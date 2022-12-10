@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-03 15:20+0100\n"
-"PO-Revision-Date: 2022-12-03 15:26+0100\n"
+"POT-Creation-Date: 2022-12-10 16:12+0100\n"
+"PO-Revision-Date: 2022-12-10 16:18+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -478,9 +478,9 @@ msgstr "Wählt einen Stil aus einem lokalen Ordner"
 msgid "Add L&ocal..."
 msgstr "L&okalen hinzufügen..."
 
-#: src/frontends/qt/ui/BibtexUi.ui:314 lib/layouts/beamer.layout:520
-#: lib/layouts/beamer.layout:549 lib/layouts/beamer.layout:560
-#: lib/layouts/beamer.layout:588 lib/layouts/beamer.layout:691
+#: src/frontends/qt/ui/BibtexUi.ui:314 lib/layouts/beamer.layout:529
+#: lib/layouts/beamer.layout:558 lib/layouts/beamer.layout:569
+#: lib/layouts/beamer.layout:597 lib/layouts/beamer.layout:700
 #: lib/layouts/chessboard.module:31 lib/layouts/chessboard.module:61
 #: lib/layouts/chessboard.module:139 lib/layouts/fixme.module:68
 #: lib/layouts/fixme.module:103 lib/layouts/fixme.module:146
@@ -636,13 +636,13 @@ msgstr "Bo&x:"
 
 #: src/frontends/qt/ui/BoxUi.ui:204 src/frontends/qt/ui/BoxUi.ui:234
 #: src/frontends/qt/ui/TabularUi.ui:213 src/frontends/qt/ui/TabularUi.ui:404
-#: lib/ui/stdcontext.inc:482 src/frontends/qt/GuiMathMatrix.cpp:54
+#: lib/ui/stdcontext.inc:483 src/frontends/qt/GuiMathMatrix.cpp:54
 msgid "Top"
 msgstr "Oben"
 
 #: src/frontends/qt/ui/BoxUi.ui:209 src/frontends/qt/ui/BoxUi.ui:239
 #: src/frontends/qt/ui/TabularUi.ui:218 src/frontends/qt/ui/TabularUi.ui:409
-#: lib/ui/stdcontext.inc:483 src/frontends/qt/GuiMathMatrix.cpp:55
+#: lib/ui/stdcontext.inc:484 src/frontends/qt/GuiMathMatrix.cpp:55
 #: src/frontends/qt/GuiTabular.cpp:256
 msgid "Middle"
 msgstr "Mitte"
@@ -664,7 +664,7 @@ msgstr "Mitte"
 #: lib/layouts/g-brief2.layout:593 lib/layouts/g-brief2.layout:613
 #: lib/layouts/g-brief2.layout:634 lib/layouts/g-brief2.layout:654
 #: lib/layouts/g-brief2.layout:674 lib/layouts/g-brief2.layout:694
-#: lib/layouts/g-brief2.layout:714 lib/ui/stdcontext.inc:484
+#: lib/layouts/g-brief2.layout:714 lib/ui/stdcontext.inc:485
 #: src/frontends/qt/GuiMathMatrix.cpp:56
 msgid "Bottom"
 msgstr "Unten"
@@ -676,7 +676,7 @@ msgstr "Dehnen"
 
 #: src/frontends/qt/ui/BoxUi.ui:265 src/frontends/qt/ui/ListingsUi.ui:110
 #: src/frontends/qt/ui/TabularUi.ui:344 src/frontends/qt/ui/TabularUi.ui:1553
-#: src/frontends/qt/ui/WrapUi.ui:47 src/frontends/qt/GuiDocument.cpp:1549
+#: src/frontends/qt/ui/WrapUi.ui:47 src/frontends/qt/GuiDocument.cpp:1545
 #: src/frontends/qt/GuiParagraph.cpp:115 src/frontends/qt/GuiTabular.cpp:1042
 msgid "Left"
 msgstr "Links"
@@ -689,7 +689,7 @@ msgstr "Zentriert"
 
 #: src/frontends/qt/ui/BoxUi.ui:275 src/frontends/qt/ui/ListingsUi.ui:115
 #: src/frontends/qt/ui/TabularUi.ui:354 src/frontends/qt/ui/WrapUi.ui:52
-#: src/frontends/qt/GuiDocument.cpp:1551 src/frontends/qt/GuiParagraph.cpp:116
+#: src/frontends/qt/GuiDocument.cpp:1547 src/frontends/qt/GuiParagraph.cpp:116
 #: src/frontends/qt/GuiTabular.cpp:1044
 msgid "Right"
 msgstr "Rechts"
@@ -852,7 +852,7 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1476
 #: src/Buffer.cpp:4732 src/Buffer.cpp:4842 src/LyXVC.cpp:114 src/LyXVC.cpp:310
 #: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:226
-#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:2837
+#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:2866
 #: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3416
 #: src/frontends/qt/GuiView.cpp:3016 src/frontends/qt/GuiView.cpp:3246
 #: src/frontends/qt/GuiView.cpp:3270 src/frontends/qt/GuiView.cpp:3284
@@ -898,16 +898,16 @@ msgstr "&Größe:"
 #: src/frontends/qt/GuiCharacter.cpp:85 src/frontends/qt/GuiCharacter.cpp:98
 #: src/frontends/qt/GuiCharacter.cpp:136 src/frontends/qt/GuiCharacter.cpp:147
 #: src/frontends/qt/GuiCharacter.cpp:190 src/frontends/qt/GuiCharacter.cpp:241
-#: src/frontends/qt/GuiDocument.cpp:120 src/frontends/qt/GuiDocument.cpp:866
-#: src/frontends/qt/GuiDocument.cpp:886 src/frontends/qt/GuiDocument.cpp:1053
-#: src/frontends/qt/GuiDocument.cpp:1138 src/frontends/qt/GuiDocument.cpp:1184
-#: src/frontends/qt/GuiDocument.cpp:1195 src/frontends/qt/GuiDocument.cpp:1425
-#: src/frontends/qt/GuiDocument.cpp:1543 src/frontends/qt/GuiDocument.cpp:1550
-#: src/frontends/qt/GuiDocument.cpp:2575 src/frontends/qt/GuiDocument.cpp:2662
-#: src/frontends/qt/GuiDocument.cpp:2663 src/frontends/qt/GuiDocument.cpp:2664
-#: src/frontends/qt/GuiDocument.cpp:2688 src/frontends/qt/GuiDocument.cpp:2695
-#: src/frontends/qt/GuiDocument.cpp:2702 src/frontends/qt/GuiDocument.cpp:2792
-#: src/frontends/qt/GuiDocument.cpp:3398 src/frontends/qt/GuiDocument.cpp:4893
+#: src/frontends/qt/GuiDocument.cpp:120 src/frontends/qt/GuiDocument.cpp:862
+#: src/frontends/qt/GuiDocument.cpp:882 src/frontends/qt/GuiDocument.cpp:1049
+#: src/frontends/qt/GuiDocument.cpp:1134 src/frontends/qt/GuiDocument.cpp:1180
+#: src/frontends/qt/GuiDocument.cpp:1191 src/frontends/qt/GuiDocument.cpp:1421
+#: src/frontends/qt/GuiDocument.cpp:1539 src/frontends/qt/GuiDocument.cpp:1546
+#: src/frontends/qt/GuiDocument.cpp:2604 src/frontends/qt/GuiDocument.cpp:2691
+#: src/frontends/qt/GuiDocument.cpp:2692 src/frontends/qt/GuiDocument.cpp:2693
+#: src/frontends/qt/GuiDocument.cpp:2717 src/frontends/qt/GuiDocument.cpp:2724
+#: src/frontends/qt/GuiDocument.cpp:2731 src/frontends/qt/GuiDocument.cpp:2821
+#: src/frontends/qt/GuiDocument.cpp:3427 src/frontends/qt/GuiDocument.cpp:4931
 #: src/frontends/qt/GuiExternal.cpp:76 src/frontends/qt/GuiGraphics.cpp:71
 #: src/frontends/qt/GuiIndex.cpp:46 src/frontends/qt/GuiIndices.cpp:58
 #: src/frontends/qt/GuiListings.cpp:160 src/frontends/qt/GuiListings.cpp:167
@@ -1112,7 +1112,7 @@ msgstr "S&prache:"
 #: lib/layouts/europasscv.layout:440 lib/layouts/europasscv.layout:475
 #: lib/layouts/europasscv.layout:482 lib/layouts/europecv.layout:321
 #: lib/layouts/europecv.layout:327 lib/layouts/moderncv.layout:580
-#: src/frontends/qt/GuiDocument.cpp:1771 src/frontends/qt/GuiPrefs.cpp:2433
+#: src/frontends/qt/GuiDocument.cpp:1767 src/frontends/qt/GuiPrefs.cpp:2433
 #: src/frontends/qt/Menus.cpp:936
 msgid "Language"
 msgstr "Sprache"
@@ -1306,7 +1306,7 @@ msgid "Greyed-out notes:"
 msgstr "Grauschrift-Notizen:"
 
 #: src/frontends/qt/ui/ColorUi.ui:118 src/frontends/qt/ui/ColorUi.ui:256
-#: src/frontends/qt/GuiDocument.cpp:2204 src/frontends/qt/GuiDocument.cpp:2234
+#: src/frontends/qt/GuiDocument.cpp:2233 src/frontends/qt/GuiDocument.cpp:2263
 msgid "&Change..."
 msgstr "&Änderung..."
 
@@ -1347,7 +1347,7 @@ msgid "Select the document from which the settings should be taken"
 msgstr ""
 "Wählen Sie das Dokument, von dem die Einstellungen übernommen werden sollen"
 
-#: src/frontends/qt/ui/CompareUi.ui:60 src/frontends/qt/GuiDocument.cpp:789
+#: src/frontends/qt/ui/CompareUi.ui:60 src/frontends/qt/GuiDocument.cpp:784
 msgid "Document Settings"
 msgstr "Dokument-Einstellungen"
 
@@ -2464,9 +2464,7 @@ msgstr "Programmlisting"
 msgid "Edit the file"
 msgstr "Die Datei bearbeiten"
 
-#: src/frontends/qt/ui/IncludeUi.ui:72 src/frontends/qt/ui/LocalLayoutUi.ui:77
-#: src/frontends/qt/ui/PreambleUi.ui:48 src/frontends/qt/GuiDocument.cpp:578
-#: src/frontends/qt/GuiDocument.cpp:759
+#: src/frontends/qt/ui/IncludeUi.ui:72
 msgid "&Edit"
 msgstr "&Bearbeiten"
 
@@ -3040,6 +3038,11 @@ msgstr ""
 "Das Bearbeitungsprogramm für das Dateiformat 'LaTeX (normal)' wird "
 "verwendet. "
 
+#: src/frontends/qt/ui/LocalLayoutUi.ui:77 src/frontends/qt/ui/PreambleUi.ui:48
+#: src/frontends/qt/GuiDocument.cpp:578 src/frontends/qt/GuiDocument.cpp:754
+msgid "&Edit Externally"
+msgstr "E&xtern bearbeiten"
+
 #: src/frontends/qt/ui/LocalLayoutUi.ui:84
 msgid "Convert"
 msgstr "Konvertieren"
@@ -3086,7 +3089,7 @@ msgid "Update the display"
 msgstr "Anzeige aktualisieren"
 
 #: src/frontends/qt/ui/LogUi.ui:159 src/frontends/qt/ui/ViewSourceUi.ui:173
-#: src/frontends/qt/GuiRef.cpp:72
+#: src/frontends/qt/GuiRef.cpp:73
 msgid "&Update"
 msgstr "A&ktualisieren"
 
@@ -3523,8 +3526,8 @@ msgid "Images"
 msgstr "Bilder"
 
 #: src/frontends/qt/ui/OutputUi.ui:279 lib/layouts/aapaper.layout:63
-#: lib/layouts/egs.layout:712 lib/languages:146
-#: src/frontends/qt/GuiDocument.cpp:1604 src/frontends/qt/GuiErrorList.cpp:50
+#: lib/layouts/egs.layout:720 lib/languages:146
+#: src/frontends/qt/GuiDocument.cpp:1600 src/frontends/qt/GuiErrorList.cpp:50
 #: src/frontends/qt/GuiLog.cpp:282 src/frontends/qt/GuiPrefs.cpp:641
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -3747,7 +3750,7 @@ msgstr "&Querformat"
 
 #: src/frontends/qt/ui/PageLayoutUi.ui:162
 #: lib/layouts/customHeadersFooters.module:3 lib/layouts/landscape.module:3
-#: lib/layouts/multicol.module:3 src/frontends/qt/GuiDocument.cpp:1769
+#: lib/layouts/multicol.module:3 src/frontends/qt/GuiDocument.cpp:1765
 msgid "Page Layout"
 msgstr "Seitenlayout"
 
@@ -3772,7 +3775,7 @@ msgid "Line &spacing"
 msgstr "Zeilen&abstand"
 
 #: src/frontends/qt/ui/ParagraphUi.ui:60 src/Text.cpp:2132
-#: src/frontends/qt/GuiDocument.cpp:875
+#: src/frontends/qt/GuiDocument.cpp:871
 msgid "Single"
 msgstr "Einfach"
 
@@ -3781,7 +3784,7 @@ msgid "1.5"
 msgstr "1,5"
 
 #: src/frontends/qt/ui/ParagraphUi.ui:70 src/Text.cpp:2138
-#: src/frontends/qt/GuiDocument.cpp:879
+#: src/frontends/qt/GuiDocument.cpp:875
 msgid "Double"
 msgstr "Doppelt"
 
@@ -3791,10 +3794,10 @@ msgstr "Doppelt"
 #: src/frontends/qt/ui/TabularUi.ui:1210 src/frontends/qt/ui/TabularUi.ui:1229
 #: src/frontends/qt/ui/TabularUi.ui:1277 src/frontends/qt/ui/VSpaceUi.ui:118
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt/FloatPlacement.cpp:185
-#: src/frontends/qt/GuiDocument.cpp:867 src/frontends/qt/GuiDocument.cpp:873
-#: src/frontends/qt/GuiDocument.cpp:881 src/frontends/qt/GuiDocument.cpp:992
-#: src/frontends/qt/GuiDocument.cpp:1059 src/frontends/qt/GuiDocument.cpp:1145
-#: src/frontends/qt/GuiDocument.cpp:1196 src/frontends/qt/GuiDocument.cpp:1544
+#: src/frontends/qt/GuiDocument.cpp:863 src/frontends/qt/GuiDocument.cpp:869
+#: src/frontends/qt/GuiDocument.cpp:877 src/frontends/qt/GuiDocument.cpp:988
+#: src/frontends/qt/GuiDocument.cpp:1055 src/frontends/qt/GuiDocument.cpp:1141
+#: src/frontends/qt/GuiDocument.cpp:1192 src/frontends/qt/GuiDocument.cpp:1540
 #: src/frontends/qt/GuiHSpace.cpp:57 src/frontends/qt/GuiIndex.cpp:50
 #: src/frontends/qt/GuiPrefs.cpp:815 src/frontends/qt/GuiPrefs.cpp:843
 #: src/frontends/qt/GuiPrefs.cpp:870 src/frontends/qt/GuiPrefs.cpp:2330
@@ -4610,18 +4613,18 @@ msgstr ""
 "soll"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:77
-#: src/frontends/qt/GuiDocument.cpp:1055 src/frontends/qt/GuiDocument.cpp:2709
+#: src/frontends/qt/GuiDocument.cpp:1051 src/frontends/qt/GuiDocument.cpp:2738
 #: src/frontends/qt/GuiPrefs.cpp:814 src/frontends/qt/GuiPrefs.cpp:842
 msgid "Automatic"
 msgstr "Automatisch"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:82
-#: src/frontends/qt/GuiDocument.cpp:1057
+#: src/frontends/qt/GuiDocument.cpp:1053
 msgid "Always Babel"
 msgstr "Immer Babel"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:92
-#: src/frontends/qt/GuiDocument.cpp:1061
+#: src/frontends/qt/GuiDocument.cpp:1057
 msgid "None[[language package]]"
 msgstr "Keines"
 
@@ -4796,7 +4799,7 @@ msgid "Default length &unit:"
 msgstr "Standard-Längene&inheit:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:348
-#: src/frontends/qt/GuiDocument.cpp:1018
+#: src/frontends/qt/GuiDocument.cpp:1014
 msgid "Language Default"
 msgstr "Sprachvoreinstellung"
 
@@ -5349,11 +5352,11 @@ msgid "Select a label from the list above or enter a label manually"
 msgstr ""
 "Wählen Sie eine Marke aus der Liste oben oder geben Sie manuell eine ein."
 
-#: src/frontends/qt/ui/RefUi.ui:200 src/frontends/qt/GuiRef.cpp:397
+#: src/frontends/qt/ui/RefUi.ui:200 src/frontends/qt/GuiRef.cpp:406
 msgid "Jump to the selected label"
 msgstr "Springe zur ausgewählten Marke"
 
-#: src/frontends/qt/ui/RefUi.ui:203 src/frontends/qt/GuiRef.cpp:396
+#: src/frontends/qt/ui/RefUi.ui:203 src/frontends/qt/GuiRef.cpp:405
 msgid "&Go to Label"
 msgstr "&Gehe zur Marke"
 
@@ -5365,35 +5368,35 @@ msgstr "&Querverweisstil:"
 msgid "Adjust the style of the cross-reference"
 msgstr "Wählen Sie hier den Stil des Querverweises aus."
 
-#: src/frontends/qt/ui/RefUi.ui:237 src/frontends/qt/GuiRef.cpp:314
+#: src/frontends/qt/ui/RefUi.ui:237 src/frontends/qt/GuiRef.cpp:320
 msgid "<reference>"
 msgstr "<Querverweis>"
 
-#: src/frontends/qt/ui/RefUi.ui:242 src/frontends/qt/GuiRef.cpp:315
+#: src/frontends/qt/ui/RefUi.ui:242 src/frontends/qt/GuiRef.cpp:321
 msgid "(<reference>)"
 msgstr "(<Querverweis>)"
 
-#: src/frontends/qt/ui/RefUi.ui:247 src/frontends/qt/GuiRef.cpp:316
+#: src/frontends/qt/ui/RefUi.ui:247 src/frontends/qt/GuiRef.cpp:322
 msgid "<page>"
 msgstr "<Seite>"
 
-#: src/frontends/qt/ui/RefUi.ui:252 src/frontends/qt/GuiRef.cpp:317
+#: src/frontends/qt/ui/RefUi.ui:252 src/frontends/qt/GuiRef.cpp:323
 msgid "on page <page>"
 msgstr "auf Seite <Seite>"
 
-#: src/frontends/qt/ui/RefUi.ui:257 src/frontends/qt/GuiRef.cpp:318
+#: src/frontends/qt/ui/RefUi.ui:257 src/frontends/qt/GuiRef.cpp:324
 msgid "<reference> on page <page>"
 msgstr "<Querverweis> auf Seite <Seite>"
 
-#: src/frontends/qt/ui/RefUi.ui:262 src/frontends/qt/GuiRef.cpp:320
+#: src/frontends/qt/ui/RefUi.ui:262 src/frontends/qt/GuiRef.cpp:326
 msgid "Formatted reference"
 msgstr "Formatierter Querverweis"
 
-#: src/frontends/qt/ui/RefUi.ui:267 src/frontends/qt/GuiRef.cpp:319
+#: src/frontends/qt/ui/RefUi.ui:267 src/frontends/qt/GuiRef.cpp:325
 msgid "Textual reference"
 msgstr "Textverweis"
 
-#: src/frontends/qt/ui/RefUi.ui:272 src/frontends/qt/GuiRef.cpp:321
+#: src/frontends/qt/ui/RefUi.ui:272 src/frontends/qt/GuiRef.cpp:327
 msgid "Label only"
 msgstr "Nur Marke"
 
@@ -5428,6 +5431,10 @@ msgstr "Den Teil der Marke vor \":\" nicht ausgeben"
 #: src/frontends/qt/ui/RefUi.ui:333 lib/ui/stdcontext.inc:126
 msgid "No Prefix"
 msgstr "Ohne Präfix"
+
+#: src/frontends/qt/ui/RefUi.ui:340 lib/ui/stdcontext.inc:127
+msgid "No Hyperlink"
+msgstr "Ohne Hyperlink "
 
 #: src/frontends/qt/ui/SearchUi.ui:52
 msgid "Find previous occurrence (Shift+Enter)"
@@ -6302,12 +6309,12 @@ msgid "Big skip"
 msgstr "Groß"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:103 src/VSpace.cpp:202
-#: src/frontends/qt/GuiDocument.cpp:868
+#: src/frontends/qt/GuiDocument.cpp:864
 msgid "Half line height"
 msgstr "Halbe Zeilenhöhe"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:108 src/VSpace.cpp:205
-#: src/frontends/qt/GuiDocument.cpp:869
+#: src/frontends/qt/GuiDocument.cpp:865
 msgid "Line height"
 msgstr "Zeilenhöhe"
 
@@ -6676,14 +6683,14 @@ msgstr "Kurztitel"
 #: lib/layouts/apax.inc:165 lib/layouts/apax.inc:192 lib/layouts/apax.inc:199
 #: lib/layouts/apax.inc:206 lib/layouts/apax.inc:213 lib/layouts/apax.inc:220
 #: lib/layouts/apax.inc:228 lib/layouts/apax.inc:250 lib/layouts/apax.inc:277
-#: lib/layouts/apax.inc:305 lib/layouts/apax.inc:598 lib/layouts/apax.inc:628
+#: lib/layouts/apax.inc:305 lib/layouts/apax.inc:604 lib/layouts/apax.inc:634
 #: lib/layouts/bicaption.module:14 lib/layouts/broadway.layout:193
 #: lib/layouts/broadway.layout:211 lib/layouts/cl2emult.layout:42
 #: lib/layouts/cl2emult.layout:64 lib/layouts/cl2emult.layout:82
 #: lib/layouts/copernicus.layout:46 lib/layouts/ectaart.layout:26
 #: lib/layouts/ectaart.layout:57 lib/layouts/ectaart.layout:90
-#: lib/layouts/egs.layout:321 lib/layouts/egs.layout:367
-#: lib/layouts/egs.layout:566 lib/layouts/elsart.layout:101
+#: lib/layouts/egs.layout:327 lib/layouts/egs.layout:373
+#: lib/layouts/egs.layout:572 lib/layouts/elsart.layout:101
 #: lib/layouts/elsart.layout:126 lib/layouts/elsarticle.layout:63
 #: lib/layouts/elsarticle.layout:111 lib/layouts/elsarticle.layout:142
 #: lib/layouts/elsarticle.layout:225 lib/layouts/elsarticle.layout:275
@@ -6816,7 +6823,7 @@ msgstr "Schlagwörter:"
 #: lib/layouts/apax.inc:249 lib/layouts/cl2emult.layout:93
 #: lib/layouts/cl2emult.layout:104 lib/layouts/copernicus.layout:234
 #: lib/layouts/db_stdstruct.inc:11 lib/layouts/ectaart.layout:52
-#: lib/layouts/ectaart.layout:65 lib/layouts/egs.layout:565
+#: lib/layouts/ectaart.layout:65 lib/layouts/egs.layout:571
 #: lib/layouts/elsart.layout:250 lib/layouts/elsart.layout:265
 #: lib/layouts/elsarticle.layout:271 lib/layouts/elsarticle.layout:288
 #: lib/layouts/entcs.layout:91 lib/layouts/foils.layout:176
@@ -6845,7 +6852,7 @@ msgstr "Abstract"
 #: lib/layouts/AEA.layout:129 lib/layouts/aa.layout:169
 #: lib/layouts/aapaper.inc:82 lib/layouts/aapaper.layout:105
 #: lib/layouts/achemso.layout:283 lib/layouts/achemso.layout:290
-#: lib/layouts/egs.layout:613 lib/layouts/elsart.layout:510
+#: lib/layouts/egs.layout:619 lib/layouts/elsart.layout:510
 #: lib/layouts/svcommon.inc:624 lib/layouts/svmult.layout:157
 #: lib/layouts/theorems-ams-extended-bytype.module:325
 #: lib/layouts/theorems-ams-extended-bytype.module:334
@@ -6866,7 +6873,7 @@ msgstr "Abstract"
 msgid "Acknowledgement"
 msgstr "Danksagung"
 
-#: lib/layouts/AEA.layout:131 lib/layouts/egs.layout:627
+#: lib/layouts/AEA.layout:131 lib/layouts/egs.layout:633
 #: lib/layouts/theorems-ams-extended-bytype.module:349
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:420
 #: lib/layouts/theorems-ams-extended.module:339
@@ -6885,9 +6892,9 @@ msgstr "Abbildungsanmerkungen"
 #: lib/layouts/agutex.layout:33 lib/layouts/amsart.layout:33
 #: lib/layouts/amsbook.layout:34 lib/layouts/apa.layout:26
 #: lib/layouts/apax.inc:22 lib/layouts/beamer.layout:67
-#: lib/layouts/beamer.layout:1211 lib/layouts/beamer.layout:1238
-#: lib/layouts/beamer.layout:1265 lib/layouts/beamer.layout:1390
-#: lib/layouts/beamer.layout:1427 lib/layouts/broadway.layout:179
+#: lib/layouts/beamer.layout:1220 lib/layouts/beamer.layout:1247
+#: lib/layouts/beamer.layout:1274 lib/layouts/beamer.layout:1399
+#: lib/layouts/beamer.layout:1436 lib/layouts/broadway.layout:179
 #: lib/layouts/cl2emult.layout:152 lib/layouts/db_stdclass.inc:17
 #: lib/layouts/dtk.layout:33 lib/layouts/egs.layout:20
 #: lib/layouts/elsart.layout:51 lib/layouts/elsarticle.layout:36
@@ -6903,9 +6910,9 @@ msgstr "Abbildungsanmerkungen"
 #: lib/layouts/maa-monthly.layout:51 lib/layouts/memoir.layout:38
 #: lib/layouts/memoir.layout:194 lib/layouts/memoir.layout:286
 #: lib/layouts/moderncv.layout:23 lib/layouts/paper.layout:27
-#: lib/layouts/powerdot.layout:121 lib/layouts/powerdot.layout:427
-#: lib/layouts/powerdot.layout:449 lib/layouts/powerdot.layout:471
-#: lib/layouts/powerdot.layout:491 lib/layouts/revtex.layout:24
+#: lib/layouts/powerdot.layout:121 lib/layouts/powerdot.layout:433
+#: lib/layouts/powerdot.layout:455 lib/layouts/powerdot.layout:477
+#: lib/layouts/powerdot.layout:497 lib/layouts/revtex.layout:24
 #: lib/layouts/revtex4.layout:49 lib/layouts/rsphrase.module:44
 #: lib/layouts/scrclass.inc:26 lib/layouts/scrclass.inc:368
 #: lib/layouts/scrlettr.layout:10 lib/layouts/scrlttr2.layout:20
@@ -6928,7 +6935,7 @@ msgid "Text of a note in a figure"
 msgstr "Text einer Abbildungsanmerkung"
 
 #: lib/layouts/AEA.layout:156 lib/layouts/apax.inc:240
-#: lib/layouts/beamer.layout:1439 lib/layouts/powerdot.layout:228
+#: lib/layouts/beamer.layout:1448 lib/layouts/powerdot.layout:228
 msgid "Note:"
 msgstr "Notiz:"
 
@@ -6946,10 +6953,10 @@ msgstr "Text einer Tabellenanmerkung"
 
 #: lib/layouts/AEA.layout:180 lib/layouts/IEEEtran.layout:49
 #: lib/layouts/acmart.layout:548 lib/layouts/acmart.layout:552
-#: lib/layouts/beamer.layout:1378 lib/layouts/elsart.layout:306
+#: lib/layouts/beamer.layout:1387 lib/layouts/elsart.layout:306
 #: lib/layouts/elsart.layout:310 lib/layouts/foils.layout:248
-#: lib/layouts/heb-article.layout:28 lib/layouts/ijmpc.layout:421
-#: lib/layouts/ijmpd.layout:428 lib/layouts/ijmpd.layout:431
+#: lib/layouts/heb-article.layout:28 lib/layouts/ijmpc.layout:425
+#: lib/layouts/ijmpd.layout:432 lib/layouts/ijmpd.layout:435
 #: lib/layouts/llncs.layout:449 lib/layouts/siamltex.layout:69
 #: lib/layouts/svmono.layout:29 lib/layouts/theorems-ams-bytype.inc:30
 #: lib/layouts/theorems-ams-bytype.inc:69
@@ -6979,7 +6986,7 @@ msgstr "Theorem"
 
 #: lib/layouts/AEA.layout:187 lib/layouts/algorithm2e.module:19
 #: lib/layouts/algorithm2e.module:33 lib/layouts/elsart.layout:408
-#: lib/layouts/powerdot.layout:587 lib/layouts/powerdot.layout:635
+#: lib/layouts/powerdot.layout:593 lib/layouts/powerdot.layout:641
 #: lib/layouts/revtex4-x.inc:308 lib/layouts/sciposter.layout:89
 #: lib/layouts/siamltex.layout:118 lib/layouts/stdfloats.inc:43
 #: lib/layouts/theorems-ams-extended-bytype.module:81
@@ -7024,8 +7031,8 @@ msgstr "Axiom"
 #: lib/layouts/AEA.layout:201 lib/layouts/AEA.layout:350
 #: lib/layouts/elsart.layout:46 lib/layouts/elsart.layout:498
 #: lib/layouts/llncs.layout:317 lib/layouts/svmono.layout:84
-#: lib/layouts/theorems-case.inc:31 lib/layouts/theorems-case.inc:83
-#: lib/layouts/theorems-case.inc:86 lib/layouts/theorems-order.inc:79
+#: lib/layouts/theorems-case.inc:31 lib/layouts/theorems-case.inc:84
+#: lib/layouts/theorems-case.inc:87 lib/layouts/theorems-order.inc:79
 #: lib/layouts/theorems-without-preamble.inc:400
 #: lib/layouts/theorems-without-preamble.inc:402
 #: lib/layouts/theorems-without-preamble.inc:409
@@ -7038,9 +7045,9 @@ msgid "Case \\thecase."
 msgstr "Fall \\thecase."
 
 #: lib/layouts/AEA.layout:211 lib/layouts/elsart.layout:479
-#: lib/layouts/heb-article.layout:76 lib/layouts/ijmpc.layout:463
-#: lib/layouts/ijmpc.layout:466 lib/layouts/ijmpd.layout:492
-#: lib/layouts/ijmpd.layout:495 lib/layouts/llncs.layout:339
+#: lib/layouts/heb-article.layout:76 lib/layouts/ijmpc.layout:467
+#: lib/layouts/ijmpc.layout:470 lib/layouts/ijmpd.layout:496
+#: lib/layouts/ijmpd.layout:499 lib/layouts/llncs.layout:339
 #: lib/layouts/svmono.layout:59 lib/layouts/svmono.layout:98
 #: lib/layouts/theorems-ams-bytype.inc:320
 #: lib/layouts/theorems-ams-bytype.inc:330
@@ -7105,8 +7112,8 @@ msgid "Condition"
 msgstr "Bedingung"
 
 #: lib/layouts/AEA.layout:234 lib/layouts/acmart.layout:608
-#: lib/layouts/elsart.layout:433 lib/layouts/ijmpc.layout:478
-#: lib/layouts/ijmpd.layout:504 lib/layouts/ijmpd.layout:507
+#: lib/layouts/elsart.layout:433 lib/layouts/ijmpc.layout:482
+#: lib/layouts/ijmpd.layout:508 lib/layouts/ijmpd.layout:511
 #: lib/layouts/llncs.layout:346 lib/layouts/siamltex.layout:109
 #: lib/layouts/svmono.layout:64 lib/layouts/theorems-ams-bytype.inc:140
 #: lib/layouts/theorems-ams-bytype.inc:149
@@ -7131,10 +7138,10 @@ msgid "Conjecture"
 msgstr "Vermutung"
 
 #: lib/layouts/AEA.layout:241 lib/layouts/acmart.layout:587
-#: lib/layouts/beamer.layout:1294 lib/layouts/elsart.layout:381
+#: lib/layouts/beamer.layout:1303 lib/layouts/elsart.layout:381
 #: lib/layouts/foils.layout:281 lib/layouts/heb-article.layout:66
-#: lib/layouts/ijmpc.layout:442 lib/layouts/ijmpd.layout:457
-#: lib/layouts/ijmpd.layout:460 lib/layouts/llncs.layout:353
+#: lib/layouts/ijmpc.layout:446 lib/layouts/ijmpd.layout:461
+#: lib/layouts/ijmpd.layout:464 lib/layouts/llncs.layout:353
 #: lib/layouts/siamltex.layout:79 lib/layouts/svmono.layout:44
 #: lib/layouts/theorems-ams-bytype.inc:80
 #: lib/layouts/theorems-ams-bytype.inc:90
@@ -7179,7 +7186,7 @@ msgid "Criterion"
 msgstr "Kriterium"
 
 #: lib/layouts/AEA.layout:256 lib/layouts/acmart.layout:615
-#: lib/layouts/beamer.layout:1332 lib/layouts/elsart.layout:417
+#: lib/layouts/beamer.layout:1341 lib/layouts/elsart.layout:417
 #: lib/layouts/foils.layout:295 lib/layouts/heb-article.layout:86
 #: lib/layouts/llncs.layout:367 lib/layouts/siamltex.layout:128
 #: lib/layouts/svmono.layout:34 lib/layouts/theorems-ams-bytype.inc:180
@@ -7205,7 +7212,7 @@ msgid "Definition"
 msgstr "Definition"
 
 #: lib/layouts/AEA.layout:263 lib/layouts/acmart.layout:629
-#: lib/layouts/beamer.layout:1344 lib/layouts/elsart.layout:442
+#: lib/layouts/beamer.layout:1353 lib/layouts/elsart.layout:442
 #: lib/layouts/linguistics.module:18 lib/layouts/llncs.layout:374
 #: lib/layouts/svmono.layout:74 lib/layouts/theorems-ams-bytype.inc:207
 #: lib/layouts/theorems-ams-bytype.inc:217
@@ -7226,7 +7233,7 @@ msgstr "Definition"
 #: lib/layouts/theorems-without-preamble.inc:240
 #: lib/layouts/theorems-without-preamble.inc:243 lib/layouts/theorems.inc:204
 #: lib/layouts/theorems.inc:213 lib/layouts/theorems.inc:216
-#: src/frontends/qt/GuiDocument.cpp:1351
+#: src/frontends/qt/GuiDocument.cpp:1347
 msgid "Example"
 msgstr "Beispiel"
 
@@ -7256,10 +7263,10 @@ msgid "Exercise"
 msgstr "Aufgabe"
 
 #: lib/layouts/AEA.layout:277 lib/layouts/acmart.layout:594
-#: lib/layouts/beamer.layout:1366 lib/layouts/elsart.layout:372
+#: lib/layouts/beamer.layout:1375 lib/layouts/elsart.layout:372
 #: lib/layouts/foils.layout:274 lib/layouts/heb-article.layout:56
-#: lib/layouts/ijmpc.layout:446 lib/layouts/ijmpd.layout:465
-#: lib/layouts/ijmpd.layout:468 lib/layouts/llncs.layout:388
+#: lib/layouts/ijmpc.layout:450 lib/layouts/ijmpd.layout:469
+#: lib/layouts/ijmpd.layout:472 lib/layouts/llncs.layout:388
 #: lib/layouts/siamltex.layout:89 lib/layouts/svmono.layout:49
 #: lib/layouts/theorems-ams-bytype.inc:100
 #: lib/layouts/theorems-ams-bytype.inc:109
@@ -7329,8 +7336,8 @@ msgstr "Problem"
 
 #: lib/layouts/AEA.layout:300 lib/layouts/acmart.layout:601
 #: lib/layouts/elsart.layout:390 lib/layouts/foils.layout:288
-#: lib/layouts/ijmpc.layout:450 lib/layouts/ijmpd.layout:473
-#: lib/layouts/ijmpd.layout:476 lib/layouts/llncs.layout:422
+#: lib/layouts/ijmpc.layout:454 lib/layouts/ijmpd.layout:477
+#: lib/layouts/ijmpd.layout:480 lib/layouts/llncs.layout:422
 #: lib/layouts/siamltex.layout:99 lib/layouts/svmono.layout:54
 #: lib/layouts/theorems-ams-bytype.inc:120
 #: lib/layouts/theorems-ams-bytype.inc:129
@@ -7355,8 +7362,8 @@ msgid "Proposition"
 msgstr "Satz"
 
 #: lib/layouts/AEA.layout:307 lib/layouts/AEA.layout:353
-#: lib/layouts/elsart.layout:461 lib/layouts/ijmpc.layout:434
-#: lib/layouts/ijmpd.layout:445 lib/layouts/ijmpd.layout:448
+#: lib/layouts/elsart.layout:461 lib/layouts/ijmpc.layout:438
+#: lib/layouts/ijmpd.layout:449 lib/layouts/ijmpd.layout:452
 #: lib/layouts/llncs.layout:435 lib/layouts/svmono.layout:39
 #: lib/layouts/theorems-ams-bytype.inc:292
 #: lib/layouts/theorems-ams-bytype.inc:309
@@ -7380,8 +7387,8 @@ msgstr "Satz"
 msgid "Remark"
 msgstr "Bemerkung"
 
-#: lib/layouts/AEA.layout:309 lib/layouts/ijmpc.layout:435
-#: lib/layouts/ijmpd.layout:449 lib/layouts/theorems-ams-bytype.inc:295
+#: lib/layouts/AEA.layout:309 lib/layouts/ijmpc.layout:439
+#: lib/layouts/ijmpd.layout:453 lib/layouts/theorems-ams-bytype.inc:295
 #: lib/layouts/theorems-ams-chap-bytype.inc:381
 #: lib/layouts/theorems-bytype.inc:289
 #: lib/layouts/theorems-without-preamble.inc:370
@@ -7450,9 +7457,9 @@ msgid "Caption"
 msgstr "Legende"
 
 #: lib/layouts/AEA.layout:344 lib/layouts/IEEEtran.layout:448
-#: lib/layouts/beamer.layout:1372 lib/layouts/elsart.layout:342
+#: lib/layouts/beamer.layout:1381 lib/layouts/elsart.layout:342
 #: lib/layouts/foils.layout:309 lib/layouts/heb-article.layout:106
-#: lib/layouts/ijmpc.layout:399 lib/layouts/ijmpd.layout:405
+#: lib/layouts/ijmpc.layout:403 lib/layouts/ijmpd.layout:409
 #: lib/layouts/llncs.layout:408 lib/layouts/siamltex.layout:157
 #: lib/layouts/svcommon.inc:738 lib/layouts/svcommon.inc:753
 #: lib/layouts/svcommon.inc:756 lib/layouts/svmono.layout:102
@@ -7525,7 +7532,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdinsets.inc:719 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
-#: src/insets/InsetRef.cpp:599
+#: src/insets/InsetRef.cpp:621
 msgid "Standard"
 msgstr "Standard"
 
@@ -7535,11 +7542,11 @@ msgstr "Standard"
 #: lib/layouts/acmart.layout:145 lib/layouts/acmsiggraph-0-92.layout:165
 #: lib/layouts/acmsiggraph.layout:141 lib/layouts/agutex.layout:56
 #: lib/layouts/amsdefs.inc:27 lib/layouts/apa.layout:42 lib/layouts/apax.inc:38
-#: lib/layouts/beamer.layout:986 lib/layouts/beamerposter.layout:21
+#: lib/layouts/beamer.layout:995 lib/layouts/beamerposter.layout:21
 #: lib/layouts/broadway.layout:192 lib/layouts/cl2emult.layout:41
 #: lib/layouts/copernicus.layout:34 lib/layouts/docbook-book.layout:18
 #: lib/layouts/docbook-chapter.layout:14 lib/layouts/docbook-section.layout:14
-#: lib/layouts/ectaart.layout:16 lib/layouts/egs.layout:320
+#: lib/layouts/ectaart.layout:16 lib/layouts/egs.layout:326
 #: lib/layouts/elsart.layout:100 lib/layouts/elsarticle.layout:59
 #: lib/layouts/entcs.layout:40 lib/layouts/foils.layout:151
 #: lib/layouts/hollywood.layout:354 lib/layouts/ijmpc.layout:113
@@ -7578,11 +7585,11 @@ msgstr "Kleinschreibung"
 #: lib/layouts/achemso.layout:84 lib/layouts/acmart.layout:81
 #: lib/layouts/acmsiggraph-0-92.layout:178 lib/layouts/acmsiggraph.layout:154
 #: lib/layouts/amsdefs.inc:57 lib/layouts/apa.layout:139
-#: lib/layouts/apax.inc:80 lib/layouts/beamer.layout:1050
+#: lib/layouts/apax.inc:80 lib/layouts/beamer.layout:1059
 #: lib/layouts/beamerposter.layout:31 lib/layouts/broadway.layout:210
 #: lib/layouts/cl2emult.layout:63 lib/layouts/copernicus.layout:61
 #: lib/layouts/ectaart.layout:131 lib/layouts/ectaart.layout:217
-#: lib/layouts/ectaart.layout:220 lib/layouts/egs.layout:366
+#: lib/layouts/ectaart.layout:220 lib/layouts/egs.layout:372
 #: lib/layouts/elsart.layout:125 lib/layouts/elsarticle.layout:139
 #: lib/layouts/entcs.layout:51 lib/layouts/foils.layout:162
 #: lib/layouts/hollywood.layout:341 lib/layouts/ijmpc.layout:135
@@ -7600,7 +7607,7 @@ msgstr "Kleinschreibung"
 msgid "Author"
 msgstr "Autor"
 
-#: lib/layouts/IEEEtran.layout:129 lib/layouts/beamer.layout:1063
+#: lib/layouts/IEEEtran.layout:129 lib/layouts/beamer.layout:1072
 msgid "Short Author|S"
 msgstr "Autor (Kurzform)|z"
 
@@ -7694,12 +7701,12 @@ msgstr "Anhänge"
 #: lib/layouts/acmsiggraph.layout:305 lib/layouts/agutex.layout:167
 #: lib/layouts/agutex.layout:177 lib/layouts/agutex.layout:197
 #: lib/layouts/agutex.layout:223 lib/layouts/amsdefs.inc:266
-#: lib/layouts/apa.layout:244 lib/layouts/beamer.layout:1171
-#: lib/layouts/copernicus.layout:437 lib/layouts/egs.layout:588
-#: lib/layouts/egs.layout:639 lib/layouts/elsarticle.layout:333
+#: lib/layouts/apa.layout:244 lib/layouts/beamer.layout:1180
+#: lib/layouts/copernicus.layout:437 lib/layouts/egs.layout:594
+#: lib/layouts/egs.layout:645 lib/layouts/elsarticle.layout:333
 #: lib/layouts/europasscv.layout:539 lib/layouts/europecv.layout:380
-#: lib/layouts/ijmpc.layout:501 lib/layouts/ijmpc.layout:528
-#: lib/layouts/ijmpd.layout:525 lib/layouts/ijmpd.layout:552
+#: lib/layouts/ijmpc.layout:505 lib/layouts/ijmpc.layout:532
+#: lib/layouts/ijmpd.layout:529 lib/layouts/ijmpd.layout:556
 #: lib/layouts/iopart.layout:300 lib/layouts/iopart.layout:325
 #: lib/layouts/iopart.layout:361 lib/layouts/isprs.layout:222
 #: lib/layouts/iucr.layout:255 lib/layouts/iucr.layout:263
@@ -7707,7 +7714,7 @@ msgstr "Anhänge"
 #: lib/layouts/kluwer.layout:342 lib/layouts/llncs.layout:281
 #: lib/layouts/maa-monthly.layout:80 lib/layouts/maa-monthly.layout:101
 #: lib/layouts/maa-monthly.layout:126 lib/layouts/maa-monthly.layout:145
-#: lib/layouts/moderncv.layout:613 lib/layouts/powerdot.layout:392
+#: lib/layouts/moderncv.layout:613 lib/layouts/powerdot.layout:398
 #: lib/layouts/revtex4-x.inc:260 lib/layouts/revtex4.layout:279
 #: lib/layouts/siamltex.layout:340 lib/layouts/sigplanconf.layout:239
 #: lib/layouts/simplecv.layout:198 lib/layouts/stdstruct.inc:63
@@ -7730,8 +7737,8 @@ msgstr "Peer-Review-Titel"
 #: lib/layouts/aastex62.layout:275 lib/layouts/copernicus.layout:303
 #: lib/layouts/copernicus.layout:309 lib/layouts/copernicus.layout:321
 #: lib/layouts/copernicus.layout:333 lib/layouts/copernicus.layout:338
-#: lib/layouts/ijmpc.layout:496 lib/layouts/ijmpc.layout:498
-#: lib/layouts/ijmpd.layout:520 lib/layouts/ijmpd.layout:522
+#: lib/layouts/ijmpc.layout:500 lib/layouts/ijmpc.layout:502
+#: lib/layouts/ijmpd.layout:524 lib/layouts/ijmpd.layout:526
 #: lib/layouts/kluwer.layout:364 lib/layouts/kluwer.layout:377
 #: lib/examples/Articles:0 src/RowPainter.cpp:374
 msgid "Appendix"
@@ -7750,18 +7757,18 @@ msgstr "Kurztitel für den Anhang"
 #: lib/layouts/aapaper.layout:234 lib/layouts/aastex.layout:450
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
 #: lib/layouts/agutex.layout:219 lib/layouts/amsbook.layout:121
-#: lib/layouts/amsdefs.inc:265 lib/layouts/beamer.layout:1170
+#: lib/layouts/amsdefs.inc:265 lib/layouts/beamer.layout:1179
 #: lib/layouts/book.layout:24 lib/layouts/book.layout:26
 #: lib/layouts/cl2emult.layout:115 lib/layouts/copernicus.layout:433
-#: lib/layouts/egs.layout:638 lib/layouts/elsarticle.layout:329
-#: lib/layouts/foils.layout:240 lib/layouts/ijmpc.layout:524
-#: lib/layouts/ijmpd.layout:548 lib/layouts/jasatex.layout:327
+#: lib/layouts/egs.layout:644 lib/layouts/elsarticle.layout:329
+#: lib/layouts/foils.layout:240 lib/layouts/ijmpc.layout:528
+#: lib/layouts/ijmpd.layout:552 lib/layouts/jasatex.layout:327
 #: lib/layouts/latex8.layout:130 lib/layouts/llncs.layout:280
 #: lib/layouts/memoir.layout:271 lib/layouts/memoir.layout:273
 #: lib/layouts/moderncv.layout:612 lib/layouts/mwbk.layout:23
 #: lib/layouts/mwbk.layout:25 lib/layouts/mwrep.layout:14
 #: lib/layouts/mwrep.layout:16 lib/layouts/natbibapa.module:3
-#: lib/layouts/powerdot.layout:391 lib/layouts/recipebook.layout:48
+#: lib/layouts/powerdot.layout:397 lib/layouts/recipebook.layout:48
 #: lib/layouts/recipebook.layout:50 lib/layouts/report.layout:18
 #: lib/layouts/report.layout:20 lib/layouts/scrbook.layout:35
 #: lib/layouts/scrbook.layout:37 lib/layouts/scrclass.inc:308
@@ -7770,16 +7777,16 @@ msgstr "Kurztitel für den Anhang"
 #: lib/layouts/stdstruct.inc:59 lib/layouts/svcommon.inc:657
 #: lib/layouts/tufte-book.layout:298 lib/layouts/tufte-book.layout:300
 #: lib/layouts/tufte-handout.layout:77 lib/examples/Articles:0
-#: src/frontends/qt/GuiDocument.cpp:1775 src/insets/InsetBibtex.cpp:957
+#: src/frontends/qt/GuiDocument.cpp:1771 src/insets/InsetBibtex.cpp:957
 msgid "Bibliography"
 msgstr "Literaturverzeichnis"
 
 #: lib/layouts/IEEEtran.layout:389 lib/layouts/aastex.layout:464
 #: lib/layouts/aastex.layout:485 lib/layouts/agutex.layout:235
-#: lib/layouts/amsdefs.inc:281 lib/layouts/beamer.layout:1185
+#: lib/layouts/amsdefs.inc:281 lib/layouts/beamer.layout:1194
 #: lib/layouts/cl2emult.layout:130 lib/layouts/copernicus.layout:449
-#: lib/layouts/egs.layout:654 lib/layouts/elsarticle.layout:345
-#: lib/layouts/ijmpc.layout:540 lib/layouts/ijmpd.layout:564
+#: lib/layouts/egs.layout:660 lib/layouts/elsarticle.layout:345
+#: lib/layouts/ijmpc.layout:544 lib/layouts/ijmpd.layout:568
 #: lib/layouts/iopart.layout:337 lib/layouts/iopart.layout:364
 #: lib/layouts/iucr.layout:261 lib/layouts/iucr.layout:268
 #: lib/layouts/jasatex.layout:343 lib/layouts/kluwer.layout:385
@@ -7793,13 +7800,13 @@ msgstr "Literaturverzeichnis"
 
 #: lib/layouts/IEEEtran.layout:398 lib/layouts/aastex.layout:474
 #: lib/layouts/agutex.layout:244 lib/layouts/amsdefs.inc:293
-#: lib/layouts/beamer.layout:1194 lib/layouts/cl2emult.layout:139
-#: lib/layouts/copernicus.layout:457 lib/layouts/egs.layout:662
-#: lib/layouts/elsarticle.layout:354 lib/layouts/ijmpc.layout:549
-#: lib/layouts/ijmpd.layout:573 lib/layouts/iopart.layout:346
+#: lib/layouts/beamer.layout:1203 lib/layouts/cl2emult.layout:139
+#: lib/layouts/copernicus.layout:457 lib/layouts/egs.layout:668
+#: lib/layouts/elsarticle.layout:354 lib/layouts/ijmpc.layout:553
+#: lib/layouts/ijmpd.layout:577 lib/layouts/iopart.layout:346
 #: lib/layouts/jasatex.layout:352 lib/layouts/kluwer.layout:410
 #: lib/layouts/llncs.layout:304 lib/layouts/moderncv.layout:638
-#: lib/layouts/powerdot.layout:412 lib/layouts/siamltex.layout:367
+#: lib/layouts/powerdot.layout:418 lib/layouts/siamltex.layout:367
 #: lib/layouts/simplecv.layout:210 lib/layouts/stdstruct.inc:92
 #: lib/layouts/svcommon.inc:681
 msgid "Bib preamble"
@@ -7807,13 +7814,13 @@ msgstr "Lit.-Vorspann"
 
 #: lib/layouts/IEEEtran.layout:399 lib/layouts/aastex.layout:475
 #: lib/layouts/agutex.layout:245 lib/layouts/amsdefs.inc:294
-#: lib/layouts/beamer.layout:1195 lib/layouts/cl2emult.layout:140
-#: lib/layouts/copernicus.layout:458 lib/layouts/egs.layout:663
-#: lib/layouts/elsarticle.layout:355 lib/layouts/ijmpc.layout:550
-#: lib/layouts/ijmpd.layout:574 lib/layouts/iopart.layout:347
+#: lib/layouts/beamer.layout:1204 lib/layouts/cl2emult.layout:140
+#: lib/layouts/copernicus.layout:458 lib/layouts/egs.layout:669
+#: lib/layouts/elsarticle.layout:355 lib/layouts/ijmpc.layout:554
+#: lib/layouts/ijmpd.layout:578 lib/layouts/iopart.layout:347
 #: lib/layouts/jasatex.layout:353 lib/layouts/kluwer.layout:411
 #: lib/layouts/llncs.layout:305 lib/layouts/moderncv.layout:639
-#: lib/layouts/powerdot.layout:413 lib/layouts/siamltex.layout:368
+#: lib/layouts/powerdot.layout:419 lib/layouts/siamltex.layout:368
 #: lib/layouts/simplecv.layout:211 lib/layouts/stdstruct.inc:93
 #: lib/layouts/svcommon.inc:682
 msgid "Bibliography Preamble"
@@ -7821,13 +7828,13 @@ msgstr "Literaturverzeichnis-Vorspann"
 
 #: lib/layouts/IEEEtran.layout:400 lib/layouts/aastex.layout:476
 #: lib/layouts/agutex.layout:246 lib/layouts/amsdefs.inc:295
-#: lib/layouts/beamer.layout:1196 lib/layouts/cl2emult.layout:141
-#: lib/layouts/copernicus.layout:459 lib/layouts/egs.layout:664
-#: lib/layouts/elsarticle.layout:356 lib/layouts/ijmpc.layout:551
-#: lib/layouts/ijmpd.layout:575 lib/layouts/iopart.layout:348
+#: lib/layouts/beamer.layout:1205 lib/layouts/cl2emult.layout:141
+#: lib/layouts/copernicus.layout:459 lib/layouts/egs.layout:670
+#: lib/layouts/elsarticle.layout:356 lib/layouts/ijmpc.layout:555
+#: lib/layouts/ijmpd.layout:579 lib/layouts/iopart.layout:348
 #: lib/layouts/jasatex.layout:354 lib/layouts/kluwer.layout:412
 #: lib/layouts/llncs.layout:306 lib/layouts/moderncv.layout:640
-#: lib/layouts/powerdot.layout:414 lib/layouts/siamltex.layout:369
+#: lib/layouts/powerdot.layout:420 lib/layouts/siamltex.layout:369
 #: lib/layouts/simplecv.layout:212 lib/layouts/stdstruct.inc:94
 #: lib/layouts/svcommon.inc:683
 msgid "LaTeX code to be inserted before the first bibliography item"
@@ -7875,10 +7882,10 @@ msgid "BiographyNoPhoto"
 msgstr "Biographie ohne Foto"
 
 #: lib/layouts/IEEEtran.layout:449 lib/layouts/acmart.layout:553
-#: lib/layouts/beamer.layout:1295 lib/layouts/elsart.layout:311
+#: lib/layouts/beamer.layout:1304 lib/layouts/elsart.layout:311
 #: lib/layouts/elsart.layout:343 lib/layouts/foils.layout:249
 #: lib/layouts/heb-article.layout:29 lib/layouts/heb-article.layout:107
-#: lib/layouts/ijmpc.layout:402 lib/layouts/ijmpd.layout:408
+#: lib/layouts/ijmpc.layout:406 lib/layouts/ijmpd.layout:412
 #: lib/layouts/llncs.layout:318 lib/layouts/siamltex.layout:119
 #: lib/layouts/svcommon.inc:739 lib/layouts/theorems-ams-bytype.inc:31
 #: lib/layouts/theorems-ams-chap-bytype.inc:73 lib/layouts/theorems-ams.inc:28
@@ -7898,7 +7905,7 @@ msgstr "Beweis (alternativ)"
 msgid "An alternative proof string"
 msgstr "Eine alternative Bezeichnung für den Beweis"
 
-#: lib/layouts/IEEEtran.layout:468 lib/layouts/beamer.layout:1375
+#: lib/layouts/IEEEtran.layout:468 lib/layouts/beamer.layout:1384
 #: lib/layouts/foils.layout:312 lib/layouts/llncs.layout:411
 #: lib/layouts/siamltex.layout:176 lib/layouts/svcommon.inc:748
 #: lib/layouts/svmono.layout:103 lib/layouts/svmono.layout:107
@@ -7955,7 +7962,7 @@ msgstr "Berichte"
 
 #: lib/layouts/RJournal.layout:52 lib/layouts/agutex.layout:158
 #: lib/layouts/amsdefs.inc:124 lib/layouts/copernicus.layout:239
-#: lib/layouts/egs.layout:580 lib/layouts/kluwer.layout:307
+#: lib/layouts/egs.layout:586 lib/layouts/kluwer.layout:307
 #: lib/layouts/llncs.layout:273 lib/layouts/siamltex.layout:282
 #: lib/layouts/svglobal.layout:173 lib/layouts/svjog.layout:171
 #: lib/layouts/svprobth.layout:200
@@ -7965,7 +7972,7 @@ msgstr "Abstract."
 #: lib/layouts/RJournal.layout:63 lib/layouts/aa.layout:93
 #: lib/layouts/aapaper.inc:31 lib/layouts/aapaper.layout:87
 #: lib/layouts/amsdefs.inc:141 lib/layouts/dinbrief.layout:339
-#: lib/layouts/ectaart.layout:77 lib/layouts/egs.layout:307
+#: lib/layouts/ectaart.layout:77 lib/layouts/egs.layout:313
 #: lib/layouts/elsarticle.layout:222 lib/layouts/entcs.layout:66
 #: lib/layouts/europasscv.layout:112 lib/layouts/europecv.layout:88
 #: lib/layouts/g-brief.layout:190 lib/layouts/g-brief2.layout:40
@@ -8051,7 +8058,7 @@ msgstr "Astronomy & Astrophysics"
 
 #: lib/layouts/aa.layout:69 lib/layouts/aapaper.inc:9
 #: lib/layouts/aapaper.layout:81 lib/layouts/acm-sigs.inc:10
-#: lib/layouts/acmart.layout:160 lib/layouts/beamer.layout:1023
+#: lib/layouts/acmart.layout:160 lib/layouts/beamer.layout:1032
 #: lib/layouts/beamerposter.layout:26 lib/layouts/kluwer.layout:136
 #: lib/layouts/llncs.layout:135 lib/layouts/scrclass.inc:217
 #: lib/layouts/sigplanconf.layout:138 lib/layouts/svcommon.inc:356
@@ -8079,7 +8086,7 @@ msgid "Correspondence to:"
 msgstr "Schriftverkehr an:"
 
 #: lib/layouts/aa.layout:181 lib/layouts/copernicus.layout:427
-#: lib/layouts/egs.layout:602
+#: lib/layouts/egs.layout:608
 msgid "Acknowledgements."
 msgstr "Danksagungen."
 
@@ -8087,7 +8094,7 @@ msgstr "Danksagungen."
 #: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:97
 #: lib/layouts/aguplus.inc:29 lib/layouts/amsart.layout:66
 #: lib/layouts/amsbook.layout:57 lib/layouts/apa.layout:339
-#: lib/layouts/apax.inc:438 lib/layouts/beamer.layout:290
+#: lib/layouts/apax.inc:438 lib/layouts/beamer.layout:296
 #: lib/layouts/egs.layout:33 lib/layouts/europasscv.layout:264
 #: lib/layouts/europecv.layout:193 lib/layouts/isprs.layout:160
 #: lib/layouts/iucr.layout:47 lib/layouts/jss.layout:25
@@ -8110,7 +8117,7 @@ msgstr "Abschnitt"
 #: lib/layouts/aapaper.layout:149 lib/layouts/aastex.layout:110
 #: lib/layouts/aguplus.inc:44 lib/layouts/amsart.layout:107
 #: lib/layouts/amsbook.layout:67 lib/layouts/apa.layout:350
-#: lib/layouts/apax.inc:449 lib/layouts/beamer.layout:352
+#: lib/layouts/apax.inc:449 lib/layouts/beamer.layout:359
 #: lib/layouts/egs.layout:56 lib/layouts/isprs.layout:172
 #: lib/layouts/iucr.layout:53 lib/layouts/jss.layout:29
 #: lib/layouts/kluwer.layout:72 lib/layouts/latex8.layout:59
@@ -8128,7 +8135,7 @@ msgstr "Unterabschnitt"
 #: lib/layouts/aapaper.layout:161 lib/layouts/aastex.layout:123
 #: lib/layouts/amsart.layout:130 lib/layouts/amsbook.layout:76
 #: lib/layouts/apa.layout:360 lib/layouts/apax.inc:459
-#: lib/layouts/beamer.layout:414 lib/layouts/isprs.layout:182
+#: lib/layouts/beamer.layout:422 lib/layouts/isprs.layout:182
 #: lib/layouts/iucr.layout:61 lib/layouts/jss.layout:33
 #: lib/layouts/kluwer.layout:82 lib/layouts/llncs.layout:67
 #: lib/layouts/ltugboat.layout:90 lib/layouts/memoir.layout:129
@@ -8144,8 +8151,8 @@ msgstr "Unterunterabschnitt"
 #: lib/layouts/aa.layout:253 lib/layouts/aapaper.layout:99
 #: lib/layouts/aapaper.layout:202 lib/layouts/aastex.layout:265
 #: lib/layouts/acmart.layout:133 lib/layouts/amsdefs.inc:82
-#: lib/layouts/beamer.layout:1122 lib/layouts/beamerposter.layout:41
-#: lib/layouts/dinbrief.layout:218 lib/layouts/egs.layout:550
+#: lib/layouts/beamer.layout:1131 lib/layouts/beamerposter.layout:41
+#: lib/layouts/dinbrief.layout:218 lib/layouts/egs.layout:556
 #: lib/layouts/foils.layout:169 lib/layouts/frletter.layout:24
 #: lib/layouts/g-brief.layout:199 lib/layouts/g-brief2.layout:54
 #: lib/layouts/g-brief2.layout:866 lib/layouts/jasatex.layout:182
@@ -8164,7 +8171,7 @@ msgstr "Datum"
 msgid "institutemark"
 msgstr "Institutsfußnotenmarke"
 
-#: lib/layouts/aa.layout:273 lib/layouts/beamer.layout:1105
+#: lib/layouts/aa.layout:273 lib/layouts/beamer.layout:1114
 msgid "Institute Mark"
 msgstr "Institutsmarke"
 
@@ -8216,7 +8223,7 @@ msgstr "Ergebnisse Ihrer Arbeit"
 msgid "Key words."
 msgstr "Schlagwörter."
 
-#: lib/layouts/aa.layout:395 lib/layouts/beamer.layout:1078
+#: lib/layouts/aa.layout:395 lib/layouts/beamer.layout:1087
 #: lib/layouts/beamerposter.layout:36 lib/layouts/cl2emult.layout:81
 #: lib/layouts/llncs.layout:231 lib/layouts/sciposter.layout:24
 #: lib/layouts/svcommon.inc:384
@@ -8234,7 +8241,7 @@ msgstr "E-Mail:"
 
 #: lib/layouts/aapaper.inc:93 lib/layouts/aastex.layout:354
 #: lib/layouts/aastex62.layout:225 lib/layouts/apa.layout:243
-#: lib/layouts/copernicus.layout:424 lib/layouts/egs.layout:587
+#: lib/layouts/copernicus.layout:424 lib/layouts/egs.layout:593
 #: lib/layouts/elsart.layout:516 lib/layouts/isprs.layout:221
 #: lib/layouts/iucr.layout:250 lib/layouts/kluwer.layout:341
 #: lib/layouts/kluwer.layout:353 lib/layouts/svcommon.inc:639
@@ -8268,7 +8275,7 @@ msgstr "Veraltet"
 
 #: lib/layouts/aapaper.layout:50 lib/layouts/apa.layout:391
 #: lib/layouts/apax.inc:490 lib/layouts/beamer.layout:84
-#: lib/layouts/egs.layout:203 lib/layouts/powerdot.layout:264
+#: lib/layouts/egs.layout:209 lib/layouts/powerdot.layout:264
 #: lib/layouts/simplecv.layout:108 lib/layouts/stdlists.inc:13
 msgid "Itemize"
 msgstr "Auflistung"
@@ -8280,22 +8287,22 @@ msgstr "Auflistung"
 msgid "Enumerate"
 msgstr "Aufzählung"
 
-#: lib/layouts/aapaper.layout:56 lib/layouts/beamer.layout:188
-#: lib/layouts/egs.layout:239 lib/layouts/hollywood.layout:130
+#: lib/layouts/aapaper.layout:56 lib/layouts/beamer.layout:194
+#: lib/layouts/egs.layout:245 lib/layouts/hollywood.layout:130
 #: lib/layouts/paper.layout:110 lib/layouts/scrclass.inc:55
 #: lib/layouts/scrlettr.layout:21 lib/layouts/scrlttr2.layout:33
-#: lib/layouts/stdlists.inc:93 lib/layouts/svcommon.inc:692
+#: lib/layouts/stdlists.inc:99 lib/layouts/svcommon.inc:692
 #: lib/ui/stdtoolbars.inc:128
 msgid "Description"
 msgstr "Beschreibung"
 
 #: lib/layouts/aapaper.layout:59 lib/layouts/algorithm2e.module:34
 #: lib/layouts/apa.layout:392 lib/layouts/apa.layout:428
-#: lib/layouts/apa.layout:466 lib/layouts/apax.inc:491 lib/layouts/apax.inc:528
-#: lib/layouts/apax.inc:566 lib/layouts/beamer.layout:85
-#: lib/layouts/beamer.layout:134 lib/layouts/beamer.layout:189
+#: lib/layouts/apa.layout:472 lib/layouts/apax.inc:491 lib/layouts/apax.inc:528
+#: lib/layouts/apax.inc:572 lib/layouts/beamer.layout:85
+#: lib/layouts/beamer.layout:134 lib/layouts/beamer.layout:195
 #: lib/layouts/egs.layout:139 lib/layouts/egs.layout:167
-#: lib/layouts/egs.layout:204 lib/layouts/enumitem.module:88
+#: lib/layouts/egs.layout:210 lib/layouts/enumitem.module:88
 #: lib/layouts/europasscv.layout:400 lib/layouts/foils.layout:87
 #: lib/layouts/foils.layout:117 lib/layouts/ijmpc.layout:325
 #: lib/layouts/ijmpc.layout:359 lib/layouts/ijmpd.layout:331
@@ -8303,8 +8310,8 @@ msgstr "Beschreibung"
 #: lib/layouts/powerdot.layout:327 lib/layouts/scrclass.inc:62
 #: lib/layouts/scrlettr.layout:36 lib/layouts/scrlttr2.layout:49
 #: lib/layouts/simplecv.layout:109 lib/layouts/stdlists.inc:14
-#: lib/layouts/stdlists.inc:53 lib/layouts/stdlists.inc:94
-#: lib/layouts/stdlists.inc:139 lib/layouts/stdlyxlist.inc:7
+#: lib/layouts/stdlists.inc:53 lib/layouts/stdlists.inc:100
+#: lib/layouts/stdlists.inc:144 lib/layouts/stdlyxlist.inc:7
 msgid "List"
 msgstr "Liste"
 
@@ -8344,9 +8351,9 @@ msgstr "Alternative Zugehörigkeit:"
 msgid "And"
 msgstr "Und"
 
-#: lib/layouts/aastex.layout:256 src/frontends/qt/GuiDocument.cpp:3137
-#: src/frontends/qt/GuiDocument.cpp:3149 src/frontends/qt/GuiDocument.cpp:3275
-#: src/frontends/qt/GuiDocument.cpp:3294
+#: lib/layouts/aastex.layout:256 src/frontends/qt/GuiDocument.cpp:3166
+#: src/frontends/qt/GuiDocument.cpp:3178 src/frontends/qt/GuiDocument.cpp:3304
+#: src/frontends/qt/GuiDocument.cpp:3323
 msgid "and"
 msgstr "und"
 
@@ -8518,12 +8525,12 @@ msgid "Corresponding author:"
 msgstr "Korrespondenzautor:"
 
 #: lib/layouts/aastex62.layout:155 lib/layouts/copernicus.layout:65
-#: lib/layouts/egs.layout:380 lib/layouts/svmult.layout:93
+#: lib/layouts/egs.layout:386 lib/layouts/svmult.layout:93
 msgid "Author:"
 msgstr "Autor:"
 
 #: lib/layouts/aastex62.layout:161 lib/layouts/acmart.layout:196
-#: lib/layouts/apax.inc:640 lib/layouts/apax.inc:667
+#: lib/layouts/apax.inc:646 lib/layouts/apax.inc:673
 msgid "ORCID"
 msgstr "ORCID"
 
@@ -8534,7 +8541,7 @@ msgstr ""
 
 #: lib/layouts/aastex62.layout:177 lib/layouts/apa.layout:197
 #: lib/layouts/apax.inc:177 lib/layouts/copernicus.layout:90
-#: lib/layouts/egs.layout:407 lib/layouts/iucr.layout:194
+#: lib/layouts/egs.layout:413 lib/layouts/iucr.layout:194
 #: lib/layouts/jss.layout:78 lib/layouts/revtex4-x.inc:77
 #: lib/layouts/revtex4.layout:152
 msgid "Affiliation:"
@@ -8596,9 +8603,9 @@ msgstr "American Chemical Society (ACS)"
 
 #: lib/layouts/achemso.layout:75 lib/layouts/amsdefs.inc:41
 #: lib/layouts/apa.layout:291 lib/layouts/apax.inc:390
-#: lib/layouts/beamer.layout:262 lib/layouts/beamer.layout:317
-#: lib/layouts/beamer.layout:379 lib/layouts/beamer.layout:441
-#: lib/layouts/beamer.layout:1000 lib/layouts/europecv.layout:201
+#: lib/layouts/beamer.layout:268 lib/layouts/beamer.layout:323
+#: lib/layouts/beamer.layout:386 lib/layouts/beamer.layout:449
+#: lib/layouts/beamer.layout:1009 lib/layouts/europecv.layout:201
 #: lib/layouts/iopart.layout:67 lib/layouts/jasatex.layout:75
 #: lib/layouts/memoir.layout:68 lib/layouts/revtex4-x.inc:245
 #: lib/layouts/scrclass.inc:142 lib/layouts/scrclass.inc:155
@@ -9033,7 +9040,7 @@ msgid "Teaser Figure"
 msgstr "Teaser-Bild"
 
 #: lib/layouts/acmart.layout:471 lib/layouts/aguplus.inc:111
-#: lib/layouts/copernicus.layout:171 lib/layouts/egs.layout:484
+#: lib/layouts/copernicus.layout:171 lib/layouts/egs.layout:490
 #: lib/layouts/ijmpc.layout:195 lib/layouts/ijmpc.layout:199
 #: lib/layouts/ijmpd.layout:188 lib/layouts/ijmpd.layout:192
 msgid "Received"
@@ -9067,8 +9074,8 @@ msgstr "Randnotiz (nur sigchi-a)"
 msgid "Margin figure (sigchi-a only)"
 msgstr "Randabbildung (nur sigchi-a)"
 
-#: lib/layouts/acmart.layout:526 lib/layouts/beamer.layout:1728
-#: lib/layouts/powerdot.layout:577 lib/layouts/sciposter.layout:109
+#: lib/layouts/acmart.layout:526 lib/layouts/beamer.layout:1737
+#: lib/layouts/powerdot.layout:583 lib/layouts/sciposter.layout:109
 #: lib/layouts/stdfloats.inc:33 lib/layouts/tufte-book.layout:292
 msgid "List of Figures"
 msgstr "Abbildungsverzeichnis"
@@ -9077,8 +9084,8 @@ msgstr "Abbildungsverzeichnis"
 msgid "Margin table (sigchi-a only)"
 msgstr "Randtabelle (nur sigchi-a)"
 
-#: lib/layouts/acmart.layout:539 lib/layouts/beamer.layout:1715
-#: lib/layouts/powerdot.layout:560 lib/layouts/sciposter.layout:123
+#: lib/layouts/acmart.layout:539 lib/layouts/beamer.layout:1724
+#: lib/layouts/powerdot.layout:566 lib/layouts/sciposter.layout:123
 #: lib/layouts/stdfloats.inc:18 lib/layouts/tufte-book.layout:276
 msgid "List of Tables"
 msgstr "Tabellenverzeichnis"
@@ -9090,7 +9097,7 @@ msgstr "Tabellenverzeichnis"
 msgid "Definitions & Theorems"
 msgstr "Definitionen & Theoreme"
 
-#: lib/layouts/acmart.layout:562 lib/layouts/beamer.layout:1324
+#: lib/layouts/acmart.layout:562 lib/layouts/beamer.layout:1333
 #: lib/layouts/theorems-ams-bytype.inc:40
 #: lib/layouts/theorems-ams-chap-bytype.inc:82 lib/layouts/theorems-ams.inc:37
 #: lib/layouts/theorems-bytype.inc:35 lib/layouts/theorems-named.module:22
@@ -9098,7 +9105,7 @@ msgstr "Definitionen & Theoreme"
 msgid "Additional Theorem Text"
 msgstr "Zusätzlicher Theoremtext"
 
-#: lib/layouts/acmart.layout:563 lib/layouts/beamer.layout:1325
+#: lib/layouts/acmart.layout:563 lib/layouts/beamer.layout:1334
 #: lib/layouts/theorems-ams-bytype.inc:41
 #: lib/layouts/theorems-ams-chap-bytype.inc:83 lib/layouts/theorems-ams.inc:38
 #: lib/layouts/theorems-bytype.inc:36 lib/layouts/theorems-named.module:23
@@ -9106,8 +9113,8 @@ msgstr "Zusätzlicher Theoremtext"
 msgid "Additional text appended to the theorem header"
 msgstr "Zusatztext, der an den Theoremtitel angehängt wird"
 
-#: lib/layouts/acmart.layout:577 lib/layouts/ijmpc.layout:423
-#: lib/layouts/ijmpd.layout:433 lib/layouts/theorems-ams-bytype.inc:55
+#: lib/layouts/acmart.layout:577 lib/layouts/ijmpc.layout:427
+#: lib/layouts/ijmpd.layout:437 lib/layouts/theorems-ams-bytype.inc:55
 #: lib/layouts/theorems-ams-chap-bytype.inc:97 lib/layouts/theorems-ams.inc:52
 #: lib/layouts/theorems-bytype.inc:49
 #: lib/layouts/theorems-without-preamble.inc:62 lib/layouts/theorems.inc:52
@@ -9395,17 +9402,17 @@ msgid "American Geophysical Union (AGUPLUS Manuscript)"
 msgstr "American Geophysical Union (AGUPLUS-Manuskript)"
 
 #: lib/layouts/aguplus.inc:37 lib/layouts/amsart.layout:77
-#: lib/layouts/amsbook.layout:86 lib/layouts/beamer.layout:334
-#: lib/layouts/egs.layout:676 lib/layouts/isprs.layout:192
-#: lib/layouts/spie.layout:32 lib/layouts/stdstarsections.inc:43
+#: lib/layouts/amsbook.layout:86 lib/layouts/beamer.layout:340
+#: lib/layouts/egs.layout:682 lib/layouts/isprs.layout:192
+#: lib/layouts/spie.layout:32 lib/layouts/stdstarsections.inc:45
 #: lib/layouts/svcommon.inc:278
 msgid "Section*"
 msgstr "Abschnitt*"
 
 #: lib/layouts/aguplus.inc:52 lib/layouts/amsart.layout:119
-#: lib/layouts/amsbook.layout:95 lib/layouts/beamer.layout:396
-#: lib/layouts/egs.layout:696 lib/layouts/isprs.layout:203
-#: lib/layouts/stdstarsections.inc:58 lib/layouts/svcommon.inc:286
+#: lib/layouts/amsbook.layout:95 lib/layouts/beamer.layout:403
+#: lib/layouts/egs.layout:703 lib/layouts/isprs.layout:203
+#: lib/layouts/stdstarsections.inc:61 lib/layouts/svcommon.inc:286
 msgid "Subsection*"
 msgstr "Unterabschnitt*"
 
@@ -9422,7 +9429,7 @@ msgstr "Unterabschnitt*"
 msgid "Paragraph"
 msgstr "Paragraph"
 
-#: lib/layouts/aguplus.inc:71 lib/layouts/stdstarsections.inc:88
+#: lib/layouts/aguplus.inc:71 lib/layouts/stdstarsections.inc:93
 #: lib/layouts/svcommon.inc:302
 msgid "Paragraph*"
 msgstr "Paragraph*"
@@ -9448,7 +9455,7 @@ msgid "Right Header:"
 msgstr "Kopfzeile rechts:"
 
 #: lib/layouts/aguplus.inc:115 lib/layouts/copernicus.layout:176
-#: lib/layouts/egs.layout:497
+#: lib/layouts/egs.layout:503
 msgid "Received:"
 msgstr "Empfangen:"
 
@@ -9463,12 +9470,12 @@ msgid "Revised:"
 msgstr "Überarbeitet:"
 
 #: lib/layouts/aguplus.inc:127 lib/layouts/copernicus.layout:183
-#: lib/layouts/egs.layout:506
+#: lib/layouts/egs.layout:512
 msgid "Accepted"
 msgstr "Akzeptiert"
 
 #: lib/layouts/aguplus.inc:131 lib/layouts/copernicus.layout:188
-#: lib/layouts/egs.layout:519
+#: lib/layouts/egs.layout:525
 msgid "Accepted:"
 msgstr "Akzeptiert:"
 
@@ -9520,8 +9527,8 @@ msgstr "Bildtafel"
 msgid "Planotable"
 msgstr "Plano-Tabelle"
 
-#: lib/layouts/aguplus.inc:211 lib/layouts/beamer.layout:1710
-#: lib/layouts/powerdot.layout:553 lib/layouts/powerdot.layout:631
+#: lib/layouts/aguplus.inc:211 lib/layouts/beamer.layout:1719
+#: lib/layouts/powerdot.layout:559 lib/layouts/powerdot.layout:637
 #: lib/layouts/sciposter.layout:118 lib/layouts/stdfloats.inc:13
 #: lib/ui/stdtoolbars.inc:156 src/insets/Inset.cpp:104
 msgid "Table"
@@ -9580,7 +9587,7 @@ msgstr ""
 "Algorithmus-Gleitumgebungen. Verwenden Sie den Absatzstil 'Algorithmus', um "
 "Algorithmen einzugeben und einzurücken."
 
-#: lib/layouts/algorithm2e.module:26 lib/layouts/powerdot.layout:594
+#: lib/layouts/algorithm2e.module:26 lib/layouts/powerdot.layout:600
 #: lib/layouts/revtex4-x.inc:316 lib/layouts/stdfloats.inc:48
 msgid "List of Algorithms"
 msgstr "Algorithmenverzeichnis"
@@ -9598,19 +9605,19 @@ msgstr "Spezialabschnitt"
 msgid "SpecialSection*"
 msgstr "Spezialabschnitt*"
 
-#: lib/layouts/amsart.layout:98 lib/layouts/beamer.layout:336
-#: lib/layouts/beamer.layout:398 lib/layouts/beamer.layout:460
+#: lib/layouts/amsart.layout:98 lib/layouts/beamer.layout:342
+#: lib/layouts/beamer.layout:405 lib/layouts/beamer.layout:468
 #: lib/layouts/memoir.layout:248 lib/layouts/stdinsets.inc:744
-#: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:30
-#: lib/layouts/stdstarsections.inc:45 lib/layouts/stdstarsections.inc:60
-#: lib/layouts/stdstarsections.inc:75 lib/layouts/stdstarsections.inc:90
-#: lib/layouts/stdstarsections.inc:105 lib/layouts/svcommon.inc:313
+#: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:31
+#: lib/layouts/stdstarsections.inc:47 lib/layouts/stdstarsections.inc:63
+#: lib/layouts/stdstarsections.inc:79 lib/layouts/stdstarsections.inc:95
+#: lib/layouts/stdstarsections.inc:111 lib/layouts/svcommon.inc:313
 msgid "Unnumbered"
 msgstr "Unnummeriert"
 
 #: lib/layouts/amsart.layout:140 lib/layouts/amsbook.layout:103
-#: lib/layouts/beamer.layout:458 lib/layouts/isprs.layout:212
-#: lib/layouts/stdstarsections.inc:73 lib/layouts/svcommon.inc:294
+#: lib/layouts/beamer.layout:466 lib/layouts/isprs.layout:212
+#: lib/layouts/stdstarsections.inc:77 lib/layouts/svcommon.inc:294
 msgid "Subsubsection*"
 msgstr "Unterunterabschnitt*"
 
@@ -9632,12 +9639,12 @@ msgid "Chapter Exercises"
 msgstr "Kapitel-Aufgaben"
 
 #: lib/layouts/amsbook.layout:166 lib/layouts/apa.layout:412
-#: lib/layouts/apa.layout:450 lib/layouts/apa.layout:486
-#: lib/layouts/apax.inc:512 lib/layouts/apax.inc:550 lib/layouts/apax.inc:586
+#: lib/layouts/apa.layout:450 lib/layouts/apa.layout:492
+#: lib/layouts/apax.inc:512 lib/layouts/apax.inc:550 lib/layouts/apax.inc:592
 #: lib/layouts/beamer.layout:109 lib/layouts/beamer.layout:162
-#: lib/layouts/beamer.layout:205 lib/layouts/beamer.layout:790
+#: lib/layouts/beamer.layout:211 lib/layouts/beamer.layout:799
 #: lib/layouts/egs.layout:154 lib/layouts/egs.layout:188
-#: lib/layouts/egs.layout:224 lib/layouts/egs.layout:259
+#: lib/layouts/egs.layout:230 lib/layouts/egs.layout:265
 #: lib/layouts/europasscv.layout:405 lib/layouts/foils.layout:105
 #: lib/layouts/foils.layout:135 lib/layouts/ijmpc.layout:330
 #: lib/layouts/ijmpc.layout:369 lib/layouts/ijmpd.layout:336
@@ -9645,18 +9652,18 @@ msgstr "Kapitel-Aufgaben"
 #: lib/layouts/linguistics.module:101 lib/layouts/powerdot.layout:289
 #: lib/layouts/powerdot.layout:354 lib/layouts/simplecv.layout:76
 #: lib/layouts/simplecv.layout:114 lib/layouts/stdlists.inc:37
-#: lib/layouts/stdlists.inc:79 lib/layouts/stdlists.inc:121
-#: lib/layouts/stdlyxlist.inc:22 lib/layouts/theorems-case.inc:56
+#: lib/layouts/stdlists.inc:79 lib/layouts/stdlists.inc:126
+#: lib/layouts/stdlyxlist.inc:22 lib/layouts/theorems-case.inc:57
 msgid "List preamble"
 msgstr "Listenvorspann"
 
 #: lib/layouts/amsbook.layout:167 lib/layouts/apa.layout:413
-#: lib/layouts/apa.layout:451 lib/layouts/apa.layout:487
-#: lib/layouts/apax.inc:513 lib/layouts/apax.inc:551 lib/layouts/apax.inc:587
+#: lib/layouts/apa.layout:451 lib/layouts/apa.layout:493
+#: lib/layouts/apax.inc:513 lib/layouts/apax.inc:551 lib/layouts/apax.inc:593
 #: lib/layouts/beamer.layout:110 lib/layouts/beamer.layout:163
-#: lib/layouts/beamer.layout:206 lib/layouts/beamer.layout:791
+#: lib/layouts/beamer.layout:212 lib/layouts/beamer.layout:800
 #: lib/layouts/egs.layout:155 lib/layouts/egs.layout:189
-#: lib/layouts/egs.layout:225 lib/layouts/egs.layout:260
+#: lib/layouts/egs.layout:231 lib/layouts/egs.layout:266
 #: lib/layouts/europasscv.layout:406 lib/layouts/foils.layout:106
 #: lib/layouts/foils.layout:136 lib/layouts/ijmpc.layout:331
 #: lib/layouts/ijmpc.layout:370 lib/layouts/ijmpd.layout:337
@@ -9664,18 +9671,18 @@ msgstr "Listenvorspann"
 #: lib/layouts/linguistics.module:102 lib/layouts/powerdot.layout:290
 #: lib/layouts/powerdot.layout:355 lib/layouts/simplecv.layout:77
 #: lib/layouts/simplecv.layout:115 lib/layouts/stdlists.inc:38
-#: lib/layouts/stdlists.inc:80 lib/layouts/stdlists.inc:122
-#: lib/layouts/stdlyxlist.inc:23 lib/layouts/theorems-case.inc:57
+#: lib/layouts/stdlists.inc:80 lib/layouts/stdlists.inc:127
+#: lib/layouts/stdlyxlist.inc:23 lib/layouts/theorems-case.inc:58
 msgid "List Preamble"
 msgstr "Listenvorspann"
 
 #: lib/layouts/amsbook.layout:168 lib/layouts/apa.layout:414
-#: lib/layouts/apa.layout:452 lib/layouts/apa.layout:488
-#: lib/layouts/apax.inc:514 lib/layouts/apax.inc:552 lib/layouts/apax.inc:588
+#: lib/layouts/apa.layout:452 lib/layouts/apa.layout:494
+#: lib/layouts/apax.inc:514 lib/layouts/apax.inc:552 lib/layouts/apax.inc:594
 #: lib/layouts/beamer.layout:111 lib/layouts/beamer.layout:164
-#: lib/layouts/beamer.layout:207 lib/layouts/beamer.layout:792
+#: lib/layouts/beamer.layout:213 lib/layouts/beamer.layout:801
 #: lib/layouts/egs.layout:156 lib/layouts/egs.layout:190
-#: lib/layouts/egs.layout:226 lib/layouts/egs.layout:261
+#: lib/layouts/egs.layout:232 lib/layouts/egs.layout:267
 #: lib/layouts/europasscv.layout:407 lib/layouts/foils.layout:107
 #: lib/layouts/foils.layout:137 lib/layouts/ijmpc.layout:332
 #: lib/layouts/ijmpc.layout:371 lib/layouts/ijmpd.layout:338
@@ -9683,8 +9690,8 @@ msgstr "Listenvorspann"
 #: lib/layouts/linguistics.module:103 lib/layouts/powerdot.layout:291
 #: lib/layouts/powerdot.layout:356 lib/layouts/simplecv.layout:78
 #: lib/layouts/simplecv.layout:116 lib/layouts/stdlists.inc:39
-#: lib/layouts/stdlists.inc:81 lib/layouts/stdlists.inc:123
-#: lib/layouts/stdlyxlist.inc:24 lib/layouts/theorems-case.inc:58
+#: lib/layouts/stdlists.inc:81 lib/layouts/stdlists.inc:128
+#: lib/layouts/stdlyxlist.inc:24 lib/layouts/theorems-case.inc:59
 msgid "LaTeX code to be inserted before the first item"
 msgstr "LaTeX-Code, der vor dem ersten Listeneintrag eingefügt wird"
 
@@ -9850,29 +9857,29 @@ msgstr "Unterparagraph"
 #: lib/layouts/apa.layout:408 lib/layouts/apa.layout:446
 #: lib/layouts/apax.inc:508 lib/layouts/apax.inc:546
 #: lib/layouts/beamer.layout:97 lib/layouts/beamer.layout:150
-#: lib/layouts/egs.layout:184 lib/layouts/egs.layout:220
+#: lib/layouts/egs.layout:184 lib/layouts/egs.layout:226
 #: lib/layouts/europasscv.layout:428 lib/layouts/powerdot.layout:299
 #: lib/layouts/powerdot.layout:364 lib/layouts/stdlists.inc:33
-#: lib/layouts/stdlists.inc:75 lib/layouts/theorems-case.inc:66
+#: lib/layouts/stdlists.inc:75 lib/layouts/theorems-case.inc:67
 msgid "Custom Item|s"
 msgstr "Benutzerdef. Aufzählung|z"
 
 #: lib/layouts/apa.layout:409 lib/layouts/apa.layout:447
 #: lib/layouts/apax.inc:509 lib/layouts/apax.inc:547
 #: lib/layouts/beamer.layout:98 lib/layouts/beamer.layout:151
-#: lib/layouts/egs.layout:185 lib/layouts/egs.layout:221
+#: lib/layouts/egs.layout:185 lib/layouts/egs.layout:227
 #: lib/layouts/europasscv.layout:429 lib/layouts/powerdot.layout:300
 #: lib/layouts/powerdot.layout:365 lib/layouts/stdlists.inc:34
-#: lib/layouts/stdlists.inc:76 lib/layouts/theorems-case.inc:67
+#: lib/layouts/stdlists.inc:76 lib/layouts/theorems-case.inc:68
 msgid "A customized item string"
 msgstr "Ein benutzerdefiniertes Zeichen für diesen Listeneintrag"
 
-#: lib/layouts/apa.layout:465 lib/layouts/apax.inc:565
+#: lib/layouts/apa.layout:471 lib/layouts/apax.inc:571
 msgid "Seriate"
 msgstr "Eingebettete Aufzählung"
 
-#: lib/layouts/apa.layout:482 lib/layouts/apa.layout:483
-#: lib/layouts/apax.inc:582 lib/layouts/apax.inc:583
+#: lib/layouts/apa.layout:488 lib/layouts/apa.layout:489
+#: lib/layouts/apax.inc:588 lib/layouts/apax.inc:589
 #: lib/layouts/stdcounters.inc:57
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
@@ -9909,7 +9916,7 @@ msgstr "Fünf Zugehörigkeiten"
 msgid "SixAffiliations"
 msgstr "Sechs Zugehörigkeiten"
 
-#: lib/layouts/apax.inc:227 lib/layouts/beamer.layout:1657
+#: lib/layouts/apax.inc:227 lib/layouts/beamer.layout:1666
 #: lib/layouts/elsart.layout:470 lib/layouts/fixme.module:108
 #: lib/layouts/iopart.layout:106 lib/layouts/llncs.layout:394
 #: lib/layouts/powerdot.layout:215 lib/layouts/slides.layout:170
@@ -9941,7 +9948,7 @@ msgstr "Notiz"
 msgid "Author Note:"
 msgstr "Autorhinweise:"
 
-#: lib/layouts/apax.inc:340 lib/layouts/egs.layout:416
+#: lib/layouts/apax.inc:340 lib/layouts/egs.layout:422
 msgid "Journal"
 msgstr "Zeitschrift"
 
@@ -9957,23 +9964,23 @@ msgstr "Band"
 msgid "*"
 msgstr "*"
 
-#: lib/layouts/apax.inc:597
+#: lib/layouts/apax.inc:603
 msgid "Course"
 msgstr "Kurs"
 
-#: lib/layouts/apax.inc:613
+#: lib/layouts/apax.inc:619
 msgid "Course: "
 msgstr "Kurs:"
 
-#: lib/layouts/apax.inc:627 lib/layouts/apax.inc:654
+#: lib/layouts/apax.inc:633 lib/layouts/apax.inc:660
 msgid "addORCIDlink"
 msgstr "ORCID-Link hinzufügen"
 
-#: lib/layouts/apax.inc:631 lib/layouts/apax.inc:655
+#: lib/layouts/apax.inc:637 lib/layouts/apax.inc:661
 msgid "ORCID-link: "
 msgstr "ORCID-Link: "
 
-#: lib/layouts/apax.inc:639 lib/layouts/apax.inc:661
+#: lib/layouts/apax.inc:645 lib/layouts/apax.inc:667
 msgid "Author-name"
 msgstr "Autorname"
 
@@ -9989,8 +9996,8 @@ msgstr "Beamer-Aufsatz (Standardklasse)"
 msgid "Article (Standard Class)"
 msgstr "Article (Standardklasse)"
 
-#: lib/layouts/article.layout:21 lib/layouts/beamer.layout:248
-#: lib/layouts/beamer.layout:277 lib/layouts/memoir.layout:66
+#: lib/layouts/article.layout:21 lib/layouts/beamer.layout:254
+#: lib/layouts/beamer.layout:283 lib/layouts/memoir.layout:66
 #: lib/layouts/mwart.layout:25 lib/layouts/paper.layout:55
 #: lib/layouts/scrartcl.layout:22 lib/layouts/scrclass.inc:77
 #: lib/layouts/stdcounters.inc:9 lib/layouts/stdsections.inc:12
@@ -10017,38 +10024,38 @@ msgid "Presentations"
 msgstr "Präsentationen"
 
 #: lib/layouts/beamer.layout:90 lib/layouts/beamer.layout:139
-#: lib/layouts/beamer.layout:194 lib/layouts/beamer.layout:505
-#: lib/layouts/beamer.layout:573 lib/layouts/beamer.layout:631
-#: lib/layouts/beamer.layout:661 lib/layouts/beamer.layout:877
-#: lib/layouts/beamer.layout:906 lib/layouts/beamer.layout:1229
-#: lib/layouts/beamer.layout:1254 lib/layouts/beamer.layout:1281
-#: lib/layouts/beamer.layout:1447
+#: lib/layouts/beamer.layout:200 lib/layouts/beamer.layout:514
+#: lib/layouts/beamer.layout:582 lib/layouts/beamer.layout:640
+#: lib/layouts/beamer.layout:670 lib/layouts/beamer.layout:886
+#: lib/layouts/beamer.layout:915 lib/layouts/beamer.layout:1238
+#: lib/layouts/beamer.layout:1263 lib/layouts/beamer.layout:1290
+#: lib/layouts/beamer.layout:1456
 msgid "Overlay Specifications|v"
 msgstr "Overlay-Spezifikation"
 
 #: lib/layouts/beamer.layout:91 lib/layouts/beamer.layout:140
-#: lib/layouts/beamer.layout:195
+#: lib/layouts/beamer.layout:201
 msgid "Overlay specifications for this list"
 msgstr "Overlay-Spezifikation für diese Liste"
 
 #: lib/layouts/beamer.layout:101 lib/layouts/beamer.layout:154
-#: lib/layouts/beamer.layout:215 lib/layouts/beamer.layout:800
+#: lib/layouts/beamer.layout:221 lib/layouts/beamer.layout:809
 #: lib/layouts/powerdot.layout:303 lib/layouts/powerdot.layout:368
 msgid "Item Overlay Specifications"
 msgstr "Eintrags-Overlay-Spezifikation"
 
 #: lib/layouts/beamer.layout:102 lib/layouts/beamer.layout:155
-#: lib/layouts/beamer.layout:216 lib/layouts/beamer.layout:630
-#: lib/layouts/beamer.layout:660 lib/layouts/beamer.layout:801
-#: lib/layouts/beamer.layout:876 lib/layouts/beamer.layout:905
-#: lib/layouts/beamer.layout:1228 lib/layouts/beamer.layout:1253
-#: lib/layouts/beamer.layout:1280 lib/layouts/beamer.layout:1446
+#: lib/layouts/beamer.layout:222 lib/layouts/beamer.layout:639
+#: lib/layouts/beamer.layout:669 lib/layouts/beamer.layout:810
+#: lib/layouts/beamer.layout:885 lib/layouts/beamer.layout:914
+#: lib/layouts/beamer.layout:1237 lib/layouts/beamer.layout:1262
+#: lib/layouts/beamer.layout:1289 lib/layouts/beamer.layout:1455
 #: lib/layouts/powerdot.layout:304 lib/layouts/powerdot.layout:369
 msgid "On Slide"
 msgstr "Auf Folie"
 
 #: lib/layouts/beamer.layout:103 lib/layouts/beamer.layout:156
-#: lib/layouts/beamer.layout:217 lib/layouts/beamer.layout:802
+#: lib/layouts/beamer.layout:223 lib/layouts/beamer.layout:811
 #: lib/layouts/powerdot.layout:305 lib/layouts/powerdot.layout:370
 msgid "Overlay specifications for this item"
 msgstr "Overlay-Spezifikation für diesen Eintrag"
@@ -10061,16 +10068,16 @@ msgstr "Mini-Vorlage"
 msgid "Mini template for this list (see beamer manual for details)"
 msgstr "Mini-Vorlage für diese Liste (siehe Beamer-Anleitung)"
 
-#: lib/layouts/beamer.layout:201
+#: lib/layouts/beamer.layout:207
 msgid "Longest label|s"
 msgstr "Längste Marke"
 
-#: lib/layouts/beamer.layout:202
+#: lib/layouts/beamer.layout:208
 msgid "The longest label in this list (to determine the indendation width)"
 msgstr "Die Längste Marke in dieser Liste (gibt die Einzugsbreite vor)"
 
-#: lib/layouts/beamer.layout:249 lib/layouts/beamer.layout:291
-#: lib/layouts/beamer.layout:353 lib/layouts/beamer.layout:415
+#: lib/layouts/beamer.layout:255 lib/layouts/beamer.layout:297
+#: lib/layouts/beamer.layout:360 lib/layouts/beamer.layout:423
 #: lib/layouts/egs.layout:34 lib/layouts/egs.layout:57
 #: lib/layouts/europasscv.layout:265 lib/layouts/europecv.layout:194
 #: lib/layouts/foils.layout:46 lib/layouts/ltugboat.layout:49
@@ -10086,473 +10093,473 @@ msgstr "Die Längste Marke in dieser Liste (gibt die Einzugsbreite vor)"
 msgid "Sectioning"
 msgstr "Gliederung"
 
-#: lib/layouts/beamer.layout:254 lib/layouts/beamer.layout:309
-#: lib/layouts/beamer.layout:342 lib/layouts/beamer.layout:371
-#: lib/layouts/beamer.layout:404 lib/layouts/beamer.layout:433
-#: lib/layouts/beamer.layout:466
+#: lib/layouts/beamer.layout:260 lib/layouts/beamer.layout:315
+#: lib/layouts/beamer.layout:348 lib/layouts/beamer.layout:378
+#: lib/layouts/beamer.layout:411 lib/layouts/beamer.layout:441
+#: lib/layouts/beamer.layout:474
 msgid "Mode"
 msgstr "Modus"
 
-#: lib/layouts/beamer.layout:255 lib/layouts/beamer.layout:310
-#: lib/layouts/beamer.layout:343 lib/layouts/beamer.layout:372
-#: lib/layouts/beamer.layout:405 lib/layouts/beamer.layout:434
-#: lib/layouts/beamer.layout:467
+#: lib/layouts/beamer.layout:261 lib/layouts/beamer.layout:316
+#: lib/layouts/beamer.layout:349 lib/layouts/beamer.layout:379
+#: lib/layouts/beamer.layout:412 lib/layouts/beamer.layout:442
+#: lib/layouts/beamer.layout:475
 msgid "Mode Specification|S"
 msgstr "Modus-Spezifikation|z"
 
-#: lib/layouts/beamer.layout:256 lib/layouts/beamer.layout:311
-#: lib/layouts/beamer.layout:344 lib/layouts/beamer.layout:373
-#: lib/layouts/beamer.layout:406 lib/layouts/beamer.layout:435
-#: lib/layouts/beamer.layout:468
+#: lib/layouts/beamer.layout:262 lib/layouts/beamer.layout:317
+#: lib/layouts/beamer.layout:350 lib/layouts/beamer.layout:380
+#: lib/layouts/beamer.layout:413 lib/layouts/beamer.layout:443
+#: lib/layouts/beamer.layout:476
 msgid "Specify in which mode (article, presentation etc.) this header appears"
 msgstr ""
 "Geben Sie an, in welchem Modus (Artikel, Präsentation usw.) diese "
 "Überschrift erscheinen soll"
 
-#: lib/layouts/beamer.layout:263 lib/layouts/memoir.layout:69
+#: lib/layouts/beamer.layout:269 lib/layouts/memoir.layout:69
 #: lib/layouts/scrclass.inc:143 lib/layouts/stdsections.inc:33
 #: lib/layouts/tufte-handout.layout:41
 msgid "The part as it appears in the table of contents/running headers"
 msgstr "Der Teil, wie er im Inhaltsverzeichnis/Kolumnentitel erscheint"
 
-#: lib/layouts/beamer.layout:306
+#: lib/layouts/beamer.layout:312
 msgid "Section \\arabic{section}"
 msgstr "Abschnitt \\arabic{section}"
 
-#: lib/layouts/beamer.layout:318 lib/layouts/scrclass.inc:169
+#: lib/layouts/beamer.layout:324 lib/layouts/scrclass.inc:169
 #: lib/layouts/simplecv.layout:53 lib/layouts/stdsections.inc:118
 #: lib/layouts/tufte-book.layout:130
 msgid "The section as it appears in the table of contents/running headers"
 msgstr ""
 "Der Abschnittstitel, wie er im Inhaltsverzeichnis/Kolumnentitel erscheint"
 
-#: lib/layouts/beamer.layout:330 lib/layouts/numarticle.inc:11
+#: lib/layouts/beamer.layout:336 lib/layouts/numarticle.inc:11
 #: lib/layouts/powerdot.layout:254
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}"
 
-#: lib/layouts/beamer.layout:368
+#: lib/layouts/beamer.layout:375
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "Unterabschnitt \\arabic{section}.\\arabic{subsection}"
 
-#: lib/layouts/beamer.layout:380
+#: lib/layouts/beamer.layout:387
 msgid "The subsection as it appears in the table of contents/running headers"
 msgstr ""
 "Der Unterabschnittstitel, wie er im Inhaltsverzeichnis/Kolumnentitel "
 "erscheint"
 
-#: lib/layouts/beamer.layout:392
+#: lib/layouts/beamer.layout:399
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
-#: lib/layouts/beamer.layout:430
+#: lib/layouts/beamer.layout:438
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 msgstr ""
 "Unterunterabschnitt \\arabic{section}.\\arabic{subsection}."
 "\\arabic{subsubsection}"
 
-#: lib/layouts/beamer.layout:442
+#: lib/layouts/beamer.layout:450
 msgid ""
 "The subsubsection as it appears in the table of contents/running headers"
 msgstr ""
 "Der Unterunterabschnittstitel, wie er im Inhaltsverzeichnis/Kolumnentitel "
 "erscheint"
 
-#: lib/layouts/beamer.layout:454
+#: lib/layouts/beamer.layout:462
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
-#: lib/layouts/beamer.layout:481 lib/layouts/beamer.layout:487
+#: lib/layouts/beamer.layout:490 lib/layouts/beamer.layout:496
 msgid "Frame"
 msgstr "Rahmen"
 
-#: lib/layouts/beamer.layout:482 lib/layouts/beamer.layout:567
-#: lib/layouts/beamer.layout:614 lib/layouts/beamer.layout:645
+#: lib/layouts/beamer.layout:491 lib/layouts/beamer.layout:576
+#: lib/layouts/beamer.layout:623 lib/layouts/beamer.layout:654
 msgid "Frames"
 msgstr "Rahmen"
 
-#: lib/layouts/beamer.layout:504 lib/layouts/beamer.layout:939
-#: lib/layouts/beamer.layout:1316 lib/layouts/beamer.layout:1473
-#: lib/layouts/beamer.layout:1493 lib/layouts/beamer.layout:1513
-#: lib/layouts/beamer.layout:1533 lib/layouts/beamer.layout:1553
-#: lib/layouts/beamer.layout:1574 lib/layouts/beamer.layout:1595
-#: lib/layouts/beamer.layout:1616 lib/layouts/beamer.layout:1637
-#: lib/layouts/beamer.layout:1665 lib/layouts/pdfform.module:124
+#: lib/layouts/beamer.layout:513 lib/layouts/beamer.layout:948
+#: lib/layouts/beamer.layout:1325 lib/layouts/beamer.layout:1482
+#: lib/layouts/beamer.layout:1502 lib/layouts/beamer.layout:1522
+#: lib/layouts/beamer.layout:1542 lib/layouts/beamer.layout:1562
+#: lib/layouts/beamer.layout:1583 lib/layouts/beamer.layout:1604
+#: lib/layouts/beamer.layout:1625 lib/layouts/beamer.layout:1646
+#: lib/layouts/beamer.layout:1674 lib/layouts/pdfform.module:124
 msgid "Action"
 msgstr "Aktion"
 
-#: lib/layouts/beamer.layout:506 lib/layouts/beamer.layout:574
+#: lib/layouts/beamer.layout:515 lib/layouts/beamer.layout:583
 msgid "Overlay specifications for this frame"
 msgstr "Overlay-Spezifikation für diesen Rahmen"
 
-#: lib/layouts/beamer.layout:512 lib/layouts/beamer.layout:580
+#: lib/layouts/beamer.layout:521 lib/layouts/beamer.layout:589
 msgid "Default Overlay Specifications"
 msgstr "Standard-Overlay-Spezifikation"
 
-#: lib/layouts/beamer.layout:513 lib/layouts/beamer.layout:581
+#: lib/layouts/beamer.layout:522 lib/layouts/beamer.layout:590
 msgid "Default overlay specifications within this frame"
 msgstr "Standard-Overlay-Spezifikation für diesen Rahmen"
 
-#: lib/layouts/beamer.layout:519 lib/layouts/beamer.layout:548
-#: lib/layouts/beamer.layout:559 lib/layouts/beamer.layout:587
+#: lib/layouts/beamer.layout:528 lib/layouts/beamer.layout:557
+#: lib/layouts/beamer.layout:568 lib/layouts/beamer.layout:596
 msgid "Frame Options"
 msgstr "Rahmen-Optionen"
 
-#: lib/layouts/beamer.layout:521 lib/layouts/beamer.layout:550
-#: lib/layouts/beamer.layout:561 lib/layouts/beamer.layout:589
+#: lib/layouts/beamer.layout:530 lib/layouts/beamer.layout:559
+#: lib/layouts/beamer.layout:570 lib/layouts/beamer.layout:598
 msgid "Frame options (see beamer manual)"
 msgstr "Rahmen-Optionen (siehe Beamer-Anleitung)"
 
-#: lib/layouts/beamer.layout:524
+#: lib/layouts/beamer.layout:533
 msgid "Frame Title"
 msgstr "Rahmentitel"
 
-#: lib/layouts/beamer.layout:525
+#: lib/layouts/beamer.layout:534
 msgid "Enter the frame title here"
 msgstr "Geben Sie hier den Rahmentitel ein"
 
-#: lib/layouts/beamer.layout:544
+#: lib/layouts/beamer.layout:553
 msgid "PlainFrame"
 msgstr "Schlichter Rahmen"
 
-#: lib/layouts/beamer.layout:546
+#: lib/layouts/beamer.layout:555
 msgid "Frame (plain)"
 msgstr "Rahmen (schlicht)"
 
-#: lib/layouts/beamer.layout:555
+#: lib/layouts/beamer.layout:564
 msgid "FragileFrame"
 msgstr "Fragiler Rahmen"
 
-#: lib/layouts/beamer.layout:557
+#: lib/layouts/beamer.layout:566
 msgid "Frame (fragile)"
 msgstr "Rahmen (fragil)"
 
-#: lib/layouts/beamer.layout:566
+#: lib/layouts/beamer.layout:575
 msgid "AgainFrame"
 msgstr "RahmenNochmal"
 
-#: lib/layouts/beamer.layout:572 lib/layouts/powerdot.layout:135
+#: lib/layouts/beamer.layout:581 lib/layouts/powerdot.layout:135
 #: lib/layouts/seminar.layout:111 lib/layouts/slides.layout:92
 #: src/frontends/qt/GuiDocument.cpp:136
 msgid "Slide"
 msgstr "Folie"
 
-#: lib/layouts/beamer.layout:601
+#: lib/layouts/beamer.layout:610
 msgid "Repeat frame with label"
 msgstr "Rahmen mit folgender Marke wiederholen:"
 
-#: lib/layouts/beamer.layout:613
+#: lib/layouts/beamer.layout:622
 msgid "FrameTitle"
 msgstr "Rahmentitel"
 
-#: lib/layouts/beamer.layout:632 lib/layouts/beamer.layout:662
-#: lib/layouts/beamer.layout:878 lib/layouts/beamer.layout:907
-#: lib/layouts/beamer.layout:941 lib/layouts/beamer.layout:1230
-#: lib/layouts/beamer.layout:1255 lib/layouts/beamer.layout:1282
-#: lib/layouts/beamer.layout:1318 lib/layouts/beamer.layout:1448
-#: lib/layouts/beamer.layout:1475 lib/layouts/beamer.layout:1495
-#: lib/layouts/beamer.layout:1515 lib/layouts/beamer.layout:1535
-#: lib/layouts/beamer.layout:1555 lib/layouts/beamer.layout:1576
-#: lib/layouts/beamer.layout:1597 lib/layouts/beamer.layout:1618
-#: lib/layouts/beamer.layout:1639 lib/layouts/beamer.layout:1667
+#: lib/layouts/beamer.layout:641 lib/layouts/beamer.layout:671
+#: lib/layouts/beamer.layout:887 lib/layouts/beamer.layout:916
+#: lib/layouts/beamer.layout:950 lib/layouts/beamer.layout:1239
+#: lib/layouts/beamer.layout:1264 lib/layouts/beamer.layout:1291
+#: lib/layouts/beamer.layout:1327 lib/layouts/beamer.layout:1457
+#: lib/layouts/beamer.layout:1484 lib/layouts/beamer.layout:1504
+#: lib/layouts/beamer.layout:1524 lib/layouts/beamer.layout:1544
+#: lib/layouts/beamer.layout:1564 lib/layouts/beamer.layout:1585
+#: lib/layouts/beamer.layout:1606 lib/layouts/beamer.layout:1627
+#: lib/layouts/beamer.layout:1648 lib/layouts/beamer.layout:1676
 msgid "Specify the overlay settings (see beamer manual)"
 msgstr ""
 "Legen Sie hier die Overlay-Spezifikationen fest (siehe Beamer-Anleitung)"
 
-#: lib/layouts/beamer.layout:638
+#: lib/layouts/beamer.layout:647
 msgid "Short Frame Title|S"
 msgstr "Rahmentitel (Kurzform)|z"
 
-#: lib/layouts/beamer.layout:639
+#: lib/layouts/beamer.layout:648
 msgid "A short form of the frame title used in some themes"
 msgstr "Eine Kurzform des Rahmentitels, die in manchen Themen verwendet wird"
 
-#: lib/layouts/beamer.layout:644
+#: lib/layouts/beamer.layout:653
 msgid "FrameSubtitle"
 msgstr "RahmenUntertitel"
 
-#: lib/layouts/beamer.layout:674 lib/layouts/moderncv.layout:395
+#: lib/layouts/beamer.layout:683 lib/layouts/moderncv.layout:395
 #: lib/layouts/moderncv.layout:412
 msgid "Column"
 msgstr "Spalte"
 
-#: lib/layouts/beamer.layout:675 lib/layouts/beamer.layout:700
-#: lib/layouts/beamer.layout:701 lib/layouts/beamer.layout:711
+#: lib/layouts/beamer.layout:684 lib/layouts/beamer.layout:709
+#: lib/layouts/beamer.layout:710 lib/layouts/beamer.layout:720
 #: lib/layouts/moderncv.layout:373 lib/layouts/multicol.module:15
 msgid "Columns"
 msgstr "Spalten"
 
-#: lib/layouts/beamer.layout:687
+#: lib/layouts/beamer.layout:696
 msgid "Start column (increase depth!), width:"
 msgstr "Starte Spalte (erhöhe Tiefe!), Breite:"
 
-#: lib/layouts/beamer.layout:690 lib/layouts/powerdot.layout:504
+#: lib/layouts/beamer.layout:699 lib/layouts/powerdot.layout:510
 msgid "Column Options"
 msgstr "Spaltenoptionen"
 
-#: lib/layouts/beamer.layout:692
+#: lib/layouts/beamer.layout:701
 msgid "Column options (see beamer manual)"
 msgstr "Spaltenoptionen (siehe Beamer-Anleitung)"
 
-#: lib/layouts/beamer.layout:713
+#: lib/layouts/beamer.layout:722
 msgid "Column Placement Options"
 msgstr "Spalten-Platzierungsoptionen"
 
-#: lib/layouts/beamer.layout:714
+#: lib/layouts/beamer.layout:723
 msgid "Column placement options (t, T, c, b)"
 msgstr "Spalten-Platzierungsoptionen (t, T, c, b)"
 
-#: lib/layouts/beamer.layout:731
+#: lib/layouts/beamer.layout:740
 msgid "ColumnsCenterAligned"
 msgstr "Spalten mittig ausgerichtet"
 
-#: lib/layouts/beamer.layout:734
+#: lib/layouts/beamer.layout:743
 msgid "Columns (center aligned)"
 msgstr "Spalten (mittig ausgerichtet)"
 
-#: lib/layouts/beamer.layout:738
+#: lib/layouts/beamer.layout:747
 msgid "ColumnsTopAligned"
 msgstr "Spalten oben ausgerichtet"
 
-#: lib/layouts/beamer.layout:741
+#: lib/layouts/beamer.layout:750
 msgid "Columns (top aligned)"
 msgstr "Spalten (oben ausgerichtet)"
 
-#: lib/layouts/beamer.layout:750 lib/layouts/powerdot.layout:518
+#: lib/layouts/beamer.layout:759 lib/layouts/powerdot.layout:524
 msgid "Pause"
 msgstr "Pause"
 
-#: lib/layouts/beamer.layout:751 lib/layouts/beamer.layout:779
-#: lib/layouts/beamer.layout:825 lib/layouts/beamer.layout:857
-#: lib/layouts/beamer.layout:886 lib/layouts/powerdot.layout:519
+#: lib/layouts/beamer.layout:760 lib/layouts/beamer.layout:788
+#: lib/layouts/beamer.layout:834 lib/layouts/beamer.layout:866
+#: lib/layouts/beamer.layout:895 lib/layouts/powerdot.layout:525
 msgid "Overlays"
 msgstr "Overlays"
 
-#: lib/layouts/beamer.layout:757 lib/layouts/powerdot.layout:525
+#: lib/layouts/beamer.layout:766 lib/layouts/powerdot.layout:531
 msgid "Pause number"
 msgstr "Pausennummer"
 
-#: lib/layouts/beamer.layout:758 lib/layouts/powerdot.layout:526
+#: lib/layouts/beamer.layout:767 lib/layouts/powerdot.layout:532
 msgid "Number of slide where the context below the pause gets visible"
 msgstr ""
 "Nummer der Folie, auf der der Text unterhalb dieser Pause sichtbar wird"
 
-#: lib/layouts/beamer.layout:769 lib/layouts/powerdot.layout:537
+#: lib/layouts/beamer.layout:778 lib/layouts/powerdot.layout:543
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-#: lib/layouts/beamer.layout:778 lib/layouts/beamer.layout:817
+#: lib/layouts/beamer.layout:787 lib/layouts/beamer.layout:826
 msgid "Overprint"
 msgstr "Überdruck"
 
-#: lib/layouts/beamer.layout:785
+#: lib/layouts/beamer.layout:794
 msgid "Overprint Area Width"
 msgstr "Überdruckbereichsbreite"
 
-#: lib/layouts/beamer.layout:786 lib/layouts/europasscv.layout:246
+#: lib/layouts/beamer.layout:795 lib/layouts/europasscv.layout:246
 #: lib/layouts/graphicboxes.module:49 lib/layouts/moderncv.layout:400
 #: lib/layouts/sectionbox.module:22 src/frontends/qt/GuiBox.cpp:71
 msgid "Width"
 msgstr "Breite"
 
-#: lib/layouts/beamer.layout:787
+#: lib/layouts/beamer.layout:796
 msgid "The width of the overprint area (default: text width)"
 msgstr "Die Breite des Überdruckbereichs (Voreinstellung: Textbreite)"
 
-#: lib/layouts/beamer.layout:824
+#: lib/layouts/beamer.layout:833
 msgid "OverlayArea"
 msgstr "ÜberlagerungsBereich"
 
-#: lib/layouts/beamer.layout:834
+#: lib/layouts/beamer.layout:843
 msgid "Overlayarea"
 msgstr "Überlagerungsbereich"
 
-#: lib/layouts/beamer.layout:844
+#: lib/layouts/beamer.layout:853
 msgid "Overlay Area Width"
 msgstr "Überlagerungsbereichsbreite"
 
-#: lib/layouts/beamer.layout:845
+#: lib/layouts/beamer.layout:854
 msgid "The width of the overlay area"
 msgstr "Die Breite des Überlagerungsbereichs"
 
-#: lib/layouts/beamer.layout:849
+#: lib/layouts/beamer.layout:858
 msgid "Overlay Area Height"
 msgstr "Überlagerungsbereichshöhe"
 
-#: lib/layouts/beamer.layout:850 lib/layouts/graphicboxes.module:56
+#: lib/layouts/beamer.layout:859 lib/layouts/graphicboxes.module:56
 #: lib/layouts/moderncv.layout:288 src/frontends/qt/GuiBox.cpp:70
 msgid "Height"
 msgstr "Höhe"
 
-#: lib/layouts/beamer.layout:851
+#: lib/layouts/beamer.layout:860
 msgid "The height of the overlay area"
 msgstr "Die Höhe des Überlagerungsbereichs"
 
-#: lib/layouts/beamer.layout:856 lib/layouts/beamer.layout:1565
-#: lib/layouts/beamer.layout:1567 lib/layouts/powerdot.layout:660
+#: lib/layouts/beamer.layout:865 lib/layouts/beamer.layout:1574
+#: lib/layouts/beamer.layout:1576 lib/layouts/powerdot.layout:666
 msgid "Uncover"
 msgstr "Aufdecken"
 
-#: lib/layouts/beamer.layout:866
+#: lib/layouts/beamer.layout:875
 msgid "Uncovered on slides"
 msgstr "Aufgedeckt auf Folien"
 
-#: lib/layouts/beamer.layout:885 lib/layouts/beamer.layout:1544
-#: lib/layouts/beamer.layout:1546 lib/layouts/powerdot.layout:666
+#: lib/layouts/beamer.layout:894 lib/layouts/beamer.layout:1553
+#: lib/layouts/beamer.layout:1555 lib/layouts/powerdot.layout:672
 msgid "Only"
 msgstr "Nur"
 
-#: lib/layouts/beamer.layout:895
+#: lib/layouts/beamer.layout:904
 msgid "Only on slides"
 msgstr "Nur auf Folien"
 
-#: lib/layouts/beamer.layout:919
+#: lib/layouts/beamer.layout:928
 msgid "Block"
 msgstr "Block"
 
-#: lib/layouts/beamer.layout:920
+#: lib/layouts/beamer.layout:929
 msgid "Blocks"
 msgstr "Blöcke"
 
-#: lib/layouts/beamer.layout:929
+#: lib/layouts/beamer.layout:938
 msgid "Block:"
 msgstr "Block:"
 
-#: lib/layouts/beamer.layout:940
+#: lib/layouts/beamer.layout:949
 msgid "Action Specification|S"
 msgstr "Aktionsspezifikation"
 
-#: lib/layouts/beamer.layout:947
+#: lib/layouts/beamer.layout:956
 msgid "Block Title"
 msgstr "Blocktitel"
 
-#: lib/layouts/beamer.layout:948
+#: lib/layouts/beamer.layout:957
 msgid "Enter the block title here"
 msgstr "Geben Sie hier den Blocktitel ein"
 
-#: lib/layouts/beamer.layout:963
+#: lib/layouts/beamer.layout:972
 msgid "ExampleBlock"
 msgstr "BeispielBlock"
 
-#: lib/layouts/beamer.layout:966
+#: lib/layouts/beamer.layout:975
 msgid "Example Block:"
 msgstr "Beispiel-Block:"
 
-#: lib/layouts/beamer.layout:972
+#: lib/layouts/beamer.layout:981
 msgid "AlertBlock"
 msgstr "AlarmBlock"
 
-#: lib/layouts/beamer.layout:975
+#: lib/layouts/beamer.layout:984
 msgid "Alert Block:"
 msgstr "Alarm-Block:"
 
-#: lib/layouts/beamer.layout:987 lib/layouts/beamer.layout:1024
-#: lib/layouts/beamer.layout:1051 lib/layouts/beamer.layout:1079
-#: lib/layouts/beamer.layout:1123 lib/layouts/beamer.layout:1146
+#: lib/layouts/beamer.layout:996 lib/layouts/beamer.layout:1033
+#: lib/layouts/beamer.layout:1060 lib/layouts/beamer.layout:1088
+#: lib/layouts/beamer.layout:1132 lib/layouts/beamer.layout:1155
 msgid "Titling"
 msgstr "Titelei"
 
-#: lib/layouts/beamer.layout:1001
+#: lib/layouts/beamer.layout:1010
 msgid "Short title which appears in the sidebar/header"
 msgstr "Kurztitel, der in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:1015
+#: lib/layouts/beamer.layout:1024
 msgid "Title (Plain Frame)"
 msgstr "Titel (schlichter Rahmen)"
 
-#: lib/layouts/beamer.layout:1037
+#: lib/layouts/beamer.layout:1046
 msgid "Short Subtitle|S"
 msgstr "Untertitel (Kurzform)|z"
 
-#: lib/layouts/beamer.layout:1038
+#: lib/layouts/beamer.layout:1047
 msgid "Short subtitle which appears in the sidebar/header"
 msgstr "Kurzform des Untertitels, die in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:1064
+#: lib/layouts/beamer.layout:1073
 msgid "Short author which appears in the sidebar/header"
 msgstr "Kurzform des Autors, die in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:1091
+#: lib/layouts/beamer.layout:1100
 msgid "Short Institute|S"
 msgstr "Institut (Kurzform)|z"
 
-#: lib/layouts/beamer.layout:1092
+#: lib/layouts/beamer.layout:1101
 msgid "Short institute which appears in the sidebar/header"
 msgstr "Kurzform des Instituts, die in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:1101
+#: lib/layouts/beamer.layout:1110
 msgid "InstituteMark"
 msgstr "Institutsfußnotenmarke"
 
-#: lib/layouts/beamer.layout:1135
+#: lib/layouts/beamer.layout:1144
 msgid "Short Date|S"
 msgstr "Datum (Kurzform)|z"
 
-#: lib/layouts/beamer.layout:1136
+#: lib/layouts/beamer.layout:1145
 msgid "Short date which appears in the sidebar/header"
 msgstr "Kurzform des Datums, die in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:1145 lib/layouts/beamerposter.layout:46
+#: lib/layouts/beamer.layout:1154 lib/layouts/beamerposter.layout:46
 msgid "TitleGraphic"
 msgstr "Titelgrafik"
 
-#: lib/layouts/beamer.layout:1210 lib/layouts/egs.layout:103
-#: lib/layouts/powerdot.layout:426 lib/layouts/stdlayouts.inc:12
+#: lib/layouts/beamer.layout:1219 lib/layouts/egs.layout:103
+#: lib/layouts/powerdot.layout:432 lib/layouts/stdlayouts.inc:12
 msgid "Quotation"
 msgstr "Zitat (lang)"
 
-#: lib/layouts/beamer.layout:1237 lib/layouts/egs.layout:122
-#: lib/layouts/moderncv.layout:305 lib/layouts/powerdot.layout:448
+#: lib/layouts/beamer.layout:1246 lib/layouts/egs.layout:122
+#: lib/layouts/moderncv.layout:305 lib/layouts/powerdot.layout:454
 #: lib/layouts/stdlayouts.inc:37
 msgid "Quote"
 msgstr "Zitat (kurz)"
 
-#: lib/layouts/beamer.layout:1262 lib/layouts/egs.layout:277
-#: lib/layouts/powerdot.layout:468 lib/layouts/stdlayouts.inc:60
+#: lib/layouts/beamer.layout:1271 lib/layouts/egs.layout:283
+#: lib/layouts/powerdot.layout:474 lib/layouts/stdlayouts.inc:60
 msgid "Verse"
 msgstr "Gedicht"
 
-#: lib/layouts/beamer.layout:1304 lib/layouts/foils.layout:340
+#: lib/layouts/beamer.layout:1313 lib/layouts/foils.layout:340
 #: lib/layouts/theorems-starred.inc:78
 msgid "Corollary."
 msgstr "Korollar."
 
-#: lib/layouts/beamer.layout:1317 lib/layouts/beamer.layout:1474
-#: lib/layouts/beamer.layout:1494 lib/layouts/beamer.layout:1514
-#: lib/layouts/beamer.layout:1534 lib/layouts/beamer.layout:1554
-#: lib/layouts/beamer.layout:1575 lib/layouts/beamer.layout:1596
-#: lib/layouts/beamer.layout:1617 lib/layouts/beamer.layout:1638
-#: lib/layouts/beamer.layout:1666
+#: lib/layouts/beamer.layout:1326 lib/layouts/beamer.layout:1483
+#: lib/layouts/beamer.layout:1503 lib/layouts/beamer.layout:1523
+#: lib/layouts/beamer.layout:1543 lib/layouts/beamer.layout:1563
+#: lib/layouts/beamer.layout:1584 lib/layouts/beamer.layout:1605
+#: lib/layouts/beamer.layout:1626 lib/layouts/beamer.layout:1647
+#: lib/layouts/beamer.layout:1675
 msgid "Action Specifications|S"
 msgstr "Aktionsspezifikation"
 
-#: lib/layouts/beamer.layout:1335 lib/layouts/foils.layout:354
+#: lib/layouts/beamer.layout:1344 lib/layouts/foils.layout:354
 #: lib/layouts/theorems-starred.inc:174
 msgid "Definition."
 msgstr "Definition."
 
-#: lib/layouts/beamer.layout:1338
+#: lib/layouts/beamer.layout:1347
 msgid "Definitions"
 msgstr "Definitionen"
 
-#: lib/layouts/beamer.layout:1341
+#: lib/layouts/beamer.layout:1350
 msgid "Definitions."
 msgstr "Definitionen."
 
-#: lib/layouts/beamer.layout:1347 lib/layouts/theorems-starred.inc:200
+#: lib/layouts/beamer.layout:1356 lib/layouts/theorems-starred.inc:200
 msgid "Example."
 msgstr "Beispiel."
 
-#: lib/layouts/beamer.layout:1354
+#: lib/layouts/beamer.layout:1363
 msgid "Examples"
 msgstr "Beispiele"
 
-#: lib/layouts/beamer.layout:1357
+#: lib/layouts/beamer.layout:1366
 msgid "Examples."
 msgstr "Beispiele."
 
-#: lib/layouts/beamer.layout:1360 lib/layouts/theorems-ams-bytype.inc:160
+#: lib/layouts/beamer.layout:1369 lib/layouts/theorems-ams-bytype.inc:160
 #: lib/layouts/theorems-ams-bytype.inc:169
 #: lib/layouts/theorems-ams-bytype.inc:172
 #: lib/layouts/theorems-ams-chap-bytype.inc:222
@@ -10573,104 +10580,104 @@ msgstr "Beispiele."
 msgid "Fact"
 msgstr "Fakt"
 
-#: lib/layouts/beamer.layout:1363 lib/layouts/theorems-starred.inc:154
+#: lib/layouts/beamer.layout:1372 lib/layouts/theorems-starred.inc:154
 msgid "Fact."
 msgstr "Fakt."
 
-#: lib/layouts/beamer.layout:1369 lib/layouts/foils.layout:333
+#: lib/layouts/beamer.layout:1378 lib/layouts/foils.layout:333
 #: lib/layouts/theorems-starred.inc:97
 msgid "Lemma."
 msgstr "Lemma."
 
-#: lib/layouts/beamer.layout:1381 lib/layouts/foils.layout:326
+#: lib/layouts/beamer.layout:1390 lib/layouts/foils.layout:326
 #: lib/layouts/theorems-named.module:18 lib/layouts/theorems-starred.inc:32
 msgid "Theorem."
 msgstr "Theorem."
 
-#: lib/layouts/beamer.layout:1389 lib/layouts/egs.layout:730
+#: lib/layouts/beamer.layout:1398 lib/layouts/egs.layout:738
 #: lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "LyX-Code"
 
-#: lib/layouts/beamer.layout:1426
+#: lib/layouts/beamer.layout:1435
 msgid "NoteItem"
 msgstr "NotizStichpunkt"
 
-#: lib/layouts/beamer.layout:1464 lib/layouts/beamer.layout:1466
+#: lib/layouts/beamer.layout:1473 lib/layouts/beamer.layout:1475
 #: src/FontInfo.cpp:48 src/frontends/qt/GuiCharacter.cpp:138
 #: src/frontends/qt/GuiIndex.cpp:47
 msgid "Bold"
 msgstr "Fett"
 
-#: lib/layouts/beamer.layout:1484 lib/layouts/ectaart.layout:178
+#: lib/layouts/beamer.layout:1493 lib/layouts/ectaart.layout:178
 msgid "Emphasize"
 msgstr "Hervorhebung"
 
-#: lib/layouts/beamer.layout:1486
+#: lib/layouts/beamer.layout:1495
 msgid "Emph."
 msgstr "Hervg."
 
-#: lib/layouts/beamer.layout:1504 lib/layouts/beamer.layout:1506
+#: lib/layouts/beamer.layout:1513 lib/layouts/beamer.layout:1515
 msgid "Alert"
 msgstr "Alarm"
 
-#: lib/layouts/beamer.layout:1524 lib/layouts/beamer.layout:1526
+#: lib/layouts/beamer.layout:1533 lib/layouts/beamer.layout:1535
 #: lib/layouts/svcommon.inc:73 lib/layouts/svcommon.inc:100
 #: lib/layouts/svcommon.inc:107
 msgid "Structure"
 msgstr "Struktur"
 
-#: lib/layouts/beamer.layout:1586 lib/layouts/beamer.layout:1588
-#: lib/layouts/powerdot.layout:644
+#: lib/layouts/beamer.layout:1595 lib/layouts/beamer.layout:1597
+#: lib/layouts/powerdot.layout:650
 msgid "Visible"
 msgstr "Sichtbar"
 
-#: lib/layouts/beamer.layout:1607 lib/layouts/beamer.layout:1609
+#: lib/layouts/beamer.layout:1616 lib/layouts/beamer.layout:1618
 msgid "Invisible"
 msgstr "Unsichtbar"
 
-#: lib/layouts/beamer.layout:1628 lib/layouts/beamer.layout:1630
+#: lib/layouts/beamer.layout:1637 lib/layouts/beamer.layout:1639
 msgid "Alternative"
 msgstr "Alternativ"
 
-#: lib/layouts/beamer.layout:1646
+#: lib/layouts/beamer.layout:1655
 msgid "Default Text"
 msgstr "Standardtext"
 
-#: lib/layouts/beamer.layout:1647
+#: lib/layouts/beamer.layout:1656
 msgid "Enter the default text here"
 msgstr "Geben Sie hier den Standardtext ein"
 
-#: lib/layouts/beamer.layout:1655
+#: lib/layouts/beamer.layout:1664
 msgid "Beamer Note"
 msgstr "Beamer-Notiz"
 
-#: lib/layouts/beamer.layout:1673
+#: lib/layouts/beamer.layout:1682
 msgid "Note Options"
 msgstr "Notiz-Optionen"
 
-#: lib/layouts/beamer.layout:1674
+#: lib/layouts/beamer.layout:1683
 msgid "Specifiy note options (see beamer manual)"
 msgstr "Geben Sie hier Notiz-Optionen ein (siehe Beamer-Anleitung)"
 
-#: lib/layouts/beamer.layout:1679
+#: lib/layouts/beamer.layout:1688
 msgid "ArticleMode"
 msgstr "Artikelmodus"
 
-#: lib/layouts/beamer.layout:1685
+#: lib/layouts/beamer.layout:1694
 msgid "Article"
 msgstr "Aufsatz"
 
-#: lib/layouts/beamer.layout:1690
+#: lib/layouts/beamer.layout:1699
 msgid "PresentationMode"
 msgstr "Präsentationsmodus"
 
-#: lib/layouts/beamer.layout:1696
+#: lib/layouts/beamer.layout:1705
 msgid "Presentation"
 msgstr "Präsentation"
 
-#: lib/layouts/beamer.layout:1723 lib/layouts/powerdot.layout:570
-#: lib/layouts/powerdot.layout:627 lib/layouts/sciposter.layout:104
+#: lib/layouts/beamer.layout:1732 lib/layouts/powerdot.layout:576
+#: lib/layouts/powerdot.layout:633 lib/layouts/sciposter.layout:104
 #: lib/layouts/stdfloats.inc:28
 msgid "Figure"
 msgstr "Abbildung"
@@ -10880,7 +10887,7 @@ msgstr ")"
 msgid "CURTAIN"
 msgstr "VORHANG"
 
-#: lib/layouts/broadway.layout:229 lib/layouts/egs.layout:296
+#: lib/layouts/broadway.layout:229 lib/layouts/egs.layout:302
 #: lib/layouts/hollywood.layout:326 lib/layouts/lyxmacros.inc:70
 #: lib/layouts/siamltex.layout:316
 msgid "Right Address"
@@ -11134,7 +11141,7 @@ msgstr "Vorname"
 msgid "Surname"
 msgstr "Nachname"
 
-#: lib/layouts/copernicus.layout:85 lib/layouts/egs.layout:394
+#: lib/layouts/copernicus.layout:85 lib/layouts/egs.layout:400
 msgid "Affil"
 msgstr "Zugehörigkeit"
 
@@ -11949,35 +11956,35 @@ msgstr "European Geophysical Society (EGS)"
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
-#: lib/layouts/egs.layout:345
+#: lib/layouts/egs.layout:351
 msgid "LaTeX Title"
 msgstr "LaTeX-Titel"
 
-#: lib/layouts/egs.layout:429
+#: lib/layouts/egs.layout:435
 msgid "Journal:"
 msgstr "Zeitschrift:"
 
-#: lib/layouts/egs.layout:438
+#: lib/layouts/egs.layout:444
 msgid "msnumber"
 msgstr "Manuskript-Nummer"
 
-#: lib/layouts/egs.layout:452
+#: lib/layouts/egs.layout:458
 msgid "MS_number:"
 msgstr "Manuskript-Nummer:"
 
-#: lib/layouts/egs.layout:462
+#: lib/layouts/egs.layout:468
 msgid "FirstAuthor"
 msgstr "Erster Autor"
 
-#: lib/layouts/egs.layout:475
+#: lib/layouts/egs.layout:481
 msgid "1st_author_surname:"
 msgstr "1. Autor Nachname:"
 
-#: lib/layouts/egs.layout:528
+#: lib/layouts/egs.layout:534
 msgid "Offsets"
 msgstr "Offsets"
 
-#: lib/layouts/egs.layout:541
+#: lib/layouts/egs.layout:547
 msgid "reprint_reqs_to:"
 msgstr "Nachdruckanfrage an:"
 
@@ -12323,7 +12330,7 @@ msgstr ""
 "Gleichungsnummer die Abschnittsnummer voran, bspw. '(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17 lib/layouts/scrbook.layout:29
-#: lib/layouts/stdcounters.inc:81 src/insets/InsetRef.cpp:600
+#: lib/layouts/stdcounters.inc:81 src/insets/InsetRef.cpp:622
 #: src/mathed/InsetMathRef.cpp:372
 msgid "Equation"
 msgstr "Gleichung"
@@ -12631,7 +12638,7 @@ msgid "Size the photo is resized to"
 msgstr "Ausgabegröße des Bildes"
 
 #: lib/layouts/europecv.layout:185 src/frontends/qt/GuiDocument.cpp:136
-#: src/insets/InsetRef.cpp:601
+#: src/insets/InsetRef.cpp:623
 msgid "Page"
 msgstr "Seite"
 
@@ -12811,8 +12818,8 @@ msgid "Fixme Error"
 msgstr "Fixme-Fehler"
 
 #: lib/layouts/fixme.module:83 src/frontends/qt/GuiCompare.cpp:202
-#: src/frontends/qt/GuiDocument.cpp:2850 src/frontends/qt/GuiDocument.cpp:2924
-#: src/frontends/qt/GuiDocument.cpp:4831
+#: src/frontends/qt/GuiDocument.cpp:2879 src/frontends/qt/GuiDocument.cpp:2953
+#: src/frontends/qt/GuiDocument.cpp:4870
 msgid "Error"
 msgstr "Fehler"
 
@@ -13609,8 +13616,8 @@ msgstr "Bemerkungen"
 msgid "Remarks #."
 msgstr "Bemerkungen #."
 
-#: lib/layouts/heb-article.layout:122 lib/layouts/ijmpc.layout:408
-#: lib/layouts/ijmpd.layout:414
+#: lib/layouts/heb-article.layout:122 lib/layouts/ijmpc.layout:412
+#: lib/layouts/ijmpd.layout:418
 msgid "Proof:"
 msgstr "Beweis:"
 
@@ -13778,7 +13785,7 @@ msgstr ""
 "Geben Sie die höchste Nummer in Ihrer Aufzählung an, z.B. '(iv)' bei 4 "
 "römisch nummerierten Einträgen"
 
-#: lib/layouts/ijmpc.layout:443 lib/layouts/ijmpd.layout:461
+#: lib/layouts/ijmpc.layout:447 lib/layouts/ijmpd.layout:465
 #: lib/layouts/theorems-ams-bytype.inc:83
 #: lib/layouts/theorems-ams-chap-bytype.inc:129
 #: lib/layouts/theorems-bytype.inc:77
@@ -13786,7 +13793,7 @@ msgstr ""
 msgid "Corollary \\thecorollary."
 msgstr "Korollar \\thecorollary."
 
-#: lib/layouts/ijmpc.layout:447 lib/layouts/ijmpd.layout:469
+#: lib/layouts/ijmpc.layout:451 lib/layouts/ijmpd.layout:473
 #: lib/layouts/theorems-ams-bytype.inc:103
 #: lib/layouts/theorems-ams-chap-bytype.inc:153
 #: lib/layouts/theorems-bytype.inc:97
@@ -13794,7 +13801,7 @@ msgstr "Korollar \\thecorollary."
 msgid "Lemma \\thelemma."
 msgstr "Lemma \\thelemma."
 
-#: lib/layouts/ijmpc.layout:451 lib/layouts/ijmpd.layout:477
+#: lib/layouts/ijmpc.layout:455 lib/layouts/ijmpd.layout:481
 #: lib/layouts/theorems-ams-bytype.inc:123
 #: lib/layouts/theorems-ams-chap-bytype.inc:177
 #: lib/layouts/theorems-bytype.inc:117
@@ -13802,8 +13809,8 @@ msgstr "Lemma \\thelemma."
 msgid "Proposition \\theproposition."
 msgstr "Satz \\theproposition."
 
-#: lib/layouts/ijmpc.layout:454 lib/layouts/ijmpd.layout:481
-#: lib/layouts/ijmpd.layout:484 lib/layouts/llncs.layout:428
+#: lib/layouts/ijmpc.layout:458 lib/layouts/ijmpd.layout:485
+#: lib/layouts/ijmpd.layout:488 lib/layouts/llncs.layout:428
 #: lib/layouts/svmono.layout:69
 #: lib/layouts/theorems-ams-extended-bytype.module:447
 #: lib/layouts/theorems-ams-extended-bytype.module:457
@@ -13828,21 +13835,21 @@ msgstr "Satz \\theproposition."
 msgid "Question"
 msgstr "Frage"
 
-#: lib/layouts/ijmpc.layout:455 lib/layouts/ijmpd.layout:485
+#: lib/layouts/ijmpc.layout:459 lib/layouts/ijmpd.layout:489
 #: lib/layouts/theorems-ams-extended-bytype.module:451
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:530
 #: lib/layouts/theorems-without-preamble.inc:446
 msgid "Question \\thequestion."
 msgstr "Frage \\thequestion."
 
-#: lib/layouts/ijmpc.layout:468 lib/layouts/ijmpd.layout:497
+#: lib/layouts/ijmpc.layout:472 lib/layouts/ijmpd.layout:501
 #: lib/layouts/theorems-ams-bytype.inc:323
 #: lib/layouts/theorems-ams-chap-bytype.inc:413
 #: lib/layouts/theorems-bytype.inc:317
 msgid "Claim \\theclaim."
 msgstr "Behauptung \\theclaim."
 
-#: lib/layouts/ijmpc.layout:479 lib/layouts/ijmpd.layout:508
+#: lib/layouts/ijmpc.layout:483 lib/layouts/ijmpd.layout:512
 #: lib/layouts/theorems-ams-bytype.inc:143
 #: lib/layouts/theorems-ams-chap-bytype.inc:201
 #: lib/layouts/theorems-bytype.inc:137
@@ -13850,11 +13857,11 @@ msgstr "Behauptung \\theclaim."
 msgid "Conjecture \\theconjecture."
 msgstr "Vermutung \\theconjecture."
 
-#: lib/layouts/ijmpc.layout:489 lib/layouts/theorems-without-preamble.inc:142
+#: lib/layouts/ijmpc.layout:493 lib/layouts/theorems-without-preamble.inc:142
 msgid "Prop"
 msgstr "Eigenschaft"
 
-#: lib/layouts/ijmpc.layout:509 lib/layouts/ijmpd.layout:533
+#: lib/layouts/ijmpc.layout:513 lib/layouts/ijmpd.layout:537
 msgid "Appendix \\Alph{appendix}."
 msgstr "Anhang \\Alph{appendix}."
 
@@ -13866,7 +13873,7 @@ msgstr "Int. Journal of Modern Physics D"
 msgid "Comby"
 msgstr "Comby"
 
-#: lib/layouts/ijmpd.layout:515 lib/layouts/theorems-without-preamble.inc:140
+#: lib/layouts/ijmpd.layout:519 lib/layouts/theorems-without-preamble.inc:140
 msgid "Prop(osition)"
 msgstr "Satz"
 
@@ -14425,7 +14432,7 @@ msgstr "(\\arabic{examplei})"
 
 #: lib/layouts/linguistics.module:30 lib/layouts/linguistics.module:36
 #: lib/layouts/linguistics.module:42 lib/layouts/linguistics.module:48
-#: lib/layouts/linguistics.module:54 lib/layouts/linguistics.module:122
+#: lib/layouts/linguistics.module:54 lib/layouts/linguistics.module:123
 msgid "Subexample"
 msgstr "Unterbeispiel"
 
@@ -14465,301 +14472,301 @@ msgstr "Benutzerdef. Nummerierung"
 msgid "Customize the numeration"
 msgstr "Die Nummerierung anpassen"
 
-#: lib/layouts/linguistics.module:129
+#: lib/layouts/linguistics.module:130
 msgid "Subexamples options"
 msgstr "Optionen für Unterbeispiele"
 
-#: lib/layouts/linguistics.module:130
+#: lib/layouts/linguistics.module:131
 msgid "Subexamples options|s"
 msgstr "Optionen für Unterbeispiele"
 
-#: lib/layouts/linguistics.module:131
+#: lib/layouts/linguistics.module:132
 msgid "Add subexamples options here"
 msgstr "Fügen Sie hier Optionen für Unterbeispiele ein."
 
-#: lib/layouts/linguistics.module:142
+#: lib/layouts/linguistics.module:144
 msgid "Interlinear Gloss (2 Lines)"
 msgstr "Interlinear-Glosse (2 Zeilen)"
 
-#: lib/layouts/linguistics.module:144
+#: lib/layouts/linguistics.module:146
 msgid "Gloss"
 msgstr "Glosse"
 
-#: lib/layouts/linguistics.module:160 lib/layouts/linguistics.module:206
+#: lib/layouts/linguistics.module:162 lib/layouts/linguistics.module:208
 msgid "Gloss options"
 msgstr "Glossen-Optionen"
 
-#: lib/layouts/linguistics.module:161 lib/layouts/linguistics.module:207
+#: lib/layouts/linguistics.module:163 lib/layouts/linguistics.module:209
 msgid "Gloss Options|s"
 msgstr "Glossen-Optionen"
 
-#: lib/layouts/linguistics.module:162
+#: lib/layouts/linguistics.module:164
 msgid "Add digloss options here"
 msgstr "Fügen Sie hier digloss-Optionen ein."
 
-#: lib/layouts/linguistics.module:166 lib/layouts/linguistics.module:167
+#: lib/layouts/linguistics.module:168 lib/layouts/linguistics.module:169
 msgid "Interlinear Gloss"
 msgstr "Interlinear-Glosse"
 
-#: lib/layouts/linguistics.module:168
+#: lib/layouts/linguistics.module:170
 msgid "Add the inter-linear gloss here"
 msgstr "Geben Sie hier die Interlinear-Glossierung ein"
 
-#: lib/layouts/linguistics.module:176 lib/layouts/linguistics.module:232
+#: lib/layouts/linguistics.module:178 lib/layouts/linguistics.module:234
 msgid "Translation"
 msgstr "Übersetzung"
 
-#: lib/layouts/linguistics.module:177 lib/layouts/linguistics.module:233
+#: lib/layouts/linguistics.module:179 lib/layouts/linguistics.module:235
 msgid "Gloss Translation"
 msgstr "Glossen-Übersetzung"
 
-#: lib/layouts/linguistics.module:178
+#: lib/layouts/linguistics.module:180
 msgid "Add a free translation for the gloss"
 msgstr "Fügt der Glosse eine freie Übersetzung (Paraphrase) hinzu"
 
-#: lib/layouts/linguistics.module:188
+#: lib/layouts/linguistics.module:190
 msgid "Interlinear Gloss (3 Lines)"
 msgstr "Interlinear-Glosse (3 Zeilen)"
 
-#: lib/layouts/linguistics.module:190
+#: lib/layouts/linguistics.module:192
 msgid "Tri-Gloss"
 msgstr "Tri-Glosse"
 
-#: lib/layouts/linguistics.module:208
+#: lib/layouts/linguistics.module:210
 msgid "Add trigloss options here"
 msgstr "Geben Sie hier trigloss-Optionen ein"
 
-#: lib/layouts/linguistics.module:212
+#: lib/layouts/linguistics.module:214
 msgid "Interlinear Gloss (1)"
 msgstr "Interlinear-Glosse (1)"
 
-#: lib/layouts/linguistics.module:213
+#: lib/layouts/linguistics.module:215
 msgid "Interlinear Gloss (Line 1)|1"
 msgstr "Interlinear-Glosse (Zeile 1)|1"
 
-#: lib/layouts/linguistics.module:214 lib/layouts/linguistics.module:224
+#: lib/layouts/linguistics.module:216 lib/layouts/linguistics.module:226
 msgid "Add the first inter-linear gloss line here"
 msgstr "Geben Sie hier die erste Interlinear-Glossierung ein"
 
-#: lib/layouts/linguistics.module:222
+#: lib/layouts/linguistics.module:224
 msgid "Interlinear Gloss (2)"
 msgstr "Interlinear-Glosse (2)"
 
-#: lib/layouts/linguistics.module:223
+#: lib/layouts/linguistics.module:225
 msgid "Interlinear Gloss (Line 2)|2"
 msgstr "Interlinear-Glosse (Zeile 2)|2"
 
-#: lib/layouts/linguistics.module:234
+#: lib/layouts/linguistics.module:236
 msgid "Add a translation for the glosse"
 msgstr "Fügt der Glosse eine Übersetzung (Paraphrase) hinzu"
 
-#: lib/layouts/linguistics.module:243
+#: lib/layouts/linguistics.module:245
 msgid "GroupGlossedWords"
 msgstr "Glossierte Wortgruppen"
 
-#: lib/layouts/linguistics.module:245
+#: lib/layouts/linguistics.module:247
 msgid "Group"
 msgstr "Gruppe"
 
-#: lib/layouts/linguistics.module:257
+#: lib/layouts/linguistics.module:259
 msgid "Structure Tree"
 msgstr "Strukturbaum"
 
-#: lib/layouts/linguistics.module:259
+#: lib/layouts/linguistics.module:261
 msgid "Tree"
 msgstr "Baum"
 
-#: lib/layouts/linguistics.module:287 lib/layouts/linguistics.module:289
+#: lib/layouts/linguistics.module:289 lib/layouts/linguistics.module:291
 msgid "DRS"
 msgstr "DRS"
 
-#: lib/layouts/linguistics.module:290
+#: lib/layouts/linguistics.module:292
 msgid "Discourse Representation Structure|D"
 msgstr "Diskursrepräsentationsstruktur|D"
 
-#: lib/layouts/linguistics.module:302 lib/layouts/linguistics.module:449
+#: lib/layouts/linguistics.module:304 lib/layouts/linguistics.module:451
 msgid "Referents"
 msgstr "Referenten"
 
-#: lib/layouts/linguistics.module:303 lib/layouts/linguistics.module:450
+#: lib/layouts/linguistics.module:305 lib/layouts/linguistics.module:452
 msgid "DRS Referents"
 msgstr "DRS-Referenten"
 
-#: lib/layouts/linguistics.module:304 lib/layouts/linguistics.module:451
+#: lib/layouts/linguistics.module:306 lib/layouts/linguistics.module:453
 msgid "Add the DRS referents (universe) here"
 msgstr "Fügen Sie hier die Diskursreferenten (Universum) ein."
 
-#: lib/layouts/linguistics.module:311 lib/layouts/linguistics.module:313
+#: lib/layouts/linguistics.module:313 lib/layouts/linguistics.module:315
 msgid "DRS*"
 msgstr "DRS*"
 
-#: lib/layouts/linguistics.module:314
+#: lib/layouts/linguistics.module:316
 msgid "Discourse Representation Structure (unspaced)|u"
 msgstr "Diskursrepräsentationsstruktur (einfach)"
 
-#: lib/layouts/linguistics.module:319
+#: lib/layouts/linguistics.module:321
 msgid "IfThen-DRS"
 msgstr "Implikative DRS"
 
-#: lib/layouts/linguistics.module:321 lib/layouts/linguistics.module:322
+#: lib/layouts/linguistics.module:323 lib/layouts/linguistics.module:324
 msgid "If-Then DRS"
 msgstr "Implikative DRS"
 
-#: lib/layouts/linguistics.module:326 lib/layouts/linguistics.module:361
-#: lib/layouts/linguistics.module:405
+#: lib/layouts/linguistics.module:328 lib/layouts/linguistics.module:363
+#: lib/layouts/linguistics.module:407
 msgid "Then-Referents"
 msgstr "Dann-Referenten"
 
-#: lib/layouts/linguistics.module:327 lib/layouts/linguistics.module:336
-#: lib/layouts/linguistics.module:362 lib/layouts/linguistics.module:371
-#: lib/layouts/linguistics.module:406 lib/layouts/linguistics.module:415
+#: lib/layouts/linguistics.module:329 lib/layouts/linguistics.module:338
+#: lib/layouts/linguistics.module:364 lib/layouts/linguistics.module:373
+#: lib/layouts/linguistics.module:408 lib/layouts/linguistics.module:417
 msgid "DRS Then-Referents"
 msgstr "DRS-Dann-Referenten"
 
-#: lib/layouts/linguistics.module:328 lib/layouts/linguistics.module:363
-#: lib/layouts/linguistics.module:407
+#: lib/layouts/linguistics.module:330 lib/layouts/linguistics.module:365
+#: lib/layouts/linguistics.module:409
 msgid "Add the DRS then-referents (universe) here"
 msgstr "Geben Sie hier die implizierten (\"dann\") Referenten ein."
 
-#: lib/layouts/linguistics.module:335 lib/layouts/linguistics.module:370
-#: lib/layouts/linguistics.module:414
+#: lib/layouts/linguistics.module:337 lib/layouts/linguistics.module:372
+#: lib/layouts/linguistics.module:416
 msgid "Then-Conditions"
 msgstr "Dann-Bedingungen"
 
-#: lib/layouts/linguistics.module:337 lib/layouts/linguistics.module:372
-#: lib/layouts/linguistics.module:416
+#: lib/layouts/linguistics.module:339 lib/layouts/linguistics.module:374
+#: lib/layouts/linguistics.module:418
 msgid "Add the DRS then-conditions here"
 msgstr "Geben Sie hier die DRS-Dann-Bedingungen ein"
 
-#: lib/layouts/linguistics.module:345
+#: lib/layouts/linguistics.module:347
 msgid "Cond-DRS"
 msgstr "Kond.-DRS"
 
-#: lib/layouts/linguistics.module:347
+#: lib/layouts/linguistics.module:349
 msgid "Cond. DRS"
 msgstr "Kond. DRS"
 
-#: lib/layouts/linguistics.module:348
+#: lib/layouts/linguistics.module:350
 msgid "Conditional DRS"
 msgstr "Konditionale DRS"
 
-#: lib/layouts/linguistics.module:352
+#: lib/layouts/linguistics.module:354
 msgid "Cond."
 msgstr "Bed."
 
-#: lib/layouts/linguistics.module:353
+#: lib/layouts/linguistics.module:355
 msgid "DRS Condition"
 msgstr "DRS-Bedingung"
 
-#: lib/layouts/linguistics.module:354
+#: lib/layouts/linguistics.module:356
 msgid "Add the DRS condition here"
 msgstr "Geben Sie hier DRS-Bedingung ein"
 
-#: lib/layouts/linguistics.module:380
+#: lib/layouts/linguistics.module:382
 msgid "QDRS"
 msgstr "QDRS"
 
-#: lib/layouts/linguistics.module:382
+#: lib/layouts/linguistics.module:384
 msgid "Dupl. Cond. DRS"
 msgstr "Dupl.-Bed.-DRS"
 
-#: lib/layouts/linguistics.module:383
+#: lib/layouts/linguistics.module:385
 msgid "Duplex Condition DRS"
 msgstr "Duplex-Bedingungs-DRS"
 
-#: lib/layouts/linguistics.module:387
+#: lib/layouts/linguistics.module:389
 msgid "Quant."
 msgstr "Quant."
 
-#: lib/layouts/linguistics.module:388
+#: lib/layouts/linguistics.module:390
 msgid "DRS Quantifier"
 msgstr "DRS-Quantifizierer"
 
-#: lib/layouts/linguistics.module:389
+#: lib/layouts/linguistics.module:391
 msgid "Add the DRS duplex quantifier here"
 msgstr "Geben Sie hier den DRS-Duplex-Quantifizierer ein"
 
-#: lib/layouts/linguistics.module:396
+#: lib/layouts/linguistics.module:398
 msgid "Quant. Var."
 msgstr "Quant.-Var."
 
-#: lib/layouts/linguistics.module:397
+#: lib/layouts/linguistics.module:399
 msgid "DRS Quantifier Variable"
 msgstr "Quantifizierer-Variablen"
 
-#: lib/layouts/linguistics.module:398
+#: lib/layouts/linguistics.module:400
 msgid "Add the DRS duplex quantifier variables here"
 msgstr "Geben Sie hier die DRS-Quantifizierer-Variablen ein"
 
-#: lib/layouts/linguistics.module:425
+#: lib/layouts/linguistics.module:427
 msgid "NegDRS"
 msgstr "NegDRS"
 
-#: lib/layouts/linguistics.module:427
+#: lib/layouts/linguistics.module:429
 msgid "Neg. DRS"
 msgstr "Neg. DRS"
 
-#: lib/layouts/linguistics.module:428
+#: lib/layouts/linguistics.module:430
 msgid "Negated DRS"
 msgstr "Negierte DRS"
 
-#: lib/layouts/linguistics.module:433
+#: lib/layouts/linguistics.module:435
 msgid "SDRS"
 msgstr "SDRS"
 
-#: lib/layouts/linguistics.module:435
+#: lib/layouts/linguistics.module:437
 msgid "Sent. DRS"
 msgstr "Satz-DRS"
 
-#: lib/layouts/linguistics.module:436
+#: lib/layouts/linguistics.module:438
 msgid "DRS with Sentence above"
 msgstr "DRS mit Satz oberhalb"
 
-#: lib/layouts/linguistics.module:440
+#: lib/layouts/linguistics.module:442
 msgid "Sentence"
 msgstr "Satz"
 
-#: lib/layouts/linguistics.module:441
+#: lib/layouts/linguistics.module:443
 msgid "DRS Sentence"
 msgstr "DRS-Satz"
 
-#: lib/layouts/linguistics.module:442
+#: lib/layouts/linguistics.module:444
 msgid "Add the sentence here"
 msgstr "Geben Sie hier den Satz ein."
 
-#: lib/layouts/linguistics.module:463
+#: lib/layouts/linguistics.module:465
 msgid "Expression"
 msgstr "Ausdruck"
 
-#: lib/layouts/linguistics.module:465
+#: lib/layouts/linguistics.module:467
 msgid "expr."
 msgstr "Ausdr."
 
-#: lib/layouts/linguistics.module:477
+#: lib/layouts/linguistics.module:479
 msgid "Concepts"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:479
+#: lib/layouts/linguistics.module:481
 msgid "concept"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:491
+#: lib/layouts/linguistics.module:493
 msgid "Meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:493
+#: lib/layouts/linguistics.module:495
 msgid "meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:506
+#: lib/layouts/linguistics.module:508
 msgid "Tableaux"
 msgstr "Tableaus"
 
-#: lib/layouts/linguistics.module:510
+#: lib/layouts/linguistics.module:512
 msgid "Tableau"
 msgstr "Tableau"
 
-#: lib/layouts/linguistics.module:515
+#: lib/layouts/linguistics.module:517
 msgid "List of Tableaux"
 msgstr "Tableaux-Verzeichnis"
 
@@ -14969,7 +14976,7 @@ msgstr "Kurztitel (Kopfzeile)"
 msgid "The chapter as it appears in the running headers"
 msgstr "Der Kapiteltitel, wie er im Kolumnentitel erscheint"
 
-#: lib/layouts/memoir.layout:90 lib/layouts/stdstarsections.inc:28
+#: lib/layouts/memoir.layout:90 lib/layouts/stdstarsections.inc:29
 #: lib/layouts/svcommon.inc:274
 msgid "Chapter*"
 msgstr "Kapitel*"
@@ -15879,7 +15886,7 @@ msgstr "CheckBox"
 msgid "ChoiceMenu"
 msgstr "Auswahlmenü"
 
-#: lib/layouts/pdfform.module:90 src/insets/InsetRef.cpp:606
+#: lib/layouts/pdfform.module:90 src/insets/InsetRef.cpp:628
 msgid "Label"
 msgstr "Beschriftung"
 
@@ -16042,79 +16049,79 @@ msgstr "Spezifikation des Itemize-Typs (siehe Powerdot-Handbuch)"
 msgid "ItemizeType1"
 msgstr "AuflistungsTyp1"
 
-#: lib/layouts/powerdot.layout:345 lib/layouts/powerdot.layout:382
+#: lib/layouts/powerdot.layout:345 lib/layouts/powerdot.layout:388
 msgid "Enumerate Type"
 msgstr "Nummerierungstyp"
 
-#: lib/layouts/powerdot.layout:346 lib/layouts/powerdot.layout:383
+#: lib/layouts/powerdot.layout:346 lib/layouts/powerdot.layout:389
 msgid "Enumerate type specification (see powerdot manual)"
 msgstr "Spezifikation des Enumerate-Typs (siehe Powerdot-Handbuch)"
 
-#: lib/layouts/powerdot.layout:379
+#: lib/layouts/powerdot.layout:385
 msgid "EnumerateType1"
 msgstr "AufzählungsTyp1"
 
-#: lib/layouts/powerdot.layout:490
+#: lib/layouts/powerdot.layout:496
 msgid "Twocolumn"
 msgstr "Zweispaltig"
 
-#: lib/layouts/powerdot.layout:505
+#: lib/layouts/powerdot.layout:511
 msgid "Twocolumn options (see powerdot manual)"
 msgstr "Spaltenoptionen (siehe Powerdot-Anleitung)"
 
-#: lib/layouts/powerdot.layout:508
+#: lib/layouts/powerdot.layout:514
 msgid "Left Column"
 msgstr "Linke Spalte"
 
-#: lib/layouts/powerdot.layout:509
+#: lib/layouts/powerdot.layout:515
 msgid "Enter the text of the left column here (right column in main paragraph)"
 msgstr ""
 "Geben Sie hier den Text der linken Spalte ein (die rechte Spalte bildet der "
 "Hauptabschnitt)"
 
-#: lib/layouts/powerdot.layout:604 lib/layouts/stdcounters.inc:50
+#: lib/layouts/powerdot.layout:610 lib/layouts/stdcounters.inc:50
 msgid "Numbered List (Level 1)"
 msgstr "Aufzählung (1. Ebene)"
 
-#: lib/layouts/powerdot.layout:608 lib/layouts/scrclass.inc:49
+#: lib/layouts/powerdot.layout:614 lib/layouts/scrclass.inc:49
 #: lib/layouts/stdcounters.inc:55
 msgid "Numbered List (Level 2)"
 msgstr "Aufzählung (2. Ebene)"
 
-#: lib/layouts/powerdot.layout:613 lib/layouts/stdcounters.inc:61
+#: lib/layouts/powerdot.layout:619 lib/layouts/stdcounters.inc:61
 msgid "Numbered List (Level 3)"
 msgstr "Aufzählung (3. Ebene)"
 
-#: lib/layouts/powerdot.layout:618 lib/layouts/stdcounters.inc:67
+#: lib/layouts/powerdot.layout:624 lib/layouts/stdcounters.inc:67
 msgid "Numbered List (Level 4)"
 msgstr "Aufzählung (4. Ebene)"
 
-#: lib/layouts/powerdot.layout:623 lib/layouts/stdcounters.inc:73
+#: lib/layouts/powerdot.layout:629 lib/layouts/stdcounters.inc:73
 msgid "Bibliography Item"
 msgstr "Literaturverzeichnis-Eintrag"
 
-#: lib/layouts/powerdot.layout:642
+#: lib/layouts/powerdot.layout:648
 msgid "Onslide"
 msgstr "Sichtbar auf Folie (onslide)"
 
-#: lib/layouts/powerdot.layout:648
+#: lib/layouts/powerdot.layout:654
 msgid "On Slides"
 msgstr "Auf Folien"
 
-#: lib/layouts/powerdot.layout:649
+#: lib/layouts/powerdot.layout:655
 msgid "Overlay Specification|S"
 msgstr "Overlay-Spezifikation"
 
-#: lib/layouts/powerdot.layout:650
+#: lib/layouts/powerdot.layout:656
 msgid "Specify the overlay settings (see powerdot manual)"
 msgstr ""
 "Legen Sie hier die Overlay-Spezifikationen fest (siehe Powerdot-Anleitung)"
 
-#: lib/layouts/powerdot.layout:657
+#: lib/layouts/powerdot.layout:663
 msgid "Onslide+"
 msgstr "Aufdecken auf Folie (onslide+)"
 
-#: lib/layouts/powerdot.layout:663
+#: lib/layouts/powerdot.layout:669
 msgid "Onslide*"
 msgstr "Nur auf Folie (onslide*)"
 
@@ -17168,7 +17175,7 @@ msgstr "Fußnoten"
 msgid "Notes"
 msgstr "Notizen"
 
-#: lib/layouts/stdinsets.inc:14 src/frontends/qt/GuiDocument.cpp:1782
+#: lib/layouts/stdinsets.inc:14 src/frontends/qt/GuiDocument.cpp:1778
 msgid "Branches"
 msgstr "Zweige"
 
@@ -17202,7 +17209,7 @@ msgstr "Programmlistings"
 msgid "List of Listings"
 msgstr "Verzeichnis der Programmlistings"
 
-#: lib/layouts/stdinsets.inc:351 src/frontends/qt/GuiDocument.cpp:1780
+#: lib/layouts/stdinsets.inc:351 src/frontends/qt/GuiDocument.cpp:1776
 msgid "Listings[[inset]]"
 msgstr "Programmlistings"
 
@@ -17266,7 +17273,7 @@ msgstr "Kapitel \\thechapter"
 msgid "Appendix \\thechapter"
 msgstr "Anhang \\thechapter"
 
-#: lib/layouts/stdstarsections.inc:103
+#: lib/layouts/stdstarsections.inc:109
 msgid "Subparagraph*"
 msgstr "Unterparagraph*"
 
@@ -19761,25 +19768,25 @@ msgstr "Formelmarke|m"
 msgid "Copy as Reference|R"
 msgstr "Als Querverweis kopieren|k"
 
-#: lib/ui/stdcontext.inc:61 lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:108
+#: lib/ui/stdcontext.inc:61 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:108
 #: lib/ui/stdtoolbars.inc:89 src/Text3.cpp:1565
 #: src/mathed/InsetMathNest.cpp:570
 msgid "Cut"
 msgstr "Ausschneiden"
 
-#: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:109
+#: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:109
 #: lib/ui/stdtoolbars.inc:90 src/BufferView.cpp:2347
 msgid "Copy"
 msgstr "Kopieren"
 
-#: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:110
+#: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:110
 #: lib/ui/stdtoolbars.inc:91 src/Text3.cpp:1509
 #: src/frontends/qt/GuiToolbar.cpp:447 src/mathed/InsetMathGrid.cpp:1564
 #: src/mathed/InsetMathNest.cpp:539
 msgid "Paste"
 msgstr "Einfügen"
 
-#: lib/ui/stdcontext.inc:64 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:111
+#: lib/ui/stdcontext.inc:64 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:111
 msgid "Paste Recent|e"
 msgstr "Einfügen (vorherige Auswahl)|h"
 
@@ -19843,7 +19850,7 @@ msgstr "Tabellen-Werkzeugleiste anzeigen"
 msgid "Use Computer Algebra System|m"
 msgstr "Computer-Algebra-System verwenden|C"
 
-#: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:112 lib/ui/stdcontext.inc:135
+#: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:112 lib/ui/stdcontext.inc:136
 msgid "Next Cross-Reference|N"
 msgstr "Nächster Querverweis|Q"
 
@@ -19883,20 +19890,20 @@ msgstr "Textverweis|T"
 msgid "Label Only|L"
 msgstr "Nur Marke|M"
 
-#: lib/ui/stdcontext.inc:104 lib/ui/stdcontext.inc:128
-#: lib/ui/stdcontext.inc:140 lib/ui/stdcontext.inc:150
-#: lib/ui/stdcontext.inc:159 lib/ui/stdcontext.inc:168
-#: lib/ui/stdcontext.inc:179 lib/ui/stdcontext.inc:186
-#: lib/ui/stdcontext.inc:287 lib/ui/stdcontext.inc:305
-#: lib/ui/stdcontext.inc:334 lib/ui/stdcontext.inc:446
-#: lib/ui/stdcontext.inc:459 lib/ui/stdcontext.inc:512
-#: lib/ui/stdcontext.inc:524 lib/ui/stdcontext.inc:548
-#: lib/ui/stdcontext.inc:559 lib/ui/stdcontext.inc:567
-#: lib/ui/stdcontext.inc:577 lib/ui/stdcontext.inc:585
-#: lib/ui/stdcontext.inc:593 lib/ui/stdcontext.inc:601
-#: lib/ui/stdcontext.inc:614 lib/ui/stdcontext.inc:626
-#: lib/ui/stdcontext.inc:676 lib/ui/stdcontext.inc:684
-#: lib/ui/stdcontext.inc:730 lib/ui/stdcontext.inc:739 lib/ui/stdmenus.inc:584
+#: lib/ui/stdcontext.inc:104 lib/ui/stdcontext.inc:129
+#: lib/ui/stdcontext.inc:141 lib/ui/stdcontext.inc:151
+#: lib/ui/stdcontext.inc:160 lib/ui/stdcontext.inc:169
+#: lib/ui/stdcontext.inc:180 lib/ui/stdcontext.inc:187
+#: lib/ui/stdcontext.inc:288 lib/ui/stdcontext.inc:306
+#: lib/ui/stdcontext.inc:335 lib/ui/stdcontext.inc:447
+#: lib/ui/stdcontext.inc:460 lib/ui/stdcontext.inc:513
+#: lib/ui/stdcontext.inc:525 lib/ui/stdcontext.inc:549
+#: lib/ui/stdcontext.inc:560 lib/ui/stdcontext.inc:568
+#: lib/ui/stdcontext.inc:578 lib/ui/stdcontext.inc:586
+#: lib/ui/stdcontext.inc:594 lib/ui/stdcontext.inc:602
+#: lib/ui/stdcontext.inc:615 lib/ui/stdcontext.inc:627
+#: lib/ui/stdcontext.inc:677 lib/ui/stdcontext.inc:685
+#: lib/ui/stdcontext.inc:731 lib/ui/stdcontext.inc:740 lib/ui/stdmenus.inc:584
 msgid "Settings...|S"
 msgstr "Einstellungen...|E"
 
@@ -19908,749 +19915,749 @@ msgstr "Plural|a"
 msgid "Capitalize|C"
 msgstr "Große Anfangsbuchstaben|A"
 
-#: lib/ui/stdcontext.inc:136
+#: lib/ui/stdcontext.inc:137
 msgid "Go Back|G"
 msgstr "Gehe zurück|G"
 
-#: lib/ui/stdcontext.inc:138 lib/ui/stdcontext.inc:545
+#: lib/ui/stdcontext.inc:139 lib/ui/stdcontext.inc:546
 msgid "Copy as Reference|C"
 msgstr "Als Querverweis kopieren|k"
 
-#: lib/ui/stdcontext.inc:151
+#: lib/ui/stdcontext.inc:152
 msgid "Try to Open Citation Content...|O"
 msgstr "Versuche Literaturverweis-Inhalt zu öffnen...|L"
 
-#: lib/ui/stdcontext.inc:161
+#: lib/ui/stdcontext.inc:162
 msgid "Edit Database(s) Externally...|x"
 msgstr "Datenbanken extern bearbeiten...|x"
 
-#: lib/ui/stdcontext.inc:175
+#: lib/ui/stdcontext.inc:176
 msgid "Open Inset|O"
 msgstr "Einfügung öffnen|ö"
 
-#: lib/ui/stdcontext.inc:176
+#: lib/ui/stdcontext.inc:177
 msgid "Close Inset|C"
 msgstr "Einfügung schließen|s"
 
-#: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:184
-#: lib/ui/stdcontext.inc:200 lib/ui/stdcontext.inc:692
+#: lib/ui/stdcontext.inc:179 lib/ui/stdcontext.inc:185
+#: lib/ui/stdcontext.inc:201 lib/ui/stdcontext.inc:693
 msgid "Dissolve Inset|D"
 msgstr "Einfügung auflösen|ü"
 
-#: lib/ui/stdcontext.inc:183 lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:184 lib/ui/stdcontext.inc:200
 msgid "Show Label|L"
 msgstr "Name anzeigen|N"
 
-#: lib/ui/stdcontext.inc:210 lib/ui/stdmenus.inc:527
+#: lib/ui/stdcontext.inc:211 lib/ui/stdmenus.inc:527
 msgid "Frameless|l"
 msgstr "Rahmenlos|l"
 
-#: lib/ui/stdcontext.inc:211 lib/ui/stdmenus.inc:528
+#: lib/ui/stdcontext.inc:212 lib/ui/stdmenus.inc:528
 msgid "Simple Frame|F"
 msgstr "Einfacher Rahmen|f"
 
-#: lib/ui/stdcontext.inc:212
+#: lib/ui/stdcontext.inc:213
 msgid "Simple Frame, Page Breaks|P"
 msgstr "Einfacher Rahmen, Seitenumbrüche|b"
 
-#: lib/ui/stdcontext.inc:213 lib/ui/stdmenus.inc:529
+#: lib/ui/stdcontext.inc:214 lib/ui/stdmenus.inc:529
 msgid "Oval, Thin|a"
 msgstr "Oval, dünn|O"
 
-#: lib/ui/stdcontext.inc:214 lib/ui/stdmenus.inc:530
+#: lib/ui/stdcontext.inc:215 lib/ui/stdmenus.inc:530
 msgid "Oval, Thick|v"
 msgstr "Oval, dick|v"
 
-#: lib/ui/stdcontext.inc:215 lib/ui/stdmenus.inc:531
+#: lib/ui/stdcontext.inc:216 lib/ui/stdmenus.inc:531
 msgid "Drop Shadow|w"
 msgstr "Schlagschatten|c"
 
-#: lib/ui/stdcontext.inc:216 lib/ui/stdmenus.inc:532
+#: lib/ui/stdcontext.inc:217 lib/ui/stdmenus.inc:532
 msgid "Shaded Background|B"
 msgstr "Schattierter Hintergrund|H"
 
-#: lib/ui/stdcontext.inc:217 lib/ui/stdmenus.inc:533
+#: lib/ui/stdcontext.inc:218 lib/ui/stdmenus.inc:533
 msgid "Double Frame|u"
 msgstr "Doppelter Rahmen|D"
 
-#: lib/ui/stdcontext.inc:234 lib/ui/stdmenus.inc:544
+#: lib/ui/stdcontext.inc:235 lib/ui/stdmenus.inc:544
 msgid "LyX Note|N"
 msgstr "LyX-Notiz|z"
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:236
 msgid "Comment|m"
 msgstr "Kommentar|K"
 
-#: lib/ui/stdcontext.inc:236 lib/ui/stdmenus.inc:546
+#: lib/ui/stdcontext.inc:237 lib/ui/stdmenus.inc:546
 msgid "Greyed Out|G"
 msgstr "Grauschrift|G"
 
-#: lib/ui/stdcontext.inc:238
+#: lib/ui/stdcontext.inc:239
 msgid "Open All Notes|A"
 msgstr "Alle Notizen öffnen|f"
 
-#: lib/ui/stdcontext.inc:239
+#: lib/ui/stdcontext.inc:240
 msgid "Close All Notes|l"
 msgstr "Alle Notizen schließen|c"
 
-#: lib/ui/stdcontext.inc:247 lib/ui/stdmenus.inc:556
+#: lib/ui/stdcontext.inc:248 lib/ui/stdmenus.inc:556
 msgid "Phantom|P"
 msgstr "Phantom|P"
 
-#: lib/ui/stdcontext.inc:248 lib/ui/stdmenus.inc:557
+#: lib/ui/stdcontext.inc:249 lib/ui/stdmenus.inc:557
 msgid "Horizontal Phantom|H"
 msgstr "Horizontales Phantom|H"
 
-#: lib/ui/stdcontext.inc:249 lib/ui/stdmenus.inc:558
+#: lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:558
 msgid "Vertical Phantom|V"
 msgstr "Vertikales Phantom|V"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:455
+#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:455
 msgid "Normal Space|e"
 msgstr "Normales Leerzeichen|N"
 
-#: lib/ui/stdcontext.inc:265
+#: lib/ui/stdcontext.inc:266
 msgid "Non-Breaking Normal Space|o"
 msgstr "Geschütztes Leerzeichen|G"
 
-#: lib/ui/stdcontext.inc:266
+#: lib/ui/stdcontext.inc:267
 msgid "Visible Space|a"
 msgstr "Sichtbares Leerzeichen|S"
 
-#: lib/ui/stdcontext.inc:267
+#: lib/ui/stdcontext.inc:268
 msgid "Non-Breaking Thin Space (1/6 em)|T"
 msgstr "Geschütztes Halbes Leerzeichen (1/6 em)|a"
 
-#: lib/ui/stdcontext.inc:268
+#: lib/ui/stdcontext.inc:269
 msgid "Non-Breaking Medium Space (3/9 em)|M"
 msgstr "Geschützter Mittlerer Abstand (3/9 em)|M"
 
-#: lib/ui/stdcontext.inc:269
+#: lib/ui/stdcontext.inc:270
 msgid "Non-Breaking Thick Space (5/18 em)|i"
 msgstr "Geschützter großer Abstand (5/18 em)|t"
 
-#: lib/ui/stdcontext.inc:270
+#: lib/ui/stdcontext.inc:271
 msgid "Non-Breaking Negative Thin Space (-1/6 em)|N"
 msgstr "Geschütztes negatives halbes Leerzeichen (-1/6 em)|h"
 
-#: lib/ui/stdcontext.inc:271
+#: lib/ui/stdcontext.inc:272
 msgid "Non-Breaking Negative Medium Space (-2/9 em)|v"
 msgstr "Geschützter negativer mittlerer Abstand (-2/9 em)|i"
 
-#: lib/ui/stdcontext.inc:272
+#: lib/ui/stdcontext.inc:273
 msgid "Non-Breaking Negative Thick Space (-5/18 em)|h"
 msgstr "Geschützter negativer großer Abstand (-5/18 em)|ß"
 
-#: lib/ui/stdcontext.inc:273
+#: lib/ui/stdcontext.inc:274
 msgid "Half Quad Space (1/2 em)|l"
 msgstr "Halbgeviert-Abstand (Enskip, 1/2 em)|k"
 
-#: lib/ui/stdcontext.inc:274
+#: lib/ui/stdcontext.inc:275
 msgid "Non-Breaking Half Quad Space (1/2 em)|k"
 msgstr "Geschützter Halbgeviert-Abstand (Enspace, 1/2 em)|ü"
 
-#: lib/ui/stdcontext.inc:275
+#: lib/ui/stdcontext.inc:276
 msgid "Quad Space (1 em)|Q"
 msgstr "Geviert-Abstand (1 em)|v"
 
-#: lib/ui/stdcontext.inc:276
+#: lib/ui/stdcontext.inc:277
 msgid "Double Quad Space (2 em)|u"
 msgstr "Doppelgeviert-Abstand (2 em)|D"
 
-#: lib/ui/stdcontext.inc:277
+#: lib/ui/stdcontext.inc:278
 msgid "Horizontal Fill|F"
 msgstr "Variabler horiz. Abstand|z"
 
-#: lib/ui/stdcontext.inc:278
+#: lib/ui/stdcontext.inc:279
 msgid "Non-Breaking Horizontal Fill|z"
 msgstr "Geschützter variabler horiz. Abstand|o"
 
-#: lib/ui/stdcontext.inc:279
+#: lib/ui/stdcontext.inc:280
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Variabler horiz. Abstand (Punkte)|P"
 
-#: lib/ui/stdcontext.inc:280
+#: lib/ui/stdcontext.inc:281
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Variabler horiz. Abstand (Linie)|L"
 
-#: lib/ui/stdcontext.inc:281
+#: lib/ui/stdcontext.inc:282
 msgid "Horizontal Fill (Left Arrow)|w"
 msgstr "Variabler horiz. Abstand (Linkspfeil)|f"
 
-#: lib/ui/stdcontext.inc:282
+#: lib/ui/stdcontext.inc:283
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Variabler horiz. Abstand (Rechtspfeil)|c"
 
-#: lib/ui/stdcontext.inc:283
+#: lib/ui/stdcontext.inc:284
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Variabler horiz. Abstand (Klammer oben)|r"
 
-#: lib/ui/stdcontext.inc:284
+#: lib/ui/stdcontext.inc:285
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Variabler horiz. Abstand (Klammer unten)|u"
 
-#: lib/ui/stdcontext.inc:285 lib/ui/stdcontext.inc:303
+#: lib/ui/stdcontext.inc:286 lib/ui/stdcontext.inc:304
 msgid "Custom Length|C"
 msgstr "Benutzerdefinierte Länge|B"
 
-#: lib/ui/stdcontext.inc:294
+#: lib/ui/stdcontext.inc:295
 msgid "Thin Space|T"
 msgstr "Halbes Leerzeichen|a"
 
-#: lib/ui/stdcontext.inc:295
+#: lib/ui/stdcontext.inc:296
 msgid "Medium Space|M"
 msgstr "Mittlerer Abstand|M"
 
-#: lib/ui/stdcontext.inc:296
+#: lib/ui/stdcontext.inc:297
 msgid "Thick Space|i"
 msgstr "Großer Abstand|t"
 
-#: lib/ui/stdcontext.inc:297
+#: lib/ui/stdcontext.inc:298
 msgid "Negative Thin Space|N"
 msgstr "Negatives halbes Leerzeichen|h"
 
-#: lib/ui/stdcontext.inc:298
+#: lib/ui/stdcontext.inc:299
 msgid "Negative Medium Space|v"
 msgstr "Negativer mittlerer Abstand|i"
 
-#: lib/ui/stdcontext.inc:299
+#: lib/ui/stdcontext.inc:300
 msgid "Negative Thick Space|h"
 msgstr "Negativer großer Abstand|ß"
 
-#: lib/ui/stdcontext.inc:300
+#: lib/ui/stdcontext.inc:301
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Halbgeviert-Abstand (Enskip)|k"
 
-#: lib/ui/stdcontext.inc:301
+#: lib/ui/stdcontext.inc:302
 msgid "Quad Space|Q"
 msgstr "Geviert-Abstand|v"
 
-#: lib/ui/stdcontext.inc:302
+#: lib/ui/stdcontext.inc:303
 msgid "Double Quad Space|u"
 msgstr "Doppelgeviert-Abstand|D"
 
-#: lib/ui/stdcontext.inc:312
+#: lib/ui/stdcontext.inc:313
 msgid "Default Skip|D"
 msgstr "Standard|S"
 
-#: lib/ui/stdcontext.inc:313
+#: lib/ui/stdcontext.inc:314
 msgid "Small Skip|S"
 msgstr "Klein|K"
 
-#: lib/ui/stdcontext.inc:314
+#: lib/ui/stdcontext.inc:315
 msgid "Medium Skip|M"
 msgstr "Mittel|M"
 
-#: lib/ui/stdcontext.inc:315
+#: lib/ui/stdcontext.inc:316
 msgid "Big Skip|B"
 msgstr "Groß|G"
 
-#: lib/ui/stdcontext.inc:316
+#: lib/ui/stdcontext.inc:317
 msgid "Half line height|H"
 msgstr "Halbe Zeilenhöhe|H"
 
-#: lib/ui/stdcontext.inc:317
+#: lib/ui/stdcontext.inc:318
 msgid "Line height|L"
 msgstr "Zeilenhöhe|Z"
 
-#: lib/ui/stdcontext.inc:318
+#: lib/ui/stdcontext.inc:319
 msgid "Vertical Fill|F"
 msgstr "Variabler vertik. Abstand|V"
 
-#: lib/ui/stdcontext.inc:319
+#: lib/ui/stdcontext.inc:320
 msgid "Custom|C"
 msgstr "Benutzerdefiniert|t"
 
-#: lib/ui/stdcontext.inc:321
+#: lib/ui/stdcontext.inc:322
 msgid "Settings...|e"
 msgstr "Einstellungen...|n"
 
-#: lib/ui/stdcontext.inc:328 lib/ui/stdcontext.inc:608
+#: lib/ui/stdcontext.inc:329 lib/ui/stdcontext.inc:609
 msgid "Include|c"
 msgstr "Include|c"
 
-#: lib/ui/stdcontext.inc:329 lib/ui/stdcontext.inc:609
+#: lib/ui/stdcontext.inc:330 lib/ui/stdcontext.inc:610
 msgid "Input|p"
 msgstr "Input|p"
 
-#: lib/ui/stdcontext.inc:330 lib/ui/stdcontext.inc:610
+#: lib/ui/stdcontext.inc:331 lib/ui/stdcontext.inc:611
 msgid "Verbatim|V"
 msgstr "Unformatiert|U"
 
-#: lib/ui/stdcontext.inc:331 lib/ui/stdcontext.inc:611
+#: lib/ui/stdcontext.inc:332 lib/ui/stdcontext.inc:612
 msgid "Verbatim (marked blanks)|b"
 msgstr "Unformatiert (Leerzeichen markiert)|m"
 
-#: lib/ui/stdcontext.inc:332 lib/ui/stdcontext.inc:612
+#: lib/ui/stdcontext.inc:333 lib/ui/stdcontext.inc:613
 msgid "Listing|L"
 msgstr "Programmlisting|l"
 
-#: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:616
+#: lib/ui/stdcontext.inc:337 lib/ui/stdcontext.inc:617
 msgid "Edit Included File...|E"
 msgstr "Eingebettete Datei bearbeiten...|b"
 
-#: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:469
+#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:469
 msgid "New Page|N"
 msgstr "Neue Seite|i"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:470
+#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:470
 msgid "Page Break|a"
 msgstr "Seitenumbruch|u"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:471
+#: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:471
 msgid "No Page Break|g"
 msgstr "Seitenumbruch verhindern|e"
 
-#: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:472
+#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:472
 msgid "Clear Page|C"
 msgstr "Seite leeren|S"
 
-#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:473
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:473
 msgid "Clear Double Page|D"
 msgstr "Doppelseite leeren|D"
 
-#: lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:466
+#: lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:466
 msgid "Ragged Line Break|R"
 msgstr "Normaler Zeilenumbruch|Z"
 
-#: lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:467
+#: lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:467
 msgid "Justified Line Break|J"
 msgstr "Rechtsbündiger Zeilenumbruch|b"
 
-#: lib/ui/stdcontext.inc:362
+#: lib/ui/stdcontext.inc:363
 msgid "Plain Separator|P"
 msgstr "Einfacher Trenner|T"
 
-#: lib/ui/stdcontext.inc:363
+#: lib/ui/stdcontext.inc:364
 msgid "Paragraph Break|B"
 msgstr "Absatzumbruch|b"
 
-#: lib/ui/stdcontext.inc:372
+#: lib/ui/stdcontext.inc:373
 msgid "Edit Externally..."
 msgstr "Extern bearbeiten..."
 
-#: lib/ui/stdcontext.inc:373
+#: lib/ui/stdcontext.inc:374
 msgid "End Editing Externally..."
 msgstr "Externe Bearbeitung beenden..."
 
-#: lib/ui/stdcontext.inc:380
+#: lib/ui/stdcontext.inc:381
 msgid "Split Inset|t"
 msgstr "Einfügung spalten|f"
 
-#: lib/ui/stdcontext.inc:382
+#: lib/ui/stdcontext.inc:383
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Zum gespeicherten Lesezeichen springen|L"
 
-#: lib/ui/stdcontext.inc:383 lib/ui/stdmenus.inc:608
+#: lib/ui/stdcontext.inc:384 lib/ui/stdmenus.inc:608
 msgid "Forward Search|F"
 msgstr "Vorwärtssuche|V"
 
-#: lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:120
+#: lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:120
 msgid "Move Paragraph Up|o"
 msgstr "Absatz nach oben verschieben|o"
 
-#: lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:121
+#: lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:121
 msgid "Move Paragraph Down|v"
 msgstr "Absatz nach unten verschieben|u"
 
-#: lib/ui/stdcontext.inc:390
+#: lib/ui/stdcontext.inc:391
 msgid "Promote Section|r"
 msgstr "Verschachtelungstiefe des Abschnitts verringern|r"
 
-#: lib/ui/stdcontext.inc:391
+#: lib/ui/stdcontext.inc:392
 msgid "Demote Section|m"
 msgstr "Verschachtelungstiefe des Abschnitts erhöhen|s"
 
-#: lib/ui/stdcontext.inc:392
+#: lib/ui/stdcontext.inc:393
 msgid "Move Section Down|D"
 msgstr "Abschnitt nach unten verschieben|n"
 
-#: lib/ui/stdcontext.inc:393 lib/ui/stdcontext.inc:712
+#: lib/ui/stdcontext.inc:394 lib/ui/stdcontext.inc:713
 msgid "Move Section Up|U"
 msgstr "Abschnitt nach oben verschieben|b"
 
-#: lib/ui/stdcontext.inc:395
+#: lib/ui/stdcontext.inc:396
 msgid "Insert Regular Expression"
 msgstr "Regulären Ausdruck einfügen"
 
-#: lib/ui/stdcontext.inc:397 lib/ui/stdcontext.inc:701
+#: lib/ui/stdcontext.inc:398 lib/ui/stdcontext.inc:702
 msgid "Accept Change|c"
 msgstr "Änderung akzeptieren|k"
 
-#: lib/ui/stdcontext.inc:398
+#: lib/ui/stdcontext.inc:399
 msgid "Reject Change|j"
 msgstr "Änderung ablehnen|b"
 
-#: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:124
+#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:124
 msgid "Text Properties|x"
 msgstr "Texteigenschaften|x"
 
-#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:125
+#: lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:125
 msgid "Custom Text Styles|S"
 msgstr "Spezifische Textstile|T"
 
-#: lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:123
+#: lib/ui/stdcontext.inc:403 lib/ui/stdmenus.inc:123
 msgid "Paragraph Settings...|P"
 msgstr "Absatz-Einstellungen...|A"
 
-#: lib/ui/stdcontext.inc:403
+#: lib/ui/stdcontext.inc:404
 msgid "Unify Graphics Groups|U"
 msgstr "Grafikgruppe zusammenstellen|z"
 
-#: lib/ui/stdcontext.inc:406
+#: lib/ui/stdcontext.inc:407
 msgid "Fullscreen Mode"
 msgstr "Vollbildmodus"
 
-#: lib/ui/stdcontext.inc:407
+#: lib/ui/stdcontext.inc:408
 msgid "Close Current View"
 msgstr "Aktuelle Ansicht schließen"
 
-#: lib/ui/stdcontext.inc:415
+#: lib/ui/stdcontext.inc:416
 msgid "Anything|A"
 msgstr "Beliebige Sequenz (mit Leerzeichen)|S"
 
-#: lib/ui/stdcontext.inc:416
+#: lib/ui/stdcontext.inc:417
 msgid "Anything Non-Empty|o"
 msgstr "Beliebige Sequenz (ohne Leerzeichen)|o"
 
-#: lib/ui/stdcontext.inc:417
+#: lib/ui/stdcontext.inc:418
 msgid "Any Word|W"
 msgstr "Beliebiges Wort (ohne Ziffern)|W"
 
-#: lib/ui/stdcontext.inc:418
+#: lib/ui/stdcontext.inc:419
 msgid "Any Number|N"
 msgstr "Beliebige Ziffer|Z"
 
-#: lib/ui/stdcontext.inc:419
+#: lib/ui/stdcontext.inc:420
 msgid "User Defined|U"
 msgstr "Benutzerdefiniert|u"
 
-#: lib/ui/stdcontext.inc:428 lib/ui/stdmenus.inc:267
+#: lib/ui/stdcontext.inc:429 lib/ui/stdmenus.inc:267
 msgid "Append Argument"
 msgstr "Argument hinzufügen"
 
-#: lib/ui/stdcontext.inc:429 lib/ui/stdmenus.inc:268
+#: lib/ui/stdcontext.inc:430 lib/ui/stdmenus.inc:268
 msgid "Remove Last Argument"
 msgstr "Letztes Argument entfernen"
 
-#: lib/ui/stdcontext.inc:431
+#: lib/ui/stdcontext.inc:432
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Das erste nicht-optionale Argument in ein optionales ändern"
 
-#: lib/ui/stdcontext.inc:432
+#: lib/ui/stdcontext.inc:433
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Das letzte optionale Argument in ein nicht-optionales ändern"
 
-#: lib/ui/stdcontext.inc:433 lib/ui/stdmenus.inc:272
+#: lib/ui/stdcontext.inc:434 lib/ui/stdmenus.inc:272
 msgid "Insert Optional Argument"
 msgstr "Optionales Argument einfügen"
 
-#: lib/ui/stdcontext.inc:434 lib/ui/stdmenus.inc:273
+#: lib/ui/stdcontext.inc:435 lib/ui/stdmenus.inc:273
 msgid "Remove Optional Argument"
 msgstr "Optionales Argument entfernen"
 
-#: lib/ui/stdcontext.inc:436 lib/ui/stdmenus.inc:275
+#: lib/ui/stdcontext.inc:437 lib/ui/stdmenus.inc:275
 msgid "Append Argument Eating From the Right"
 msgstr "Argument von rechts hinzufügen"
 
-#: lib/ui/stdcontext.inc:437 lib/ui/stdmenus.inc:276
+#: lib/ui/stdcontext.inc:438 lib/ui/stdmenus.inc:276
 msgid "Append Optional Argument Eating From the Right"
 msgstr "Optionales Argument von rechts hinzufügen"
 
-#: lib/ui/stdcontext.inc:438 lib/ui/stdmenus.inc:277
+#: lib/ui/stdcontext.inc:439 lib/ui/stdmenus.inc:277
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Letztes Argument rechts entfernen"
 
-#: lib/ui/stdcontext.inc:447
+#: lib/ui/stdcontext.inc:448
 msgid "Reload|R"
 msgstr "Neu laden|u"
 
-#: lib/ui/stdcontext.inc:449 lib/ui/stdcontext.inc:461
-#: lib/ui/stdcontext.inc:569
+#: lib/ui/stdcontext.inc:450 lib/ui/stdcontext.inc:462
+#: lib/ui/stdcontext.inc:570
 msgid "Edit Externally...|x"
 msgstr "Datei extern bearbeiten...|x"
 
-#: lib/ui/stdcontext.inc:469 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:470 lib/ui/stdmenus.inc:222
 msgid "Top|T"
 msgstr "Oben|O"
 
-#: lib/ui/stdcontext.inc:470 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:471 lib/ui/stdmenus.inc:224
 msgid "Bottom|B"
 msgstr "Unten|U"
 
-#: lib/ui/stdcontext.inc:471 lib/ui/stdmenus.inc:218
+#: lib/ui/stdcontext.inc:472 lib/ui/stdmenus.inc:218
 msgid "Left|L"
 msgstr "Links|L"
 
-#: lib/ui/stdcontext.inc:472 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:473 lib/ui/stdmenus.inc:220
 msgid "Right|R"
 msgstr "Rechts|R"
 
-#: lib/ui/stdcontext.inc:473
+#: lib/ui/stdcontext.inc:474
 msgid "Reset Formal Defaults|F"
 msgstr "Auf formalen Standard zurücksetzen|f"
 
-#: lib/ui/stdcontext.inc:477
+#: lib/ui/stdcontext.inc:478
 msgid "Left|f"
 msgstr "Links|L"
 
-#: lib/ui/stdcontext.inc:478 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:479 lib/ui/stdmenus.inc:219
 msgid "Center|C"
 msgstr "Zentriert|Z"
 
-#: lib/ui/stdcontext.inc:479
+#: lib/ui/stdcontext.inc:480
 msgid "Right|h"
 msgstr "Rechts|R"
 
-#: lib/ui/stdcontext.inc:480
+#: lib/ui/stdcontext.inc:481
 msgid "Decimal"
 msgstr "Dezimal"
 
-#: lib/ui/stdcontext.inc:488
+#: lib/ui/stdcontext.inc:489
 msgid "Multicolumn|u"
 msgstr "Mehrfachspalte|h"
 
-#: lib/ui/stdcontext.inc:489
+#: lib/ui/stdcontext.inc:490
 msgid "Multirow|w"
 msgstr "Mehrfachzeile|f"
 
-#: lib/ui/stdcontext.inc:491
+#: lib/ui/stdcontext.inc:492
 msgid "Append Row|A"
 msgstr "Zeile anfügen|a"
 
-#: lib/ui/stdcontext.inc:492 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:493 lib/ui/stdmenus.inc:227
 msgid "Delete Row|D"
 msgstr "Zeile löschen|ö"
 
-#: lib/ui/stdcontext.inc:493 lib/ui/stdmenus.inc:228
+#: lib/ui/stdcontext.inc:494 lib/ui/stdmenus.inc:228
 msgid "Copy Row|o"
 msgstr "Zeile kopieren|k"
 
-#: lib/ui/stdcontext.inc:494 lib/ui/stdmenus.inc:229
+#: lib/ui/stdcontext.inc:495 lib/ui/stdmenus.inc:229
 msgid "Move Row Up"
 msgstr "Zeile nach oben verschieben"
 
-#: lib/ui/stdcontext.inc:495 lib/ui/stdmenus.inc:230
+#: lib/ui/stdcontext.inc:496 lib/ui/stdmenus.inc:230
 msgid "Move Row Down"
 msgstr "Zeile nach unten verschieben"
 
-#: lib/ui/stdcontext.inc:497
+#: lib/ui/stdcontext.inc:498
 msgid "Append Column|p"
 msgstr "Spalte anfügen|S"
 
-#: lib/ui/stdcontext.inc:498 lib/ui/stdmenus.inc:234
+#: lib/ui/stdcontext.inc:499 lib/ui/stdmenus.inc:234
 msgid "Delete Column|e"
 msgstr "Spalte löschen|p"
 
-#: lib/ui/stdcontext.inc:499
+#: lib/ui/stdcontext.inc:500
 msgid "Copy Column|y"
 msgstr "Spalte kopieren|t"
 
-#: lib/ui/stdcontext.inc:500 lib/ui/stdmenus.inc:236
+#: lib/ui/stdcontext.inc:501 lib/ui/stdmenus.inc:236
 msgid "Move Column Right|v"
 msgstr "Spalte nach rechts verschieben"
 
-#: lib/ui/stdcontext.inc:501 lib/ui/stdmenus.inc:237
+#: lib/ui/stdcontext.inc:502 lib/ui/stdmenus.inc:237
 msgid "Move Column Left"
 msgstr "Spalte nach links verschieben"
 
-#: lib/ui/stdcontext.inc:505 lib/ui/stdmenus.inc:201
+#: lib/ui/stdcontext.inc:506 lib/ui/stdmenus.inc:201
 msgid "Multi-page Table|g"
 msgstr "Mehrseitige Tabelle|t"
 
-#: lib/ui/stdcontext.inc:506
+#: lib/ui/stdcontext.inc:507
 msgid "Formal Style|m"
 msgstr "Formaler Stil|F"
 
-#: lib/ui/stdcontext.inc:508
+#: lib/ui/stdcontext.inc:509
 msgid "Borders|d"
 msgstr "Rahmenlinien|R"
 
-#: lib/ui/stdcontext.inc:509
+#: lib/ui/stdcontext.inc:510
 msgid "Alignment|i"
 msgstr "Ausrichtung|s"
 
-#: lib/ui/stdcontext.inc:510
+#: lib/ui/stdcontext.inc:511
 msgid "Columns/Rows|C"
 msgstr "Zeilen/Spalten|Z"
 
-#: lib/ui/stdcontext.inc:522
+#: lib/ui/stdcontext.inc:523
 msgid "Transform Field to Static Text|T"
 msgstr "Textfeld in statischen Text umwandeln|T"
 
-#: lib/ui/stdcontext.inc:523
+#: lib/ui/stdcontext.inc:524
 msgid "Copy Text|o"
 msgstr "Text kopieren|o"
 
-#: lib/ui/stdcontext.inc:532 lib/ui/stdcontext.inc:556
+#: lib/ui/stdcontext.inc:533 lib/ui/stdcontext.inc:557
 msgid "Activate Branch|A"
 msgstr "Aktiviere Zweig|A"
 
-#: lib/ui/stdcontext.inc:533 lib/ui/stdcontext.inc:557
+#: lib/ui/stdcontext.inc:534 lib/ui/stdcontext.inc:558
 msgid "Deactivate Branch|e"
 msgstr "Deaktiviere Zweig|Z"
 
-#: lib/ui/stdcontext.inc:534
+#: lib/ui/stdcontext.inc:535
 msgid "Activate Branch in Master|M"
 msgstr "Aktiviere Zweig im Hauptdokument|H"
 
-#: lib/ui/stdcontext.inc:535
+#: lib/ui/stdcontext.inc:536
 msgid "Deactivate Branch in Master|v"
 msgstr "Deaktiviere Zweig im Hauptdokument|v"
 
-#: lib/ui/stdcontext.inc:536
+#: lib/ui/stdcontext.inc:537
 msgid "Invert Inset|I"
 msgstr "Einfügung umkehren|u"
 
-#: lib/ui/stdcontext.inc:537
+#: lib/ui/stdcontext.inc:538
 msgid "Add Unknown Branch|w"
 msgstr "Unbekannten Zweig hinzufügen|w"
 
-#: lib/ui/stdcontext.inc:546
+#: lib/ui/stdcontext.inc:547
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Verweis an der Cursor-Position einfügen|V"
 
-#: lib/ui/stdcontext.inc:624
+#: lib/ui/stdcontext.inc:625
 msgid "Insert Copy at Cursor Position|I"
 msgstr "Kopie an der Cursor-Position einfügen|K"
 
-#: lib/ui/stdcontext.inc:636
+#: lib/ui/stdcontext.inc:637
 msgid "Index All Occurrences of this Word|W"
 msgstr "Alle Vorkommen dieses Worts indexieren|A"
 
-#: lib/ui/stdcontext.inc:638
+#: lib/ui/stdcontext.inc:639
 msgid "Single Page (No Page Range)|P"
 msgstr "Einzelseite (kein Seitenbereich)|z"
 
-#: lib/ui/stdcontext.inc:639
+#: lib/ui/stdcontext.inc:640
 msgid "Start Page Range|t"
 msgstr "Seitenbereich beginnen|b"
 
-#: lib/ui/stdcontext.inc:640
+#: lib/ui/stdcontext.inc:641
 msgid "End Page Range|E"
 msgstr "Seitenbereich beenden|d"
 
-#: lib/ui/stdcontext.inc:642
+#: lib/ui/stdcontext.inc:643
 msgid "No Page Formatting|N"
 msgstr "Normaler Seitenverweis|N"
 
-#: lib/ui/stdcontext.inc:643
+#: lib/ui/stdcontext.inc:644
 msgid "Bold Page Formatting|B"
 msgstr "Fetter Seitenverweis|F"
 
-#: lib/ui/stdcontext.inc:644
+#: lib/ui/stdcontext.inc:645
 msgid "Italic Page Formatting|I"
 msgstr "Kursiver Seitenverweis|K"
 
-#: lib/ui/stdcontext.inc:645
+#: lib/ui/stdcontext.inc:646
 msgid "Emphasized Page Formatting|z"
 msgstr "Hervorgehobener Seitenverweis|H"
 
-#: lib/ui/stdcontext.inc:646
+#: lib/ui/stdcontext.inc:647
 msgid "Custom Page Formatting|u"
 msgstr "Benutzerdefinierter Seitenverweis|u"
 
-#: lib/ui/stdcontext.inc:650
+#: lib/ui/stdcontext.inc:651
 msgid "Insert Subentry|b"
 msgstr "Untereintrag einfügen|n"
 
-#: lib/ui/stdcontext.inc:651
+#: lib/ui/stdcontext.inc:652
 msgid "Insert Sortkey|k"
 msgstr "Sortierschlüssel einfügen|r"
 
-#: lib/ui/stdcontext.inc:652
+#: lib/ui/stdcontext.inc:653
 msgid "Insert See Reference|e"
 msgstr "\"Siehe\"-Verweis einfügen|S"
 
-#: lib/ui/stdcontext.inc:653
+#: lib/ui/stdcontext.inc:654
 msgid "Insert See also Reference|a"
 msgstr "\"Siehe-auch\"-Verweis einfügen|c"
 
-#: lib/ui/stdcontext.inc:661 lib/ui/stdmenus.inc:539
+#: lib/ui/stdcontext.inc:662 lib/ui/stdmenus.inc:539
 msgid "See|e"
 msgstr "Siehe|S"
 
-#: lib/ui/stdcontext.inc:662 lib/ui/stdmenus.inc:540
+#: lib/ui/stdcontext.inc:663 lib/ui/stdmenus.inc:540
 msgid "See also|a"
 msgstr "Siehe auch|a"
 
-#: lib/ui/stdcontext.inc:671
+#: lib/ui/stdcontext.inc:672
 msgid "All Indexes|A"
 msgstr "Alle Indexe|A"
 
-#: lib/ui/stdcontext.inc:674
+#: lib/ui/stdcontext.inc:675
 msgid "Subindex|b"
 msgstr "Unterindex|t"
 
-#: lib/ui/stdcontext.inc:702 lib/ui/stdmenus.inc:591
+#: lib/ui/stdcontext.inc:703 lib/ui/stdmenus.inc:591
 msgid "Reject Change|R"
 msgstr "Änderung ablehnen|b"
 
-#: lib/ui/stdcontext.inc:710
+#: lib/ui/stdcontext.inc:711
 msgid "Promote Section|P"
 msgstr "Verschachtelungstiefe des Abschnitts verringern|r"
 
-#: lib/ui/stdcontext.inc:711
+#: lib/ui/stdcontext.inc:712
 msgid "Demote Section|D"
 msgstr "Verschachtelungstiefe des Abschnitts erhöhen|s"
 
-#: lib/ui/stdcontext.inc:713
+#: lib/ui/stdcontext.inc:714
 msgid "Move Section Down|w"
 msgstr "Abschnitt nach unten verschieben|n"
 
-#: lib/ui/stdcontext.inc:715
+#: lib/ui/stdcontext.inc:716
 msgid "Select Section|S"
 msgstr "Abschnitt auswählen|h"
 
-#: lib/ui/stdcontext.inc:723
+#: lib/ui/stdcontext.inc:724
 msgid "Wrap by Preview|y"
 msgstr "Eingebettete Vorschau|r"
 
-#: lib/ui/stdcontext.inc:732
+#: lib/ui/stdcontext.inc:733
 msgid "Open Target...|O"
 msgstr "Verweisziel öffnen...|ö"
 
-#: lib/ui/stdcontext.inc:748 lib/ui/stdmenus.inc:361
+#: lib/ui/stdcontext.inc:749 lib/ui/stdmenus.inc:361
 msgid "Lock Toolbars|L"
 msgstr "Verankere die Werkzeugleisten|V"
 
-#: lib/ui/stdcontext.inc:750 lib/ui/stdmenus.inc:363
+#: lib/ui/stdcontext.inc:751 lib/ui/stdmenus.inc:363
 msgid "Small-sized Icons"
 msgstr "Kleine Symbole"
 
-#: lib/ui/stdcontext.inc:751 lib/ui/stdmenus.inc:364
+#: lib/ui/stdcontext.inc:752 lib/ui/stdmenus.inc:364
 msgid "Normal-sized Icons"
 msgstr "Normalgroße Symbole"
 
-#: lib/ui/stdcontext.inc:752 lib/ui/stdmenus.inc:365
+#: lib/ui/stdcontext.inc:753 lib/ui/stdmenus.inc:365
 msgid "Big-sized Icons"
 msgstr "Große Symbole"
 
-#: lib/ui/stdcontext.inc:753 lib/ui/stdmenus.inc:366
+#: lib/ui/stdcontext.inc:754 lib/ui/stdmenus.inc:366
 msgid "Huge-sized Icons"
 msgstr "Riesige Symbole"
 
-#: lib/ui/stdcontext.inc:754 lib/ui/stdmenus.inc:367
+#: lib/ui/stdcontext.inc:755 lib/ui/stdmenus.inc:367
 msgid "Giant-sized Icons"
 msgstr "Gigantische Symbole"
 
-#: lib/ui/stdcontext.inc:768
+#: lib/ui/stdcontext.inc:769
 msgid "Zoom Level|Z"
 msgstr "Vergrößerungsfaktor|f"
 
-#: lib/ui/stdcontext.inc:769
+#: lib/ui/stdcontext.inc:770
 msgid "Zoom Slider|S"
 msgstr "Schieberegler|r"
 
-#: lib/ui/stdcontext.inc:771
+#: lib/ui/stdcontext.inc:772
 msgid "Word Count|W"
 msgstr "Wortzählung|W"
 
-#: lib/ui/stdcontext.inc:772
+#: lib/ui/stdcontext.inc:773
 msgid "Character Count|C"
 msgstr "Zeichenzählung|Z"
 
-#: lib/ui/stdcontext.inc:773
+#: lib/ui/stdcontext.inc:774
 msgid "Character Count (No Blanks)|h"
 msgstr "Zeichenzählung (ohne Leerzeichen)|o"
 
@@ -22217,7 +22224,7 @@ msgid "Fractions"
 msgstr "Brüche"
 
 #: lib/ui/stdtoolbars.inc:222 lib/ui/stdtoolbars.inc:445
-#: src/frontends/qt/GuiDocument.cpp:1767
+#: src/frontends/qt/GuiDocument.cpp:1763
 msgid "Fonts"
 msgstr "Schriften"
 
@@ -22234,7 +22241,7 @@ msgid "Big operators"
 msgstr "Große Operatoren"
 
 #: lib/ui/stdtoolbars.inc:226 lib/ui/stdtoolbars.inc:693
-#: src/frontends/qt/GuiDocument.cpp:5168
+#: src/frontends/qt/GuiDocument.cpp:5207
 msgid "Miscellaneous"
 msgstr "Verschiedenes"
 
@@ -27288,7 +27295,7 @@ msgstr "Noweb2LyX"
 msgid "Noweb Listerrors"
 msgstr "Noweb-Fehlerbericht"
 
-#: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1765
+#: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1761
 msgid "Modules"
 msgstr "Module"
 
@@ -27321,10 +27328,6 @@ msgid "Hebrew Article (KOMA-Script)"
 msgstr "Hebräischer Aufsatz (KOMA-Script)"
 
 #: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
-
-#: lib/examples/Articles:0
 msgid "IEEE Transactions Journal"
 msgstr "IEEE Transactions Journal"
 
@@ -27335,6 +27338,10 @@ msgstr "Mathematical Monthly"
 #: lib/examples/Articles:0
 msgid "Springers Global Journal Template (V. 3)"
 msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
+
+#: lib/examples/Articles:0
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
 msgid "00 Main File"
@@ -28255,7 +28262,7 @@ msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
 #: src/BufferParams.cpp:1103 src/Color.cpp:281
-#: src/frontends/qt/GuiDocument.cpp:3527
+#: src/frontends/qt/GuiDocument.cpp:3566
 msgid "greyedout inset text"
 msgstr "Grauschrift-Einfügungstext"
 
@@ -28266,7 +28273,7 @@ msgstr "Grauschrift-Einfügungstext"
 #: src/insets/InsetCommandParams.cpp:508 src/insets/InsetCommandParams.cpp:516
 #: src/insets/InsetGraphics.cpp:900 src/insets/InsetGraphics.cpp:908
 #: src/insets/InsetListings.cpp:299 src/insets/InsetListings.cpp:307
-#: src/insets/InsetListings.cpp:332 src/mathed/InsetMathMacro.cpp:1163
+#: src/insets/InsetListings.cpp:332 src/mathed/InsetMathMacro.cpp:1165
 #: src/mathed/MathExtern.cpp:1444 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
@@ -28276,7 +28283,7 @@ msgstr "LyX-Warnung: "
 #: src/insets/InsetCommandParams.cpp:509 src/insets/InsetCommandParams.cpp:517
 #: src/insets/InsetGraphics.cpp:901 src/insets/InsetGraphics.cpp:909
 #: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
-#: src/mathed/InsetMathMacro.cpp:1164 src/mathed/MathExtern.cpp:1445
+#: src/mathed/InsetMathMacro.cpp:1166 src/mathed/MathExtern.cpp:1445
 #: src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "unkodierbares Zeichen"
@@ -29217,11 +29224,11 @@ msgstr ""
 "konvertieren.\n"
 "Definieren Sie einen Konverter in den Einstellungen."
 
-#: src/Converter.cpp:576 src/frontends/qt/GuiDocument.cpp:1989
+#: src/Converter.cpp:576 src/frontends/qt/GuiDocument.cpp:2018
 msgid "Pygments driver command not found!"
 msgstr "Pygments-Treiberbefehl nicht gefunden!"
 
-#: src/Converter.cpp:577 src/frontends/qt/GuiDocument.cpp:1990
+#: src/Converter.cpp:577 src/frontends/qt/GuiDocument.cpp:2019
 msgid ""
 "The driver command necessary to use the minted package\n"
 "(pygmentize) has not been found. Make sure you have\n"
@@ -29497,17 +29504,17 @@ msgid "Number %1$s"
 msgstr "Nummer %1$s"
 
 #: src/FontInfo.cpp:43 src/frontends/qt/GuiCharacter.cpp:148
-#: src/frontends/qt/GuiDocument.cpp:4893 src/frontends/qt/GuiListings.cpp:167
+#: src/frontends/qt/GuiDocument.cpp:4931 src/frontends/qt/GuiListings.cpp:167
 msgid "Roman"
 msgstr "Serifenschrift"
 
 #: src/FontInfo.cpp:43 src/frontends/qt/GuiCharacter.cpp:149
-#: src/frontends/qt/GuiDocument.cpp:4893 src/frontends/qt/GuiListings.cpp:167
+#: src/frontends/qt/GuiDocument.cpp:4931 src/frontends/qt/GuiListings.cpp:167
 msgid "Sans Serif"
 msgstr "Serifenlos"
 
 #: src/FontInfo.cpp:43 src/frontends/qt/GuiCharacter.cpp:150
-#: src/frontends/qt/GuiDocument.cpp:4893 src/frontends/qt/GuiListings.cpp:167
+#: src/frontends/qt/GuiDocument.cpp:4931 src/frontends/qt/GuiListings.cpp:167
 msgid "Typewriter"
 msgstr "Schreibmaschine"
 
@@ -30788,7 +30795,7 @@ msgstr ", Tiefe: %1$d"
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/Text.cpp:2135 src/frontends/qt/GuiDocument.cpp:877
+#: src/Text.cpp:2135 src/frontends/qt/GuiDocument.cpp:873
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -31043,7 +31050,7 @@ msgstr "Marken und Querverweise"
 msgid "Broken References and Citations"
 msgstr "Ungültige Literatur- und Querverweise"
 
-#: src/TocBackend.cpp:299 src/frontends/qt/GuiDocument.cpp:1764
+#: src/TocBackend.cpp:299 src/frontends/qt/GuiDocument.cpp:1760
 msgid "Child Documents"
 msgstr "Unterdokumente"
 
@@ -31408,14 +31415,14 @@ msgstr "Schließen"
 msgid "Unavailable:"
 msgstr "Nicht verfügbar:"
 
-#: src/frontends/qt/CategorizedCombo.cpp:480
+#: src/frontends/qt/CategorizedCombo.cpp:482
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Nicht verfügbar: %1$s"
 
-#: src/frontends/qt/CategorizedCombo.cpp:483
-#: src/frontends/qt/CategorizedCombo.cpp:508
-#: src/frontends/qt/CategorizedCombo.cpp:509
+#: src/frontends/qt/CategorizedCombo.cpp:485
+#: src/frontends/qt/CategorizedCombo.cpp:510
+#: src/frontends/qt/CategorizedCombo.cpp:511
 msgid "Uncategorized"
 msgstr "Nicht kategorisiert"
 
@@ -31498,8 +31505,8 @@ msgstr ""
 "Eingabetaste)"
 
 #: src/frontends/qt/FloatPlacement.cpp:182
-#: src/frontends/qt/GuiDocument.cpp:1144 src/frontends/qt/GuiDocument.cpp:2710
-#: src/frontends/qt/GuiDocument.cpp:2737
+#: src/frontends/qt/GuiDocument.cpp:1140 src/frontends/qt/GuiDocument.cpp:2739
+#: src/frontends/qt/GuiDocument.cpp:2766
 msgid "Class Default"
 msgstr "Klassenvoreinstellungen"
 
@@ -31507,7 +31514,7 @@ msgstr "Klassenvoreinstellungen"
 msgid "Document Default"
 msgstr "Dokumentvoreinstellung"
 
-#: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1779
+#: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1775
 msgid "Float Settings"
 msgstr "Gleitobjekt-Einstellungen"
 
@@ -31610,12 +31617,17 @@ msgstr "Qt-Version (Laufzeit): %1$s (Plattform: %2$s)"
 msgid "Qt Version (compile-time): %1$s"
 msgstr "Qt-Version (bei Erstellung): %1$s"
 
-#: src/frontends/qt/GuiAbout.cpp:297
+#: src/frontends/qt/GuiAbout.cpp:298
+#, c-format
+msgid "OS Version (run-time): %1$s"
+msgstr "OS-Version (bei Erstellung): %1$s"
+
+#: src/frontends/qt/GuiAbout.cpp:305
 #, c-format
 msgid "Python detected: %1$s"
 msgstr "Python-Aufruf: %1$s"
 
-#: src/frontends/qt/GuiAbout.cpp:328
+#: src/frontends/qt/GuiAbout.cpp:336
 msgid "About LyX"
 msgstr "Über LyX"
 
@@ -31946,7 +31958,7 @@ msgstr "alle Literaturverzeichnisse"
 
 #: src/frontends/qt/GuiBibtex.cpp:496 src/frontends/qt/GuiBibtex.cpp:506
 #: src/frontends/qt/GuiCompare.cpp:166 src/frontends/qt/GuiCompare.cpp:170
-#: src/frontends/qt/GuiDocument.cpp:2888 src/frontends/qt/GuiExternal.cpp:677
+#: src/frontends/qt/GuiDocument.cpp:2917 src/frontends/qt/GuiExternal.cpp:677
 #: src/frontends/qt/GuiGraphics.cpp:826 src/frontends/qt/GuiInclude.cpp:380
 #: src/frontends/qt/GuiLyXFiles.cpp:364 src/frontends/qt/GuiLyXFiles.cpp:370
 #: src/frontends/qt/GuiView.cpp:2756 src/frontends/qt/GuiView.cpp:2815
@@ -32042,7 +32054,7 @@ msgid "Filename Suffix"
 msgstr "Erweitere Dateinamen"
 
 #: src/frontends/qt/GuiBranches.cpp:135 src/frontends/qt/GuiBranches.cpp:149
-#: src/frontends/qt/GuiDocument.cpp:3324 src/frontends/qt/GuiDocument.cpp:4629
+#: src/frontends/qt/GuiDocument.cpp:3353 src/frontends/qt/GuiDocument.cpp:4668
 #: src/frontends/qt/GuiProgressView.cpp:148
 #: src/frontends/qt/GuiProgressView.cpp:162
 #: src/frontends/qt/GuiProgressView.cpp:184
@@ -32050,8 +32062,8 @@ msgid "Yes"
 msgstr "Ja"
 
 #: src/frontends/qt/GuiBranches.cpp:135 src/frontends/qt/GuiBranches.cpp:149
-#: src/frontends/qt/GuiDocument.cpp:3323 src/frontends/qt/GuiDocument.cpp:3957
-#: src/frontends/qt/GuiDocument.cpp:4628
+#: src/frontends/qt/GuiDocument.cpp:3352 src/frontends/qt/GuiDocument.cpp:3996
+#: src/frontends/qt/GuiDocument.cpp:4667
 #: src/frontends/qt/GuiProgressView.cpp:114
 #: src/frontends/qt/GuiProgressView.cpp:147
 #: src/frontends/qt/GuiProgressView.cpp:184
@@ -32431,80 +32443,76 @@ msgstr "Variabel"
 msgid "Module not found!"
 msgstr "Modul nicht gefunden!"
 
-#: src/frontends/qt/GuiDocument.cpp:594 src/frontends/qt/GuiDocument.cpp:775
+#: src/frontends/qt/GuiDocument.cpp:594 src/frontends/qt/GuiDocument.cpp:770
 msgid "&End Edit"
 msgstr "&Bearbeitung beenden"
 
-#: src/frontends/qt/GuiDocument.cpp:663
-msgid "Validation required!"
-msgstr "Validierung erforderlich!"
-
-#: src/frontends/qt/GuiDocument.cpp:713
+#: src/frontends/qt/GuiDocument.cpp:708
 msgid "Layout is valid!"
 msgstr "Format ist gültig!"
 
-#: src/frontends/qt/GuiDocument.cpp:714
+#: src/frontends/qt/GuiDocument.cpp:709
 msgid "Layout is invalid!"
 msgstr "Format ist ungültig!"
 
-#: src/frontends/qt/GuiDocument.cpp:726
+#: src/frontends/qt/GuiDocument.cpp:721
 msgid "Conversion to current format impossible!"
 msgstr "Konvertierung in aktuelles Format nicht möglich!"
 
-#: src/frontends/qt/GuiDocument.cpp:727
+#: src/frontends/qt/GuiDocument.cpp:722
 msgid "Conversion to current stable format impossible."
 msgstr "Konvertierung in aktuelles stabiles Format nicht möglich."
 
-#: src/frontends/qt/GuiDocument.cpp:732
+#: src/frontends/qt/GuiDocument.cpp:727
 msgid "Convert to current format"
 msgstr "Konvertiere in ein aktuelles Format"
 
-#: src/frontends/qt/GuiDocument.cpp:870
+#: src/frontends/qt/GuiDocument.cpp:866
 msgid "Small Skip"
 msgstr "Klein"
 
-#: src/frontends/qt/GuiDocument.cpp:871
+#: src/frontends/qt/GuiDocument.cpp:867
 msgid "Medium Skip"
 msgstr "Mittel"
 
-#: src/frontends/qt/GuiDocument.cpp:872
+#: src/frontends/qt/GuiDocument.cpp:868
 msgid "Big Skip"
 msgstr "Groß"
 
-#: src/frontends/qt/GuiDocument.cpp:910 src/frontends/qt/GuiInclude.cpp:52
+#: src/frontends/qt/GuiDocument.cpp:906 src/frontends/qt/GuiInclude.cpp:52
 msgid "Child Document"
 msgstr "Unterdokument"
 
-#: src/frontends/qt/GuiDocument.cpp:911
+#: src/frontends/qt/GuiDocument.cpp:907
 msgid "Include to Output"
 msgstr "In Ausgabe einbinden"
 
-#: src/frontends/qt/GuiDocument.cpp:990
+#: src/frontends/qt/GuiDocument.cpp:986
 msgid "Unicode (utf8)"
 msgstr "Unicode (utf8)"
 
-#: src/frontends/qt/GuiDocument.cpp:991
+#: src/frontends/qt/GuiDocument.cpp:987
 msgid "Traditional (auto-selected)"
 msgstr "Traditionell (automatisch gewählt)"
 
-#: src/frontends/qt/GuiDocument.cpp:994
+#: src/frontends/qt/GuiDocument.cpp:990
 msgid "Select Unicode (utf8) encoding."
 msgstr "Wählen Sie die passende Unicode-Kodierung"
 
-#: src/frontends/qt/GuiDocument.cpp:996
+#: src/frontends/qt/GuiDocument.cpp:992
 msgid "Use language-dependent traditional encodings."
 msgstr "Verwendet sprachspezifische traditionelle Kodierungen."
 
-#: src/frontends/qt/GuiDocument.cpp:998
+#: src/frontends/qt/GuiDocument.cpp:994
 msgid "Select a custom, document-wide encoding."
 msgstr ""
 "Hiermit können Sie eine benutzerdefinierte dokumentweite Kodierung wählen"
 
-#: src/frontends/qt/GuiDocument.cpp:1007
+#: src/frontends/qt/GuiDocument.cpp:1003
 msgid "Standard Unicode support by the ``inputenc'' package."
 msgstr "Standard-Unicode-Unterstützung durch das Paket ,,inputenc``."
 
-#: src/frontends/qt/GuiDocument.cpp:1010
+#: src/frontends/qt/GuiDocument.cpp:1006
 msgid ""
 "Use UTF-8 'as-is': do not load any supporting packages, do not convert any "
 "characters to LaTeX macros. For use with non-TeX fonts (XeTeX/LuaTeX) or "
@@ -32515,7 +32523,7 @@ msgstr ""
 "Nicht-TeX-Schriften (XeTeX/LuaTeX) verwendet. Er kann auch bei manuellen "
 "Konfigurationen nützlich sein."
 
-#: src/frontends/qt/GuiDocument.cpp:1015
+#: src/frontends/qt/GuiDocument.cpp:1011
 msgid ""
 "Load ``inputenc'' with option 'utf8x' for extended Unicode support by the "
 "``ucs'' package."
@@ -32523,11 +32531,11 @@ msgstr ""
 "Lade ,,inputenc`` mit der Option ,utf8x` für erweiterte Unicode-"
 "Unterstützung (über das Paket ,,ucs``)."
 
-#: src/frontends/qt/GuiDocument.cpp:1019
+#: src/frontends/qt/GuiDocument.cpp:1015
 msgid "Language Default (no inputenc)"
 msgstr "Sprachvoreinstellung (ohne inputenc)"
 
-#: src/frontends/qt/GuiDocument.cpp:1021
+#: src/frontends/qt/GuiDocument.cpp:1017
 msgid ""
 "Use the traditional default encoding of the text language. Switch encoding "
 "if a text part is set to a language with different default."
@@ -32536,7 +32544,7 @@ msgstr ""
 "Textes. Die Kodierung wird der jeweiligen Sprache angepasst, auch bei "
 "Sprachwechseln im Dokument."
 
-#: src/frontends/qt/GuiDocument.cpp:1025
+#: src/frontends/qt/GuiDocument.cpp:1021
 msgid ""
 "Do not load the 'inputenc' package. Switch encoding if required but do not "
 "write input encoding switch commands to the source."
@@ -32544,23 +32552,23 @@ msgstr ""
 "Lädt das Paket ,,inputenc`` nicht. Die Kodierung wird zwar, falls nötig, "
 "angepasst, aber es werden keine entsprechenden LaTeX-Makros ausgegeben."
 
-#: src/frontends/qt/GuiDocument.cpp:1139
+#: src/frontends/qt/GuiDocument.cpp:1135
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt/GuiDocument.cpp:1140
+#: src/frontends/qt/GuiDocument.cpp:1136
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt/GuiDocument.cpp:1141
+#: src/frontends/qt/GuiDocument.cpp:1137
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt/GuiDocument.cpp:1143
+#: src/frontends/qt/GuiDocument.cpp:1139
 msgid "Automatic[[encoding]]"
 msgstr "Automatisch"
 
-#: src/frontends/qt/GuiDocument.cpp:1153
+#: src/frontends/qt/GuiDocument.cpp:1149
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
@@ -32569,194 +32577,194 @@ msgstr ""
 "LuaTeX)\n"
 "Um dieses Feature zu nutzen, müssen Sie das Paket \"fontspec\" installieren."
 
-#: src/frontends/qt/GuiDocument.cpp:1185
+#: src/frontends/qt/GuiDocument.cpp:1181
 msgid "empty"
 msgstr "leer"
 
-#: src/frontends/qt/GuiDocument.cpp:1186
+#: src/frontends/qt/GuiDocument.cpp:1182
 msgid "plain"
 msgstr "einfach"
 
-#: src/frontends/qt/GuiDocument.cpp:1187
+#: src/frontends/qt/GuiDocument.cpp:1183
 msgid "headings"
 msgstr "mit Überschriften"
 
-#: src/frontends/qt/GuiDocument.cpp:1188
+#: src/frontends/qt/GuiDocument.cpp:1184
 msgid "fancy"
 msgstr "ausgefallen"
 
-#: src/frontends/qt/GuiDocument.cpp:1197
+#: src/frontends/qt/GuiDocument.cpp:1193
 msgid "US letter"
 msgstr "US letter"
 
-#: src/frontends/qt/GuiDocument.cpp:1198
+#: src/frontends/qt/GuiDocument.cpp:1194
 msgid "US legal"
 msgstr "US legal"
 
-#: src/frontends/qt/GuiDocument.cpp:1199
+#: src/frontends/qt/GuiDocument.cpp:1195
 msgid "US executive"
 msgstr "US executive"
 
-#: src/frontends/qt/GuiDocument.cpp:1200
+#: src/frontends/qt/GuiDocument.cpp:1196
 msgid "A0"
 msgstr "A0"
 
-#: src/frontends/qt/GuiDocument.cpp:1201
+#: src/frontends/qt/GuiDocument.cpp:1197
 msgid "A1"
 msgstr "A1"
 
-#: src/frontends/qt/GuiDocument.cpp:1202
+#: src/frontends/qt/GuiDocument.cpp:1198
 msgid "A2"
 msgstr "A2"
 
-#: src/frontends/qt/GuiDocument.cpp:1203
+#: src/frontends/qt/GuiDocument.cpp:1199
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt/GuiDocument.cpp:1204
+#: src/frontends/qt/GuiDocument.cpp:1200
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt/GuiDocument.cpp:1205
+#: src/frontends/qt/GuiDocument.cpp:1201
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt/GuiDocument.cpp:1206
+#: src/frontends/qt/GuiDocument.cpp:1202
 msgid "A6"
 msgstr "A6"
 
-#: src/frontends/qt/GuiDocument.cpp:1207
+#: src/frontends/qt/GuiDocument.cpp:1203
 msgid "B0"
 msgstr "B0"
 
-#: src/frontends/qt/GuiDocument.cpp:1208
+#: src/frontends/qt/GuiDocument.cpp:1204
 msgid "B1"
 msgstr "B1"
 
-#: src/frontends/qt/GuiDocument.cpp:1209
+#: src/frontends/qt/GuiDocument.cpp:1205
 msgid "B2"
 msgstr "B2"
 
-#: src/frontends/qt/GuiDocument.cpp:1210
+#: src/frontends/qt/GuiDocument.cpp:1206
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt/GuiDocument.cpp:1211
+#: src/frontends/qt/GuiDocument.cpp:1207
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt/GuiDocument.cpp:1212
+#: src/frontends/qt/GuiDocument.cpp:1208
 msgid "B5"
 msgstr "B5"
 
-#: src/frontends/qt/GuiDocument.cpp:1213
+#: src/frontends/qt/GuiDocument.cpp:1209
 msgid "B6"
 msgstr "B6"
 
-#: src/frontends/qt/GuiDocument.cpp:1214
+#: src/frontends/qt/GuiDocument.cpp:1210
 msgid "C0"
 msgstr "C0"
 
-#: src/frontends/qt/GuiDocument.cpp:1215
+#: src/frontends/qt/GuiDocument.cpp:1211
 msgid "C1"
 msgstr "C1"
 
-#: src/frontends/qt/GuiDocument.cpp:1216
+#: src/frontends/qt/GuiDocument.cpp:1212
 msgid "C2"
 msgstr "C2"
 
-#: src/frontends/qt/GuiDocument.cpp:1217
+#: src/frontends/qt/GuiDocument.cpp:1213
 msgid "C3"
 msgstr "C3"
 
-#: src/frontends/qt/GuiDocument.cpp:1218
+#: src/frontends/qt/GuiDocument.cpp:1214
 msgid "C4"
 msgstr "C4"
 
-#: src/frontends/qt/GuiDocument.cpp:1219
+#: src/frontends/qt/GuiDocument.cpp:1215
 msgid "C5"
 msgstr "C5"
 
-#: src/frontends/qt/GuiDocument.cpp:1220
+#: src/frontends/qt/GuiDocument.cpp:1216
 msgid "C6"
 msgstr "C6"
 
-#: src/frontends/qt/GuiDocument.cpp:1221
+#: src/frontends/qt/GuiDocument.cpp:1217
 msgid "JIS B0"
 msgstr "JIS B0"
 
-#: src/frontends/qt/GuiDocument.cpp:1222
+#: src/frontends/qt/GuiDocument.cpp:1218
 msgid "JIS B1"
 msgstr "JIS B1"
 
-#: src/frontends/qt/GuiDocument.cpp:1223
+#: src/frontends/qt/GuiDocument.cpp:1219
 msgid "JIS B2"
 msgstr "JIS B2"
 
-#: src/frontends/qt/GuiDocument.cpp:1224
+#: src/frontends/qt/GuiDocument.cpp:1220
 msgid "JIS B3"
 msgstr "JIS B3"
 
-#: src/frontends/qt/GuiDocument.cpp:1225
+#: src/frontends/qt/GuiDocument.cpp:1221
 msgid "JIS B4"
 msgstr "JIS B4"
 
-#: src/frontends/qt/GuiDocument.cpp:1226
+#: src/frontends/qt/GuiDocument.cpp:1222
 msgid "JIS B5"
 msgstr "JIS B5"
 
-#: src/frontends/qt/GuiDocument.cpp:1227
+#: src/frontends/qt/GuiDocument.cpp:1223
 msgid "JIS B6"
 msgstr "JIS B6"
 
-#: src/frontends/qt/GuiDocument.cpp:1352
+#: src/frontends/qt/GuiDocument.cpp:1348
 msgid "Numbered"
 msgstr "Nummeriert"
 
-#: src/frontends/qt/GuiDocument.cpp:1353
+#: src/frontends/qt/GuiDocument.cpp:1349
 msgid "Appears in TOC"
 msgstr "Erscheint im Inhaltsverzeichnis"
 
-#: src/frontends/qt/GuiDocument.cpp:1441
+#: src/frontends/qt/GuiDocument.cpp:1437
 msgid "Package"
 msgstr "Paket"
 
-#: src/frontends/qt/GuiDocument.cpp:1441
+#: src/frontends/qt/GuiDocument.cpp:1437
 msgid "Load automatically"
 msgstr "Automatisch laden"
 
-#: src/frontends/qt/GuiDocument.cpp:1442
+#: src/frontends/qt/GuiDocument.cpp:1438
 msgid "Load always"
 msgstr "Immer laden"
 
-#: src/frontends/qt/GuiDocument.cpp:1442
+#: src/frontends/qt/GuiDocument.cpp:1438
 msgid "Do not load"
 msgstr "Nicht laden"
 
-#: src/frontends/qt/GuiDocument.cpp:1454
+#: src/frontends/qt/GuiDocument.cpp:1450
 msgid "The AMS LaTeX packages are always used"
 msgstr "Die AMS-LaTeX-Pakete werden immer verwendet"
 
-#: src/frontends/qt/GuiDocument.cpp:1457
+#: src/frontends/qt/GuiDocument.cpp:1453
 #, c-format
 msgid "The LaTeX package %1$s is always used"
 msgstr "Das LaTeX-Paket %1$s wird immer verwendet"
 
-#: src/frontends/qt/GuiDocument.cpp:1462
+#: src/frontends/qt/GuiDocument.cpp:1458
 msgid "The AMS LaTeX packages are never used"
 msgstr "Die AMS-LaTeX-Pakete werden nie verwendet"
 
-#: src/frontends/qt/GuiDocument.cpp:1465
+#: src/frontends/qt/GuiDocument.cpp:1461
 #, c-format
 msgid "The LaTeX package %1$s is never used"
 msgstr "Das LaTeX-Paket %1$s wird nie verwendet"
 
-#: src/frontends/qt/GuiDocument.cpp:1602 src/frontends/qt/GuiDocument.cpp:2867
+#: src/frontends/qt/GuiDocument.cpp:1598 src/frontends/qt/GuiDocument.cpp:2896
 #, c-format
 msgid "%1$s [Class '%2$s']"
 msgstr "%1$s [Klasse '%2$s']"
 
-#: src/frontends/qt/GuiDocument.cpp:1605
+#: src/frontends/qt/GuiDocument.cpp:1601
 #, c-format
 msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
@@ -32765,83 +32773,106 @@ msgstr ""
 "Klasse wurde von LyX nicht gefunden. Bitte prüfen Sie, ob Sie die "
 "entsprechende %1$s-Klasse und alle nötigen Pakete (%2$s) installiert haben."
 
-#: src/frontends/qt/GuiDocument.cpp:1667
+#: src/frontends/qt/GuiDocument.cpp:1663
 msgid "All avail. modules"
 msgstr "Alle verf. Module"
 
-#: src/frontends/qt/GuiDocument.cpp:1756 src/frontends/qt/GuiDocument.cpp:1975
+#: src/frontends/qt/GuiDocument.cpp:1752 src/frontends/qt/GuiDocument.cpp:2004
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
 "Geben Sie unten Listing-Parameter ein. Geben Sie '?' für eine Liste gültiger "
 "Parameter ein."
 
-#: src/frontends/qt/GuiDocument.cpp:1763
+#: src/frontends/qt/GuiDocument.cpp:1759
 msgid "Document Class"
 msgstr "Dokumentklasse"
 
-#: src/frontends/qt/GuiDocument.cpp:1766
+#: src/frontends/qt/GuiDocument.cpp:1762 src/frontends/qt/GuiDocument.cpp:3455
 msgid "Local Layout"
 msgstr "Lokales Format"
 
-#: src/frontends/qt/GuiDocument.cpp:1768
+#: src/frontends/qt/GuiDocument.cpp:1764
 msgid "Text Layout"
 msgstr "Textformat"
 
-#: src/frontends/qt/GuiDocument.cpp:1770
+#: src/frontends/qt/GuiDocument.cpp:1766
 msgid "Page Margins"
 msgstr "Seitenränder"
 
-#: src/frontends/qt/GuiDocument.cpp:1772 src/frontends/qt/GuiPrefs.cpp:1079
+#: src/frontends/qt/GuiDocument.cpp:1768 src/frontends/qt/GuiPrefs.cpp:1079
 msgid "Colors"
 msgstr "Farben"
 
-#: src/frontends/qt/GuiDocument.cpp:1773
+#: src/frontends/qt/GuiDocument.cpp:1769
 msgid "Change Tracking"
 msgstr "Änderungsverfolgung"
 
-#: src/frontends/qt/GuiDocument.cpp:1774
+#: src/frontends/qt/GuiDocument.cpp:1770
 msgid "Numbering & TOC"
 msgstr "Nummerierung & Inhaltsverzeichnis"
 
-#: src/frontends/qt/GuiDocument.cpp:1776
+#: src/frontends/qt/GuiDocument.cpp:1772
 msgid "Indexes"
 msgstr "Stichwortverzeichnis"
 
-#: src/frontends/qt/GuiDocument.cpp:1777
+#: src/frontends/qt/GuiDocument.cpp:1773
 msgid "PDF Properties"
 msgstr "PDF-Eigenschaften"
 
-#: src/frontends/qt/GuiDocument.cpp:1778
+#: src/frontends/qt/GuiDocument.cpp:1774
 msgid "Math Options"
 msgstr "Mathe-Optionen"
 
-#: src/frontends/qt/GuiDocument.cpp:1781
+#: src/frontends/qt/GuiDocument.cpp:1777
 msgid "Bullets"
 msgstr "Auflistungszeichen"
 
-#: src/frontends/qt/GuiDocument.cpp:1783
+#: src/frontends/qt/GuiDocument.cpp:1779
 msgid "Formats[[output]]"
 msgstr "Formate"
 
-#: src/frontends/qt/GuiDocument.cpp:1784
+#: src/frontends/qt/GuiDocument.cpp:1780
 msgid "LaTeX Preamble"
 msgstr "LaTeX-Vorspann"
 
-#: src/frontends/qt/GuiDocument.cpp:2084 src/frontends/qt/GuiDocument.cpp:2170
+# , c-format
+# , c-format
+#: src/frontends/qt/GuiDocument.cpp:1802 src/frontends/qt/GuiDocument.cpp:2939
+#: src/frontends/qt/GuiDocument.cpp:3240 src/frontends/qt/GuiDocument.cpp:4859
+msgid "Unapplied changes"
+msgstr "Nicht übernommene Änderungen"
+
+#: src/frontends/qt/GuiDocument.cpp:1803
+msgid ""
+"Some changes in the previous document were not yet applied.\n"
+"Do you want to switch back and apply them?"
+msgstr ""
+"Einige Änderungen im vorherigen Dokument wurden noch nicht angewendet.\n"
+"Möchten Sie zu diesem Dokument zurückwechseln, um sie anzuwenden?"
+
+#: src/frontends/qt/GuiDocument.cpp:1805
+msgid "Yes, &Switch Back"
+msgstr "&Ja, zurückwechseln"
+
+#: src/frontends/qt/GuiDocument.cpp:1805
+msgid "No, &Dismiss Changes"
+msgstr "&Nein, Änderungen verwerfen"
+
+#: src/frontends/qt/GuiDocument.cpp:2113 src/frontends/qt/GuiDocument.cpp:2199
 msgid "Class defaults"
 msgstr "Klassenvoreinstellung"
 
-#: src/frontends/qt/GuiDocument.cpp:2084 src/frontends/qt/GuiDocument.cpp:2170
+#: src/frontends/qt/GuiDocument.cpp:2113 src/frontends/qt/GuiDocument.cpp:2199
 msgid "Package defaults"
 msgstr "Paketvoreinstellung"
 
-#: src/frontends/qt/GuiDocument.cpp:2087 src/frontends/qt/GuiDocument.cpp:2173
+#: src/frontends/qt/GuiDocument.cpp:2116 src/frontends/qt/GuiDocument.cpp:2202
 msgid "If no value is given, the defaults as set by the class are used."
 msgstr ""
 "Wenn kein Wert angegeben wird, werden die Voreinstellungen der Klasse "
 "verwendet."
 
-#: src/frontends/qt/GuiDocument.cpp:2088 src/frontends/qt/GuiDocument.cpp:2174
+#: src/frontends/qt/GuiDocument.cpp:2117 src/frontends/qt/GuiDocument.cpp:2203
 msgid ""
 "If no value is given, the defaults as set by the geometry package or a "
 "package/class overriding geometry's defaults are used."
@@ -32850,49 +32881,49 @@ msgstr ""
 "Pakets oder eines Pakets bzw. der Klasse verwendet, falls diese die Geometry-"
 "Voreinstellungen überschreiben."
 
-#: src/frontends/qt/GuiDocument.cpp:2217 src/frontends/qt/GuiDocument.cpp:2247
+#: src/frontends/qt/GuiDocument.cpp:2246 src/frontends/qt/GuiDocument.cpp:2276
 msgid "&Default..."
 msgstr "Stan&dard..."
 
-#: src/frontends/qt/GuiDocument.cpp:2448
+#: src/frontends/qt/GuiDocument.cpp:2477
 msgid "Direct (No inputenc)"
 msgstr "Direkt (ohne inputenc)"
 
-#: src/frontends/qt/GuiDocument.cpp:2450
+#: src/frontends/qt/GuiDocument.cpp:2479
 msgid "Direct (XeTeX/LuaTeX)"
 msgstr "Direkt (XeTeX/LuaTeX)"
 
-#: src/frontends/qt/GuiDocument.cpp:2636 src/frontends/qt/GuiDocument.cpp:4301
-#: src/frontends/qt/GuiDocument.cpp:4310 src/frontends/qt/GuiDocument.cpp:4319
-#: src/frontends/qt/GuiDocument.cpp:4328
+#: src/frontends/qt/GuiDocument.cpp:2665 src/frontends/qt/GuiDocument.cpp:4340
+#: src/frontends/qt/GuiDocument.cpp:4349 src/frontends/qt/GuiDocument.cpp:4358
+#: src/frontends/qt/GuiDocument.cpp:4367
 msgid " (not installed)"
 msgstr " (nicht installiert)"
 
-#: src/frontends/qt/GuiDocument.cpp:2665
+#: src/frontends/qt/GuiDocument.cpp:2694
 msgid "Non-TeX Fonts Default"
 msgstr "Voreinstellung Nicht-TeX Schriften"
 
-#: src/frontends/qt/GuiDocument.cpp:2667
+#: src/frontends/qt/GuiDocument.cpp:2696
 msgid " (not available)"
 msgstr " (nicht verfügbar)"
 
-#: src/frontends/qt/GuiDocument.cpp:2668
+#: src/frontends/qt/GuiDocument.cpp:2697
 msgid "Class Default (TeX Fonts)"
 msgstr "Klassenvoreinstellungen (TeX-Schriften)"
 
-#: src/frontends/qt/GuiDocument.cpp:2819
+#: src/frontends/qt/GuiDocument.cpp:2848
 msgid "Lay&outs"
 msgstr "F&ormatdateien"
 
-#: src/frontends/qt/GuiDocument.cpp:2821
+#: src/frontends/qt/GuiDocument.cpp:2850
 msgid "LyX Layout (*.layout)"
 msgstr "LyX-Formatdatei (*.layout)"
 
-#: src/frontends/qt/GuiDocument.cpp:2823 src/frontends/qt/GuiDocument.cpp:2832
+#: src/frontends/qt/GuiDocument.cpp:2852 src/frontends/qt/GuiDocument.cpp:2861
 msgid "Local layout file"
 msgstr "Lokale Formatdatei"
 
-#: src/frontends/qt/GuiDocument.cpp:2833
+#: src/frontends/qt/GuiDocument.cpp:2862
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory.\n"
@@ -32905,35 +32936,28 @@ msgstr ""
 "kann, müssen Sie sicherstellen, dass die Formatdatei\n"
 "nicht verschoben wird."
 
-#: src/frontends/qt/GuiDocument.cpp:2837
+#: src/frontends/qt/GuiDocument.cpp:2866
 msgid "&Set Layout"
 msgstr "&Layout übernehmen"
 
-#: src/frontends/qt/GuiDocument.cpp:2851
+#: src/frontends/qt/GuiDocument.cpp:2880
 msgid "Unable to read local layout file."
 msgstr "Lokale Formatdatei kann nicht gelesen werden."
 
-#: src/frontends/qt/GuiDocument.cpp:2868
+#: src/frontends/qt/GuiDocument.cpp:2897
 msgid "This is a local layout file."
 msgstr "Dies ist eine lokale Formatdatei."
 
-#: src/frontends/qt/GuiDocument.cpp:2882
+#: src/frontends/qt/GuiDocument.cpp:2911
 msgid "Select master document"
 msgstr "Hauptdokument wählen"
 
-#: src/frontends/qt/GuiDocument.cpp:2886
+#: src/frontends/qt/GuiDocument.cpp:2915
 msgid "LyX Files (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-# , c-format
-# , c-format
-#: src/frontends/qt/GuiDocument.cpp:2910 src/frontends/qt/GuiDocument.cpp:3211
-#: src/frontends/qt/GuiDocument.cpp:4820
-msgid "Unapplied changes"
-msgstr "Nicht übernommene Änderungen"
-
-#: src/frontends/qt/GuiDocument.cpp:2911 src/frontends/qt/GuiDocument.cpp:3212
-#: src/frontends/qt/GuiDocument.cpp:4821
+#: src/frontends/qt/GuiDocument.cpp:2940 src/frontends/qt/GuiDocument.cpp:3241
+#: src/frontends/qt/GuiDocument.cpp:4860
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -32942,86 +32966,86 @@ msgstr ""
 "Wenn Sie sie jetzt nicht anwenden, werden sie nach dieser\n"
 "Aktion verlorengehen."
 
-#: src/frontends/qt/GuiDocument.cpp:2913 src/frontends/qt/GuiDocument.cpp:3214
-#: src/frontends/qt/GuiDocument.cpp:4823
+#: src/frontends/qt/GuiDocument.cpp:2942 src/frontends/qt/GuiDocument.cpp:3243
+#: src/frontends/qt/GuiDocument.cpp:4862
 msgid "&Apply"
 msgstr "&Anwenden"
 
-#: src/frontends/qt/GuiDocument.cpp:2913 src/frontends/qt/GuiDocument.cpp:3214
-#: src/frontends/qt/GuiDocument.cpp:4823
+#: src/frontends/qt/GuiDocument.cpp:2942 src/frontends/qt/GuiDocument.cpp:3243
+#: src/frontends/qt/GuiDocument.cpp:4862
 msgid "&Dismiss"
 msgstr "&Ablehnen"
 
-#: src/frontends/qt/GuiDocument.cpp:2924 src/frontends/qt/GuiDocument.cpp:4831
+#: src/frontends/qt/GuiDocument.cpp:2953 src/frontends/qt/GuiDocument.cpp:4870
 msgid "Unable to set document class."
 msgstr "Kann Dokumentklasse nicht einstellen."
 
-#: src/frontends/qt/GuiDocument.cpp:3090
+#: src/frontends/qt/GuiDocument.cpp:3119
 msgid "Basic numerical"
 msgstr "Einfach nummerisch"
 
-#: src/frontends/qt/GuiDocument.cpp:3093
+#: src/frontends/qt/GuiDocument.cpp:3122
 msgid "Author-year"
 msgstr "Autor-Jahr"
 
-#: src/frontends/qt/GuiDocument.cpp:3096
+#: src/frontends/qt/GuiDocument.cpp:3125
 msgid "Author-number"
 msgstr "Autor-Nummer"
 
-#: src/frontends/qt/GuiDocument.cpp:3136
+#: src/frontends/qt/GuiDocument.cpp:3165
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s und %2$s"
 
-#: src/frontends/qt/GuiDocument.cpp:3143
+#: src/frontends/qt/GuiDocument.cpp:3172
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt/GuiDocument.cpp:3148
+#: src/frontends/qt/GuiDocument.cpp:3177
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s und %3$s"
 
-#: src/frontends/qt/GuiDocument.cpp:3162
+#: src/frontends/qt/GuiDocument.cpp:3191
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr "%1$s (nicht verfügbar)"
 
-#: src/frontends/qt/GuiDocument.cpp:3261
+#: src/frontends/qt/GuiDocument.cpp:3290
 msgid "Module provided by document class."
 msgstr "Von der Dokumentklasse bereitgestelltes Modul."
 
-#: src/frontends/qt/GuiDocument.cpp:3269
+#: src/frontends/qt/GuiDocument.cpp:3298
 #, c-format
 msgid "<p><b>Category:</b> %1$s.</p>"
 msgstr "<p><b>Kategorie:</b> %1$s.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3279
+#: src/frontends/qt/GuiDocument.cpp:3308
 #, c-format
 msgid "<p><b>Package(s) required:</b> %1$s.</p>"
 msgstr "<p><b>Benötigte Pakete:</b> %1$s.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3285
+#: src/frontends/qt/GuiDocument.cpp:3314
 msgid "or"
 msgstr "oder"
 
-#: src/frontends/qt/GuiDocument.cpp:3288
+#: src/frontends/qt/GuiDocument.cpp:3317
 #, c-format
 msgid "<p><b>Modules required:</b> %1$s.</p>"
 msgstr "<p><b>Benötigte Module:</b> %1$s.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3297
+#: src/frontends/qt/GuiDocument.cpp:3326
 #, c-format
 msgid "<p><b>Modules excluded:</b> %1$s.</p>"
 msgstr "<p><b>Ausgeschlossene Module:</b> %1$s.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3302
+#: src/frontends/qt/GuiDocument.cpp:3331
 #, c-format
 msgid "<p><b>Filename:</b> <tt>%1$s.module</tt>.</p>"
 msgstr "<p><b>Dateiname:</b> <tt>%1$s.module</tt>.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3307
+#: src/frontends/qt/GuiDocument.cpp:3336
 msgid ""
 "<p><font color=red><b>WARNING: Some required packages are unavailable!</b></"
 "font></p>"
@@ -33029,61 +33053,61 @@ msgstr ""
 "<p><font color=red><b>WARNUNG: Einige benötigte Pakete sind nicht verfügbar!"
 "</b></font></p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3959
+#: src/frontends/qt/GuiDocument.cpp:3998
 msgid "per part"
 msgstr "pro Teil"
 
-#: src/frontends/qt/GuiDocument.cpp:3961
+#: src/frontends/qt/GuiDocument.cpp:4000
 msgid "per chapter"
 msgstr "pro Kapitel"
 
-#: src/frontends/qt/GuiDocument.cpp:3963
+#: src/frontends/qt/GuiDocument.cpp:4002
 msgid "per section"
 msgstr "pro Abschnitt"
 
-#: src/frontends/qt/GuiDocument.cpp:3965
+#: src/frontends/qt/GuiDocument.cpp:4004
 msgid "per subsection"
 msgstr "pro Unterabschnitt"
 
-#: src/frontends/qt/GuiDocument.cpp:3966
+#: src/frontends/qt/GuiDocument.cpp:4005
 msgid "per child document"
 msgstr "pro Unterdokument"
 
-#: src/frontends/qt/GuiDocument.cpp:3993
+#: src/frontends/qt/GuiDocument.cpp:4032
 #, c-format
 msgid "%1$s (not available)"
 msgstr "%1$s (nicht verfügbar)"
 
-#: src/frontends/qt/GuiDocument.cpp:4221
+#: src/frontends/qt/GuiDocument.cpp:4260
 msgid "[No options predefined]"
 msgstr "[Keine Optionen vordefiniert]"
 
-#: src/frontends/qt/GuiDocument.cpp:4488
+#: src/frontends/qt/GuiDocument.cpp:4527
 msgid "C&ustomize Hyperref Options"
 msgstr "H&yperref-Optionen anpassen"
 
-#: src/frontends/qt/GuiDocument.cpp:4490
+#: src/frontends/qt/GuiDocument.cpp:4529
 msgid "&Use Hyperref Support"
 msgstr "Hyperref-Unterstützung &verwenden"
 
-#: src/frontends/qt/GuiDocument.cpp:4843
+#: src/frontends/qt/GuiDocument.cpp:4882
 msgid "Can't set layout!"
 msgstr "Kann Format nicht verwenden!"
 
-#: src/frontends/qt/GuiDocument.cpp:4844
+#: src/frontends/qt/GuiDocument.cpp:4883
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Kann Format für ID '%1$s' nicht verwenden"
 
-#: src/frontends/qt/GuiDocument.cpp:4947
+#: src/frontends/qt/GuiDocument.cpp:4986
 msgid "Not Found"
 msgstr "Nicht gefunden"
 
-#: src/frontends/qt/GuiDocument.cpp:5009
+#: src/frontends/qt/GuiDocument.cpp:5048
 msgid "Assigned master does not include this file"
 msgstr "Zugewiesenes Hauptdokument bettet diese Datei nicht ein"
 
-#: src/frontends/qt/GuiDocument.cpp:5010
+#: src/frontends/qt/GuiDocument.cpp:5049
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -33094,11 +33118,11 @@ msgstr ""
 "'%1$s' einbetten, sonst bleibt die\n"
 "vorgenommene Zuordnung des Hauptdokuments wirkungslos."
 
-#: src/frontends/qt/GuiDocument.cpp:5014
+#: src/frontends/qt/GuiDocument.cpp:5053
 msgid "Could not load master"
 msgstr "Konnte das Hauptdokument nicht laden"
 
-#: src/frontends/qt/GuiDocument.cpp:5015
+#: src/frontends/qt/GuiDocument.cpp:5054
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -33107,23 +33131,23 @@ msgstr ""
 "Das Hauptdokument '%1$s'\n"
 "konnte nicht geladen werden."
 
-#: src/frontends/qt/GuiDocument.cpp:5165
+#: src/frontends/qt/GuiDocument.cpp:5204
 msgid "%1 (missing req.)"
 msgstr "%1 (fehlende Vor.)"
 
-#: src/frontends/qt/GuiDocument.cpp:5177
+#: src/frontends/qt/GuiDocument.cpp:5216
 msgid "personal module"
 msgstr "persönliches Modul"
 
-#: src/frontends/qt/GuiDocument.cpp:5177
+#: src/frontends/qt/GuiDocument.cpp:5216
 msgid "distributed module"
 msgstr "mitgeliefertes Modul"
 
-#: src/frontends/qt/GuiDocument.cpp:5178
+#: src/frontends/qt/GuiDocument.cpp:5217
 msgid "<b>Module name:</b> <i>%1</i> (%2)"
 msgstr "<b>Modulname:</b> <i>%1</i> (%2)"
 
-#: src/frontends/qt/GuiDocument.cpp:5184
+#: src/frontends/qt/GuiDocument.cpp:5223
 msgid "<b>Note:</b> Some requirements for this module are missing!"
 msgstr ""
 "<b>Achtung:</b> Einige Voraussetzungen für dieses Modul sind nicht gegeben!"
@@ -34236,43 +34260,43 @@ msgstr "Testebene"
 msgid "Set"
 msgstr "Aktiv"
 
-#: src/frontends/qt/GuiRef.cpp:50
+#: src/frontends/qt/GuiRef.cpp:51
 msgid "Cross-reference"
 msgstr "Querverweis"
 
-#: src/frontends/qt/GuiRef.cpp:60
+#: src/frontends/qt/GuiRef.cpp:61
 msgid "All available labels"
 msgstr "Alle verfügbaren Marken"
 
-#: src/frontends/qt/GuiRef.cpp:61
+#: src/frontends/qt/GuiRef.cpp:62
 msgid "Enter string to filter the list of available labels"
 msgstr "Geben Sie eine Zeichenkette zum Filtern der verfügbaren Marken ein."
 
-#: src/frontends/qt/GuiRef.cpp:68
+#: src/frontends/qt/GuiRef.cpp:69
 msgid "By Occurrence"
 msgstr "Nach Vorkommen"
 
-#: src/frontends/qt/GuiRef.cpp:69
+#: src/frontends/qt/GuiRef.cpp:70
 msgid "Alphabetically (Case-Insensitive)"
 msgstr "Alphabetisch"
 
-#: src/frontends/qt/GuiRef.cpp:70
+#: src/frontends/qt/GuiRef.cpp:71
 msgid "Alphabetically (Case-Sensitive)"
 msgstr "Alphabetisch (Groß- vor Kleinschreibung)"
 
-#: src/frontends/qt/GuiRef.cpp:73
+#: src/frontends/qt/GuiRef.cpp:74
 msgid "Update the label list"
 msgstr "Liste der Marken aktualisieren"
 
-#: src/frontends/qt/GuiRef.cpp:389
+#: src/frontends/qt/GuiRef.cpp:398
 msgid "&Go Back"
 msgstr "&Gehe zurück"
 
-#: src/frontends/qt/GuiRef.cpp:390
+#: src/frontends/qt/GuiRef.cpp:399
 msgid "Jump back to the original cursor location"
 msgstr "Springe zur ursprünglichen Cursor-Platzierung zurück"
 
-#: src/frontends/qt/GuiRef.cpp:466 src/frontends/qt/GuiRef.cpp:486
+#: src/frontends/qt/GuiRef.cpp:480 src/frontends/qt/GuiRef.cpp:501
 msgid "<No prefix>"
 msgstr "<Ohne Präfix>"
 
@@ -35460,11 +35484,11 @@ msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
 msgstr ""
 "Filtere Formate mit \"%1$s\". Drücken Sie ESC, um den Filter zu entfernen."
 
-#: src/frontends/qt/LayoutBox.cpp:349 src/frontends/qt/LayoutBox.cpp:404
+#: src/frontends/qt/LayoutBox.cpp:349 src/frontends/qt/LayoutBox.cpp:405
 msgid "Enter characters to filter the layout list."
 msgstr "Geben Sie Zeichen zum Filtern der Absatzformatliste ein."
 
-#: src/frontends/qt/LayoutBox.cpp:517
+#: src/frontends/qt/LayoutBox.cpp:519
 #, c-format
 msgid "%1$s (unknown)"
 msgstr "%1$s (unbekannt)"
@@ -36057,7 +36081,7 @@ msgstr "Kein Literaturverzeichnis definiert!"
 msgid "+ %1$d more entries."
 msgstr "+ %1$d weitere Einträge."
 
-#: src/insets/InsetCitation.cpp:579 src/insets/InsetRef.cpp:516
+#: src/insets/InsetCitation.cpp:579 src/insets/InsetRef.cpp:538
 msgid "BROKEN: "
 msgstr "UNGÜLTIG: "
 
@@ -36859,7 +36883,7 @@ msgstr ""
 "Die Marke %1$s existiert bereits,\n"
 "sie wird zu %2$s geändert."
 
-#: src/insets/InsetLabel.cpp:180
+#: src/insets/InsetLabel.cpp:181
 msgid "DUPLICATE: "
 msgstr "DUPLIKAT: "
 
@@ -37204,7 +37228,7 @@ msgstr "Beschreibung: "
 msgid "Sorting: "
 msgstr "Sortierung: "
 
-#: src/insets/InsetNote.cpp:269
+#: src/insets/InsetNote.cpp:276
 msgid "note"
 msgstr "Notiz"
 
@@ -37252,51 +37276,51 @@ msgstr "%1$sText"
 msgid "text%1$s"
 msgstr "Text%1$s"
 
-#: src/insets/InsetRef.cpp:599
+#: src/insets/InsetRef.cpp:621
 msgid "Ref"
 msgstr "Querverweis"
 
-#: src/insets/InsetRef.cpp:600
+#: src/insets/InsetRef.cpp:622
 msgid "EqRef"
 msgstr "(Querverweis)"
 
-#: src/insets/InsetRef.cpp:601 src/mathed/InsetMathRef.cpp:373
+#: src/insets/InsetRef.cpp:623 src/mathed/InsetMathRef.cpp:373
 msgid "Page Number"
 msgstr "Seitennummer"
 
-#: src/insets/InsetRef.cpp:602 src/mathed/InsetMathRef.cpp:374
+#: src/insets/InsetRef.cpp:624 src/mathed/InsetMathRef.cpp:374
 msgid "Textual Page Number"
 msgstr "Seitennummer in Textform"
 
-#: src/insets/InsetRef.cpp:602
+#: src/insets/InsetRef.cpp:624
 msgid "TextPage"
 msgstr "TextSeite"
 
-#: src/insets/InsetRef.cpp:603 src/mathed/InsetMathRef.cpp:375
+#: src/insets/InsetRef.cpp:625 src/mathed/InsetMathRef.cpp:375
 msgid "Standard+Textual Page"
 msgstr "Standard+Seite in Textform"
 
-#: src/insets/InsetRef.cpp:603
+#: src/insets/InsetRef.cpp:625
 msgid "Ref+Text"
 msgstr "Querverweis+Text"
 
-#: src/insets/InsetRef.cpp:604 src/mathed/InsetMathRef.cpp:377
+#: src/insets/InsetRef.cpp:626 src/mathed/InsetMathRef.cpp:377
 msgid "Reference to Name"
 msgstr "Referenz auf Namen"
 
-#: src/insets/InsetRef.cpp:604
+#: src/insets/InsetRef.cpp:626
 msgid "NameRef"
 msgstr "Namen-Querverweis"
 
-#: src/insets/InsetRef.cpp:605
+#: src/insets/InsetRef.cpp:627
 msgid "Formatted"
 msgstr "Formatiert"
 
-#: src/insets/InsetRef.cpp:605
+#: src/insets/InsetRef.cpp:627
 msgid "Format"
 msgstr "Format"
 
-#: src/insets/InsetRef.cpp:606 src/mathed/InsetMathRef.cpp:378
+#: src/insets/InsetRef.cpp:628 src/mathed/InsetMathRef.cpp:378
 msgid "Label Only"
 msgstr "Nur Marke"
 
@@ -37687,14 +37711,14 @@ msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden."
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden."
 
-#: src/mathed/InsetMathMacro.cpp:1188
+#: src/mathed/InsetMathMacro.cpp:1190
 msgid "Uncodable characters in math macro"
 msgstr "Unkodierbare Zeichen in Mathe-Makro"
 
-#: src/mathed/InsetMathMacro.cpp:1189
+#: src/mathed/InsetMathMacro.cpp:1191
 #, c-format
 msgid ""
-"The macro name '%1$s' contains a character.\n"
+"The macro name '%1$s' contains a character\n"
 "that is not encodable in the current encoding (%2$s).\n"
 "Please fix this macro."
 msgstr ""
@@ -37702,7 +37726,7 @@ msgstr ""
 "in der aktuellen Kodierung kodierbar sind (%2$s).\n"
 "Bitte korrigieren Sie das Makro."
 
-#: src/mathed/InsetMathMacro.cpp:1348 src/mathed/InsetMathMacro.cpp:1354
+#: src/mathed/InsetMathMacro.cpp:1350 src/mathed/InsetMathMacro.cpp:1356
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Makro: %1$s"
@@ -38205,6 +38229,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Validation required!"
+#~ msgstr "Validierung erforderlich!"
 
 #~ msgid "New Docu&ment"
 #~ msgstr "N&eues Dokument"
