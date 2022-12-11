@@ -4605,7 +4605,7 @@ def revert_starred_refs(document):
 
 
 def convert_starred_refs(document):
-    " Convert inset index macros "
+    " Convert starred refs "
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset ref", i)
