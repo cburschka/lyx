@@ -23,7 +23,7 @@ if [ -z "$EDITOR" ]; then EDITOR=vi; fi
 # Option variables
 
 # Options to make, when we compile
-MAKEOPTS="-j8";
+MAKEOPTS="-j12";
 # Compile?
 COMPILE="YES";
 # Make patch file?
@@ -49,7 +49,7 @@ shift $(($OPTIND - 1));
 
 # Determine LyX version
 cd $SRCDIR/
-VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
+VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(\[LyX\],\[([^,]+)\]/; print $1;}');
 
 # Development release?
 DEVEL_RELEASE="";
