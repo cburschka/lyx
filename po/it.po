@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-12-10 18:36+0100\n"
-"PO-Revision-Date: 2022-12-10 18:53+0100\n"
+"PO-Revision-Date: 2022-12-11 14:13+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -27396,8 +27396,8 @@ msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr ""
-"Il file %1$s è stato generato da una precedente\n"
-"versione di LyX e lo script lyx2lyx non è riuscito a convertirlo."
+"Il file %1$s è stato generato da una precedente versione di LyX e lo script "
+"lyx2lyx non è riuscito a convertirlo."
 
 #: src/Buffer.cpp:1384
 #, c-format
@@ -27405,8 +27405,8 @@ msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr ""
-"Il file %1$s è stato generato da una versione\n"
-"più recente di LyX e lo script lyx2lyx non è riuscito a convertirlo."
+"Il file %1$s è stato generato da una versione più recente di LyX e lo script "
+"lyx2lyx non è riuscito a convertirlo."
 
 #: src/Buffer.cpp:1463 src/Buffer.cpp:4742 src/Buffer.cpp:4851
 msgid "File is read-only"
@@ -27940,80 +27940,80 @@ msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
 "the AMS math toolbars are inserted into formulas"
 msgstr ""
-"Il pacchetto LaTeX amsmath sarà usato solo se comandi\n"
-"o simboli AMS vengono inseriti nelle formule"
+"Il pacchetto LaTeX amsmath sarà usato solo se comandi o simboli AMS vengono "
+"inseriti nelle formule"
 
 #: src/BufferParams.cpp:536
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
-"Il pacchetto LaTeX amssymb sarà usato solo se\n"
-"simboli AMS vengono inseriti nelle formule"
+"Il pacchetto LaTeX amssymb sarà usato solo se simboli AMS vengono inseriti "
+"nelle formule"
 
 #: src/BufferParams.cpp:538
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
 msgstr ""
-"Il pacchetto LaTeX cancel sarà usato solo se comandi\n"
-"\\cancel vengono inseriti nelle formule"
+"Il pacchetto LaTeX cancel sarà usato solo se comandi \\cancel vengono "
+"inseriti nelle formule"
 
 #: src/BufferParams.cpp:540
 msgid ""
 "The LaTeX package esint is only used if special integral symbols are inserted "
 "into formulas"
 msgstr ""
-"Il pacchetto LaTeX esint sarà usato solo se simboli di\n"
-"integrale speciali vengono inseriti nelle formule"
+"Il pacchetto LaTeX esint sarà usato solo se simboli di integrale speciali "
+"vengono inseriti nelle formule"
 
 #: src/BufferParams.cpp:542
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
 msgstr ""
-"Il pacchetto LaTeX mathdots sarà usato solo se\n"
-"il comando \\iddots viene inserito nelle formule"
+"Il pacchetto LaTeX mathdots sarà usato solo se il comando \\iddots viene "
+"inserito nelle formule"
 
 #: src/BufferParams.cpp:544
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
 "inserted into formulas"
 msgstr ""
-"Il pacchetto LaTeX mathtools sarà usato solo se alcune\n"
-"relazioni matematiche vengono inserite nelle formule"
+"Il pacchetto LaTeX mathtools sarà usato solo se alcune relazioni matematiche "
+"vengono inserite nelle formule"
 
 #: src/BufferParams.cpp:546
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
 msgstr ""
-"Il pacchetto LaTeX mhchem sarà usato solo se i\n"
-"comandi \\ce o \\cf vengono inseriti nelle formule"
+"Il pacchetto LaTeX mhchem sarà usato solo se i comandi \\ce o \\cf vengono "
+"inseriti nelle formule"
 
 #: src/BufferParams.cpp:548
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
 "subscript is inserted into formulas"
 msgstr ""
-"Il pacchetto LaTeX stackrel sarà usato solo se il comando\n"
-"\\stackrel con pedici viene inserito nelle formule"
+"Il pacchetto LaTeX stackrel sarà usato solo se il comando \\stackrel con "
+"pedici viene inserito nelle formule"
 
 #: src/BufferParams.cpp:550
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
 "symbol font for theoretical computer science are inserted into formulas"
 msgstr ""
-"Il pacchetto LaTeX stmaryrd sarà usato solo se vengono inseriti nelle\n"
-"formule simboli dai caratteri St Mary's Road per informatica teorica"
+"Il pacchetto LaTeX stmaryrd sarà usato solo se vengono inseriti nelle formule "
+"simboli dai caratteri St Mary's Road per informatica teorica"
 
 #: src/BufferParams.cpp:552
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
 "decoration 'utilde'"
 msgstr ""
-"Il pacchetto LaTeX undertilde sarà usato solo se\n"
-"la decorazione 'utilde' viene utilizzata nelle formule"
+"Il pacchetto LaTeX undertilde sarà usato solo se la decorazione 'utilde' "
+"viene utilizzata nelle formule"
 
 #: src/BufferParams.cpp:787
 #, c-format
