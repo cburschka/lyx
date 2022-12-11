@@ -1141,11 +1141,13 @@ cmd_ret const runCommand(string const & cmd)
 	DWORD pret;
 	BOOL success = GetExitCodeProcess(process.hProcess, &pret);
 	bool valid = (pret == 0) && success;
+	if (!success)
+		pret = -1;
 	if (!infile.empty())
 		CloseHandle(startup.hStdInput);
 	CloseHandle(process.hProcess);
 	if (fclose(inf) != 0)
-		valid = false;
+		pret = -1;
 #elif defined (HAVE_PCLOSE)
 	int const pret = pclose(inf);
 	bool const valid = (WEXITSTATUS(pret) == 0);
@@ -1156,7 +1158,7 @@ cmd_ret const runCommand(string const & cmd)
 #error No pclose() function.
 #endif
 
-	if (!valid)
+	if (pret == -1)
 		perror("RunCommand: could not terminate child process");
 
 	return { valid, result };
