@@ -4529,7 +4529,7 @@ Articles
 
 \begin_layout Standard
 
-\change_inserted 564990737 1670439557
+\change_inserted 564990737 1670794710
 See also the document classes in the Collections (section
 \begin_inset space ~
 \end_inset
@@ -4542,6 +4542,1099 @@ reference "sec:Collections"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+A&A Paper
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Original by 
+\noun on
+Peter Sütterlin
+\noun default
+; updated by the \SpecialChar LyX
+ Team
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Introduction
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+This section describes how \SpecialChar LyX
+ can be used to write articles for submission
+ to the scientific journal 
+\emph on
+Astronomy and Astrophysics
+\emph default
+ (
+\begin_inset CommandInset href
+LatexCommand href
+name "aa-package"
+target "http://ftp.edpsciences.org/pub/aa/aa-package.zip"
+literal "false"
+
+\end_inset
+
+) using Version 9.1 of the document class 
+\family typewriter
+aa.cls
+\family default
+; information about it is available at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1670794716
+
+https://www.aanda.org/for-authors/latex-issues/texnical-background-information
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+A manual comes together with the package and should be consulted before
+ installing this document class as described in the 
+\emph on
+Installing New Document Classe
+\emph default
+s section of the 
+\emph on
+Customization
+\emph default
+ manual.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Please note that the publisher of the journal was changed from Springer
+ to EDP Sciences starting January 1, 2001.
+ That change also involved some slight changes to the style files, namely
+ the removal of the thesaurus command.
+ If you have an older version installed, please upgrade.
+ For information about compatibility with the old (version 4) layout, please
+ refer to the comments in 
+\family typewriter
+\SpecialChar LyX
+Dir/layouts/aapaper.layout
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Getting started
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+It is recommended you start from the template 
+\emph on
+aa.lyx
+\emph default
+ in the menu 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar menuseparator
+New
+\begin_inset space ~
+\end_inset
+
+fro
+\bar under
+m
+\bar default
+
+\begin_inset space ~
+\end_inset
+
+Template
+\family default
+.
+ If you are not using the template, note the following settings:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Select 
+\family sans
+article (A&A)
+\family default
+ in the 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar menuseparator
+
+\bar under
+S
+\bar default
+ettings\SpecialChar menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+Class
+\family default
+ dialog (OK, that one was obvious).
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Don't change the 
+\family sans
+Headings
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+s
+\bar default
+tyle
+\family default
+ in the 
+\family sans
+Page
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog: leave it set to 
+\family sans
+Default
+\family default
+.
+ The whole layout is done by the macros, you shouldn't change anything.
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+The header block
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+First thing to enter is the header information.
+ It consists of five entries, of which one is optional.
+ They are
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Title
+\family default
+: [required] 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Subtitle
+\family default
+: [optional] 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Author
+\family default
+: [required]
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+Institute
+\family default
+: [required]
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Date
+\family default
+: [required].
+ Suggested format is 
+\family typewriter
+Received: <date>; Accepted <date> 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Although the order of the single header entries doesn't matter it is advised
+ to keep the above sequence, just to get the best optics and meets the layout
+ of the real document.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+If you want to place footnotes in the header block, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+to state your present address, just use the standard footnote via the menu
+ 
+\family sans
+\bar under
+I
+\bar default
+nsert\SpecialChar menuseparator
+
+\bar under
+F
+\bar default
+ootnote.
+
+\family default
+ \SpecialChar LyX
+ will automagically use the term 
+\family typewriter
+
+\backslash
+thanks{}
+\family default
+ in that case.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+In addition to these topics, the macros use three additional \SpecialChar LaTeX
+ commands that
+ have no counterpart in \SpecialChar LyX
+:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+
+\backslash
+and
+\family default
+ to separate different names for more than one author and institute, respectivel
+y.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+
+\backslash
+inst{<nr>}
+\family default
+ to mark corresponding author/institute pairs.
+ The institutes are numbered sequentially as they appear in the 
+\family sans
+Institute
+\family default
+ field, so you have to put a marker to each author.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+
+\backslash
+email{address}
+\family default
+ to supply an email address for fast contact.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+In all cases, the appropriate command has to be entered as \SpecialChar TeX
+ code in \SpecialChar LyX
+.
+ See the examples in the template and in the file 
+\emph on
+aa_sample.lyx
+\emph default
+ in the 
+\family sans
+Examples
+\family default
+ directory.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+The abstract
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+The abstract should immediately follow the header block and must contain
+ five tokens: 
+\family typewriter
+
+\backslash
+abstract{}{}{}{}{}
+\family default
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+context heading
+\family default
+ (optional) {} leave it empty if necessary 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+aims heading
+\family default
+ (mandatory) {} 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+methods heading
+\family default
+ (mandatory) {} 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+results heading
+\family default
+ (mandatory) {} 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+conclusions heading
+\family default
+ (optional) {} leave it empty if necessary 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+(NB.
+ This structure not shown in 
+\emph on
+aa_sample.lyx.
+\emph default
+)
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Supported environments
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+The A&A paper layout supports the following environments for structuring
+ your text:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Standard
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Section
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Subsection
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Subsubsection
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Itemize
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Enumerate
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Description
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Caption
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Abstract
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Acknowledgment
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+Bibliography
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family sans
+\lang american
+\SpecialChar LaTeX
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Commands not supported by \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Some commands are not yet supported by the 
+\family sans
+paper (A&A)
+\family default
+ layout for \SpecialChar LyX
+.
+ Some have already been mentioned.
+ For the sake of completeness, they are listed all together here:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+
+\backslash
+and
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+
+\backslash
+email
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+
+\backslash
+inst{}
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+
+\backslash
+keywords{}
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1670794716
+
+\family typewriter
+\lang american
+
+\backslash
+object{}
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+If you want to use any of these commands, you have to enter them yourself.
+ 
+\family typewriter
+Do not forget to use
+\family sans
+ 
+\bar under
+I
+\bar default
+nsert\SpecialChar menuseparator
+\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+Code
+\family default
+\series bold
+!
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Figure and Table Floats
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+\SpecialChar LyX
+ provides support for the necessary float environments 
+\family sans
+figure, figure*, table
+\family default
+ and 
+\family sans
+table*
+\family default
+, therefore we won't tell much about it here.
+ Refer to the 
+\emph on
+User's
+\begin_inset space ~
+\end_inset
+
+Guide
+\emph default
+.
+ Just remember that tables should be left-aligned.
+ For that, select the table and change the alignment in 
+\family sans
+\bar under
+E
+\bar default
+dit\SpecialChar menuseparator
+
+\bar under
+P
+\bar default
+aragraph
+\begin_inset space ~
+\end_inset
+
+Settings.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+There is only one special thing: the figures with a caption beside the figure.
+ To create such a figure, you have to do the following:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Create a wide figure float: 
+\family sans
+\bar under
+I
+\bar default
+nsert\SpecialChar menuseparator
+Flo
+\bar under
+a
+\bar default
+t\SpecialChar menuseparator
+Figure
+\family default
+, then, from within the float, use the menu 
+\family sans
+\bar under
+E
+\bar default
+dit\SpecialChar menuseparator
+Flo
+\bar under
+a
+\bar default
+t
+\begin_inset space ~
+\end_inset
+
+Settings
+\family default
+ and check 
+\family sans
+\bar under
+S
+\bar default
+pan
+\begin_inset space ~
+\end_inset
+
+columns
+\family default
+ in the 
+\family sans
+float
+\family default
+ dialog.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Enter your caption text.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Press 
+\family sans
+Return
+\family default
+ to move the cursor above the caption.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Insert your figure
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Position the cursor after the figure and insert a horizontal fill by using
+ the menu: 
+\family sans
+\bar under
+I
+\bar default
+nsert\SpecialChar menuseparator
+F
+\bar under
+o
+\bar default
+rmatting\SpecialChar menuseparator
+H
+\bar under
+o
+\bar default
+rizontal
+\begin_inset space ~
+\end_inset
+
+Space
+\family default
+ to open the 
+\family sans
+space
+\family default
+ dialog and select the 
+\family sans
+Horizontal fill
+\family default
+ option from the 
+\family sans
+\bar under
+S
+\bar default
+pacing
+\family default
+ pull-down menu.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Switch to \SpecialChar LaTeX
+ mode: 
+\family sans
+M-c
+\begin_inset space ~
+\end_inset
+
+t
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Enter 
+\family typewriter
+
+\backslash
+parbox[b]{55mm}{
+\family default
+ 
+\emph on
+Do not close the brace!
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Position the cursor behind the caption text, switch to \SpecialChar LaTeX
+ mode and insert
+ the closing brace: 
+\family sans
+M-c
+\begin_inset space ~
+\end_inset
+
+t
+\family default
+ 
+\family typewriter
+}
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Also, refer to the figures in the file 
+\emph on
+aa_sample.lyx
+\emph default
+ in the 
+\family sans
+Examples
+\family default
+ directory.
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+Referee layout
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+For submission, the paper has to be formatted in a special double-spacing
+ layout.
+ For this purpose, you have to add the option 
+\family typewriter
+referee
+\family default
+ to the 
+\family sans
+Cus
+\bar under
+t
+\bar default
+om Class
+\begin_inset space ~
+\end_inset
+
+options
+\family default
+ in the 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar menuseparator
+
+\bar under
+S
+\bar default
+ettings\SpecialChar menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+Class
+\family default
+ dialog.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1670794716
+
+\lang american
+The example paper
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1670794716
+
+\lang american
+The example paper 
+\emph on
+aa_sample.lyx
+\emph default
+ was written with \SpecialChar LyX
+.
+ It is the example paper from the original macro package, 
+\family typewriter
+aa.dem
+\family default
+ in the 
+\begin_inset CommandInset href
+LatexCommand href
+name "aa-package"
+target "http://ftp.edpsciences.org/pub/aa/aa-package.zip"
+literal "false"
+
+\end_inset
+
+, but translated to \SpecialChar LyX
+ using the older unstructured abstract type.
+ Use it for inspiration, and compare the \SpecialChar LaTeX
+ code in 
+\family typewriter
+aa.dem
+\family default
+ with the \SpecialChar LyX
+ way of writing.
 \end_layout
 
 \begin_layout Section
