@@ -1148,10 +1148,10 @@ cmd_ret const runCommand(string const & cmd)
 		valid = false;
 #elif defined (HAVE_PCLOSE)
 	int const pret = pclose(inf);
-	bool const valid = (pret != -1);
+	bool const valid = (WEXITSTATUS(pret) == 0);
 #elif defined (HAVE__PCLOSE)
 	int const pret = _pclose(inf);
-	bool const valid = (pret != -1);
+	bool const valid = (WEXITSTATUS(pret) == 0);
 #else
 #error No pclose() function.
 #endif
