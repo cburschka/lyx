@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -34,9 +34,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -96,12 +96,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -114,8 +118,7 @@ status open
 
 \lang english
 Compilation of this example fails on updated TeX Live 2020.
- The smaintainer of the “seminar” package is not planning to fix the core
- issue since the package is old.
+ The smaintainer of the “seminar” package is not planning to fix the core issue since the package is old.
  A workaround is to export to .tex and prepend as the first line the following:
  
 \backslash
@@ -143,7 +146,8 @@ Seminar
 status collapsed
 
 \begin_layout Plain Layout
-traduction francophone Jean-Pierre Chrétien, mise à jour 09/2016
+traduction francophone Jean-Pierre Chrétien,
+ mise à jour 09/2016
 \end_layout
 
 \end_inset
@@ -192,8 +196,8 @@ literal "false"
 \end_inset
 
  est conçue pour créer des transparents pour rétroprojecteur.
- Pour des présentations à la PowerPoint, une classe de document appropriée
- comme
+ Pour des présentations à la PowerPoint,
+ une classe de document appropriée comme
 \family sans
  beamer
 \family default
@@ -223,15 +227,16 @@ Inserts personnalisables
 
 \begin_layout Itemize
 Pratiquement tout ce qui peut apparaître en \SpecialChar LaTeX
- ordinaire peut aussi figurer
- dans un transparent (sauf les flottants).
+ ordinaire peut aussi figurer dans un transparent (sauf les flottants).
 \end_layout
 
 \begin_deeper
 \begin_layout Plain Layout
-Styles complémentaires: 
+Styles complémentaires:
+ 
 \family sans
-TitreDiapo, SousTitreDiapo
+TitreDiapo,
+ SousTitreDiapo
 \end_layout
 
 \end_deeper
@@ -275,9 +280,8 @@ literal "false"
 
 \end_inset
 
-: la taille et l'orientation des transparents présente des problèmes suivant
- les formats de sortie et l'utilitaire d'affichage (voir le transparent
- 
+:
+ la taille et l'orientation des transparents présente des problèmes suivant les formats de sortie et l'utilitaire d'affichage (voir le transparent 
 \begin_inset Quotes cld
 \end_inset
 
@@ -381,7 +385,8 @@ notesonly
 \end_layout
 
 \begin_layout Description
-portrait orientation portrait (orientation implicite: paysage)
+portrait orientation portrait (orientation implicite:
+ paysage)
 \end_layout
 
 \begin_layout Description
@@ -394,8 +399,7 @@ article imprime comme un article (2 par page avec PDF (dvipdfm) et l'option
 \end_layout
 
 \begin_layout Description
-semrot pivote les transparents dont l'orientation ne correspond pas au réglage
- pour le document.
+semrot pivote les transparents dont l'orientation ne correspond pas au réglage pour le document.
 \end_layout
 
 \begin_layout Standard
@@ -417,8 +421,8 @@ Préambule LaTeX
 \begin_layout Description
 
 \backslash
-onlyslides{8,9,11} imprime seulement les transparents numéro 8, 9 et 11
- (e.
+onlyslides{8,9,11} imprime seulement les transparents numéro 8,
+ 9 et 11 (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -436,7 +440,8 @@ notslides{4,8,9,11} n'imprime pas ces transparents
 \end_layout
 
 \begin_layout Plain Layout
-Pour plus d'options de configuration, voir 
+Pour plus d'options de configuration,
+ voir 
 \begin_inset CommandInset href
 LatexCommand href
 name "sem-user.pdf"
@@ -462,8 +467,8 @@ Listes/TdM
 \family sans
 Seminar
 \family default
- définit des commandes pour créer un sommaire, car la table des matières
- n'affiche que les titres et sous-titres de section 
+ définit des commandes pour créer un sommaire,
+ car la table des matières n'affiche que les titres et sous-titres de section 
 \begin_inset Quotes cld
 \end_inset
 
@@ -483,8 +488,8 @@ L'insert
 \family sans
 ContenuDiapo
 \family default
- est similaire à la table des matières, mais n'affiche que la liste des
- 
+ est similaire à la table des matières,
+ mais n'affiche que la liste des 
 \family sans
 TitreDiapo
 \family default
@@ -505,7 +510,8 @@ TitreDiapo
 \end_layout
 
 \begin_layout Standard
-Similaire à une liste des tableaux, le style 
+Similaire à une liste des tableaux,
+ le style 
 \family sans
 ListeDiapos
 \family default
@@ -533,8 +539,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-Si vous souhaitez assurer à l'auditoire que la présentation est bientôt
- terminée, insérez un transparent avec 
+Si vous souhaitez assurer à l'auditoire que la présentation est bientôt terminée,
+ insérez un transparent avec 
 \family typewriter
 SommaireProgression
 \family default
@@ -559,8 +565,7 @@ Mise en page
 \end_layout
 
 \begin_layout Standard
-Vous pouvez spécifier une famille sans empattements et une police adéquate
- via 
+Vous pouvez spécifier une famille sans empattements et une police adéquate via 
 \family sans
 Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
@@ -571,8 +576,8 @@ Polices
 
 \begin_layout Standard
 Le préambule \SpecialChar LaTeX
- est l'endroit adéquat pour ajouter de nombreuses options pour
- enrichir la présentation, e.
+ est l'endroit adéquat pour ajouter de nombreuses options pour enrichir la présentation,
+ e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -659,7 +664,8 @@ a4paper
 \end_layout
 
 \begin_layout Itemize
-Initialement, 
+Initialement,
+ 
 \family typewriter
 seminar.cls
 \family default
@@ -674,7 +680,8 @@ literal "false"
 
 \end_inset
 
-, si vous voulez utiliser des polices non-TeX.
+,
+ si vous voulez utiliser des polices non-TeX.
 \end_layout
 
 \begin_layout Itemize
@@ -691,7 +698,8 @@ paysage
 \end_inset
 
 .
- De ce fait, 
+ De ce fait,
+ 
 \family sans
 Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
@@ -699,7 +707,8 @@ Format de la page\SpecialChar menuseparator
 Orientation
 \family default
  n'a pas d'effet sur le résultat imprimable.
- A la place, ajouter l'option de classe 
+ A la place,
+ ajouter l'option de classe 
 \family typewriter
 portrait
 \family default
@@ -707,21 +716,19 @@ portrait
 \end_layout
 
 \begin_layout Itemize
-Une taille et une orientation correcte des transparents est quelque peu
- problématique.
- En fonction des cas, différents réglages et options d'exportation sont
- plus appropriées.
+Une taille et une orientation correcte des transparents est quelque peu problématique.
+ En fonction des cas,
+ différents réglages et options d'exportation sont plus appropriées.
  voir l'annexe pour les détails.
 \end_layout
 
 \begin_layout Itemize
-Ne mélangez pas des transparents portrait et des transparents paysage, si
- vous voulez utiliser un vidéoprojecteur.
+Ne mélangez pas des transparents portrait et des transparents paysage,
+ si vous voulez utiliser un vidéoprojecteur.
 \end_layout
 
 \begin_layout Itemize
-La compilation avec Xe/LuaTeX fonctionne aussi bien avec les polices TeX
- qu'Unicode.
+La compilation avec Xe/LuaTeX fonctionne aussi bien avec les polices TeX qu'Unicode.
 \end_layout
 
 \begin_layout Section
@@ -730,14 +737,15 @@ Formats de sortie et options diverses
 \end_layout
 
 \begin_layout Itemize
-Les réglages implicites fonctionnent correctement pour des transparents
- projetés sur un écran avec PDF (dvipdfm), PDF (pdflatex), et PDF (XeTeX).
+Les réglages implicites fonctionnent correctement pour des transparents projetés sur un écran avec PDF (dvipdfm),
+ PDF (pdflatex),
+ et PDF (XeTeX).
  
 \end_layout
 
 \begin_layout Itemize
-Pour l'impression sur transparents, les transparents portait et paysage
- peuvent être mélangés si l'option 
+Pour l'impression sur transparents,
+ les transparents portait et paysage peuvent être mélangés si l'option 
 \family typewriter
 semrot
 \family default
@@ -759,14 +767,16 @@ trim margins
 \end_inset
 
  de l'afficheur PDF (e.g.
- Okular), peut être utilisée pour contourner cet obstacle pour des diapositives
- portait et paysage mélangées.
+ Okular),
+ peut être utilisée pour contourner cet obstacle pour des diapositives portait et paysage mélangées.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Les formats de sortie DVI, DVI (LuaTeX), Postscript, et PDF (ps2pdf) nécessitent
- les options 
+Les formats de sortie DVI,
+ DVI (LuaTeX),
+ Postscript,
+ et PDF (ps2pdf) nécessitent les options 
 \family typewriter
 portrait
 \family default
@@ -787,7 +797,8 @@ Options
 \begin_inset space ~
 \end_inset
 
-requises: [] (aucune)
+requises:
+ [] (aucune)
 \end_layout
 
 \begin_layout Standard
@@ -1164,8 +1175,7 @@ PDF (LuaTeX)
 \end_layout
 
 \begin_layout Standard
-¹ zone de texte paysage dans une page portrait (avec XeTeX seulement sur
- la page de titre)
+¹ zone de texte paysage dans une page portrait (avec XeTeX seulement sur la page de titre)
 \end_layout
 
 \begin_layout Standard
@@ -1190,7 +1200,8 @@ Options
 \begin_inset space ~
 \end_inset
 
-requises: [semrot] 
+requises:
+ [semrot] 
 \end_layout
 
 \begin_layout Standard
@@ -1567,8 +1578,7 @@ PDF (LuaTeX)
 \end_layout
 
 \begin_layout Standard
-¹ zone de texte paysage dans une page portrait (avec XeTeX seulement sur
- la page de titre) 
+¹ zone de texte paysage dans une page portrait (avec XeTeX seulement sur la page de titre) 
 \end_layout
 
 \begin_layout Standard
@@ -1589,7 +1599,8 @@ Options
 \begin_inset space ~
 \end_inset
 
-requises: [portrait]
+requises:
+ [portrait]
 \end_layout
 
 \begin_layout Standard
@@ -1979,7 +1990,8 @@ Options
 \begin_inset space ~
 \end_inset
 
-requises: [semrot,portrait] 
+requises:
+ [semrot,portrait] 
 \end_layout
 
 \begin_layout Standard
@@ -2373,7 +2385,8 @@ Options
 \begin_inset space ~
 \end_inset
 
-requises: [article] ou [article,portrait]
+requises:
+ [article] ou [article,portrait]
 \end_layout
 
 \begin_layout Standard

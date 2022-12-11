@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -30,9 +30,9 @@ End
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -83,12 +83,16 @@ End
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -99,7 +103,10 @@ Journal of Important Stuff
 status open
 
 \begin_layout Plain Layout
-The journal name, volume, ccopy, and copnum appear only in jou and doc modes.
+The journal name,
+ volume,
+ ccopy,
+ and copnum appear only in jou and doc modes.
 \end_layout
 
 \end_inset
@@ -109,7 +116,8 @@ The journal name, volume, ccopy, and copnum appear only in jou and doc modes.
 
 \begin_layout Volume
 Vol.
- 0 (2007), pp.~1–22
+ 0 (2007),
+ pp.~1–22
 \end_layout
 
 \begin_layout Copyright
@@ -126,9 +134,11 @@ Long Title of the Paper Which is Very Descriptive of the Work Being Done
 status open
 
 \begin_layout Plain Layout
-Warning: Don't force a newline in manuscript mode.
+Warning:
+ Don't force a newline in manuscript mode.
  It won't compile.
- If you want to in jou or doc mode, that's fine.
+ If you want to in jou or doc mode,
+ that's fine.
 \end_layout
 
 \end_inset
@@ -150,8 +160,8 @@ Author
 status open
 
 \begin_layout Plain Layout
-The left header is used for the author's last name(s), and appears on even-page
- headers in jou mode.
+The left header is used for the author's last name(s),
+ and appears on even-page headers in jou mode.
 \end_layout
 
 \end_inset
@@ -173,26 +183,25 @@ Draft of 12/ 16/12.
 
 \begin_layout Abstract
 This the abstract for my document.
- The purpose of this document is to demonstrate the new apa6 class that
- I have been working on.
- There was a layout file for the original apa document class which was authored
- by Randy Gobbel.
- This document is based on that layout, but includes many additions and
- updates.
- I really don't like having relevant information in a preamble if it is
- not necessary.
- So, styles for all the necessary commands have been included as part of
- the document instead.
+ The purpose of this document is to demonstrate the new apa6 class that I have been working on.
+ There was a layout file for the original apa document class which was authored by Randy Gobbel.
+ This document is based on that layout,
+ but includes many additions and updates.
+ I really don't like having relevant information in a preamble if it is not necessary.
+ So,
+ styles for all the necessary commands have been included as part of the document instead.
 \end_layout
 
 \begin_layout Keywords
-apa6, layout, template, \SpecialChar LyX
+apa6,
+ layout,
+ template,
+ \SpecialChar LyX
 
 \end_layout
 
 \begin_layout AuthorNote
-We would like to acknowledge all of the many people who contributed to this
- work.
+We would like to acknowledge all of the many people who contributed to this work.
 \end_layout
 
 \begin_layout Section
@@ -239,10 +248,11 @@ Subsection Heading
 
 \begin_layout Standard
 This is more standard text.
- If you use the nifty natbibapa module, then you can select apacite as the
- bibliography style below.
+ If you use the nifty natbibapa module,
+ then you can select apacite as the bibliography style below.
  This allows you to do awesome stuff.
- For example, check out this inline citation.
+ For example,
+ check out this inline citation.
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -285,9 +295,11 @@ literal "true"
 status collapsed
 
 \begin_layout Plain Layout
-Unlike the original apa class, the apa6 class does not override whatever
- citation style is listed in the bibliography.
- However, for compliance with apa6, you should set the style to apacite.
+Unlike the original apa class,
+ the apa6 class does not override whatever citation style is listed in the bibliography.
+ However,
+ for compliance with apa6,
+ you should set the style to apacite.
 \end_layout
 
 \end_inset

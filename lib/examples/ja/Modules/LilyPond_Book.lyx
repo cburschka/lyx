@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,9 +21,9 @@ lilypond
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -90,12 +90,16 @@ lilypond
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -116,8 +120,9 @@ LilyPond-bookと\SpecialChar LyX
 
 \begin_layout Abstract
 この文書は、\SpecialChar LyX
-文書への楽譜片の取り込み方の説明と例示を行います。記譜法としては、LilyPond文法を用い、処理にはLilyPond-bookユーティリティを使用
-します。
+文書への楽譜片の取り込み方の説明と例示を行います。
+記譜法としては、LilyPond文法を用い、処理にはLilyPond-bookユーティリティを使用します。
+
 \end_layout
 
 \begin_layout Section
@@ -125,25 +130,28 @@ LilyPond-bookと\SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-LilyPondは、コンピュータで生成した美しい音楽スコアを生成することを可能にするオープンソースプロジェクトです。このプロジェクトには、テキストベースの記譜言
-語と、この記譜法を音楽スコアに変換するプログラムが含まれています。
+LilyPondは、コンピュータで生成した美しい音楽スコアを生成することを可能にするオープンソースプロジェクトです。
+このプロジェクトには、テキストベースの記譜言語と、この記譜法を音楽スコアに変換するプログラムが含まれています。
+
 \end_layout
 
 \begin_layout Standard
-LilyPond自身も、タイトルや作者情報、脚注、巻末注などの表示をサポートしていますが、主な目的はあくまで楽譜の組版です。文章の組版には、一般的に云って、他の
-プログラムの方が向いています。LilyPond-bookは、LilyPond記譜法を使った音楽スコアを、なかんずく\SpecialChar LaTeX
-文書に組み込むことを補助するための、LilyP
-ondプロジェクトが提供するユーティリティです。
+LilyPond自身も、タイトルや作者情報、脚注、巻末注などの表示をサポートしていますが、主な目的はあくまで楽譜の組版です。
+文章の組版には、一般的に云って、他のプログラムの方が向いています。
+LilyPond-bookは、LilyPond記譜法を使った音楽スコアを、なかんずく\SpecialChar LaTeX
+文書に組み込むことを補助するための、LilyPondプロジェクトが提供するユーティリティです。
+
 \end_layout
 
 \begin_layout Standard
 この文書は、\SpecialChar LaTeX
 ベースのレイアウトを用いた\SpecialChar LyX
 文書中で、LilyPond記譜法を用いることで、\SpecialChar LaTeX
-とLilyPondの両方を結びつけて実現される、美しく高品質な組版を得る方
-法を説明します。記譜のために、LiliPond文法の基本を理解していることが必要ですが、\SpecialChar LyX
+とLilyPondの両方を結びつけて実現される、美しく高品質な組版を得る方法を説明します。
+記譜のために、LiliPond文法の基本を理解していることが必要ですが、\SpecialChar LyX
 を使用している限りは\SpecialChar LaTeX
 の知識は必要ありません。
+
 \end_layout
 
 \begin_layout Standard
@@ -151,18 +159,22 @@ ondプロジェクトが提供するユーティリティです。
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:LilyPondコードを使用"
+nolink "false"
 
 \end_inset
 
 節は、必要要件と使用法、\SpecialChar LyX
-中でLiliPond記譜法を用いることの短所を説明します。第
+中でLiliPond記譜法を用いることの短所を説明します。
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:LilyPond-examples"
+nolink "false"
 
 \end_inset
 
 節は、いくつかの例を用いて、その組版の美しさと品質をお見せします。
+
 \end_layout
 
 \begin_layout Section
@@ -179,19 +191,22 @@ name "sec:LilyPondコードを使用"
 
 \begin_layout Standard
 使用中の文書に、LilyPondモジュールを追加すると、\SpecialChar LyX
-でのLilyPond記譜法(LilyPondコード)のサポートが有効になります。これは、
+でのLilyPond記譜法(LilyPondコード)のサポートが有効になります。
+これは、
 \family sans
 文書\SpecialChar menuseparator
 設定
 \family default
-メニューを開いて、モジュール一覧からLilyPondを選択することで、実現できます。\SpecialChar LaTeX
+メニューを開いて、モジュール一覧からLilyPondを選択することで、実現できます。
+\SpecialChar LaTeX
 ベースの\SpecialChar LyX
-レイアウトはどれでも使うことができ、通常のプレビューや書き出し機構も
-使用できます。\SpecialChar LyX
+レイアウトはどれでも使うことができ、通常のプレビューや書き出し機構も使用できます。
+\SpecialChar LyX
 は、\SpecialChar LaTeX
-/LilyPond混在コードを、LilyPond-bookを用いて処理してくれます。LilyPond-bookは、DocBookやHTML文書
-も扱うことができますが、これらの文書型をLilyPond-bookと\SpecialChar LyX
+/LilyPond混在コードを、LilyPond-bookを用いて処理してくれます。
+LilyPond-bookは、DocBookやHTML文書も扱うことができますが、これらの文書型をLilyPond-bookと\SpecialChar LyX
 に統合することは、今のところ実現していません。
+
 \end_layout
 
 \begin_layout Subsection
@@ -200,6 +215,7 @@ name "sec:LilyPondコードを使用"
 
 \begin_layout Standard
 LilyPond-book第2.13版以降。
+
 \begin_inset Foot
 status collapsed
 
@@ -216,6 +232,7 @@ LilyPond-bookは、第2.1版以降で、\SpecialChar LaTeX
 \family default
 フラグ(第2.13版以降)など、\SpecialChar LyX
 が使用する機能の一部は、それよりも最近の版でしか利用することができません。
+
 \end_layout
 
 \end_inset
@@ -233,8 +250,10 @@ LilyPond-bookは、第2.1版以降で、\SpecialChar LaTeX
 挿入\SpecialChar menuseparator
 任意設定差込枠
 \family default
-メニューで挿入することができます。この差込枠は、LilyPondコードを入力するためのもので、このコードが楽譜に組まれることになります。まずは、簡単な音階から始
-めてみましょう。
+メニューで挿入することができます。
+この差込枠は、LilyPondコードを入力するためのもので、このコードが楽譜に組まれることになります。
+まずは、簡単な音階から始めてみましょう。
+
 \end_layout
 
 \begin_layout Standard
@@ -283,6 +302,7 @@ relative c'' {
 上記の\SpecialChar LyX
 差込枠は、以下のような\SpecialChar LaTeX
 様のコードを生成します。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -316,27 +336,33 @@ end{lilypond}
 \end_layout
 
 \begin_layout Standard
-最初の角括弧の中に書かれているのは、LilyPond-bookに渡すオプションです。これは、\SpecialChar LyX
+最初の角括弧の中に書かれているのは、LilyPond-bookに渡すオプションです。
+これは、\SpecialChar LyX
 中では、LilyPond差込枠を挿入したときと同じように、
 \family sans
 挿入
 \family default
-メニューから挿入されたものです。ここでは、譜表(staff)の大きさを28
+メニューから挿入されたものです。
+ここでは、譜表(staff)の大きさを28
 \begin_inset space \thinspace{}
 \end_inset
 
-pt(ポイント)にしています。例えば、
+pt(ポイント)にしています。
+例えば、
 \family typewriter
 [staffsize=28,verbatim]
 \family default
-のように、コンマで区切れば、他のオプションを追加することができます。譜表オプションの一覧は、LilyPond説明書の中にあります。既定の設定が欲しい場合には、角
-括弧ブロック全体を省略することができます。
+のように、コンマで区切れば、他のオプションを追加することができます。
+譜表オプションの一覧は、LilyPond説明書の中にあります。
+既定の設定が欲しい場合には、角括弧ブロック全体を省略することができます。
+
 \end_layout
 
 \begin_layout Standard
-オプションブロックの後に来るのは、LilyPond文法で書かれた楽譜片の文字表記です。このコードは、実は\SpecialChar LaTeX
-が処理するのではなく、LilyPond-bookが前処理
-を行います。LilyPond-bookは、グラフィックファイルを生成し、このコード部分を置き換えた
+オプションブロックの後に来るのは、LilyPond文法で書かれた楽譜片の文字表記です。
+このコードは、実は\SpecialChar LaTeX
+が処理するのではなく、LilyPond-bookが前処理を行います。
+LilyPond-bookは、グラフィックファイルを生成し、このコード部分を置き換えた
 \family typewriter
 
 \backslash
@@ -345,6 +371,7 @@ includegraphics{\SpecialChar ldots
 \family default
 コマンドが、このファイルを\SpecialChar LaTeX
 文書に取り込みます。
+
 \end_layout
 
 \begin_layout Standard
@@ -356,12 +383,14 @@ LilyPond-book\SpecialChar menuseparator
 \SpecialChar LaTeX
 
 \family default
-のようになります。\SpecialChar LyX
+のようになります。
+\SpecialChar LyX
 は.lytexファイルを生成し、次にLilyPond-bookが.texファイルと付随する画像ファイルを生成し、最後に\SpecialChar LaTeX
-が最終文書を生成します。ツー
-ル連鎖の各段階では、あなたが選択した配置方法に従います。つまり、楽譜片を行内に配置するか、独立した段落にするか、中央揃えか左揃えか等々、\SpecialChar LyX
-ウィンドウ内での表示のさ
-れ方は、出力書式でも尊重されます。行内での使用の例としては、
+が最終文書を生成します。
+ツール連鎖の各段階では、あなたが選択した配置方法に従います。
+つまり、楽譜片を行内に配置するか、独立した段落にするか、中央揃えか左揃えか等々、\SpecialChar LyX
+ウィンドウ内での表示のされ方は、出力書式でも尊重されます。
+行内での使用の例としては、
 \begin_inset Flex LilyPond
 status open
 
@@ -391,6 +420,7 @@ flat } }
 \end_inset
 
 のようにコード名を表示したい場合や、非常に短い楽譜片を表示したい時などが挙げられます。
+
 \end_layout
 
 \begin_layout Subsection
@@ -399,13 +429,16 @@ flat } }
 
 \begin_layout Standard
 記譜がどのように見えるかについては、\SpecialChar LyX
-内で直接フィードバックを得ることができます。そのためには、LilyPond差込枠を、
+内で直接フィードバックを得ることができます。
+そのためには、LilyPond差込枠を、
 \family sans
 挿入\SpecialChar menuseparator
 プレビュー
 \family default
-メニューを使って得られるプレビュー差込枠の中に入れなくてはなりません。これは、以下のように、\SpecialChar LyX
+メニューを使って得られるプレビュー差込枠の中に入れなくてはなりません。
+これは、以下のように、\SpecialChar LyX
 内での表示に影響するだけで出力には関係しません。
+
 \end_layout
 
 \begin_layout Standard
@@ -443,8 +476,10 @@ relative c'' {
 \end_layout
 
 \begin_layout Standard
-残念ながら、プレビューがそれほど即座に表示されないことに気づかれるかもしれません。コンパイルを開始するには、カーソルをプレビュー差込枠の外にカーソルを出す必要が
-あり、さらに、処理には数秒の時間がかかり得ます。しかしながら、編集中に、直接フィードバックを得ることには相応の価値があり、文書内の移動を非常に楽にします。
+残念ながら、プレビューがそれほど即座に表示されないことに気づかれるかもしれません。
+コンパイルを開始するには、カーソルをプレビュー差込枠の外にカーソルを出す必要があり、さらに、処理には数秒の時間がかかり得ます。
+しかしながら、編集中に、直接フィードバックを得ることには相応の価値があり、文書内の移動を非常に楽にします。
+
 \end_layout
 
 \begin_layout Subsection
@@ -454,6 +489,7 @@ Gotchas
 \begin_layout Standard
 ここでは、LilyPond-bookと\SpecialChar LyX
 を統合する上で経験された認識のいくつかを紹介します。
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -463,19 +499,21 @@ Gotchas
 \begin_layout Standard
 LilyPondモジュールを用いた\SpecialChar LyX
 文書は、「Input」法を用いた子文書を持つことができません。
+
 \family sans
 挿入\SpecialChar menuseparator
 ファイル\SpecialChar menuseparator
 子文書
 \family default
-において、「取り込みの型」として「Input」を選択すると、出力を生成する際にエラーが発生します。これは、LilyPond-bookが、これらのインプットファイ
-ルを、自動で再帰的に処理してしまうせいです。現在のところ、LilyPond-bookには、この挙動を停止するコマンドラインオプションは存在しないので、代わりに「
-Include」法を使用することを推奨致します。
+において、「取り込みの型」として「Input」を選択すると、出力を生成する際にエラーが発生します。
+これは、LilyPond-bookが、これらのインプットファイルを、自動で再帰的に処理してしまうせいです。
+現在のところ、LilyPond-bookには、この挙動を停止するコマンドラインオプションは存在しないので、代わりに「Include」法を使用することを推奨致します。
+
 \end_layout
 
 \begin_layout Standard
-なお、LilyPondモジュールを使用していない親文書に、LilyPondモジュールを使用した子文書を挿入することは、「Input」法でも「Include」法で
-も可能です。これを動作させるには、
+なお、LilyPondモジュールを使用していない親文書に、LilyPondモジュールを使用した子文書を挿入することは、「Input」法でも「Include」法でも可能です。
+これを動作させるには、
 \family sans
 文書\SpecialChar menuseparator
 設定
@@ -491,6 +529,7 @@ usepackage{graphicx}
 
 \begin_layout Standard
 という行を追加する必要があります。
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -510,7 +549,9 @@ score
 \backslash
 relative
 \family default
-コマンドを検索します。LilyPondコマンドを全く入れないことも可能ですが、その場合には{囲み波括弧}が必要です。したがって、下記のコード
+コマンドを検索します。
+LilyPondコマンドを全く入れないことも可能ですが、その場合には{囲み波括弧}が必要です。
+したがって、下記のコード
 \end_layout
 
 \begin_layout LyX-Code
@@ -533,10 +574,13 @@ end{lilypond}
 
 \begin_layout Standard
 では、LilyPond-bookは、以下のように混乱してしまいます。
+
 \end_layout
 
 \begin_layout LyX-Code
-error: syntax error, unexpected NOTENAME_PITCH
+error:
+ syntax error,
+ unexpected NOTENAME_PITCH
 \end_layout
 
 \begin_layout LyX-Code
@@ -547,6 +591,7 @@ score given
 
 \begin_layout Standard
 囲み波括弧を用いれば、下記のようにうまく行きます。
+
 \end_layout
 
 \begin_layout Standard
@@ -574,8 +619,9 @@ score given
 \end_layout
 
 \begin_layout Standard
-LilyPondコマンドを使用せずに、波括弧内に直接音符を書くと、短い楽譜片を書く場合に便利です。熟練ユーザーは、おそらく、楽曲をLilyPond変数やコマンド
-を使用して入力したいものと思われますが、もちろんその方法もサポートされています。
+LilyPondコマンドを使用せずに、波括弧内に直接音符を書くと、短い楽譜片を書く場合に便利です。
+熟練ユーザーは、おそらく、楽曲をLilyPond変数やコマンドを使用して入力したいものと思われますが、もちろんその方法もサポートされています。
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -590,6 +636,7 @@ LilyPondコマンドを使用せずに、波括弧内に直接音符を書くと
 fret-diagram
 \family default
 マークアップコマンドを用いた、連続したLilyPond楽譜片についてです。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -637,8 +684,9 @@ end{lilypond}
 \end_layout
 
 \begin_layout Standard
-何らかの理由で、LilyPond-book第2.13版は、これを安全モードで走らせると(意図を理解していない限り、つねにこうするべきです)、文句を云います。これは
-第2.15版の時点では修正されています(LilyPond issue #1900にファイルされています)。
+何らかの理由で、LilyPond-book第2.13版は、これを安全モードで走らせると(意図を理解していない限り、つねにこうするべきです)、文句を云います。
+これは第2.15版の時点では修正されています(LilyPond issue #1900にファイルされています)。
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -658,12 +706,13 @@ LilyPond-bookは、
 \backslash
 lilypondfile
 \family default
-コマンドによって、外部ファイルに存在するLilyPondコードを取込むことをサポートしています。このコマンドによって、LilyPondコードは、文書内で打ち込ま
-れたかのように処理され、出力スコアは、行幅・改頁等、\SpecialChar LaTeX
-が定める組版に従います。これは、\SpecialChar LyX
-に長らく存在する、LilyPondスコアを外部素材として取り込む機能とは対照
-的です。そこでは、外部ファイルを処理するのにLilyPondを呼び出し、固定した画像を生成した上で、文書中にこの画像を取り込んでいたので、組版の決定はLilyP
-ondに委ねられていました。残念ながら、\SpecialChar LyX
+コマンドによって、外部ファイルに存在するLilyPondコードを取込むことをサポートしています。
+このコマンドによって、LilyPondコードは、文書内で打ち込まれたかのように処理され、出力スコアは、行幅・改頁等、\SpecialChar LaTeX
+が定める組版に従います。
+これは、\SpecialChar LyX
+に長らく存在する、LilyPondスコアを外部素材として取り込む機能とは対照的です。
+そこでは、外部ファイルを処理するのにLilyPondを呼び出し、固定した画像を生成した上で、文書中にこの画像を取り込んでいたので、組版の決定はLilyPondに委ねられていました。
+残念ながら、\SpecialChar LyX
 での
 \family typewriter
 
@@ -672,6 +721,7 @@ lilypondfile
 \family default
 コマンドのサポートは、まだ実装されていませんが、望むファイルへの完全な絶対パスを与えるということさえ守れば、\SpecialChar TeX
 コードブロック中でこれを使用することは可能です。
+
 \end_layout
 
 \begin_layout Section
@@ -690,18 +740,22 @@ name "sec:LilyPond-examples"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Editorial-headword"
+nolink "false"
 
 \end_inset
 
-は、LilyPond要素を多用した複雑なスコアです。安全モードで実行できるように、この楽譜片のオリジナルソースからは、スキームコードの一部が取り除かれています。
+は、LilyPond要素を多用した複雑なスコアです。
+安全モードで実行できるように、この楽譜片のオリジナルソースからは、スキームコードの一部が取り除かれています。
 また、例
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:タブ譜のひな型"
+nolink "false"
 
 \end_inset
 
 は、ギター奏者に魅力的なLilyPondの出力を示しています。
+
 \end_layout
 
 \begin_layout Subsection
@@ -1231,7 +1285,10 @@ http://lsr.di.unimi.it/LSR/Item?id=627
 
 \end_inset
 
-より。スキームコードは削除。段落設定で中央揃えに。]
+より。
+スキームコードは削除。
+段落設定で中央揃えに。
+]
 \end_layout
 
 \begin_layout Subsection
@@ -1279,7 +1336,8 @@ relative c {
 
 \begin_layout Plain Layout
 
-  c4  e  g,  e'
+  c4  e  g,
+  e'
 \end_layout
 
 \begin_layout Plain Layout

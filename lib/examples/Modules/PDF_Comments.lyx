@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -39,9 +39,9 @@ pdfcomment
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -90,8 +90,8 @@ pdfcomment
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -107,12 +107,16 @@ pdfcomment
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -132,7 +136,8 @@ color=yellow
 status collapsed
 
 \begin_layout Plain Layout
-This sets yellow as default color for new PDF comments, see sec.
+This sets yellow as default color for new PDF comments,
+ see sec.
 \begin_inset space ~
 \end_inset
 
@@ -140,6 +145,7 @@ This sets yellow as default color for new PDF comments, see sec.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:PDF-Comment-setup"
+nolink "false"
 
 \end_inset
 
@@ -166,14 +172,15 @@ The \SpecialChar LaTeX
 pdfcomment
 \series default
  provides full access for PDF comments.
- You can add normal comments as well as margin comments, underlining etc..
- You can also define a special layout for a comment which you can use several
- times in the document.
+ You can add normal comments as well as margin comments,
+ underlining etc..
+ You can also define a special layout for a comment which you can use several times in the document.
  This document is only a excerpt of the documentation of 
 \series bold
 pdfcomment
 \series default
-; see its documentation for all information:
+;
+ see its documentation for all information:
 \begin_inset Newline newline
 \end_inset
 
@@ -215,7 +222,8 @@ PDF-Annotation
 
 \begin_layout Standard
 This is the standard PDF comment.
- Here is an example: 
+ Here is an example:
+ 
 \begin_inset Flex PDF-Annotation
 status open
 
@@ -229,10 +237,9 @@ This is a simple PDF-Annotation.
 \end_layout
 
 \begin_layout Standard
-Like for all PDF comment types you can add a lot of things to the option
- of the inset.
- To insert the options inset, set the cursor into the comment inset and
- use the menu 
+Like for all PDF comment types you can add a lot of things to the option of the inset.
+ To insert the options inset,
+ set the cursor into the comment inset and use the menu 
 \family sans
 Insert\SpecialChar menuseparator
 PDF Comment Options
@@ -248,6 +255,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  All braces and brackets in comment options must be inserted as \SpecialChar TeX
  code!
@@ -271,7 +279,8 @@ Daisy Duck
 \begin_inset Quotes erd
 \end_inset
 
-: 
+:
+ 
 \begin_inset Flex PDF-Annotation
 status open
 
@@ -338,8 +347,8 @@ This is an annotation with a complex option.
 \end_layout
 
 \begin_layout Standard
-To avoid to write the same options like the author again and again, you
- can define a so-called 
+To avoid to write the same options like the author again and again,
+ you can define a so-called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -352,6 +361,7 @@ avatar
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Avatars"
+nolink "false"
 
 \end_inset
 
@@ -359,7 +369,8 @@ reference "sec:Avatars"
 \end_layout
 
 \begin_layout Standard
-For a full list of possible options, please look at the 
+For a full list of possible options,
+ please look at the 
 \series bold
 pdfcomment
 \series default
@@ -372,7 +383,8 @@ PDF-Circle
 
 \begin_layout Standard
 This will typeset a comment in form of a circle or ellipse.
- Here is an example without any options: 
+ Here is an example without any options:
+ 
 \begin_inset Flex PDF-Circle
 status open
 
@@ -386,8 +398,8 @@ a simple circle comment
 \end_layout
 
 \begin_layout Standard
-At the right side you see a large, elliptical comment as example of a PDF-Circle
- with options.
+At the right side you see a large,
+ elliptical comment as example of a PDF-Circle with options.
  
 \begin_inset Flex PDF-Circle
 status open
@@ -397,8 +409,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-id=1,color=blue,height=2.5cm,width=5.8cm,voffset=-2.8cm,hoffset=8cm,opacity=1.0,just
-ification=right,icolor=
+id=1,color=blue,height=2.5cm,width=5.8cm,voffset=-2.8cm,hoffset=8cm,opacity=1.0,justification=right,icolor=
 \begin_inset ERT
 status collapsed
 
@@ -477,15 +488,14 @@ This will typeset a comment in form of a freely positioned box.
 \series bold
 type=callout
 \series default
- the box will have an additional so called callout line, to bind the box
- to a certain element of the page.
+ the box will have an additional so called callout line,
+ to bind the box to a certain element of the page.
  With the option 
 \series bold
 type=typewriter
 \series default
  you can write a comment everywhere on the page with a virtual ’typewriter’.
- These PDF-Freetext annotations do have no frame and a transparent background
- for ’overwriting’ arbitrary parts of the page.
+ These PDF-Freetext annotations do have no frame and a transparent background for ’overwriting’ arbitrary parts of the page.
  Here is an example in form of a yellow rectangle:
 \begin_inset Flex PDF-Freetext
 status open
@@ -495,13 +505,13 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-height=3cm,type=freetext,subject={freetext},width=4.5cm,voffset=-3.2cm,hoffset=-3.2
-cm,opacity=0.9,justification=right
+height=3cm,type=freetext,subject={freetext},width=4.5cm,voffset=-3.2cm,hoffset=-3.2cm,opacity=0.9,justification=right
 \end_layout
 
 \end_inset
 
-This is also a comment, but it is a PDF-Freetext annotation.
+This is also a comment,
+ but it is a PDF-Freetext annotation.
 \end_layout
 
 \end_inset
@@ -530,8 +540,10 @@ PDF-Line
 \end_layout
 
 \begin_layout Standard
-This will typeset a comment in form of a line, polyline or polygon.
- Here is an example without any options: 
+This will typeset a comment in form of a line,
+ polyline or polygon.
+ Here is an example without any options:
+ 
 \begin_inset Flex PDF-Line
 status open
 
@@ -553,8 +565,7 @@ As you can see a PDF-Line comment without options is useless.
 \end_layout
 
 \begin_layout Standard
-The green arrow at the left side of this page is an example for a PDF-Line
- comment with options.
+The green arrow at the left side of this page is an example for a PDF-Line comment with options.
  
 \begin_inset Flex PDF-Line
 status open
@@ -649,7 +660,8 @@ PDF-Margin
 
 \begin_layout Standard
 This will typeset an annotation into the margin.
- Right besides this text is an example without options: 
+ Right besides this text is an example without options:
+ 
 \begin_inset Flex PDF-Margin
 status open
 
@@ -691,9 +703,9 @@ PDF-Markup
 \end_layout
 
 \begin_layout Standard
-This will typeset so called PDF text markup annotations over some text or
- math.
- Here is a markup without options: 
+This will typeset so called PDF text markup annotations over some text or math.
+ Here is a markup without options:
+ 
 \begin_inset Flex PDF-Markup
 status open
 
@@ -715,7 +727,8 @@ markup
 \end_layout
 
 \begin_layout Description
-Highlight The markup text will be highlighted: 
+Highlight The markup text will be highlighted:
+ 
 \begin_inset Flex PDF-Markup
 status open
 
@@ -769,7 +782,8 @@ id=1
 \end_layout
 
 \begin_layout Description
-Underline The markup text will be underlined: 
+Underline The markup text will be underlined:
+ 
 \begin_inset Flex PDF-Markup
 status open
 
@@ -792,7 +806,8 @@ Underlining PDF-Markup
 \end_layout
 
 \begin_layout Description
-Squiggly The markup text will be underlined with a wave: 
+Squiggly The markup text will be underlined with a wave:
+ 
 \begin_inset Flex PDF-Markup
 status open
 
@@ -815,7 +830,8 @@ Underwave PDF-Markup
 \end_layout
 
 \begin_layout Description
-StrikeOut The markup text will be struck-out: 
+StrikeOut The markup text will be struck-out:
+ 
 \begin_inset Flex PDF-Markup
 status open
 
@@ -851,6 +867,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  The PDF-Markup inset cannot be used for this option!
 \end_layout
@@ -930,14 +947,14 @@ the markup text must not be longer than one paragraph
 \end_layout
 
 \begin_layout Itemize
-the markup annotation must not be longer than one page, otherwise the recognitio
-n of the page break will fail
+the markup annotation must not be longer than one page,
+ otherwise the recognition of the page break will fail
 \end_layout
 
 \begin_layout Itemize
 when using Xe\SpecialChar TeX
- you have to assure that the page dimensions are internally
- output, e.
+ you have to assure that the page dimensions are internally output,
+ e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -949,7 +966,8 @@ with the document class option
 \series bold
 pagesize
 \series default
- for the KOMA-Script classes, or the option 
+ for the KOMA-Script classes,
+ or the option 
 \series bold
 pagesize
 \series default
@@ -973,6 +991,7 @@ status open
 
 \series bold
 Attention:
+
 \series default
  Due to technical limitations PDF-Reply only works when using pdflatex.
  On some \SpecialChar LaTeX
@@ -1061,7 +1080,8 @@ replyto=2,date=D:20101212095321+01'00'
 
 \end_inset
 
-Of course, you can reply to a reply.
+Of course,
+ you can reply to a reply.
 \end_layout
 
 \end_inset
@@ -1092,10 +1112,9 @@ PDF-Sideline
 \end_layout
 
 \begin_layout Standard
-This will typeset a comment in form of identical markers on every side of
- the page.
- The yellow arrows besides this text are an example of a PDF-Sideline without
- any options: 
+This will typeset a comment in form of identical markers on every side of the page.
+ The yellow arrows besides this text are an example of a PDF-Sideline without any options:
+ 
 \begin_inset Flex PDF-Sideline
 status open
 
@@ -1111,8 +1130,7 @@ a simple PDF-Sideline
 \begin_layout Standard
 As you can see a PDF-Sideline comment without options is quite useless.
  PDF-Sideline is useful if you want to highlight complete parts of a page.
- The inset options define the layout of the marker while the normal content
- of the inset is the text surrounded by the markers.
+ The inset options define the layout of the marker while the normal content of the inset is the text surrounded by the markers.
  The content of the inset option 
 \family sans
 Comment
@@ -1179,27 +1197,30 @@ status collapsed
 
 \end_inset
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
 \end_layout
 
 \begin_layout Plain Layout
 At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
 \begin_inset Argument 2
 status open
 
@@ -1222,14 +1243,14 @@ PDF-Sideline has some limitations:
 \end_layout
 
 \begin_layout Itemize
-the comment should not be longer than one page, otherwise the recognition
- of the page could fail
+the comment should not be longer than one page,
+ otherwise the recognition of the page could fail
 \end_layout
 
 \begin_layout Itemize
 when using Xe\SpecialChar TeX
- you have to assure that the page dimensions are internally
- output, e.
+ you have to assure that the page dimensions are internally output,
+ e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1241,7 +1262,8 @@ with the document class option
 \series bold
 pagesize
 \series default
- for the KOMA-Script classes, or the option 
+ for the KOMA-Script classes,
+ or the option 
 \series bold
 pagesize
 \series default
@@ -1259,7 +1281,8 @@ PDF-Square
 
 \begin_layout Standard
 This will typeset a rectangular box.
- Here is an example without any options: 
+ Here is an example without any options:
+ 
 \begin_inset Flex PDF-Square
 status open
 
@@ -1273,8 +1296,7 @@ a simple PDF-Square comment
 \end_layout
 
 \begin_layout Standard
-Below this text you see a rectangle comment with a curvy outline as example
- of a PDF-Square with options.
+Below this text you see a rectangle comment with a curvy outline as example of a PDF-Square with options.
 \end_layout
 
 \begin_layout Standard
@@ -1286,8 +1308,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-height=2cm,width=4.8cm,voffset=-2cm,hoffset=1cm,opacity=1.0,justification=right,ic
-olor=CornflowerBlue,bse=cloudy,bsei=2.5,linewidth=8pt
+height=2cm,width=4.8cm,voffset=-2cm,hoffset=1cm,opacity=1.0,justification=right,icolor=CornflowerBlue,bse=cloudy,bsei=2.5,linewidth=8pt
 \end_layout
 
 \end_inset
@@ -1339,7 +1360,8 @@ All objects that can be set into a \SpecialChar TeX
 The PDF-Tooltip inset has a mandatory argument for the tooltip.
  The object that should be annotated is set into the PDF-Tooltip inset,
  the tooltip is written into the mandatory argument.
- Here is as example of a word with a tooltip: 
+ Here is as example of a word with a tooltip:
+ 
 \begin_inset Flex PDF-Tooltip
 status open
 
@@ -1364,8 +1386,9 @@ word
 \end_layout
 
 \begin_layout Standard
-Since a tooltip can be used for almost any object, one can also use it for
- chemical notations in math: 
+Since a tooltip can be used for almost any object,
+ one can also use it for chemical notations in math:
+ 
 \begin_inset Flex PDF-Tooltip
 status open
 
@@ -1392,8 +1415,7 @@ Sulfuric acid
 \end_layout
 
 \begin_layout Standard
-The PDF-Tooltip inset has also an option that is used to correct the size
- of the tooltip for math (if necessary) or to disable an annotation.
+The PDF-Tooltip inset has also an option that is used to correct the size of the tooltip for math (if necessary) or to disable an annotation.
  Here is an example with a mathstyle option:
 \end_layout
 
@@ -1470,12 +1492,10 @@ name "subsec:PDF-Comment-setup"
 \end_layout
 
 \begin_layout Standard
-With this custom inset you can reset the global (document-wide) options
- at any time.
+With this custom inset you can reset the global (document-wide) options at any time.
  For example the default color for new PDF comments is blue.
  To get Adobe Reader's yellow colored notes for all comments in your document,
- add the PDF comment setup inset to the beginning of your document and insert
- there the option 
+ add the PDF comment setup inset to the beginning of your document and insert there the option 
 \series bold
 color=yellow
 \series default
@@ -1491,8 +1511,7 @@ local
  you can keep the reset local within a group enclosed by \SpecialChar TeX
 -braces.
  For example you want to reset the color only for two consecutive comments,
- then enclose the PDF comment setup inset and the two comment insets in
- \SpecialChar TeX
+ then enclose the PDF comment setup inset and the two comment insets in \SpecialChar TeX
 -braces.
  Here is an example:
 \end_layout
@@ -1588,16 +1607,15 @@ PDF Comment style
 \end_layout
 
 \begin_layout Standard
-This environment allows you to define a style for a PDF comment that can
- be used by several comments.
- Assuming you write a Math tutorial and want to add popup explanations in
- the PDF for several expressions, then insert a PDF Comment style environment
- before your first formula.
+This environment allows you to define a style for a PDF comment that can be used by several comments.
+ Assuming you write a Math tutorial and want to add popup explanations in the PDF for several expressions,
+ then insert a PDF Comment style environment before your first formula.
  Name it for example 
 \series bold
 MathPopup
 \series default
-, set the color to white with 
+,
+ set the color to white with 
 \series bold
 color=white
 \series default
@@ -1714,12 +1732,11 @@ Avatars
 \end_layout
 
 \begin_layout Standard
-If you are for example reviewing a document, you need to add your name to
- every of your comments.
- In case you use a special layout of your annotations, you would have to
- do a lot of copy-paste work.
- But this can be avoided if you define for every comment author a special
- avatar.
+If you are for example reviewing a document,
+ you need to add your name to every of your comments.
+ In case you use a special layout of your annotations,
+ you would have to do a lot of copy-paste work.
+ But this can be avoided if you define for every comment author a special avatar.
 \end_layout
 
 \begin_layout Standard
@@ -1741,7 +1758,8 @@ Avatar
 \family default
 .
  Its mandatory option is the name.
- In your case, name it 
+ In your case,
+ name it 
 \series bold
 Oleg
 \series default
@@ -1754,9 +1772,10 @@ author={Oleg Testman}
 \begin_inset Newline newline
 \end_inset
 
-You might use a special icon to see at the first look which comments were
- made by you.
- You therefore add behind the author-statement, separated by a comma, 
+You might use a special icon to see at the first look which comments were made by you.
+ You therefore add behind the author-statement,
+ separated by a comma,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1773,7 +1792,8 @@ icon=Check
 status open
 
 \begin_layout Plain Layout
-For all possible icons, see the 
+For all possible icons,
+ see the 
 \series bold
 pdfcomment
 \series default
@@ -1865,7 +1885,9 @@ avatar=Oleg
 status open
 
 \begin_layout Plain Layout
-Oleg said: Wow, that's nice!
+Oleg said:
+ Wow,
+ that's nice!
 \end_layout
 
 \end_inset
@@ -1879,7 +1901,8 @@ and here is another comment:
 status open
 
 \begin_layout Plain Layout
-Oleg also said: I hate to repeat myself.
+Oleg also said:
+ I hate to repeat myself.
 \end_layout
 
 \end_inset
@@ -1926,7 +1949,8 @@ avatar=Dolittle
 \end_inset
 
 I am Dr.
- Dolittle! Respect my authority!
+ Dolittle!
+ Respect my authority!
 \end_layout
 
 \end_inset
@@ -1944,10 +1968,8 @@ You can insert a list with all PDF comments using the environment
 List of PDF comments
 \family default
 .
- By specifying options for it you can determine what parts of the comments
- should appear in the list.
- Here is the list for this document where only the comments of a defined
- author are printed:
+ By specifying options for it you can determine what parts of the comments should appear in the list.
+ Here is the list for this document where only the comments of a defined author are printed:
 \end_layout
 
 \begin_layout List of PDF Comments
@@ -1977,7 +1999,8 @@ status collapsed
 
 \end_inset
 
-, heading =
+,
+ heading =
 \begin_inset ERT
 status collapsed
 
@@ -2109,6 +2132,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  Only one list of comments can be printed in the PDF.
 \end_layout
@@ -2123,8 +2147,7 @@ General Hints
 \end_layout
 
 \begin_layout Itemize
-To be able to use all kinds of colors and color definitions you must load
- the \SpecialChar LaTeX
+To be able to use all kinds of colors and color definitions you must load the \SpecialChar LaTeX
  package 
 \series bold
 xcolor
@@ -2145,7 +2168,8 @@ If you have two consecutive PDF
 \begin_inset space ~
 \end_inset
 
-comment insets, the will appear in the PDF one over each other:
+comment insets,
+ the will appear in the PDF one over each other:
 \begin_inset Flex PDF-Comment-Setup
 status open
 
@@ -2160,7 +2184,9 @@ avatar=Oleg
 status open
 
 \begin_layout Plain Layout
-Oleg said: Wow, that's nice!
+Oleg said:
+ Wow,
+ that's nice!
 \end_layout
 
 \end_inset
@@ -2170,7 +2196,8 @@ Oleg said: Wow, that's nice!
 status open
 
 \begin_layout Plain Layout
-Oleg also said: I hate to repeat myself.
+Oleg also said:
+ I hate to repeat myself.
 \end_layout
 
 \end_inset
@@ -2184,7 +2211,9 @@ To avoid that separate them with whitespace like protected space:
 status open
 
 \begin_layout Plain Layout
-Oleg said: Wow, that's nice!
+Oleg said:
+ Wow,
+ that's nice!
 \end_layout
 
 \end_inset
@@ -2222,7 +2251,8 @@ Oleg said: Wow, that's nice!
 status open
 
 \begin_layout Plain Layout
-Oleg also said: I hate to repeat myself.
+Oleg also said:
+ I hate to repeat myself.
 \end_layout
 
 \end_inset
@@ -2232,8 +2262,7 @@ Oleg also said: I hate to repeat myself.
 
 \begin_layout Itemize
 You cannot use non-Latin characters in your comment or in the author name.
- The reason is that PDFs use a special character encoding that is not compatible
- with \SpecialChar LaTeX
+ The reason is that PDFs use a special character encoding that is not compatible with \SpecialChar LaTeX
 .
 \end_layout
 

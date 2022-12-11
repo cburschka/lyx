@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -24,9 +24,9 @@
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -77,12 +77,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -108,7 +112,8 @@ status collapsed
 \end_inset
 
 \SpecialChar LyX
- מגיע עם מסמכי תיעוד ועזרה מצויינים — מומלץ להשתמש בהם.
+ מגיע עם מסמכי תיעוד ועזרה מצויינים —
+ מומלץ להשתמש בהם.
  כדאי להתחיל בקריאת הקובץ 
 \family sans
 עזרה
@@ -117,8 +122,10 @@ status collapsed
 
 מבוא
 \family default
-, המהווה הקדמה קצרה לתיעוד.
- לאחר מכן, ניתן להמשיך בקריאת 
+,
+ המהווה הקדמה קצרה לתיעוד.
+ לאחר מכן,
+ ניתן להמשיך בקריאת 
 \family sans
 עזרה
 \begin_inset Formula $\vartriangleleft$
@@ -137,8 +144,7 @@ status collapsed
 \begin_layout Enumerate
 אנחנו מתייחסים אל \SpecialChar LyX
  כאל "מעבד מסמכים".
- הוא מתוכנן להיות שונה ממעבד תמלילים רגיל כך שמלאכת כתיבת המסמכים תהיה קלה
- יותר.
+ הוא מתוכנן להיות שונה ממעבד תמלילים רגיל כך שמלאכת כתיבת המסמכים תהיה קלה יותר.
  מסמכי העזרה והתיעוד יבהירו לך סוגיה זו.
 \begin_inset Foot
 status collapsed
@@ -154,7 +160,8 @@ status collapsed
 
 \begin_layout Enumerate
 הפלט שיוצא מ- \SpecialChar LyX
- נראה פשוט נהדר — לחץ על 
+ נראה פשוט נהדר —
+ לחץ על 
 \family sans
 \lang english
 Document\SpecialChar menuseparator
@@ -184,17 +191,18 @@ status collapsed
 
 \SpecialChar LyX
  מסוגל לחקות (כמעט) את כל האפשרויות של \SpecialChar LaTeX
-, והוא מסוגל לייבא קבצי \SpecialChar LaTeX
+,
+ והוא מסוגל לייבא קבצי \SpecialChar LaTeX
 .
  משתמשי \SpecialChar LaTeX
- מנוסים יכולים לפיכך לקרוא את "השיעור המודרך" ברפרוף ולהעמיק בחלק
- 
+ מנוסים יכולים לפיכך לקרוא את "השיעור המודרך" ברפרוף ולהעמיק בחלק 
 \begin_inset Quotes prd
 \end_inset
 
 \SpecialChar LyX
  למשתמשי \SpecialChar LaTeX
-" (כל השאר אל תדאגו! לא צריך לדעת \SpecialChar LaTeX
+" (כל השאר אל תדאגו!
+ לא צריך לדעת \SpecialChar LaTeX
  בשביל להשתמש ב- \SpecialChar LyX
 ).
 \end_layout
@@ -210,9 +218,10 @@ status collapsed
 \end_inset
 
 \SpecialChar LyX
- מכיל מגוון של אפשרויות המיועדות עבור משתמשים הכותבים או קוראים שפות נוספות
- חוץ מאנגלית.
- בנוסף לכך, ניתן להתאים אישית מקשי קיצור, סרגלי כלים ותכונות נוספות רבות.
+ מכיל מגוון של אפשרויות המיועדות עבור משתמשים הכותבים או קוראים שפות נוספות חוץ מאנגלית.
+ בנוסף לכך,
+ ניתן להתאים אישית מקשי קיצור,
+ סרגלי כלים ותכונות נוספות רבות.
  ראה 
 \family sans
 עזרה
@@ -232,7 +241,8 @@ status collapsed
 
 \begin_layout Enumerate
 דף הבית של \SpecialChar LyX
- הוא: 
+ הוא:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -244,8 +254,8 @@ https://www.lyx.org
 \end_inset
 
 .
- באתר זה תוכלו לקבל מידע נוסף על התוכנה, להרשם לרשימות הדיוור וללמוד מהסיור
- המודרך של \SpecialChar LyX
+ באתר זה תוכלו לקבל מידע נוסף על התוכנה,
+ להרשם לרשימות הדיוור וללמוד מהסיור המודרך של \SpecialChar LyX
 .
 \end_layout
 
@@ -254,6 +264,7 @@ https://www.lyx.org
 \series bold
 \lang english
 Note for Linux users:
+
 \series default
  Please check that the language packages for the \SpecialChar LaTeX
  distribution 

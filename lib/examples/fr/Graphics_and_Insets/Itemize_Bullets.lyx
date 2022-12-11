@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,9 +21,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -74,16 +74,20 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \bulletLaTeX 0 "\raise1pt\hbox{\small\(\blacktriangleright\)}"
 \bulletLaTeX 1 "\raise1pt\hbox{\(\leadsto\)}"
 \bullet 2 4 8 3
 \bullet 3 0 8 -1
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -98,11 +102,18 @@ Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour, Date : 06/07/2003
+Traduction :
+ Mise à jour,
+ Date :
+ 06/07/2003
 \end_layout
 
 \begin_layout Plain Layout
-Original : Révision: 1.6, Date : 17/01/2003
+Original :
+ Révision:
+ 1.6,
+ Date :
+ 17/01/2003
 \end_layout
 
 \end_inset
@@ -112,7 +123,8 @@ Original : Révision: 1.6, Date : 17/01/2003
 status collapsed
 
 \begin_layout Plain Layout
-Traduction : Adrien 
+Traduction :
+ Adrien 
 \noun on
 Rebollo
 \noun default
@@ -134,8 +146,8 @@ Introduction
 
 \begin_layout Standard
 Vous verrez vite que vous pouvez rendre le réglage des puces assez complexe.
- Ne vous affolez pas, la plupart des options sont à portée d'un clic de
- souris ou deux.
+ Ne vous affolez pas,
+ la plupart des options sont à portée d'un clic de souris ou deux.
 \end_layout
 
 \begin_layout Itemize
@@ -185,8 +197,7 @@ ne vérifie pas
 \begin_deeper
 \begin_layout Itemize
 Sauf pour appliquer la limite de profondeur de \SpecialChar LaTeX
- qui est de 6 pour toutes
- les listes.
+ qui est de 6 pour toutes les listes.
 \end_layout
 
 \end_deeper
@@ -196,8 +207,7 @@ Y a-t-il encore d'autres restrictions?
 
 \begin_layout Standard
 Oui.
- La sélection des puces vous permet seulement de définir des puces utilisées
- tout au long du document.
+ La sélection des puces vous permet seulement de définir des puces utilisées tout au long du document.
  Si vous voulez ajuster chaque paragraphe vous devrez le faire à la main.
 \end_layout
 
@@ -216,7 +226,8 @@ Puces
 status collapsed
 
 \begin_layout Plain Layout
-NdT : ou 
+NdT :
+ ou 
 \family sans
 Bullets
 \family default
@@ -234,8 +245,7 @@ Tableaux de Puces
 \end_layout
 
 \begin_layout Standard
-Les tableaux suivants sont utilisés pour générer les panneaux de puces dans
- l'onglet 
+Les tableaux suivants sont utilisés pour générer les panneaux de puces dans l'onglet 
 \family sans
 Puces
 \family default
@@ -1217,9 +1227,9 @@ Ding 1 (Polices PSNFSS
 status collapsed
 
 \begin_layout Plain Layout
-NFSS est le nouveau schéma de sélection de police (New Font Selecting Scheme)
- de \SpecialChar LaTeX2e
- (basiquement, c'est ce qui a changé les commandes de police de 
+NFSS est le nouveau schéma de sélection de police (New Font Selecting Scheme) de \SpecialChar LaTeX2e
+ (basiquement,
+ c'est ce qui a changé les commandes de police de 
 \family typewriter
 {
 \backslash
@@ -1231,11 +1241,11 @@ bf ...}
 \backslash
 textbf{...}
 \family default
-, bien que les vrais changements soient à l'intérieur).
+,
+ bien que les vrais changements soient à l'intérieur).
  PS signifie PostScript®.
  PSNFSS est un ensemble de fichiers \SpecialChar LaTeX
- qui fournissent le support de NFSS
- pour les 35 polices PS de base présentes dans beaucoup d'imprimantes postscript.
+ qui fournissent le support de NFSS pour les 35 polices PS de base présentes dans beaucoup d'imprimantes postscript.
 \end_layout
 
 \end_inset

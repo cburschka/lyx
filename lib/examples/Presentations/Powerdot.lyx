@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -116,6 +116,7 @@ General Notes
 
 \series bold
 Output Format:
+
 \series default
  
 \emph on
@@ -130,7 +131,8 @@ postscript code
 \end_inset
 
 .
- Thus, it does 
+ Thus,
+ it does 
 \series bold
 not work with PDF
 \begin_inset space ~
@@ -151,7 +153,8 @@ View
 \emph on
 ps2pdf
 \emph default
- to generate a PDF, which is the recommended method (for your own documents,
+ to generate a PDF,
+ which is the recommended method (for your own documents,
  you can set this via 
 \family sans
 Document\SpecialChar menuseparator
@@ -169,8 +172,10 @@ View other formats
 \begin_inset Quotes erd
 \end_inset
 
- button, you can use other output formats.
- However, the only sensible alternative is 
+ button,
+ you can use other output formats.
+ However,
+ the only sensible alternative is 
 \emph on
 Postscript
 \emph default
@@ -183,7 +188,8 @@ PDF
 
 (dvipdfm)
 \emph default
- compiles, but most likely does not produce correct output.
+ compiles,
+ but most likely does not produce correct output.
  The same applies to 
 \emph on
 DVI
@@ -195,6 +201,7 @@ DVI
 
 \series bold
 Options:
+
 \series default
  Depending on your \SpecialChar LaTeX
  system you might have to add the option 
@@ -221,10 +228,12 @@ Custom
 
 \series bold
 Converter:
+
 \series default
  Depending on your \SpecialChar LaTeX
- system (e.g., TeX Live >= 2021), you might have to add
- the option 
+ system (e.g.,
+ TeX Live >= 2021),
+ you might have to add the option 
 \begin_inset Quotes eld
 \end_inset
 
@@ -233,7 +242,9 @@ Converter:
 \end_inset
 
  to the ps2pdf converter.
- For more information on this option, see here: 
+ For more information on this option,
+ see here:
+ 
 \begin_inset Flex URL
 status open
 
@@ -245,13 +256,15 @@ https://www.ghostscript.com/doc/current/Use.htm
 \end_inset
 
 .
- To add the option, in LyX go to 
+ To add the option,
+ in LyX go to 
 \family sans
 Tools\SpecialChar menuseparator
 Preferences\SpecialChar ldots
 \SpecialChar menuseparator
 File Handling\SpecialChar menuseparator
-Converters, select 
+Converters,
+ select 
 \begin_inset Quotes eld
 \end_inset
 
@@ -259,7 +272,8 @@ Postscript ->PDF (ps2pdf)
 \begin_inset Quotes erd
 \end_inset
 
-, and change 
+,
+ and change 
 \begin_inset Quotes eld
 \end_inset
 
@@ -303,6 +317,7 @@ OK
 
 \series bold
 Appearance:
+
 \series default
  You can customize the look of the presentation with the class options 
 \emph on
@@ -317,7 +332,8 @@ Document Class\SpecialChar menuseparator
 Class Options\SpecialChar menuseparator
 Custom
 \family default
-); the 
+);
+ the 
 \emph on
 powerdot
 \emph default
@@ -333,6 +349,7 @@ powerdot
 
 \series bold
 Compatibility:
+
 \series default
  
 \emph on
@@ -347,7 +364,8 @@ enumitem
 \emph on
 enumitem
 \emph default
- errors, make sure to download 
+ errors,
+ make sure to download 
 \emph on
 powerdot
 \emph default
@@ -360,7 +378,8 @@ powerdot
 \end_layout
 
 \begin_layout Title
-Powerdot Presentations: A \SpecialChar LyX
+Powerdot Presentations:
+ A \SpecialChar LyX
  Sample
 \end_layout
 
@@ -430,9 +449,9 @@ We use a
 \family typewriter
 Slide
 \family default
- style (magenta color, see above this text in the \SpecialChar LyX
- window) for the title
- of each slide and to start a new slide.
+ style (magenta color,
+ see above this text in the \SpecialChar LyX
+ window) for the title of each slide and to start a new slide.
 \end_layout
 
 \begin_layout WideSlide
@@ -450,7 +469,8 @@ But we may also produce wide slides via the
 \family typewriter
 WideSlide
 \family default
- style (green color, see above this text in the \SpecialChar LyX
+ style (green color,
+ see above this text in the \SpecialChar LyX
  window).
 \end_layout
 
@@ -467,7 +487,8 @@ If you need TOC options (see
 \emph on
 powerdot
 \emph default
- manual), you have to insert 
+ manual),
+ you have to insert 
 \family typewriter
 
 \backslash
@@ -518,15 +539,17 @@ This slide has a very very long title
 \end_layout
 
 \begin_layout Standard
-This slide's title is different in the TOC, since we use the slide option
- 
+This slide's title is different in the TOC,
+ since we use the slide option 
 \emph on
 toc=<shorttitle>
 \emph default
-; see slide 
+;
+ see slide 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "toc"
+nolink "false"
 
 \end_inset
 
@@ -539,7 +562,8 @@ toc=
 \begin_inset space \thinspace{}
 \end_inset
 
-e., pass an empty value) to hide a title completely from the TOC.
+e.,
+ pass an empty value) to hide a title completely from the TOC.
 \begin_inset VSpace defskip
 \end_inset
 
@@ -590,7 +614,8 @@ Class Options\SpecialChar menuseparator
 Custom
 \family default
 ) determines whether notes are visible in the output.
- By default, they are not (
+ By default,
+ they are not (
 \emph on
 display=slides
 \emph default
@@ -668,7 +693,8 @@ Visible
 \begin_inset Quotes erd
 \end_inset
 
-), 
+),
+ 
 \family typewriter
 Onslide*
 \family default
@@ -692,7 +718,8 @@ Uncover
 \begin_inset Quotes erd
 \end_inset
 
-) insets, which correspond to 
+) insets,
+ which correspond to 
 \emph on
 powerdot's
 \emph default
@@ -741,7 +768,8 @@ Visible
 \begin_inset Quotes erd
 \end_inset
 
-): This 
+):
+ This 
 \begin_inset Flex Onslide
 status open
 
@@ -776,7 +804,8 @@ Only
 \begin_inset Quotes erd
 \end_inset
 
-): This 
+):
+ This 
 \begin_inset Flex Onslide*
 status open
 
@@ -795,8 +824,9 @@ shows previously completely hidden text
 
 \end_inset
 
- (note how, contrary to the above, the space is here only occupied after
- un-hiding!) 
+ (note how,
+ contrary to the above,
+ the space is here only occupied after un-hiding!) 
 \end_layout
 
 \begin_layout Enumerate
@@ -812,7 +842,8 @@ Uncover
 \begin_inset Quotes erd
 \end_inset
 
-): This 
+):
+ This 
 \begin_inset Flex Onslide+
 status open
 
@@ -867,7 +898,8 @@ Enumerate Options
 Insert\SpecialChar menuseparator
 Itemize Options
 \family default
-, respectively.
+,
+ respectively.
  A list item can be customized by means of 
 \family sans
 Insert\SpecialChar menuseparator
@@ -953,7 +985,8 @@ inactive
 \begin_inset Quotes erd
 \end_inset
 
- mode, while 
+ mode,
+ while 
 \family typewriter
 Enumerate
 \family default
@@ -1037,7 +1070,8 @@ The overlay argument of a list item (
 item<arg>
 \family default
  in \SpecialChar LaTeX
- output, 
+ output,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1050,11 +1084,13 @@ On Slide
 \family sans
 Insert\SpecialChar menuseparator
 Overlay Specification.
- Note how these, as opposed to 
+ Note how these,
+ as opposed to 
 \family typewriter
 Pause
 \family sans
-, can be used to highlight only one item on each sub-slide (but try 
+,
+ can be used to highlight only one item on each sub-slide (but try 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1062,7 +1098,8 @@ Pause
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1197,12 +1234,15 @@ plain
 \begin_inset Quotes erd
 \end_inset
 
-, for that matter, i.
+,
+ for that matter,
+ i.
 \begin_inset space \thinspace{}
 \end_inset
 
 e.
- it has no title, navigation bar etc.) \SpecialChar ldots
+ it has no title,
+ navigation bar etc.) \SpecialChar ldots
  
 \end_layout
 
@@ -1251,8 +1291,7 @@ Use the
 Twocolumn
 \family default
  style to enter two columns.
- The inset for the left column is automatically inserted or can be inserted
- via 
+ The inset for the left column is automatically inserted or can be inserted via 
 \family sans
 Insert\SpecialChar menuseparator
 Left Column
@@ -1361,7 +1400,9 @@ fragile
 \end_inset
 
  content (such as listings).
- Note, though, that this option does not allow for overlays.
+ Note,
+ though,
+ that this option does not allow for overlays.
 \end_layout
 
 \begin_layout Slide
@@ -1391,8 +1432,8 @@ method=file
 \family typewriter
 method=direct
 \family default
-, thus the latter is recommended if you have verbatim content and do not
- use overlays.
+,
+ thus the latter is recommended if you have verbatim content and do not use overlays.
 \end_layout
 
 \begin_layout Pause
@@ -1451,7 +1492,8 @@ You can use the standard float types
 \emph on
 algorithm
 \emph default
-, 
+,
+ 
 \emph on
 figure
 \emph default
@@ -1542,7 +1584,8 @@ The end.
 \end_layout
 
 \begin_layout Standard
-At the end of the document, you have to put an 
+At the end of the document,
+ you have to put an 
 \family typewriter
 EndSlide
 \family default

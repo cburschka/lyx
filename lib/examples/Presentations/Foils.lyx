@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -23,9 +23,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -85,16 +85,20 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \bullet 0 5 2 -1
 \bullet 1 5 4 -1
 \bullet 2 4 8 -1
 \bullet 3 1 3 -1
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -135,8 +139,7 @@ height "7pt"
 \begin_layout Abstract
 \SpecialChar LyX
  and Foil\SpecialChar TeX
- combine to provide a powerful presentation package for creating
- 
+ combine to provide a powerful presentation package for creating 
 \begin_inset Quotes eld
 \end_inset
 
@@ -169,8 +172,7 @@ A Foilhead starts a new foil.
 \emph on
 short
 \emph default
- version is also provided that reduces the separation between the Foilhead
- and the body of the foil.
+ version is also provided that reduces the separation between the Foilhead and the body of the foil.
  Almost all the environments found in other classes are also supported.
 \end_layout
 
@@ -209,14 +211,15 @@ at each of the four levels of the Itemize environment
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-NOTE: to get the full capabilities of the Itemize Bullet Selection popup
- read the Special Tools manual and the ItemizeBullets.lyx file included with
- the examples.
+NOTE:
+ to get the full capabilities of the Itemize Bullet Selection popup read the Special Tools manual and the ItemizeBullets.lyx file included with the examples.
 \end_layout
 
 \begin_layout Itemize
-NOTE 2: To get your list spacing small like this use the Foil\SpecialChar TeX
- command: 
+NOTE 2:
+ To get your list spacing small like this use the Foil\SpecialChar TeX
+ command:
+ 
 \family typewriter
 
 \backslash
@@ -260,10 +263,8 @@ CrossList
 \end_layout
 
 \begin_layout Standard
-These two lists were added because the listing of do's and don'ts or good
- and bad are relatively common in foils.
- Providing a dedicated paragraph style for these occasions should allow
- faster entry and simplify interaction with \SpecialChar LyX
+These two lists were added because the listing of do's and don'ts or good and bad are relatively common in foils.
+ Providing a dedicated paragraph style for these occasions should allow faster entry and simplify interaction with \SpecialChar LyX
 .
 \end_layout
 
@@ -282,19 +283,20 @@ Create landscape foils by using Rotatefoilhead
 \end_layout
 
 \begin_layout Itemize
-Note that if you are viewing this with xdvi the page will appear to overrun
- the page dimensions because it xdvi doesn't rotate the text
+Note that if you are viewing this with xdvi the page will appear to overrun the page dimensions because it xdvi doesn't rotate the text
 \end_layout
 
 \begin_layout Itemize
-If you view this document using ghostview or something similar then the
- page should appear rotated.
+If you view this document using ghostview or something similar then the page should appear rotated.
  If not then you probably don't have the necessary dvips driver.
 \end_layout
 
 \begin_layout Definition*
 There are also several environments specially designed for presenting Theorems,
- Lemmas, Corollaries, Propositions, Proofs and Definitions.
+ Lemmas,
+ Corollaries,
+ Propositions,
+ Proofs and Definitions.
  These are available as numbered or unnumbered environments.
 \end_layout
 
@@ -319,10 +321,8 @@ Again the short version reduces the space below the heading
 \end_layout
 
 \begin_layout Itemize
-Another way to control the amount of separation is to adjust the length
- in the preamble.
- This will affect both the normal and short versions of foilhead and rotatefoilh
-ead.
+Another way to control the amount of separation is to adjust the length in the preamble.
+ This will affect both the normal and short versions of foilhead and rotatefoilhead.
  For example,
 \begin_inset Newline newline
 \end_inset
@@ -348,8 +348,7 @@ The
 \emph on
 short
 \emph default
- versions of the foilheads reduce the separation by 0.5 inches (approximately
- 12.5mm).
+ versions of the foilheads reduce the separation by 0.5 inches (approximately 12.5mm).
 \end_layout
 
 \begin_layout ShortFoilhead
@@ -373,23 +372,28 @@ Several consecutive paragraphs of type
 \emph on
 Theorem
 \emph default
-, 
+,
+ 
 \emph on
 Lemma
 \emph default
-, 
+,
+ 
 \emph on
 Corollary
 \emph default
-, 
+,
+ 
 \emph on
 Proposition
 \emph default
-, 
+,
+ 
 \emph on
 Definition
 \emph default
-, 
+,
+ 
 \emph on
 Proof
 \emph default
@@ -397,7 +401,8 @@ Proof
 \end_layout
 
 \begin_layout Lemma*
-As you can see, we are still in the same lemma.
+As you can see,
+ we are still in the same lemma.
 \end_layout
 
 \begin_layout Standard
@@ -408,9 +413,7 @@ As you can see, we are still in the same lemma.
 \end_layout
 
 \begin_layout Lemma*
-To force this second Lemma straight after the first it's necessary to add
- some dividing text or as I've done in this case separate the two by inserting
- a 
+To force this second Lemma straight after the first it's necessary to add some dividing text or as I've done in this case separate the two by inserting a 
 \emph on
 \SpecialChar TeX
 
@@ -426,14 +429,13 @@ To force this second Lemma straight after the first it's necessary to add
 .
  This is simply a comment character in \SpecialChar LaTeX
  but the insertion of the \SpecialChar LaTeX
- paragraph
- is sufficient to fool \SpecialChar LyX
+ paragraph is sufficient to fool \SpecialChar LyX
  into correctly handling the multiple environments.
 \end_layout
 
 \begin_layout Lemma*
-NOTE: You only have this problem with multiple paragraphs of the same type
- 
+NOTE:
+ You only have this problem with multiple paragraphs of the same type 
 \emph on
 not
 \emph default
@@ -579,11 +581,11 @@ foils
 \end_layout
 
 \begin_layout Standard
-Both tables and figures are supported in Foils however floats don't float
- instead they appear exactly where they appear in the text.
+Both tables and figures are supported in Foils however floats don't float instead they appear exactly where they appear in the text.
  Any placement parameters you set will be ignored.
 \begin_inset Float table
 placement htbp
+alignment document
 wide false
 sideways false
 status open
@@ -749,15 +751,14 @@ You can also use the standard footnotes like this one.
 
 \end_inset
 
- that are best set in the preamble although they may be set at any point
- in a document.
- If you want to change these settings in the document the best place to
- do so is at the very top of a foil ie.
+ that are best set in the preamble although they may be set at any point in a document.
+ If you want to change these settings in the document the best place to do so is at the very top of a foil ie.
  straight after the foilhead.
 \end_layout
 
 \begin_layout Standard
-The left-footer is controlled by two commands: 
+The left-footer is controlled by two commands:
+ 
 \family typewriter
 
 \backslash
@@ -770,8 +771,7 @@ MyLogo{}
 Restriction{}
 \family default
 .
- The first is meant to allow you to include a graphic logo on your foils
- and defaults to 
+ The first is meant to allow you to include a graphic logo on your foils and defaults to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -781,8 +781,7 @@ Restriction{}
 \end_inset
 
 .
- While the second is meant to provide a classification for the audience
- e.
+ While the second is meant to provide a classification for the audience e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -845,9 +844,10 @@ Your \SpecialChar LaTeX
 .
  There are many more features in Foil\SpecialChar TeX
  than those described here.
- For example, Foil\SpecialChar TeX
- can automatically place a horizontal rule between the
- headers and all foilheads, and between the body and the footers.
+ For example,
+ Foil\SpecialChar TeX
+ can automatically place a horizontal rule between the headers and all foilheads,
+ and between the body and the footers.
 \end_layout
 
 \begin_layout Bibliography
@@ -858,7 +858,8 @@ literal "true"
 
 \end_inset
 
-Jim Hafner, 
+Jim Hafner,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -867,7 +868,8 @@ The Foil\SpecialChar TeX
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \family typewriter
 .../texmf/texmf/doc/latex/foiltex/foiltex.dvi
 \end_layout
@@ -881,7 +883,8 @@ literal "true"
 \end_inset
 
 \SpecialChar LyX
- Documentation Team, 
+ Documentation Team,
+ 
 \begin_inset Quotes eld
 \end_inset
 

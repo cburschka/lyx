@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -117,6 +117,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  Vous ne devez pas utiliser le bouton 
 \begin_inset Quotes cld
@@ -126,8 +127,9 @@ Visionner PDF (pdflatex)
 \begin_inset Quotes crd
 \end_inset
 
- pour visualiser ce fichier ! Pour visionner et exporter en PDF, utiliser
- les méthodes 
+ pour visualiser ce fichier !
+ Pour visionner et exporter en PDF,
+ utiliser les méthodes 
 \begin_inset Quotes cld
 \end_inset
 
@@ -144,7 +146,8 @@ PDF (dvipdfm)
 \end_inset
 
 .
- Pour en avoir plus, lisez le manuel 
+ Pour en avoir plus,
+ lisez le manuel 
 \series bold
 powerdot
 \series default
@@ -155,10 +158,11 @@ powerdot
 
 \series bold
 Note:
+
 \series default
  En fonction de votre distribution \SpecialChar LaTeX
-, vous pouvez avoir à ajouter l'option
- 
+,
+ vous pouvez avoir à ajouter l'option 
 \begin_inset Quotes cld
 \end_inset
 
@@ -206,11 +210,13 @@ and
 status collapsed
 
 \begin_layout Plain Layout
-Traduction française Jean-Pierre Chrétien, 
+Traduction française Jean-Pierre Chrétien,
+ 
 \family typewriter
 <jeanpierre.chretien@free.fr>
 \family default
-, novembre 2009.
+,
+ novembre 2009.
 \end_layout
 
 \end_inset
@@ -247,9 +253,9 @@ Diapo
 \begin_inset Quotes crd
 \end_inset
 
- (couleur magenta, voyez le texte ci-dessus dans la fenêtre \SpecialChar LyX
-) pour le titre
- de chaque transparent d'une section ou d'un document.
+ (couleur magenta,
+ voyez le texte ci-dessus dans la fenêtre \SpecialChar LyX
+) pour le titre de chaque transparent d'une section ou d'un document.
 \end_layout
 
 \begin_layout WideSlide
@@ -271,8 +277,8 @@ DiapoLarge
 \begin_inset Quotes crd
 \end_inset
 
- pour des transparents larges (couleur verte, voyez le texte ci-dessus dans
- la fenêtre \SpecialChar LyX
+ pour des transparents larges (couleur verte,
+ voyez le texte ci-dessus dans la fenêtre \SpecialChar LyX
 ).
 \end_layout
 
@@ -312,11 +318,12 @@ Ce transparent a un titre très très long
 \end_layout
 
 \begin_layout Standard
-Le titre du transparent est différent dans la TdM, comparer le transparent
- 
+Le titre du transparent est différent dans la TdM,
+ comparer le transparent 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "toc"
+nolink "false"
 
 \end_inset
 
@@ -349,7 +356,8 @@ pause
 \end_layout
 
 \begin_layout Standard
-Faisons une pause! 
+Faisons une pause!
+ 
 \begin_inset ERT
 status collapsed
 
@@ -640,7 +648,8 @@ status open
 \backslash
 newcommand{
 \backslash
-BonjourLeMonde}{Bonjour, le monde!}
+BonjourLeMonde}{Bonjour,
+ le monde!}
 \end_layout
 
 \end_inset
@@ -691,7 +700,8 @@ void BonjourLeMonde() {
 
 \begin_layout Plain Layout
 
-printf("Bonjour, le monde!
+printf("Bonjour,
+ le monde!
 \backslash
 n");
 \end_layout
@@ -719,10 +729,11 @@ pause
 
 \end_inset
 
- Au contraire du transparent précédent, celui-ci doit utiliser l'option
- 
+ Au contraire du transparent précédent,
+ celui-ci doit utiliser l'option 
 \family typewriter
-method=file, car il comporte deux superpositions.
+method=file,
+ car il comporte deux superpositions.
 \end_layout
 
 \begin_layout Slide

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -66,8 +66,8 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -83,12 +83,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -102,7 +106,8 @@ status open
 \series bold
 Note
 \series default
-: To be able to view your file as PDF you must have the \SpecialChar LaTeX
+:
+ To be able to view your file as PDF you must have the \SpecialChar LaTeX
 -package 
 \family sans
 fpl
@@ -110,9 +115,11 @@ fpl
  installed to your \SpecialChar LaTeX
  system.
  If you are using MiK\SpecialChar TeX
-, you will automatically be asked to install this package
- when previewing your file, if you are using \SpecialChar TeX
-Live, use \SpecialChar TeX
+,
+ you will automatically be asked to install this package when previewing your file,
+ if you are using \SpecialChar TeX
+Live,
+ use \SpecialChar TeX
 Live's package manager.
 \end_layout
 
@@ -121,10 +128,11 @@ Live's package manager.
 \series bold
 Note 2
 \series default
-: If you wish to compile to PDF with plain \SpecialChar LaTeX
+:
+ If you wish to compile to PDF with plain \SpecialChar LaTeX
  (instead of pdf\SpecialChar TeX
-), there is currently
- a bug in the Tufte class that causes errors.
+),
+ there is currently a bug in the Tufte class that causes errors.
  You can add the class option 'nols' (put this in the 
 \begin_inset Quotes eld
 \end_inset
@@ -135,8 +143,9 @@ Custom
 
  field of Document\SpecialChar menuseparator
 Settings \SpecialChar menuseparator
-Document Class) to get rid of the errors, but
- this also removes letterspacing, an important part of the Tufte design.
+Document Class) to get rid of the errors,
+ but this also removes letterspacing,
+ an important part of the Tufte design.
 \end_layout
 
 \end_inset
@@ -154,7 +163,8 @@ Fake Author
 status open
 
 \begin_layout Plain Layout
-author of this example file: Jason Waskiewicz
+author of this example file:
+ Jason Waskiewicz
 \end_layout
 
 \end_inset
@@ -176,15 +186,16 @@ The Features of the Tufte-book Class
 \end_layout
 
 \begin_layout Standard
-In this document, it was endeavored to show some of the features of the
- 
+In this document,
+ it was endeavored to show some of the features of the 
 \family sans
 Tufte-book
 \family default
  class.
- In the first chapter, their use is outlined.
- In the second chapter, their use through a handout that was created in
- a calculus class is demonstrated.
+ In the first chapter,
+ their use is outlined.
+ In the second chapter,
+ their use through a handout that was created in a calculus class is demonstrated.
 \end_layout
 
 \begin_layout Section
@@ -206,8 +217,7 @@ Edward Tufte
 Tufte-handout
 \family default
  class with book-specific additions.
- Tufte's documents consist of a rather narrow column of text and a wide
- column of margin notes and margin figures.
+ Tufte's documents consist of a rather narrow column of text and a wide column of margin notes and margin figures.
  This is to improve readability.
 \end_layout
 
@@ -243,8 +253,11 @@ Limited layers of sections and subsections
 \end_layout
 
 \begin_layout Standard
-In this sample document, some of these features are demonstrated.
- For a full demonstration, visit the tufte-latex website: 
+In this sample document,
+ some of these features are demonstrated.
+ For a full demonstration,
+ visit the tufte-latex website:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -276,7 +289,8 @@ ragged right
 status open
 
 \begin_layout Plain Layout
-To get justified text, add the option 
+To get justified text,
+ add the option 
 \emph on
 justified
 \emph default
@@ -295,7 +309,8 @@ Document Class
 
 \end_inset
 
- Ragged right text is used in most of his works, but the class option 
+ Ragged right text is used in most of his works,
+ but the class option 
 \emph on
 justified
 \emph default
@@ -304,10 +319,12 @@ justified
 
 \begin_layout Standard
 Tufte also formats his pages asymmetrically.
- This means that the marginalia appear on the right side on each page, whether
- odd or even.
- If you prefer, you can change that and have symmetric layout, as common
- in traditional book typography, by using the 
+ This means that the marginalia appear on the right side on each page,
+ whether odd or even.
+ If you prefer,
+ you can change that and have symmetric layout,
+ as common in traditional book typography,
+ by using the 
 \emph on
 symmetric
 \emph default
@@ -316,7 +333,8 @@ symmetric
 status open
 
 \begin_layout Plain Layout
-To create a symmetric layout, add the option 
+To create a symmetric layout,
+ add the option 
 \emph on
 symmetric
 \emph default
@@ -339,8 +357,10 @@ Document Class
 \end_layout
 
 \begin_layout Standard
-Finally, Tufte does not number his chapters or his sections.
- If you like to refer to sections by number, move the 
+Finally,
+ Tufte does not number his chapters or his sections.
+ If you like to refer to sections by number,
+ move the 
 \emph on
 Numbering
 \emph default
@@ -422,7 +442,9 @@ An ordinary figure float.
 \end_layout
 
 \begin_layout Standard
-Furthermore, he uses margin figures, as shown in Fig.
+Furthermore,
+ he uses margin figures,
+ as shown in Fig.
 \begin_inset space ~
 \end_inset
 
@@ -430,6 +452,7 @@ Furthermore, he uses margin figures, as shown in Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:margin-figure"
+nolink "false"
 
 \end_inset
 
@@ -471,8 +494,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Imagine your favorite photograph of a squirrel inside this box instead of
- this boring text.
+Imagine your favorite photograph of a squirrel inside this box instead of this boring text.
 \end_layout
 
 \end_inset
@@ -509,9 +531,9 @@ status open
 
 \series bold
 Note:
+
 \series default
- If you are using margin figures or tables you must use the default float
- placement option in the document settings under 
+ If you are using margin figures or tables you must use the default float placement option in the document settings under 
 \family sans
 Float
 \begin_inset space ~
@@ -528,35 +550,39 @@ Placement
 \end_layout
 
 \begin_layout Standard
-In the same vein, the 
+In the same vein,
+ the 
 \family sans
 Tufte-book
 \family default
- class allows the use of tables, both in the margins and in the text.
- The margin tables are recommended for a small set of data to illustrate
- a concept such as 
+ class allows the use of tables,
+ both in the margins and in the text.
+ The margin tables are recommended for a small set of data to illustrate a concept such as 
 \begin_inset Quotes eld
 \end_inset
 
-Look, distance-time data is quadratic when the object is falling.
+Look,
+ distance-time data is quadratic when the object is falling.
 \begin_inset Quotes erd
 \end_inset
 
- More detailed data such as flame test results and comments should be put
- in a full-width table instead.
+ More detailed data such as flame test results and comments should be put in a full-width table instead.
 \end_layout
 
 \begin_layout Standard
-Finally, 
+Finally,
+ 
 \family sans
 Tufte-book
 \family default
  provides a full-width figure.
- This one takes up the entire width of the page, i.
+ This one takes up the entire width of the page,
+ i.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., text and margin.
+e.,
+ text and margin.
  See Fig.
 \begin_inset space ~
 \end_inset
@@ -565,6 +591,7 @@ e., text and margin.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:full-width-figure"
+nolink "false"
 
 \end_inset
 
@@ -599,8 +626,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Imagine your favorite photograph of a squirrel inside this box instead of
- this boring text.
+Imagine your favorite photograph of a squirrel inside this box instead of this boring text.
 \end_layout
 
 \end_inset
@@ -641,8 +667,7 @@ Working with Text
 \end_layout
 
 \begin_layout Standard
-One of the most prominent and distinctive features of this style is the
- extensive use of sidenotes.
+One of the most prominent and distinctive features of this style is the extensive use of sidenotes.
  There is a wide margin to provide ample room for sidenotes and small figures.
  Any footnotes will automatically be converted to sidenotes.
 \begin_inset Foot
@@ -658,11 +683,13 @@ footnote
 
 \end_inset
 
- Alternatively, you can also use the 
+ Alternatively,
+ you can also use the 
 \family typewriter
 Sidenote
 \family default
- inset directly; you'll find it in the 
+ inset directly;
+ you'll find it in the 
 \family sans
 Insert\SpecialChar menuseparator
 Custom Insets
@@ -685,8 +712,8 @@ sidenote
 \end_layout
 
 \begin_layout Standard
-If you like to place ancillary information in the margin without the sidenote
- mark (the superscript number), you can use the 
+If you like to place ancillary information in the margin without the sidenote mark (the superscript number),
+ you can use the 
 \family typewriter
 Marginnote
 \family default
@@ -697,13 +724,14 @@ status open
 
 \begin_layout Plain Layout
 This is Tufte's margin note.
- Notice that there isn't a number preceding the note, and there is no number
- in the main text where this note was written.
+ Notice that there isn't a number preceding the note,
+ and there is no number in the main text where this note was written.
 \end_layout
 
 \end_inset
 
- The normal margin note will work as well, but it will look rather odd.
+ The normal margin note will work as well,
+ but it will look rather odd.
 \begin_inset Marginal
 status open
 
@@ -738,14 +766,13 @@ TextStyle\SpecialChar menuseparator
 NewThought
 \family default
 ).
- It introduces new thoughts by means of small caps, as demonstrated in this
- paragraph.
+ It introduces new thoughts by means of small caps,
+ as demonstrated in this paragraph.
  
 \end_layout
 
 \begin_layout Standard
-The Tufte document classes include two new character styles and some improvement
-s on existing commands for letterspacing.
+The Tufte document classes include two new character styles and some improvements on existing commands for letterspacing.
 \end_layout
 
 \begin_layout Standard
@@ -769,8 +796,11 @@ small caps
 
 \end_inset
 
-, the letterspacing—that is, the spacing between the letters—should be increased
- slightly.
+,
+ the letterspacing—
+that is,
+ the spacing between the letters—
+should be increased slightly.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bringhurst2005"
@@ -798,7 +828,8 @@ FULL CAPITAL LETTERS
 
 \end_inset
 
-, and the 
+,
+ and the 
 \emph on
 SmallCaps
 \emph default
@@ -819,8 +850,8 @@ small capital letters
 \end_inset
 
 .
- These commands will also automatically convert the case of the text to
- upper- or lowercase, respectively.
+ These commands will also automatically convert the case of the text to upper- or lowercase,
+ respectively.
 \end_layout
 
 \begin_layout Standard
@@ -829,40 +860,62 @@ The normal
 Small Caps
 \emph default
  shape has also been redefined to include letterspacing.
- Its case is left as is, however.
- This allows one to use both uppercase and lowercase letters: 
+ Its case is left as is,
+ however.
+ This allows one to use both uppercase and lowercase letters:
+ 
 \shape smallcaps
 The Initial Letters Of The Words In This Sentence Are Capitalized.
 \end_layout
 
 \begin_layout Standard
-Finally, the
+Finally,
+ the
 \emph on
  Full Width
 \emph default
- paragraph environment provides a paragraph layout that stretches across
- the main text block and the sidenotes area:
+ paragraph environment provides a paragraph layout that stretches across the main text block and the sidenotes area:
 \end_layout
 
 \begin_layout Full Width
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
- Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+Lorem ipsum dolor sit amet,
+ consectetuer adipiscing elit.
+ Ut purus elit,
+ vestibulum ut,
+ placerat ac,
+ adipiscing vitae,
+ felis.
  Curabitur dictum gravida mauris.
- Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.
+ Nam arcu libero,
+ nonummy eget,
+ consectetuer id,
+ vulputate a,
+ magna.
  Donec vehicula augue eu neque.
- Pellentesque habitant morbi tristique senectus et netus et malesuada fames
- ac turpis egestas.
+ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
  Mauris ut leo.
  Cras viverra metus rhoncus sem.
  Nulla et lectus vestibulum urna fringilla ultrices.
  Phasellus eu tellus sit amet tortor gravida placerat.
- Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+ Integer sapien est,
+ iaculis in,
+ pretium quis,
+ viverra ac,
+ nunc.
  Praesent eget sem vel leo ultrices bibendum.
  Aenean faucibus.
- Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla.
+ Morbi dolor nulla,
+ malesuada eu,
+ pulvinar at,
+ mollis ac,
+ nulla.
  Curabitur auctor semper nulla.
  Donec varius orci eget risus.
- Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
+ Duis nibh mi,
+ congue eu,
+ accumsan eleifend,
+ sagittis quis,
+ diam.
  Duis eget orci sit amet orci dignissim rutrum.
 \end_layout
 
@@ -871,7 +924,8 @@ References
 \end_layout
 
 \begin_layout Standard
-References are placed alongside their citations as sidenotes, as well.
+References are placed alongside their citations as sidenotes,
+ as well.
  This can be accomplished using the normal citation command.
 \begin_inset Foot
 status collapsed
@@ -886,8 +940,7 @@ The previous section includes a citation.
 \end_layout
 
 \begin_layout Standard
-The complete list of references may also be printed automatically by using
- 
+The complete list of references may also be printed automatically by using 
 \family sans
 Insert\SpecialChar menuseparator
 Lists/TOC\SpecialChar menuseparator
@@ -898,8 +951,8 @@ Bib\SpecialChar TeX
 
 Bibliography
 \family default
- (see the end of this document for an example.) If you do not want to print
- a bibliography at the end of your document, place the 
+ (see the end of this document for an example.) If you do not want to print a bibliography at the end of your document,
+ place the 
 \family sans
 Bib\SpecialChar TeX
 
@@ -920,7 +973,8 @@ nobibliography
 \end_layout
 
 \begin_layout Chapter
-Calculation of Volume: Sections 2.12–2.13
+Calculation of Volume:
+ Sections 2.12–2.13
 \end_layout
 
 \begin_layout Standard
@@ -930,8 +984,8 @@ Imagine taking a function like
 
  and rotating it in 3 dimensions around the x-axis.
  The resulting shape would look somewhat like a cup (on its side).
- Interestingly, integration empowers us to do exactly this and to find out
- how much water that cup could hold.
+ Interestingly,
+ integration empowers us to do exactly this and to find out how much water that cup could hold.
 \end_layout
 
 \begin_layout Section
@@ -1026,8 +1080,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Here I rotated the square root function and then drew a disk on the figure
- to illustrate how I would calculate the volume of the figure.
+Here I rotated the square root function and then drew a disk on the figure to illustrate how I would calculate the volume of the figure.
 \end_layout
 
 \end_inset
@@ -1064,6 +1117,7 @@ Figure
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "mar:A-graph-of"
+nolink "false"
 
 \end_inset
 
@@ -1071,22 +1125,25 @@ reference "mar:A-graph-of"
 \begin_inset Formula $f(x)=\sqrt{x}.$
 \end_inset
 
- Now, imagine that we rotate that function about the x-axis.
+ Now,
+ imagine that we rotate that function about the x-axis.
  The resulting figure would be somewhat like figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "mar:rotated"
+nolink "false"
 
 \end_inset
 
 .
  This is akin to a cup lying on its side.
- For the sake of clarity, the artist (me) drew a circle on the end of the
- figure to show that it is indeed rotated.
+ For the sake of clarity,
+ the artist (me) drew a circle on the end of the figure to show that it is indeed rotated.
 \end_layout
 
 \begin_layout Standard
-Now, suppose we wished to find the volume of the figure.
+Now,
+ suppose we wished to find the volume of the figure.
  When we integrated the original square root function to find its area,
  we imagined a series of rectangles inside the figure.
  Their height was 
@@ -1098,12 +1155,15 @@ Now, suppose we wished to find the volume of the figure.
 \end_inset
 
 .
- Since height multiplied by width was the area of each rectangle, we summed
- these areas and rewrote this as 
+ Since height multiplied by width was the area of each rectangle,
+ we summed these areas and rewrote this as 
 \begin_inset Formula $\int\,f(x)\,dx$
 \end_inset
 
-, or, in this specific case, 
+,
+ or,
+ in this specific case,
+ 
 \begin_inset Formula $\int\,\sqrt{x}\,dx$
 \end_inset
 
@@ -1124,7 +1184,8 @@ The text refers to these cylinders as "disks".
 
 \end_inset
 
- Then, we can find the volume of each cylinder/disk.
+ Then,
+ we can find the volume of each cylinder/disk.
  The basic formula is:
 \end_layout
 
@@ -1176,7 +1237,8 @@ A=\pi f^{2}(x)
 
 \begin_layout Standard
 \noindent
-In our specific case, 
+In our specific case,
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1192,7 +1254,8 @@ A & = & \pi\left(\sqrt{x}\right)^{2}\\
 \end_layout
 
 \begin_layout Standard
-To calculate the volume of one disk, we have
+To calculate the volume of one disk,
+ we have
 \end_layout
 
 \begin_layout Standard
@@ -1208,7 +1271,8 @@ V=\pi x\,dx
 
 \begin_layout Standard
 \noindent
-or, in the general case
+or,
+ in the general case
 \end_layout
 
 \begin_layout Standard
@@ -1247,7 +1311,8 @@ To find the volume of the figure between points
 
 \begin_layout Standard
 \noindent
-In the specific example, over the interval 
+In the specific example,
+ over the interval 
 \begin_inset Formula $[0,4]$
 \end_inset
 
@@ -1284,7 +1349,8 @@ Suppose I drill
 status collapsed
 
 \begin_layout Plain Layout
-I have no idea how I'd do this in real life, but I'm making a point.
+I have no idea how I'd do this in real life,
+ but I'm making a point.
 \end_layout
 
 \end_inset
@@ -1294,8 +1360,7 @@ I have no idea how I'd do this in real life, but I'm making a point.
 \end_inset
 
 .
- I would need to subtract the volume of the material removed from the volume
- of the entire 
+ I would need to subtract the volume of the material removed from the volume of the entire 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1313,7 +1378,8 @@ washer
 \end_inset
 
 .
- To get the area of one washer, I would use the formula
+ To get the area of one washer,
+ I would use the formula
 \end_layout
 
 \begin_layout Standard
@@ -1410,7 +1476,8 @@ V_{washer} & = & A_{washer}\,dx\\
 
 \begin_layout Standard
 \noindent
-Then, by summing the volumes of all the washers between points 
+Then,
+ by summing the volumes of all the washers between points 
 \begin_inset Formula $a$
 \end_inset
 
@@ -1418,7 +1485,8 @@ Then, by summing the volumes of all the washers between points
 \begin_inset Formula $b$
 \end_inset
 
-, the integral is derived:
+,
+ the integral is derived:
 \end_layout
 
 \begin_layout Standard
@@ -1508,7 +1576,15 @@ Homework
 \end_layout
 
 \begin_layout Itemize
-p114: 1, 4, 5, 6, 8, 10, 12, 15
+p114:
+ 1,
+ 4,
+ 5,
+ 6,
+ 8,
+ 10,
+ 12,
+ 15
 \end_layout
 
 \begin_layout Standard

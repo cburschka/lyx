@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -28,9 +28,9 @@ theorems-ams
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -81,12 +81,16 @@ theorems-ams
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -97,8 +101,7 @@ status open
 
 \begin_layout Plain Layout
 This is an example \SpecialChar LyX
- file for articles to be submitted to journals of the
- American Chemistry Society (ACS).
+ file for articles to be submitted to journals of the American Chemistry Society (ACS).
  For general infos see 
 \begin_inset Flex URL
 status open
@@ -126,9 +129,9 @@ status open
 
 \series bold
 Note:
+
 \series default
- The journal where you want to submit is specified in the document class
- options of this file.
+ The journal where you want to submit is specified in the document class options of this file.
 \end_layout
 
 \end_inset
@@ -180,7 +183,10 @@ Fred T.
 \end_layout
 
 \begin_layout Affiliation
-Current address: Some other place, Othertöwn, Germany
+Current address:
+ Some other place,
+ Othertöwn,
+ Germany
 \end_layout
 
 \begin_layout Author
@@ -209,7 +215,8 @@ i.k.groupleader@unknown.uu
 status open
 
 \begin_layout Plain Layout
-The affiliation of authors is given after the authors; each 
+The affiliation of authors is given after the authors;
+ each 
 \family sans
 Affiliation
 \family default
@@ -221,7 +228,8 @@ Affiliation
 \family sans
 Altaffiliation
 \family default
- should be used for new address, etc.
+ should be used for new address,
+ etc.
 \end_layout
 
 \begin_layout Plain Layout
@@ -229,8 +237,7 @@ Altaffiliation
 \family sans
 Alsoaffiliation
 \family default
- is used on a per author basis when authors are associated with multiple
- institutions.
+ is used on a per author basis when authors are associated with multiple institutions.
 \end_layout
 
 \end_inset
@@ -239,7 +246,9 @@ Alsoaffiliation
 \end_layout
 
 \begin_layout Affiliation
-Department of Chemistry, Unknown University, Unknown Town
+Department of Chemistry,
+ Unknown University,
+ Unknown Town
 \begin_inset Argument 1
 status open
 
@@ -253,7 +262,9 @@ Unknown University
 \end_layout
 
 \begin_layout Also Affiliation
-Department of Chemistry, Second University, Nearby Town
+Department of Chemistry,
+ Second University,
+ Nearby Town
 \begin_inset Argument 1
 status open
 
@@ -271,7 +282,8 @@ IR,NMR,UV
 \end_layout
 
 \begin_layout Keywords
-American Chemical Society, \SpecialChar LaTeX
+American Chemical Society,
+ \SpecialChar LaTeX
 
 \end_layout
 
@@ -305,10 +317,11 @@ The class makes various changes to the way that references are handled.
 \family sans
 natbib
 \family default
-, and also the appropriate bibliography style.
- References can be made using the normal method; the citation should be
- placed before any punctuation, as the class will move it if using a superscript
- citation style 
+,
+ and also the appropriate bibliography style.
+ References can be made using the normal method;
+ the citation should be placed before any punctuation,
+ as the class will move it if using a superscript citation style 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mena2000,Abernethy2003"
@@ -321,7 +334,8 @@ literal "true"
 \family sans
 natbib
 \family default
- allows the use of the various citation commands of that package: 
+ allows the use of the various citation commands of that package:
+ 
 \begin_inset ERT
 status collapsed
 
@@ -345,7 +359,8 @@ status collapsed
 
 \end_inset
 
- have shown something, or in 
+ have shown something,
+ or in 
 \begin_inset ERT
 status collapsed
 
@@ -426,7 +441,8 @@ The class also handles notes to be added to the bibliography.
 status open
 
 \begin_layout Plain Layout
-This is a bibnote; its text will be moved the the references section.
+This is a bibnote;
+ its text will be moved the the references section.
  Bibnotes are inserted with the menu 
 \family sans
 Insert\SpecialChar menuseparator
@@ -441,10 +457,11 @@ Custom Insets
 \end_layout
 
 \begin_layout Standard
-As with citations, the text should be placed before punctuation.
+As with citations,
+ the text should be placed before punctuation.
  A note is also generated if a citation has an optional note.
- This assumes that the whole work has already been cited: odd numbering
- will result if this is not the case 
+ This assumes that the whole work has already been cited:
+ odd numbering will result if this is not the case 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Cotton1999"
@@ -460,13 +477,17 @@ Some Infos
 \end_layout
 
 \begin_layout Standard
-Besides the standard figure and table floats, the achemso \SpecialChar LaTeX
--class provides
- scheme, chart, and graph floats.
+Besides the standard figure and table floats,
+ the achemso \SpecialChar LaTeX
+-class provides scheme,
+ chart,
+ and graph floats.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float scheme
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -490,6 +511,8 @@ An example scheme
 
 \begin_layout Standard
 \begin_inset Float chart
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -513,6 +536,8 @@ An example chart
 
 \begin_layout Standard
 \begin_inset Float graph
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -535,7 +560,8 @@ An example graph
 \end_layout
 
 \begin_layout Standard
-Chemical symbols can easily be input: 
+Chemical symbols can easily be input:
+ 
 \begin_inset Flex Chemistry
 status open
 
@@ -558,8 +584,7 @@ Supplemental informations go here.
 
 \begin_layout TOC entry
 Some journals require a graphical entry for the Table of Contents.
- This should be laid out ``print ready'' so that the sizing of the text
- is correct.
+ This should be laid out ``print ready'' so that the sizing of the text is correct.
 \end_layout
 
 \begin_layout TOC entry
@@ -571,18 +596,18 @@ cm by 3.5
 \begin_inset space \thinspace{}
 \end_inset
 
-cm, which is the maximum permitted for 
+cm,
+ which is the maximum permitted for 
 \emph on
 Journal of the American Chemical Society
 \emph default
  graphical table of content entries.
- The box will not resize if the content is too big: instead it will overflow
- the edge of the box.
+ The box will not resize if the content is too big:
+ instead it will overflow the edge of the box.
 \end_layout
 
 \begin_layout TOC entry
-This box and the associated title will always be printed on a separate page
- at the end of the document.
+This box and the associated title will always be printed on a separate page at the end of the document.
 \end_layout
 
 \begin_layout Standard

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -75,11 +75,14 @@
 \paperpagestyle default
 \tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -87,6 +90,7 @@
 \begin_layout Title
 \SpecialChar LyX
 へようこそ！
+
 \end_layout
 
 \begin_layout Section*
@@ -96,8 +100,8 @@
 
 \begin_layout Standard
 You can write text in other scripts and languages inside Japanese documents.
- With non-TeX fonts, make sure to use document classes that support XeTeX
- or LuaTeX.
+ With non-TeX fonts,
+ make sure to use document classes that support XeTeX or LuaTeX.
  (e.g.
  document classes 
 \begin_inset Quotes eld
@@ -119,18 +123,21 @@ Text in Latin script:
 \end_layout
 
 \begin_layout Quotation
-English: Hello Mr.
+English:
+ Hello Mr.
  Sandman!
 \end_layout
 
 \begin_layout Quotation
-Deutsch: Grüße aus Österreich!
+Deutsch:
+ Grüße aus Österreich!
 \end_layout
 
 \begin_layout Standard
-Some Japanese fonts contain Greek and Cyrillic characters, however they
- are considerabely wider than characters in Latin, Greek, and Cyrillic TeX
- fonts.
+Some Japanese fonts contain Greek and Cyrillic characters,
+ however they are considerabely wider than characters in Latin,
+ Greek,
+ and Cyrillic TeX fonts.
  
 \end_layout
 
@@ -139,8 +146,9 @@ With
 \emph on
 TeX fonts
 \emph default
-, LyX converts them to LaTeX macros, so that the output matches other non-Japane
-se text.
+,
+ LyX converts them to LaTeX macros,
+ so that the output matches other non-Japanese text.
 \end_layout
 
 \begin_layout Itemize
@@ -152,10 +160,10 @@ and
 \emph on
  Xe/LuaTeX
 \emph default
-, there is no native support for use of specific fonts for different scripts/lan
-guages.
- Some Unicode fonts provide a large range of characters, but quality is
- not always best and 
+,
+ there is no native support for use of specific fonts for different scripts/languages.
+ Some Unicode fonts provide a large range of characters,
+ but quality is not always best and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -175,7 +183,8 @@ Text in Cyrillic and Greek script:
 \end_layout
 
 \begin_layout Quotation
-Russisch: Привет с 
+Russisch:
+ Привет с 
 \emph on
 новым
 \emph default
@@ -197,7 +206,8 @@ fontspec
 
 \end_inset
 
-Griechisch: χαιρετισμος!
+Griechisch:
+ χαιρετισμος!
 \end_layout
 
 \begin_layout Quotation
@@ -213,7 +223,9 @@ else
 
 \end_inset
 
-Griechisch: χαιρετισμός! 
+Griechisch:
+ χαιρετισμός!
+ 
 \begin_inset ERT
 status collapsed
 
@@ -230,8 +242,7 @@ fi
 \end_layout
 
 \begin_layout Standard
-Text in some other languages with correct language setting (not all languages
- supported by LyX are compatible with Japanese (you may try 
+Text in some other languages with correct language setting (not all languages supported by LyX are compatible with Japanese (you may try 
 \begin_inset Quotes eld
 \end_inset
 
@@ -245,44 +256,52 @@ japanese (CJK)
 \begin_layout Standard
 
 \lang english
-English: Hello Mr.
+English:
+ Hello Mr.
  Sandman!
 \end_layout
 
 \begin_layout Standard
 
 \lang afrikaans
-Afrikaans: Good dag minher.
+Afrikaans:
+ Good dag minher.
 \end_layout
 
 \begin_layout Standard
 
 \lang swedish
-Swedish: Hej då.
+Swedish:
+ Hej då.
 \end_layout
 
 \begin_layout Standard
 
 \lang ngerman
-Deutsch: Grüße aus Österreich! 
+Deutsch:
+ Grüße aus Österreich!
+ 
 \end_layout
 
 \begin_layout Standard
 
 \lang french
-French: «Bonsoir à vous.»
+French:
+ «Bonsoir à vous.»
 \end_layout
 
 \begin_layout Standard
 
 \lang afrikaans
-Griechisch: χαιρετισμος!
+Griechisch:
+ χαιρετισμος!
 \end_layout
 
 \begin_layout Standard
 
 \lang russian
-Russisch: Привет с 
+Russisch:
+ Привет с 
 \emph on
 новым
 \emph default

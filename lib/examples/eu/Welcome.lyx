@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 95 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -100,7 +104,8 @@ Laguntza\SpecialChar menuseparator
 Sarrera
 \family default
  zerrenda aukerarekin hasi (eskuliburuei buruzko sarreratxo bat da).
- Ondoren, 
+ Ondoren,
+ 
 \family sans
 Laguntza\SpecialChar menuseparator
 Tutoretza-n
@@ -122,9 +127,10 @@ idazki prozesatzailea
 \end_inset
 
  deritzoguna da.
- Bere egituragatik ohizko idazki prozesatzaileen aldean ezberdina da, idazkiak
- idazteko lana errazago eginez.
- Apur bat ezberdina soilik, ez zaitez beldurtu.
+ Bere egituragatik ohizko idazki prozesatzaileen aldean ezberdina da,
+ idazkiak idazteko lana errazago eginez.
+ Apur bat ezberdina soilik,
+ ez zaitez beldurtu.
  Eskuliburu laguntzaileek gauza denak argituko dizkizute.
 \begin_inset Foot
 status collapsed
@@ -164,7 +170,8 @@ Bai,.
  \SpecialChar LyX
 -ek \SpecialChar LaTeX
 -en betebeharreko ia dena errepika (edo landu) dezake.
- Eta bai, \SpecialChar LyX
+ Eta bai,
+ \SpecialChar LyX
 -ek \SpecialChar LaTeX
 -eko fitxategiak beregana (
 \family sans
@@ -187,19 +194,18 @@ Tutoretzako
 \begin_inset Quotes erd
 \end_inset
 
- alea irakurtzea komeni zaie, eta gainerakoentzat gainetik begiradatxo bat
- ematearekin nahikoa izango da.
- Beste irakurle guztiontzat (ez zaitez kezkatu), \SpecialChar LyX
+ alea irakurtzea komeni zaie,
+ eta gainerakoentzat gainetik begiradatxo bat ematearekin nahikoa izango da.
+ Beste irakurle guztiontzat (ez zaitez kezkatu),
+ \SpecialChar LyX
  erabiltzeko \SpecialChar LaTeX
- jakin beharrik
- ez dago.
+ jakin beharrik ez dago.
 \end_layout
 
 \begin_layout Enumerate
-Inglesez gain beste edozein hizkuntzetan idazten edo irakurtzen duten erabiltzai
-leentzat abantaila ugari daude.
- Gainera tekla elkarte, tresna barra eta beste hainbat ezaugarriek egokitze
- maila handia eskeintzen diote (ia dena 
+Inglesez gain beste edozein hizkuntzetan idazten edo irakurtzen duten erabiltzaileentzat abantaila ugari daude.
+ Gainera tekla elkarte,
+ tresna barra eta beste hainbat ezaugarriek egokitze maila handia eskeintzen diote (ia dena 
 \family typewriter
 lyxrc
 \family default
@@ -226,7 +232,8 @@ https://www.lyx.org
 \end_inset
 
  da.
- Bertan programari buruzko informazioa lortu, gutun zerrendetan harpidetu,
+ Bertan programari buruzko informazioa lortu,
+ gutun zerrendetan harpidetu,
  \SpecialChar LyX
 -eko Marrazkidun Ibilalditxoa (edo Tour)-a:
 \begin_inset Newline newline
@@ -251,6 +258,7 @@ https://www.lyx.org/Walkthrough
 \series bold
 \lang english
 Note for Linux users:
+
 \series default
  Please check that the language packages for the \SpecialChar LaTeX
  distribution 

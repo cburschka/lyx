@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 95 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -93,14 +97,15 @@ Hal utama yang perlu diketahui ketika menggunakan \SpecialChar LyX
 
 \begin_layout Enumerate
 \SpecialChar LyX
- dilengkapi dengan dokumentasi yang sangat lengkap — Silakan dimanfaatkan!
+ dilengkapi dengan dokumentasi yang sangat lengkap —
+ Silakan dimanfaatkan!
  Dimulai dari 
 \family sans
 Bantuan\SpecialChar menuseparator
 Pengantar
 \family default
-, yang akan memberikan gambaran awal kepada anda tentang dokumentasi yang
- ada.
+,
+ yang akan memberikan gambaran awal kepada anda tentang dokumentasi yang ada.
  Setelah memahaminya teruskan untuk belajar menggunakan \SpecialChar LyX
  dari 
 \family sans
@@ -120,11 +125,11 @@ pengolah dokumen
 \begin_inset Quotes erd
 \end_inset
 
- yang dirancang berbeda dari pengolah kata yang biasa — sedemikian rupa
- sehingga membuat pengolahan dokumen menjadi lebih mudah dan akurat.
- Memang ada sedikit perbedaan, namun jangan terlalu kawatir.
- Bahan dokumentasi buku petunjuk yang disediakan akan menjelaskan penggunaan
- secara terperinci.
+ yang dirancang berbeda dari pengolah kata yang biasa —
+ sedemikian rupa sehingga membuat pengolahan dokumen menjadi lebih mudah dan akurat.
+ Memang ada sedikit perbedaan,
+ namun jangan terlalu kawatir.
+ Bahan dokumentasi buku petunjuk yang disediakan akan menjelaskan penggunaan secara terperinci.
 \begin_inset Foot
 status collapsed
 
@@ -144,7 +149,8 @@ Bantuan
 
 \begin_layout Enumerate
 Tampilan hasil dari \SpecialChar LyX
- akan terlihat mengagumkan! Cobalah sekarang 
+ akan terlihat mengagumkan!
+ Cobalah sekarang 
 \family sans
 \lang english
 Document\SpecialChar menuseparator
@@ -163,20 +169,21 @@ View
 \end_layout
 
 \begin_layout Enumerate
-Benar, \SpecialChar LyX
- dapat menampilkan (hampir semuanya) dari fungsi-fungsi yang ada
- pada \SpecialChar LaTeX
+Benar,
+ \SpecialChar LyX
+ dapat menampilkan (hampir semuanya) dari fungsi-fungsi yang ada pada \SpecialChar LaTeX
 .
- Demikian pula, \SpecialChar LyX
+ Demikian pula,
+ \SpecialChar LyX
  dapat mengenal dan mengimpor berkas \SpecialChar LaTeX
 .
  Bagi yang sudah mengenal dan mempunyai pengalaman menggunakan \SpecialChar LaTeX
- bisa memahami
- bagian awal 
+ bisa memahami bagian awal 
 \emph on
 Tutorial
 \emph default
- dengan cepat, kemudian bisa langsung membaca ke bab 
+ dengan cepat,
+ kemudian bisa langsung membaca ke bab 
 \begin_inset Quotes eld
 \end_inset
 
@@ -188,25 +195,27 @@ Tutorial
 
 .
  (yang belum mengenal \SpecialChar LaTeX
-: jangan kawatir, anda tidak perlu memahami \SpecialChar LaTeX
- untuk
- menggunakan \SpecialChar LyX
+:
+ jangan kawatir,
+ anda tidak perlu memahami \SpecialChar LaTeX
+ untuk menggunakan \SpecialChar LyX
 .) 
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
- mempunyai fasilitas yang dapat mengakomodasi pengguna yang berbahasa selain
- bahasa Inggris.
+ mempunyai fasilitas yang dapat mengakomodasi pengguna yang berbahasa selain bahasa Inggris.
  Selain hal tersebut ada rangkaian kunci (
 \emph on
 key bindings
 \emph default
-), kotak bantuan (
+),
+ kotak bantuan (
 \emph on
 toolbars
 \emph default
-), serta banyak hal lain yang bisa disesuaikan mengikuti kehendak pengguna.
+),
+ serta banyak hal lain yang bisa disesuaikan mengikuti kehendak pengguna.
  Untuk detailnya dapat dilihat melalui 
 \family sans
 Bantuan\SpecialChar menuseparator
@@ -227,15 +236,17 @@ https://www.lyx.org
 \end_inset
 
 .
- Pada halaman tersebut anda akan mendapatkan keterangan lebih lanjut tentang
- \SpecialChar LyX
-, juga bisa mendaftar ke 
+ Pada halaman tersebut anda akan mendapatkan keterangan lebih lanjut tentang \SpecialChar LyX
+,
+ juga bisa mendaftar ke 
 \emph on
 mailing list
 \emph default
  \SpecialChar LyX
- yang ada, bisa melihat gambar-gambar \SpecialChar LyX
- ketika digunakan: 
+ yang ada,
+ bisa melihat gambar-gambar \SpecialChar LyX
+ ketika digunakan:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -246,7 +257,8 @@ https://www.lyx.org/Walkthrough
 
 \end_inset
 
-, serta banyak hal lagi.
+,
+ serta banyak hal lagi.
 \end_layout
 
 \begin_layout Enumerate
@@ -254,6 +266,7 @@ https://www.lyx.org/Walkthrough
 \series bold
 \lang english
 Note for Linux users:
+
 \series default
  Please check that the language packages for the \SpecialChar LaTeX
  distribution 

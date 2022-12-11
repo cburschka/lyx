@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,9 +37,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -104,12 +104,16 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -122,7 +126,8 @@
 \end_layout
 
 \begin_layout Author
-egilea: \SpecialChar LyX
+egilea:
+ \SpecialChar LyX
  taldea.
 \begin_inset Foot
 status collapsed
@@ -134,18 +139,22 @@ John Weiss
 \family default
  da.
  Bidali iradokizunak edo erroreei buruzko zuzenketak \SpecialChar LyX
- dokumentazioko posta-zerre
-ndara: <lyx-docs@lists.lyx.org>.
+ dokumentazioko posta-zerrendara:
+ <lyx-docs@lists.lyx.org>.
  
 \begin_inset Newline newline
 \end_inset
 
-Itzulpena: Iñaki Larrañaga Murgoitio (dooteo@euskalgnu.org) eta Sara Elorza,
- 2004, 2010.
+Itzulpena:
+ Iñaki Larrañaga Murgoitio (dooteo@euskalgnu.org) eta Sara Elorza,
+ 2004,
+ 2010.
 \begin_inset Newline newline
 \end_inset
 
-Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
+Zuzenketak:
+ Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>,
+ 2004.
 \end_layout
 
 \end_inset
@@ -168,46 +177,57 @@ Sarrera
 
 \begin_layout Section
 Ongi etorri \SpecialChar LyX
--era! 
+-era!
+ 
 \end_layout
 
 \begin_layout Standard
 Fitxategi hau \SpecialChar LaTeX
- inoiz entzun barik edo ongi ezagutzen ez duten neska-mutilentzat
- egina dago.
- Lasai, ordea, \SpecialChar LyX
+ inoiz entzun barik edo ongi ezagutzen ez duten neska-mutilentzat egina dago.
+ Lasai,
+ ordea,
+ \SpecialChar LyX
  erabiltzeko \SpecialChar LaTeX
 -i buruz ezer jakin beharrik ez daukazu.
- Azken finean, \SpecialChar LyX
+ Azken finean,
+ \SpecialChar LyX
 -en ezaugarrietako bat \SpecialChar LaTeX
 -entzat ia WYSIWYG (
 \emph on
 What You See Is What You Get
 \emph default
 ) interfazea eskaintzean datza.
- Hori bai, \SpecialChar LyX
+ Hori bai,
+ \SpecialChar LyX
  bere osotasunean erabiltzeko gauza batzuk ikasi beharko dituzu.
 \end_layout
 
 \begin_layout Standard
-Ziurrenik, bi paragrafo artean hiru lerro zuri edo puntu "." baten ondoren
- bi hutsune ezartzen saiatzeagatik eskuliburu hau irakurtzen ari zara.
- Hainbat buruhauste izan eta gero, ezinezkoa dela ohartuko zinen.
- Gertatzen dena hau da: bestelako testu prozesadoreetako zenbait trikimailu
- \SpecialChar LyX
+Ziurrenik,
+ bi paragrafo artean hiru lerro zuri edo puntu "." baten ondoren bi hutsune ezartzen saiatzeagatik eskuliburu hau irakurtzen ari zara.
+ Hainbat buruhauste izan eta gero,
+ ezinezkoa dela ohartuko zinen.
+ Gertatzen dena hau da:
+ bestelako testu prozesadoreetako zenbait trikimailu \SpecialChar LyX
 -en ez direla erabilgarriak.
- Hau da, erabili izan dituzun testu-prozesadore gehienetan tabulazioak,
- zuriuneak, paragrafo-tarteak, letra-tipoak eta bestelako batzuk eskuz idatzi
- behar dira.
- Honekin jarraituz, dokumentuetako testua idazteaz gain beraren itxura eta
- konposaketa-lanak ere erabiltzaile bakoitzak lantzen ditu.
+ Hau da,
+ erabili izan dituzun testu-prozesadore gehienetan tabulazioak,
+ zuriuneak,
+ paragrafo-tarteak,
+ letra-tipoak eta bestelako batzuk eskuz idatzi behar dira.
+ Honekin jarraituz,
+ dokumentuetako testua idazteaz gain beraren itxura eta konposaketa-lanak ere erabiltzaile bakoitzak lantzen ditu.
  \SpecialChar LyX
--ek, ordea, itxura eta konposaketa-arloak lantzen ditu, gauza garrantzitsuena
- zuri utziz: dokumentuaren edukia idaztea.
+-ek,
+ ordea,
+ itxura eta konposaketa-arloak lantzen ditu,
+ gauza garrantzitsuena zuri utziz:
+ dokumentuaren edukia idaztea.
 \end_layout
 
 \begin_layout Standard
-Beraz, zatoz gurekin eta jarraitu irakurtzen.
+Beraz,
+ zatoz gurekin eta jarraitu irakurtzen.
  Tutoretza hau irakurrita denborari etekina aterako diozu.
 \end_layout
 
@@ -216,7 +236,8 @@ Tutoretza hau zer da eta zer ez da.
 \end_layout
 
 \begin_layout Standard
-Atal honekin serioski hasi baino lehen, gauza bat argitu nahiko genuke.
+Atal honekin serioski hasi baino lehen,
+ gauza bat argitu nahiko genuke.
  
 \emph on
 Tutoretza
@@ -226,7 +247,8 @@ Tutoretza
 Sarrera
 \emph default
  eskuliburuan agertzen den idazkera erabiltzen du.
- Lehenbizi eskuliburu hau irakurtzen ari bazara, hobe lehenago 
+ Lehenbizi eskuliburu hau irakurtzen ari bazara,
+ hobe lehenago 
 \emph on
 Sarrera
 \emph default
@@ -234,8 +256,8 @@ Sarrera
 \end_layout
 
 \begin_layout Standard
-Orain letra-tipo bakoitzaren esanahia dakizunez, tutoretza honen helburuez
- zertxobait azaldu nahi dugu.
+Orain letra-tipo bakoitzaren esanahia dakizunez,
+ tutoretza honen helburuez zertxobait azaldu nahi dugu.
 \end_layout
 
 \begin_layout Subsection
@@ -244,33 +266,40 @@ Tutoretza erabilgarria izan dadin.
 
 \begin_layout Standard
 Tutoretza hau adibide eta ariketekin osatua dago.
- Dokumentu honi zuku handiena ateratzeko irakurtzean zenbait ariketa idazteko
- esango dizugu, gauza guztiak ongi ulertu dituzula ziurtatzeko.
- Zure erosotasunerako, inprimatu dokumentu honen PDF bertsioa.
+ Dokumentu honi zuku handiena ateratzeko irakurtzean zenbait ariketa idazteko esango dizugu,
+ gauza guztiak ongi ulertu dituzula ziurtatzeko.
+ Zure erosotasunerako,
+ inprimatu dokumentu honen PDF bertsioa.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LaTeX
- ezagutzen baduzu, 
+ ezagutzen baduzu,
+ 
 \emph on
 Tutoretza
 \emph default
- hau azkarrago irakur dezakezu, \SpecialChar LyX
+ hau azkarrago irakur dezakezu,
+ \SpecialChar LyX
 -eko burutazio ugari \SpecialChar LaTeX
 -ekoak baitira.
- Nola nahi ere, Lyx-ek ikasi beharreko halako ezaugarriak ditu.
+ Nola nahi ere,
+ Lyx-ek ikasi beharreko halako ezaugarriak ditu.
  Baldin eta 
 \emph on
 Tutoretza
 \emph default
- osoa irakurtzeko asmorik ez baduzu, 
+ osoa irakurtzeko asmorik ez baduzu,
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "atal:latexerabiltzaileak"
+nolink "false"
 
 \end_inset
 
- atala begiratzea aholkatzen dizugu, \SpecialChar LaTeX
+ atala begiratzea aholkatzen dizugu,
+ \SpecialChar LaTeX
 -eko adituei zuzendua baitago.
 \end_layout
 
@@ -307,8 +336,8 @@ Erabiltzailearen gida
 \begin_layout Standard
 Premiagabekoak.
  \SpecialChar LaTeX
--ekin egin daitezkeen trikimailu batzuk ikasteko gogoa edukiz gero, eman
- begiradatxo bat 
+-ekin egin daitezkeen trikimailu batzuk ikasteko gogoa edukiz gero,
+ eman begiradatxo bat 
 \emph on
 Kapsulatutako objektuak
 \emph default
@@ -335,19 +364,25 @@ Lehenbiziko \SpecialChar LyX
 \begin_layout Standard
 Oso ondo.
  Idazten hasteko prest zaude.
- Hasi aurretik, ordea, 
+ Hasi aurretik,
+ ordea,
+ 
 \emph on
 Tutoretza
 \emph default
- hau hezigarri, erabilgarri eta atseginagoa gertatuko zaizulakoan, gauza
- batzuk esan beharrean gaude.
+ hau hezigarri,
+ erabilgarri eta atseginagoa gertatuko zaizulakoan,
+ gauza batzuk esan beharrean gaude.
 \end_layout
 
 \begin_layout Standard
-Dagoen informazio asko hemen azalduko ez dugunez, laguntzako beste fitxategi
- batzuk bilatu beharrean egongo zara.
- Zorionez, erraza da: abiarazi \SpecialChar LyX
-, aukeratu 
+Dagoen informazio asko hemen azalduko ez dugunez,
+ laguntzako beste fitxategi batzuk bilatu beharrean egongo zara.
+ Zorionez,
+ erraza da:
+ abiarazi \SpecialChar LyX
+,
+ aukeratu 
 \emph on
 Erabiltzailearen gida
 \emph default
@@ -356,27 +391,29 @@ Erabiltzailearen gida
 Laguntza
 \family default
  menuan.
- Horrela baderitzozu, kargatu 
+ Horrela baderitzozu,
+ kargatu 
 \emph on
 Tutoretza
 \emph default
  ere (une honetan pantailan irakurtzen ari ez bazara bederen).
- Horrela, zure fitxategia \SpecialChar LyX
--en eginbideen erabilera gisa adibide ona izango
- da, idazten ari zaren bitartean irakur baititzakezu
+ Horrela,
+ zure fitxategia \SpecialChar LyX
+-en eginbideen erabilera gisa adibide ona izango da,
+ idazten ari zaren bitartean irakur baititzakezu
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Adibide gisa ere erabil ditzakezu \SpecialChar LyX
--en eginbide asko nola erabiltzen diren
- jakiteko.
+-en eginbide asko nola erabiltzen diren jakiteko.
 \end_layout
 
 \end_inset
 
 .
- Dokumentu bat baino gehiago irekita badituzu, 
+ Dokumentu bat baino gehiago irekita badituzu,
+ 
 \family sans
 Ikusi
 \family default
@@ -388,18 +425,21 @@ Ikusi
 \emph on
 Tutoretza
 \emph default
- honetan programa hauek instalatuta dauzkazula onartuko dugu: ongi baino
- hobekiago darabilen \SpecialChar LyX
--eko bertsio bat, baina \SpecialChar LaTeX
--en paketeak ere, PDF formatuen
- ikustaile bat.
- GNU/Linux eta BSD banaketetako kasu litzateke hau, baita Windows sistemakoa
- ere, \SpecialChar LyX
+ honetan programa hauek instalatuta dauzkazula onartuko dugu:
+ ongi baino hobekiago darabilen \SpecialChar LyX
+-eko bertsio bat,
+ baina \SpecialChar LaTeX
+-en paketeak ere,
+ PDF formatuen ikustaile bat.
+ GNU/Linux eta BSD banaketetako kasu litzateke hau,
+ baita Windows sistemakoa ere,
+ \SpecialChar LyX
 -en instalatzaileak ezartzen baititu.
 \end_layout
 
 \begin_layout Standard
-Azkenik, zure trebezia lantzeko asmoz \SpecialChar LyX
+Azkenik,
+ zure trebezia lantzeko asmoz \SpecialChar LyX
 -en fitxategi bat prestatu dugu.
  Beraren izena 
 \family typewriter
@@ -426,13 +466,14 @@ Trikimailuak horia koloreko "oharretan" agertzen dira.
 \end_inset
 
 .
- Tranpa egin nahi baduzu (edo egindakoa aztertzeko asmoz), 
+ Tranpa egin nahi baduzu (edo egindakoa aztertzeko asmoz),
+ 
 \family typewriter
 adibide_lyx-atua.lyx
 \family default
- fitxategia daukazu; berton \SpecialChar LyX
--en aditua den norbaitek idatzitako testu berdina
- dago.
+ fitxategia daukazu;
+ berton \SpecialChar LyX
+-en aditua den norbaitek idatzitako testu berdina dago.
 \end_layout
 
 \begin_layout Standard
@@ -440,7 +481,8 @@ Adibide-fitxategiak
 \family typewriter
 examples/
 \family default
- direktoriopean aurki Daiteke; hautatu 
+ direktoriopean aurki Daiteke;
+ hautatu 
 \family sans
 Fitxategia\SpecialChar menuseparator
 Ireki
@@ -450,11 +492,13 @@ Ireki
 Adibideak
 \family default
  botoian klikatuz lor ditzakezu.
- Ireki Landugabeko dokumentua, 
+ Ireki Landugabeko dokumentua,
+ 
 \family typewriter
 adibide_gordina.lyx
 \family default
-, eta horren gainean idazteko 
+,
+ eta horren gainean idazteko 
 \family sans
 Fitxategia\SpecialChar menuseparator
 Gorde
@@ -465,27 +509,28 @@ honela
 \family default
 \SpecialChar ldots
  aukera erabiliz zure "etxeko" direktorioan kopia bat gorde.
- Dokumentua zuzentzen duzun heinean, aldaketak DVI irteeran nola eragiten
- duten ikus dezakezu.
+ Dokumentua zuzentzen duzun heinean,
+ aldaketak DVI irteeran nola eragiten duten ikus dezakezu.
 \end_layout
 
 \begin_layout Standard
-Gainera, 
+Gainera,
+ 
 \family typewriter
 examples/
 \family default
  direktorioan dauden beste adibide-fitxategiek \SpecialChar LyX
--ekin landuago dauden gauza
- politak burutzen erakutsiko dizute.
- Eskuliburuetan (bere luzera edo beste arrazoiengatik) agertzen ez diren
- beste gauza erabilgarri batzuk erakusten dira.
- Tutoretza hau irakurri ondoren, edo \SpecialChar LyX
--ekin gauza dotoreagoak egiteko orduan
- zalantzarik edukiz gero, kontsultatu fitxategi hauek.
+-ekin landuago dauden gauza politak burutzen erakutsiko dizute.
+ Eskuliburuetan (bere luzera edo beste arrazoiengatik) agertzen ez diren beste gauza erabilgarri batzuk erakusten dira.
+ Tutoretza hau irakurri ondoren,
+ edo \SpecialChar LyX
+-ekin gauza dotoreagoak egiteko orduan zalantzarik edukiz gero,
+ kontsultatu fitxategi hauek.
 \end_layout
 
 \begin_layout Subsection
-Idaztea, ikustea eta inprimatzea
+Idaztea,
+ ikustea eta inprimatzea
 \end_layout
 
 \begin_layout Itemize
@@ -498,7 +543,8 @@ Berria
 \end_layout
 
 \begin_layout Itemize
-Idatzi honelako esaldi bat: Nere \SpecialChar LyX
+Idatzi honelako esaldi bat:
+ Nere \SpecialChar LyX
  lehen dokumentua!.
 \end_layout
 
@@ -521,7 +567,8 @@ Exekutatu \SpecialChar LaTeX
 \family typewriter
 DVI
 \family default
- fitxategia sortzeko, 
+ fitxategia sortzeko,
+ 
 \family sans
 Ikusi\SpecialChar menuseparator
 PDF
@@ -534,7 +581,8 @@ arg   "buffer-view"
 
  botoiarekin.
  \SpecialChar LyX
--ek DVI ikustaria abiatuko du; horrek beste leiho berri bat sortuko du,
+-ek DVI ikustaria abiatuko du;
+ horrek beste leiho berri bat sortuko du,
  berton zure dokumentua inprimatua nola geldituko den erakutsiko dizun.
  
 \begin_inset Foot
@@ -542,7 +590,8 @@ status collapsed
 
 \begin_layout Plain Layout
 PDFren ikustailea atzeko planoan exekutatzen utziz denbora aurrez dezakezu.
- Ondoren, 
+ Ondoren,
+ 
 \family sans
 Ikusi\SpecialChar menuseparator
 Eguneratu\SpecialChar menuseparator
@@ -568,8 +617,8 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-Prest dagoenean, esportatu nahi duzun formatura inprimatzeko dokumentura
- 
+Prest dagoenean,
+ esportatu nahi duzun formatura inprimatzeko dokumentura 
 \family sans
 Fitxategia\SpecialChar menuseparator
 Esportatu
@@ -578,10 +627,11 @@ Esportatu
 \end_layout
 
 \begin_layout Standard
-Zorionak! Zure lehenbiziko \SpecialChar LyX
+Zorionak!
+ Zure lehenbiziko \SpecialChar LyX
  dokumentua idatzi eta inprimatu duzu.
- Beste guztia huskeriak bakarrik dira, beste eskuliburuetan zehar azalduko
- direnak.
+ Beste guztia huskeriak bakarrik dira,
+ beste eskuliburuetan zehar azalduko direnak.
 \end_layout
 
 \begin_layout Subsection
@@ -592,13 +642,14 @@ Eragiketa bakunak
 \SpecialChar LyX
 -ek testu-prozesadore batekin egin ditzakezun gauza gehienak egin ditzake.
  Automatikoki hitzak banandu eta paragrafoak koska ditzake.
- Ondoren, ekintza sinple batzuen azalpen laburrak dauzkazu.
+ Ondoren,
+ ekintza sinple batzuen azalpen laburrak dauzkazu.
 \end_layout
 
 \begin_layout Description
 Desegin \SpecialChar LyX
--ek hainbat desegite-maila ditu, uneko dokumentua editatzen hasi
- eta orain arteko guztiak desegin ditzakezu 
+-ek hainbat desegite-maila ditu,
+ uneko dokumentua editatzen hasi eta orain arteko guztiak desegin ditzakezu 
 \family sans
 Editatu\SpecialChar menuseparator
 Desegin
@@ -610,7 +661,9 @@ arg   "undo"
 \end_inset
 
  botoia) hautatuz behin eta berriz.
- Gehiegi desegiten baduzu, aldaketak berreskuratzeko, hautatu 
+ Gehiegi desegiten baduzu,
+ aldaketak berreskuratzeko,
+ hautatu 
 \family sans
 Editatu\SpecialChar menuseparator
 Berregin
@@ -626,7 +679,8 @@ arg   "redo"
 
 \begin_deeper
 \begin_layout Standard
-Unean, desegin komandoa 100 urratsetara mugatua dago.
+Unean,
+ desegin komandoa 100 urratsetara mugatua dago.
 \end_layout
 
 \end_deeper
@@ -642,7 +696,8 @@ type  "icon"
 arg   "cut"
 \end_inset
 
- botoia), 
+ botoia),
+ 
 \family sans
 Editatu\SpecialChar menuseparator
 Itsatsi
@@ -664,9 +719,9 @@ type  "icon"
 arg   "paste"
 \end_inset
 
- botoia) testua ebaki, itsatsi eta kopiatzeko.
- Edo itsatsi automatikoki hautatutako testua (beste zenbait programetako
- hautapenak ere bai) saguaren erdiko botoiarekin.
+ botoia) testua ebaki,
+ itsatsi eta kopiatzeko.
+ Edo itsatsi automatikoki hautatutako testua (beste zenbait programetako hautapenak ere bai) saguaren erdiko botoiarekin.
 \end_layout
 
 \begin_layout Description
@@ -690,7 +745,8 @@ arg   "dialog-show findreplace"
 \end_inset
 
  botoia) esaldi edo hitzak bilatzeko.
- Elkarrizketa-koadroan, bilatu 
+ Elkarrizketa-koadroan,
+ bilatu 
 \family typewriter
 Bilatu
 \begin_inset space ~
@@ -698,7 +754,8 @@ Bilatu
 
 hurrengoa
 \family default
- botoiarekin, eta erabil ezazu 
+ botoiarekin,
+ eta erabil ezazu 
 \family sans
 Ordeztu
 \family default
@@ -707,18 +764,18 @@ Ordeztu
 status collapsed
 
 \begin_layout Plain Layout
-Amaitzean leihotxoa itxi, edo irekita utzi lagungarriagoa dela baderitzozu.
+Amaitzean leihotxoa itxi,
+ edo irekita utzi lagungarriagoa dela baderitzozu.
  \SpecialChar LyX
 -eko elkarrizketa-koadro gehienak modu honetan erabil ditzakezu.
- Ziurtatu leiho nagusian fokua daukazula, edo elkarrizketa-koadro batean
- komando bat idazten ari zarela.
+ Ziurtatu leiho nagusian fokua daukazula,
+ edo elkarrizketa-koadro batean komando bat idazten ari zarela.
 \end_layout
 
 \end_inset
 
 .
- Bilaketetan maiuskula eta minuskulak bereiz ditzan edo hitz osoak soilik
- bilatzeko aukera eskaintzen zaizu.
+ Bilaketetan maiuskula eta minuskulak bereiz ditzan edo hitz osoak soilik bilatzeko aukera eskaintzen zaizu.
  Dokumentuan gorantz ere bilatu dezakezu.
 \end_layout
 
@@ -731,28 +788,33 @@ formateatzea Testua
 \emph on
 enfasiarekin
 \emph default
- (karaktere etzanak, tresna-barrako 
+ (karaktere etzanak,
+ tresna-barrako 
 \begin_inset Info
 type  "icon"
 arg   "font-emph"
 \end_inset
 
- botoia), 
+ botoia),
+ 
 \series bold
 lodia
 \series default
-, edo 
+,
+ edo 
 \noun on
 Izen
 \noun default
- estiloa (normalean maiuskula txikiak izaten dira, pertsonen izenentzako,
+ estiloa (normalean maiuskula txikiak izaten dira,
+ pertsonen izenentzako,
  tresna-barrako 
 \begin_inset Info
 type  "icon"
 arg   "font-noun"
 \end_inset
 
- botoia) eran ezartzeko, erabili 
+ botoia) eran ezartzeko,
+ erabili 
 \family sans
 Diseinua\SpecialChar menuseparator
 Karakterea
@@ -767,8 +829,9 @@ arg   "dialog-show character"
 \end_layout
 
 \begin_layout Description
-Tresna-barra Ekintza erabilgarrienak lantzeko botoiak dauzka (menuen azpian
- dago), adibidez, 
+Tresna-barra Ekintza erabilgarrienak lantzeko botoiak dauzka (menuen azpian dago),
+ adibidez,
+ 
 \family sans
 Itsatsi
 \family default
@@ -780,21 +843,23 @@ Inprimatu
 \end_layout
 
 \begin_layout Standard
-Noski, oraindik ez duzu nahikoa idatzi funtzio hauen erabilgarritasuna aztertzek
-o.
- Gehiago idaztean desegin, itsatsi, kopiatu e.a.
+Noski,
+ oraindik ez duzu nahikoa idatzi funtzio hauen erabilgarritasuna aztertzeko.
+ Gehiago idaztean desegin,
+ itsatsi,
+ kopiatu e.a.
  erabiltzen saia zaitez.
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: zuriuneak \SpecialChar LyX
+WYSIWYM:
+ zuriuneak \SpecialChar LyX
 -en
 \end_layout
 
 \begin_layout Standard
 Erabiltzaile berrientzako gauza zailenetariko bat \SpecialChar LyX
--ek zuriuneak erabiltzeko
- modura ohitzea izaten da.
+-ek zuriuneak erabiltzeko modura ohitzea izaten da.
  Nahiz eta mila bider 
 \family sans
 Sartu
@@ -807,7 +872,8 @@ Enter
 \family sans
 Return
 \family default
-) sakatu, lerro zuri bakarra lortuko duzu.
+) sakatu,
+ lerro zuri bakarra lortuko duzu.
  Nahiz eta tua sutu arte 
 \family typewriter
 Zuriunea
@@ -816,48 +882,61 @@ Zuriunea
 \family sans
 Spacebar
 \family default
- izeneko 'luuuze' hori) astindu, zuriune bakar bat besterik ez duzu lortuko.
+ izeneko 'luuuze' hori) astindu,
+ zuriune bakar bat besterik ez duzu lortuko.
  \SpecialChar LyX
 -ek ez dizu lerro huts batean zuriune bat sartzen utziko.
  
 \family sans
 Tabuladoreak
 \family default
- ez du testua koskatuko, gainera tabulaziorik ez dago! Orrialdearen gainean
- marjinak edo tabulazioak ezartzeko erregelarik ere ez dago.
+ ez du testua koskatuko,
+ gainera tabulaziorik ez dago!
+ Orrialdearen gainean marjinak edo tabulazioak ezartzeko erregelarik ere ez dago.
 \end_layout
 
 \begin_layout Standard
-Testu-prozesadore asko WYSIWYG portaeran oinarritzen dira: "ikusten duzuna
- lortzen duzu".
+Testu-prozesadore asko WYSIWYG portaeran oinarritzen dira:
+ "ikusten duzuna lortzen duzu".
  \SpecialChar LyX
--ek, ordea, "Ikusten duzuna 
+-ek,
+ ordea,
+ "Ikusten duzuna 
 \emph on
 esan nahi
 \emph default
  duzu" izakeran oinarritzen da.
  Utzi \SpecialChar LyX
--en eskuetan idatzi nahi duzuna eta beste dena, konposaketa-lanak.
+-en eskuetan idatzi nahi duzuna eta beste dena,
+ konposaketa-lanak.
  Lantxo hori txukun-txukun eta polit-polita uzten bera arduratuko baita.
  
 \family sans
 Lerro-itzulera
 \family default
- batek paragrafoak gramatikalki bereizten ditu, 
+ batek paragrafoak gramatikalki bereizten ditu,
+ 
 \family sans
 Zuriune
 \family default
- batek bi hitz bereizten dituen bezalaxe, eta gauzak horrela izanda, lerro-itzul
-era gehiago sartu beharrik ez dago; bestalde, 
+ batek bi hitz bereizten dituen bezalaxe,
+ eta gauzak horrela izanda,
+ lerro-itzulera gehiago sartu beharrik ez dago;
+ bestalde,
+ 
 \family sans
 Tabuladore
 \family default
- batek ez dauka funtzio gramatikarik; beraz, \SpecialChar LyX
+ batek ez dauka funtzio gramatikarik;
+ beraz,
+ \SpecialChar LyX
 -ek ez du onartzen.
- Azken finean, \SpecialChar LyX
- erabiliz denborarik gehien dokumentuaren edukian buru-belarri
- idazten igaroko duzu, eta gutxiengoa itxuran.
- WYSIWYMren esanahia hobekiago ulertzeko, ikus 
+ Azken finean,
+ \SpecialChar LyX
+ erabiliz denborarik gehien dokumentuaren edukian buru-belarri idazten igaroko duzu,
+ eta gutxiengoa itxuran.
+ WYSIWYMren esanahia hobekiago ulertzeko,
+ ikus 
 \emph on
 Sarrera
 \emph default
@@ -873,14 +952,16 @@ Sarrera
 Erabiltzailearen gida
 \emph default
 -k honi buruzkoak argitzen dizkizu.
- Horizontal eta bertikal betegarriei buruzko azalpenak ditu, hainbat zuriune
- edo lerro hutsak baino gaitasun handiagoa daukate.
- Paragrafo, lerrokatze, letra-tipo, letra-tamaina eta bestelakoak eskuz
- alda ditzakezu.
- Benetako ideia da zu zeu dokumentuaren edukian murgiltzea, eta amaitzean
- soilik arduratzea gauzak fintzeaz.
- Egungo testu-prozesadore arruntekin, idazten zabiltzan unean dokumentuaren
- itxurak arreta galarazten dizu.
+ Horizontal eta bertikal betegarriei buruzko azalpenak ditu,
+ hainbat zuriune edo lerro hutsak baino gaitasun handiagoa daukate.
+ Paragrafo,
+ lerrokatze,
+ letra-tipo,
+ letra-tamaina eta bestelakoak eskuz alda ditzakezu.
+ Benetako ideia da zu zeu dokumentuaren edukian murgiltzea,
+ eta amaitzean soilik arduratzea gauzak fintzeaz.
+ Egungo testu-prozesadore arruntekin,
+ idazten zabiltzan unean dokumentuaren itxurak arreta galarazten dizu.
 \end_layout
 
 \begin_layout Section
@@ -888,31 +969,36 @@ Inguruneak
 \end_layout
 
 \begin_layout Standard
-Dokumentu bateko zati ezberdinek xede ezberdinak dituzte: zati horiei 
+Dokumentu bateko zati ezberdinek xede ezberdinak dituzte:
+ zati horiei 
 \emph on
 inguruneak
 \emph default
  deritzogu.
  Dokumentu bateko gehiengoa testu arrunta izan ohi da.
- Ataleko (kapituluak, azpiatalak, e.a.) izenburuek azalduko den gai edo azpigai
- berriak hastera doazela jakinarazten diote irakurleari.
+ Ataleko (kapituluak,
+ azpiatalak,
+ e.a.) izenburuek azalduko den gai edo azpigai berriak hastera doazela jakinarazten diote irakurleari.
  Dokumentu mota batzuek ingurune bereziak dauzkate.
  Egunkari bateko artikulu batek titulu eta laburpen bat edukiko du.
- Gutun batek, berriz, horietakorik ez du edukiko, bidaltzailearen helbidea
- edukitzeko ingurune aproposa edukiko du ziurrenik.
+ Gutun batek,
+ berriz,
+ horietakorik ez du edukiko,
+ bidaltzailearen helbidea edukitzeko ingurune aproposa edukiko du ziurrenik.
 \end_layout
 
 \begin_layout Standard
 Inguruneak \SpecialChar LyX
--en oinarrizko "Ikusten duzuna esan nahi duzu" filosofiaren zati
- nagusiak dira.
- Ingurune zehatz batek letra-tipo, letra-tamaina, koskatze, lerro arteko
- tarte eta beste berezitasun batzuk eska ditzake.
- Arazoa areagotzen da ingurune zehatz bat aldatzean: egunkari batek bere
- tituluentzako letra lodia, 18 tamainakoa eta paragrafo zentratuak erabil
- ditzaken bitartean beste batzuk 15 tamainako letra etzana eta ezkerrera
- lerrokatuta erabil dezakete; hizkuntza ezberdinek koska-estandar ezberdinak
- eska ditzakete; eta bibliografietako egiturak asko alda daitezke.
+-en oinarrizko "Ikusten duzuna esan nahi duzu" filosofiaren zati nagusiak dira.
+ Ingurune zehatz batek letra-tipo,
+ letra-tamaina,
+ koskatze,
+ lerro arteko tarte eta beste berezitasun batzuk eska ditzake.
+ Arazoa areagotzen da ingurune zehatz bat aldatzean:
+ egunkari batek bere tituluentzako letra lodia,
+ 18 tamainakoa eta paragrafo zentratuak erabil ditzaken bitartean beste batzuk 15 tamainako letra etzana eta ezkerrera lerrokatuta erabil dezakete;
+ hizkuntza ezberdinek koska-estandar ezberdinak eska ditzakete;
+ eta bibliografietako egiturak asko alda daitezke.
  \SpecialChar LyX
 -ek formatu-estilo guztiak ikastea saihestuko dizu.
 \end_layout
@@ -922,8 +1008,9 @@ Inguruneak \SpecialChar LyX
 \family sans
 Ingurunea
 \family default
- goitibeherako zerrenda tresna-barraren ezkerrean kokatua dago, eta honako
- itxura du: 
+ goitibeherako zerrenda tresna-barraren ezkerrean kokatua dago,
+ eta honako itxura du:
+ 
 \begin_inset Graphics
 	filename ../clipart/ToolbarEnvBox.png
 	scale 75
@@ -937,10 +1024,11 @@ Ingurunea
 \family sans
 Arrunta
 \family default
-" azaltzen zuen, testuen ingurune lehenetsia.
- Nola dabiltzan ikusteko, dokumentu berrian gune ezberdinak jar ditzakezu.
- Ireki Ingurunea menua saguarekin klik eginez eta hautatu bertako edozein
- elementu.
+" azaltzen zuen,
+ testuen ingurune lehenetsia.
+ Nola dabiltzan ikusteko,
+ dokumentu berrian gune ezberdinak jar ditzakezu.
+ Ireki Ingurunea menua saguarekin klik eginez eta hautatu bertako edozein elementu.
 \end_layout
 
 \begin_layout Subsection
@@ -953,7 +1041,8 @@ Idatzi
 Sarrera
 \family default
  zure \SpecialChar LyX
--eko fitxategiko lehen lerroan, eta 
+-eko fitxategiko lehen lerroan,
+ eta 
 \family sans
 Ingurunea
 \family default
@@ -967,11 +1056,12 @@ Ez daukazu lerro osoa
 hautatu
 \emph default
  beharrik.
- Ezer ez baduzu hautatzen, \SpecialChar LyX
--ek unean dagoen paragrafoa hautatutako ingurunera
- aldatuko du.
- Bestalde, hainbat paragrafo-ingurune batera aldatzeko, hautatu lehenbizi
- paragrafoak eta ondoren zehaztu ingurunea.
+ Ezer ez baduzu hautatzen,
+ \SpecialChar LyX
+-ek unean dagoen paragrafoa hautatutako ingurunera aldatuko du.
+ Bestalde,
+ hainbat paragrafo-ingurune batera aldatzeko,
+ hautatu lehenbizi paragrafoak eta ondoren zehaztu ingurunea.
 \end_layout
 
 \end_inset
@@ -990,10 +1080,10 @@ Atala
 \family sans
 Atala*
 \family default
-, beherago azalduko da zergatia.
+,
+ beherago azalduko da zergatia.
  \SpecialChar LyX
--ek atala "1" bezala zenbatzen du eta atalaren izenburua letra-tamaina
- handiagoz ezartzen du.
+-ek atala "1" bezala zenbatzen du eta atalaren izenburua letra-tamaina handiagoz ezartzen du.
  Orain lerro-itzulera sakatu.
  Ikus dezakezuna 
 \family sans
@@ -1008,7 +1098,9 @@ Atala
 Arrunta
 \family default
 " egoerara igarotzen da.
- Ataleko izenburuak, ingurune asko bezala, 
+ Ataleko izenburuak,
+ ingurune asko bezala,
+ 
 \family typewriter
 Sartu
 \family default
@@ -1026,7 +1118,8 @@ Sakatu
 \family sans
 Sartu 
 \family default
-tekla berriro, eta 
+tekla berriro,
+ eta 
 \family typewriter
 Ingurunea
 \family default
@@ -1049,15 +1142,17 @@ gauza gehiago
 \begin_inset Quotes erd
 \end_inset
 
-, eta ikusiko duzu ataleko izenburu bezala ezarriko duela.
+,
+ eta ikusiko duzu ataleko izenburu bezala ezarriko duela.
 \end_layout
 
 \begin_layout Standard
 Gauzak hobetuz doaz.
  Joan 1.
  atalaren amaierara ("nire \SpecialChar LyX
--eko lehen" paragrafoaren atzera), sakatu Sartu
- tekla, eta hautatu 
+-eko lehen" paragrafoaren atzera),
+ sakatu Sartu tekla,
+ eta hautatu 
 \family sans
 Atala
 \family default
@@ -1069,12 +1164,15 @@ Atala
 Dokumentu honi buruz
 \family default
 .
- "Gauza gehiago" atala, lehenxeago 2.
- atala zena, automatikoki 3.
- atal bezala berzenbatua izan da! WYSIWYM egiazko eran, dokumentuko testuak
- atalen izenburu bezala identifikatu behar dituzu, \SpecialChar LyX
- arduratuko baita zenbatzeaz
- eta konposatzeaz.
+ "Gauza gehiago" atala,
+ lehenxeago 2.
+ atala zena,
+ automatikoki 3.
+ atal bezala berzenbatua izan da!
+ WYSIWYM egiazko eran,
+ dokumentuko testuak atalen izenburu bezala identifikatu behar dituzu,
+ \SpecialChar LyX
+ arduratuko baita zenbatzeaz eta konposatzeaz.
 \end_layout
 
 \begin_layout Standard
@@ -1082,11 +1180,13 @@ Sakatu
 \family typewriter
 Sartu
 \family default
- tekla, 
+ tekla,
+ 
 \family typewriter
 Arrunta
 \family default
- ingurunera itzultzeko, eta datozen bost lerroak idatzi:
+ ingurunera itzultzeko,
+ eta datozen bost lerroak idatzi:
 \end_layout
 
 \begin_layout LyX-Code
@@ -1120,18 +1220,23 @@ Azpiatala
 \family default
  hautatu.
  \SpecialChar LyX
--ek azpiatala "2.1" zenbatuko du, eta letra-tamaina testu arruntarena baino
- handiagoa eta atalen izenburuena baino txikiagoa ezarriko dio.
+-ek azpiatala "2.1" zenbatuko du,
+ eta letra-tamaina testu arruntarena baino handiagoa eta atalen izenburuena baino txikiagoa ezarriko dio.
  Laugarren lerroa 
 \series bold
 Azpiatala
 \series default
  ingurunera aldatu baita ere.
- Pentsatzen zenuen bezala, \SpecialChar LyX
+ Pentsatzen zenuen bezala,
+ \SpecialChar LyX
 -ek azpiatala "2.2" bezala zenbatzen du.
- Beste atal bat sartzen baduzu 2.aren aurretik, 2.
+ Beste atal bat sartzen baduzu 2.aren aurretik,
+ 2.
  atala 3.
- atalera berzenbatua izango da; beraren azpiatalak, berriz, "3.1" eta "3.2"ra.
+ atalera berzenbatua izango da;
+ beraren azpiatalak,
+ berriz,
+ "3.1" eta "3.2"ra.
 \end_layout
 
 \begin_layout Standard
@@ -1139,7 +1244,8 @@ Zatitzeko maila sakonagoak
 \family sans
 Azpiazpiatala
 \family default
-, 
+,
+ 
 \family sans
 Paragrafo
 \family default
@@ -1149,8 +1255,9 @@ Azpiparagrafoak
 \family default
  dira.
  Hauekin zure kasa jolasten utziko dizugu.
- Paragrafo eta azpiparagrafoen izenburuek jatorriz zenbatu gabe eta azpiparagraf
-oak koskatuta daudela ohartuko zara; hori aldatzeko, irakurri 
+ Paragrafo eta azpiparagrafoen izenburuek jatorriz zenbatu gabe eta azpiparagrafoak koskatuta daudela ohartuko zara;
+ hori aldatzeko,
+ irakurri 
 \emph on
 Erabiltzailearen gida
 \emph default
@@ -1159,16 +1266,18 @@ Erabiltzailearen gida
 \family sans
 Kapitulua
 \family default
- izenburuak dira, 
+ izenburuak dira,
+ 
 \family sans
 Atala
 \family default
- gainetik, baina \SpecialChar LyX
- dokumentuetako testu-klase batzuetan bakarrik erabil ditzakezu
- (
+ gainetik,
+ baina \SpecialChar LyX
+ dokumentuetako testu-klase batzuetan bakarrik erabil ditzakezu (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "atal:dokumklaseak"
+nolink "false"
 
 \end_inset
 
@@ -1176,7 +1285,8 @@ reference "atal:dokumklaseak"
 \end_layout
 
 \begin_layout Standard
-Azkenik, baliteke zenbatu gabeko atal eta azpiatalak nahi izatea.
+Azkenik,
+ baliteke zenbatu gabeko atal eta azpiatalak nahi izatea.
  Horretarako ere badaude beste gune batzuk.
  Atalen izenburuak 
 \family sans
@@ -1186,9 +1296,10 @@ Atala*
 \family typewriter
 Ingurunea
 \family default
- zerrendan beherantz mugitu beharko duzu) aldatzen badituzu, \SpecialChar LyX
--ek atal normaletak
-o letra-tamaina berdina erabiliko du, baina ez ditu zenbatuko.
+ zerrendan beherantz mugitu beharko duzu) aldatzen badituzu,
+ \SpecialChar LyX
+-ek atal normaletako letra-tamaina berdina erabiliko du,
+ baina ez ditu zenbatuko.
  Badaude "izardun" izenburuak 
 \family sans
 Azpiatala
@@ -1207,7 +1318,8 @@ Azpiazpiatala
 \series bold
 Ariketa
 \series default
-: konpondu 
+:
+ konpondu 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -1221,14 +1333,17 @@ Zerrendak eta azpizerrendak
 \begin_layout Standard
 \SpecialChar LyX
 -ek zerrendak osatzeko zenbait ingurune ditu.
- Zerrenden hainbat ingurunek eskema bat idaztean, 
+ Zerrenden hainbat ingurunek eskema bat idaztean,
+ 
 \family sans
 Tabuladoreari
 \family default
- hainbat bider sakatzea edo zerrenda baten erdian puntu berri bat idaztean
- beste denak berzenbatzea saihestuko da.
- Horrela, zerrendaren edukiaz arduratuko zara soilik.
- Dokumentu mota desberdinek, noski, zerrenda ingurune ezberdinak behar dituzte:
+ hainbat bider sakatzea edo zerrenda baten erdian puntu berri bat idaztean beste denak berzenbatzea saihestuko da.
+ Horrela,
+ zerrendaren edukiaz arduratuko zara soilik.
+ Dokumentu mota desberdinek,
+ noski,
+ zerrenda ingurune ezberdinak behar dituzte:
 \end_layout
 
 \begin_layout Itemize
@@ -1244,8 +1359,7 @@ Eskema batek
 \family sans
 Zenbatuta
 \family default
- inguruneko zenbatutako zerrenda (eta hizkiz osatutako azpizerrendak) erabil
- lezake.
+ inguruneko zenbatutako zerrenda (eta hizkiz osatutako azpizerrendak) erabil lezake.
 \end_layout
 
 \begin_layout Itemize
@@ -1253,8 +1367,8 @@ Hainbat softwaretako paketeak azaltzen dituen dokumentu batek
 \family sans
 Azalpena
 \family default
- ingurunea erabil dezake, eta zerrendako elementu bakoitza letra lodia duen
- hitz batekin hasiko da.
+ ingurunea erabil dezake,
+ eta zerrendako elementu bakoitza letra lodia duen hitz batekin hasiko da.
  
 \end_layout
 
@@ -1273,8 +1387,7 @@ Azalpena
 
 \begin_layout Standard
 \SpecialChar LyX
- beste testu-prozesadoreak baino hobeago izatearen arrazoiei buruzko zerrenda
- bat idatziko dugu.
+ beste testu-prozesadoreak baino hobeago izatearen arrazoiei buruzko zerrenda bat idatziko dugu.
  Idatzi hau zure dokumentuaren leku batean:
 \end_layout
 
@@ -1295,8 +1408,8 @@ Inguruneen
 \family default
 .
  \SpecialChar LyX
--ek lerro-hasieran bulet bat idazten du (berez "izartxo" bat, baina irteerako
- emaitzan borobil bihurtzen da).
+-ek lerro-hasieran bulet bat idazten du (berez "izartxo" bat,
+ baina irteerako emaitzan borobil bihurtzen da).
  Idatzi zure zergatiak:
 \end_layout
 
@@ -1317,22 +1430,25 @@ Oso erraza da zerrendak sortzea!
 \end_layout
 
 \begin_layout Standard
-Zerrenda-motako inguruneak, izenburuen ez bezala, 
+Zerrenda-motako inguruneak,
+ izenburuen ez bezala,
+ 
 \family sans
 Sartu
 \family default
  sakatzean ez dira amaitzen.
- Horren ordez, \SpecialChar LyX
--ek zerrendako hurrengo elementuarekin jarraituko duzulakoan
- dago.
+ Horren ordez,
+ \SpecialChar LyX
+-ek zerrendako hurrengo elementuarekin jarraituko duzulakoan dago.
  Aurreko adibidea hiru elementuz osatutako zerrenda bat da.
- Zerrendako elementu batean paragrafo bat baino gehiago edukitzeko jauzi
- babestua erabili, 
+ Zerrendako elementu batean paragrafo bat baino gehiago edukitzeko jauzi babestua erabili,
+ 
 \family sans
 Ktrl+Sartu
 \family default
  sakatuz.
- Zerrenda ingurunetik irteteko, hautatu 
+ Zerrenda ingurunetik irteteko,
+ hautatu 
 \family sans
 Arrunta
 \family default
@@ -1349,18 +1465,23 @@ S
 
 \begin_layout Standard
 Zerrenda polita lortu duzu.
- Inprimatzean zein itxura edukiko duen ikusteko, exekutatu \SpecialChar LaTeX
+ Inprimatzean zein itxura edukiko duen ikusteko,
+ exekutatu \SpecialChar LaTeX
 .
- Baina, zer gertatzen da arrazoiak zenbatuta eduki nahi badituzu? Hautatu
- zerrenda osoa
+ Baina,
+ zer gertatzen da arrazoiak zenbatuta eduki nahi badituzu?
+ Hautatu zerrenda osoa
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
--ek ez dizu lehenbiziko buleta aukeratzen utziko, zerrendaren aurreko paragrafoa
- ez baduzu aukeratzen, bederen, eta ziurrenik ez duzu hori egitea nahiko.
- Era berean, atalen izenburuen zenbakia ez du hautatzen utziko.
+-ek ez dizu lehenbiziko buleta aukeratzen utziko,
+ zerrendaren aurreko paragrafoa ez baduzu aukeratzen,
+ bederen,
+ eta ziurrenik ez duzu hori egitea nahiko.
+ Era berean,
+ atalen izenburuen zenbakia ez du hautatzen utziko.
  Ez zaitez kezkatu.
 \end_layout
 
@@ -1375,14 +1496,17 @@ Ingurunea
 Zenbatuta
 \family default
 .
- Sinestezina, eh?! Esan genizun bezala, zerrendan elementu bat gehitean
- edo ezabatzean \SpecialChar LyX
+ Sinestezina,
+ eh?!
+ Esan genizun bezala,
+ zerrendan elementu bat gehitean edo ezabatzean \SpecialChar LyX
 -ek zenbaketa guztia berregiten du.
 \end_layout
 
 \begin_layout Standard
-Zerrenda hautatuta dagoen bitartean, beste bi zerrenda-ingurunetara alda
- dezakezu, 
+Zerrenda hautatuta dagoen bitartean,
+ beste bi zerrenda-ingurunetara alda dezakezu,
+ 
 \family sans
 Azalpena
 \family default
@@ -1390,10 +1514,11 @@ Azalpena
 \family sans
 Zerrenda
 \family default
-, nolako itxura duten ikusteko.
- Bi kasuetan, zerrendako elementu bakoitzak "termino" eta definizio bat
- dauka, eta definizioa paragrafoan gelditzen den beste guztia da (Sartu
- tekla sakatu arte).
+,
+ nolako itxura duten ikusteko.
+ Bi kasuetan,
+ zerrendako elementu bakoitzak "termino" eta definizio bat dauka,
+ eta definizioa paragrafoan gelditzen den beste guztia da (Sartu tekla sakatu arte).
  Lehen terminoa letra lodiz (
 \family sans
 Azalpena
@@ -1403,9 +1528,11 @@ Azalpena
 status collapsed
 
 \begin_layout Plain Layout
-Konposaketako tabuladorea da, ordea, eta zerrendako "termino" handienaren
- neurrira moldatzeko aldatuko da, idazmakina bateko tabuladore lehor, goibel
- eta aldagaitz bat ez bezala.
+Konposaketako tabuladorea da,
+ ordea,
+ eta zerrendako "termino" handienaren neurrira moldatzeko aldatuko da,
+ idazmakina bateko tabuladore lehor,
+ goibel eta aldagaitz bat ez bezala.
 \end_layout
 
 \end_inset
@@ -1428,7 +1555,8 @@ Ktrl+Zuriunea
 \series bold
 Ariketa
 \series default
-: zuzendu 
+:
+ zuzendu 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -1436,14 +1564,15 @@ adibide_gordina.lyx
 \end_layout
 
 \begin_layout Standard
-Itxura erakargarriak osatuz, zerrenda batzuk beste batzuen barnean sar ditzakezu
-: kontzeptu honi 'habiaratzea' ere deitzen zaio euskaraz.
- Adibide gisa, eskemak.
- Zerrenda sinplea eta zenbatuak azpizerrendetan buleta eta zenbatze-mota
- ezberdinak eduki ditzakete.
+Itxura erakargarriak osatuz,
+ zerrenda batzuk beste batzuen barnean sar ditzakezu:
+ kontzeptu honi 'habiaratzea' ere deitzen zaio euskaraz.
+ Adibide gisa,
+ eskemak.
+ Zerrenda sinplea eta zenbatuak azpizerrendetan buleta eta zenbatze-mota ezberdinak eduki ditzakete.
  Zerrenda-mota ezberdinen azalpenak eta habiaratze-mailari (adib.
- azpizerrenda beste baten barruan, eta azken hau beste batean habiaratuta)
- buruko xehetasunak 
+ azpizerrenda beste baten barruan,
+ eta azken hau beste batean habiaratuta) buruko xehetasunak 
 \emph on
 Erabiltzailearen gida
 \emph default
@@ -1451,11 +1580,14 @@ Erabiltzailearen gida
 \end_layout
 
 \begin_layout Subsection
-Beste inguruneak: Bertsoa, Zitazioa eta beste batzuk
+Beste inguruneak:
+ Bertsoa,
+ Zitazioa eta beste batzuk
 \end_layout
 
 \begin_layout Standard
-Zitak ezartzeko bi ingurune daude: 
+Zitak ezartzeko bi ingurune daude:
+ 
 \family sans
 Aipua
 \family default
@@ -1483,21 +1615,22 @@ tutoretza honetako adibide luzeetan erabilia
 \family typewriter
 idazmakinaren
 \family default
- letra-tipoarekin idazten du; kodea koskatzeko nahi adina zuriune jarraian
- idazteko baimena eskaintzen dizun \SpecialChar LyX
+ letra-tipoarekin idazten du;
+ kodea koskatzeko nahi adina zuriune jarraian idazteko baimena eskaintzen dizun \SpecialChar LyX
 -eko ingurune bakarra da.
  Olerkiak idatz ditzakezu 
 \family sans
 Bertsoa
 \family default
- ingurunea erabiliz, estrofak bereizteko lerro-itzulerak eta estrofa baten
- barruan lerroak banatzeko 
+ ingurunea erabiliz,
+ estrofak bereizteko lerro-itzulerak eta estrofa baten barruan lerroak banatzeko 
 \family sans
 Ktrl+Sartu teklak
 \family default
  erabiliz.
  \SpecialChar LyX
--ek eskaintzen dizkizun inguruneen xehetasunak ezagutzeko, ikus 
+-ek eskaintzen dizkizun inguruneen xehetasunak ezagutzeko,
+ ikus 
 \emph on
 Erabiltzailearen gida
 \emph default
@@ -1509,11 +1642,13 @@ Erabiltzailearen gida
 \series bold
 Ariketa
 \series default
-: 
+:
+ 
 \family sans
 Aipua
 \family default
-, 
+,
+ 
 \family sans
 \SpecialChar LyX
 -kodea
@@ -1538,18 +1673,23 @@ Dokumentuak idaztea
 \begin_layout Standard
 Aurreko kapitulua \SpecialChar LyX
 -ekin idazten ohitzeko lagunduko zizulakoan gaude.
- Oinarrizko editatze-eragiketaz gain inguruneen ahalmenekin idaztea ere
- erakutsi dizugu.
+ Oinarrizko editatze-eragiketaz gain inguruneen ahalmenekin idaztea ere erakutsi dizugu.
  \SpecialChar LyX
  erabiltzen duen gehiengo batek dokumentuak idaztea dauka helburutzat:
- egunkariak, artikuluak, liburuak, gutunak edo eskuliburuak.
+ egunkariak,
+ artikuluak,
+ liburuak,
+ gutunak edo eskuliburuak.
  Kapitulu honek testu bakun batetik dokumentu oso bat \SpecialChar LyX
--ekin idaztera eramango
- zaitu.
- Testu-klaseak aurkeztuko dizkizu, hainbat dokumentu mota idazteko.
- Testu bat dokumentu batera bihurtzeko behar dituzun eginbide asko azalduko
- dizkizu, adibidez, tituluak, oin-oharrak, erreferentzia gurutzatuak, bibliograf
-i eta gaien aurkibideak.
+-ekin idaztera eramango zaitu.
+ Testu-klaseak aurkeztuko dizkizu,
+ hainbat dokumentu mota idazteko.
+ Testu bat dokumentu batera bihurtzeko behar dituzun eginbide asko azalduko dizkizu,
+ adibidez,
+ tituluak,
+ oin-oharrak,
+ erreferentzia gurutzatuak,
+ bibliografi eta gaien aurkibideak.
 \end_layout
 
 \begin_layout Section
@@ -1565,11 +1705,12 @@ name "atal:dokumklaseak"
 
 \begin_layout Standard
 Dokumentu mota bakoitza era desberdin batean konposatzen da.
- Adibidez, liburuak bi aldetatik inprimatu ohi diren bitartean, artikuluak
- orrialde bakarrekoak izaten dira.
- Gainera, dokumentu askok ingurune bereziak edukitzen dituzte: gutunak edukitzen
- duten zenbait ingurune (bidaltzailearen helbidea eta sinadura bezala) liburu
- edo artikulu batean ez daukate zentzurik.
+ Adibidez,
+ liburuak bi aldetatik inprimatu ohi diren bitartean,
+ artikuluak orrialde bakarrekoak izaten dira.
+ Gainera,
+ dokumentu askok ingurune bereziak edukitzen dituzte:
+ gutunak edukitzen duten zenbait ingurune (bidaltzailearen helbidea eta sinadura bezala) liburu edo artikulu batean ez daukate zentzurik.
  \SpecialChar LyX
 -eko 
 \emph on
@@ -1581,23 +1722,25 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--eko erabiltzaileentzat: hau \SpecialChar LaTeX
--eko dokumentu-klasearen (document-class) antzekoa
- da
+-eko erabiltzaileentzat:
+ hau \SpecialChar LaTeX
+-eko dokumentu-klasearen (document-class) antzekoa da
 \end_layout
 
 \end_inset
 
  hauen arteko ezberdintasunez arduratzen dira.
- Tutoretza hau, adibidez, 
+ Tutoretza hau,
+ adibidez,
+ 
 \family sans
 liburua
 \family default
  (Book) dokumentu klasearekin idatzi da.
  Testu-klaseak WYSIWYM filosofiaren zatirik garrantzitsuenetarikoak dira;
  beraiek esaten baitiote \SpecialChar LyX
--i dokumentu bat nola konposatu, ondorioz hau egiteko
- moduari buruz ez daukazu ezer jakin beharrik.
+-i dokumentu bat nola konposatu,
+ ondorioz hau egiteko moduari buruz ez daukazu ezer jakin beharrik.
 \end_layout
 
 \begin_layout Standard
@@ -1621,22 +1764,27 @@ Dokumentu klase lehenetsia izan ohi da.
 Dokumentua\SpecialChar menuseparator
 Ezarpenak
 \family default
- menua), hauen konposaketa ezberdinak ikusteko.
+ menua),
+ hauen konposaketa ezberdinak ikusteko.
  Aldatu zure dokumentua 
 \family sans
 Book
 \family default
- dokumentu klasera, eta 
+ dokumentu klasera,
+ eta 
 \family sans
 Ingurunea
 \family default
  zerrendan begiratzen baduzu dauden ingurune gehienak berdinak izango dira.
- Orain, ordea, 
+ Orain,
+ ordea,
+ 
 \family sans
 Kapitulua
 \family default
  ingurunea erabil dezakezu.
- Testu-klase batek zein ingurune eskaintzen dituen jakiteko, 
+ Testu-klase batek zein ingurune eskaintzen dituen jakiteko,
+ 
 \family sans
 Ingurunea
 \family default
@@ -1644,15 +1792,18 @@ Ingurunea
 \end_layout
 
 \begin_layout Standard
-Egunkariek konposaketa-mota propioa eduki ohi dute: letra-tamainak, zutabe
- bateko (edo biko) inprimaketa, edo orriaren izenburuak bezala.
- Garai digital honetan, hauek artikulu elektronikoak onartzen hasi dira,
+Egunkariek konposaketa-mota propioa eduki ohi dute:
+ letra-tamainak,
+ zutabe bateko (edo biko) inprimaketa,
+ edo orriaren izenburuak bezala.
+ Garai digital honetan,
+ hauek artikulu elektronikoak onartzen hasi dira,
  \SpecialChar LaTeX
- estiloko fitxategiak sortu eta idazleak beraien artikuluak ongi konposatuta
- bidal ditzaten.
+ estiloko fitxategiak sortu eta idazleak beraien artikuluak ongi konposatuta bidal ditzaten.
  Horretarako ere prestatuta dago \SpecialChar LyX
 .
- Adibidez, \SpecialChar LyX
+ Adibidez,
+ \SpecialChar LyX
 -ek 
 \family sans
 Article
@@ -1661,13 +1812,13 @@ Article
 
 (AMS)
 \family default
- dokumentu klasearen bidez Amerikar Matematika Elkarteko egunkarientzat
- (eta antzeko beste batzuentzat ere) konposaketa-euskarria eskaintzen du.
+ dokumentu klasearen bidez Amerikar Matematika Elkarteko egunkarientzat (eta antzeko beste batzuentzat ere) konposaketa-euskarria eskaintzen du.
 \end_layout
 
 \begin_layout Standard
 Jarraian zenbait testu-motari buruzko erreferentzia laburra azaltzen da.
- Xehetasun gehiagorako, ikus 
+ Xehetasun gehiagorako,
+ ikus 
 \emph on
 Eginbide gehigarriak
 \emph default
@@ -1718,7 +1869,8 @@ article
 \begin_inset Text
 
 \begin_layout Plain Layout
-orrialde bakarrekoa, kapitulurik gabe
+orrialde bakarrekoa,
+ kapitulurik gabe
 \end_layout
 
 \end_inset
@@ -1758,7 +1910,8 @@ report
 \begin_inset Text
 
 \begin_layout Plain Layout
-artikulua baino luzeagoa, bi orrialdetatik
+artikulua baino luzeagoa,
+ bi orrialdetatik
 \end_layout
 
 \end_inset
@@ -1819,7 +1972,8 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-helbide, sinadura eta bestelako inguruneak dauzka
+helbide,
+ sinadura eta bestelako inguruneak dauzka
 \end_layout
 
 \end_inset
@@ -1833,11 +1987,13 @@ helbide, sinadura eta bestelako inguruneak dauzka
 \end_layout
 
 \begin_layout Section
-Txantiloiak: gutuna idaztea
+Txantiloiak:
+ gutuna idaztea
 \end_layout
 
 \begin_layout Standard
-Gutun bat idazteko orduan, ireki fitxategi berria eta aukeratu 
+Gutun bat idazteko orduan,
+ ireki fitxategi berria eta aukeratu 
 \family sans
 Letter
 \family default
@@ -1847,19 +2003,21 @@ Dokumentua\SpecialChar menuseparator
 Ezarpenak 
 \family default
 elkarrizketa-koadroan.
- Gutuna idazteko biderik errazena izan arren lan gehiago eskatzen duela
- dirudi.
- Negozio-gutun bakoitza idaztean jasotzailearen eta zure helbideak, testuaren
- gorputza, sinadura e.a.
+ Gutuna idazteko biderik errazena izan arren lan gehiago eskatzen duela dirudi.
+ Negozio-gutun bakoitza idaztean jasotzailearen eta zure helbideak,
+ testuaren gorputza,
+ sinadura e.a.
  eduki nahi dituzu.
- Beraz, \SpecialChar LyX
+ Beraz,
+ \SpecialChar LyX
 -ek gutunentzat 
 \emph on
 txantiloi
 \emph default
- bat dauka, gutun-adibidea duena; behin txantiloi bat eskuartean daukazula,
- gutun berri bat idazten duzun bakoitzean zatiren bat edo beste aldatzen
- duzu soilik.
+ bat dauka,
+ gutun-adibidea duena;
+ behin txantiloi bat eskuartean daukazula,
+ gutun berri bat idazten duzun bakoitzean zatiren bat edo beste aldatzen duzu soilik.
 \end_layout
 
 \begin_layout Standard
@@ -1887,8 +2045,9 @@ letter.lyx
 \family sans
 Ingurunea
 \family default
- menuan begiratzen duzunean beste testu-klase batzuetan ageri ez diren hainbat
- ingurune ikusiko dituzu, adibidez, 
+ menuan begiratzen duzunean beste testu-klase batzuetan ageri ez diren hainbat ingurune ikusiko dituzu,
+ adibidez,
+ 
 \family sans
 Nire
 \begin_inset space ~
@@ -1902,8 +2061,11 @@ Helbidea
 Azalpena
 \family default
  bezalako beste batzuk ezagunak egingo zaizkizu.
- Ingurune horiek nola erabiltzen diren ikusteko, haiekin jolasten ibil zaitezke.
- Ohartuko zara, adibidez, 
+ Ingurune horiek nola erabiltzen diren ikusteko,
+ haiekin jolasten ibil zaitezke.
+ Ohartuko zara,
+ adibidez,
+ 
 \family sans
 Sinadura
 \family default
@@ -1912,37 +2074,41 @@ Sinadura
 signature:
 \family default
 " hitza testuaren aurretik agertzen duela.
- Fitxategia inprimatzen baduzu, ohartuko zara hitz hori ez duela erakusten.
+ Fitxategia inprimatzen baduzu,
+ ohartuko zara hitz hori ez duela erakusten.
  Sinaduraren kokapena jakiteko erabiltzen da.
- Horrez gain, jakin ezazu berdin dela 
+ Horrez gain,
+ jakin ezazu berdin dela 
 \family sans
 Signature
 \family default
  lerroa non kokatzen den.
  Gogoratu \SpecialChar LyX
- programa WYSIWYM dela; nahi duzun lekuan 
+ programa WYSIWYM dela;
+ nahi duzun lekuan 
 \family sans
 Signature
 \family default
- ingurunea kokatu, \SpecialChar LyX
--ek badaki inprimatzean sinadurak gutunaren amaieran
- egon behar duela.
+ ingurunea kokatu,
+ \SpecialChar LyX
+-ek badaki inprimatzean sinadurak gutunaren amaieran egon behar duela.
 \end_layout
 
 \begin_layout Standard
 Txantiloi bat \SpecialChar LyX
  fitxategi arrunt bat besterik ez da.
- Hots, zure helbide eta sinadurekin bete eta txantiloi berri bat bezala
- gorde dezakezu.
- Hemendik aurrera, gutun bat idatzi nahi duzun bakoitzean sortu berri duzun
- txantiloian oinarrituz denbora aurreztuko duzu.
- Egiazko "ariketa" bat egitea ongi baino hobekiago etorriko zaizula esan
- beharrik ez daukagu, idatz iezaiozu gutun bat lagun bati 
+ Hots,
+ zure helbide eta sinadurekin bete eta txantiloi berri bat bezala gorde dezakezu.
+ Hemendik aurrera,
+ gutun bat idatzi nahi duzun bakoitzean sortu berri duzun txantiloian oinarrituz denbora aurreztuko duzu.
+ Egiazko "ariketa" bat egitea ongi baino hobekiago etorriko zaizula esan beharrik ez daukagu,
+ idatz iezaiozu gutun bat lagun bati 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Abisu bat, txantiloitik idazten duzun kasurako.
+Abisu bat,
+ txantiloitik idazten duzun kasurako.
  Ingurune bateko testua ezabatuz (zure helbidea sartzeko 
 \family sans
 Nire
@@ -1951,10 +2117,11 @@ Nire
 
 helbidea
 \family default
- eremua erabat ezabatzen baduzu) eta ondoren ezer idatzi gabe kurtsorea
- beste nonbaitera mugituz gero, gune hori desagertuko da.
+ eremua erabat ezabatzen baduzu) eta ondoren ezer idatzi gabe kurtsorea beste nonbaitera mugituz gero,
+ gune hori desagertuko da.
  Ingurune gehienek testurik gabe ezin dute bizi.
- Itzultzeko, hautatu berriro 
+ Itzultzeko,
+ hautatu berriro 
 \family typewriter
 Ingurunea
 \family default
@@ -1967,14 +2134,15 @@ Ingurunea
 \end_layout
 
 \begin_layout Standard
-Txantiloiek denbora asko aurrera dezaketenez, ahal duzun guztietan erabiltzea
- aholkatzen dizugu.
- Gainera, testu-klase dotore batzuk nola erabiltzen diren erakusten dute.
- Azkenik, \SpecialChar LyX
- ordenagailuekin trebetasun gutxi daukaten erabiltzaileentzat
- lagungarri izan daiteke.
- Erabiltzaileek gutun-txantiloi bat erabiltzen badute errazagoa izateaz
- gain, \SpecialChar LyX
+Txantiloiek denbora asko aurrera dezaketenez,
+ ahal duzun guztietan erabiltzea aholkatzen dizugu.
+ Gainera,
+ testu-klase dotore batzuk nola erabiltzen diren erakusten dute.
+ Azkenik,
+ \SpecialChar LyX
+ ordenagailuekin trebetasun gutxi daukaten erabiltzaileentzat lagungarri izan daiteke.
+ Erabiltzaileek gutun-txantiloi bat erabiltzen badute errazagoa izateaz gain,
+ \SpecialChar LyX
  erabiltzeko beldurra galduko dute.
 \end_layout
 
@@ -1985,8 +2153,11 @@ Dokumentuen tituluak
 \begin_layout Standard
 \SpecialChar LyX
 -ek (\SpecialChar LaTeX
--ek bezala) titulua — uneko izenburua, egilea, data eta laburpena ere
- barne eduki ditzake — dokumentutik bereizitako zati bezala hartzen du.
+-ek bezala) titulua —
+ uneko izenburua,
+ egilea,
+ data eta laburpena ere barne eduki ditzake —
+ dokumentutik bereizitako zati bezala hartzen du.
 \end_layout
 
 \begin_layout Standard
@@ -2000,7 +2171,8 @@ Article
 status collapsed
 
 \begin_layout Plain Layout
-Gutun mota ez darabilzula, 
+Gutun mota ez darabilzula,
+ 
 \family sans
 Letter
 \family default
@@ -2025,8 +2197,8 @@ Egilea
 Data
 \family default
  ingurunea erabiliz.
- Hori egin ondoren, laburtu dokumentuaren edukia bizpahiru paragrafotan
- (edo bakar batean) eta ezarri 
+ Hori egin ondoren,
+ laburtu dokumentuaren edukia bizpahiru paragrafotan (edo bakar batean) eta ezarri 
 \family sans
 Laburpena
 \family default
@@ -2036,8 +2208,9 @@ Laburpena
 \family typewriter
 Book
 \family default
- klasera aldatzen baduzu, tituluaren orrialdea bereiztuta agertuko da, tutoretza
- honetako aurreneko orrialdearen antzera.
+ klasera aldatzen baduzu,
+ tituluaren orrialdea bereiztuta agertuko da,
+ tutoretza honetako aurreneko orrialdearen antzera.
 \end_layout
 
 \begin_layout Standard
@@ -2045,7 +2218,9 @@ Book
 \series bold
 Ariketa
 \series default
-: Zuzendu titulua, egilea eta data 
+:
+ Zuzendu titulua,
+ egilea eta data 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -2057,8 +2232,10 @@ Etiketa eta erreferentzia gurutzatuak
 \end_layout
 
 \begin_layout Standard
-Dokumentuko atalen goiburuak, zerrendako elementuak, formulak, oin-oharrak
- eta mugikorrei
+Dokumentuko atalen goiburuak,
+ zerrendako elementuak,
+ formulak,
+ oin-oharrak eta mugikorrei
 \begin_inset Foot
 status collapsed
 
@@ -2077,16 +2254,16 @@ Kapsulatutako objektuak
 \end_inset
 
  etiketa jar diezaiekezu.
- Etiketa bat jarritakoan, dokumentuko beste edozein lekutan atal honi buruzko
- aipamenak sartzeko erreferentzia gurutzatuak erabil ditzakezu.
+ Etiketa bat jarritakoan,
+ dokumentuko beste edozein lekutan atal honi buruzko aipamenak sartzeko erreferentzia gurutzatuak erabil ditzakezu.
  Atalaren zenbakira edo kokatuta dagoen orrialdeari erreferentzia egin dezakezu.
- Atalen zenbaketaz bezala, erreferentzia gurutzatuez \SpecialChar LyX
+ Atalen zenbaketaz bezala,
+ erreferentzia gurutzatuez \SpecialChar LyX
  arduratuko da.
- Etiketa eta erreferentzia gurutzatuak automatikoki kudeatzeko gaitasuna
- \SpecialChar LyX
+ Etiketa eta erreferentzia gurutzatuak automatikoki kudeatzeko gaitasuna \SpecialChar LyX
  eta \SpecialChar LaTeX
- programen abantailarik onenetariko bat da, beste testu-prozesadoreekin
- konparatuz.
+ programen abantailarik onenetariko bat da,
+ beste testu-prozesadoreekin konparatuz.
 \end_layout
 
 \begin_layout Subsection
@@ -2094,7 +2271,8 @@ Zure aurreneko etiketa
 \end_layout
 
 \begin_layout Standard
-Joan gure bigarren atalera, "Dokumentu honi buruz" izenburua duena.
+Joan gure bigarren atalera,
+ "Dokumentu honi buruz" izenburua duena.
  Egin klik ataleko izenburuaren lerroaren amaieran eta hautatu 
 \family sans
 \bar under
@@ -2114,14 +2292,14 @@ arg   "label-insert"
 \end_inset
 
  botoia.
- Elkarrizketa-koadro batek etiketaren izena eskatuko dizu, eta berak iradokizun
- bat egingo dizu.
+ Elkarrizketa-koadro batek etiketaren izena eskatuko dizu,
+ eta berak iradokizun bat egingo dizu.
  
 \family typewriter
 Ados
 \family default
- botoian klik egindakoan, etiketaren izena kutxa batean ataleko izenburuaren
- alboan ezarriko du.
+ botoian klik egindakoan,
+ etiketaren izena kutxa batean ataleko izenburuaren alboan ezarriko du.
 \end_layout
 
 \begin_layout Standard
@@ -2129,10 +2307,11 @@ Orain arte ez dugu gauza askorik egin (
 \family typewriter
 DVI
 \family default
- fitxategiak itxura bera dauka, inprimatutako dokumentuan etiketarik ez
- baita agertzen).
- Hala ere, etiketa gehitu duzunez, honi buruzko erreferentzia gurutzatuak
- erabil ditzakezu dokumentuan.
+ fitxategiak itxura bera dauka,
+ inprimatutako dokumentuan etiketarik ez baita agertzen).
+ Hala ere,
+ etiketa gehitu duzunez,
+ honi buruzko erreferentzia gurutzatuak erabil ditzakezu dokumentuan.
  Horitxi egingo dugu.
 \end_layout
 
@@ -2147,15 +2326,18 @@ Kokatu kurtsorea zure dokumentuko 2.
 \end_layout
 
 \begin_layout LyX-Code
-Dokumentu honi buruz gehiago jakiteko asmoz, 
+Dokumentu honi buruz gehiago jakiteko asmoz,
+ 
 \begin_inset Newline newline
 \end_inset
 
-ikus atala , orrialdean aurki dezakezu.
+ikus atala ,
+ orrialdean aurki dezakezu.
 \end_layout
 
 \begin_layout Standard
-Orain, kokatu kurtsorea "atala" hitzaren aurrean eta hautatu 
+Orain,
+ kokatu kurtsorea "atala" hitzaren aurrean eta hautatu 
 \family sans
 Txertatu\SpecialChar menuseparator
 Erreferentzia gurutzatua
@@ -2178,18 +2360,22 @@ Erreferentzia gurutzatua
 atal:dokumburuz
 \family default
 " bakarrik da.
- Aurrenik, hautatu 
+ Aurrenik,
+ hautatu 
 \family typewriter
 Formatua
 \family default
- izeneako goitibeherako zerrenda, eta hautatu '<erreferentzia> <orrialdea>
- orrialdean' elementua.
- Gero, hautatu "
+ izeneako goitibeherako zerrenda,
+ eta hautatu '<erreferentzia> <orrialdea> orrialdean' elementua.
+ Gero,
+ hautatu "
 \family typewriter
 atal:dokumburuz
 \family default
-" etiketa (lehenetsi gisa hautatuta egongo da), eta 'Erref+Testua: atal:dokumbur
-uz' erreferentziaren markatzailea agertuko da (egokia izateko, 
+" etiketa (lehenetsi gisa hautatuta egongo da),
+ eta 'Erref+Testua:
+ atal:dokumburuz' erreferentziaren markatzailea agertuko da (egokia izateko,
+ 
 \family typewriter
 Zuriune
 \begin_inset space ~
@@ -2198,15 +2384,14 @@ Zuriune
 babestu
 \family default
  bat jarri beharko zenuke erreferentzia eta 'atala'-ren artean).
- Hau egiteko badago beste bide bat: egin klik saguaren eskuineko botoiarekin
- atalaren alboa ezarritako etiketaren gainean eta erabili testuinguruko
- 
+ Hau egiteko badago beste bide bat:
+ egin klik saguaren eskuineko botoiarekin atalaren alboa ezarritako etiketaren gainean eta erabili testuinguruko 
 \family typewriter
 Kopiatu erreferentzia gisa
 \family default
  menua.
- Etiketa honen erreferentzia gurutzatua arbelean dago orain, eta kurtsorearen
- uneko posizioan kopia daiteke 
+ Etiketa honen erreferentzia gurutzatua arbelean dago orain,
+ eta kurtsorearen uneko posizioan kopia daiteke 
 \family typewriter
 Editatu
 \family sans
@@ -2216,14 +2401,15 @@ Editatu
 Itsatsi
 \family default
  menua (edo Ktrl+V lasterbidea) erabiliz.
- Inprimatutako dokumentuan, erreferentziaren markatzaile hau atalaren eta
- orrialdearen zenbakiekin ordeztuta agertuko da.
- Ikusi zure dokumentua DVI gisa, eta ikusiko duzu \SpecialChar LaTeX
+ Inprimatutako dokumentuan,
+ erreferentziaren markatzaile hau atalaren eta orrialdearen zenbakiekin ordeztuta agertuko da.
+ Ikusi zure dokumentua DVI gisa,
+ eta ikusiko duzu \SpecialChar LaTeX
  zein argia den.
- '2 atala' adierazten du, 2.
- atalaren eta bere erreferentzia gurutzatuaren artean idatzi duzun testuaren
- luzeraren arabera 'orrialde honetan', 'hurrengo orrialdean' edo 'n orrialdean'
- (non 
+ '2 atala' adierazten du,
+ 2.
+ atalaren eta bere erreferentzia gurutzatuaren artean idatzi duzun testuaren luzeraren arabera 'orrialde honetan',
+ 'hurrengo orrialdean' edo 'n orrialdean' (non 
 \emph on
 n
 \emph default
@@ -2231,9 +2417,9 @@ n
 \end_layout
 
 \begin_layout Standard
-Erreferentzia gurutzatu batek hiperesteka baten antzera funtzionatzen du
- \SpecialChar LyX
--en dokumentu bat editatzean; haren gainean klik egitean 
+Erreferentzia gurutzatu batek hiperesteka baten antzera funtzionatzen du \SpecialChar LyX
+-en dokumentu bat editatzean;
+ haren gainean klik egitean 
 \family typewriter
 Erreferentzia
 \begin_inset space ~
@@ -2241,7 +2427,8 @@ Erreferentzia
 
 gurutzatua
 \family default
- elkarrizketa-koadroa bistaratuko da, egin klik 
+ elkarrizketa-koadroa bistaratuko da,
+ egin klik 
 \family typewriter
 Joan
 \begin_inset space ~
@@ -2258,26 +2445,29 @@ Etiketekin jolastea
 
 \begin_layout Standard
 Esan dizugu erreferentzia gurutzatuak zenbatzeaz \SpecialChar LyX
- arduratzen dela; probatzeko
- unea heldu zaizu.
+ arduratzen dela;
+ probatzeko unea heldu zaizu.
  Gehitu atal berri bat 2.
- atalaren aurretik, jar iezaiozu izenburu panpox bat ("Neguko lore gardenak"
- adibidez).
- Eguneratu DVI ikuspegia eta — 'Voilà!'— atalaren erreferentzia gurutzatua
- "3" izatera aldatu da! Aldatu "Dokumentu honi buruz" azpiatal ingurunera,
+ atalaren aurretik,
+ jar iezaiozu izenburu panpox bat ("Neguko lore gardenak" adibidez).
+ Eguneratu DVI ikuspegia eta —
+ 'Voilà!'—
+ atalaren erreferentzia gurutzatua "3" izatera aldatu da!
+ Aldatu "Dokumentu honi buruz" azpiatal ingurunera,
  eta erreferentzia gurutzatua 3 atalaren ordez 2.1
 \begin_inset space ~
 \end_inset
 
 azpiatala bezala agertuko da.
- Hori bai, erreferentziaren orrialdea aldatzeko etiketaren aurretik testu
- asko daukan orrialde berri bat idatzi beharko duzu.
+ Hori bai,
+ erreferentziaren orrialdea aldatzeko etiketaren aurretik testu asko daukan orrialde berri bat idatzi beharko duzu.
  
 \end_layout
 
 \begin_layout Standard
-Etiketekin aritzeko, sartu etiketa berri bat lehenbiziko erreferentzia gurutzatu
-a zegoen lekuan, eta aipatu dokumentuko edozein lekutik.
+Etiketekin aritzeko,
+ sartu etiketa berri bat lehenbiziko erreferentzia gurutzatua zegoen lekuan,
+ eta aipatu dokumentuko edozein lekutik.
  Erreferentzia gurutzatu ugari txertatzen ibiltzen bazara 
 \family sans
 Erreferentzia gurutzatua
@@ -2286,8 +2476,8 @@ Erreferentzia gurutzatua
 \end_layout
 
 \begin_layout Standard
-Erreferentzia gurutzatuak dokumentu handietan ere ongi dabiltzala ziurtatu
- nahi baduzu, kopiatu 
+Erreferentzia gurutzatuak dokumentu handietan ere ongi dabiltzala ziurtatu nahi baduzu,
+ kopiatu 
 \emph on
 Erabiltzailearen gida
 \emph default
@@ -2300,13 +2490,16 @@ Itsatsi
 status collapsed
 
 \begin_layout Plain Layout
-Gauza bat, kapitulu baten izenburua kopiatzeak errore bat sor dezake, zeren
- eta artikulua klaseak kapitulurik ez baitu onartzen.
- Hori gertatzen bada, ezabatu kapituluaren izenburua.
+Gauza bat,
+ kapitulu baten izenburua kopiatzeak errore bat sor dezake,
+ zeren eta artikulua klaseak kapitulurik ez baitu onartzen.
+ Hori gertatzen bada,
+ ezabatu kapituluaren izenburua.
  Xehetasun gehiago 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "atal:dokumklaseak"
+nolink "false"
 
 \end_inset
 
@@ -2327,7 +2520,8 @@ atalean.
 \series bold
 Ariketa
 \series default
-: konpondu erreferentziak 
+:
+ konpondu erreferentziak 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -2339,7 +2533,8 @@ Oin-oharrak eta albokoak
 \end_layout
 
 \begin_layout Standard
-Oin-oharrak gehitzeko, tresna-barrako 
+Oin-oharrak gehitzeko,
+ tresna-barrako 
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
@@ -2350,13 +2545,13 @@ arg   "footnote-insert"
 status collapsed
 
 \begin_layout Plain Layout
-Botoiak beltz koloreko testuaren azpian dagoen testu gorri batera zuzendutako
- gezia irudikatzen du.
+Botoiak beltz koloreko testuaren azpian dagoen testu gorri batera zuzendutako gezia irudikatzen du.
 \end_layout
 
 \end_inset
 
-, edo 
+,
+ edo 
 \family sans
 Txertatu
 \family default
@@ -2374,8 +2569,8 @@ arg   "footnote-insert"
 \end_inset
 
  botoian.
- Oin-oharrari dagokion kutxa bat agertuko zaizu; idatzi bertan oineko oharrari
- dagokion testua.
+ Oin-oharrari dagokion kutxa bat agertuko zaizu;
+ idatzi bertan oineko oharrari dagokion testua.
  \SpecialChar LyX
 -ek kurtsorea oin-ohar kutxaren hasieran kokatuko du.
  Idatzi
@@ -2388,16 +2583,18 @@ arg   "footnote-insert"
 
 \begin_layout Standard
 Orain egin klik "oina" etiketa duen botoian.
- Oin-oharraren kutxa itxi egingo da, oin-oharraren markatzailea inprimatuko
- den testuaren kokalekua erakusteko botoia utziko du.
+ Oin-oharraren kutxa itxi egingo da,
+ oin-oharraren markatzailea inprimatuko den testuaren kokalekua erakusteko botoia utziko du.
  Ekintza horri oin-oharra "tolestea" deitzen zaio.
- Oin-oharra zabaltzea nahi duzunean, egin klik "oina" botoian; horrela hango
- testua editatzeko aukera daukazu.
+ Oin-oharra zabaltzea nahi duzunean,
+ egin klik "oina" botoian;
+ horrela hango testua editatzeko aukera daukazu.
 \end_layout
 
 \begin_layout Standard
 Oin-oharrak testu arrunt bezala ebaki eta itsats daitezke.
- Saia zaitez beldurrik gabe! Hautatu oin-oharraren 
+ Saia zaitez beldurrik gabe!
+ Hautatu oin-oharraren 
 \begin_inset Foot
 status collapsed
 
@@ -2408,7 +2605,8 @@ Teklatuaren bitartez errazago hautatuko duzu.
 
 \end_inset
 
- botoia, 
+ botoia,
+ 
 \family sans
 Ebaki
 \family default
@@ -2417,21 +2615,23 @@ Ebaki
 Itsatsi
 \family default
 .
- Horretaz gain, testu arrunta oin-ohar batera alda dezakezu: hautatu testua
- eta egin klik 
+ Horretaz gain,
+ testu arrunta oin-ohar batera alda dezakezu:
+ hautatu testua eta egin klik 
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
  botoian.
- Oin-oharra testu arruntera bihurtzeko, ireki oin-oharra eta kokatu kurtsorea
- hango testuaren hasieran, gero sakatu 
+ Oin-oharra testu arruntera bihurtzeko,
+ ireki oin-oharra eta kokatu kurtsorea hango testuaren hasieran,
+ gero sakatu 
 \family typewriter
 Atzera
 \family default
- tekla, edo bestela kurtsorea esaldiaren amaieran kokatuta dagoela sakatu
- 
+ tekla,
+ edo bestela kurtsorea esaldiaren amaieran kokatuta dagoela sakatu 
 \family typewriter
 Ezabatu
 \family default
@@ -2439,7 +2639,8 @@ Ezabatu
 \end_layout
 
 \begin_layout Standard
-Albo-oharrak gehitzeko, erabili tresna-barrako 
+Albo-oharrak gehitzeko,
+ erabili tresna-barrako 
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
@@ -2451,7 +2652,8 @@ Txertatu\SpecialChar menuseparator
 Albo-oharra
 \family default
  menua.
- Oin-oharrak bezala dihardute, honako hauek izan ezik:
+ Oin-oharrak bezala dihardute,
+ honako hauek izan ezik:
 \end_layout
 
 \begin_layout Itemize
@@ -2459,7 +2661,8 @@ Pantailan kutxek "albo" daukate "oina" eduki ordez.
 \end_layout
 
 \begin_layout Itemize
-Oharrak alboetan kokatzen dira, testuaren behealdean ordez.
+Oharrak alboetan kokatzen dira,
+ testuaren behealdean ordez.
 \end_layout
 
 \begin_layout Itemize
@@ -2469,9 +2672,10 @@ Ez dira zenbatzen.
 
 \begin_layout Standard
 Aldatu \SpecialChar LyX
--eko oin-ohar bat testu arrunt egoerara, ondoren hautatu testu hori
- eta bihurtu ezazu albo-oharrera.
- Albo-oharra nola inprimatzen diren ikusteko, eguneratu DVI ikuspegia.
+-eko oin-ohar bat testu arrunt egoerara,
+ ondoren hautatu testu hori eta bihurtu ezazu albo-oharrera.
+ Albo-oharra nola inprimatzen diren ikusteko,
+ eguneratu DVI ikuspegia.
 \end_layout
 
 \begin_layout Standard
@@ -2479,7 +2683,8 @@ Aldatu \SpecialChar LyX
 \series bold
 Ariketa
 \series default
-: konpondu oin-oharrak 
+:
+ konpondu oin-oharrak 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -2501,11 +2706,10 @@ name "atal:bibliografiak"
 Bibliografiak erreferentzia gurutzatuak bezalakoak dira.
  Bibliografiak erreferentzien zerrenda bat edukitzen du dokumentu amaieran,
  eta dokumentuaren zehar elementu hauek aipa daiteke.
- Ataletako izenburuekin gertatzen den bezala, \SpecialChar LyX
+ Ataletako izenburuekin gertatzen den bezala,
+ \SpecialChar LyX
  eta \SpecialChar LaTeX
--ek zure lana errazten
- dute bibliografiako elementuak automatikoki zenbatuz eta aipamenak aldatuz
- elementuen zenbakia aldatzen diren bakoitzean.
+-ek zure lana errazten dute bibliografiako elementuak automatikoki zenbatuz eta aipamenak aldatuz elementuen zenbakia aldatzen diren bakoitzean.
 \end_layout
 
 \begin_layout Standard
@@ -2514,7 +2718,8 @@ Joan dokumentuaren amaierara eta aldatu
 Bibliografia
 \family default
  ingurunera.
- Orain, idazten duzun paragrafo bakoitza erreferentzi bat izango da.
+ Orain,
+ idazten duzun paragrafo bakoitza erreferentzi bat izango da.
  Idatzi 
 \begin_inset Quotes eld
 \end_inset
@@ -2522,7 +2727,8 @@ Bibliografia
 
 \family typewriter
 \SpecialChar LyX
- Tutoretza, \SpecialChar LyX
+ Tutoretza,
+ \SpecialChar LyX
 -eko dokumentazio taldea
 \family default
 
@@ -2531,9 +2737,9 @@ Bibliografia
 
  zure aurreneko erreferentzia gisa.
  Ohartu zaitez erreferentzia bakoitzaren aurretik \SpecialChar LyX
--ek automatikoki zenbaki
- bat daukan kutxa jartzen duela.
- Egin klik erreferentziaren zenbakiaren kutxaren gainean, eta 
+-ek automatikoki zenbaki bat daukan kutxa jartzen duela.
+ Egin klik erreferentziaren zenbakiaren kutxaren gainean,
+ eta 
 \family typewriter
 Bibliografia
 \begin_inset space ~
@@ -2546,14 +2752,16 @@ sarrera
 \family typewriter
 Gakoa
 \family default
- erabiltzen da, 
+ erabiltzen da,
+ 
 \family typewriter
 Etiketa
 \family default
  berriz irteeran agertzen da.
- Etiketa ez denean ezartzen (lehenetsia), bibliografiaren zenbakia agertuko
- da irteeran.
- Errazago oroitzeko, 
+ Etiketa ez denean ezartzen (lehenetsia),
+ bibliografiaren zenbakia agertuko da irteeran.
+ Errazago oroitzeko,
+ 
 \family sans
 Gakoa
 \family default
@@ -2569,8 +2777,9 @@ lyxtutoretza
 \end_layout
 
 \begin_layout Standard
-Orain, kokatu kurtsorea dokumentuko leku batean, erreferentzia txertatu
- nahi duzun kokalekuan hain zuzen.
+Orain,
+ kokatu kurtsorea dokumentuko leku batean,
+ erreferentzia txertatu nahi duzun kokalekuan hain zuzen.
  Hautatu 
 \family sans
 Txertatu\SpecialChar menuseparator
@@ -2588,9 +2797,8 @@ arg   "dialog-show-new-inset citation"
 Aipamena
 \family default
  elkarrizketa-koadroa agertuko da.
- Elkarrizketa-koadro honen eskuineko panelean bibliografiako sarrera guztiak
- zerrendatzen dira, eta eremu honek aipatzea nahi duzun bibliografiako elementua
- aukeratzea eskaintzen dizu.
+ Elkarrizketa-koadro honen eskuineko panelean bibliografiako sarrera guztiak zerrendatzen dira,
+ eta eremu honek aipatzea nahi duzun bibliografiako elementua aukeratzea eskaintzen dizu.
  Hautatu 
 \begin_inset Quotes eld
 \end_inset
@@ -2599,16 +2807,18 @@ Aipamena
 \family typewriter
 lyxtutoretza
 \family default
-" (oraintxe bertan, dagoen bibliografiako elementu bakarra baita), ondoren
- erabili erdian dagoen 
+" (oraintxe bertan,
+ dagoen bibliografiako elementu bakarra baita),
+ ondoren erabili erdian dagoen 
 \family typewriter
 Gehitu
 \family default
  botoia txertatzeko.
- Kokapen berean nahi haina zitazio eduki ditzakezu honen bidez hainbat gako
- transferituta.
- Orain, begiratu DVI fitxategian, eta ikusiko duzu aipamenak giltzen artean
- agertzen direla testuan, dokumentu amaierako bibliografia erreferentziatuz.
+ Kokapen berean nahi haina zitazio eduki ditzakezu honen bidez hainbat gako transferituta.
+ Orain,
+ begiratu DVI fitxategian,
+ eta ikusiko duzu aipamenak giltzen artean agertzen direla testuan,
+ dokumentu amaierako bibliografia erreferentziatuz.
 \end_layout
 
 \begin_layout Standard
@@ -2624,12 +2834,10 @@ Testua
 
 ondoren
 \family default
- eremuak ohar bat sartuko du giltzen artean (erreferentziatzen den liburu
- edo artikulu bateko orrialde edo kapitulua zehazteko, adibidez).
- Inprimatzean erreferentziek zenbakien ordez etiketak edukitzea nahi baduzu
- (adib.
- egunkari batzuk Sorozabal andreak 1992an idatzitako dokumentu bat aipatzeko
- "[Sor92]" idaztiko lukete) 
+ eremuak ohar bat sartuko du giltzen artean (erreferentziatzen den liburu edo artikulu bateko orrialde edo kapitulua zehazteko,
+ adibidez).
+ Inprimatzean erreferentziek zenbakien ordez etiketak edukitzea nahi baduzu (adib.
+ egunkari batzuk Sorozabal andreak 1992an idatzitako dokumentu bat aipatzeko "[Sor92]" idaztiko lukete) 
 \family sans
 Bibliografia-elementua
 \family default
@@ -2638,7 +2846,8 @@ Bibliografia-elementua
 Etiketa
 \family default
  eremua erabili.
- Xehetasun gehiagorako, irakurri 
+ Xehetasun gehiagorako,
+ irakurri 
 \emph on
 Erabiltzailearen gida
 \emph default
@@ -2650,7 +2859,8 @@ Erabiltzailearen gida
 \series bold
 Ariketa
 \series default
-: zuzendu bibliografia eta zitazioak 
+:
+ zuzendu bibliografia eta zitazioak 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -2669,7 +2879,8 @@ Dokumentuaren hasieran gaien aurkibidea jartzea nahi izan dezakezu.
 \family typewriter
 Sartu
 \family default
- tekla, aukeratu 
+ tekla,
+ aukeratu 
 \family sans
 Txertatu\SpecialChar menuseparator
 Zerrendak
@@ -2701,14 +2912,16 @@ Gaien aurkibidea
 
 \begin_layout Standard
 Ez dirudi oso erabilkorra denik.
- Hala ere, 
+ Hala ere,
+ 
 \family typewriter
 DVI
 \family default
- fitxategian begiratzen baduzu, dokumentuko atal eta azpiatalak zerrendatzen
- dituen gaien aurkibidea ikusiko duzu.
- Ohitura den bezala, atalak berrantolatzean edo berriak sortzean, aldaketa
- horiek 
+ fitxategian begiratzen baduzu,
+ dokumentuko atal eta azpiatalak zerrendatzen dituen gaien aurkibidea ikusiko duzu.
+ Ohitura den bezala,
+ atalak berrantolatzean edo berriak sortzean,
+ aldaketa horiek 
 \family typewriter
 DVI 
 \family default
@@ -2716,9 +2929,11 @@ fitxategi eguneratuan ikusiko dituzu.
 \end_layout
 
 \begin_layout Standard
-Dokumentua pantailan editatzean, ez da gaien aurkibidea testu gisa azaltzen,
+Dokumentua pantailan editatzean,
+ ez da gaien aurkibidea testu gisa azaltzen,
  ezinezkoa baita editatzea.
- Gaien aurkibideari dagokion botoian, 
+ Gaien aurkibideari dagokion botoian,
+ 
 \family sans
 Dokumentua\SpecialChar menuseparator
 Eskema
@@ -2730,24 +2945,21 @@ arg   "dialog-toggle toc"
 \end_inset
 
  botoian klik eginez banandutako leiho batean zerrendatzen da.
- Nahiz eta dokumentuan "gaien aurkibidea" ez egon txertatuta, menuak funtzionatu
-ko du.
+ Nahiz eta dokumentuan "gaien aurkibidea" ez egon txertatuta,
+ menuak funtzionatuko du.
  Oso erabilgarria da dokumentuan zehar mugitzeko.
- Atal (edo azpiatal) baten izenburuan klik eginez bat elementuaren lerroa
- nabarmendu eta kurtsorea (\SpecialChar LyX
- editatzen den leihoan) dokumentuko leku horretan
- kokatuko du.
- Teklatuko geziak ere erabil ditzakezu gaien aurkibidean gora eta behera
- mugitzeko.
- Agian komenigarria izango duzu editatzen ari zarenean leiho hau irekita
- uztea.
- Antzeko gaitasuna Arakatu menutik lor dezakezu, eta gaien aurkibidea automatiko
-ki agertuko da.
+ Atal (edo azpiatal) baten izenburuan klik eginez bat elementuaren lerroa nabarmendu eta kurtsorea (\SpecialChar LyX
+ editatzen den leihoan) dokumentuko leku horretan kokatuko du.
+ Teklatuko geziak ere erabil ditzakezu gaien aurkibidean gora eta behera mugitzeko.
+ Agian komenigarria izango duzu editatzen ari zarenean leiho hau irekita uztea.
+ Antzeko gaitasuna Arakatu menutik lor dezakezu,
+ eta gaien aurkibidea automatikoki agertuko da.
 \end_layout
 
 \begin_layout Standard
-Aurkibidea kentzeko dagokion botoia, beste edozein testu bezala, ezabatzearekin
- nahikoa da.
+Aurkibidea kentzeko dagokion botoia,
+ beste edozein testu bezala,
+ ezabatzearekin nahikoa da.
 \end_layout
 
 \begin_layout Standard
@@ -2755,7 +2967,8 @@ Aurkibidea kentzeko dagokion botoia, beste edozein testu bezala, ezabatzearekin
 \series bold
 Ariketa
 \series default
-: jarri gaien aurkibidea 
+:
+ jarri gaien aurkibidea 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -2768,20 +2981,24 @@ Matematika erabiltzea
 
 \begin_layout Standard
 Zientzialari askok \SpecialChar LaTeX
- erabiltzen dute, ekuazioak era dotore batean argitaratzen
- baititu, testu-prozesadoreek eta beraien ekuazio editoreak erabiltzen duten
- kontrol-karaktereak saihetsiz.
- Zientzilari askok goibelduak sentitzen dira, \SpecialChar LaTeX
--ekin ekuazioak idatzi baino
- programaketa lan bat gehiago delako.
- Zorionez, \SpecialChar LyX
+ erabiltzen dute,
+ ekuazioak era dotore batean argitaratzen baititu,
+ testu-prozesadoreek eta beraien ekuazio editoreak erabiltzen duten kontrol-karaktereak saihetsiz.
+ Zientzilari askok goibelduak sentitzen dira,
+ \SpecialChar LaTeX
+-ekin ekuazioak idatzi baino programaketa lan bat gehiago delako.
+ Zorionez,
+ \SpecialChar LyX
 -ek ekuazioentzako WYSIWYM euskarria dauka.
  \SpecialChar LaTeX
- erabiltzen baduzu, \SpecialChar LaTeX
--eko matematika komandoak bide normal batean idatz
- daitekeela ikusiko duzu, eta horiek WYSIWYM eran erakutsiko dira.
- Bestalde, \SpecialChar LaTeX
- inoiz ez baduzu erabili, orduan 
+ erabiltzen baduzu,
+ \SpecialChar LaTeX
+-eko matematika komandoak bide normal batean idatz daitekeela ikusiko duzu,
+ eta horiek WYSIWYM eran erakutsiko dira.
+ Bestalde,
+ \SpecialChar LaTeX
+ inoiz ez baduzu erabili,
+ orduan 
 \family sans
 Matematikako
 \begin_inset space ~
@@ -2789,8 +3006,7 @@ Matematikako
 
 panela
 \family default
-rekin bide azkar eta erosoan profesional-itxurako adierazpen matematikoak
- idazteko aukera izango duzu.
+rekin bide azkar eta erosoan profesional-itxurako adierazpen matematikoak idazteko aukera izango duzu.
 \end_layout
 
 \begin_layout Section
@@ -2802,23 +3018,29 @@ Dokumentuko lekuren batean ondorengoa idatzi:
 \end_layout
 
 \begin_layout LyX-Code
-Gogoko dut Einstein-ek esandakoa, E=mc^2, hain bakuna da.
+Gogoko dut Einstein-ek esandakoa,
+ E=mc^2,
+ hain bakuna da.
 \end_layout
 
 \begin_layout Standard
-Orain, ekuazio horiek ez dute itxura oso onik ez \SpecialChar LyX
--en ez irteeran ere; hizkien
- eta berdintasun ikurraren artean ez dago zuriunerik, eta "2" benetako goi-indiz
-e bezala egotea nahiko zenuke.
- Konposaketa okerra gertatu da, \SpecialChar LyX
--i matematikako ekuazio bat idazten ari
- garela ez baitiogu esan, eta ekuazioa testu arrunta bezala konposatu du.
+Orain,
+ ekuazio horiek ez dute itxura oso onik ez \SpecialChar LyX
+-en ez irteeran ere;
+ hizkien eta berdintasun ikurraren artean ez dago zuriunerik,
+ eta "2" benetako goi-indize bezala egotea nahiko zenuke.
+ Konposaketa okerra gertatu da,
+ \SpecialChar LyX
+-i matematikako ekuazio bat idazten ari garela ez baitiogu esan,
+ eta ekuazioa testu arrunta bezala konposatu du.
  
 \end_layout
 
 \begin_layout Standard
-Horren ordez, formula bat sortu dugu egokiro konposatua izan dadin.
- Formula bat sortzeko, egin klik tresna-barrako 
+Horren ordez,
+ formula bat sortu dugu egokiro konposatua izan dadin.
+ Formula bat sortzeko,
+ egin klik tresna-barrako 
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
@@ -2836,20 +3058,23 @@ formula
 \family default
  menua.
  \SpecialChar LyX
--ek laukitxo urdin bat txertatuko du; matematikako ekuazio hutsa izango
- da, eta kurtsorea bertan kokatuko duenez, idatzi 
+-ek laukitxo urdin bat txertatuko du;
+ matematikako ekuazio hutsa izango da,
+ eta kurtsorea bertan kokatuko duenez,
+ idatzi 
 \family typewriter
 E=mc^2
 \family default
  berriro.
- Adierazpen matematikoa urdinez dago, eta laukitxo urdina ekuazioa hutsa
- izateari uzten dion unean desagertuko da.
+ Adierazpen matematikoa urdinez dago,
+ eta laukitxo urdina ekuazioa hutsa izateari uzten dion unean desagertuko da.
  Sakatu 
 \family sans
 Ihes
 \family default
  tekla ekuaziotik ateratzeko.
- Markatzaile arrosa desagertuko da, kurtsorea adierazpenaren eskuinean kokatuz,
+ Markatzaile arrosa desagertuko da,
+ kurtsorea adierazpenaren eskuinean kokatuz,
  eta orain zerbait idazten baduzu testu arrunta izango da.
 \end_layout
 
@@ -2859,32 +3084,36 @@ Begiratu
 DVI
 \family default
  fitxategian.
- Konturatuko zarenez, adierazpen matematikoa era dotorean osatu da; hizki
- eta berdintasun ikurraren artean zuriunea du, eta "2" goi-indize bezala
- dauka.
- Matematika-eran hizkiak aldagai gisa hartzen dira, eta letra etzanez azaltzen
- dira.
+ Konturatuko zarenez,
+ adierazpen matematikoa era dotorean osatu da;
+ hizki eta berdintasun ikurraren artean zuriunea du,
+ eta "2" goi-indize bezala dauka.
+ Matematika-eran hizkiak aldagai gisa hartzen dira,
+ eta letra etzanez azaltzen dira.
  Zenbakiak zenbaki izaten jarraitzen dute.
 \end_layout
 
 \begin_layout Standard
-Matematika editatzeko era berri hau WYSIWYM filosofiaren beste adibide bat
- da.
+Matematika editatzeko era berri hau WYSIWYM filosofiaren beste adibide bat da.
  \SpecialChar LaTeX
--en, matematikako adierazpenak testuaren eta 
+-en,
+ matematikako adierazpenak testuaren eta 
 \family typewriter
 
 \backslash
 sqrt
 \family default
- bezalako komandoen bitartez idazten dira; \SpecialChar LaTeX
- exekutatu arte ezin izango duzu
- ikusi nola inprimatuko diren, eta falta den parentesi edo bestelako zerbaiten
- bila denbora asko gal daiteke.
+ bezalako komandoen bitartez idazten dira;
+ \SpecialChar LaTeX
+ exekutatu arte ezin izango duzu ikusi nola inprimatuko diren,
+ eta falta den parentesi edo bestelako zerbaiten bila denbora asko gal daiteke.
  \SpecialChar LyX
--ek, ordea, adierazpen matematikoa WYSIWYG eran ez azaldu arren, inprimatzean
- edukiko duen ia itxura berdina bistaratzen du.
- Ondoren, \SpecialChar LaTeX
+-ek,
+ ordea,
+ adierazpen matematikoa WYSIWYG eran ez azaldu arren,
+ inprimatzean edukiko duen ia itxura berdina bistaratzen du.
+ Ondoren,
+ \SpecialChar LaTeX
  konposaketa profesionala lantzeaz arduratuko da.
 \end_layout
 
@@ -2902,9 +3131,9 @@ aldatu
 \end_inset
 
 ekuaziora.
- Adierazpen barruan mugitzeko, erabili teklatuko geziak.
- Adierazpena sartzean matematika-eran zaudela argitzeko markatzaile arrosa
- azaltzen dela ohartu.
+ Adierazpen barruan mugitzeko,
+ erabili teklatuko geziak.
+ Adierazpena sartzean matematika-eran zaudela argitzeko markatzaile arrosa azaltzen dela ohartu.
  Erabili teklatuko 
 \family sans
 Ezkerrera
@@ -2913,7 +3142,8 @@ Ezkerrera
 \family sans
 Eskuinera
 \family default
- geziak berdintasun ikurraren mailan kurtsorea mugitzeko, idatzi eta "1+".
+ geziak berdintasun ikurraren mailan kurtsorea mugitzeko,
+ idatzi eta "1+".
  Erabili geziak ekuaziotik irteteko edo sakatu 
 \family sans
 Ihes
@@ -2922,9 +3152,10 @@ Ihes
 \end_layout
 
 \begin_layout Standard
-Matematika-eran idaztea testu arrunta editatzea bezala da, aurrerago azalduko
- dizkizugun tekla bereziak kontutan hartzen ez baditugu bederen.
- Ezabatzeko, erabili 
+Matematika-eran idaztea testu arrunta editatzea bezala da,
+ aurrerago azalduko dizkizugun tekla bereziak kontutan hartzen ez baditugu bederen.
+ Ezabatzeko,
+ erabili 
 \family sans
 Ezabatu
 \family default
@@ -2939,9 +3170,10 @@ Atzera tekla
 Editatu\SpecialChar menuseparator
 Desegin
 \family default
- menua matematika-eran berdin erabiltzen da, gauza bera ebaki eta itsasteko.
- Kontuz ibili gauza batekin: ekuazioaren ezkerraldean edo eskuinaldean eta
- kanpoan kurtsorea balego eta 
+ menua matematika-eran berdin erabiltzen da,
+ gauza bera ebaki eta itsasteko.
+ Kontuz ibili gauza batekin:
+ ekuazioaren ezkerraldean edo eskuinaldean eta kanpoan kurtsorea balego eta 
 \family sans
 Ezabatu
 \family default
@@ -2966,17 +3198,21 @@ Eta
 \begin_inset Formula $E=mc^{2.5}+1$
 \end_inset
 
- ekuaziora aldatu nahi baduzu? Beste behin, egin klik saguarekin kokaleku
- egokian.
- Nahi izanez gero, erabili teklatuko geziak.
+ ekuaziora aldatu nahi baduzu?
+ Beste behin,
+ egin klik saguarekin kokaleku egokian.
+ Nahi izanez gero,
+ erabili teklatuko geziak.
  Kurtsorea "c" hizkiaren ondoren baina "2"-ren aurrean kokatuta balego,
  sakatu 
 \family sans
 Gora
 \family default
- gezia goi-indizera igotzeko, "2"-ren aurretik kokatuko da.
+ gezia goi-indizera igotzeko,
+ "2"-ren aurretik kokatuko da.
  Gehitu ".5" balioa.
- Orain, sakatu 
+ Orain,
+ sakatu 
 \family sans
 Behera
 \family default
@@ -2985,8 +3221,9 @@ Behera
 \family sans
 Zuriunea
 \family default
- sakatzen baduzu, jaitsi maila arruntera eta goi-indize ondoren kurtsorea
- kokatuko du, horrela "+1" idaztea bakarrik faltako zaizu.
+ sakatzen baduzu,
+ jaitsi maila arruntera eta goi-indize ondoren kurtsorea kokatuko du,
+ horrela "+1" idaztea bakarrik faltako zaizu.
 \end_layout
 
 \begin_layout Section
@@ -3002,11 +3239,11 @@ Matematikako
 
 tresna-barra
 \family default
- erabiliz sar daitekeen arren (ikus ondorengo atala), askoz ere azkarragoa
- da "^" erabiltzea.
+ erabiliz sar daitekeen arren (ikus ondorengo atala),
+ askoz ere azkarragoa da "^" erabiltzea.
  \SpecialChar LyX
--ek goi-indizean beste laukitxo urdin bat jarriko du, ondoren idazten duzuna
- goi-indizea izango da (letra-tamaina txikiagoa edukiko du).
+-ek goi-indizean beste laukitxo urdin bat jarriko du,
+ ondoren idazten duzuna goi-indizea izango da (letra-tamaina txikiagoa edukiko du).
  
 \family sans
 Zuriunea
@@ -3015,18 +3252,18 @@ Zuriunea
 \family sans
 Ihes
 \family default
- (formulatik erabat irtetzeko) sakatu bitartean idazten duzun guztia goi-indizea
-n agertuko da.
+ (formulatik erabat irtetzeko) sakatu bitartean idazten duzun guztia goi-indizean agertuko da.
 \end_layout
 
 \begin_layout Standard
-Azpindizea idazteko bidea ere erraza da: 
+Azpindizea idazteko bidea ere erraza da:
+ 
 \family sans
 Azpimarra
 \family default
  ("_") zapaldu.
- Dagoeneko ikasi duzu ondoren agertzen den ekuazioko goi-indizeak eta azpindizea
-k idazten: 
+ Dagoeneko ikasi duzu ondoren agertzen den ekuazioko goi-indizeak eta azpindizeak idazten:
+ 
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
 \end_inset
 
@@ -3038,7 +3275,8 @@ k idazten:
 \series bold
 Ariketa
 \series default
-: ipini 
+:
+ ipini 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -3060,7 +3298,8 @@ Matematikaren
 tresna-barra
 \family default
  erabiltzea komenigarria izaten da.
- Eragiketa hauetariko asko teklatuarekin, 
+ Eragiketa hauetariko asko teklatuarekin,
+ 
 \family sans
 Editatu\SpecialChar menuseparator
 Matematika
@@ -3071,7 +3310,8 @@ Txertatu\SpecialChar menuseparator
 Matematika
 \family default
  menuen bidez sor daiteke.
- Hala ere, 
+ Hala ere,
+ 
 \family typewriter
 Matematika
 \family default
@@ -3083,7 +3323,8 @@ ren
 
 tresna-barra
 \family default
- erabiltzen irakatsiko dizugu; 
+ erabiltzen irakatsiko dizugu;
+ 
 \emph on
 Matematika
 \emph default
@@ -3091,8 +3332,8 @@ Matematika
 \end_layout
 
 \begin_layout Standard
-Matematikako tresna-barra erakusten da kurtsorea formulan dagoenean, eta
- aktibatu daiteke baita ere 
+Matematikako tresna-barra erakusten da kurtsorea formulan dagoenean,
+ eta aktibatu daiteke baita ere 
 \family typewriter
 Ikusi\SpecialChar menuseparator
 Tresna-barrak
@@ -3104,8 +3345,10 @@ type  "icon"
 arg   "toolbar-toggle math"
 \end_inset
 
-) dagokion kontrol-koadroa aktibatzean, tresna-barra agertzen da behin betirako
- leihoaren behean; egoera hau aldatzeko, 
+) dagokion kontrol-koadroa aktibatzean,
+ tresna-barra agertzen da behin betirako leihoaren behean;
+ egoera hau aldatzeko,
+ 
 \family typewriter
 Tresna-barrak
 \family default
@@ -3113,8 +3356,8 @@ Tresna-barrak
 \family typewriter
 Matematika
 \family default
-ren kontrol-koadroan klik egin berriro, eta kurtsorea formula baten barruan
- kokatzean soilik agertuko da matematikaren tresna-barra.
+ren kontrol-koadroan klik egin berriro,
+ eta kurtsorea formula baten barruan kokatzean soilik agertuko da matematikaren tresna-barra.
  
 \end_layout
 
@@ -3131,25 +3374,31 @@ Matematikaren
 
 tresna-barrak
 \family default
- matematikako ikur multzo handia aukeratzen uzten dizu: hainbat gezi, erlazio,
- eragile, batura, karaktere berezi eta integral.
- Jakin ezazu goi-indizeek eta azpindizeek batura eta integralen limitea
- jartzea eskaintzen dizutela.
+ matematikako ikur multzo handia aukeratzen uzten dizu:
+ hainbat gezi,
+ erlazio,
+ eragile,
+ batura,
+ karaktere berezi eta integral.
+ Jakin ezazu goi-indizeek eta azpindizeek batura eta integralen limitea jartzea eskaintzen dizutela.
 \end_layout
 
 \begin_layout Subsection
-Erroketa, tilet eta mugatzaileak
+Erroketa,
+ tilet eta mugatzaileak
 \end_layout
 
 \begin_layout Standard
-Erroketa bat idazteko, egin klik 
+Erroketa bat idazteko,
+ egin klik 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\sqrt"
 \end_inset
 
  botoian.
- Erro ikurra agertuko da, eta txertatze-gunea
+ Erro ikurra agertuko da,
+ eta txertatze-gunea
 \begin_inset Foot
 status collapsed
 
@@ -3158,15 +3407,17 @@ status collapsed
 \emph on
 Itzultzailearen oharra
 \emph default
-: txertatze-gunea matematikako ekuazioa idazten den laukitxo urdinari deitzen
- zaio.
+:
+ txertatze-gunea matematikako ekuazioa idazten den laukitxo urdinari deitzen zaio.
 \end_layout
 
 \end_inset
 
  bere barruan kokatuko da.
- Orain idatzi aldagaiak, zenbakiak, beste erroketak, zatikiak edota nahi
- duzun guztia.
+ Orain idatzi aldagaiak,
+ zenbakiak,
+ beste erroketak,
+ zatikiak edota nahi duzun guztia.
  \SpecialChar LyX
 -ek erroketaren tamaina automatikoki egokituko du edukieraren arabera.
 \end_layout
@@ -3188,18 +3439,19 @@ arg   "math-insert \\hat"
 \end_inset
 
  botoiaren bidez erabilgarri daude.
- Egin klik apaingarri batean, eta \SpecialChar LyX
--ek apaingarri hori txertatuko du txertatze-gu
-ne baten azpian (edo gainean).
+ Egin klik apaingarri batean,
+ eta \SpecialChar LyX
+-ek apaingarri hori txertatuko du txertatze-gune baten azpian (edo gainean).
  Idatzi nahi duzuna txertatze-gunean.
- Apaingarrien bi multzo daude: idazten duzun testuarekin bat tamainaz aldatzen
- direnak, eta finkatutako tamaina dutenak, hizki soilentzako egokiagoak
- direnak.
+ Apaingarrien bi multzo daude:
+ idazten duzun testuarekin bat tamainaz aldatzen direnak,
+ eta finkatutako tamaina dutenak,
+ hizki soilentzako egokiagoak direnak.
 \end_layout
 
 \begin_layout Standard
-Parentesiak, giltzak edota kortxeteak bezalako mugatzaileak antzera erabili
- arren pitin bat zailtxoagoak dira erabiltzen.
+Parentesiak,
+ giltzak edota kortxeteak bezalako mugatzaileak antzera erabili arren pitin bat zailtxoagoak dira erabiltzen.
  Sakatu 
 \family sans
 Mugatzailea
@@ -3217,27 +3469,32 @@ Mugatzaileak
  elkarrizketa-koadroa agertuko da.
  Unean hautatutako mugatzailea leiho erdialdean agertuko da.
  Mugatzaileen uneko hautapena kutxa batean bistaratuko da.
- Parentesi-bikotea egoten da lehenetsi gisa, hautatu zuk nahi dituzun kortxete-b
-ikoteak, kortxete eta parentesiak, edo botoi hutsa "
+ Parentesi-bikotea egoten da lehenetsi gisa,
+ hautatu zuk nahi dituzun kortxete-bikoteak,
+ kortxete eta parentesiak,
+ edo botoi hutsa "
 \begin_inset Formula $a=\left\langle 7\right.$
 \end_inset
 
-" bezalako zerbait idazteko (huts-mugatzailea tartekako marra bertikala
- bezala bistaratzen da \SpecialChar LyX
--en; inprimatzean, ordea, ez da azaltzen).
+" bezalako zerbait idazteko (huts-mugatzailea tartekako marra bertikala bezala bistaratzen da \SpecialChar LyX
+-en;
+ inprimatzean,
+ ordea,
+ ez da azaltzen).
 \end_layout
 
 \begin_layout Standard
-Alferra bazara, matematika-eran oraingo parentesiak idatz ditzakezu 
+Alferra bazara,
+ matematika-eran oraingo parentesiak idatz ditzakezu 
 \family sans
 Mugatzailea
 \family default
  leihoaren ordez.
- Hala ere, parentesi horiek testu arruntaren letra-tamaina berdina izango
- dute, parentesi barruan zatiketa edo matrize bat idazten baduzu oso itsusi
- geldituko dira.
- Beraz, egokiagoa da mugatzaileen hiru botoietariko bat erabiltzea zuzenean
- (
+ Hala ere,
+ parentesi horiek testu arruntaren letra-tamaina berdina izango dute,
+ parentesi barruan zatiketa edo matrize bat idazten baduzu oso itsusi geldituko dira.
+ Beraz,
+ egokiagoa da mugatzaileen hiru botoietariko bat erabiltzea zuzenean (
 \begin_inset space ~
 \end_inset
 
@@ -3245,9 +3502,10 @@ Mugatzailea
 \end_layout
 
 \begin_layout Standard
-Existitzen den testu batean mugatzaileak, erroketak edo apaingarriak txerta
- ditzakezu.
- Hautatu egokitu nahi duzun ekuazioa, ondoren egn klik 
+Existitzen den testu batean mugatzaileak,
+ erroketak edo apaingarriak txerta ditzakezu.
+ Hautatu egokitu nahi duzun ekuazioa,
+ ondoren egn klik 
 \family sans
 Matematikaren
 \begin_inset space ~
@@ -3298,17 +3556,22 @@ Zatikia
  botoian.
  \SpecialChar LyX
 -ek bi txertatze-gune jarriko ditu zatiki batean.
- Uste zenuen bezala, zatiki batean zehar kurtsorea mugitzeko teklatuko geziak
- erabil ditzakezu.
+ Uste zenuen bezala,
+ zatiki batean zehar kurtsorea mugitzeko teklatuko geziak erabil ditzakezu.
  Egin klik zenbatzaileari dagokion txertatze-gunean eta idatzi "1" zenbakia.
- Orain, sakatu 
+ Orain,
+ sakatu 
 \family sans
 Behera
 \family default
  gezia eta "2" zenbakia idatzi.
- Zatiki bat lortu duzu! Jakingo duzunez, bi txertatze-gunetan nahi duzuna
- idazteko aukera daukazu: berretzaileak dituzten aldagaiak, erro karratuak,
- beste zatiki batzuk, integralak edo bururatzen zaizun beste edozer.
+ Zatiki bat lortu duzu!
+ Jakingo duzunez,
+ bi txertatze-gunetan nahi duzuna idazteko aukera daukazu:
+ berretzaileak dituzten aldagaiak,
+ erro karratuak,
+ beste zatiki batzuk,
+ integralak edo bururatzen zaizun beste edozer.
 \end_layout
 
 \begin_layout Standard
@@ -3316,7 +3579,8 @@ Behera
 \series bold
 Ariketa
 \series default
-: jarri 
+:
+ jarri 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -3326,17 +3590,21 @@ adibide_gordina.lyx
 
 \begin_layout Subsection
 \SpecialChar TeX
- era: limiteak, log, sinu eta bestelakoak
+ era:
+ limiteak,
+ log,
+ sinu eta bestelakoak
 \end_layout
 
 \begin_layout Standard
-Matematika-eran hizkiak aldagaitzat hartzen direnez, matematika-eran "sin"
- idazten baduzu \SpecialChar LyX
+Matematika-eran hizkiak aldagaitzat hartzen direnez,
+ matematika-eran "sin" idazten baduzu \SpecialChar LyX
 -ek hiru aldagaien arteko biderketa (
 \begin_inset Formula $s$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $i$
 \end_inset
 
@@ -3345,11 +3613,11 @@ Matematika-eran hizkiak aldagaitzat hartzen direnez, matematika-eran "sin"
 \end_inset
 
 ) idazten ari zarela usteko du.
- Hirurak letra etzanarekin bistaratuko dira, baina "sin" hitza letra erromatarra
-rekin idatzi nahiko zenuen.
- Gainera, \SpecialChar LyX
--ek ez du tarterik sartuko "sin" eta "x" hitzen artean (zuriunea
- sakatuz matematika-eratik aterako zaitu).
+ Hirurak letra etzanarekin bistaratuko dira,
+ baina "sin" hitza letra erromatarrarekin idatzi nahiko zenuen.
+ Gainera,
+ \SpecialChar LyX
+-ek ez du tarterik sartuko "sin" eta "x" hitzen artean (zuriunea sakatuz matematika-eratik aterako zaitu).
  Nola lor dezakezu 
 \begin_inset Quotes eld
 \end_inset
@@ -3392,24 +3660,30 @@ type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
- botoian eta gero, agertzen den zerrendan hautatu "sin".
+ botoian eta gero,
+ agertzen den zerrendan hautatu "sin".
  "sin" hitza letra beltz eta erromatarrez idatziko da.
- Hitz osoa sinbolo soil baten gisa kudeatuko denez, 
+ Hitz osoa sinbolo soil baten gisa kudeatuko denez,
+ 
 \family sans
 Atzera
 \family default
  tekla sakatuz hitz osoa ezabatuko da.
- Idatzi orain "(x)", letra etzan urdinez idatziko da, matematika-eran espero
- zenuen bezala.
+ Idatzi orain "(x)",
+ letra etzan urdinez idatziko da,
+ matematika-eran espero zenuen bezala.
  Irteerako fitxategian adierazpen matematikoa egokiro konposatuko da.
  Saia zaitez.
 \end_layout
 
 \begin_layout Standard
-Funtzioen zerrendan honako beste funtzioak aurki daiteke: trigonometriako
- funtzioak eta beraien alderantzizkoak, hiperbole funtzioak, logaritmoak,
+Funtzioen zerrendan honako beste funtzioak aurki daiteke:
+ trigonometriako funtzioak eta beraien alderantzizkoak,
+ hiperbole funtzioak,
+ logaritmoak,
  limiteak eta bestelako gutxi batzuk.
- Funtzio hauek goi-indize eta azpindizeak onartzen dituzte, 
+ Funtzio hauek goi-indize eta azpindizeak onartzen dituzte,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3441,7 +3715,8 @@ Funtzioen zerrendan honako beste funtzioak aurki daiteke: trigonometriako
 \series bold
 Ariketa
 \series default
-: jarri 
+:
+ jarri 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -3469,9 +3744,10 @@ arg   "dialog-show mathmatrix"
 \end_inset
 
  botoian.
- Izen bereko elkarrizketa-koadroa agertuko da, matrizeko errenkada eta zutabe
- kopuruak zehazteko aukera eskainiz.
- Aukeratu 2 errenkada eta 3 zutabe, eta egin klik 
+ Izen bereko elkarrizketa-koadroa agertuko da,
+ matrizeko errenkada eta zutabe kopuruak zehazteko aukera eskainiz.
+ Aukeratu 2 errenkada eta 3 zutabe,
+ eta egin klik 
 \family sans
 Ados
 \family default
@@ -3485,19 +3761,23 @@ Matrize bateko zutabeetan zehar mugitzeko
 Tabuladorea
 \family default
  erabil daiteke.
- Beste aukera bat da teklatuko geziak erabiltzea: gune-amaieran 
+ Beste aukera bat da teklatuko geziak erabiltzea:
+ gune-amaieran 
 \family sans
 Eskuinera
 \family default
- sakatuz kurtsorea hurrengora bidaliko du, 
+ sakatuz kurtsorea hurrengora bidaliko du,
+ 
 \family sans
 Behera
 \family default
- geziarekin azpiko errenkadara, eta abar.
+ geziarekin azpiko errenkadara,
+ eta abar.
 \end_layout
 
 \begin_layout Standard
-Bat-batean errenkada edo zutabe gehiago behar badituzu, erabili 
+Bat-batean errenkada edo zutabe gehiago behar badituzu,
+ erabili 
 \family sans
 Editatu\SpecialChar menuseparator
 Errenkadak
@@ -3516,19 +3796,22 @@ type  "icon"
 arg   "tabular-feature append-row"
 \end_inset
 
-, 
+,
+ 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature delete-row"
 \end_inset
 
-, 
+,
+ 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature append-column"
 \end_inset
 
-, 
+,
+ 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature delete-column"
@@ -3542,12 +3825,12 @@ Ikus
 \emph on
 Erabiltzailearen gida
 \emph default
- zutabe bakoitza lerrokatzen edo matrize osoaren kokapen bertikala nola
- aldatzen den ikasteko.
- Jabetu zaitez zeregin bakoitzarentzat tresna bat dagoela; testua daukan
- taula bat idazteko, erabili \SpecialChar LyX
--en taulentzako euskarri harrigarria, taulak
- idazteko ez da komeni matrizeak erabiltzea.
+ zutabe bakoitza lerrokatzen edo matrize osoaren kokapen bertikala nola aldatzen den ikasteko.
+ Jabetu zaitez zeregin bakoitzarentzat tresna bat dagoela;
+ testua daukan taula bat idazteko,
+ erabili \SpecialChar LyX
+-en taulentzako euskarri harrigarria,
+ taulak idazteko ez da komeni matrizeak erabiltzea.
 \end_layout
 
 \begin_layout Subsection
@@ -3555,16 +3838,20 @@ Adierazpen-era
 \end_layout
 
 \begin_layout Standard
-Orain arte idatzi ditugun ekuazioak, inguratzen zituzten testuaren lerro
- berdinean zeuden, lerroko formulak bezala ere ezagutzen dira.
- Ekuazio labur eta soilentzat ongi doa, baina gauza handiagoentzat, edo
- testutik urruntzea nahi badituzu, adierazpen eran idatzi beharko dira.
- Gainera, adierazpen erako ekuazioak etiketatu eta zenbatuak izan daiteke
- (ikus 
+Orain arte idatzi ditugun ekuazioak,
+ inguratzen zituzten testuaren lerro berdinean zeuden,
+ lerroko formulak bezala ere ezagutzen dira.
+ Ekuazio labur eta soilentzat ongi doa,
+ baina gauza handiagoentzat,
+ edo testutik urruntzea nahi badituzu,
+ adierazpen eran idatzi beharko dira.
+ Gainera,
+ adierazpen erako ekuazioak etiketatu eta zenbatuak izan daiteke (ikus 
 \emph on
 Erabiltzailearen Gida
 \emph default
-), eta hainbat lerrotako ekuazioak adierazpen-eran egon behar dute.
+),
+ eta hainbat lerrotako ekuazioak adierazpen-eran egon behar dute.
 \end_layout
 
 \begin_layout Standard
@@ -3583,8 +3870,9 @@ arg   "math-display"
 \end_inset
 
  botoian.
- Lerro berri batean, eta erdialdean zentratuta, txertatze-gune bat agertuko
- da.
+ Lerro berri batean,
+ eta erdialdean zentratuta,
+ txertatze-gune bat agertuko da.
  Orain idatzi ekuazio bat eta bistaratu DVI formatuan bere itxura ikusteko.
  
 \family sans
@@ -3594,13 +3882,15 @@ Adierazpen
 
 era
 \family default
- botoia era batetik bestera txandakatzeko erabiltzen da: adierazpen eratik
- barneko erara aldatzeko, edo alderantziz.
+ botoia era batetik bestera txandakatzeko erabiltzen da:
+ adierazpen eratik barneko erara aldatzeko,
+ edo alderantziz.
  Adierazpen erak lerroko eratik bereizten dituen zenbait eginbide ditu:
 \end_layout
 
 \begin_layout Itemize
-Letra-tamaina lehenetsia handiagoa da, 
+Letra-tamaina lehenetsia handiagoa da,
+ 
 \begin_inset Formula $\sum$
 \end_inset
 
@@ -3612,8 +3902,7 @@ Letra-tamaina lehenetsia handiagoa da,
 \end_layout
 
 \begin_layout Itemize
-Batura eta limiteetan (integraletan ez) goi-indizeak eta azpindizeak ikurren
- azpira gehiago hurbiltzen dira alboetara baino.
+Batura eta limiteetan (integraletan ez) goi-indizeak eta azpindizeak ikurren azpira gehiago hurbiltzen dira alboetara baino.
 \end_layout
 
 \begin_layout Itemize
@@ -3621,25 +3910,28 @@ Testua zentratuta dago.
 \end_layout
 
 \begin_layout Standard
-Desberdintasun hauek alde batera utziz, lerroko eta adierazpen erako ekuazioak
- oso antzekoak dira.
+Desberdintasun hauek alde batera utziz,
+ lerroko eta adierazpen erako ekuazioak oso antzekoak dira.
 \end_layout
 
 \begin_layout Standard
-Azken ohar bat adierazpen-formula konposatzeari buruz: argi ibili ekuazioa
- paragrafo berri batean edo ez idazten duzunean.
- Ekuazioa sententzi edo paragrafo baten erdian idazten baduzu, ez sakatu
- 
+Azken ohar bat adierazpen-formula konposatzeari buruz:
+ argi ibili ekuazioa paragrafo berri batean edo ez idazten duzunean.
+ Ekuazioa sententzi edo paragrafo baten erdian idazten baduzu,
+ ez sakatu 
 \family typewriter
 Sartu
 \family default
  tekla.
- Hori eginez gero, ekuazio 
+ Hori eginez gero,
+ ekuazio 
 \emph on
 osteko
 \emph default
  testua paragrafo berri batean hasiko baita.
- Ondorioz, testu hau koskatuko da, eta litekeena da hori nahi ez izatea.
+ Ondorioz,
+ testu hau koskatuko da,
+ eta litekeena da hori nahi ez izatea.
 \end_layout
 
 \begin_layout Standard
@@ -3647,12 +3939,13 @@ osteko
 \series bold
 Ariketa
 \series default
-: jarri 
+:
+ jarri 
 \family typewriter
 adibide_gordina.lyx
 \family default
- fitxategiko ekuazio batzuk adierazpen eran, eta ikusi bestelako konposaketa
- lantzen den.
+ fitxategiko ekuazio batzuk adierazpen eran,
+ eta ikusi bestelako konposaketa lantzen den.
 \end_layout
 
 \begin_layout Standard
@@ -3660,13 +3953,15 @@ adibide_gordina.lyx
 \series bold
 Ariketa
 \series default
-: atal honetan ikasitako zenbait tresnarekin, Hurrengo ekuazioa bezalako
- bat idazteko gai izan beharko zenuke
+:
+ atal honetan ikasitako zenbait tresnarekin,
+ Hurrengo ekuazioa bezalako bat idazteko gai izan beharko zenuke
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Bide zailenetik aritu ondoren, zergatik ez zara 
+Bide zailenetik aritu ondoren,
+ zergatik ez zara 
 \family sans
 Txertatu\SpecialChar menuseparator
 Matematika\SpecialChar menuseparator
@@ -3706,7 +4001,8 @@ Matematikari buruzko gauza gehiago
 \begin_layout Standard
 Matematika-eran gauza gehiago egin ditzake \SpecialChar LyX
 -ek.
- Oraindaino oinarrizkoa bakarrik ezagutu duzu, irakurri 
+ Oraindaino oinarrizkoa bakarrik ezagutu duzu,
+ irakurri 
 \emph on
 Erabiltzailearen gida
 \emph default
@@ -3722,23 +4018,25 @@ Lerro anitzeko ekuazioak sortzea.
 \end_layout
 
 \begin_layout Itemize
-Letra-tipoak aldatzea, adibidez, adierazpen bateko testua letra lodiz idaztea.
+Letra-tipoak aldatzea,
+ adibidez,
+ adierazpen bateko testua letra lodiz idaztea.
 \end_layout
 
 \begin_layout Itemize
-Ekuazio bateko letra-tipoa eta barruko tartea zehaztea (ez zaitez kezkatu
- honelakoengatik amaierako zirriborroa arte).
+Ekuazio bateko letra-tipoa eta barruko tartea zehaztea (ez zaitez kezkatu honelakoengatik amaierako zirriborroa arte).
 \end_layout
 
 \begin_layout Itemize
 Makroak idaztea.
- Oso baliagarriak dira, dokumentu baten hasieran definitu eta dokumentuan
- zehar erabili ahal izango dituzu.
+ Oso baliagarriak dira,
+ dokumentu baten hasieran definitu eta dokumentuan zehar erabili ahal izango dituzu.
  
 \end_layout
 
 \begin_layout Itemize
-Leku falta dela eta, 
+Leku falta dela eta,
+ 
 \emph on
 Tutoretza
 \emph default
@@ -3756,8 +4054,8 @@ Hainbat
 
 \begin_layout Standard
 Ez ditugu aipatu \SpecialChar LyX
--ekin erabil daitezken komando guztiak, eta ez daukagu
- asmorik.
+-ekin erabil daitezken komando guztiak,
+ eta ez daukagu asmorik.
  Informazio gehiagorako irakur ezazu 
 \emph on
 Erabiltzailearen gida
@@ -3774,7 +4072,8 @@ Kapsulatutako objektuak
 \begin_layout Itemize
 \SpecialChar LyX
 -ek taulentzako WYSIWYG euskarria dauka.
- Taula bat lortzeko, erabili 
+ Taula bat lortzeko,
+ erabili 
 \family sans
 Txertatu\SpecialChar menuseparator
 Taula
@@ -3790,7 +4089,8 @@ arg   "tabular-insert"
 \family sans
 Ezarpenak
 \family default
- elkarrizketa-koadroa irekitzeko, eta taula editatzeko aukera izango duzula.
+ elkarrizketa-koadroa irekitzeko,
+ eta taula editatzeko aukera izango duzula.
  
 \lang english
 By pressing
@@ -3809,7 +4109,8 @@ the table toolbar will appear permanently.
 \begin_layout Itemize
 \SpecialChar LyX
 -ek hainbat formatuko irudiak txertatzeko euskarria dauka.
- Asmatu duzu: 
+ Asmatu duzu:
+ 
 \family sans
 \bar under
 T
@@ -3828,18 +4129,21 @@ arg   "dialog-show-new-inset graphics"
 \end_inset
 
  botoia erabili.
- Ondoren, arakatu, biratu edo eskalatu nahi duzun irudi-fitxategia.
- Bai taulek bai irudiek epigrafeak eduki ditzakete, eta \SpecialChar LyX
--ek automatikoki
- irudi edota taulen zerrenda sortuko du.
+ Ondoren,
+ arakatu,
+ biratu edo eskalatu nahi duzun irudi-fitxategia.
+ Bai taulek bai irudiek epigrafeak eduki ditzakete,
+ eta \SpecialChar LyX
+-ek automatikoki irudi edota taulen zerrenda sortuko du.
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
  oso konfiguragarria da.
- Gauza guztiak, \SpecialChar LyX
- leihoen itxuratik hasita inprimatzeko irteerako emaitza
- arte, hainbat eratan konfigura daiteke.
+ Gauza guztiak,
+ \SpecialChar LyX
+ leihoen itxuratik hasita inprimatzeko irteerako emaitza arte,
+ hainbat eratan konfigura daiteke.
  Konfigurazio gehienak 
 \family sans
 Tresna
@@ -3853,7 +4157,8 @@ H
 obespenak
 \family default
  menutik lantzen dira.
- Argitasun gehiagorako, kontsultatu 
+ Argitasun gehiagorako,
+ kontsultatu 
 \family sans
 Laguntza\SpecialChar menuseparator
 Pertsonalizazioa
@@ -3864,21 +4169,29 @@ Pertsonalizazioa
 \begin_layout Itemize
 \SpecialChar LyX
  bost kontinenteetako programatzaile-talde baten eskutik garatzen ari da.
- Horregatik, hainbat testu-prozesadorerekin konparatuz, ingeles hizkuntzak
- ez direnen euskarri hobeagoa dauka (alemanera, txekiera, grekoa, euskara,
- italiera, errusiera...).
- Eskuinetik ezkerrera idazten diren hizkuntzak ere onartzen ditu, hala nola
- Arabiera, Farsiera edo Hebreera adibidez, Txinera, Japoniera eta Koreera
- ere onartuta daude.
- Dokumentuak beste hizkuntza batzuetan idatz ditzakezu; \SpecialChar LyX
--ek menuak eta errore-me
-zuak beste hizkuntzetan erakuts ditzan ere konfigura dezakezu.
+ Horregatik,
+ hainbat testu-prozesadorerekin konparatuz,
+ ingeles hizkuntzak ez direnen euskarri hobeagoa dauka (alemanera,
+ txekiera,
+ grekoa,
+ euskara,
+ italiera,
+ errusiera...).
+ Eskuinetik ezkerrera idazten diren hizkuntzak ere onartzen ditu,
+ hala nola Arabiera,
+ Farsiera edo Hebreera adibidez,
+ Txinera,
+ Japoniera eta Koreera ere onartuta daude.
+ Dokumentuak beste hizkuntza batzuetan idatz ditzakezu;
+ \SpecialChar LyX
+-ek menuak eta errore-mezuak beste hizkuntzetan erakuts ditzan ere konfigura dezakezu.
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
 -eko menuek lasterbideak erabiltzen dituzte.
- Hots, 
+ Hots,
+ 
 \family sans
 Fitxategia\SpecialChar menuseparator
 Ireki
@@ -3891,7 +4204,8 @@ Alt+F
 \family sans
 O
 \family default
- sakatu, edo menuaren alboan agertzen den lotura erabili (
+ sakatu,
+ edo menuaren alboan agertzen den lotura erabili (
 \family sans
 Ktrl+O 
 \family default
@@ -3913,6 +4227,7 @@ Pertsonalizazioa
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "atal:LaTeX-dokumentuak-inportatzea"
+nolink "false"
 
 \end_inset
 
@@ -3924,7 +4239,8 @@ atala.
 \end_layout
 
 \begin_layout Itemize
-Zuzentzaile ortografikoa, thesaurusa eta hitzen zenbaketak erabilgarri daude.
+Zuzentzaile ortografikoa,
+ thesaurusa eta hitzen zenbaketak erabilgarri daude.
 \end_layout
 
 \begin_layout Itemize
@@ -3946,33 +4262,36 @@ name "atal:latexerabiltzaileak"
 
 \begin_layout Standard
 \SpecialChar LaTeX
--i buruz ezer ez badakizu, atal hau irakurri beharrik ez daukazu.
+-i buruz ezer ez badakizu,
+ atal hau irakurri beharrik ez daukazu.
  Baliteke \SpecialChar LaTeX
  buruzko zerbait 
 \emph on
 ikasi
 \emph default
- nahi izatea, eta ondorioz atal hau irakurtzea.
- Hala ere, \SpecialChar LyX
+ nahi izatea,
+ eta ondorioz atal hau irakurtzea.
+ Hala ere,
+ \SpecialChar LyX
  erabiltzen hasten diren batzuei \SpecialChar LaTeX
  ezaguna egingo zaie.
- Horietariko bat bazara, galde dezakezu ea \SpecialChar LyX
+ Horietariko bat bazara,
+ galde dezakezu ea \SpecialChar LyX
 -ek \SpecialChar LaTeX
--ekin egin daitekeen gauza
- guztiak egiteko ahalmena al daukan.
+-ekin egin daitekeen gauza guztiak egiteko ahalmena al daukan.
  Erantzun labur bat da nola edo hala \SpecialChar LyX
  hurbiltzen dela \SpecialChar LaTeX
--ekin egin daitekeen
- gauzetara, eta \SpecialChar LaTeX
- formatuko dokumentu baten zati gehiena idaztea errazten
- duela.
+-ekin egin daitekeen gauzetara,
+ eta \SpecialChar LaTeX
+ formatuko dokumentu baten zati gehiena idaztea errazten duela.
 \end_layout
 
 \begin_layout Standard
-Hau tutoretza bat bakarrik denez, \SpecialChar LyX
--eko erabiltzaile berriek interesa eduki
- dezaketen zenbait gauza aipatuko ditugu.
- Tutoretza hori labur gordetzearren, azalpen xumeak izango dira.
+Hau tutoretza bat bakarrik denez,
+ \SpecialChar LyX
+-eko erabiltzaile berriek interesa eduki dezaketen zenbait gauza aipatuko ditugu.
+ Tutoretza hori labur gordetzearren,
+ azalpen xumeak izango dira.
  
 \emph on
 Eginbide gehigarriak
@@ -3983,10 +4302,10 @@ Kapsulatutako objektuak
 \emph default
  eskuliburuek \SpecialChar LyX
  eta \SpecialChar LaTeX
- arteko desberdintasunei, eta \SpecialChar LyX
+ arteko desberdintasunei,
+ eta \SpecialChar LyX
 -en \SpecialChar LaTeX
--eko zenbait trikimailu
- nola erabili buruzko informazio asko dauka.
+-eko zenbait trikimailu nola erabili buruzko informazio asko dauka.
 \end_layout
 
 \begin_layout Subsection
@@ -3996,9 +4315,9 @@ Kapsulatutako objektuak
 
 \begin_layout Standard
 \SpecialChar TeX
- eran idatzitako guztia pantailan gorriz agertuko da, eta zuzenean \SpecialChar LaTeX
--i bidaliko
- zaio.
+ eran idatzitako guztia pantailan gorriz agertuko da,
+ eta zuzenean \SpecialChar LaTeX
+-i bidaliko zaio.
  \SpecialChar TeX
  komandoak \SpecialChar LyX
 -en erabil ditzakezu 
@@ -4025,22 +4344,24 @@ arg   "ert-insert"
 \SpecialChar TeX
 -ek matematika-era zertxobait ezberdin erabiltzen du.
  Sartu \SpecialChar TeX
- eran alderantzizko barra, ("
+ eran alderantzizko barra,
+ ("
 \backslash
 ") bat idatziz.
- Inprimatzean ez da agertuko, ondoren idazten duzun guztia gorriz egongo
- da.
+ Inprimatzean ez da agertuko,
+ ondoren idazten duzun guztia gorriz egongo da.
  \SpecialChar TeX
  eratik ateratzeko sakatu 
 \family typewriter
 Zuriunea
 \family default
- tekla edo edozein karaktere ez-alfabetiko (zenbaki, azpimarra, berretzaile-ikur
-ra edo parentesi gisakoak).
+ tekla edo edozein karaktere ez-alfabetiko (zenbaki,
+ azpimarra,
+ berretzaile-ikurra edo parentesi gisakoak).
  \SpecialChar TeX
- eratik ateratzen zarenean, \SpecialChar TeX
--en zein komando idatzi duzun ezagutzen badu
- \SpecialChar LyX
+ eratik ateratzen zarenean,
+ \SpecialChar TeX
+-en zein komando idatzi duzun ezagutzen badu \SpecialChar LyX
 -ek eta WYSIWYM-era bihurtuko du.
  Ekuazio batean 
 \family typewriter
@@ -4052,7 +4373,8 @@ gamma
 \family typewriter
 Zuriunea
 \family default
- tekla sakatzen baduzu, \SpecialChar LyX
+ tekla sakatzen baduzu,
+ \SpecialChar LyX
 -ek "gamma" gorria 
 \begin_inset Quotes eld
 \end_inset
@@ -4075,13 +4397,14 @@ Matematikaren
 
 tresna-barra 
 \family default
-erabiltzea baino azkarragoa izan daiteke, batiz bat \SpecialChar LaTeX
--eko erabiltzaile adituentza
-ko.
+erabiltzea baino azkarragoa izan daiteke,
+ batiz bat \SpecialChar LaTeX
+-eko erabiltzaile adituentzako.
 \end_layout
 
 \begin_layout Standard
-Bitxikeri bat, formula batean 
+Bitxikeri bat,
+ formula batean 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4091,8 +4414,8 @@ Bitxikeri bat, formula batean
 \begin_inset Quotes erd
 \end_inset
 
- idazten baduzu, hasiera eta amaierako kortxeteak gorriz txertatuko dira
- eta kurtsorea kortxete artean kokatuko da.
+ idazten baduzu,
+ hasiera eta amaierako kortxeteak gorriz txertatuko dira eta kurtsorea kortxete artean kokatuko da.
  Argumentuak jasotzen dituzten komandoak idazteko komenigarria izaten da.
 \end_layout
 
@@ -4100,18 +4423,18 @@ Bitxikeri bat, formula batean
 \SpecialChar LyX
 -ek ezin ditu egin \SpecialChar LaTeX
 -ekin egiten diren gauza guztiak.
- Landutako funtzio batzuk ez dira erabat onartzen, beste batzuk berriz erabilgar
-riak dira baina ez dira WYSIWYM.
+ Landutako funtzio batzuk ez dira erabat onartzen,
+ beste batzuk berriz erabilgarriak dira baina ez dira WYSIWYM.
  \SpecialChar TeX
  erak erabiltzaileari \SpecialChar LaTeX
 -en moldagarritasun osoa eskaintzeaz batera \SpecialChar LyX
--eko
- funtzionalitate erabilgarriekin gozatu (WYSIWYM matematikak, taulak eta
- edizioa bezalakoak) dezake.
+-eko funtzionalitate erabilgarriekin gozatu (WYSIWYM matematikak,
+ taulak eta edizioa bezalakoak) dezake.
  \SpecialChar LyX
 -ek ezin izango ditu \SpecialChar LaTeX
 -eko pakete guztiak onartu.
- Hala ere, hitzaurrean 
+ Hala ere,
+ hitzaurrean 
 \family typewriter
 
 \backslash
@@ -4121,6 +4444,7 @@ usepackage{pakete_izena}
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "atal:aitzinsolasa"
+nolink "false"
 
 \end_inset
 
@@ -4128,13 +4452,14 @@ reference "atal:aitzinsolasa"
 \begin_inset space ~
 \end_inset
 
-atala), nahi dituzun pakete guztiak erabiltzeko gaitasuna izango duzu (kontutan
- izan pakete hauek WYSIWYM euskarria ez dutela izango).
+atala),
+ nahi dituzun pakete guztiak erabiltzeko gaitasuna izango duzu (kontutan izan pakete hauek WYSIWYM euskarria ez dutela izango).
 \end_layout
 
 \begin_layout Subsection
 \SpecialChar LaTeX
- dokumentuak inportatzea: tex2lyx
+ dokumentuak inportatzea:
+ tex2lyx
 \begin_inset CommandInset label
 LatexCommand label
 name "atal:LaTeX-dokumentuak-inportatzea"
@@ -4162,11 +4487,12 @@ LaTex
 \family typewriter
 tex2lyx
 \family default
- programari deituko dio, eta adibidea.tex fitxategitik adibidea.lyx fitxategia
- sortuko du.
+ programari deituko dio,
+ eta adibidea.tex fitxategitik adibidea.lyx fitxategia sortuko du.
  \SpecialChar LyX
 -ek sortu berri den fitxategi hori irekiko du ondoren.
- Bihurketak ez badu funtzionatzen, 
+ Bihurketak ez badu funtzionatzen,
+ 
 \family typewriter
 tex2lyx
 \family default
@@ -4175,20 +4501,23 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-Bihurketak funtzionatzen duenean ere, 
+Bihurketak funtzionatzen duenean ere,
+ 
 \family typewriter
 tex2lyx
 \family default
- programak gauza guztiak bihurtzen ez dituen arren, \SpecialChar LaTeX
--eko gauza gehienak
- kudeatzen ditu.
+ programak gauza guztiak bihurtzen ez dituen arren,
+ \SpecialChar LaTeX
+-eko gauza gehienak kudeatzen ditu.
  \SpecialChar TeX
- moduan ulertzen ez dituen gauzei ezikusi egingo die; horrela, 
+ moduan ulertzen ez dituen gauzei ezikusi egingo die;
+ horrela,
+ 
 \family typewriter
 tex2lyx
 \family default
- programarekin fitxategi bat bihurtu ondoren, testu gorrian begira dezakezu
- eta eskuz editatu gauzak ongi egiteko.
+ programarekin fitxategi bat bihurtu ondoren,
+ testu gorrian begira dezakezu eta eskuz editatu gauzak ongi egiteko.
 \end_layout
 
 \begin_layout Standard
@@ -4200,7 +4529,8 @@ tex2lyx
 \family typewriter
 man
 \family default
- eskuliburua), Unix/Linux sistemetako erabiltzaileek komando-lerroan 
+ eskuliburua),
+ Unix/Linux sistemetako erabiltzaileek komando-lerroan 
 \family typewriter
 man tex2lyx
 \family default
@@ -4210,9 +4540,9 @@ man tex2lyx
 man
 \family default
  eskuliburuak onartzen ez diren \SpecialChar LaTeX
--eko komando eta inguruneak zerrendatzen
- ditu, zein akats dauden eta nola saihestu, eta aukera batzuk nola erabili
- azaltzen ditu.
+-eko komando eta inguruneak zerrendatzen ditu,
+ zein akats dauden eta nola saihestu,
+ eta aukera batzuk nola erabili azaltzen ditu.
 \end_layout
 
 \begin_layout Standard
@@ -4230,11 +4560,13 @@ ezagunak
 
  diren dokumentu klaseak darabilten fitxategiak soilik bihur ditzake \SpecialChar LyX
  formatura,
- hau da, dagokion \SpecialChar LyX
+ hau da,
+ dagokion \SpecialChar LyX
 -eko diseinu fitxategia egonez gero.
- Diseinuaren fitxategirik ez egonez gero, errore bat gertatuko da bihurketa
- ezin izan dela burutu jakinaraziz.
- Gauzak horrela, zure \SpecialChar LaTeX
+ Diseinuaren fitxategirik ez egonez gero,
+ errore bat gertatuko da bihurketa ezin izan dela burutu jakinaraziz.
+ Gauzak horrela,
+ zure \SpecialChar LaTeX
  fitxategiaren dokumentu klasearen diseinua ez badaukazu,
  
 \family typewriter
@@ -4242,8 +4574,7 @@ tex2lyx
 \family default
 -ek ezingo du jakin nola bihurtu aurkitzen dituen \SpecialChar LaTeX
 -eko gauzak \SpecialChar LyX
--ek ulertzen
- dituen gauzetara.
+-ek ulertzen dituen gauzetara.
  Diseinuen fitxategiei eta hauek nola sortzen diren buruzkoak 
 \emph on
 Pertsonalizazioa
@@ -4261,9 +4592,9 @@ Pertsonalizazioa
 \SpecialChar LyX
  dokumentu bat \SpecialChar LaTeX
  formatura bihurtzea nahi izango duzu.
- Adibidez, lankide edo eginkide batek \SpecialChar LyX
- programa ez eduki arren dokumentuarekin
- lan egin behar du.
+ Adibidez,
+ lankide edo eginkide batek \SpecialChar LyX
+ programa ez eduki arren dokumentuarekin lan egin behar du.
  Hori egitea huskeria bat da \SpecialChar LyX
 -entzako.
  Hautatu 
@@ -4278,15 +4609,17 @@ Esportatu\SpecialChar menuseparator
 \family typewriter
 adibidetxoa.lyx
 \family default
- fitxategia beste fitxategi honetan bihurtuko du: 
+ fitxategia beste fitxategi honetan bihurtuko du:
+ 
 \family typewriter
 adibidetxoa.tex
 \family default
 .
- Azken finean, \SpecialChar LyX
+ Azken finean,
+ \SpecialChar LyX
 -ek dokumentuak bistaratu edo inprimatzean beti \SpecialChar LaTeX
- behin-behineko
- fitxategiak sortzen dituenez, \SpecialChar LaTeX
+ behin-behineko fitxategiak sortzen dituenez,
+ \SpecialChar LaTeX
  sortzen trebea da.
 \end_layout
 
@@ -4306,7 +4639,8 @@ Dokumentua\SpecialChar menuseparator
 Ezarpenak
 \family default
  elkarrizketa-koadroak dokumentu osoaren aukeren ardura du.
- Hemen aldatu dokumentuaren klasea, letra-tipoa eta paper-tamaina.
+ Hemen aldatu dokumentuaren klasea,
+ letra-tipoa eta paper-tamaina.
  Dokumentu-klasea aukeran \SpecialChar LaTeX
  paketeentzako aukerak sar daiteke 
 \family typewriter
@@ -4335,7 +4669,8 @@ Aitzinsolasean komando bereziak jarri behar badituzu \SpecialChar LaTeX
  fitxategi baterako,
  zuzenean \SpecialChar LyX
  dokumentuan idatz ditzakezu.
- Horretarako, 
+ Horretarako,
+ 
 \family sans
 Dokumentua\SpecialChar menuseparator
 Ezarpenak\SpecialChar menuseparator
@@ -4346,8 +4681,7 @@ Ezarpenak\SpecialChar menuseparator
 
 aitzinsolasa
 \family default
- hautatu eta idatzi elkarrizketa-koadroan (edo dokumentuaren ezarpenen elkarrizk
-eta-koadrotik interfazearen arabera).
+ hautatu eta idatzi elkarrizketa-koadroan (edo dokumentuaren ezarpenen elkarrizketa-koadrotik interfazearen arabera).
  Hor idazten duzun dena zuzenean \SpecialChar LaTeX
 -i bidaliko zaio.
 \end_layout
@@ -4360,8 +4694,8 @@ Bib\SpecialChar TeX
 \begin_layout Standard
 \SpecialChar LyX
 -ek Bib\SpecialChar TeX
- euskarria du, honekin erreferentzia bibliografikoen datu-baseak
- sortu eta hainbat dokumentutan erabiltzeko aukera izango duzu.
+ euskarria du,
+ honekin erreferentzia bibliografikoen datu-baseak sortu eta hainbat dokumentutan erabiltzeko aukera izango duzu.
  Hautatu 
 \family sans
 Txertatu\SpecialChar menuseparator
@@ -4396,7 +4730,8 @@ Bib\SpecialChar TeX
 Datu-basea
 \family default
  eremuan Bib\SpecialChar TeX
- fitxategiak karga ditzakezu, 
+ fitxategiak karga ditzakezu,
+ 
 \family typewriter
 Estiloa
 \family default
@@ -4405,8 +4740,8 @@ Estiloa
 \end_layout
 
 \begin_layout Standard
-Hori egindakoan, edozein bibliografia-sarreraren aipamenak egin ditzakezu
- 
+Hori egindakoan,
+ edozein bibliografia-sarreraren aipamenak egin ditzakezu 
 \family typewriter
 Txertatu
 \family default
@@ -4419,6 +4754,7 @@ Aipamena
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "atal:bibliografiak"
+nolink "false"
 
 \end_inset
 
@@ -4451,17 +4787,18 @@ Erroreak!
 \end_layout
 
 \begin_layout Standard
-Batzuetan dokumentu bat ikusten saiatzean erroreak gerta daiteke, \SpecialChar LyX
--ek edo
- \SpecialChar LaTeX
+Batzuetan dokumentu bat ikusten saiatzean erroreak gerta daiteke,
+ \SpecialChar LyX
+-ek edo \SpecialChar LaTeX
 -ek ulertzen ez dituzten gauzengatik.
- Hori gertatzen bada, \SpecialChar LyX
+ Hori gertatzen bada,
+ \SpecialChar LyX
 -ek \SpecialChar LaTeX
 -en erroreen elkarrizketa-koadroa irekiko du.
- Errore bakoitzaren gainean klik egitean, elkarrizketa-koadroak errorea
- gertatu den lekura eramango zaitu \SpecialChar LyX
- dokumentuan, horretaz gain errorearen
- zergatia bistaratuko du.
+ Errore bakoitzaren gainean klik egitean,
+ elkarrizketa-koadroak errorea gertatu den lekura eramango zaitu \SpecialChar LyX
+ dokumentuan,
+ horretaz gain errorearen zergatia bistaratuko du.
 \end_layout
 
 \end_body

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -59,9 +59,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -113,19 +113,24 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
 
 \begin_layout Standard
 This document demonstrates the usage of two different formula categories.
- One is Arabic, one is Roman numbered.
+ One is Arabic,
+ one is Roman numbered.
 \end_layout
 
 \begin_layout Standard
@@ -235,59 +240,75 @@ A=I\label{eq:I}
 \end_layout
 
 \begin_layout Standard
-Cross-references: 
+Cross-references:
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:B"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:C"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:F"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:G"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:D"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:E"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:H"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:I"
+nolink "false"
 
 \end_inset
 
@@ -308,8 +329,8 @@ height "1pt"
 \begin_inset VSpace medskip
 \end_inset
 
-To create this example, first a counter must be defined for the Roman numbered
- formulas.
+To create this example,
+ first a counter must be defined for the Roman numbered formulas.
  To do this the following is inserted to the \SpecialChar LaTeX
 -preamble:
 \end_layout
@@ -340,7 +361,8 @@ To save the value of the Arabic counter
 \series bold
 equation
 \series default
-, this is added to the preamble
+,
+ this is added to the preamble
 \end_layout
 
 \begin_layout Standard
@@ -440,7 +462,8 @@ for Arabic numbering.
 
 \begin_layout Standard
 Every formula will be by default numbered Arabic.
- To switch to Roman numbering, the command 
+ To switch to Roman numbering,
+ the command 
 \series bold
 
 \backslash

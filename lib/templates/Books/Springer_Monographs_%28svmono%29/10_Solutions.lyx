@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -94,6 +94,7 @@ Problems of Chapter
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "chap:intro"
 
 \end_inset
@@ -165,6 +166,7 @@ As explained in the description of problem
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "prob:given-problem"
 
 \end_inset

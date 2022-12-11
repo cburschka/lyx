@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -87,7 +91,8 @@ TO JE NASLOV VAŠEGA SPISA
 status collapsed
 
 \begin_layout Plain Layout
-Namig: naslov bi moral biti videti bolj kot naslov.
+Namig:
+ naslov bi moral biti videti bolj kot naslov.
 \end_layout
 
 \end_inset
@@ -96,13 +101,15 @@ Namig: naslov bi moral biti videti bolj kot naslov.
 \end_layout
 
 \begin_layout Standard
-Avtor: Fe \SpecialChar LyX
+Avtor:
+ Fe \SpecialChar LyX
 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Namig: Fe je AVTOR (angl.
+Namig:
+ Fe je AVTOR (angl.
  Author).
 \end_layout
 
@@ -118,7 +125,8 @@ Namig: Fe je AVTOR (angl.
 status collapsed
 
 \begin_layout Plain Layout
-Namig: to je DATUM (angl.
+Namig:
+ to je DATUM (angl.
  Date).
 \end_layout
 
@@ -133,7 +141,9 @@ Kazalo
 status collapsed
 
 \begin_layout Plain Layout
-Namig: Fino bi bilo, če nam ne bi bilo treba ročno
+Namig:
+ Fino bi bilo,
+ če nam ne bi bilo treba ročno
 \end_layout
 
 \begin_layout Plain Layout
@@ -178,7 +188,24 @@ a
 \end_layout
 
 \begin_layout Standard
-—————————————————
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+
 \end_layout
 
 \begin_layout Standard
@@ -188,7 +215,8 @@ a
 status collapsed
 
 \begin_layout Plain Layout
-Namig: naslovi razdelkov (angl.
+Namig:
+ naslovi razdelkov (angl.
  Section) bi verjetno
 \end_layout
 
@@ -203,8 +231,10 @@ morali bolj izstopati.
 
 \begin_layout Standard
 Temeljna filozofija \SpecialChar LyX
-a je, da naj bi se posvečali vsebini tistega, o čemer
- pišemo, ne obliki.
+a je,
+ da naj bi se posvečali vsebini tistega,
+ o čemer pišemo,
+ ne obliki.
 \end_layout
 
 \begin_layout Standard
@@ -215,12 +245,14 @@ a je, da naj bi se posvečali vsebini tistega, o čemer
 \begin_layout Standard
 \SpecialChar LyX
  uporablja \SpecialChar LaTeX
-, sistem za pripravljanje spisov, ki ga je leta 1985 zasnoval
- Leslie Lamport.
+,
+ sistem za pripravljanje spisov,
+ ki ga je leta 1985 zasnoval Leslie Lamport.
  \SpecialChar LaTeX
- pa temelji na stavnem jeziku, imenovanem \SpecialChar TeX
-, ki ga je leta 1984 ustvaril
- Donald Knuth.
+ pa temelji na stavnem jeziku,
+ imenovanem \SpecialChar TeX
+,
+ ki ga je leta 1984 ustvaril Donald Knuth.
  Filozofija \SpecialChar LaTeX
 a je podobna filozofiji \SpecialChar LyX
 a.
@@ -229,12 +261,14 @@ a.
 status collapsed
 
 \begin_layout Plain Layout
-Namig: Verjetno ta NAVZKRIŽNI SKLIC ne bi smel
+Namig:
+ Verjetno ta NAVZKRIŽNI SKLIC ne bi smel
 \end_layout
 
 \begin_layout Plain Layout
 biti "vnešen".
- Kaj, če naredimo Lamportovo knjigo
+ Kaj,
+ če naredimo Lamportovo knjigo
 \end_layout
 
 \begin_layout Plain Layout
@@ -251,15 +285,16 @@ za drugo postavko spiska literature?
 \end_inset
 
 Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
- Da bi bilo spis lahko brati, mora njegova zunanja podoba odsevati njegovo
- logično zgradbo.
- Navedki in računalniški programi, ki so logično različni strukturni elementi,
+ Da bi bilo spis lahko brati,
+ mora njegova zunanja podoba odsevati njegovo logično zgradbo.
+ Navedki in računalniški programi,
+ ki so logično različni strukturni elementi,
  bi se morali med seboj na pogled razlikovati...
  Ker \SpecialChar LaTeX
- ne more razumeti vaše poezije, morate izrecno označiti logično strukturo
- z vnosom posebnih ukazov...
- Med pisanjem bi se morali ukvarjati z logično zgradbo spisa, ne pa z njegovo
- zunanjo podobo.
+ ne more razumeti vaše poezije,
+ morate izrecno označiti logično strukturo z vnosom posebnih ukazov...
+ Med pisanjem bi se morali ukvarjati z logično zgradbo spisa,
+ ne pa z njegovo zunanjo podobo.
 \begin_inset Quotes grd
 \end_inset
 
@@ -268,7 +303,8 @@ Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
 status collapsed
 
 \begin_layout Plain Layout
-Namig: To je NAVEDEK (angl.
+Namig:
+ To je NAVEDEK (angl.
  Quote).
 \end_layout
 
@@ -286,23 +322,28 @@ Namig: To je NAVEDEK (angl.
 \SpecialChar LyX
  je uporaben za več ljudi kot \SpecialChar LaTeX
 .
- Precej lažje se ga je naučiti, saj ni treba znati \SpecialChar LaTeX
-a (ki je praktično programski
- jezik).
+ Precej lažje se ga je naučiti,
+ saj ni treba znati \SpecialChar LaTeX
+a (ki je praktično programski jezik).
  \SpecialChar LyX
  je pravzaprav tak kot drugi urejevalniki besedil tipa 
 \begin_inset Quotes gld
 \end_inset
 
-to, kar vidiš, to tudi dobiš
+to,
+ kar vidiš,
+ to tudi dobiš
 \begin_inset Quotes grd
 \end_inset
 
-, le da je vrste 
+,
+ le da je vrste 
 \begin_inset Quotes gld
 \end_inset
 
-to, kar vidiš, to tudi misliš
+to,
+ kar vidiš,
+ to tudi misliš
 \begin_inset Quotes grd
 \end_inset
 
@@ -311,7 +352,8 @@ to, kar vidiš, to tudi misliš
 a.
  To je Dobra Stvar.
  Tudi datotečni format je neodvisen od platforme.
- Najboljše od vsega pa je, da je PROST!
+ Najboljše od vsega pa je,
+ da je PROST!
 \end_layout
 
 \begin_layout Standard
@@ -322,13 +364,16 @@ a
 
 \begin_layout Standard
 \SpecialChar LyX
- ima številne odlike, ki nam olajšajo pisanje spisov.
- (Navsezadnje, le zakaj bi ga drugače sploh želeli uporabljati?
+ ima številne odlike,
+ ki nam olajšajo pisanje spisov.
+ (Navsezadnje,
+ le zakaj bi ga drugače sploh želeli uporabljati?
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Namig: Ta stavek v oklepaju je videti bolje kot
+Namig:
+ Ta stavek v oklepaju je videti bolje kot
 \end_layout
 
 \begin_layout Plain Layout
@@ -337,12 +382,14 @@ opomba v nogi.
 
 \end_inset
 
-) ZELO ME VESELI, 
+) ZELO ME VESELI,
+ 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Namig: Poudarite!
+Namig:
+ Poudarite!
 \end_layout
 
 \end_inset
@@ -361,19 +408,22 @@ a:
 \end_layout
 
 \begin_layout Standard
-Bolj filozofsko razpravo o tem, zakaj je \SpecialChar LyX
- boljši od drugih urejevalnikov
- besedil, pa boste našli v razdelku 1.2 na strani 1.
+Bolj filozofsko razpravo o tem,
+ zakaj je \SpecialChar LyX
+ boljši od drugih urejevalnikov besedil,
+ pa boste našli v razdelku 1.2 na strani 1.
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Namig: Verjetno ta NAVZKRIŽNA SKLICEVANJA
+Namig:
+ Verjetno ta NAVZKRIŽNA SKLICEVANJA
 \end_layout
 
 \begin_layout Plain Layout
 ne bi smela biti "zakodirana".
- Kaj, če spremenimo
+ Kaj,
+ če spremenimo
 \end_layout
 
 \begin_layout Plain Layout
@@ -392,7 +442,8 @@ a
 \end_layout
 
 \begin_layout Standard
-Zadnjič sem napisal program, podoben spodnjemu:
+Zadnjič sem napisal program,
+ podoben spodnjemu:
 \end_layout
 
 \begin_layout Standard
@@ -417,7 +468,8 @@ STRAŠEN SEM!
 status collapsed
 
 \begin_layout Plain Layout
-Namig: To je računalniška KODA (angl.
+Namig:
+ To je računalniška KODA (angl.
  Code).
 \end_layout
 
@@ -427,8 +479,7 @@ Namig: To je računalniška KODA (angl.
 \end_layout
 
 \begin_layout Standard
-Po tem učenem razmišljanju me je nenadoma preplavilo bolj umetniško razpoloženje
- in napisal sem tale haiku
+Po tem učenem razmišljanju me je nenadoma preplavilo bolj umetniško razpoloženje in napisal sem tale haiku
 \end_layout
 
 \begin_layout Standard
@@ -446,7 +497,9 @@ prihrani mi toliko časa
 status collapsed
 
 \begin_layout Plain Layout
-Namig: Ni preveč dobro, a je poezija,
+Namig:
+ Ni preveč dobro,
+ a je poezija,
 \end_layout
 
 \begin_layout Plain Layout
@@ -466,7 +519,8 @@ znana tudi kot VERZI (angl.
 status collapsed
 
 \begin_layout Plain Layout
-Namig: Te matematične stvari bi morale biti izpisane
+Namig:
+ Te matematične stvari bi morale biti izpisane
 \end_layout
 
 \begin_layout Plain Layout
@@ -481,20 +535,36 @@ v matematičnem načinu!
 \begin_layout Standard
 Najbolj so mi pri srcu enačbe za rešitev kvadratne enačbe.
  Če je ax^2+bx+c=0 (en.
- 1), potem je x= -b + ali minus kvadratni koren od b^2-4ac vse skupaj ulomljeno
- z 2a (en.
+ 1),
+ potem je x= -b + ali minus kvadratni koren od b^2-4ac vse skupaj ulomljeno z 2a (en.
  2).
 \end_layout
 
 \begin_layout Standard
-Druga priljubljena enačba je temelj matematične analize: izraz f'(x) je
- definiran kot limita izraza f(x+deltax) - f(x) ulomljenega z deltax, ko
- gredo števila deltax proti nič (en.
+Druga priljubljena enačba je temelj matematične analize:
+ izraz f'(x) je definiran kot limita izraza f(x+deltax) - f(x) ulomljenega z deltax,
+ ko gredo števila deltax proti nič (en.
  3).
 \end_layout
 
 \begin_layout Standard
-————————————————
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+
 \end_layout
 
 \begin_layout Standard
@@ -502,10 +572,16 @@ LITERATURA
 \end_layout
 
 \begin_layout Standard
-[1] Lamport, Leslie.
+[1] Lamport,
+ Leslie.
  \SpecialChar LaTeX
-: A Document Preparation System; Addison-Wesley, Reading, Massachusetts,
- druga izdaja, 1994.
+:
+ A Document Preparation System;
+ Addison-Wesley,
+ Reading,
+ Massachusetts,
+ druga izdaja,
+ 1994.
 \end_layout
 
 \end_body

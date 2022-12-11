@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,9 +25,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -78,12 +78,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -97,6 +101,7 @@ status open
 
 \series bold
 Wichtiger Hinweis:
+
 \series default
  Diese Vorlage nutzt die alte Dokumentklasse 
 \begin_inset Quotes pld
@@ -106,7 +111,8 @@ g-brief
 \begin_inset Quotes prd
 \end_inset
 
-, die durch die neue Version 
+,
+ die durch die neue Version 
 \begin_inset Quotes pld
 \end_inset
 
@@ -115,7 +121,8 @@ g-brief2
 \end_inset
 
  ersetzt wurde.
- Es wird daher empfohlen, die Vorlage 
+ Es wird daher empfohlen,
+ die Vorlage 
 \begin_inset Quotes pld
 \end_inset
 
@@ -253,10 +260,10 @@ Mit freundlichen Grüßen,
 \end_layout
 
 \begin_layout Letter
-seit der siebten Mieterhöhung im laufenden Jahr konnte ich keinen Zahlungseingan
-g von Ihnen mehr verbuchen.
- Ich bitte Sie Ihren Verpflichtungen schnellstens nachzukommen, da ich mich
- sonst gezwungen sehe, Ihre Miete ein weiteres mal anzuheben.
+seit der siebten Mieterhöhung im laufenden Jahr konnte ich keinen Zahlungseingang von Ihnen mehr verbuchen.
+ Ich bitte Sie Ihren Verpflichtungen schnellstens nachzukommen,
+ da ich mich sonst gezwungen sehe,
+ Ihre Miete ein weiteres mal anzuheben.
 \end_layout
 
 \end_body

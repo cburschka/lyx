@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -92,6 +92,7 @@
 \html_css_as_file 0
 \html_be_strict false
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -122,46 +123,51 @@ Istorija
 \emph on
 Lietuvių kalba
 \emph default
- – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybin
-ė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.
+ – iš baltų prokalbės kilusi lietuvių tautos kalba,
+ kuri Lietuvoje yra valstybinė,
+ o Europos Sąjungoje – viena iš oficialiųjų kalbų.
  Lietuviškai kalba apie tris milijonus žmonių (dauguma jų gyvena Lietuvoje).
- Drauge su latvių, mirusiomis prūsų, jotvingių ir kitomis baltų kalbomis,
+ Drauge su latvių,
+ mirusiomis prūsų,
+ jotvingių ir kitomis baltų kalbomis,
  priklauso indoeuropiečių kalbų šeimos baltų kalbų grupei.
 \end_layout
 
 \begin_layout Standard
-Pirmieji lietuvių kalbos rašytiniai paminklai atsirado vėlokai, apie XVI
- a., tačiau net dabartinė lietuvių kalba pasižymi dideliu archajiškumu (ypač
- vardažodžių linksniavimo srityje).
- Fonetiškai ir morfologiškai konservatyvi lietuvių kalba žymiai artimesnė
- baltų prokalbei negu naujoviškesnė latvių kalba.
- Lietuvių kalba – archajiškiausia iš gyvųjų indoeuropiečių kalbų, išsaugojusi
- daugybę indoeuropiečių prokalbės ypatybių.
+Pirmieji lietuvių kalbos rašytiniai paminklai atsirado vėlokai,
+ apie XVI a.,
+ tačiau net dabartinė lietuvių kalba pasižymi dideliu archajiškumu (ypač vardažodžių linksniavimo srityje).
+ Fonetiškai ir morfologiškai konservatyvi lietuvių kalba žymiai artimesnė baltų prokalbei negu naujoviškesnė latvių kalba.
+ Lietuvių kalba – archajiškiausia iš gyvųjų indoeuropiečių kalbų,
+ išsaugojusi daugybę indoeuropiečių prokalbės ypatybių.
 \end_layout
 
 \begin_layout Standard
-Lietuvių kalba skirstoma į dvi pagrindines tarmes: aukštaičių ir žemaičių.
- Dabartinė bendrinė lietuvių kalba grindžiama vakarų aukštaičių kauniškių
- patarme.
+Lietuvių kalba skirstoma į dvi pagrindines tarmes:
+ aukštaičių ir žemaičių.
+ Dabartinė bendrinė lietuvių kalba grindžiama vakarų aukštaičių kauniškių patarme.
 \end_layout
 
 \begin_layout Standard
-Lietuvių kalboje yra 45 priebalsinės ir 13 balsinių fonemų (įskaitant ir
- vartojamas tik skoliniuose).
- Būdingos minkštųjų ir kietųjų priebalsių poros, skiriamas balsių ilgumas.
- Kirtis – laisvas, tariamos priegaidės, tačiau rašte kirtis ir priegaidės
- paprastai nežymimi.
+Lietuvių kalboje yra 45 priebalsinės ir 13 balsinių fonemų (įskaitant ir vartojamas tik skoliniuose).
+ Būdingos minkštųjų ir kietųjų priebalsių poros,
+ skiriamas balsių ilgumas.
+ Kirtis – laisvas,
+ tariamos priegaidės,
+ tačiau rašte kirtis ir priegaidės paprastai nežymimi.
 \end_layout
 
 \begin_layout Standard
 Morfologiškai lietuvių kalba yra fleksinė.
- Sintaksė pasižymi palyginti laisva žodžių tvarka, pagrindinė žodžių tvarka
- sakinyje – SVO (veiksnys – tarinys – papildinys).
- Žodyno daugumą sudaro veldiniai, tarp skolinių vyrauja slavizmai ir germanizmai.
+ Sintaksė pasižymi palyginti laisva žodžių tvarka,
+ pagrindinė žodžių tvarka sakinyje – SVO (veiksnys – tarinys – papildinys).
+ Žodyno daugumą sudaro veldiniai,
+ tarp skolinių vyrauja slavizmai ir germanizmai.
 \end_layout
 
 \begin_layout Standard
-Kalba užrašoma papildyta lotynų abėcėle, vartojamos 32 raidės.
+Kalba užrašoma papildyta lotynų abėcėle,
+ vartojamos 32 raidės.
  
 \end_layout
 
@@ -178,8 +184,7 @@ L7x
 \begin_inset Quotes grd
 \end_inset
 
- font encoding that is required to let LaTeX correctly auto-hyphenate words
- containing special letters like 
+ font encoding that is required to let LaTeX correctly auto-hyphenate words containing special letters like 
 \begin_inset Quotes gld
 \end_inset
 
@@ -210,7 +215,8 @@ TeX Gyre
 
 \begin_deeper
 \begin_layout Standard
-For a wider choice of fonts, use the 
+For a wider choice of fonts,
+ use the 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -225,6 +231,7 @@ setting.
 
 \series bold
 Note for Linux users:
+
 \series default
  Please check that the language packages for the \SpecialChar LaTeX
  distribution 
@@ -288,51 +295,44 @@ Lietuvių kalbos abėcėlę sudaro 32 raidės:
 \end_layout
 
 \begin_layout Standard
-Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
- Šš Tt Uu Ųų Ūū Vv Zz Žž
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss Šš Tt Uu Ųų Ūū Vv Zz Žž
 \end_layout
 
 \begin_layout Standard
 
 \shape italic
-Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
- Šš Tt Uu Ųų Ūū Vv Zz Žž
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss Šš Tt Uu Ųų Ūū Vv Zz Žž
 \end_layout
 
 \begin_layout Standard
 
 \shape smallcaps
-Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
- Šš Tt Uu Ųų Ūū Vv Zz Žž
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss Šš Tt Uu Ųų Ūū Vv Zz Žž
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
- Šš Tt Uu Ųų Ūū Vv Zz Žž
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss Šš Tt Uu Ųų Ūū Vv Zz Žž
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 \shape italic
-Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
- Šš Tt Uu Ųų Ūū Vv Zz Žž
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss Šš Tt Uu Ųų Ūū Vv Zz Žž
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
- Šš Tt Uu Ųų Ūū Vv Zz Žž
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss Šš Tt Uu Ųų Ūū Vv Zz Žž
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
- Šš Tt Uu Ųų Ūū Vv Zz Žž
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss Šš Tt Uu Ųų Ūū Vv Zz Žž
 \end_layout
 
 \end_body

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -58,9 +58,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -107,8 +107,8 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -124,12 +124,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -153,7 +157,8 @@ Pour pouvoir utiliser les diagrammes de
 \noun on
 Feynman
 \noun default
-, le paquetage
+,
+ le paquetage
 \noun on
  
 \series bold
@@ -172,13 +177,11 @@ Feynman
 Diagram
 \series default
  dans une formule.
- Ensuite on peut ajouter de nouvelles lignes et colonnes comme dans une
- matrice habituelle.
+ Ensuite on peut ajouter de nouvelles lignes et colonnes comme dans une matrice habituelle.
 \end_layout
 
 \begin_layout Standard
-Les éléments matriciels sont créés par des commandes agissant comme des
- 
+Les éléments matriciels sont créés par des commandes agissant comme des 
 \begin_inset Quotes cld
 \end_inset
 
@@ -194,7 +197,8 @@ propagateurs
 \begin_inset Quotes crd
 \end_inset
 
-, par exemple:
+,
+ par exemple:
 \end_layout
 
 \begin_layout Standard
@@ -260,7 +264,8 @@ f,g,h
 \begin_layout Plain Layout
 \noindent
 \align left
-fermion, photon ou propagateur fantôme
+fermion,
+ photon ou propagateur fantôme
 \end_layout
 
 \end_inset
@@ -343,7 +348,8 @@ fu,fd,fv (gu,gd,gv)
 \begin_layout Plain Layout
 \noindent
 \align left
-fermion/photon, directions haut/bas/vertical
+fermion/photon,
+ directions haut/bas/vertical
 \end_layout
 
 \end_inset
@@ -560,7 +566,8 @@ $
 \begin_inset Text
 
 \begin_layout Plain Layout
-fl,glB,glS,fl1,gl2, etc.
+fl,glB,glS,fl1,gl2,
+ etc.
 \end_layout
 
 \end_inset
@@ -818,7 +825,8 @@ Ce ne sont que quelques options du paquetage
 \series bold
 feyn
 \series default
-, voir le manuel d'utilisation
+,
+ voir le manuel d'utilisation
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Feyn"
@@ -837,9 +845,10 @@ status open
 
 \series bold
 Nota:
+
 \series default
- si vous avez un index dans votre document et si vous utiliser un des modules
- pour les théorèmes AMS, il vous faut ajouter l'option 
+ si vous avez un index dans votre document et si vous utiliser un des modules pour les théorèmes AMS,
+ il vous faut ajouter l'option 
 \series bold
 noglobalbang
 \series default
@@ -852,8 +861,7 @@ noglobalbang
 \begin_inset Quotes crd
 \end_inset
 
- dans les entrées d'index (nécessaire pour saisir des sous-entrées) mais
- peut créer des problèmes de conflit dans les environnements 
+ dans les entrées d'index (nécessaire pour saisir des sous-entrées) mais peut créer des problèmes de conflit dans les environnements 
 \family sans
 align 
 \family default

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 95 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -93,19 +97,26 @@ O primeiro que debe saber para empregar o \SpecialChar LyX
 
 \begin_layout Enumerate
 \SpecialChar LyX
- ven con unha excelente documentación —use-a, por favor! Comece con 
+ ven con unha excelente documentación —
+use-a,
+ por favor!
+ Comece con 
 \family sans
 Axuda\SpecialChar menuseparator
 Introdución
 \family default
-, onde se apresenta a filosofia que guia o \SpecialChar LyX
-, e a sua documentación.
- A seguir é o momento de ler o tutorial, 
+,
+ onde se apresenta a filosofia que guia o \SpecialChar LyX
+,
+ e a sua documentación.
+ A seguir é o momento de ler o tutorial,
+ 
 \family sans
 Axuda\SpecialChar menuseparator
 Tutorial
 \family default
-, para aprender as cuestións mais básicas.
+,
+ para aprender as cuestións mais básicas.
 \end_layout
 
 \begin_layout Enumerate
@@ -119,10 +130,12 @@ procesador de documentos
 \end_inset
 
 .
- Non está moi lonxe dos procesadores de texto comuns, mais parte dunha filosofia
- diferente, facilitando a escrita de documentos, sobre todo os complexos.
- A documentación permitira-lle ver as diferéncias, e a forma de sacar proveito
- das características únicas do \SpecialChar LyX
+ Non está moi lonxe dos procesadores de texto comuns,
+ mais parte dunha filosofia diferente,
+ facilitando a escrita de documentos,
+ sobre todo os complexos.
+ A documentación permitira-lle ver as diferéncias,
+ e a forma de sacar proveito das características únicas do \SpecialChar LyX
 .
 \begin_inset Foot
 status collapsed
@@ -138,7 +151,8 @@ Mencionamos xa que debe ler a documentación?
 
 \begin_layout Enumerate
 O resultado ao imprimir os documentos no \SpecialChar LyX
- é excelente! Seleccione 
+ é excelente!
+ Seleccione 
 \family sans
 \lang english
 Document\SpecialChar menuseparator
@@ -157,10 +171,12 @@ View
 \end_layout
 
 \begin_layout Enumerate
-Si, \SpecialChar LyX
+Si,
+ \SpecialChar LyX
  pode reproducir (case todas) as funcionalidades do \SpecialChar LaTeX
 .
- E si, \SpecialChar LyX
+ E si,
+ \SpecialChar LyX
  pode importar arquivos do \SpecialChar LaTeX
 .
  Os usuários experientes do \SpecialChar LaTeX
@@ -177,10 +193,11 @@ Si, \SpecialChar LyX
  do 
 \emph on
 Tutorial,
+
 \emph default
  e ler por riba o resto do documento.
- (O resto dos mortais non teñen por que se preocupar, non é preciso coñecer
- \SpecialChar LaTeX
+ (O resto dos mortais non teñen por que se preocupar,
+ non é preciso coñecer \SpecialChar LaTeX
  para usar o \SpecialChar LyX
 .) 
 \end_layout
@@ -188,8 +205,9 @@ Tutorial,
 \begin_layout Enumerate
 \SpecialChar LyX
  incorpora diversos recursos para os que non escrebemos en inglés.
- As teclas de atallo, barra de ferramentas, e moitas outras características
- son altamente configurábeis (a maioria editando o seu arquivo 
+ As teclas de atallo,
+ barra de ferramentas,
+ e moitas outras características son altamente configurábeis (a maioria editando o seu arquivo 
 \family typewriter
 lyxrc
 \family default
@@ -216,8 +234,10 @@ https://www.lyx.org
 \end_inset
 
 .
- Nela pode obter mais información sobre o programa, inscreber-se na(s) lista(s)
- de discusión, ver a Turnê Gráfica: 
+ Nela pode obter mais información sobre o programa,
+ inscreber-se na(s) lista(s) de discusión,
+ ver a Turnê Gráfica:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -236,6 +256,7 @@ https://www.lyx.org/Walkthrough
 \series bold
 \lang english
 Note for Linux users:
+
 \series default
  Please check that the language packages for the \SpecialChar LaTeX
  distribution 

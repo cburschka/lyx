@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,6 +54,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \use_lineno 0
 \index Index
 \shortcut idx
@@ -66,16 +67,20 @@
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\use_minted 0
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -110,7 +115,8 @@ thispagestyle{empty}
 
 \begin_layout Standard
 To install \SpecialChar LyX
-, do the following:
+,
+ do the following:
 \end_layout
 
 \begin_layout Enumerate
@@ -125,9 +131,10 @@ Prepare your system for \SpecialChar LyX
 \begin_deeper
 \begin_layout Itemize
 If this is your first time installing \SpecialChar LyX
-, make sure you have installed a recent
- version of Mac\SpecialChar TeX
-: 
+,
+ make sure you have installed a recent version of Mac\SpecialChar TeX
+:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -141,15 +148,14 @@ http://www.tug.org/mactex
 .
  Since \SpecialChar LyX
  relies on \SpecialChar LaTeX
- to typeset documents, it is not intended to produce output
- without it.
+ to typeset documents,
+ it is not intended to produce output without it.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Open the \SpecialChar LyX
--2.2 disk image (you probably did it already if you are reading
- this).
+-2.2 disk image (you probably did it already if you are reading this).
 \end_layout
 
 \begin_layout Enumerate

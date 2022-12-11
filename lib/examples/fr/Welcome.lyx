@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 95 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -93,13 +97,15 @@ Les points les plus importants à connaître pour utiliser \SpecialChar LyX
 
 \begin_layout Enumerate
 \SpecialChar LyX
- est fourni avec une excellente documentation — utilisez-la! Vous pouvez
- commencer par 
+ est fourni avec une excellente documentation —
+ utilisez-la!
+ Vous pouvez commencer par 
 \family sans
 Aide\SpecialChar menuseparator
 Introduction
 \family default
-, qui donne une brève description de la documentation.
+,
+ qui donne une brève description de la documentation.
  Vous pourrez ensuite apprendre à vous servir de \SpecialChar LyX
  avec 
 \family sans
@@ -124,15 +130,18 @@ constructeur de documents
 \end_inset
 
 .
- Par sa conception, il se distingue des traitements de texte ordinaires
- — en ce sens qu'il facilite l'écriture des documents.
- Mais la distinction est minime, ne craignez rien, et la documentation est
- là pour faire toute la lumière.
+ Par sa conception,
+ il se distingue des traitements de texte ordinaires —
+ en ce sens qu'il facilite l'écriture des documents.
+ Mais la distinction est minime,
+ ne craignez rien,
+ et la documentation est là pour faire toute la lumière.
 \end_layout
 
 \begin_layout Enumerate
 Les résultats de mise en page de \SpecialChar LyX
- sont très esthétiques! Faites 
+ sont très esthétiques!
+ Faites 
 \family sans
 Document\SpecialChar menuseparator
 Visionner
@@ -155,10 +164,12 @@ arg   "buffer-view"
 \end_layout
 
 \begin_layout Enumerate
-Oui! \SpecialChar LyX
+Oui!
+ \SpecialChar LyX
  est capable d'imiter (presque) toutes les fonctionnalités de \SpecialChar LaTeX
 .
- Et de nouveau oui! \SpecialChar LyX
+ Et de nouveau oui!
+ \SpecialChar LyX
  sait lire les fichiers \SpecialChar LaTeX
 .
  Les utilisateurs de \SpecialChar LaTeX
@@ -180,18 +191,19 @@ d'apprentissage
 \begin_inset Quotes crd
 \end_inset
 
- (pour tous les autres: ne vous inquiétez pas, vous n'avez pas besoin de
- connaître \SpecialChar LaTeX
+ (pour tous les autres:
+ ne vous inquiétez pas,
+ vous n'avez pas besoin de connaître \SpecialChar LaTeX
  pour vous servir de \SpecialChar LyX
 ).
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
- possède de nombreuses fonctionnalités pour tous ceux qui lisent ou écrivent
- dans d'autres langues que l'anglais.
- En outre, le clavier, la barre d'outils et beaucoup d'autres caractéristiques
- sont pleinement configurables.
+ possède de nombreuses fonctionnalités pour tous ceux qui lisent ou écrivent dans d'autres langues que l'anglais.
+ En outre,
+ le clavier,
+ la barre d'outils et beaucoup d'autres caractéristiques sont pleinement configurables.
  Voir 
 \family sans
 Aide\SpecialChar menuseparator
@@ -218,9 +230,11 @@ https://www.lyx.org/WebFr.Home
 \end_inset
 
 .
- Vous pouvez y piocher des informations, souscrire à l'une ou l'autre des
- listes de messagerie, faire le tour de \SpecialChar LyX
- (par l'image): 
+ Vous pouvez y piocher des informations,
+ souscrire à l'une ou l'autre des listes de messagerie,
+ faire le tour de \SpecialChar LyX
+ (par l'image):
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -231,16 +245,17 @@ https://www.lyx.org/WebFr.Walkthrough
 
 \end_inset
 
-, et plus encore.
+,
+ et plus encore.
 \end_layout
 
 \begin_layout Enumerate
 
 \series bold
 Note à l'attention des utilisateurs Linux:
+
 \series default
  il vous faut vérifier que les paquetages de langue de la distribution \SpecialChar LaTeX
-
  
 \family sans
 \SpecialChar TeX
@@ -250,7 +265,8 @@ Note à l'attention des utilisateurs Linux:
 
 Live
 \family default
- dont vous aurez besoin sont installés, sinon vous aurez des erreurs \SpecialChar LaTeX
+ dont vous aurez besoin sont installés,
+ sinon vous aurez des erreurs \SpecialChar LaTeX
 .
 \begin_inset Newline newline
 \end_inset
@@ -263,7 +279,8 @@ Par exemple avec les distributions
 \family sans
 Debian
 \family default
-, le nom du paquetage pour le français est 
+,
+ le nom du paquetage pour le français est 
 \family typewriter
 
 \begin_inset Quotes cld
@@ -279,8 +296,8 @@ texlive-lang-french
 \begin_inset Newline newline
 \end_inset
 
-Une fois les paquetages de langue installés, il vous faut activer le menu
- \SpecialChar LyX
+Une fois les paquetages de langue installés,
+ il vous faut activer le menu \SpecialChar LyX
  
 \family sans
 Outils

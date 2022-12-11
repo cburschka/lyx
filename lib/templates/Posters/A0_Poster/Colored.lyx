@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,9 +37,9 @@ multicol
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -94,12 +94,16 @@ multicol
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -113,7 +117,8 @@ This template uses the
 \family sans
 a0poster
 \family default
- class, which itself offers no specific options to display text blocks,
+ class,
+ which itself offers no specific options to display text blocks,
  and the 
 \family sans
 tcolorbox
@@ -126,13 +131,15 @@ Colored Boxes
 \begin_inset Quotes erd
 \end_inset
 
- module), which provides nice-looking, adjustable boxes that are highly
- suited for conference posters.
+ module),
+ which provides nice-looking,
+ adjustable boxes that are highly suited for conference posters.
  Please refer to the 
 \family sans
 tcolorbox
 \family default
- documentation for details on how to alter the look: 
+ documentation for details on how to alter the look:
+ 
 \begin_inset Flex URL
 status open
 
@@ -160,8 +167,7 @@ Use the
 \family sans
 Color Box Setup
 \family default
- paragraph style to adjust the default appearance of (subsequent) color
- boxes (the custom color 
+ paragraph style to adjust the default appearance of (subsequent) color boxes (the custom color 
 \family typewriter
 myboxcolor
 \family default
@@ -172,7 +178,8 @@ Settings\SpecialChar menuseparator
 \SpecialChar LaTeX
  Preamble
 \family default
-): 
+):
+ 
 \end_layout
 
 \end_inset
@@ -181,11 +188,13 @@ Settings\SpecialChar menuseparator
 \end_layout
 
 \begin_layout Color Box Setup
-colframe=myboxcolor, fonttitle=
+colframe=myboxcolor,
+ fonttitle=
 \backslash
 Large
 \backslash
-bfseries, boxsep=5mm
+bfseries,
+ boxsep=5mm
 \end_layout
 
 \begin_layout Standard
@@ -199,7 +208,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=myboxcolor, coltext=white
+colback=myboxcolor,
+ coltext=white
 \end_layout
 
 \end_inset
@@ -385,7 +395,8 @@ This is a color box.
 status open
 
 \begin_layout Plain Layout
-If you need several color boxes next to each other, put them in minipages:
+If you need several color boxes next to each other,
+ put them in minipages:
 \end_layout
 
 \end_inset
@@ -486,7 +497,9 @@ with several paragraphs
 status open
 
 \begin_layout Plain Layout
-Columns inside a color box, on the other hand, can be set with the 
+Columns inside a color box,
+ on the other hand,
+ can be set with the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -574,13 +587,13 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-Wide blocks on a poster usually have too long lines (more than 60 letters
- per line is difficult to read).
+Wide blocks on a poster usually have too long lines (more than 60 letters per line is difficult to read).
 \end_layout
 
 \begin_layout Plain Layout
 One way to solve this is using columns.
- To this end, you can use the 
+ To this end,
+ you can use the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -588,7 +601,8 @@ Multiple Columns
 \begin_inset Quotes erd
 \end_inset
 
- module, as done here.
+ module,
+ as done here.
  It provides the 
 \begin_inset Quotes eld
 \end_inset
@@ -639,41 +653,42 @@ columnbreak
 \end_layout
 
 \begin_layout Plain Layout
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
 \end_layout
 
 \begin_layout Plain Layout
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
- consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
- accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
- augue duis dolore te feugait nulla facilisi.
- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
- nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+ vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+ Lorem ipsum dolor sit amet,
+ consectetuer adipiscing elit,
+ sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 \end_layout
 
 \begin_layout Plain Layout
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
- lobortis nisl ut aliquip ex ea commodo consequat.
- Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
- consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
- accumsan et iusto odio dignissim.
+Ut wisi enim ad minim veniam,
+ quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+ vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim.
 \end_layout
 
 \end_inset
@@ -716,7 +731,9 @@ LaTeX
 
  command)
 \series medium
-, enhanced, watermark text=Font Sizes
+,
+ enhanced,
+ watermark text=Font Sizes
 \end_layout
 
 \end_inset
@@ -740,7 +757,8 @@ Insert\SpecialChar menuseparator
 Custom Insets
 \family default
 .
- For small inline snippets, there are variants at 
+ For small inline snippets,
+ there are variants at 
 \family sans
 Edit\SpecialChar menuseparator
 Text Style.
@@ -932,7 +950,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=Boxes with Two Levels, collower=myboxcolor
+title=Boxes with Two Levels,
+ collower=myboxcolor
 \end_layout
 
 \end_inset
@@ -945,7 +964,8 @@ By means of the
 \family sans
 Color Box Separator
 \family default
- paragraph style, a color box can be split in an upper \SpecialChar ldots
+ paragraph style,
+ a color box can be split in an upper \SpecialChar ldots
 
 \end_layout
 
@@ -961,8 +981,9 @@ Color Box Separator
 \family sans
 Color Box Line
 \family default
- paragraph style, which just draws the separation line without actually
- separating the box, can be used repeatedly.
+ paragraph style,
+ which just draws the separation line without actually separating the box,
+ can be used repeatedly.
 \end_layout
 
 \end_inset
@@ -980,8 +1001,16 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=Look: A Table!, left=0mm, right=0mm, top=0mm, bottom=0mm, boxsep=0mm,
- toptitle=5mm, lefttitle=3mm, bottomtitle=5mm
+title=Look:
+ A Table!,
+ left=0mm,
+ right=0mm,
+ top=0mm,
+ bottom=0mm,
+ boxsep=0mm,
+ toptitle=5mm,
+ lefttitle=3mm,
+ bottomtitle=5mm
 \end_layout
 
 \end_inset
@@ -1386,7 +1415,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=Themes, skin=beamer
+title=Themes,
+ skin=beamer
 \end_layout
 
 \end_inset
@@ -1436,9 +1466,16 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=Tweaking the Boxes, leftrule=13mm, colback=red!5!white, colframe=myboxcolo
-r, arc=14mm, boxsep=1cm, height=10cm, valign=center, enhanced, interior
- style=
+title=Tweaking the Boxes,
+ leftrule=13mm,
+ colback=red!5!white,
+ colframe=myboxcolor,
+ arc=14mm,
+ boxsep=1cm,
+ height=10cm,
+ valign=center,
+ enhanced,
+ interior style=
 \begin_inset ERT
 status collapsed
 
@@ -1449,7 +1486,8 @@ status collapsed
 
 \end_inset
 
-left color=myboxcolor!10, right color=myboxcolor
+left color=myboxcolor!10,
+ right color=myboxcolor
 \begin_inset ERT
 status collapsed
 
@@ -1460,7 +1498,8 @@ status collapsed
 
 \end_inset
 
-, frame style=
+,
+ frame style=
 \begin_inset ERT
 status collapsed
 
@@ -1471,7 +1510,8 @@ status collapsed
 
 \end_inset
 
-right color=myboxcolor!10, left color=myboxcolor
+right color=myboxcolor!10,
+ left color=myboxcolor
 \begin_inset ERT
 status collapsed
 
@@ -1482,7 +1522,9 @@ status collapsed
 
 \end_inset
 
-, coltext=white, fontupper=
+,
+ coltext=white,
+ fontupper=
 \begin_inset ERT
 status open
 
@@ -1542,7 +1584,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=myboxcolor, coltext=white
+colback=myboxcolor,
+ coltext=white
 \end_layout
 
 \end_inset

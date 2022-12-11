@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 95 95
 \font_tt_scale 100 100
 \use_microtype false
@@ -73,12 +73,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -95,12 +99,16 @@ Vítajte v \SpecialChar LyX
 
 \begin_layout Enumerate
 \SpecialChar LyX
- prichádza s výbornou dokumentáciou — prosím, používajte ju! Začnite s Pomocník
+ prichádza s výbornou dokumentáciou —
+ prosím,
+ používajte ju!
+ Začnite s Pomocník
 \family sans
 \SpecialChar menuseparator
 Úvod
 \family default
-, ktorý vám dá veľmi stručný úvod do dokumentácie.
+,
+ ktorý vám dá veľmi stručný úvod do dokumentácie.
  Používať \SpecialChar LyX
  sa potom dá naučiť pomocou Pomocník
 \family sans
@@ -112,7 +120,8 @@ Užívateľská príručka.
 
 \begin_layout Enumerate
 \SpecialChar LyX
- je niečo, čo nazývame 
+ je niečo,
+ čo nazývame 
 \begin_inset Quotes eld
 \end_inset
 
@@ -121,15 +130,18 @@ dokument procesor
 \end_inset
 
 .
- Svojim návrhom je odlišný od bežného spracovávania textov — a to spôsobom,
+ Svojim návrhom je odlišný od bežného spracovávania textov —
+ a to spôsobom,
  ktorý písanie dokumentov ľahko umožňuje.
- Ale je to len trochu iné, netreba sa znepokojovať.
+ Ale je to len trochu iné,
+ netreba sa znepokojovať.
  Dokumentácia to všetko vyjasní.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Už sme spomenuli, že by bolo dobre čítať dokumentáciu?
+Už sme spomenuli,
+ že by bolo dobre čítať dokumentáciu?
 \end_layout
 
 \end_inset
@@ -139,7 +151,8 @@ Už sme spomenuli, že by bolo dobre čítať dokumentáciu?
 
 \begin_layout Enumerate
 Výstup z \SpecialChar LyX
--u vyzerá skvele! Vyberte 
+-u vyzerá skvele!
+ Vyberte 
 \family sans
 Dokument\SpecialChar menuseparator
 Zobraziť
@@ -156,10 +169,12 @@ Zobraziť
 \end_layout
 
 \begin_layout Enumerate
-Áno, \SpecialChar LyX
+Áno,
+ \SpecialChar LyX
  imituje (skoro) všetky možnosti \SpecialChar LaTeX
 -u.
- A áno, \SpecialChar LyX
+ A áno,
+ \SpecialChar LyX
  dokáže importovať \SpecialChar LaTeX
 -súbory.
  Skúseným užívateľom \SpecialChar LaTeX
@@ -167,7 +182,8 @@ Zobraziť
 \emph on
 Príručku
 \emph default
-, potom si prečítať kapitolu 
+,
+ potom si prečítať kapitolu 
 \begin_inset Quotes eld
 \end_inset
 
@@ -178,17 +194,19 @@ Príručku
 \end_inset
 
 .
- (Všetci ostatný: netreba sa znepokojovať, nie je potrebné poznať \SpecialChar LaTeX
- na používanie
- \SpecialChar LyX
+ (Všetci ostatný:
+ netreba sa znepokojovať,
+ nie je potrebné poznať \SpecialChar LaTeX
+ na používanie \SpecialChar LyX
 -u.) 
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
  má mnoho možností pre ľudí ktorí píšu alebo čítajú neanglickým jazykom.
- Naviac, klávesové skratky, nástrojová lišta a mnohé iné vlastnosti sú vynikajúc
-o konfigurovateľné.
+ Naviac,
+ klávesové skratky,
+ nástrojová lišta a mnohé iné vlastnosti sú vynikajúco konfigurovateľné.
  Pre detaily si pozrite na 
 \family sans
 Pomocník\SpecialChar menuseparator
@@ -212,14 +230,16 @@ https://www.lyx.org
 
 .
  Tu nájdete informácie o \SpecialChar LyX
--e, prihlásite sa do mailing list(ov) \SpecialChar LyX
--u, môžte
- si užiť grafickú výpravu do \SpecialChar LyX
+-e,
+ prihlásite sa do mailing list(ov) \SpecialChar LyX
+-u,
+ môžte si užiť grafickú výpravu do \SpecialChar LyX
 -u (
 \lang british
 Graphical Tour
 \lang slovak
-): 
+):
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -230,13 +250,15 @@ https://www.lyx.org/Walkthrough
 
 \end_inset
 
-, a iné.
+,
+ a iné.
 \end_layout
 
 \begin_layout Enumerate
 
 \series bold
 Upozornenie pre Linuxákov:
+
 \series default
  Preverte si že máte nastavené jazykové balíčky pre vašu \SpecialChar LaTeX
  distribúciu 

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -110,8 +114,9 @@ Grundidee
 
 \begin_layout Standard
 Die Grundidee von \SpecialChar LyX
- ist, daß Sie sich um den Inhalt Ihrer Dokumente kümmern
- sollten, und nicht um das Aussehen.
+ ist,
+ daß Sie sich um den Inhalt Ihrer Dokumente kümmern sollten,
+ und nicht um das Aussehen.
 \end_layout
 
 \begin_layout Subsection
@@ -122,7 +127,9 @@ Wie \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  benutzt \SpecialChar LaTeX
-, ein Textsatzsystem für Dokumente, das 
+,
+ ein Textsatzsystem für Dokumente,
+ das 
 \noun on
 Leslie
 \noun default
@@ -132,7 +139,8 @@ Lamport
 \noun default
  1985 entworfen hatte.
  Das wiederum baut auf der Textsatzsprache \SpecialChar TeX
- auf, die 
+ auf,
+ die 
 \noun on
 Donald
 \noun default
@@ -164,18 +172,19 @@ literal "true"
 \end_layout
 
 \begin_layout Quote
-Der Sinn des typographischen Entwurfs ist, dass der Leser die Ideen des
- Autors versteht.
- Damit ein Dokument leicht zu lesen ist, muss die sichtbare Struktur die
- logische widerspiegeln.
- Zitate und Computerprogramme, die logisch unterschiedliche Strukturelemente
- darstellen, sollten auch anders aussehen\SpecialChar ldots
+Der Sinn des typographischen Entwurfs ist,
+ dass der Leser die Ideen des Autors versteht.
+ Damit ein Dokument leicht zu lesen ist,
+ muss die sichtbare Struktur die logische widerspiegeln.
+ Zitate und Computerprogramme,
+ die logisch unterschiedliche Strukturelemente darstellen,
+ sollten auch anders aussehen\SpecialChar ldots
  Weil \SpecialChar LaTeX
- Ihren Text nicht verstehen
- kann, müssen Sie die logische Struktur durch Spezialbefehle kennzeichnen\SpecialChar ldots
-
- Während Sie Ihr Dokument schreiben, sollten Sie sich auf die logische Struktur
- konzentrieren, nicht auf sein Aussehen.
+ Ihren Text nicht verstehen kann,
+ müssen Sie die logische Struktur durch Spezialbefehle kennzeichnen\SpecialChar ldots
+ Während Sie Ihr Dokument schreiben,
+ sollten Sie sich auf die logische Struktur konzentrieren,
+ nicht auf sein Aussehen.
 \end_layout
 
 \begin_layout Subsection
@@ -194,14 +203,14 @@ name "subsec:Warum-LyX-besser"
 \SpecialChar LyX
  kann mehr Menschen nützen als \SpecialChar LaTeX
 .
- Es ist viel leichter zu lernen, weil Sie nicht \SpecialChar LaTeX
+ Es ist viel leichter zu lernen,
+ weil Sie nicht \SpecialChar LaTeX
  lernen müssen (\SpecialChar LaTeX
- ist im
- Prinzip eine Programmiersprache).
+ ist im Prinzip eine Programmiersprache).
  \SpecialChar LyX
- ist im Prinzip wie andere WYSIWYG-Textverarbeitungen, aber \SpecialChar LyX
- ist WYSIWYM
- 
+ ist im Prinzip wie andere WYSIWYG-Textverarbeitungen,
+ aber \SpecialChar LyX
+ ist WYSIWYM 
 \begin_inset Quotes gld
 \end_inset
 
@@ -210,12 +219,12 @@ What you see is what you mean
 \end_inset
 
 .
- Auf diese Weise verbindet es die Benutzerfreundlichkeit einer Textverarbeitung
- mit der Stärke von \SpecialChar LaTeX
+ Auf diese Weise verbindet es die Benutzerfreundlichkeit einer Textverarbeitung mit der Stärke von \SpecialChar LaTeX
 .
  Das ist eine gute Sache.
  Außerdem ist das Dateiformat plattformunabhängig.
- Das Beste aber ist: es ist KOSTENLOS!
+ Das Beste aber ist:
+ es ist KOSTENLOS!
 \end_layout
 
 \begin_layout Section
@@ -225,7 +234,8 @@ What you see is what you mean
 
 \begin_layout Standard
 \SpecialChar LyX
- hat viele Merkmale, die das Schreiben von Dokumenten erleichtern.
+ hat viele Merkmale,
+ die das Schreiben von Dokumenten erleichtern.
 \begin_inset Foot
 status collapsed
 
@@ -238,6 +248,7 @@ Warum sollte man es sonst benutzen?
  Ich bin 
 \emph on
 sehr aufgeregt,
+
 \emph default
  über sie zu sprechen.
  Hier sind ein paar:
@@ -254,9 +265,10 @@ sehr aufgeregt,
 \end_layout
 
 \begin_layout Standard
-Für eine mehr philosophische Diskussion, warum \SpecialChar LyX
- besser als viele andere
- Textverarbeitungen ist, lesen Sie bitte Abschnitt
+Für eine mehr philosophische Diskussion,
+ warum \SpecialChar LyX
+ besser als viele andere Textverarbeitungen ist,
+ lesen Sie bitte Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -264,6 +276,7 @@ Für eine mehr philosophische Diskussion, warum \SpecialChar LyX
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Warum-LyX-besser"
+nolink "false"
 
 \end_inset
 
@@ -275,6 +288,7 @@ reference "subsec:Warum-LyX-besser"
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "subsec:Warum-LyX-besser"
+nolink "false"
 
 \end_inset
 
@@ -304,8 +318,8 @@ Neulich schrieb ich ein Programm.
 \end_layout
 
 \begin_layout Standard
-Nach all dem wissenschaftlichen Denken fühlte ich mehr künstlerisch, also
- schrieb ich dies Gedicht:
+Nach all dem wissenschaftlichen Denken fühlte ich mehr künstlerisch,
+ also schrieb ich dies Gedicht:
 \end_layout
 
 \begin_layout Verse
@@ -341,7 +355,8 @@ Meine Lieblingsformel ist die Lösung einer quadratischen Gleichung.
 \end_layout
 
 \begin_layout Standard
-Eine weitere Lieblingsformel ist die Ableitung: 
+Eine weitere Lieblingsformel ist die Ableitung:
+ 
 \begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
@@ -360,16 +375,17 @@ ifizieren dieser Datei:
 
 \begin_layout Itemize
 Ich konnte die gestrichelten Linien entfernen.
- Sie waren nur dazu da, den Titel und das Quellenverzeichnis vom Rest des
- Dokumentes zu trennen.
+ Sie waren nur dazu da,
+ den Titel und das Quellenverzeichnis vom Rest des Dokumentes zu trennen.
  \SpecialChar LyX
  (\SpecialChar LaTeX
-) weiß genug, um diese Teile mit Zwischenräumen abzusetzen.
+) weiß genug,
+ um diese Teile mit Zwischenräumen abzusetzen.
 \end_layout
 
 \begin_layout Itemize
-Ich kümmerte mich nicht darum, die mathematischen Formeln als abgesetzte
- Formeln zu schreiben.
+Ich kümmerte mich nicht darum,
+ die mathematischen Formeln als abgesetzte Formeln zu schreiben.
  Außerdem habe ich nicht die automatische Gleichungsnummerierung von \SpecialChar LyX
  benutzt,
  weil das nicht im 
@@ -398,7 +414,9 @@ Referenzen
 \begin_inset Quotes grd
 \end_inset
 
-, abhängig von der Dokumentklasse), wenn man als Umgebung 
+,
+ abhängig von der Dokumentklasse),
+ wenn man als Umgebung 
 \family sans
 Literaturverzeichnis
 \family default
@@ -413,14 +431,20 @@ literal "true"
 
 \end_inset
 
-Lamport, Leslie.
+Lamport,
+ Leslie.
  
 \emph on
 \SpecialChar LaTeX
-: A Document Preparation System.
+:
+ A Document Preparation System.
 
 \emph default
- Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+ Addison-Wesley,
+ Reading,
+ Massachusetts,
+ second edition,
+ 1994.
 \end_layout
 
 \end_body

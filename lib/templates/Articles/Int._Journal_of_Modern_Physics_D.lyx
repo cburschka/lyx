@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -72,12 +72,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -88,8 +92,7 @@ status open
 
 \begin_layout Plain Layout
 This is a template \SpecialChar LyX
- file for articles to be submitted to the International
- Journal of Modern Physics section D (IJMPD).
+ file for articles to be submitted to the International Journal of Modern Physics section D (IJMPD).
  How to install the IJMPD \SpecialChar LaTeX
  class to your \SpecialChar LaTeX
  system is explained in 
@@ -120,7 +123,9 @@ status open
 \series bold
 Note
 \series default
-: To be able to compile ijmpc articles, assure that in the menu 
+:
+ To be able to compile ijmpc articles,
+ assure that in the menu 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -168,7 +173,8 @@ Paper's Title
 status open
 
 \begin_layout Plain Layout
-a command only for the typesetter, keep it empty!
+a command only for the typesetter,
+ keep it empty!
 \end_layout
 
 \end_inset
@@ -182,7 +188,8 @@ TITLE OF THE ARTICLE
 status collapsed
 
 \begin_layout Plain Layout
-For the title, try not to use more than 3 lines.
+For the title,
+ try not to use more than 3 lines.
  Typeset the title uppercase.
 \end_layout
 
@@ -207,11 +214,15 @@ Typeset names uppercase.
 \end_layout
 
 \begin_layout Address
-<University Department, University Name, Address>
+<University Department,
+ University Name,
+ Address>
 \begin_inset Newline newline
 \end_inset
 
-<City, State ZIP/Zone, Country>
+<City,
+ State ZIP/Zone,
+ Country>
 \begin_inset Newline newline
 \end_inset
 
@@ -220,7 +231,8 @@ e-mail-1
 status collapsed
 
 \begin_layout Plain Layout
-State completely without abbreviations, the affiliation and mailing address,
+State completely without abbreviations,
+ the affiliation and mailing address,
  including country.
 \end_layout
 
@@ -244,11 +256,15 @@ Permanent or present address for the second author (optional).
 \end_layout
 
 \begin_layout Address
-<University Department, University Name, Address>
+<University Department,
+ University Name,
+ Address>
 \begin_inset Newline newline
 \end_inset
 
-<City, State ZIP/Zone, Country>
+<City,
+ State ZIP/Zone,
+ Country>
 \begin_inset Newline newline
 \end_inset
 
@@ -289,13 +305,15 @@ Managing Editor
 \end_layout
 
 \begin_layout Abstract
-The abstract should summarize the context, content and conclusions of the
- paper in less than 200 words.
+The abstract should summarize the context,
+ content and conclusions of the paper in less than 200 words.
  It should not contain any references or displayed equations.
 \end_layout
 
 \begin_layout Keywords
-Keyword1; keyword2; keyword3.
+Keyword1;
+ keyword2;
+ keyword3.
 \end_layout
 
 \begin_layout Section
@@ -320,7 +338,8 @@ g.
 \begin_inset space ~
 \end_inset
 
-Latin, French).
+Latin,
+ French).
 \end_layout
 
 \begin_layout Section
@@ -328,8 +347,7 @@ Running Heads
 \end_layout
 
 \begin_layout Standard
-Please provide a shortened runninghead (not more than eight words) for the
- title of your paper.
+Please provide a shortened runninghead (not more than eight words) for the title of your paper.
  This will appear on the top right-hand side of your paper.
 \end_layout
 
@@ -338,8 +356,7 @@ Major Headings
 \end_layout
 
 \begin_layout Standard
-Major headings should be typeset with the first letter of important words
- capitalized.
+Major headings should be typeset with the first letter of important words capitalized.
 \end_layout
 
 \begin_layout Subsection
@@ -347,8 +364,7 @@ Sub-headings
 \end_layout
 
 \begin_layout Standard
-Sub-headings should be typeset capitalized the first letter of the first
- word only.
+Sub-headings should be typeset capitalized the first letter of the first word only.
 \end_layout
 
 \begin_layout Subsubsection
@@ -440,7 +456,8 @@ begin{equation}
 \end_layout
 
 \begin_layout Standard
-Equations should be referred to in abbreviated form, e.
+Equations should be referred to in abbreviated form,
+ e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -460,6 +477,7 @@ Eq.
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:diseqn"
+nolink "false"
 
 \end_inset
 
@@ -467,13 +485,14 @@ reference "eq:diseqn"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:diseqn"
+nolink "false"
 
 \end_inset
 
 )''.
- In multiple-line equations, the number should be given on the last line.
- Punctuation marks are used at the end of equations as if they appeared
- directly in the text.
+ In multiple-line equations,
+ the number should be given on the last line.
+ Punctuation marks are used at the end of equations as if they appeared directly in the text.
 \end_layout
 
 \begin_layout Theorem
@@ -494,15 +513,16 @@ Illustrations and Photographs
 
 \begin_layout Standard
 Figures are to be inserted in the text nearest their first reference.
- If the author requires the publisher to reduce the figures, ensure that
- the figures (including letterings and numbers) are large enough to be clearly
- seen after reduction.
- If photographs are to be used, only black and white ones are acceptable.
+ If the author requires the publisher to reduce the figures,
+ ensure that the figures (including letterings and numbers) are large enough to be clearly seen after reduction.
+ If photographs are to be used,
+ only black and white ones are acceptable.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 placement ph
+alignment document
 wide false
 sideways false
 status open
@@ -561,7 +581,8 @@ name "fig:A-schematic-illustration"
 \end_inset
 
 A schematic illustration of dissociative recombination.
- The direct mechanism, 4m
+ The direct mechanism,
+ 4m
 \begin_inset Formula $_{\pi}^{2}$
 \end_inset
 
@@ -591,6 +612,7 @@ The caption must be placed below the figure (see Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:A-schematic-illustration"
+nolink "false"
 
 \end_inset
 
@@ -598,8 +620,7 @@ reference "fig:A-schematic-illustration"
 \end_layout
 
 \begin_layout Standard
-Previously published material must be accompanied by written permission
- from the author and publisher.
+Previously published material must be accompanied by written permission from the author and publisher.
 \end_layout
 
 \begin_layout Section
@@ -623,11 +644,13 @@ literal "true"
 
 \end_inset
 
- You can also use them directly, but in this case you should use the 
+ You can also use them directly,
+ but in this case you should use the 
 \family typewriter
 refcite
 \family default
- command, e.
+ command,
+ e.
 \begin_inset space ~
 \end_inset
 
@@ -665,12 +688,13 @@ Tables
 \end_layout
 
 \begin_layout Standard
-Tables should be inserted in the text as close to the point of reference
- as possible.
+Tables should be inserted in the text as close to the point of reference as possible.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -850,8 +874,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-If tables need to extend over to a second page, the continuation of the
- table should be preceded by a caption, e.
+If tables need to extend over to a second page,
+ the continuation of the table should be preceded by a caption,
+ e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -908,8 +933,7 @@ An Appendix section
 
 \begin_layout Standard
 Appendices should be used only when absolutely necessary.
- They should come before the References.Note that appendices should be placed
- 
+ They should come before the References.Note that appendices should be placed 
 \emph on
 after
 \emph default
@@ -925,7 +949,12 @@ Another Appendix section
 \end_layout
 
 \begin_layout Standard
-<Appendices are, in fact, normal Sections, which are numbered as A, B, C,
+<Appendices are,
+ in fact,
+ normal Sections,
+ which are numbered as A,
+ B,
+ C,
  ...>
 \end_layout
 
@@ -939,11 +968,14 @@ literal "true"
 
 First-1.
  Middle-1.
- Surname-1, First-2.
+ Surname-1,
+ First-2.
  Middle-2.
- Surname-2, and First-3.
+ Surname-2,
+ and First-3.
  Middle-3.
- Surname-3, 
+ Surname-3,
+ 
 \emph on
 Journal abbreviation
 \emph default
@@ -951,7 +983,8 @@ Journal abbreviation
 \series bold
 Volume
 \series default
-, Page (Year).
+,
+ Page (Year).
 \end_layout
 
 \begin_layout Bibliography
@@ -964,11 +997,14 @@ literal "true"
 
 First-1.
  Middle-1.
- Surname-1, 
+ Surname-1,
+ 
 \emph on
 Book Title
 \emph default
- (Publishers, City, Year).
+ (Publishers,
+ City,
+ Year).
 \end_layout
 
 \end_body

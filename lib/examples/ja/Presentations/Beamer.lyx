@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31,9 +31,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -84,12 +84,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -190,7 +194,8 @@ Beamer
 
 \end_inset
 
-クラスを用いると、発表スライドを生成することができます。これは
+クラスを用いると、発表スライドを生成することができます。
+これは
 \end_layout
 
 \begin_deeper
@@ -229,6 +234,7 @@ Beamer
 
 \begin_layout Itemize
 他にも多くの特徴を持ちます。
+
 \end_layout
 
 \end_deeper
@@ -278,6 +284,7 @@ Beamer
 \end_deeper
 \begin_layout Frame
 を説明します。
+
 \begin_inset Flex Structure
 status collapsed
 
@@ -296,6 +303,7 @@ literal "true"
 \end_inset
 
 を参照してください。
+
 \end_layout
 
 \begin_layout Section
@@ -334,7 +342,9 @@ status open
 
 \end_deeper
 \begin_layout Frame
-などが含まれます。以下では、全体構造のうちの、これらの各部について説明します。
+などが含まれます。
+以下では、全体構造のうちの、これらの各部について説明します。
+
 \end_layout
 
 \begin_layout Standard
@@ -420,11 +430,13 @@ status collapsed
 \end_inset
 
 の各レイアウトで構成されます。
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 これらの要素は、各々はどれも必須ではありませんが、少なくともひとつは必要です。
+
 \end_layout
 
 \begin_layout Itemize
@@ -439,6 +451,7 @@ Beamer
 \end_inset
 
 のテーマで決められています)。
+
 \end_layout
 
 \begin_layout Itemize
@@ -505,7 +518,9 @@ status collapsed
 
 \end_inset
 
-で「短縮形」を定義することができます。これらは、サイドバーやヘディングで使用されます(ただし、サイドバーやヘディングがテーマで実際に提供されている場合のみ)。
+で「短縮形」を定義することができます。
+これらは、サイドバーやヘディングで使用されます(ただし、サイドバーやヘディングがテーマで実際に提供されている場合のみ)。
+
 \end_layout
 
 \begin_layout Itemize
@@ -529,6 +544,7 @@ status collapsed
 \end_inset
 
 を選ぶと、表題頁にはサイドバーやヘディングが現れません。
+
 \end_layout
 
 \end_deeper
@@ -562,7 +578,9 @@ Beamer
 
 \end_inset
 
-では、スライドのことを「フレーム」と呼びます。フレーム内のものは全て、1つのスライドに収められます(スライドの中に副スライドを収めることもあります)。
+では、スライドのことを「フレーム」と呼びます。
+フレーム内のものは全て、1つのスライドに収められます(スライドの中に副スライドを収めることもあります)。
+
 \end_layout
 
 \begin_deeper
@@ -578,10 +596,12 @@ status collapsed
 \end_inset
 
 段落様式を選んでください。
+
 \end_layout
 
 \begin_layout Itemize
-フレームの見出しは「フレーム見出し」差込枠に書き込まなくてはなりません。この差込枠は、新規フレームには自動的に用意されますが、 
+フレームの見出しは「フレーム見出し」差込枠に書き込まなくてはなりません。
+この差込枠は、新規フレームには自動的に用意されますが、 
 \begin_inset Flex Alert
 status collapsed
 
@@ -593,6 +613,7 @@ status collapsed
 \end_inset
 
 で手動で挿入することもできます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -606,8 +627,9 @@ status collapsed
 
 \end_inset
 
-レイアウトを使用することもできます。これを使うと、(あまり用いられませんが)フレーム見出し短縮形のオプションと、重ね合わせ指定のオプション(こちらの方が重要です
-)が提供されます。
+レイアウトを使用することもできます。
+これを使うと、(あまり用いられませんが)フレーム見出し短縮形のオプションと、重ね合わせ指定のオプション(こちらの方が重要です)が提供されます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -622,6 +644,7 @@ status collapsed
 \end_inset
 
 レイアウトで付けることができます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -667,6 +690,7 @@ status collapsed
 \end_inset
 
 で重ね合わせオプションを指定することができます(これが何であるかについては後述します)。
+
 \end_layout
 
 \end_deeper
@@ -713,10 +737,12 @@ status open
 
 \begin_layout Frame
 各フレームは、フレーム全体あるいは選択した副フレームだけを、発表の後の方で何度でも再表示させることができます。
+
 \end_layout
 
 \begin_layout Frame
 それには、(このフレームで行なっているように)各フレームのフレームオプションに「label」を指定して、ラベル名を付けます。
+
 \end_layout
 
 \begin_deeper
@@ -736,7 +762,8 @@ status collapsed
 
 \end_inset
 
-レイアウトを使えば、このフレームを再表示させることができます。それには、ただ
+レイアウトを使えば、このフレームを再表示させることができます。
+それには、ただ
 \begin_inset Flex Structure
 status collapsed
 
@@ -758,6 +785,7 @@ status collapsed
 \end_inset
 
 で指定するだけです(再度「重ね合わせ」の概念については、下記参照)。
+
 \end_layout
 
 \begin_deeper
@@ -782,8 +810,9 @@ status collapsed
 
 \end_inset
 
- (この文章は、副スライド3でのみ表示されます。副スライド3は、このフレームが後で再表示された時にのみ表示されます。)証明ブロックの見出しの日本語化には、プリア
-ンブルで
+ (この文章は、副スライド3でのみ表示されます。
+副スライド3は、このフレームが後で再表示された時にのみ表示されます。
+)証明ブロックの見出しの日本語化には、プリアンブルで
 \begin_inset Flex Bold
 status open
 
@@ -811,6 +840,7 @@ status collapsed
 \end_inset
 
 を参照)。
+
 \end_layout
 
 \end_deeper
@@ -867,6 +897,7 @@ arg   "depth-increment"
 \end_inset
 
 を使用して)フレーム環境に入れ子にしなくてはならないことに注意してください。
+
 \lang english
  This is done automatically if you insert new frame paragraphs.
 \end_layout
@@ -874,15 +905,18 @@ arg   "depth-increment"
 \begin_layout Itemize
 内容物を入れ子にしたことは、\SpecialChar LyX
 作業領域の余白に赤い傍線で表示されます。
+
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 (この行のように)入れ子にしない内容物も、発表に(別のスライドとして)表示されますが、綺麗に整えられないのです。
+
 \end_layout
 
 \begin_layout Itemize
 ですから、これは避けてくださいね。
+
 \end_layout
 
 \begin_layout Standard
@@ -912,13 +946,13 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 分離線
 \end_layout
 
 \end_inset
 
 段落様式で分けることができます。
+
 \end_layout
 
 \begin_deeper
@@ -927,7 +961,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 分離線
 \end_layout
 
@@ -955,6 +988,7 @@ status collapsed
 \end_inset
 
 を選ぶことです。
+
 \end_layout
 
 \begin_layout Block
@@ -976,7 +1010,6 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 フレーム
 \end_layout
 
@@ -994,8 +1027,8 @@ arg   "paragraph-break inverse"
 \begin_layout Block
 
 \lang english
-There is a simple and much more convenient way to start a new frame: Issue
- 
+There is a simple and much more convenient way to start a new frame:
+ Issue 
 \begin_inset Flex Alert
 status collapsed
 
@@ -1026,14 +1059,18 @@ Frame
 
 \end_inset
 
- paragraph, or 
+ paragraph,
+ or 
 \begin_inset Info
 type  "shortcut"
 arg   "environment-split outer"
 \end_inset
 
-, respectively, if you are in a nested paragraph within the frame).
- If you are in the frame heading, 
+,
+ respectively,
+ if you are in a nested paragraph within the frame).
+ If you are in the frame heading,
+ 
 \begin_inset Flex Alert
 status collapsed
 
@@ -1046,7 +1083,8 @@ Separated Frame Above
 
 \end_inset
 
- inserts a new, properly separated frame above the current one!
+ inserts a new,
+ properly separated frame above the current one!
 \end_layout
 
 \end_deeper
@@ -1087,6 +1125,7 @@ status open
 \begin_layout PlainFrame
 \SpecialChar LyX
 は、以下の2つの特殊なフレーム型を提供しています。
+
 \end_layout
 
 \begin_deeper
@@ -1100,7 +1139,9 @@ status collapsed
 
 \end_inset
 
-は、(このフレームのように)サイドバーやヘッダがないフレームです。これは、内容が多かったり幅広な表があるスライドに便利です。
+は、(このフレームのように)サイドバーやヘッダがないフレームです。
+これは、内容が多かったり幅広な表があるスライドに便利です。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1114,11 +1155,13 @@ status collapsed
 \end_inset
 
 は、プログラムリストなど字句通り(verbatim)の内容が含まれている場合のように、フレームに「脆弱な」内容が含まれている時に使用します。
+
 \end_layout
 
 \end_deeper
 \begin_layout PlainFrame
 白紙の脆弱フレームが欲しい場合には、脆弱フレームに「plain」オプションを渡すか、白紙フレームに「fragile」オプションを渡してください。
+
 \end_layout
 
 \begin_layout Standard
@@ -1174,10 +1217,12 @@ status collapsed
 \end_inset
 
 のような)通常の節分けコマンドを使用してください。
+
 \end_layout
 
 \begin_layout Itemize
 これらは、目次や(テーマに依存して)サイドバー・ヘッダ、およびarticle出力に表示されます(「article」については、下記「モード」に関する節を参照)。
+
 \end_layout
 
 \end_deeper
@@ -1242,6 +1287,7 @@ status collapsed
 \end_inset
 
 メニューを使うことができます。
+
 \end_layout
 
 \end_deeper
@@ -1267,12 +1313,15 @@ status open
 
 \begin_deeper
 \begin_layout Itemize
-付録は、追加の内容や留保しておいた内容を書くのに便利かもしれません。付録は発表の一部ですが、目次やサイドバー、ヘッダには表示されません。
+付録は、追加の内容や留保しておいた内容を書くのに便利かもしれません。
+付録は発表の一部ですが、目次やサイドバー、ヘッダには表示されません。
+
 \end_layout
 
 \begin_layout Itemize
 付録は、\SpecialChar LyX
 中では、以下のようにして通常通り入力することができます。
+
 \end_layout
 
 \begin_deeper
@@ -1289,11 +1338,13 @@ status collapsed
 \end_inset
 
 を選択します。
+
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 付録によく収録されるのは書誌情報です。
+
 \end_layout
 
 \begin_deeper
@@ -1310,6 +1361,7 @@ status collapsed
 \end_inset
 
 段落様式を用いて書き込みます(例としてこの発表の最後にある書誌情報を参照)。
+
 \end_layout
 
 \begin_layout Itemize
@@ -1326,6 +1378,7 @@ Beamer
 
 と協働できる訳ではないですが、Bib\SpecialChar TeX
 を使うこともできます。
+
 \end_layout
 
 \end_deeper
@@ -1348,8 +1401,9 @@ status open
 \end_layout
 
 \begin_layout Frame
-基本的には、重ね合わせは、スライドの中身を動的に変更できるようにするものです。ものや文章を少しずつ開示したり、内容をフェイドアウトさせ、強調したり、文字や画像を
-取り替えたりといったことができます。
+基本的には、重ね合わせは、スライドの中身を動的に変更できるようにするものです。
+ものや文章を少しずつ開示したり、内容をフェイドアウトさせ、強調したり、文字や画像を取り替えたりといったことができます。
+
 \end_layout
 
 \begin_deeper
@@ -1369,18 +1423,22 @@ status open
 \end_inset
 
 重ね合わせは、喋る内容に合わせてスライドを作り上げていくのに便利です。
+
 \end_layout
 
 \begin_layout Itemize
 これによって、聴衆の関心を特定のものに合わせていくことができます。
+
 \end_layout
 
 \begin_layout Itemize
 そして、聴衆があなたの話に付いていく手助けとなります。
+
 \end_layout
 
 \begin_layout Itemize
-ですから、重ね合わせを使いましょう！ 
+ですから、重ね合わせを使いましょう！
+ 
 \begin_inset Flex Alert
 status open
 
@@ -1396,6 +1454,7 @@ status open
 \end_inset
 
 ほんまに！
+
 \end_layout
 
 \end_inset
@@ -1434,25 +1493,30 @@ Beamer
 
 \end_inset
 
-では、多くの重ね合わせ型が提供されています。中でも重要なものは
+では、多くの重ね合わせ型が提供されています。
+中でも重要なものは
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-蔵匿型: ある点まで全く表示されないもの
+蔵匿型:
+ ある点まで全く表示されないもの
 \end_layout
 
 \begin_layout Description
-被覆型: 褪色表示にするもの(完全に見えないわけではない)
+被覆型:
+ 褪色表示にするもの(完全に見えないわけではない)
 \end_layout
 
 \begin_layout Description
-強調型: ある点で何らかの方法で強調されるもの
+強調型:
+ ある点で何らかの方法で強調されるもの
 \end_layout
 
 \end_deeper
 \begin_layout Frame
 これらの型の例は後に挙げますが、まずは重ね合わせの指定可能性についての一般的な注意から始めましょう。
+
 \end_layout
 
 \begin_layout Standard
@@ -1486,7 +1550,8 @@ Beamer
 
 \end_inset
 
-構成要素は、重ね合わせの設定をすることができます。どの副スライドに特定の内容が表示されるかを指定したり(
+構成要素は、重ね合わせの設定をすることができます。
+どの副スライドに特定の内容が表示されるかを指定したり(
 \begin_inset Quotes eld
 \end_inset
 
@@ -1494,7 +1559,8 @@ Beamer
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1502,7 +1568,8 @@ Beamer
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1510,7 +1577,8 @@ Beamer
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1526,7 +1594,8 @@ presentation
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1535,6 +1604,7 @@ article
 \end_inset
 
 など)。
+
 \end_layout
 
 \begin_deeper
@@ -1563,6 +1633,7 @@ status collapsed
 \end_inset
 
 で指定することができます。
+
 \end_layout
 
 \begin_layout Overprint
@@ -1581,8 +1652,8 @@ status open
 
 \begin_deeper
 \begin_layout Definition
-「動作」はより一般的な概念で、これまで「重ね合わせ」と呼んできたもの(この上に副スライドを表示したり隠したり強調したりするもの)を含むだけでなく、「この発表には
-表示するけれども配布資料には表示しない」とか「これは第2画面にのみ表示する」といった指定(いわゆる「モード」)を含みます。
+「動作」はより一般的な概念で、これまで「重ね合わせ」と呼んできたもの(この上に副スライドを表示したり隠したり強調したりするもの)を含むだけでなく、「この発表には表示するけれども配布資料には表示しない」とか「これは第2画面にのみ表示する」といった指定(いわゆる「モード」)を含みます。
+
 \end_layout
 
 \begin_layout Definition
@@ -1618,6 +1689,7 @@ status collapsed
 \end_inset
 
 を参照)。
+
 \end_layout
 
 \end_deeper
@@ -1678,12 +1750,14 @@ status collapsed
 \end_inset
 
 で囲んだコマンドオプションや環境オプションに対応します。
+
 \end_layout
 
 \begin_layout AlertBlock
 \SpecialChar LyX
-は、書き出し時に括弧を追加しますので、括弧は自分で入れてはなりません。つまり、重ね合わせ/動作差込枠には、「<1>」や「[<+->]」ではなく、「1」や「+-」
-と入力してください。
+は、書き出し時に括弧を追加しますので、括弧は自分で入れてはなりません。
+つまり、重ね合わせ/動作差込枠には、「<1>」や「[<+->]」ではなく、「1」や「+-」と入力してください。
+
 \end_layout
 
 \end_deeper
@@ -1710,6 +1784,7 @@ status open
 
 \begin_layout Frame
 用例として引用を取り上げてみましょう。
+
 \begin_inset Flex Structure
 status collapsed
 
@@ -1730,7 +1805,9 @@ status collapsed
 
 \end_inset
 
-で指定することができます。このようにして「2」を入力すれば、引用は第2(副)スライドにのみ表示されます。
+で指定することができます。
+このようにして「2」を入力すれば、引用は第2(副)スライドにのみ表示されます。
+
 \end_layout
 
 \begin_deeper
@@ -1747,13 +1824,15 @@ status open
 
 
 \lang ngerman
-Ich weiß nicht, was ich will
+Ich weiß nicht,
+ was ich will
 \end_layout
 
 \begin_layout Quote
 
 \lang ngerman
-ich will nicht, was ich weiß
+ich will nicht,
+ was ich weiß
 \end_layout
 
 \begin_layout Quote
@@ -1771,6 +1850,7 @@ im Winter ist mir heiß.
 \end_deeper
 \begin_layout Frame
 重ね合わせは、基本的にこのように動作します。
+
 \end_layout
 
 \begin_layout Standard
@@ -1794,8 +1874,9 @@ status open
 \end_layout
 
 \begin_layout Frame
-「被覆(covering)」と「蔵匿(hiding)」の違いは、蔵匿対象がそこに無いかのごとく扱われるのに対し、被覆対象は覆われているだけである(スペースは確保
-されている)という点です。前スライドの引用を被覆する代わりに蔵匿したとすると、以下のように、スペースは表示される時だけ確保されます。
+「被覆(covering)」と「蔵匿(hiding)」の違いは、蔵匿対象がそこに無いかのごとく扱われるのに対し、被覆対象は覆われているだけである(スペースは確保されている)という点です。
+前スライドの引用を被覆する代わりに蔵匿したとすると、以下のように、スペースは表示される時だけ確保されます。
+
 \end_layout
 
 \begin_deeper
@@ -1812,13 +1893,15 @@ only@2
 
 
 \lang ngerman
-Ich weiß nicht, was ich will
+Ich weiß nicht,
+ was ich will
 \end_layout
 
 \begin_layout Quote
 
 \lang ngerman
-ich will nicht, was ich weiß
+ich will nicht,
+ was ich weiß
 \end_layout
 
 \begin_layout Quote
@@ -1836,6 +1919,7 @@ im Winter ist mir heiß.
 \end_deeper
 \begin_layout Frame
 引用の蔵匿が解かれるとともに、この文が移動するのがわかるでしょう。
+
 \end_layout
 
 \begin_layout Standard
@@ -1896,8 +1980,10 @@ setbeamercovered
 
 \end_inset
 
-コマンドを使って、(発表全体にわたって)グローバルにも、(ここでのように1フレームのみなど)ローカルにも設定することができます。既定では、対象は完全に被覆されま
-す。「transparent(透過)」モードでは、被覆文は、以下のように淡色表示されているのがわかります。
+コマンドを使って、(発表全体にわたって)グローバルにも、(ここでのように1フレームのみなど)ローカルにも設定することができます。
+既定では、対象は完全に被覆されます。
+「transparent(透過)」モードでは、被覆文は、以下のように淡色表示されているのがわかります。
+
 \end_layout
 
 \begin_deeper
@@ -1914,13 +2000,15 @@ status open
 
 
 \lang ngerman
-Ich weiß nicht, was ich will
+Ich weiß nicht,
+ was ich will
 \end_layout
 
 \begin_layout Quote
 
 \lang ngerman
-ich will nicht, was ich weiß
+ich will nicht,
+ was ich weiß
 \end_layout
 
 \begin_layout Quote
@@ -1948,6 +2036,7 @@ Beamer
 \end_inset
 
 取扱説明書を参照してください。
+
 \end_layout
 
 \begin_layout Standard
@@ -1976,17 +2065,19 @@ status open
 
 \begin_deeper
 \begin_layout Itemize
-環境によっては(箇条書きやフレームなど)、通常の重ね合わせ指定や動作指定に加えて(箇条書きの場合には、箇条書き全体に対しては「重ね合わせ指定」、項目単独に対して
-は「項目重ね合わせ指定」に加えて)「指定の既定値」を選ぶことができます。
+環境によっては(箇条書きやフレームなど)、通常の重ね合わせ指定や動作指定に加えて(箇条書きの場合には、箇条書き全体に対しては「重ね合わせ指定」、項目単独に対しては「項目重ね合わせ指定」に加えて)「指定の既定値」を選ぶことができます。
+
 \end_layout
 
 \begin_layout Itemize
 指定の既定値は、個別に新たに設定しない限りは、その環境の全内容に対して適用されます。
+
 \end_layout
 
 \begin_layout Itemize
-通常の重ね合わせ/動作指定には、順序指定用文法を用います。例えば「+(1)-」とすると、以下のように、個別の項目指定がない限りは、箇条書き中の各項目を一つづつ(
-開始オフセット1で)開示します。
+通常の重ね合わせ/動作指定には、順序指定用文法を用います。
+例えば「+(1)-」とすると、以下のように、個別の項目指定がない限りは、箇条書き中の各項目を一つづつ(開始オフセット1で)開示します。
+
 \end_layout
 
 \begin_deeper
@@ -2040,6 +2131,7 @@ Beamer
 \end_inset
 
 取扱説明書を参照してください。
+
 \end_layout
 
 \begin_layout Frame
@@ -2084,6 +2176,7 @@ status open
 \begin_layout Frame
 \noindent
 このフレームは、既定の重ね合わせ指定を使用しています。
+
 \end_layout
 
 \begin_layout Frame
@@ -2219,8 +2312,8 @@ status collapsed
 
 \end_inset
 
-レイアウトを用いると、以下のように、それ以降のすべての内容を被覆する点を指定できます(既定では、一時停止以前の内容が開示された後、1つのスライドの間のみ被覆しま
-す)。
+レイアウトを用いると、以下のように、それ以降のすべての内容を被覆する点を指定できます(既定では、一時停止以前の内容が開示された後、1つのスライドの間のみ被覆します)。
+
 \end_layout
 
 \begin_deeper
@@ -2256,6 +2349,7 @@ status open
 \end_deeper
 \begin_layout Frame
 既定では、一連の一時停止は一つづつ解除されます。
+
 \end_layout
 
 \begin_layout Frame
@@ -2271,6 +2365,7 @@ status collapsed
 \end_inset
 
 を使えば、それ以前に挿入された一時停止の数に関わらず、一時停止を解除する副スライドを指定することができます。
+
 \end_layout
 
 \begin_layout Standard
@@ -2305,6 +2400,7 @@ Beamer
 
 および\SpecialChar LyX
 は、段落全体や複数の段落を、特定のスライドで表示させたり隠したりするための段落レイアウトを用意しています。
+
 \end_layout
 
 \begin_layout Frame
@@ -2345,6 +2441,7 @@ status collapsed
 \begin_layout Itemize
 \SpecialChar ldots
 これには入れ子になっている他のレイアウト段落も追従します。
+
 \end_layout
 
 \end_deeper
@@ -2374,6 +2471,7 @@ status collapsed
 \end_inset
 
 レイアウト(前の例と同じように、これが表示されるようになった時に周りの文が「移動する」のがわかるでしょう)。
+
 \end_layout
 
 \begin_layout Overprint
@@ -2425,12 +2523,14 @@ status collapsed
 \end_inset
 
 環境。
+
 \end_layout
 
 \end_deeper
 \end_deeper
 \begin_layout Frame
 ここに表示されています。
+
 \end_layout
 
 \begin_layout Standard
@@ -2505,6 +2605,7 @@ status collapsed
 \end_inset
 
 で設定することができます。
+
 \end_layout
 
 \begin_layout Frame
@@ -2544,6 +2645,7 @@ status collapsed
 \end_inset
 
 することができます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -2576,8 +2678,8 @@ status collapsed
 
 \end_inset
 
-にすることができます(このスライドでローカルに用いられているように「transparent」被覆設定が指定されたときのみ、「限定開示(uncover)」との違い
-が出てきます。
+にすることができます(このスライドでローカルに用いられているように「transparent」被覆設定が指定されたときのみ、「限定開示(uncover)」との違いが出てきます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -2611,6 +2713,7 @@ status collapsed
 \end_inset
 
 することができます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -2644,6 +2747,7 @@ status collapsed
 \end_inset
 
 にすることができます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -2687,6 +2791,7 @@ status collapsed
 \end_inset
 
 文を表示することができます。
+
 \end_layout
 
 \end_deeper
@@ -2702,6 +2807,7 @@ status collapsed
 \end_inset
 
 メニューから行うことができます。
+
 \end_layout
 
 \begin_layout Standard
@@ -2737,6 +2843,7 @@ status collapsed
 \end_inset
 
 でも見つけられます)が重ねあわせを認識します。
+
 \end_layout
 
 \begin_deeper
@@ -2822,6 +2929,7 @@ status open
 \end_inset
 
 で表示したりすることができます。
+
 \end_layout
 
 \begin_layout Block
@@ -2849,7 +2957,8 @@ status open
 \end_layout
 
 \begin_layout Block
-(通常のフォント設定を通じてではなく)強調差込枠やボールド体差込枠を使用してください。単に重ね合わせ指定をしなくていいという他に、
+(通常のフォント設定を通じてではなく)強調差込枠やボールド体差込枠を使用してください。
+単に重ね合わせ指定をしなくていいという他に、
 \begin_inset Flex Structure
 status collapsed
 
@@ -2861,6 +2970,7 @@ Beamer
 
 における強調やボールド体の定義のされ方のおかげで、通常の強調やボールド体の指定の仕方では、例えば節見出しで使用したりすると、\SpecialChar LaTeX
 エラーが発生することがあります。
+
 \end_layout
 
 \end_deeper
@@ -2900,7 +3010,9 @@ status open
 
 \end_deeper
 \begin_layout Frame
-があります。以下では、これらを簡単に説明します。
+があります。
+以下では、これらを簡単に説明します。
+
 \end_layout
 
 \begin_layout Standard
@@ -2924,7 +3036,9 @@ status open
 \end_layout
 
 \begin_layout Frame
-ブロックには、あらゆる種類の情報を入れることができます。ここでは、これらを「ヒント」と「こつ」に使用しました。
+ブロックには、あらゆる種類の情報を入れることができます。
+ここでは、これらを「ヒント」と「こつ」に使用しました。
+
 \begin_inset Flex Structure
 status collapsed
 
@@ -2935,6 +3049,7 @@ Beamer
 \end_inset
 
 クラスは、外見の異なる、以下の3つの定義済ブロックを提供しています。
+
 \end_layout
 
 \begin_deeper
@@ -3046,21 +3161,25 @@ status open
 \begin_deeper
 \begin_layout Itemize
 \SpecialChar LyX
-では、ブロックは、フレームに類似のインターフェースを持ちます。つまり
+では、ブロックは、フレームに類似のインターフェースを持ちます。
+つまり
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 ブロックの内容は、(「ブロック」段落レイアウト自身を除き)入れ子にする必要があります。
+
 \end_layout
 
 \begin_layout Itemize
 同種のブロックが続く際には、「分離線」段落様式で分離してやる必要があります。
+
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 ブロックは重ね合わせに対応しています。
+
 \end_layout
 
 \end_deeper
@@ -3092,11 +3211,13 @@ status open
 \end_deeper
 \begin_layout Frame
 定理は、出力はブロックに類似していますが、(型に依存して)固定した見出しを持っています。
+
 \end_layout
 
 \begin_deeper
 \begin_layout Theorem
 これが定理だ！
+
 \end_layout
 
 \begin_layout Theorem
@@ -3132,10 +3253,12 @@ status collapsed
 \end_inset
 
 を参照)。
+
 \end_layout
 
 \begin_layout Fact
 これが事実だ！
+
 \end_layout
 
 \begin_layout Pause
@@ -3155,6 +3278,7 @@ status collapsed
 \end_inset
 
 を使えば、この固定した見出しに文を追記することができます。
+
 \end_layout
 
 \begin_layout Frame
@@ -3168,6 +3292,7 @@ status open
 
 \begin_layout Plain Layout
 悪い例！
+
 \end_layout
 
 \end_inset
@@ -3202,6 +3327,7 @@ status open
 
 \begin_layout Frame
 発表を段組にすると便利なことがあります。
+
 \end_layout
 
 \begin_deeper
@@ -3238,6 +3364,7 @@ status collapsed
 \end_inset
 
 (段ではない)を選択してください。
+
 \end_layout
 
 \begin_layout Pause
@@ -3272,6 +3399,7 @@ status collapsed
 \end_inset
 
 (段組ではない)を選択してください。
+
 \end_layout
 
 \end_deeper
@@ -3304,6 +3432,7 @@ status collapsed
 
 環境では、\SpecialChar LaTeX
 文法を使って(とはいえ「3.5cm」のようなものも大丈夫です)幅を指定しなくてはなりません。
+
 \end_layout
 
 \begin_layout Itemize
@@ -3326,7 +3455,8 @@ status collapsed
 
 \end_inset
 
-の下に入れ子にしなくてはなりません。同様に、段の内容は
+の下に入れ子にしなくてはなりません。
+同様に、段の内容は
 \begin_inset Flex Structure
 status collapsed
 
@@ -3337,6 +3467,7 @@ status collapsed
 \end_inset
 
 に入れ子にすれば、どのような段落様式でも構いません。
+
 \end_layout
 
 \end_deeper
@@ -3367,7 +3498,9 @@ Beamer
 
 \end_inset
 
-用語では、「モード」は特定の出力経路を指します。各目的のためにモードがいくつか存在しますが、特に3つを取り上げてみたいと思います。
+用語では、「モード」は特定の出力経路を指します。
+各目的のためにモードがいくつか存在しますが、特に3つを取り上げてみたいと思います。
+
 \end_layout
 
 \begin_deeper
@@ -3385,7 +3518,8 @@ Beamer
 
 \end_deeper
 \begin_layout Frame
-beamerモードが既定値です。明示的に指定しない限り、
+beamerモードが既定値です。
+明示的に指定しない限り、
 \begin_inset Flex Structure
 status collapsed
 
@@ -3396,6 +3530,7 @@ Beamer
 \end_inset
 
 文書は「beamer」モードになります。
+
 \end_layout
 
 \begin_layout Standard
@@ -3430,19 +3565,21 @@ status open
 \end_layout
 
 \begin_layout Frame
-しかし、文書の一部やフレーム、見出し、すべての「動作」対応環境は、別のモードに切り替えることができます。例えば、このフレームは「presentation」モード
-に切り替えられています。
+しかし、文書の一部やフレーム、見出し、すべての「動作」対応環境は、別のモードに切り替えることができます。
+例えば、このフレームは「presentation」モードに切り替えられています。
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 それはどういうことですか？
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-つまり、このフレームは、発表(presentation)でのみ表示され、付随の「原稿(article)」を作ったとしても、それには表示されないということです(こ
-の点は後述します)。
+つまり、このフレームは、発表(presentation)でのみ表示され、付随の「原稿(article)」を作ったとしても、それには表示されないということです(この点は後述します)。
+
 \end_layout
 
 \end_deeper
@@ -3480,6 +3617,7 @@ status open
 
 \begin_layout Frame
 このフレームは、発表では表示されませんが、「article」モードにあるので原稿には表示されます。
+
 \end_layout
 
 \begin_layout Standard
@@ -3495,6 +3633,7 @@ status open
 
 \begin_layout Plain Layout
 だからなに？
+
 \end_layout
 
 \end_inset
@@ -3503,7 +3642,11 @@ status open
 \end_layout
 
 \begin_layout Frame
-これは、本当に便利なのですよ！文書を一つだけ作っておいて、発表と配布資料—article(原稿)モードを使って—の両方を生成することができるのです。
+これは、本当に便利なのですよ！
+文書を一つだけ作っておいて、発表と配布資料—
+article(原稿)モードを使って—
+の両方を生成することができるのです。
+
 \end_layout
 
 \begin_deeper
@@ -3518,16 +3661,18 @@ status collapsed
 
 \end_inset
 
-役立つハンドアウトを意味しているのであって、このところふつうに見られるようになったスライドの単なる縮刷版を意味しているのではないのです(どうしてもそうしたければ
-、そのような縮刷版を作ることも可能です)。
+役立つハンドアウトを意味しているのであって、このところふつうに見られるようになったスライドの単なる縮刷版を意味しているのではないのです(どうしてもそうしたければ、そのような縮刷版を作ることも可能です)。
+
 \end_layout
 
 \begin_layout Itemize
 モードを使うと、配布資料に文章を追加したり、一部を隠したりすることが可能です。
+
 \end_layout
 
 \begin_layout Itemize
 例えば、発表と配布資料で異なる画像を使用することも可能です。
+
 \end_layout
 
 \begin_layout Itemize
@@ -3558,6 +3703,7 @@ status open
 
 \begin_layout Frame
 既述のように多くの要素がモードに対応しています。
+
 \end_layout
 
 \begin_deeper
@@ -3567,7 +3713,6 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 編集\SpecialChar menuseparator
 文字様式\SpecialChar menuseparator
 限定挿入(only)
@@ -3616,6 +3761,7 @@ article
 \end_inset
 
 表示することができます。
+
 \end_layout
 
 \end_deeper
@@ -3637,6 +3783,7 @@ status collapsed
 \end_inset
 
 を使えば、原稿(article)モードでのみ出力される差込枠が挿入されるので、そこにはどんな複雑な内容でも入れることもできます。
+
 \end_layout
 
 \end_inset
@@ -3659,6 +3806,7 @@ status collapsed
 \end_inset
 
 を使えば、発表(presentation)モードでのみ出力される差込枠が挿入されるので、そこにはどんな複雑な内容でも入れることもできます。
+
 \end_layout
 
 \end_inset
@@ -3709,10 +3857,12 @@ article
 \end_inset
 
 は原稿にのみ適用されるように定義することもできます。
+
 \end_layout
 
 \begin_layout Itemize
 また、節見出しやフレーム表題・副題を、発表若しくは原稿のみで表示させることもできます(この発表でも「目次」と「参考文献」のフレーム表題でそのようにしています)。
+
 \end_layout
 
 \begin_layout Itemize
@@ -3744,6 +3894,7 @@ status open
 \begin_layout Frame
 \SpecialChar LyX
 でbeamer article(原稿)を作るのは簡単です。
+
 \end_layout
 
 \begin_deeper
@@ -3753,7 +3904,6 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 Beamer Article (標準クラス)
 \end_layout
 
@@ -3764,7 +3914,6 @@ Beamer Article (標準クラス)
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 Beamer Article (KOMA-Script)
 \end_layout
 
@@ -3791,13 +3940,17 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-それだけです。これら二つの文書のいずれかをコンパイルすることによって、配布資料や発表を作ることができます。その一方で、編集するのは片方、即ち発表の方だけで構いま
-せん。
+それだけです。
+これら二つの文書のいずれかをコンパイルすることによって、配布資料や発表を作ることができます。
+その一方で、編集するのは片方、即ち発表の方だけで構いません。
+
 \end_layout
 
 \end_deeper
 \begin_layout Frame
-この発表に付随するbeamer-article文書もご覧ください。この文書と同じフォルダにあります。
+この発表に付随するbeamer-article文書もご覧ください。
+この文書と同じフォルダにあります。
+
 \end_layout
 
 \begin_layout Section
@@ -3828,8 +3981,9 @@ Beamer
 
 \end_inset
 
-発表の外観は、テーマ化されています。テーマは、使用される色やマクロ構造(サイドバーやヘッドラインの使用法など)、フォント、箇条書きの表示の仕方、ブロック、及び発
-表全体の印象一般を定義するものです。
+発表の外観は、テーマ化されています。
+テーマは、使用される色やマクロ構造(サイドバーやヘッドラインの使用法など)、フォント、箇条書きの表示の仕方、ブロック、及び発表全体の印象一般を定義するものです。
+
 \end_layout
 
 \begin_layout Itemize
@@ -3843,6 +3997,7 @@ Beamer
 \end_inset
 
 自体、異なった外見を持つたくさんのテーマを同梱しています(この発表では「Berkeley」テーマを使用しています。
+
 \begin_inset Flex Alert
 status collapsed
 
@@ -3855,6 +4010,7 @@ LaTeXプリアンブル
 \end_inset
 
 を見れば、このテーマを有効にして微調整を加えている様を見ることができるでしょう)。
+
 \end_layout
 
 \begin_layout Itemize
@@ -3868,6 +4024,7 @@ literal "false"
 \end_inset
 
 やインターネット上の他の所からもテーマを手に入れることができます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -3890,6 +4047,7 @@ literal "true"
 \end_inset
 
 に自作テーマの作り方の説明があります。
+
 \end_layout
 
 \end_deeper
@@ -3915,11 +4073,13 @@ status open
 
 \begin_layout Frame
 しかし、外見を変更したい時に、更の状態からテーマを書く必要はありません。
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 既存のテーマは、細部に亘るまで変更したり、(色彩等)大雑把な領域だけを変更したりすることができます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -3942,6 +4102,7 @@ literal "true"
 \end_inset
 
 を参照してください。
+
 \end_layout
 
 \end_deeper
@@ -3957,6 +4118,7 @@ status open
 \begin_layout Plain Layout
 \SpecialChar ldots
 もっとたくさん！
+
 \end_layout
 
 \end_inset
@@ -3975,6 +4137,7 @@ Beamer
 \end_inset
 
 は、ここで取り上げたよりも、もっと多くのことができるのです。
+
 \begin_inset Flex Structure
 status collapsed
 
@@ -3993,6 +4156,7 @@ literal "true"
 \end_inset
 
 に、包括的な説明があります。
+
 \end_layout
 
 \begin_layout Frame
@@ -4008,6 +4172,7 @@ Beamer
 \end_inset
 
 の用例やひな型をご覧ください！
+
 \end_layout
 
 \begin_layout Section
@@ -4020,7 +4185,8 @@ Beamer
 status open
 
 \begin_layout Plain Layout
-以下では、原稿(article)で表題が重複しないように、フレーム表題レイアウトを使います(そしてフレーム表題差込枠は使いません)。また、書誌情報に
+以下では、原稿(article)で表題が重複しないように、フレーム表題レイアウトを使います(そしてフレーム表題差込枠は使いません)。
+また、書誌情報に
 \begin_inset Flex Alert
 status collapsed
 
@@ -4032,7 +4198,9 @@ newblock
 
 \end_inset
 
-を使っていることに留意してください。これは、項目が正しく出力されるのに必要です(PDF出力では著者の色が違うことに注意)。
+を使っていることに留意してください。
+これは、項目が正しく出力されるのに必要です(PDF出力では著者の色が違うことに注意)。
+
 \end_layout
 
 \end_inset
@@ -4067,7 +4235,8 @@ literal "true"
 
 \end_inset
 
-Tantau, Till et al.:
+Tantau,
+ Till et al.:
 \begin_inset ERT
 status collapsed
 

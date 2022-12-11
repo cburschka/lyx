@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -36,9 +36,9 @@ PackageOptions algorithm2e ruled
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -91,12 +91,16 @@ PackageOptions algorithm2e ruled
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -106,9 +110,9 @@ PackageOptions algorithm2e ruled
 status open
 
 \begin_layout Plain Layout
-For correct output, compile with pdflatex.
- Alternatively set Document>Settings>Fonts>use non-TeX fonts and compile
- with XeTeX or LuaTeX.
+For correct output,
+ compile with pdflatex.
+ Alternatively set Document>Settings>Fonts>use non-TeX fonts and compile with XeTeX or LuaTeX.
 \end_layout
 
 \end_inset
@@ -450,7 +454,8 @@ Theory of computation~Complexity classes
 \end_layout
 
 \begin_layout Keywords
-Keyword 1, Keyword 2
+Keyword 1,
+ Keyword 2
 \end_layout
 
 \begin_layout Thanks
@@ -505,10 +510,12 @@ reference "alg:one"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
-, Figure
+,
+ Figure
 \begin_inset space ~
 \end_inset
 
@@ -519,10 +526,12 @@ reference "fig:one"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
-, and Table
+,
+ and Table
 \begin_inset space ~
 \end_inset
 
@@ -530,6 +539,7 @@ noprefix "false"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:one"
+nolink "false"
 
 \end_inset
 
@@ -1012,7 +1022,8 @@ Vertical rules
 \begin_inset Text
 
 \begin_layout Plain Layout
-Never, ever
+Never,
+ ever
 \end_layout
 
 \end_inset

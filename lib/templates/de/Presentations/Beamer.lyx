@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,9 +25,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -78,12 +78,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -125,14 +129,14 @@ Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
 \end_layout
 
 \begin_layout Plain Layout
-In principle, this file can be redistributed and/or modified under the terms
- of the GNU Public License, version 2.
- However, this file is supposed to be a template to be modified for your
- own needs.
- For this reason, if you use this file as a template and not specifically
- distribute it as part of a another package/program, the author grants the
- extra permission to freely copy and modify this file as you see fit and
- even to delete this copyright notice.
+In principle,
+ this file can be redistributed and/or modified under the terms of the GNU Public License,
+ version 2.
+ However,
+ this file is supposed to be a template to be modified for your own needs.
+ For this reason,
+ if you use this file as a template and not specifically distribute it as part of a another package/program,
+ the author grants the extra permission to freely copy and modify this file as you see fit and even to delete this copyright notice.
  
 \end_layout
 
@@ -152,7 +156,8 @@ Kurzversion des Titels
 status collapsed
 
 \begin_layout Plain Layout
-optional, nur bei langen Titeln nötig
+optional,
+ nur bei langen Titeln nötig
 \end_layout
 
 \end_inset
@@ -166,7 +171,8 @@ optional, nur bei langen Titeln nötig
 \end_layout
 
 \begin_layout Subtitle
-Untertitel nur angeben, wenn es einen im Tagungsband gibt
+Untertitel nur angeben,
+ wenn es einen im Tagungsband gibt
 \end_layout
 
 \begin_layout Author
@@ -227,8 +233,8 @@ Einfügen\SpecialChar menuseparator
 Benutzerdefinierte Einfügungen\SpecialChar menuseparator
 Institutsfußnotenmarke
 \family default
-) sollte nur verwendet werden, wenn die Autoren unterschiedlichen Instituten
- angehören.
+) sollte nur verwendet werden,
+ wenn die Autoren unterschiedlichen Instituten angehören.
 \end_layout
 
 \end_inset
@@ -238,16 +244,19 @@ Institutsfußnotenmarke
 status open
 
 \begin_layout Plain Layout
-Autor, Anders
+Autor,
+ Anders
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Itemize
-optional, nur bei vielen Autoren
+optional,
+ nur bei vielen Autoren
 \end_layout
 
 \begin_layout Itemize
-wenn es sehr viele Autoren gibt, besser 
+wenn es sehr viele Autoren gibt,
+ besser 
 \begin_inset Quotes ald
 \end_inset
 
@@ -320,13 +329,14 @@ Einfügen\SpecialChar menuseparator
 Benutzerdefinierte Einfügungen\SpecialChar menuseparator
 Institutsfußnotenmarke
 \family default
-) sollte nur verwendet werden, wenn die Autoren unterschiedlichen Instituten
- angehören.
+) sollte nur verwendet werden,
+ wenn die Autoren unterschiedlichen Instituten angehören.
  
 \end_layout
 
 \begin_layout Itemize
-Haltn Sie es einfach, niemand interessiert sich für Ihre genau Adresse.
+Haltn Sie es einfach,
+ niemand interessiert sich für Ihre genau Adresse.
  
 \end_layout
 
@@ -342,7 +352,8 @@ Universitäten Hier und Da
 status collapsed
 
 \begin_layout Plain Layout
-optional, aber oft nötig
+optional,
+ aber oft nötig
 \end_layout
 
 \end_inset
@@ -366,8 +377,10 @@ Voller oder abgekürzter Name sind möglich.
 \end_layout
 
 \begin_layout Itemize
-Dieser Eintrag ist nicht für das Publikum gedacht (das weiß ja, bei welcher
- Konferenz es ist), sondern für Leute, die die Folien später lesen.
+Dieser Eintrag ist nicht für das Publikum gedacht (das weiß ja,
+ bei welcher Konferenz es ist),
+ sondern für Leute,
+ die die Folien später lesen.
 \end_layout
 
 \end_inset
@@ -382,7 +395,8 @@ KüP 2004
 status collapsed
 
 \begin_layout Plain Layout
-optional, möglichst Abkürzung des Konferenznamens verwenden
+optional,
+ möglichst Abkürzung des Konferenznamens verwenden
 \end_layout
 
 \end_inset
@@ -411,8 +425,9 @@ institution-logo-filename.xxx
  vorhanden ist (wobei xxx ein von \SpecialChar LaTeX
  bzw.
  PDF\SpecialChar LaTeX
- lesbares Grafikformat ist), können Sie ein Logo einfügen, indem Sie
- das Folgende auskommentieren (
+ lesbares Grafikformat ist),
+ können Sie ein Logo einfügen,
+ indem Sie das Folgende auskommentieren (
 \begin_inset Quotes ald
 \end_inset
 
@@ -458,8 +473,8 @@ pgfuseimage{institution-logo}}
 status open
 
 \begin_layout Plain Layout
-Folgendes sollten Sie löschen, wenn nicht am Anfang jedes Unterabschnitts
- die Gliederung gezeigt werdem soll.
+Folgendes sollten Sie löschen,
+ wenn nicht am Anfang jedes Unterabschnitts die Gliederung gezeigt werdem soll.
  
 \end_layout
 
@@ -520,8 +535,8 @@ tableofcontents[currentsection,currentsubsection]
 status open
 
 \begin_layout Plain Layout
-Falls Sie Aufzählungen immer schrittweise zeigen wollen, können Sie folgenden
- Befehl auskommentieren:
+Falls Sie Aufzählungen immer schrittweise zeigen wollen,
+ können Sie folgenden Befehl auskommentieren:
 \end_layout
 
 \end_inset
@@ -573,9 +588,11 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-Einen Vortrag zu strukturieren, ist nicht immer einfach.
+Einen Vortrag zu strukturieren,
+ ist nicht immer einfach.
  Die nachfolgende Struktur kann unangemessen sein.
- Hier ein paar Regeln, die für diese Lösungsvorlage gelten:
+ Hier ein paar Regeln,
+ die für diese Lösungsvorlage gelten:
 \end_layout
 
 \begin_layout Itemize
@@ -599,19 +616,24 @@ Pro Rahmen sollten Sie zwischen 30 Sekunden und zwei Minuten reden.
 
 \begin_layout Itemize
 Konferenzteilnehmer wissen oft wenig von der Materie des Vortrags.
- Also: Vereinfachen Sie! 
-\end_layout
-
-\begin_layout Itemize
-In 20 Minuten ist es schon schwer genug, die Hauptbotschaft zu vermitteln.
- Deshalb sollten Sie Details auslassen, selbst wenn die Darstellung dann
- weniger genau ist, als Sie das gerne möchten.
+ Also:
+ Vereinfachen Sie!
  
 \end_layout
 
 \begin_layout Itemize
-Falls Sie Details weglassen, die eigentlich wichtig für einen Beweis/Umsetzung
- sind, sagen Sie dies den Leuten einmal klar und deutlich.
+In 20 Minuten ist es schon schwer genug,
+ die Hauptbotschaft zu vermitteln.
+ Deshalb sollten Sie Details auslassen,
+ selbst wenn die Darstellung dann weniger genau ist,
+ als Sie das gerne möchten.
+ 
+\end_layout
+
+\begin_layout Itemize
+Falls Sie Details weglassen,
+ die eigentlich wichtig für einen Beweis/Umsetzung sind,
+ sagen Sie dies den Leuten einmal klar und deutlich.
  Alle werden damit leben können.
  
 \end_layout
@@ -651,8 +673,8 @@ status open
 
 \begin_layout Plain Layout
 Eine Überschrift fasst einen Rahmen verständlich zusammen.
- Man muss sie verstehen können, selbst wenn man nicht den Rest des Rahmens
- versteht.
+ Man muss sie verstehen können,
+ selbst wenn man nicht den Rest des Rahmens versteht.
  
 \end_layout
 
@@ -726,7 +748,8 @@ status open
 
 \end_inset
 
-Man kann auch Overlay-Spezifikationen benutzen, um Overlays zu erzeugen.
+Man kann auch Overlay-Spezifikationen benutzen,
+ um Overlays zu erzeugen.
 \end_layout
 
 \begin_layout Itemize
@@ -1093,7 +1116,8 @@ dritte Botschaft
 
 
 \color none
-, aber das reicht dann auch.
+,
+ aber das reicht dann auch.
 \end_layout
 
 \begin_layout Standard
@@ -1122,11 +1146,13 @@ Ausblick
 
 \begin_deeper
 \begin_layout Itemize
-Etwas, was wir noch nicht lösen konnten.
+Etwas,
+ was wir noch nicht lösen konnten.
 \end_layout
 
 \begin_layout Itemize
-Noch etwas, das wir noch nicht lösen konnten.
+Noch etwas,
+ das wir noch nicht lösen konnten.
 \end_layout
 
 \end_deeper
@@ -1240,7 +1266,8 @@ newblock
 
 \end_inset
 
- Klein-Verlag, 1990.
+ Klein-Verlag,
+ 1990.
 \begin_inset ERT
 status collapsed
 
@@ -1312,7 +1339,8 @@ newblock
 Journal on This and That
 \emph default
 .
- 2(1):50–100, 2000.
+ 2(1):50–100,
+ 2000.
 \end_layout
 
 \end_deeper

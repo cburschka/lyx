@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,9 +21,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -78,16 +78,20 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \bulletLaTeX 0 "\raise1pt\hbox{\small\(\blacktriangleright\)}"
 \bulletLaTeX 1 "\raise1pt\hbox{\(\leadsto\)}"
 \bullet 2 4 8 3
 \bullet 3 0 8 -1
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -97,11 +101,13 @@ Aufzählungszeichen anpassen
 \end_layout
 
 \begin_layout Author
-Übersetzer: Hartmut Haase
+Übersetzer:
+ Hartmut Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 6.
+letzte Änderung:
+ 6.
  November 2005
 \end_layout
 
@@ -110,10 +116,11 @@ Einführung
 \end_layout
 
 \begin_layout Standard
-Sie werden recht bald sehen, daß das Anpassen von Aufzählungszeichen recht
- kompliziert sein kann, wenn Sie es wollen.
- Keine Angst, die meisten Einstellungen sind nur einen Mausklick oder zwei
- entfernt.
+Sie werden recht bald sehen,
+ daß das Anpassen von Aufzählungszeichen recht kompliziert sein kann,
+ wenn Sie es wollen.
+ Keine Angst,
+ die meisten Einstellungen sind nur einen Mausklick oder zwei entfernt.
 \end_layout
 
 \begin_layout Itemize
@@ -147,7 +154,8 @@ jede Stufe kann ihr eigenes Aufzählungszeichen haben
 \emph on
 nicht
 \emph default
-, ob die Stufen richtig sind
+,
+ ob die Stufen richtig sind
 \end_layout
 
 \begin_deeper
@@ -164,7 +172,8 @@ Gibt es weitere Einschränkungen?
 \begin_layout Standard
 Ja.
  Die Aufzählungszeichen können nur für das ganze Dokument angepaßt werden.
- Wenn Sie es abschnittsweise tun wollen, müssen Sie es von Hand machen.
+ Wenn Sie es abschnittsweise tun wollen,
+ müssen Sie es von Hand machen.
 \end_layout
 
 \begin_layout Standard
@@ -1167,8 +1176,7 @@ status collapsed
 
 \begin_layout Plain Layout
 NFSS (New Font Selecting Scheme) ist das neue Schema von \SpecialChar LaTeX2e
- (im wesentlichen
- die Befehlsänderungen von 
+ (im wesentlichen die Befehlsänderungen von 
 \family typewriter
 {
 \backslash
@@ -1182,11 +1190,13 @@ bf \SpecialChar ldots
 textbf{\SpecialChar ldots
 }
 \family default
-, obwohl die wirklichen Änderungen im Inneren zu finden sind).
+,
+ obwohl die wirklichen Änderungen im Inneren zu finden sind).
  PS bedeutet PostScript®.
  PSNFSS ist eine Zahl von \SpecialChar LaTeX
--Dateien, die die NFSS-Unterstützung für 35 PS-Fonts
- liefern, die in vielen  PostScript®-Druckern zu finden sind.
+-Dateien,
+ die die NFSS-Unterstützung für 35 PS-Fonts liefern,
+ die in vielen  PostScript®-Druckern zu finden sind.
  
 \end_layout
 

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,9 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -105,12 +105,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -154,14 +158,15 @@ Bine aţi venit în lumea \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-Pentru a uşura răspunsul la întrebările dumneavoastră şi pentru a descrie
- caracteristicile \SpecialChar LyX
--ului, documentaţia a fost împărţită în mai multe  fişiere.
- Fiecare fişier are rostul său, aşa cum se va putea observa din descrierea
- care urmează.
- Înainte de a citi oricare dintre aceste fişiere ar trebui, totuşi, să-l
-  citiţi mai întâi pe acesta, deoarece conţine foarte multă informaţie utilă
- şi pentru că în acest mod puteţi economisi timp.
+Pentru a uşura răspunsul la întrebările dumneavoastră şi pentru a descrie caracteristicile \SpecialChar LyX
+-ului,
+ documentaţia a fost împărţită în mai multe  fişiere.
+ Fiecare fişier are rostul său,
+ aşa cum se va putea observa din descrierea care urmează.
+ Înainte de a citi oricare dintre aceste fişiere ar trebui,
+ totuşi,
+ să-l  citiţi mai întâi pe acesta,
+ deoarece conţine foarte multă informaţie utilă şi pentru că în acest mod puteţi economisi timp.
  
 \end_layout
 
@@ -178,15 +183,19 @@ ATENŢIE!!!!!ATENŢIE!!!!!!ATENŢIE!!!!!
 \end_layout
 
 \begin_layout Standard
-Documentaţia, ca un întreg, nu este completă în acest moment! Ca şi programul,
+Documentaţia,
+ ca un întreg,
+ nu este completă în acest moment!
+ Ca şi programul,
  ea poate fi considerată în faza beta.
  Puteţi fi siguri că totul va fi complet odată cu versiunea 1.0.
 \end_layout
 
 \begin_layout Standard
-Dacă în lectura acestui manual întâlniţi neclarităţi sau vi se pare ceva
- confuz, puteţi contacta echipa \SpecialChar LyX
-: 
+Dacă în lectura acestui manual întâlniţi neclarităţi sau vi se pare ceva confuz,
+ puteţi contacta echipa \SpecialChar LyX
+:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-users@lists.lyx.org"
@@ -196,7 +205,8 @@ literal "false"
 \end_inset
 
 .
- Vă rugăm să puneţi cuvintele: 
+ Vă rugăm să puneţi cuvintele:
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -222,17 +232,21 @@ Unii dintre cititorii acestui articol vor tipări această documentaţie.
 \emph on
 online
 \emph toggle
-, cu \SpecialChar LyX
--ul, ca pe un fişier.
+,
+ cu \SpecialChar LyX
+-ul,
+ ca pe un fişier.
  Pentru cei care citesc documentaţia
 \emph default
  
 \emph on
 online
 \emph toggle
-, există câteva diferenţe faţă de versiunea tipărită.
- În primul rând, titlul este pur şi simplu la începutul documentului, nu
-  formatat pe o pagină separată ca în unele dintre versiunile tipărite.
+,
+ există câteva diferenţe faţă de versiunea tipărită.
+ În primul rând,
+ titlul este pur şi simplu la începutul documentului,
+ nu  formatat pe o pagină separată ca în unele dintre versiunile tipărite.
  Cuprinsul şi notele de subsol nu sunt vizibile.
  Pentru a-l afişa selectaţi
 \emph default
@@ -258,7 +272,8 @@ meniul
 Editare
 \family default
 .
- Pentru a deschide o notă de subsol, care arată ca aceasta,
+ Pentru a deschide o notă de subsol,
+ care arată ca aceasta,
 \begin_inset Foot
 status collapsed
 
@@ -272,13 +287,16 @@ Salut!
 \end_layout
 
 \begin_layout Standard
-Acum, dupa ce am clarificat câteva dintre diferenţele dintre versiunea tipărită
- şi cea 
+Acum,
+ dupa ce am clarificat câteva dintre diferenţele dintre versiunea tipărită şi cea 
 \emph on
 online
 \emph toggle
-, putem să aruncăm o privire asupra formatului  acestui document.
- Puteţi remarca, uneori, diferite fonturi:
+,
+ putem să aruncăm o privire asupra formatului  acestui document.
+ Puteţi remarca,
+ uneori,
+ diferite fonturi:
 \end_layout
 
 \begin_layout Itemize
@@ -286,8 +304,10 @@ online
 \emph on
 Stilul evidenţiat
 \emph default
- este folosit pentru accentuări generale, argumente generice, titluri de
- cărţi, nume de secţiuni ale manualelor şi note din partea autorilor.
+ este folosit pentru accentuări generale,
+ argumente generice,
+ titluri de cărţi,
+ nume de secţiuni ale manualelor şi note din partea autorilor.
 \end_layout
 
 \begin_layout Itemize
@@ -295,9 +315,9 @@ Stilul evidenţiat
 \family typewriter
 Maşină de scris
 \family default
- este folosit pentru nume de programe şi de fişiere, cod \SpecialChar LaTeX
- şi pentru cod
- sursă şi funcţii \SpecialChar LyX
+ este folosit pentru nume de programe şi de fişiere,
+ cod \SpecialChar LaTeX
+ şi pentru cod sursă şi funcţii \SpecialChar LyX
 .
 \end_layout
 
@@ -306,7 +326,9 @@ Maşină de scris
 \family sans
 Sans Serif
 \family default
- este utilizat pentru meniu, butoane, nume de meniuri 
+ este utilizat pentru meniu,
+ butoane,
+ nume de meniuri 
 \emph on
 popup
 \emph default
@@ -324,8 +346,7 @@ Stilul substantiv
 \end_layout
 
 \begin_layout Standard
-Pentru a afla diferitele asocieri dintre taste şi comenzi ar trebui să citiţi
- secţiunea 
+Pentru a afla diferitele asocieri dintre taste şi comenzi ar trebui să citiţi secţiunea 
 \emph on
 Maparea
 \emph default
@@ -355,7 +376,8 @@ Reference.
 \family default
 \SpecialChar LyX
 ].
- Când vom face referire la taste, vom folosi următoarele convenţii:
+ Când vom face referire la taste,
+ vom folosi următoarele convenţii:
 \end_layout
 
 \begin_layout Itemize
@@ -408,7 +430,8 @@ M-
 \family sans
 Meta
 \family default
-, care pentru unele tastaturi este reprezentată de tasta 
+,
+ care pentru unele tastaturi este reprezentată de tasta 
 \family sans
 Alt
 \family default
@@ -506,7 +529,8 @@ Down
 \begin_inset Quotes erd
 \end_inset
 
-: reprezintă tastele cursor.
+:
+ reprezintă tastele cursor.
 \end_layout
 
 \begin_layout Itemize
@@ -581,8 +605,8 @@ PageDown
 \begin_inset Quotes erd
 \end_inset
 
-: acestea sunt cele 6 taste ce apar deasupra tastelor curente la majoritatea
- tastaturilor PC.
+:
+ acestea sunt cele 6 taste ce apar deasupra tastelor curente la majoritatea tastaturilor PC.
   
 \begin_inset Quotes eld
 \end_inset
@@ -666,8 +690,8 @@ Enter,
 
  pe când altele le au pe amîndouă.
  \SpecialChar LyX
- le tratează pe toate ca fiind aceiaşi tastă, astfel încît le vom putea
- utiliza pe oricare din ele.
+ le tratează pe toate ca fiind aceiaşi tastă,
+ astfel încît le vom putea utiliza pe oricare din ele.
 \end_layout
 
 \begin_layout Standard
@@ -692,8 +716,7 @@ Manualul de referinţă
 \end_inset
 
  din când în când.
- Am listat mapările posibile de taste pentru o funcţie în secţiunea corespunzăto
-are din 
+ Am listat mapările posibile de taste pentru o funcţie în secţiunea corespunzătoare din 
 \begin_inset Quotes eld
 \end_inset
 
@@ -730,9 +753,10 @@ Introducere
 Tutorial
 \emph default
  Dacă sunteţi nou în \SpecialChar LyX
-, şi nu aţi utilizat niciodată \SpecialChar LaTeX
- înainte, atunci ar
- trebui să începeţi cu acest fişier.
+,
+ şi nu aţi utilizat niciodată \SpecialChar LaTeX
+ înainte,
+ atunci ar trebui să începeţi cu acest fişier.
  
 \end_layout
 
@@ -752,21 +776,25 @@ fac
  Acesta este un fişier cu cele mai frecvente întrebări referitoare la \SpecialChar LyX
  [
 \emph on
-sau va fi, la timpul potrivit
+sau va fi,
+ la timpul potrivit
 \emph default
 ].
- În tot ceea ce înseamnă procesare de text sunt câteva operaţii comune cu
- care aproape toţi utilizatorii sunt familiarizaţi.
+ În tot ceea ce înseamnă procesare de text sunt câteva operaţii comune cu care aproape toţi utilizatorii sunt familiarizaţi.
  Nu toate acestea sunt valabile însă şi în \SpecialChar LyX
-, şi de aceea, nu au nici un
- sens în \SpecialChar LyX
+,
+ şi de aceea,
+ nu au nici un sens în \SpecialChar LyX
  sau \SpecialChar LaTeX
 .
- Acest fişier încearcă să explice, prin întrebări şi răspunsuri, care sunt
-  operaţiile echivalente în \SpecialChar LyX
+ Acest fişier încearcă să explice,
+ prin întrebări şi răspunsuri,
+ care sunt  operaţiile echivalente în \SpecialChar LyX
 \SpecialChar endofsentence
- De asemenea, tot aici se pot găsi, din când
- în când, referinţe la manualul principal.
+ De asemenea,
+ tot aici se pot găsi,
+ din când în când,
+ referinţe la manualul principal.
 \end_layout
 
 \begin_layout Description
@@ -808,9 +836,8 @@ avansată
 Ghidului utilizatorului
 \emph default
 .
- El include informaţii adiţionale privind tehnoredactarea documentelor şi
- caracteristici ale editărilor specializate, printre aceste incluzând şi
- câteva trucuri ale specialiştilor \SpecialChar LaTeX
+ El include informaţii adiţionale privind tehnoredactarea documentelor şi caracteristici ale editărilor specializate,
+ printre aceste incluzând şi câteva trucuri ale specialiştilor \SpecialChar LaTeX
 .
 \end_layout
 
@@ -820,11 +847,11 @@ Ghidului utilizatorului
 Personalizare
 \emph default
  O descriere avansată a caracteristicilor \SpecialChar LyX
--ului, incluzând informaţii despre
- cum să vă personalizaţi întregul comportament al \SpecialChar LyX
+-ului,
+ incluzând informaţii despre cum să vă personalizaţi întregul comportament al \SpecialChar LyX
 -ului.
- Aceasta include chestiuni legate de mapări, internaţionalizări şi fişiere
- de configurare.
+ Aceasta include chestiuni legate de mapări,
+ internaţionalizări şi fişiere de configurare.
 \end_layout
 
 \begin_layout Description
@@ -840,10 +867,9 @@ de
 
 referinţă
 \emph default
-  Acesta contine o descriere exhaustivă şi detaliată a caracteristicilor
- \SpecialChar LyX
--ului, dar fără aluziile şi descrierile ajutătoare pe care le găsiţi în
- 
+  Acesta contine o descriere exhaustivă şi detaliată a caracteristicilor \SpecialChar LyX
+-ului,
+ dar fără aluziile şi descrierile ajutătoare pe care le găsiţi în 
 \emph on
 Ghidul utilizatorului
 \emph default
@@ -861,8 +887,7 @@ Erori
 cunoscute
 \emph default
  Acest fişier conţine o listă a erorilor cunoscute în \SpecialChar LyX
- şi informaţii despre
- ce trebuie să faceţi dacă depistaţi o eroare în \SpecialChar LyX
+ şi informaţii despre ce trebuie să faceţi dacă depistaţi o eroare în \SpecialChar LyX
 \SpecialChar endofsentence
 
 \end_layout
@@ -878,14 +903,14 @@ Configuraţia
 
 \emph default
  Acest fişier conţine informaţii pe care \SpecialChar LyX
--ul le-a aflat despre instalarea
- pe care aţi făcut-o dumneavoastră.
+-ul le-a aflat despre instalarea pe care aţi făcut-o dumneavoastră.
  Verificaţi pentru a afla dacă vă lipseşte ceva ce aţi dori să aveţi.
 \end_layout
 
 \begin_layout Standard
 Aceste fişiere fac referire unul la celălalt.
- De exemplu, 
+ De exemplu,
+ 
 \emph on
 Ghidul utilizatorului
 \emph default
@@ -893,8 +918,8 @@ Ghidul utilizatorului
 \emph on
 unele
 \emph default
- informaţii despre instalare şi personalizare, dar face referire la manualul
- 
+ informaţii despre instalare şi personalizare,
+ dar face referire la manualul 
 \emph on
 Personalizare
 \emph default
@@ -928,7 +953,8 @@ Tutorialul.
 \end_layout
 
 \begin_layout Standard
-Altfel, \SpecialChar LyX
+Altfel,
+ \SpecialChar LyX
 -ul vi se va părea bizar şi greu de utilizat.
 \end_layout
 
@@ -942,8 +968,7 @@ Raportarea erorilor
 
 \begin_layout Standard
 Destul de uşor de făcut.
- Va trebui să trimiteţi un mesaj pe Developer's Mailing List sau pe User's
- Mailing List.
+ Va trebui să trimiteţi un mesaj pe Developer's Mailing List sau pe User's Mailing List.
  Dacă începeţi linia din subiect cu 
 \begin_inset Quotes eld
 \end_inset
@@ -952,7 +977,8 @@ Doc Error
 \begin_inset Quotes erd
 \end_inset
 
- sau ceva în genul acesta, ne va ajuta foarte mult să o găsim
+ sau ceva în genul acesta,
+ ne va ajuta foarte mult să o găsim
 \end_layout
 
 \begin_layout Standard
@@ -966,8 +992,7 @@ Doc Error
 \align center
 
 \emph on
-Nu faceţi nici o modificare în aceste manuale fără un acord prealabil al
- autorilor!
+Nu faceţi nici o modificare în aceste manuale fără un acord prealabil al autorilor!
 \end_layout
 
 \begin_layout Standard
@@ -981,7 +1006,8 @@ Nu faceţi nici o modificare în aceste manuale fără un acord prealabil al
 
 \lang english
 \SpecialChar LyX
- has a bug tracking system, which you can find at
+ has a bug tracking system,
+ which you can find at
 \lang romanian
  
 \begin_inset Flex URL
@@ -999,7 +1025,8 @@ https://www.lyx.org/trac/wiki/BugTrackerHome
 
 \begin_layout Standard
 Orice modificare aleatoare a acestor manuale ar fi fără rost pentru că,
- oricum, echipa de documentare deţine originalul.
+ oricum,
+ echipa de documentare deţine originalul.
 \end_layout
 
 \begin_layout Subsection
@@ -1008,8 +1035,10 @@ Cum să începeţie
 
 \begin_layout Standard
 Proiectul de documentare al \SpecialChar LyX
-, ca şi orice alt proiect \SpecialChar LyX
-, poate fi susţinut!
+,
+ ca şi orice alt proiect \SpecialChar LyX
+,
+ poate fi susţinut!
  Dacă sunteţi interesat să contribuiţi la Proiectul de documentare al \SpecialChar LyX
 ,
  va trebui să urmaţi aceste etape :
@@ -1027,7 +1056,9 @@ development
 \end_layout
 
 \begin_layout Enumerate
-Apoi, citiţi, 
+Apoi,
+ citiţi,
+ 
 \emph on
 Ghidul utilizatorului
 \emph default
@@ -1043,14 +1074,15 @@ Scopul acestui exerciţiu este sa vă dăm câteva idei.
 Ghidul utilizatorului
 \emph default
  este cel mai complet manual din această documentaţie.
- Va trebui sa vă însuşiţi câteva idei referitoare la modul în care se citeşte
- sau arată acest manual.
+ Va trebui sa vă însuşiţi câteva idei referitoare la modul în care se citeşte sau arată acest manual.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-În cele din urmă, contactaţi echipa \SpecialChar LyX
- : 
+În cele din urmă,
+ contactaţi echipa \SpecialChar LyX
+ :
+ 
 \end_layout
 
 \begin_deeper

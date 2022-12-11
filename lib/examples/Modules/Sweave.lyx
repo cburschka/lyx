@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -33,9 +33,9 @@ sweave
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -90,12 +90,16 @@ sweave
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -131,7 +135,8 @@ status open
 
 %% 
 \backslash
-maxwidth was defined in the preamble; see document settings
+maxwidth was defined in the preamble;
+ see document settings
 \end_layout
 
 \begin_layout Plain Layout
@@ -159,8 +164,10 @@ Yihui Xie
 status collapsed
 
 \begin_layout Plain Layout
-Department of Statistics, Iowa State University.
- Email: 
+Department of Statistics,
+ Iowa State University.
+ Email:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "xie@yihui.name"
@@ -218,15 +225,16 @@ http://www.r-project.org
 
 ) for dynamic report generation using the ideas of literate programming.
  R code can be mixed into a \SpecialChar LaTeX
- document, and will be executed in R when the
- document is compiled; the results are written into the \SpecialChar TeX
+ document,
+ and will be executed in R when the document is compiled;
+ the results are written into the \SpecialChar TeX
  output.
 \end_layout
 
 \begin_layout Standard
 Since \SpecialChar LyX
- 2.0, Sweave can be used out of the box with any document class using
- the 
+ 2.0,
+ Sweave can be used out of the box with any document class using the 
 \family sans
 Sweave
 \family default
@@ -243,8 +251,8 @@ Settings\SpecialChar menuseparator
 Modules
 \family default
 .
- In this manual, we demonstrate some common features of Sweave and explain
- how the module works.
+ In this manual,
+ we demonstrate some common features of Sweave and explain how the module works.
  A PDF version of this manual can be found at 
 \begin_inset Flex URL
 status collapsed
@@ -261,7 +269,8 @@ https://github.com/downloads/yihui/lyx/sweave.pdf
 
 \begin_layout Standard
 Since \SpecialChar LyX
- 2.3, it is necessary to enable the use of 
+ 2.3,
+ it is necessary to enable the use of 
 \emph on
 needauth
 \emph default
@@ -287,17 +296,20 @@ Sweave
 \family typewriter
 Rscript
 \family default
-, so it has to be in the 
+,
+ so it has to be in the 
 \family sans
 PATH
 \family default
  variable of the system.
- It is usually not a problem for Linux and Mac OS users, but may be confusing
- to Windows users; if you do not understand what is 
+ It is usually not a problem for Linux and Mac OS users,
+ but may be confusing to Windows users;
+ if you do not understand what is 
 \family sans
 PATH
 \family default
- under Windows, you may either use the R script 
+ under Windows,
+ you may either use the R script 
 \family sans
 add-R-path-win.R
 \family default
@@ -312,18 +324,21 @@ https://github.com/yihui/lyx
 
 \end_inset
 
- to change it automatically (not recommended; you should learn 
+ to change it automatically (not recommended;
+ you should learn 
 \family sans
 PATH
 \family default
- anyway), or go to 
+ anyway),
+ or go to 
 \family sans
 Tools\SpecialChar menuseparator
 Preferences\SpecialChar menuseparator
 Paths\SpecialChar menuseparator
 PATH prefix
 \family default
- to add the bin path of R (recommended), which is often like 
+ to add the bin path of R (recommended),
+ which is often like 
 \family sans
 C:
 \backslash
@@ -368,7 +383,8 @@ R.home('bin')
 \end_layout
 
 \begin_layout Standard
-After you have done these changes, you need to reconfigure \SpecialChar LyX
+After you have done these changes,
+ you need to reconfigure \SpecialChar LyX
  by 
 \family sans
 Tools\SpecialChar menuseparator
@@ -383,13 +399,14 @@ Rscript
 \family sans
 PATH
 \family default
-, the 
+,
+ the 
 \family sans
 Sweave
 \family default
  module will be unavailable.
- It is recommended to use the latest version of R, since Sweave is still
- being updated.
+ It is recommended to use the latest version of R,
+ since Sweave is still being updated.
  Another dependency is introduced by the \SpecialChar LaTeX
  style file 
 \family sans
@@ -419,7 +436,10 @@ sweave-sty,eval=FALSE
 
 \begin_layout Plain Layout
 
-file.path(R.home('share'), 'texmf', 'tex', 'latex')
+file.path(R.home('share'),
+ 'texmf',
+ 'tex',
+ 'latex')
 \end_layout
 
 \end_inset
@@ -429,8 +449,7 @@ file.path(R.home('share'), 'texmf', 'tex', 'latex')
 
 \begin_layout Standard
 Mik\SpecialChar TeX
- users may add the texmf directory to the list of root directories in
- Mik\SpecialChar TeX
+ users may add the texmf directory to the list of root directories in Mik\SpecialChar TeX
  through Mik\SpecialChar TeX
  settings.
  Further note that 
@@ -455,8 +474,9 @@ ae
 \family sans
 Sweave.sty
 \family default
-, it will directly copy from R, so the Sweave module works even if you do
- not know where is this style file.
+,
+ it will directly copy from R,
+ so the Sweave module works even if you do not know where is this style file.
 \end_layout
 
 \begin_layout Section
@@ -464,8 +484,9 @@ Sweave Examples
 \end_layout
 
 \begin_layout Standard
-Before we write an Sweave document, we can set some Sweave options; the
- command is 
+Before we write an Sweave document,
+ we can set some Sweave options;
+ the command is 
 \family typewriter
 
 \backslash
@@ -478,7 +499,8 @@ Insert\SpecialChar menuseparator
 Custom Insets\SpecialChar menuseparator
 Sweave Options
 \family default
-, or just use \SpecialChar TeX
+,
+ or just use \SpecialChar TeX
  code to write it (
 \family sans
 Insert\SpecialChar menuseparator
@@ -486,19 +508,21 @@ Insert\SpecialChar menuseparator
  Code
 \family default
 ).
- For example, we can set a global option 
+ For example,
+ we can set a global option 
 \family typewriter
 echo=FALSE
 \family default
- in the beginning of a document to suppress all R code (by default, both
- R code and its output will show up in the \SpecialChar LaTeX
+ in the beginning of a document to suppress all R code (by default,
+ both R code and its output will show up in the \SpecialChar LaTeX
  document).
  
 \end_layout
 
 \begin_layout Standard
 To write R code in \SpecialChar LyX
-, you can first insert 
+,
+ you can first insert 
 \family typewriter
 Chunk
 \family default
@@ -508,10 +532,11 @@ Insert\SpecialChar menuseparator
 Custom Insets\SpecialChar menuseparator
 Chunk
 \family default
-, or you can simply open a \SpecialChar TeX
- code environment and write Sweave code chunks
- in it.
- However, \SpecialChar LyX
+,
+ or you can simply open a \SpecialChar TeX
+ code environment and write Sweave code chunks in it.
+ However,
+ \SpecialChar LyX
  provides a summary of all the 
 \family typewriter
 Chunk
@@ -530,7 +555,8 @@ Outline Pane
 \end_layout
 
 \begin_layout Standard
-Some R options can be useful to the Sweave output as well, e.g.
+Some R options can be useful to the Sweave output as well,
+ e.g.
  
 \family typewriter
 width
@@ -540,8 +566,8 @@ width
 useFancyQuotes
 \family default
 .
- The former option can adjust the width of the output, and the latter can
- avoid a common problem with quotes.
+ The former option can adjust the width of the output,
+ and the latter can avoid a common problem with quotes.
  Users are encouraged to read the Sweave manual in R for more details.
 \end_layout
 
@@ -556,7 +582,8 @@ status open
 
 \begin_layout Plain Layout
 
-setup, keep.source=TRUE
+setup,
+ keep.source=TRUE
 \end_layout
 
 \end_inset
@@ -571,7 +598,9 @@ setup, keep.source=TRUE
 
 \begin_layout Plain Layout
 
-options(width = 70, useFancyQuotes = FALSE, digits = 4)
+options(width = 70,
+ useFancyQuotes = FALSE,
+ digits = 4)
 \end_layout
 
 \end_inset
@@ -590,7 +619,9 @@ status open
 
 \begin_layout Plain Layout
 
-sweave-manual, eval=FALSE, keep.source=TRUE
+sweave-manual,
+ eval=FALSE,
+ keep.source=TRUE
 \end_layout
 
 \end_inset
@@ -605,7 +636,8 @@ sweave-manual, eval=FALSE, keep.source=TRUE
 
 \begin_layout Plain Layout
 
-vignette("Sweave", package = "utils")
+vignette("Sweave",
+ package = "utils")
 \end_layout
 
 \end_inset
@@ -614,7 +646,8 @@ vignette("Sweave", package = "utils")
 \end_layout
 
 \begin_layout Standard
-A simple example that will run in any S engine: 
+A simple example that will run in any S engine:
+ 
 \end_layout
 
 \begin_layout Standard
@@ -628,7 +661,8 @@ status open
 
 \begin_layout Plain Layout
 
-print-integers, keep.source=TRUE
+print-integers,
+ keep.source=TRUE
 \end_layout
 
 \end_inset
@@ -662,7 +696,8 @@ status open
 
 \begin_layout Plain Layout
 
-hide-results, results=hide
+hide-results,
+ results=hide
 \end_layout
 
 \end_inset
@@ -686,7 +721,8 @@ print(1:20)
 \end_layout
 
 \begin_layout Standard
-We can also emulate a simple calculator: 
+We can also emulate a simple calculator:
+ 
 \end_layout
 
 \begin_layout Standard
@@ -772,23 +808,26 @@ t1 <- t.test(x)
 \end_layout
 
 \begin_layout Standard
-Note that we can easily integrate some numbers into standard text; this
- is done with the command 
+Note that we can easily integrate some numbers into standard text;
+ this is done with the command 
 \family typewriter
 
 \backslash
 Sexpr{}
 \family default
-, and the corresponding \SpecialChar LyX
+,
+ and the corresponding \SpecialChar LyX
  menu is 
 \family sans
 Insert\SpecialChar menuseparator
 Custom Insets\SpecialChar menuseparator
 S/R expression
 \family default
-, or alternatively just use \SpecialChar TeX
+,
+ or alternatively just use \SpecialChar TeX
  code.
- For example, the third element of the vector 
+ For example,
+ the third element of the vector 
 \family typewriter
 x
 \family default
@@ -894,6 +933,8 @@ summary(iris[,-5])
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -944,13 +985,15 @@ if (require('xtable')) {
 
 \begin_layout Plain Layout
 
-print(xtable(sapply(iris[,-5], quantile)), floating=FALSE)
+print(xtable(sapply(iris[,-5],
+ quantile)),
+ floating=FALSE)
 \end_layout
 
 \begin_layout Plain Layout
 
-} else cat('the xtable package is not available! please install.packages("xtable"
-)')
+} else cat('the xtable package is not available!
+ please install.packages("xtable")')
 \end_layout
 
 \end_inset
@@ -972,7 +1015,8 @@ raw
 \begin_inset Quotes erd
 \end_inset
 
- output, and we can polish these messy numbers with the 
+ output,
+ and we can polish these messy numbers with the 
 \series bold
 xtable
 \series default
@@ -981,6 +1025,7 @@ xtable
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:xtable-demo"
+nolink "false"
 
 \end_inset
 
@@ -988,13 +1033,13 @@ reference "tab:xtable-demo"
 \series bold
 xtable
 \series default
- package with Sweave; note the chunk option 
+ package with Sweave;
+ note the chunk option 
 \family typewriter
 results=tex
 \family default
  makes sure that the R output is written out as raw \SpecialChar LaTeX
- code instead of being
- wrapped in a special environment (
+ code instead of being wrapped in a special environment (
 \family typewriter
 Soutput
 \family default
@@ -1006,6 +1051,7 @@ Figure
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:iris-pairs"
+nolink "false"
 
 \end_inset
 
@@ -1013,6 +1059,7 @@ reference "fig:iris-pairs"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:iris-boxplots"
+nolink "false"
 
 \end_inset
 
@@ -1021,6 +1068,8 @@ reference "fig:iris-boxplots"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1032,7 +1081,8 @@ status open
 
 \begin_layout Plain Layout
 Both eps and pdf are set to true so that both latex and pdflatex work.
- In practice, you would probably just choose one.
+ In practice,
+ you would probably just choose one.
 \end_layout
 
 \end_inset
@@ -1062,7 +1112,8 @@ iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE
 
 \begin_layout Plain Layout
 
-pairs(iris, col = iris$Species)
+pairs(iris,
+ col = iris$Species)
 \end_layout
 
 \end_inset
@@ -1100,6 +1151,8 @@ name "fig:iris-pairs"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1126,7 +1179,8 @@ iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F,eps=T,pdf=T
 
 \begin_layout Plain Layout
 
-par(mar=c(4,5,.1,.3), las=1)
+par(mar=c(4,5,.1,.3),
+ las=1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1164,14 +1218,14 @@ name "fig:iris-boxplots"
 \end_layout
 
 \begin_layout Standard
-We can also export all the R code in an Sweave document as a single R script
- (
+We can also export all the R code in an Sweave document as a single R script (
 \family sans
 File\SpecialChar menuseparator
 Export\SpecialChar menuseparator
 R/S code
 \family default
-), which is done via 
+),
+ which is done via 
 \family typewriter
 R CMD Stangle
 \family default
@@ -1192,10 +1246,9 @@ The
 Sweave
 \family default
  module declares that a \SpecialChar LyX
- document contains literate programming components
- with R, so that \SpecialChar LyX
- will handle such documents according to the specific converter
-s (see the Customization manual).
+ document contains literate programming components with R,
+ so that \SpecialChar LyX
+ will handle such documents according to the specific converters (see the Customization manual).
  The 
 \family sans
 Sweave
@@ -1204,7 +1257,8 @@ Sweave
 \family sans
 sweave
 \family default
- converter, which essentially consists of an R script 
+ converter,
+ which essentially consists of an R script 
 \family sans
 lyxsweave.R
 \family default
@@ -1220,9 +1274,9 @@ Rnw
 \family default
  document from \SpecialChar LyX
  and call Sweave to process it to a \SpecialChar TeX
- document, then \SpecialChar LyX
- takes
- care of the rest of work.
+ document,
+ then \SpecialChar LyX
+ takes care of the rest of work.
 \end_layout
 
 \begin_layout Standard
@@ -1247,8 +1301,7 @@ begin{verbatim}
 
 \begin_layout Plain Layout
 
-Rscript --no-save --no-restore $$s/scripts/lyxsweave.R $$p$$i $$p$$o $$e
- $$r
+Rscript --no-save --no-restore $$s/scripts/lyxsweave.R $$p$$i $$p$$o $$e $$r
 \end_layout
 
 \begin_layout Plain Layout
@@ -1276,17 +1329,19 @@ About \SpecialChar LyX
 
 \family default
 .
- All the rest of options passed to R are explained in the R script, and
- the \SpecialChar LyX
+ All the rest of options passed to R are explained in the R script,
+ and the \SpecialChar LyX
  Customization manual also has detailed explanations about 
 \family typewriter
 $$i
 \family default
-, 
+,
+ 
 \family typewriter
 $$o
 \family default
-, 
+,
+ 
 \family typewriter
 $$e
 \family default
@@ -1295,8 +1350,8 @@ $$e
 $$r
 \family default
 .
- General users do not need to know clearly what they mean, but here we need
- to explain a few issues in the R code:
+ General users do not need to know clearly what they mean,
+ but here we need to explain a few issues in the R code:
 \end_layout
 
 \begin_layout Enumerate
@@ -1310,7 +1365,8 @@ ISO-8859-15
 \family typewriter
 UTF-8
 \family default
-, etc.
+,
+ etc.
  The encoding is used for R to read the 
 \family sans
 Rnw
@@ -1319,15 +1375,16 @@ Rnw
 \end_layout
 
 \begin_layout Enumerate
-the R code chunks in the Sweave document are executed under the directory
- of the \SpecialChar LyX
- document (if you are not sure, put 
+the R code chunks in the Sweave document are executed under the directory of the \SpecialChar LyX
+ document (if you are not sure,
+ put 
 \family typewriter
 getwd()
 \family default
  in a code chunk to see what is the current working directory).
- In this case, you can put data files under the same directory and use relative
- paths in R to guarantee reproducibility, i.e.
+ In this case,
+ you can put data files under the same directory and use relative paths in R to guarantee reproducibility,
+ i.e.
  we do not need to write hard-coded paths which may not exist in other systems.
 \end_layout
 
@@ -1337,14 +1394,14 @@ if \SpecialChar LaTeX
 \family sans
 Sweave.sty
 \family default
-, this R script will copy it to the temporary directory automatically where
- the \SpecialChar LaTeX
+,
+ this R script will copy it to the temporary directory automatically where the \SpecialChar LaTeX
  compilation takes place.
 \end_layout
 
 \begin_layout Enumerate
-Sweave will use the filename of the Rnw file as the prefix string for the
- graphics output by default; one known issue (
+Sweave will use the filename of the Rnw file as the prefix string for the graphics output by default;
+ one known issue (
 \begin_inset CommandInset href
 LatexCommand href
 name "#7551"
@@ -1353,17 +1410,17 @@ literal "false"
 
 \end_inset
 
-) is that if the filename (without extension) contains dots, \SpecialChar LaTeX
- can fail to
- deal with such files in 
+) is that if the filename (without extension) contains dots,
+ \SpecialChar LaTeX
+ can fail to deal with such files in 
 \family typewriter
 
 \backslash
 includegraphics{}
 \family default
 .
- Therefore, we have set the default value of the prefix to be the filename
- with all the dots being replaced by 
+ Therefore,
+ we have set the default value of the prefix to be the filename with all the dots being replaced by 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1372,13 +1429,13 @@ includegraphics{}
 \end_inset
 
 .
- We can also solve this problem in Sweave directly: set the Sweave option
- 
+ We can also solve this problem in Sweave directly:
+ set the Sweave option 
 \family typewriter
 prefix.string
 \family default
- to be a character string without dots, and this option will override the
- default value.
+ to be a character string without dots,
+ and this option will override the default value.
 \end_layout
 
 \begin_layout Standard
@@ -1429,9 +1486,11 @@ end{verbatim}
 
 \begin_layout Standard
 \SpecialChar LyX
- can deal with the font encoding by default, so there is no need to ask
- Sweave to do this (furthermore, this may bring clashes of package options);
- besides, the users can load the 
+ can deal with the font encoding by default,
+ so there is no need to ask Sweave to do this (furthermore,
+ this may bring clashes of package options);
+ besides,
+ the users can load the 
 \series bold
 ae
 \series default
@@ -1444,17 +1503,18 @@ Trouble Shooting
 
 \begin_layout Standard
 Since \SpecialChar LyX
- 2.0, we can see the detailed information during compilation via 
+ 2.0,
+ we can see the detailed information during compilation via 
 \family sans
 View\SpecialChar menuseparator
 View Messages
 \family default
 .
- This is extremely helpful for trouble shooting – the process of R will
- be shown in the message panel, and we will be able to know which chunk
- goes wrong in cases of errors.
- For example, when you compile this document, you can see messages like
- below:
+ This is extremely helpful for trouble shooting – the process of R will be shown in the message panel,
+ and we will be able to know which chunk goes wrong in cases of errors.
+ For example,
+ when you compile this document,
+ you can see messages like below:
 \end_layout
 
 \begin_layout Standard
@@ -1470,37 +1530,29 @@ begin{verbatim}
 
 \begin_layout Plain Layout
 
-17:58:47.868: Processing code chunks with options ...
+17:58:47.868:
+ Processing code chunks with options ...
 \end_layout
 
 \begin_layout Plain Layout
 
-17:58:47.885:  1 : echo keep.source term verbatim (label=setup)
+17:58:47.885:
+  1 :
+ echo keep.source term verbatim (label=setup)
 \end_layout
 
 \begin_layout Plain Layout
 
-17:58:47.889:  2 : echo keep.source (label=sweave-manual)
+17:58:47.889:
+  2 :
+ echo keep.source (label=sweave-manual)
 \end_layout
 
 \begin_layout Plain Layout
 
-17:58:47.908:  3 : echo keep.source term verbatim (label=print-integers)
-\end_layout
-
-\begin_layout Plain Layout
-
-....
-\end_layout
-
-\begin_layout Plain Layout
-
-17:58:47.941: Loading required package: xtable
-\end_layout
-
-\begin_layout Plain Layout
-
-17:58:47.976:  9 : echo term verbatim pdf (label=iris-pairs)
+17:58:47.908:
+  3 :
+ echo keep.source term verbatim (label=print-integers)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1510,7 +1562,27 @@ begin{verbatim}
 
 \begin_layout Plain Layout
 
-17:58:48.116: You can now run (pdf)latex on 'sweave.tex'
+17:58:47.941:
+ Loading required package:
+ xtable
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:47.976:
+  9 :
+ echo term verbatim pdf (label=iris-pairs)
+\end_layout
+
+\begin_layout Plain Layout
+
+....
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:48.116:
+ You can now run (pdf)latex on 'sweave.tex'
 \end_layout
 
 \begin_layout Plain Layout
@@ -1531,27 +1603,27 @@ The string after
 label=
 \family default
  is the chunk label.
- If any chunk causes an error in R, you will see the error message here
- immediately.
+ If any chunk causes an error in R,
+ you will see the error message here immediately.
 \end_layout
 
 \begin_layout Standard
 Another issue with the \SpecialChar TeX
- code environment is the Sweave code chunk may fail
- when we change the alignment of the chunk paragraph in \SpecialChar LyX
+ code environment is the Sweave code chunk may fail when we change the alignment of the chunk paragraph in \SpecialChar LyX
  (using 
 \family sans
 Paragraph settings
 \family default
-), because \SpecialChar LyX
+),
+ because \SpecialChar LyX
  may add a macro like 
 \family typewriter
 
 \backslash
 centering{}
 \family default
- before the code chunk without adding a new line, which will lead to a code
- chunk like this:
+ before the code chunk without adding a new line,
+ which will lead to a code chunk like this:
 \end_layout
 
 \begin_layout Standard
@@ -1585,14 +1657,14 @@ end{verbatim}
 \end_layout
 
 \begin_layout Standard
-This is not a legitimate Sweave code chunk, since 
+This is not a legitimate Sweave code chunk,
+ since 
 \family typewriter
 <<>>=
 \family default
  must start in a new line with nothing before it.
  This does not happen when using the Chunk inset instead of the \SpecialChar TeX
- code environmen
-t.
+ code environment.
  
 \end_layout
 
@@ -1673,9 +1745,9 @@ How to use Sweave with beamer?
 
 \begin_layout Standard
 You will end up with \SpecialChar LaTeX
- errors if you use Sweave in normal beamer slides in
- \SpecialChar LyX
-; the reason is the beamer frame that contains verbatim R code.
+ errors if you use Sweave in normal beamer slides in \SpecialChar LyX
+;
+ the reason is the beamer frame that contains verbatim R code.
  The solution is to use a 
 \emph on
 FragileFrame
@@ -1684,7 +1756,8 @@ FragileFrame
 \emph on
 Frame
 \emph default
-, or to pass the option 
+,
+ or to pass the option 
 \family typewriter
 fragile
 \family default
@@ -1701,15 +1774,17 @@ Can I define my own R script to compile the Rnw document?
 \end_layout
 
 \begin_layout Standard
-Yes, of course.
+Yes,
+ of course.
  First you need to understand how the R script 
 \family typewriter
 $$s
 \family sans
 /scripts/lyxsweave.R
 \family default
- works, which was introduced previously, and we recommend you to read the
- R source code as well (on how R takes the paths and uses 
+ works,
+ which was introduced previously,
+ and we recommend you to read the R source code as well (on how R takes the paths and uses 
 \emph on
 Sweave()
 \emph default
@@ -1726,7 +1801,8 @@ scripts
 \emph on
 user directory
 \emph default
- (again, see 
+ (again,
+ see 
 \family sans
 Help\SpecialChar menuseparator
 About \SpecialChar LyX
@@ -1742,25 +1818,28 @@ user directory
 \emph on
 library directory
 \emph default
-; if an R script 
+;
+ if an R script 
 \family sans
 lyxsweave.R
 \family default
- is found in the user directory, it will be used.
+ is found in the user directory,
+ it will be used.
  It is not recommended to hack the script under the \SpecialChar LyX
  library directory directly,
  since updating \SpecialChar LyX
- will override you modified script (the user directory will
- not be affected).
+ will override you modified script (the user directory will not be affected).
 \end_layout
 
 \begin_layout Standard
-Beside the support for the official Sweave in R, the 
+Beside the support for the official Sweave in R,
+ the 
 \series bold
 knitr
 \series default
- package is also supported, which is an alternative tool to Sweave; the
- corresponding module is named 
+ package is also supported,
+ which is an alternative tool to Sweave;
+ the corresponding module is named 
 \family sans
 Rnw (knitr)
 \family default

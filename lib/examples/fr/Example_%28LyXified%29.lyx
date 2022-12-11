@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -91,11 +95,19 @@ Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour, Date: 30/09/2009, JPChrétien
+Traduction :
+ Mise à jour,
+ Date:
+ 30/09/2009,
+ JPChrétien
 \end_layout
 
 \begin_layout Plain Layout
-Original : Révision: 1.6, Date: 17/01/2003
+Original :
+ Révision:
+ 1.6,
+ Date:
+ 17/01/2003
 \end_layout
 
 \end_inset
@@ -127,8 +139,7 @@ Philosophie générale
 
 \begin_layout Standard
 La philosophie générale de \SpecialChar LyX
- est de vous laisser vous concentrer sur le contenu
- et non pas sur la forme de vos écrits.
+ est de vous laisser vous concentrer sur le contenu et non pas sur la forme de vos écrits.
 \end_layout
 
 \begin_layout Subsection
@@ -139,11 +150,14 @@ Comment \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  utilise \SpecialChar LaTeX
-, un système de préparation de documents conçu par Leslie Lamport
- en 1985.
- Il a été construit, à son tour, à partir d'un langage de composition typographi
-que, appelé \SpecialChar TeX
-, créé par Donald Knuth en 1984.
+,
+ un système de préparation de documents conçu par Leslie Lamport en 1985.
+ Il a été construit,
+ à son tour,
+ à partir d'un langage de composition typographique,
+ appelé \SpecialChar TeX
+,
+ créé par Donald Knuth en 1984.
  \SpecialChar LaTeX
  est conçu autour d'une philosophie similaire à celle de \SpecialChar LyX
 .
@@ -164,16 +178,19 @@ literal "true"
 
 \begin_layout Quote
 Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteur.
- Pour qu'un document soit facile à lire, sa structure visuelle doit refléter
- sa structure logique.
- Les citations et les sources de programmes, étant, logiquement parlant,
- des éléments structurels différents, doivent être visuellement différents
- les uns les autres...
+ Pour qu'un document soit facile à lire,
+ sa structure visuelle doit refléter sa structure logique.
+ Les citations et les sources de programmes,
+ étant,
+ logiquement parlant,
+ des éléments structurels différents,
+ doivent être visuellement différents les uns les autres...
  Comme \SpecialChar LaTeX
- ne peut pas comprendre votre prose, vous devez explicitement définir
- sa structure logique en insérant des codes appropriés...
- Lors de l'écriture de votre document, vous devez vous préoccuper de sa
- structure logique, et non pas de son apparence.
+ ne peut pas comprendre votre prose,
+ vous devez explicitement définir sa structure logique en insérant des codes appropriés...
+ Lors de l'écriture de votre document,
+ vous devez vous préoccuper de sa structure logique,
+ et non pas de son apparence.
 \end_layout
 
 \begin_layout Subsection
@@ -192,9 +209,10 @@ name "subsec:Pourquoi-LyX-est"
 \SpecialChar LyX
  peut être profitable à un plus grand nombre d'utilisateurs que \SpecialChar LaTeX
 .
- Il est beaucoup plus facile à apprendre, car vous n'avez pas à connaître
- \SpecialChar LaTeX
-, qui est pratiquement un langage de programmation.
+ Il est beaucoup plus facile à apprendre,
+ car vous n'avez pas à connaître \SpecialChar LaTeX
+,
+ qui est pratiquement un langage de programmation.
  \SpecialChar LyX
  est en bien des points comparable à d'autres traitements de texte 
 \begin_inset Quotes cld
@@ -208,7 +226,8 @@ What you see is what you get
 \begin_inset Quotes crd
 \end_inset
 
- (WYSIWYG), excepté que \SpecialChar LyX
+ (WYSIWYG),
+ excepté que \SpecialChar LyX
  est plutôt 
 \begin_inset Quotes cld
 \end_inset
@@ -223,12 +242,15 @@ What you see is what you mean
 
  (WYSIWYM).
  \SpecialChar LyX
- combine donc le confort des autres traitements de texte, et la puissance
- de \SpecialChar LaTeX
+ combine donc le confort des autres traitements de texte,
+ et la puissance de \SpecialChar LaTeX
 .
  C'est une bonne chose.
- De plus, le format de fichier est indépendant du système.
- Et pour finir, c'est un logiciel LIBRE ! 
+ De plus,
+ le format de fichier est indépendant du système.
+ Et pour finir,
+ c'est un logiciel LIBRE !
+ 
 \end_layout
 
 \begin_layout Section
@@ -243,7 +265,8 @@ Fonctionnalités de \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-Après tout, quelle autre raison pourrait vous le faire utiliser ?
+Après tout,
+ quelle autre raison pourrait vous le faire utiliser ?
 \end_layout
 
 \end_inset
@@ -275,10 +298,12 @@ Voir Section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Pourquoi-LyX-est"
+nolink "false"
 
 \end_inset
 
-, page
+,
+ page
 \begin_inset space ~
 \end_inset
 
@@ -286,14 +311,15 @@ reference "subsec:Pourquoi-LyX-est"
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "subsec:Pourquoi-LyX-est"
+nolink "false"
 
 \end_inset
 
  pour une discussion plus approfondie sur les avantages de \SpecialChar LyX
- par rapport
- aux autres traitements de texte.
+ par rapport aux autres traitements de texte.
  Voir aussi le site web de \SpecialChar LyX
-: 
+:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -304,7 +330,8 @@ https://www.lyx.org
 
 \end_inset
 
- (pour la version francophone, cliquer sur le drapeau).
+ (pour la version francophone,
+ cliquer sur le drapeau).
  
 \end_layout
 
@@ -351,7 +378,8 @@ GOTO
 \end_layout
 
 \begin_layout Standard
-Après cette pensée hautement scientifique, je me suis senti l'âme d'un poète.
+Après cette pensée hautement scientifique,
+ je me suis senti l'âme d'un poète.
  J'ai donc écrit ceci :
 \end_layout
 
@@ -373,12 +401,13 @@ Les maths
 \end_layout
 
 \begin_layout Standard
-Ma formule préférée est la résolution d'une équation du second degré: si
- 
+Ma formule préférée est la résolution d'une équation du second degré:
+ si 
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
- (eq.1), alors 
+ (eq.1),
+ alors 
 \begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
@@ -387,7 +416,8 @@ Ma formule préférée est la résolution d'une équation du second degré: si
 \end_layout
 
 \begin_layout Standard
-Une autre formule favorite est la base du calcul différentiel : 
+Une autre formule favorite est la base du calcul différentiel :
+ 
 \begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
@@ -414,21 +444,19 @@ ification
 
 \begin_layout Itemize
 j'ai pu éliminer les lignes de tirets.
- Elles n'étaient là que pour séparer le titre et les références du reste
- du document: \SpecialChar LyX
+ Elles n'étaient là que pour séparer le titre et les références du reste du document:
+ \SpecialChar LyX
  (ou \SpecialChar LaTeX
 ) en sait assez pour les séparer avec de l'espacement.;
 \end_layout
 
 \begin_layout Itemize
-je ne me suis pas donné la peine de mettre les équations mathématiques en
- mode affichage (ou 
+je ne me suis pas donné la peine de mettre les équations mathématiques en mode affichage (ou 
 \emph on
 hors ligne
 \emph default
 ).
- Je n'ai pas non plus utilisé le mode de numérotation automatique des équations
- de \SpecialChar LyX
+ Je n'ai pas non plus utilisé le mode de numérotation automatique des équations de \SpecialChar LyX
  parce qu'il n'est pas décrit dans le 
 \emph on
 Manuel
@@ -457,7 +485,8 @@ Bibliographie
 \begin_inset Quotes crd
 \end_inset
 
-, en fonction de la classe du document) lorsque vous sélectionnez l
+,
+ en fonction de la classe du document) lorsque vous sélectionnez l
 \family sans
 e style Bibliograph
 \family default
@@ -472,17 +501,23 @@ literal "true"
 
 \end_inset
 
-Lamport, Leslie.
+Lamport,
+ Leslie.
  
 \emph on
 \lang english
 \SpecialChar LaTeX
- : A Document Preparation System.
+ :
+ A Document Preparation System.
 
 \emph default
- Addison-Wesley, Reading, Massachusetts
+ Addison-Wesley,
+ Reading,
+ Massachusetts
 \lang french
-, deuxième édition, 1994.
+,
+ deuxième édition,
+ 1994.
 \end_layout
 
 \end_body

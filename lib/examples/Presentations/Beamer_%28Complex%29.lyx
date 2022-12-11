@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -164,9 +164,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -217,12 +217,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -244,7 +248,8 @@ International Computer Science Institute
 \begin_inset Newline newline
 \end_inset
 
-Berkeley, California
+Berkeley,
+ California
 \begin_inset Argument 1
 status collapsed
 
@@ -258,7 +263,8 @@ ICSI
 \end_layout
 
 \begin_layout Date
-January 30th, 2004
+January 30th,
+ 2004
 \end_layout
 
 \begin_layout Frame
@@ -933,7 +939,8 @@ Elements in a set need to be sorted.
 \begin_inset Newline newline
 \end_inset
 
-The comparison relation may be cyclic, however.
+The comparison relation may be cyclic,
+ however.
 \end_layout
 
 \end_deeper
@@ -1184,7 +1191,8 @@ graph
 \begin_inset Formula $G=(V,E)$
 \end_inset
 
-, a
+,
+ a
 \color none
  
 \color red
@@ -1674,7 +1682,8 @@ pgfputat{
 \backslash
 pgfxy(5.3,1)}{
 \backslash
-pgfbox[left,center]{, $d=2$}}}
+pgfbox[left,center]{,
+ $d=2$}}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1691,7 +1700,8 @@ pgfputat{
 \backslash
 pgfxy(5.3,1)}{
 \backslash
-pgfbox[left,center]{, $r=1.5$}}}
+pgfbox[left,center]{,
+ $r=1.5$}}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1708,7 +1718,8 @@ pgfputat{
 \backslash
 pgfxy(5.3,1)}{
 \backslash
-pgfbox[left,center]{, $r=1.25$}}}
+pgfbox[left,center]{,
+ $r=1.25$}}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2045,7 +2056,8 @@ Reachability
 \begin_inset space ~
 \end_inset
 
-Problem: Is there a path from 
+Problem:
+ Is there a path from 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2085,7 +2097,8 @@ Construction
 \begin_inset space ~
 \end_inset
 
-Problem: Construct a path from 
+Problem:
+ Construct a path from 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2097,7 +2110,8 @@ Problem: Construct a path from
 \begin_inset Formula $t$
 \end_inset
 
-? 
+?
+ 
 \end_layout
 
 \begin_layout Description
@@ -2115,7 +2129,8 @@ Optimization
 \begin_inset space ~
 \end_inset
 
-Problem: Construct a shortest path from 
+Problem:
+ Construct a shortest path from 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2145,7 +2160,8 @@ Distance
 \begin_inset space ~
 \end_inset
 
-Problem: Is the distance of 
+Problem:
+ Is the distance of 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2183,7 +2199,8 @@ Approximation
 \begin_inset space ~
 \end_inset
 
-Problem: Construct a path from 
+Problem:
+ Construct a path from 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2223,8 +2240,7 @@ status collapsed
 \backslash
 pgfdeclaremask{computer-mask}{beamer-g4-mask} 
 \backslash
-pgfdeclareimage[height=2cm,mask=computer-mask,interpolate=true]{computer}{beamer
--g4} 
+pgfdeclareimage[height=2cm,mask=computer-mask,interpolate=true]{computer}{beamer-g4} 
 \end_layout
 
 \end_inset
@@ -2274,7 +2290,8 @@ pgfxy(0,4)}{%
 
   
 \backslash
-tape{input tape (read only), $n$ symbols}{}{3401234*3143223=}} 
+tape{input tape (read only),
+ $n$ symbols}{}{3401234*3143223=}} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2325,7 +2342,8 @@ pgfxy(7,2)}{%
 
      
 \backslash
-shorttape{work tape (read/write), $O(
+shorttape{work tape (read/write),
+ $O(
 \backslash
 log n)$ symbols}{}{42}}
 \end_layout
@@ -2450,7 +2468,9 @@ Deterministic logspace machines can compute
 
 \begin_deeper
 \begin_layout Itemize
-addition, multiplication, and even division
+addition,
+ multiplication,
+ and even division
 \end_layout
 
 \begin_layout Itemize
@@ -2936,11 +2956,13 @@ The Circuit Complexity Classes AC
 \begin_inset Formula $^{0}$
 \end_inset
 
-, NC
+,
+ NC
 \begin_inset Formula $^{1}$
 \end_inset
 
-, and NC
+,
+ and NC
 \begin_inset Formula $^{2}$
 \end_inset
 
@@ -3225,7 +3247,8 @@ Are Equally Difficult
 \end_layout
 
 \begin_layout Corollary
-For directed graphs, we can solve
+For directed graphs,
+ we can solve
 \end_layout
 
 \begin_deeper
@@ -3352,7 +3375,8 @@ Finding Paths in Tournaments
 \end_layout
 
 \begin_layout Subsection
-Complexity of: Does a Path Exist?
+Complexity of:
+ Does a Path Exist?
 \end_layout
 
 \begin_layout Frame
@@ -3509,7 +3533,8 @@ hierarchy
 \end_layout
 
 \begin_layout Subsection
-Complexity of: Construct a Shortest Path
+Complexity of:
+ Construct a Shortest Path
 \end_layout
 
 \begin_layout Frame
@@ -3647,7 +3672,8 @@ Shortest path in tournaments can be constructed
 \begin_inset Newline newline
 \end_inset
 
-in logarithmic space, iff 
+in logarithmic space,
+ iff 
 \begin_inset Formula $\Class{L}=\Class{NL}$
 \end_inset
 
@@ -5005,7 +5031,8 @@ hierarchy
 \end_layout
 
 \begin_layout Subsection
-Complexity of: Approximating the Shortest Path
+Complexity of:
+ Approximating the Shortest Path
 \end_layout
 
 \begin_layout Frame
@@ -5131,7 +5158,8 @@ O\left(\log|V|\log\frac{1}{r-1}\right).
 \end_layout
 
 \begin_layout Corollary
-In tournaments, paths can be constructed in logarithmic space.
+In tournaments,
+ paths can be constructed in logarithmic space.
 \end_layout
 
 \begin_layout Standard
@@ -5176,7 +5204,8 @@ hierarchy
 status open
 
 \begin_layout Plain Layout
-If a frame includes a program listing, the frame needs to be marked as 
+If a frame includes a program listing,
+ the frame needs to be marked as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5240,7 +5269,8 @@ def func(param):
 
 \begin_layout Plain Layout
 
-'This is a German word: Tschüs'
+'This is a German word:
+ Tschüs'
 \end_layout
 
 \begin_layout Plain Layout
@@ -5526,7 +5556,10 @@ newblock
 
 \end_inset
 
- Holt, Rinehart, and Winston, 1968.
+ Holt,
+ Rinehart,
+ and Winston,
+ 1968.
  
 \begin_inset ERT
 status collapsed
@@ -5587,7 +5620,9 @@ newblock
 Proc.
  of COCOON 2002
 \emph default
-, Springer-Verlag, 2002.
+,
+ Springer-Verlag,
+ 2002.
 \end_layout
 
 \begin_layout Bibliography
@@ -5615,8 +5650,7 @@ newblock
 
 \end_inset
 
- A logspace approximation scheme for the shortest path problem for graphs
- with bounded independence number.
+ A logspace approximation scheme for the shortest path problem for graphs with bounded independence number.
 \begin_inset ERT
 status collapsed
 
@@ -5634,7 +5668,9 @@ newblock
 Proc.
  of STACS 2004
 \emph default
-, Springer-Verlag, 2004.
+,
+ Springer-Verlag,
+ 2004.
  
 \begin_inset ERT
 status collapsed
@@ -5766,6 +5802,7 @@ For each
 \end_inset
 
 ,
+
 \color none
  
 \color red
@@ -5808,7 +5845,8 @@ For each
 \begin_inset Formula $k$
 \end_inset
 
-, there exists a
+,
+ there exists a
 \color none
  
 \color red
@@ -5816,8 +5854,7 @@ logspace approximation scheme
 \color none
  
 \color inherit
-for approximating the shortest path in graphs with independence number at
- most
+for approximating the shortest path in graphs with independence number at most
 \begin_inset space ~
 \end_inset
 
@@ -5844,7 +5881,8 @@ For each
 \begin_inset Formula $k$
 \end_inset
 
-, finding the
+,
+ finding the
 \color none
  
 \color red
@@ -5929,7 +5967,8 @@ Is Party Unknown.
 \end_layout
 
 \begin_layout Corollary
-For undirected graphs, we can solve
+For undirected graphs,
+ we can solve
 \end_layout
 
 \begin_deeper
@@ -5985,7 +6024,8 @@ status open
 
 \end_inset
 
-, 
+,
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -6032,7 +6072,8 @@ status open
 
 \end_inset
 
-, 
+,
+ 
 \end_layout
 
 \begin_layout Itemize

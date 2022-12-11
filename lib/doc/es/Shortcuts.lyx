@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -92,8 +96,7 @@ Por el equipo \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-Este archivo contiene la lista de los atajos de teclado definidos actualmente
- en el archivo bind 
+Este archivo contiene la lista de los atajos de teclado definidos actualmente en el archivo bind 
 \family typewriter
 
 \begin_inset Info
@@ -135,8 +138,7 @@ Guía del Usuario
 \end_layout
 
 \begin_layout Standard
-Las combinaciones de teclas en este documento se actualizan automáticamente
- cuando se cambian en las preferencias.
+Las combinaciones de teclas en este documento se actualizan automáticamente cuando se cambian en las preferencias.
  Por eso no es posible por ahora traducir en \SpecialChar LyX
  la notación de las teclas.
  Teclas equivalentes en español:
@@ -166,6 +168,7 @@ Las combinaciones de teclas en este documento se actualizan automáticamente
 Tab
 \family default
 :
+
 \family sans
  Tabulador
 \end_layout
@@ -181,6 +184,7 @@ Tab
 PgUp
 \family default
 :
+
 \family sans
  AvPág
 \end_layout
@@ -195,7 +199,8 @@ PgUp
 \family sans
 Shift
 \family default
-: 
+:
+ 
 \family sans
 Mayúsculas
 \end_layout
@@ -211,6 +216,7 @@ Mayúsculas
 Space
 \family default
 :
+
 \family sans
  Espacio
 \end_layout
@@ -228,6 +234,7 @@ Space
 Return
 \family default
 :
+
 \family sans
  Retorno
 \end_layout
@@ -243,6 +250,7 @@ Return
 Right
 \family default
 :
+
 \family sans
  Derecha
 \end_layout
@@ -258,6 +266,7 @@ Right
 Left
 \family default
 :
+
 \family sans
  Izquierda
 \end_layout

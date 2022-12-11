@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -3763,7 +3767,8 @@ arg   "math-delim | |"
 تفضيلات\SpecialChar menuseparator
 تحرير\SpecialChar menuseparator
 اختصارات\SpecialChar menuseparator
-جديد ، ثم نكتب الدالة ونختار الرمز.
+جديد ،
+ ثم نكتب الدالة ونختار الرمز.
 \end_layout
 
 \begin_layout Paragraph*
@@ -3785,7 +3790,8 @@ arg   "math-delim | |"
 \begin_inset Quotes crd
 \end_inset
 
- ونختارها، لكن باستخدام الاختصارات نختصر كل هذه الخطوات في خطوة واحدة.
+ ونختارها،
+ لكن باستخدام الاختصارات نختصر كل هذه الخطوات في خطوة واحدة.
 \end_layout
 
 \begin_layout Standard
@@ -3795,7 +3801,8 @@ arg   "math-delim | |"
 تفضيلات\SpecialChar menuseparator
 تحرير\SpecialChar menuseparator
 اختصارات\SpecialChar menuseparator
-جديد ، ونكتب في حقل الدالة
+جديد ،
+ ونكتب في حقل الدالة
 \end_layout
 
 \begin_layout Standard
@@ -3821,12 +3828,13 @@ times
 \end_layout
 
 \begin_layout Standard
-ثم ننقر على زر الاختصار الفارغ، ثم نضغط الزرين 
+ثم ننقر على زر الاختصار الفارغ،
+ ثم نضغط الزرين 
 \begin_inset Formula $Alt+8$
 \end_inset
 
- ثم زر موافق، الآن إذا اردنا إدراج إشارة الضرب في أي معادلة نضغط الزرين
- 
+ ثم زر موافق،
+ الآن إذا اردنا إدراج إشارة الضرب في أي معادلة نضغط الزرين 
 \begin_inset Formula $Alt+8$
 \end_inset
 
@@ -3854,7 +3862,8 @@ times
 تفضيلات\SpecialChar menuseparator
 تحرير\SpecialChar menuseparator
 اختصارات\SpecialChar menuseparator
-جديد ، ونكتب في حقل الدالة
+جديد ،
+ ونكتب في حقل الدالة
 \end_layout
 
 \begin_layout Standard
@@ -3936,12 +3945,13 @@ times 10^
 \begin_inset Formula $SHIFT+6$
 \end_inset
 
- ) ثم ننقر على زر الاختصار الفارغ، ثم نضغط الزرين 
+ ) ثم ننقر على زر الاختصار الفارغ،
+ ثم نضغط الزرين 
 \begin_inset Formula $Alt+6$
 \end_inset
 
- ثم زر موافق، الآن إذا اردنا إدراج الأس للأساس عشرة في أي معادلة نضغط الزرين
- 
+ ثم زر موافق،
+ الآن إذا اردنا إدراج الأس للأساس عشرة في أي معادلة نضغط الزرين 
 \begin_inset Formula $Alt+6$
 \end_inset
 
@@ -3955,8 +3965,7 @@ times 10^
 \end_layout
 
 \begin_layout Standard
-عند كتابة المعادلات والمسائل الرياضية والفيزيائية نحتاج لكتابة اسم المعادلة
- أو رمز لها أو كلمة مثل 
+عند كتابة المعادلات والمسائل الرياضية والفيزيائية نحتاج لكتابة اسم المعادلة أو رمز لها أو كلمة مثل 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3974,7 +3983,8 @@ times 10^
 تفضيلات\SpecialChar menuseparator
 تحرير\SpecialChar menuseparator
 اختصارات\SpecialChar menuseparator
-جديد ، ونكتب في حقل الدالة
+جديد ،
+ ونكتب في حقل الدالة
 \end_layout
 
 \begin_layout Standard
@@ -3998,16 +4008,19 @@ tag*
 \end_layout
 
 \begin_layout Standard
-ثم ننقر على زر الاختصار الفارغ، ثم نضغط الزرين 
+ثم ننقر على زر الاختصار الفارغ،
+ ثم نضغط الزرين 
 \begin_inset Formula $Alt+t$
 \end_inset
 
- ثم زر موافق، الآن إذا اردنا إدراج مربع اسم معادلة في أي معادلة نضغط الزرين
+ ثم زر موافق،
+ الآن إذا اردنا إدراج مربع اسم معادلة في أي معادلة نضغط الزرين 
+\begin_inset Formula $Alt+t$
+\end_inset
+
+ ،
+ وهذا الاختصار لن يعمل إلا إذا كانت المعادلة من نوع معادلة مرقمة،
  
-\begin_inset Formula $Alt+t$
-\end_inset
-
- ، وهذا الاختصار لن يعمل إلا إذا كانت المعادلة من نوع معادلة مرقمة، 
 \family sans
 إدراج\SpecialChar menuseparator
 رياضيات\SpecialChar menuseparator

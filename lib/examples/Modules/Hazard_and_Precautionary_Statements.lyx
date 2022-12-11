@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -130,8 +130,8 @@ Introduction
 
 \begin_layout Standard
 To be able to insert chemical hazard and precautionary statements in \SpecialChar LyX
-, you
- need to load the module 
+,
+ you need to load the module 
 \family sans
 Risk
 \begin_inset space ~
@@ -183,7 +183,8 @@ H-P
 
 number
 \family default
- is used to typeset the number, the inset 
+ is used to typeset the number,
+ the inset 
 \family sans
 H-P
 \begin_inset space ~
@@ -206,7 +207,8 @@ H200
 
 \end_inset
 
- has the statement: 
+ has the statement:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -232,7 +234,8 @@ H200
 
 \end_inset
 
-: 
+:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -246,7 +249,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-As you can see, the statement inset can be left empty.
+As you can see,
+ the statement inset can be left empty.
  In this case the previously used number is used for the statement.
 \end_layout
 
@@ -266,7 +270,8 @@ P235
 
 \end_inset
 
- is: 
+ is:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -285,13 +290,13 @@ Statement Alternatives
 
 \begin_layout Standard
 Some statements allow you to choose between certain alternatives.
- In these cases you must add a dot and the number of the alternative to
- the statement number.
+ In these cases you must add a dot and the number of the alternative to the statement number.
  Some examples:
 \end_layout
 
 \begin_layout Description
-P250.1 leads to: 
+P250.1 leads to:
+ 
 \begin_inset Flex H-P number
 status open
 
@@ -302,7 +307,8 @@ P250.1
 
 \end_inset
 
-: 
+:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -316,7 +322,8 @@ status open
 \end_layout
 
 \begin_layout Description
-P250.2 leads to: 
+P250.2 leads to:
+ 
 \begin_inset Flex H-P number
 status open
 
@@ -327,7 +334,8 @@ P250.2
 
 \end_inset
 
-: 
+:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -353,7 +361,8 @@ The alternative number
 \end_layout
 
 \begin_layout Description
-P250.0 leads to: 
+P250.0 leads to:
+ 
 \begin_inset Flex H-P number
 status open
 
@@ -364,7 +373,8 @@ P250.0
 
 \end_inset
 
-: 
+:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -424,7 +434,8 @@ P264
 
 \end_inset
 
- says: 
+ says:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -465,7 +476,8 @@ P321
 
 \end_inset
 
- says: 
+ says:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -533,7 +545,8 @@ P321
 
 \end_inset
 
- says: 
+ says:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -567,7 +580,11 @@ The statements are output depending on the language.
 \begin_inset Newline newline
 \end_inset
 
-Danish, English, French, German, Italian and Spanish
+Danish,
+ English,
+ French,
+ German,
+ Italian and Spanish
 \begin_inset Newline newline
 \end_inset
 
@@ -609,7 +626,8 @@ H251
 
 \end_inset
 
-: 
+:
+ 
 \begin_inset Flex H-P statement
 status open
 
@@ -634,7 +652,8 @@ H251
 
 \end_inset
 
-: 
+:
+ 
 \begin_inset Flex H-P statement
 status open
 

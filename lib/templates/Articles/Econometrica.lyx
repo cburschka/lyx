@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31,9 +31,9 @@ theorems-ams
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -84,12 +84,16 @@ theorems-ams
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -100,12 +104,10 @@ status open
 
 \begin_layout Plain Layout
 This is a template \SpecialChar LyX
- file for articles to be submitted to the Journal Econometric
-a.
+ file for articles to be submitted to the Journal Econometrica.
  How to install the Econometrica \SpecialChar LaTeX
  class to your \SpecialChar LaTeX
- system is explained in
- 
+ system is explained in 
 \begin_inset Flex URL
 status open
 
@@ -134,8 +136,8 @@ This template is prepared for the
 draft
 \series default
  mode.
- When you finalize the document for actual submission, uncheck the option
- 
+ When you finalize the document for actual submission,
+ uncheck the option 
 \family sans
 Predefined
 \family default
@@ -182,7 +184,8 @@ Other available document options are:
 \series bold
 titlepage
 \series default
-: print the title page (default in draft mode)
+:
+ print the title page (default in draft mode)
 \end_layout
 
 \begin_layout Plain Layout
@@ -190,7 +193,8 @@ titlepage
 \series bold
 notitlepage
 \series default
-: do not print the title page (default in final mode)
+:
+ do not print the title page (default in final mode)
 \end_layout
 
 \begin_layout Plain Layout
@@ -198,7 +202,8 @@ notitlepage
 \series bold
 doublespacing
 \series default
-: set the double spacing (default in draft mode)
+:
+ set the double spacing (default in draft mode)
 \end_layout
 
 \begin_layout Plain Layout
@@ -206,7 +211,8 @@ doublespacing
 \series bold
 singlespacing
 \series default
-: set the single spacing (default in final mode)
+:
+ set the single spacing (default in final mode)
 \end_layout
 
 \begin_layout Plain Layout
@@ -214,7 +220,8 @@ singlespacing
 \series bold
 linenumbers
 \series default
-: print line numbers on margins (default in draft mode)
+:
+ print line numbers on margins (default in draft mode)
 \end_layout
 
 \begin_layout Plain Layout
@@ -222,7 +229,8 @@ linenumbers
 \series bold
 nolinenumbers
 \series default
-: turn off line numbers (default in final mode)
+:
+ turn off line numbers (default in final mode)
 \end_layout
 
 \begin_layout Plain Layout
@@ -230,7 +238,8 @@ nolinenumbers
 \series bold
 infoline
 \series default
-: print id line at bottom of the page (default in draft mode)
+:
+ print id line at bottom of the page (default in draft mode)
 \end_layout
 
 \begin_layout Plain Layout
@@ -238,7 +247,8 @@ infoline
 \series bold
 noinfoline
 \series default
-: turn off id line (default in final mode)
+:
+ turn off id line (default in final mode)
 \end_layout
 
 \end_inset
@@ -260,13 +270,13 @@ status open
 
 \begin_layout Plain Layout
 You can use Author environment when there is only one author.
- However, if you have multiple authors, use Authors Block instead of Author
- environment as in this example.
+ However,
+ if you have multiple authors,
+ use Authors Block instead of Author environment as in this example.
  Put the name of each author in the Author inset.
  Put all names within one line.
- For the corresponding author, put Corresponding Author inset as a tag in
- the Author inset (you don't have to fill in anything in Corresponing Author
- inset).
+ For the corresponding author,
+ put Corresponding Author inset as a tag in the Author inset (you don't have to fill in anything in Corresponing Author inset).
 \end_layout
 
 \end_inset
@@ -397,7 +407,8 @@ Author name to be shown at the header of even pages
 
 \begin_layout Address
 Address.
- Email: 
+ Email:
+ 
 \begin_inset Flex Internet Address Reference
 status open
 
@@ -407,7 +418,9 @@ email
 
 \end_inset
 
-, Web: 
+,
+ Web:
+ 
 \begin_inset Flex Internet Address Reference
 status open
 
@@ -524,8 +537,8 @@ name "sec:section"
 
 \end_inset
 
-Section label must not be inserted in the section line, but put it in the
- text body as this example.
+Section label must not be inserted in the section line,
+ but put it in the text body as this example.
 \end_layout
 
 \begin_layout Bibliography
@@ -537,8 +550,11 @@ literal "true"
 
 \end_inset
 
-Smith, Adam (1759) The Theory of Moral Sentiments, A.
- Millar, London.
+Smith,
+ Adam (1759) The Theory of Moral Sentiments,
+ A.
+ Millar,
+ London.
 \end_layout
 
 \begin_layout Bibliography
@@ -563,7 +579,8 @@ status collapsed
  (1776) An Inquiry into the Nature and Causes of the Wealth of Nations,
  W.
  Strahan and T.
- Cadell, London.
+ Cadell,
+ London.
 \begin_inset Note Note
 status open
 

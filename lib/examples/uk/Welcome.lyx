@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 95 95
 \font_tt_scale 100 100
 \use_microtype false
@@ -75,11 +75,14 @@
 \paperpagestyle default
 \tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -90,19 +93,25 @@
 \end_layout
 
 \begin_layout Section*
-Ось декілька речей, про які ви маєте знати, користуючись \SpecialChar LyX
+Ось декілька речей,
+ про які ви маєте знати,
+ користуючись \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
- постачається з відмінною документацією — будь ласка, користуйтеся нею!
+ постачається з відмінною документацією —
+ будь ласка,
+ користуйтеся нею!
  Почніть з пункту меню
 \family sans
  Довідка\SpecialChar menuseparator
 Вступ
 \family default
-, — програма покаже дуже короткий вступ до документації.
+,
+ —
+ програма покаже дуже короткий вступ до документації.
  Продовжіть вивчення \SpecialChar LyX
  за допомогою пункту меню
 \family sans
@@ -114,16 +123,21 @@
 
 \begin_layout Enumerate
 \SpecialChar LyX
- — це те, що ми називаємо «процесором документів».
- За своєю структурою програма відрізняється від звичайних текстових процесорів
- — вона спрощує написання документів.
- Але відмінності не такі значні, отже, не лякайтеся.
+ —
+ це те,
+ що ми називаємо «процесором документів».
+ За своєю структурою програма відрізняється від звичайних текстових процесорів —
+ вона спрощує написання документів.
+ Але відмінності не такі значні,
+ отже,
+ не лякайтеся.
  Всі пояснення можна знайти у документації.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Ми вже згадували, що вам варто ознайомитися з документацією?
+Ми вже згадували,
+ що вам варто ознайомитися з документацією?
 \end_layout
 
 \end_inset
@@ -132,8 +146,10 @@ status collapsed
 \end_layout
 
 \begin_layout Enumerate
-Документи, створені у \SpecialChar LyX
- виглядають чудово! Скористайтеся пунктом меню
+Документи,
+ створені у \SpecialChar LyX
+ виглядають чудово!
+ Скористайтеся пунктом меню
 \family sans
  Документ\SpecialChar menuseparator
 Переглянути
@@ -146,14 +162,17 @@ status collapsed
 
 (pdflatex)]
 \family default
-, щоб переконатися у цьому на власні очі.
+,
+ щоб переконатися у цьому на власні очі.
 \end_layout
 
 \begin_layout Enumerate
-Так, у \SpecialChar LyX
+Так,
+ у \SpecialChar LyX
  можна користуватися (майже) всіма функціональними можливостями \SpecialChar LaTeX
 .
- І так, \SpecialChar LyX
+ І так,
+ \SpecialChar LyX
  може імпортувати файли \SpecialChar LaTeX
 .
  Досвідчені користувачі \SpecialChar LaTeX
@@ -161,20 +180,25 @@ status collapsed
 \emph on
  Підручника
 \emph default
-, і одразу перейти до читання глави «\SpecialChar LyX
+,
+ і одразу перейти до читання глави «\SpecialChar LyX
  для користувачів \SpecialChar LaTeX
 ».
- (Всім іншим: не переймайтеся, вам не потрібно знати \SpecialChar LaTeX
-, щоб користуватися
- \SpecialChar LyX
+ (Всім іншим:
+ не переймайтеся,
+ вам не потрібно знати \SpecialChar LaTeX
+,
+ щоб користуватися \SpecialChar LyX
 .)
 \end_layout
 
 \begin_layout Enumerate
 У \SpecialChar LyX
- передбачено багато можливостей для користувачів, які читають або пишуть
- мовою, відмінною від англійської.
- Крім того, у програмі можна налаштувати майже всі клавіатурні скорочення,
+ передбачено багато можливостей для користувачів,
+ які читають або пишуть мовою,
+ відмінною від англійської.
+ Крім того,
+ у програмі можна налаштувати майже всі клавіатурні скорочення,
  панелі інструментів та багато інших характеристик.
  Докладніше про це можна дізнатися з розділу
 \family sans
@@ -199,10 +223,12 @@ https://www.lyx.org
 
 .
  Там ви можете отримати відомості про \SpecialChar LyX
-, підписатися на списки листування
- \SpecialChar LyX
-, здійснити візуальну подорож \SpecialChar LyX
-: 
+,
+ підписатися на списки листування \SpecialChar LyX
+,
+ здійснити візуальну подорож \SpecialChar LyX
+:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -213,16 +239,18 @@ https://www.lyx.org/Walkthrough
 
 \end_inset
 
-, а також знайти багато іншої корисної інформації.
+,
+ а також знайти багато іншої корисної інформації.
 \end_layout
 
 \begin_layout Enumerate
 
 \series bold
 Зауваження для користувачів Linux:
+
 \series default
- будь ласка, не забудьте встановити потрібні вам мовні пакунки дистрибутива
- \SpecialChar LaTeX
+ будь ласка,
+ не забудьте встановити потрібні вам мовні пакунки дистрибутива \SpecialChar LaTeX
  
 \family sans
 \SpecialChar TeX
@@ -233,13 +261,14 @@ https://www.lyx.org/Walkthrough
 Live
 \family default
 .
- Якщо ви цього не зробите, спроби запустити \SpecialChar LaTeX
- завершуватимуться повідомленнями
- про помилки.
+ Якщо ви цього не зробите,
+ спроби запустити \SpecialChar LaTeX
+ завершуватимуться повідомленнями про помилки.
 \begin_inset Newline newline
 \end_inset
 
-Для прикладу, у дистрибутивах Linux 
+Для прикладу,
+ у дистрибутивах Linux 
 \family sans
 (K,X)Ubuntu
 \family default

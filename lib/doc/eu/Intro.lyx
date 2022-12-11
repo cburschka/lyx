@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,9 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -105,12 +105,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -121,15 +125,16 @@
 \end_layout
 
 \begin_layout Author
-egilea: \SpecialChar LyX
+egilea:
+ \SpecialChar LyX
  taldea.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Bidali iradokizunak edo erroreei buruzko zuzenketak \SpecialChar LyX
- dokumentazioko posta-zerren
-da honetara: 
+ dokumentazioko posta-zerrenda honetara:
+ 
 \lang english
 
 \begin_inset CommandInset href
@@ -146,11 +151,16 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-Itzulpena: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2010.
+Itzulpena:
+ Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>,
+ 2004,
+ 2010.
 \begin_inset Newline newline
 \end_inset
 
-Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
+Zuzenketak:
+ Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>,
+ 2004.
 \end_layout
 
 \end_inset
@@ -180,29 +190,44 @@ Zer da \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  dokumentuak prestatzeko sistema bat da.
- Matematikak, erreferentzia gurutzatuak, bibliografiak, indizeak eta bestelakoak
- erabiliz artikulu tekniko eta zientifiko konplexuak sortzeko aukera eskaintzen
- dizu.
- Edozein luzeratako dokumentuak idazteko gaitasuna duen tresna paregabea
- da: dokumentua hainbat ataletan edo orrialdetan automatikoki zatitzeko,
+ Matematikak,
+ erreferentzia gurutzatuak,
+ bibliografiak,
+ indizeak eta bestelakoak erabiliz artikulu tekniko eta zientifiko konplexuak sortzeko aukera eskaintzen dizu.
+ Edozein luzeratako dokumentuak idazteko gaitasuna duen tresna paregabea da:
+ dokumentua hainbat ataletan edo orrialdetan automatikoki zatitzeko,
  zuzentzaile ortografikoak lantzeko eta bestelako eginbideak ditu.
- Amatxori eskutitz bat idazteko ere erabil dezakezu, nahiz eta ziurrenik
- hori egiteko programa sinpleagoren bat erabilgarri egon.
- Ez da iragarki, posterrak edo marrazkiak sortzeko tresna (gero azalduko
- da zergatia), nahiz eta gogorki saiatuta hori ere lor daitekeen.
- Beraren erabileraren gaineko zenbait adibide: memoriak, eskutitzak, desadostasu
-nak eta horrelakoak, irakurtzeko oharrak, ikastarotako liburuxkak, hitzaldietara
-ko laburpenak, softwareari buruzko dokumentazioa, liburuak (PostgreSQL,
- telepatia, kriptologia, fikziozko edota maitasunezko nobelak, olerkiak,
- bertsoak, umeentzako ipuinak e.a.), ekitaldi zientifikoetarako artikuluak,
- musika eta filmentzako script-ak, proiektuetarako txostenak \SpecialChar ldots
+ Amatxori eskutitz bat idazteko ere erabil dezakezu,
+ nahiz eta ziurrenik hori egiteko programa sinpleagoren bat erabilgarri egon.
+ Ez da iragarki,
+ posterrak edo marrazkiak sortzeko tresna (gero azalduko da zergatia),
+ nahiz eta gogorki saiatuta hori ere lor daitekeen.
+ Beraren erabileraren gaineko zenbait adibide:
+ memoriak,
+ eskutitzak,
+ desadostasunak eta horrelakoak,
+ irakurtzeko oharrak,
+ ikastarotako liburuxkak,
+ hitzaldietarako laburpenak,
+ softwareari buruzko dokumentazioa,
+ liburuak (PostgreSQL,
+ telepatia,
+ kriptologia,
+ fikziozko edota maitasunezko nobelak,
+ olerkiak,
+ bertsoak,
+ umeentzako ipuinak e.a.),
+ ekitaldi zientifikoetarako artikuluak,
+ musika eta filmentzako script-ak,
+ proiektuetarako txostenak \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- ordenagailuen bitartez dokumentazioa idazteko tresna eraginkorra da, markatze-h
-izkuntza darabil, 
+ ordenagailuen bitartez dokumentazioa idazteko tresna eraginkorra da,
+ markatze-hizkuntza darabil,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -211,8 +236,8 @@ idazmakina
 \end_inset
 
  kontzeptu zaharkitua apurtuz.
- Ahalegin gutxirekin eta denbora oso labur batean dokumentu profesionalak
- sortu nahi dituztenentzako diseinatua dago, eta 
+ Ahalegin gutxirekin eta denbora oso labur batean dokumentu profesionalak sortu nahi dituztenentzako diseinatua dago,
+ eta 
 \begin_inset Quotes eld
 \end_inset
 
@@ -221,19 +246,21 @@ maketazioko
 \end_inset
 
  aditua izan gabe.
- Maketazio lanez ordenagailua arduratzen da, ez egilea; \SpecialChar LyX
--ekin egileak dokumentua
-ren edukian kontzentratzen da.
+ Maketazio lanez ordenagailua arduratzen da,
+ ez egilea;
+ \SpecialChar LyX
+-ekin egileak dokumentuaren edukian kontzentratzen da.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- erabiltzeko lehen aurrerapausoa zuk, erabiltzaile zaren horrek, daukazun
- pentsaera aldatzean datza.
- Garai batean (sua asmatu eta mende gutxitara) dokumentuak sortzeko tresnak
- idazmakinak ziren, eta bere mugak gainditzeko hainbat trikimailu beharko
- ikasi.
- Honela, esaldia edo hitz bat azpimarratzeko 
+ erabiltzeko lehen aurrerapausoa zuk,
+ erabiltzaile zaren horrek,
+ daukazun pentsaera aldatzean datza.
+ Garai batean (sua asmatu eta mende gutxitara) dokumentuak sortzeko tresnak idazmakinak ziren,
+ eta bere mugak gainditzeko hainbat trikimailu beharko ikasi.
+ Honela,
+ esaldia edo hitz bat azpimarratzeko 
 \begin_inset Quotes eld
 \end_inset
 
@@ -241,15 +268,22 @@ _
 \begin_inset Quotes erd
 \end_inset
 
- karakterearekin berridazten genuen, esaldiari garrantzi handiagoa emanez.
- Taula bat sortzeko, berriz, zutabe bakoitzaren zabalera zehaztu, eta kontuz
- kontu tabulazioz betetzen genuen.
- Gutunak eta bestelakoak sortzerakoan, eskuinera 'koskatu', e.a.
- Gainera, lerro-amaierako hitz banaketekin kontuz ibili beharra.
+ karakterearekin berridazten genuen,
+ esaldiari garrantzi handiagoa emanez.
+ Taula bat sortzeko,
+ berriz,
+ zutabe bakoitzaren zabalera zehaztu,
+ eta kontuz kontu tabulazioz betetzen genuen.
+ Gutunak eta bestelakoak sortzerakoan,
+ eskuinera 'koskatu',
+ e.a.
+ Gainera,
+ lerro-amaierako hitz banaketekin kontuz ibili beharra.
 \end_layout
 
 \begin_layout Standard
-Beste hitzetan, denok entrenatuak izan ginen 
+Beste hitzetan,
+ denok entrenatuak izan ginen 
 \begin_inset Quotes eld
 \end_inset
 
@@ -258,32 +292,36 @@ zer hizki zein lekutan kokatu
 \end_inset
 
  lan egiteko era horiekin arduratzeko.
- Ondorioz, ia testu-prozesadoreen gehiengo batek oraindik bizimodu horrekin
- darrai.
+ Ondorioz,
+ ia testu-prozesadoreen gehiengo batek oraindik bizimodu horrekin darrai.
  Tabuladorea leku batean zuriuneak ezartzeko erabiltzen da.
- Oraindik, orrialde batean gauza bakoitzak eduki behar duen kokapenarekin
- arduratu behar izaten dugu.
- Dokumentu zati baten letra-tipoa aldatzea, idazmakina baten idazgurpila
- aldatzea bezalako zerbait da.
- WYSIWYG motako testu-prozesadoreen filosofia da hori: "Ikusten duzuna lortzen
- duzu" (WYSIWYG, What You See Is What You Get).
- Zoritxarrez, paradigma honen emaitza "Ikusten duzuna da lortzen duzun guztia".
+ Oraindik,
+ orrialde batean gauza bakoitzak eduki behar duen kokapenarekin arduratu behar izaten dugu.
+ Dokumentu zati baten letra-tipoa aldatzea,
+ idazmakina baten idazgurpila aldatzea bezalako zerbait da.
+ WYSIWYG motako testu-prozesadoreen filosofia da hori:
+ "Ikusten duzuna lortzen duzu" (WYSIWYG,
+ What You See Is What You Get).
+ Zoritxarrez,
+ paradigma honen emaitza "Ikusten duzuna da lortzen duzun guztia".
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
--eko oinarrizko izaera zer egiten ari garen horretan datza, eta ez 
+-eko oinarrizko izaera zer egiten ari garen horretan datza,
+ eta ez 
 \emph on
 nola
 \emph default
  egitean.
- "Ikusten duzuna lortzen duzu" (WYSIWYG, What You See Is What You Get) pentsamol
-deko prozesadore baten ordez \SpecialChar LyX
+ "Ikusten duzuna lortzen duzu" (WYSIWYG,
+ What You See Is What You Get) pentsamoldeko prozesadore baten ordez \SpecialChar LyX
 -en eredua "Ikusten duzuna 
 \emph on
 esan nahi
 \emph default
- duzu" (WYSIWYM, What You See Is What You 
+ duzu" (WYSIWYM,
+ What You See Is What You 
 \emph on
 Mean
 \emph default
@@ -292,27 +330,31 @@ Mean
 
 \begin_layout Standard
 \SpecialChar LyX
- arlo honetan bereizten da, beste testu-prozesadore arrunt batekin konparatuz
- .
+ arlo honetan bereizten da,
+ beste testu-prozesadore arrunt batekin konparatuz .
  Hizki bat leku zehatz batean egoteaz arduratu beharrik ez daukazu.
  Esan \SpecialChar LyX
 -i 
 \emph on
 zer egiten ari zaren
 \emph default
-, eta bera, 
+,
+ eta bera,
+ 
 \emph on
 estilo
 \emph default
- izeneko arautegi bat jarraituz, beste denaz arduratuko da.
+ izeneko arautegi bat jarraituz,
+ beste denaz arduratuko da.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
- Zehatzago izatearren, bulegotikako suiteak (azken bertsioak) markatze-metodoare
-n antzekoa erabiltzen duten orri-estiloak dituzte.
- Nola nahi ere, gure esperientziaren arabera, eguneroko zereginetan oso
- gutxi erabiltzen dira.
+ Zehatzago izatearren,
+ bulegotikako suiteak (azken bertsioak) markatze-metodoaren antzekoa erabiltzen duten orri-estiloak dituzte.
+ Nola nahi ere,
+ gure esperientziaren arabera,
+ eguneroko zereginetan oso gutxi erabiltzen dira.
 \end_layout
 
 \end_inset
@@ -331,9 +373,10 @@ Sarrera
 \end_inset
 
  izeneko atal bat eduki nahi duzu txostenaren hasieran.
- Ireki zure testu-prozesadoreko letra-tipoen menua, letra-tamaina berria
- aukeratzeko.
- Ondoren, aktibatu letra lodiarekin.
+ Ireki zure testu-prozesadoreko letra-tipoen menua,
+ letra-tamaina berria aukeratzeko.
+ Ondoren,
+ aktibatu letra lodiarekin.
  Jarraian idatzi 
 \begin_inset Quotes eld
 \end_inset
@@ -347,16 +390,20 @@ Sarrera
 \end_inset
 
 .
- Nola ez, denbora pasa ahala, gero atal hau dokumentuko beste leku batean
- kokatzeko, edo aurretik beste atal bat idazteko asmoa edukiz gero, bai
- honi bai beste atal guztiei zenbatzailean zenbakiak aldatu beharko dizkiozu,
- eta nola ez, aurkibideko zenbaki guztiak aldatu.
+ Nola ez,
+ denbora pasa ahala,
+ gero atal hau dokumentuko beste leku batean kokatzeko,
+ edo aurretik beste atal bat idazteko asmoa edukiz gero,
+ bai honi bai beste atal guztiei zenbatzailean zenbakiak aldatu beharko dizkiozu,
+ eta nola ez,
+ aurkibideko zenbaki guztiak aldatu.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
--en berriz, kokatu goialdean dauden botoitxo guztien ezkerretara dagoen
- goitibeherako zerrendan, hautatu 
+-en berriz,
+ kokatu goialdean dauden botoitxo guztien ezkerretara dagoen goitibeherako zerrendan,
+ hautatu 
 \family sans
 Atala
 \family default
@@ -365,17 +412,19 @@ Atala
 
 \begin_layout Standard
 Hori da dena.
- Ebaki atal hori eta beste edonon itsatsiz gero, dena bere kasa berriz zenbatua
- izango da.
- Gainera, atal horri buruz errenferentziak sartzen badituzu (erreferentzia
- gurutzatuen etiketak txertatuz), \SpecialChar LyX
--ek dokumentuaren barruko buruzko erreferentzi
-a guztiak eguneratuko ditu, ez daukazu atalen zenbaketa gehiago idatzi beharrik.
+ Ebaki atal hori eta beste edonon itsatsiz gero,
+ dena bere kasa berriz zenbatua izango da.
+ Gainera,
+ atal horri buruz errenferentziak sartzen badituzu (erreferentzia gurutzatuen etiketak txertatuz),
+ \SpecialChar LyX
+-ek dokumentuaren barruko buruzko erreferentzia guztiak eguneratuko ditu,
+ ez daukazu atalen zenbaketa gehiago idatzi beharrik.
 \end_layout
 
 \begin_layout Standard
 Ohiko testu-prozesadore orokorrekin kontsistentzia-arazoak gertatzen dira.
- Bost egun igaro ondoren, txostena berriro ireki eta 4.
+ Bost egun igaro ondoren,
+ txostena berriro ireki eta 4.
 \begin_inset space ~
 \end_inset
 
@@ -384,11 +433,14 @@ atala hasteko asmoa daukazu.
 \begin_inset space ~
 \end_inset
 
-neurriko letra lodia erabili behar dela ahaztu zaizu, eta 16
+neurriko letra lodia erabili behar dela ahaztu zaizu,
+ eta 16
 \begin_inset space ~
 \end_inset
 
-neurrikoa erabiltzen duzu; beraz, 4.
+neurrikoa erabiltzen duzu;
+ beraz,
+ 4.
 \begin_inset space ~
 \end_inset
 
@@ -398,45 +450,53 @@ ataleko izenburuko letra-tipoa eta 1.
 
 atalean erabilitakoak desberdinak dira.
  \SpecialChar LyX
--en ez dago arazo hori, zure ordez letra-tipoa eta tamainak egoki edukitzeaz
- ordenagailua arduratuko baita.
- Azken finean, horretarako sortu ziren ordenagailuak, guri bizitza errazteko.
+-en ez dago arazo hori,
+ zure ordez letra-tipoa eta tamainak egoki edukitzeaz ordenagailua arduratuko baita.
+ Azken finean,
+ horretarako sortu ziren ordenagailuak,
+ guri bizitza errazteko.
 \end_layout
 
 \begin_layout Standard
 Beste adibide bat.
  Demagun zerrenda bat egiten ari zarela.
- Beste testu-prozesadoreetan zerrenda bat tabulazio eta lerro berri (lerro-jauzi
-) batzuen ondorioa besterik ez da izaten, zerrendako elementu bakoitzaren
- etiketa non jarri, zer den, zenbateko tartea eta antzekoetan pentsatu behar
- duzu.
+ Beste testu-prozesadoreetan zerrenda bat tabulazio eta lerro berri (lerro-jauzi) batzuen ondorioa besterik ez da izaten,
+ zerrendako elementu bakoitzaren etiketa non jarri,
+ zer den,
+ zenbateko tartea eta antzekoetan pentsatu behar duzu.
  \SpecialChar LyX
--ekin, ordea, bi ardura hartu beharko dituzu, bata zelako zerrenda mota
- den, eta bestea, bertan zer idatzi behar duzun.
+-ekin,
+ ordea,
+ bi ardura hartu beharko dituzu,
+ bata zelako zerrenda mota den,
+ eta bestea,
+ bertan zer idatzi behar duzun.
  Eta kitto!
 \end_layout
 
 \begin_layout Standard
-Beraz, \SpecialChar LyX
--en atzean dagoen ideia hau da: zer egin nahi duzun zehaztea, ez
- nola egin nahi duzun.
+Beraz,
+ \SpecialChar LyX
+-en atzean dagoen ideia hau da:
+ zer egin nahi duzun zehaztea,
+ ez nola egin nahi duzun.
  "What You See Is What You Get" modeloaren ordez \SpecialChar LyX
--ek "What You See Is What
- You 
+-ek "What You See Is What You 
 \emph on
 Mean"
 \emph default
  edo "WYSIWYM" erabiltzen du.
- Ahalmen handiko burutazio honek dokumentuak idazteko zeregina oso sinplifikatze
-n du.
+ Ahalmen handiko burutazio honek dokumentuak idazteko zeregina oso sinplifikatzen du.
  Horregatik irudi edo iragarkiak sortzeko \SpecialChar LyX
  ez da erabilgarria.
- Kasu horietan, gauza bakoitza zein lekutan kokatu behar den zehaztu behar
- duzu, hemen ez baitago paragrafo, atal eta bestelako unitate funtzionalik.
+ Kasu horietan,
+ gauza bakoitza zein lekutan kokatu behar den zehaztu behar duzu,
+ hemen ez baitago paragrafo,
+ atal eta bestelako unitate funtzionalik.
  Ez du esan nahi \SpecialChar LyX
 -i zenbait funtzio falta zaizkiola.
- Esan nahi du lan horretarako ez dela tresna egokia – marrazkiak ukitzeko
- tresna egokiak dauden bezala, dokumentuak idazteko tresnen artean \SpecialChar LyX
+ Esan nahi du lan horretarako ez dela tresna egokia – marrazkiak ukitzeko tresna egokiak dauden bezala,
+ dokumentuak idazteko tresnen artean \SpecialChar LyX
  daukagu.
 \end_layout
 
@@ -472,22 +532,25 @@ Zuriune
 \end_layout
 
 \begin_layout Standard
-Tabuladoreek zehazten dute erregela batean zehar orrialde bakoitzeko elementuak
- non kokatzen diren, \SpecialChar LyX
+Tabuladoreek zehazten dute erregela batean zehar orrialde bakoitzeko elementuak non kokatzen diren,
+ \SpecialChar LyX
 -en alferrikakoak dira.
- Programa gauza bakoitzaren kokapenaz arduratzen da, zu ez.
- Zuriune osagarriekin ere antzera: \SpecialChar LyX
--ek gehituko ditu, behar diren heinean
- eta inguruaren arabera.
- Hasieran, bi lerro huts jarraian ezin ezartzea nahiko bitxi gertatuko zaigu,
- baina 'WYSIWYM' pentsamoldea ibiltzen ikastean zentzu gehiago hartzen joango
- zara.
+ Programa gauza bakoitzaren kokapenaz arduratzen da,
+ zu ez.
+ Zuriune osagarriekin ere antzera:
+ \SpecialChar LyX
+-ek gehituko ditu,
+ behar diren heinean eta inguruaren arabera.
+ Hasieran,
+ bi lerro huts jarraian ezin ezartzea nahiko bitxi gertatuko zaigu,
+ baina 'WYSIWYM' pentsamoldea ibiltzen ikastean zentzu gehiago hartzen joango zara.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
--ek aurkezten dizkizun eginbide batzuk, baina irudikatu dezakezun bezala
- erabiltzen ez direnak: 
+-ek aurkezten dizkizun eginbide batzuk,
+ baina irudikatu dezakezun bezala erabiltzen ez direnak:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -500,7 +563,9 @@ Orri-jauziak.
 
 \begin_layout Itemize
 Lerro-tartea (adb.
- zuriune sinplea, bikoitza, e.a.).
+ zuriune sinplea,
+ bikoitza,
+ e.a.).
 \end_layout
 
 \begin_layout Itemize
@@ -512,31 +577,36 @@ Letra-tipo eta tamainak.
 \end_layout
 
 \begin_layout Itemize
-Letra-familia (lodia, etzana, azpimarratua, e.a.).
+Letra-familia (lodia,
+ etzana,
+ azpimarratua,
+ e.a.).
 \end_layout
 
 \begin_layout Standard
 Nahiz eta \SpecialChar LyX
--en agertu, oro har ez dira erabiltzen.
+-en agertu,
+ oro har ez dira erabiltzen.
  \SpecialChar LyX
- gauza horietaz arduratzen da zure ordez, eta egiten ari zarenaren ondorioekin
- bat egiten du.
- Dokumentuko zati bakoitzari letra-tipo eta tamaina zehatzak automatikoki
- ezartzen dizkio.
- Paragrafoen koskak testuinguruaren menpe daude; paragrafo mota bakoitza
- era ezberdinean 'koskatzen' da.
+ gauza horietaz arduratzen da zure ordez,
+ eta egiten ari zarenaren ondorioekin bat egiten du.
+ Dokumentuko zati bakoitzari letra-tipo eta tamaina zehatzak automatikoki ezartzen dizkio.
+ Paragrafoen koskak testuinguruaren menpe daude;
+ paragrafo mota bakoitza era ezberdinean 'koskatzen' da.
  Orri-jauziak modu automatiko batean lantzen dira.
- Oro har, lerro, hitz eta paragrafo-tarteak aldakorrak dira, \SpecialChar LyX
--ek ezartzen
- ditu.
+ Oro har,
+ lerro,
+ hitz eta paragrafo-tarteak aldakorrak dira,
+ \SpecialChar LyX
+-ek ezartzen ditu.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Eginbide hauek denak zehatz ditzakezu (gutxi batzuk zehazteko \SpecialChar LaTeX
--eko ezaguerak
- behar dira) bai dokumentu osorako bai eta zati baterako ere.
- Xehetasun gehiagotarako, ikusi 
+-eko ezaguerak behar dira) bai dokumentu osorako bai eta zati baterako ere.
+ Xehetasun gehiagotarako,
+ ikusi 
 \emph on
 Erabiltzailearen gida
 \emph default
@@ -553,10 +623,11 @@ Eginbide gehigarriak
 \end_layout
 
 \begin_layout Standard
-Azkenik, \SpecialChar LyX
+Azkenik,
+ \SpecialChar LyX
 -ek (eta \SpecialChar LaTeX
--ek ere bai) testu-prozesadore askori gainditzen dien
- arloak hauek dira: 
+-ek ere bai) testu-prozesadore askori gainditzen dien arloak hauek dira:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -580,15 +651,19 @@ Erreferentzia gurutzatuak.
 \end_layout
 
 \begin_layout Standard
-Egungo prozesadore askok matematikako ikurrak, taulak, lerro amaierako hitz
- bereizleak eta estilo-definizioa erabiltzen dituzte, eta WYSIWYM pentsamoldera
- hurbiltzen hasiak dira.
- Eginbide horiek ezartzen hasi berri dira; \SpecialChar LyX
-, ordea, \SpecialChar LaTeX
- dokumentu-prestatze
- sisteman oinarritua dago.
+Egungo prozesadore askok matematikako ikurrak,
+ taulak,
+ lerro amaierako hitz bereizleak eta estilo-definizioa erabiltzen dituzte,
+ eta WYSIWYM pentsamoldera hurbiltzen hasiak dira.
+ Eginbide horiek ezartzen hasi berri dira;
+ \SpecialChar LyX
+,
+ ordea,
  \SpecialChar LaTeX
- duela 20 urte baino gehiago sortu zen, eta 
+ dokumentu-prestatze sisteman oinarritua dago.
+ \SpecialChar LaTeX
+ duela 20 urte baino gehiago sortu zen,
+ eta 
 \emph on
 funtzionatzen du
 \emph default
@@ -608,8 +683,8 @@ Zer demontre da \SpecialChar LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-Atal honetako informazioaren jatorria, Helmut Kopka eta Patrick Daly-k idatzitak
-o "A Guide to \SpecialChar LaTeX2e
+Atal honetako informazioaren jatorria,
+ Helmut Kopka eta Patrick Daly-k idatzitako "A Guide to \SpecialChar LaTeX2e
 "-a.
  
 \emph on
@@ -620,17 +695,17 @@ k bibliografia atalean honi buruzko sarrera bat dauka.
 
 \end_inset
 
- da 1985-ean Leslie Lamport-ek diseinatutako dokumentazioa prestatzeko sistema
- da.
+ da 1985-ean Leslie Lamport-ek diseinatutako dokumentazioa prestatzeko sistema da.
  1984-ean Donald Knuth-ek sortu zuen \SpecialChar TeX
- maketazio-konposaketa hizkuntzaren
- gainetik pixkanaka eraikita izan zen.
- Zehazki zer den, ordea, askok ez du ulertzen.
- ASCII (testu soila) fitxategian idatzitako komando-konposaketa zerrenda
- hartu eta landu egiten du.
- Idazmakina bat baino zailagoa da, baina argitaletxe baten espezializazio
- eta konplexutasunera heldu gabe.
- Edozein modutan, irteera bezala 'dispositibotik aske' (
+ maketazio-konposaketa hizkuntzaren gainetik pixkanaka eraikita izan zen.
+ Zehazki zer den,
+ ordea,
+ askok ez du ulertzen.
+ ASCII (testu soila) fitxategian idatzitako komando-konposaketa zerrenda hartu eta landu egiten du.
+ Idazmakina bat baino zailagoa da,
+ baina argitaletxe baten espezializazio eta konplexutasunera heldu gabe.
+ Edozein modutan,
+ irteera bezala 'dispositibotik aske' (
 \begin_inset Quotes eld
 \end_inset
 
@@ -638,7 +713,8 @@ device independent
 \begin_inset Quotes erd
 \end_inset
 
-) izeneko formatuan sortzen du, 
+) izeneko formatuan sortzen du,
+ 
 \family typewriter
 dvi
 \family default
@@ -647,86 +723,102 @@ dvi
 \family typewriter
 dvi
 \family default
- fitxategia bistaratzeko programak edo PostScript bezalako beste formatu
- batera bihurtzen dutenak erabil ditzakezu.
+ fitxategia bistaratzeko programak edo PostScript bezalako beste formatu batera bihurtzen dutenak erabil ditzakezu.
 \end_layout
 
 \begin_layout Standard
-Eginbide hau besterik ez balu, konposaketaren bihotza besterik ez zen izango.
+Eginbide hau besterik ez balu,
+ konposaketaren bihotza besterik ez zen izango.
  \SpecialChar TeX
--ek, ordea, makroak ezarri eta zehazteko aukera eskaintzen digu.
+-ek,
+ ordea,
+ makroak ezarri eta zehazteko aukera eskaintzen digu.
  \SpecialChar TeX
- erabiltzen duten gehienek erabiltzen dute Knuth-ek sortutako Konposaketa-mundu
-ko ñabardurak ezkutatzeko makromultzoa.
+ erabiltzen duten gehienek erabiltzen dute Knuth-ek sortutako Konposaketa-munduko ñabardurak ezkutatzeko makromultzoa.
  Erabiltzaile normalak \SpecialChar TeX
- (konposaketa komandoez bakarrik osatutako bizkarrezurra)
- garbi batekin lanik ez du egiten.
+ (konposaketa komandoez bakarrik osatutako bizkarrezurra) garbi batekin lanik ez du egiten.
  Era gordinean makroak sortzen dituztenek bakarrik erabiltzen dute.
  Eta une hori da Leslie Lamport antzeztokira sartzen zaiguna.
- Berak makroak (komando multzo bat), taulak edo matematika formulak sortzeko
- bide sendo eta uniforme batean egon nahi zuen: erabiltzaileari begira gehiago
- zuzendua eta konposaketa arlora berriz gutxiago, horrenbesteko buru hausterik
- gabe.
+ Berak makroak (komando multzo bat),
+ taulak edo matematika formulak sortzeko bide sendo eta uniforme batean egon nahi zuen:
+ erabiltzaileari begira gehiago zuzendua eta konposaketa arlora berriz gutxiago,
+ horrenbesteko buru hausterik gabe.
  Honela sortu zen \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
-Orain, \SpecialChar LaTeX
--en hedapen eta garapenekin bateratuz, beste gizaki batzuk \SpecialChar TeX
--erako
- norberaren makro multzoak sortzen ari dira, matematika eta horrelako edizio
- arloetara zuzendutakoak.
- Batzuek zuzenean \SpecialChar TeX
- erabili zuten; besteak, berriz, \SpecialChar LaTeX
- moldatzen hasi ziren.
- Nahaspila hau konpontzeko asmoz, laurogeigarren hamarkadaren amaieran,
+Orain,
  \SpecialChar LaTeX
--eko adituak (Lamport barne, noski) \SpecialChar LaTeX2e
--en lanean hasi ziren, gaur egungo
- bertsioa.
- Bertsio berri hori makroak sortzeko erraztasun handiagoak eskaintzen dizkizuten
- komandoekin dator, letra-tipo berriak erabiltzeko laguntza eta hobekuntza
- gehiago.
- Beraren eskubide osoz, \SpecialChar LaTeX
+-en hedapen eta garapenekin bateratuz,
+ beste gizaki batzuk \SpecialChar TeX
+-erako norberaren makro multzoak sortzen ari dira,
+ matematika eta horrelako edizio arloetara zuzendutakoak.
+ Batzuek zuzenean \SpecialChar TeX
+ erabili zuten;
+ besteak,
+ berriz,
+ \SpecialChar LaTeX
+ moldatzen hasi ziren.
+ Nahaspila hau konpontzeko asmoz,
+ laurogeigarren hamarkadaren amaieran,
+ \SpecialChar LaTeX
+-eko adituak (Lamport barne,
+ noski) \SpecialChar LaTeX2e
+-en lanean hasi ziren,
+ gaur egungo bertsioa.
+ Bertsio berri hori makroak sortzeko erraztasun handiagoak eskaintzen dizkizuten komandoekin dator,
+ letra-tipo berriak erabiltzeko laguntza eta hobekuntza gehiago.
+ Beraren eskubide osoz,
+ \SpecialChar LaTeX
  bere izaeran hizkuntza zabal bat da.
- Estandarraz gain, mundu osoko erabiltzaileek \SpecialChar LaTeX
--entzat gehigarriak sortzen
- darraite.
+ Estandarraz gain,
+ mundu osoko erabiltzaileek \SpecialChar LaTeX
+-entzat gehigarriak sortzen darraite.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LaTeX
- hedatzeko bi modu daude: klaseak eta estiloak.
+ hedatzeko bi modu daude:
+ klaseak eta estiloak.
  
 \emph on
 Klase
 \emph default
- bat da dokumentu-mota berri bat (liburu bat, edo artikulu bat) zehazten
- duen \SpecialChar LaTeX
+ bat da dokumentu-mota berri bat (liburu bat,
+ edo artikulu bat) zehazten duen \SpecialChar LaTeX
 -eko (eta \SpecialChar TeX
 -ekoa ere) makro talde bat.
- Diapositibentzako klaseak daude, fisika eta matematikako argitalpenetan...
+ Diapositibentzako klaseak daude,
+ fisika eta matematikako argitalpenetan...
  zenbait unibertsitatek tesiak zehazten dituen formatuak dituzte.
  
 \emph on
 Estiloa
 \emph default
- bat berriz, eta klase batetik ezberdinduz, ez du dokumentu berri bat zehazten,
+ bat berriz,
+ eta klase batetik ezberdinduz,
+ ez du dokumentu berri bat zehazten,
  edozein dokumentutan erabil dezakezun 
 \emph on
 jokabide
 \emph default
  berri bat baizik.
- Adibidez, \SpecialChar LyX
+ Adibidez,
+ \SpecialChar LyX
 -ek orriaren marjinak eta lerro-tarteak \SpecialChar LaTeX
--eko bi estilo-fitxategi
- erabiliz kontrolatzen ditu.
- Dokumentu-motak lantzeko hainbat estilo-fitxategi daude: txartelak edo
- gutunazalak inprimatzeko, dokumentuaren koskak aldatzeko, letra-tipo berriak
- ezartzeko, irudiak moldatzeko, orriko goiburukoak diseinatzeko, bibliografiak
- nork bere erara egiteko, oin-oharren itxura eta kokalekuak aldatzeko, taulak
- eta irudiak, zerrendak pertsonalizatu, e.a.
+-eko bi estilo-fitxategi erabiliz kontrolatzen ditu.
+ Dokumentu-motak lantzeko hainbat estilo-fitxategi daude:
+ txartelak edo gutunazalak inprimatzeko,
+ dokumentuaren koskak aldatzeko,
+ letra-tipo berriak ezartzeko,
+ irudiak moldatzeko,
+ orriko goiburukoak diseinatzeko,
+ bibliografiak nork bere erara egiteko,
+ oin-oharren itxura eta kokalekuak aldatzeko,
+ taulak eta irudiak,
+ zerrendak pertsonalizatu,
+ e.a.
 \end_layout
 
 \begin_layout Standard
@@ -735,28 +827,36 @@ Laburpen bat:
 
 \begin_layout Description
 \SpecialChar TeX
-: konposaketarako lengoaia, makroak sortu eta erabiltzeko ahalmenarekin.
+:
+ konposaketarako lengoaia,
+ makroak sortu eta erabiltzeko ahalmenarekin.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX
-: \SpecialChar TeX
+:
+ \SpecialChar TeX
 -en gainean eraikitako makroen paketea.
 \end_layout
 
 \begin_layout Description
-klaseak: dokumentu baten deskribapena, \SpecialChar LaTeX
+klaseak:
+ dokumentu baten deskribapena,
+ \SpecialChar LaTeX
  erabiliz.
 \end_layout
 
 \begin_layout Description
-estiloak: nolabait \SpecialChar LaTeX
+estiloak:
+ nolabait \SpecialChar LaTeX
 -en izaera moldatzeko.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
-: WYSIWYM testu-prozesadore bisuala, \SpecialChar LaTeX
+:
+ WYSIWYM testu-prozesadore bisuala,
+ \SpecialChar LaTeX
 -en indar eta ahalmen guztiak erabiliz.
 \end_layout
 
@@ -766,11 +866,12 @@ Atal honen asmoa izan da zuri argitzea \SpecialChar LyX
 \emph on
 zergatik
 \emph default
- ezberdintzen den beste testu prozesadoreen lana jorratzeko bideez (bere
- funtzionamenduan).
- Zergatia garbia da: konposaketa oinarri bezala \SpecialChar LaTeX
+ ezberdintzen den beste testu prozesadoreen lana jorratzeko bideez (bere funtzionamenduan).
+ Zergatia garbia da:
+ konposaketa oinarri bezala \SpecialChar LaTeX
  erabiltzen du.
- Azken hau bezala, zure idazkeraren inguruan kokatzen da (idazten ari zarena).
+ Azken hau bezala,
+ zure idazkeraren inguruan kokatzen da (idazten ari zarena).
  Haren itxuraz ordenagailua arduratuko da.
 \end_layout
 
@@ -779,29 +880,38 @@ Dokumentazioan nabigatzea
 \end_layout
 
 \begin_layout Standard
-Zure galderei errazago erantzuteko, eta \SpecialChar LyX
--en eginbideak era egoki baten azaltzeko
-, dokumentazioa hainbat fitxategitan zatitu da.
- Zati bakoitzak bere helburua du, aurrerago azalduko den bezala.
- Fitxategi hauetariko batekin aurrez aurre aurkitu baino lehenago, begi
- bistan daukazun hau irakurtzea aholkatzen dizugu, denbora aurreztu dezazun
- informazio eta aipamen erabilgarri asko baitauka.
+Zure galderei errazago erantzuteko,
+ eta \SpecialChar LyX
+-en eginbideak era egoki baten azaltzeko,
+ dokumentazioa hainbat fitxategitan zatitu da.
+ Zati bakoitzak bere helburua du,
+ aurrerago azalduko den bezala.
+ Fitxategi hauetariko batekin aurrez aurre aurkitu baino lehenago,
+ begi bistan daukazun hau irakurtzea aholkatzen dizugu,
+ denbora aurreztu dezazun informazio eta aipamen erabilgarri asko baitauka.
 \end_layout
 
 \begin_layout Standard
-Zorionez, \SpecialChar LyX
--en garapena ez denez inoiz geldituko, laguntzako dokumentuaren
- zati bat amaitu gabe edo zaharkitua egon daiteke.
+Zorionez,
  \SpecialChar LyX
--eko beste guztia bezala, eskuliburuak boluntario-lanaren emaitzak dira,
- eta hauek "benetako lana" daukate; etxekoak, iloba zaindu, edalontziak
- garbitu, mozkorkerian gaupasa egin, e.a.
+-en garapena ez denez inoiz geldituko,
+ laguntzako dokumentuaren zati bat amaitu gabe edo zaharkitua egon daiteke.
+ \SpecialChar LyX
+-eko beste guztia bezala,
+ eskuliburuak boluntario-lanaren emaitzak dira,
+ eta hauek "benetako lana" daukate;
+ etxekoak,
+ iloba zaindu,
+ edalontziak garbitu,
+ mozkorkerian gaupasa egin,
+ e.a.
  Eskuliburuak egoera onean (eguneratuak) egon daitezen ahalegintzen gara.
- Laguntzeko prest bazaude, ziurta zaitez dokumentuko beste ezer baino lehen
- 
+ Laguntzeko prest bazaude,
+ ziurta zaitez dokumentuko beste ezer baino lehen 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "atal:auzolana"
+nolink "false"
 
 \end_inset
 
@@ -809,10 +919,11 @@ reference "atal:auzolana"
 \end_layout
 
 \begin_layout Standard
-Beste mesede bat egin dezakezu: eskuliburu hauetan zerbait argi ez badago
- edo akatsak baditu, guri jakinarazi! Dokumentazioa eguneratua edukitzen
- arduratuta dauden neska/mutilekin harremanetan jar zaitezke, horretarako
- idatzi 
+Beste mesede bat egin dezakezu:
+ eskuliburu hauetan zerbait argi ez badago edo akatsak baditu,
+ guri jakinarazi!
+ Dokumentazioa eguneratua edukitzen arduratuta dauden neska/mutilekin harremanetan jar zaitezke,
+ horretarako idatzi 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -823,7 +934,8 @@ literal "false"
 
  helbidera.
  Dokumentazioan erantzuten ez den zerbaiti buruzko laguntza behar baduzu,
- erabili posta-zerrenda hau: 
+ erabili posta-zerrenda hau:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-users@lists.lyx.org"
@@ -840,25 +952,33 @@ Eskuliburuen egitura
 \end_layout
 
 \begin_layout Standard
-Agian, eskulibururen bat edo beste inprimatuta edukiko duzu, edo bestela
- \SpecialChar LyX
+Agian,
+ eskulibururen bat edo beste inprimatuta edukiko duzu,
+ edo bestela \SpecialChar LyX
  erabiliz "pantailan" irakurtzen zaude.
  \SpecialChar LyX
 -eko fitxategia eta inprimatutakoaren artean ezberdintasun batzuk daude.
- Aurrenekoa, izenburua eskuliburuaren hasieran dago, ez da bereizitako orrialdea
-n agertzen, inprimatutako bertsioan lehenbiziko orrialdean agertzen da.
- Bai oin-oharra, bai edukien aurkibidea ez daude beraien osotasunean bistaratuak.
- Edukien aurkibidea ikusteko menuko aukera bat badaukazu: 
+ Aurrenekoa,
+ izenburua eskuliburuaren hasieran dago,
+ ez da bereizitako orrialdean agertzen,
+ inprimatutako bertsioan lehenbiziko orrialdean agertzen da.
+ Bai oin-oharra,
+ bai edukien aurkibidea ez daude beraien osotasunean bistaratuak.
+ Edukien aurkibidea ikusteko menuko aukera bat badaukazu:
+ 
 \family sans
 Arakatu
 \family default
 .
- Oin-ohar bat irakurtzeko, modu honetan agertzen da
+ Oin-ohar bat irakurtzeko,
+ modu honetan agertzen da
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Kaixo! Oin-ohar hau ixteko, ezkerraldeko laukitxo gris horretan klik egin\SpecialChar ldots
+Kaixo!
+ Oin-ohar hau ixteko,
+ ezkerraldeko laukitxo gris horretan klik egin\SpecialChar ldots
 Bai,
  "oina" hitza bertan idatzita agertzen da.
 \end_layout
@@ -870,13 +990,18 @@ Bai,
 \end_layout
 
 \begin_layout Standard
-Inprimatutako eskuliburuetan, erreferentzia gurutzatu guztiak kapitulu,
- atal, azpiatal eta bestelakoen zenbatzaile bezala agertzen dira.
- Pantailan, ordea, erreferentzia gurutzatuak datorrena bezalako laukiluze
- grisetan agertzen dira: 
+Inprimatutako eskuliburuetan,
+ erreferentzia gurutzatu guztiak kapitulu,
+ atal,
+ azpiatal eta bestelakoen zenbatzaile bezala agertzen dira.
+ Pantailan,
+ ordea,
+ erreferentzia gurutzatuak datorrena bezalako laukiluze grisetan agertzen dira:
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "atal:auzolana"
+nolink "false"
 
 \end_inset
 
@@ -884,13 +1009,11 @@ reference "atal:auzolana"
 \begin_inset space ~
 \end_inset
 
-alegia (inprimatutako eskuliburuetan zenbakiak agertzen dira laukiluze hauen
- ordez).
- Laukiluzea saguaren ezker botoiarekin klik eginez dokumentuko erreferentzia
- gurutzatuen zerrenda daukan elkarrizketa-koadroa bistaratuko zaizu.
+alegia (inprimatutako eskuliburuetan zenbakiak agertzen dira laukiluze hauen ordez).
+ Laukiluzea saguaren ezker botoiarekin klik eginez dokumentuko erreferentzia gurutzatuen zerrenda daukan elkarrizketa-koadroa bistaratuko zaizu.
  Sarrera honek "atal:auzolana" izeneko bakar bat dauka.
- Erreferentziatu den atalera joateko, erabili elkarrizketa koadroan "Joan
- etiketara" botoia.
+ Erreferentziatu den atalera joateko,
+ erabili elkarrizketa koadroan "Joan etiketara" botoia.
  
 \begin_inset Quotes eld
 \end_inset
@@ -903,8 +1026,8 @@ Joan atzerantz
 \end_layout
 
 \begin_layout Standard
-Fitxategi honen pantailazko eta inprimatutako bertsioaren arteko ezberdintasun
- batzuk ikusi ondoren, eskuliburu honen formatuaz mintzatzen has gaitezke.
+Fitxategi honen pantailazko eta inprimatutako bertsioaren arteko ezberdintasun batzuk ikusi ondoren,
+ eskuliburu honen formatuaz mintzatzen has gaitezke.
  Noizean behin letra-tipo desberdineko elementuak aurkituko dituzu:
 \end_layout
 
@@ -913,8 +1036,11 @@ Fitxategi honen pantailazko eta inprimatutako bertsioaren arteko ezberdintasun
 \emph on
 Enfasia estiloa
 \emph default
- orokorrean enfasietan erabiltzen da, arrazonamendu orokorretan, liburuen
- tituluetan, beste eskuliburuetako ataletan, eta idazleen (egile) oharretan.
+ orokorrean enfasietan erabiltzen da,
+ arrazonamendu orokorretan,
+ liburuen tituluetan,
+ beste eskuliburuetako ataletan,
+ eta idazleen (egile) oharretan.
 \end_layout
 
 \begin_layout Itemize
@@ -922,10 +1048,10 @@ Enfasia estiloa
 \family typewriter
 Idazmakina 
 \family default
-programa eta fitxategien izenetan, \SpecialChar LaTeX
+programa eta fitxategien izenetan,
+ \SpecialChar LaTeX
  kodea eta \SpecialChar LyX
- kode eta funtzioetan erabiltzen
- da.
+ kode eta funtzioetan erabiltzen da.
 \end_layout
 
 \begin_layout Itemize
@@ -933,8 +1059,9 @@ programa eta fitxategien izenetan, \SpecialChar LaTeX
 \family sans
 Sans Serif
 \family default
- menu, botoi, elkarrizketa-koadroetan eta teklatuko teklen izenetan erabiltzen
- da.
+ menu,
+ botoi,
+ elkarrizketa-koadroetan eta teklatuko teklen izenetan erabiltzen da.
 \end_layout
 
 \begin_layout Itemize
@@ -1034,19 +1161,23 @@ F12
 \family sans
 "Ezkerrera"
 \family default
-, 
+,
+ 
 \family sans
 "Eskuinera"
 \family default
-, 
+,
+ 
 \family sans
 Gora"
 \family default
-, 
+,
+ 
 \family sans
 "Behera"
 \family default
- beraien izenak dioen bezala, teklatuko geziak (kurtsoreak) dira.
+ beraien izenak dioen bezala,
+ teklatuko geziak (kurtsoreak) dira.
  
 \end_layout
 
@@ -1054,18 +1185,22 @@ Gora"
 
 \family sans
 "Txertatu",
+
 \family default
  
 \family sans
 "Ezabatu",
+
 \family default
  
 \family sans
 "Hasiera",
+
 \family default
  
 \family sans
 "Amaiera",
+
 \family default
  "
 \family sans
@@ -1103,13 +1238,16 @@ Sartu
 \family sans
 Return
 \family default
- daukate, beste batzuk 
+ daukate,
+ beste batzuk 
 \family sans
 Enter,
+
 \family default
  beste batzuk berriz birritan daukate.
  \SpecialChar LyX
--ek tekla denak berdin erabiliko ditu, beraz 
+-ek tekla denak berdin erabiliko ditu,
+ beraz 
 \family sans
 Sartu
 \family default
@@ -1117,8 +1255,7 @@ Sartu
 \end_layout
 
 \begin_layout Itemize
-Uneko lasterbideen zerrenda Laguntza menuko Lasterbideak dokumentuan aurkitzen
- dira zehaztuta.
+Uneko lasterbideen zerrenda Laguntza menuko Lasterbideak dokumentuan aurkitzen dira zehaztuta.
 \end_layout
 
 \begin_layout Subsection
@@ -1126,10 +1263,12 @@ Eskuliburuetan erabilitako unitateak
 \end_layout
 
 \begin_layout Standard
-Dokumentazio honetan azaldutako unitateak ulertzeko, 
+Dokumentazio honetan azaldutako unitateak ulertzeko,
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Unitateak"
+nolink "false"
 
 \end_inset
 
@@ -1143,6 +1282,8 @@ taulak \SpecialChar LyX
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1628,26 +1769,28 @@ Sarrera Fitxategi hau.
 
 \begin_layout Description
 Tutoretza \SpecialChar LyX
- erabiltzen hasiberria bazara, eta orain arte \SpecialChar LaTeX
- inoiz ez baduzu
- entzun ez eta erabili ere, orduan hemendik hasi beharko duzu.
+ erabiltzen hasiberria bazara,
+ eta orain arte \SpecialChar LaTeX
+ inoiz ez baduzu entzun ez eta erabili ere,
+ orduan hemendik hasi beharko duzu.
  
 \emph on
 Tutoretza
 \emph default
- irakurri ostean, \SpecialChar LaTeX
+ irakurri ostean,
+ \SpecialChar LaTeX
  oraindik zabalegia delakoan ustearekin jarraitu dezakezu,
  baina \SpecialChar LyX
  nola erabili behar den jakingo duzu.
  \SpecialChar LaTeX
- erabili baduzu, 
+ erabili baduzu,
+ 
 \emph on
 Tutoretza
 \emph default
 ko "\SpecialChar LyX
  \SpecialChar LaTeX
- erabiltzaileentzat" atala irakurri beharko zenuke (eta eskuliburuko
- beste atalek kalterik ez dizute egingo).
+ erabiltzaileentzat" atala irakurri beharko zenuke (eta eskuliburuko beste atalek kalterik ez dizute egingo).
 \end_layout
 
 \begin_layout Description
@@ -1657,10 +1800,10 @@ Erabiltzailearen
 
 gida Eskuliburu nagusia.
  Hemen \SpecialChar LyX
- programaren oinarrizko eginbide eta aukeren gehiengo bat argitzen
- saiatuko gara.
+ programaren oinarrizko eginbide eta aukeren gehiengo bat argitzen saiatuko gara.
  Eskuliburu nagusiak \SpecialChar LaTeX
--eko ezagutza batzuk dauzkazulakoan dago, edo 
+-eko ezagutza batzuk dauzkazulakoan dago,
+ edo 
 \emph on
 Tutoretza
 \emph default
@@ -1677,8 +1820,11 @@ objektuak
 Erabiltzailearen gida
 \emph default
 ren hedapena da.
- Dokumentu honetan taulak, grafikoak, mugikorrak, oharrak, programen zerrendak
- eta koadroak nola erabiltzen diren erakusten du xehetasunez.
+ Dokumentu honetan taulak,
+ grafikoak,
+ mugikorrak,
+ oharrak,
+ programen zerrendak eta koadroak nola erabiltzen diren erakusten du xehetasunez.
 \end_layout
 
 \begin_layout Description
@@ -1701,19 +1847,21 @@ Erabiltzailearen gida
 \emph default
 ren hedapena.
  \SpecialChar LaTeX
--eko komandoak, diseinu gehigarriak, edizioko eginbide bereziak azaltzen
- ditu dokumentu honek.
+-eko komandoak,
+ diseinu gehigarriak,
+ edizioko eginbide bereziak azaltzen ditu dokumentu honek.
 \end_layout
 
 \begin_layout Description
 Pertsonalizazioa \SpecialChar LyX
--en eginbide garatuen azalpena, programaren jarrera (izaera)
- orokorra pertsonalizatzea; tekla-lotura, nazioartekotza eta konfigurazioko
- fitxategi bezalakoak.
- Diseinuko fitxategiei buruzko informazioa ere dauka, \SpecialChar LyX
+-en eginbide garatuen azalpena,
+ programaren jarrera (izaera) orokorra pertsonalizatzea;
+ tekla-lotura,
+ nazioartekotza eta konfigurazioko fitxategi bezalakoak.
+ Diseinuko fitxategiei buruzko informazioa ere dauka,
+ \SpecialChar LyX
 -ek \SpecialChar LaTeX
--eko klase edo
- paketeen euskarria edukitzeko beharrezkoa izanik.
+-eko klase edo paketeen euskarria edukitzeko beharrezkoa izanik.
 \end_layout
 
 \begin_layout Description
@@ -1728,10 +1876,11 @@ Lasterbideak Unean definitutako \SpecialChar LyX
 \end_inset
 
 konfigurazioa \SpecialChar LyX
--ek, instalatzean, zure sistema aztertzen du.
+-ek,
+ instalatzean,
+ zure sistema aztertzen du.
  Fitxategi honek \SpecialChar LyX
--ek zure instalazioari buruz ikasitakoaren informazioa
- dauka.
+-ek zure instalazioari buruz ikasitakoaren informazioa dauka.
 \begin_inset Foot
 status collapsed
 
@@ -1740,21 +1889,26 @@ status collapsed
 \emph on
 Itzultzailearen oharra
 \emph default
-: dokumentu hau automatikoki sortzen denez ezin da euskaratu.
+:
+ dokumentu hau automatikoki sortzen denez ezin da euskaratu.
 \end_layout
 
 \end_inset
 
- Eduki beharreko zerbait falta bada, hemen begiratu beharko duzu.
+ Eduki beharreko zerbait falta bada,
+ hemen begiratu beharko duzu.
 \end_layout
 
 \begin_layout Standard
-Fitxategiok elkar erreferentziatzen dute, beharrezkoa denean.
- Adibidez, 
+Fitxategiok elkar erreferentziatzen dute,
+ beharrezkoa denean.
+ Adibidez,
+ 
 \emph on
 Erabiltzailearen gida
 \emph default
--k instalatze eta pertsonalizatze buruzko zerbait dio, baina irakurlea 
+-k instalatze eta pertsonalizatze buruzko zerbait dio,
+ baina irakurlea 
 \emph on
 Pertsonalizazioa
 \emph default
@@ -1762,7 +1916,8 @@ Pertsonalizazioa
 \end_layout
 
 \begin_layout Standard
-Berriro, gauza garrantzitsu bat azpimarratu behar dugu:
+Berriro,
+ gauza garrantzitsu bat azpimarratu behar dugu:
 \end_layout
 
 \begin_layout Standard
@@ -1775,7 +1930,8 @@ Berriro, gauza garrantzitsu bat azpimarratu behar dugu:
 \begin_layout Standard
 \align center
 \SpecialChar LyX
--ekin hasiberria bazara, 
+-ekin hasiberria bazara,
+ 
 \emph on
 Tutoretza
 \emph default
@@ -1793,8 +1949,9 @@ Tutoretza
 \begin_layout Standard
 Bestela alferrik haserretuko zara zeure buruarekin.
  \SpecialChar LyX
--ek testu-prozesadore batetik behar duzuna eskaintzen dizu, hori bai, erabilera
- ezberdin batekin.
+-ek testu-prozesadore batetik behar duzuna eskaintzen dizu,
+ hori bai,
+ erabilera ezberdin batekin.
 \end_layout
 
 \begin_layout Section
@@ -1817,9 +1974,9 @@ Lagundu \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  ia bere osotasunean C++ programaketa hizkuntzan idatzia dago (\SpecialChar LaTeX
- inportatzeko
- tresna Python-en idatzia izan da).
- Proiektu handi bat da, eta gerta daiteke errore bat edo beste edukitzea,
+ inportatzeko tresna Python-en idatzia izan da).
+ Proiektu handi bat da,
+ eta gerta daiteke errore bat edo beste edukitzea,
  edo iturburua hobetu beharra izatea.
 \end_layout
 
@@ -1830,18 +1987,20 @@ Bidali errorea
 \begin_layout Standard
 \SpecialChar LyX
  erabiltzean portaeraren bat errorea dela pentsa dezakezu.
- Nahiz eta gutxitan gertatu, programa hondatu daiteke.
+ Nahiz eta gutxitan gertatu,
+ programa hondatu daiteke.
  \SpecialChar LyX
--eko garatzaile-taldearen iritziz errore gehientsuenak erabiltzaile-interfazeti
-k sor daiteke: \SpecialChar LyX
- interfazeko zein zati korapilatsua, zaila ulertzeko, azaltzen
- dituzten iradokizunak oso lagungarriak izaten dira.
+-eko garatzaile-taldearen iritziz errore gehientsuenak erabiltzaile-interfazetik sor daiteke:
+ \SpecialChar LyX
+ interfazeko zein zati korapilatsua,
+ zaila ulertzeko,
+ azaltzen dituzten iradokizunak oso lagungarriak izaten dira.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
--ek erroreen txostenak bidaltzeko eta kudeatzeko sistema bat erabiltzen
- du,
+-ek erroreen txostenak bidaltzeko eta kudeatzeko sistema bat erabiltzen du,
+
 \family typewriter
  
 \begin_inset Flex URL
@@ -1857,16 +2016,17 @@ https://www.lyx.org/trac/wiki/BugTrackerHome
 
 \family default
  gunean aurki dezakezuna.
- Edozein errore buruzko txostena bidali aurretik erroreak kudeatzeko sistema
- horretan begiratzea eskatuko genizuke, aurrez beste norbaitek errore berdinari
- buruzko txosten bat bidalita eduki baitezake.
- Hau da, errore txosten berri bat bidali aurretik, egiaztatu errore berdinari
- buruzko beste txostenik ez dagoela erroreak kudeatzeko \SpecialChar LyX
--ek darabilen sistema
- horretan.
- Erabili sistema errore-kudeatzaile hori dagoen errore bati buruzko iradokizunak
-, edo errore berri bati buruzko txostena bidaltzeko, edo, bestela, bidali
- mezu bat 
+ Edozein errore buruzko txostena bidali aurretik erroreak kudeatzeko sistema horretan begiratzea eskatuko genizuke,
+ aurrez beste norbaitek errore berdinari buruzko txosten bat bidalita eduki baitezake.
+ Hau da,
+ errore txosten berri bat bidali aurretik,
+ egiaztatu errore berdinari buruzko beste txostenik ez dagoela erroreak kudeatzeko \SpecialChar LyX
+-ek darabilen sistema horretan.
+ Erabili sistema errore-kudeatzaile hori dagoen errore bati buruzko iradokizunak,
+ edo errore berri bati buruzko txostena bidaltzeko,
+ edo,
+ bestela,
+ bidali mezu bat 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
@@ -1877,8 +2037,8 @@ literal "false"
 
  posta-zerrendara.
  Posta-zerrenda honen artxiboei zuzendutako estekak \SpecialChar LyX
--en webgune nagusian
- jarri dira:
+-en webgune nagusian jarri dira:
+
 \family typewriter
  
 \begin_inset Flex URL
@@ -1898,15 +2058,16 @@ https://www.lyx.org/
 
 \begin_layout Standard
 Errore-txosten on (erabilgarria) batek gutxienik arazoak dituen \SpecialChar LyX
- bertsioaren
- zenbakia eduki beharko luke.
- Honekin batera, azaldu \SpecialChar LyX
- zein sisteman eragile eta bertsiotan erabiltzen
- ari zaren.
- Zure sisteman instalatuta daukazun liburutegien bertsioak eta, interesgarria
- baderitzozu, \SpecialChar LyX
+ bertsioaren zenbakia eduki beharko luke.
+ Honekin batera,
+ azaldu \SpecialChar LyX
+ zein sisteman eragile eta bertsiotan erabiltzen ari zaren.
+ Zure sisteman instalatuta daukazun liburutegien bertsioak eta,
+ interesgarria baderitzozu,
+ \SpecialChar LyX
 -ek erabiltzen duen kanpoko programen bertsioak.
- Konpilatze- edo konfigurazio-arazo bat izanez gero, egokiena da 
+ Konpilatze- edo konfigurazio-arazo bat izanez gero,
+ egokiena da 
 \family typewriter
 config.log
 \family default
@@ -1920,13 +2081,13 @@ Lagundu finkatzen eta eginbide berrietan
 \begin_layout Standard
 Baldin eta \SpecialChar LyX
 -eko iturburuetan aldaketak egin badituzu eta \SpecialChar LyX
- proiektuko zati
- izatea garrantzitsua dela uste baduzu, bidal iezaguzu 
+ proiektuko zati izatea garrantzitsua dela uste baduzu,
+ bidal iezaguzu 
 \family typewriter
 diff
 \family default
- fitxategi bat (formatu bateratu batean) arestiko posta-zerrendara, baita
- 
+ fitxategi bat (formatu bateratu batean) arestiko posta-zerrendara,
+ baita 
 \family typewriter
 changelog
 \family default
@@ -1940,12 +2101,12 @@ Lagundu dokumentazioan
 \begin_layout Standard
 \SpecialChar LyX
 -en dokumentazioa zabala da.
- Nola nahi ere, \SpecialChar LyX
- beti garatzen ari da, eta kaleratze berri bakoitzak eginbide
- berriekin agertzen da.
+ Nola nahi ere,
+ \SpecialChar LyX
+ beti garatzen ari da,
+ eta kaleratze berri bakoitzak eginbide berriekin agertzen da.
  Dokumentazio batzuk eguneratu beharrean daudela aurki ditzakezu.
- Atal honek azaltzen du zer egin behar duzun errore bat edo hobekuntzaren
- bat aholkatu nahi badiguzu.
+ Atal honek azaltzen du zer egin behar duzun errore bat edo hobekuntzaren bat aholkatu nahi badiguzu.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1973,10 +2134,12 @@ Dokumentazio-taldera elkartzea
 \begin_layout Standard
 \SpecialChar LyX
  dokumentazio-proiektuak (The \SpecialChar LyX
- Documentation Project), \SpecialChar LyX
- proiektuko beste
- guztiak bezala, laguntza erabiltzen du.
- Dokumentazio-proiektuan lagundu nahi baduzu, jorratu urrats hauek:
+ Documentation Project),
+ \SpecialChar LyX
+ proiektuko beste guztiak bezala,
+ laguntza erabiltzen du.
+ Dokumentazio-proiektuan lagundu nahi baduzu,
+ jorratu urrats hauek:
 \end_layout
 
 \begin_layout Enumerate
@@ -2000,7 +2163,8 @@ https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 \end_layout
 
 \begin_layout Enumerate
-Ondoren, irakurri 
+Ondoren,
+ irakurri 
 \emph on
 Erabiltzailearen gida
 \emph default
@@ -2026,12 +2190,12 @@ Erabiltzailearen
 gida
 \emph default
  izango dira dokumentaziotik gehien eguneratu behar direnak.
- Hauekin nolako eskuliburuak irakurri eta zein itxura eduki behar duten
- ohartuko zara.
+ Hauekin nolako eskuliburuak irakurri eta zein itxura eduki behar duten ohartuko zara.
 \end_layout
 
 \begin_layout Enumerate
-Jarri taldearekin harremanetan: 
+Jarri taldearekin harremanetan:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -2048,12 +2212,14 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-nahi dituzun aldaketei buruz eztabaidatzeko, eta beraien ikuspuntuak jakiteko.
+nahi dituzun aldaketei buruz eztabaidatzeko,
+ eta beraien ikuspuntuak jakiteko.
 \end_layout
 
 \begin_layout Standard
-Egiten dituzun aldaketek testu aldetik garbiak izan behar dute, ulerterrazak
- alegia, dokumentazioaren berregituraketa sakonagoa egin ahal izateko.
+Egiten dituzun aldaketek testu aldetik garbiak izan behar dute,
+ ulerterrazak alegia,
+ dokumentazioaren berregituraketa sakonagoa egin ahal izateko.
  Hobekuntza guzti horiek jasotzea beti eskertzen da.
 \end_layout
 

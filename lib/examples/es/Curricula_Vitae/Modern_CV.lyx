@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -24,9 +24,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -79,12 +79,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -94,8 +98,8 @@
 status open
 
 \begin_layout Plain Layout
-La clase moderncv ofrece muchas posibilidades de personalización; para más
- información echa un vistazo a la documentación del paquete \SpecialChar LaTeX
+La clase moderncv ofrece muchas posibilidades de personalización;
+ para más información echa un vistazo a la documentación del paquete \SpecialChar LaTeX
  
 \series bold
 moderncv
@@ -147,8 +151,12 @@ casual
 status open
 
 \begin_layout Plain Layout
-requerido, estilos posibles: 'casual' (predeterminado), 'classic', 'fancy'
- ('fancy' requiere moderncv 2.0), 'oldstyle' y 'banking'
+requerido,
+ estilos posibles:
+ 'casual' (predeterminado),
+ 'classic',
+ 'fancy' ('fancy' requiere moderncv 2.0),
+ 'oldstyle' y 'banking'
 \end_layout
 
 \end_inset
@@ -158,8 +166,7 @@ requerido, estilos posibles: 'casual' (predeterminado), 'classic', 'fancy'
 status collapsed
 
 \begin_layout Plain Layout
-Para poder usar opciones de estilo debe estar instalada al menos la versión
- 2.0 de moderncv.
+Para poder usar opciones de estilo debe estar instalada al menos la versión 2.0 de moderncv.
  Se puede consultar la lista de opciones disponibles en:
 \begin_inset Newline newline
 \end_inset
@@ -178,9 +185,15 @@ blue
 status open
 
 \begin_layout Plain Layout
-requerido, colores posibles: 'blue' (predeterminado), 'orange', 'green',
- 'red', 'purple', 'burgundy' ('burgundy' requiere moderncv 2.0), 'grey' y
- 'black'
+requerido,
+ colores posibles:
+ 'blue' (predeterminado),
+ 'orange',
+ 'green',
+ 'red',
+ 'purple',
+ 'burgundy' ('burgundy' requiere moderncv 2.0),
+ 'grey' y 'black'
 \end_layout
 
 \end_inset
@@ -194,13 +207,15 @@ awesome
 status collapsed
 
 \begin_layout Plain Layout
-opcional, debe insertarse después de 
+opcional,
+ debe insertarse después de 
 \family sans
 Estilo CV
 \family default
-; conjuntos de iconos posibles: 'awesome' (predeterminado para estilos 'casual'
- y 'banking'), 'marvosym' (predeterminado para los otros estilos) y 'letters'
- (predeterminado para estilo 'oldstyle')
+;
+ conjuntos de iconos posibles:
+ 'awesome' (predeterminado para estilos 'casual' y 'banking'),
+ 'marvosym' (predeterminado para los otros estilos) y 'letters' (predeterminado para estilo 'oldstyle')
 \end_layout
 
 \end_inset
@@ -214,7 +229,9 @@ Estilo CV
 status collapsed
 
 \begin_layout Plain Layout
-opcional, anchura de columna con las fechas, por omisión '3cm'
+opcional,
+ anchura de columna con las fechas,
+ por omisión '3cm'
 \end_layout
 
 \end_inset
@@ -228,9 +245,11 @@ UseOutlines
 status collapsed
 
 \begin_layout Plain Layout
-opcional, controla lo que se muestra en el PDF; 'UseNone' (solo el documento),
- 'UseThumbs' (muestra miniaturas), 'UseOutlines' (muestra marcadores) o
- 'FullScreen' (abre en pantalla completa).
+opcional,
+ controla lo que se muestra en el PDF;
+ 'UseNone' (solo el documento),
+ 'UseThumbs' (muestra miniaturas),
+ 'UseOutlines' (muestra marcadores) o 'FullScreen' (abre en pantalla completa).
 \end_layout
 
 \end_inset
@@ -247,7 +266,8 @@ Otras sugerencias:
 \end_layout
 
 \begin_layout Itemize
-Para suprimir la numeración de páginas, marca la opción 
+Para suprimir la numeración de páginas,
+ marca la opción 
 \family sans
 Suprimir fecha por omisión en primera página
 \family default
@@ -270,15 +290,19 @@ cm.
 \family sans
 Márgenes de página
 \family default
- en la configuración del documento, como se ha hecho en este ejemplo.
+ en la configuración del documento,
+ como se ha hecho en este ejemplo.
 \end_layout
 
 \begin_layout Itemize
-Para usar, por ejemplo, tipos 
+Para usar,
+ por ejemplo,
+ tipos 
 \family sans
 palo seco
 \family default
- en todo el CV, elige como 
+ en todo el CV,
+ elige como 
 \family sans
 Familia predeterminada 
 \family default
@@ -436,11 +460,13 @@ nomape
 status open
 
 \begin_layout Plain Layout
-por ahora, solo 
+por ahora,
+ solo 
 \series bold
 twitter
 \series default
-, 
+,
+ 
 \series bold
 linkedin
 \series default
@@ -514,8 +540,8 @@ status open
 
 \begin_layout Plain Layout
 Nombre del archivo de imagen.
- El primer argumento es la dimensión de la altura de la foto, el segundo
- el grosor del marco alrededor
+ El primer argumento es la dimensión de la altura de la foto,
+ el segundo el grosor del marco alrededor
 \end_layout
 
 \end_inset
@@ -532,7 +558,8 @@ Nombre del archivo de imagen.
 status collapsed
 
 \begin_layout Plain Layout
-imprime la parte de título; opcional
+imprime la parte de título;
+ opcional
 \end_layout
 
 \end_inset
@@ -760,6 +787,7 @@ status open
 
 \series bold
 Nota:
+
 \series default
  Si usas los temas 
 \emph on
@@ -769,7 +797,8 @@ banking
 \emph on
 fancy
 \emph default
-, los saltos de línea en las entradas no están permitidos.
+,
+ los saltos de línea en las entradas no están permitidos.
 \end_layout
 
 \end_inset
@@ -906,7 +935,9 @@ SO
 status collapsed
 
 \begin_layout Plain Layout
-Linux, Unix, Windows
+Linux,
+ Unix,
+ Windows
 \end_layout
 
 \end_inset
@@ -921,7 +952,8 @@ Administración
 
 \end_inset
 
-Apache, Mailman
+Apache,
+ Mailman
 \end_layout
 
 \begin_layout DoubleItem
@@ -943,7 +975,8 @@ status collapsed
 \shape smallcaps
 Java
 \shape default
-, C/C++
+,
+ C/C++
 \end_layout
 
 \end_inset
@@ -958,7 +991,9 @@ Interpretación
 
 \end_inset
 
-PHP, Shell, Ruby
+PHP,
+ Shell,
+ Ruby
 \end_layout
 
 \begin_layout DoubleItem
@@ -976,7 +1011,9 @@ Científicos
 status collapsed
 
 \begin_layout Plain Layout
-Matlab, AutoCAD, Abaqus
+Matlab,
+ AutoCAD,
+ Abaqus
 \end_layout
 
 \end_inset
@@ -992,8 +1029,11 @@ Tipografía
 \end_inset
 
 \SpecialChar LaTeX
-, Con\SpecialChar TeX
-t, Scribus, QuarkXPress
+,
+ Con\SpecialChar TeX
+t,
+ Scribus,
+ QuarkXPress
 \end_layout
 
 \begin_layout DoubleItem
@@ -1015,7 +1055,9 @@ web
 status collapsed
 
 \begin_layout Plain Layout
-XHTML, CSS, AJAX
+XHTML,
+ CSS,
+ AJAX
 \end_layout
 
 \end_inset
@@ -1038,7 +1080,8 @@ datos
 
 \end_inset
 
-MySQL, PostgreSQL
+MySQL,
+ PostgreSQL
 \end_layout
 
 \begin_layout Section
@@ -1059,8 +1102,9 @@ aventura
 
 \end_inset
 
-Practico deportes como esquí, montañismo y submarinismo; he sido boy scout
- durante cinco años.
+Practico deportes como esquí,
+ montañismo y submarinismo;
+ he sido boy scout durante cinco años.
  
 \end_layout
 
@@ -1144,7 +1188,8 @@ listitemsymbol}{-~}
 status open
 
 \begin_layout Plain Layout
-opcional, cambia el símbolo para las listas
+opcional,
+ cambia el símbolo para las listas
 \end_layout
 
 \end_inset
@@ -1175,7 +1220,8 @@ status collapsed
 
 \end_inset
 
-Ítem 4, véase 
+Ítem 4,
+ véase 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Jobs95"
@@ -1208,7 +1254,8 @@ labelitemi~}
 status open
 
 \begin_layout Plain Layout
-opcional, retorna al símbolo predeterminado para las listas
+opcional,
+ retorna al símbolo predeterminado para las listas
 \end_layout
 
 \end_inset
@@ -1248,9 +1295,9 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-la anchura opcional es un número entre 0 y 1, especifica la fracción de
- longitud de línea; si no se determina anchura se usa para la columna toda
- la anchura disponible
+la anchura opcional es un número entre 0 y 1,
+ especifica la fracción de longitud de línea;
+ si no se determina anchura se usa para la columna toda la anchura disponible
 \end_layout
 
 \end_inset
@@ -1301,12 +1348,16 @@ status open
 
 \series bold
 Nota:
+
 \series default
- no está permitido el alineamiento de párrafos, así que, p.
+ no está permitido el alineamiento de párrafos,
+ así que,
+ p.
 \begin_inset space \thinspace{}
 \end_inset
 
-ej., no es posible centrar el cuadro
+ej.,
+ no es posible centrar el cuadro
 \end_layout
 
 \end_inset
@@ -1343,8 +1394,11 @@ Sección con tu propio contenido
 \end_layout
 
 \begin_layout Standard
-Aquí va el contenido propio, en un entorno sin formato.
- Aquí puedes usar, por ejemplo, ecuaciones matemáticas 
+Aquí va el contenido propio,
+ en un entorno sin formato.
+ Aquí puedes usar,
+ por ejemplo,
+ ecuaciones matemáticas 
 \begin_inset Formula 
 \[
 E=mc^{2}
@@ -1352,7 +1406,9 @@ E=mc^{2}
 
 \end_inset
 
-cuadros, figuras, etc.
+cuadros,
+ figuras,
+ etc.
 \end_layout
 
 \begin_layout EmptySection
@@ -1388,7 +1444,8 @@ Ahora
 
 \end_inset
 
-Volvemos al formato moderncv, sin poner sección nueva.
+Volvemos al formato moderncv,
+ sin poner sección nueva.
 \end_layout
 
 \begin_layout Standard
@@ -1411,7 +1468,8 @@ Para redefinir el texto del encabezado (p.
 \begin_inset space \thinspace{}
 \end_inset
 
-ej., 
+ej.,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1419,7 +1477,8 @@ Publicaciones
 \begin_inset Quotes erd
 \end_inset
 
-), elimina la marca de comentario (%):
+),
+ elimina la marca de comentario (%):
 \end_layout
 
 \end_inset
@@ -1464,7 +1523,8 @@ arabic{enumiv}]}
 status open
 
 \begin_layout Plain Layout
-opcional, numera las entradas de bibliografía
+opcional,
+ numera las entradas de bibliografía
 \end_layout
 
 \end_inset
@@ -1481,13 +1541,15 @@ literal "true"
 \end_inset
 
 Helmut Kopka and Patrick W.
- Daly: 
+ Daly:
+ 
 \emph on
 A Guide to \SpecialChar LaTeX
  Fourth Edition.
 
 \emph default
- Addison-Wesley, 2003
+ Addison-Wesley,
+ 2003
 \end_layout
 
 \begin_layout Bibliography
@@ -1498,13 +1560,17 @@ literal "true"
 
 \end_inset
 
-Leslie Lamport: 
+Leslie Lamport:
+ 
 \emph on
 \SpecialChar LaTeX
-: A Document Preparation System.
+:
+ A Document Preparation System.
 
 \emph default
- Addison-Wesley, second edition, 1994
+ Addison-Wesley,
+ second edition,
+ 1994
 \end_layout
 
 \begin_layout Standard
@@ -1539,7 +1605,8 @@ options "plain"
 status open
 
 \begin_layout Plain Layout
-Compañía, S.A.
+Compañía,
+ S.A.
 \end_layout
 
 \end_inset
@@ -1548,7 +1615,8 @@ Departamento de contratación
 \begin_inset Newline newline
 \end_inset
 
-C/ Calle, 123
+C/ Calle,
+ 123
 \begin_inset Newline newline
 \end_inset
 
@@ -1586,7 +1654,8 @@ curriculum vitae
 status collapsed
 
 \begin_layout Plain Layout
-genera el título de la carta; debe ir detrás del 
+genera el título de la carta;
+ debe ir detrás del 
 \emph on
 Cierre
 \family sans
@@ -1613,39 +1682,56 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Lorem ipsum dolor sit amet,
+ consectetur adipiscing elit.
  Duis ullamcorper neque sit amet lectus facilisis sed luctus nisl iaculis.
- Vivamus at neque arcu, sed tempor quam.
+ Vivamus at neque arcu,
+ sed tempor quam.
  Curabitur pharetra tincidunt tincidunt.
- Morbi volutpat feugiat mauris, quis tempor neque vehicula volutpat.
+ Morbi volutpat feugiat mauris,
+ quis tempor neque vehicula volutpat.
  Duis tristique justo vel massa fermentum accumsan.
- Mauris ante elit, feugiat vestibulum tempor eget, eleifend ac ipsum.
+ Mauris ante elit,
+ feugiat vestibulum tempor eget,
+ eleifend ac ipsum.
  Donec scelerisque lobortis ipsum eu vestibulum.
  Pellentesque vel massa at felis accumsan rhoncus.
 \end_layout
 
 \begin_layout Standard
-Suspendisse commodo, massa eu congue tincidunt, elit mauris pellentesque
- orci, cursus tempor odio nisl euismod augue.
+Suspendisse commodo,
+ massa eu congue tincidunt,
+ elit mauris pellentesque orci,
+ cursus tempor odio nisl euismod augue.
  Aliquam adipiscing nibh ut odio sodales et pulvinar tortor laoreet.
  Mauris a accumsan ligula.
- Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
- inceptos himenaeos.
+ Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+ per inceptos himenaeos.
  Suspendisse vulputate sem vehicula ipsum varius nec tempus dui dapibus.
- Phasellus et est urna, ut auctor erat.
+ Phasellus et est urna,
+ ut auctor erat.
  Sed tincidunt odio id odio aliquam mattis.
- Donec sapien nulla, feugiat eget adipiscing sit amet, lacinia ut dolor.
- Phasellus tincidunt, leo a fringilla consectetur, felis diam aliquam urna,
+ Donec sapien nulla,
+ feugiat eget adipiscing sit amet,
+ lacinia ut dolor.
+ Phasellus tincidunt,
+ leo a fringilla consectetur,
+ felis diam aliquam urna,
  vitae aliquet lectus orci nec velit.
  Vivamus dapibus varius blandit.
 \end_layout
 
 \begin_layout Standard
-Duis sit amet magna ante, at sodales diam.
+Duis sit amet magna ante,
+ at sodales diam.
  Aenean consectetur porta risus et sagittis.
- Ut interdum, enim varius pellentesque tincidunt, magna libero sodales tortor,
+ Ut interdum,
+ enim varius pellentesque tincidunt,
+ magna libero sodales tortor,
  ut fermentum nunc metus a ante.
- Vivamus odio leo, tincidunt eu luctus ut, sollicitudin sit amet metus.
+ Vivamus odio leo,
+ tincidunt eu luctus ut,
+ sollicitudin sit amet metus.
  Nunc sed orci lectus.
  Ut sodales magna sed velit volutpat sit amet pulvinar diam venenatis.
 \end_layout

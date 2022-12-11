@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -64,8 +64,8 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -81,12 +81,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -100,7 +104,8 @@ status open
 \series bold
 Note
 \series default
-: To be able to view your file as PDF you must have the \SpecialChar LaTeX
+:
+ To be able to view your file as PDF you must have the \SpecialChar LaTeX
 -package 
 \family sans
 fpl
@@ -108,9 +113,11 @@ fpl
  installed to your \SpecialChar LaTeX
  system.
  If you are using MiK\SpecialChar TeX
-, you will automatically be asked to install this package
- when previewing your file, if you are using \SpecialChar TeX
-Live, use \SpecialChar TeX
+,
+ you will automatically be asked to install this package when previewing your file,
+ if you are using \SpecialChar TeX
+Live,
+ use \SpecialChar TeX
 Live's package manager.
 \end_layout
 
@@ -119,10 +126,11 @@ Live's package manager.
 \series bold
 Note 2
 \series default
-: If you wish to compile to PDF with plain \SpecialChar LaTeX
+:
+ If you wish to compile to PDF with plain \SpecialChar LaTeX
  (instead of pdf\SpecialChar TeX
-), there is currently
- a bug in the Tufte class that causes errors.
+),
+ there is currently a bug in the Tufte class that causes errors.
  You can add the class option 'nols' (put this in the 
 \begin_inset Quotes eld
 \end_inset
@@ -133,8 +141,9 @@ Custom
 
  field of Document\SpecialChar menuseparator
 Settings \SpecialChar menuseparator
-Document Class) to get rid of the errors, but
- this also removes letterspacing, an important part of the Tufte design.
+Document Class) to get rid of the errors,
+ but this also removes letterspacing,
+ an important part of the Tufte design.
 \end_layout
 
 \end_inset
@@ -151,7 +160,8 @@ If the
 \emph on
 Date
 \emph default
- is left out, the current date will be used.
+ is left out,
+ the current date will be used.
 \end_layout
 
 \end_inset
@@ -180,7 +190,8 @@ Tufte handout
 \emph on
 tufte-handout.cls
 \emph default
-, but adapted for the use with \SpecialChar LyX
+,
+ but adapted for the use with \SpecialChar LyX
 .
 \end_layout
 
@@ -216,10 +227,10 @@ http://ctan.org/tex-archive/macros/latex/contrib/tufte-latex
 Edward Tufte
 \noun default
  uses in his books and handouts.
- Tufte's style is known for its extensive use of sidenotes, tight integration
- of graphics with text, and well-set typography.
- This document aims to be at once a demonstration of the features of the
- 
+ Tufte's style is known for its extensive use of sidenotes,
+ tight integration of graphics with text,
+ and well-set typography.
+ This document aims to be at once a demonstration of the features of the 
 \family sans
 tufte-handout
 \family default
@@ -254,7 +265,8 @@ a
 \shape smallcaps
 b
 \shape default
--heads (that is, 
+-heads (that is,
+ 
 \emph on
 section
 \emph default
@@ -262,12 +274,14 @@ section
 \emph on
 subsection
 \emph default
-, both numbered and non-numbered), as demonstrated above.
+,
+ both numbered and non-numbered),
+ as demonstrated above.
 \end_layout
 
 \begin_layout Standard
-If you need more than two levels of section headings, you'll have to define
- them yourself at the moment;
+If you need more than two levels of section headings,
+ you'll have to define them yourself at the moment;
 \begin_inset Foot
 status collapsed
 
@@ -288,6 +302,7 @@ Defining new sections
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "sec:defining-sections"
+nolink "false"
 
 \end_inset
 
@@ -321,7 +336,9 @@ literal "true"
 \begin_inset Quotes eld
 \end_inset
 
-use as many levels of headings as you need: no more, and no fewer.
+use as many levels of headings as you need:
+ no more,
+ and no fewer.
 \begin_inset Quotes erd
 \end_inset
 
@@ -346,13 +363,15 @@ literal "true"
 
 \end_inset
 
- Tufte starts each section with a bit of vertical space, a non-indented
- paragraph, and sets the first few words of the sentence in 
+ Tufte starts each section with a bit of vertical space,
+ a non-indented paragraph,
+ and sets the first few words of the sentence in 
 \shape smallcaps
 small caps
 \shape default
 .
- To accomplish this, use the 
+ To accomplish this,
+ use the 
 \family typewriter
 NewThought
 \family default
@@ -370,8 +389,7 @@ Sidenotes
 \end_layout
 
 \begin_layout Standard
-One of the most prominent and distinctive features of this style is the
- extensive use of sidenotes.
+One of the most prominent and distinctive features of this style is the extensive use of sidenotes.
  There is a wide margin to provide ample room for sidenotes and small figures.
  Any footnotes will automatically be converted to sidenotes.
 \begin_inset Foot
@@ -387,11 +405,13 @@ footnote
 
 \end_inset
 
- Alternatively, you can also use the 
+ Alternatively,
+ you can also use the 
 \family typewriter
 Sidenote
 \family default
- inset directly; you'll find it in the 
+ inset directly;
+ you'll find it in the 
 \family sans
 Insert\SpecialChar menuseparator
 Custom Insets
@@ -414,8 +434,8 @@ sidenote
 \end_layout
 
 \begin_layout Standard
-If you like to place ancillary information in the margin without the sidenote
- mark (the superscript number), you can use the 
+If you like to place ancillary information in the margin without the sidenote mark (the superscript number),
+ you can use the 
 \family typewriter
 Marginnote
 \family default
@@ -426,13 +446,14 @@ status open
 
 \begin_layout Plain Layout
 This is Tufte's margin note.
- Notice that there isn't a number preceding the note, and there is no number
- in the main text where this note was written.
+ Notice that there isn't a number preceding the note,
+ and there is no number in the main text where this note was written.
 \end_layout
 
 \end_inset
 
- The normal margin note will work as well, but it will look rather odd.
+ The normal margin note will work as well,
+ but it will look rather odd.
 \begin_inset Marginal
 status open
 
@@ -451,7 +472,8 @@ References
 \end_layout
 
 \begin_layout Standard
-References are placed alongside their citations as sidenotes, as well.
+References are placed alongside their citations as sidenotes,
+ as well.
  This can be accomplished using the normal citation command.
 \begin_inset Foot
 status collapsed
@@ -466,8 +488,7 @@ The first paragraph of this document includes a citation.
 \end_layout
 
 \begin_layout Standard
-The complete list of references may also be printed automatically by using
- 
+The complete list of references may also be printed automatically by using 
 \family sans
 Insert\SpecialChar menuseparator
 Lists/TOC\SpecialChar menuseparator
@@ -478,8 +499,8 @@ Bib\SpecialChar TeX
 
 Bibliography
 \family default
- (see the end of this document for an example.) If you do not want to print
- a bibliography at the end of your document, place the 
+ (see the end of this document for an example.) If you do not want to print a bibliography at the end of your document,
+ place the 
 \family sans
 Bib\SpecialChar TeX
 
@@ -513,18 +534,18 @@ figure
 \emph on
 tabular
 \emph default
- floats, this class provides special figure and table environments for full-widt
-h floats.
+ floats,
+ this class provides special figure and table environments for full-width floats.
 \end_layout
 
 \begin_layout Standard
-Full page width figures and tables can be produced by using figure or table
- floats and clicking 
+Full page width figures and tables can be produced by using figure or table floats and clicking 
 \emph on
 Span Columns
 \emph default
  in the float dialog.
- To place figures or tables in the margin, use the 
+ To place figures or tables in the margin,
+ use the 
 \emph on
 MarginFigure
 \emph default
@@ -540,6 +561,7 @@ MarginTable
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:marginfig"
+nolink "false"
 
 \end_inset
 
@@ -548,10 +570,12 @@ reference "fig:marginfig"
 status collapsed
 
 \begin_layout Plain Layout
-Note: unfortunately, the counting inside the \SpecialChar LyX
+Note:
+ unfortunately,
+ the counting inside the \SpecialChar LyX
  view is wrong.
- Margin floats and normal floats are counted differently, whereas the use
- the same counter in the output.
+ Margin floats and normal floats are counted differently,
+ whereas the use the same counter in the output.
 \end_layout
 
 \end_inset
@@ -626,9 +650,9 @@ status open
 
 \series bold
 Note:
+
 \series default
- If you are using margin figures or tables you must use the default float
- placement option in the document settings under 
+ If you are using margin figures or tables you must use the default float placement option in the document settings under 
 \family sans
 Float
 \begin_inset space ~
@@ -653,6 +677,7 @@ Figure
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:fullfig"
+nolink "false"
 
 \end_inset
 
@@ -664,6 +689,7 @@ reference "fig:fullfig"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:textfig"
+nolink "false"
 
 \end_inset
 
@@ -820,6 +846,7 @@ Table
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:normaltab"
+nolink "false"
 
 \end_inset
 
@@ -836,8 +863,8 @@ formal
 \end_inset
 
  in the tabular dialog).
- Notice the lack of vertical rules—they serve only to clutter the table's
- data.
+ Notice the lack of vertical rules—
+they serve only to clutter the table's data.
 \end_layout
 
 \begin_layout Standard
@@ -1030,33 +1057,53 @@ Full-width text blocks
 \end_layout
 
 \begin_layout Standard
-In addition to the new float types, there is a 
+In addition to the new float types,
+ there is a 
 \emph on
 Full Width
 \emph default
- environment that stretches across the main text block and the sidenotes
- area and ragged left:
+ environment that stretches across the main text block and the sidenotes area and ragged left:
 \end_layout
 
 \begin_layout Full Width
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
- Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+Lorem ipsum dolor sit amet,
+ consectetuer adipiscing elit.
+ Ut purus elit,
+ vestibulum ut,
+ placerat ac,
+ adipiscing vitae,
+ felis.
  Curabitur dictum gravida mauris.
- Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.
+ Nam arcu libero,
+ nonummy eget,
+ consectetuer id,
+ vulputate a,
+ magna.
  Donec vehicula augue eu neque.
- Pellentesque habitant morbi tristique senectus et netus et malesuada fames
- ac turpis egestas.
+ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
  Mauris ut leo.
  Cras viverra metus rhoncus sem.
  Nulla et lectus vestibulum urna fringilla ultrices.
  Phasellus eu tellus sit amet tortor gravida placerat.
- Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+ Integer sapien est,
+ iaculis in,
+ pretium quis,
+ viverra ac,
+ nunc.
  Praesent eget sem vel leo ultrices bibendum.
  Aenean faucibus.
- Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla.
+ Morbi dolor nulla,
+ malesuada eu,
+ pulvinar at,
+ mollis ac,
+ nulla.
  Curabitur auctor semper nulla.
  Donec varius orci eget risus.
- Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
+ Duis nibh mi,
+ congue eu,
+ accumsan eleifend,
+ sagittis quis,
+ diam.
  Duis eget orci sit amet orci dignissim rutrum.
 \end_layout
 
@@ -1081,8 +1128,10 @@ Palatino
 \emph on
 Bera Mono
 \emph default
- typefaces are installed, this style will use them automatically.
- Otherwise, we'll fall back on the 
+ typefaces are installed,
+ this style will use them automatically.
+ Otherwise,
+ we'll fall back on the 
 \emph on
 Computer Modern
 \emph default
@@ -1094,8 +1143,7 @@ Letterspacing
 \end_layout
 
 \begin_layout Standard
-This document class includes two new character styles and some improvements
- on existing commands for letterspacing.
+This document class includes two new character styles and some improvements on existing commands for letterspacing.
 \end_layout
 
 \begin_layout Standard
@@ -1119,8 +1167,11 @@ small caps
 
 \end_inset
 
-, the letterspacing—that is, the spacing between the letters—should be increased
- slightly.
+,
+ the letterspacing—
+that is,
+ the spacing between the letters—
+should be increased slightly.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bringhurst2005"
@@ -1148,7 +1199,8 @@ FULL CAPITAL LETTERS
 
 \end_inset
 
-, and the 
+,
+ and the 
 \emph on
 SmallCaps
 \emph default
@@ -1169,8 +1221,8 @@ small capital letters
 \end_inset
 
 .
- These commands will also automatically convert the case of the text to
- upper- or lowercase, respectively.
+ These commands will also automatically convert the case of the text to upper- or lowercase,
+ respectively.
 \end_layout
 
 \begin_layout Standard
@@ -1179,8 +1231,10 @@ The normal
 Small Caps
 \emph default
  shape has also been redefined to include letterspacing.
- Its case is left as is, however.
- This allows one to use both uppercase and lowercase letters: 
+ Its case is left as is,
+ however.
+ This allows one to use both uppercase and lowercase letters:
+ 
 \shape smallcaps
 The Initial Letters Of The Words In This Sentence Are Capitalized.
 \end_layout
@@ -1203,12 +1257,14 @@ tufte-handout
 article
 \family default
  document class.
- Therefore, you can pass any of the typical article options.
+ Therefore,
+ you can pass any of the typical article options.
  There are a few options that are specific to the 
 \family sans
 tufte-handout
 \family default
- document class, however.
+ document class,
+ however.
 \end_layout
 
 \begin_layout Itemize
@@ -1236,9 +1292,7 @@ The
 \emph on
 twoside
 \emph default
- option will modify the running heads so that the page number is printed
- on the outside edge (as opposed to always printing the page number on the
- right-side edge in 
+ option will modify the running heads so that the page number is printed on the outside edge (as opposed to always printing the page number on the right-side edge in 
 \emph on
 oneside
 \emph default
@@ -1251,8 +1305,8 @@ The
 symmetric
 \emph default
  option typesets the sidenotes on the outside edge of the page.
- This is how books are traditionally printed, but is contrary to Tufte's
- book design which sets the sidenotes on the right side of the page.
+ This is how books are traditionally printed,
+ but is contrary to Tufte's book design which sets the sidenotes on the right side of the page.
  This option implicitly sets the 
 \emph on
 twoside
@@ -1268,8 +1322,7 @@ justified
  option sets all the text fully justified (flush left and right).
  The default is to set the text ragged right.
  The body text of Tufte's books are set ragged right.
- This prevents needless hyphenation and makes it easier to read the text
- in the slightly narrower column.
+ This prevents needless hyphenation and makes it easier to read the text in the slightly narrower column.
 \end_layout
 
 \begin_layout Subsection
@@ -1292,10 +1345,12 @@ As mentioned on page
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "sec:headings"
+nolink "false"
 
 \end_inset
 
-, the 
+,
+ the 
 \family sans
 tufte-handout
 \family default
@@ -1311,11 +1366,14 @@ subsection
 \end_layout
 
 \begin_layout Standard
-If you want to define, say, a 
+If you want to define,
+ say,
+ a 
 \emph on
 paragraph
 \emph default
- heading, you could do it as follows:
+ heading,
+ you could do it as follows:
 \end_layout
 
 \begin_layout LyX-Code
@@ -1392,7 +1450,8 @@ paragraph
 \end_layout
 
 \begin_layout Standard
-For more details on defining section levels, see 
+For more details on defining section levels,
+ see 
 \shape italic
 The \SpecialChar LaTeX
 
@@ -1516,7 +1575,8 @@ https://tufte-latex.github.io/tufte-latex/
 \end_inset
 
 .
- On this website, you'll find links to the 
+ On this website,
+ you'll find links to the 
 \begin_inset Flex SmallCaps
 status open
 
@@ -1526,8 +1586,10 @@ svn
 
 \end_inset
 
- repository of the tufte-latex project, mailing lists, bug tracker, and
- documentation.
+ repository of the tufte-latex project,
+ mailing lists,
+ bug tracker,
+ and documentation.
 \end_layout
 
 \begin_layout Standard

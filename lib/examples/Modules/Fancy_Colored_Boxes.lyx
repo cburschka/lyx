@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -48,9 +48,9 @@ tcolorbox
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -99,8 +99,8 @@ tcolorbox
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -116,12 +116,16 @@ tcolorbox
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -157,8 +161,7 @@ Colored
 Boxes
 \emph default
  you have access to a huge variety of colored boxes.
- They are particularly useful for presentations or educational texts where
- you might for example highlight results or equations.
+ They are particularly useful for presentations or educational texts where you might for example highlight results or equations.
  This document describes how these boxes are used with \SpecialChar LyX
 .
 \end_layout
@@ -181,7 +184,8 @@ pages.
 \series bold
 tcolorbox
 \series default
- manual, 
+ manual,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -213,14 +217,15 @@ Boxes
 \end_layout
 
 \begin_layout Standard
-Add the following options to the document class options in the document
- settings of your file:
+Add the following options to the document class options in the document settings of your file:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-most, usenames, dvipsnames
+most,
+ usenames,
+ dvipsnames
 \end_layout
 
 \begin_layout Standard
@@ -236,9 +241,11 @@ tcolorbox
 .
  The options 
 \series bold
-usenames, dvipsnames
+usenames,
+ dvipsnames
 \series default
- load additional colors, see Appendix
+ load additional colors,
+ see Appendix
 \begin_inset space ~
 \end_inset
 
@@ -280,7 +287,8 @@ Box
 \end_layout
 
 \begin_layout Standard
-This is a static color box: 
+This is a static color box:
+ 
 \begin_inset Flex Color Box
 status open
 
@@ -294,8 +302,7 @@ A basic color box.
 \end_layout
 
 \begin_layout Standard
-It has by default a frame with round corners and consumes the full text
- width.
+It has by default a frame with round corners and consumes the full text width.
  It can contain several paragraphs and math.
 \end_layout
 
@@ -307,12 +314,15 @@ status open
 
 \series bold
 Note:
+
 \series default
  The box can contain forced page breaks but they will be ignored.
- To get breakable boxes, see 
+ To get breakable boxes,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Beakable-boxes"
+nolink "false"
 
 \end_inset
 
@@ -347,7 +357,8 @@ Box
 \end_layout
 
 \begin_layout Standard
-This is a dynamic color box: 
+This is a dynamic color box:
+ 
 \begin_inset Flex Dynamic Color Box
 status open
 
@@ -361,18 +372,22 @@ A dynamic color box.
 \end_layout
 
 \begin_layout Standard
-In contrary to static boxes dynamic boxes cannot have parts, see 
+In contrary to static boxes dynamic boxes cannot have parts,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Box-parts"
+nolink "false"
 
 \end_inset
 
-, and they cannot made breakable but one can set their vertical placement,
+,
+ and they cannot made breakable but one can set their vertical placement,
  see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Vertical"
+nolink "false"
 
 \end_inset
 
@@ -403,19 +418,19 @@ Box
 \end_layout
 
 \begin_layout Standard
-Fit boxes are dynamic boxes but their content is automatically decreased
- or increased to fit into the specified box width and height.
+Fit boxes are dynamic boxes but their content is automatically decreased or increased to fit into the specified box width and height.
  How to specify a width and height is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Geometry"
+nolink "false"
 
 \end_inset
 
 .
- If no width and height is specified the result is a square box consuming
- the full available width of the page.
- If only a width is specified, the result is a square box.
+ If no width and height is specified the result is a square box consuming the full available width of the page.
+ If only a width is specified,
+ the result is a square box.
 \end_layout
 
 \begin_layout Standard
@@ -467,7 +482,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=5cm, height=3cm
+width=5cm,
+ height=3cm
 \end_layout
 
 \end_inset
@@ -489,8 +505,7 @@ cm high fit color box.
 \end_layout
 
 \begin_layout Standard
-The examples show that the text will be shrinked to fit into the box but
- it will not be increased.
+The examples show that the text will be shrinked to fit into the box but it will not be increased.
 \end_layout
 
 \begin_layout Subsubsection
@@ -516,10 +531,12 @@ Box
 \end_layout
 
 \begin_layout Standard
-How to use and customize custom color boxes, see 
+How to use and customize custom color boxes,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:General"
+nolink "false"
 
 \end_inset
 
@@ -549,7 +566,8 @@ title=
 \end_layout
 
 \begin_layout Standard
-This is a titled box: 
+This is a titled box:
+ 
 \begin_inset Flex Color Box
 status open
 
@@ -619,10 +637,12 @@ The subtitle
 
 \begin_layout Standard
 The title and subtitle text is by default white.
- How to change its color, see 
+ How to change its color,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Title-text"
+nolink "false"
 
 \end_inset
 
@@ -641,17 +661,14 @@ name "subsec:Box-parts"
 \end_layout
 
 \begin_layout Standard
-The content of the box can be divided into an upper and a lower part by
- using the environment 
+The content of the box can be divided into an upper and a lower part by using the environment 
 \family sans
 Color Box Separator
 \family default
  in \SpecialChar LyX
 's environment selection combobox.
- The idea behind this is that both parts can be treated and customized separatel
-y.
- An application would be that the upper part contains a description and
- the lower part an equation.
+ The idea behind this is that both parts can be treated and customized separately.
+ An application would be that the upper part contains a description and the lower part an equation.
 \end_layout
 
 \begin_layout Standard
@@ -684,6 +701,7 @@ The separation line can be customized as described in
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Lines"
+nolink "false"
 
 \end_inset
 
@@ -745,7 +763,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-sidebyside, lower separated=false
+sidebyside,
+ lower separated=false
 \end_layout
 
 \end_inset
@@ -767,14 +786,17 @@ Lower content at the right
 \end_layout
 
 \begin_layout Standard
-There are several layout skins available for colored boxes, see 
+There are several layout skins available for colored boxes,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Beamer"
+nolink "false"
 
 \end_inset
 
-, that affects also the layout of the box parts.
+,
+ that affects also the layout of the box parts.
  For example with the box option 
 \series bold
 beamer
@@ -859,10 +881,12 @@ Some text
 \end_layout
 
 \begin_layout Standard
-The line style can only be changed if a skin is specified, see 
+The line style can only be changed if a skin is specified,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Enhanced"
+nolink "false"
 
 \end_inset
 
@@ -888,7 +912,8 @@ skins
 \series bold
 tcolorbox
 \series default
- manual for possible commands, 
+ manual for possible commands,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -916,7 +941,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-enhanced, segmentation style={double=white,draw=blue,double distance=1pt,solid}
+enhanced,
+ segmentation style={double=white,draw=blue,double distance=1pt,solid}
 \end_layout
 
 \end_inset
@@ -961,7 +987,8 @@ To make a box breakable the option
 breakable
 \series default
  is added.
- If a page break occurs within a box, the box will get broken this way:
+ If a page break occurs within a box,
+ the box will get broken this way:
 \end_layout
 
 \begin_layout Standard
@@ -973,71 +1000,83 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=A breakable box, breakable, title after break=continued...
+title=A breakable box,
+ breakable,
+ title after break=continued...
 \end_layout
 
 \end_inset
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
 \end_layout
 
 \end_inset
@@ -1059,7 +1098,8 @@ title after break
 \end_layout
 
 \begin_layout Standard
-If boxes are inside boxes, only the outer box can made breakable.
+If boxes are inside boxes,
+ only the outer box can made breakable.
 \end_layout
 
 \begin_layout Standard
@@ -1070,6 +1110,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  Dynamic boxes and fit boxes cannot made breakable!
 \end_layout
@@ -1099,8 +1140,8 @@ The following subsections show many possibilities to customize boxes.
 \end_layout
 
 \begin_layout Standard
-To avoid to write the box commands all the time, you can use the environment
- 
+To avoid to write the box commands all the time,
+ you can use the environment 
 \family sans
 Color
 \begin_inset space ~
@@ -1126,7 +1167,8 @@ following
  the environment.
  For example writing there 
 \series bold
-width=3cm, height=8cm
+width=3cm,
+ height=8cm
 \series default
  forces all following boxes to have a height of 8
 \begin_inset space \thinspace{}
@@ -1137,8 +1179,8 @@ cm and a width of 3
 \end_inset
 
 cm.
- However, this is not useful if one needs several box types since the changes
- would affect 
+ However,
+ this is not useful if one needs several box types since the changes would affect 
 \emph on
 all
 \emph default
@@ -1146,8 +1188,7 @@ all
 \end_layout
 
 \begin_layout Standard
-In most documents one need a few types of boxes and all boxes of a type
- should look identical.
+In most documents one need a few types of boxes and all boxes of a type should look identical.
  To achieve this the module 
 \emph on
 Fancy
@@ -1187,11 +1228,11 @@ Type
 \end_layout
 
 \begin_layout Standard
-If you want for example a box type that looks like the fancy colored one
- in 
+If you want for example a box type that looks like the fancy colored one in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Enhanced"
+nolink "false"
 
 \end_inset
 
@@ -1201,8 +1242,11 @@ reference "subsec:Enhanced"
 \begin_layout Standard
 
 \series bold
-enhanced, frame style={left color=red!75!black, right color=blue!75!black},
- interior style={left color=red!20!white, right color=yellow!50!white}
+enhanced,
+ frame style={left color=red!75!black,
+ right color=blue!75!black},
+ interior style={left color=red!20!white,
+ right color=yellow!50!white}
 \end_layout
 
 \begin_layout Standard
@@ -1218,7 +1262,8 @@ cBoxA
 \begin_inset space ~
 \end_inset
 
-1, cBoxB type
+1,
+ cBoxB type
 \begin_inset space ~
 \end_inset
 
@@ -1231,7 +1276,8 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-every box should have its own title), you need one argument.
+every box should have its own title),
+ you need one argument.
  Therefore add 
 \series bold
 1
@@ -1247,8 +1293,10 @@ status open
 
 \series bold
 Note:
+
 \series default
- If you use an argument, the inset 
+ If you use an argument,
+ the inset 
 \family sans
 Default Value
 \family default
@@ -1292,8 +1340,11 @@ status open
 
 \end_inset
 
-enhanced, frame style={left color=red!75!black, right color=blue!75!black},
- interior style={left color=red!20!white, right color=yellow!50!white},
+enhanced,
+ frame style={left color=red!75!black,
+ right color=blue!75!black},
+ interior style={left color=red!20!white,
+ right color=yellow!50!white},
  #1
 \end_layout
 
@@ -1348,13 +1399,15 @@ Another example:
 \begin_inset Newline newline
 \end_inset
 
-Assuming you need a box type that can be numbered, you insert
+Assuming you need a box type that can be numbered,
+ you insert
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-auto counter, number within=section
+auto counter,
+ number within=section
 \end_layout
 
 \begin_layout Standard
@@ -1391,7 +1444,8 @@ Name
 \series bold
 cBoxB
 \series default
-, 
+,
+ 
 \family sans
 Arguments
 \family default
@@ -1406,9 +1460,12 @@ Arguments
 \begin_layout Standard
 
 \series bold
-colback=red!5!white, colframe=red!75!black, title=Example~
+colback=red!5!white,
+ colframe=red!75!black,
+ title=Example~
 \backslash
-thetcbcounter : #1
+thetcbcounter :
+ #1
 \end_layout
 
 \begin_layout Standard
@@ -1446,7 +1503,8 @@ status open
 
 \begin_layout Plain Layout
 
-auto counter, number within=section
+auto counter,
+ number within=section
 \end_layout
 
 \end_inset
@@ -1483,9 +1541,12 @@ status open
 
 \end_inset
 
-colback=red!5!white, colframe=red!75!black, title=Example~
+colback=red!5!white,
+ colframe=red!75!black,
+ title=Example~
 \backslash
-thetcbcounter : #1
+thetcbcounter :
+ #1
 \end_layout
 
 \begin_layout Standard
@@ -1535,7 +1596,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-Bold numbered title, colback=lime, fonttitle=
+Bold numbered title,
+ colback=lime,
+ fonttitle=
 \backslash
 bfseries
 \end_layout
@@ -1575,18 +1638,19 @@ Box
 2
 \family default
  but want to add more than one option.
- This is for example useful for options that require another option before
- in the options list.
+ This is for example useful for options that require another option before in the options list.
 \begin_inset Newline newline
 \end_inset
 
-Like before, add 
+Like before,
+ add 
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-auto counter, number within=section
+auto counter,
+ number within=section
 \end_layout
 
 \begin_layout Standard
@@ -1628,7 +1692,8 @@ cBoxC
 \begin_inset space ~
 \end_inset
 
-Arguments, 
+Arguments,
+ 
 \family sans
 Arguments
 \family default
@@ -1643,13 +1708,18 @@ Arguments
 \begin_layout Standard
 
 \series bold
-nobeforeafter, width=#1, square, colframe=orange!50!black, 
+nobeforeafter,
+ width=#1,
+ square,
+ colframe=orange!50!black,
+ 
 \begin_inset Newline newline
 \end_inset
 
 title=Example~
 \backslash
-thetcbcounter : #2
+thetcbcounter :
+ #2
 \end_layout
 
 \begin_layout Standard
@@ -1687,7 +1757,8 @@ status open
 
 \begin_layout Plain Layout
 
-auto counter, number within=section
+auto counter,
+ number within=section
 \end_layout
 
 \end_inset
@@ -1724,9 +1795,14 @@ status open
 
 \end_inset
 
-nobeforeafter, width=#1, square, colframe=orange!50!black, title=Example~
+nobeforeafter,
+ width=#1,
+ square,
+ colframe=orange!50!black,
+ title=Example~
 \backslash
-thetcbcounter : #2
+thetcbcounter :
+ #2
 \end_layout
 
 \begin_layout Standard
@@ -1781,7 +1857,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-The title, beamer
+The title,
+ beamer
 \end_layout
 
 \end_inset
@@ -1815,7 +1892,8 @@ You cannot use \SpecialChar LyX
 \begin_layout Standard
 
 \series bold
-, label={name}
+,
+ label={name}
 \end_layout
 
 \begin_layout Standard
@@ -1823,7 +1901,8 @@ to the the
 \family sans
 Color Box Options
 \family default
- inset, whereby 
+ inset,
+ whereby 
 \series bold
 name
 \series default
@@ -1839,7 +1918,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-Mass–energy equivalence, label={Einstein}
+Mass–energy equivalence,
+ label={Einstein}
 \end_layout
 
 \end_inset
@@ -1861,7 +1941,8 @@ E=mc^{2}.
 \end_layout
 
 \begin_layout Standard
-To reference the box, insert the command
+To reference the box,
+ insert the command
 \end_layout
 
 \begin_layout Standard
@@ -1909,11 +1990,13 @@ The \SpecialChar LaTeX
 tcolorbox
 \series default
  provides different skins.
- For a full list, see the 
+ For a full list,
+ see the 
 \series bold
 tcolorbox
 \series default
- manual, section 
+ manual,
+ section 
 \family sans
 Library
 \begin_inset space ~
@@ -1921,7 +2004,8 @@ Library
 
 skins
 \family default
-, 
+,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -1959,13 +2043,16 @@ This skin is enabled by adding the option enhanced.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Lines"
+nolink "false"
 
 \end_inset
 
- or the ability to have shadows, see 
+ or the ability to have shadows,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Shadows"
+nolink "false"
 
 \end_inset
 
@@ -1986,71 +2073,83 @@ title=An
 \emph on
 enhanced
 \emph default
- breakable box, breakable, enhanced
+ breakable box,
+ breakable,
+ enhanced
 \end_layout
 
 \end_inset
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
 \end_layout
 
 \end_inset
@@ -2059,8 +2158,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Standard
-Another feature you might like is to add color gradients with the options
- 
+Another feature you might like is to add color gradients with the options 
 \series bold
 frame style
 \series default
@@ -2075,7 +2173,8 @@ interior style
 
 
 \series bold
-frame style={left color=color, right color=color}
+frame style={left color=color,
+ right color=color}
 \begin_inset Newline newline
 \end_inset
 
@@ -2085,10 +2184,12 @@ where
 \series bold
 color
 \series default
- is a color name or definition, see 
+ is a color name or definition,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Color"
+nolink "false"
 
 \end_inset
 
@@ -2108,9 +2209,12 @@ title=An
 \emph on
 enhanced
 \emph default
- box with a color gradient, enhanced, frame style={left color=red!75!black,
- right color=blue!75!black}, interior style={left color=red!20!white, right
- color=yellow!50!white}
+ box with a color gradient,
+ enhanced,
+ frame style={left color=red!75!black,
+ right color=blue!75!black},
+ interior style={left color=red!20!white,
+ right color=yellow!50!white}
 \end_layout
 
 \end_inset
@@ -2132,8 +2236,7 @@ Lower content
 \end_layout
 
 \begin_layout Standard
-Alternatively one can use a PNG image as background for boxes with the option
- 
+Alternatively one can use a PNG image as background for boxes with the option 
 \series bold
 frame style image=file name
 \series default
@@ -2153,8 +2256,7 @@ Bicolor
 \end_layout
 
 \begin_layout Standard
-With this skin the lower content gets another background color than the
- upper part.
+With this skin the lower content gets another background color than the upper part.
 \end_layout
 
 \begin_layout Standard
@@ -2170,7 +2272,8 @@ title=A box with the skin
 \emph on
 bicolor
 \emph default
-, bicolor
+,
+ bicolor
 \end_layout
 
 \end_inset
@@ -2201,6 +2304,7 @@ colbacklower
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Color"
+nolink "false"
 
 \end_inset
 
@@ -2219,12 +2323,13 @@ name "subsec:Beamer"
 \end_layout
 
 \begin_layout Standard
-This is a skin that simulates the appearance of the beamer presentation
- document class.
- Its appearance can be changed like for the enhanced skin, 
+This is a skin that simulates the appearance of the beamer presentation document class.
+ Its appearance can be changed like for the enhanced skin,
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Enhanced"
+nolink "false"
 
 \end_inset
 
@@ -2244,7 +2349,9 @@ title=A
 \emph on
 beamer
 \emph default
- box with a color gradient, beamer, frame style={left color=red!75!black,
+ box with a color gradient,
+ beamer,
+ frame style={left color=red!75!black,
  right color=blue!75!black}
 \end_layout
 
@@ -2271,8 +2378,7 @@ Widget
 \end_layout
 
 \begin_layout Standard
-This skin is like the standard skin but the background colors are automatically
- shaded:
+This skin is like the standard skin but the background colors are automatically shaded:
 \end_layout
 
 \begin_layout Standard
@@ -2288,7 +2394,8 @@ title=A
 \emph on
 widget
 \emph default
- box, widget
+ box,
+ widget
 \end_layout
 
 \end_inset
@@ -2315,11 +2422,12 @@ Empty
 
 \begin_layout Standard
 This skin has no colors.
- To make the title visible (because it is by default white) you have to
- change its color, see 
+ To make the title visible (because it is by default white) you have to change its color,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Title-text"
+nolink "false"
 
 \end_inset
 
@@ -2339,7 +2447,9 @@ title=A box with the
 \emph on
 empty
 \emph default
- skin, empty, coltitle=orange
+ skin,
+ empty,
+ coltitle=orange
 \end_layout
 
 \end_inset
@@ -2370,10 +2480,10 @@ Side by side
 
 \begin_layout Standard
 Normally the boxes are a paragraph of its own.
- They will therefore appear by default one upon another separated by vertical
- space.
- To change this behavior, to place for example boxes side by side, use the
- placement options 
+ They will therefore appear by default one upon another separated by vertical space.
+ To change this behavior,
+ to place for example boxes side by side,
+ use the placement options 
 \series bold
 before=code
 \series default
@@ -2385,10 +2495,10 @@ after=code
  By default there is a paragraph break before and after the box.
  By using the options 
 \series bold
-before=, after=
+before=,
+ after=
 \series default
- nothing will be added besides the boxes so that they can be places side
- by side:
+ nothing will be added besides the boxes so that they can be places side by side:
 \end_layout
 
 \begin_layout Standard
@@ -2400,7 +2510,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=3cm, square, valign=center, before=, after=
+width=3cm,
+ square,
+ valign=center,
+ before=,
+ after=
 \end_layout
 
 \end_inset
@@ -2409,7 +2523,8 @@ A 3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, square box.
+cm wide,
+ square box.
 \end_layout
 
 \end_inset
@@ -2423,7 +2538,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=3cm, square, valign=center, before=, after=
+width=3cm,
+ square,
+ valign=center,
+ before=,
+ after=
 \end_layout
 
 \end_inset
@@ -2432,7 +2551,8 @@ A 3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, square box.
+cm wide,
+ square box.
 \end_layout
 
 \end_inset
@@ -2446,7 +2566,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=3cm, square, valign=center, before=, after=
+width=3cm,
+ square,
+ valign=center,
+ before=,
+ after=
 \end_layout
 
 \end_inset
@@ -2455,7 +2579,8 @@ A 3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, square box.
+cm wide,
+ square box.
 \end_layout
 
 \end_inset
@@ -2470,15 +2595,15 @@ nobeforeafter
 \series default
  is an alternative for 
 \series bold
-before=, after=
+before=,
+ after=
 \series default
 .
 \end_layout
 
 \begin_layout Standard
 To separate the boxes one can use the normal \SpecialChar LyX
- spacing features like a horizontal
- fill:
+ spacing features like a horizontal fill:
 \end_layout
 
 \begin_layout Standard
@@ -2494,7 +2619,10 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=3cm, square, valign=center, nobeforeafter
+width=3cm,
+ square,
+ valign=center,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -2503,7 +2631,8 @@ A 3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, square box.
+cm wide,
+ square box.
 \end_layout
 
 \end_inset
@@ -2521,7 +2650,10 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=3cm, square, valign=center, nobeforeafter
+width=3cm,
+ square,
+ valign=center,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -2530,7 +2662,8 @@ A 3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, square box.
+cm wide,
+ square box.
 \end_layout
 
 \end_inset
@@ -2548,7 +2681,10 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=3cm, square, valign=center, nobeforeafter
+width=3cm,
+ square,
+ valign=center,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -2557,7 +2693,8 @@ A 3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, square box.
+cm wide,
+ square box.
 \end_layout
 
 \end_inset
@@ -2585,8 +2722,7 @@ Floating
 \end_layout
 
 \begin_layout Standard
-Like for tables and figures in a document it is very helpful if boxes could
- float in the text to be placed at the optimal position.
+Like for tables and figures in a document it is very helpful if boxes could float in the text to be placed at the optimal position.
  This is achieved by the option 
 \series bold
 float=options
@@ -2608,7 +2744,8 @@ h
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2620,7 +2757,8 @@ t
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2695,7 +2833,10 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=A floating box, float, width=5cm, valign=center
+title=A floating box,
+ float,
+ width=5cm,
+ valign=center
 \end_layout
 
 \end_inset
@@ -2727,8 +2868,7 @@ are ignored.
 every float=code
 \series default
  before the box.
- If the box is breakable the code is inserted before every part of the break
- sequence.
+ If the box is breakable the code is inserted before every part of the break sequence.
  A typical application is to center the floating box with 
 \series bold
 every float=
@@ -2745,7 +2885,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=A floating box, float, width=5cm, valign=center, every float=
+title=A floating box,
+ float,
+ width=5cm,
+ valign=center,
+ every float=
 \backslash
 centering
 \end_layout
@@ -2776,8 +2920,7 @@ name "subsec:Vertical"
 \end_layout
 
 \begin_layout Standard
-The vertical placement of a box in respect to the surrounding text line
- can only be set for dynamic boxes.
+The vertical placement of a box in respect to the surrounding text line can only be set for dynamic boxes.
  The option 
 \series bold
 tcbox raise=length
@@ -2810,8 +2953,7 @@ tcbox raise=0pt
 \series bold
 tcbox raise base
 \series default
- the box is lowered so that the base of the box content matches the base
- of the surrounding line.
+ the box is lowered so that the base of the box content matches the base of the surrounding line.
 \end_layout
 
 \begin_layout Standard
@@ -2828,7 +2970,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-tcbox raise base, nobeforeafter
+tcbox raise base,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -2866,7 +3009,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-tcbox raise=1cm, nobeforeafter
+tcbox raise=1cm,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -2888,8 +3032,7 @@ Raster
 \end_layout
 
 \begin_layout Standard
-The easiest way to place boxes in a table-like raster is to put them into
- a raster box.
+The easiest way to place boxes in a table-like raster is to put them into a raster box.
  The 
 \family sans
 Raster
@@ -2920,8 +3063,7 @@ raster columns=number
 number
 \series default
  is the number of columns.
- All boxes inserted to the raster box will now automatically be output in
- a raster with 3 columns and their width is automatically adjusted.
+ All boxes inserted to the raster box will now automatically be output in a raster with 3 columns and their width is automatically adjusted.
 \end_layout
 
 \begin_layout Standard
@@ -3045,12 +3187,13 @@ A simple box.
 \end_layout
 
 \begin_layout Standard
-For more info about options of the raster color box, please consult the
- 
+For more info about options of the raster color box,
+ please consult the 
 \series bold
 tcolorbox
 \series default
- manual, section 
+ manual,
+ section 
 \family sans
 Library
 \begin_inset space ~
@@ -3058,7 +3201,8 @@ Library
 
 raster
 \family default
-, 
+,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -3152,8 +3296,8 @@ One can also set a width only for the text of the box with the option
 text width=length
 \series default
 .
- If the width is shorter than required for the text, new lines will be created
- automatically.
+ If the width is shorter than required for the text,
+ new lines will be created automatically.
 \end_layout
 
 \begin_layout Standard
@@ -3191,7 +3335,8 @@ width
 \series bold
 text width
 \series default
-; only the last given width option is taken into account.
+;
+ only the last given width option is taken into account.
 \end_layout
 
 \begin_layout Standard
@@ -3215,7 +3360,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=10cm, add to width=2cm
+width=10cm,
+ add to width=2cm
 \end_layout
 
 \end_inset
@@ -3241,20 +3387,22 @@ Content
 \end_layout
 
 \begin_layout Standard
-For boxes with parts side by side one can control the width of the box parts
- with the options 
+For boxes with parts side by side one can control the width of the box parts with the options 
 \series bold
 sidebyside gap
 \series default
-, 
+,
+ 
 \series bold
 lefthand width
 \series default
-, 
+,
+ 
 \series bold
 righthand width
 \series default
-, 
+,
+ 
 \series bold
 lefthand ratio
 \series default
@@ -3309,7 +3457,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-sidebyside, sidebyside gap=2cm
+sidebyside,
+ sidebyside gap=2cm
 \end_layout
 
 \end_inset
@@ -3343,7 +3492,8 @@ lefthand width
 \series bold
 righthand width
 \series default
- set the absolute width of the left and right part, respectively:
+ set the absolute width of the left and right part,
+ respectively:
 \end_layout
 
 \begin_layout Standard
@@ -3355,7 +3505,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-sidebyside, lefthand width=3cm
+sidebyside,
+ lefthand width=3cm
 \end_layout
 
 \end_inset
@@ -3389,7 +3540,8 @@ lefthand ratio
 \series bold
 righthand ratio
 \series default
- set the relative width of the left and right part, respectively:
+ set the relative width of the left and right part,
+ respectively:
 \end_layout
 
 \begin_layout Standard
@@ -3401,7 +3553,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-sidebyside, lefthand ratio=0.3
+sidebyside,
+ lefthand ratio=0.3
 \end_layout
 
 \end_inset
@@ -3531,7 +3684,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=3cm, square
+width=3cm,
+ square
 \end_layout
 
 \end_inset
@@ -3548,8 +3702,7 @@ A squared box.
 \begin_inset VSpace bigskip
 \end_inset
 
-To extend the height of the box in case the content might consume more height
- than expected one must use the 
+To extend the height of the box in case the content might consume more height than expected one must use the 
 \series bold
 height
 \series default
@@ -3558,9 +3711,7 @@ height
 height plus=length
 \series default
 .
- An application would be to set a maximal possible height in case you write
- a book where the spacing is defined and should not be overwritten by any
- value.
+ An application would be to set a maximal possible height in case you write a book where the spacing is defined and should not be overwritten by any value.
 \end_layout
 
 \begin_layout Standard
@@ -3572,7 +3723,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=2cm, height plus=2cm
+height=2cm,
+ height plus=2cm
 \end_layout
 
 \end_inset
@@ -3602,7 +3754,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=2cm, height plus=2cm
+height=2cm,
+ height plus=2cm
 \end_layout
 
 \end_inset
@@ -3672,8 +3825,7 @@ cm.
 \begin_inset VSpace bigskip
 \end_inset
 
-In some cases it might be useful to specify an allowed range for the height
- with the option 
+In some cases it might be useful to specify an allowed range for the height with the option 
 \series bold
 height from=min to max
 \series default
@@ -3686,9 +3838,9 @@ min
 max
 \series default
  are values.
- The height will then be at least the given minimal value or the height
- consumed by the content.
- It does not exceed the maximum, independent of the content:
+ The height will then be at least the given minimal value or the height consumed by the content.
+ It does not exceed the maximum,
+ independent of the content:
 \end_layout
 
 \begin_layout Standard
@@ -3827,7 +3979,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=1cm, add to height=1cm
+height=1cm,
+ add to height=1cm
 \end_layout
 
 \end_inset
@@ -3856,8 +4009,7 @@ With the option
 \series bold
 height fill=value
 \series default
- one can force the box to consume the rest of the available height of the
- document parts where it is in.
+ one can force the box to consume the rest of the available height of the document parts where it is in.
  
 \series bold
 value
@@ -3875,13 +4027,11 @@ maximum
 \series bold
 true
 \series default
- but compresses the content of the page before the box as much as possible
- to maximize the box.
+ but compresses the content of the page before the box as much as possible to maximize the box.
 \begin_inset Newline newline
 \end_inset
 
-In this example the box is in the main text and therefore consumes the rest
- of the current page:
+In this example the box is in the main text and therefore consumes the rest of the current page:
 \end_layout
 
 \begin_layout Standard
@@ -3941,8 +4091,7 @@ A box with 1.5
 \end_inset
 
 cm high content.
- Due to the frame separation and the frame width the box height is larger
- than 1.5
+ Due to the frame separation and the frame width the box height is larger than 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -3963,7 +4112,8 @@ height
 \series bold
 text height
 \series default
-; only the last given width option is taken into account.
+;
+ only the last given width option is taken into account.
 \end_layout
 
 \begin_layout Standard
@@ -3974,15 +4124,18 @@ With the options
 \series bold
 space=fraction
 \series default
-, 
+,
+ 
 \series bold
 space to upper
 \series default
-, 
+,
+ 
 \series bold
 space to lower
 \series default
-, 
+,
+ 
 \series bold
 space to both
 \series default
@@ -3990,8 +4143,7 @@ space to both
 \series bold
 split=fraction
 \series default
- one can specify how the height should be divided between the upper and
- the lower part.
+ one can specify how the height should be divided between the upper and the lower part.
  For the 
 \series bold
 space
@@ -4000,8 +4152,7 @@ space
 \series bold
 fraction
 \series default
- is the fraction of the additional height (the specified height minus the
- height consumed by the content).
+ is the fraction of the additional height (the specified height minus the height consumed by the content).
 \begin_inset Newline newline
 \end_inset
 
@@ -4025,7 +4176,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=3cm, space=0.75
+height=3cm,
+ space=0.75
 \end_layout
 
 \end_inset
@@ -4059,7 +4211,8 @@ space to upper
 \series bold
 space=1
 \series default
-, 
+,
+ 
 \series bold
 space to lower
 \series default
@@ -4067,7 +4220,8 @@ space to lower
 \series bold
 space=0
 \series default
-, 
+,
+ 
 \series bold
 space to both
 \series default
@@ -4087,7 +4241,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=3cm, space to upper
+height=3cm,
+ space to upper
 \end_layout
 
 \end_inset
@@ -4146,7 +4301,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=3cm, split=0.1
+height=3cm,
+ split=0.1
 \end_layout
 
 \end_inset
@@ -4218,9 +4374,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-adjusted title=ace, width=0.3
+adjusted title=ace,
+ width=0.3
 \backslash
-columnwidth, nobeforeafter, equal height group=A
+columnwidth,
+ nobeforeafter,
+ equal height group=A
 \end_layout
 
 \end_inset
@@ -4243,9 +4402,13 @@ status open
 status open
 
 \begin_layout Plain Layout
-adjusted title=Grapefruit, width=0.3
+adjusted title=Grapefruit,
+ width=0.3
 \backslash
-columnwidth, space to upper, nobeforeafter, equal height group=A
+columnwidth,
+ space to upper,
+ nobeforeafter,
+ equal height group=A
 \end_layout
 
 \end_inset
@@ -4276,9 +4439,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-adjusted title=, width=0.3
+adjusted title=,
+ width=0.3
 \backslash
-columnwidth, nobeforeafter, equal height group=A
+columnwidth,
+ nobeforeafter,
+ equal height group=A
 \end_layout
 
 \end_inset
@@ -4318,8 +4484,8 @@ A
 \end_layout
 
 \begin_layout Standard
-If you have a title that needs only a single line, it is recommended to
- use the option 
+If you have a title that needs only a single line,
+ it is recommended to use the option 
 \series bold
 adjusted title
 \series default
@@ -4327,8 +4493,7 @@ adjusted title
 \series bold
 title
 \series default
- for all boxes to assure that the title height will be the same for all
- boxes.
+ for all boxes to assure that the title height will be the same for all boxes.
  Otherwise the height would be different in the above example because 
 \begin_inset Quotes eld
 \end_inset
@@ -4357,15 +4522,18 @@ The width of the box frame can be changed with the options
 \series bold
 toprule
 \series default
-, 
+,
+ 
 \series bold
 bottomrule
 \series default
-, 
+,
+ 
 \series bold
 leftrule
 \series default
-, 
+,
+ 
 \series bold
 rightrule
 \series default
@@ -4418,7 +4586,10 @@ status open
 status open
 
 \begin_layout Plain Layout
-leftrule=3mm, rightrule=4mm, toprule=2mm, bottomrule=1mm
+leftrule=3mm,
+ rightrule=4mm,
+ toprule=2mm,
+ bottomrule=1mm
 \end_layout
 
 \end_inset
@@ -4427,11 +4598,13 @@ leftrule=3mm, rightrule=4mm, toprule=2mm, bottomrule=1mm
 \begin_inset space \thinspace{}
 \end_inset
 
-mm wide left rule, 4
+mm wide left rule,
+ 4
 \begin_inset space \thinspace{}
 \end_inset
 
-mm wide right rule, 2
+mm wide right rule,
+ 2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -4486,7 +4659,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=A title, titlerule=8mm, colbacktitle=blue
+title=A title,
+ titlerule=8mm,
+ colbacktitle=blue
 \end_layout
 
 \end_inset
@@ -4585,7 +4760,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-arc=5mm, outer arc=0mm
+arc=5mm,
+ outer arc=0mm
 \end_layout
 
 \end_inset
@@ -4597,6 +4773,7 @@ arc=5
 \end_inset
 
 mm,
+
 \series default
  
 \series bold
@@ -4623,7 +4800,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-arc=0mm, outer arc=0mm
+arc=0mm,
+ outer arc=0mm
 \end_layout
 
 \end_inset
@@ -4649,7 +4827,8 @@ mm
 \series bold
 sharp corners=all
 \series default
-, see below.
+,
+ see below.
 \end_layout
 
 \end_inset
@@ -4665,7 +4844,8 @@ The general shape can be changed with the options
 \series bold
 circular arc
 \series default
-, 
+,
+ 
 \series bold
 bean arc
 \series default
@@ -4694,7 +4874,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=3.5cm, circular arc
+width=3.5cm,
+ circular arc
 \end_layout
 
 \end_inset
@@ -4717,20 +4898,23 @@ As you can see circular arc box looks ugly when the box is wider than high.
 \series bold
 square
 \series default
-, see 
+,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Height"
+nolink "false"
 
 \end_inset
 
-, to get the same width and height.
+,
+ to get the same width and height.
  The result is a perfect circle.
- To center the text in the box use the text alignment options described
- in 
+ To center the text in the box use the text alignment options described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Alignment"
+nolink "false"
 
 \end_inset
 
@@ -4746,7 +4930,10 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=4cm, square, valign=center, circular arc
+width=4cm,
+ square,
+ valign=center,
+ circular arc
 \end_layout
 
 \end_inset
@@ -4798,7 +4985,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=3.5cm, height=5cm, bean arc, nobeforeafter, valign=center
+width=3.5cm,
+ height=5cm,
+ bean arc,
+ nobeforeafter,
+ valign=center
 \end_layout
 
 \end_inset
@@ -4807,7 +4998,8 @@ A 3.5
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, 5
+cm wide,
+ 5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -4829,7 +5021,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=5cm, height=3.5cm, bean arc, nobeforeafter, valign=center
+width=5cm,
+ height=3.5cm,
+ bean arc,
+ nobeforeafter,
+ valign=center
 \end_layout
 
 \end_inset
@@ -4838,7 +5034,8 @@ A 5
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, 3.5
+cm wide,
+ 3.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -4871,7 +5068,10 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=4cm, square, bean arc, valign=center
+width=4cm,
+ square,
+ bean arc,
+ valign=center
 \end_layout
 
 \end_inset
@@ -4880,7 +5080,8 @@ A 4
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, square box as bean arc.
+cm wide,
+ square box as bean arc.
 \end_layout
 
 \end_inset
@@ -4910,7 +5111,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-width=4cm, square, octogon arc, valign=center, arc is angular
+width=4cm,
+ square,
+ octogon arc,
+ valign=center,
+ arc is angular
 \end_layout
 
 \end_inset
@@ -4919,7 +5124,8 @@ A 4
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide, square box with 
+cm wide,
+ square box with 
 \series bold
 octogon arc
 \series default
@@ -4939,6 +5145,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  The option 
 \series bold
@@ -4971,11 +5178,13 @@ position
 \series bold
 northwest
 \series default
-, 
+,
+ 
 \series bold
 northeast
 \series default
-, 
+,
+ 
 \series bold
 southwest
 \series default
@@ -5017,19 +5226,23 @@ The positions
 \series bold
 north
 \series default
-, 
+,
+ 
 \series bold
 south
 \series default
-, 
+,
+ 
 \series bold
 east
 \series default
-, 
+,
+ 
 \series bold
 west
 \series default
-, 
+,
+ 
 \series bold
 downhill
 \series default
@@ -5055,7 +5268,8 @@ status open
 \begin_layout Plain Layout
 width=0.4
 \backslash
-columnwidth,sharp corners=east, nobeforeafter
+columnwidth,sharp corners=east,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -5088,7 +5302,8 @@ status open
 \begin_layout Plain Layout
 width=0.4
 \backslash
-columnwidth,sharp corners=uphill, nobeforeafter
+columnwidth,sharp corners=uphill,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -5097,7 +5312,9 @@ A box with 2
 \begin_inset space ~
 \end_inset
 
-corners, one at the lower left, one at the upper right (
+corners,
+ one at the lower left,
+ one at the upper right (
 \series bold
 uphill
 \series default
@@ -5256,7 +5473,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-halign upper=left, halign lower=center
+halign upper=left,
+ halign lower=center
 \end_layout
 
 \end_inset
@@ -5294,8 +5512,10 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=A right-aligned title, halign title=right, halign upper=left, halign
- lower=center
+title=A right-aligned title,
+ halign title=right,
+ halign upper=left,
+ halign lower=center
 \end_layout
 
 \end_inset
@@ -5321,12 +5541,12 @@ Vertical
 \end_layout
 
 \begin_layout Standard
-The vertical alignment can only be changed if the box height is explicitly
- set larger than the height consumed by the box content.
+The vertical alignment can only be changed if the box height is explicitly set larger than the height consumed by the box content.
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Height"
+nolink "false"
 
 \end_inset
 
@@ -5365,7 +5585,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=2cm, valign=top
+height=2cm,
+ valign=top
 \end_layout
 
 \end_inset
@@ -5388,7 +5609,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=2cm, valign=bottom
+height=2cm,
+ valign=bottom
 \end_layout
 
 \end_inset
@@ -5411,7 +5633,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=2cm, valign=center
+height=2cm,
+ valign=center
 \end_layout
 
 \end_inset
@@ -5434,7 +5657,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=2cm, valign=scale
+height=2cm,
+ valign=scale
 \end_layout
 
 \end_inset
@@ -5460,7 +5684,10 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=4cm, space=0.5, valign upper=bottom, valign lower=center
+height=4cm,
+ space=0.5,
+ valign upper=bottom,
+ valign lower=center
 \end_layout
 
 \end_inset
@@ -5514,8 +5741,8 @@ large
 \begin_inset Newline newline
 \end_inset
 
-makes the font sans-serif, bold and increases the font size to the level
- 
+makes the font sans-serif,
+ bold and increases the font size to the level 
 \series bold
 
 \backslash
@@ -5545,7 +5772,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=A title, fonttitle=
+title=A title,
+ fonttitle=
 \backslash
 sffamily
 \backslash
@@ -5569,8 +5797,7 @@ Text
 \end_layout
 
 \begin_layout Standard
-The font for the upper and lower part text can be changed with the options
- 
+The font for the upper and lower part text can be changed with the options 
 \series bold
 fontupper
 \series default
@@ -5578,7 +5805,8 @@ fontupper
 \series bold
 fontlower
 \series default
-, respectively.
+,
+ respectively.
 \end_layout
 
 \begin_layout Standard
@@ -5590,9 +5818,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=A title, fontupper=
+title=A title,
+ fontupper=
 \backslash
-ttfamily, fontlower=
+ttfamily,
+ fontlower=
 \backslash
 small
 \end_layout
@@ -6936,7 +7166,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-, and the ones listed in Appendix
+,
+ and the ones listed in Appendix
 \begin_inset space ~
 \end_inset
 
@@ -7040,7 +7271,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=A title, colbacktitle=green!30
+title=A title,
+ colbacktitle=green!30
 \end_layout
 
 \end_inset
@@ -7081,7 +7313,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-title=A title, coltitle=orange
+title=A title,
+ coltitle=orange
 \end_layout
 
 \end_inset
@@ -7158,7 +7391,8 @@ colupper
 \series bold
 collower
 \series default
-, respectively.
+,
+ respectively.
 \end_layout
 
 \begin_layout Standard
@@ -7170,7 +7404,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-colupper=green!30!blue, collower=green!70!blue
+colupper=green!30!blue,
+ collower=green!70!blue
 \end_layout
 
 \end_inset
@@ -7210,10 +7445,12 @@ name "subsec:Shadows"
 \end_layout
 
 \begin_layout Standard
-Boxes can only be decorated with shadows if a skin is specified, see 
+Boxes can only be decorated with shadows if a skin is specified,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Enhanced"
+nolink "false"
 
 \end_inset
 
@@ -7233,15 +7470,18 @@ drop shadow=color
 \series bold
 color
 \series default
- is a color name or definition, see 
+ is a color name or definition,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Color"
+nolink "false"
 
 \end_inset
 
 .
- One can omit the color, the shadow color is then black!50!white.
+ One can omit the color,
+ the shadow color is then black!50!white.
  The option 
 \series bold
 drop fuzzy shadow
@@ -7258,7 +7498,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-enhanced, drop shadow, nobeforeafter
+enhanced,
+ drop shadow,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -7284,12 +7526,15 @@ status open
 status open
 
 \begin_layout Plain Layout
-enhanced, drop fuzzy shadow=purple, nobeforeafter
+enhanced,
+ drop fuzzy shadow=purple,
+ nobeforeafter
 \end_layout
 
 \end_inset
 
-A box with a fuzzy, purple shadow
+A box with a fuzzy,
+ purple shadow
 \end_layout
 
 \end_inset
@@ -7307,7 +7552,8 @@ Shadow Option Keys
 \series bold
 tcolorbox
 \series default
- manual, 
+ manual,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -7336,13 +7582,14 @@ size
 color
 \series default
  is a color name or definition.
- One can omit the size and color, the halo is then 0.9
+ One can omit the size and color,
+ the halo is then 0.9
 \begin_inset space \thinspace{}
 \end_inset
 
 mm thick and has the color yellow.
- Note that one cannot omit only the size or color, either both is omitted
- or both is specified.
+ Note that one cannot omit only the size or color,
+ either both is omitted or both is specified.
  The option 
 \series bold
 fuzzy halo
@@ -7359,7 +7606,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-enhanced, halo, nobeforeafter
+enhanced,
+ halo,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -7388,7 +7637,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-enhanced, fuzzy halo=5mm with green, nobeforeafter
+enhanced,
+ fuzzy halo=5mm with green,
+ nobeforeafter
 \end_layout
 
 \end_inset
@@ -7397,7 +7648,8 @@ A box with a 5
 \begin_inset space \thinspace{}
 \end_inset
 
-mm thick, green fuzzy halo
+mm thick,
+ green fuzzy halo
 \end_layout
 
 \end_inset
@@ -7427,7 +7679,8 @@ Generic Shadows
 \series bold
 tcolorbox
 \series default
- manual, 
+ manual,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -7447,8 +7700,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-enhanced, title=Double shadow, shadow={-2.5mm}{-2.5mm}{0mm}{fill=blue, opacity=0.25
-}, shadow={1.5mm}{1.5mm}{0mm}{fill=red, opacity=0.25}
+enhanced,
+ title=Double shadow,
+ shadow={-2.5mm}{-2.5mm}{0mm}{fill=blue,
+ opacity=0.25},
+ shadow={1.5mm}{1.5mm}{0mm}{fill=red,
+ opacity=0.25}
 \end_layout
 
 \end_inset

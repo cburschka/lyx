@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -70,12 +70,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -85,9 +89,8 @@ LyX gnuplot scripting example
 \end_layout
 
 \begin_layout Standard
-This is a sample LyX file showing a Graphics inset including a simple gnuplot
- script, that is auto-converted when previewing on-screen and when formatting
- for PDF or other output format.
+This is a sample LyX file showing a Graphics inset including a simple gnuplot script,
+ that is auto-converted when previewing on-screen and when formatting for PDF or other output format.
 \end_layout
 
 \begin_layout Standard
@@ -118,7 +121,8 @@ Graphics
 \end_layout
 
 \begin_layout Standard
-If you don't see it, there are basically a few possible causes
+If you don't see it,
+ there are basically a few possible causes
 \end_layout
 
 \begin_layout Enumerate
@@ -126,16 +130,18 @@ you don't have Gnuplot installed
 \end_layout
 
 \begin_layout Enumerate
-you have on-screen graphics display disabled; this can be checked/enabled
- with menu 
+you have on-screen graphics display disabled;
+ this can be checked/enabled with menu 
 \family sans
 Tools\SpecialChar menuseparator
 Preferences,
+
 \family default
  pane 
 \family sans
 Look & feel\SpecialChar menuseparator
 Display,
+
 \family default
  then ensuring that the option 
 \family sans
@@ -149,8 +155,8 @@ you have
 \family typewriter
 needauth
 \family default
- converters completely disabled/forbidden (gnuplot is among this type of
- converters, more information is available at 
+ converters completely disabled/forbidden (gnuplot is among this type of converters,
+ more information is available at 
 \begin_inset CommandInset href
 LatexCommand href
 target "https://www.lyx.org/trac/ticket/10481"
@@ -158,10 +164,12 @@ literal "false"
 
 \end_inset
 
-); these can be re-enabled from the menu 
+);
+ these can be re-enabled from the menu 
 \family sans
 Tools\SpecialChar menuseparator
 Preferences,
+
 \family default
  pane 
 \family sans
@@ -169,7 +177,8 @@ File Handling\SpecialChar menuseparator
 Converters\SpecialChar menuseparator
 Security
 \family default
-, then ensuring that the option 
+,
+ then ensuring that the option 
 \family sans
 Forbid use of needauth converters
 \family default
@@ -181,10 +190,12 @@ even though you have
 \family typewriter
 needauth
 \family default
- converters enabled, you denied permission to run the Gnuplot script included
- in this sample document when you first opened it, and you got a prompt
- dialog on screen; in such case, close the document and open it again, then
- answer 
+ converters enabled,
+ you denied permission to run the Gnuplot script included in this sample document when you first opened it,
+ and you got a prompt dialog on screen;
+ in such case,
+ close the document and open it again,
+ then answer 
 \begin_inset Quotes eld
 \end_inset
 
@@ -196,7 +207,8 @@ Run
 \end_layout
 
 \begin_layout Enumerate
-if none of the above worked, please contact us on the 
+if none of the above worked,
+ please contact us on the 
 \begin_inset CommandInset href
 LatexCommand href
 name "lyx-devel@lyx.org"

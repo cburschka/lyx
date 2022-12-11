@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -41,9 +41,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -94,12 +94,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -117,11 +121,13 @@ modes
 \begin_inset Quotes erd
 \end_inset
 
- that generate different looks: 
+ that generate different looks:
+ 
 \emph on
 Manuscript mode (man)
 \emph default
-, 
+,
+ 
 \emph on
 Printed Journal mode (jou)
 \emph default
@@ -135,7 +141,8 @@ Regular \SpecialChar LaTeX
 \emph on
 man
 \emph default
-, 
+,
+ 
 \emph on
 jou
 \emph default
@@ -152,8 +159,7 @@ Options.
 \begin_layout Plain Layout
 Have a look at Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-Preamble for further settings like acknowledgemen
-ts.
+Preamble for further settings like acknowledgements.
  A brief documentation can be found at 
 \begin_inset Flex URL
 status collapsed
@@ -184,7 +190,8 @@ Running Head for Journal and \SpecialChar LaTeX
 status open
 
 \begin_layout Plain Layout
-for manuscript mode, use 
+for manuscript mode,
+ use 
 \emph on
 ShortTitle
 \emph default
@@ -220,12 +227,14 @@ Author1 and Author2
 \end_inset
 
 .
- However, if there are multiple authors from different affiliations involved,
+ However,
+ if there are multiple authors from different affiliations involved,
  chose 
 \emph on
 TwoAuthors
 \emph default
-, 
+,
+ 
 \emph on
 ThreeAuthors
 \emph default
@@ -238,7 +247,8 @@ FourAuthors
 Author
 \emph default
 .
- Note that in this case, authors have to be separated by 
+ Note that in this case,
+ authors have to be separated by 
 \begin_inset ERT
 status collapsed
 
@@ -250,7 +260,8 @@ status collapsed
 \end_inset
 
  in \SpecialChar TeX
- mode, e.
+ mode,
+ e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -278,7 +289,8 @@ My colleague's name
 \end_inset
 
 .
- Note further that you must use the corresponding Affiliation style, i.
+ Note further that you must use the corresponding Affiliation style,
+ i.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -294,7 +306,8 @@ TwoAffiliations
 \emph on
 TwoAuthors
 \emph default
-, etc.
+,
+ etc.
  (using again the 
 \begin_inset ERT
 status collapsed
@@ -324,7 +337,9 @@ Article starts here.
 \end_layout
 
 \begin_layout Standard
-Just to test the bibliography, we are citing some fake authors here: 
+Just to test the bibliography,
+ we are citing some fake authors here:
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "article-full"
@@ -332,7 +347,8 @@ literal "true"
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "booklet-full"
@@ -340,7 +356,8 @@ literal "true"
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "misc-full"

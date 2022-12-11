@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,6 +54,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \use_lineno 0
 \index Index
 \shortcut idx
@@ -66,16 +67,20 @@
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\use_minted 0
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -125,11 +130,12 @@ Preparación del sistema para \SpecialChar LyX
 \begin_deeper
 \begin_layout Itemize
 En caso que se trate de su primera instalación de \SpecialChar LyX
-, asegúrense de tener
- una versión reciente de \SpecialChar LaTeX
+,
+ asegúrense de tener una versión reciente de \SpecialChar LaTeX
 .
  Una posibilidad simple es la instalación de Mac\SpecialChar TeX
-: 
+:
+ 
 \begin_inset Flex URL
 status collapsed
 

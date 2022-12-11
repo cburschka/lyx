@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -23,9 +23,9 @@ linguistics
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -76,12 +76,16 @@ linguistics
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -101,28 +105,25 @@ This document contains large part
 status collapsed
 
 \begin_layout Plain Layout
-Note that all of them can not be used simulataneously in one file, so few
- strings will be missing.
+Note that all of them can not be used simulataneously in one file,
+ so few strings will be missing.
  
 \end_layout
 
 \end_inset
 
- of layout environments and insets which can be translated automatically
- by \SpecialChar LyX
+ of layout environments and insets which can be translated automatically by \SpecialChar LyX
 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
- These are on the top of normal babel translations and could be regarded
- as an extension.
+ These are on the top of normal babel translations and could be regarded as an extension.
 \end_layout
 
 \end_inset
 
- in case proper translation is provided in .po file (for a given language)
- and layouttranslations file is generated from it.
+ in case proper translation is provided in .po file (for a given language) and layouttranslations file is generated from it.
 \end_layout
 
 \begin_layout Standard
@@ -131,7 +132,8 @@ First of all change the language of this document to your own
 status collapsed
 
 \begin_layout Plain Layout
-You may need to save this document elsewhere, in case the file is readonly.
+You may need to save this document elsewhere,
+ in case the file is readonly.
 \end_layout
 
 \end_inset
@@ -147,20 +149,17 @@ GUI
 \begin_deeper
 \begin_layout Itemize
 simply scroll through the whole document in \SpecialChar LyX
- window and check all layouts/insets
- inside the sections 2&3 are properly translated.
+ window and check all layouts/insets inside the sections 2&3 are properly translated.
 \end_layout
 
 \begin_layout Itemize
-click on the environments box (left top combo box) and scroll through the
- listing.
+click on the environments box (left top combo box) and scroll through the listing.
  The most important part is the section of mathematical environments.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-final document output - scroll through the whole document in output viewer
- of ps/pdf file and again check proper translation.
+final document output - scroll through the whole document in output viewer of ps/pdf file and again check proper translation.
 \end_layout
 
 \begin_layout Standard
@@ -348,6 +347,7 @@ Test of insets and listings
 \begin_layout Standard
 \begin_inset Float algorithm
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -380,6 +380,7 @@ hhh
 \begin_layout Standard
 \begin_inset Float tableau
 placement H
+alignment document
 wide false
 sideways false
 status open

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -86,8 +90,8 @@
 status open
 
 \begin_layout Plain Layout
-La liste des styles couvre tous les éléments d'une lettre qui apparaissent
- dans la classe, à l'exception du bas de page institutionnel.
+La liste des styles couvre tous les éléments d'une lettre qui apparaissent dans la classe,
+ à l'exception du bas de page institutionnel.
  Elle ne permet pas non plus la création de télécopies.
 \end_layout
 
@@ -100,12 +104,12 @@ Le paquetage de langue est forcé à
 \family sans
 babel
 \family default
-, l'utilisation de 
+,
+ l'utilisation de 
 \family sans
 polyglossia
 \family default
- (implicite normalement avec des polices non-TeX) provoque des erreurs avec
- XeTeX et LuaTeX (voir le message 
+ (implicite normalement avec des polices non-TeX) provoque des erreurs avec XeTeX et LuaTeX (voir le message 
 \family typewriter
 https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg201529.html
 \family default
@@ -113,18 +117,20 @@ https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg201529.html
 \end_layout
 
 \begin_layout Plain Layout
-Le format de la page est codé en dur en Iso A4 jusqu'à la version 2.351 de
- la classe (09/09/2014, TeXLive 2015/2016), qui interprète correctement
- l'option de classe 
+Le format de la page est codé en dur en Iso A4 jusqu'à la version 2.351 de la classe (09/09/2014,
+ TeXLive 2015/2016),
+ qui interprète correctement l'option de classe 
 \family typewriter
 a4paper
 \family default
 .
- Par contre, les options de classe 
+ Par contre,
+ les options de classe 
 \family typewriter
 letterpaper
 \family default
-, 
+,
+ 
 \family typewriter
 legalpaper
 \family default
@@ -136,7 +142,8 @@ executivepaper
 \family typewriter
 Lettre US
 \family default
-, 
+,
+ 
 \family typewriter
 Légal US
 \family default
@@ -150,9 +157,8 @@ Documents\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
 Format de la Page
 \family default
-) donnent alors des tailles de page inexactes, il faut installer la version
- 3.000 (TeXLive 03/08/2017) pour un fonctionnement correct si vous résidez
- dans un pays utilisant les normes US.
+) donnent alors des tailles de page inexactes,
+ il faut installer la version 3.000 (TeXLive 03/08/2017) pour un fonctionnement correct si vous résidez dans un pays utilisant les normes US.
 \end_layout
 
 \begin_layout Plain Layout
@@ -160,7 +166,9 @@ Format de la Page
 \series bold
 Attention
 \series default
- : avec cette version de la classe, le nouveau nom du fichier 
+ :
+ avec cette version de la classe,
+ le nouveau nom du fichier 
 \family sans
 institut.ins
 \family default
@@ -168,7 +176,8 @@ institut.ins
 \family sans
 lettre-<institut>.cfg
 \family default
-, voir la documentation de la classe 3.000.
+,
+ voir la documentation de la classe 3.000.
 \end_layout
 
 \end_inset
@@ -202,15 +211,14 @@ status collapsed
 
 \begin_layout Plain Layout
 Ce style \SpecialChar LyX
- est utile pour éviter qu'apparaissent les données implictes du
- fichier de données personnelles que l'on peut utiliser pour éviter de les
- ressaisir dans chaque lettre (cf.
+ est utile pour éviter qu'apparaissent les données implictes du fichier de données personnelles que l'on peut utiliser pour éviter de les ressaisir dans chaque lettre (cf.
  la documentation de 
 \family typewriter
 lettre.cls
 \family default
 ).
- Des styles similaires existent pour le téléphone, le lieu et la date.
+ Des styles similaires existent pour le téléphone,
+ le lieu et la date.
 \end_layout
 
 \end_inset
@@ -277,7 +285,9 @@ Troisième signature
 \end_layout
 
 \begin_layout Closing
-Je vous prie d'agréer, Cher Monsieur, blah blah blah
+Je vous prie d'agréer,
+ Cher Monsieur,
+ blah blah blah
 \end_layout
 
 \begin_layout Post Scriptum
@@ -289,7 +299,8 @@ Documents
 \end_layout
 
 \begin_layout cc
-DG, DRH
+DG,
+ DRH
 \end_layout
 
 \begin_layout EndOfMessage
@@ -297,8 +308,7 @@ DG, DRH
 status collapsed
 
 \begin_layout Plain Layout
-Marqueur de fin de lettre obligatoire (il peut y avoir plusieurs lettres
- dans le même fichier)
+Marqueur de fin de lettre obligatoire (il peut y avoir plusieurs lettres dans le même fichier)
 \end_layout
 
 \end_inset

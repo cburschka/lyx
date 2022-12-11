@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -96,9 +96,9 @@ End
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -158,12 +158,16 @@ End
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -196,8 +200,9 @@ literal "false"
 
 \begin_layout Abstract
 この小論は、\SpecialChar LyX
-が言語学者に提供している機能のいくつかを説明します。ここでは、付番用例や語句注解、OT表、セマンティックマークアップ、発音記号（IPA）を生成するた
-めに用意されているネイティブサポートを利用する方法を説明します。
+が言語学者に提供している機能のいくつかを説明します。
+ここでは、付番用例や語句注解、OT表、セマンティックマークアップ、発音記号（IPA）を生成するために用意されているネイティブサポートを利用する方法を説明します。
+
 \end_layout
 
 \begin_layout Section
@@ -206,9 +211,10 @@ literal "false"
 
 \begin_layout Standard
 基本的に、この小論は、第1.6.0版現在において\SpecialChar LyX
-に同梱されている「言語学」モジュールの機能を説明するものです。（\SpecialChar LyX
- 1.6.0で導入された）「モジュール」は、どの文書から
-でも簡単に選択できるようにしたサポートファイルです。言語学モジュールを使用するためには、
+に同梱されている「言語学」モジュールの機能を説明するものです。
+（\SpecialChar LyX
+ 1.6.0で導入された）「モジュール」は、どの文書からでも簡単に選択できるようにしたサポートファイルです。
+言語学モジュールを使用するためには、
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -219,12 +225,14 @@ literal "false"
 追加
 \family default
 ボタンを押してください。
+
 \end_layout
 
 \begin_layout Standard
-このモジュールは、どの文書クラスでも使えるようになったはずです（もしそうなっていなければ、私に知らせてください）。しかし、すべての機能を使用するには、以下の各L
-a\SpecialChar TeX
+このモジュールは、どの文書クラスでも使えるようになったはずです（もしそうなっていなければ、私に知らせてください）。
+しかし、すべての機能を使用するには、以下の各La\SpecialChar TeX
 パッケージが導入されている必要があります。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -240,7 +248,9 @@ literal "true"
 
 \end_inset
 
-：これは付番用例と語句注解に使用される基本パッケージです。
+：
+これは付番用例と語句注解に使用される基本パッケージです。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -256,7 +266,9 @@ literal "true"
 
 \end_inset
 
-：このパッケージは、Subexamplesスタイルに使用されます。これは一般的に、箇条書き（
+：
+このパッケージは、Subexamplesスタイルに使用されます。
+これは一般的に、箇条書き（
 \emph on
 連番
 \emph default
@@ -269,6 +281,7 @@ literal "true"
 記述
 \emph default
 など）の外観を変えるのに役立ちます。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -285,10 +298,13 @@ literal "true"
 \end_inset
 
 ：
+
 \emph on
 意味
 \emph default
-文字様式に必要です。このパッケージは、使用中の言語に依存して、文脈依存の引用符を提供するようにします。
+文字様式に必要です。
+このパッケージは、使用中の言語に依存して、文脈依存の引用符を提供するようにします。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -304,8 +320,11 @@ literal "true"
 
 \end_inset
 
-：OT表とフロート一覧に必要とsれます。このパッケージは、すべての\SpecialChar LaTeX
+：
+OT表とフロート一覧に必要とsれます。
+このパッケージは、すべての\SpecialChar LaTeX
 頒布版に同梱されているはずです。
+
 \end_layout
 
 \begin_layout Section
@@ -313,11 +332,14 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-付番用例は、ツールバーのレイアウトドロップダウンボックスを使って挿入することができます。これには、以下の三つの派生型があります。
+付番用例は、ツールバーのレイアウトドロップダウンボックスを使って挿入することができます。
+これには、以下の三つの派生型があります。
+
 \end_layout
 
 \begin_layout Numbered Example (multiline)
-これは複数行の例です。[
+これは複数行の例です。
+[
 \emph on
 付番用例（複数行）
 \emph default
@@ -326,10 +348,12 @@ literal "true"
 
 \begin_layout Numbered Example (multiline)
 これには複数の段落を入れることができます。
+
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
 これは単独の用例です。
+
 \begin_inset CommandInset label
 LatexCommand label
 name "exa:single-example"
@@ -345,10 +369,12 @@ name "exa:single-example"
 
 \begin_layout Numbered Examples (consecutive)
 連続した単独用例は、それぞれ番号が振られます。
+
 \end_layout
 
 \begin_layout Subexample
 これは小例です。
+
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:subexample"
@@ -364,18 +390,22 @@ name "subsec:subexample"
 
 \begin_layout Subexample
 もう一つの小例です。
+
 \end_layout
 
 \begin_layout Standard
-例への参照は通常通り作成することができます。例にラベルを挿入し、
+例への参照は通常通り作成することができます。
+例にラベルを挿入し、
 \family sans
 挿入\SpecialChar menuseparator
 相互参照
 \family default
-で相互参照を入れてください。これを例示するために、ここでは
+で相互参照を入れてください。
+これを例示するために、ここでは
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "exa:single-example"
+nolink "false"
 
 \end_inset
 
@@ -383,10 +413,12 @@ reference "exa:single-example"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:subexample"
+nolink "false"
 
 \end_inset
 
 への参照をしておきましょう。
+
 \end_layout
 
 \begin_layout Section
@@ -399,7 +431,8 @@ reference "subsec:subexample"
 挿入\SpecialChar menuseparator
 任意設定差込枠
 \family default
-で挿入することができます。標準の
+で挿入することができます。
+標準の
 \emph on
 任意設定:語句注解
 \emph default
@@ -407,8 +440,10 @@ reference "subsec:subexample"
 \emph on
 任意設定:三行語句注解
 \emph default
-差込枠は、三行と翻訳から成ります。各翻訳行は、複数行に展開されるかもしれません。つまり、本文幅を超えた段落は、自動的に改行されます。翻訳行は必須であり、その先頭
-には
+差込枠は、三行と翻訳から成ります。
+各翻訳行は、複数行に展開されるかもしれません。
+つまり、本文幅を超えた段落は、自動的に改行されます。
+翻訳行は必須であり、その先頭には
 \family typewriter
 
 \backslash
@@ -417,10 +452,12 @@ glt
 コマンドを、語句注解差込枠中にそのまま入れなくてはなりません（\SpecialChar TeX
 モードは必要でなく、実のところ\SpecialChar TeX
 モードにすることはできません）。
+
 \end_layout
 
 \begin_layout Standard
 以下は簡単な例です。
+
 \end_layout
 
 \begin_layout Standard
@@ -486,10 +523,12 @@ This is a simple example
 \begin_layout Standard
 \noindent
 波括弧が複数単語の表現をくくるのに使われていることに注意してください。
+
 \end_layout
 
 \begin_layout Standard
 同じようにして、以下のように三行語句注解を作ることができます。
+
 \end_layout
 
 \begin_layout Standard
@@ -569,6 +608,7 @@ This is a simple example
 \begin_layout Standard
 \noindent
 連番の付いた語句注解が欲しい場合には、以下のように、語句注解差込枠を付番用例段落に入れるだけです。
+
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
@@ -646,14 +686,17 @@ Do you have matches?
 \end_layout
 
 \begin_layout Standard
-語句注解中では、フォントの変更はできないことに注意してください。したがって
+語句注解中では、フォントの変更はできないことに注意してください。
+したがって
 \family sans
 文字様式
 \family default
-ダイアログは無効になっています。語句注解はハイフネートしないので、\SpecialChar LaTeX
-出力中で明示的に言語を設定することは必要とされません（むしろ、covingtonがサポートしな
-いため、出力が崩れてしまいます）。それでも、正しいスペルチェックをするために、言語を設定したいと思うかもしれません。現在のところ、これは以下のようにしなくてはな
-りません。文章を選択して、
+ダイアログは無効になっています。
+語句注解はハイフネートしないので、\SpecialChar LaTeX
+出力中で明示的に言語を設定することは必要とされません（むしろ、covingtonがサポートしないため、出力が崩れてしまいます）。
+それでも、正しいスペルチェックをするために、言語を設定したいと思うかもしれません。
+現在のところ、これは以下のようにしなくてはなりません。
+文章を選択して、
 \begin_inset Info
 type  "shortcut"
 arg   "command-execute"
@@ -663,7 +706,8 @@ arg   "command-execute"
 \family sans
 language <言語>
 \family default
-と打ってください。ここで
+と打ってください。
+ここで
 \family sans
 <言語>
 \family default
@@ -679,8 +723,10 @@ french
 \family sans
 ngerman
 \family default
-などの各言語に置き換えてください。\SpecialChar LaTeX
+などの各言語に置き換えてください。
+\SpecialChar LaTeX
 出力中では、この設定は出力されません。
+
 \end_layout
 
 \begin_layout Section
@@ -692,7 +738,8 @@ OT表自体は、もちろん単純に、通常の表として入れることが
 \emph on
 埋め込みオブジェクト
 \emph default
-説明書を参照）。しかし、これらの表には、文書を通して連番を振り、
+説明書を参照）。
+しかし、これらの表には、文書を通して連番を振り、
 \emph on
 表一覧
 \emph default
@@ -701,20 +748,24 @@ OT表自体は、もちろん単純に、通常の表として入れることが
 OT表一覧
 \emph default
 を置きたいところです。
+
 \end_layout
 
 \begin_layout Standard
 言語学モジュールは、この2つをサポートしています。
+
 \family sans
 挿入\SpecialChar menuseparator
 フロート
 \family default
 の中には、以下のようなOT表フロートがあります。
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float tableau
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -1008,7 +1059,8 @@ OT表の例
 
 \begin_layout Standard
 出力中のキャプションは、\SpecialChar LyX
-ウィンドウ内での置き方にかかわらず、既定ではつねに、OT表の下に置かれることに注意してください。OT表のキャプションを上に置くには、
+ウィンドウ内での置き方にかかわらず、既定ではつねに、OT表の下に置かれることに注意してください。
+OT表のキャプションを上に置くには、
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -1016,6 +1068,7 @@ OT表の例
  プリアンブル
 \family default
 に以下のコードを書いてください。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -1032,6 +1085,7 @@ restylefloat{tableau}
 
 \begin_layout Standard
 KOMAクラスを使用している場合には、代わりに以下のようにした方がきれいな余白取りがされます。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -1052,7 +1106,9 @@ OT表一覧差込枠の一覧は、
 挿入\SpecialChar menuseparator
 一覧/目次
 \family default
-にあります。OT表一覧は、通常、文書の始まりか終わりに置かれますが、ここでは例示のためにこの場所に置くことにします。
+にあります。
+OT表一覧は、通常、文書の始まりか終わりに置かれますが、ここでは例示のためにこの場所に置くことにします。
+
 \end_layout
 
 \begin_layout Standard
@@ -1069,10 +1125,12 @@ OT表一覧差込枠の一覧は、
 
 \begin_layout Standard
 言語学モジュールは、以下のような言語学でよく使われる文字様式を同梱しています。
+
 \end_layout
 
 \begin_layout Enumerate
 概念（スモールキャップ体）：
+
 \begin_inset Flex Concepts
 status collapsed
 
@@ -1087,6 +1145,7 @@ concept
 
 \begin_layout Enumerate
 表現（強調）：
+
 \begin_inset Flex Expression
 status collapsed
 
@@ -1101,6 +1160,7 @@ expression
 
 \begin_layout Enumerate
 意味（一重引用符）：
+
 \begin_inset Flex Meaning
 status collapsed
 
@@ -1119,8 +1179,10 @@ meaning
 編集\SpecialChar menuseparator
 文字様式
 \family default
-サブメニューで入れることができます。これらの様式の外観を後で変更する必要があれば、プリアンブル中で再定義することができます。たとえば、ボールド体の表現にするため
-には、以下のように入れてください。
+サブメニューで入れることができます。
+これらの様式の外観を後で変更する必要があれば、プリアンブル中で再定義することができます。
+たとえば、ボールド体の表現にするためには、以下のように入れてください。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -1147,6 +1209,7 @@ lingconcept
 lingmeaning
 \family default
 ）も修正することができます。
+
 \end_layout
 
 \begin_layout Section
@@ -1155,8 +1218,9 @@ lingmeaning
 
 \begin_layout Standard
 発音記号を挿入するには、言語学モジュールは必要でなく、\SpecialChar LyX
-の基本機能となっています。しかしながら、発音記号は言語学者が頻繁に用いるので、本稿でも（手短に）説明します
-。
+の基本機能となっています。
+しかしながら、発音記号は言語学者が頻繁に用いるので、本稿でも（手短に）説明します。
+
 \end_layout
 
 \begin_layout Standard
@@ -1174,7 +1238,8 @@ literal "true"
 
 \end_inset
 
-が必要です。加えて自動プレビューを必要とするなら、
+が必要です。
+加えて自動プレビューを必要とするなら、
 \emph on
 preview-latex
 \emph default
@@ -1195,9 +1260,9 @@ status open
 \lang english
 If you use traditional \SpecialChar LaTeX
  or PDF\SpecialChar LaTeX
-, a prerequisite to use \SpecialChar LyX
-'s IPA support is
- the \SpecialChar LaTeX
+,
+ a prerequisite to use \SpecialChar LyX
+'s IPA support is the \SpecialChar LaTeX
  package 
 \emph on
 tipa
@@ -1210,16 +1275,17 @@ literal "true"
 
 \end_inset
 
-, which is automatically loaded by \SpecialChar LyX
- if you follow the procedure described
- below.
+,
+ which is automatically loaded by \SpecialChar LyX
+ if you follow the procedure described below.
  If you use Xe\SpecialChar TeX
  or Lua\SpecialChar TeX
  (i.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., if you have clicked 
+e.,
+ if you have clicked 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1234,7 +1300,8 @@ Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Fonts
 \family default
-), the package 
+),
+ the package 
 \emph on
 xunicode
 \emph default
@@ -1251,9 +1318,11 @@ xunicode
 \emph on
 tipa
 \emph default
- output, but is not perfect at that, so some things might not look as expected.
- Furthermore, you need to take care in this case to use a non-TeX font that
- includes the IPA glyphs (such as 
+ output,
+ but is not perfect at that,
+ so some things might not look as expected.
+ Furthermore,
+ you need to take care in this case to use a non-TeX font that includes the IPA glyphs (such as 
 \emph on
 CMU Serif
 \emph default
@@ -1262,8 +1331,7 @@ CMU Serif
 SIL Doulos
 \emph default
 ).
- You can also specify an extra font only for IPA by adding the following
- to 
+ You can also specify an extra font only for IPA by adding the following to 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -1320,8 +1388,10 @@ ipafont}
 \begin_layout Plain Layout
 
 \lang english
-Additionally, and independent from which of the above approaches you use,
- if you want to have instant preview, you should have the 
+Additionally,
+ and independent from which of the above approaches you use,
+ if you want to have instant preview,
+ you should have the 
 \emph on
 preview-latex
 \emph default
@@ -1339,6 +1409,7 @@ literal "true"
 \end_inset
 
 を導入しておかなくてはなりません。
+
 \end_layout
 
 \begin_layout Standard
@@ -1348,11 +1419,14 @@ literal "true"
 特殊文字\SpecialChar menuseparator
 発音記号
 \family default
-で入れることができます。すると小さな枠が現れるので、そこに
+で入れることができます。
+すると小さな枠が現れるので、そこに
 \emph on
 tipa
 \emph default
-説明書に説明されている短絡表記で記号を挿入します。例：
+説明書に説明されている短絡表記で記号を挿入します。
+例：
+
 \begin_inset Formula $\text{\textipa{[Ekspl@"neIS@n]}}$
 \end_inset
 
@@ -1361,10 +1435,12 @@ tipa
 tipa
 \emph default
 短絡表記：
+
 \family typewriter
 [Ekspl@"neIS@n
 \family default
 ]）。
+
 \emph on
 preview-latex
 \emph default
@@ -1375,6 +1451,7 @@ preview-latex
 表示
 \family default
 で）有効にしてあれば、カーソルを枠から出すとすぐに、きれいなプレビューを見ることができます。
+
 \end_layout
 
 \begin_layout Standard
@@ -1386,12 +1463,14 @@ preview-latex
 
 \family default
 で）挿入したり、[ɛkspləˈneɪʃən]のように直接\SpecialChar LyX
-に貼り付けたりすることもできます。出力中では、これらは正しい
+に貼り付けたりすることもできます。
+出力中では、これらは正しい
 \emph on
 tipa
 \emph default
-マクロに自動的に変換されます（そうならなければ私に知らせてください）。しかしながら、以下の二つの理由から、前者の方法の方が良質の出力を生成することに注意してくだ
-さい。
+マクロに自動的に変換されます（そうならなければ私に知らせてください）。
+しかしながら、以下の二つの理由から、前者の方法の方が良質の出力を生成することに注意してください。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1402,14 +1481,18 @@ tipa
 発音記号
 \family default
 で入れると、すべての文字にIPAフォントが使われます）。
+
 \end_layout
 
 \begin_layout Enumerate
 文字のカーニングは保持されません。
+
 \end_layout
 
 \begin_layout Standard
-したがって、単一のIPA文字を入れるだけでいいのでなければ、前者の方法が推奨されます。それに、（かなり直感的な）IPA短絡表記は学んでおくに値します。
+したがって、単一のIPA文字を入れるだけでいいのでなければ、前者の方法が推奨されます。
+それに、（かなり直感的な）IPA短絡表記は学んでおくに値します。
+
 \end_layout
 
 \begin_layout Section
@@ -1428,6 +1511,7 @@ literal "true"
 
 のLinguist\SpecialChar LyX
 ページをご参照ください（ご自身のコツもご自由に書き加えてください）。
+
 \end_layout
 
 \begin_layout Bibliography
@@ -1439,6 +1523,7 @@ literal "true"
 \end_inset
 
 covingtonパッケージ：
+
 \begin_inset Flex URL
 status collapsed
 
@@ -1461,6 +1546,7 @@ literal "true"
 \end_inset
 
 csquotesパッケージ：
+
 \begin_inset Flex URL
 status collapsed
 
@@ -1483,6 +1569,7 @@ literal "true"
 \end_inset
 
 enumitemパッケージ：
+
 \begin_inset Flex URL
 status collapsed
 
@@ -1505,6 +1592,7 @@ literal "true"
 \end_inset
 
 floatパッケージ：
+
 \begin_inset Flex URL
 status collapsed
 
@@ -1526,9 +1614,10 @@ literal "true"
 
 \end_inset
 
-Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using \SpecialChar LyX
- for Linguistic
- Papers.
+Maria Gouskova,
+ Stacia Hartleben and Jürgen Spitzmüller:
+ Using \SpecialChar LyX
+ for Linguistic Papers.
  
 \begin_inset Flex URL
 status collapsed
@@ -1552,6 +1641,7 @@ literal "true"
 \end_inset
 
 preview-latexパッケージ：
+
 \begin_inset Flex URL
 status collapsed
 
@@ -1574,6 +1664,7 @@ literal "true"
 \end_inset
 
 tipaパッケージおよびフォント：
+
 \begin_inset Flex URL
 status collapsed
 

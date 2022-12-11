@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -50,9 +50,9 @@ sectionbox
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -103,12 +103,16 @@ sectionbox
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -122,7 +126,9 @@ Author One and Author Two
 \end_layout
 
 \begin_layout Institute
-The University, Some address, Postal Code
+The University,
+ Some address,
+ Postal Code
 \end_layout
 
 \begin_layout E-Mail
@@ -193,8 +199,8 @@ LeftLogo
 RightLogo
 \family default
  style to insert graphic logos in the header of your poster.
- The logos need to be given as file names (with our without extension) and
- with full path, if the files are not in the TEXMF directory.
+ The logos need to be given as file names (with our without extension) and with full path,
+ if the files are not in the TEXMF directory.
 \end_layout
 
 \begin_layout Itemize
@@ -210,7 +216,8 @@ Conference
 \begin_inset space \thinspace{}
 \end_inset
 
-e., no foot line).
+e.,
+ no foot line).
 \end_layout
 
 \begin_layout Subsubsection*
@@ -233,8 +240,8 @@ Custom Insets.
 \end_layout
 
 \begin_layout Itemize
-Instead of the Section Boxes, you can also use the differently looking Color
- Boxes via the 
+Instead of the Section Boxes,
+ you can also use the differently looking Color Boxes via the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -289,10 +296,7 @@ Abstract
 
 \size small
 \emph on
-This is my special abstract This is my special abstract This is my special
- abstract This is my special abstract This is my special abstract This is
- my special abstract This is my special abstract This is my special abstract
- This is my special abstract This is my special abstract.
+This is my special abstract This is my special abstract This is my special abstract This is my special abstract This is my special abstract This is my special abstract This is my special abstract This is my special abstract This is my special abstract This is my special abstract.
 \end_layout
 
 \end_inset
@@ -345,7 +349,8 @@ literal "true"
 
 \end_inset
 
-Author One & Author Two (2010): Our Great Book.
+Author One & Author Two (2010):
+ Our Great Book.
  Somewhere.
 \end_layout
 
@@ -358,7 +363,8 @@ literal "true"
 
 \end_inset
 
-Author Two & Author One (2011): Our Even Greater Book.
+Author Two & Author One (2011):
+ Our Even Greater Book.
  Somewhere.
 \end_layout
 
@@ -664,14 +670,16 @@ Insert\SpecialChar menuseparator
 Custom Insets
 \family default
 .
- For small inline snippets, there are variants at 
+ For small inline snippets,
+ there are variants at 
 \family sans
 Edit\SpecialChar menuseparator
 Text Style.
 \end_layout
 
 \begin_layout Plain Layout
-Note that for some paper sizes and font settings, 
+Note that for some paper sizes and font settings,
+ 
 \begin_inset Quotes eld
 \end_inset
 

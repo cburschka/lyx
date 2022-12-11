@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -119,11 +119,14 @@
 \tablestyle default
 \bulletLaTeX 0 "\mytextbullet"
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -208,7 +211,8 @@ today
 \end_layout
 
 \begin_layout Abstract
-For introduction in English, please see 
+For introduction in English,
+ please see 
 \family typewriter
 README 
 \family default
@@ -232,8 +236,9 @@ Live용으로 수정했다.
 \begin_inset space \space{}
 \end_inset
 
-Live 버전에서는 나눔글꼴을 트루타입 대신 Type1 글꼴—물론 subfont들이다—로 변환해 넣음으로써 다양한 DVI 툴을 이용할
- 수 있게 했다.
+Live 버전에서는 나눔글꼴을 트루타입 대신 Type1 글꼴—
+물론 subfont들이다—
+로 변환해 넣음으로써 다양한 DVI 툴을 이용할 수 있게 했다.
 \end_layout
 
 \begin_layout Abstract
@@ -599,7 +604,10 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-— 예: 괄호 앞뒤, 수식 뒤 
+—
+ 예:
+ 괄호 앞뒤,
+ 수식 뒤 
 \end_layout
 
 \begin_layout Itemize
@@ -607,7 +615,9 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-— 예: 한글 글자 크기 조정 허용 
+—
+ 예:
+ 한글 글자 크기 조정 허용 
 \end_layout
 
 \begin_layout Itemize
@@ -654,7 +664,10 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-— 중세한글, 일본어, 중국어는 지원하지 않는다.
+—
+ 중세한글,
+ 일본어,
+ 중국어는 지원하지 않는다.
  
 \end_layout
 
@@ -663,7 +676,8 @@ Package options
 \end_layout
 
 \begin_layout Description
-불러오기 : 
+불러오기 :
+ 
 \begin_inset space \quad{}
 \end_inset
 
@@ -747,7 +761,8 @@ Live에선 이 옵션이 없으면 kotexutf
 \end_inset
 
 가 로드된다.
- 단, 
+ 단,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -793,7 +808,10 @@ hangul
 
 \end_inset
 
-한글 캡션, 줄 간격, 단어 간격, frenchspacing 등의 조정이 이루어진다.
+한글 캡션,
+ 줄 간격,
+ 단어 간격,
+ frenchspacing 등의 조정이 이루어진다.
  문서의 주된 언어가 한글이라고 선언하는 옵션 
 \end_layout
 
@@ -897,12 +915,14 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
- — 이 옵션은 ulem 패키지도 부르므로 
+ —
+ 이 옵션은 ulem 패키지도 부르므로 
 \bar under
 밑줄 긋기
 \bar default
  가능.
- 단, 
+ 단,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -1154,7 +1174,8 @@ leftskip
 \end_layout
 
 \begin_layout Itemize
-예: 
+예:
+ 
 \begin_inset ERT
 status collapsed
 
@@ -1222,7 +1243,9 @@ verb|[hangul]|
 
 \end_inset
 
- 옵션 아래서는 단어 간격, 줄 간격, 들여쓰기 크기도 자동 조정 
+ 옵션 아래서는 단어 간격,
+ 줄 간격,
+ 들여쓰기 크기도 자동 조정 
 \end_layout
 
 \begin_layout Itemize
@@ -1287,7 +1310,8 @@ leftskip
 \end_layout
 
 \begin_layout Itemize
-예: 
+예:
+ 
 \begin_inset ERT
 status collapsed
 
@@ -1439,7 +1463,8 @@ leftskip
 \end_layout
 
 \begin_layout Itemize
-예: 
+예:
+ 
 \begin_inset ERT
 status collapsed
 
@@ -2450,7 +2475,8 @@ koTeX
 \end_inset
 
 패키지와 동일하다.
- 사용례: 
+ 사용례:
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3598,7 +3624,8 @@ verb|kotexutf.sty|
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3611,7 +3638,8 @@ verb|xetexko.sty|
 
 \end_inset
 
-, 혹은 
+,
+ 혹은 
 \begin_inset ERT
 status collapsed
 
@@ -3643,7 +3671,8 @@ GPL
 \begin_inset space ~
 \end_inset
 
-— 
+—
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3665,7 +3694,8 @@ LPPL
 \begin_inset space ~
 \end_inset
 
-— 
+—
+ 
 \begin_inset ERT
 status collapsed
 

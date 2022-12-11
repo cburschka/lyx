@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -22,9 +22,9 @@ subequations
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -75,12 +75,16 @@ subequations
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -91,8 +95,7 @@ status open
 
 \begin_layout Plain Layout
 This is a template \SpecialChar LyX
- file for articles to be submitted to the American Physical
- Society (APS).
+ file for articles to be submitted to the American Physical Society (APS).
  APS uses the \SpecialChar LaTeX
  class REV\SpecialChar TeX
  for submissions.
@@ -122,8 +125,9 @@ status open
 
 \begin_layout Plain Layout
 The style of the document is specified by options in the document preamble!
- For the right document class options, have a look at the elsarticle documentati
-on: 
+ For the right document class options,
+ have a look at the elsarticle documentation:
+ 
 \begin_inset Flex URL
 status open
 
@@ -164,8 +168,7 @@ APS/123-QED
 status collapsed
 
 \begin_layout Plain Layout
-Use the Preprint layout to place your local institutional report number
- in the upper righthand corner of the title page in preprint mode.
+Use the Preprint layout to place your local institutional report number in the upper righthand corner of the title page in preprint mode.
  Multiple Preprint layouts are allowed.
  Use the document class option 
 \family sans
@@ -211,7 +214,8 @@ Also at
 
 \end_inset
 
-Physics Department, XYZ University.
+Physics Department,
+ XYZ University.
 \end_layout
 
 \begin_layout Author
@@ -232,8 +236,7 @@ Authors' institution and/or address
 status collapsed
 
 \begin_layout Plain Layout
-The Affiliation layout applies to all authors since the last Affiliation
- layout.
+The Affiliation layout applies to all authors since the last Affiliation layout.
  The Affiliation layout should follow the other information.
 \end_layout
 
@@ -300,7 +303,8 @@ Second institution and/or address
 \end_layout
 
 \begin_layout Affiliation
-Third institution, the second for Charlie Author 
+Third institution,
+ the second for Charlie Author 
 \end_layout
 
 \begin_layout Author
@@ -333,7 +337,8 @@ today
 status collapsed
 
 \begin_layout Plain Layout
-prints the current date; should only be replaced for special cases
+prints the current date;
+ should only be replaced for special cases
 \end_layout
 
 \end_inset
@@ -342,8 +347,8 @@ prints the current date; should only be replaced for special cases
 \end_layout
 
 \begin_layout Abstract
-An article usually includes an abstract, a concise summary of the work covered
- at length in the main body of the article.
+An article usually includes an abstract,
+ a concise summary of the work covered at length in the main body of the article.
  
 \end_layout
 
@@ -404,7 +409,8 @@ status open
 
 \begin_layout Plain Layout
 Insert suggested PACS numbers here.
- An example: 
+ An example:
+ 
 \end_layout
 
 \end_inset
@@ -418,7 +424,8 @@ Suggested keywords
 status collapsed
 
 \begin_layout Plain Layout
-optional; use the document class option 
+optional;
+ use the document class option 
 \family sans
 showkeys
 \family default
@@ -435,8 +442,7 @@ showkeys
 status open
 
 \begin_layout Plain Layout
-Table of contents is optional and should be inserted to this position if
- desired.
+Table of contents is optional and should be inserted to this position if desired.
 \end_layout
 
 \end_inset
@@ -467,8 +473,7 @@ Tables should appear as floats within the text.
 \end_layout
 
 \begin_layout Itemize
-The Ruled Table layout adds doubled rules to table and sets a reasonable
- default table settings.
+The Ruled Table layout adds doubled rules to table and sets a reasonable default table settings.
 \end_layout
 
 \begin_layout Itemize
@@ -511,8 +516,8 @@ lowercase words
 status collapsed
 
 \begin_layout Plain Layout
-If a specific letter or word should appear in lowercase instead, you must
- escape it using the custom inset 
+If a specific letter or word should appear in lowercase instead,
+ you must escape it using the custom inset 
 \family sans
 Lowercase
 \family default
@@ -531,7 +536,8 @@ name "sec:level2"
 
 \end_inset
 
-Second-level heading: Formatting
+Second-level heading:
+ Formatting
 \end_layout
 
 \begin_layout Standard
@@ -561,7 +567,8 @@ The
 \family typewriter
 widetext
 \family default
- environment will make the text the width of the full page, as on page
+ environment will make the text the width of the full page,
+ as on page
 \begin_inset space ~
 \end_inset
 
@@ -569,6 +576,7 @@ widetext
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "eq:wideeq"
+nolink "false"
 
 \end_inset
 
@@ -608,8 +616,9 @@ uses the
 \series bold
 natbib
 \series default
- package of Patrick Daly, the entire repertoire of commands in that package
- are available for your document; see the 
+ package of Patrick Daly,
+ the entire repertoire of commands in that package are available for your document;
+ see the 
 \series bold
 natbib
 \series default
@@ -621,7 +630,8 @@ Example citations
 \end_layout
 
 \begin_layout Standard
-By default, citations are numerical
+By default,
+ citations are numerical
 \begin_inset CommandInset citation
 LatexCommand citep
 key "article-full"
@@ -631,7 +641,8 @@ literal "true"
 
 .
  Author-year citations are used when the journal is RMP.
- To give a textual citation, use the custom inset 
+ To give a textual citation,
+ use the custom inset 
 \family sans
 Online
 \begin_inset space ~
@@ -639,7 +650,8 @@ Online
 
 cite
 \family default
-: Refs.
+:
+ Refs.
 \begin_inset space ~
 \end_inset
 
@@ -663,7 +675,8 @@ article-full,booklet-full
 \end_inset
 
 .
- By default, the 
+ By default,
+ the 
 \family typewriter
 natbib
 \family default
@@ -681,15 +694,14 @@ compresses
 \begin_inset space \space{}
 \end_inset
 
-provides the ability to automatically change the punctuation when switching
- between journal styles that provide citations in square brackets and those
- that use a superscript style instead.
+provides the ability to automatically change the punctuation when switching between journal styles that provide citations in square brackets and those that use a superscript style instead.
  This is done through the 
 \family typewriter
 citeautoscript
 \family default
  document class option.
- For instance, the journal style 
+ For instance,
+ the journal style 
 \family typewriter
 prb
 \family default
@@ -698,9 +710,11 @@ prb
 Physical Review B
 \shape default
  uses superscript-style citations.
- The effect is to move the punctuation, which normally comes after a citation
- in square brackets, to its proper position before the superscript.
- To illustrate, we cite several together 
+ The effect is to move the punctuation,
+ which normally comes after a citation in square brackets,
+ to its proper position before the superscript.
+ To illustrate,
+ we cite several together 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "article-crossref,booklet-full,misc-full"
@@ -709,7 +723,8 @@ literal "true"
 \end_inset
 
 .
- Futhermore, running this sample file under the 
+ Futhermore,
+ running this sample file under the 
 \family typewriter
 prb
 \family default
@@ -721,15 +736,15 @@ When the
 \family typewriter
 prb
 \family default
- class option is used, the citation is displayed as a superscript rather
- than in square brackets.
- Note that the location of the citation should be adjusted for the reference
- style: the superscript references in non-
+ class option is used,
+ the citation is displayed as a superscript rather than in square brackets.
+ Note that the location of the citation should be adjusted for the reference style:
+ the superscript references in non-
 \family typewriter
 prb
 \family default
- style must appear after punctuation; otherwise the reference must appear
- before any punctuation.
+ style must appear after punctuation;
+ otherwise the reference must appear before any punctuation.
  This sample was written for the regular (non-
 \family typewriter
 prb
@@ -773,8 +788,10 @@ Physical Review
 \shape italic
 Reviews of Modern Physics
 \shape default
-, respectively.
- To display titles for cited journal articles, use the 
+,
+ respectively.
+ To display titles for cited journal articles,
+ use the 
 \family typewriter
 longbibliography
 \family default
@@ -820,8 +837,8 @@ In \SpecialChar LaTeX
 \begin_inset space \space{}
 \end_inset
 
-there are many different ways to display equations, and a few preferred
- ways are noted below.
+there are many different ways to display equations,
+ and a few preferred ways are noted below.
  Displayed math will center by default.
  Use the document class option 
 \family sans
@@ -831,12 +848,13 @@ fleqn
 \end_layout
 
 \begin_layout Standard
-Below we have a numbered single-line equation; this is the most common type
- of equation in 
+Below we have a numbered single-line equation;
+ this is the most common type of equation in 
 \shape italic
 Physical Review
 \shape default
-: 
+:
+ 
 \begin_inset Formula 
 \begin{eqnarray}
 \left\{ \openone234567890abc123\alpha\beta\gamma\delta1234556\alpha\beta\frac{1\sum_{b}^{a}}{A^{2}}\right\} .\label{eq:one}
@@ -852,6 +870,7 @@ Note the open one in Eq.
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:one"
+nolink "false"
 
 \end_inset
 
@@ -860,8 +879,8 @@ reference "eq:one"
 
 \begin_layout Standard
 Not all numbered equations will fit within a narrow column this way.
- The equation number will move down automatically if it cannot fit on the
- same line with a one-line equation: 
+ The equation number will move down automatically if it cannot fit on the same line with a one-line equation:
+ 
 \begin_inset Formula 
 \begin{equation}
 \left\{ ab12345678abc123456abcdef\alpha\beta\gamma\delta1234556\alpha\beta\frac{1\sum_{b}^{a}}{A^{2}}\right\} .
@@ -877,7 +896,8 @@ Multiline equations
 \end_layout
 
 \begin_layout Standard
-Only number the last line of a continued equation: 
+Only number the last line of a continued equation:
+ 
 \begin_inset Formula 
 \begin{eqnarray}
 {\cal M}= &  & ig_{Z}^{2}(4E_{1}E_{2})^{1/2}(l_{i}^{2})^{-1}\delta_{\sigma_{1},-\sigma_{2}}(g_{\sigma_{2}}^{e})^{2}\chi_{-\sigma_{2}}(p_{2})\nonumber \\
@@ -890,8 +910,8 @@ Only number the last line of a continued equation:
 \end_layout
 
 \begin_layout Standard
-To obtain numbers not normally produced by the automatic numbering, use
- the \SpecialChar LaTeX
+To obtain numbers not normally produced by the automatic numbering,
+ use the \SpecialChar LaTeX
 -command 
 \series bold
 
@@ -925,8 +945,8 @@ tag
 \backslash
 tag
 \series default
- should only be used in exceptional cases—do not use it to number many equations
- in your paper.
+ should only be used in exceptional cases—
+do not use it to number many equations in your paper.
 \end_layout
 
 \begin_layout Standard
@@ -934,8 +954,8 @@ Setting display math within custom inset
 \family sans
 Subequations
 \family default
- will produce a set of equations that are labeled with letters, as shown
- in Eqs.
+ will produce a set of equations that are labeled with letters,
+ as shown in Eqs.
 \begin_inset space ~
 \end_inset
 
@@ -943,6 +963,7 @@ Subequations
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "subeq:1"
+nolink "false"
 
 \end_inset
 
@@ -950,13 +971,13 @@ reference "subeq:1"
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "subeq:2"
+nolink "false"
 
 \end_inset
 
  below.
- You may include any number of single-line and multiline equations, although
- it is probably not a good idea to follow one display math directly after
- another.
+ You may include any number of single-line and multiline equations,
+ although it is probably not a good idea to follow one display math directly after another.
  
 \begin_inset Flex Subequations
 status open
@@ -998,10 +1019,11 @@ Wide equations
 \end_layout
 
 \begin_layout Standard
-The equation that follows is set in a wide format, i.e., it spans the full
- page.
- The wide format is reserved for long equations that cannot easily be set
- in a single column: 
+The equation that follows is set in a wide format,
+ i.e.,
+ it spans the full page.
+ The wide format is reserved for long equations that cannot easily be set in a single column:
+ 
 \end_layout
 
 \begin_layout Wide Text
@@ -1017,12 +1039,13 @@ The equation that follows is set in a wide format, i.e., it spans the full
 
 \begin_layout Standard
 This is typed to show how the output appears in wide format.
- (Incidentally, since there is no blank line between the 
+ (Incidentally,
+ since there is no blank line between the 
 \family typewriter
 equation
 \family default
- environment above and the start of this paragraph, this paragraph is not
- indented.)
+ environment above and the start of this paragraph,
+ this paragraph is not indented.)
 \end_layout
 
 \begin_layout Section
@@ -1030,9 +1053,12 @@ Cross-referencing
 \end_layout
 
 \begin_layout Standard
-The referencing label should appear within the section heading, within the
- footnote text, within the equation, or within the table or figure caption.
- Some examples: Section
+The referencing label should appear within the section heading,
+ within the footnote text,
+ within the equation,
+ or within the table or figure caption.
+ Some examples:
+ Section
 \begin_inset space ~
 \end_inset
 
@@ -1040,6 +1066,7 @@ The referencing label should appear within the section heading, within the
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:level1"
+nolink "false"
 
 \end_inset
 
@@ -1051,10 +1078,12 @@ reference "sec:level1"
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "sec:level1"
+nolink "false"
 
 \end_inset
 
-, Table
+,
+ Table
 \begin_inset space ~
 \end_inset
 
@@ -1062,6 +1091,7 @@ reference "sec:level1"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:table1"
+nolink "false"
 
 \end_inset
 
@@ -1070,8 +1100,7 @@ reference "tab:table1"
 status collapsed
 
 \begin_layout Plain Layout
-The proposed place to locate the table is directly after its first reference
- in text.
+The proposed place to locate the table is directly after its first reference in text.
 \end_layout
 
 \end_inset
@@ -1079,6 +1108,7 @@ The proposed place to locate the table is directly after its first reference
 
 \begin_inset Float table
 placement b
+alignment document
 wide false
 sideways false
 status open
@@ -1099,10 +1129,11 @@ A table that fits into a single column of a two-column layout.
 \begin_inset space ~
 \end_inset
 
-4 adjusts the intercolumn spacing so that the table fills the entire width
- of the column.
+4 adjusts the intercolumn spacing so that the table fills the entire width of the column.
  Table captions are numbered automatically.
- This table illustrates left-, center-, decimal- and right-aligned columns,
+ This table illustrates left-,
+ center-,
+ decimal- and right-aligned columns,
  along with the use of the 
 \family typewriter
 ruledtabular
@@ -1303,12 +1334,14 @@ and Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:epsart"
+nolink "false"
 
 \end_inset
 
 .
 \begin_inset Float figure
 placement b
+alignment document
 wide false
 sideways false
 status open
@@ -1363,13 +1396,19 @@ name "fig:epsart"
 \end_layout
 
 \begin_layout Section
-Floats: Figures, Tables, Videos, etc.
+Floats:
+ Figures,
+ Tables,
+ Videos,
+ etc.
 \end_layout
 
 \begin_layout Standard
-The typical content of a figure is an image of some kind; that of a table
- is an alignment.
+The typical content of a figure is an image of some kind;
+ that of a table is an alignment.
 \begin_inset Float figure
+placement document
+alignment document
 wide true
 sideways false
 status open
@@ -1432,6 +1471,8 @@ twocolumn
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide true
 sideways false
 status open
@@ -1722,9 +1763,8 @@ footnotemark[1]
 \end_layout
 
 \begin_layout Standard
-The best place to locate a figure or table is immediately following its
- first reference in text; this sample document illustrates this practice
- for Fig.
+The best place to locate a figure or table is immediately following its first reference in text;
+ this sample document illustrates this practice for Fig.
 \begin_inset space ~
 \end_inset
 
@@ -1732,14 +1772,17 @@ The best place to locate a figure or table is immediately following its
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:epsart"
+nolink "false"
 
 \end_inset
 
-, which shows a figure that is small enough to fit in a single column.
+,
+ which shows a figure that is small enough to fit in a single column.
 \end_layout
 
 \begin_layout Standard
-In exceptional cases, you will need to move the float earlier in the document,
+In exceptional cases,
+ you will need to move the float earlier in the document,
  as was done with Table
 \begin_inset space ~
 \end_inset
@@ -1748,12 +1791,13 @@ In exceptional cases, you will need to move the float earlier in the document,
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:table3"
+nolink "false"
 
 \end_inset
 
-: \SpecialChar LaTeX
-'s float placement algorithms need to know about a full-page-width float
- earlier.
+:
+ \SpecialChar LaTeX
+'s float placement algorithms need to know about a full-page-width float earlier.
 \end_layout
 
 \begin_layout Standard
@@ -1765,10 +1809,12 @@ Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:wide"
+nolink "false"
 
 \end_inset
 
- has content that is too wide for a single column, so the 
+ has content that is too wide for a single column,
+ so the 
 \family typewriter
 Figure*
 \family default
@@ -1776,8 +1822,7 @@ Figure*
 \end_layout
 
 \begin_layout Standard
-The doubled (or Scotch) rules that appear at the top and bottom of a table
- can be achieved enclosing the table within a 
+The doubled (or Scotch) rules that appear at the top and bottom of a table can be achieved enclosing the table within a 
 \family typewriter
 Ruled
 \begin_inset space ~
@@ -1794,26 +1839,32 @@ Table
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:table1"
+nolink "false"
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:table3"
+nolink "false"
 
 \end_inset
 
-, and 
+,
+ and 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:table2"
+nolink "false"
 
 \end_inset
 
 
 \begin_inset Float table
 placement b
+alignment document
 wide false
 sideways false
 status open
@@ -1829,7 +1880,8 @@ name "tab:table2"
 \end_inset
 
  A table with numerous columns that still fits into a single column.
- Here, several entries share the same footnote.
+ Here,
+ several entries share the same footnote.
 \end_layout
 
 \end_inset
@@ -2483,7 +2535,8 @@ footnotetext[1]{
 
 \end_inset
 
-Here's the first, from Ref.
+Here's the first,
+ from Ref.
 \begin_inset space ~
 \end_inset
 
@@ -2622,17 +2675,18 @@ show various effects.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:table3"
+nolink "false"
 
 \end_inset
 
- is a wide table, set with the 
+ is a wide table,
+ set with the 
 \family typewriter
 Table*
 \family default
  environment.
  Long tables may need to break across pages.
- The most straightforward way to accomplish this is to specify the option
- 
+ The most straightforward way to accomplish this is to specify the option 
 \family sans
 Here
 \begin_inset space ~
@@ -2641,7 +2695,8 @@ Here
 definitely
 \family default
  in the float settings.
- Alternatively one can use longtables, see sec.
+ Alternatively one can use longtables,
+ see sec.
 \begin_inset space \space{}
 \end_inset
 
@@ -2658,22 +2713,21 @@ EmbeddedObjects
 \end_layout
 
 \begin_layout Standard
-There are two methods for setting footnotes within a table (these footnotes
- will be displayed directly below the table rather than at the bottom of
- the page or in the bibliography).
+There are two methods for setting footnotes within a table (these footnotes will be displayed directly below the table rather than at the bottom of the page or in the bibliography).
  The easiest and preferred method is just to use a normal footnote inset.
  This will automatically enumerate the footnotes with lowercase roman letters.
- However, it is sometimes necessary to have multiple entries in the table
- share the same footnote.
- In this case, there is no choice but to manually create the footnotes using
- the \SpecialChar LaTeX
+ However,
+ it is sometimes necessary to have multiple entries in the table share the same footnote.
+ In this case,
+ there is no choice but to manually create the footnotes using the \SpecialChar LaTeX
 -command 
 \series bold
 
 \backslash
 footnotemark
 \series default
-, see sec.
+,
+ see sec.
 \begin_inset space \space{}
 \end_inset
 
@@ -2695,6 +2749,7 @@ EmbeddedObjects
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:table1"
+nolink "false"
 
 \end_inset
 
@@ -2702,6 +2757,7 @@ reference "tab:table1"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:table2"
+nolink "false"
 
 \end_inset
 
@@ -2717,15 +2773,18 @@ Video
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "vid:PRSTPER.4.010101"
+nolink "false"
 
 \end_inset
 
  illustrates several features new with REV\SpecialChar TeX
-4.1, starting with the 
+4.1,
+ starting with the 
 \family typewriter
 video
 \family default
- environment, which is in the same category with 
+ environment,
+ which is in the same category with 
 \family typewriter
 figure
 \family default
@@ -2735,6 +2794,8 @@ table
 \family default
 .
 \begin_inset Float video
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -2782,10 +2843,11 @@ name "vid:PRSTPER.4.010101"
 
 \end_inset
 
-Students explain their initial idea about Newton's third law to a teaching
- assistant.
- Clip (a): same force.
- Clip (b): move backwards.
+Students explain their initial idea about Newton's third law to a teaching assistant.
+ Clip (a):
+ same force.
+ Clip (b):
+ move backwards.
  
 \end_layout
 
@@ -2807,8 +2869,8 @@ The \SpecialChar LaTeX
 \backslash
 setfloatlink
 \series default
- causes the title of the video to be a hyperlink to the indicated URL; it
- may be used with any environment that can have a caption.
+ causes the title of the video to be a hyperlink to the indicated URL;
+ it may be used with any environment that can have a caption.
 \end_layout
 
 \begin_layout Standard
@@ -2816,8 +2878,8 @@ setfloatlink
 \shape italic
 Physical Review
 \shape default
- style requires that the initial citation of figures or tables be in numerical
- order in text, so don't cite Fig.
+ style requires that the initial citation of figures or tables be in numerical order in text,
+ so don't cite Fig.
 \begin_inset space ~
 \end_inset
 
@@ -2825,6 +2887,7 @@ Physical Review
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:wide"
+nolink "false"
 
 \end_inset
 
@@ -2836,6 +2899,7 @@ reference "fig:wide"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:epsart"
+nolink "false"
 
 \end_inset
 
@@ -2845,7 +2909,9 @@ reference "fig:epsart"
 \begin_layout Acknowledgments
 We wish to acknowledge the support of the author community in using REV\SpecialChar TeX
 ,
- offering suggestions and encouragement, testing new versions, ….
+ offering suggestions and encouragement,
+ testing new versions,
+ ….
  
 \end_layout
 
@@ -2855,7 +2921,8 @@ Appendixes
 \end_layout
 
 \begin_layout Standard
-If there is only one appendix, then the letter 
+If there is only one appendix,
+ then the letter 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2864,7 +2931,8 @@ A
 \end_inset
 
  should not appear.
- This is suppressed by using the star version of the appendix command: 
+ This is suppressed by using the star version of the appendix command:
+ 
 \series bold
 
 \backslash
@@ -2879,8 +2947,7 @@ appendix
 
 \begin_layout Standard
 This is not yet supported by \SpecialChar LyX
- so that you have to do that manually in the
- exported \SpecialChar LaTeX
+ so that you have to do that manually in the exported \SpecialChar LaTeX
 -file.
 \end_layout
 
@@ -2893,7 +2960,8 @@ A little more on appendixes
 \end_layout
 
 \begin_layout Standard
-Note the equation number in an appendix: 
+Note the equation number in an appendix:
+ 
 \begin_inset Formula 
 \begin{equation}
 E=mc^{2}.
@@ -2916,7 +2984,8 @@ A subsection in an appendix
 
 \begin_layout Standard
 You can use a subsection or subsubsection in an appendix.
- Note the numbering: we are now in Appendix
+ Note the numbering:
+ we are now in Appendix
 \begin_inset space ~
 \end_inset
 
@@ -2924,6 +2993,7 @@ You can use a subsection or subsubsection in an appendix.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "app:subsec"
+nolink "false"
 
 \end_inset
 
@@ -2931,8 +3001,9 @@ reference "app:subsec"
 \end_layout
 
 \begin_layout Standard
-Note the equation numbers in this appendix, produced with the subequations
- environment: 
+Note the equation numbers in this appendix,
+ produced with the subequations environment:
+ 
 \begin_inset Flex Subequations
 status open
 
@@ -2959,20 +3030,25 @@ E & \agt & mc^{3}.\label{appc}
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "appa"
+nolink "false"
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "appb"
+nolink "false"
 
 \end_inset
 
-, and 
+,
+ and 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "appc"
+nolink "false"
 
 \end_inset
 

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,9 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -105,12 +105,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -134,7 +138,8 @@ by the \SpecialChar LyX
 \begin_inset Newline newline
 \end_inset
 
-polskie tłumaczenie: Wojtek Pękala
+polskie tłumaczenie:
+ Wojtek Pękala
 \end_layout
 
 \begin_layout Standard
@@ -157,11 +162,13 @@ Witaj w \SpecialChar LyX
 
 \begin_layout Standard
 Aby ułatwić wyszukiwanie informacji i opisać wszystkie możliwości \SpecialChar LyX
--a, dokumentac
-ja została rozdzielona na kilka różnych plików.
- Każdy z nich służy innemu celowi, który opisano poniżej.
- Zanim zaczniesz brnąć przez któryś z tych plików, przeczytaj najpierw dokładnie
- niniejszy dokument, który zawiera mnóstwo pożytecznych informacji i komentarzy.
+-a,
+ dokumentacja została rozdzielona na kilka różnych plików.
+ Każdy z nich służy innemu celowi,
+ który opisano poniżej.
+ Zanim zaczniesz brnąć przez któryś z tych plików,
+ przeczytaj najpierw dokładnie niniejszy dokument,
+ który zawiera mnóstwo pożytecznych informacji i komentarzy.
  Pomogą one zaoszczędzić Ci czas.
 \end_layout
 
@@ -174,12 +181,16 @@ ja została rozdzielona na kilka różnych plików.
 
 \begin_layout Standard
 \align center
-OSTRZEŻENIE!!!!! OSTRZEŻENIE!!!!! OSTRZEŻENIE!!!!
+OSTRZEŻENIE!!!!!
+ OSTRZEŻENIE!!!!!
+ OSTRZEŻENIE!!!!
 \end_layout
 
 \begin_layout Standard
 \align center
-Danger, Will Robinson, Danger!
+Danger,
+ Will Robinson,
+ Danger!
 \end_layout
 
 \begin_layout Standard
@@ -190,16 +201,19 @@ Danger, Will Robinson, Danger!
 \end_layout
 
 \begin_layout Standard
-Dokumentacja, jako całość, jest w tej chwili niekompletna! Podobnie jak
- program jest w wersji beta.
+Dokumentacja,
+ jako całość,
+ jest w tej chwili niekompletna!
+ Podobnie jak program jest w wersji beta.
  Obiecujemy uzupełnić wszystko do wersji 1.0!
 \end_layout
 
 \begin_layout Standard
-Prosimy także o pomoc - jeśli coś w podręcznikach jest niejasne, dezorientujące
- lub nieprawidłowe, nie wahajcie się dać nam znać! \SpecialChar LyX
- Team jest osiągalny
- przez listę dyskusyjną programistów pod adresem 
+Prosimy także o pomoc - jeśli coś w podręcznikach jest niejasne,
+ dezorientujące lub nieprawidłowe,
+ nie wahajcie się dać nam znać!
+ \SpecialChar LyX
+ Team jest osiągalny przez listę dyskusyjną programistów pod adresem 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-users@lists.lyx.org"
@@ -232,18 +246,22 @@ Format podręczników
 
 \begin_layout Standard
 Część użytkowników mogła już wydrukować podręcznik.
- Inni mogą czytać go w komputerze, jako plik \SpecialChar LyX
+ Inni mogą czytać go w komputerze,
+ jako plik \SpecialChar LyX
 -a.
  Istnieją pewne różnice między wersją drukowaną i elektroniczną.
- Po pierwsze tytuł w pliku jest po prostu na początku dokumentu, a nie na
- osobnej stronie, jak na wydruku.
+ Po pierwsze tytuł w pliku jest po prostu na początku dokumentu,
+ a nie na osobnej stronie,
+ jak na wydruku.
  Nie widać również przypisów ani spisu treści.
- Istnieje okno do oglądania spisu treści, otwierane poleceniem Spis
+ Istnieje okno do oglądania spisu treści,
+ otwierane poleceniem Spis
 \begin_inset space ~
 \end_inset
 
 treści z menu Edycja.
- Aby zajrzeć do przypisu, który wygląda tak,
+ Aby zajrzeć do przypisu,
+ który wygląda tak,
 \begin_inset Foot
 status collapsed
 
@@ -259,8 +277,8 @@ Cześć !
 \begin_layout Standard
 Skoro 
 \size small
-wyjaśniono już różnice między wydrukiem a wersją ekranową, nadszedł czas
- na objaśnienie formatu dokumentu.
+wyjaśniono już różnice między wydrukiem a wersją ekranową,
+ nadszedł czas na objaśnienie formatu dokumentu.
  Od czasu do czasu można w nim napotkać tekst pisany różną czcionką:
 \end_layout
 
@@ -269,9 +287,10 @@ wyjaśniono już różnice między wydrukiem a wersją ekranową, nadszedł czas
 \emph on
 Wyróżnienia
 \emph default
- używa się celem ogólnego wyeksponowania fragmentów tekstu, podkreślenia
- argumentów, tytułów książek, nazw podrozdziałów innych podręczników i uwag
- od autorów.
+ używa się celem ogólnego wyeksponowania fragmentów tekstu,
+ podkreślenia argumentów,
+ tytułów książek,
+ nazw podrozdziałów innych podręczników i uwag od autorów.
 \end_layout
 
 \begin_layout Itemize
@@ -279,10 +298,11 @@ Wyróżnienia
 \family typewriter
 Czcionka maszynowa
 \family default
- stosowana jest do zapisu programów i nazw plików, kodu \SpecialChar LaTeX
--a, kodu \SpecialChar LyX
--a i jego
- funkcji.
+ stosowana jest do zapisu programów i nazw plików,
+ kodu \SpecialChar LaTeX
+-a,
+ kodu \SpecialChar LyX
+-a i jego funkcji.
 \end_layout
 
 \begin_layout Itemize
@@ -290,7 +310,9 @@ Czcionka maszynowa
 \family sans
 Czcionka Sans Serif
 \family default
- opisuje menu, przyciski, nazwy okien i klawiszy.
+ opisuje menu,
+ przyciski,
+ nazwy okien i klawiszy.
 \end_layout
 
 \begin_layout Itemize
@@ -486,7 +508,12 @@ Down
 \begin_inset Quotes erd
 \end_inset
 
- klawisze strzałek, odpowiednio: w lewo, prawo, do góry, w dół.
+ klawisze strzałek,
+ odpowiednio:
+ w lewo,
+ prawo,
+ do góry,
+ w dół.
 \end_layout
 
 \begin_layout Itemize
@@ -561,7 +588,8 @@ PageDown
 \begin_inset Quotes erd
 \end_inset
 
-: to sześć klawiszy nad klawiszami strzałek na wielu klawiaturach typu PC.
+:
+ to sześć klawiszy nad klawiszami strzałek na wielu klawiaturach typu PC.
  
 \begin_inset Quotes eld
 \end_inset
@@ -623,10 +651,11 @@ Return
 i Enter
 \family default
  odnoszą się do tego samego klawisza.
- Na niektórych klawiaturach Return nazywa się Enter, na innych Return, są
- i takie posiadające dwa takie klawisze, ale \SpecialChar LyX
- traktuje je wszystkie jednakowo
- i w dokumentacji Return i Enter używane są zamiennie
+ Na niektórych klawiaturach Return nazywa się Enter,
+ na innych Return,
+ są i takie posiadające dwa takie klawisze,
+ ale \SpecialChar LyX
+ traktuje je wszystkie jednakowo i w dokumentacji Return i Enter używane są zamiennie
 \end_layout
 
 \begin_layout Standard
@@ -651,12 +680,12 @@ Opisie poleceń
 \end_inset
 
 .
- Skróty klawiszowe dla różnych funkcji zostały opisane w odpowiednich pozycjach
- 
+ Skróty klawiszowe dla różnych funkcji zostały opisane w odpowiednich pozycjach 
 \emph on
 Opisu poleceń
 \emph default
-, tak więc warto także tam zaglądnąć.
+,
+ tak więc warto także tam zaglądnąć.
 \end_layout
 
 \begin_layout Section
@@ -697,9 +726,10 @@ Elementarz
 \end_inset
 
 Dla nowych użytkowników \SpecialChar LyX
--a, którzy nigdy nie używali \SpecialChar LaTeX
--a, ani nawet o nim
- nie słyszeli.
+-a,
+ którzy nigdy nie używali \SpecialChar LaTeX
+-a,
+ ani nawet o nim nie słyszeli.
 \end_layout
 
 \begin_layout Description
@@ -723,18 +753,18 @@ zrobić
 \begin_inset Newline newline
 \end_inset
 
-To zbiór często zadawanych pytań (i odpowiedzi: FAQ) na temat obsługi \SpecialChar LyX
--a
- [a w każdym razie kiedyś takim ma być].
- Maszyny do pisania i zwykłe edytory oferują szereg wspólnych funkcji, znanych
- wielu użytkownikom.
+To zbiór często zadawanych pytań (i odpowiedzi:
+ FAQ) na temat obsługi \SpecialChar LyX
+-a [a w każdym razie kiedyś takim ma być].
+ Maszyny do pisania i zwykłe edytory oferują szereg wspólnych funkcji,
+ znanych wielu użytkownikom.
  Nie wszystkie z nich są dostępne w \SpecialChar LyX
--ie, albo nie mają sensu w środowisku
- \SpecialChar LyX
+-ie,
+ albo nie mają sensu w środowisku \SpecialChar LyX
 -a i \SpecialChar LaTeX
 -a.
- Plik ten próbuje wyjaśnić w formie pytań i odpowiedzi, jak posługiwać się
- odpowiednimi operacjami w \SpecialChar LyX
+ Plik ten próbuje wyjaśnić w formie pytań i odpowiedzi,
+ jak posługiwać się odpowiednimi operacjami w \SpecialChar LyX
 -ie.
  Czasami będzie odwoływał się do głównego podręcznika.
 \end_layout
@@ -763,12 +793,10 @@ użytkownika
 \end_inset
 
 Podstawowa dokumentacja.
- Spróbowaliśmy zawrzeć w nim większość zasadniczych operacji i dostępnych
- funkcji \SpecialChar LyX
+ Spróbowaliśmy zawrzeć w nim większość zasadniczych operacji i dostępnych funkcji \SpecialChar LyX
 -a.
  Główny podręcznik zakłada przynajmniej częściową znajomość \SpecialChar LaTeX
--a lub przeczytanie
- 
+-a lub przeczytanie 
 \emph on
 Elementarza
 \emph default
@@ -816,8 +844,10 @@ Przystosowywanie
 \end_inset
 
 Opis zaawansowanych cech \SpecialChar LyX
--a, wraz z przystosowywaniem zachowania programu:
- skróty klawiszowe, internacjonalizacja i pliki konfiguracyjne.
+-a,
+ wraz z przystosowywaniem zachowania programu:
+ skróty klawiszowe,
+ internacjonalizacja i pliki konfiguracyjne.
 \end_layout
 
 \begin_layout Description
@@ -837,9 +867,10 @@ poleceń
 
 
 \emph default
-Zawiera wyczerpujący, szczegółowy opis funkcji \SpecialChar LyX
--a, ale bez wskazówek i przykładó
-w jak w 
+Zawiera wyczerpujący,
+ szczegółowy opis funkcji \SpecialChar LyX
+-a,
+ ale bez wskazówek i przykładów jak w 
 \emph on
 Podręczniku użytkownika
 \emph default
@@ -865,8 +896,8 @@ usterki
 \end_inset
 
 Plik ten zawiera opis znanych usterek \SpecialChar LyX
--a oraz informację, co zrobić w razie
- znalezienia błędu w \SpecialChar LyX
+-a oraz informację,
+ co zrobić w razie znalezienia błędu w \SpecialChar LyX
 -ie\SpecialChar endofsentence
 
 \end_layout
@@ -890,19 +921,21 @@ Konfiguracja
 \end_inset
 
 \SpecialChar LyX
- w trakcie instalacji robi przegląd systemu, a uzyskaną informację zapisuje
- w tym pliku.
+ w trakcie instalacji robi przegląd systemu,
+ a uzyskaną informację zapisuje w tym pliku.
  Przejrzyj go i sprawdź czy nie brakuje czegoś potrzebnego.
 \end_layout
 
 \begin_layout Standard
-Pliki te odwołują się, gdy to konieczne, jeden do drugiego.
+Pliki te odwołują się,
+ gdy to konieczne,
+ jeden do drugiego.
  Na przykład 
 \emph on
 Podręcznik użytkownika
 \emph default
- zawiera trochę wiadomości o instalacji i przystosowywaniu, ale odsyła czytelnik
-a do 
+ zawiera trochę wiadomości o instalacji i przystosowywaniu,
+ ale odsyła czytelnika do 
 \emph on
 Podręcznika przystosowywania
 \emph default
@@ -922,9 +955,10 @@ W tym miejscu ponownie zamieścimy istotne stwierdzenie:
 
 \begin_layout Standard
 \align center
-Jeśli nigdy przedtem nie używałeś, ani nawet nie słyszałeś o \SpecialChar LaTeX
--u, przeczytaj
- 
+Jeśli nigdy przedtem nie używałeś,
+ ani nawet nie słyszałeś o \SpecialChar LaTeX
+-u,
+ przeczytaj 
 \emph on
 Elementarz
 \emph toggle
@@ -963,7 +997,8 @@ Doc Error
 \begin_inset Quotes prd
 \end_inset
 
- lub czymś podobnym, pomożesz nam go znaleźć
+ lub czymś podobnym,
+ pomożesz nam go znaleźć
 \end_layout
 
 \begin_layout Standard
@@ -977,8 +1012,7 @@ Doc Error
 \align center
 
 \emph on
-Nigdy nie zmieniaj zawartości żadnego z podręczników bez zgody aktualnego
- redaktora!
+Nigdy nie zmieniaj zawartości żadnego z podręczników bez zgody aktualnego redaktora!
 \end_layout
 
 \begin_layout Standard
@@ -992,7 +1026,8 @@ Nigdy nie zmieniaj zawartości żadnego z podręczników bez zgody aktualnego
 
 \lang english
 \SpecialChar LyX
- has a bug tracking system, which you can find at
+ has a bug tracking system,
+ which you can find at
 \lang polish
  
 \family typewriter
@@ -1013,8 +1048,8 @@ https://www.lyx.org/trac/wiki/BugTrackerHome
 \end_layout
 
 \begin_layout Standard
-Takie doraźne zmiany i tak nie zostaną uwzględnione, gdyż Zespół Dokumentacji
- posługuje się kopiami-matkami.
+Takie doraźne zmiany i tak nie zostaną uwzględnione,
+ gdyż Zespół Dokumentacji posługuje się kopiami-matkami.
 \end_layout
 
 \begin_layout Subsection
@@ -1023,11 +1058,13 @@ Pierwsze kroki
 
 \begin_layout Standard
 The \SpecialChar LyX
- Documentation Project, tak jak inne elementy projektu \SpecialChar LyX
-, chętnie skorzysta
- z pomocy! Jeśli jesteś zainteresowany(a) wsparciem wysiłku dokumentowania
- \SpecialChar LyX
--a, musisz 
+ Documentation Project,
+ tak jak inne elementy projektu \SpecialChar LyX
+,
+ chętnie skorzysta z pomocy!
+ Jeśli jesteś zainteresowany(a) wsparciem wysiłku dokumentowania \SpecialChar LyX
+-a,
+ musisz 
 \emph on
 najpierw
 \emph default
@@ -1064,12 +1101,15 @@ Celem tego zadania jest wyrobienie podejścia.
 Podręcznik użytkownika
 \emph default
  jest najbardziej kompletny z całej dokumentacji.
- Powinien pozwolić Ci zorientować się, jakiego typu podręczników potrzebujemy.
+ Powinien pozwolić Ci zorientować się,
+ jakiego typu podręczników potrzebujemy.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Na koniec, skontaktuj się z zespołem pod adresem: 
+Na koniec,
+ skontaktuj się z zespołem pod adresem:
+ 
 \end_layout
 
 \begin_deeper
@@ -1086,7 +1126,8 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Chcemy się upewnić, że rozumiesz plik stylu dokumentacji 
+Chcemy się upewnić,
+ że rozumiesz plik stylu dokumentacji 
 \emph on
 zanim
 \emph default
@@ -1100,7 +1141,8 @@ zanim
 \emph on
 Nie myśl
 \emph default
- nawet o rozpoczęciu pisania, zanim nie pogadamy przez pocztę elektroniczną.
+ nawet o rozpoczęciu pisania,
+ zanim nie pogadamy przez pocztę elektroniczną.
 \end_layout
 
 \end_body

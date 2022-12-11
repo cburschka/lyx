@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -24,9 +24,9 @@ theorems-ams-extended
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -79,12 +79,16 @@ theorems-ams-extended
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -112,7 +116,9 @@ newline
 
 \end_inset
 
-Lehigh University, Bethlehem, PA 18015
+Lehigh University,
+ Bethlehem,
+ PA 18015
 \end_layout
 
 \begin_layout Current Address
@@ -132,7 +138,10 @@ Test
 \end_layout
 
 \begin_layout Thanks
-To Emmanuel, for forcing me to fix this, and Jean-Marc, for making it possible,
+To Emmanuel,
+ for forcing me to fix this,
+ and Jean-Marc,
+ for making it possible,
  and necessary.
 \end_layout
 
@@ -145,7 +154,10 @@ Joe
 \end_layout
 
 \begin_layout Subjectclass
-Primary: 12G34, Secondary: 09G87
+Primary:
+ 12G34,
+ Secondary:
+ 09G87
 \end_layout
 
 \begin_layout Chapter
@@ -157,8 +169,13 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This file, using the amsbook layout, numbers all results, Theorems, Definitions,
- etc., using 
+This file,
+ using the amsbook layout,
+ numbers all results,
+ Theorems,
+ Definitions,
+ etc.,
+ using 
 \begin_inset Formula $(m.n.p)$
 \end_inset
 
@@ -166,11 +183,15 @@ This file, using the amsbook layout, numbers all results, Theorems, Definitions,
 \begin_inset Formula $m$
 \end_inset
 
- is the chapter number, the 
+ is the chapter number,
+ the 
 \begin_inset Formula $n$
 \end_inset
 
- is the section number, and, finally, the 
+ is the section number,
+ and,
+ finally,
+ the 
 \begin_inset Formula $p$
 \end_inset
 
@@ -178,7 +199,8 @@ This file, using the amsbook layout, numbers all results, Theorems, Definitions,
 \end_layout
 
 \begin_layout Standard
-This can be changed by modifying the layout file, removing the line 
+This can be changed by modifying the layout file,
+ removing the line 
 \family typewriter
 
 \begin_inset Newline newline
@@ -236,7 +258,8 @@ Need some criteria
 \end_layout
 
 \begin_layout Algorithm
-first this, then the next
+first this,
+ then the next
 \end_layout
 
 \begin_layout Fact
@@ -280,7 +303,8 @@ It may need more work yet.
 \end_layout
 
 \begin_layout Standard
-More plain text, in standard format.
+More plain text,
+ in standard format.
 \end_layout
 
 \begin_layout Theorem
@@ -327,7 +351,8 @@ Need some criteria
 \end_layout
 
 \begin_layout Summary
-In the end, will it matter?
+In the end,
+ will it matter?
 \end_layout
 
 \begin_layout Acknowledgement
@@ -337,7 +362,8 @@ Thanks to Mattias Ettrich.
 \end_layout
 
 \begin_layout Case
-If this works, then the rest will.
+If this works,
+ then the rest will.
 \end_layout
 
 \begin_layout Conclusion
@@ -418,7 +444,8 @@ With more results therein.
 \end_layout
 
 \begin_layout Theorem
-This is a theorem, maybe the fourth one.
+This is a theorem,
+ maybe the fourth one.
 \end_layout
 
 \begin_layout Proof
@@ -510,7 +537,8 @@ This is the subsection with results.
 \end_layout
 
 \begin_layout Standard
-The quick, brown fox jumped over the lazy dog.
+The quick,
+ brown fox jumped over the lazy dog.
 \end_layout
 
 \begin_layout Theorem
@@ -557,7 +585,8 @@ literal "true"
 
 \end_inset
 
-Johnson, D.
+Johnson,
+ D.
  L.
  
 \emph on
@@ -572,12 +601,15 @@ literal "true"
 
 \end_inset
 
-American Mathematical Society, 
+American Mathematical Society,
+ 
 \emph on
-Instructions for preparation of papers and monographs: AMS-\SpecialChar LaTeX
+Instructions for preparation of papers and monographs:
+ AMS-\SpecialChar LaTeX
 
 \emph default
-, (1997).
+,
+ (1997).
 \end_layout
 
 \begin_layout Bibliography
@@ -588,7 +620,8 @@ literal "true"
 
 \end_inset
 
-American Mathematical Society, 
+American Mathematical Society,
+ 
 \end_layout
 
 \begin_layout Standard

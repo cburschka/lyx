@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -50,9 +50,9 @@ bicaption
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -98,8 +98,8 @@ bicaption
 \justification true
 \use_refstyle 1
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -115,12 +115,16 @@ bicaption
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -165,7 +169,8 @@ B.
 \series bold
 bicaption
 \series default
-, das Teil des \SpecialChar LaTeX
+,
+ das Teil des \SpecialChar LaTeX
 -Pakets 
 \series bold
 caption
@@ -175,7 +180,8 @@ caption
 \series bold
 caption
 \series default
- installiert ist, sollte also auch 
+ installiert ist,
+ sollte also auch 
 \series bold
 bicaption
 \series default
@@ -183,20 +189,21 @@ bicaption
 \end_layout
 
 \begin_layout Standard
-Die erste Sprache ist die Dokumentsprache, die zweite muss über die Umgebung
- 
+Die erste Sprache ist die Dokumentsprache,
+ die zweite muss über die Umgebung 
 \family sans
 Legenden-Einstellungen
 \family default
  angegeben werden.
- Diese Umgebung hat ein optionales Argument um zu definieren, welche Sprache
- die Einstellung betrifft.
- Um die Einstellung für alle Legenden der ersten Sprache zu ändern, verwendet
- man 
+ Diese Umgebung hat ein optionales Argument um zu definieren,
+ welche Sprache die Einstellung betrifft.
+ Um die Einstellung für alle Legenden der ersten Sprache zu ändern,
+ verwendet man 
 \series bold
 bi-first
 \series default
- als optionales Argument, für die zweite Sprache 
+ als optionales Argument,
+ für die zweite Sprache 
 \series bold
 bi-second
 \series default
@@ -216,12 +223,14 @@ status open
 \series bold
 Achtung
 \series default
-: Wenn für 
+:
+ Wenn für 
 \family sans
 Legenden-Einstellungen
 \family default
- kein optionales Argument verwendet wird, betrifft die Einstellung alle
- Legenden des Dokuments, nicht nur die mehrsprachigen.
+ kein optionales Argument verwendet wird,
+ betrifft die Einstellung alle Legenden des Dokuments,
+ nicht nur die mehrsprachigen.
 \end_layout
 
 \end_inset
@@ -231,7 +240,8 @@ Legenden-Einstellungen
 
 \begin_layout Standard
 Dieses Dokument ist in Deutsch.
- Um Englisch als zweite Sprache zu definieren, verwendet man den Befehl
+ Um Englisch als zweite Sprache zu definieren,
+ verwendet man den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -259,6 +269,7 @@ english
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Liste-mit-babel-Namen"
+nolink "false"
 
 \end_inset
 
@@ -280,9 +291,10 @@ Tabelle
 \end_layout
 
 \begin_layout Standard
-Um eine mehrsprachige Legende zu einem Gleitobjekt hinzuzufügen, klickt
- man mit der rechten Maustaste auf die Legende, die automatisch beim Einfügen
- des Gleitobjekts erstellt wurde, und wählt 
+Um eine mehrsprachige Legende zu einem Gleitobjekt hinzuzufügen,
+ klickt man mit der rechten Maustaste auf die Legende,
+ die automatisch beim Einfügen des Gleitobjekts erstellt wurde,
+ und wählt 
 \family sans
 Legende
 \begin_inset space ~
@@ -291,8 +303,8 @@ Legende
 (Zweisprachig
 \family default
 ) im Kontext-Menü aus.
- Ist keine Legende vorhanden, kann man eine mehrsprachige Legende über das
- Menü 
+ Ist keine Legende vorhanden,
+ kann man eine mehrsprachige Legende über das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Legende\SpecialChar menuseparator
@@ -332,6 +344,7 @@ Abbildung
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Beispiel-Abbildung"
+nolink "false"
 
 \end_inset
 
@@ -364,6 +377,8 @@ legt die zweite Sprache fest
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -460,7 +475,8 @@ status open
 \series bold
 Achtung
 \series default
-: Mehrsprachige Legenden können nicht für lange Tabellen verwendet werden.
+:
+ Mehrsprachige Legenden können nicht für lange Tabellen verwendet werden.
 \end_layout
 
 \end_inset
@@ -478,8 +494,9 @@ Die Formatierung der Legenden kann ebenfalls über die Umgebung
 Legenden-Einstellungen
 \family default
  geändert werden.
- Um zum Beispiel die Legende in sansserif, kursiv zu setzen, verwendet man
- den Befehl
+ Um zum Beispiel die Legende in sansserif,
+ kursiv zu setzen,
+ verwendet man den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -489,7 +506,8 @@ textfont={sf,it}
 \end_layout
 
 \begin_layout Standard
-Um die Marke fett zu drucken, verwendet man
+Um die Marke fett zu drucken,
+ verwendet man
 \end_layout
 
 \begin_layout Standard
@@ -499,19 +517,19 @@ labelfont=bf
 \end_layout
 
 \begin_layout Standard
-Um die Formatierung für den Text und die Marke zu ändern, verwendet man
- den Befehl 
+Um die Formatierung für den Text und die Marke zu ändern,
+ verwendet man den Befehl 
 \series bold
 font=
 \series default
 .
- Für weitere Informationen über mögliche Anpassungen siehe die Dokumentation
- des \SpecialChar LaTeX
+ Für weitere Informationen über mögliche Anpassungen siehe die Dokumentation des \SpecialChar LaTeX
 -Pakets 
 \series bold
 caption
 \series default
-, 
+,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "caption"
@@ -519,7 +537,8 @@ literal "true"
 
 \end_inset
 
-, denn die Anpassungsmöglichkeiten des Pakets 
+,
+ denn die Anpassungsmöglichkeiten des Pakets 
 \series bold
 bicaption
 \series default
@@ -539,11 +558,12 @@ Abbildung
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Beispiel-Abbildung-angepasst"
+nolink "false"
 
 \end_inset
 
- ist ein Beispiel für eine Abbildung mit einer angepassten, mehrsprachigen
- Legende.
+ ist ein Beispiel für eine Abbildung mit einer angepassten,
+ mehrsprachigen Legende.
 \end_layout
 
 \begin_layout Caption setup
@@ -555,8 +575,9 @@ status open
 \series bold
 Achtung
 \series default
-: Diese Einstellung hat in diesem Dokument keinen Effekt, siehe den Hinweis
- in Abschnitt
+:
+ Diese Einstellung hat in diesem Dokument keinen Effekt,
+ siehe den Hinweis in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -564,6 +585,7 @@ Achtung
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formatierung-der-Liste"
+nolink "false"
 
 \end_inset
 
@@ -583,13 +605,14 @@ bi-both
 
 \end_inset
 
-labelfont=bf, labelsep=newline
+labelfont=bf,
+ labelsep=newline
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Die Marke soll fett sein, das Trennzeichen soll ein Zeilenumbruch statt
- eines Doppelpunkts sein.
+Die Marke soll fett sein,
+ das Trennzeichen soll ein Zeilenumbruch statt eines Doppelpunkts sein.
 \end_layout
 
 \end_inset
@@ -608,7 +631,8 @@ bi-first
 
 \end_inset
 
-labelfont=bf, labelsep=newline
+labelfont=bf,
+ labelsep=newline
 \begin_inset Note Note
 status collapsed
 
@@ -632,12 +656,15 @@ bi-second
 
 \end_inset
 
-labelfont=bf, textfont={sf,it}, labelsep=newline
+labelfont=bf,
+ textfont={sf,it},
+ labelsep=newline
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Der Text der zweiten Sprache soll sansserif, kursiv sein.
+Der Text der zweiten Sprache soll sansserif,
+ kursiv sein.
 \end_layout
 
 \end_inset
@@ -647,6 +674,8 @@ Der Text der zweiten Sprache soll sansserif, kursiv sein.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -729,10 +758,9 @@ Formatierung der Liste mit Gleitobjekten
 \end_layout
 
 \begin_layout Standard
-Die Verzeichnisse der Tabellen/Abbildungen enthalten standardmäßig beide
- Sprachen.
- Man kann die zweite Sprache ausschalten, indem man diese Zeile zur Dokumentpräa
-mbel hinzufügt:
+Die Verzeichnisse der Tabellen/Abbildungen enthalten standardmäßig beide Sprachen.
+ Man kann die zweite Sprache ausschalten,
+ indem man diese Zeile zur Dokumentpräambel hinzufügt:
 \end_layout
 
 \begin_layout Standard
@@ -744,12 +772,12 @@ PassOptionsToPackage{list=off}{bicaption}
 \end_layout
 
 \begin_layout Standard
-Es ist auch möglich zwei verschiedene Verzeichnisse zu haben, eine für die
- Dokumentsprache und eine für die zweite Sprache.
+Es ist auch möglich zwei verschiedene Verzeichnisse zu haben,
+ eine für die Dokumentsprache und eine für die zweite Sprache.
  Dies ist in diesem Dokument der Fall.
- Um die Liste zu Teilen, müssen diese Zeilen in den \SpecialChar LaTeX
--Vorspann des Dokuments
- hinzugefügt werden:
+ Um die Liste zu Teilen,
+ müssen diese Zeilen in den \SpecialChar LaTeX
+-Vorspann des Dokuments hinzugefügt werden:
 \end_layout
 
 \begin_layout Standard
@@ -849,7 +877,9 @@ status open
 \series bold
 Achtung
 \series default
-: Wenn man dieses Feature verwendet, hat die 
+:
+ Wenn man dieses Feature verwendet,
+ hat die 
 \family sans
 Legenden-Einstellungen
 \family default
@@ -880,7 +910,9 @@ Für mehr Informationen was man mit dem \SpecialChar LaTeX
 \series bold
 bicaption
 \series default
- machen kann, siehe seine Dokumentation, 
+ machen kann,
+ siehe seine Dokumentation,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bicaption"
@@ -1115,7 +1147,8 @@ Deutsch
 \begin_inset Text
 
 \begin_layout Plain Layout
-ngerman, naustrian 
+ngerman,
+ naustrian 
 \end_layout
 
 \end_inset
@@ -1135,7 +1168,12 @@ Englisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-english, american, australian, british, canadian, newzealand 
+english,
+ american,
+ australian,
+ british,
+ canadian,
+ newzealand 
 \end_layout
 
 \end_inset
@@ -1215,7 +1253,9 @@ Französisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-french, canadien, acadian
+french,
+ canadien,
+ acadian
 \end_layout
 
 \end_inset
@@ -1275,7 +1315,8 @@ Griechisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-greek, polutonikogreek 
+greek,
+ polutonikogreek 
 \end_layout
 
 \end_inset
@@ -1563,7 +1604,8 @@ Norwegisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-norsk, nynorsk 
+norsk,
+ nynorsk 
 \end_layout
 
 \end_inset
@@ -1623,7 +1665,8 @@ Portugiesisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-portuguese, brazilian 
+portuguese,
+ brazilian 
 \end_layout
 
 \end_inset
@@ -1871,7 +1914,8 @@ Ungarisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-magyar, hungarian
+magyar,
+ hungarian
 \end_layout
 
 \end_inset

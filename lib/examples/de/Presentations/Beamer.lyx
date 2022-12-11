@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -24,9 +24,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -77,12 +77,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -188,7 +192,8 @@ Beamer
 
 \end_inset
 
--Klasse können Sie Präsentationsfolien erstellen, die
+-Klasse können Sie Präsentationsfolien erstellen,
+ die
 \end_layout
 
 \begin_deeper
@@ -213,8 +218,8 @@ Overlay
 \end_layout
 
 \begin_layout Itemize
-verschiedene Navigationspfade enthalten können (beachten Sie, dass die Folien
- alle möglichen Formen von Hyperlinks enthalten können),
+verschiedene Navigationspfade enthalten können (beachten Sie,
+ dass die Folien alle möglichen Formen von Hyperlinks enthalten können),
 \end_layout
 
 \begin_layout Itemize
@@ -223,7 +228,8 @@ verschiedene Navigationspfade enthalten können (beachten Sie, dass die Folien
 \end_layout
 
 \begin_layout Itemize
-multimediale Inhalte einbetten können (Audio, Video),
+multimediale Inhalte einbetten können (Audio,
+ Video),
 \end_layout
 
 \begin_layout Itemize
@@ -277,7 +283,8 @@ Beamer
 \end_layout
 
 \begin_layout Itemize
-und vor allem, wie Sie diese mit \SpecialChar LyX
+und vor allem,
+ wie Sie diese mit \SpecialChar LyX
  nutzen können.
 \end_layout
 
@@ -309,7 +316,8 @@ literal "true"
 status collapsed
 
 \begin_layout Plain Layout
-Präsentation: Bestandteile
+Präsentation:
+ Bestandteile
 \end_layout
 
 \end_inset
@@ -340,12 +348,13 @@ einer Titelfolie,
 \end_layout
 
 \begin_layout Itemize
-weiteren Folien, die in Abschnitte oder (Vortrags-)Teile gruppiert sein
- können,
+weiteren Folien,
+ die in Abschnitte oder (Vortrags-)Teile gruppiert sein können,
 \end_layout
 
 \begin_layout Itemize
-einem Anhang mit zusätzlichen Informationen, bspw.
+einem Anhang mit zusätzlichen Informationen,
+ bspw.
  einem Literaturverzeichnis.
 \end_layout
 
@@ -386,7 +395,8 @@ Titel
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex Structure
 status collapsed
 
@@ -396,7 +406,8 @@ Untertitel
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex Structure
 status collapsed
 
@@ -406,7 +417,8 @@ Autor
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex Structure
 status collapsed
 
@@ -416,7 +428,8 @@ Institut
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex Structure
 status collapsed
 
@@ -442,13 +455,13 @@ Titelgrafik
 
 \begin_deeper
 \begin_layout Itemize
-Keines dieser Elemente ist unbedingt nötig, aber zumindest eines (egal welches)
- müssen Sie verwenden, damit eine Titelseite generiert wird.
+Keines dieser Elemente ist unbedingt nötig,
+ aber zumindest eines (egal welches) müssen Sie verwenden,
+ damit eine Titelseite generiert wird.
 \end_layout
 
 \begin_layout Itemize
-Die Eingabereihenfolge spielt keine Rolle (der Aufbau der Titelfolie ist
- im 
+Die Eingabereihenfolge spielt keine Rolle (der Aufbau der Titelfolie ist im 
 \begin_inset Flex Structure
 status collapsed
 
@@ -472,7 +485,8 @@ Titel
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex Structure
 status collapsed
 
@@ -482,7 +496,8 @@ Untertitel
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex Structure
 status collapsed
 
@@ -492,7 +507,8 @@ Autor
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex Structure
 status collapsed
 
@@ -537,8 +553,7 @@ Kurzformen
  definieren.
  Diese werden in der Seitenleiste und\SpecialChar breakableslash
 oder Kopf-\SpecialChar breakableslash
-Fußzeile verwendet (falls
- das verwendete Thema solche Bereiche vorsieht).
+Fußzeile verwendet (falls das verwendete Thema solche Bereiche vorsieht).
 \end_layout
 
 \begin_layout Itemize
@@ -562,7 +577,9 @@ Titel
 
 \end_inset
 
- verwenden, hat die Titelfolie keine Seitenleiste, Kopf- oder Fußzeile.
+ verwenden,
+ hat die Titelfolie keine Seitenleiste,
+ Kopf- oder Fußzeile.
 \end_layout
 
 \end_deeper
@@ -640,7 +657,8 @@ Frames
 \end_inset
 
 ).
- Alles, was sich innerhalb eines 
+ Alles,
+ was sich innerhalb eines 
 \begin_inset Quotes gld
 \end_inset
 
@@ -648,7 +666,8 @@ Rahmens
 \begin_inset Quotes grd
 \end_inset
 
- befindet, wird auf eine Folie ausgegeben (die ihrerseits aus 
+ befindet,
+ wird auf eine Folie ausgegeben (die ihrerseits aus 
 \begin_inset Quotes gld
 \end_inset
 
@@ -683,8 +702,8 @@ Rahmentitel
 \begin_inset Quotes grd
 \end_inset
 
--Einfügung ein, die für neue Rahmen automatisch eingefügt wird (manuell
- können Sie sie über 
+-Einfügung ein,
+ die für neue Rahmen automatisch eingefügt wird (manuell können Sie sie über 
 \begin_inset Flex Alert
 status collapsed
 
@@ -709,7 +728,8 @@ Rahmentitel
 
 \end_inset
 
- verwenden, der zusätzlich eine (selten verwendete) Rahmen-
+ verwenden,
+ der zusätzlich eine (selten verwendete) Rahmen-
 \begin_inset Quotes gld
 \end_inset
 
@@ -762,7 +782,9 @@ Rahmen-Optionen
 
 \end_inset
 
-, Overlay-Optionen (wir erläutern später, was das ist) über 
+,
+ Overlay-Optionen (wir erläutern später,
+ was das ist) über 
 \begin_inset Flex Alert
 status collapsed
 
@@ -888,14 +910,16 @@ small
 \end_layout
 
 \begin_layout Frame
-Rahmen können vollständig oder partiell (nur in Form einzelner Unterfolien)
- wiederholt werden, und zwar beliebig oft und jederzeit in späteren Phasen
- der Präsentation.
+Rahmen können vollständig oder partiell (nur in Form einzelner Unterfolien) wiederholt werden,
+ und zwar beliebig oft und jederzeit in späteren Phasen der Präsentation.
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Alles, was Sie tun müssen, ist, dem betreffenden Rahmen eine Marke zuzuweisen.
+Alles,
+ was Sie tun müssen,
+ ist,
+ dem betreffenden Rahmen eine Marke zuzuweisen.
  Dies geschieht mit Hilfe der Rahmenoption 
 \begin_inset Quotes gld
 \end_inset
@@ -946,8 +970,9 @@ Overlay-Spezifikation
 
 \end_inset
 
-, falls nötig, welche Unterfolien Sie wiederholen möchten (eine Erläuterung
- des 
+,
+ falls nötig,
+ welche Unterfolien Sie wiederholen möchten (eine Erläuterung des 
 \begin_inset Quotes gld
 \end_inset
 
@@ -979,8 +1004,8 @@ Hier ist der Beweis!
 
 \end_inset
 
- (Dieser Text wird nur auf Unterfolie 3 angezeigt, welche ihrerseits erst
- in der Wiederholung dieses Rahmens sichtbar werden wird.)
+ (Dieser Text wird nur auf Unterfolie 3 angezeigt,
+ welche ihrerseits erst in der Wiederholung dieses Rahmens sichtbar werden wird.)
 \end_layout
 
 \end_deeper
@@ -1010,7 +1035,9 @@ Betten Sie ein!
 \end_layout
 
 \begin_layout Itemize
-Beachten Sie, dass jeglicher Rahmeninhalt, wenn der Absatzstil nicht 
+Beachten Sie,
+ dass jeglicher Rahmeninhalt,
+ wenn der Absatzstil nicht 
 \begin_inset Flex Structure
 status collapsed
 
@@ -1020,7 +1047,8 @@ Rahmen
 
 \end_inset
 
- ist, in den Rahmen 
+ ist,
+ in den Rahmen 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1046,8 +1074,8 @@ arg   "depth-increment"
 \end_inset
 
 ).
- Die Einbettung geschieht automatisch, wenn neue Absätze zu einem Rahmen
- hinzugefügt werden.
+ Die Einbettung geschieht automatisch,
+ wenn neue Absätze zu einem Rahmen hinzugefügt werden.
 \end_layout
 
 \begin_layout Itemize
@@ -1068,9 +1096,9 @@ Arbeitsbereichs markiert.
 
 \end_deeper
 \begin_layout Itemize
-Nicht eingebettete Inhalte (wie dieser und der nächste Absatz) werden zwar
- auch in der Präsentation angezeigt, aber auf einer separaten Folie, und
- sie werden nicht richtig ausgerichtet.
+Nicht eingebettete Inhalte (wie dieser und der nächste Absatz) werden zwar auch in der Präsentation angezeigt,
+ aber auf einer separaten Folie,
+ und sie werden nicht richtig ausgerichtet.
 \end_layout
 
 \begin_layout Itemize
@@ -1115,8 +1143,8 @@ status open
 \end_inset
 
 Einfügung.
- Diese können Sie einzufügen, indem Sie in einem leeren Standard-Absatz
- (direkt unter dem Rahmen) die Return-Taste drücken (siehe Benutzerhandbuch,
+ Diese können Sie einzufügen,
+ indem Sie in einem leeren Standard-Absatz (direkt unter dem Rahmen) die Return-Taste drücken (siehe Benutzerhandbuch,
  Abschnitt 3.4.6).
 \end_layout
 
@@ -1135,7 +1163,8 @@ Tipp
 \end_layout
 
 \begin_layout Block
-Komfortabler geht es so: Führen Sie 
+Komfortabler geht es so:
+ Führen Sie 
 \begin_inset Flex Alert
 status collapsed
 
@@ -1152,7 +1181,8 @@ type  "shortcut"
 arg   "environment-split"
 \end_inset
 
-, wenn Sie in einem nicht eingebetteten 
+,
+ wenn Sie in einem nicht eingebetteten 
 \begin_inset Flex Structure
 status collapsed
 
@@ -1162,13 +1192,15 @@ Rahmen
 
 \end_inset
 
--Absatz sind, 
+-Absatz sind,
+ 
 \begin_inset Info
 type  "shortcut"
 arg   "environment-split outer"
 \end_inset
 
-, wenn Sie in einem eingebetteten Absatz innerhalb des Rahmens sind).
+,
+ wenn Sie in einem eingebetteten Absatz innerhalb des Rahmens sind).
  In einer Rahmen-Überschrift können Sie mit 
 \begin_inset Flex Alert
 status collapsed
@@ -1244,7 +1276,8 @@ Schlichter Rahmen
 
 \end_inset
 
- ist einen Rahmen ohne Seitenleiste, Kopf- oder Fußzeile (so wie dieser).
+ ist einen Rahmen ohne Seitenleiste,
+ Kopf- oder Fußzeile (so wie dieser).
  Das ist nützlich für Folien mit viel Inhalt\SpecialChar breakableslash
 breiten Tabellen.
 \end_layout
@@ -1259,7 +1292,8 @@ Fragiler Rahmen
 
 \end_inset
 
- muss verwendet werden, wenn die Folie 
+ muss verwendet werden,
+ wenn die Folie 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1268,7 +1302,8 @@ fragile
 \end_inset
 
  Inhalte (in \SpecialChar LaTeX
-' Sinn) hat, besonders bei 
+' Sinn) hat,
+ besonders bei 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1281,8 +1316,8 @@ Verbatim
 
 \end_deeper
 \begin_layout PlainFrame
-Wenn Sie einen fragilen schlichten Rahmen wollen, übergeben Sie einfach
- die Rahmen-Option 
+Wenn Sie einen fragilen schlichten Rahmen wollen,
+ übergeben Sie einfach die Rahmen-Option 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1323,8 +1358,7 @@ Eine Präsentation gliedern
 
 \begin_deeper
 \begin_layout Itemize
-Um Folien/Rahmen zu gruppieren verwenden Sie einfach die üblichen Gliederungsumg
-ebungen (
+Um Folien/Rahmen zu gruppieren verwenden Sie einfach die üblichen Gliederungsumgebungen (
 \begin_inset Flex Structure
 status collapsed
 
@@ -1334,7 +1368,8 @@ Abschnitt
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex Structure
 status collapsed
 
@@ -1348,8 +1383,8 @@ Unterabschnitt
 \end_layout
 
 \begin_layout Itemize
-Diese werden im Inhaltsverzeichnis der Präsentation angezeigt, außerdem
- in der Seitenleiste oder der Kopfzeile (je nach 
+Diese werden im Inhaltsverzeichnis der Präsentation angezeigt,
+ außerdem in der Seitenleiste oder der Kopfzeile (je nach 
 \begin_inset Flex Structure
 status collapsed
 
@@ -1428,8 +1463,9 @@ Teile
 \end_inset
 
  untergliedern.
- Beachten Sie aber, dass Teile in Beamer anders interpretiert werden als
- in anderen Dokumentklassen: ein Teil wird als 
+ Beachten Sie aber,
+ dass Teile in Beamer anders interpretiert werden als in anderen Dokumentklassen:
+ ein Teil wird als 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1437,8 +1473,9 @@ kleiner eigenständiger Vortrag
 \begin_inset Quotes grd
 \end_inset
 
- angesehen, der sein eigenes Inhaltsverzeichnis, seine eigene Navigationsleiste
- usw.
+ angesehen,
+ der sein eigenes Inhaltsverzeichnis,
+ seine eigene Navigationsleiste usw.
  bekommt (vgl.
  
 \begin_inset CommandInset citation
@@ -1453,10 +1490,12 @@ literal "true"
 \end_layout
 
 \begin_layout Itemize
-Das bedeutet, dass beispielsweise ein Inhaltsverzeichnis, sobald Sie die
- Präsentation in Teile untergliedern, nur die Abschnitte und Unterabschnitte
- des Teils auf\SpecialChar ligaturebreak
-führt, in den Sie das Inhaltsverzeichnis eingefügt haben.
+Das bedeutet,
+ dass beispielsweise ein Inhaltsverzeichnis,
+ sobald Sie die Präsentation in Teile untergliedern,
+ nur die Abschnitte und Unterabschnitte des Teils auf\SpecialChar ligaturebreak
+führt,
+ in den Sie das Inhaltsverzeichnis eingefügt haben.
  Auch die Seitenleiste bzw.
  Kopf-\SpecialChar breakableslash
 Fußzeile enthält dann jeweils nur die Abschnitte des aktuelles Teils.
@@ -1498,8 +1537,8 @@ Tipp
 \end_layout
 
 \begin_layout Block
-Wussten Sie, dass Sie komplette Rahmen mit Hilfe der Gliederungsansicht
- (
+Wussten Sie,
+ dass Sie komplette Rahmen mit Hilfe der Gliederungsansicht (
 \begin_inset Flex Alert
 status collapsed
 
@@ -1550,7 +1589,8 @@ Der Anhang
 
 \begin_deeper
 \begin_layout Itemize
-Anhänge können nützlich sein, um zusätzliches oder 
+Anhänge können nützlich sein,
+ um zusätzliches oder 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1559,8 +1599,8 @@ Reserve
 \end_inset
 
 -Material vorzuhalten.
- Der Anhang ist Teil der Präsentation, aber er wird nicht im Inhaltsverzeichnis
- und den Navigationsleisten angezeigt.
+ Der Anhang ist Teil der Präsentation,
+ aber er wird nicht im Inhaltsverzeichnis und den Navigationsleisten angezeigt.
 \end_layout
 
 \begin_layout Itemize
@@ -1581,7 +1621,8 @@ Anhang hier beginnen
 
 \end_inset
 
- an der Stelle, an der der Anhang beginnen soll.
+ an der Stelle,
+ an der der Anhang beginnen soll.
 \end_layout
 
 \end_deeper
@@ -1592,8 +1633,8 @@ Ein typischer Bestandteil des Anhangs ist das Literaturverzeichnis
 \begin_deeper
 \begin_layout Itemize
 Dieses geben Sie wie in den anderen \SpecialChar LyX
--Klassen auch ein, über den Absatzstil
- 
+-Klassen auch ein,
+ über den Absatzstil 
 \begin_inset Flex Structure
 status collapsed
 
@@ -1608,9 +1649,9 @@ Literaturverzeichnis
 
 \begin_layout Itemize
 Sie können auch Bib\SpecialChar TeX
- verwenden, jedoch sind nicht alle Bib\SpecialChar TeX
--Stile kompatibel
- mit 
+ verwenden,
+ jedoch sind nicht alle Bib\SpecialChar TeX
+-Stile kompatibel mit 
 \begin_inset Flex Structure
 status collapsed
 
@@ -1668,8 +1709,10 @@ Overlay
 \end_inset
 
 -Konzept einen dynamischen Aufbau und Wechsel von Folieninhalten.
- Sie können Dinge oder Text Schritt für Schritt aufdecken, Inhalte ausblenden,
- hervorheben, ersetzen usw.
+ Sie können Dinge oder Text Schritt für Schritt aufdecken,
+ Inhalte ausblenden,
+ hervorheben,
+ ersetzen usw.
 \end_layout
 
 \begin_deeper
@@ -1688,19 +1731,23 @@ status open
 
 \end_inset
 
-Overlays sind hilfreich, um Folien während des Sprechens aufzubauen.
+Overlays sind hilfreich,
+ um Folien während des Sprechens aufzubauen.
 \end_layout
 
 \begin_layout Itemize
-Sie helfen, die Aufmerksamkeit des Publikums auf spezifischen Dinge zu lenken,
+Sie helfen,
+ die Aufmerksamkeit des Publikums auf spezifischen Dinge zu lenken,
 \end_layout
 
 \begin_layout Itemize
-und sie helfen somit dem Publikum, Ihnen zu folgen.
+und sie helfen somit dem Publikum,
+ Ihnen zu folgen.
 \end_layout
 
 \begin_layout Itemize
-Verwenden Sie also Overlays! 
+Verwenden Sie also Overlays!
+ 
 \begin_inset Flex Alert
 status open
 
@@ -1715,7 +1762,8 @@ status open
 
 \end_inset
 
-Wirklich, verwenden Sie sie!
+Wirklich,
+ verwenden Sie sie!
 \end_layout
 
 \end_inset
@@ -1764,8 +1812,9 @@ Unsichtbare
 \begin_inset space ~
 \end_inset
 
-Inhalte: Material, welches bis zu einem bestimmten Zeitpunkt komplett unsichtbar
- ist.
+Inhalte:
+ Material,
+ welches bis zu einem bestimmten Zeitpunkt komplett unsichtbar ist.
 \end_layout
 
 \begin_layout Description
@@ -1773,7 +1822,8 @@ Verdeckte
 \begin_inset space ~
 \end_inset
 
-Inhalte: Ausgeblendetes Material (nicht komplett unsichtbar).
+Inhalte:
+ Ausgeblendetes Material (nicht komplett unsichtbar).
 \end_layout
 
 \begin_layout Description
@@ -1781,8 +1831,9 @@ Hervorgehobene
 \begin_inset space ~
 \end_inset
 
-Inhalte: Material, welches zu einem bestimmten Zeitpunkt in irgendeiner
- Form 
+Inhalte:
+ Material,
+ welches zu einem bestimmten Zeitpunkt in irgendeiner Form 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1796,8 +1847,7 @@ hervorgehoben
 \end_deeper
 \begin_layout Frame
 Wir geben im Folgenden Beispiele für diese Typen.
- Zuvor jedoch erlauben wir uns noch ein paar allgemeine Anmerkungen zu den
- Möglichkeiten von Overlays.
+ Zuvor jedoch erlauben wir uns noch ein paar allgemeine Anmerkungen zu den Möglichkeiten von Overlays.
 \end_layout
 
 \begin_layout Standard
@@ -1832,8 +1882,8 @@ Beamer
 \end_inset
 
 -Elemente erlauben Overlay-Spezifikationen.
- Sie können dabei etwa festlegen, auf welchen Unterfolien ein gegebener
- Inhalt erscheint (
+ Sie können dabei etwa festlegen,
+ auf welchen Unterfolien ein gegebener Inhalt erscheint (
 \begin_inset Quotes gld
 \end_inset
 
@@ -1841,7 +1891,8 @@ Beamer
 \begin_inset Quotes grd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1849,7 +1900,8 @@ Beamer
 \begin_inset Quotes grd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1857,7 +1909,8 @@ Beamer
 \begin_inset Quotes grd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1873,7 +1926,8 @@ presentation
 \begin_inset Quotes grd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1935,7 +1989,9 @@ Aktion
 \begin_inset Quotes grd
 \end_inset
 
- ist ein umfassenderes Konzept, welches nicht nur das umfasst, was wir 
+ ist ein umfassenderes Konzept,
+ welches nicht nur das umfasst,
+ was wir 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1953,11 +2009,13 @@ hervorgehoben
 \begin_inset Quotes erd
 \end_inset
 
- werden), sondern auch Aufgaben wie 
+ werden),
+ sondern auch Aufgaben wie 
 \begin_inset Quotes gld
 \end_inset
 
-zeige dies nur auf den Präsentationsfolien, nicht auf dem Handout
+zeige dies nur auf den Präsentationsfolien,
+ nicht auf dem Handout
 \begin_inset Quotes grd
 \end_inset
 
@@ -2046,9 +2104,9 @@ small
 
 Die erwähnten Overlay-\SpecialChar breakableslash
 Aktionsspezifikationen entsprechen den Befehls-\SpecialChar breakableslash
-Umgebungsop
-tionen in der \SpecialChar LaTeX
--Ausgabe, die mit
+Umgebungsoptionen in der \SpecialChar LaTeX
+-Ausgabe,
+ die mit
 \begin_inset Flex Alert
 status collapsed
 
@@ -2077,14 +2135,16 @@ status collapsed
 \end_layout
 
 \begin_layout AlertBlock
-Beachten Sie, dass \SpecialChar LyX
- diese Klammern beim Export hinzufügt, Sie dürfen Sie
- also nicht selbst eingeben.
+Beachten Sie,
+ dass \SpecialChar LyX
+ diese Klammern beim Export hinzufügt,
+ Sie dürfen Sie also nicht selbst eingeben.
  D.
 \begin_inset space \thinspace{}
 \end_inset
 
-h., geben Sie 
+h.,
+ geben Sie 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2101,7 +2161,8 @@ h., geben Sie
 \end_inset
 
  in die Overlay-\SpecialChar breakableslash
-Aktionseinfügungen ein, nicht 
+Aktionseinfügungen ein,
+ nicht 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2165,8 +2226,8 @@ Overlay-Spezifikation
 
 \end_inset
 
- eine Einfügung einfügen, in der sie die Overlay-Einstellungen festlegen
- können.
+ eine Einfügung einfügen,
+ in der sie die Overlay-Einstellungen festlegen können.
  Wenn Sie dies tun und als Spezifikation 
 \begin_inset Quotes gld
 \end_inset
@@ -2175,7 +2236,8 @@ Overlay-Spezifikation
 \begin_inset Quotes grd
 \end_inset
 
- eingeben, erscheint das Zitat nur auf der zweiten Teilfolie:
+ eingeben,
+ erscheint das Zitat nur auf der zweiten Teilfolie:
 \end_layout
 
 \begin_deeper
@@ -2190,11 +2252,13 @@ status open
 
 \end_inset
 
-Ich weiß nicht, was ich will
+Ich weiß nicht,
+ was ich will
 \end_layout
 
 \begin_layout Quote
-ich will nicht, was ich weiß
+ich will nicht,
+ was ich weiß
 \end_layout
 
 \begin_layout Quote
@@ -2256,8 +2320,10 @@ unsichtbar
 \begin_inset Quotes grd
 \end_inset
 
- machen) ist der, dass verborgene Inhalte so behandelt werden, als seien
- sie nicht vorhanden, während verdeckte Inhalte nur 
+ machen) ist der,
+ dass verborgene Inhalte so behandelt werden,
+ als seien sie nicht vorhanden,
+ während verdeckte Inhalte nur 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2266,8 +2332,9 @@ unsichtbar
 \end_inset
 
  sind (aber trotzdem Platz beanspruchen).
- Wenn wir das Zitat auf der vorherigen Folie verborgen und nicht bloß verdeckt
- hätten, hätte es erst Platz beansprucht, nachdem es aufgedeckt wurde:
+ Wenn wir das Zitat auf der vorherigen Folie verborgen und nicht bloß verdeckt hätten,
+ hätte es erst Platz beansprucht,
+ nachdem es aufgedeckt wurde:
 \end_layout
 
 \begin_deeper
@@ -2282,11 +2349,13 @@ only@2
 
 \end_inset
 
-Ich weiß nicht, was ich will
+Ich weiß nicht,
+ was ich will
 \end_layout
 
 \begin_layout Quote
-ich will nicht, was ich weiß
+ich will nicht,
+ was ich weiß
 \end_layout
 
 \begin_layout Quote
@@ -2303,7 +2372,8 @@ im Winter ist mir heiß.
 \end_layout
 
 \begin_layout Frame
-Sie sehen, wie dieser Satz 
+Sie sehen,
+ wie dieser Satz 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2311,7 +2381,8 @@ wandert
 \begin_inset Quotes grd
 \end_inset
 
-, wenn das Zitat aufgedeckt wird.
+,
+ wenn das Zitat aufgedeckt wird.
 \end_layout
 
 \begin_layout Standard
@@ -2368,7 +2439,8 @@ Verdecktheit
 \begin_inset Quotes grd
 \end_inset
 
-, die mit Hilfe des Befehls 
+,
+ die mit Hilfe des Befehls 
 \begin_inset Flex Alert
 status collapsed
 
@@ -2385,8 +2457,10 @@ setbeamercovered
 \end_inset
 
 B.
- für einen einzelnen Rahmen, so wie hier) bestimmt werden können.
- Die Voreinstellung ist, dass Inhalte komplett verdeckt werden.
+ für einen einzelnen Rahmen,
+ so wie hier) bestimmt werden können.
+ Die Voreinstellung ist,
+ dass Inhalte komplett verdeckt werden.
  Im Grad 
 \begin_inset Quotes gld
 \end_inset
@@ -2410,11 +2484,13 @@ status open
 
 \end_inset
 
-Ich weiß nicht, was ich will
+Ich weiß nicht,
+ was ich will
 \end_layout
 
 \begin_layout Quote
-ich will nicht, was ich weiß
+ich will nicht,
+ was ich weiß
 \end_layout
 
 \begin_layout Quote
@@ -2499,7 +2575,8 @@ Bei manchen Umgebungen (z.
 \end_inset
 
 B.
- Listen, Rahmen) können Sie 
+ Listen,
+ Rahmen) können Sie 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2508,8 +2585,8 @@ Standard-Spezifikationen
 \end_inset
 
  zusätzlich zu den normalen Overlay-\SpecialChar breakableslash
-Aktionsspezifikationen festlegen (bei
- Listen: 
+Aktionsspezifikationen festlegen (bei Listen:
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2536,8 +2613,8 @@ Standard-Spezifikationen
 \begin_inset Quotes grd
 \end_inset
 
- gelten für den gesamten Inhalt der Umgebung, wenn keine spezifischen Spezifikat
-ionen für einzelne Abschnitte\SpecialChar breakableslash
+ gelten für den gesamten Inhalt der Umgebung,
+ wenn keine spezifischen Spezifikationen für einzelne Abschnitte\SpecialChar breakableslash
 Einträge gegeben werden.
 \end_layout
 
@@ -2551,8 +2628,8 @@ Sie verwenden eine Platzhalter-Syntax.
 \begin_inset Quotes grd
 \end_inset
 
- etwa deckt alle Einträge in einer Liste schrittweise auf (mit einer Verzögerung
- von 1), sofern sie keine individuelle Eintragsspezifikation haben:
+ etwa deckt alle Einträge in einer Liste schrittweise auf (mit einer Verzögerung von 1),
+ sofern sie keine individuelle Eintragsspezifikation haben:
 \end_layout
 
 \begin_deeper
@@ -2653,7 +2730,8 @@ spezifikationen
 \begin_layout Frame
 \noindent
 Dieser Rahmen verwendet eine spezifische Standard-Overlay-Spezifikation,
- die bewirkt, dass jeder overlay-fähige Absatz \SpecialChar ldots
+ die bewirkt,
+ dass jeder overlay-fähige Absatz \SpecialChar ldots
 
 \end_layout
 
@@ -2672,7 +2750,8 @@ Dieser Rahmen verwendet eine spezifische Standard-Overlay-Spezifikation,
 
 \begin_layout Itemize
 \SpecialChar ldots
- eingeblendet wird, \SpecialChar ldots
+ eingeblendet wird,
+ \SpecialChar ldots
 
 \end_layout
 
@@ -2790,9 +2869,8 @@ Pause
 
 \end_inset
 
- können Sie einen Punkt auf der Folie markieren, nach dem jeder folgende
- Inhalt verdeckt wird (standardmäßig für eine Folie in Bezug auf die Inhalte
- vor der Pause):
+ können Sie einen Punkt auf der Folie markieren,
+ nach dem jeder folgende Inhalt verdeckt wird (standardmäßig für eine Folie in Bezug auf die Inhalte vor der Pause):
 \end_layout
 
 \begin_deeper
@@ -2843,8 +2921,10 @@ Pausennummer
 
 \end_inset
 
- können Sie jedoch eine Unterfolie spezifizieren, auf der die aktuelle Pause
- endet, unabhängig davon, wie viele Pausen vor ihr eingefügt wurden.
+ können Sie jedoch eine Unterfolie spezifizieren,
+ auf der die aktuelle Pause endet,
+ unabhängig davon,
+ wie viele Pausen vor ihr eingefügt wurden.
 \end_layout
 
 \begin_layout Standard
@@ -2878,8 +2958,9 @@ Beamer
 \end_inset
 
  und \SpecialChar LyX
- bieten Absatzstile, deren einziger Zweck es ist, ganze Absätze oder
- Sequenzen von Absätzen auf bestimmten (Teil-)Folien aus- oder einzublenden.
+ bieten Absatzstile,
+ deren einziger Zweck es ist,
+ ganze Absätze oder Sequenzen von Absätzen auf bestimmten (Teil-)Folien aus- oder einzublenden.
  Dies sind vor allem:
 \end_layout
 
@@ -2909,11 +2990,13 @@ Aufgedeckt
 
 \end_inset
 
-, der den Inhalt eines ganzen Absatzes auf bestimmten Folien 
+,
+ der den Inhalt eines ganzen Absatzes auf bestimmten Folien 
 \emph on
 aufdeckt
 \emph default
-, \SpecialChar ldots
+,
+ \SpecialChar ldots
 
 \end_layout
 
@@ -2953,7 +3036,8 @@ Nur
 \emph on
 sichtbar
 \emph default
- (beachten Sie wieder, wie der umgebende Text 
+ (beachten Sie wieder,
+ wie der umgebende Text 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2961,7 +3045,8 @@ wandert
 \begin_inset Quotes grd
 \end_inset
 
-, wenn dieser Abschnitt sichtbar wird).
+,
+ wenn dieser Abschnitt sichtbar wird).
 \end_layout
 
 \begin_layout Overprint
@@ -2990,7 +3075,8 @@ status collapsed
 
 \end_inset
 
-, mit welchem Sie \SpecialChar ldots
+,
+ mit welchem Sie \SpecialChar ldots
 
 \end_layout
 
@@ -3012,7 +3098,8 @@ status open
 \begin_deeper
 \begin_layout Standard
 \SpecialChar ldots
- alternativen Text eingeben können, der einen bestimmten Raum beansprucht.
+ alternativen Text eingeben können,
+ der einen bestimmten Raum beansprucht.
 \end_layout
 
 \end_deeper
@@ -3080,8 +3167,7 @@ Beamer
 
 \end_inset
 
- ermöglicht auch absatzinterne Overlays für Textteile (im Gegensatz zu ganzen
- Absätzen).
+ ermöglicht auch absatzinterne Overlays für Textteile (im Gegensatz zu ganzen Absätzen).
  Sie sind in \SpecialChar LyX
  über 
 \begin_inset Flex Alert
@@ -3179,7 +3265,8 @@ transparent
 \begin_inset Quotes grd
 \end_inset
 
- erkennbar, den wir hier lokal aktiviert haben),
+ erkennbar,
+ den wir hier lokal aktiviert haben),
 \end_layout
 
 \begin_layout Itemize
@@ -3375,7 +3462,8 @@ hervorheben
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset Flex Bold
 status open
 
@@ -3395,7 +3483,8 @@ fett drucken
 
 \end_inset
 
-, oder in 
+,
+ oder in 
 \begin_inset Flex Alert
 status open
 
@@ -3463,9 +3552,10 @@ Tipp
 \end_layout
 
 \begin_layout Block
-Verwenden Sie diese Hervorhebungs- und Fett-Einfügungen (anstelle der üblichen
- Schriftattribute) auch dann, wenn Sie keine Overlay-Spezifikationen benötigen!
- Aufgrund der Art und Weise, wie Fettdruck und Hervorhebung in 
+Verwenden Sie diese Hervorhebungs- und Fett-Einfügungen (anstelle der üblichen Schriftattribute) auch dann,
+ wenn Sie keine Overlay-Spezifikationen benötigen!
+ Aufgrund der Art und Weise,
+ wie Fettdruck und Hervorhebung in 
 \begin_inset Flex Structure
 status collapsed
 
@@ -3475,7 +3565,8 @@ Beamer
 
 \end_inset
 
- definiert sind, können 
+ definiert sind,
+ können 
 \begin_inset Quotes gld
 \end_inset
 
@@ -3492,7 +3583,8 @@ normale
 \end_inset
 
  Hervorhebung \SpecialChar LaTeX
--Fehler nach sich ziehen, vor allem in Überschriften.
+-Fehler nach sich ziehen,
+ vor allem in Überschriften.
 \end_layout
 
 \end_deeper
@@ -3803,7 +3895,8 @@ type  "shortcut"
 arg   "environment-split"
 \end_inset
 
-), um von einem bestehenden Block aus einen neuen zu beginnen!
+),
+ um von einem bestehenden Block aus einen neuen zu beginnen!
 \end_layout
 
 \end_deeper
@@ -3835,14 +3928,20 @@ Theoremartige Umgebungen
 
 \begin_deeper
 \begin_layout FrameSubtitle
-(Theorem, Korollar, Definition, Definitionen, Beispiel, Beispiele, Fakt,
+(Theorem,
+ Korollar,
+ Definition,
+ Definitionen,
+ Beispiel,
+ Beispiele,
+ Fakt,
  Beweis)
 \end_layout
 
 \end_deeper
 \begin_layout Frame
-Theoreme sehen ähnlich aus wie Blocks, aber sie haben einen vom Typ abhängigen
- festen Titel.
+Theoreme sehen ähnlich aus wie Blocks,
+ aber sie haben einen vom Typ abhängigen festen Titel.
  
 \end_layout
 
@@ -3916,7 +4015,8 @@ Spalten
 \end_layout
 
 \begin_layout Frame
-Manchmal ist es nützlich, eine Folie in Spalten aufzuteilen
+Manchmal ist es nützlich,
+ eine Folie in Spalten aufzuteilen
 \end_layout
 
 \begin_deeper
@@ -3952,7 +4052,8 @@ Spalten
 
 \end_inset
 
- (beachten Sie den Plural!), um die Spalten zu beginnen
+ (beachten Sie den Plural!),
+ um die Spalten zu beginnen
 \end_layout
 
 \begin_layout Pause
@@ -3976,7 +4077,9 @@ textwidth
 \end_layout
 
 \begin_layout Standard
-Und dann, im folgenden Absatz, wählen Sie 
+Und dann,
+ im folgenden Absatz,
+ wählen Sie 
 \begin_inset Flex Structure
 status collapsed
 
@@ -3986,7 +4089,8 @@ Spalte
 
 \end_inset
 
- (Singular), um eine spezifische\SpecialChar breakableslash
+ (Singular),
+ um eine spezifische\SpecialChar breakableslash
 neue Spalte zu beginnen
 \end_layout
 
@@ -4020,8 +4124,7 @@ Spalte
 \end_inset
 
  (Singular) müssen Sie die Breite mit Hilfe von \SpecialChar LaTeX
--Syntax definieren (einfache
- Varianten davon sind Angaben wie 
+-Syntax definieren (einfache Varianten davon sind Angaben wie 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4220,12 +4323,14 @@ Beamer
 \begin_inset Quotes grd
 \end_inset
 
--Modus, d.
+-Modus,
+ d.
 \begin_inset space \thinspace{}
 \end_inset
 
 h.
- solange nichts anderes spezifiziert wurde, ist ihr 
+ solange nichts anderes spezifiziert wurde,
+ ist ihr 
 \begin_inset Flex Structure
 status collapsed
 
@@ -4278,8 +4383,9 @@ Modi wechseln
 \end_layout
 
 \begin_layout Frame
-Sie können jedoch für Teile des Dokuments, Rahmen, Überschriften und alle
- 
+Sie können jedoch für Teile des Dokuments,
+ Rahmen,
+ Überschriften und alle 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4288,8 +4394,7 @@ aktions
 \end_inset
 
 fähigen Umgebungen in einen anderen Modus wechseln.
- Zum Beispiel haben wir für diesen Rahmen in den Präsentationsmodus gewechselt
- (mit der Aktionsspezifikation 
+ Zum Beispiel haben wir für diesen Rahmen in den Präsentationsmodus gewechselt (mit der Aktionsspezifikation 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4307,7 +4412,8 @@ Was bedeutet das nun?
 
 \begin_deeper
 \begin_layout Itemize
-Es bedeutet, dass dieser Rahmen nur in der Präsentation sichtbar sein wird,
+Es bedeutet,
+ dass dieser Rahmen nur in der Präsentation sichtbar sein wird,
  nicht jedoch im begleitenden 
 \begin_inset Quotes gld
 \end_inset
@@ -4316,8 +4422,8 @@ Artikel
 \begin_inset Quotes grd
 \end_inset
 
-, wenn Sie einen solchen produzieren (wir gehen darauf später noch kurz
- ein).
+,
+ wenn Sie einen solchen produzieren (wir gehen darauf später noch kurz ein).
 \end_layout
 
 \end_deeper
@@ -4354,8 +4460,8 @@ Modi wechseln
 \end_layout
 
 \begin_layout Frame
-Dieser Rahmen wird nicht in der Präsentation erscheinen, sondern nur im
- 
+Dieser Rahmen wird nicht in der Präsentation erscheinen,
+ sondern nur im 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4363,7 +4469,8 @@ Artikel
 \begin_inset Quotes grd
 \end_inset
 
-, denn er ist im Artikelmodus (Aktionsspezifikation 
+,
+ denn er ist im Artikelmodus (Aktionsspezifikation 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4395,9 +4502,9 @@ Na und?
 \end_layout
 
 \begin_layout Frame
-Das ist wirklich sehr nützlich! Sie können so ein einziges Dokument erstellen,
- aus dem Sie sowohl Präsentationsfolien als auch – über den Artikelmodus
- – ein Handout generieren können.
+Das ist wirklich sehr nützlich!
+ Sie können so ein einziges Dokument erstellen,
+ aus dem Sie sowohl Präsentationsfolien als auch – über den Artikelmodus – ein Handout generieren können.
 \end_layout
 
 \begin_deeper
@@ -4412,9 +4519,11 @@ echten
 
 \end_inset
 
-, nützlichen Handout, nicht von einer dieser verkleinerten Folienausdrucke,
- die heutzutage so verbreitet sind (aber wenn Sie darauf bestehen, können
- Sie mit 
+,
+ nützlichen Handout,
+ nicht von einer dieser verkleinerten Folienausdrucke,
+ die heutzutage so verbreitet sind (aber wenn Sie darauf bestehen,
+ können Sie mit 
 \begin_inset Flex Structure
 status collapsed
 
@@ -4429,8 +4538,7 @@ Beamer
 \end_layout
 
 \begin_layout Itemize
-Mit Modi können Sie zusätzlichen Text auf das Handout setzen oder Text von
- diesem fernhalten,
+Mit Modi können Sie zusätzlichen Text auf das Handout setzen oder Text von diesem fernhalten,
 \end_layout
 
 \begin_layout Itemize
@@ -4465,7 +4573,8 @@ Beispiele
 \end_layout
 
 \begin_layout Frame
-Wie gesagt, viele Elemente sind modusfähig.
+Wie gesagt,
+ viele Elemente sind modusfähig.
  
 \end_layout
 
@@ -4477,7 +4586,6 @@ Sie können einen bestimmten Text mit Hilfe von
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 Bearbeiten\SpecialChar menuseparator
 Textstil\SpecialChar menuseparator
 Nur
@@ -4546,7 +4654,8 @@ Artikelmodus
 
 \end_inset
 
- in eine Einfügung platzieren, deren Inhalt nur im Handout ausgegeben wird.
+ in eine Einfügung platzieren,
+ deren Inhalt nur im Handout ausgegeben wird.
 \end_layout
 
 \end_inset
@@ -4568,8 +4677,8 @@ Präsentationsmodus
 
 \end_inset
 
- in eine Einfügung platzieren, deren Inhalt nur in der Präsentation ausgegeben
- wird.
+ in eine Einfügung platzieren,
+ deren Inhalt nur in der Präsentation ausgegeben wird.
 \end_layout
 
 \end_inset
@@ -4579,7 +4688,8 @@ Präsentationsmodus
 
 \begin_deeper
 \begin_layout Itemize
-Oder Sie können bestimmen, dass eine 
+Oder Sie können bestimmen,
+ dass eine 
 \begin_inset Flex Emphasize
 status open
 
@@ -4599,7 +4709,8 @@ Hervorhebung
 
 \end_inset
 
- nur in der Präsentation vorgenommen wird, 
+ nur in der Präsentation vorgenommen wird,
+ 
 \begin_inset Flex Bold
 status open
 
@@ -4626,8 +4737,7 @@ ein Fettdruck
 Auch können Sie etwa Abschnittsüberschriften oder Rahmentitel bzw.
  \SpecialChar nobreakdash
 untertitel nur in der Präsentation\SpecialChar breakableslash
-dem Handout ausgeben lassen (wie wir
- das in dieser Präsentation für die Rahmen 
+dem Handout ausgeben lassen (wie wir das in dieser Präsentation für die Rahmen 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4673,7 +4783,8 @@ Ein Handout (via Artikelmodus) erstellen
 \end_layout
 
 \begin_layout Frame
-Ein Handout (via Artikelmodus) zu erstellen, ist leicht.
+Ein Handout (via Artikelmodus) zu erstellen,
+ ist leicht.
 \end_layout
 
 \begin_deeper
@@ -4684,7 +4795,6 @@ Erstellen Sie einfach ein neues Dokument der Klasse
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 Beamer-Aufsatz (Standardklasse)
 \end_layout
 
@@ -4695,7 +4805,6 @@ Beamer-Aufsatz (Standardklasse)
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 Beamer-Aufsatz (KOMA-Script)
 \end_layout
 
@@ -4705,8 +4814,7 @@ Beamer-Aufsatz (KOMA-Script)
 \end_layout
 
 \begin_layout Itemize
-Fügen Sie diesem Dokument dann die Präsentation als Unterdokument hinzu
- (über 
+Fügen Sie diesem Dokument dann die Präsentation als Unterdokument hinzu (über 
 \begin_inset Flex Alert
 status collapsed
 
@@ -4723,11 +4831,12 @@ Unterdokument\SpecialChar ldots
 \end_layout
 
 \begin_layout Itemize
-Das ist schon alles! Nun können Sie das Handout und die Präsentation erzeugen,
- indem Sie eines der beiden Dokumente (den Beamer-Aufsatz oder die Präsentation
- selbst) ansehen\SpecialChar breakableslash
+Das ist schon alles!
+ Nun können Sie das Handout und die Präsentation erzeugen,
+ indem Sie eines der beiden Dokumente (den Beamer-Aufsatz oder die Präsentation selbst) ansehen\SpecialChar breakableslash
 exportieren.
- Inhaltlich bearbeiten müssen Sie nur eines, nämlich die Präsentation.
+ Inhaltlich bearbeiten müssen Sie nur eines,
+ nämlich die Präsentation.
 \end_layout
 
 \end_deeper
@@ -4740,7 +4849,8 @@ beamer-article.lyx
 \begin_inset Quotes grd
 \end_inset
 
- an, welches diese Präsentation einbindet.
+ an,
+ welches diese Präsentation einbindet.
  Sie finden es im selben Ordner wie diese Datei.
 \end_layout
 
@@ -4781,9 +4891,12 @@ Themen
 \end_inset
 
  optisch verändert werden.
- Diese bestimmen die Farben, die Makrostruktur (Verwendung von Seitenleisten,
- Kopfzeilen etc.), die Schriftarten, das Aussehen von Listen, Blocks und
- grundsätzlich das gesamte Aussehen der Präsentation.
+ Diese bestimmen die Farben,
+ die Makrostruktur (Verwendung von Seitenleisten,
+ Kopfzeilen etc.),
+ die Schriftarten,
+ das Aussehen von Listen,
+ Blocks und grundsätzlich das gesamte Aussehen der Präsentation.
 \end_layout
 
 \begin_layout Itemize
@@ -4796,8 +4909,7 @@ Beamer
 
 \end_inset
 
- selbst stellt eine ganze Palette von Themen zur Auswahl (wir verwenden
- hier das 
+ selbst stellt eine ganze Palette von Themen zur Auswahl (wir verwenden hier das 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4805,7 +4917,8 @@ Berkeley
 \begin_inset Quotes grd
 \end_inset
 
--Thema; in 
+-Thema;
+ in 
 \begin_inset Flex Alert
 status collapsed
 
@@ -4817,7 +4930,8 @@ LaTeX-Vorspann
 
 \end_inset
 
- können Sie sehen, wie wir es aktiviert und spezifiziert haben).
+ können Sie sehen,
+ wie wir es aktiviert und spezifiziert haben).
 \end_layout
 
 \begin_layout Itemize
@@ -4844,8 +4958,8 @@ Beamer
 \end_layout
 
 \begin_layout Itemize
-Wenn Sie diese alle nicht befriedigen oder Sie für Ihre Universität oder
- Ihr Unternehmen ein spezifisches Design brauchen, erläutert das 
+Wenn Sie diese alle nicht befriedigen oder Sie für Ihre Universität oder Ihr Unternehmen ein spezifisches Design brauchen,
+ erläutert das 
 \begin_inset Flex Structure
 status collapsed
 
@@ -4863,7 +4977,8 @@ literal "true"
 
 \end_inset
 
-, wie Sie Ihr eigenes Thema generieren können.
+,
+ wie Sie Ihr eigenes Thema generieren können.
 \end_layout
 
 \end_deeper
@@ -4894,8 +5009,7 @@ Aber Sie müssen nicht notwendigerweise ein komplett neues Thema erstellen,
 
 \begin_deeper
 \begin_layout Itemize
-Die vorhandenen Themen können sowohl in Details als auch in größeren Bereichen
- (etwa der Farbwahl) modifiziert werden
+Die vorhandenen Themen können sowohl in Details als auch in größeren Bereichen (etwa der Farbwahl) modifiziert werden
 \end_layout
 
 \begin_layout Itemize
@@ -4950,7 +5064,8 @@ Beamer
 
 \end_inset
 
- kann viel mehr, als wir hier beschrieben haben.
+ kann viel mehr,
+ als wir hier beschrieben haben.
  Das 
 \begin_inset Flex Structure
 status collapsed
@@ -4983,7 +5098,8 @@ Beamer
 
 \end_inset
 
--Beispiele und die Vorlagen an, die \SpecialChar LyX
+-Beispiele und die Vorlagen an,
+ die \SpecialChar LyX
  mitbringt!
 \end_layout
 
@@ -5017,7 +5133,8 @@ Rahmen
 
 \end_inset
 
-), weil wir den überflüssigen Titel 
+),
+ weil wir den überflüssigen Titel 
 \begin_inset Quotes gld
 \end_inset
 
@@ -5039,8 +5156,7 @@ newblock
 \end_inset
 
  im Literaturverzeichnis.
- Er ist für eine elegantes Darstellung und Abgrenzung der Eintragsteile
- nötig (beachten Sie die Einfärbung und Absetzung des Autors in der PDF-Ausgabe).
+ Er ist für eine elegantes Darstellung und Abgrenzung der Eintragsteile nötig (beachten Sie die Einfärbung und Absetzung des Autors in der PDF-Ausgabe).
 \end_layout
 
 \end_inset
@@ -5075,7 +5191,8 @@ literal "true"
 
 \end_inset
 
-Tantau, Till et al.:
+Tantau,
+ Till et al.:
 \begin_inset ERT
 status collapsed
 

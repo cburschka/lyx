@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,9 +37,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -104,12 +104,16 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -121,7 +125,8 @@ Sprievodca programom \SpecialChar LyX
 
 \begin_layout Author
 napísal Amir Karger a \SpecialChar LyX
- Team, 
+ Team,
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -147,34 +152,48 @@ e!
 \end_layout
 
 \begin_layout Standard
-Tento súbor je určený všetkým, ktorí nepočuli o \SpecialChar LaTeX
-e, alebo ho veľmi nepoznajú.
+Tento súbor je určený všetkým,
+ ktorí nepočuli o \SpecialChar LaTeX
+e,
+ alebo ho veľmi nepoznajú.
  Teraz hlavne nepanikárte - pre používanie \SpecialChar LyX
 u sa nemusíte učit \SpecialChar LaTeX
 .
- To je, nakoniec, hlavný účel \SpecialChar LyX
-u: poskytnúť skoro-WYSIWYG rozhranie pre \SpecialChar LaTeX
+ To je,
+ nakoniec,
+ hlavný účel \SpecialChar LyX
+u:
+ poskytnúť skoro-WYSIWYG rozhranie pre \SpecialChar LaTeX
 .
- Na druhej strane, je pár vecí, ktoré sa budete musieť naučiť, aby ste mohli
- používať \SpecialChar LyX
+ Na druhej strane,
+ je pár vecí,
+ ktoré sa budete musieť naučiť,
+ aby ste mohli používať \SpecialChar LyX
  efektívne.
 \end_layout
 
 \begin_layout Standard
 Niektorí z vás sa už pravdepodobne pokúšali robiť ničo s týmto dokumentom,
  napr.
- vložiť dve medzery za bodku, alebo tri prazdne riadky medzi odseky.
- Po chvíli ste zistili, že to nejde.
- V podstate zistíte, že väčšina malých trikov, ktoré ste používali v iných
- textových procesoroch jednoducho v \SpecialChar LyX
+ vložiť dve medzery za bodku,
+ alebo tri prazdne riadky medzi odseky.
+ Po chvíli ste zistili,
+ že to nejde.
+ V podstate zistíte,
+ že väčšina malých trikov,
+ ktoré ste používali v iných textových procesoroch jednoducho v \SpecialChar LyX
 e nefunguje.
- Je to tak pretože väčšina textových procesorov ktoré ste v minulosti používali
- sú len vyčačkané písacie stroje.
- Vyžadujú od vás, aby ste vložili všetky medzery, veľkosti písiem atď.
- Takže skončíte nielen písaním textu, ale aj jeho formátovaním.
+ Je to tak pretože väčšina textových procesorov ktoré ste v minulosti používali sú len vyčačkané písacie stroje.
+ Vyžadujú od vás,
+ aby ste vložili všetky medzery,
+ veľkosti písiem atď.
+ Takže skončíte nielen písaním textu,
+ ale aj jeho formátovaním.
  A na to je \SpecialChar LyX
-: formátuje za vás a to konzistentne v celom dokumente.
- Necháva vás zameriať sa na dôležité veci, ako napríklad obsah vášho textu.
+:
+ formátuje za vás a to konzistentne v celom dokumente.
+ Necháva vás zameriať sa na dôležité veci,
+ ako napríklad obsah vášho textu.
 \end_layout
 
 \begin_layout Standard
@@ -187,16 +206,22 @@ O tomto dokumente
 \end_layout
 
 \begin_layout Standard
-Predtým ako začneme s touto časťou, chceli by sme zdôrazniť niečo o tomto
- dokumente.
- Predpokladáme, že vy, užívaťeľ, 
+Predtým ako začneme s touto časťou,
+ chceli by sme zdôrazniť niečo o tomto dokumente.
+ Predpokladáme,
+ že vy,
+ užívaťeľ,
+ 
 \series bold
 NIE
 \series default
  ste blbý.
- Predpokladáme, že viete načo sú tie klávesy na klávesnici, že viete používať
- myš, že sa viete pohybovať v okienkovom prostredí atď.
- Taktiež predpokladáme, že neviete absolútne nič o \SpecialChar LaTeX
+ Predpokladáme,
+ že viete načo sú tie klávesy na klávesnici,
+ že viete používať myš,
+ že sa viete pohybovať v okienkovom prostredí atď.
+ Taktiež predpokladáme,
+ že neviete absolútne nič o \SpecialChar LaTeX
 e.
 \end_layout
 
@@ -229,7 +254,8 @@ Predstavenie
 
 \emph toggle
 .
- Ak najprv čítate tento manuál, prečítajte si najprv
+ Ak najprv čítate tento manuál,
+ prečítajte si najprv
 \emph default
  
 \emph on
@@ -248,12 +274,13 @@ Predstavenie
 \end_layout
 
 \begin_layout Standard
-Dôvod prečo vás odkazujeme na časť iného dokumentu je jednoduchý: lenivosť.
+Dôvod prečo vás odkazujeme na časť iného dokumentu je jednoduchý:
+ lenivosť.
  \SpecialChar LyX
  Team je dosť zaneprázdnený pridávaním nových vecí a opravovaním chýb.
- Nepotrebujeme si pridávať robotu staraním sa o 5 identických verzií rovnakej
- časti textu v rôznych dokumentoch.
- Tak, prečítajte si 
+ Nepotrebujeme si pridávať robotu staraním sa o 5 identických verzií rovnakej časti textu v rôznych dokumentoch.
+ Tak,
+ prečítajte si 
 \emph on
 
 \begin_inset Quotes gld
@@ -265,7 +292,9 @@ Predstavenie
 
 
 \emph toggle
-, ktoré vám skutočne povie, čo potrebujete vedieť o
+,
+ ktoré vám skutočne povie,
+ čo potrebujete vedieť o
 \emph default
  
 \emph on
@@ -274,11 +303,14 @@ všetkých
  
 \emph toggle
 manuáloch.
- Keď budete hotový, vráťte sa späť sem.
+ Keď budete hotový,
+ vráťte sa späť sem.
 \end_layout
 
 \begin_layout Standard
-Teraz, keď už viete čo ktoré písmo znamená, budeme hovoriť trochu o tom,
+Teraz,
+ keď už viete čo ktoré písmo znamená,
+ budeme hovoriť trochu o tom,
  na čo je tento 
 \emph on
 
@@ -318,7 +350,8 @@ Tu je pár slov od
 \noun on
 Johna Weissa
 \noun toggle
-, ktorý je pôvodným autorom 
+,
+ ktorý je pôvodným autorom 
 \emph on
 
 \begin_inset Quotes gld
@@ -348,7 +381,8 @@ Sprievodcu
 \emph toggle
 .
  Ale ako pri veľa ďalších projektoch nakoniec zaúradovala realita.
- Zistil som, že by som trávil čas písaním
+ Zistil som,
+ že by som trávil čas písaním
 \emph default
  
 \emph on
@@ -364,8 +398,12 @@ Sprievodcu
 \emph default
  
 \emph toggle
-od teraz, až do úplnej záhuby, pokiaľ by nebol v poriadku.
- Tiež mi dolo, že by som písal veľa vecí, ktoré sú popísané v
+od teraz,
+ až do úplnej záhuby,
+ pokiaľ by nebol v poriadku.
+ Tiež mi dolo,
+ že by som písal veľa vecí,
+ ktoré sú popísané v
 \emph default
  
 \emph on
@@ -384,7 +422,10 @@ Užívateľskej príručke
 \end_layout
 
 \begin_layout Quotation
-Tak, či tak, pochopil som, že ľudia sa najlepšie učia:
+Tak,
+ či tak,
+ pochopil som,
+ že ľudia sa najlepšie učia:
 \end_layout
 
 \begin_deeper
@@ -402,9 +443,12 @@ prácou.
 
 \end_deeper
 \begin_layout Quotation
-Tak som neochotne roztrhal asi 20 strán cenného materiálu, ktorý som napísal,
+Tak som neochotne roztrhal asi 20 strán cenného materiálu,
+ ktorý som napísal,
  a rozhodol som sa znovu začať.
- Jediná vec, ktorú som nechal, je teraz časť 
+ Jediná vec,
+ ktorú som nechal,
+ je teraz časť 
 \begin_inset Quotes gld
 \end_inset
 
@@ -428,10 +472,14 @@ Ako povedal
 \noun on
 John Weiss
 \noun toggle
-, Sprievodca pozostáva z príkladov a cvičení.
- Aby ste z neho mali čo najviac, mali by ste postupne čítať dokument, písať
- všetky tie malé hlúpe veci o ktorých vám hovoríme aby ste ich písali, a
- vyskúšať si všetky cvičenia, aby ste zistili, či tomu rozumiete.
+,
+ Sprievodca pozostáva z príkladov a cvičení.
+ Aby ste z neho mali čo najviac,
+ mali by ste postupne čítať dokument,
+ písať všetky tie malé hlúpe veci o ktorých vám hovoríme aby ste ich písali,
+ a vyskúšať si všetky cvičenia,
+ aby ste zistili,
+ či tomu rozumiete.
  Výhodné je vytlačiť si PostScriptovú verziu tohto dokumentu.
 \end_layout
 
@@ -447,8 +495,10 @@ John Weiss
 
  je pozostatok z pôvodnej verzie Sprievodcu.
  Stále je to dobrý úvod do \SpecialChar LyX
-u, takže by ste mohli do nej nahliadnuť, aby
- ste zistili, na čo tel \SpecialChar LyX
+u,
+ takže by ste mohli do nej nahliadnuť,
+ aby ste zistili,
+ na čo tel \SpecialChar LyX
  vlastne je.
 \end_layout
 
@@ -479,7 +529,8 @@ používať klávesnicu
 
 \end_deeper
 \begin_layout Standard
-Ak ste doteraz nezistili ako obsluhovať tieto veci, nemôžeme vám pomôcť.
+Ak ste doteraz nezistili ako obsluhovať tieto veci,
+ nemôžeme vám pomôcť.
 \end_layout
 
 \begin_layout Itemize
@@ -489,7 +540,8 @@ u.
 
 \begin_deeper
 \begin_layout Standard
-Čo? Chceli by ste dvakrát 
+Čo?
+ Chceli by ste dvakrát 
 \emph on
 Užívateľskú príručku
 \emph toggle
@@ -498,13 +550,15 @@ Užívateľskú príručku
 
 \begin_layout Standard
 Tak vážne.
- Sme tu nato, aby sme vás rozbehli a všetko čo potrebujete je v 
+ Sme tu nato,
+ aby sme vás rozbehli a všetko čo potrebujete je v 
 \emph on
 Užívateľskej príručke
 \emph toggle
 .
  Keby sme sa pokúsili duplikovať všetky informácie o \SpecialChar LyX
 e,
+
 \emph default
  
 \emph on
@@ -516,7 +570,8 @@ by nikdy nebol aktuálny.
 \end_layout
 
 \begin_layout Standard
-To ale neznamená, že 
+To ale neznamená,
+ že 
 \emph on
 nikdy
 \emph default
@@ -524,9 +579,13 @@ nikdy
 \emph toggle
 nepovieme nič o črtách \SpecialChar LyX
 u.
- Určite vám povieme, všeobecne, ako používať bežné veci.
- také, ktoré nepredpokladáme, že sa budú meniť, napríklad ako otvoriť a
- vytlačiť súbor.
+ Určite vám povieme,
+ všeobecne,
+ ako používať bežné veci.
+ také,
+ ktoré nepredpokladáme,
+ že sa budú meniť,
+ napríklad ako otvoriť a vytlačiť súbor.
  Bude aj
 \emph default
  
@@ -535,10 +594,14 @@ niekoľko
 \emph default
  
 \emph toggle
-kapitol s príkladmi a cvičeniami pre nové, špeciálne črty \SpecialChar LyX
-u, ako matematika.
- (Samozrejme nemyslíme, že sa bude drasticky meniť matematické prostredie.
- Vylepšovať áno, ale úplne meniť nie.)
+kapitol s príkladmi a cvičeniami pre nové,
+ špeciálne črty \SpecialChar LyX
+u,
+ ako matematika.
+ (Samozrejme nemyslíme,
+ že sa bude drasticky meniť matematické prostredie.
+ Vylepšovať áno,
+ ale úplne meniť nie.)
 \end_layout
 
 \end_deeper
@@ -549,21 +612,25 @@ Detailné vysvetlenie LaTaXu.
 \begin_deeper
 \begin_layout Standard
 Nepotrebné.
- Ak ste skutočne chtivý naučiť sa niektoré šikovné triky, ktoré sa dajú
- robiť s \SpecialChar LaTeX
-om, zožeňte si knihu o \SpecialChar LaTeX
+ Ak ste skutočne chtivý naučiť sa niektoré šikovné triky,
+ ktoré sa dajú robiť s \SpecialChar LaTeX
+om,
+ zožeňte si knihu o \SpecialChar LaTeX
 e.
  Na trhu je ich dobrých niekoľko.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Tak, statočná duša, je čas pohnúť sa ďalej.
- Môžete si dať krátku exkurziu cez nasledujúcu časť, alebo môžete pokračovať
- v časti 
+Tak,
+ statočná duša,
+ je čas pohnúť sa ďalej.
+ Môžete si dať krátku exkurziu cez nasledujúcu časť,
+ alebo môžete pokračovať v časti 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec: prvý-dok-ex"
+nolink "false"
 
 \end_inset
 
@@ -589,25 +656,35 @@ name "sec: prvý-dok-ex"
 
 OK.
  Takže ste pripravený začať písať.
- Predtým, ako tak urobíte, je niekoľko vecí, o ktorých sa musíme zmieniť
- a ktoré, dúfajme, spravia 
+ Predtým,
+ ako tak urobíte,
+ je niekoľko vecí,
+ o ktorých sa musíme zmieniť a ktoré,
+ dúfajme,
+ spravia 
 \emph on
 Sprievodcu
 \emph default
  
 \emph toggle
-viac poučným, užitočnejším a zábavnejším.
+viac poučným,
+ užitočnejším a zábavnejším.
 \end_layout
 
 \begin_layout Standard
-Pretože je veľa informácií, ktoré vám neposkytneme, 
+Pretože je veľa informácií,
+ ktoré vám neposkytneme,
+ 
 \series bold
 prvá
 \series default
- vec, ktorú potrebujete urobiť, je nájsť ďalšie súbory helpu.
+ vec,
+ ktorú potrebujete urobiť,
+ je nájsť ďalšie súbory helpu.
  Našťastie je to veľmi jednoduché.
  Spustite \SpecialChar LyX
-, a vyberte položku 
+,
+ a vyberte položku 
 \emph on
 Užívateľská príručka
 \emph default
@@ -645,8 +722,9 @@ u.
 \end_inset
 
 .
- Všimnite si, že ak máte otvorený viac ako jeden dokument, môžete používa
- menu 
+ Všimnite si,
+ že ak máte otvorený viac ako jeden dokument,
+ môžete používa menu 
 \family sans
 \bar under
 D
@@ -662,9 +740,11 @@ Sprievodca
 \emph default
  
 \emph toggle
-detailne nepokrýva vlastnosti, ktoré sú popísané v iných manuáloch \SpecialChar LyX
+detailne nepokrýva vlastnosti,
+ ktoré sú popísané v iných manuáloch \SpecialChar LyX
 u.
- Na začiatku vám to trochu sťaží život, ale
+ Na začiatku vám to trochu sťaží život,
+ ale
 \emph default
  
 \emph on
@@ -673,8 +753,10 @@ Sprievodca
  
 \emph toggle
 ostane krátky.
- Taktiež si zvyknete používať iné manuály, ktoré — v dlhom období — vám
- ušetria veľa času.
+ Taktiež si zvyknete používať iné manuály,
+ ktoré —
+ v dlhom období —
+ vám ušetria veľa času.
 \end_layout
 
 \begin_layout Standard
@@ -684,9 +766,12 @@ Sprievodcovi
 \emph default
  
 \emph toggle
-predpokladáme, že máte plne funkčnú verziu \SpecialChar LyX
-u, tiež \SpecialChar LaTeX
+predpokladáme,
+ že máte plne funkčnú verziu \SpecialChar LyX
 u,
+ tiež \SpecialChar LaTeX
+u,
+
 \emph default
  
 \family typewriter
@@ -697,6 +782,7 @@ xdvi
  
 \emph toggle
 prípadne iný dvi prezerač,
+
 \emph default
  
 \family typewriter
@@ -706,44 +792,51 @@ dvips
 \emph default
  
 \emph toggle
-alebo nejaký iný spôsob konverzie dvi dokumentov do PostScriptu a fungujúcu
- tlačiareň.
+alebo nejaký iný spôsob konverzie dvi dokumentov do PostScriptu a fungujúcu tlačiareň.
  Je to veľa predpokladov.
- Ak niektorý z nich nespĺňate, vy (alebo váš systémový administrátor), budete
- musieť nastaviť systém.
+ Ak niektorý z nich nespĺňate,
+ vy (alebo váš systémový administrátor),
+ budete musieť nastaviť systém.
  Informácie o tomto nájdete v iných manuáloch.
 \end_layout
 
 \begin_layout Standard
-Nakoniec, napísali sme súbor na ktorom si môžete precvičovť \SpecialChar LyX
+Nakoniec,
+ napísali sme súbor na ktorom si môžete precvičovť \SpecialChar LyX
 .
  Nazýva sa 
 \family typewriter
 example_raw.lyx
 \family default
 .
- Predstavte si, že bol napísaný niekým, kto nevedel o žiadnej zo schopností
- \SpecialChar LyX
+ Predstavte si,
+ že bol napísaný niekým,
+ kto nevedel o žiadnej zo schopností \SpecialChar LyX
 u.
  Ako sa budete učiť nové funkcie \SpecialChar LyX
-u, predpokladáme, že opravíte časti súboru
- 
+u,
+ predpokladáme,
+ že opravíte časti súboru 
 \family typewriter
 example_raw.lyx
 \family default
 .
- Súbor tiež obsahuje malé rady, ako tieto veci opraviť.
- Ak chcete podvádzať (alebo zistiť ako sa to robí), je tiež súbor nazvaný
- 
+ Súbor tiež obsahuje malé rady,
+ ako tieto veci opraviť.
+ Ak chcete podvádzať (alebo zistiť ako sa to robí),
+ je tiež súbor nazvaný 
 \family typewriter
 example_lyxified.lyx
 \family default
-, ktorý obsahuje rovnaký text, ale napísaný majstrom v \SpecialChar LyX
+,
+ ktorý obsahuje rovnaký text,
+ ale napísaný majstrom v \SpecialChar LyX
 e.
 \end_layout
 
 \begin_layout Subsection
-Písanie, prezeranie a tlač
+Písanie,
+ prezeranie a tlač
 \end_layout
 
 \begin_layout Itemize
@@ -760,7 +853,9 @@ ový
 \end_layout
 
 \begin_layout Itemize
-Napíšte vetu, napríklad: 
+Napíšte vetu,
+ napríklad:
+ 
 \family typewriter
 Toto je môj prvý \SpecialChar LyX
  dokument!
@@ -771,8 +866,9 @@ status collapsed
 No dobre.
  V podstate môžete napísať čo chcete.
  Skutočne na tom nezáleží.
- Ospravedlňujeme sa za hlúposť tejto vety, ako aj ďalších, ktoré budeme
- chcieť aby ste napísali v budúcnosti.
+ Ospravedlňujeme sa za hlúposť tejto vety,
+ ako aj ďalších,
+ ktoré budeme chcieť aby ste napísali v budúcnosti.
 \end_layout
 
 \end_inset
@@ -806,7 +902,8 @@ Spustite \SpecialChar LaTeX
 \family typewriter
 dvi
 \family default
- súbor, príkazom 
+ súbor,
+ príkazom 
 \family sans
 \bar under
 S
@@ -826,10 +923,12 @@ D
 VI
 \family default
 .
- Možte vidieť zobrazovanie správ v okne, z ktorého ste spustili \SpecialChar LyX
+ Možte vidieť zobrazovanie správ v okne,
+ z ktorého ste spustili \SpecialChar LyX
 .
  Sú to správy \SpecialChar LaTeX
-u, ktoré nateraz môžete ignorovať.
+u,
+ ktoré nateraz môžete ignorovať.
  \SpecialChar LyX
  spustí 
 \family typewriter
@@ -839,7 +938,8 @@ xdvi
 \family typewriter
 dvi
 \family default
- prezerač), ktorý zobrazí nové okno ukazujúce ako bude vyzerať váš dokument,
+ prezerač),
+ ktorý zobrazí nové okno ukazujúce ako bude vyzerať váš dokument,
  keď bude vytlačený
 \begin_inset Foot
 status collapsed
@@ -898,13 +998,16 @@ lačiť
 \end_layout
 
 \begin_layout Standard
-Gratulujeme! Napísali a vytlačili ste svoj prvý \SpecialChar LyX
+Gratulujeme!
+ Napísali a vytlačili ste svoj prvý \SpecialChar LyX
  dokument.
- Všetko ostatné sú len detaily, ktoré sú popísané vo zvyšku 
+ Všetko ostatné sú len detaily,
+ ktoré sú popísané vo zvyšku 
 \emph on
 Sprievodcu
 \emph toggle
-, v
+,
+ v
 \emph default
  
 \emph on
@@ -927,10 +1030,11 @@ Jednoduché operácie
 
 \begin_layout Standard
 \SpecialChar LyX
- samozrejme môže robiť väčšinu vecí, ktoré ste robili v textových procesoroch.
+ samozrejme môže robiť väčšinu vecí,
+ ktoré ste robili v textových procesoroch.
  Bude automaticky zalamovať slová a odsadzovať odseky.
- Otvorte si neraz nejaké menu a uvidíte, že väčšina jednoduchých príkazov
- (napr.
+ Otvorte si neraz nejaké menu a uvidíte,
+ že väčšina jednoduchých príkazov (napr.
  
 \family sans
 K
@@ -939,7 +1043,8 @@ o
 \bar default
 niec
 \family default
-, 
+,
+ 
 \family sans
 V
 \bar under
@@ -947,15 +1052,20 @@ l
 \bar default
 ožiť
 \family default
-, 
+,
+ 
 \family sans
 \bar under
 T
 \bar default
 lačiť
 \family default
-) má také mená, aké ste očakávali, že budú mať, že sú v tom menu, ktorom
- ste očakávali že budú a pracujú tak, ako očakávate že majú pracovať.
+) má také mená,
+ aké ste očakávali,
+ že budú mať,
+ že sú v tom menu,
+ ktorom ste očakávali že budú a pracujú tak,
+ ako očakávate že majú pracovať.
  Tu je rýchly popis ako vykonať ďlašie jednoduché akcie.
 \end_layout
 
@@ -969,7 +1079,10 @@ nekonečné undo
 \begin_inset Quotes grd
 \end_inset
 
-, čo znamená, že môžete vrátiť späť všetko, čo ste urobili po zapnutí \SpecialChar LyX
+,
+ čo znamená,
+ že môžete vrátiť späť všetko,
+ čo ste urobili po zapnutí \SpecialChar LyX
 u,
  vykonaním príkazu 
 \family sans
@@ -987,7 +1100,8 @@ rátiť
 späť
 \family default
 .
- Ak sa vrátite príliš, jednoducho vyberte 
+ Ak sa vrátite príliš,
+ jednoducho vyberte 
 \family sans
 Upraviť->Opakovať
 \begin_inset space ~
@@ -1014,7 +1128,8 @@ y
 \bar default
 strihnúť
 \family default
-, 
+,
+ 
 \family sans
 \bar under
 U
@@ -1025,7 +1140,8 @@ l
 \bar default
 ožiť
 \family default
-, 
+,
+ 
 \family sans
 \bar under
 U
@@ -1067,23 +1183,25 @@ ind
 Replace
 \family default
  na hľadanie s rozlišovaním veľkých a malých písmen.
- V okne výsledkov hľadajte so šípkamy pre smer dopredu a dozadu a použite
- tlačítko 
+ V okne výsledkov hľadajte so šípkamy pre smer dopredu a dozadu a použite tlačítko 
 \family sans
 \bar under
 V
 \bar default
 ymeniť
 \family default
- na náhradu slova, ktoré ste našli.
+ na náhradu slova,
+ ktoré ste našli.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Ak ste skončili okno zatvorte, lebo ho nechajte otvorené, ak vám to viac
- vyhovuje.
+Ak ste skončili okno zatvorte,
+ lebo ho nechajte otvorené,
+ ak vám to viac vyhovuje.
  Väčšina okien v \SpecialChar LyX
-e — vrátane 
+e —
+ vrátane 
 \family sans
 \bar under
 F
@@ -1098,7 +1216,8 @@ ind
 
 Replace
 \family default
-, 
+,
+ 
 \family sans
 Štruktúra
 \begin_inset space ~
@@ -1117,8 +1236,11 @@ R
 \bar default
 ozloženia
 \family default
-, tak isto aj rôzne matematické okná — môže byť znížená namiesto zatvorená.
- Niektoré, napríklad 
+,
+ tak isto aj rôzne matematické okná —
+ môže byť znížená namiesto zatvorená.
+ Niektoré,
+ napríklad 
 \family sans
 \bar under
 S
@@ -1129,8 +1251,10 @@ O
 \bar default
 tvoriť
 \family default
-, vám nedovolia napísať ni do hlavného okna \SpecialChar LyX
-u, pokiaľ ich neuzavriete.
+,
+ vám nedovolia napísať ni do hlavného okna \SpecialChar LyX
+u,
+ pokiaľ ich neuzavriete.
 \end_layout
 
 \end_inset
@@ -1149,14 +1273,16 @@ zvýrazniť
 \emph default
  
 \emph toggle
-text (čo vo všeobecnosti znamená napísať ho šikmým písmom), napísať ho
+text (čo vo všeobecnosti znamená napísať ho šikmým písmom),
+ napísať ho
 \emph default
  
 \series bold
 \emph toggle
 tučne
 \series default
-, alebo v 
+,
+ alebo v 
 \noun on
 Štýle Kapitálok
 \noun toggle
@@ -1179,8 +1305,9 @@ Nástrojová
 \begin_inset space ~
 \end_inset
 
-lišta Sú na nej tlačítka (hneď pod menu), ktoré vám dovoľujú urobiť niektoré
- používanejšie funkcie, napríklad 
+lišta Sú na nej tlačítka (hneď pod menu),
+ ktoré vám dovoľujú urobiť niektoré používanejšie funkcie,
+ napríklad 
 \family sans
 Vložiť
 \family default
@@ -1189,17 +1316,20 @@ Vložiť
 Tlačiť
 \family default
 .
- Ak podržíte nad tlačítkom kurzor, zobrazí sa vám malá poznámka, na čo dané
- tlačítko slúži.
+ Ak podržíte nad tlačítkom kurzor,
+ zobrazí sa vám malá poznámka,
+ na čo dané tlačítko slúži.
 \end_layout
 
 \begin_layout Standard
-Samozrejme, ešte ste nenapísali dosť na to, aby ste mohli všetky tieto funkcie
- použiť.
+Samozrejme,
+ ešte ste nenapísali dosť na to,
+ aby ste mohli všetky tieto funkcie použiť.
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: Priestor v \SpecialChar LyX
+WYSIWYM:
+ Priestor v \SpecialChar LyX
 e
 \end_layout
 
@@ -1210,33 +1340,39 @@ name "sec: priestor"
 
 \end_inset
 
-Jedna z najťažších vecí, na ktorú si majú nový užívatelia \SpecialChar LyX
-u zvyknúť, je
- ako \SpecialChar LyX
+Jedna z najťažších vecí,
+ na ktorú si majú nový užívatelia \SpecialChar LyX
+u zvyknúť,
+ je ako \SpecialChar LyX
  zaobchádza s dokumentom.
  Nezáleží na tm koľkokrát stlačíte 
 \family sans
 Enter
 \family default
-, alebo 
+,
+ alebo 
 \family sans
 Medzeru
 \family default
-, vždy dostanete len jeden prázdny riadok, alebo jednu medzeru.
+,
+ vždy dostanete len jeden prázdny riadok,
+ alebo jednu medzeru.
  Na prázdnom riadku vám \SpecialChar LyX
  nedovolí napísať ani jednu medzeru.
  Klávesa 
 \family sans
 Tab
 \family default
- vás neposunie dopredu o jeden tabulátor, pretože 
+ vás neposunie dopredu o jeden tabulátor,
+ pretože 
 \emph on
 žiadne
 \emph default
  
 \emph toggle
-tabulátory nie sú! Nie je ani žiadne pravítko na vrchu stránky, ktorým by
- ste mohli nastaviť tabulátory alebo okraje.
+tabulátory nie sú!
+ Nie je ani žiadne pravítko na vrchu stránky,
+ ktorým by ste mohli nastaviť tabulátory alebo okraje.
 \end_layout
 
 \begin_layout Standard
@@ -1245,12 +1381,14 @@ Veľa komerčných textových procesoroch je založených na WYSIWYG princípe:
 \begin_inset Quotes gld
 \end_inset
 
-What You See Is What You Get - To, čo vidíš dostaneš
+What You See Is What You Get - To,
+ čo vidíš dostaneš
 \begin_inset Quotes grd
 \end_inset
 
 .
- Na druhej strane, \SpecialChar LyX
+ Na druhej strane,
+ \SpecialChar LyX
  je založený na princípe 
 \begin_inset Quotes gld
 \end_inset
@@ -1261,14 +1399,18 @@ Mean
 \emph default
  
 \emph toggle
-- To, čo vidíš, je to, čo si myslíš
+- To,
+ čo vidíš,
+ je to,
+ čo si myslíš
 \begin_inset Quotes grd
 \end_inset
 
 .
- Napíšete čo chcete, a \SpecialChar LyX
- sa za vás postará o formát dokumentu tak, aby výstup
- vyzeral pekne.
+ Napíšete čo chcete,
+ a \SpecialChar LyX
+ sa za vás postará o formát dokumentu tak,
+ aby výstup vyzeral pekne.
 
 \emph default
  
@@ -1289,7 +1431,8 @@ Medzera
 \emph default
  
 \emph toggle
-gramaticky oddeľuje slová, takže nie je dôvod mať ich viac za sebou.
+gramaticky oddeľuje slová,
+ takže nie je dôvod mať ich viac za sebou.
 
 \emph default
  
@@ -1300,7 +1443,8 @@ Tabulátor
 \emph default
  
 \emph toggle
-nemá žiadny gramaticky význam, takže \SpecialChar LyX
+nemá žiadny gramaticky význam,
+ takže \SpecialChar LyX
  ho nepodporuje.
  Používaním \SpecialChar LyX
 u strávite viac času staraním sa o
@@ -1339,14 +1483,16 @@ Pomocník\SpecialChar menuseparator
 \begin_layout Standard
 \SpecialChar LyX
  má (veľa) spôsoby ako si jemne doladiť formátovanie dokumentu.
- Nakoniec, ani \SpecialChar LyX
+ Nakoniec,
+ ani \SpecialChar LyX
  nemusí vysádzať 
 \emph on
 presne
 \emph default
  
 \emph toggle
-to, čo ste mysleli.
+to,
+ čo ste mysleli.
  Informácie o tom všetkom sú v
 \emph default
  
@@ -1364,13 +1510,16 @@ HFills
 \emph default
  
 \emph toggle
-a vertikálne medzery — ktoré sú silnejšie a univerzálnejšie ako viacero
- medzier alebo prázdnych riadkov — a spôsoby, ako zmeniť veľkoť písma, štýl
- znakov a zarovnanie odsekov.
- Hlavnou myšlienkou je, aby ste napísali celý svoj dokument, sústreďujúc
- sa na jeho obsah, a nakoniec sa postarali o toto jemné formátovanie.
- Pri štandardných textových procesoroch by ste sa rozptyľovali formátovaním
- dokumentu počas písania.
+a vertikálne medzery —
+ ktoré sú silnejšie a univerzálnejšie ako viacero medzier alebo prázdnych riadkov —
+ a spôsoby,
+ ako zmeniť veľkoť písma,
+ štýl znakov a zarovnanie odsekov.
+ Hlavnou myšlienkou je,
+ aby ste napísali celý svoj dokument,
+ sústreďujúc sa na jeho obsah,
+ a nakoniec sa postarali o toto jemné formátovanie.
+ Pri štandardných textových procesoroch by ste sa rozptyľovali formátovaním dokumentu počas písania.
 \end_layout
 
 \begin_layout Section
@@ -1385,12 +1534,14 @@ prostredia
 \emph toggle
 .
  Väčšina dokumentu je tvorená obyčajným textom.
- Názvy častí (kapitoly, podkapitoly atď.) upozorňujú čitateľa, že bude preberaná
- nejaká nová téma.
+ Názvy častí (kapitoly,
+ podkapitoly atď.) upozorňujú čitateľa,
+ že bude preberaná nejaká nová téma.
  Určité časti dokumentu majú špeciálne prostredia.
  Novinový časopis bude mať zhrnutie a názov.
- List pravdepodobne nič z tohto, ale bude mať prostredie, ktoré dáva pisateľovu
- adresu.
+ List pravdepodobne nič z tohto,
+ ale bude mať prostredie,
+ ktoré dáva pisateľovu adresu.
 \end_layout
 
 \begin_layout Standard
@@ -1404,12 +1555,16 @@ What You See Is What You Mean
 
  filozofie \SpecialChar LyX
 u.
- Dané prostredie môže vyžadovať určitý typ fontu, jeho veľkosť, zarovnanie,
+ Dané prostredie môže vyžadovať určitý typ fontu,
+ jeho veľkosť,
+ zarovnanie,
  riadkovanie plus ďalšie veci.
- Tento probôém je horší, lebo presné formátovanie pre dané prosredie sa
- môže meniť: nejaký časopis môže používať tučné písmo veľkosti 18 bodov,
- vycentrované pre nadpisy, zatiľčo iný používa kurzíva, 15 bodov veľké a
- zarovnané naľavo.
+ Tento probôém je horší,
+ lebo presné formátovanie pre dané prosredie sa môže meniť:
+ nejaký časopis môže používať tučné písmo veľkosti 18 bodov,
+ vycentrované pre nadpisy,
+ zatiľčo iný používa kurzíva,
+ 15 bodov veľké a zarovnané naľavo.
  \SpecialChar LyX
  vám dovolí vyhnúť sa učeniu všetkých týchto rôznych formátovacích štýlov.
 \end_layout
@@ -1428,7 +1583,8 @@ S
 \family default
 ).
  Ukazuje v akom prostredí práve píšete.
- Keď ste písali svoj prvý dokument, hovorilo 
+ Keď ste písali svoj prvý dokument,
+ hovorilo 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1436,14 +1592,16 @@ Standard
 \begin_inset Quotes grd
 \end_inset
 
-, čo je štandardné prostredie pre text.
- Teraz skúste použiť niekoľko prostredí vo vašom dokumente, aby ste zistili
- akopracujú.
+,
+ čo je štandardné prostredie pre text.
+ Teraz skúste použiť niekoľko prostredí vo vašom dokumente,
+ aby ste zistili akopracujú.
  Urobíte tak pomocou 
 \family sans
 Menu prostredí
 \family default
-, ktoré otvoríte kliknutím na ikonu šípky nadol.
+,
+ ktoré otvoríte kliknutím na ikonu šípky nadol.
 \end_layout
 
 \begin_layout Subsection
@@ -1463,10 +1621,12 @@ status collapsed
 
 \begin_layout Plain Layout
 Nemusíte označiť riadok.
- Keď nie je nič označené, \SpecialChar LyX
- zmení prostredie odseku, v ktorom sa práve nachádzate.
- Ďalšou možnosťou je zmena prostredia viacerým odsekom narad tým, že ich
- označíte pred výberom prostredia.
+ Keď nie je nič označené,
+ \SpecialChar LyX
+ zmení prostredie odseku,
+ v ktorom sa práve nachádzate.
+ Ďalšou možnosťou je zmena prostredia viacerým odsekom narad tým,
+ že ich označíte pred výberom prostredia.
 \end_layout
 
 \end_inset
@@ -1482,18 +1642,21 @@ Nemusíte označiť riadok.
 \end_inset
 
  a vypíše názov sekcie väčším písmom.
- (Samozrejme, že názov sekcie bude správne napísaný aj v
+ (Samozrejme,
+ že názov sekcie bude správne napísaný aj v
 \family default
  
 \family typewriter
 dvi
 \family default
-, alebo vytlačenom dokumente.) teraz stlačte 
+,
+ alebo vytlačenom dokumente.) teraz stlačte 
 \family sans
 Enter
 \family default
 .
- Všimnite si, že prostredie sa zmenilo naspäť na 
+ Všimnite si,
+ že prostredie sa zmenilo naspäť na 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1502,8 +1665,9 @@ Standard
 \end_inset
 
 .
- Nadpisy sekcií, ako aj niektoré ďalšie prostredia, sa považujú za ukončené
- pri stlačení 
+ Nadpisy sekcií,
+ ako aj niektoré ďalšie prostredia,
+ sa považujú za ukončené pri stlačení 
 \family sans
 Enteru
 \family default
@@ -1517,7 +1681,8 @@ Pozrite si
 \emph on
 Užívateľskú príručku
 \emph toggle
-, ak chcete vedieť ako napísať nadpisy s dvoma a viac riadkami.
+,
+ ak chcete vedieť ako napísať nadpisy s dvoma a viac riadkami.
  Prostredie
 \emph default
  
@@ -1537,7 +1702,8 @@ samozrejme môže pokračovať ďalej niekoľko odsekov.
 Enteru
 \family default
 .
- V akom prostredí práve pracujete, zistíte pozrením sa na
+ V akom prostredí práve pracujete,
+ zistíte pozrením sa na
 \emph default
  
 \family sans
@@ -1581,7 +1747,8 @@ Section
 \family typewriter
 Ďalšie veci
 \family default
-, a zistíte,že \SpecialChar LyX
+,
+ a zistíte,že \SpecialChar LyX
  znovu zmenil formátoanie na názov.
 \end_layout
 
@@ -1612,7 +1779,8 @@ Enter a znova vyberte prostredie
 \begin_inset Quotes grd
 \end_inset
 
- a počká, kým napíšete názov.
+ a počká,
+ kým napíšete názov.
  Napíšte
 \family default
  
@@ -1630,11 +1798,14 @@ O tomto dokumente
 \begin_inset Quotes grd
 \end_inset
 
-, ktorá bola sekcia č.
- 2, bola automaticky prečíslovaná na sekciu č.
- 3! V zmysle WYSIWYM vy len označíte čo je názov sekcie, \SpecialChar LyX
- sa postará o číslovani
-e a formátovanie.
+,
+ ktorá bola sekcia č.
+ 2,
+ bola automaticky prečíslovaná na sekciu č.
+ 3!
+ V zmysle WYSIWYM vy len označíte čo je názov sekcie,
+ \SpecialChar LyX
+ sa postará o číslovanie a formátovanie.
 \end_layout
 
 \begin_layout Standard
@@ -1646,7 +1817,8 @@ Enter
 \family sans
 Standard
 \family default
-, a napíšte nasledujúce riadky:
+,
+ a napíšte nasledujúce riadky:
 \end_layout
 
 \begin_layout LyX-Code
@@ -1684,8 +1856,8 @@ Subsection
 \begin_inset Quotes grd
 \end_inset
 
- a nastaví veľkosť fontu na väčšiu ako je obyčajná, ale menšiu ako je v
- názvoch sekcií.
+ a nastaví veľkosť fontu na väčšiu ako je obyčajná,
+ ale menšiu ako je v názvoch sekcií.
  Tak iso zmeňte prostredie štvrtého riadku.
  Bude automaticky očíslovaný 
 \begin_inset Quotes gld
@@ -1696,8 +1868,8 @@ Subsection
 \end_inset
 
 .
- Keď teraz vložíte ďalšiu sekciu pred sekciu 2, tá bude prečíslovaná na
- sekciu 3 a podsekcie budú prečíslované na 
+ Keď teraz vložíte ďalšiu sekciu pred sekciu 2,
+ tá bude prečíslovaná na sekciu 3 a podsekcie budú prečíslované na 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1721,7 +1893,8 @@ Subsection
 \family sans
 Subsubsection
 \family default
-, 
+,
+ 
 \family sans
 Paragraph
 \family default
@@ -1731,9 +1904,11 @@ SubParagraph
 \family default
 .
  Ich vyskúšanie necháme na vás.
- Možte si všimnúť, že paragraph a subparagraph nie sú automaticky číslované,
+ Možte si všimnúť,
+ že paragraph a subparagraph nie sú automaticky číslované,
  a že subparagraph je odsadený.
- Ak to chcete zmeniť, pozritesa do 
+ Ak to chcete zmeniť,
+ pozritesa do 
 \emph on
 Užívateľskej príručky
 \emph toggle
@@ -1745,11 +1920,12 @@ Užívateľskej príručky
 \emph toggle
 Chapter
 \family default
-), ale ich použitie je dovolené len v niektorých typoch (textclass) dokumentov
- (pozri časť 
+),
+ ale ich použitie je dovolené len v niektorých typoch (textclass) dokumentov (pozri časť 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec: textclasses"
+nolink "false"
 
 \end_inset
 
@@ -1757,15 +1933,18 @@ reference "sec: textclasses"
 \end_layout
 
 \begin_layout Standard
-Nakoniec môžte chcieť mať sekcie a podsekcie, ktoré nie sú číslované.
+Nakoniec môžte chcieť mať sekcie a podsekcie,
+ ktoré nie sú číslované.
  Aj na toto sú prostredia.
  Ak zmeníte prostredie niektorého nadpisu na 
 \family sans
 Section*
 \family default
- (možno budete musieť menu prostredí rolovať nadol, aby ste to našli), \SpecialChar LyX
-
- použije také isté formátovanie písma ako pre normálnu sekciu, ale ju neočísluje.
+ (možno budete musieť menu prostredí rolovať nadol,
+ aby ste to našli),
+ \SpecialChar LyX
+ použije také isté formátovanie písma ako pre normálnu sekciu,
+ ale ju neočísluje.
  Tak isto fungujú aj ďalšie 
 \begin_inset Quotes gld
 \end_inset
@@ -1775,8 +1954,8 @@ hviezdižkové
 \end_inset
 
  prostredia.
- Skúste zmeniť niektoré zo sekcií na hviezdičkové a všimnite si, ako sa
- zmení číslovanie.
+ Skúste zmeniť niektoré zo sekcií na hviezdičkové a všimnite si,
+ ako sa zmení číslovanie.
 \end_layout
 
 \begin_layout Standard
@@ -1784,6 +1963,7 @@ hviezdižkové
 \family typewriter
 \series bold
 Cvičenie:
+
 \family default
 \series default
  Opravte hlavičky sekcií a podsekcií v súbore 
@@ -1845,7 +2025,8 @@ Dokument popisujúci rôzne balíky softvéru by mohol použiť prostredie
 \family sans
 Description
 \family default
-, kde každá položka v zozname začína slovom s tučným písmom.
+,
+ kde každá položka v zozname začína slovom s tučným písmom.
 \end_layout
 
 \begin_layout Itemize
@@ -1853,8 +2034,10 @@ Prostredie
 \family sans
 List
 \family default
- — nenachádzajúce sa v \SpecialChar LaTeX
-e — je trochu odlišné od 
+ —
+ nenachádzajúce sa v \SpecialChar LaTeX
+e —
+ je trochu odlišné od 
 \family sans
 Description
 \family default
@@ -1862,7 +2045,8 @@ Description
 \end_layout
 
 \begin_layout Standard
-Napíšme zoznam dôvodov, prečo je \SpecialChar LyX
+Napíšme zoznam dôvodov,
+ prečo je \SpecialChar LyX
  lepší ako ostatné textové procesory.
  Niekde vo vašom dokumente napíšte:
 \end_layout
@@ -1871,7 +2055,8 @@ Napíšme zoznam dôvodov, prečo je \SpecialChar LyX
 
 \family typewriter
 \SpecialChar LyX
- je lepší ako iné textové procesoty, pretože:
+ je lepší ako iné textové procesoty,
+ pretože:
 \end_layout
 
 \begin_layout Standard
@@ -1882,8 +2067,8 @@ Itemize
 \family default
 .
  \SpecialChar LyX
- na riadok napíše značku (teraz hviezdičku, ktorá bude vo výstupe konvertovaná
- na krúžok).
+ na riadok napíše značku (teraz hviezdičku,
+ ktorá bude vo výstupe konvertovaná na krúžok).
  Napíšte dôvody:
 \end_layout
 
@@ -1900,16 +2085,19 @@ Je veľmi ľahké vytvátať zoznamy!
 \end_layout
 
 \begin_layout Standard
-Prostredia zoznamov, nie ako lavičky sekcií, nekončia stlačením 
+Prostredia zoznamov,
+ nie ako lavičky sekcií,
+ nekončia stlačením 
 \family sans
 Enteru
 \family default
 .
  \SpecialChar LyX
- predpokladá, že budete písať ďalšiu položku zoznamu.
+ predpokladá,
+ že budete písať ďalšiu položku zoznamu.
  Riadky hore preto budú tvoriť zoznam s tromi položkami.
- Ak chcete použiť viac ako jeden odsek vrámci jednej položky zoznamu, použijete
- 
+ Ak chcete použiť viac ako jeden odsek vrámci jednej položky zoznamu,
+ použijete 
 \family sans
 Chránený
 \begin_inset space ~
@@ -1917,7 +2105,8 @@ Chránený
 
 Enter
 \family default
-, stlačením 
+,
+ stlačením 
 \family sans
 Ctrl+Enter
 \family default
@@ -1929,7 +2118,8 @@ von
 \begin_inset Quotes grd
 \end_inset
 
- zo zoznamu, musíte znova nastaviť prostredie 
+ zo zoznamu,
+ musíte znova nastaviť prostredie 
 \family sans
 Standard
 \family default
@@ -1944,20 +2134,24 @@ s).
 Máte pekný značkový zoznam.
  Môžete spustiť \SpecialChar LaTeX
  aby ste videli ako to bude vyzerať vytlačcené.
- Ale čo keby ste chceli dôvody očíslovať? No.
+ Ale čo keby ste chceli dôvody očíslovať?
+ No.
  Označte celý zoznam
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
- vám nedovolí označiť prvú značku, kým neoznačíte aj odsek 
+ vám nedovolí označiť prvú značku,
+ kým neoznačíte aj odsek 
 \emph on
 pred
 \emph default
  
 \emph toggle
-zoznamom, čo asi nie je to, čo chcete.
+zoznamom,
+ čo asi nie je to,
+ čo chcete.
  Podobne nemôžete označiť číslo sekcie v jej titulku.
  Netrápte sa s tým.
 \end_layout
@@ -1965,12 +2159,16 @@ zoznamom, čo asi nie je to, čo chcete.
 \end_inset
 
  a vybrte prostredie Enumerate.
- Páni! Ako sme sa už zmienili, ak pridáte, alebo zrušíte nejakú položku,
+ Páni!
+ Ako sme sa už zmienili,
+ ak pridáte,
+ alebo zrušíte nejakú položku,
  zoznam bude prečíslovaný.
 \end_layout
 
 \begin_layout Standard
-Pokiaľ je zoznam stále označený, môžete vyskúšať ďalšie druhy zoznamov,
+Pokiaľ je zoznam stále označený,
+ môžete vyskúšať ďalšie druhy zoznamov,
  
 \family sans
 Description
@@ -1980,9 +2178,11 @@ Description
 List
 \family default
 .
- Pre tieto dve prostredia, každá položka sa skladá z názvu, ktorým je prvé
- slovo, a za ním nasleduje definícia, ktorú tvorí zvyšok odseku (kým nestlačíte
- 
+ Pre tieto dve prostredia,
+ každá položka sa skladá z názvu,
+ ktorým je prvé slovo,
+ a za ním nasleduje definícia,
+ ktorú tvorí zvyšok odseku (kým nestlačíte 
 \family sans
 Enter
 \family default
@@ -1991,7 +2191,8 @@ Enter
 \family sans
 Description
 \family default
-), alebo oddelený 
+),
+ alebo oddelený 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2004,8 +2205,10 @@ tabulátorom
 status collapsed
 
 \begin_layout Plain Layout
-Ale sádzacím tabulátorom, ktorý sa zmení tak, aby stačil veľkosťou pre najdlhší
- názov, a nie žalostným a nezmeniteľným tabulátorom písacieho stroja.
+Ale sádzacím tabulátorom,
+ ktorý sa zmení tak,
+ aby stačil veľkosťou pre najdlhší názov,
+ a nie žalostným a nezmeniteľným tabulátorom písacieho stroja.
 \end_layout
 
 \end_inset
@@ -2015,7 +2218,8 @@ Ale sádzacím tabulátorom, ktorý sa zmení tak, aby stačil veľkosťou pre n
 List
 \family default
 ) od zvyšku odseku.
- Ak chcete mať v názve viac ako jedno slovo, oddeľte ich 
+ Ak chcete mať v názve viac ako jedno slovo,
+ oddeľte ich 
 \family sans
 Chránenými
 \begin_inset space ~
@@ -2023,11 +2227,13 @@ Chránenými
 
 medzerami
 \family default
-, ktoré sa vkladajú 
+,
+ ktoré sa vkladajú 
 \family sans
 Ctrl+medzera
 \family default
-, a zobrazujú ako rúžové malé 
+,
+ a zobrazujú ako rúžové malé 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2042,6 +2248,7 @@ u
 
 \series bold
 Cvičenie:
+
 \series default
  Napíšte zoznam v 
 \family typewriter
@@ -2051,23 +2258,26 @@ example_raw.lyx
 \begin_layout Standard
 Listy môžu byť vnorené všetkými možnými spôsobmi.
  Bežný príklad je písanie návrhu.
- Číslované a značkované zoznamy budú mať rôzne číslovanie a značky pre podzoznam
-y.
+ Číslované a značkované zoznamy budú mať rôzne číslovanie a značky pre podzoznamy.
  Pozrite si 
 \emph on
 Užívateľskú príručku
 \emph default
  
 \emph toggle
-a rôzne príklady, ktoré používajú vnorené listy.
+a rôzne príklady,
+ ktoré používajú vnorené listy.
 \end_layout
 
 \begin_layout Subsection
-Ďalšie prostredia: verše, citáty a ďalšie
+Ďalšie prostredia:
+ verše,
+ citáty a ďalšie
 \end_layout
 
 \begin_layout Standard
-Sú dve prostrdia pre vysádzaie citátov oddelených od okolitého textu: 
+Sú dve prostrdia pre vysádzaie citátov oddelených od okolitého textu:
+ 
 \family sans
 Quote
 \family default
@@ -2081,7 +2291,8 @@ Quotation
 \SpecialChar LyX
 -Code
 \family default
-, v 
+,
+ v 
 \emph on
 Sprievodcovi
 \emph default
@@ -2098,15 +2309,17 @@ písacieho stroja
  
 \emph toggle
 - toto prostredie je v \SpecialChar LyX
-e jediné, kde sú povolené viaceré medzery, aby bolo
- možné kód zarovnať.
+e jediné,
+ kde sú povolené viaceré medzery,
+ aby bolo možné kód zarovnať.
  Môžete dokonca písať poéziu
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar ldots
-s predpokladom, že ste na to dosť kreatívny.
+s predpokladom,
+ že ste na to dosť kreatívny.
 \end_layout
 
 \end_inset
@@ -2138,12 +2351,14 @@ Užívateľskej príručke
 
 \series bold
 Cvičenie:
+
 \series default
  Správne naformátujte 
 \family sans
 Quote
 \family default
-, 
+,
+ 
 \family sans
 \SpecialChar LyX
 -Code
@@ -2164,23 +2379,33 @@ Písanie dokumentov
 \end_layout
 
 \begin_layout Standard
-Dúfane, že v predchádzajúcej kapitole ste sa zoznámili s písaním v \SpecialChar LyX
+Dúfane,
+ že v predchádzajúcej kapitole ste sa zoznámili s písaním v \SpecialChar LyX
 e.
  Uviedla vás do základov editovania textu v \SpecialChar LyX
 e a aj do mocnej metódy prostredí.
  Väčšina ľudí používajúcich \SpecialChar LyX
-, bude chcieť písať dokumenty: články, knihy,
+,
+ bude chcieť písať dokumenty:
+ články,
+ knihy,
  manuály alebo listy.
  Táto kapitola vás má doviesť od jednoduchého písania textu v \SpecialChar LyX
-e, k písaniu
- celých dokumentov.
- Ukáže vám triedy dokumentov, ktoré vám umožnia písať rône druhy dokumentov.
- Ďalej popíše veľa spôsobov ako previesť text na dokument, napr.
- nadpisy, poznámky pod čiarou, krížové odkazy, bibliografiua obsah.
+e,
+ k písaniu celých dokumentov.
+ Ukáže vám triedy dokumentov,
+ ktoré vám umožnia písať rône druhy dokumentov.
+ Ďalej popíše veľa spôsobov ako previesť text na dokument,
+ napr.
+ nadpisy,
+ poznámky pod čiarou,
+ krížové odkazy,
+ bibliografiua obsah.
 \end_layout
 
 \begin_layout Section
-Triedy dokumentov a šablóny: písanie listov
+Triedy dokumentov a šablóny:
+ písanie listov
 \end_layout
 
 \begin_layout Standard
@@ -2191,10 +2416,12 @@ name "sec: textclasses"
 \end_inset
 
 Rôzne typy dokumentov by mali byť rôane vysáďzané.
- Napríklad knihy sú normálne tlačené obojstranne, zatiaľčo články sú tlačené
- jednostranne.
- Ďalej veľa dokumentov obsahuje špeciálne prostredia: listy obsahujú prostredia,
- ako adresa odosielateľa, ktoré v článkoch a knihách nedávajú zmysel.
+ Napríklad knihy sú normálne tlačené obojstranne,
+ zatiaľčo články sú tlačené jednostranne.
+ Ďalej veľa dokumentov obsahuje špeciálne prostredia:
+ listy obsahujú prostredia,
+ ako adresa odosielateľa,
+ ktoré v článkoch a knihách nedávajú zmysel.
  O tieto veľké rozdiely medzi rôanymi typmi dokumentov sa v \SpecialChar LyX
 e starajú 
 \emph on
@@ -2210,7 +2437,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Pre používateľov \SpecialChar LaTeX
-u: je to ekvivalentné \SpecialChar LaTeX
+u:
+ je to ekvivalentné \SpecialChar LaTeX
 ovým 
 \emph on
 documentclass
@@ -2231,9 +2459,10 @@ bol napríklad napísaný v triede dokumentu
 Book
 \family default
 .
- Triedy dokumentov sú ďalšou hlavnou časťou filozofie WYSIWYM: hovoria \SpecialChar LyX
-u
- ako vysádzať dokument, takže vy to nemusíte vedieť.
+ Triedy dokumentov sú ďalšou hlavnou časťou filozofie WYSIWYM:
+ hovoria \SpecialChar LyX
+u ako vysádzať dokument,
+ takže vy to nemusíte vedieť.
 \end_layout
 
 \begin_layout Standard
@@ -2244,7 +2473,8 @@ Article
 status collapsed
 
 \begin_layout Plain Layout
-To je obyčajne predvolená trieda, aj keď to môžete zmeniť v súbore 
+To je obyčajne predvolená trieda,
+ aj keď to môžete zmeniť v súbore 
 \family sans
 lyxrc
 \family default
@@ -2258,7 +2488,8 @@ lyxrc
 \family sans
 Trieda
 \family default
-, v menu 
+,
+ v menu 
 \family sans
 \bar under
 R
@@ -2269,25 +2500,32 @@ D
 \bar default
 okument
 \family default
-), aby ste videli rozdiely vo vysádzaní.
+),
+ aby ste videli rozdiely vo vysádzaní.
  Ak zmeníte triedu na 
 \family sans
 Book
 \family default
- a pozriete sa do menu prostredí, zistíte, že väčšina prostredí ostala rovnaká.
+ a pozriete sa do menu prostredí,
+ zistíte,
+ že väčšina prostredí ostala rovnaká.
  Avšak pribudlo prostredie 
 \family sans
 Chapter
 \family default
 .
- Ak ste si nie istý ktoré prostredia sú v ktorej triede, stačí sa pozrieť
- sem.
+ Ak ste si nie istý ktoré prostredia sú v ktorej triede,
+ stačí sa pozrieť sem.
 \end_layout
 
 \begin_layout Standard
-Veľkosť písma, jeden, alebo dvojstĺpcová tlač a titulky strán, sú niektoré
- zo vlastností, akými sa odlišujú jednotlivé noviny jedny od druhých.
- Ako dospieval počítačový vek, noviny si začali vytvárať \SpecialChar LaTeX
+Veľkosť písma,
+ jeden,
+ alebo dvojstĺpcová tlač a titulky strán,
+ sú niektoré zo vlastností,
+ akými sa odlišujú jednotlivé noviny jedny od druhých.
+ Ako dospieval počítačový vek,
+ noviny si začali vytvárať \SpecialChar LaTeX
 ové 
 \begin_inset Quotes gld
 \end_inset
@@ -2296,11 +2534,12 @@ ové
 \begin_inset Quotes grd
 \end_inset
 
-, takže autori mohli predkladať správne vysádzané články.
+,
+ takže autori mohli predkladať správne vysádzané články.
  \SpecialChar LyX
  tiež toto podporuje.
- Napríklad podporuje sadzbu (a extra prostredia) pre noviny American Mathematics
- Society, použitím triedy Article
+ Napríklad podporuje sadzbu (a extra prostredia) pre noviny American Mathematics Society,
+ použitím triedy Article
 \begin_inset space ~
 \end_inset
 
@@ -2309,7 +2548,8 @@ ové
 
 \begin_layout Standard
 Tu je veľmi stručný prehľad niektorých tried.
- Ako obyčajne, pre viac informácií sa pozrite do 
+ Ako obyčajne,
+ pre viac informácií sa pozrite do 
 \emph on
 Užívateľskej príručky
 \emph toggle
@@ -2364,7 +2604,8 @@ article
 \begin_inset Text
 
 \begin_layout Plain Layout
-jedno­stranná, bez kapitol
+jedno­stranná,
+ bez kapitol
 \end_layout
 
 \end_inset
@@ -2404,7 +2645,8 @@ report
 \begin_inset Text
 
 \begin_layout Plain Layout
-dlhšia ako article, obojstranná
+dlhšia ako article,
+ obojstranná
 \end_layout
 
 \end_inset
@@ -2465,7 +2707,8 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-veľa extra prostredí pre adresy, podpisy\SpecialChar ldots
+veľa extra prostredí pre adresy,
+ podpisy\SpecialChar ldots
 
 \end_layout
 
@@ -2487,7 +2730,8 @@ veľa extra prostredí pre adresy, podpisy\SpecialChar ldots
 \end_layout
 
 \begin_layout Section
-Šablóny: písanie listu
+Šablóny:
+ písanie listu
 \end_layout
 
 \begin_layout Standard
@@ -2516,18 +2760,23 @@ D
 okument
 \family default
 .
- Aj keď je to najobyčajnejší spôsob ako napísať list, zdá sa to ako robota
- naviac.
- Vždy keď píšete obchodný list, chcete tam mať svoju adresu, adresu komu
- list opsielate, telo listu, podpis, atď.
+ Aj keď je to najobyčajnejší spôsob ako napísať list,
+ zdá sa to ako robota naviac.
+ Vždy keď píšete obchodný list,
+ chcete tam mať svoju adresu,
+ adresu komu list opsielate,
+ telo listu,
+ podpis,
+ atď.
  Preto má \SpecialChar LyX
  na listy 
 \emph on
 šablónu
 \emph toggle
-, ktorá obsahuje príklad listu.
- Keď už raz máte šablónu, pri písaní listu vám stačí prepísať len niekoľko
- častí.
+,
+ ktorá obsahuje príklad listu.
+ Keď už raz máte šablónu,
+ pri písaní listu vám stačí prepísať len niekoľko častí.
 \end_layout
 
 \begin_layout Standard
@@ -2551,16 +2800,21 @@ a
 blóny
 \family default
 .
- Potom, čo súbor pomenujete, vyberte 
+ Potom,
+ čo súbor pomenujete,
+ vyberte 
 \family typewriter
 latex_letter.lyx
 \family default
  z okna šablón.
- Súbor uložte a vytlačte, aby ste videli, ako sú vysádzané rôzne prostredia.
+ Súbor uložte a vytlačte,
+ aby ste videli,
+ ako sú vysádzané rôzne prostredia.
 \end_layout
 
 \begin_layout Standard
-V menu prostredí nájdete niekoľko prostredí, ako napríklad 
+V menu prostredí nájdete niekoľko prostredí,
+ ako napríklad 
 \family sans
 My
 \begin_inset space ~
@@ -2568,14 +2822,18 @@ My
 
 Address
 \family default
-, ktoré vo väčšine ostatných triedach neexistujú.
- Iné, napríklad 
+,
+ ktoré vo väčšine ostatných triedach neexistujú.
+ Iné,
+ napríklad 
 \family sans
 Description
 \family default
  sú bežné.
- Môžete si vyskúšať, ako rôzne prostredia pracujú.
- Všimnete si napríklad, že prosrtedie 
+ Môžete si vyskúšať,
+ ako rôzne prostredia pracujú.
+ Všimnete si napríklad,
+ že prosrtedie 
 \family sans
 Signature
 \family default
@@ -2588,30 +2846,40 @@ Signature:
 \end_inset
 
  pred skutočným textom podpisu.
- Toto slovo sa v liste nezobrazí, čo si všimnete, keď súbor vytlačíte.
- Je tam preto, aby ste vedeli, kde podpis bude.
- Taktiež si všimnite, že nezáleží na tom, kde v súbore sa nachádza riadok
- 
+ Toto slovo sa v liste nezobrazí,
+ čo si všimnete,
+ keď súbor vytlačíte.
+ Je tam preto,
+ aby ste vedeli,
+ kde podpis bude.
+ Taktiež si všimnite,
+ že nezáleží na tom,
+ kde v súbore sa nachádza riadok 
 \family sans
 Signature
 \family default
 .
  Spomínajte.
  \SpecialChar LyX
- je WYSIWYM: prostredie 
+ je WYSIWYM:
+ prostredie 
 \family sans
 Signature
 \family default
  môžete vložiť kde chcete a \SpecialChar LyX
- vie, že vo výstupe by mal byť podpis na konci.
+ vie,
+ že vo výstupe by mal byť podpis na konci.
 \end_layout
 
 \begin_layout Standard
 Šablóna je obyčajný \SpecialChar LyX
  dokukment.
- To znamená, že môžete vyplniť svoju adresu a podpis a súbor uložiť ako
- novú šablónu.
- Odteraz, vždy, keď budete chcieť napísať list, môžete použiť novú šablónu,
+ To znamená,
+ že môžete vyplniť svoju adresu a podpis a súbor uložiť ako novú šablónu.
+ Odteraz,
+ vždy,
+ keď budete chcieť napísať list,
+ môžete použiť novú šablónu,
  aby ste ušetrili čas.
  Tu pravdepodobne nemusíme navrhovať žiadne cvičenie.
  Jednoducho napíšte niekomu list!
@@ -2619,9 +2887,10 @@ Signature
 status collapsed
 
 \begin_layout Plain Layout
-Ešte jedno varovanie, keď píšete zo šablóny.
- Ak vymažete celý text z prostredia ­­­ napríklad, keď vymažete celé pole
- 
+Ešte jedno varovanie,
+ keď píšete zo šablóny.
+ Ak vymažete celý text z prostredia ­­­ napríklad,
+ keď vymažete celé pole 
 \family sans
 My
 \begin_inset space ~
@@ -2629,9 +2898,11 @@ My
 
 Address
 \family default
-, takže ho budete chcieť nahradiť svojím vlastným ­­­ a potom posuniete
- kurzor bez toho aby ste napísali nejaký text, prostredie môže zmiznúť.
- je to preto, lebo prostredie nemôže existovať bez textu.
+,
+ takže ho budete chcieť nahradiť svojím vlastným ­­­ a potom posuniete kurzor bez toho aby ste napísali nejaký text,
+ prostredie môže zmiznúť.
+ je to preto,
+ lebo prostredie nemôže existovať bez textu.
  V takomto prípade jednoducho znovu prostredie nastavte z menu.
 \end_layout
 
@@ -2648,7 +2919,8 @@ Titulné strany dokumentov
 \SpecialChar LyX
  (ako \SpecialChar LaTeX
 ) považuje titulnú stranu ­­­ ktorá môže obsahovať názov dokumentu,
- autora, dátum ­­­ za samostatnú časť dokumentu.
+ autora,
+ dátum ­­­ za samostatnú časť dokumentu.
 \end_layout
 
 \begin_layout Standard
@@ -2656,7 +2928,8 @@ Vráťte sa k vášmu dokumentu
 \family typewriter
 newfile.lyx
 \family default
- a uistite sa, že je triedy 
+ a uistite sa,
+ že je triedy 
 \family sans
 Article
 \family default
@@ -2665,12 +2938,14 @@ Article
 status collapsed
 
 \begin_layout Plain Layout
-Už by ste nameli používať triedu Letter, pretože nepodporuje titulné tránky.
+Už by ste nameli používať triedu Letter,
+ pretože nepodporuje titulné tránky.
 \end_layout
 
 \end_inset
 
- Napíšte názov na prvý riadok, a prostredie zmeňte na 
+ Napíšte názov na prvý riadok,
+ a prostredie zmeňte na 
 \family sans
 Title
 \family default
@@ -2685,8 +2960,8 @@ Author
 Date
 \family default
 .
- Napíšte odsek alebo dva, ktoré popisujú váš dokument a nastavte im prostredie
- 
+ Napíšte odsek alebo dva,
+ ktoré popisujú váš dokument a nastavte im prostredie 
 \family sans
 Abstract
 \family default
@@ -2698,8 +2973,10 @@ Abstract
 
 \series bold
 Cvičenie:
+
 \series default
- Upravte názov, dátum a autora v example_raw.lyx
+ Upravte názov,
+ dátum a autora v example_raw.lyx
 \end_layout
 
 \begin_layout Section
@@ -2707,17 +2984,17 @@ Návestia a krosreferencie
 \end_layout
 
 \begin_layout Standard
-Sekciu (alebo podsekciu, alebo zriedkavo len nejakú časť textu) môžete v
- dokumente pomenovať.
- Keď tak urobíte, môžete sa na túto sekciu odkazovať v iných častiach dokumentu
- použitím krosreferencií.
- Môžete sa odkazovať na číslo sekcie, alebo na stránku, na ktorej sa sekcia
- objaví.
+Sekciu (alebo podsekciu,
+ alebo zriedkavo len nejakú časť textu) môžete v dokumente pomenovať.
+ Keď tak urobíte,
+ môžete sa na túto sekciu odkazovať v iných častiach dokumentu použitím krosreferencií.
+ Môžete sa odkazovať na číslo sekcie,
+ alebo na stránku,
+ na ktorej sa sekcia objaví.
  Tak isto ako pri sekciách a poznámkach sa o krosreferencie stará \SpecialChar LyX
 .
  Automatické pomenovania a krosreferencie sú jednou z najväčších výhod \SpecialChar LyX
-u
- oproti konvenčným textovým procesorom.
+u oproti konvenčným textovým procesorom.
 \end_layout
 
 \begin_layout Subsection*
@@ -2725,7 +3002,8 @@ Vaše prvé návestie
 \end_layout
 
 \begin_layout Standard
-Označme našu druhú sekciu, ktorej názov je 
+Označme našu druhú sekciu,
+ ktorej názov je 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2751,23 +3029,28 @@ N
 \family typewriter
 sec:odokumente
 \family default
-, čo sa zdá byť dosť dobrý názov, ktorý si nebudete mýliť s inými názvami,
+,
+ čo sa zdá byť dosť dobrý názov,
+ ktorý si nebudete mýliť s inými názvami,
  ktoré možno pridáte.
  Keď stlačíte 
 \family sans
 OK
 \family default
-, názov sekcie sa vloží ako obdĺžnik, hneď vedľa titulku.
+,
+ názov sekcie sa vloží ako obdĺžnik,
+ hneď vedľa titulku.
 \end_layout
 
 \begin_layout Standard
 Mimochodom.
  návestie ste mohli vložiť kdekoľvek c sekcii.
- Referencia sa odkazuje na poslednú sekciu, alebo podsekciu, ktorá je pred
- návestím.
- Avšak ak ho dáte na ten istý riadok ako je názov sekcie (alebo prípadne
- na prvý riadok textu sekcie), budete si istý, že referencia na stránku
- sekcie sa bude odkzovať na jej začiatok.
+ Referencia sa odkazuje na poslednú sekciu,
+ alebo podsekciu,
+ ktorá je pred návestím.
+ Avšak ak ho dáte na ten istý riadok ako je názov sekcie (alebo prípadne na prvý riadok textu sekcie),
+ budete si istý,
+ že referencia na stránku sekcie sa bude odkzovať na jej začiatok.
 \end_layout
 
 \begin_layout Standard
@@ -2776,9 +3059,10 @@ Doposiaľ ste nič neurobili.
 \family sans
 Dvi
 \family default
- súbor bude vyzerať presne tak isto, pretože návestia sa neukazujú vo vytlačenom
- dokumente.
- Avšak keď ste vložili návestie, môžete sa naň odkazovať pomocou krosreferencie.
+ súbor bude vyzerať presne tak isto,
+ pretože návestia sa neukazujú vo vytlačenom dokumente.
+ Avšak keď ste vložili návestie,
+ môžete sa naň odkazovať pomocou krosreferencie.
  To urobíme teraz.
 \end_layout
 
@@ -2791,8 +3075,9 @@ Umiestnite kurzor niekde v sekcii 2 a napíšte:
 \end_layout
 
 \begin_layout LyX-Code
-Ak chcete vedieť viac o tomto dokumente, potom si pozrite sekciu , ktorá
- je na stránke .
+Ak chcete vedieť viac o tomto dokumente,
+ potom si pozrite sekciu ,
+ ktorá je na stránke .
 \end_layout
 
 \begin_layout Standard
@@ -2817,7 +3102,8 @@ Vložiť
 krosreferenciu
 \family default
 .
- Zobrazuje zoznam možností, na ktoré sa môžete odkazovať.
+ Zobrazuje zoznam možností,
+ na ktoré sa môžete odkazovať.
  V tomto momente by tam mala byť jedna 
 \begin_inset Quotes gld
 \end_inset
@@ -2861,9 +3147,11 @@ strany
 
 \begin_layout Standard
 \SpecialChar LyX
- umiestní referencie ako obdĺžniky na mieste, kde sa nachádzal kurzor.
- Vo vytlačenom dokumente budú tieto značky referencií nahradené buď číslom
- strany, alebo sekcie (podľa toho, čo ste zvolili v okne 
+ umiestní referencie ako obdĺžniky na mieste,
+ kde sa nachádzal kurzor.
+ Vo vytlačenom dokumente budú tieto značky referencií nahradené buď číslom strany,
+ alebo sekcie (podľa toho,
+ čo ste zvolili v okne 
 \family sans
 Vložiť
 \begin_inset space ~
@@ -2878,8 +3166,9 @@ dvi
 \family default
  súbor.
  Krosreferencia v \SpecialChar LyX
-e funguje ako hyperlink: ak na ňu kliknete, kurzor sa
- premiestni na zadané návestie.
+e funguje ako hyperlink:
+ ak na ňu kliknete,
+ kurzor sa premiestni na zadané návestie.
 \end_layout
 
 \begin_layout Subsection*
@@ -2887,12 +3176,13 @@ Viac zábavy s návestiami
 \end_layout
 
 \begin_layout Standard
-Povedali sme vám, že \SpecialChar LyX
- sa stará o číslovanie krosreferencií a teraz si to
- môžte otestovať.
+Povedali sme vám,
+ že \SpecialChar LyX
+ sa stará o číslovanie krosreferencií a teraz si to môžte otestovať.
  Pridajte novú sekciu pred sekciu 2.
  Znovu spustite \SpecialChar LaTeX
- a krosreferencia na sekciu sa zmenila na 3! Zmeňte 
+ a krosreferencia na sekciu sa zmenila na 3!
+ Zmeňte 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2901,14 +3191,16 @@ O tomto dokumente
 \end_inset
 
  na podsekciu a referencia sa zmení na podsekcia 2.1 namiesto sekcia 3.
- Samozrejme, že referencia na číslo stránky sa nezmení, pokiaľ nevložíte
- pred návestie celú stránku textu.
+ Samozrejme,
+ že referencia na číslo stránky sa nezmení,
+ pokiaľ nevložíte pred návestie celú stránku textu.
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 Cvičenie:
+
 \series default
  Opravte referencie v 
 \family typewriter
@@ -2941,13 +3233,14 @@ pod
 status collapsed
 
 \begin_layout Plain Layout
-Tlačítko zobrazuje šípku ukazujúcu na červený text, ktorý je pod nejakým
- čiernym textom.
+Tlačítko zobrazuje šípku ukazujúcu na červený text,
+ ktorý je pod nejakým čiernym textom.
 \end_layout
 
 \end_inset
 
-, alebo príkazom 
+,
+ alebo príkazom 
 \family sans
 \bar under
 V
@@ -2993,7 +3286,8 @@ pod
 čiarou
 \family default
 .
- Riadok s poznámkou sa otvorí pod riadkov, v ktorom práve píšete.
+ Riadok s poznámkou sa otvorí pod riadkov,
+ v ktorom práve píšete.
  Na ľavej strane uvidíte slovo 
 \begin_inset Quotes gld
 \end_inset
@@ -3002,9 +3296,11 @@ foot
 \begin_inset Quotes grd
 \end_inset
 
-, napísané červeným písmom na šedom pozadí.
- Zvyšok riadku je orámovaný na červeno: to je miesto, kde napíšete svoju
- poznámku.
+,
+ napísané červeným písmom na šedom pozadí.
+ Zvyšok riadku je orámovaný na červeno:
+ to je miesto,
+ kde napíšete svoju poznámku.
  \SpecialChar LyX
  by mal umiestniť kurzor na začatok tohto riadku.
  Napíšte
@@ -3033,8 +3329,9 @@ foot
 \begin_inset Quotes grd
 \end_inset
 
- napísané červeným písmom horným indexom, ktoré ukazuje, kde v texte bude
- vytlačená značka poznámky pod čiarou.
+ napísané červeným písmom horným indexom,
+ ktoré ukazuje,
+ kde v texte bude vytlačená značka poznámky pod čiarou.
  Toto sa nazýva 
 \begin_inset Quotes gld
 \end_inset
@@ -3044,8 +3341,7 @@ zabalenie
 \end_inset
 
  poznámky.
- Môžete ju kedykoľvek rozbaliť a editovať jdnoduchým kliknutím na značke
- 
+ Môžete ju kedykoľvek rozbaliť a editovať jdnoduchým kliknutím na značke 
 \begin_inset Quotes gld
 \end_inset
 
@@ -3058,31 +3354,35 @@ foot
 
 \begin_layout Standard
 Možno sa čudujete prečo značka je slovo a nie číslo.
- Odpoveďou je, že o číslovanie poznámok vo vytlačenom texte sa stará \SpecialChar LyX
+ Odpoveďou je,
+ že o číslovanie poznámok vo vytlačenom texte sa stará \SpecialChar LyX
 .
  Môžete si to pozrieť v súbore 
 \family typewriter
 dvi
 \family default
 .
- Ak pridáte ďalšie poznámky, \SpecialChar LyX
+ Ak pridáte ďalšie poznámky,
+ \SpecialChar LyX
  ich prečísluje.
  Keďže \SpecialChar LyX
  (v skutočnosti \SpecialChar LaTeX
-) sa stará o číslovanie poznámok, nie je dôvod dávať
- čísla do \SpecialChar LyX
+) sa stará o číslovanie poznámok,
+ nie je dôvod dávať čísla do \SpecialChar LyX
  súboru.
 \end_layout
 
 \begin_layout Standard
 Poznámka pod čiarou môže byť vystrihovaná a vkladaná ako normálny text.
- Vyskúšajte si to! Všetko čo potrebujete urobiť je označiť značku poznámky
+ Vyskúšajte si to!
+ Všetko čo potrebujete urobiť je označiť značku poznámky
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Môže byť ľahšie označiť ju klávesnicou.
- Ak sa pokúsite označiť ju myšou, môžete ju náhodne otvoriť.
+ Ak sa pokúsite označiť ju myšou,
+ môžete ju náhodne otvoriť.
 \end_layout
 
 \end_inset
@@ -3104,8 +3404,9 @@ l
 ožiť
 \family default
 .
- Okrem toho môžte zmeniť obyčajný text na poznámku jeho označením a stlačením
- tlačítka, a poznámku na text stlačením tlačítka, keď je kurzor v poznámke.
+ Okrem toho môžte zmeniť obyčajný text na poznámku jeho označením a stlačením tlačítka,
+ a poznámku na text stlačením tlačítka,
+ keď je kurzor v poznámke.
 \end_layout
 
 \begin_layout Standard
@@ -3128,13 +3429,14 @@ okraj
 status collapsed
 
 \begin_layout Plain Layout
-Tlačítko zobrazuje šípku ukazujúcu na červený text vedľa (na okraji) čierneho
- textu, a malo by byť vedľa tlačítka s poznámkou pod čiarou.
+Tlačítko zobrazuje šípku ukazujúcu na červený text vedľa (na okraji) čierneho textu,
+ a malo by byť vedľa tlačítka s poznámkou pod čiarou.
 \end_layout
 
 \end_inset
 
-, alebo príkazom 
+,
+ alebo príkazom 
 \bar under
 V
 \bar default
@@ -3153,7 +3455,9 @@ a
 okraji
 \family default
 .
- Tieto poznámky sú ako poznámky pod čiarou, okrem toho, že:
+ Tieto poznámky sú ako poznámky pod čiarou,
+ okrem toho,
+ že:
 \end_layout
 
 \begin_layout Itemize
@@ -3185,20 +3489,23 @@ poznámky na okraji sa nečíslujú
 \end_layout
 
 \begin_layout Itemize
-keď je poznámka zabalená, na okraji textu sa zobrazí výkričník, ktorý sa
- však nevytlačí.
+keď je poznámka zabalená,
+ na okraji textu sa zobrazí výkričník,
+ ktorý sa však nevytlačí.
 \end_layout
 
 \begin_layout Standard
 Zmeňte poznámku pod čiarou na text a následne ju zmeňte na poznámku na okraji.
  Spustite \SpecialChar LaTeX
-, aby ste videli ako to vyzerá.
+,
+ aby ste videli ako to vyzerá.
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 Cvičenie:
+
 \series default
  Upravte poznámky pod čiarou v 
 \family typewriter
@@ -3217,12 +3524,12 @@ name "sec: citácie"
 \end_inset
 
 Citácie sú podobné krosreferenciám.
- Citácia obsahuje zoznam odkazov na konci dokumentu, na ktoré môžete odkazovať
- z dokumentu.
- Tak isto ako názvy sekcií, \SpecialChar LyX
+ Citácia obsahuje zoznam odkazov na konci dokumentu,
+ na ktoré môžete odkazovať z dokumentu.
+ Tak isto ako názvy sekcií,
+ \SpecialChar LyX
  a \SpecialChar LaTeX
- vám uľahčujú život automatickým číslovaním
- položiek citácií.
+ vám uľahčujú život automatickým číslovaním položiek citácií.
 \end_layout
 
 \begin_layout Standard
@@ -3234,7 +3541,8 @@ Sprievodca programom \SpecialChar LyX
 
 \family default
 .
- Všimnite si, že \SpecialChar LyX
+ Všimnite si,
+ že \SpecialChar LyX
  automaticky vložil číslo v obdĺžniku pred každú referenciu.
  kliknite na toto číslo a zobrazí sa vám okienko 
 \family sans
@@ -3242,7 +3550,9 @@ Bib\SpecialChar TeX
 
 \family default
 .
- Prvú položku, Kľúč, použijete na odkazovanie na túto referenciu v dokumente.
+ Prvú položku,
+ Kľúč,
+ použijete na odkazovanie na túto referenciu v dokumente.
  Štandardne je to číslo.
  Zmeňte ju na 
 \begin_inset Quotes gld
@@ -3252,11 +3562,13 @@ lyxsprievodca
 \begin_inset Quotes grd
 \end_inset
 
-, aby ste si ju ľahšie pamätali.
+,
+ aby ste si ju ľahšie pamätali.
 \end_layout
 
 \begin_layout Standard
-Teraz kliknite niekde v dokumente, kde chcete vložiť odkaz.
+Teraz kliknite niekde v dokumente,
+ kde chcete vložiť odkaz.
  Urobte tak príkazom 
 \family sans
 \bar under
@@ -3277,8 +3589,7 @@ u
 \bar default
 .
  \SpecialChar LyX
- zobrazí šedý obdĺžnik s tromi otáznikmi v hranatých zátvorkách a zobrazí
- sa okienko 
+ zobrazí šedý obdĺžnik s tromi otáznikmi v hranatých zátvorkách a zobrazí sa okienko 
 \family sans
 Vložiť
 \begin_inset space ~
@@ -3291,13 +3602,14 @@ citáciu
 \family sans
 Kľúč
 \family default
- a dovoľuje vám vybrať, ktorú položku citácie chcete citovať
+ a dovoľuje vám vybrať,
+ ktorú položku citácie chcete citovať
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Kvôli tomuto je dobré dávať kľúčom unikátne a logické názvy, namiesto štandardný
-ch čísel.
+Kvôli tomuto je dobré dávať kľúčom unikátne a logické názvy,
+ namiesto štandardných čísel.
 \end_layout
 
 \end_inset
@@ -3312,17 +3624,20 @@ lyxsprievodca
 \end_inset
 
  (práve teraz je to jediná opložka menu).
- Spustite LaTex a uvidíte, že citácia sa zobrazí v zátvorkách v texte, odkazujúc
- sa na citáciu na konci dokumentu.
+ Spustite LaTex a uvidíte,
+ že citácia sa zobrazí v zátvorkách v texte,
+ odkazujúc sa na citáciu na konci dokumentu.
 \end_layout
 
 \begin_layout Standard
-Na čo sa používajú ďalšie položky? Pole Návestie v okienku 
+Na čo sa používajú ďalšie položky?
+ Pole Návestie v okienku 
 \family sans
 Bib\SpecialChar TeX
 
 \family default
- vloží namiesto čísla citácie značku, ktorú sem napíšete (napr.
+ vloží namiesto čísla citácie značku,
+ ktorú sem napíšete (napr.
  
 \begin_inset Quotes gld
 \end_inset
@@ -3343,6 +3658,7 @@ Užívateľskej príručky
 
 \series bold
 Cvičenie:
+
 \series default
  Upravte citácie v 
 \family typewriter
@@ -3357,8 +3673,7 @@ Obsah
 Možno by ste chceli na začiatok dokumentu vložiť obsah.
  S \SpecialChar LyX
 om sa to dá veľmi jednoducho.
- Len stlačte Enter za názvom dokumentu a pred prvým názvom sekcie a vyberte
- príkaz 
+ Len stlačte Enter za názvom dokumentu a pred prvým názvom sekcie a vyberte príkaz 
 \family sans
 \bar under
 V
@@ -3395,20 +3710,24 @@ Obsah
 
 \begin_layout Standard
 Nemusí sa vám to zdať veľmi užitočné.
- Avšak, ak si pozriete 
+ Avšak,
+ ak si pozriete 
 \family typewriter
 dvi
 \family default
- dokument, zistíte, že obsah bol skutočne vygenerovaný a zobrazuje rôzne
- sekcie a podsekcie vášho dokumentu.
- AKo obyčajne, keď zmeníte poradie jednotlivých častí, zmeny sa prejavia
- po aktualizovaní 
+ dokument,
+ zistíte,
+ že obsah bol skutočne vygenerovaný a zobrazuje rôzne sekcie a podsekcie vášho dokumentu.
+ AKo obyčajne,
+ keď zmeníte poradie jednotlivých častí,
+ zmeny sa prejavia po aktualizovaní 
 \family typewriter
 dvi
 \family default
  súboru.
  Obsah sa nezobrazí na obrazovke v \SpecialChar LyX
-e, pretože aj tak ho nemôžete editovať.
+e,
+ pretože aj tak ho nemôžete editovať.
  Môžete ho zobraziť v samostatnom okne príkazom 
 \family sans
 \bar under
@@ -3427,22 +3746,23 @@ okumentu
 .
  Toto je veľmi užitočný nástroj.
  Môžete ho použiť na presuny v dokumente.
- Kliknutím na názov (pod)sekcie zvýrazní ten riadok a presunie kurzor (v
- editovacom okne \SpecialChar LyX
+ Kliknutím na názov (pod)sekcie zvýrazní ten riadok a presunie kurzor (v editovacom okne \SpecialChar LyX
 u) na dané miesto v dokumente.
  Šípky môžete použiť na presun jednotlivých častí dokumentu.
  Toto okno môžte nechať otvorené počas editovania.
 \end_layout
 
 \begin_layout Standard
-Ak sa chcete zbaviť obsahu, stačí vymazať jeho značku, jednoducho ako akýkoľvek
- iný znak.
+Ak sa chcete zbaviť obsahu,
+ stačí vymazať jeho značku,
+ jednoducho ako akýkoľvek iný znak.
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 Cvičenie:
+
 \series default
  Upravte obsah v 
 \family typewriter
@@ -3455,27 +3775,33 @@ Používanie matematiky
 
 \begin_layout Standard
 \SpecialChar LaTeX
- používa veľa vedcov, pretože produkuje veľmi dobre vyzerajúce rovnice a
- vzorce, vyhýbajúc sa kontrolným znakom, ktoré používajú iné textové procesory
- a ich editory rovníc.
- Veľa z týchto vedcov je frustrovaných, pretože písanie rovníc v \SpecialChar LaTeX
-e je viac
- programovanie ako písanie.
+ používa veľa vedcov,
+ pretože produkuje veľmi dobre vyzerajúce rovnice a vzorce,
+ vyhýbajúc sa kontrolným znakom,
+ ktoré používajú iné textové procesory a ich editory rovníc.
+ Veľa z týchto vedcov je frustrovaných,
+ pretože písanie rovníc v \SpecialChar LaTeX
+e je viac programovanie ako písanie.
  Našťastie \SpecialChar LyX
  má WYSIWYM podporu na rovnice.
  Ak ste zvyknutý na \SpecialChar LaTeX
-, zistíte, že všetky obyčajné matematické príkazy \SpecialChar LaTeX
-u
- môžte napísať normálne, ale zobrazia sa spôsobom WYSIWYM.
- Na druhej strane, ak ste nikdy nepísali v \SpecialChar LaTeX
-e, matematický panel vám dovolí
- napísať profesionálne vyzerajúcu matematiku rýchlo a jednoducho
+,
+ zistíte,
+ že všetky obyčajné matematické príkazy \SpecialChar LaTeX
+u môžte napísať normálne,
+ ale zobrazia sa spôsobom WYSIWYM.
+ Na druhej strane,
+ ak ste nikdy nepísali v \SpecialChar LaTeX
+e,
+ matematický panel vám dovolí napísať profesionálne vyzerajúcu matematiku rýchlo a jednoducho
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
- nemôže skontrolovať, či vzorec, ktorý ste práve napísali je 
+ nemôže skontrolovať,
+ či vzorec,
+ ktorý ste práve napísali je 
 \emph on
 správny
 \emph toggle
@@ -3497,12 +3823,15 @@ Niekde vo svojom dokumente napíšte:
 \end_layout
 
 \begin_layout LyX-Code
-Mám rád čo povedal Einstein, E=mc^2, pretože je to tak jednoduché.
+Mám rád čo povedal Einstein,
+ E=mc^2,
+ pretože je to tak jednoduché.
 \end_layout
 
 \begin_layout Standard
 Teraz tá rovnica nevyzerá veľmi dobre.
- aj kvôli tomu, že v dvi súbore nie je medzera medzi písmenami a rovná sa,
+ aj kvôli tomu,
+ že v dvi súbore nie je medzera medzi písmenami a rovná sa,
  a vy by ste radi napísali 
 \begin_inset Quotes gld
 \end_inset
@@ -3512,29 +3841,37 @@ Teraz tá rovnica nevyzerá veľmi dobre.
 \end_inset
 
  horným indexom.
- Toto je spôsobené tým, že sme nepovedali \SpecialChar LyX
-u, že píšeme matematický výraz,
+ Toto je spôsobené tým,
+ že sme nepovedali \SpecialChar LyX
+u,
+ že píšeme matematický výraz,
  tak vysádzal rovnicu ako obyčajný text.
 \end_layout
 
 \begin_layout Standard
 Matematika sa píše v Matematickom režime.
- Ak sa chcete prepnúť do matematického režimu, stačí kliknúť na tlačítko
- s modrým popisom
+ Ak sa chcete prepnúť do matematického režimu,
+ stačí kliknúť na tlačítko s modrým popisom
 \begin_inset Formula $\frac{a+b}{c}$
 \end_inset
 
 .
  \SpecialChar LyX
- otvorí malý modrý štvorček, s rúžovým obdĺžnikom okolo neho.
+ otvorí malý modrý štvorček,
+ s rúžovým obdĺžnikom okolo neho.
  Modrý štvorček je 
 \emph on
 vkladací bod
 \emph toggle
-, ktorý hovorí, že matematický editor čaká na váš, že niečo napíšete, a
- rúžový obdĺžnik hovorí, že ste v matematickom režime.
+,
+ ktorý hovorí,
+ že matematický editor čaká na váš,
+ že niečo napíšete,
+ a rúžový obdĺžnik hovorí,
+ že ste v matematickom režime.
  \SpecialChar LyX
- umiestnil kurzor do modrého štvorčeku, tak len znovu napíšte
+ umiestnil kurzor do modrého štvorčeku,
+ tak len znovu napíšte
 \emph default
  
 \family typewriter
@@ -3542,10 +3879,12 @@ vkladací bod
 E=mc^2
 \family default
 .
- Výraz je napísaný modrým, a modrý štvorček zmizne okamžite, ak vkladací
- bod nie je prázdny.
+ Výraz je napísaný modrým,
+ a modrý štvorček zmizne okamžite,
+ ak vkladací bod nie je prázdny.
  Teraz stlačte Esc na ukončenie matematického editora.
- (Poznámka: kliknutie na tlačítko mat.
+ (Poznámka:
+ kliknutie na tlačítko mat.
  editora
 \emph default
  
@@ -3556,8 +3895,8 @@ nevypne
 \emph toggle
 mat.
  režim).
- Rúžový obdĺžnik zmizne a kurzor sa nastaví vpravo od výrazu a keď napíšete
- niečo teraz, bude to normálny text.
+ Rúžový obdĺžnik zmizne a kurzor sa nastaví vpravo od výrazu a keď napíšete niečo teraz,
+ bude to normálny text.
 \end_layout
 
 \begin_layout Standard
@@ -3567,7 +3906,8 @@ Spustite \SpecialChar LaTeX
 dvi
 \family default
  súbor.
- Všimnite si, že výraz bol napísaný správne.
+ Všimnite si,
+ že výraz bol napísaný správne.
  Písmena v matematickom režime sú považované za premenné a sú napísanú kurzívou.
  Čísla sú jednoducho čísla.
 \end_layout
@@ -3575,12 +3915,14 @@ dvi
 \begin_layout Standard
 Matematický editor je ďalším príkladom filozofie WYSIWYM.
  V \SpecialChar LaTeX
-e píšete matematické výrazy používaním príkazov, napr.
+e píšete matematické výrazy používaním príkazov,
+ napr.
  
 \backslash
 sqrt.
- Toto môže byť frustrujúce, pretože nevidíte ako výraz vyzerá, pokaiľ nespustíte
- \SpecialChar LaTeX
+ Toto môže byť frustrujúce,
+ pretože nevidíte ako výraz vyzerá,
+ pokaiľ nespustíte \SpecialChar LaTeX
  a môžete stráviť čas hľadaním chýbajúcej zátvorky alebo iných 
 \begin_inset Quotes gld
 \end_inset
@@ -3590,20 +3932,24 @@ bugov
 \end_inset
 
 .
- Na druhej strane, \SpecialChar LyX
- sa nepokúša zobraziť výraz perfektne (WYSIWYG), ale
- vám dáva náhľad, ako bude daný výraz vyzerať.
+ Na druhej strane,
+ \SpecialChar LyX
+ sa nepokúša zobraziť výraz perfektne (WYSIWYG),
+ ale vám dáva náhľad,
+ ako bude daný výraz vyzerať.
  O profesionálne vysádzanie sa postará \SpecialChar LaTeX
 .
- V 99% nebudete musieť robiť žiadne zmeny vo veľkostiach písem, alebo v
- medzerách.
- Takto (prepáčte, že sa opakujeme) sa môžte zamerať na 
+ V 99% nebudete musieť robiť žiadne zmeny vo veľkostiach písem,
+ alebo v medzerách.
+ Takto (prepáčte,
+ že sa opakujeme) sa môžte zamerať na 
 \emph on
 obsah
 \emph default
  
 \emph toggle
-vášho matematického výrazu, a nie na jeho formát.
+vášho matematického výrazu,
+ a nie na jeho formát.
 \end_layout
 
 \begin_layout Section
@@ -3621,8 +3967,11 @@ Teraz zmeňme
 
 .
  Na pohyb vo výraze použite kurzorové šípky.
- Všimnite si, že keď vstúpite do výrazu, objaví sa rúžový obdĺžnik, any
- ste vedeli, že ste v matematickom režime.
+ Všimnite si,
+ že keď vstúpite do výrazu,
+ objaví sa rúžový obdĺžnik,
+ any ste vedeli,
+ že ste v matematickom režime.
  Teraz šípkami nastavte kurzor za rovná sa a jednoducho napíšte 
 \begin_inset Quotes gld
 \end_inset
@@ -3637,13 +3986,13 @@ Teraz zmeňme
 Esc
 \family default
  aby ste ukončili výraz a rúžový obdĺžnik zmizne.
- Pre veľa ľudí sú kurzorové šípky vhodné, ale stačí len kliknúť niekde vo
- výraze a spustí sa matematický editor.
+ Pre veľa ľudí sú kurzorové šípky vhodné,
+ ale stačí len kliknúť niekde vo výraze a spustí sa matematický editor.
 \end_layout
 
 \begin_layout Standard
-Okrem špeciálnych klávesov popísaných nižšie, písanie v matematickom režime
- je ako písanie obyčajného textu.
+Okrem špeciálnych klávesov popísaných nižšie,
+ písanie v matematickom režime je ako písanie obyčajného textu.
  Používajte 
 \family sans
 Delete
@@ -3669,9 +4018,10 @@ rátiť
 
 späť
 \family default
- funguje v matemtickom režime, rovnako ako vystrihovanie a vkladanie.
- Ale na jednu vec si dávajte pozor: ak ste tesne vedľa výrazu a stlačíte
- 
+ funguje v matemtickom režime,
+ rovnako ako vystrihovanie a vkladanie.
+ Ale na jednu vec si dávajte pozor:
+ ak ste tesne vedľa výrazu a stlačíte 
 \family sans
 Delete
 \family default
@@ -3679,7 +4029,8 @@ Delete
 \family sans
 Backspace
 \family default
-), vymažete celý výraz.
+),
+ vymažete celý výraz.
  Našťastie jednoducho vrátite akciu späť.
 \end_layout
 
@@ -3692,7 +4043,9 @@ Backspace
 \begin_inset Formula $E=mc^{2,5}+1$
 \end_inset
 
-? Znovu, myšou kliknite na správnom mieste (samozrejme môžete použiť klávesnicu).
+?
+ Znovu,
+ myšou kliknite na správnom mieste (samozrejme môžete použiť klávesnicu).
  Keď je kurzor za písmenom 
 \begin_inset Quotes gld
 \end_inset
@@ -3709,11 +4062,13 @@ c
 \begin_inset Quotes grd
 \end_inset
 
-, stlačením klávesy 
+,
+ stlačením klávesy 
 \family sans
 Up
 \family default
- (šípka hore) presunie kurzor do úrovne horného indexu, hneď pred 
+ (šípka hore) presunie kurzor do úrovne horného indexu,
+ hneď pred 
 \begin_inset Quotes gld
 \end_inset
 
@@ -3735,12 +4090,15 @@ Up
 \family sans
 Down
 \family default
- (šípka nadol), presunie kurzor naspäť na bežnú úroveň.
- V podstate, ak stlačíte 
+ (šípka nadol),
+ presunie kurzor naspäť na bežnú úroveň.
+ V podstate,
+ ak stlačíte 
 \family sans
 Down
 \family default
- hocikde v hornom indexe, kurzor sa nastaví tesne 
+ hocikde v hornom indexe,
+ kurzor sa nastaví tesne 
 \emph on
 za
 \emph default
@@ -3763,29 +4121,42 @@ Na pohyb vo výraze tiež môžete použiť
 Medzeru
 \family default
 .
- Ak ste práve v matematickej štruktúre (horný/dolný index, zlomok, odmocnina,
- matica, všetky ktoré sú popísané v nasledujúcej sekcii), stlačením 
+ Ak ste práve v matematickej štruktúre (horný/dolný index,
+ zlomok,
+ odmocnina,
+ matica,
+ všetky ktoré sú popísané v nasledujúcej sekcii),
+ stlačením 
 \family sans
 Medzery
 \family default
- presuniete kurzor za danú štruktúru, ale ostanete v matematiskom režime.
- Takže, keď je kurzor v hornom indexe, sltačením 
+ presuniete kurzor za danú štruktúru,
+ ale ostanete v matematiskom režime.
+ Takže,
+ keď je kurzor v hornom indexe,
+ sltačením 
 \family sans
 Medzery
 \family default
  sa nastaví na bežnú úroveň za daný horný index.
- To znamená, že môžete napísať 
+ To znamená,
+ že môžete napísať 
 \begin_inset Formula $E=mc^{1+x}-2$
 \end_inset
 
- bez používania myši alebo kurzorových šípok, spôsobom, ktorý budete pravdepodob
-ne preferovať, keď budete mať viac skúseností.
- Buďte opatrný, aby ste nestlačili 
+ bez používania myši alebo kurzorových šípok,
+ spôsobom,
+ ktorý budete pravdepodobne preferovať,
+ keď budete mať viac skúseností.
+ Buďte opatrný,
+ aby ste nestlačili 
 \family sans
 Medzeru
 \family default
- medzi jednotkou a znakom plus, pretože opustíte horný index.
- Na miestach, kde to nedáva zmysel (povedzme medzi 
+ medzi jednotkou a znakom plus,
+ pretože opustíte horný index.
+ Na miestach,
+ kde to nedáva zmysel (povedzme medzi 
 \begin_inset Quotes gld
 \end_inset
 
@@ -3801,7 +4172,8 @@ c
 \begin_inset Quotes grd
 \end_inset
 
-), 
+),
+ 
 \family sans
 Medzera
 \family default
@@ -3815,18 +4187,21 @@ Medzery a tabulátory sa
 nepoužívajú
 \series default
  na tvorenie extra medzier medzi časťami výrazu.
- Medzery sú problémom sádzania, čo znamená, že by ste mali nechať sa o ne
- postarať \SpecialChar LyX
+ Medzery sú problémom sádzania,
+ čo znamená,
+ že by ste mali nechať sa o ne postarať \SpecialChar LyX
  (\SpecialChar LaTeX
 ) (pozri sekciu 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec: priestor"
+nolink "false"
 
 \end_inset
 
 ).
- Ak nie ste celkom spokojný, v 
+ Ak nie ste celkom spokojný,
+ v 
 \emph on
 Užívateľskej príručke
 \emph default
@@ -3841,18 +4216,22 @@ si pozrite spôsoby ako jemne doladiť medzery.
 \end_layout
 
 \begin_layout Standard
-Všimnite si, že keď napíšete výraz a ukončíte ho 
+Všimnite si,
+ že keď napíšete výraz a ukončíte ho 
 \family sans
 Esc
 \family default
-, na ním nebude žiadna medzera.
+,
+ na ním nebude žiadna medzera.
  Je to dobré ak chcete za ním napísať bodku alebo čiarku.
- Ale ak chcete za ním napísať slovo, musíte explicitne stlačiť 
+ Ale ak chcete za ním napísať slovo,
+ musíte explicitne stlačiť 
 \family sans
 Medzeru
 \family default
 .
- Ako skratku môžete použiť stlačenie Medzery, ak ste na úplnom konci výrazu.
+ Ako skratku môžete použiť stlačenie Medzery,
+ ak ste na úplnom konci výrazu.
  Toto ukončí matematický režim a vloží za výraz medzeru.
  Takto môžete napísať 
 \begin_inset Quotes gld
@@ -3897,12 +4276,15 @@ Exponent môže byť vložený z matematického menu.
 
 .
  \SpecialChar LyX
- vloží vkládací bod (modrý štvorček, pamätáte?) na úrovni horného indexu,
- takže všetko čo napíšete, bude horný index a bude menšie písmo.
+ vloží vkládací bod (modrý štvorček,
+ pamätáte?) na úrovni horného indexu,
+ takže všetko čo napíšete,
+ bude horný index a bude menšie písmo.
 \end_layout
 
 \begin_layout Standard
-Napísanie dolného indexu je rovnako jednoduché: začnite písať znakom 
+Napísanie dolného indexu je rovnako jednoduché:
+ začnite písať znakom 
 \begin_inset Quotes gld
 \end_inset
 
@@ -3912,7 +4294,9 @@ _
 
 .
  Exponenty a idexy môžu byť na viacerých úrovňach (napr.
- exponent v exponente), ako napríklad toto: 
+ exponent v exponente),
+ ako napríklad toto:
+ 
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
 \end_inset
 
@@ -3923,6 +4307,7 @@ _
 
 \series bold
 Cvičenie:
+
 \series default
  Prepíšte výraz 1 v 
 \family typewriter
@@ -3936,14 +4321,15 @@ Matematický panel
 \end_layout
 
 \begin_layout Standard
-Matematický panel je bežný spôsob ako vkladať symboly a rôzne komplikované
- matemtické funkcie.
- Veľa z týchto funkcií môže byť dosiahnutých z klávesnice, alebo matematického
- menu.
- Avšak my sa zameriame na použitie panelu, aby ste zistili, čo tam je.
+Matematický panel je bežný spôsob ako vkladať symboly a rôzne komplikované matemtické funkcie.
+ Veľa z týchto funkcií môže byť dosiahnutých z klávesnice,
+ alebo matematického menu.
+ Avšak my sa zameriame na použitie panelu,
+ aby ste zistili,
+ čo tam je.
  Klávesové skratky sa môžete naučiť neskôr z iných manuálov.
- Takže teraz si matematický panel otvorte, a nechajte si ho otvorený počas
- čítania tohto textu.
+ Takže teraz si matematický panel otvorte,
+ a nechajte si ho otvorený počas čítania tohto textu.
 \end_layout
 
 \begin_layout Subsection
@@ -3963,16 +4349,22 @@ Ak kliknete na tlačítku
 \begin_inset Quotes grd
 \end_inset
 
-, otvorí sa vám menu gréckych písmen.
- Všimnite si, že sú tam viaceré varianty písmen epsilon, pi, phi, theta
- a sigma.
- Ako skratku môžete vybrať niečo z panelu a automaticky sa otvorí matematický
- editor.
+,
+ otvorí sa vám menu gréckych písmen.
+ Všimnite si,
+ že sú tam viaceré varianty písmen epsilon,
+ pi,
+ phi,
+ theta a sigma.
+ Ako skratku môžete vybrať niečo z panelu a automaticky sa otvorí matematický editor.
 \end_layout
 
 \begin_layout Standard
-Ďalšie štyri tlačítka vám umožnia vybrať si z množstva symbolov používaných
- v matematike: rôzne šípky, relácie, operátory, sumy a integrály.
+Ďalšie štyri tlačítka vám umožnia vybrať si z množstva symbolov používaných v matematike:
+ rôzne šípky,
+ relácie,
+ operátory,
+ sumy a integrály.
  Exponenty a indexy vám umožnia nastaviť dolné a horné hranice súm a integrálov.
  Posledné tlačítko má popis rôzne.
  
@@ -3992,16 +4384,23 @@ Nič čo môžeš urobiť nemôže byť urobené\SpecialChar ldots
 \end_layout
 
 \begin_layout Subsection
-Odmocniny, zdôraznenia a oddeľovače
+Odmocniny,
+ zdôraznenia a oddeľovače
 \end_layout
 
 \begin_layout Standard
-Na napísanie Odmocniny jednoducho kliknite na tlačítko, na ktorom je odmocnina.
+Na napísanie Odmocniny jednoducho kliknite na tlačítko,
+ na ktorom je odmocnina.
  Tá sa objaví a kurzor bude v nvom vkládacom bode pod odmocninou.
- Môžete písať premenné, čísla, iné odmocniny, zlomky, čo chcete.
+ Môžete písať premenné,
+ čísla,
+ iné odmocniny,
+ zlomky,
+ čo chcete.
  \SpecialChar LyX
- automaticky zmení veľkosť odmocniny, aby sa pod ňu vošlo všetko, čo ste
- napísali.
+ automaticky zmení veľkosť odmocniny,
+ aby sa pod ňu vošlo všetko,
+ čo ste napísali.
 \end_layout
 
 \begin_layout Standard
@@ -4009,7 +4408,8 @@ Zdôraznenie znaku (
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
 
-), alebo skupiny znakov (
+),
+ alebo skupiny znakov (
 \begin_inset Formula $\overrightarrow{a+b}$
 \end_inset
 
@@ -4018,7 +4418,8 @@ Zdôraznenie znaku (
 \family sans
 Dekorácia
 \family default
-, ktoré má modrý štvorček s čiernou vlnovkou nad ním.
+,
+ ktoré má modrý štvorček s čiernou vlnovkou nad ním.
  Otvorí sa okno dekorácií.
  Stlačne na požadovanej dekorácií a \SpecialChar LyX
  ju zobrazí s vkladacím bodom pod ňou.
@@ -4030,9 +4431,11 @@ Medzeru
 \end_layout
 
 \begin_layout Standard
-Oddeľovače a zátvorky pracujú podobne, ale sú trošku komplikovanejšie.
- Stlačte tlačítko oddeľovačov, ktoré má nakreslený modrý štvorček v hranatých
- zátvorkách, a objaví sa okno oddeľovačov.
+Oddeľovače a zátvorky pracujú podobne,
+ ale sú trošku komplikovanejšie.
+ Stlačte tlačítko oddeľovačov,
+ ktoré má nakreslený modrý štvorček v hranatých zátvorkách,
+ a objaví sa okno oddeľovačov.
  Kliknite na ľavý oddeľovač 
 \emph on
 ľavým myšítkom
@@ -4047,11 +4450,10 @@ pravým myšítkom
 \emph default
  
 \emph toggle
-(môžete použiť aj prepínač Vľavo a Vpravo a potom kliknúť na jednotlivé
- oddeľovače ľavým myšítkom).
+(môžete použiť aj prepínač Vľavo a Vpravo a potom kliknúť na jednotlivé oddeľovače ľavým myšítkom).
  Váš výber je okamžite zobrazený.
- Môžete vybrať ľubovoľnú kombináciu, alebo dokonca nechať jeden z oddeľovačov
- prázdny aby ste dostali niečo ako 
+ Môžete vybrať ľubovoľnú kombináciu,
+ alebo dokonca nechať jeden z oddeľovačov prázdny aby ste dostali niečo ako 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4063,28 +4465,31 @@ pravým myšítkom
 \begin_inset Quotes grd
 \end_inset
 
- (prázdny oddeľovač sa zobrazí ako prerušovaná čierna čiara, ale nevytlačí
- sa).
+ (prázdny oddeľovač sa zobrazí ako prerušovaná čierna čiara,
+ ale nevytlačí sa).
 \end_layout
 
 \begin_layout Standard
-Ak máte nastavené oddeľovače, stlačte tlačítko 
+Ak máte nastavené oddeľovače,
+ stlačte tlačítko 
 \family sans
 OK
 \family default
 .
- Ak ste lenivý, môžete napísať zátvorky v matematickom režime, bez použitia
- okna oddeľovačov.
- Avšak tieto zátvorky budú mať rovnakú veľkosť ako text, čo nebude vyzrať
- dobre, ak v nich máte veľký zlomok alebo maticu.
- Použitie okna oddeľovačov vám garantuje prispôsobenie veľkosti oddeľovačov
- ich obsahu.
+ Ak ste lenivý,
+ môžete napísať zátvorky v matematickom režime,
+ bez použitia okna oddeľovačov.
+ Avšak tieto zátvorky budú mať rovnakú veľkosť ako text,
+ čo nebude vyzrať dobre,
+ ak v nich máte veľký zlomok alebo maticu.
+ Použitie okna oddeľovačov vám garantuje prispôsobenie veľkosti oddeľovačov ich obsahu.
 \end_layout
 
 \begin_layout Standard
-Oddeľovače, odmocniny alebo zvýraznenie môžete aplikovať aj na už napísaný
- text.
- Označte časť výrazu, na ktorý to chcete aplikovať a stlačte príslušné tlačítko.
+Oddeľovače,
+ odmocniny alebo zvýraznenie môžete aplikovať aj na už napísaný text.
+ Označte časť výrazu,
+ na ktorý to chcete aplikovať a stlačte príslušné tlačítko.
  Pokúste sa zmeniť druhý Newtonov zákon zo skalárov na vektorovú formu (
 \begin_inset Formula $f=ma$
 \end_inset
@@ -4094,8 +4499,9 @@ Oddeľovače, odmocniny alebo zvýraznenie môžete aplikovať aj na už napísa
 \end_inset
 
 ).
- Teraz, keď sa naučíte vytvárať matice, už budete vedieť dať okolo nich
- zátvorky.
+ Teraz,
+ keď sa naučíte vytvárať matice,
+ už budete vedieť dať okolo nich zátvorky.
 \end_layout
 
 \begin_layout Subsection
@@ -4107,8 +4513,8 @@ Zlomky sú v matematickom editore jednoduché.
  Kliknite na tlačítko zlomku na matematiickom paneli.
  \SpecialChar LyX
  zobrazí dva vkladacie bodu ako zlomok.
- Ako ise očakávate, na pohyb v zlomku môžete použiť kurzorové šípky alebo
- myš.
+ Ako ise očakávate,
+ na pohyb v zlomku môžete použiť kurzorové šípky alebo myš.
  Kliknite na horný štvorček a napíšte 
 \begin_inset Quotes gld
 \end_inset
@@ -4117,7 +4523,8 @@ Zlomky sú v matematickom editore jednoduché.
 \begin_inset Quotes grd
 \end_inset
 
-, potom na dolný a napíšte 
+,
+ potom na dolný a napíšte 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4126,14 +4533,19 @@ Zlomky sú v matematickom editore jednoduché.
 \end_inset
 
 .
- Vytvorili ste zlomok! Samozrejme že do zlomkov môžete napísať čokoľvek:
- premenné s exponentom, odmocniny, iné zlomky, čokoľvek.
+ Vytvorili ste zlomok!
+ Samozrejme že do zlomkov môžete napísať čokoľvek:
+ premenné s exponentom,
+ odmocniny,
+ iné zlomky,
+ čokoľvek.
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 Cvičenie:
+
 \series default
  Preveďte výraz 2 v 
 \family typewriter
@@ -4144,12 +4556,15 @@ example_raw.lyx
 
 \begin_layout Subsection
 Režim \SpecialChar TeX
-: limity, logaritmy, sínusy a ďalšie
+:
+ limity,
+ logaritmy,
+ sínusy a ďalšie
 \end_layout
 
 \begin_layout Standard
-Pretože písmená v matematickom režime sú považované za premenné, ak napíšete
- 
+Pretože písmená v matematickom režime sú považované za premenné,
+ ak napíšete 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4157,21 +4572,26 @@ sin
 \begin_inset Quotes grd
 \end_inset
 
-, \SpecialChar LyX
- si myslí, že píšete tri premenné 
+,
+ \SpecialChar LyX
+ si myslí,
+ že píšete tri premenné 
 \begin_inset Formula $s$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $i$
 \end_inset
 
-, a 
+,
+ a 
 \begin_inset Formula $n$
 \end_inset
 
 .
- Tieto písmená budú vytlačené kurzívou, zatiľčo vy ste chceli slovo 
+ Tieto písmená budú vytlačené kurzívou,
+ zatiľčo vy ste chceli slovo 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4247,13 +4667,16 @@ sin
 \begin_inset Quotes grd
 \end_inset
 
- je napísané červeným normálnym písmom, tiež známym ako režim \SpecialChar TeX
+ je napísané červeným normálnym písmom,
+ tiež známym ako režim \SpecialChar TeX
 .
- Celé slovo je považované za jeden symbol, takže keď stlačíte 
+ Celé slovo je považované za jeden symbol,
+ takže keď stlačíte 
 \family sans
 Backspace
 \family default
-, vymažete celé slovo.
+,
+ vymažete celé slovo.
  Teraz napíšte 
 \begin_inset Quotes gld
 \end_inset
@@ -4262,7 +4685,9 @@ x
 \begin_inset Quotes grd
 \end_inset
 
-, ktoré bude napísané kurzívou, ako iste očakávate v matematickom editore.
+,
+ ktoré bude napísané kurzívou,
+ ako iste očakávate v matematickom editore.
  V súbore 
 \family typewriter
 dvi
@@ -4272,14 +4697,18 @@ dvi
 \end_layout
 
 \begin_layout Standard
-Ďalšie príkazy, písané v režime \SpecialChar TeX
+Ďalšie príkazy,
+ písané v režime \SpecialChar TeX
  použitím tlačítka 
 \family sans
 Funkcie
 \family default
- zahŕňajú ďalšie trigonometrické funkcie a ich inverzné formy, hyperbolické
- funkcie, logaritmy, limity a zopár ďlaších slov.
- Tieto funkcie samozrejme môžu mať exponenty a indexy, napríklad 
+ zahŕňajú ďalšie trigonometrické funkcie a ich inverzné formy,
+ hyperbolické funkcie,
+ logaritmy,
+ limity a zopár ďlaších slov.
+ Tieto funkcie samozrejme môžu mať exponenty a indexy,
+ napríklad 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4307,7 +4736,8 @@ Funkcie
 \end_layout
 
 \begin_layout Standard
-Cvičenie: Preveďte rovnicu 3 v 
+Cvičenie:
+ Preveďte rovnicu 3 v 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4334,8 +4764,9 @@ Matica
 \family sans
 Matica
 \family default
-, ktoré má dve posúvacie lišty, ktorými určíte koľko riadkov a stĺpcov má
- matica mať.
+,
+ ktoré má dve posúvacie lišty,
+ ktorými určíte koľko riadkov a stĺpcov má matica mať.
  Nastavte 2 riadky a 3 stĺpce a stlačte 
 \family sans
 OK
@@ -4366,9 +4797,9 @@ Užívateľskej príručke
 \emph default
  
 \emph toggle
-si pozrite ako zmeníte horizontálne zarovnanie každého stĺpca a ako zmeníte
- vertikálnu polohu celej matice.
- Ak chcete napísať tabuľku obsahujúcu text, mali by ste použiť \SpecialChar LyX
+si pozrite ako zmeníte horizontálne zarovnanie každého stĺpca a ako zmeníte vertikálnu polohu celej matice.
+ Ak chcete napísať tabuľku obsahujúcu text,
+ mali by ste použiť \SpecialChar LyX
 ové tabuľky,
  namiesto písania textu do matice.
 \end_layout
@@ -4378,22 +4809,25 @@ Režim rovnice
 \end_layout
 
 \begin_layout Standard
-Všetky výrazy, ktoré sme doteraz napísali boli na rovnakom riadku ako text
- pred nimi a za nimi.
+Všetky výrazy,
+ ktoré sme doteraz napísali boli na rovnakom riadku ako text pred nimi a za nimi.
  Tiež sa tomu hovorí inline výrazy.
- Toto je vhodné na krátke, jednoduché výrazy, ale keď chcete napísať veľký
- výraz, alebo chcete aby výraz bol mimo textu, potrebujete ho napísať v
- režime rovnice.
- Okrem toho len takto napísané výrazy môžu byť označkované a očíslované
- (pozri 
+ Toto je vhodné na krátke,
+ jednoduché výrazy,
+ ale keď chcete napísať veľký výraz,
+ alebo chcete aby výraz bol mimo textu,
+ potrebujete ho napísať v režime rovnice.
+ Okrem toho len takto napísané výrazy môžu byť označkované a očíslované (pozri 
 \emph on
 Užívateľskú príručku
 \emph toggle
-), a viacriadkové výrazy (pozri Sek.
+),
+ a viacriadkové výrazy (pozri Sek.
  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec: multiline"
+nolink "false"
 
 \end_inset
 
@@ -4405,9 +4839,11 @@ Kliknite na tlačítko
 \family sans
 Rovnica
 \family default
-, ktoré zobrazuje zopár riadkov textu pred a za modrým centrovaným štvorčekom.
- Lyx vloží nový vkladací bod, ale tento bude na novom riadku, a bude vycentrovan
-ý.
+,
+ ktoré zobrazuje zopár riadkov textu pred a za modrým centrovaným štvorčekom.
+ Lyx vloží nový vkladací bod,
+ ale tento bude na novom riadku,
+ a bude vycentrovaný.
  Teraz napíšte nejaký výraz a spustite \SpecialChar LaTeX
  aby ste vydeli ako to bude vyzerať.
  Toto tlačítko je v skutočnosti prepínač.
@@ -4419,7 +4855,8 @@ Režim rovnice má zopár odlišností od matematického editora:
 \end_layout
 
 \begin_layout Itemize
-Štandardný font pre niektoré symboly, napr.
+Štandardný font pre niektoré symboly,
+ napr.
  
 \begin_inset Formula $\sum$
 \end_inset
@@ -4428,12 +4865,12 @@ Režim rovnice má zopár odlišností od matematického editora:
 \begin_inset Formula $\int$
 \end_inset
 
-, je menší
+,
+ je menší
 \end_layout
 
 \begin_layout Itemize
-Exponenty a indexy pre limity a sumy (ale nie pre integrály) sú napísané
- pod a nie vedľa symbolu
+Exponenty a indexy pre limity a sumy (ale nie pre integrály) sú napísané pod a nie vedľa symbolu
 \end_layout
 
 \begin_layout Itemize
@@ -4445,20 +4882,25 @@ Rovnicové a inline výrazy sú si ináč veľmi podobné.
 \end_layout
 
 \begin_layout Standard
-Ešte jedna poznámka o spôsobe vysádzania rovnicových výrazov: dajte si pozor,
+Ešte jedna poznámka o spôsobe vysádzania rovnicových výrazov:
+ dajte si pozor,
  či vkladáte výraz do nového odseku alebo nie.
- Ak váš výraz je uprostred vety, nestláčajte 
+ Ak váš výraz je uprostred vety,
+ nestláčajte 
 \family sans
 Enter
 \family default
-, pretože text za výrazom bude nový odsek.
- Text preto bude zarovnaný, čo asi nechcete.
+,
+ pretože text za výrazom bude nový odsek.
+ Text preto bude zarovnaný,
+ čo asi nechcete.
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 Cvičenie:
+
 \series default
  Preveďte rôzne výrazy v 
 \family typewriter
@@ -4471,9 +4913,10 @@ example_raw.lyx
 
 \series bold
 Cvičenie:
+
 \series default
- Pomocou nástrojov, ktoré ste sa naučili používať v tejto sekcii by ste
- mali byť schopný napísať niečo takéto:
+ Pomocou nástrojov,
+ ktoré ste sa naučili používať v tejto sekcii by ste mali byť schopný napísať niečo takéto:
 \begin_inset Formula 
 \[
 f(x)=\left\{ \begin{array}{cc}
@@ -4526,9 +4969,12 @@ x=y+y+y+y+y
 \end_layout
 
 \begin_layout Standard
-Toto vôbec nevyzerá dobre! Ak píšete dve alebo viac rovníc, ktoré sú pod
- sebou, vyzeralo by lepšie, keby znamienka rovná sa boli priamo nad sebou
- (zvlášť, ak druhá rovnica nemá ľavú stranu).
+Toto vôbec nevyzerá dobre!
+ Ak píšete dve alebo viac rovníc,
+ ktoré sú pod sebou,
+ vyzeralo by lepšie,
+ keby znamienka rovná sa boli priamo nad sebou (zvlášť,
+ ak druhá rovnica nemá ľavú stranu).
  \SpecialChar LyX
  vám dovoľuje napísať viacriadkový výraz s možnosťou kontroly zarovnania.
 \end_layout
@@ -4552,23 +4998,28 @@ oveľa
 \emph default
  
 \emph toggle
-lepšie! Znamianka rovná sa sú zarovnané a medzi rovnicami je menšia medzera.
+lepšie!
+ Znamianka rovná sa sú zarovnané a medzi rovnicami je menšia medzera.
 \end_layout
 
 \begin_layout Standard
-Keď chcete písať viacriadkový výraz, spustite matematický editor a stlačte
- 
+Keď chcete písať viacriadkový výraz,
+ spustite matematický editor a stlačte 
 \family sans
 C-Enter
 \family default
 .
  \SpecialChar LyX
  napíše dva riadky a v každom tri vkladacie body.
- Ako s maticami, na pohyb môžete použiť myš, kurzorové šípky a tabulátor.
+ Ako s maticami,
+ na pohyb môžete použiť myš,
+ kurzorové šípky a tabulátor.
  Pokúste sa reprodukovať výraz napísaný vyššie.
- Všimnite si, že je možné nechať vkladací bod prázdny.
- Toto je užitočné napríklad na niečo ako je hore, alebo na rozdelenie veľmi
- dlhej rovnice, ako napríklad:
+ Všimnite si,
+ že je možné nechať vkladací bod prázdny.
+ Toto je užitočné napríklad na niečo ako je hore,
+ alebo na rozdelenie veľmi dlhej rovnice,
+ ako napríklad:
 \begin_inset Formula 
 \begin{eqnarray*}
 x & = & a+b+c+d+\\
@@ -4582,8 +5033,10 @@ x & = & a+b+c+d+\\
 
 \begin_layout Standard
 \SpecialChar LyX
- rovnice zarovná tak, aby druhé (prostredné) vkladacie body boli nad sebou,
- takže obyčajne tam napíšete rovná sa, alebo nejaký iný relačný operátor.
+ rovnice zarovná tak,
+ aby druhé (prostredné) vkladacie body boli nad sebou,
+ takže obyčajne tam napíšete rovná sa,
+ alebo nejaký iný relačný operátor.
  Samozrejme môžete tam napísať čokoľvek.
  Ale nepoužívajte viacriadkový výraz na písanie polí.
  Na to sú matice (pozri Sek.
@@ -4591,6 +5044,7 @@ x & = & a+b+c+d+\\
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec: matice"
+nolink "false"
 
 \end_inset
 
@@ -4598,24 +5052,26 @@ reference "sec: matice"
 \end_layout
 
 \begin_layout Standard
-Ak chcete ešte dlhšiu množinu rovníc, stlačte znovu 
+Ak chcete ešte dlhšiu množinu rovníc,
+ stlačte znovu 
 \family sans
 C-Enter
 \family default
  a dostanete nový riadok.
- Ak nie ste na konci riadku keď to robíte, zvyšok riadku bude prenesený
- do nového riadku.
+ Ak nie ste na konci riadku keď to robíte,
+ zvyšok riadku bude prenesený do nového riadku.
  Ak stlačíte 
 \family sans
 C-Enter
 \family default
- ak ste už napísali (jednoriadkovú) rovnicu, celá rovnica ostane v prvom
- vkladacom bode.
+ ak ste už napísali (jednoriadkovú) rovnicu,
+ celá rovnica ostane v prvom vkladacom bode.
  Umiestnite kurzor pred znamienko rovná sa a stlačte 
 \family sans
 C-Tab
 \family default
-, aby sa posunulo do druhého bodu.
+,
+ aby sa posunulo do druhého bodu.
  Potom sa presuňte za rovná sa a znovu stlačte 
 \family sans
 C-Tab
@@ -4638,8 +5094,8 @@ E & = & mc^{2}\\
 \end_layout
 
 \begin_layout Standard
-Ak ste napísali príliš veľa riadkov, dajte kurzor na koniec riadku a použite
- 
+Ak ste napísali príliš veľa riadkov,
+ dajte kurzor na koniec riadku a použite 
 \family sans
 M-e
 \begin_inset space ~
@@ -4647,11 +5103,13 @@ M-e
 
 k
 \family default
-, aby ste zmazali nasledujúci riadok.
- Vymaže to koiec riadku a spojí (všetky tri časti) nasledujúceho riadku
- na koniec aktuálneho.
- Ak nasledujúci riadok je prázdny, jednoducho ho zruší.
- Upozornenie: použitie 
+,
+ aby ste zmazali nasledujúci riadok.
+ Vymaže to koiec riadku a spojí (všetky tri časti) nasledujúceho riadku na koniec aktuálneho.
+ Ak nasledujúci riadok je prázdny,
+ jednoducho ho zruší.
+ Upozornenie:
+ použitie 
 \family sans
 M-e
 \begin_inset space ~
@@ -4668,11 +5126,14 @@ k
 
 \begin_layout Standard
 Matematický editor dokáže oveľa viac.
- Teraz, keď ste sa oboznámili so základmi, odkážeme vás len na 
+ Teraz,
+ keď ste sa oboznámili so základmi,
+ odkážeme vás len na 
 \emph on
 Užívateľskú príručku
 \emph toggle
-, ako:
+,
+ ako:
 \end_layout
 
 \begin_layout Itemize
@@ -4680,24 +5141,28 @@ Značkovanie a číslovanie výrazov.
 \end_layout
 
 \begin_layout Itemize
-Zmena fontu, napr.
+Zmena fontu,
+ napr.
  napísať tučný text vo výraze.
- Tu len spomenieme, že kliknutie na tlačítko matematického režimu, ak už
- ste v tomto režime, môžete písať normálny text, dokiaľ nestlačíte (nechránenú)
- medzeru.
+ Tu len spomenieme,
+ že kliknutie na tlačítko matematického režimu,
+ ak už ste v tomto režime,
+ môžete písať normálny text,
+ dokiaľ nestlačíte (nechránenú) medzeru.
 \end_layout
 
 \begin_layout Itemize
 Doladenie veľkostí fontov a medzier vo výraze.
- (O toto sa starajte, až keď budete mať všetko ostatné hotové!)
+ (O toto sa starajte,
+ až keď budete mať všetko ostatné hotové!)
 \end_layout
 
 \begin_layout Itemize
 Písanie makier.
- Toto je veľmi mocný nástroj, pretože makrá definujete raz na začiatku dokumentu
- a potom ich môžete používať v celom dokumente.
- Ak zmeníte definíciu makra, zmenia sa všetky referencie na dané makro v
- dokumente.
+ Toto je veľmi mocný nástroj,
+ pretože makrá definujete raz na začiatku dokumentu a potom ich môžete používať v celom dokumente.
+ Ak zmeníte definíciu makra,
+ zmenia sa všetky referencie na dané makro v dokumente.
  Makrá dokonca môžu prijímať argumenty.
 \end_layout
 
@@ -4733,7 +5198,8 @@ Užívateľská príručka
 Referenčnej príručke
 \emph toggle
 .
- Iba spomenieme zopár hlavných vecí, ktoré je schopný urobyť \SpecialChar LyX
+ Iba spomenieme zopár hlavných vecí,
+ ktoré je schopný urobyť \SpecialChar LyX
 \SpecialChar ldots
 
 \end_layout
@@ -4759,15 +5225,16 @@ pravým myšítkom
 \emph default
  
 \emph toggle
-a zobrazí sa vám menu, ktoré umožňuje meniť parametre tabuľky.
+a zobrazí sa vám menu,
+ ktoré umožňuje meniť parametre tabuľky.
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
  tiež podporuje vkladanie PostScriptových (alebo čisto \SpecialChar LaTeX
-ových) obrázkov do
- dokumentu.
- (Uhádli ste: 
+ových) obrázkov do dokumentu.
+ (Uhádli ste:
+ 
 \family sans
 \bar under
 V
@@ -4779,14 +5246,15 @@ O
 brázok
 \family default
 .
- Potom kliknite na obrázok, aby ste špecifikovali súbor, alebo manipulovali
- s obrázkom.) Tabuľky a obrázky môžu mať nadpisy a \SpecialChar LyX
- automaticky vygeneruje
- zoznam obrázkov a/alebo tabuliek.
+ Potom kliknite na obrázok,
+ aby ste špecifikovali súbor,
+ alebo manipulovali s obrázkom.) Tabuľky a obrázky môžu mať nadpisy a \SpecialChar LyX
+ automaticky vygeneruje zoznam obrázkov a/alebo tabuliek.
 \end_layout
 
 \begin_layout Itemize
-Je podporovaná správa verzií, použitím RCS (pre info si spustite 
+Je podporovaná správa verzií,
+ použitím RCS (pre info si spustite 
 \family typewriter
 man rcsinfo
 \family default
@@ -4796,9 +5264,10 @@ man rcsinfo
 \begin_layout Itemize
 \SpecialChar LyX
  je veľmi konfigurovateľný.
- Všetko, od toho ako vyzerá okno \SpecialChar LyX
-u, až po to aký je výstup sa dá nakonfigurovať
- viacerými spôsobmi.
+ Všetko,
+ od toho ako vyzerá okno \SpecialChar LyX
+u,
+ až po to aký je výstup sa dá nakonfigurovať viacerými spôsobmi.
  Pomoc pri tomto získate príkazom 
 \family sans
 \bar under
@@ -4817,10 +5286,14 @@ rispôsobenie
 \SpecialChar LyX
  vyvíja tím programátorov na piatich kontinentoch.
  Preto má \SpecialChar LyX
- lepšiu podporu pre neanglické (holandský, nemecký, grécky, český,
+ lepšiu podporu pre neanglické (holandský,
+ nemecký,
+ grécky,
+ český,
  turecký\SpecialChar ldots
 ) jazyky ako väčšina textových procesorov.
- Ešte k tomu, táto podpora priebežne vyzrieva.
+ Ešte k tomu,
+ táto podpora priebežne vyzrieva.
 \end_layout
 
 \begin_layout Itemize
@@ -4860,7 +5333,8 @@ u
 
 \begin_layout Standard
 Ak neviete nič o \SpecialChar LaTeX
-e, nemusíte túto sekciu čítať.
+e,
+ nemusíte túto sekciu čítať.
  Ale môžete chcieť 
 \emph on
 naučiť
@@ -4868,27 +5342,34 @@ naučiť
  
 \emph toggle
 sa niečo o \SpecialChar LaTeX
-e, tak potom si túto sekciu prečítajte.
- Avšak veľa ľudí, ktorí začínajú používať \SpecialChar LyX
-, budú oboznámený s \SpecialChar LaTeX
+e,
+ tak potom si túto sekciu prečítajte.
+ Avšak veľa ľudí,
+ ktorí začínajú používať \SpecialChar LyX
+,
+ budú oboznámený s \SpecialChar LaTeX
 om.
- Ak ste taký človek, môžete byť zvedavý, či \SpecialChar LyX
+ Ak ste taký človek,
+ môžete byť zvedavý,
+ či \SpecialChar LyX
  skutočne dokáže všetko čo \SpecialChar LaTeX
 .
- Krátkou odpoveďou je, že \SpecialChar LyX
+ Krátkou odpoveďou je,
+ že \SpecialChar LyX
  dokáže naozaj všetko čo \SpecialChar LaTeX
- a zjednodušuje väčšinu
- častí písania \SpecialChar LaTeX
+ a zjednodušuje väčšinu častí písania \SpecialChar LaTeX
 ových dokumentov.
  V dnešnej dobe mäžu byť nejaké problémy s konvertovaním starých \SpecialChar LaTeX
-ových dokumento
-v, prípadne v zopár ďalčích oblastiach, ale ďalšie vydania \SpecialChar LyX
+ových dokumentov,
+ prípadne v zopár ďalčích oblastiach,
+ ale ďalšie vydania \SpecialChar LyX
 u sa o toto postarajú.
 \end_layout
 
 \begin_layout Standard
-Pretože toto je len sprievodca, iba spomenieme veci, o ktoré sa budú väčšinou
- zaujímať nový užívatelia \SpecialChar LyX
+Pretože toto je len sprievodca,
+ iba spomenieme veci,
+ o ktoré sa budú väčšinou zaujímať nový užívatelia \SpecialChar LyX
 u.
  V záujme udržania 
 \emph on
@@ -4896,7 +5377,8 @@ Sprievodcu
 \emph default
  
 \emph toggle
-krátkeho, dáme vám len minimálne množstvo informácií.
+krátkeho,
+ dáme vám len minimálne množstvo informácií.
 
 \emph default
  
@@ -4908,8 +5390,7 @@ Užívateľská príručka
 obsahuje množstvo informácií o rozdieloch \SpecialChar LyX
 u a \SpecialChar LaTeX
 u a ukazuje rôzne \SpecialChar LaTeX
-ové triky
- v \SpecialChar LyX
+ové triky v \SpecialChar LyX
 e.
 \end_layout
 
@@ -4920,9 +5401,9 @@ Režim \SpecialChar TeX
 
 \begin_layout Standard
 Všetko čo vložíte v režime \SpecialChar TeX
-, bude odovzdané priamo \SpecialChar LaTeX
-u a bude zobrazené červeným
- písmom.
+,
+ bude odovzdané priamo \SpecialChar LaTeX
+u a bude zobrazené červeným písmom.
  \SpecialChar TeX
  režim spustíte príkazom 
 \family sans
@@ -4938,7 +5419,8 @@ Te
 X
 \family default
 \bar default
-, alebo kliknutím na prepínač \SpecialChar TeX
+,
+ alebo kliknutím na prepínač \SpecialChar TeX
  na paneli nástrojov.
 \end_layout
 
@@ -4947,21 +5429,26 @@ V matematickom režime sa \SpecialChar TeX
  režim správa trochu inak.
  \SpecialChar TeX
  režim spustíte stlačením opačného lomítka.
- Toto lomítko sa nezobrazí, ale všetko čo potom napíšete bude červené.
+ Toto lomítko sa nezobrazí,
+ ale všetko čo potom napíšete bude červené.
  \SpecialChar TeX
- režim opustíte stlačením medzery, alebo nejkého iného ne-alfabetického
- znaku, ako napríklad číslo, podtržítko alebo zátvorky.
+ režim opustíte stlačením medzery,
+ alebo nejkého iného ne-alfabetického znaku,
+ ako napríklad číslo,
+ podtržítko alebo zátvorky.
  Keď opustíte režim \SpecialChar TeX
-, ak \SpecialChar LyX
- spozná príkaz ktorý ste napísali, prevedie ho
- na WYSIWYM.
+,
+ ak \SpecialChar LyX
+ spozná príkaz ktorý ste napísali,
+ prevedie ho na WYSIWYM.
  Takže keď v matematike napíšete 
 \family typewriter
 
 \backslash
 gamma
 \family default
- a potom stlačíte medzeru, \SpecialChar LyX
+ a potom stlačíte medzeru,
+ \SpecialChar LyX
  zmení červené 
 \begin_inset Quotes gld
 \end_inset
@@ -4983,24 +5470,26 @@ gamma
 \end_inset
 
 .
- Toto funguje takmer na všetky nekomplikované matematické makrá (tiež si
- všimnite, že funkcie ako 
+ Toto funguje takmer na všetky nekomplikované matematické makrá (tiež si všimnite,
+ že funkcie ako 
 \family typewriter
 
 \backslash
 sin
 \family default
- ostanú červené, pretože to už je WYSIWYM).
- Toto môže byť rýchlejšie ako používanie matematického panelu a bude to
- vyhovovať skúseným používateľom \SpecialChar LaTeX
+ ostanú červené,
+ pretože to už je WYSIWYM).
+ Toto môže byť rýchlejšie ako používanie matematického panelu a bude to vyhovovať skúseným používateľom \SpecialChar LaTeX
 u.
 \end_layout
 
 \begin_layout Standard
-V špeciálnom prípade, keď napíšete zloženú zátvorku, v \SpecialChar TeX
+V špeciálnom prípade,
+ keď napíšete zloženú zátvorku,
+ v \SpecialChar TeX
  režime v matematike,
- Matematický editor zobrazí počiatočnú a koncovú zátvorku červenú, potom
- 
+ Matematický editor zobrazí počiatočnú a koncovú zátvorku červenú,
+ potom 
 \emph on
 zruší
 \emph default
@@ -5008,20 +5497,22 @@ zruší
 \emph toggle
 režim \SpecialChar TeX
  a kurzor umiestni medzi zátvorky.
- Toto je vhodné na písanie príkazov, ktoré matematický editor nepozná a
- ktoré prijímajú argumenty,
+ Toto je vhodné na písanie príkazov,
+ ktoré matematický editor nepozná a ktoré prijímajú argumenty,
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
  nedokáže urobiť absolútne všetko čo \SpecialChar LaTeX
 .
- Niektoré funkcie nie sú podporované a niektoré fungujú, ale nie sú WYSIWYM.
+ Niektoré funkcie nie sú podporované a niektoré fungujú,
+ ale nie sú WYSIWYM.
  Režim \SpecialChar TeX
  dovoľuje užívateľovi získať plnú flexibilitu \SpecialChar LaTeX
-u pri ostatných črtách
- \SpecialChar LyX
-u, ako napríklad WYSIWYM matematika, tabuľky a editovanie.
+u pri ostatných črtách \SpecialChar LyX
+u,
+ ako napríklad WYSIWYM matematika,
+ tabuľky a editovanie.
  \SpecialChar LyX
  by nemohol podporovať všetky balíky \SpecialChar LaTeX
 u.
@@ -5035,11 +5526,12 @@ usepacage[foo]
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec: preamble"
+nolink "false"
 
 \end_inset
 
-), môžte použiť balík aký chcete (samozrejme nebudete mať WYSIWYM podporu
- pre daný balík).
+),
+ môžte použiť balík aký chcete (samozrejme nebudete mať WYSIWYM podporu pre daný balík).
 \end_layout
 
 \begin_layout Subsection
@@ -5085,12 +5577,15 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
- — and then open that file.
- If the translation doesn't work, you can try calling 
+ —
+ and then open that file.
+ If the translation doesn't work,
+ you can try calling 
 \family typewriter
 tex2lyx
 \family default
- from the command line, possibly using fancier options.
+ from the command line,
+ possibly using fancier options.
 \end_layout
 
 \begin_layout Standard
@@ -5100,14 +5595,16 @@ tex2lyx
 tex2lyx
 \family default
  will translate most legal \SpecialChar LaTeX
-, but not everything.
+,
+ but not everything.
  It will leave things it doesn't understand in \SpecialChar TeX
- mode, so after translating
- a file with 
+ mode,
+ so after translating a file with 
 \family typewriter
 tex2lyx
 \family default
-, you can look for red text and hand-edit it to look right.
+,
+ you can look for red text and hand-edit it to look right.
 \end_layout
 
 \begin_layout Standard
@@ -5119,7 +5616,8 @@ tex2lyx
  has its own manpage.
  Read it to find out about which \SpecialChar LaTeX
  commands and environments aren't supported,
- bugs (and how to get around them), and how to use the various options.
+ bugs (and how to get around them),
+ and how to use the various options.
 \end_layout
 
 \begin_layout Subsection
@@ -5132,10 +5630,12 @@ u
 Môžete chcieť konvertovať \SpecialChar LyX
  dokument do \SpecialChar LaTeX
 u.
- Napríklad spolupracovník a spoluautor, ktorý nemá \SpecialChar LyX
+ Napríklad spolupracovník a spoluautor,
+ ktorý nemá \SpecialChar LyX
  si ho chce prečítať.
  Toto je v \SpecialChar LyX
-e veľmi jednoduché: 
+e veľmi jednoduché:
+ 
 \family sans
 \bar under
 S
@@ -5168,8 +5668,8 @@ meno.lyx
  \SpecialChar LyX
  vždy vytváre dočasné \SpecialChar LaTeX
 ové súbory predtým než spustí samotný \SpecialChar LaTeX
-, ale tieto
- nie sú dobre čitateľné a sú ukladané do dočasných adresárov.
+,
+ ale tieto nie sú dobre čitateľné a sú ukladané do dočasných adresárov.
 \end_layout
 
 \begin_layout Subsection
@@ -5193,14 +5693,16 @@ D
 \bar default
 okument
 \family default
- sa stará o veľa vlastností, ktoré by ste napísali do príkazu 
+ sa stará o veľa vlastností,
+ ktoré by ste napísali do príkazu 
 \family typewriter
 
 \backslash
 documentclass
 \family default
 .
- Mení sa tu trieda, štandardná veľkosť písma a papiera.
+ Mení sa tu trieda,
+ štandardná veľkosť písma a papiera.
  Ďalšie extra vlastnosti môžete pridať do poľa 
 \family sans
 Extra
@@ -5224,8 +5726,8 @@ name "sec: preamble"
 \end_inset
 
 Ak chcete do preambuly \SpecialChar LaTeX
-ového súboru vložiť ďalšie príkazy, môžete to urobyť
- aj v dokumente \SpecialChar LyX
+ového súboru vložiť ďalšie príkazy,
+ môžete to urobyť aj v dokumente \SpecialChar LyX
 u.
  Vyberte 
 \family sans
@@ -5244,7 +5746,8 @@ a
 mbula
 \family default
  a píšte do zobrazeného okna.
- Všetko, čo napíšete (podobne ako v režime \SpecialChar TeX
+ Všetko,
+ čo napíšete (podobne ako v režime \SpecialChar TeX
 ) bude poslané priamo \SpecialChar LaTeX
 u.
 \end_layout
@@ -5256,9 +5759,11 @@ Bib\SpecialChar TeX
 
 \begin_layout Standard
 \SpecialChar LyX
- má dobrú, ale nie úplnú podporu BiB\SpecialChar TeX
-u, ktorý vám umožňuje vytvárať databázy
- bibliografických referencií, pre použitie vo viacerých dokumentoch.
+ má dobrú,
+ ale nie úplnú podporu BiB\SpecialChar TeX
+u,
+ ktorý vám umožňuje vytvárať databázy bibliografických referencií,
+ pre použitie vo viacerých dokumentoch.
  Na vloženie 
 \family typewriter
 bib
@@ -5302,7 +5807,8 @@ Bib\SpecialChar TeX
 \family sans
 Databáza
 \family default
- napíšte to, čo by ste napísali do zátvoriek príkazu 
+ napíšte to,
+ čo by ste napísali do zátvoriek príkazu 
 \family typewriter
 
 \backslash
@@ -5313,7 +5819,8 @@ bibliography{}
 \family sans
 Štýl
 \family default
- napíšte to, čo by ste napísali so zátvoriek príkazu 
+ napíšte to,
+ čo by ste napísali so zátvoriek príkazu 
 \family typewriter
 
 \backslash
@@ -5323,7 +5830,9 @@ bibliographystyle{}
 \end_layout
 
 \begin_layout Standard
-Potom, čo to urobíte, môžete používať citáty z ľubovoľnej bibliografie,
+Potom,
+ čo to urobíte,
+ môžete používať citáty z ľubovoľnej bibliografie,
  použitím príkazu 
 \family sans
 \bar under
@@ -5346,6 +5855,7 @@ u
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec: citácie"
+nolink "false"
 
 \end_inset
 
@@ -5353,8 +5863,10 @@ reference "sec: citácie"
  O spustenie Bib\SpecialChar TeX
 u sa postará \SpecialChar LyX
 .
- Dôvod prečo hovoríme, že \SpecialChar LyX
- nemá plnú podporu je, že \SpecialChar LyX
+ Dôvod prečo hovoríme,
+ že \SpecialChar LyX
+ nemá plnú podporu je,
+ že \SpecialChar LyX
  nedokáže vytvárať 
 \family typewriter
 bib
@@ -5400,8 +5912,9 @@ Sprievodcovi
  
 \emph toggle
 ich je veľa.
- Ďalšie špeciálne znaky (trojbodka, zalomenie riadku, bod rozdelenia) sú
- v menu
+ Ďalšie špeciálne znaky (trojbodka,
+ zalomenie riadku,
+ bod rozdelenia) sú v menu
 \emph default
  
 \family sans
@@ -5427,11 +5940,16 @@ Chyby!
 \end_layout
 
 \begin_layout Standard
-Niekedy, keď spustíte \SpecialChar LaTeX
-, môžu sa vyskytnúť chyby, že \SpecialChar LaTeX
-, alebo \SpecialChar LyX
+Niekedy,
+ keď spustíte \SpecialChar LaTeX
+,
+ môžu sa vyskytnúť chyby,
+ že \SpecialChar LaTeX
+,
+ alebo \SpecialChar LyX
  niečomu nerozumejú.
- Ak toto nastane, \SpecialChar LyX
+ Ak toto nastane,
+ \SpecialChar LyX
  zobrazí chybové okno (okno so slovom 
 \begin_inset Quotes gld
 \end_inset
@@ -5442,14 +5960,17 @@ Chyba
 
 ).
  Kliknutím na okno sa zobrazí okno s popisom aká chyba nastala.
- Ak to bolo niečo, čo ste urobili zle s \SpecialChar LyX
-om, bude to chyba \SpecialChar LyX
+ Ak to bolo niečo,
+ čo ste urobili zle s \SpecialChar LyX
+om,
+ bude to chyba \SpecialChar LyX
 u.
  Toto by sa malo stávať veľmi zriedkavo.
  Ak má problém \SpecialChar LaTeX
- (najčastejšie sa to stane, ak ste písali v režime \SpecialChar TeX
-), potom
- \SpecialChar LyX
+ (najčastejšie sa to stane,
+ ak ste písali v režime \SpecialChar TeX
+),
+ potom \SpecialChar LyX
  zobrazí \SpecialChar LaTeX
 ovú chybovú hlášku.
 \end_layout

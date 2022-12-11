@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -92,7 +96,8 @@ av Fee \SpecialChar LyX
 
 \begin_layout Date
 12.
- Juni, 1972
+ Juni,
+ 1972
 \end_layout
 
 \begin_layout Standard
@@ -110,8 +115,8 @@ Grunntanke
 
 \begin_layout Standard
 Grunntanken bak \SpecialChar LyX
- er at du skal tenke på innholdet i det du skriver, og ikke
- formen.
+ er at du skal tenke på innholdet i det du skriver,
+ og ikke formen.
  
 \end_layout
 
@@ -123,10 +128,11 @@ Hvordan \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  bruker \SpecialChar LaTeX
-, et dokumentsystem designet av Leslie Lamport i 1985.
+,
+ et dokumentsystem designet av Leslie Lamport i 1985.
  Det bygger igjen på et typesettingssystem kalt \SpecialChar TeX
-, laget av Donald Knuth
- i 1984.
+,
+ laget av Donald Knuth i 1984.
  \SpecialChar LaTeX
  bygger på samme tankegods som \SpecialChar LyX
 .
@@ -146,14 +152,16 @@ literal "true"
 \end_inset
 
 Typografi er til for å hjelpe leseren å forstå forfatterens idéer.
- For at et dokument skal være lett å lese, må den visuelle strukturen tilsvare
- den logiske strukturen.
- Sitater og dataprogrammer er separate elementer, og må derfor kunne skilles
- fra hverandre visuelt....
+ For at et dokument skal være lett å lese,
+ må den visuelle strukturen tilsvare den logiske strukturen.
+ Sitater og dataprogrammer er separate elementer,
+ og må derfor kunne skilles fra hverandre visuelt....
  Siden \SpecialChar LaTeX
- ikke an forstå din prosa, må du indikere den logiske strukturen
- eksplisitt med spesielle kommandoer....
- Mens du skriver dokumentet ditt, bør du tenke på strukturen, ikke på utseendet.
+ ikke an forstå din prosa,
+ må du indikere den logiske strukturen eksplisitt med spesielle kommandoer....
+ Mens du skriver dokumentet ditt,
+ bør du tenke på strukturen,
+ ikke på utseendet.
 \begin_inset Quotes crd
 \end_inset
 
@@ -175,9 +183,9 @@ name "subsec:lyxbedre"
 \SpecialChar LyX
  kan nyttes av flere mennesker enn \SpecialChar LaTeX
 .
- Det er mye lettere å lære, siden du ikke trenger å lære \SpecialChar LaTeX
- (som i praktisk
- talt er et programmeringsspråk).
+ Det er mye lettere å lære,
+ siden du ikke trenger å lære \SpecialChar LaTeX
+ (som i praktisk talt er et programmeringsspråk).
  \SpecialChar LyX
  er 
 \begin_inset Quotes cld
@@ -187,7 +195,8 @@ hva du ser er hva du får
 \begin_inset Quotes crd
 \end_inset
 
- omtrent som andre tekstbehandlere , bortsett fra at \SpecialChar LyX
+ omtrent som andre tekstbehandlere ,
+ bortsett fra at \SpecialChar LyX
  er 
 \begin_inset Quotes cld
 \end_inset
@@ -242,8 +251,8 @@ veldig interessert
 
 \begin_layout Standard
 For en mer filosofisk diskusjon om hvorfor \SpecialChar LyX
- er bedre enn mange andre tekstbehand
-lere, se seksjon
+ er bedre enn mange andre tekstbehandlere,
+ se seksjon
 \begin_inset space ~
 \end_inset
 
@@ -251,10 +260,12 @@ lere, se seksjon
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:lyxbedre"
+nolink "false"
 
 \end_inset
 
-, som du finner på side
+,
+ som du finner på side
 \begin_inset space ~
 \end_inset
 
@@ -262,6 +273,7 @@ reference "subsec:lyxbedre"
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "subsec:lyxbedre"
+nolink "false"
 
 \end_inset
 
@@ -299,8 +311,8 @@ JEG ER FANTASTISK!
 \end_layout
 
 \begin_layout Standard
-Etter så mye programmering følte jeg meg mer kunstnerisk, så jeg skrev en
- haiku
+Etter så mye programmering følte jeg meg mer kunstnerisk,
+ så jeg skrev en haiku
 \end_layout
 
 \begin_layout Verse
@@ -309,7 +321,8 @@ Etter så mye programmering følte jeg meg mer kunstnerisk, så jeg skrev en
 \begin_inset Newline newline
 \end_inset
 
-Typograf, tekstbehandler
+Typograf,
+ tekstbehandler
 \begin_inset Newline newline
 \end_inset
 
@@ -326,7 +339,8 @@ Min favorittligning er løsningen for annengradsligninger.
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
- (eq.1), må 
+ (eq.1),
+ må 
 \begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
@@ -335,7 +349,8 @@ Min favorittligning er løsningen for annengradsligninger.
 \end_layout
 
 \begin_layout Standard
-En annen favoritt er grunnlaget for kalkulus: 
+En annen favoritt er grunnlaget for kalkulus:
+ 
 \begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
@@ -361,8 +376,8 @@ Jeg kunne fjerne linjene som var lagd med bindestreker.
 
 \begin_layout Itemize
 Jeg skrev ikke formlene i displaymodus.
- Jeg brukte heller ikke automatisk nummerering av ligninger, fordi dette
- ikke dekkes av 
+ Jeg brukte heller ikke automatisk nummerering av ligninger,
+ fordi dette ikke dekkes av 
 \emph on
 innføringen.
 \end_layout
@@ -401,14 +416,20 @@ literal "true"
 
 \end_inset
 
- Lamport, Leslie.
+ Lamport,
+ Leslie.
  
 \emph on
 \SpecialChar LaTeX
-: A Document Preparation System.
+:
+ A Document Preparation System.
 
 \emph default
- Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+ Addison-Wesley,
+ Reading,
+ Massachusetts,
+ second edition,
+ 1994.
 \end_layout
 
 \end_body

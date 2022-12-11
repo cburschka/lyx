@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -87,7 +91,8 @@ DETTE ER TITTELEN FOR DOKUMENTET
 status collapsed
 
 \begin_layout Plain Layout
-Hint: tittelen burde se mer ut som en tittel
+Hint:
+ tittelen burde se mer ut som en tittel
 \end_layout
 
 \end_inset
@@ -102,7 +107,8 @@ av Fee \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Fee er FORFATTEREN
+Hint:
+ Fee er FORFATTEREN
 \end_layout
 
 \end_inset
@@ -112,12 +118,14 @@ Hint: Fee er FORFATTEREN
 
 \begin_layout Standard
 12.
- Juni, 1972
+ Juni,
+ 1972
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Hint: dette er en DATO
+Hint:
+ dette er en DATO
 \end_layout
 
 \end_inset
@@ -131,8 +139,8 @@ Innholdsfortegnelse
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Det hadde vært fint om vi ikke trengte å skrive innholdsfortegnelsen
- selv
+Hint:
+ Det hadde vært fint om vi ikke trengte å skrive innholdsfortegnelsen selv
 \end_layout
 
 \end_inset
@@ -173,7 +181,24 @@ Hint: Det hadde vært fint om vi ikke trengte å skrive innholdsfortegnelsen
 \end_layout
 
 \begin_layout Standard
-—————————————————
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+
 \end_layout
 
 \begin_layout Standard
@@ -183,7 +208,8 @@ Hint: Det hadde vært fint om vi ikke trengte å skrive innholdsfortegnelsen
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Section titles should probably stand out more
+Hint:
+ Section titles should probably stand out more
 \end_layout
 
 \end_inset
@@ -193,8 +219,8 @@ Hint: Section titles should probably stand out more
 
 \begin_layout Standard
 Grunntanken bak \SpecialChar LyX
- er at du skal tenke på innholdet i det du skriver, og ikke
- formen.
+ er at du skal tenke på innholdet i det du skriver,
+ og ikke formen.
 \end_layout
 
 \begin_layout Standard
@@ -205,10 +231,11 @@ Grunntanken bak \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  bruker \SpecialChar LaTeX
-, et dokumentsystem designet av Leslie Lamport i 1985.
+,
+ et dokumentsystem designet av Leslie Lamport i 1985.
  Det bygger igjen på et typesettingssystem kalt \SpecialChar TeX
-, laget av Donald Knuth
- i 1984.
+,
+ laget av Donald Knuth i 1984.
  \SpecialChar LaTeX
  bygger på samme tankegods som \SpecialChar LyX
 .
@@ -217,7 +244,8 @@ Grunntanken bak \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Antagelig bør ikke denne LITTERATURREFERANSEN 
+Hint:
+ Antagelig bør ikke denne LITTERATURREFERANSEN 
 \begin_inset Quotes eld
 \end_inset
 
@@ -239,14 +267,16 @@ hardkodes
 \end_inset
 
 Typografi er til for å hjelpe leseren å forstå forfatterens idéer.
- For at et dokument skal være lett å lese, må den visuelle strukturen tilsvare
- den logiske strukturen.
- Sitater og dataprogrammer er separate elementer, og må derfor kunne skilles
- fra hverandre visuelt....
+ For at et dokument skal være lett å lese,
+ må den visuelle strukturen tilsvare den logiske strukturen.
+ Sitater og dataprogrammer er separate elementer,
+ og må derfor kunne skilles fra hverandre visuelt....
  Siden \SpecialChar LaTeX
- ikke an forstå din prosa, må du indikere den logiske strukturen
- eksplisitt med spesielle kommandoer....
- Mens du skriver dokumentet ditt, bør du tenke på strukturen, ikke på utseendet.
+ ikke an forstå din prosa,
+ må du indikere den logiske strukturen eksplisitt med spesielle kommandoer....
+ Mens du skriver dokumentet ditt,
+ bør du tenke på strukturen,
+ ikke på utseendet.
 \begin_inset Quotes crd
 \end_inset
 
@@ -255,7 +285,8 @@ Typografi er til for å hjelpe leseren å forstå forfatterens idéer.
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Dette er et SITAT
+Hint:
+ Dette er et SITAT
 \end_layout
 
 \end_inset
@@ -272,9 +303,9 @@ Hint: Dette er et SITAT
 \SpecialChar LyX
  kan nyttes av flere mennesker enn \SpecialChar LaTeX
 .
- Det er mye lettere å lære, siden du ikke trenger å lære \SpecialChar LaTeX
- (som praktisk
- talt er et programmeringsspråk).
+ Det er mye lettere å lære,
+ siden du ikke trenger å lære \SpecialChar LaTeX
+ (som praktisk talt er et programmeringsspråk).
  \SpecialChar LyX
  er 
 \begin_inset Quotes cld
@@ -284,7 +315,8 @@ hva du ser er hva du får
 \begin_inset Quotes crd
 \end_inset
 
- omtrent som andre tekstbehandlere , bortsett fra at \SpecialChar LyX
+ omtrent som andre tekstbehandlere ,
+ bortsett fra at \SpecialChar LyX
  er 
 \begin_inset Quotes cld
 \end_inset
@@ -315,7 +347,8 @@ hva du ser er hva du mener
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Denne parantesen hadde sett bedre ut i en fotnote.
+Hint:
+ Denne parantesen hadde sett bedre ut i en fotnote.
 \end_layout
 
 \end_inset
@@ -325,7 +358,8 @@ Hint: Denne parantesen hadde sett bedre ut i en fotnote.
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Utheve!
+Hint:
+ Utheve!
 \end_layout
 
 \end_inset
@@ -346,13 +380,15 @@ Hint: Utheve!
 
 \begin_layout Standard
 For en mer filosofisk diskusjon om hvorfor \SpecialChar LyX
- er bedre enn mange andre tekstbehand
-lere, se seksjon 1.2, som du finner på side 1.
+ er bedre enn mange andre tekstbehandlere,
+ se seksjon 1.2,
+ som du finner på side 1.
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Disse KRYSSREFERANSENE burde ikke 
+Hint:
+ Disse KRYSSREFERANSENE burde ikke 
 \begin_inset Quotes cld
 \end_inset
 
@@ -402,7 +438,8 @@ JEG ER FANTASTISK!
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Dette er PROGRAMKODE
+Hint:
+ Dette er PROGRAMKODE
 \end_layout
 
 \end_inset
@@ -411,8 +448,8 @@ Hint: Dette er PROGRAMKODE
 \end_layout
 
 \begin_layout Standard
-Etter så mye programmering følte jeg meg mer kunstnerisk, så jeg skrev en
- haiku
+Etter så mye programmering følte jeg meg mer kunstnerisk,
+ så jeg skrev en haiku
 \end_layout
 
 \begin_layout Standard
@@ -421,7 +458,8 @@ Etter så mye programmering følte jeg meg mer kunstnerisk, så jeg skrev en
 \end_layout
 
 \begin_layout Standard
-Typograf, tekstbehandler
+Typograf,
+ tekstbehandler
 \end_layout
 
 \begin_layout Standard
@@ -430,7 +468,10 @@ Den sparer så mye tid
 status collapsed
 
 \begin_layout Plain Layout
-Hint: Ikke spesielt godt, men det er poesi, også kjent som VERS
+Hint:
+ Ikke spesielt godt,
+ men det er poesi,
+ også kjent som VERS
 \end_layout
 
 \end_inset
@@ -445,7 +486,8 @@ Hint: Ikke spesielt godt, men det er poesi, også kjent som VERS
 status collapsed
 
 \begin_layout Plain Layout
-Hint: disse mattegreiene burde skrives i mattemodus!
+Hint:
+ disse mattegreiene burde skrives i mattemodus!
 \end_layout
 
 \end_inset
@@ -455,19 +497,36 @@ Hint: disse mattegreiene burde skrives i mattemodus!
 
 \begin_layout Standard
 Min favorittligning er løsningen for annengradsligninger.
- Hvis ax^2+bx+c=0 (eq.1), må x= -b + eller minus kvadratroten av b^2-4ac,
+ Hvis ax^2+bx+c=0 (eq.1),
+ må x= -b + eller minus kvadratroten av b^2-4ac,
  alt delt på 2a (eq.
  2).
 \end_layout
 
 \begin_layout Standard
-En annen favoritt er grunnlaget for kalkulus: f'(x) er definert som grenseverdie
-n når deltax går mot 0 av f(x+deltax) - f(x) delt på deltax (eq.
+En annen favoritt er grunnlaget for kalkulus:
+ f'(x) er definert som grenseverdien når deltax går mot 0 av f(x+deltax) - f(x) delt på deltax (eq.
  3).
 \end_layout
 
 \begin_layout Standard
-————————————————
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+
 \end_layout
 
 \begin_layout Standard
@@ -475,10 +534,16 @@ REFERANSER
 \end_layout
 
 \begin_layout Standard
-[1] Lamport, Leslie.
+[1] Lamport,
+ Leslie.
  \SpecialChar LaTeX
-: A Document Preparation System.
- Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+:
+ A Document Preparation System.
+ Addison-Wesley,
+ Reading,
+ Massachusetts,
+ second edition,
+ 1994.
 \end_layout
 
 \end_body

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -30,9 +30,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -83,12 +83,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -99,6 +103,7 @@ status open
 
 \begin_layout Plain Layout
 このファイルは、下記の要請を満たすひな型です。
+
 \end_layout
 
 \begin_layout Itemize
@@ -128,14 +133,14 @@ Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
 \end_layout
 
 \begin_layout Plain Layout
-In principle, this file can be redistributed and/or modified under the terms
- of the GNU Public License, version 2.
- However, this file is supposed to be a template to be modified for your
- own needs.
- For this reason, if you use this file as a template and not specifically
- distribute it as part of a another package/program, the author grants the
- extra permission to freely copy and modify this file as you see fit and
- even to delete this copyright notice.
+In principle,
+ this file can be redistributed and/or modified under the terms of the GNU Public License,
+ version 2.
+ However,
+ this file is supposed to be a template to be modified for your own needs.
+ For this reason,
+ if you use this file as a template and not specifically distribute it as part of a another package/program,
+ the author grants the extra permission to freely copy and modify this file as you see fit and even to delete this copyright notice.
  
 \end_layout
 
@@ -155,7 +160,8 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-非必須。論文タイトルが長過ぎるときのみ使います
+非必須。
+論文タイトルが長過ぎるときのみ使います
 \end_layout
 
 \end_inset
@@ -235,16 +241,19 @@ status open
 status open
 
 \begin_layout Plain Layout
-Author, Another
+Author,
+ Another
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-- 非必須。著者が大勢いるときのみ使います
+- 非必須。
+著者が大勢いるときのみ使います
 \end_layout
 
 \begin_layout Plain Layout
-- ひじょうに多くの著者がいる場合には，「Author et al.」を使ってください
+- ひじょうに多くの著者がいる場合には，
+「Author et al.」を使ってください
 \end_layout
 
 \end_inset
@@ -309,7 +318,9 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-簡潔に。だれもあなたの番地には興味ありません。
+簡潔に。
+だれもあなたの番地には興味ありません。
+
 \end_layout
 
 \end_inset
@@ -337,7 +348,8 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-聴衆にはあまり役に立つ情報ではありませんが，どちらかといえばスライドをオンラインで読む人々向けです
+聴衆にはあまり役に立つ情報ではありませんが，
+どちらかといえばスライドをオンラインで読む人々向けです
 \end_layout
 
 \end_inset
@@ -352,7 +364,8 @@ CFP 2003
 status collapsed
 
 \begin_layout Plain Layout
-非必須。学会の略称を置きます
+非必須。
+学会の略称を置きます
 \end_layout
 
 \end_inset
@@ -370,8 +383,9 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-「institution-logo-filename.xxx」というファイルがあれば (xxxはlatexもしくはpdflatexが処理できる画像形式)、下記のコ
-メントを外すことで，ロゴを追加することができます。
+「institution-logo-filename.xxx」というファイルがあれば (xxxはlatexもしくはpdflatexが処理できる画像形式)、下記のコメントを外すことで，
+ロゴを追加することができます。
+
 \end_layout
 
 \end_inset
@@ -409,7 +423,10 @@ pgfuseimage{institution-logo}}
 status open
 
 \begin_layout Plain Layout
-下記は，各小節の冒頭に目次が表示されるようにするものです。これを望まない場合には、削除してください。
+下記は，
+各小節の冒頭に目次が表示されるようにするものです。
+これを望まない場合には、削除してください。
+
 \end_layout
 
 \end_inset
@@ -470,6 +487,7 @@ status open
 
 \begin_layout Plain Layout
 すべてを一段ずつ開示するようにしたい場合には、下記のコマンドのコメントを外してください。
+
 \end_layout
 
 \end_inset
@@ -521,7 +539,9 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-発表をどう構築するかは大変な仕事ですから、以下の構造は適切でないこともあります。ここでのソリューションに適用する法則は以下のとおりです。
+発表をどう構築するかは大変な仕事ですから、以下の構造は適切でないこともあります。
+ここでのソリューションに適用する法則は以下のとおりです。
+
 \end_layout
 
 \begin_layout Itemize
@@ -534,10 +554,13 @@ status open
 最大でも
 \series default
 3小節に収める。
+
 \end_layout
 
 \begin_layout Itemize
-1フレームあたり30秒から2分で話すこと。したがって、発表すべてで15〜30フレームにすること。
+1フレームあたり30秒から2分で話すこと。
+したがって、発表すべてで15〜30フレームにすること。
+
 \end_layout
 
 \begin_layout Itemize
@@ -547,11 +570,15 @@ status open
 \end_layout
 
 \begin_layout Itemize
-20分の発表で、中心となるアイディアを伝えるのは大変なことです。必要とされる水準よりも不正確になると思っても、細部は省略しましょう。
+20分の発表で、中心となるアイディアを伝えるのは大変なことです。
+必要とされる水準よりも不正確になると思っても、細部は省略しましょう。
+
 \end_layout
 
 \begin_layout Itemize
-証明や実装に不可欠な細部を省略する場合には、省略する旨を一度発言しましょう。皆それで満足です。
+証明や実装に不可欠な細部を省略する場合には、省略する旨を一度発言しましょう。
+皆それで満足です。
+
 \end_layout
 
 \end_inset
@@ -583,7 +610,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-よくわかる見出しを付けましょう。Use Uppercase Letters for English.
+よくわかる見出しを付けましょう。
+Use Uppercase Letters for English.
 \end_layout
 
 \end_inset
@@ -593,12 +621,14 @@ status open
 
 \begin_deeper
 \begin_layout FrameSubtitle
-フレームの副見出しは必須ではありません。Use upper- or lowercase letters for English.
+フレームの副見出しは必須ではありません。
+Use upper- or lowercase letters for English.
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 タイトルは、スライド全部についていけない人にもわかるように、スライドを要約していなくてはなりません。
+
 \end_layout
 
 \end_inset
@@ -608,6 +638,7 @@ status collapsed
 
 \begin_layout Itemize
 記号箇条書きを多用しましょう。
+
 \end_layout
 
 \begin_deeper
@@ -618,6 +649,7 @@ status collapsed
 \end_deeper
 \begin_layout Itemize
 非常に短い文や短い句を使用しましょう。
+
 \end_layout
 
 \begin_deeper
@@ -628,6 +660,7 @@ status collapsed
 \end_deeper
 \begin_layout Itemize
 これらの重ね合わせは、一時停止様式を使えば、生成することができます。
+
 \end_layout
 
 \end_deeper
@@ -644,6 +677,7 @@ status open
 
 \begin_layout Plain Layout
 よくわかる見出しを付けましょう。
+
 \end_layout
 
 \end_inset
@@ -663,7 +697,9 @@ status open
 
 \end_inset
 
-重ね合わせを行うには，重ねあわせ指定を使うこともできます。
+重ね合わせを行うには，
+重ねあわせ指定を使うこともできます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -678,6 +714,7 @@ status open
 \end_inset
 
 すると、任意の順序で項目を表示することができます。
+
 \end_layout
 
 \begin_layout Itemize
@@ -692,6 +729,7 @@ status open
 \end_inset
 
 これは2番めに表示されます。
+
 \end_layout
 
 \end_deeper
@@ -708,6 +746,7 @@ status open
 
 \begin_layout Plain Layout
 よくわかる見出しを付けましょう。
+
 \end_layout
 
 \end_inset
@@ -737,6 +776,7 @@ status open
 
 \begin_layout Itemize
 全スライドに表示されます。
+
 \end_layout
 
 \end_deeper
@@ -791,6 +831,7 @@ status open
 
 \begin_layout Plain Layout
 よくわかる見出しを付けましょう。
+
 \end_layout
 
 \end_inset
@@ -811,6 +852,7 @@ status open
 \end_inset
 
 最初のスライドに表示。
+
 \end_layout
 
 \begin_layout Standard
@@ -832,6 +874,7 @@ status open
 \end_inset
 
 2番めのスライドに表示。
+
 \end_layout
 
 \end_deeper
@@ -849,6 +892,7 @@ status open
 
 \begin_layout Plain Layout
 よくわかる見出しを付けましょう。
+
 \end_layout
 
 \end_inset
@@ -859,6 +903,7 @@ status open
 \begin_deeper
 \begin_layout Theorem
 最初のスライドに表示。
+
 \end_layout
 
 \begin_layout Pause
@@ -867,6 +912,7 @@ status open
 
 \begin_layout Corollary
 2番めのスライドに表示。
+
 \end_layout
 
 \end_deeper
@@ -883,6 +929,7 @@ status open
 
 \begin_layout Plain Layout
 よくわかる見出しを付けましょう。
+
 \end_layout
 
 \end_inset
@@ -972,6 +1019,7 @@ status open
 \end_inset
 
 を1〜2行で。
+
 \end_layout
 
 \begin_layout Itemize
@@ -986,6 +1034,7 @@ status open
 \end_inset
 
 を1〜2行で。
+
 \end_layout
 
 \begin_layout Itemize
@@ -1001,7 +1050,9 @@ status open
 
 
 \color none
-。でもこれ以上はだめ。
+。
+でもこれ以上はだめ。
+
 \end_layout
 
 \begin_layout Standard
@@ -1010,6 +1061,7 @@ status open
 
 \begin_layout Plain Layout
 展望は必ずしも必要ではありません。
+
 \end_layout
 
 \end_inset
@@ -1028,10 +1080,12 @@ status open
 \begin_deeper
 \begin_layout Itemize
 まだやっていないこと。
+
 \end_layout
 
 \begin_layout Itemize
 さらに追加事項。
+
 \end_layout
 
 \end_deeper
@@ -1042,7 +1096,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-下記は必須ではなく，通常必要ではありません。
+下記は必須ではなく，
+通常必要ではありません。
+
 \end_layout
 
 \end_inset
@@ -1097,6 +1153,7 @@ status open
 
 \begin_layout Plain Layout
 総記書籍から始めます。
+
 \end_layout
 
 \end_inset
@@ -1144,7 +1201,8 @@ newblock
 
 \end_inset
 
- Some Press, 1990.
+ Some Press,
+ 1990.
 \begin_inset ERT
 status collapsed
 
@@ -1162,7 +1220,9 @@ beamertemplatearticlebibitems
 status open
 
 \begin_layout Plain Layout
-下記に面白い論文。一覧は短く収めること。
+下記に面白い論文。
+一覧は短く収めること。
+
 \end_layout
 
 \end_inset
@@ -1215,7 +1275,8 @@ newblock
 Journal on This and That
 \emph default
 .
- 2(1):50–100, 2000.
+ 2(1):50–100,
+ 2000.
 \end_layout
 
 \end_deeper

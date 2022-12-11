@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,9 +29,9 @@ braille
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -96,12 +96,16 @@ braille
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -129,11 +133,13 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-まず一般的な注意をひとつ。\SpecialChar LaTeX
-で生成できる点字は、完全ではありません。点字には、6点点字と8点点字がありますが、\SpecialChar LaTeX
+まず一般的な注意をひとつ。
+\SpecialChar LaTeX
+で生成できる点字は、完全ではありません。
+点字には、6点点字と8点点字がありますが、\SpecialChar LaTeX
 （したがって\SpecialChar LyX
-も）は、アクセント文字のない6点点字のみ
-をサポートしています。
+も）は、アクセント文字のない6点点字のみをサポートしています。
+
 \end_layout
 
 \begin_layout Standard
@@ -146,7 +152,8 @@ literal "false"
 \family sans
 点字
 \family default
-モジュールを読み込んでください。そうすると、\SpecialChar LyX
+モジュールを読み込んでください。
+そうすると、\SpecialChar LyX
 の環境選択ボックスから
 \family sans
 点字（既定値）
@@ -155,12 +162,15 @@ literal "false"
 \family sans
 点字（テキストサイズ
 \family default
-）環境を選択して、文章を書けるようになります。他の点字環境は、以下に述べるように、特定の性質を有効にしたり無効にしたりするためだけのものです。これらの環境には文
-章は入れません。
+）環境を選択して、文章を書けるようになります。
+他の点字環境は、以下に述べるように、特定の性質を有効にしたり無効にしたりするためだけのものです。
+これらの環境には文章は入れません。
+
 \end_layout
 
 \begin_layout Standard
 以下の例をご覧下さい。
+
 \begin_inset Newline newline
 \end_inset
 
@@ -178,6 +188,7 @@ height "1pt"
 
 \begin_layout Standard
 ラテン文字：
+
 \begin_inset Newline newline
 \end_inset
 
@@ -186,6 +197,7 @@ This is an example sentence written in Braille.
 
 \begin_layout Standard
 点字：
+
 \end_layout
 
 \begin_layout Braille (default)
@@ -214,7 +226,9 @@ height "1pt"
 \end_inset
 
 \SpecialChar LaTeX
-は、点字で書かれた単語のハイフネーションを行うことができません。ハイフネーションは、手動で行う必要があります。
+は、点字で書かれた単語のハイフネーションを行うことができません。
+ハイフネーションは、手動で行う必要があります。
+
 \end_layout
 
 \begin_layout Standard
@@ -230,8 +244,9 @@ status open
 \series bold
 （註）
 \series default
-点字モジュールでは、ラテン文字・数字・句読点・括弧のみを印字することができます。「@」や「$」のような特殊文字や、ウムラウトのようなアクセント文字、改行などはサ
-ポートされていません。
+点字モジュールでは、ラテン文字・数字・句読点・括弧のみを印字することができます。
+「@」や「$」のような特殊文字や、ウムラウトのようなアクセント文字、改行などはサポートされていません。
+
 \end_layout
 
 \end_inset
@@ -260,6 +275,7 @@ status open
 」・「\SpecialChar LyX
 」は、以下の例のように、\SpecialChar TeX
 コードで入れなくてはなりません。
+
 \end_layout
 
 \end_inset
@@ -282,6 +298,7 @@ height "1pt"
 
 \begin_layout Standard
 ラテン文字：
+
 \begin_inset ERT
 status collapsed
 
@@ -297,6 +314,7 @@ LyX
 \end_inset
 
 点字：
+
 \end_layout
 
 \begin_layout Braille (default)
@@ -328,6 +346,7 @@ height "1pt"
 
 \begin_layout Standard
 以下は、「This is Braille.」という文章例を、さまざまな点字環境で表示させたものです。
+
 \end_layout
 
 \begin_layout Standard
@@ -339,6 +358,7 @@ height "1pt"
 点字（既定値）
 \family default
 ：
+
 \end_layout
 
 \begin_layout Braille (default)
@@ -351,6 +371,7 @@ This is Braille.
 点字（本文寸法大）
 \family default
  - ほぼ文書の本文文字寸法に一致する大きさです：
+
 \end_layout
 
 \begin_layout Braille (textsize)
@@ -366,6 +387,7 @@ This is Braille.
 点字（点付き）
 \family default
  - 空位置に小さな点を表示することができます：
+
 \end_layout
 
 \begin_layout Braille (dots on)
@@ -381,10 +403,12 @@ This is Braille.
 \end_inset
 
 後で、点字ニードルや適切な他の方法を使って、点字を「印字」できるように、文章を鏡像にすることができます：
+
 \end_layout
 
 \begin_layout Standard
 通常：
+
 \end_layout
 
 \begin_layout Braille (default)
@@ -397,6 +421,7 @@ This is Braille.
 点字（鏡像）
 \family default
 ：
+
 \end_layout
 
 \begin_layout Braille (mirror on)
@@ -415,16 +440,20 @@ This is Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-点字の文字は、点字ボックスに数字を書くことによっても、作成することができます。点字ボックスは、
+点字の文字は、点字ボックスに数字を書くことによっても、作成することができます。
+点字ボックスは、
 \family sans
 挿入\SpecialChar menuseparator
 任意設定差込枠
 \family default
-メニューで挿入することができます。このボックス内の各数値は、対応する点字ドットを出力するようにします。たとえば、
+メニューで挿入することができます。
+このボックス内の各数値は、対応する点字ドットを出力するようにします。
+たとえば、
 \series bold
 6145
 \series default
 という数値は：
+
 \begin_inset Newline newline
 \end_inset
 
@@ -443,6 +472,7 @@ status open
 \end_inset
 
 のようになります。
+
 \end_layout
 
 \begin_layout Standard
@@ -455,11 +485,13 @@ status open
 \backslash
 brailleeightdotstrue
 \series default
-コマンドで有効にすることができますが、追加の二点は、点字ボックスを使用するときのみ印字されます。たとえば、点字ボックス内に
+コマンドで有効にすることができますが、追加の二点は、点字ボックスを使用するときのみ印字されます。
+たとえば、点字ボックス内に
 \series bold
 8175
 \series default
 という数値を書くと：
+
 \begin_inset Newline newline
 \end_inset
 
@@ -504,6 +536,7 @@ brailleeightdotsfalse
 \end_inset
 
 のようになります。
+
 \end_layout
 
 \begin_layout Standard
@@ -516,12 +549,15 @@ brailleeightdotsfalse
 \backslash
 brailleunit
 \series default
-で変更することができます。既定値は2.4
+で変更することができます。
+既定値は2.4
 \begin_inset space \thinspace{}
 \end_inset
 
-mmです。たとえば、2倍の大きさの点字を作るには、文書中に\SpecialChar TeX
+mmです。
+たとえば、2倍の大きさの点字を作るには、文書中に\SpecialChar TeX
 コードで以下のコマンドを記述してください：
+
 \end_layout
 
 \begin_layout Standard
@@ -550,6 +586,7 @@ braille{#1}}
 
 \begin_layout Standard
 2倍の大きさの点字：
+
 \begin_inset ERT
 status collapsed
 
@@ -620,6 +657,7 @@ braille{#1}}
 \end_inset
 
 点字セルの寸法に関して、詳しくは以下をご覧下さい。
+
 \begin_inset Newline newline
 \end_inset
 

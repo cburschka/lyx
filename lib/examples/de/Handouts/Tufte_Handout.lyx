@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -73,12 +73,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -92,7 +96,9 @@ status open
 \series bold
 Achtung
 \series default
-: Um dieses Dokument als PDF zu betrachten, muss das \SpecialChar LaTeX
+:
+ Um dieses Dokument als PDF zu betrachten,
+ muss das \SpecialChar LaTeX
 -paket 
 \family sans
 fpl
@@ -100,8 +106,9 @@ fpl
  in ihrem \SpecialChar LaTeX
 -Sytem installiert sein.
  Wenn Sie MiK\SpecialChar TeX
- benutzen, werden Sie automatisch danach gefragt dieses Paket
- zu installieren, wenn sie das Dokument als PDF ansehen.
+ benutzen,
+ werden Sie automatisch danach gefragt dieses Paket zu installieren,
+ wenn sie das Dokument als PDF ansehen.
  Wenn Sie \SpecialChar TeX
 Live benutzen,verwenden Sie \SpecialChar TeX
 Lives Paket-Manager.
@@ -121,7 +128,8 @@ Wenn Sie kein
 \emph on
 Datum
 \emph default
- angeben, wird das aktuelle Datum automatisch eingefügt.
+ angeben,
+ wird das aktuelle Datum automatisch eingefügt.
 \end_layout
 
 \end_inset
@@ -144,13 +152,16 @@ Dieses Dokument beschreibt die Dokumentklasse
 Tufte Handout
 \emph default
 .
- Es zeigt anhand von Beispielen, wie die Klasse verwendet wird.
- Das Dokument basiert auf der Beispieldatei, die mit der \SpecialChar LaTeX
+ Es zeigt anhand von Beispielen,
+ wie die Klasse verwendet wird.
+ Das Dokument basiert auf der Beispieldatei,
+ die mit der \SpecialChar LaTeX
 -Klasse 
 \emph on
 tufte-handout.cls
 \emph default
- vertrieben wird, wurde aber an \SpecialChar LyX
+ vertrieben wird,
+ wurde aber an \SpecialChar LyX
 -Spezifika angepasst.
 \end_layout
 
@@ -181,14 +192,15 @@ http://ctan.org/tex-archive/macros/latex/contrib/tufte-latex
 
 \end_inset
 
- ist an jenen angelehnt, den 
+ ist an jenen angelehnt,
+ den 
 \noun on
 Edward Tufte
 \noun default
  in seinen Büchern und Handouts verwendet.
  Tuftes Stil zeichnet sich durch einen extensiven Gebrauch von Marginalien,
- eine starke Verknüpfung von Grafiken und Text und gute, reflektierte Typographi
-e aus.
+ eine starke Verknüpfung von Grafiken und Text und gute,
+ reflektierte Typographie aus.
  Dieses Dokument soll die Besonderheiten der 
 \family sans
 Tufte-Handout-Klasse
@@ -244,13 +256,15 @@ Abschnitte
 \emph on
 Unterabschnitte
 \emph default
-, jeweils nummeriert und nicht-nummeriert), wie man an diesem Abschnitt
- sehen kann.
+,
+ jeweils nummeriert und nicht-nummeriert),
+ wie man an diesem Abschnitt sehen kann.
 \end_layout
 
 \begin_layout Standard
-Wenn Sie mehr als zwei Überschriftenebenen benötigen, müssen Sie diese derzeit
- selbst definieren; Überschriften unterhalb der Ebene 
+Wenn Sie mehr als zwei Überschriftenebenen benötigen,
+ müssen Sie diese derzeit selbst definieren;
+ Überschriften unterhalb der Ebene 
 \emph on
 Unterabschnitt
 \emph default
@@ -276,6 +290,7 @@ Neue Abschnittsüberschriften definieren
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "sec:abschnitte-definieren"
+nolink "false"
 
 \end_inset
 
@@ -300,12 +315,15 @@ literal "true"
 
 \end_inset
 
- betont, sollten sie 
+ betont,
+ sollten sie 
 \begin_inset Quotes gld
 \end_inset
 
-so viele Überschriftenebenen verwenden, wie Sie brauchen: nicht mehr, und
- nicht weniger
+so viele Überschriftenebenen verwenden,
+ wie Sie brauchen:
+ nicht mehr,
+ und nicht weniger
 \begin_inset Quotes grd
 \end_inset
 
@@ -330,8 +348,9 @@ literal "true"
 
 \end_inset
 
- beginnt Tufte jeden Abschnitt mit etwas vertikalem Abstand, ohne Absatzeinrücku
-ng, und er zeichnet die ersten paar Wörter des Abschnittes in 
+ beginnt Tufte jeden Abschnitt mit etwas vertikalem Abstand,
+ ohne Absatzeinrückung,
+ und er zeichnet die ersten paar Wörter des Abschnittes in 
 \shape smallcaps
 Kapitälchen
 \shape default
@@ -341,7 +360,8 @@ Kapitälchen
 Spitzkolumne
 \emph default
 ).
- Wenn Sie dies auch tun wollen, verwenden Sie den Zeichenstil 
+ Wenn Sie dies auch tun wollen,
+ verwenden Sie den Zeichenstil 
 \family typewriter
 Neuer Gedanke
 \family default
@@ -367,16 +387,16 @@ name "sec:Randnotizen"
 
 \begin_layout Standard
 Eine der auf\SpecialChar ligaturebreak
-fälligsten Eigenschaften der vorliegenden Klasse ist seine extensive
- Nutzung von Randnotizen.
- Der Stil definiert einen breiten rechten Rand, der viel Raum für Randnotizen
- und kleine Abbildungen bietet.
+fälligsten Eigenschaften der vorliegenden Klasse ist seine extensive Nutzung von Randnotizen.
+ Der Stil definiert einen breiten rechten Rand,
+ der viel Raum für Randnotizen und kleine Abbildungen bietet.
  Jede Fußnote wird automatisch als nummerierte Randnotiz ausgegeben.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Dies ist eine nummerierte Randnotiz, die als 
+Dies ist eine nummerierte Randnotiz,
+ die als 
 \family typewriter
 Fußnote
 \family default
@@ -385,8 +405,8 @@ Fußnote
 
 \end_inset
 
- Alternativ können Sie nummerierte Randnotizen auch direkt eingeben, und
- zwar über 
+ Alternativ können Sie nummerierte Randnotizen auch direkt eingeben,
+ und zwar über 
 \family sans
 Einfügen\SpecialChar menuseparator
 Benutzerdefinierte Einfügungen\SpecialChar menuseparator
@@ -397,7 +417,8 @@ Randnotiz (nummeriert)
 status collapsed
 
 \begin_layout Plain Layout
-Dies ist eine nummerierte Randnotiz, eingegeben über 
+Dies ist eine nummerierte Randnotiz,
+ eingegeben über 
 \family sans
 Einfügen\SpecialChar menuseparator
 Benutzerdefinierte Einfügungen\SpecialChar menuseparator
@@ -412,7 +433,8 @@ Randnotiz (nummeriert)
 \end_layout
 
 \begin_layout Standard
-Nicht nummerierte Randnotizen gibt es ebenfalls; Sie finden Sie in 
+Nicht nummerierte Randnotizen gibt es ebenfalls;
+ Sie finden Sie in 
 \family sans
 Einfügen\SpecialChar menuseparator
 Benutzerdefinierte Einfügungen\SpecialChar menuseparator
@@ -429,13 +451,16 @@ Dies ist eine nicht-nummerierte Randnotiz.
 
 \end_inset
 
- Die normale Randnotiz, die Sie aus anderen \SpecialChar LyX
+ Die normale Randnotiz,
+ die Sie aus anderen \SpecialChar LyX
 -Klassen kennen (
 \family sans
 Einfügen\SpecialChar menuseparator
 Randnotiz
 \family default
-), funktioniert ebenfalls, sie sieht aber nicht sehr elegant aus.
+),
+ funktioniert ebenfalls,
+ sie sieht aber nicht sehr elegant aus.
 \begin_inset Marginal
 status open
 
@@ -454,8 +479,7 @@ Literaturverweise
 \end_layout
 
 \begin_layout Standard
-Literaturhinweise werden ebenfalls – als Randnotizen neben den Literaturverweise
-n – im Rand platziert.
+Literaturhinweise werden ebenfalls – als Randnotizen neben den Literaturverweisen – im Rand platziert.
  Verwenden Sie hierfür einfach den normalen Literaturverweis-Befehl.
 \begin_inset Foot
 status collapsed
@@ -470,8 +494,8 @@ Der erste Abschnitt dieses Dokuments enthält einen solchen Literaturverweis.
 \end_layout
 
 \begin_layout Standard
-Eine vollständige Bibliographie können sie ebenfalls ausgeben, und zwar
- über 
+Eine vollständige Bibliographie können sie ebenfalls ausgeben,
+ und zwar über 
 \family sans
 Einfügen\SpecialChar menuseparator
 Liste
@@ -487,11 +511,10 @@ Bib\SpecialChar TeX
 -Literaturverzeichnis
 \family default
  (am Ende dieses Dokuments sehen Sie ein Beispiel).
- Wenn Sie keine vollständige Bibliographie ausgeben möchten, platzieren
- Sie das Bib\SpecialChar TeX
+ Wenn Sie keine vollständige Bibliographie ausgeben möchten,
+ platzieren Sie das Bib\SpecialChar TeX
 -Literaturverzeichnis in eine \SpecialChar LyX
--Notiz und setzen Sie in den Text
- 
+-Notiz und setzen Sie in den Text 
 \family typewriter
 
 \backslash
@@ -514,20 +537,21 @@ name "sec:Abbildungen-Tabellen"
 
 \begin_layout Standard
 Abbildungen und Grafiken spielen in Tuftes Arbeiten eine zentrale Rolle.
- Ergänzend zu den Standard-Gleitobjekten für Abbildungen und Tabellen stellt
- diese Klasse daher spezifische Gleitobjekte für Abbildungen und Tabellen,
+ Ergänzend zu den Standard-Gleitobjekten für Abbildungen und Tabellen stellt diese Klasse daher spezifische Gleitobjekte für Abbildungen und Tabellen,
  die den Rand mitnutzen.
 \end_layout
 
 \begin_layout Standard
-Abbildungen und Tabellen, die in den Rand hineinragen, bekommen Sie, wenn
- Sie 
+Abbildungen und Tabellen,
+ die in den Rand hineinragen,
+ bekommen Sie,
+ wenn Sie 
 \emph on
 Spalten überspannen 
 \emph default
 im Gleitobjekt-Dialog aktivieren.
- Um Abbildungen und Tabellen in den Rand zu setzen, verwenden Sie die spezifisch
-en Gleitobjekte 
+ Um Abbildungen und Tabellen in den Rand zu setzen,
+ verwenden Sie die spezifischen Gleitobjekte 
 \emph on
 Randabbildung
 \emph default
@@ -544,6 +568,7 @@ Randtabelle
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Randabbildung"
+nolink "false"
 
 \end_inset
 
@@ -554,8 +579,8 @@ status collapsed
 \begin_layout Plain Layout
 Leider ist die Zählung im \SpecialChar LyX
 -Arbeitsfenster falsch.
- Normale und Rand-Gleitabbildungen werden separat gezählt, Sie verwenden
- aber in der Ausgabe denselben Zähler.
+ Normale und Rand-Gleitabbildungen werden separat gezählt,
+ Sie verwenden aber in der Ausgabe denselben Zähler.
 \end_layout
 
 \end_inset
@@ -630,10 +655,12 @@ Abbildung
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Ganzabbildung"
+nolink "false"
 
 \end_inset
 
- zeigt eine Abbildung, die den Rand mitnutzt und Abbildung
+ zeigt eine Abbildung,
+ die den Rand mitnutzt und Abbildung
 \begin_inset space ~
 \end_inset
 
@@ -641,10 +668,12 @@ reference "fig:Ganzabbildung"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Textabbildung"
+nolink "false"
 
 \end_inset
 
- eine, die dies nicht tut (normale Gleitabbildung).
+ eine,
+ die dies nicht tut (normale Gleitabbildung).
  
 \begin_inset Float figure
 placement document
@@ -693,7 +722,8 @@ Spalten überspannend
 ).
  
 \emph on
-Beachten Sie, dass diese den Rand mitnutzt.
+Beachten Sie,
+ dass diese den Rand mitnutzt.
 \emph default
 
 \begin_inset CommandInset label
@@ -759,7 +789,8 @@ Ersetzen Sie die Box durch Ihre Abbildung!
 Dies ist eine normale Abbildung.
  
 \emph on
-Beachten Sie, dass diese nur die Textbreite nutzt.
+Beachten Sie,
+ dass diese nur die Textbreite nutzt.
 \emph default
 
 \begin_inset CommandInset label
@@ -790,10 +821,12 @@ Tabelle
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:normaltab"
+nolink "false"
 
 \end_inset
 
- zeigt eine Tabelle, die das 
+ zeigt eine Tabelle,
+ die das 
 \family typewriter
 booktabs-
 \family default
@@ -806,8 +839,8 @@ formal
 \end_inset
 
  in den Tabellen-Einstellungen).
- Beachten Sie, dass es keine vertikalen Tabellenlinien gibt – diese zerstören
- ohnehin nur das Tabellenbild.
+ Beachten Sie,
+ dass es keine vertikalen Tabellenlinien gibt – diese zerstören ohnehin nur das Tabellenbild.
 \end_layout
 
 \begin_layout Standard
@@ -1005,30 +1038,49 @@ Ergänzend zu den neuen Gleitobjekten gibt es auch eine Absatzumgebung
 Volle Breite.
 
 \emph default
- Diese erstreckt sich über den Textblock hinaus und nutzt den Randbereich
- mit.
+ Diese erstreckt sich über den Textblock hinaus und nutzt den Randbereich mit.
  Außerdem ist sie linksbündig:
 \end_layout
 
 \begin_layout Full Width
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
- Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+Lorem ipsum dolor sit amet,
+ consectetuer adipiscing elit.
+ Ut purus elit,
+ vestibulum ut,
+ placerat ac,
+ adipiscing vitae,
+ felis.
  Curabitur dictum gravida mauris.
- Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.
+ Nam arcu libero,
+ nonummy eget,
+ consectetuer id,
+ vulputate a,
+ magna.
  Donec vehicula augue eu neque.
- Pellentesque habitant morbi tristique senectus et netus et malesuada fames
- ac turpis egestas.
+ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
  Mauris ut leo.
  Cras viverra metus rhoncus sem.
  Nulla et lectus vestibulum urna fringilla ultrices.
  Phasellus eu tellus sit amet tortor gravida placerat.
- Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+ Integer sapien est,
+ iaculis in,
+ pretium quis,
+ viverra ac,
+ nunc.
  Praesent eget sem vel leo ultrices bibendum.
  Aenean faucibus.
- Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla.
+ Morbi dolor nulla,
+ malesuada eu,
+ pulvinar at,
+ mollis ac,
+ nulla.
  Curabitur auctor semper nulla.
  Donec varius orci eget risus.
- Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
+ Duis nibh mi,
+ congue eu,
+ accumsan eleifend,
+ sagittis quis,
+ diam.
  Duis eget orci sit amet orci dignissim rutrum.
 \end_layout
 
@@ -1067,7 +1119,8 @@ Palatino
 \emph on
 Bera Mono
 \emph default
- installiert sind, werden sie automatisch verwendet.
+ installiert sind,
+ werden sie automatisch verwendet.
  Andernfalls greift die Klasse auf die 
 \emph on
 Computer-Modern-
@@ -1087,8 +1140,8 @@ name "sec:Zeichenabstand"
 \end_layout
 
 \begin_layout Standard
-Diese Dokumentklasse beinhaltet zwei neue Zeichenstile, und sie verbessert
- einige vorhandene Zeichenstildefinitionen.
+Diese Dokumentklasse beinhaltet zwei neue Zeichenstile,
+ und sie verbessert einige vorhandene Zeichenstildefinitionen.
 \end_layout
 
 \begin_layout Standard
@@ -1112,8 +1165,8 @@ Kapitälchen
 
 \end_inset
 
- ausgezeichnet wird, sollte der Abstand zwischen den einzelnen Zeichen leicht
- erhöht werden (leichte 
+ ausgezeichnet wird,
+ sollte der Abstand zwischen den einzelnen Zeichen leicht erhöht werden (leichte 
 \emph on
 Sperrung
 \emph default
@@ -1166,8 +1219,7 @@ Kapitälchen
 \end_inset
 
  leicht.
- Innerhalb dieser Zeichenstile werden die Buchstaben auch automatisch in
- Klein- (in 
+ Innerhalb dieser Zeichenstile werden die Buchstaben auch automatisch in Klein- (in 
 \emph on
 Kapitälchen
 \emph default
@@ -1180,12 +1232,12 @@ Versalien
 \end_layout
 
 \begin_layout Standard
-Der normale Kapitälchenstil wurde ebenfalls so umdefiniert, dass die Zeichen
- leicht gesperrt werden.
+Der normale Kapitälchenstil wurde ebenfalls so umdefiniert,
+ dass die Zeichen leicht gesperrt werden.
  Die Groß-\SpecialChar breakableslash
 Kleinschreibung wurde allerdings nicht angetastet.
- Das ermöglicht die (im Deutschen übliche) Verwendung von Groß- und Kleinbuchsta
-ben innerhalb von Kapitälchensequenzen: 
+ Das ermöglicht die (im Deutschen übliche) Verwendung von Groß- und Kleinbuchstaben innerhalb von Kapitälchensequenzen:
+ 
 \shape smallcaps
 Die Anfangsbuchstaben der Nomina in diesem Satz sind Grossbuchstaben.
 \end_layout
@@ -1243,7 +1295,8 @@ Die Option
 \emph on
 sfsidenotes
 \emph default
- bewirkt, dass Randnotizenin 
+ bewirkt,
+ dass Randnotizenin 
 \family sans
 serifenloser Schrift
 \family default
@@ -1255,12 +1308,14 @@ Die Option
 \emph on
 twoside
 \emph default
- verändert die Kolumnentitel dahingehend, dass die Seitenzahl am jeweils
- äußeren Rand (und nicht, wie im 
+ verändert die Kolumnentitel dahingehend,
+ dass die Seitenzahl am jeweils äußeren Rand (und nicht,
+ wie im 
 \emph on
 oneside-
 \emph default
-Modus, immer 
+Modus,
+ immer 
 \emph on
 rechts
 \emph default
@@ -1273,8 +1328,9 @@ Die Option
 symmetric
 \emph default
  setzt die Randnotizen an den jeweils äußeren Rand der Seite.
- Das entspricht der üblichen Konvention im Buchdruck, widerspricht aber
- Tuftes Buchdesign, in dem Randnotizen immer rechts erscheinen.
+ Das entspricht der üblichen Konvention im Buchdruck,
+ widerspricht aber Tuftes Buchdesign,
+ in dem Randnotizen immer rechts erscheinen.
  Diese Option aktiviert auch automatisch die Option 
 \emph on
 twoside
@@ -1288,8 +1344,8 @@ Die Option
 justified
 \emph default
  setzt den Text im Blocksatz.
- Der Standard hingegen ist linksbündig, was unnötige Zeilentrennung vermeidet
- und den Text in den relativ engen Spalten besser lesbar macht.
+ Der Standard hingegen ist linksbündig,
+ was unnötige Zeilentrennung vermeidet und den Text in den relativ engen Spalten besser lesbar macht.
 \end_layout
 
 \begin_layout Subsection*
@@ -1312,14 +1368,17 @@ Wie auf S.
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "sec:ueberschriften"
+nolink "false"
 
 \end_inset
 
- erwähnt, definiert die 
+ erwähnt,
+ definiert die 
 \family sans
 Tufte-Handout
 \family default
--Klasse nur zwei Abschnittsüberschriften: 
+-Klasse nur zwei Abschnittsüberschriften:
+ 
 \emph on
 Abschnitt
 \emph default
@@ -1335,7 +1394,8 @@ Wenn Sie beispielsweise eine Abschnittsüberschrift
 \emph on
 Paragraph
 \emph default
- definieren möchten, können Sie dies folgendermaßen tun:
+ definieren möchten,
+ können Sie dies folgendermaßen tun:
 \end_layout
 
 \begin_layout LyX-Code
@@ -1402,7 +1462,8 @@ Einstellungen\SpecialChar menuseparator
 \SpecialChar LaTeX
 -Vorspann
 \family default
- eingegeben haben, können Sie 
+ eingegeben haben,
+ können Sie 
 \family typewriter
 
 \backslash
@@ -1413,8 +1474,7 @@ paragraph
 \end_layout
 
 \begin_layout Standard
-Für weitere Informationen zur Definition von Abschnittsüberschriften lesen
- Sie bitte 
+Für weitere Informationen zur Definition von Abschnittsüberschriften lesen Sie bitte 
 \shape italic
 The \SpecialChar LaTeX
 
@@ -1461,7 +1521,8 @@ name "sec:Abhaengigkeiten"
 \end_layout
 
 \begin_layout Standard
-Im Folgenden werden die Pakete aufgelistet, auf die die 
+Im Folgenden werden die Pakete aufgelistet,
+ auf die die 
 \family sans
 Tufte-Handout
 \family default
@@ -1561,7 +1622,9 @@ svn
 
 \end_inset
 
--Archiv, eine Mailingliste, eine Fehlerdatenbank und weitere Dokumentation.
+-Archiv,
+ eine Mailingliste,
+ eine Fehlerdatenbank und weitere Dokumentation.
 \end_layout
 
 \begin_layout Standard

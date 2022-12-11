@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,9 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -105,12 +105,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -147,31 +151,45 @@ Hvad er \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  er et system til at udfærdige dokumenter\SpecialChar endofsentence
- Det udmærker sig ved at kunne
- lave komplekse tekniske og videnskabelige artikler med formler, krydshenvisning
-er, litteraturhenvisninger, indekser m.m\SpecialChar endofsentence
- Det er glimrende til dokumenter
- af enhver længde, hvor teksthåndterings-funktionaliteter er påkrævede:
- automatisk afsnits- og sidenummerering, stavekontrol o.s.v\SpecialChar endofsentence
- Det kan også bruges
- til at skrive et brev til Mor, men det skal indrømmes at der nok findes
- enklere programmer til sådan noget\SpecialChar endofsentence
- Det er absolut ikke det bedste værktøj
- til at lave plakater, flyers eller reklamemateriale (vi kommer tilbage
- til hvorfor), selvom den slags også kan laves med en ekstra indsats\SpecialChar endofsentence
- Eksempler
- på, hvad det er brugt til: breve, eksamensprojekter, afhandlinger, lærebøger
- og -noter, seminarmateriale, konference-proceedings, programdokumentation,
- bøger (om PostgreSQL, overvågning, kryptologi, fiktionslitteratur, poesi
- og selv en børnebog eller to), artikler i videnskabelige tidsskrifter,
- filmmanuskripter, forretningsplaner\SpecialChar ldots
+ Det udmærker sig ved at kunne lave komplekse tekniske og videnskabelige artikler med formler,
+ krydshenvisninger,
+ litteraturhenvisninger,
+ indekser m.m\SpecialChar endofsentence
+ Det er glimrende til dokumenter af enhver længde,
+ hvor teksthåndterings-funktionaliteter er påkrævede:
+ automatisk afsnits- og sidenummerering,
+ stavekontrol o.s.v\SpecialChar endofsentence
+ Det kan også bruges til at skrive et brev til Mor,
+ men det skal indrømmes at der nok findes enklere programmer til sådan noget\SpecialChar endofsentence
+ Det er absolut ikke det bedste værktøj til at lave plakater,
+ flyers eller reklamemateriale (vi kommer tilbage til hvorfor),
+ selvom den slags også kan laves med en ekstra indsats\SpecialChar endofsentence
+ Eksempler på,
+ hvad det er brugt til:
+ breve,
+ eksamensprojekter,
+ afhandlinger,
+ lærebøger og -noter,
+ seminarmateriale,
+ konference-proceedings,
+ programdokumentation,
+ bøger (om PostgreSQL,
+ overvågning,
+ kryptologi,
+ fiktionslitteratur,
+ poesi og selv en børnebog eller to),
+ artikler i videnskabelige tidsskrifter,
+ filmmanuskripter,
+ forretningsplaner\SpecialChar ldots
  og meget mere.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- er et program, der har en moderne tilgang til dokumentskrivning på computer
- med et markeringsparadigme, en tilgang, der bryder med det gammeldags 
+ er et program,
+ der har en moderne tilgang til dokumentskrivning på computer med et markeringsparadigme,
+ en tilgang,
+ der bryder med det gammeldags 
 \begin_inset Quotes sld
 \end_inset
 
@@ -180,24 +198,25 @@ skrivemaskine-koncept
 \end_inset
 
 \SpecialChar endofsentence
- Det er lavet til tekstforfattere, der hurtigt vil have et professionelt
- resultat med en minimal indsats uden at skulle være specialister i tekstopsætni
-ng\SpecialChar endofsentence
- Arbejdet med tekstopsætning klares hovedsageligt af computeren, ikke
- forfatteren; med \SpecialChar LyX
+ Det er lavet til tekstforfattere,
+ der hurtigt vil have et professionelt resultat med en minimal indsats uden at skulle være specialister i tekstopsætning\SpecialChar endofsentence
+ Arbejdet med tekstopsætning klares hovedsageligt af computeren,
+ ikke forfatteren;
+ med \SpecialChar LyX
  kan forfatteren koncentrere sig om indholdet\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-En af de udfordringer du kommer ud for, når du tager \SpecialChar LyX
- i brug, er den anderledes
- tænkemåde, du er nødt til at lægge for dagen\SpecialChar endofsentence
- Engang for længe siden var
- gammeldags skrivemaskiner det eneste man havde til at skrive dokumenter
- på, så vi lærte os allesammen små trick til at komme udenom deres begrænsninger\SpecialChar endofsentence
-
- Understregning, som ikke er andet end at overskrive med 
+En af de udfordringer du kommer ud for,
+ når du tager \SpecialChar LyX
+ i brug,
+ er den anderledes tænkemåde,
+ du er nødt til at lægge for dagen\SpecialChar endofsentence
+ Engang for længe siden var gammeldags skrivemaskiner det eneste man havde til at skrive dokumenter på,
+ så vi lærte os allesammen små trick til at komme udenom deres begrænsninger\SpecialChar endofsentence
+ Understregning,
+ som ikke er andet end at overskrive med 
 \begin_inset Quotes sld
 \end_inset
 
@@ -205,29 +224,25 @@ _
 \begin_inset Quotes srd
 \end_inset
 
--tegnet, blev en måde at lægge tryk på ord og sætninger\SpecialChar endofsentence
- Du var nødt til
- at lære dig søjlebredder og tabulatorstop — og sætte disse inden du lavede
- en tabel\SpecialChar endofsentence
+-tegnet,
+ blev en måde at lægge tryk på ord og sætninger\SpecialChar endofsentence
+ Du var nødt til at lære dig søjlebredder og tabulatorstop —
+ og sætte disse inden du lavede en tabel\SpecialChar endofsentence
  Det samme gjaldt for breve og andre højrejusterede tekster\SpecialChar endofsentence
- Orddeling
- ved linjeskift krævede et trænet øje og en den fremsynethed\SpecialChar endofsentence
+ Orddeling ved linjeskift krævede et trænet øje og en den fremsynethed\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Med andre ord er blev vi alle trænet op til at bekymre os om små detaljer
- om, hvilket tegn der skulle placeres hvor\SpecialChar endofsentence
- Derfor har alle tekstbehandlingsprogr
-ammer overtaget denne måde at tænke på\SpecialChar endofsentence
- De bruger stadig tabulatorstop til
- at lave afstande mellem teksterne\SpecialChar endofsentence
- Du skal stadig tænke over, præcis hvor
- på siden de forskellige elementer bliver placeret\SpecialChar endofsentence
- Når tekster skal fremhæves
- gøres det ved at vælge en anden skrifttype svarende til at udskifte skrivemaski
-nens skrifttypehjul\SpecialChar endofsentence
- Dette er filosofien bag WYSIWYG-tekstbehandling: 
+Med andre ord er blev vi alle trænet op til at bekymre os om små detaljer om,
+ hvilket tegn der skulle placeres hvor\SpecialChar endofsentence
+ Derfor har alle tekstbehandlingsprogrammer overtaget denne måde at tænke på\SpecialChar endofsentence
+ De bruger stadig tabulatorstop til at lave afstande mellem teksterne\SpecialChar endofsentence
+ Du skal stadig tænke over,
+ præcis hvor på siden de forskellige elementer bliver placeret\SpecialChar endofsentence
+ Når tekster skal fremhæves gøres det ved at vælge en anden skrifttype svarende til at udskifte skrivemaskinens skrifttypehjul\SpecialChar endofsentence
+ Dette er filosofien bag WYSIWYG-tekstbehandling:
+ 
 \begin_inset Quotes sld
 \end_inset
 
@@ -235,12 +250,14 @@ What You See Is What You Get
 \begin_inset Quotes erd
 \end_inset
 
- (Du ser, hvad du får).
+ (Du ser,
+ hvad du får).
  Desværre er resultatet oftest 
 \begin_inset Quotes sld
 \end_inset
 
-Du får ikke mere end det, du ser
+Du får ikke mere end det,
+ du ser
 \begin_inset Quotes srd
 \end_inset
 
@@ -249,14 +266,16 @@ Du får ikke mere end det, du ser
 \end_layout
 
 \begin_layout Standard
-Det er her, \SpecialChar LyX
+Det er her,
+ \SpecialChar LyX
  afviger fra almindelig tekstbehandling\SpecialChar endofsentence
- Du skal ikke bekymre
- dig om, hvor tegnene placeres på arket\SpecialChar endofsentence
+ Du skal ikke bekymre dig om,
+ hvor tegnene placeres på arket\SpecialChar endofsentence
  Du fortælle \SpecialChar LyX
  
 \emph on
-hvad det er, du laver
+hvad det er,
+ du laver
 \emph default
  og \SpecialChar LyX
  klarer resten efter et regelsæt kaldet en 
@@ -268,9 +287,9 @@ stil
 status collapsed
 
 \begin_layout Plain Layout
-Retfærdigvis skal det siges, at de nyeste udgaver af de mest populære kontorprog
-rammer har fået en slags stilark, som kan marker teksten på en lignende
- måde\SpecialChar endofsentence
+Retfærdigvis skal det siges,
+ at de nyeste udgaver af de mest populære kontorprogrammer har fået en slags stilark,
+ som kan marker teksten på en lignende måde\SpecialChar endofsentence
  De bruges dog sjældent i praksis\SpecialChar endofsentence
 
 \end_layout
@@ -282,8 +301,7 @@ rammer har fået en slags stilark, som kan marker teksten på en lignende
 
 \begin_layout Standard
 Du er ved at skrive en rapport\SpecialChar endofsentence
- I begyndelsen af rapporten vil du have et
- afsnit kaldet 
+ I begyndelsen af rapporten vil du have et afsnit kaldet 
 \begin_inset Quotes sld
 \end_inset
 
@@ -291,10 +309,9 @@ Introduktion
 \begin_inset Quotes srd
 \end_inset
 
-, så du bruger menuen i dit tekstbehandlingsprogram til ændring af skriftstørrel
-ser og vælger en ny skriftstørrelse\SpecialChar endofsentence
- Så aktiverer du fed skrift og skriver
- 
+,
+ så du bruger menuen i dit tekstbehandlingsprogram til ændring af skriftstørrelser og vælger en ny skriftstørrelse\SpecialChar endofsentence
+ Så aktiverer du fed skrift og skriver 
 \begin_inset Quotes sld
 \end_inset
 
@@ -311,10 +328,8 @@ Introduktion
 \end_inset
 
 \SpecialChar endofsentence
- Hvis du senere vil flytte afsnittet til et andet sted i dokumentet eller
- indsætter et nyt afsnit før dette, er du naturligvis nødt til at ændre
- nummereringen for denne og alle efterfølgende sektioner samt i indholdsfortegne
-lsen\SpecialChar endofsentence
+ Hvis du senere vil flytte afsnittet til et andet sted i dokumentet eller indsætter et nyt afsnit før dette,
+ er du naturligvis nødt til at ændre nummereringen for denne og alle efterfølgende sektioner samt i indholdsfortegnelsen\SpecialChar endofsentence
 
 \end_layout
 
@@ -338,19 +353,18 @@ Introduktion
 
 \begin_layout Standard
 Det er det hele\SpecialChar endofsentence
- Hvis du flytter rundt på afsnittene vil de automatisk få
- nye numre — overalt\SpecialChar endofsentence
- Og hvis du indsætter referencer til afsnittet korrekt
- (ved at indsætte krydsreference-mærker), vil \SpecialChar LyX
- automatisk opdatere dem i
- hele filen, så du altid nogensinde skal skrive et afsnitsnummer selv\SpecialChar endofsentence
+ Hvis du flytter rundt på afsnittene vil de automatisk få nye numre —
+ overalt\SpecialChar endofsentence
+ Og hvis du indsætter referencer til afsnittet korrekt (ved at indsætte krydsreference-mærker),
+ vil \SpecialChar LyX
+ automatisk opdatere dem i hele filen,
+ så du altid nogensinde skal skrive et afsnitsnummer selv\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
 Lad os kigge på problematikken omkring konsistens\SpecialChar endofsentence
- Fem dage senere åbner
- du igen rapporten og begynder at skrive sektion
+ Fem dage senere åbner du igen rapporten og begynder at skrive sektion
 \begin_inset space ~
 \end_inset
 
@@ -367,35 +381,35 @@ Lad os kigge på problematikken omkring konsistens\SpecialChar endofsentence
 1\SpecialChar endofsentence
  Dette problem findes ganske enkelt ikke i \SpecialChar LyX
 \SpecialChar endofsentence
- Maskinen holder styr på alle
- detaljerne om, hvilke ting der har hvilken skriftstørrelse for dig\SpecialChar endofsentence
- Sådan
- noget er computere trods alt ret gode til\SpecialChar endofsentence
+ Maskinen holder styr på alle detaljerne om,
+ hvilke ting der har hvilken skriftstørrelse for dig\SpecialChar endofsentence
+ Sådan noget er computere trods alt ret gode til\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Endnu et eksempel: Du laver en liste\SpecialChar endofsentence
- I andre tekstbehandlingsprogrammer
- er en liste blot en masse tabulatorstop og linjeskift\SpecialChar endofsentence
- du skal selv sørge
- for at placere et mærke ud for hvert punkt på listen, hvilket mærke det
- skal være, hvor mange tomme linjer der skal mellem hvert punkt og så videre\SpecialChar endofsentence
-
+Endnu et eksempel:
+ Du laver en liste\SpecialChar endofsentence
+ I andre tekstbehandlingsprogrammer er en liste blot en masse tabulatorstop og linjeskift\SpecialChar endofsentence
+ du skal selv sørge for at placere et mærke ud for hvert punkt på listen,
+ hvilket mærke det skal være,
+ hvor mange tomme linjer der skal mellem hvert punkt og så videre\SpecialChar endofsentence
  I \SpecialChar LyX
- skal du kun tænke på to ting: hvilken slags liste er det og hvad skal
- der stå i den\SpecialChar endofsentence
+ skal du kun tænke på to ting:
+ hvilken slags liste er det og hvad skal der stå i den\SpecialChar endofsentence
  Det er det hele\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
 Så den grundlæggende idé bag \SpecialChar LyX
- er: angiv 
+ er:
+ angiv 
 \emph on
 hvad
 \emph default
- du laver, ikke 
+ du laver,
+ ikke 
 \emph on
 hvordan
 \emph default
@@ -404,7 +418,8 @@ hvordan
 \begin_inset Quotes sld
 \end_inset
 
-Du ser, hvad du får
+Du ser,
+ hvad du får
 \begin_inset Quotes srd
 \end_inset
 
@@ -413,7 +428,8 @@ Du ser, hvad du får
 \begin_inset Quotes sld
 \end_inset
 
-Du ser, hvad du 
+Du ser,
+ hvad du 
 \emph on
 mener
 \emph default
@@ -421,22 +437,22 @@ mener
 \begin_inset Quotes srd
 \end_inset
 
- (What You See Is What You Mean, WYSIWYM)\SpecialChar endofsentence
- Den gør det meget simplere at
- skrive dokumenter\SpecialChar endofsentence
+ (What You See Is What You Mean,
+ WYSIWYM)\SpecialChar endofsentence
+ Den gør det meget simplere at skrive dokumenter\SpecialChar endofsentence
  Det er også derfor \SpecialChar LyX
- ikke er ret godt til at lave plakater
- og flyers — i disse tilfælde vil du netop 
+ ikke er ret godt til at lave plakater og flyers —
+ i disse tilfælde vil du netop 
 \emph on
 gerne
 \emph default
- bestemme præcis hvor alt skal stå, fordi der ikke findes funktionsbestemte
- enheder som afsnit, sektioner o.s.v\SpecialChar endofsentence
+ bestemme præcis hvor alt skal stå,
+ fordi der ikke findes funktionsbestemte enheder som afsnit,
+ sektioner o.s.v\SpecialChar endofsentence
  Det betyder ikke at \SpecialChar LyX
- mangler en bestemt
- funktion, snarere at det ganske enkelt ikke er det rigtigt værktøj til
- dette — du bruger heller ikke en skruetrækker til at hamre søm i med (medmindre
- din skruetrækker har livsvarig garanti)\SpecialChar endofsentence
+ mangler en bestemt funktion,
+ snarere at det ganske enkelt ikke er det rigtigt værktøj til dette —
+ du bruger heller ikke en skruetrækker til at hamre søm i med (medmindre din skruetrækker har livsvarig garanti)\SpecialChar endofsentence
 
 \end_layout
 
@@ -473,23 +489,27 @@ Space
 \end_layout
 
 \begin_layout Standard
-Tabulatorstop er sammen med linealen, der viser hvor ting er placeret på
- siden, ubrugelige i \SpecialChar LyX
+Tabulatorstop er sammen med linealen,
+ der viser hvor ting er placeret på siden,
+ ubrugelige i \SpecialChar LyX
 \SpecialChar endofsentence
- Programmet tager sig selv af, hvor på siden tingene
- placeres\SpecialChar endofsentence
- Det samme gælder ekstra mellemrum; \SpecialChar LyX
- tilføjer det efter behov afhængigt
- af konteksten\SpecialChar endofsentence
- I starten kan det være irriterende ikke at kunne indsætte
- to tomme linjer efter hinanden, men det giver mening, når du tænker i WYSIWYM\SpecialChar endofsentence
+ Programmet tager sig selv af,
+ hvor på siden tingene placeres\SpecialChar endofsentence
+ Det samme gælder ekstra mellemrum;
+ \SpecialChar LyX
+ tilføjer det efter behov afhængigt af konteksten\SpecialChar endofsentence
+ I starten kan det være irriterende ikke at kunne indsætte to tomme linjer efter hinanden,
+ men det giver mening,
+ når du tænker i WYSIWYM\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Her er nogle ting, der findes i \SpecialChar LyX
-, men bruges på en anden måde, end man skulle
- tro:
+Her er nogle ting,
+ der findes i \SpecialChar LyX
+,
+ men bruges på en anden måde,
+ end man skulle tro:
 \end_layout
 
 \begin_layout Itemize
@@ -502,11 +522,13 @@ Sideskift
 
 \begin_layout Itemize
 Linjeafstand (f.eks.
- enkelt, dobbelt o.s.v.)
+ enkelt,
+ dobbelt o.s.v.)
 \end_layout
 
 \begin_layout Itemize
-Afstand, vandret og lodret
+Afstand,
+ vandret og lodret
 \end_layout
 
 \begin_layout Itemize
@@ -514,32 +536,34 @@ Skrifttyper og -størrelser
 \end_layout
 
 \begin_layout Itemize
-Skriftjustering (fed, skråtstillet, understreget o.s.v.)
+Skriftjustering (fed,
+ skråtstillet,
+ understreget o.s.v.)
 \end_layout
 
 \begin_layout Standard
 Selvom de findes i \SpecialChar LyX
-, har du normalt ikke brug for dem\SpecialChar endofsentence
+,
+ har du normalt ikke brug for dem\SpecialChar endofsentence
  \SpecialChar LyX
- tager sig af disse
- ting for dig afhængigt af, hvad du er i gang med\SpecialChar endofsentence
- Forskellige dele af dokumentet
- sættes automatisk med en anden skrifttype og -størrelse\SpecialChar endofsentence
- Afsnitsindrykning
- afhænger af konteksten; forskellige afsnitstyper indrykkes forskelligt\SpecialChar endofsentence
-
+ tager sig af disse ting for dig afhængigt af,
+ hvad du er i gang med\SpecialChar endofsentence
+ Forskellige dele af dokumentet sættes automatisk med en anden skrifttype og -størrelse\SpecialChar endofsentence
+ Afsnitsindrykning afhænger af konteksten;
+ forskellige afsnitstyper indrykkes forskelligt\SpecialChar endofsentence
  Sideskift håndteres også automatisk\SpecialChar endofsentence
- Normalt er afstanden mellem ord, linjer
- og afsnit fleksibel, styret af \SpecialChar LyX
+ Normalt er afstanden mellem ord,
+ linjer og afsnit fleksibel,
+ styret af \SpecialChar LyX
 \SpecialChar endofsentence
 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Det er muligt selv at finjustere disse (hvoraf enkelte kræver kendskab til
- \SpecialChar LaTeX
-), i hele dokumentet eller dele heraf\SpecialChar endofsentence
+Det er muligt selv at finjustere disse (hvoraf enkelte kræver kendskab til \SpecialChar LaTeX
+),
+ i hele dokumentet eller dele heraf\SpecialChar endofsentence
  Se detaljerne i manualen 
 \emph on
 Brugermanualen
@@ -558,10 +582,10 @@ Udvidede funktioner
 \end_layout
 
 \begin_layout Standard
-Til sidste er der nogle områder, hvor vi mener at \SpecialChar LyX
+Til sidste er der nogle områder,
+ hvor vi mener at \SpecialChar LyX
  (og \SpecialChar LaTeX
-) overgår mange tekstbeha
-ndlingsprogrammer:
+) overgår mange tekstbehandlingsprogrammer:
 \end_layout
 
 \begin_layout Itemize
@@ -585,13 +609,14 @@ Krydsreferencer
 \end_layout
 
 \begin_layout Standard
-Godt nok kan mange nyere tekstbehandlingsprogrammer håndtere matematiske
- symboler, tabeller og orddeling — og mange har bevæget sig mod stildefinitioner
- og WYSIWYM-filosofien.
- Det er dog først for nylig at dette er sket, hvorimod \SpecialChar LyX
- bygger på do kuementudvi
-klingssystemet-\SpecialChar LaTeX
-, der har eksisteret i mere end 15 år og 
+Godt nok kan mange nyere tekstbehandlingsprogrammer håndtere matematiske symboler,
+ tabeller og orddeling —
+ og mange har bevæget sig mod stildefinitioner og WYSIWYM-filosofien.
+ Det er dog først for nylig at dette er sket,
+ hvorimod \SpecialChar LyX
+ bygger på do kuementudviklingssystemet-\SpecialChar LaTeX
+,
+ der har eksisteret i mere end 15 år og 
 \emph on
 virker
 \emph default
@@ -601,7 +626,9 @@ virker
 status collapsed
 
 \begin_layout Plain Layout
-Okay, vi ved godt at intet er helt perfekt, men \SpecialChar LaTeX
+Okay,
+ vi ved godt at intet er helt perfekt,
+ men \SpecialChar LaTeX
  er så tæt på at være fejlfrit,
  som et program kan komme\SpecialChar endofsentence
 
@@ -623,8 +650,8 @@ er
 
 \begin_layout Standard
 \SpecialChar LaTeX
- er et dokumentudviklingssystem, der blev lavet af Leslie Lamport tilbage
- i 1985
+ er et dokumentudviklingssystem,
+ der blev lavet af Leslie Lamport tilbage i 1985
 \begin_inset Foot
 status collapsed
 
@@ -642,7 +669,8 @@ A Guide to \SpecialChar LaTeX2e
 \begin_inset Quotes erd
 \end_inset
 
- af Helmut Kopka og Patrick Daly, som er nævnt i 
+ af Helmut Kopka og Patrick Daly,
+ som er nævnt i 
 \emph on
 Brugermanualen
 \emph default
@@ -654,8 +682,7 @@ s litteraturliste\SpecialChar endofsentence
 
 \SpecialChar endofsentence
  Det er igen bygget op omkring et tekstopsætningssprog kaldet \SpecialChar TeX
- (udtales
- 
+ (udtales 
 \begin_inset Quotes sld
 \end_inset
 
@@ -663,21 +690,21 @@ tæk
 \begin_inset Quotes srd
 \end_inset
 
-), som Donald Knuth lavede i 1984.
- Dog er det de færreste, der ved nøjagtig hvad \SpecialChar TeX
+),
+ som Donald Knuth lavede i 1984.
+ Dog er det de færreste,
+ der ved nøjagtig hvad \SpecialChar TeX
  er\SpecialChar endofsentence
  \SpecialChar TeX
- udfører en række skriftopsæt
-ningskommandoer fra en ren tekstfil\SpecialChar endofsentence
- Det er en smule mere indviklet end en
- skrivemaskine, men ikke nær så involveret i selve udskriftsprocessen\SpecialChar endofsentence
- Dog
- er mange af pressens udskrifts-trick blevet omsat til algoritmer af Knuth
- og inkorporeret i \SpecialChar TeX
-, hvilket er skyld i det fremragende udseende af udskrifter
- fra \SpecialChar TeX
+ udfører en række skriftopsætningskommandoer fra en ren tekstfil\SpecialChar endofsentence
+ Det er en smule mere indviklet end en skrivemaskine,
+ men ikke nær så involveret i selve udskriftsprocessen\SpecialChar endofsentence
+ Dog er mange af pressens udskrifts-trick blevet omsat til algoritmer af Knuth og inkorporeret i \SpecialChar TeX
+,
+ hvilket er skyld i det fremragende udseende af udskrifter fra \SpecialChar TeX
 \SpecialChar endofsentence
- I alle tilfælde er det, der kommer fra \SpecialChar TeX
+ I alle tilfælde er det,
+ der kommer fra \SpecialChar TeX
  en såkaldt 
 \begin_inset Quotes sld
 \end_inset
@@ -686,7 +713,8 @@ enhedsuafhængig
 \begin_inset Quotes srd
 \end_inset
 
- fil, 
+ fil,
+ 
 \family typewriter
 dvi
 \family default
@@ -703,108 +731,119 @@ dvi
 \family typewriter
 dvi
 \family default
- til andre formater såsom PostScript®, PDF, m.m\SpecialChar endofsentence
+ til andre formater såsom PostScript®,
+ PDF,
+ m.m\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Hvis ikke det var for én yderligere funktion, ville \SpecialChar TeX
- kun være et program
- til opsætning af tekst\SpecialChar endofsentence
+Hvis ikke det var for én yderligere funktion,
+ ville \SpecialChar TeX
+ kun være et program til opsætning af tekst\SpecialChar endofsentence
  \SpecialChar TeX
  giver imidlertid mulighed for at definere makroer\SpecialChar endofsentence
-
- Det er her, det bliver spændende\SpecialChar endofsentence
+ Det er her,
+ det bliver spændende\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
 De fleste brugere at \SpecialChar TeX
- bruger i virkeligheden en makropakke, som Knuth lavede
- for at skjule en del af detaljerne omkring opsætningen af tekst\SpecialChar endofsentence
- Det er
- det, de fleste kender som \SpecialChar TeX
+ bruger i virkeligheden en makropakke,
+ som Knuth lavede for at skjule en del af detaljerne omkring opsætningen af tekst\SpecialChar endofsentence
+ Det er det,
+ de fleste kender som \SpecialChar TeX
 \SpecialChar endofsentence
  Almindelige brugere arbejder ikke med rå \SpecialChar TeX
-, som
- udelukkende er kommandoer til opsætning af tekst\SpecialChar endofsentence
- Kun folk, der laver nye
- makropakker gør det\SpecialChar endofsentence
- Det er her, Lesslie Lamport kommer ind i historien\SpecialChar endofsentence
-
- Han ville have en makropakke, der var mere bruger\SpecialChar softhyphen
-orienteret og mindre skrivemas
-kine\SpecialChar softhyphen
+,
+ som udelukkende er kommandoer til opsætning af tekst\SpecialChar endofsentence
+ Kun folk,
+ der laver nye makropakker gør det\SpecialChar endofsentence
+ Det er her,
+ Lesslie Lamport kommer ind i historien\SpecialChar endofsentence
+ Han ville have en makropakke,
+ der var mere bruger\SpecialChar softhyphen
+orienteret og mindre skrivemaskine\SpecialChar softhyphen
 orienteret\SpecialChar endofsentence
- Et kommandosæt, der kunne sætte tekst, sektioner, tabeller
- og matematiske formler op på en ensartet, sammenhængende måde\SpecialChar endofsentence
- Sådan blev
- \SpecialChar LaTeX
+ Et kommandosæt,
+ der kunne sætte tekst,
+ sektioner,
+ tabeller og matematiske formler op på en ensartet,
+ sammenhængende måde\SpecialChar endofsentence
+ Sådan blev \SpecialChar LaTeX
  født\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
 Sideløbende med udviklingen af \SpecialChar LaTeX
- lavede andre deres egne makropakker til
- \SpecialChar TeX
+ lavede andre deres egne makropakker til \SpecialChar TeX
  til at lave slides eller artikler til matematik-tidsskrifter o.s.v\SpecialChar endofsentence
- Nogle
- brugte det rå \SpecialChar TeX
--funktioner til dette, mens andre begyndet at ændre i \SpecialChar LaTeX
+ Nogle brugte det rå \SpecialChar TeX
+-funktioner til dette,
+ mens andre begyndet at ændre i \SpecialChar LaTeX
 \SpecialChar endofsentence
- I
- et forsøg på at rydde op i dette rod, begyndte et hold af \SpecialChar LaTeX
--folk (heriblandt
- Lamport, naturligvis) sidst i 80'erne at arbejde på \SpecialChar LaTeX2e
-, den nuværende udgave
- af \SpecialChar LaTeX
+ I et forsøg på at rydde op i dette rod,
+ begyndte et hold af \SpecialChar LaTeX
+-folk (heriblandt Lamport,
+ naturligvis) sidst i 80'erne at arbejde på \SpecialChar LaTeX2e
+,
+ den nuværende udgave af \SpecialChar LaTeX
 \SpecialChar endofsentence
  Denne nye udgave af \SpecialChar LaTeX
- har kommandoer, der gør det lettere at oprette
- \SpecialChar TeX
--makroer, bruge nye skrifttyper m.m\SpecialChar endofsentence
+ har kommandoer,
+ der gør det lettere at oprette \SpecialChar TeX
+-makroer,
+ bruge nye skrifttyper m.m\SpecialChar endofsentence
  Faktisk er \SpecialChar LaTeX
- et ret omfattende selvstændigt
- sprog! Brugere verden over har lavet deres egne tilføjelser til \SpecialChar LaTeX
- ud over
- de almindelige\SpecialChar endofsentence
+ et ret omfattende selvstændigt sprog!
+ Brugere verden over har lavet deres egne tilføjelser til \SpecialChar LaTeX
+ ud over de almindelige\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
 Der er to måder at udvide \SpecialChar LaTeX
-: klasser og stile\SpecialChar endofsentence
+:
+ klasser og stile\SpecialChar endofsentence
  En 
 \emph on
 klasse
 \emph default
  er en samling \SpecialChar LaTeX
 - og \SpecialChar TeX
--makroer, der beskriver en bestemt slags dokument, såsom
- en bog eller artikel\SpecialChar endofsentence
- Der er klasser til slides, fysiske eller matematiske
- tidsskrifter\SpecialChar ldots
- mange universiteter har ligefrem sine egne klasse sine eksamenspro
-jekter og afhandlinger! En 
+-makroer,
+ der beskriver en bestemt slags dokument,
+ såsom en bog eller artikel\SpecialChar endofsentence
+ Der er klasser til slides,
+ fysiske eller matematiske tidsskrifter\SpecialChar ldots
+ mange universiteter har ligefrem sine egne klasse sine eksamensprojekter og afhandlinger!
+ En 
 \emph on
 stil
 \emph default
- afviger fra en klasse ved at den ikke definerer en ny dokumenttype, men
- en anden 
+ afviger fra en klasse ved at den ikke definerer en ny dokumenttype,
+ men en anden 
 \emph on
 opførsel
 \emph default
-, ethvert dokument kan have\SpecialChar endofsentence
+,
+ ethvert dokument kan have\SpecialChar endofsentence
  For eksempel styrer \SpecialChar LyX
- sidens margin og linjeafstand
- med to \SpecialChar LaTeX
+ sidens margin og linjeafstand med to \SpecialChar LaTeX
  stil-filer\SpecialChar endofsentence
- Der er stil-filer til en lang række ting: udskrivning
- af labels eller konvolutter, ændring af indrykningsopførsel, tilføjelse
- af nye skrifttyper, håndtering af grafik, design af nye tjekkede sidehoveder,
- justering af litteraturlister, ændring af fodnoters, tabellers og figurers
- placering og fremtræden, opsætning af lister o.s.v., o.s.v\SpecialChar endofsentence
+ Der er stil-filer til en lang række ting:
+ udskrivning af labels eller konvolutter,
+ ændring af indrykningsopførsel,
+ tilføjelse af nye skrifttyper,
+ håndtering af grafik,
+ design af nye tjekkede sidehoveder,
+ justering af litteraturlister,
+ ændring af fodnoters,
+ tabellers og figurers placering og fremtræden,
+ opsætning af lister o.s.v.,
+ o.s.v\SpecialChar endofsentence
 
 \end_layout
 
@@ -815,34 +854,42 @@ Her er en opsummering:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \SpecialChar TeX
-: Skriftopsætningssprog med makrofunktionalitet.
+:
+ Skriftopsætningssprog med makrofunktionalitet.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \SpecialChar LaTeX
-: Makropakke, der bygger på \SpecialChar TeX
+:
+ Makropakke,
+ der bygger på \SpecialChar TeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-klasser: Beskrivelser af en dokumenttype ved brug af \SpecialChar LaTeX
+klasser:
+ Beskrivelser af en dokumenttype ved brug af \SpecialChar LaTeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-stile: Ændrer \SpecialChar LaTeX
+stile:
+ Ændrer \SpecialChar LaTeX
 's standardopførsel på en eller anden måde.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \SpecialChar LyX
-: Visuel, WYSIWYM-tekstbehandling, der bruger \SpecialChar LaTeX
+:
+ Visuel,
+ WYSIWYM-tekstbehandling,
+ der bruger \SpecialChar LaTeX
 -systemet til udskrifterne.
 \end_layout
 
@@ -860,12 +907,14 @@ hvorfor
  Ligesom \SpecialChar LaTeX
  fokuserer \SpecialChar LyX
  på konteksten af det,
- du skriver — 
+ du skriver —
+ 
 \emph on
 hvad
 \emph default
  du er ved at skrive.
- Maskinen styrer derefter, 
+ Maskinen styrer derefter,
+ 
 \emph on
 hvordan
 \emph default
@@ -878,20 +927,18 @@ Dokumentationen
 
 \begin_layout Standard
 For at gøre det nemmere at svare på dine spørgsmål og beskrive alle \SpecialChar LyX
-'s funktione
-r, er dokumentationen delt op i flere filer\SpecialChar endofsentence
- De tjener hvert sit formål som
- beskrevet herunder\SpecialChar endofsentence
- Du bør læse dette afsnit nøje før du pløjer dig gennem
- dem\SpecialChar endofsentence
- Det indeholder en masse nyttige oplysninger og kommentarer, der kan
- spare din tid\SpecialChar endofsentence
+'s funktioner,
+ er dokumentationen delt op i flere filer\SpecialChar endofsentence
+ De tjener hvert sit formål som beskrevet herunder\SpecialChar endofsentence
+ Du bør læse dette afsnit nøje før du pløjer dig gennem dem\SpecialChar endofsentence
+ Det indeholder en masse nyttige oplysninger og kommentarer,
+ der kan spare din tid\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Noget af dokumentationen kan være mangelfuld eller forældet, selvom vi forsøger
- hårdt på at følge med\SpecialChar endofsentence
+Noget af dokumentationen kan være mangelfuld eller forældet,
+ selvom vi forsøger hårdt på at følge med\SpecialChar endofsentence
  Som resten af \SpecialChar LyX
  er manualerne udarbejdet af frivillige,
  der har 
@@ -902,11 +949,15 @@ virkelige job
 \begin_inset Quotes srd
 \end_inset
 
-, familier, opvask, kattebakker der skal tømmes o.s.v\SpecialChar endofsentence
- Vi gør vores bedste
- for at holde manualerne i tip-top stand, men det lykkes ikke altid, da
- udviklerne ynder at tilføje nye funktioner mens vi skriver om det gamle!
- (Hvis du vil hjælpe med at rette op på dette, skal du endelig læse kapitel
+,
+ familier,
+ opvask,
+ kattebakker der skal tømmes o.s.v\SpecialChar endofsentence
+ Vi gør vores bedste for at holde manualerne i tip-top stand,
+ men det lykkes ikke altid,
+ da udviklerne ynder at tilføje nye funktioner mens vi skriver om det gamle!
+ (Hvis du vil hjælpe med at rette op på dette,
+ skal du endelig læse kapitel
 \begin_inset space ~
 \end_inset
 
@@ -918,6 +969,7 @@ virkelige job
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "kap:Bidrag"
+nolink "false"
 
 \end_inset
 
@@ -926,10 +978,12 @@ reference "kap:Bidrag"
 \end_layout
 
 \begin_layout Standard
-Gør os i øvrigt en tjeneste — hvis der er noget i manualerne, der forvirrer
- dig, er uklart eller forkert, må du endelig lade os det vide! Du kan kontakte
- de nuværende vedligeholdere af manualerne ved at skrive på engelsk til
- 
+Gør os i øvrigt en tjeneste —
+ hvis der er noget i manualerne,
+ der forvirrer dig,
+ er uklart eller forkert,
+ må du endelig lade os det vide!
+ Du kan kontakte de nuværende vedligeholdere af manualerne ved at skrive på engelsk til 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -939,8 +993,9 @@ literal "false"
 \end_inset
 
 .
- Hvis du har spørgsmål, der ikke åbenlyst besvares af dokumentationen og
- skal bruge hurtig hjælp, kan du benytte dig af postlisten for \SpecialChar LyX
+ Hvis du har spørgsmål,
+ der ikke åbenlyst besvares af dokumentationen og skal bruge hurtig hjælp,
+ kan du benytte dig af postlisten for \SpecialChar LyX
 -brugere,
  som du kan nå på 
 \begin_inset CommandInset href
@@ -959,16 +1014,15 @@ Formatet
 \end_layout
 
 \begin_layout Standard
-Nogen trykker manualerne, mens andre læser dem på skærmen med \SpecialChar LyX
+Nogen trykker manualerne,
+ mens andre læser dem på skærmen med \SpecialChar LyX
 \SpecialChar endofsentence
- Fremtoningen
- på skærmen afviger på flere punkter fra den trykte version\SpecialChar endofsentence
- For det første
- er titlen i dokumentets top, ikke på en separat side, som den er på visse
- trykte versioner\SpecialChar endofsentence
+ Fremtoningen på skærmen afviger på flere punkter fra den trykte version\SpecialChar endofsentence
+ For det første er titlen i dokumentets top,
+ ikke på en separat side,
+ som den er på visse trykte versioner\SpecialChar endofsentence
  Hverken fodnoter eller indholdsfortegnelse er synlig\SpecialChar endofsentence
- Fodnoter
- ser således ud.
+ Fodnoter ser således ud.
 \begin_inset Foot
 status collapsed
 
@@ -993,31 +1047,33 @@ fodnote
 \end_inset
 
  Klik på den med venstre museknap for at åbne den\SpecialChar endofsentence
- For indholdsfortegnelsen
- kan du enten klikke på den grå firkant eller kigge i menuen 
+ For indholdsfortegnelsen kan du enten klikke på den grå firkant eller kigge i menuen 
 \family sans
 Navigér
 \family default
-, hvor indholdsfortegnelsen vises automatisk\SpecialChar endofsentence
+,
+ hvor indholdsfortegnelsen vises automatisk\SpecialChar endofsentence
  (Prøv det af!)
 \end_layout
 
 \begin_layout Standard
-I de trykte manualer optræder alle krydsreferencer som kapitelnumre, sektionsnum
-mer, undersektionsnumre o.s.v\SpecialChar endofsentence
- På skærmen vil krydsreferencer derimod være
- grå bokse som denne: 
+I de trykte manualer optræder alle krydsreferencer som kapitelnumre,
+ sektionsnummer,
+ undersektionsnumre o.s.v\SpecialChar endofsentence
+ På skærmen vil krydsreferencer derimod være grå bokse som denne:
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "kap:Bidrag"
+nolink "false"
 
 \end_inset
 
 .
- (De trykte manualer viser blot et nummer.) Hvis du klikker på firkanten
- med venstre museknap, vil du få et vindue med listen over alle krydsreferencer
- i dokumentet\SpecialChar endofsentence
- Denne introduktion har kun en enkelt, kaldet 
+ (De trykte manualer viser blot et nummer.) Hvis du klikker på firkanten med venstre museknap,
+ vil du få et vindue med listen over alle krydsreferencer i dokumentet\SpecialChar endofsentence
+ Denne introduktion har kun en enkelt,
+ kaldet 
 \begin_inset Quotes sld
 \end_inset
 
@@ -1061,15 +1117,16 @@ C-<
 \begin_inset Quotes erd
 \end_inset
 
- betyder? Se herunder)\SpecialChar endofsentence
+ betyder?
+ Se herunder)\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Nu, hvor vi har afklaret nogle af forskellene mellem den udskrevne version
- og den på skærmen, kan vi starte med at se på dette dokuments format\SpecialChar endofsentence
- Du
- vil støde på ord i forskellige skrifter:
+Nu,
+ hvor vi har afklaret nogle af forskellene mellem den udskrevne version og den på skærmen,
+ kan vi starte med at se på dette dokuments format\SpecialChar endofsentence
+ Du vil støde på ord i forskellige skrifter:
 \end_layout
 
 \begin_layout Itemize
@@ -1077,8 +1134,9 @@ Nu, hvor vi har afklaret nogle af forskellene mellem den udskrevne version
 \emph on
 Fremhævet stil
 \emph default
- bruges til generel fremhævning, bogtitler, titler på andre afsnit i manualerne
- og noter fra forfatterne\SpecialChar endofsentence
+ bruges til generel fremhævning,
+ bogtitler,
+ titler på andre afsnit i manualerne og noter fra forfatterne\SpecialChar endofsentence
 
 \end_layout
 
@@ -1087,8 +1145,10 @@ Fremhævet stil
 \family typewriter
 Skrivemaskine
 \family default
- bruges til program- og filnavne, \SpecialChar LaTeX
--, og \SpecialChar LyX
+ bruges til program- og filnavne,
+ \SpecialChar LaTeX
+-,
+ og \SpecialChar LyX
 -koder og funktioner.
 \end_layout
 
@@ -1097,7 +1157,9 @@ Skrivemaskine
 \family sans
 Grotesk
 \family default
- bruges til navne på menuer, knapper, vinduer og tastaturknapper.
+ bruges til navne på menuer,
+ knapper,
+ vinduer og tastaturknapper.
 \end_layout
 
 \begin_layout Itemize
@@ -1130,7 +1192,8 @@ Avancerede funktioner
 Additional.lyx
 \family default
 ).
- Når vi skal beskrive taster, bruger vi følgende konventioner:
+ Når vi skal beskrive taster,
+ bruger vi følgende konventioner:
 \end_layout
 
 \begin_layout Itemize
@@ -1187,7 +1250,8 @@ M-
 \family sans
 Meta-
 \family default
- tasten, som på de fleste tastaturer er 
+ tasten,
+ som på de fleste tastaturer er 
 \family sans
 Alt-
 \family default
@@ -1249,7 +1313,8 @@ Venstre
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \family sans
 
 \begin_inset Quotes sld
@@ -1261,7 +1326,8 @@ Højre
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \family sans
 
 \begin_inset Quotes sld
@@ -1273,7 +1339,8 @@ Op
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \family sans
 
 \begin_inset Quotes sld
@@ -1285,7 +1352,8 @@ Ned
 \begin_inset Quotes erd
 \end_inset
 
-: piletaster.
+:
+ piletaster.
 \end_layout
 
 \begin_layout Itemize
@@ -1300,7 +1368,8 @@ Insert
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \family sans
 
 \begin_inset Quotes sld
@@ -1312,7 +1381,8 @@ Delete
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \family sans
 
 \begin_inset Quotes sld
@@ -1324,7 +1394,8 @@ Home
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \family sans
 
 \begin_inset Quotes sld
@@ -1336,7 +1407,8 @@ End
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \family sans
 
 \begin_inset Quotes sld
@@ -1348,7 +1420,8 @@ PageUp
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \family sans
 
 \begin_inset Quotes sld
@@ -1360,8 +1433,9 @@ PageDown
 \begin_inset Quotes srd
 \end_inset
 
-: Det er de 6 taster, der er placeret lige over piletasterne på mange PC-tastatu
-rer.
+:
+ Det er de 6 taster,
+ der er placeret lige over piletasterne på mange PC-tastaturer.
  
 \family sans
 
@@ -1435,7 +1509,8 @@ Return
 \begin_inset Quotes erd
 \end_inset
 
-, andre som 
+,
+ andre som 
 \begin_inset Quotes sld
 \end_inset
 
@@ -1445,7 +1520,8 @@ Enter,
 
  atter andre har to taster.
  \SpecialChar LyX
- behandler dem alle som samme tast, og kalder den både 
+ behandler dem alle som samme tast,
+ og kalder den både 
 \family sans
 Retur
 \family default
@@ -1470,8 +1546,7 @@ Du kan også støde på fraser som
 \end_inset
 
 \SpecialChar endofsentence
- Vi har vist de mulige standard-genvejstaster for en funktion i dens beskrivelse
- i manualen 
+ Vi har vist de mulige standard-genvejstaster for en funktion i dens beskrivelse i manualen 
 \emph on
 
 \begin_inset Quotes sld
@@ -1483,10 +1558,13 @@ Avancerede funktioner
 \begin_inset Quotes erd
 \end_inset
 
-, så kig også der\SpecialChar endofsentence
- Bemærk, at der er to forskellige tastaturudlægninger,
+,
+ så kig også der\SpecialChar endofsentence
+ Bemærk,
+ at der er to forskellige tastaturudlægninger,
  der benyttes kan bruges i \SpecialChar LyX
-: 
+:
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1503,7 +1581,8 @@ emacs
 \begin_inset Quotes erd
 \end_inset
 
--typen er den almindelige for dem, der 
+-typen er den almindelige for dem,
+ der 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1512,8 +1591,8 @@ voksede op
 \end_inset
 
  med Unix-systemer og brugte Emacs til tekstredigering\SpecialChar endofsentence
- Medmindre andet er
- angivet, vil dokumentationen referere til CUA-typen\SpecialChar endofsentence
+ Medmindre andet er angivet,
+ vil dokumentationen referere til CUA-typen\SpecialChar endofsentence
  Hvis du kender Emacs,
  kan du nok selv læse dokumentationen og finde genvejstasterne selv\SpecialChar endofsentence
 
@@ -1551,11 +1630,12 @@ Selvstudium (Tutorial)
 \begin_layout Standard
 Hvis du ikke kender \SpecialChar LyX
  i forvejen og ikke har brugt \SpecialChar LaTeX
-, bør du starte her\SpecialChar endofsentence
- Hvis
- du tror, at \SpecialChar LaTeX
- er et fleksibelt plastikmateriale, skal du helt sikkert læse
- 
+,
+ bør du starte her\SpecialChar endofsentence
+ Hvis du tror,
+ at \SpecialChar LaTeX
+ er et fleksibelt plastikmateriale,
+ skal du helt sikkert læse 
 \emph on
 Selvstudium
 \emph default
@@ -1564,8 +1644,10 @@ Selvstudium
 \emph on
 Selvstudium
 \emph default
- muligvis stadig vil tro, at \SpecialChar LaTeX
- er et elastisk materiale — men du vil vide,
+ muligvis stadig vil tro,
+ at \SpecialChar LaTeX
+ er et elastisk materiale —
+ men du vil vide,
  hvordan du bruger \SpecialChar LyX
 \SpecialChar endofsentence
 
@@ -1577,7 +1659,8 @@ Hvis du
 har
 \emph default
  prøvet at bruge \SpecialChar LaTeX
- før, kan du læse 
+ før,
+ kan du læse 
 \emph on
 Selvstudium
 \emph default
@@ -1596,7 +1679,8 @@ Selvstudium
 \end_layout
 
 \begin_layout Standard
-Hvis du på noget tidspunkt føler dig på dybt vand, bør du tjekke 
+Hvis du på noget tidspunkt føler dig på dybt vand,
+ bør du tjekke 
 \emph on
 Selvstudium
 \emph default
@@ -1625,8 +1709,8 @@ de fleste
 \emph default
  af de grundlæggende \SpecialChar LyX
 -funktioner her\SpecialChar endofsentence
- Brugermanualen vil gå ud fra, at du
- har læst 
+ Brugermanualen vil gå ud fra,
+ at du har læst 
 \emph on
 Selvstudium
 \emph default
@@ -1657,9 +1741,11 @@ Brugermanual
 \emph default
 \SpecialChar endofsentence
  Dokumenterer hvordan du bruger de gå \SpecialChar LaTeX
--kommandoer, yderligere layout, redigering
-sfunktioner til bestemte formål — og viser nogle af de (noget bizarre men
- snedige) trick, \SpecialChar LaTeX
+-kommandoer,
+ yderligere layout,
+ redigeringsfunktioner til bestemte formål —
+ og viser nogle af de (noget bizarre men snedige) trick,
+ \SpecialChar LaTeX
 -kendere har adgang til\SpecialChar endofsentence
 
 \end_layout
@@ -1674,13 +1760,13 @@ Tilpasning (Customization)
 \begin_deeper
 \begin_layout Standard
 En beskrivelse af avancerede \SpecialChar LyX
--funktioner, herunder hvordan du tilpasser
- \SpecialChar LyX
+-funktioner,
+ herunder hvordan du tilpasser \SpecialChar LyX
 's generelle opførsel til dine behov\SpecialChar endofsentence
  Det omfatter tastaturudlægninger,
  sprogtilpasning og konfigurationsfiler\SpecialChar endofsentence
- Du skal end ikke tænke på at kigge
- her, før du har læst 
+ Du skal end ikke tænke på at kigge her,
+ før du har læst 
 \emph on
 Selvstudium
 \emph default
@@ -1708,21 +1794,22 @@ configuration)
  Denne fil indeholder de oplysninger,
  \SpecialChar LyX
  fandt frem til om dit system\SpecialChar endofsentence
- Tjek her for at se, om du mangler noget,
+ Tjek her for at se,
+ om du mangler noget,
  du muligvis gerne ville have\SpecialChar endofsentence
 
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Disse filer vil referere til hinanden, når det er nødvendigt\SpecialChar endofsentence
- For eksempel
- indeholder 
+Disse filer vil referere til hinanden,
+ når det er nødvendigt\SpecialChar endofsentence
+ For eksempel indeholder 
 \emph on
 Brugermanual
 \emph default
- nogen information om installation og tilpasning, men henviser læseren til
- 
+ nogen information om installation og tilpasning,
+ men henviser læseren til 
 \emph on
 Tilpasning
 \emph default
@@ -1747,7 +1834,8 @@ Læs
 \emph on
 Selvstudium
 \emph default
- nu, hvis du ikke kender \SpecialChar LyX
+ nu,
+ hvis du ikke kender \SpecialChar LyX
  i forvejen\SpecialChar endofsentence
 
 \end_layout
@@ -1762,8 +1850,8 @@ Selvstudium
 \begin_layout Standard
 Ellers vil du frustrere dig selv unødigt\SpecialChar endofsentence
  \SpecialChar LyX
- kan rigtigt meget, men kræver
- en anden angrebsvinkel\SpecialChar endofsentence
+ kan rigtigt meget,
+ men kræver en anden angrebsvinkel\SpecialChar endofsentence
 
 \end_layout
 
@@ -1787,8 +1875,7 @@ At bidrage til \SpecialChar LyX
 \SpecialChar LyX
  er hovedsageligt skrevet i C++ (\SpecialChar LaTeX
 -indlæseren er skrevet i Perl).
- Det er et stort projekt og er derfor ikke uden fejl eller behov for forbedringe
-r i kildeteksten.
+ Det er et stort projekt og er derfor ikke uden fejl eller behov for forbedringer i kildeteksten.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1797,19 +1884,24 @@ Rapportér fejl
 
 \begin_layout Standard
 Under brugen af \SpecialChar LyX
- kan det ske at du finder noget, du anser for at være en
- fejl\SpecialChar endofsentence
- Nedbrud, om end de er sjældne, kan forekomme\SpecialChar endofsentence
- Fejl i brugerfladen opfattes
- af \SpecialChar LyX
--udviklerne som alvorlige fejl: det er især en hjælp, at få at vide,
- hvis der er dele af brugerfladen, du synes er forvirrende eller uklare\SpecialChar endofsentence
+ kan det ske at du finder noget,
+ du anser for at være en fejl\SpecialChar endofsentence
+ Nedbrud,
+ om end de er sjældne,
+ kan forekomme\SpecialChar endofsentence
+ Fejl i brugerfladen opfattes af \SpecialChar LyX
+-udviklerne som alvorlige fejl:
+ det er især en hjælp,
+ at få at vide,
+ hvis der er dele af brugerfladen,
+ du synes er forvirrende eller uklare\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- har et fejlsporingssystem, som du finde på 
+ har et fejlsporingssystem,
+ som du finde på 
 \family typewriter
 \SpecialChar LyX
  fejlsporing
@@ -1826,11 +1918,10 @@ https://www.lyx.org/trac/wiki/BugTrackerHome
 \end_inset
 
 .
- Du bar tjekke dette inden du indrapporterer en fejl, så du undgår at den
- allerede er anmeldt\SpecialChar endofsentence
- Hvis du har kommentarer til en eksisterende fejl eller
- vil rapportere en ny fejl, kan du enten bruge fejlsporingssystemet eller
- sende et engelsksproget brev til udviklingslisten på 
+ Du bar tjekke dette inden du indrapporterer en fejl,
+ så du undgår at den allerede er anmeldt\SpecialChar endofsentence
+ Hvis du har kommentarer til en eksisterende fejl eller vil rapportere en ny fejl,
+ kan du enten bruge fejlsporingssystemet eller sende et engelsksproget brev til udviklingslisten på 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
@@ -1841,7 +1932,8 @@ literal "false"
 
 .
  Du finder arkivet fra denne liste på \SpecialChar LyX
-'s hoved-webside, 
+'s hoved-webside,
+ 
 \family typewriter
 \SpecialChar LyX
  webside
@@ -1862,30 +1954,35 @@ https://www.lyx.org/
 
 \begin_layout Standard
 En god (brugbar) fejlrapport fortæller som minimum hvilken udgave af \SpecialChar LyX
-, du
- har problemer med\SpecialChar endofsentence
- Nøjagtige, detaljerede beskrivelser foretrækkes — jo
- mere tid udviklerne skal bruge på at udpege kilden til en fejl, des mindre
- tid har de til andre forbedringer\SpecialChar endofsentence
+,
+ du har problemer med\SpecialChar endofsentence
+ Nøjagtige,
+ detaljerede beskrivelser foretrækkes —
+ jo mere tid udviklerne skal bruge på at udpege kilden til en fejl,
+ des mindre tid har de til andre forbedringer\SpecialChar endofsentence
  Nævn hvilket system du kører \SpecialChar LyX
  på\SpecialChar endofsentence
- Oplys
- versionerne på de biblioteker, du har installeret på dit system og, hvis
- det er relevant, udgaverne af de eksterne programmer, \SpecialChar LyX
+ Oplys versionerne på de biblioteker,
+ du har installeret på dit system og,
+ hvis det er relevant,
+ udgaverne af de eksterne programmer,
+ \SpecialChar LyX
  benytter\SpecialChar endofsentence
- Hvis det
- er et problem med oversættelsen af kildekoden, skal du vedlægge filen 
+ Hvis det er et problem med oversættelsen af kildekoden,
+ skal du vedlægge filen 
 \family typewriter
 config.log
 \family default
-, og nævne hvilken oversætter, du bruger.
+,
+ og nævne hvilken oversætter,
+ du bruger.
  
 \end_layout
 
 \begin_layout Standard
 Hvis du får \SpecialChar LyX
- til at bryde ned, vil vi bede dig om at tage dig tid til at
- spore fejlen med gdb\SpecialChar endofsentence
+ til at bryde ned,
+ vil vi bede dig om at tage dig tid til at spore fejlen med gdb\SpecialChar endofsentence
  Kun \SpecialChar LyX
  fra gdb ved for eksempel at skrive 
 \family typewriter
@@ -1917,9 +2014,9 @@ run
 
 .
  Få \SpecialChar LyX
- til at bryde ned, hvorefter du går tilbage til gdb\SpecialChar endofsentence
- Brug kommandoen
- 
+ til at bryde ned,
+ hvorefter du går tilbage til gdb\SpecialChar endofsentence
+ Brug kommandoen 
 \begin_inset Quotes sld
 \end_inset
 
@@ -1946,7 +2043,8 @@ backtrace
 status collapsed
 
 \begin_layout Plain Layout
-hvis du vil være grundig, kan du bruge kommandoerne 
+hvis du vil være grundig,
+ kan du bruge kommandoerne 
 \family typewriter
 
 \begin_inset Quotes srd
@@ -1976,8 +2074,8 @@ up
 
 \end_inset
 
- Hvis det er muligt, er en beskrivelse af hvordan man kan fremprovokere
- fejlen vigtigere end en 
+ Hvis det er muligt,
+ er en beskrivelse af hvordan man kan fremprovokere fejlen vigtigere end en 
 \begin_inset Quotes sld
 \end_inset
 
@@ -1985,9 +2083,9 @@ backtrace
 \begin_inset Quotes srd
 \end_inset
 
--fil, fordi vi så selv har mulighed for at undersøge fejlen\SpecialChar endofsentence
- Hvis fejlen
- ikke er let at reproducere er 
+-fil,
+ fordi vi så selv har mulighed for at undersøge fejlen\SpecialChar endofsentence
+ Hvis fejlen ikke er let at reproducere er 
 \begin_inset Quotes sld
 \end_inset
 
@@ -1995,7 +2093,8 @@ backtrace
 \begin_inset Quotes srd
 \end_inset
 
--filen essentiel, da den i så tilfælde er alt hvad vi har at gå ud fra.
+-filen essentiel,
+ da den i så tilfælde er alt hvad vi har at gå ud fra.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2004,11 +2103,12 @@ Bidrag med fejlrettelser og nye funktioner
 
 \begin_layout Standard
 Hvis du har lavet ændringer i \SpecialChar LyX
-'s kildetekst, som du synes bør indføres i
- \SpecialChar LyX
-, kan du sende dine ændringer som en diff-fil (i 'unified' format) til
- udviklingslisten, der blev nævnt ovenfor, sammen med en beskrivelse af
- ændringen og hvad den gør.
+'s kildetekst,
+ som du synes bør indføres i \SpecialChar LyX
+,
+ kan du sende dine ændringer som en diff-fil (i 'unified' format) til udviklingslisten,
+ der blev nævnt ovenfor,
+ sammen med en beskrivelse af ændringen og hvad den gør.
 \end_layout
 
 \begin_layout Subsection
@@ -2019,12 +2119,11 @@ Bidrag til dokumentationen
 \SpecialChar LyX
 's dokumentation er omfattende\SpecialChar endofsentence
  Alligevel er \SpecialChar LyX
- under konstant udvikling, og
- hver ny udgave tilføjer nye funktioner\SpecialChar endofsentence
- Du kan komme ud for at noget af
- dokumentationen trænger til en opdatering\SpecialChar endofsentence
- Dette afsnit beskriver hvad du
- gør, hvis du finder en fejl eller har forslag til forbedring af dokumentationen.
+ under konstant udvikling,
+ og hver ny udgave tilføjer nye funktioner\SpecialChar endofsentence
+ Du kan komme ud for at noget af dokumentationen trænger til en opdatering\SpecialChar endofsentence
+ Dette afsnit beskriver hvad du gør,
+ hvis du finder en fejl eller har forslag til forbedring af dokumentationen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2041,9 +2140,9 @@ literal "false"
 
 \end_inset
 
-, hvis du finder fejl i dokumentationen\SpecialChar endofsentence
- Dokumentationsholdet vil tage sig
- af de nødvendige rettelser\SpecialChar endofsentence
+,
+ hvis du finder fejl i dokumentationen\SpecialChar endofsentence
+ Dokumentationsholdet vil tage sig af de nødvendige rettelser\SpecialChar endofsentence
 
 \end_layout
 
@@ -2053,9 +2152,10 @@ Deltag i dokumentationsholdet.
 
 \begin_layout Standard
 Ligesom alt andet i \SpecialChar LyX
--projektet, kan \SpecialChar LyX
-'s dokumentationsprojekt altid bruge
- hjælp! Hvis du er interesseret i at bidrage til dokumentationsprojektet,
+-projektet,
+ kan \SpecialChar LyX
+'s dokumentationsprojekt altid bruge hjælp!
+ Hvis du er interesseret i at bidrage til dokumentationsprojektet,
  skal du 
 \emph on
 først
@@ -2105,7 +2205,8 @@ Selvstudium
 
 \begin_deeper
 \begin_layout Standard
-Meningen med denne øvelse er, at give dig idéer\SpecialChar endofsentence
+Meningen med denne øvelse er,
+ at give dig idéer\SpecialChar endofsentence
  
 \emph on
 Selvstudium
@@ -2115,14 +2216,15 @@ Selvstudium
 Brugermanualen
 \emph default
  vil altid være de mest opdaterede filer i dokumentationen\SpecialChar endofsentence
- Du vil kunne
- få et godt indtryk af, hvordan vi vil have manualerne til at se ud og virke\SpecialChar endofsentence
+ Du vil kunne få et godt indtryk af,
+ hvordan vi vil have manualerne til at se ud og virke\SpecialChar endofsentence
 
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Kontakt holdet på engelsk på: 
+Kontakt holdet på engelsk på:
+ 
 \end_layout
 
 \begin_deeper
@@ -2139,14 +2241,15 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-og beskriv de ændringer, du foreslår og gå noget respons på dem\SpecialChar endofsentence
+og beskriv de ændringer,
+ du foreslår og gå noget respons på dem\SpecialChar endofsentence
 
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-De ændringer, du kan foreslå at lave kan være alt lige fra at øge forståelighede
-n af teksten til at lave større omstruktureringer af dokumentationen.
+De ændringer,
+ du kan foreslå at lave kan være alt lige fra at øge forståeligheden af teksten til at lave større omstruktureringer af dokumentationen.
  Alle forbedringer modtages med tak\SpecialChar endofsentence
 
 \end_layout

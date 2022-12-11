@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -22,9 +22,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -75,13 +75,17 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \listings_params "breaklines=true"
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -91,16 +95,15 @@
 status open
 
 \begin_layout Plain Layout
-This example shows how to typeset code listings in a document using the
- minted latex package.
+This example shows how to typeset code listings in a document using the minted latex package.
 \end_layout
 
 \begin_layout Plain Layout
-Other than the minted package, you also need the pygments python module.
- See the minted documentation for directions on how to install it and what
- you have to do for using it with LaTeX.
- If you use a linux system, you can possibly install a suitable package
- through your package manager.
+Other than the minted package,
+ you also need the pygments python module.
+ See the minted documentation for directions on how to install it and what you have to do for using it with LaTeX.
+ If you use a linux system,
+ you can possibly install a suitable package through your package manager.
  Look for python packages named 
 \family typewriter
 python-pygments
@@ -125,11 +128,14 @@ reference "lis:foo"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
- using the default style, a light gray background, visible spaces, and numbered
- lines.
+ using the default style,
+ a light gray background,
+ visible spaces,
+ and numbered lines.
  The listing of some fortran code using the 
 \family typewriter
 bw
@@ -270,7 +276,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-Here is an inline listing of some TeX code: 
+Here is an inline listing of some TeX code:
+ 
 \begin_inset listings
 lstparams "language=TeX,fontfamily=tt"
 inline true

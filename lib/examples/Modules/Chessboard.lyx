@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -32,9 +32,9 @@ multicol
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -90,12 +90,16 @@ multicol
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -133,8 +137,7 @@ status open
 \begin_layout Plain Layout
 The following game was played at the IECC (International Email Chess Club).
  It is presented as an example of the fun you can have with \SpecialChar LyX
-'s new chessboard
- module (using the 
+'s new chessboard module (using the 
 \family sans
 xskak
 \family default
@@ -160,11 +163,13 @@ height "1pt"
 \begin_layout Plain Layout
 
 \noun on
-Sylvan, Kayvan
+Sylvan,
+ Kayvan
 \begin_inset space \hfill{}
 \end_inset
 
-Wakeham, Marc
+Wakeham,
+ Marc
 \noun default
 
 \begin_inset Newline newline
@@ -250,8 +255,7 @@ status open
 
 \begin_layout Plain Layout
 
-markmoves={d2-d4},pgfstyle=knightmove,markmove={g1-e2},pgfstyle=circle,markfield
-s={d4,f4}
+markmoves={d2-d4},pgfstyle=knightmove,markmove={g1-e2},pgfstyle=circle,markfields={d4,f4}
 \end_layout
 
 \end_inset
@@ -267,9 +271,10 @@ s={d4,f4}
 \begin_layout Plain Layout
 \noindent
 \align block
-So far, so good.
- The e2 knight controls the d4 and f4 squares, preparing an eventual d4
- push.
+So far,
+ so good.
+ The e2 knight controls the d4 and f4 squares,
+ preparing an eventual d4 push.
  The diagrammed position has been reached before in hundreds of GM games.
 \end_layout
 
@@ -356,7 +361,8 @@ outvar
 
 \begin_layout Plain Layout
 With 7...
- a6, we are back in the well-trodden theory of this opening.
+ a6,
+ we are back in the well-trodden theory of this opening.
 \end_layout
 
 \begin_layout Plain Layout
@@ -431,7 +437,8 @@ status open
 \begin_layout Plain Layout
 
 12...
- O-O? 
+ O-O?
+ 
 \begin_inset Argument post:1
 status open
 
@@ -451,7 +458,8 @@ This move loses instantly.
 \end_layout
 
 \begin_layout Plain Layout
-The following was better, even though white retains the upper hand.
+The following was better,
+ even though white retains the upper hand.
 \end_layout
 
 \begin_layout Plain Layout
@@ -531,7 +539,8 @@ status open
 \begin_layout Plain Layout
 
 13...
- Nd5!? 14.
+ Nd5!?
+ 14.
  Bxd5 cxd5 15.
  exf6 Qxf6 16.
  Bxd6 Rfd8 17.

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 611
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -801,6 +801,7 @@ reference "subsec:Cite-Engine-Files"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -889,6 +890,7 @@ xx
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:Internationalizing-LyX"
+nolink "false"
 
 \end_inset
 
@@ -982,6 +984,7 @@ ontains keyboard keymapping files.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:International-Keymap-Stuff"
+nolink "false"
 
 \end_inset
 
@@ -1009,6 +1012,7 @@ ontains the text class and module files described in
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:Installing-New-Document"
+nolink "false"
 
 \end_inset
 
@@ -1111,6 +1115,7 @@ ontains the standard \SpecialChar LyX
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Creating-Templates"
+nolink "false"
 
 \end_inset
 
@@ -1183,6 +1188,7 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Including-External-Material"
+nolink "false"
 
 \end_inset
 
@@ -1365,6 +1371,7 @@ his file contains translations for internationalized paragraph styles (see
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:I18n"
+nolink "false"
 
 \end_inset
 
@@ -1965,6 +1972,7 @@ Document format
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Converters"
+nolink "false"
 
 \end_inset
 
@@ -3278,6 +3286,7 @@ To define such alternate chains,
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formats"
+nolink "false"
 
 \end_inset
 
@@ -6638,6 +6647,7 @@ is
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Tags-for-XHTML"
+nolink "false"
 
 \end_inset
 
@@ -7862,6 +7872,7 @@ Your new package may also provide commands or environments not present in the ba
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:TextClass"
+nolink "false"
 
 \end_inset
 
@@ -7942,6 +7953,7 @@ A more complex module might modify the behavior of some existing constructs or d
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:TextClass"
+nolink "false"
 
 \end_inset
 
@@ -8467,6 +8479,7 @@ reference "subsec:Citation-engine-description"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -8474,6 +8487,7 @@ noprefix "false"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Citation-format-description"
+nolink "false"
 
 \end_inset
 
@@ -9622,6 +9636,7 @@ reference "subsec:Citation-engine-description"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -9839,6 +9854,7 @@ reference "subsec:Citation-engine-description"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -9869,6 +9885,7 @@ reference "subsec:Cite-Engine-Files"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -9911,6 +9928,7 @@ CiteFormat
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Citation-format-description"
+nolink "false"
 
 \end_inset
 
@@ -9941,6 +9959,7 @@ reference "subsec:Cite-Engine-Files"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -9997,6 +10016,7 @@ reference "subsec:Cite-Engine-Files"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -10018,6 +10038,7 @@ ClassOptions
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:ClassOptions"
+nolink "false"
 
 \end_inset
 
@@ -10149,6 +10170,7 @@ See
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Counters"
+nolink "false"
 
 \end_inset
 
@@ -10170,6 +10192,7 @@ DefaultFont
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -10448,6 +10471,7 @@ not
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Layout-modules"
+nolink "false"
 
 \end_inset
 
@@ -10469,6 +10493,7 @@ Float
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Floats"
+nolink "false"
 
 \end_inset
 
@@ -10672,6 +10697,7 @@ See
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Counters"
+nolink "false"
 
 \end_inset
 
@@ -10892,6 +10918,7 @@ See
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Flex-insets-and"
+nolink "false"
 
 \end_inset
 
@@ -10988,6 +11015,7 @@ reference "subsec:Cite-Engine-Files"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -11848,6 +11876,7 @@ boldsymbol
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:List-of-functions"
+nolink "false"
 
 \end_inset
 
@@ -11982,6 +12011,7 @@ string
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:List-of-functions"
+nolink "false"
 
 \end_inset
 
@@ -12184,6 +12214,7 @@ See
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -13182,6 +13213,7 @@ reference "subsec:Arguments"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -13818,6 +13850,7 @@ Font
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -13879,6 +13912,7 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -13902,6 +13936,7 @@ LabelFont
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -14520,6 +14555,7 @@ EndBabelPreamble
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:I18n"
+nolink "false"
 
 \end_inset
 
@@ -14872,6 +14908,7 @@ and
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -15117,6 +15154,7 @@ HTML*
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Style-XHTML"
+nolink "false"
 
 \end_inset
 
@@ -15762,6 +15800,7 @@ See
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Counters"
+nolink "false"
 
 \end_inset
 
@@ -15783,6 +15822,7 @@ LabelFont
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -15872,6 +15912,7 @@ LabelCounter
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Counters"
+nolink "false"
 
 \end_inset
 
@@ -16208,6 +16249,7 @@ Counter
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Counters"
+nolink "false"
 
 \end_inset
 
@@ -16308,6 +16350,7 @@ EndLangPreamble
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:I18n"
+nolink "false"
 
 \end_inset
 
@@ -17958,6 +18001,7 @@ string
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:List-of-functions"
+nolink "false"
 
 \end_inset
 
@@ -17977,6 +18021,7 @@ PackageOptions
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:General-text-class"
+nolink "false"
 
 \end_inset
 
@@ -18422,6 +18467,7 @@ TextFont
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -19369,6 +19415,7 @@ HTML*
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Tags-for-XHTML"
+nolink "false"
 
 \end_inset
 
@@ -19853,6 +19900,7 @@ string
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -20795,6 +20843,7 @@ reference "subsec:Arguments"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -20804,6 +20853,7 @@ noprefix "false"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -20833,6 +20883,7 @@ BabelPreamble
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:I18n"
+nolink "false"
 
 \end_inset
 
@@ -20864,6 +20915,7 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Names-of-colors"
+nolink "false"
 
 \end_inset
 
@@ -20936,6 +20988,7 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -21249,6 +21302,7 @@ and
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -21609,6 +21663,7 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -21630,6 +21685,7 @@ HTML*
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Tags-for-XHTML"
+nolink "false"
 
 \end_inset
 
@@ -21767,6 +21823,7 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -21788,6 +21845,7 @@ LabelFont
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -21874,6 +21932,7 @@ LangPreamble
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:I18n"
+nolink "false"
 
 \end_inset
 
@@ -22978,6 +23037,7 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -23026,6 +23086,7 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -23048,6 +23109,7 @@ Preamble
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -23103,6 +23165,7 @@ string
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -24231,6 +24294,7 @@ Font
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -24292,6 +24356,7 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
+nolink "false"
 
 \end_inset
 
@@ -24319,6 +24384,7 @@ LabelFont
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -25919,6 +25985,7 @@ reference "chap:Names-of-colors"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -26400,6 +26467,7 @@ reference "subsec:Cite-Engine-Files"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -27138,6 +27206,7 @@ reference "subsec:Cite-Engine-Files"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -28400,6 +28469,7 @@ AddToHTMLPreamble
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:General-text-class"
+nolink "false"
 
 \end_inset
 
@@ -28850,6 +28920,8 @@ status collapsed
 
 \change_inserted -584632292 1670182222
 HTMLClass
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28862,6 +28934,8 @@ status collapsed
 
 \change_inserted -584632292 1670182217
 string
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -30205,6 +30279,7 @@ floattype
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Floats"
+nolink "false"
 
 \end_inset
 
@@ -30312,6 +30387,7 @@ CiteFormat
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Citation-format-description"
+nolink "false"
 
 \end_inset
 
@@ -30393,6 +30469,7 @@ Font
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-description"
+nolink "false"
 
 \end_inset
 
@@ -30840,6 +30917,7 @@ reference "subsec:DocBook-New-line-policy"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -31862,6 +31940,7 @@ reference "subsec:DocBook-New-line-policy"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -32034,6 +32113,7 @@ reference "subsec:DocBook-New-line-policy"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -32164,6 +32244,7 @@ reference "subsec:DocBook-New-line-policy"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -32355,6 +32436,7 @@ reference "subsec:DocBook-New-line-policy"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -32541,6 +32623,7 @@ reference "subsec:DocBook-New-line-policy"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -32715,6 +32798,7 @@ reference "subsec:DocBook-New-line-policy"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -32905,6 +32989,7 @@ reference "subsec:DocBook-New-line-policy"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -33353,6 +33438,7 @@ will
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Security-discussion"
+nolink "false"
 
 \end_inset
 
@@ -33799,6 +33885,7 @@ InputFormat
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formats"
+nolink "false"
 
 \end_inset
 

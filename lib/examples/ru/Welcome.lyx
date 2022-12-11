@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -75,11 +75,14 @@
 \paperpagestyle default
 \tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -90,21 +93,26 @@
 \end_layout
 
 \begin_layout Section*
-Главные вещи, которые нужно знать при работе в \SpecialChar LyX
+Главные вещи,
+ которые нужно знать при работе в \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
- поставляется с отличной документацией — пожалуйста, пользуйтесь ей! Начните
- с выбора пункта меню 
+ поставляется с отличной документацией —
+ пожалуйста,
+ пользуйтесь ей!
+ Начните с выбора пункта меню 
 \family sans
 Помощь\SpecialChar menuseparator
 Введение
 \family default
-, где вы сможете найти очень краткое введение в систему документации.
+,
+ где вы сможете найти очень краткое введение в систему документации.
  Затем изучите принципы работы в \SpecialChar LyX
-, выбрав в меню пункт 
+,
+ выбрав в меню пункт 
 \family sans
 Помощь\SpecialChar menuseparator
 Самоучитель
@@ -115,17 +123,21 @@
 \begin_layout Enumerate
 Мы называем \SpecialChar LyX
  «процессором документов».
- Эта программа отличается по замыслу от обычных «текстовых процессоров»
- — с помощью \SpecialChar LyX
+ Эта программа отличается по замыслу от обычных «текстовых процессоров» —
+ с помощью \SpecialChar LyX
  процесс создания документа упрощается.
- Но не пугайтесь, если этот процесс несколько отличается от того, к которому
- вы привыкли.
+ Но не пугайтесь,
+ если этот процесс несколько отличается от того,
+ к которому вы привыкли.
  Возникшие у вас вопросы может прояснить документация
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Мы, кажется, уже упоминали, что документацию читать очень полезно?
+Мы,
+ кажется,
+ уже упоминали,
+ что документацию читать очень полезно?
 \end_layout
 
 \end_inset
@@ -135,8 +147,9 @@ status collapsed
 
 \begin_layout Enumerate
 Вывод программы \SpecialChar LyX
- выглядит потрясающе! Чтобы в этом убедиться, выберите пункт
- меню
+ выглядит потрясающе!
+ Чтобы в этом убедиться,
+ выберите пункт меню
 \begin_inset Newline newline
 \end_inset
 
@@ -163,10 +176,12 @@ arg   "buffer-view"
 \end_layout
 
 \begin_layout Enumerate
-Да, \SpecialChar LyX
+Да,
+ \SpecialChar LyX
  может использовать (почти) все возможности системы \SpecialChar LaTeX
 .
- И да, \SpecialChar LyX
+ И да,
+ \SpecialChar LyX
  может импортировать файлы \SpecialChar LaTeX
 .
  Опытные пользователи \SpecialChar LaTeX
@@ -177,17 +192,20 @@ arg   "buffer-view"
  и затем приступить к чтению главы «\SpecialChar LyX
  для пользователей \SpecialChar LaTeX
 » (всем остальным:
- не беспокойтесь, вам необязательно знать \SpecialChar LaTeX
+ не беспокойтесь,
+ вам необязательно знать \SpecialChar LaTeX
  для работы в \SpecialChar LyX
 ).
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
- содержит множество возможностей для пользователей, читающих или пишущих
- на языке, отличном от английского.
- В дополнение к этому, привязки клавиш, набор кнопок панели инструментов
- и многие другие свойства программы допускают очень гибкую настройку.
+ содержит множество возможностей для пользователей,
+ читающих или пишущих на языке,
+ отличном от английского.
+ В дополнение к этому,
+ привязки клавиш,
+ набор кнопок панели инструментов и многие другие свойства программы допускают очень гибкую настройку.
  Для более подробной информации найдите в меню пункт 
 \family sans
 Помощь\SpecialChar menuseparator
@@ -223,8 +241,9 @@ https://www.lyx.org/WebRu.Home
 
 .
  Там вы сможете получить информацию о программе \SpecialChar LyX
-, подписаться на списки
- рассылки, совершить графический тур по ключевым возможностям \SpecialChar LyX
+,
+ подписаться на списки рассылки,
+ совершить графический тур по ключевым возможностям \SpecialChar LyX
  (
 \begin_inset Flex URL
 status collapsed
@@ -243,9 +262,10 @@ https://www.lyx.org/WebRu.Walkthrough
 
 \series bold
 Замечание для пользователей Linux:
+
 \series default
- пожалуйста, не забудьте установить необходимые языковые пакеты дистрибутива
- \SpecialChar LaTeX
+ пожалуйста,
+ не забудьте установить необходимые языковые пакеты дистрибутива \SpecialChar LaTeX
  
 \family sans
 \SpecialChar TeX
@@ -256,12 +276,14 @@ https://www.lyx.org/WebRu.Walkthrough
 Live
 \family default
 .
- Если этого не сделать, то \SpecialChar LaTeX
+ Если этого не сделать,
+ то \SpecialChar LaTeX
  будет выдавать ошибки.
 \begin_inset Newline newline
 \end_inset
 
-Например, в дистрибутивах Linux 
+Например,
+ в дистрибутивах Linux 
 \family sans
 (K,X)Ubuntu
 \family default

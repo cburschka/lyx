@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -80,9 +80,9 @@ customHeadersFooters
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -128,37 +128,37 @@ customHeadersFooters
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \branch chapter-1
 \selected 1
 \filename_suffix 0
-\color #ffaa00
+\color #ffaa00 #0055ff
 \end_branch
 \branch chapter-2
 \selected 1
 \filename_suffix 0
-\color #55aaff
+\color #55aaff #aa5500
 \end_branch
 \branch Summary
 \selected 1
 \filename_suffix 0
-\color #7f7f7f
+\color #7f7f7f #808080
 \end_branch
 \branch Acknowledgments
 \selected 1
 \filename_suffix 0
-\color #ffff00
+\color #ffff00 #0000ff
 \end_branch
 \branch Appendix
 \selected 1
 \filename_suffix 0
-\color #faf0e6
+\color background background
 \end_branch
 \branch Standalone
 \selected 0
 \filename_suffix 0
-\color #faf0e6
+\color background background
 \end_branch
-\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -175,12 +175,16 @@ customHeadersFooters
 \papercolumns 1
 \papersides 2
 \paperpagestyle fancy
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -196,8 +200,8 @@ Notes:
 \end_layout
 
 \begin_layout Itemize
-When renaming this file, you must also rename it in all its sub-documents
- in the document settings in the menu 
+When renaming this file,
+ you must also rename it in all its sub-documents in the document settings in the menu 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -226,7 +230,8 @@ The bibliography database can be changed in the
 \emph on
 Bibliography
 \emph default
- sub-document, which also includes the nomenclature.
+ sub-document,
+ which also includes the nomenclature.
 \end_layout
 
 \begin_layout Itemize
@@ -242,15 +247,13 @@ Settings\SpecialChar menuseparator
 \end_layout
 
 \begin_layout Itemize
-If you change the document language you also need to check the document
- preamble and replace there the English-specific setting.
+If you change the document language you also need to check the document preamble and replace there the English-specific setting.
 \end_layout
 
 \begin_layout Itemize
 This file is not designed to change the document class.
- You can use it nevertheless as starting point if you have to use a special
- document class provided by your university, but no support can be granted
- for this transition.
+ You can use it nevertheless as starting point if you have to use a special document class provided by your university,
+ but no support can be granted for this transition.
 \end_layout
 
 \end_inset
@@ -264,8 +267,7 @@ Thesis to get the degree of a doctor of philosophy
 status open
 
 \begin_layout Plain Layout
-Use the official terms and title page layout of your university instead
- of this one!
+Use the official terms and title page layout of your university instead of this one!
 \end_layout
 
 \end_inset
@@ -431,7 +433,9 @@ xx.yy.zzzz
 \end_layout
 
 \begin_layout Dedication
-Dedication, cite from a famous person, or whatever you like (optional)
+Dedication,
+ cite from a famous person,
+ or whatever you like (optional)
 \end_layout
 
 \begin_layout Standard
@@ -460,8 +464,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Defines the header line.
- If your university does not have special rules what must be in the header/foote
-r, leave the settings as they are.
+ If your university does not have special rules what must be in the header/footer,
+ leave the settings as they are.
 \end_layout
 
 \begin_layout Plain Layout
@@ -473,7 +477,8 @@ Stuff inside the
 \family sans
 opt
 \family default
- inset appears on even pages, stuff outside the 
+ inset appears on even pages,
+ stuff outside the 
 \family sans
 opt
 \family default
@@ -514,13 +519,15 @@ rightmark
 \backslash
 thepage
 \series default
- prints the current page number, 
+ prints the current page number,
+ 
 \series bold
 
 \backslash
 thechapter
 \series default
- the current chapter number, 
+ the current chapter number,
+ 
 \series bold
 
 \backslash
@@ -531,16 +538,16 @@ thesection
 
 \begin_layout Itemize
 Further adjustments can be made in the \SpecialChar LaTeX
- preamble of thios document in the
- menu Document\SpecialChar menuseparator
+ preamble of thios document in the menu Document\SpecialChar menuseparator
 Settings.
- For a brief description how the header/footer lines can be modified, see
- the manual of the \SpecialChar LaTeX
+ For a brief description how the header/footer lines can be modified,
+ see the manual of the \SpecialChar LaTeX
  package 
 \series bold
 fancyhdr
 \series default
-: 
+:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -674,7 +681,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Usually the summary should not have page headers.
- If it should, remove this \SpecialChar TeX
+ If it should,
+ remove this \SpecialChar TeX
  code.
 \end_layout
 
@@ -971,8 +979,8 @@ Appendix is of course optional
 status open
 
 \begin_layout Plain Layout
-The bibliography and nomenclature are in an own sub-document, so that they
- can be included from individual chapters as well.
+The bibliography and nomenclature are in an own sub-document,
+ so that they can be included from individual chapters as well.
 \end_layout
 
 \end_inset

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,6 +54,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \use_lineno 0
 \index Index
 \shortcut idx
@@ -66,16 +67,20 @@
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\use_minted 0
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -110,7 +115,8 @@ thispagestyle{empty}
 
 \begin_layout Standard
 Pour installer \SpecialChar LyX
-, la marche à suivre est la suivante :
+,
+ la marche à suivre est la suivante :
 \end_layout
 
 \begin_layout Enumerate
@@ -124,8 +130,8 @@ Préparation du système
 \begin_deeper
 \begin_layout Itemize
 Si c'est votre première installation de \SpecialChar LyX
-, assurez-vous d'avoir une version
- récente de Mac\SpecialChar TeX
+,
+ assurez-vous d'avoir une version récente de Mac\SpecialChar TeX
  
 \begin_inset Flex URL
 status collapsed
@@ -140,15 +146,13 @@ http://www.tug.org/mactex
 .
  \SpecialChar LyX
  s'appuie sur \SpecialChar LaTeX
- pour composer les documents et ne peut pas produire de documents
- imprimables sans cela.
+ pour composer les documents et ne peut pas produire de documents imprimables sans cela.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Ouvrez l'image disque de \SpecialChar LyX
- 2.2 (ce que vous avez probablement déjà fait si
- vous lisez ceci).
+ 2.2 (ce que vous avez probablement déjà fait si vous lisez ceci).
 \end_layout
 
 \begin_layout Enumerate
@@ -163,8 +167,7 @@ Démarrez \SpecialChar LyX
 
 \begin_layout Enumerate
 Vous trouverez une liste des nouvelles fonctionnalités de \SpecialChar LyX
- 2.2 (malheureusement
- en anglais) à 
+ 2.2 (malheureusement en anglais) à 
 \begin_inset Flex URL
 status collapsed
 

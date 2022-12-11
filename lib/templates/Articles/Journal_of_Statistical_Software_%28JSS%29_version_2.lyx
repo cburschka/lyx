@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -39,9 +39,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -92,12 +92,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -108,8 +112,7 @@ status open
 
 \begin_layout Plain Layout
 This is a template \SpecialChar LyX
- file for articles to be submitted to the Journal of
- Statistical Software (JSS).
+ file for articles to be submitted to the Journal of Statistical Software (JSS).
  How to install the JSS \SpecialChar LaTeX
  class to your \SpecialChar LaTeX
  system is explained in 
@@ -133,8 +136,9 @@ https://wiki.lyx.org/Layouts/JSS
 status open
 
 \begin_layout Plain Layout
-To use the JSS codesnippet, bookreview or softwarereview styles, replace
- the option 
+To use the JSS codesnippet,
+ bookreview or softwarereview styles,
+ replace the option 
 \begin_inset Quotes eld
 \end_inset
 
@@ -153,7 +157,8 @@ codesnippet
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -175,8 +180,8 @@ softwarereview
 \end_layout
 
 \begin_layout Plain Layout
-If you want to use this JSS article style for a non-JSS article, replace
- the option 
+If you want to use this JSS article style for a non-JSS article,
+ replace the option 
 \begin_inset Quotes eld
 \end_inset
 
@@ -197,8 +202,9 @@ nojss
 \end_layout
 
 \begin_layout Plain Layout
-To include the JSS-specific parts of the layout, the article has to be processed
- with PDF, i.
+To include the JSS-specific parts of the layout,
+ the article has to be processed with PDF,
+ i.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -207,7 +213,8 @@ e.
 \end_inset
 
 you cannot process it with DVI or PS.
- However, if the option 
+ However,
+ if the option 
 \begin_inset Quotes eld
 \end_inset
 
@@ -215,7 +222,8 @@ nojss
 \begin_inset Quotes erd
 \end_inset
 
- is used, it can be processed with DVI or PS.
+ is used,
+ it can be processed with DVI or PS.
 \end_layout
 
 \end_inset
@@ -224,7 +232,8 @@ nojss
 \end_layout
 
 \begin_layout Title
-A Capitalized Title: Something about a Package 
+A Capitalized Title:
+ Something about a Package 
 \begin_inset Flex Pkg
 status open
 
@@ -238,7 +247,8 @@ foo
 \end_layout
 
 \begin_layout Plain Title
-A Capitalized Title: Something about a Package foo
+A Capitalized Title:
+ Something about a Package foo
 \begin_inset Note Note
 status open
 
@@ -277,7 +287,8 @@ Plus Affiliation
 \end_layout
 
 \begin_layout Plain Author
-Achim Zeileis, Second Author
+Achim Zeileis,
+ Second Author
 \begin_inset Note Note
 status open
 
@@ -300,7 +311,8 @@ foo
 
 \end_inset
 
-: A Capitalized Title
+:
+ A Capitalized Title
 \begin_inset Note Note
 status collapsed
 
@@ -316,16 +328,14 @@ only if necessary
 \begin_layout Abstract
 \noindent
 The abstract of the article.
- The abstract of the article.The abstract of the article.The abstract of the
- article.The abstract of the article.The abstract of the article.The abstract
- of the article.The abstract of the article.The abstract of the article.The
- abstract of the article.The abstract of the article.The abstract of the article.Th
-e abstract of the article.The abstract of the article.The abstract of the
- article.The abstract of the article.The abstract of the article.
+ The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.
 \end_layout
 
 \begin_layout Keywords
-keywords, comma-separated, not capitalized, 
+keywords,
+ comma-separated,
+ not capitalized,
+ 
 \begin_inset Flex Proglang
 status open
 
@@ -349,7 +359,10 @@ at least one keyword must be supplied
 \end_layout
 
 \begin_layout Plain Keywords
-keyword 1, keyword 2, foo, R
+keyword 1,
+ keyword 2,
+ foo,
+ R
 \end_layout
 
 \begin_layout Address
@@ -369,11 +382,13 @@ Universität Innsbruck
 \begin_inset Newline newline
 \end_inset
 
-6020 Innsbruck, Austria
+6020 Innsbruck,
+ Austria
 \begin_inset Newline newline
 \end_inset
 
-E-mail: 
+E-mail:
+ 
 \begin_inset Flex E-mail
 status open
 
@@ -388,7 +403,8 @@ Achim.Zeileis@uibk.ac.at
 \begin_inset Newline newline
 \end_inset
 
-URL: 
+URL:
+ 
 \begin_inset Flex URL
 status open
 
@@ -404,16 +420,17 @@ http://eeecon.uibk.ac.at/~zeileis/
 status open
 
 \begin_layout Plain Layout
-It is also possible to add a telephone and fax number before the e-mail
- in the following format:
+It is also possible to add a telephone and fax number before the e-mail in the following format:
 \begin_inset Newline newline
 \end_inset
 
-Telephone: +43/512/507-7103
+Telephone:
+ +43/512/507-7103
 \end_layout
 
 \begin_layout Plain Layout
-Fax: +43/512/507-2851
+Fax:
+ +43/512/507-2851
 \end_layout
 
 \end_inset
@@ -466,9 +483,9 @@ The short title provides bookmarks for PDF files
 \end_layout
 
 \begin_layout Standard
-The special JSS style commands related to software and mathematical formulas
- are written as follows in \SpecialChar LyX
-: 
+The special JSS style commands related to software and mathematical formulas are written as follows in \SpecialChar LyX
+:
+ 
 \begin_inset Flex Proglang
 status open
 
@@ -488,7 +505,8 @@ R
 
 \end_inset
 
- for the names of programming languages, 
+ for the names of programming languages,
+ 
 \begin_inset Flex Pkg
 status open
 
@@ -508,7 +526,8 @@ foo
 
 \end_inset
 
- for software packages, and 
+ for software packages,
+ and 
 \begin_inset Flex Code
 status open
 
@@ -528,7 +547,8 @@ some code
 
 \end_inset
 
- for code; 
+ for code;
+ 
 \begin_inset Formula $\E$
 \end_inset
 
@@ -544,7 +564,8 @@ E
 
 \end_inset
 
- for expectations, 
+ for expectations,
+ 
 \begin_inset Formula $\VAR$
 \end_inset
 
@@ -560,7 +581,8 @@ VAR
 
 \end_inset
 
- for variances, 
+ for variances,
+ 
 \begin_inset Formula $\COV$
 \end_inset
 
@@ -576,7 +598,8 @@ COV
 
 \end_inset
 
- for covariances, and 
+ for covariances,
+ and 
 \begin_inset Formula $\Prob$
 \end_inset
 
@@ -624,7 +647,8 @@ third line of code
 \end_layout
 
 \begin_layout Standard
-Alternatively, you can distinguish between input and output code:
+Alternatively,
+ you can distinguish between input and output code:
 \end_layout
 
 \begin_layout Standard

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,9 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -105,12 +105,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -136,12 +140,14 @@ skupina \SpecialChar LyX
 
 
 \size normal
-Prevod: Roman Maurer
+Prevod:
+ Roman Maurer
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Jezikovni pregled: Dora Mali
+Jezikovni pregled:
+ Dora Mali
 \end_layout
 
 \end_inset
@@ -173,13 +179,16 @@ Dobrodošli v \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-Dokumentacija je razdeljena na več različnih datotek, da bi lažje našli
- odgovore na vprašanja, ki se vam zastavljajo, in spoznali vse odlike \SpecialChar LyX
+Dokumentacija je razdeljena na več različnih datotek,
+ da bi lažje našli odgovore na vprašanja,
+ ki se vam zastavljajo,
+ in spoznali vse odlike \SpecialChar LyX
 a.
- Vsak od teh spisov ima poseben namen, kot je opisano spodaj.
- Preden se podaste v katerokoli od teh datotek, pa bi morali najprej podrobno
- prebrati tole, saj boste tu izvedeli marsikaj uporabnega in si pozneje
- prihranili precej časa.
+ Vsak od teh spisov ima poseben namen,
+ kot je opisano spodaj.
+ Preden se podaste v katerokoli od teh datotek,
+ pa bi morali najprej podrobno prebrati tole,
+ saj boste tu izvedeli marsikaj uporabnega in si pozneje prihranili precej časa.
 \end_layout
 
 \begin_layout Standard
@@ -191,12 +200,15 @@ a.
 
 \begin_layout Standard
 \align center
-POZOR!!!!! POZOR!!!!! POZOR!!!!
+POZOR!!!!!
+ POZOR!!!!!
+ POZOR!!!!
 \end_layout
 
 \begin_layout Standard
 \align center
-Nevarnost, nevarnost!
+Nevarnost,
+ nevarnost!
 \end_layout
 
 \begin_layout Standard
@@ -208,8 +220,8 @@ Nevarnost, nevarnost!
 
 \begin_layout Standard
 Čeprav ima različica \SpecialChar LyX
-a zdaj številko 1.0 (in več), je morda nekaj dokumentacije
- nepopolne ali pa se nanaša na starejše različice.
+a zdaj številko 1.0 (in več),
+ je morda nekaj dokumentacije nepopolne ali pa se nanaša na starejše različice.
  Tako kot preostanek \SpecialChar LyX
 a so tudi priročniki delo skupine prostovoljcev s 
 \begin_inset Quotes gld
@@ -219,11 +231,15 @@ pravimi službami
 \begin_inset Quotes grd
 \end_inset
 
-, z družinami, ki morajo pomivati posodo, menjati pesek v mačjem stranišču
- in tako naprej in tako naprej.
- Po svojih najboljših močeh se trudimo, da bi ohranili priročnike v tip-top
- formi, vendar nam to morda kdaj tudi ne bo uspelo.
- (Če želite to popraviti, poleg tega spisa preberite še razdelek
+,
+ z družinami,
+ ki morajo pomivati posodo,
+ menjati pesek v mačjem stranišču in tako naprej in tako naprej.
+ Po svojih najboljših močeh se trudimo,
+ da bi ohranili priročnike v tip-top formi,
+ vendar nam to morda kdaj tudi ne bo uspelo.
+ (Če želite to popraviti,
+ poleg tega spisa preberite še razdelek
 \begin_inset space ~
 \end_inset
 
@@ -231,6 +247,7 @@ pravimi službami
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Contrib"
+nolink "false"
 
 \end_inset
 
@@ -238,9 +255,10 @@ reference "sec:Contrib"
 \end_layout
 
 \begin_layout Standard
-In še nekaj vas prosimo – če vas karkoli v teh priročnikih zmede, ker je
- nejasno ali napačno, ne oklevajte in nam sporočite! S trenutnimi vzdrževalci
- spisov lahko stopite v stik tudi po elektronski pošti na naslov 
+In še nekaj vas prosimo – če vas karkoli v teh priročnikih zmede,
+ ker je nejasno ali napačno,
+ ne oklevajte in nam sporočite!
+ S trenutnimi vzdrževalci spisov lahko stopite v stik tudi po elektronski pošti na naslov 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -259,15 +277,19 @@ Oblika priročnikov
 \begin_layout Standard
 Nekateri ste priročnik(e) za \SpecialChar LyX
  že natisnili.
- Drugi jih morda prebirate na zvezi, kot datoteko v \SpecialChar LyX
+ Drugi jih morda prebirate na zvezi,
+ kot datoteko v \SpecialChar LyX
 u.
- Za tiste, ki jih berete na zvezi, je priročnik videti malce drugačen od
- tiskane različice.
- Najprej, naslov je preprosto na vrhu spisa, ne urejen na posebni strani
- kot v nekaterih tiskanih različicah.
+ Za tiste,
+ ki jih berete na zvezi,
+ je priročnik videti malce drugačen od tiskane različice.
+ Najprej,
+ naslov je preprosto na vrhu spisa,
+ ne urejen na posebni strani kot v nekaterih tiskanih različicah.
  Opombe v nogi in kazalo vsebine niso vidni.
  Na voljo je postavka menuja za ogled kazala vsebine.
- Odprete ga tako, da z menuja 
+ Odprete ga tako,
+ da z menuja 
 \family sans
 Uredi
 \family default
@@ -280,7 +302,8 @@ Kazalo
 vsebine
 \family default
 .
- Opombo v nogi, ki je videti takole
+ Opombo v nogi,
+ ki je videti takole
 \begin_inset Foot
 status collapsed
 
@@ -302,23 +325,28 @@ foot
 
 \end_inset
 
-, odprete , če jo kliknete z levim gumbom miške.
+,
+ odprete ,
+ če jo kliknete z levim gumbom miške.
 \end_layout
 
 \begin_layout Standard
-V tiskanih priročnikih so vsa navzkrižna sklicevanja vidna kot prave številke
- poglavja, razdelka, podrazdelka in tako naprej.
- Na zvezi pa so vsa navzkrižna sklicevanja videti kot siva škatla, podobna
- tej: 
+V tiskanih priročnikih so vsa navzkrižna sklicevanja vidna kot prave številke poglavja,
+ razdelka,
+ podrazdelka in tako naprej.
+ Na zvezi pa so vsa navzkrižna sklicevanja videti kot siva škatla,
+ podobna tej:
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Contrib"
+nolink "false"
 
 \end_inset
 
 .
- (V tiskanem priročniku boste namesto tega videli številko.) Če to škatlo
- kliknete z levim gumbom miške, vas \SpecialChar LyX
+ (V tiskanem priročniku boste namesto tega videli številko.) Če to škatlo kliknete z levim gumbom miške,
+ vas \SpecialChar LyX
  popelje v tisti razdelek.
  Nazaj se vrnete s 
 \family sans
@@ -337,12 +365,14 @@ C-<
 \begin_inset Quotes grd
 \end_inset
 
-? Glej spodaj.)
+?
+ Glej spodaj.)
 \end_layout
 
 \begin_layout Standard
-Zdaj, ko smo pojasnili nekatere razlike med tiskanimi in elektronskimi izvodi
- te datoteke, si lahko začnemo ogledovati obliko tega spisa.
+Zdaj,
+ ko smo pojasnili nekatere razlike med tiskanimi in elektronskimi izvodi te datoteke,
+ si lahko začnemo ogledovati obliko tega spisa.
  Tu in tam boste opazili različne pisave:
 \end_layout
 
@@ -351,8 +381,10 @@ Zdaj, ko smo pojasnili nekatere razlike med tiskanimi in elektronskimi izvodi
 \emph on
 Poudarjeni slog
 \emph default
- se uporablja za splošne poudarke, splošne argumente, naslove knjig, imena
- razdelkov v drugih priročnikih in opozorila avtorjev.
+ se uporablja za splošne poudarke,
+ splošne argumente,
+ naslove knjig,
+ imena razdelkov v drugih priročnikih in opozorila avtorjev.
 \end_layout
 
 \begin_layout Itemize
@@ -360,9 +392,9 @@ Poudarjeni slog
 \family typewriter
 Pisava pisalnega stroja
 \family default
- prikazuje imena programov in datotek, kode za \SpecialChar LaTeX
- ter kode in funkcije za
- \SpecialChar LyX
+ prikazuje imena programov in datotek,
+ kode za \SpecialChar LaTeX
+ ter kode in funkcije za \SpecialChar LyX
 .
 \end_layout
 
@@ -371,8 +403,8 @@ Pisava pisalnega stroja
 \family sans
 Neserifna pisava
 \family default
- se uporablja za imena menujev, gumbov ali menujskih postavk ter imena tipk
- na tipkovnici.
+ se uporablja za imena menujev,
+ gumbov ali menujskih postavk ter imena tipk na tipkovnici.
 \end_layout
 
 \begin_layout Itemize
@@ -384,8 +416,8 @@ se uporabljajo za imena ljudi.
 \end_layout
 
 \begin_layout Standard
-Kar zadeva tipke in tipkovne povezave, vas bomo verjetno napotili k razdelku
- 
+Kar zadeva tipke in tipkovne povezave,
+ vas bomo verjetno napotili k razdelku 
 \emph on
 Key Bindings
 \emph default
@@ -406,8 +438,8 @@ Referenčnem priročniku
 Reference.lyx
 \family default
 ).
- Ko se bomo morali sklicevati na tipke, bomo uporabili naslednje dogovore
- o predponah:
+ Ko se bomo morali sklicevati na tipke,
+ bomo uporabili naslednje dogovore o predponah:
 \end_layout
 
 \begin_layout Itemize
@@ -464,7 +496,8 @@ M-
 \family sans
 Meta-
 \family default
-, ki bo na nekaterih tipkovnicah označena z 
+,
+ ki bo na nekaterih tipkovnicah označena z 
 \family sans
 Alt-
 \family default
@@ -562,7 +595,8 @@ Dol
 \begin_inset Quotes grd
 \end_inset
 
-: pomen je očiten.
+:
+ pomen je očiten.
 \end_layout
 
 \begin_layout Itemize
@@ -637,7 +671,8 @@ PageDown
 \begin_inset Quotes grd
 \end_inset
 
-: teh šest tipk je na večini osebnih računalnikov nad kurzorskimi tipkami.
+:
+ teh šest tipk je na večini osebnih računalnikov nad kurzorskimi tipkami.
  
 \begin_inset Quotes gld
 \end_inset
@@ -712,7 +747,8 @@ Return
 \begin_inset Quotes grd
 \end_inset
 
-, druge kot 
+,
+ druge kot 
 \begin_inset Quotes gld
 \end_inset
 
@@ -720,9 +756,11 @@ Enter
 \begin_inset Quotes grd
 \end_inset
 
-, tretje imajo dve tipki.
+,
+ tretje imajo dve tipki.
  \SpecialChar LyX
- ju obravnava kot eno samo, zato bomo izmenoma uporabljali oznaki 
+ ju obravnava kot eno samo,
+ zato bomo izmenoma uporabljali oznaki 
 \family sans
 Return
 \family default
@@ -734,7 +772,8 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Včasih boste videli tudi kaj podobnega temu: 
+Včasih boste videli tudi kaj podobnega temu:
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -759,7 +798,8 @@ Referenčnem priročniku
 \begin_inset Quotes grd
 \end_inset
 
-, zato poglejte tudi tja.
+,
+ zato poglejte tudi tja.
 \end_layout
 
 \begin_layout Section
@@ -801,38 +841,45 @@ Učbenik
 
 Če ste novinec v \SpecialChar LyX
 u in niste nikoli prej uporabljali \SpecialChar LaTeX
-a, bi se morali branja
- lotiti tukaj.
- Če mislite, da je \SpecialChar LaTeX
- snov, iz katere izdelujejo kondome, morate vsekakor
- prebrati 
+a,
+ bi se morali branja lotiti tukaj.
+ Če mislite,
+ da je \SpecialChar LaTeX
+ snov,
+ iz katere izdelujejo kondome,
+ morate vsekakor prebrati 
 \emph on
 Učbenik
 \emph default
 .
- Vedite, da boste tudi potem še vedno mislili, da je \SpecialChar LaTeX
- nekaj raztegljivega
- – vendar 
+ Vedite,
+ da boste tudi potem še vedno mislili,
+ da je \SpecialChar LaTeX
+ nekaj raztegljivega – vendar 
 \emph on
 boste
 \emph default
- vedeli, kako uporabljati \SpecialChar LyX
+ vedeli,
+ kako uporabljati \SpecialChar LyX
 .
  
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Tudi, če 
+Tudi,
+ če 
 \emph on
 ste
 \emph default
  že prej uporabljali \SpecialChar LaTeX
-, bi morali prebrati 
+,
+ bi morali prebrati 
 \emph on
 Učbenik
 \emph default
-, začenši z razdelkom 
+,
+ začenši z razdelkom 
 \begin_inset Quotes gld
 \end_inset
 
@@ -842,16 +889,20 @@ a
 \begin_inset Quotes grd
 \end_inset
 
- (pa tudi, če boste preleteli preostanek spisa, vam ne bo škodilo).
+ (pa tudi,
+ če boste preleteli preostanek spisa,
+ vam ne bo škodilo).
 \end_layout
 
 \begin_layout Standard
 Če kdaj ostanete brez navdiha v zvezi z \SpecialChar LyX
-om, najprej vzemite v roke 
+om,
+ najprej vzemite v roke 
 \emph on
 Učbenik
 \emph default
-, šele potem se poglobite v druge priročnike.
+,
+ šele potem se poglobite v druge priročnike.
  Učbenik je dobra odskočna deska.
 \end_layout
 
@@ -880,7 +931,8 @@ večino
 \emph default
  osnovnih postopkov in dostopnih odlik \SpecialChar LyX
 a.
- Osrednji priročnik predpostavlja, da ste prebrali 
+ Osrednji priročnik predpostavlja,
+ da ste prebrali 
 \emph on
 Učbenik
 \emph default
@@ -923,8 +975,8 @@ Razširitev
 Uporabniškega vodnika
 \emph default
 .
- Dodatni videzi sestavkov in možnosti za posebno urejanje, skupaj z nekaterimi
- zvijačami mojstrov \SpecialChar LaTeX
+ Dodatni videzi sestavkov in možnosti za posebno urejanje,
+ skupaj z nekaterimi zvijačami mojstrov \SpecialChar LaTeX
 a.
 \end_layout
 
@@ -942,12 +994,14 @@ Prilagoditev
 \end_inset
 
 Opis izpopolnjenih možnosti \SpecialChar LyX
-a, skupaj s postopki za prilagoditev splošnega
- vedenja \SpecialChar LyX
+a,
+ skupaj s postopki za prilagoditev splošnega vedenja \SpecialChar LyX
 a.
- Sem so vštete tudi kombinacije tipk, internacionalizacija in nastavitvene
- datoteke.
- Naj vam ne pride na misel, da bi pokukali semkaj, dokler ne preberete 
+ Sem so vštete tudi kombinacije tipk,
+ internacionalizacija in nastavitvene datoteke.
+ Naj vam ne pride na misel,
+ da bi pokukali semkaj,
+ dokler ne preberete 
 \emph on
 Učbenika
 \emph default
@@ -971,13 +1025,18 @@ priročnik
 \begin_inset Newline newline
 \end_inset
 
-Ta obsega izčrpen, podroben opis odlik \SpecialChar LyX
-a, a brez uporabnih namigov, kako
- ga uporabljati, ter napotke, kdaj pogledati v 
+Ta obsega izčrpen,
+ podroben opis odlik \SpecialChar LyX
+a,
+ a brez uporabnih namigov,
+ kako ga uporabljati,
+ ter napotke,
+ kdaj pogledati v 
 \emph on
 Uporabniški vodnik
 \emph default
-, 
+,
+ 
 \emph on
 Učbenik
 \emph default
@@ -1002,8 +1061,9 @@ hrošči
 \end_inset
 
 V tej datoteki je seznam znanih hroščev v \SpecialChar LyX
-u in napotki, kaj storiti, če
- v \SpecialChar LyX
+u in napotki,
+ kaj storiti,
+ če v \SpecialChar LyX
 u naletite na hrošča.
 \end_layout
 
@@ -1027,11 +1087,13 @@ a
 
 \SpecialChar LyX
  takoj po namestitvi preišče sistem.
- V tej datoteki so podatki, ki jih je \SpecialChar LyX
+ V tej datoteki so podatki,
+ ki jih je \SpecialChar LyX
  zbral o vaši namestitvi \SpecialChar LaTeX
 a.
- Preverite to datoteko in poglejte, ali vam manjka kaj, kar bi sicer želeli
- imeti.
+ Preverite to datoteko in poglejte,
+ ali vam manjka kaj,
+ kar bi sicer želeli imeti.
 \end_layout
 
 \begin_layout Standard
@@ -1040,11 +1102,14 @@ Te datoteke se bodo po potrebi sklicevale druga na drugo.
 \emph on
 Uporabniškem vodniku
 \emph default
-, denimo, so zbrani 
+,
+ denimo,
+ so zbrani 
 \emph on
 nekateri
 \emph default
- podatki o namestitvi in prilagoditvi, kaj več pa boste izvedeli v 
+ podatki o namestitvi in prilagoditvi,
+ kaj več pa boste izvedeli v 
 \emph on
 Prilagoditvenem priročniku
 \emph default
@@ -1065,7 +1130,8 @@ Prilagoditvenem priročniku
 \begin_layout Standard
 \align center
 Če ste novinec v \SpecialChar LyX
-u, si preberite 
+u,
+ si preberite 
 \emph on
 Učbenik
 \emph default
@@ -1101,8 +1167,7 @@ Poročanje o napakah v priročnikih
 
 \begin_layout Standard
 To je zelo preprosto.
- Sporočilo lahko pošljete na dopisni seznam za razvijalce ali za uporabnike
- \SpecialChar LyX
+ Sporočilo lahko pošljete na dopisni seznam za razvijalce ali za uporabnike \SpecialChar LyX
 a.
  Dokumentacijska skupina pa bo najbolj vesela sporočila na naslov 
 \begin_inset CommandInset href
@@ -1114,9 +1179,13 @@ literal "false"
 \end_inset
 
 .
- Če gre za manjše popravke, jih bo kdo vnesel.
- Če gre za kaj večjega, pa vam priporočamo, da se pridružite dopisnemu seznamu
- in se, preden karkoli ukrenete, nekaj časa pogovarjate z nami.
+ Če gre za manjše popravke,
+ jih bo kdo vnesel.
+ Če gre za kaj večjega,
+ pa vam priporočamo,
+ da se pridružite dopisnemu seznamu in se,
+ preden karkoli ukrenete,
+ nekaj časa pogovarjate z nami.
 \end_layout
 
 \begin_layout Standard
@@ -1130,8 +1199,7 @@ literal "false"
 \align center
 
 \emph on
-Nikoli ne spreminjajte vsebine priročnikov brez poprejšnjega soglasja dokumentac
-ijske skupine!
+Nikoli ne spreminjajte vsebine priročnikov brez poprejšnjega soglasja dokumentacijske skupine!
 \end_layout
 
 \begin_layout Standard
@@ -1145,7 +1213,8 @@ ijske skupine!
 
 \lang english
 \SpecialChar LyX
- has a bug tracking system, which you can find at
+ has a bug tracking system,
+ which you can find at
 \lang slovene
  
 \family typewriter
@@ -1166,8 +1235,8 @@ https://www.lyx.org/trac/wiki/BugTrackerHome
 \end_layout
 
 \begin_layout Standard
-Takšne naključne spremembe ne bodo prišle v dokumentacijo, saj dokumentacijska
- skupina vzdržuje osrednje izvode v drevesu SVN.
+Takšne naključne spremembe ne bodo prišle v dokumentacijo,
+ saj dokumentacijska skupina vzdržuje osrednje izvode v drevesu SVN.
 \begin_inset Foot
 status collapsed
 
@@ -1186,9 +1255,12 @@ Pridružitev dokumentacijski skupini
 
 \begin_layout Standard
 Dokumentacijskemu projektu za \SpecialChar LyX
-, tako kot vsemu pri projektu \SpecialChar LyX
-, vedno prav
- pride pomoč! Če bi radi prispevali k Dokumentacijskem projektu, 
+,
+ tako kot vsemu pri projektu \SpecialChar LyX
+,
+ vedno prav pride pomoč!
+ Če bi radi prispevali k Dokumentacijskem projektu,
+ 
 \emph on
 najprej
 \emph default
@@ -1203,14 +1275,14 @@ a.
 status collapsed
 
 \begin_layout Plain Layout
-Bolj pustolovske duše med vami bodo anonimno pobrale zadnjo izvorno kodo
- iz arhiva CVS za \SpecialChar LyX
+Bolj pustolovske duše med vami bodo anonimno pobrale zadnjo izvorno kodo iz arhiva CVS za \SpecialChar LyX
 .
 \end_layout
 
 \end_inset
 
- V glavnem drevesu boste našli imenik, imenovan 
+ V glavnem drevesu boste našli imenik,
+ imenovan 
 \family typewriter
 development
 \family default
@@ -1232,7 +1304,8 @@ Učbenik
 
 \begin_deeper
 \begin_layout Standard
-Smisel te naloge je, da si ustvarite predstavo in da se vam utrnejo zamisli.
+Smisel te naloge je,
+ da si ustvarite predstavo in da se vam utrnejo zamisli.
  
 \emph on
 Učbenik
@@ -1242,8 +1315,8 @@ Učbenik
 Uporabniški vodnik
 \emph default
  bosta vedno najbolj osveženi del dokumentacije.
- Pri ogledu bi morali spoznati, kako naj bi brali priročnike in kako naj
- bi bili le-ti videti.
+ Pri ogledu bi morali spoznati,
+ kako naj bi brali priročnike in kako naj bi bili le-ti videti.
 \end_layout
 
 \end_deeper
@@ -1273,21 +1346,22 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Radi bi dosegli, da bi razumeli 
+Radi bi dosegli,
+ da bi razumeli 
 \emph on
 slog
 \emph default
-, preden bi začeli pisati.
+,
+ preden bi začeli pisati.
  Drugače boste morali svoje prispevke vnovič napisati.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Naj vam ne pride na misel, da bi se lotili pisanja, dokler ne poklepetamo
- po e-pošti.
- Trenutno stanje v dokumentaciji si boste lahko ogledali na spletni strani
- dokumentacijske skupine (ko jo bomo usposobili) ali v arhivih dopisnih
- seznamov na 
+Naj vam ne pride na misel,
+ da bi se lotili pisanja,
+ dokler ne poklepetamo po e-pošti.
+ Trenutno stanje v dokumentaciji si boste lahko ogledali na spletni strani dokumentacijske skupine (ko jo bomo usposobili) ali v arhivih dopisnih seznamov na 
 \begin_inset Flex URL
 status collapsed
 

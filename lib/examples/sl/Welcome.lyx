@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 95 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -87,19 +91,24 @@ u!
 \end_layout
 
 \begin_layout Section*
-Najpomembnejše, kar morate vedeti, ko uporabljate \SpecialChar LyX
+Najpomembnejše,
+ kar morate vedeti,
+ ko uporabljate \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
-u je priložena izvrstna dokumentacija (v angleščini, deloma tudi v slovenščini)
- – prosimo, uporabljajte jo! Začnite s 
+u je priložena izvrstna dokumentacija (v angleščini,
+ deloma tudi v slovenščini) – prosimo,
+ uporabljajte jo!
+ Začnite s 
 \family sans
 Pomoč\SpecialChar menuseparator
 Uvod
 \family default
-, ki vam ponuja zelo kratek uvod v dokumentacijo.
+,
+ ki vam ponuja zelo kratek uvod v dokumentacijo.
  Potem se učite uporabljati \SpecialChar LyX
  s postavko 
 \family sans
@@ -120,15 +129,18 @@ stavnik spisov
 \end_inset
 
 .
- Po zasnovi se razlikuje od navadnih urejevalnikov besedil – tako, da olajša
- pisanje spisov.
- Vendar se od njih razlikuje le malce, zato se nikar ne prestrašite.
+ Po zasnovi se razlikuje od navadnih urejevalnikov besedil – tako,
+ da olajša pisanje spisov.
+ Vendar se od njih razlikuje le malce,
+ zato se nikar ne prestrašite.
  V dokumentaciji je vse pojasnjeno.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Saj smo omenili, da bi morali prebrati dokumentacijo, kajne?
+Saj smo omenili,
+ da bi morali prebrati dokumentacijo,
+ kajne?
 \end_layout
 
 \end_inset
@@ -138,7 +150,8 @@ Saj smo omenili, da bi morali prebrati dokumentacijo, kajne?
 
 \begin_layout Enumerate
 Izhod \SpecialChar LyX
-a je videti čudovit! Izberite 
+a je videti čudovit!
+ Izberite 
 \family sans
 \lang english
 Document\SpecialChar menuseparator
@@ -157,10 +170,12 @@ View
 \end_layout
 
 \begin_layout Enumerate
-Da, \SpecialChar LyX
+Da,
+ \SpecialChar LyX
  lahko posnema (skoraj) vso uporabnost \SpecialChar LaTeX
 a.
- In da, \SpecialChar LyX
+ In da,
+ \SpecialChar LyX
  lahko uvaža datoteke za \SpecialChar LaTeX
 .
  Izkušeni uporabniki \SpecialChar LaTeX
@@ -179,18 +194,21 @@ a
 \end_inset
 
 .
- (Vsi drugi: ne skrbite: zato, da bi lahko uporabljali \SpecialChar LyX
- vam ni treba znati
- \SpecialChar LaTeX
+ (Vsi drugi:
+ ne skrbite:
+ zato,
+ da bi lahko uporabljali \SpecialChar LyX
+ vam ni treba znati \SpecialChar LaTeX
 a.)
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
- skriva marsikaj koristnega za tiste, ki berejo ali pišejo v kakem drugem
- jeziku, ne v angleščini.
- Poleg tega so tipkovne povezave, orodna vrstica in številne druge značilnosti
- silno nastavljive (večinoma z urejanjem datoteke 
+ skriva marsikaj koristnega za tiste,
+ ki berejo ali pišejo v kakem drugem jeziku,
+ ne v angleščini.
+ Poleg tega so tipkovne povezave,
+ orodna vrstica in številne druge značilnosti silno nastavljive (večinoma z urejanjem datoteke 
 \family typewriter
 lyxrc
 \family default
@@ -218,8 +236,10 @@ https://www.lyx.org
 
 .
  Poučite se o \SpecialChar LyX
-u, prijavite se na dopisne sezname o njem, podajte se na grafično
- odpravo: 
+u,
+ prijavite se na dopisne sezname o njem,
+ podajte se na grafično odpravo:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -238,6 +258,7 @@ https://www.lyx.org/Walkthrough
 \series bold
 \lang english
 Note for Linux users:
+
 \series default
  Please check that the language packages for the \SpecialChar LaTeX
  distribution 

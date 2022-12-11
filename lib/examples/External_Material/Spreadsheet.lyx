@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -23,9 +23,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -76,12 +76,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -106,8 +110,10 @@ LatexCommand tableofcontents
 \begin_layout Standard
 Test of spreadsheet external inset in \SpecialChar LyX
 .
- Spreadsheets (created with Gnumeric, LibreOffice, OpenOffice.org, or Excel)
- gets converted to .tex with the 
+ Spreadsheets (created with Gnumeric,
+ LibreOffice,
+ OpenOffice.org,
+ or Excel) gets converted to .tex with the 
 \family typewriter
 ssconvert
 \family default
@@ -121,9 +127,11 @@ External material
 \begin_inset Quotes erd
 \end_inset
 
-, any changes to the spreadsheet will be reflected in \SpecialChar LyX
+,
+ any changes to the spreadsheet will be reflected in \SpecialChar LyX
 's output too.
- Thus, the \SpecialChar LyX
+ Thus,
+ the \SpecialChar LyX
  document is always up to date.
 \end_layout
 
@@ -143,7 +151,8 @@ External Material.
 \end_layout
 
 \begin_layout Enumerate
-In the dialog, set template to 
+In the dialog,
+ set template to 
 \family sans
 GnumericSpreadsheet
 \family default
@@ -155,9 +164,11 @@ Simple examples
 \end_layout
 
 \begin_layout Standard
-First, the file 
+First,
+ the file 
 \emph on
-sheet1.gnumeric, 
+sheet1.gnumeric,
+ 
 \emph default
 a spreadsheet created with Gnumeric:
 \end_layout
@@ -175,7 +186,8 @@ a spreadsheet created with Gnumeric:
 \begin_layout Standard
 Then 
 \emph on
-sheet2.ods, 
+sheet2.ods,
+ 
 \emph default
 which was made with LibreOffice:
 \end_layout
@@ -242,8 +254,8 @@ Necessary software
 ssconvert
 \family default
  that is distributed with Gnumeric.
- It is therefore necessary to install Gnumeric, even if other software is
- used to create and edit the spreadsheets.
+ It is therefore necessary to install Gnumeric,
+ even if other software is used to create and edit the spreadsheets.
 \end_layout
 
 \begin_layout Section
@@ -252,7 +264,8 @@ Limitations
 
 \begin_layout Standard
 Spreadsheet inclusion have some limitations.
- I don't know all of them, but have seen problem with this:
+ I don't know all of them,
+ but have seen problem with this:
 \end_layout
 
 \begin_layout Labeling
@@ -262,8 +275,8 @@ Wide
 \begin_inset space ~
 \end_inset
 
-spreadsheets Unlike long spreadsheets, a spreadsheet wider than the margins
- doesn't work well.
+spreadsheets Unlike long spreadsheets,
+ a spreadsheet wider than the margins doesn't work well.
  There is no attempt at breaking up such spreadsheets.
 \end_layout
 
@@ -276,7 +289,8 @@ Some
 
 formatting Some types of formatting doesn't work.
  The red and green texts in the long spreadsheet are underlined.
- The underlining doesn't show, but the texts is otherwise printed correctly.
+ The underlining doesn't show,
+ but the texts is otherwise printed correctly.
 \end_layout
 
 \begin_layout Standard
@@ -285,8 +299,7 @@ These limitations come from
 ssconvert
 \family default
 .
- Feature requests for better spreadsheet conversions should therefore go
- to the Gnumeric developers.
+ Feature requests for better spreadsheet conversions should therefore go to the Gnumeric developers.
 \end_layout
 
 \end_body

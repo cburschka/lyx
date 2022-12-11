@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,9 +25,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -78,12 +78,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -97,11 +101,13 @@ status open
 \end_layout
 
 \begin_layout Itemize
-pour des conférences, 
+pour des conférences,
+ 
 \end_layout
 
 \begin_layout Itemize
-d'une durée approximative de 20 minutes, 
+d'une durée approximative de 20 minutes,
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -109,7 +115,8 @@ avec un style ornemental.
 \end_layout
 
 \begin_layout Plain Layout
-Pour afficher les explications, ouvrir les notes.
+Pour afficher les explications,
+ ouvrir les notes.
 \end_layout
 
 \end_inset
@@ -137,19 +144,18 @@ Adaptation à \SpecialChar LyX
 \end_layout
 
 \begin_layout Plain Layout
-En principe, ce fichier peut être redistribué et/ou modifié conformément
- aux termes de la GNU Public License, version 2.Cependant, ce fichier est
- un "exemple-type" qui peut être modifié selon vos propres besoins.
- Pour cette raison, si vous utilisez ce fichier en tant qu'"exemple-type"
- et non spécifiquement pour le distribuer en tant que partie d'un package
- ou programme, je vous donne la permission exceptionnelle de copier librement
- et de modifier ce fichier et même d'effacer ce message de copyright.
+En principe,
+ ce fichier peut être redistribué et/ou modifié conformément aux termes de la GNU Public License,
+ version 2.Cependant,
+ ce fichier est un "exemple-type" qui peut être modifié selon vos propres besoins.
+ Pour cette raison,
+ si vous utilisez ce fichier en tant qu'"exemple-type" et non spécifiquement pour le distribuer en tant que partie d'un package ou programme,
+ je vous donne la permission exceptionnelle de copier librement et de modifier ce fichier et même d'effacer ce message de copyright.
  
 \end_layout
 
 \begin_layout Plain Layout
-Correction mineure (style Institute au lieu de style Date) des fichiers
- originaux le 12 jan 07 par Jean-Pierre Chrétien <chretien@cert.fr> 
+Correction mineure (style Institute au lieu de style Date) des fichiers originaux le 12 jan 07 par Jean-Pierre Chrétien <chretien@cert.fr> 
 \end_layout
 
 \end_inset
@@ -168,7 +174,8 @@ Titre court
 status collapsed
 
 \begin_layout Plain Layout
-(facultatif, à utiliser uniquement si le titre de l'article est trop long)
+(facultatif,
+ à utiliser uniquement si le titre de l'article est trop long)
 \end_layout
 
 \end_inset
@@ -259,16 +266,19 @@ Insérer->Inserts personnalisables->MarqueInstitution
 status open
 
 \begin_layout Plain Layout
-Auteur, Lautre
+Auteur,
+ Lautre
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Itemize
-facultatif, à utiliser seulement avec plusieurs auteurs;
+facultatif,
+ à utiliser seulement avec plusieurs auteurs;
 \end_layout
 
 \begin_layout Itemize
-s'il y a vraiment beaucoup d'auteurs, utiliser 
+s'il y a vraiment beaucoup d'auteurs,
+ utiliser 
 \begin_inset Quotes eld
 \end_inset
 
@@ -341,7 +351,8 @@ inst uniquement s'il y a plusieurs affiliations.
 \end_layout
 
 \begin_layout Plain Layout
-- faites quelque chose de simple, personne ne s'intéresse à votre adresse
+- faites quelque chose de simple,
+ personne ne s'intéresse à votre adresse
 \end_layout
 
 \end_inset
@@ -356,7 +367,8 @@ Universités de Quelque Part et d'Ailleurs
 status collapsed
 
 \begin_layout Plain Layout
-optionnel, mais souvent nécessaire
+optionnel,
+ mais souvent nécessaire
 \end_layout
 
 \end_inset
@@ -370,18 +382,19 @@ optionnel, mais souvent nécessaire
 \end_layout
 
 \begin_layout Date
-Conférence sur les Présentations Fabuleuses, 2006
+Conférence sur les Présentations Fabuleuses,
+ 2006
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Itemize
-utilisez le nom de la conférence ou son abréviation; 
+utilisez le nom de la conférence ou son abréviation;
+ 
 \end_layout
 
 \begin_layout Itemize
-n'a pas réellement d'importance pour l'assistance qui sera présente lors
- de la conférence; mais en a pour les personnes (y compris vous-même) qui
- liront les transparents en ligne.
+n'a pas réellement d'importance pour l'assistance qui sera présente lors de la conférence;
+ mais en a pour les personnes (y compris vous-même) qui liront les transparents en ligne.
 \end_layout
 
 \end_inset
@@ -396,7 +409,8 @@ CPF 2006
 status collapsed
 
 \begin_layout Plain Layout
-facultatif, devrait être une abréviation du nom de la conférence
+facultatif,
+ devrait être une abréviation du nom de la conférence
 \end_layout
 
 \end_inset
@@ -414,10 +428,10 @@ facultatif, devrait être une abréviation du nom de la conférence
 status collapsed
 
 \begin_layout Plain Layout
-Si vous avez un fichier nommé "université-logo-nomfichier.xxx", où xxxest
- un format graphique accepté par \SpecialChar LyX
- (comme par exemple .png), alors vous pouvez
- insérer votre logo ainsi :
+Si vous avez un fichier nommé "université-logo-nomfichier.xxx",
+ où xxxest un format graphique accepté par \SpecialChar LyX
+ (comme par exemple .png),
+ alors vous pouvez insérer votre logo ainsi :
 \end_layout
 
 \end_inset
@@ -452,8 +466,9 @@ includegraphics[height=0.5cm]{institution-logo-filename}}
 status open
 
 \begin_layout Plain Layout
-Avec la syntaxe pgf, construction équivalente, mais format graphique compris
- par latex ou pdflatex:
+Avec la syntaxe pgf,
+ construction équivalente,
+ mais format graphique compris par latex ou pdflatex:
 \end_layout
 
 \end_inset
@@ -491,8 +506,7 @@ pgfuseimage{institution-logo}}
 status open
 
 \begin_layout Plain Layout
-À supprimer si vous ne voulez pas que la table des matières apparaisse au
- début de chaque sous-section :
+À supprimer si vous ne voulez pas que la table des matières apparaisse au début de chaque sous-section :
 \end_layout
 
 \end_inset
@@ -534,7 +548,8 @@ tableofcontents[currentsection,currentsubsection]
 
 \begin_layout Plain Layout
 
-% Vous pouvez, si vous le souhaitez ajouter l'option [pausesections]
+% Vous pouvez,
+ si vous le souhaitez ajouter l'option [pausesections]
 \end_layout
 
 \begin_layout Plain Layout
@@ -557,9 +572,9 @@ tableofcontents[currentsection,currentsubsection]
 status open
 
 \begin_layout Plain Layout
-Si vous souhaitez recouvrir vos transparents un à un, utilisez la commande
- suivante (pour plus d'info, voir la page 74 du manuel d'utilisation de
- Beamer (version 3.06) par Till Tantau) :
+Si vous souhaitez recouvrir vos transparents un à un,
+ utilisez la commande suivante (pour plus d'info,
+ voir la page 74 du manuel d'utilisation de Beamer (version 3.06) par Till Tantau) :
 \end_layout
 
 \end_inset
@@ -611,28 +626,30 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-Structurer l'exposé est une tâche difficile et la structure suivante pourrait
- ne pas convenir.
+Structurer l'exposé est une tâche difficile et la structure suivante pourrait ne pas convenir.
  Voici quelques règles à appliquer pour cet exemple ci :
 \end_layout
 
 \begin_layout Itemize
-avoir exactement deux ou trois sections (autre que le sommaire); 
+avoir exactement deux ou trois sections (autre que le sommaire);
+ 
 \end_layout
 
 \begin_layout Itemize
-tout au plus trois sous-sections par section; 
+tout au plus trois sous-sections par section;
+ 
 \end_layout
 
 \begin_layout Itemize
 parler approximativement entre 30 secondes et 2 minutes par transparent.
- Il  devrait donc y avoir entre 15 et 30 transparents, pour tout dire;
+ Il  devrait donc y avoir entre 15 et 30 transparents,
+ pour tout dire;
 \end_layout
 
 \begin_layout Itemize
-le public d'une conférence connaîtra probablement peu de chose sur le sujet
-  que vous serez en train de traiter.
- Donc, *simplifier*
+le public d'une conférence connaîtra probablement peu de chose sur le sujet  que vous serez en train de traiter.
+ Donc,
+ *simplifier*
 \begin_inset space ~
 \end_inset
 
@@ -640,15 +657,16 @@ le public d'une conférence connaîtra probablement peu de chose sur le sujet
 \end_layout
 
 \begin_layout Itemize
-dans un exposé de 20 minutes, garder à l'esprit les idées principales est
- largement  suffisant pour votre assistance.
- Laissez tomber certains détails, même s'ils vous  semblent nécessaires;
+dans un exposé de 20 minutes,
+ garder à l'esprit les idées principales est largement  suffisant pour votre assistance.
+ Laissez tomber certains détails,
+ même s'ils vous  semblent nécessaires;
  
 \end_layout
 
 \begin_layout Itemize
-si un détail qui est vital pour une preuve/mise en oeuvre est omis,  le
- dire simplement une fois.
+si un détail qui est vital pour une preuve/mise en oeuvre est omis,
+  le dire simplement une fois.
  Ce sera suffisant pour l'auditoire.
  
 \end_layout
@@ -698,8 +716,7 @@ Les sous-titres sont facultatifs.
 status collapsed
 
 \begin_layout Plain Layout
- - Un titre doit résumer le transparent dans un langage compréhensible 
-   par tous ceux qui ne suivront rien de ce qu'il y a sur ce transparent.
+ - Un titre doit résumer le transparent dans un langage compréhensible    par tous ceux qui ne suivront rien de ce qu'il y a sur ce transparent.
 \end_layout
 
 \end_inset
@@ -764,8 +781,7 @@ status open
 
 \end_inset
 
-Vous pouvez aussi utiliser des spécifications d'overlay pour créer des recouvrem
-ents
+Vous pouvez aussi utiliser des spécifications d'overlay pour créer des recouvrements
 \end_layout
 
 \begin_layout Itemize
@@ -819,9 +835,9 @@ Faites des titres qui informent
 
 \begin_deeper
 \begin_layout Standard
-Pour faire un recouvrement exact d'un transparent à l'autre (transparents
- dynamiques), utiliez le style overprint; attention à gérer le mode handout
- en choisissant quelle entrée sera retenue.
+Pour faire un recouvrement exact d'un transparent à l'autre (transparents dynamiques),
+ utiliez le style overprint;
+ attention à gérer le mode handout en choisissant quelle entrée sera retenue.
 \end_layout
 
 \begin_layout Standard
@@ -1186,7 +1202,8 @@ troisième message
 
 
 \color none
-, mais pas plus.
+,
+ mais pas plus.
 \end_layout
 
 \begin_layout Standard
@@ -1332,7 +1349,8 @@ newblock
 
 \end_inset
 
- Une Edition, 1990.
+ Une Edition,
+ 1990.
 \begin_inset ERT
 status collapsed
 
@@ -1405,7 +1423,8 @@ newblock
 Journal de ceci et cela
 \emph default
 .
- 2(1):50–100, 2000.
+ 2(1):50–100,
+ 2000.
 \end_layout
 
 \end_deeper

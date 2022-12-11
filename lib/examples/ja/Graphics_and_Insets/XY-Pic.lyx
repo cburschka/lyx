@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -42,9 +42,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -109,12 +109,16 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -166,9 +170,10 @@ Xy
 
 
 \family default
--Picを便利に使用することができます。\SpecialChar LyX
-のメイン編集ウィンドウ内部で、図式を編集したり表示したりすることができるのです。ここでは、主に圏論や代数などの関連領域で
-使用される図式を描いたり、編集したり、プレビューしたりするためには、
+-Picを便利に使用することができます。
+\SpecialChar LyX
+のメイン編集ウィンドウ内部で、図式を編集したり表示したりすることができるのです。
+ここでは、主に圏論や代数などの関連領域で使用される図式を描いたり、編集したり、プレビューしたりするためには、
 \family typewriter
 xypic
 \family default
@@ -180,6 +185,7 @@ xymatrix
 \family default
 コマンドを\SpecialChar LyX
 内部からどのように使えばいいのかを説明します。
+
 \end_layout
 
 \begin_layout Abstract
@@ -201,12 +207,13 @@ LatexCommand tableofcontents
 xypic
 \family default
 パッケージは、\SpecialChar LaTeX
-においてグラフと図式を簡単に構成するための便利なツールとして、長い間使われてきています。不幸にして長い間、\SpecialChar LyX
+においてグラフと図式を簡単に構成するための便利なツールとして、長い間使われてきています。
+不幸にして長い間、\SpecialChar LyX
 中でこのパッケージを使えるのは、悪名高き\SpecialChar TeX
-
 コードボックスに限定されてきたため、\SpecialChar LyX
 エディタでは、完成した図式ではなく\SpecialChar LaTeX
-ソースしか表示されませんでした。しかしついに、AUC\SpecialChar TeX
+ソースしか表示されませんでした。
+しかしついに、AUC\SpecialChar TeX
 プロジェクト
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -226,6 +233,7 @@ preview
 xypic
 \family default
 図式の編集や表示ができるようになりました。
+
 \end_layout
 
 \begin_layout Standard
@@ -270,16 +278,19 @@ Xy
 \end_inset
 
 -Picを\SpecialChar LyX
-内部からどのように使用すればよいか、図式をどのように作成し編集すればよいかを説明します。下記の手順は、Windows
+内部からどのように使用すればよいか、図式をどのように作成し編集すればよいかを説明します。
+下記の手順は、Windows
 \begin_inset space \thinspace{}
 \end_inset
 
 XPおよびWindows Vistaそれぞれの環境下で、\SpecialChar LyX
 の第1.3.7版から第1.6版までを使用して検証されています。
+
 \end_layout
 
 \begin_layout Standard
-操作には二つのモードがあります。最初のうち、何回かの練習では、まず
+操作には二つのモードがあります。
+最初のうち、何回かの練習では、まず
 \begin_inset ERT
 status collapsed
 
@@ -306,20 +317,24 @@ Ctrl-M
 status collapsed
 
 \begin_layout Plain Layout
-【訳註】これはキー割り当てがcuaの場合です（以下同）。その他のキー割り当てであれば、
+【訳註】これはキー割り当てがcuaの場合です（以下同）。
+その他のキー割り当てであれば、
 \family typewriter
 math-mode
 \family default
-関数に割り当てられたキーになります。たとえば、emacs配列では
+関数に割り当てられたキーになります。
+たとえば、emacs配列では
 \family typewriter
 Ctrl-m m
 \family default
 です。
+
 \end_layout
 
 \end_inset
 
 図表示に変換するのが、最も簡単でしょう。
+
 \begin_inset ERT
 status collapsed
 
@@ -334,11 +349,13 @@ Xy
 
 -Picをもっとよく使うようであったり、最初に作った図を修正したりしたいのであれば、目的の図は、\SpecialChar LyX
 数式エディタを使って組み立て、修正した方がよいでしょう。
+
 \end_layout
 
 \begin_layout Standard
-カーソルを図式の上に動かすと、図式はノードコマンドと矢印コマンドの配列として表示され、これは対話的に変更することができます。カーソルを編集領域から動かすと、図式
-が再び表示されます。
+カーソルを図式の上に動かすと、図式はノードコマンドと矢印コマンドの配列として表示され、これは対話的に変更することができます。
+カーソルを編集領域から動かすと、図式が再び表示されます。
+
 \end_layout
 
 \begin_layout Standard
@@ -356,10 +373,12 @@ Xy
 
 \end_inset
 
--Picの機能を紹介します。第
+-Picの機能を紹介します。
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式エディタ"
+nolink "false"
 
 \end_inset
 
@@ -377,6 +396,7 @@ Xy
 \end_inset
 
 -Picコマンドの使い方を説明します。
+
 \end_layout
 
 \begin_layout Standard
@@ -394,7 +414,8 @@ Xy
 \end_inset
 
 -Picの入門を書くことではなく、これらのうち最も重要なコマンドが\SpecialChar LyX
-内部でどう機能するのかを紹介することにあります。というのも、
+内部でどう機能するのかを紹介することにあります。
+というのも、
 \begin_inset ERT
 status collapsed
 
@@ -417,6 +438,7 @@ literal "true"
 
 で説明されているキー割り当ては、\SpecialChar LyX
 内部では必ずしも正しく動作しないからです。
+
 \end_layout
 
 \begin_layout Section
@@ -434,7 +456,9 @@ xypic
 preview
 \family default
 が、\SpecialChar LaTeX
-システムに導入されていることが必要です。これらはCTANから入手することができます。それぞれ
+システムに導入されていることが必要です。
+これらはCTANから入手することができます。
+それぞれ
 \begin_inset CommandInset citation
 LatexCommand cite
 key "instant-preview"
@@ -450,14 +474,17 @@ literal "true"
 
 \end_inset
 
-を参照してください。これらを新しく導入した場合には、\SpecialChar LyX
+を参照してください。
+これらを新しく導入した場合には、\SpecialChar LyX
 のメインメニューから
 \family sans
 編集\SpecialChar menuseparator
 再設定
 \family default
-を実行する必要があるかもしれません。すると、\SpecialChar LyX
+を実行する必要があるかもしれません。
+すると、\SpecialChar LyX
 で最初の図式を作るための手順は以下のようになります。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -483,6 +510,7 @@ preview
 自動プレビュー
 \emph default
 ドロップダウンメニューを「有効」にしてください。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -496,10 +524,12 @@ preview
 instant-preview
 \family default
 が動作するかどうかテストします。
+
 \end_layout
 
 \begin_layout Enumerate
 カーソルを数式の外に出し、その外観が、DVI文書やPostScript文書の仕上がりと同じような外観に変化するのを確認してください。
+
 \end_layout
 
 \end_deeper
@@ -539,6 +569,7 @@ ar[r] & B}
 \end_inset
 
 という文を入力してください。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -553,6 +584,7 @@ ar[r] & B}
 Ctrl-M
 \family default
 を使用してください。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -562,6 +594,7 @@ $
 \end_inset
 
 のような矢印が現れるまでほんの一瞬待ってください。
+
 \end_layout
 
 \end_deeper
@@ -601,6 +634,7 @@ literal "true"
 \end_inset
 
 から採った、以下の図式は、このパッケージで利用できる機能の多くに対する使用例となるでしょう。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -670,8 +704,9 @@ xymatrix{
 \family typewriter
 }
 \family default
-までを選択して、上述したように別行建て数式に変えてください。カーソルを数式領域から出してしばらくすると、以下のような輝かしいフルグラフィックスとして図式が表示さ
-れるはずです。
+までを選択して、上述したように別行建て数式に変えてください。
+カーソルを数式領域から出してしばらくすると、以下のような輝かしいフルグラフィックスとして図式が表示されるはずです。
+
 \end_layout
 
 \begin_layout Standard
@@ -694,7 +729,8 @@ $
 \family typewriter
 xymatrix
 \family default
-は、図式の頂点のレイアウトを定義するのに、行列を使います。上記の例では、
+は、図式の頂点のレイアウトを定義するのに、行列を使います。
+上記の例では、
 \begin_inset Formula $3\times3$
 \end_inset
 
@@ -718,7 +754,9 @@ xymatrix
 \begin_inset Formula $Z$
 \end_inset
 
-の各頂点用に使用され、残りの位置は空のままに残されています。この場合には、以下の行列がレイアウトを決定しています。
+の各頂点用に使用され、残りの位置は空のままに残されています。
+この場合には、以下の行列がレイアウトを決定しています。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -751,7 +789,8 @@ times_Z Y   & X
 
 \begin_layout Standard
 このパターンは\SpecialChar LaTeX
-で慣れておられると思います。ここには3つの行があり、最初の2行は行末マーカ
+で慣れておられると思います。
+ここには3つの行があり、最初の2行は行末マーカ
 \family typewriter
 
 \backslash
@@ -759,11 +798,13 @@ times_Z Y   & X
 \backslash
 
 \family default
-で終わっています。各行には、各要素がアンパサンド
+で終わっています。
+各行には、各要素がアンパサンド
 \family typewriter
 &
 \family default
 で区切られて入っています。
+
 \end_layout
 
 \begin_layout Subsection
@@ -771,7 +812,8 @@ times_Z Y   & X
 \end_layout
 
 \begin_layout Standard
-頂点を入れたので、それらの間に矢印を加えます。矢印を生成する
+頂点を入れたので、それらの間に矢印を加えます。
+矢印を生成する
 \family typewriter
 xypic
 \family default
@@ -781,7 +823,8 @@ xypic
 \backslash
 ar
 \family default
-ですが、これを矢印の始まる行列セルに入れます。矢印の終点は、方向コマンド
+ですが、これを矢印の始まる行列セルに入れます。
+矢印の終点は、方向コマンド
 \family typewriter
 u
 \family default
@@ -797,7 +840,9 @@ l
 \family typewriter
 r
 \family default
-（右）で決定します。これらは経路を表すように結合して、角括弧の中に入れます。たとえば、左上角の頂点
+（右）で決定します。
+これらは経路を表すように結合して、角括弧の中に入れます。
+たとえば、左上角の頂点
 \begin_inset Formula $U$
 \end_inset
 
@@ -831,7 +876,9 @@ ar[ddr]
 \backslash
 ar[drr]
 \family default
-と定義します。よって、上記の図式にすべての矢印を加えたものは以下のようになります。
+と定義します。
+よって、上記の図式にすべての矢印を加えたものは以下のようになります。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -906,7 +953,8 @@ $
 \backslash
 ar
 \family default
-コマンドに上添字または下添字として書き加えれば、付けることができます。したがって、
+コマンドに上添字または下添字として書き加えれば、付けることができます。
+したがって、
 \family typewriter
 
 \backslash
@@ -918,7 +966,8 @@ varphi
 \begin_inset Formula $\varphi$
 \end_inset
 
-というラベルを付けた矢印を定義することになります。ラベルを矢印の下に付けるには、
+というラベルを付けた矢印を定義することになります。
+ラベルを矢印の下に付けるには、
 \family typewriter
 
 \backslash
@@ -926,8 +975,10 @@ ar[ddr]_
 \backslash
 psi
 \family default
-のように、ラベルを下添字にしてください。実は、この説明は右向きの矢印にのみ該当します。正確には、矢印が指している方向に矢印に沿って見ると、上添字はラベルを矢印の
-左に置き、下添字は右に置くのです。その結果、
+のように、ラベルを下添字にしてください。
+実は、この説明は右向きの矢印にのみ該当します。
+正確には、矢印が指している方向に矢印に沿って見ると、上添字はラベルを矢印の左に置き、下添字は右に置くのです。
+その結果、
 \family typewriter
 
 \backslash
@@ -950,11 +1001,14 @@ beta
 $
 \end_inset
 
-のようになります。^や_の代わりに、|という文字を使用すると、ラベルを矢印の上に（柄の部分が埋もれてしまいますが）置くこともできます。
+のようになります。
+^や_の代わりに、|という文字を使用すると、ラベルを矢印の上に（柄の部分が埋もれてしまいますが）置くこともできます。
+
 \end_layout
 
 \begin_layout Standard
-通常、ラベルは、矢印の起点となるオブジェクトと終点のオブジェクトの中点に置かれます。以下の図式では、
+通常、ラベルは、矢印の起点となるオブジェクトと終点のオブジェクトの中点に置かれます。
+以下の図式では、
 \begin_inset Formula $U$
 \end_inset
 
@@ -962,13 +1016,15 @@ $
 \begin_inset Formula $(x,y)$
 \end_inset
 
-は、それがつなぐ二つのオブジェクトの中点ではなく、矢印の柄の中点にあります。これは、
+は、それがつなぐ二つのオブジェクトの中点ではなく、矢印の柄の中点にあります。
+これは、
 \family typewriter
 
 \backslash
 ar[dr]|-{(x,y)}
 \family default
 のように、ラベルの前にマイナス記号を付けることで実現しています。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -1055,10 +1111,12 @@ ar[r]|(0.3){
 phi}
 \family default
 のように矢印の上に置かれているラベルに関してのみ行うことができます。
+
 \end_layout
 
 \begin_layout Standard
-これは、矢印の右や左に置かれているラベルに対しては機能しないのです。\SpecialChar LyX
+これは、矢印の右や左に置かれているラベルに対しては機能しないのです。
+\SpecialChar LyX
 の数式エディタは、このような場合に対応する、
 \family typewriter
 
@@ -1088,7 +1146,9 @@ Xy
 
 \end_inset
 
--Picコードを正しく解釈できません。これを回避する二つの方法は、この文書の最後の節で提案されています。
+-Picコードを正しく解釈できません。
+これを回避する二つの方法は、この文書の最後の節で提案されています。
+
 \end_layout
 
 \begin_layout Subsection
@@ -1100,7 +1160,8 @@ Xy
 \family typewriter
 @
 \family default
-文字を使って行われます。その後に括弧対を置き、その括弧の形、
+文字を使って行われます。
+その後に括弧対を置き、その括弧の形、
 \family typewriter
 { }
 \family default
@@ -1112,7 +1173,9 @@ Xy
 \family typewriter
 / /
 \family default
-が、矢印のデザインを修正したいのか配置を変えたいのか曲率を変えたいのかを示します。これと同時に、矢印に対する様々な修正も加えることができます。
+が、矢印のデザインを修正したいのか配置を変えたいのか曲率を変えたいのかを示します。
+これと同時に、矢印に対する様々な修正も加えることができます。
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1132,7 +1195,9 @@ Xy
 \emph on
 二重線
 \emph default
-のような様々なデザインを施すことができます。これと同時に、様々な鏃や根本を指定できます。一般的に、矢印のデザインは、
+のような様々なデザインを施すことができます。
+これと同時に、様々な鏃や根本を指定できます。
+一般的に、矢印のデザインは、
 \family typewriter
 
 \backslash
@@ -1143,14 +1208,17 @@ ar
 @
 \family default
 印を置き、その後に矢印の根本と柄、鏃を指定する文字を入れた括弧対{\SpecialChar ldots
-}を置くことで指定することができます。この指定文字は、実際の矢印をASCII文字で模したような
-ものになっています。たとえば、
+}を置くことで指定することができます。
+この指定文字は、実際の矢印をASCII文字で模したようなものになっています。
+たとえば、
 \family typewriter
 
 \backslash
 ar@{>..>>}
 \family default
-と書くと、二股の矢羽根に、点線の矢柄、二重の鏃を持つ矢印が生成されます。その他の矢印デザインを下記の表に多数列挙しておきます。
+と書くと、二股の矢羽根に、点線の矢柄、二重の鏃を持つ矢印が生成されます。
+その他の矢印デザインを下記の表に多数列挙しておきます。
+
 \begin_inset Formula $\xymatrix{A\ar@{^{(}->}[r] & B}
 $
 \end_inset
@@ -1162,6 +1230,7 @@ $
 ar@{^(->}[r]
 \family default
 のように左括弧を上添えにするか下添えにするかで記述します。
+
 \family typewriter
 
 \begin_inset Newline newline
@@ -1486,8 +1555,9 @@ ar@{|-|}
 
 \begin_layout Standard
 \noindent
-@文字の後に、2や3や^を続けることによって、二重・三重線の矢柄を持つ矢印や、鏃と矢羽根の上側ないし下側のみが表示された矢印を作ることができます。最後の例が示す
-ように、矢印は必ずしも鏃と矢羽根を持っていなくてはならないということはありません。
+@文字の後に、2や3や^を続けることによって、二重・三重線の矢柄を持つ矢印や、鏃と矢羽根の上側ないし下側のみが表示された矢印を作ることができます。
+最後の例が示すように、矢印は必ずしも鏃と矢羽根を持っていなくてはならないということはありません。
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1730,6 +1800,7 @@ ar@2{--}
 
 \begin_layout Standard
 一定の制限内であれば、自作の矢印をデザインする方法もあります。
+
 \family typewriter
 ><|ox+/()[
 \family default
@@ -1739,7 +1810,8 @@ ar@2{--}
 \backslash
 newdir
 \family default
-コマンドを使って、自作の鏃をデザインすることができます。説明は
+コマンドを使って、自作の鏃をデザインすることができます。
+説明は
 \begin_inset ERT
 status collapsed
 
@@ -1753,6 +1825,7 @@ Xy
 \end_inset
 
 -Picの取扱説明書にゆだねますが、以下はそこから採った例です。
+
 \end_layout
 
 \begin_layout Standard
@@ -1779,6 +1852,7 @@ ar@{-|>}[r]
 \family default
 とすれば、\SpecialChar LyX
 中で以下のように正しく表示されます。
+
 \begin_inset Formula 
 \[
 \xymatrix{A\ar@{-|>}[r] & \ \ B}
@@ -1806,8 +1880,11 @@ ar@{-|>}[r]
 \family typewriter
 >
 \family default
-を使えば、横にずらすことができます。ここで省略符号の部分には正か負の長さを入れます。たとえば、二つのノードの間に右向きと左向きの矢印を並べてデザインするには、矢
-印の間が離れるようにシフトさせなくてはなりません。（正の）シフトの方向は、矢印に沿って見たときに左側になることに注意してください。したがって、
+を使えば、横にずらすことができます。
+ここで省略符号の部分には正か負の長さを入れます。
+たとえば、二つのノードの間に右向きと左向きの矢印を並べてデザインするには、矢印の間が離れるようにシフトさせなくてはなりません。
+（正の）シフトの方向は、矢印に沿って見たときに左側になることに注意してください。
+したがって、
 \end_layout
 
 \begin_layout Standard
@@ -1829,6 +1906,7 @@ ar@<1ex>[l]}
 \begin_layout Standard
 \noindent
 とすれば、以下のように出力されます。
+
 \begin_inset Formula 
 \[
 \xymatrix{\circ\ar@<1ex>[r] & \circ\ar@<1ex>[l]}
@@ -1849,7 +1927,8 @@ ar@<1ex>[l]}
 $
 \end_inset
 
-のように、行内で使用することができます。上記のように、このコードを\SpecialChar LyX
+のように、行内で使用することができます。
+上記のように、このコードを\SpecialChar LyX
 内で書いたならば、それを選択して、行内表示にしたければ
 \family sans
 Ctrl-m
@@ -1859,12 +1938,14 @@ Ctrl-m
 Ctrl-M
 \family default
 を押します。
+
 \family sans
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 数式の表記を変更
 \family default
 を行内として作られた図式は後から中央揃えにすることもできますし、逆に中央揃えの図式を行内にすることもできます。
+
 \end_layout
 
 \begin_layout Subsection
@@ -1872,9 +1953,12 @@ Ctrl-M
 \end_layout
 
 \begin_layout Standard
-矢印を曲げるには、簡単な方法が二つあります。最初の方法は、矢印の柄の中点をどれだけ持ち上げるか、あるいはどれだけ押し下げるかを示す値を明示的に与える方法です。も
-う一つの方法は、矢印が起点を指定した方角に出るように指定し、終点に指定した方角から入るように規定する方法です。必要な矢印の曲率は、自動的に決定されます。以下でこ
-の二つの方法を説明します。
+矢印を曲げるには、簡単な方法が二つあります。
+最初の方法は、矢印の柄の中点をどれだけ持ち上げるか、あるいはどれだけ押し下げるかを示す値を明示的に与える方法です。
+もう一つの方法は、矢印が起点を指定した方角に出るように指定し、終点に指定した方角から入るように規定する方法です。
+必要な矢印の曲率は、自動的に決定されます。
+以下でこの二つの方法を説明します。
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1886,8 +1970,10 @@ Ctrl-M
 \begin_inset Formula $\ldots$
 \end_inset
 
-/を使用します。省略記号の部分には、\SpecialChar TeX
-式の長さを下添字か上添字として入力する必要があります。たとえば、矢印を
+/を使用します。
+省略記号の部分には、\SpecialChar TeX
+式の長さを下添字か上添字として入力する必要があります。
+たとえば、矢印を
 \family typewriter
 1pc
 \family default
@@ -1902,14 +1988,16 @@ xypic
 ar@/_1pc/
 \family default
 と書けばいいのですが、\SpecialChar LyX
-では直接このように書くことはできません。\SpecialChar LyX
+では直接このように書くことはできません。
+\SpecialChar LyX
 では、長さを
 \family typewriter
 
 \backslash
 ar@/_{1pc}/
 \family default
-のように波括弧対の中に入れる必要があります。下記の例は、それぞれ.5ピカ分曲げられた、
+のように波括弧対の中に入れる必要があります。
+下記の例は、それぞれ.5ピカ分曲げられた、
 \begin_inset Formula $A$
 \end_inset
 
@@ -1917,7 +2005,9 @@ ar@/_{1pc}/
 \begin_inset Formula $B$
 \end_inset
 
-の間で対向する二つの矢印です。以下のソースコードで与えられます。
+の間で対向する二つの矢印です。
+以下のソースコードで与えられます。
+
 \end_layout
 
 \begin_layout Standard
@@ -1948,7 +2038,8 @@ ar@/_{.5pc}/[l]}
 \end_layout
 
 \begin_layout Standard
-矢印を曲げるもう一つの方法は、起点を出る際と終点に入る際の方角を指定する方法です。方角は、北・北東・東などと指定はしないで、
+矢印を曲げるもう一つの方法は、起点を出る際と終点に入る際の方角を指定する方法です。
+方角は、北・北東・東などと指定はしないで、
 \family typewriter
 u
 \family default
@@ -1980,7 +2071,8 @@ l
 \family typewriter
 ul
 \family default
-（up-left:左上）というふうに指定します。方角は@(
+（up-left:左上）というふうに指定します。
+方角は@(
 \emph on
 出射
 \emph default
@@ -1996,7 +2088,9 @@ ul
 \emph on
 入射
 \emph default
-は終点に入る方角を示します。例として、曲がった矢印と、矢印の終点を指定せずに入射角と出射角のみを指定すると作ることのできるループを示します。
+は終点に入る方角を示します。
+例として、曲がった矢印と、矢印の終点を指定せずに入射角と出射角のみを指定すると作ることのできるループを示します。
+
 \end_layout
 
 \begin_layout Standard
@@ -2044,6 +2138,7 @@ ar@(ul,ur)}
 
 \begin_layout Standard
 上述の例は、オートマトン図式を思い起こさせますが、通常、オートマトン図式では、状態が小さな丸で囲まれ、最終状態は二重丸で囲まれています。
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2081,7 +2176,8 @@ $
 $
 \end_inset
 
-のように、要素に一重または二重の枠を付けることができます。通常、枠は非常に窮屈なので、前に
+のように、要素に一重または二重の枠を付けることができます。
+通常、枠は非常に窮屈なので、前に
 \family typewriter
 +
 \family default
@@ -2090,6 +2186,7 @@ $
 ++
 \family default
 を付けて枠を広げなくてはなりません。
+
 \begin_inset Formula $\xymatrix{*++[o][F]{A}}
 $
 \end_inset
@@ -2103,7 +2200,9 @@ $
 \family typewriter
 [o]
 \family default
-として指定することで得ることができます。この後者の例は、*++[o][F=]{B}として構成されています。このようにして、以下のオートマトン
+として指定することで得ることができます。
+この後者の例は、*++[o][F=]{B}として構成されています。
+このようにして、以下のオートマトン
 \end_layout
 
 \begin_layout Standard
@@ -2120,6 +2219,7 @@ $
 \begin_layout Standard
 \noindent
 は、下記のようにして組版することができます。
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -2163,7 +2263,8 @@ entrymodifiers={
 \family typewriter
 }
 \family default
-は、ある要素の様式を既定に設定するものですが、もちろん各要素において、この様式を上書きすることができます。したがって、
+は、ある要素の様式を既定に設定するものですが、もちろん各要素において、この様式を上書きすることができます。
+したがって、
 \family typewriter
 
 \backslash
@@ -2183,6 +2284,7 @@ Xy
 \end_inset
 
 -行列内のすべての要素は丸で囲まれるようになります。
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2211,7 +2313,8 @@ save ...
 \backslash
 restore
 \family default
-で作れます。長方形の寸法は、長方形の左上と右下を示す点をピリオドでつなげた対
+で作れます。
+長方形の寸法は、長方形の左上と右下を示す点をピリオドでつなげた対
 \family roman
 \series medium
 \shape up
@@ -2244,7 +2347,9 @@ restore
 \begin_inset Quotes erd
 \end_inset
 
-で与えられます。その後には、以下のような図を生成するための枠付けコマンドが続きます。 
+で与えられます。
+その後には、以下のような図を生成するための枠付けコマンドが続きます。
+ 
 \begin_inset Formula 
 \[
 \xymatrix{A & B\ar@(d,r)[dl]\sp(0.2)\phi\sp(0.7)\psi\save"1,1"."2,1"*+[F=]\frm{}\restore\,\\
@@ -2302,7 +2407,8 @@ restore
 \bar no
 \noun off
 \color none
-で作られます。このコードは、
+で作られます。
+このコードは、
 \family default
 \series default
 \shape default
@@ -2325,6 +2431,7 @@ Xy
 \end_inset
 
 -行列のどのセルにも置くことができます。
+
 \end_layout
 
 \begin_layout Section
@@ -2353,12 +2460,14 @@ Ctrl-m
 Ctrl-M
 \family default
 を適用して数式編集環境に変換する方法以外にも、\SpecialChar LyX
-数式エディタ内でxypic図式を作成して編集することができます。上記のような図を編集する手順を説明することにしまし
-ょう。
+数式エディタ内でxypic図式を作成して編集することができます。
+上記のような図を編集する手順を説明することにしましょう。
+
 \end_layout
 
 \begin_layout Subsection
-注意—波括弧の入れ方
+注意—
+波括弧の入れ方
 \end_layout
 
 \begin_layout Standard
@@ -2377,7 +2486,9 @@ Ctrl-M
 \backslash
 {
 \family default
-を一回入力するだけで入れなくてはなりません。閉じ括弧は自動的に付け加えられ、間にはパラメータを入れるボックスが現れます。
+を一回入力するだけで入れなくてはなりません。
+閉じ括弧は自動的に付け加えられ、間にはパラメータを入れるボックスが現れます。
+
 \begin_inset ERT
 status collapsed
 
@@ -2399,7 +2510,8 @@ Xy
 \family typewriter
 }
 \family default
-の形で入力する矢印修飾子についても同じことが云えます。数式エディタ内では、
+の形で入力する矢印修飾子についても同じことが云えます。
+数式エディタ内では、
 \family typewriter
 @
 \backslash
@@ -2407,6 +2519,7 @@ Xy
 \family default
 とだけ入力して、\SpecialChar LyX
 がボックスと閉じ括弧を入れてくれるのを待ち、そこに矢印の指定を入れてください。
+
 \end_layout
 
 \begin_layout Standard
@@ -2416,7 +2529,9 @@ Xy
 \backslash
 
 \family default
-なしで入れた波括弧は、打ったとおりに出ますが、マクロパラメータを受けるために使用することはできません。こうした波括弧は、集合などを示すのに便利です。たとえば、
+なしで入れた波括弧は、打ったとおりに出ますが、マクロパラメータを受けるために使用することはできません。
+こうした波括弧は、集合などを示すのに便利です。
+たとえば、
 \family typewriter
 {x
 \backslash
@@ -2431,6 +2546,7 @@ notin x}
 \end_inset
 
 と表示されます。
+
 \end_layout
 
 \begin_layout Subsection
@@ -2452,7 +2568,8 @@ Ctrl-M
 \backslash
 xymatrix
 \family default
-と入れてください。すると、1
+と入れてください。
+すると、1
 \begin_inset Formula $\times$
 \end_inset
 
@@ -2469,7 +2586,8 @@ Xy
 
 \end_inset
 
--行列が作られます。行を追加するには、
+-行列が作られます。
+行を追加するには、
 \family sans
 Ctrl-Enter
 \family default
@@ -2478,6 +2596,7 @@ Ctrl-Enter
 Alt-m c i
 \family default
 と入力します。
+
 \end_layout
 
 \begin_layout Standard
@@ -2495,6 +2614,7 @@ Alt-m c
 Alt-m w
 \family default
 で始まる行コマンド短絡キーを使って、いつでも追加したり削除したりすることができます。
+
 \end_layout
 
 \begin_layout Subsection
@@ -2502,8 +2622,9 @@ Alt-m w
 \end_layout
 
 \begin_layout Standard
-まずノードを行列中の正しい位置に入力してください。行列の外にカーソルを動かすと、ノードレイアウトの最初のレンダリングを見ることができます。次に、矢印を開始するノ
-ードに
+まずノードを行列中の正しい位置に入力してください。
+行列の外にカーソルを動かすと、ノードレイアウトの最初のレンダリングを見ることができます。
+次に、矢印を開始するノードに
 \family typewriter
 
 \backslash
@@ -2515,7 +2636,8 @@ p
 \emph default
 ]
 \family default
-と打って矢印を加えてください。ここで
+と打って矢印を加えてください。
+ここで
 \emph on
 p
 \emph default
@@ -2535,12 +2657,15 @@ l
 \family typewriter
 r
 \family default
-の文字を組み合わせて作られたパスを示します。このパスが、本当に行列中の既存ノードに向かっていることを確認してください。正しくないと、カーソルを編集領域から出して
-も、図が表示されません。
+の文字を組み合わせて作られたパスを示します。
+このパスが、本当に行列中の既存ノードに向かっていることを確認してください。
+正しくないと、カーソルを編集領域から出しても、図が表示されません。
+
 \end_layout
 
 \begin_layout Standard
-次に、矢印のパスの終わりに上添字か下添字としてラベルを書くことで、矢印にラベルを付けてください。\SpecialChar LyX
+次に、矢印のパスの終わりに上添字か下添字としてラベルを書くことで、矢印にラベルを付けてください。
+\SpecialChar LyX
 数式エディタにおいては常に、アンダースコア
 \family typewriter
 _
@@ -2549,8 +2674,10 @@ _
 \family typewriter
 ^
 \family default
-の後にスペースを押すと上添字のボックスが開きます。ラベルには、\SpecialChar LaTeX
+の後にスペースを押すと上添字のボックスが開きます。
+ラベルには、\SpecialChar LaTeX
 コードを自由に入れることができます。
+
 \end_layout
 
 \begin_layout Subsection
@@ -2587,14 +2714,17 @@ _
 \family typewriter
 /
 \family default
-を入れることによって、矢印の見かけを修正することができます。上記の注意は、最初の修飾子のみに該当し、
+を入れることによって、矢印の見かけを修正することができます。
+上記の注意は、最初の修飾子のみに該当し、
 \family typewriter
 @
 \backslash
 {
 \family default
-と打つと出てくるボックスの中に矢印の指定を入力するようにしなくてはなりません。このボックスを空のままにしておくと、空の矢印を指定したことになります。次節で見るよ
-うに、これもまた便利な作図法です。
+と打つと出てくるボックスの中に矢印の指定を入力するようにしなくてはなりません。
+このボックスを空のままにしておくと、空の矢印を指定したことになります。
+次節で見るように、これもまた便利な作図法です。
+
 \end_layout
 
 \begin_layout Standard
@@ -2626,7 +2756,8 @@ _
 \family typewriter
 /
 \family default
-は、省略記号部分を矢印の指定に置き換える他は、そのまま入力します。曲がった矢印のコードは、
+は、省略記号部分を矢印の指定に置き換える他は、そのまま入力します。
+曲がった矢印のコードは、
 \family typewriter
 xypic
 \family default
@@ -2656,8 +2787,9 @@ xypic
 寸法
 \emph default
 は有効な\SpecialChar TeX
-寸法であり、最初のスラッシュ/の後に上添字または下添字として入力します）。最後のスラッシュが、上添字や下添字の一部のままにならないように注意してください
-。
+寸法であり、最初のスラッシュ/の後に上添字または下添字として入力します）。
+最後のスラッシュが、上添字や下添字の一部のままにならないように注意してください。
+
 \end_layout
 
 \begin_layout Subsection
@@ -2665,13 +2797,15 @@ xypic
 \end_layout
 
 \begin_layout Standard
-図式を作図するときに、ときどきカーソルを編集領域の外に出して、自動プレビューがグラフィカル出力に正しく変換されるかどうかを確かめると良いでしょう。うまく変換され
-ないときには、何らかの理由で自動プレビューがグラフィックスを再描画すべきことに気づかないせいかもしれません。カーソルを編集領域にいったん入れてからまた出すと、自
-動プレビューが引き起こされることがあります。
+図式を作図するときに、ときどきカーソルを編集領域の外に出して、自動プレビューがグラフィカル出力に正しく変換されるかどうかを確かめると良いでしょう。
+うまく変換されないときには、何らかの理由で自動プレビューがグラフィックスを再描画すべきことに気づかないせいかもしれません。
+カーソルを編集領域にいったん入れてからまた出すと、自動プレビューが引き起こされることがあります。
+
 \end_layout
 
 \begin_layout Standard
-もっと深刻な理由としては、入力中の文法エラーであることもあります。必要であれば、
+もっと深刻な理由としては、入力中の文法エラーであることもあります。
+必要であれば、
 \emph on
 Ctrl+Z
 \emph default
@@ -2689,7 +2823,9 @@ DVI
 \emph on
 DVI
 \emph default
-に変換してみてください。いくつかエラーが出力されるはずなので、間違いの原因についてのヒントが得られるかもしれません。
+に変換してみてください。
+いくつかエラーが出力されるはずなので、間違いの原因についてのヒントが得られるかもしれません。
+
 \end_layout
 
 \begin_layout Section
@@ -2698,8 +2834,10 @@ DVI
 
 \begin_layout Standard
 一部には、\SpecialChar LyX
-内部では正しく動作しないものがあります。私たちが（かつて）最も望んでいたものは、図式の水平・垂直伸縮であり、矢印の正確な配置でした。これにはいくつか回
-避法があり、それをここで説明します。
+内部では正しく動作しないものがあります。
+私たちが（かつて）最も望んでいたものは、図式の水平・垂直伸縮であり、矢印の正確な配置でした。
+これにはいくつか回避法があり、それをここで説明します。
+
 \end_layout
 
 \begin_layout Subsection
@@ -2708,6 +2846,7 @@ DVI
 
 \begin_layout Standard
 行間コマンドや列間コマンドを使用して、図式全体の水平寸法や垂直寸法を伸縮させることが便利なことがよくあります。
+
 \begin_inset ERT
 status collapsed
 
@@ -2744,7 +2883,8 @@ Xy
 
 \end_inset
 
--行列が定義されます。同様に、
+-行列が定義されます。
+同様に、
 \family typewriter
 
 \backslash
@@ -2760,7 +2900,8 @@ xymatrix@C=
 \family typewriter
 }
 \family default
-とすれば、列間を指定することができます。残念ながら@-文字は、\SpecialChar LyX
+とすれば、列間を指定することができます。
+残念ながら@-文字は、\SpecialChar LyX
 に
 \begin_inset ERT
 status collapsed
@@ -2776,6 +2917,7 @@ Xy
 
 -行列マクロの終わりと解釈されてしまうので、これらのコマンドは、現在のところ、\SpecialChar LyX
 内では動作しません。
+
 \end_layout
 
 \begin_layout Standard
@@ -2811,6 +2953,7 @@ xymatrixrowsep@
 プリアンブル
 \family default
 ）に以下のマクロを付け加えます。
+
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -2856,7 +2999,8 @@ xymatrixcolsep@
 \backslash
 xyC
 \family default
-マクロも定義できます。すると、
+マクロも定義できます。
+すると、
 \begin_inset ERT
 status collapsed
 
@@ -2871,7 +3015,9 @@ Xy
 
 -行列に
 \backslash
-xyR{...}を入れることによって、図を伸縮することができます。カーソルを行列の内部、最初の要素の前に置きます。そこに、
+xyR{...}を入れることによって、図を伸縮することができます。
+カーソルを行列の内部、最初の要素の前に置きます。
+そこに、
 \family typewriter
 
 \backslash
@@ -2887,12 +3033,16 @@ xyC
 \backslash
 {
 \family default
-、あるいは両者を入力します。バックスラッシュを忘れないようにし、閉じ括弧は\SpecialChar LyX
-が自動的に供給することに注意してください。波括弧の中に寸法を入れます。既定値は、
+、あるいは両者を入力します。
+バックスラッシュを忘れないようにし、閉じ括弧は\SpecialChar LyX
+が自動的に供給することに注意してください。
+波括弧の中に寸法を入れます。
+既定値は、
 \family typewriter
 2pt
 \family default
-です。以下は、
+です。
+以下は、
 \family typewriter
 
 \backslash
@@ -2901,6 +3051,7 @@ xyR{9pc}
 xyC{.5pc}
 \family default
 と指定して、縦方向に圧縮し、横方向に伸ばした図式の例です。
+
 \end_layout
 
 \begin_layout Standard
@@ -2934,8 +3085,9 @@ Xy
 
 \end_inset
 
--コマンドに、ラベルを矢柄の正確な位置に配置させるものがあります。ラベルの既定位置が絵を汚くしてしまったり、下記の図における矢印の交点のように、他の要素と干渉し
-てしまったりする場合には、この機能が必要となります。矢柄に沿ってラベル位置を移動させるために、
+-コマンドに、ラベルを矢柄の正確な位置に配置させるものがあります。
+ラベルの既定位置が絵を汚くしてしまったり、下記の図における矢印の交点のように、他の要素と干渉してしまったりする場合には、この機能が必要となります。
+矢柄に沿ってラベル位置を移動させるために、
 \begin_inset ERT
 status collapsed
 
@@ -2948,7 +3100,8 @@ Xy
 
 \end_inset
 
-では、括弧の中に十進数を入れて、矢の中でラベルを配置する相対位置を指定することができます。たとえば、
+では、括弧の中に十進数を入れて、矢の中でラベルを配置する相対位置を指定することができます。
+たとえば、
 \family typewriter
 
 \backslash
@@ -2956,7 +3109,8 @@ ar[r]|(0.3)
 \backslash
 varphi
 \family default
-というコードは、ラベルを柄の3分の1のところに配置します。同じことを矢印の上や下に付けるラベルに対してしようとして、
+というコードは、ラベルを柄の3分の1のところに配置します。
+同じことを矢印の上や下に付けるラベルに対してしようとして、
 \family typewriter
 
 \backslash
@@ -2973,7 +3127,8 @@ ar[ur]_(0.3)
 phi
 \family default
 としたとしても、\SpecialChar LyX
-の内部からではうまく動作しません。その代替策として、ハット記号^あるいはアンダースコア_を、それぞれ
+の内部からではうまく動作しません。
+その代替策として、ハット記号^あるいはアンダースコア_を、それぞれ
 \family typewriter
 
 \backslash
@@ -3005,7 +3160,9 @@ sb(0.3)
 \backslash
 phi
 \family default
-のようにしてください。じつは、このようにして複数のラベルを入れ、たとえ矢印が曲がっていても、これらのラベルを正確に配置することができるのです。以下の図では、
+のようにしてください。
+じつは、このようにして複数のラベルを入れ、たとえ矢印が曲がっていても、これらのラベルを正確に配置することができるのです。
+以下の図では、
 \family typewriter
 
 \begin_inset Newline linebreak
@@ -3036,6 +3193,7 @@ sp(0.8){
 phi_{4}}
 \family default
 と指定することによって、4つのラベルを持つ曲がった矢印を生成しています。
+
 \end_layout
 
 \begin_layout Standard
@@ -3056,7 +3214,8 @@ phi_{4}}
 \end_layout
 
 \begin_layout Standard
-図式の好きなオブジェクトを（ほぼ任意の）好きな場所に配置するトリックとして、見えない矢印を使う方法がよく使われます。見えない矢印を作成し、パスに伸縮比
+図式の好きなオブジェクトを（ほぼ任意の）好きな場所に配置するトリックとして、見えない矢印を使う方法がよく使われます。
+見えない矢印を作成し、パスに伸縮比
 \family typewriter
 (0.6)
 \family default
@@ -3064,7 +3223,9 @@ phi_{4}}
 \family typewriter
 (1.4)
 \family default
-などを加えて、その行き先を縮めたり延ばしたりしてください。この見えない矢印にラベルを付加します。
+などを加えて、その行き先を縮めたり延ばしたりしてください。
+この見えない矢印にラベルを付加します。
+
 \end_layout
 
 \begin_layout Standard
@@ -3090,16 +3251,21 @@ ar@{}[dr(0.6)]^
 \backslash
 varphi
 \family default
-を付け加え、それを比率0.6に縮めることによっても作成することができます。そのラベルは、元の見える矢印の0.3の位置に表示されることになります。
+を付け加え、それを比率0.6に縮めることによっても作成することができます。
+そのラベルは、元の見える矢印の0.3の位置に表示されることになります。
+
 \end_layout
 
 \begin_layout Standard
-この回避法には、2つ微少な短所があります。一つは、これは曲がった矢印には機能しないことです。二つめは、見えない矢印を図全体の正常な寸法を超えて延ばしてしまうと、
-図のボックスの余白を延ばしてしまい、図と前後の段落との間に垂直余白を取りすぎることになってしまうことです。
+この回避法には、2つ微少な短所があります。
+一つは、これは曲がった矢印には機能しないことです。
+二つめは、見えない矢印を図全体の正常な寸法を超えて延ばしてしまうと、図のボックスの余白を延ばしてしまい、図と前後の段落との間に垂直余白を取りすぎることになってしまうことです。
+
 \end_layout
 
 \begin_layout Standard
-それでも、見えない矢印は、基本的に図式中の任意の場所に情報を置くのに用いることができるので、重要なツールなのです。たとえば、上図中では、
+それでも、見えない矢印は、基本的に図式中の任意の場所に情報を置くのに用いることができるので、重要なツールなのです。
+たとえば、上図中では、
 \family typewriter
 
 \backslash
@@ -3110,6 +3276,7 @@ vdots
 水平方向に延ばす
 \family default
 」という文章を置くのに見えない矢印を使用しています。
+
 \end_layout
 
 \begin_layout Subsection
@@ -3158,6 +3325,7 @@ Xy
 
 \family default
 -パッケージの機能の一つに過ぎないのです。
+
 \family typewriter
 
 \begin_inset ERT
@@ -3182,8 +3350,9 @@ literal "true"
 
 \end_inset
 
-には、このパッケージの進んだ使い方が多く示されています。そこでは簡潔な説明しか与えられていないため、そこにある多くの実例をあれこれ試したり修正したりする必要があ
-るかもしれないので、注意してください。Lauda 
+には、このパッケージの進んだ使い方が多く示されています。
+そこでは簡潔な説明しか与えられていないため、そこにある多くの実例をあれこれ試したり修正したりする必要があるかもしれないので、注意してください。
+Lauda 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lauda"
@@ -3205,6 +3374,7 @@ Xy
 \end_inset
 
 -Picの使い方がたくさん説明されています。
+
 \family typewriter
 
 \begin_inset ERT
@@ -3229,7 +3399,9 @@ literal "true"
 
 \end_inset
 
-です。あなたが私同様にエスペラント語に長けていないとしても、ほとんどの部分はわかるでしょう。
+です。
+あなたが私同様にエスペラント語に長けていないとしても、ほとんどの部分はわかるでしょう。
+
 \end_layout
 
 \begin_layout Bibliography
@@ -3242,7 +3414,8 @@ literal "true"
 \end_inset
 
 Kristoffer H.
- Rose: 
+ Rose:
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3260,8 +3433,10 @@ Xy
 -Pic User's Guide
 \emph default
 .
- Version 3.7, Feb.
- 16, 1999.
+ Version 3.7,
+ Feb.
+ 16,
+ 1999.
 \begin_inset Newline newline
 \end_inset
 
@@ -3271,6 +3446,7 @@ Xy
 xypic
 \family default
 の一部として入手できます。
+
 \end_layout
 
 \begin_layout Bibliography
@@ -3351,7 +3527,8 @@ literal "true"
 
 \end_inset
 
-Aarlon Lauda: 
+Aarlon Lauda:
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3399,7 +3576,8 @@ literal "true"
 
 \end_inset
 
-Filipp Ouvaton: 
+Filipp Ouvaton:
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3416,7 +3594,8 @@ Xy
 \emph on
 -Pic
 \emph default
-: 
+:
+ 
 \emph on
 Enkonduko pri Xymatrix
 \emph default

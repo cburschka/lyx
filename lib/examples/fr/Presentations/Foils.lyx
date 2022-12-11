@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -23,9 +23,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -85,16 +85,20 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \bullet 0 5 2 -1
 \bullet 1 5 4 -1
 \bullet 2 4 8 -1
 \bullet 3 1 3 -1
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -167,10 +171,8 @@ height "3pt"
 
 \begin_layout Standard
 Un En-tête_Diapo démarre une nouvelle diapo.
- Il y a aussi une version Courte qui réduit l'espace entre l'en-tête et
- le corps de la diapo.
- Presque tous les environnements existant dans les autres classes sont encore
- présents ici.
+ Il y a aussi une version Courte qui réduit l'espace entre l'en-tête et le corps de la diapo.
+ Presque tous les environnements existant dans les autres classes sont encore présents ici.
 \end_layout
 
 \begin_layout Itemize
@@ -210,8 +212,9 @@ pour chacun des quatre niveaux de l'environnement ListePuces
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-NOTE : Pour exploiter toutes les possibilités de sélection de la forme des
- puces, lisez le manuel d'
+NOTE :
+ Pour exploiter toutes les possibilités de sélection de la forme des puces,
+ lisez le manuel d'
 \emph on
 Options
 \begin_inset space ~
@@ -227,8 +230,8 @@ fr_ListesPuces.lyx
 \end_layout
 
 \begin_layout Itemize
-NOTE 2 : Pour avoir un espacement de liste petit comme ici mettez la commande
- Foil\SpecialChar TeX
+NOTE 2 :
+ Pour avoir un espacement de liste petit comme ici mettez la commande Foil\SpecialChar TeX
  
 \family typewriter
 
@@ -256,8 +259,7 @@ height "3pt"
 \end_layout
 
 \begin_layout Standard
-La classe foils a été étendue pour avoir deux nouveaux types de listes à
- puces.
+La classe foils a été étendue pour avoir deux nouveaux types de listes à puces.
  Ce sont :
 \end_layout
 
@@ -274,8 +276,8 @@ ListeCroix (CrossList)
 \end_layout
 
 \begin_layout Standard
-Ces deux listes ont été ajoutées pour les listes de type conseils / interdiction
-s, ou 
+Ces deux listes ont été ajoutées pour les listes de type conseils / interdictions,
+ ou 
 \begin_inset Quotes cld
 \end_inset
 
@@ -291,9 +293,9 @@ pas d'accord
 \begin_inset Quotes crd
 \end_inset
 
-, assez fréquentes dans des transparents.
- Nous avons donc introduit deux environnements de paragraphe spécialisés
- pour vous rendre la vie plus facile.
+,
+ assez fréquentes dans des transparents.
+ Nous avons donc introduit deux environnements de paragraphe spécialisés pour vous rendre la vie plus facile.
  
 \end_layout
 
@@ -318,19 +320,20 @@ Vous pouvez créer des diapos paysage avec En-tête_Diapo_Tourné.
 \end_layout
 
 \begin_layout Itemize
-Notez qui si vous visionnez ça avec xdvi la page semblera déborder de la
- feuille car xdvi ne tourne pas le texte.
+Notez qui si vous visionnez ça avec xdvi la page semblera déborder de la feuille car xdvi ne tourne pas le texte.
 \end_layout
 
 \begin_layout Itemize
-Si vous visionnez ce document avec ghostview ou quelque chose d'approchant
- la page apparaîtra tournée.
+Si vous visionnez ce document avec ghostview ou quelque chose d'approchant la page apparaîtra tournée.
  Sinon c'est que vous n'avez sans doute pas le bon pilote dvips.
 \end_layout
 
 \begin_layout Definition*
-Il y a aussi plusieurs environnements spécialement destinés à présenter
- des Théorèmes, Lemmes, Corollaires, Propositions, Preuves et Définitions.
+Il y a aussi plusieurs environnements spécialement destinés à présenter des Théorèmes,
+ Lemmes,
+ Corollaires,
+ Propositions,
+ Preuves et Définitions.
  Il en existe des versions numérotées et non numérotées.
 \end_layout
 
@@ -355,10 +358,10 @@ Là encore la version courte réduit l'espace sous l'en-tête.
 \end_layout
 
 \begin_layout Itemize
-Une autre façon de contrôler la séparation est d'en ajuster la taille dans
- le préambule, ce qui affectera à la fois la version normale et la version
- courte des en-têtes de diapo (droits et tournés).
- Par exemple, 
+Une autre façon de contrôler la séparation est d'en ajuster la taille dans le préambule,
+ ce qui affectera à la fois la version normale et la version courte des en-têtes de diapo (droits et tournés).
+ Par exemple,
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -419,32 +422,37 @@ Plusieurs paragraphes consécutifs de type
 \emph on
 Theorem
 \emph default
-, 
+,
+ 
 \emph on
 Lemme
 \emph default
-, 
+,
+ 
 \emph on
 Corollaire
 \emph default
-, 
+,
+ 
 \emph on
 Proposition
 \emph default
-, 
+,
+ 
 \emph on
 Définition
 \emph default
-, 
+,
+ 
 \emph on
 Preuve
 \emph default
- ou de leurs versions étoilées sont considérés comme faisant partie du même
- environnement.
+ ou de leurs versions étoilées sont considérés comme faisant partie du même environnement.
 \end_layout
 
 \begin_layout Lemma*
-Comme vous voyez, nous sommes toujours dans le même lemme.
+Comme vous voyez,
+ nous sommes toujours dans le même lemme.
 \end_layout
 
 \begin_layout Lemma*
@@ -452,23 +460,28 @@ Several consecutive paragraphs of type
 \emph on
 Theorem
 \emph default
-, 
+,
+ 
 \emph on
 Lemma
 \emph default
-, 
+,
+ 
 \emph on
 Corollary
 \emph default
-, 
+,
+ 
 \emph on
 Proposition
 \emph default
-, 
+,
+ 
 \emph on
 Definition
 \emph default
-, 
+,
+ 
 \emph on
 Proof
 \emph default
@@ -476,7 +489,8 @@ Proof
 \end_layout
 
 \begin_layout Lemma*
-As you can see, we are still in the same lemma.
+As you can see,
+ we are still in the same lemma.
 \end_layout
 
 \begin_layout Standard
@@ -487,10 +501,11 @@ As you can see, we are still in the same lemma.
 \end_layout
 
 \begin_layout Lemma*
-Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
- par du texte standard ou, comme ici, par un insert \SpecialChar TeX
- qui contient juste
- un 
+Pour mettre un deuxième Lemme juste après le premier,
+ il faut les séparer par du texte standard ou,
+ comme ici,
+ par un insert \SpecialChar TeX
+ qui contient juste un 
 \family typewriter
 \emph on
 
@@ -506,16 +521,14 @@ Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
 \emph default
 .
  C'est simplement le caractère de commentaire en \SpecialChar LaTeX
- mais l'apparition d'un
- paragraphe contenant du \SpecialChar LaTeX
+ mais l'apparition d'un paragraphe contenant du \SpecialChar LaTeX
  suffit pour forcer \SpecialChar LyX
- à présenter correctement les
- deux environnements.
+ à présenter correctement les deux environnements.
 \end_layout
 
 \begin_layout Lemma*
-NOTE : Vous ne rencontrerez ce problème qu'avec des paragraphes du même
- type et 
+NOTE :
+ Vous ne rencontrerez ce problème qu'avec des paragraphes du même type et 
 \emph on
 pas
 \emph default
@@ -662,17 +675,17 @@ foils
 
 \begin_layout Standard
 Les tableaux et les figures sont tous deux supportés dans Foils.
- Cependant les flottants ne flottent pas, mais apparaissent exactement là
- où ils se trouvent dans le texte.
+ Cependant les flottants ne flottent pas,
+ mais apparaissent exactement là où ils se trouvent dans le texte.
  Les paramètres de placement de flottants seront tous ignorés.
 \end_layout
 
 \begin_layout Standard
-Both tables and figures are supported in Foils however floats don't float
- instead they appear exactly where they appear in the text.
+Both tables and figures are supported in Foils however floats don't float instead they appear exactly where they appear in the text.
  Any placement parameters you set will be ignored.
 \begin_inset Float table
 placement htbp
+alignment document
 wide false
 sideways false
 status open
@@ -820,8 +833,7 @@ height "3pt"
 
 \begin_layout Standard
 Foil\SpecialChar TeX
- offre de nombreuses possibilités pour gérer les en-têtes et les pieds
- de page
+ offre de nombreuses possibilités pour gérer les en-têtes et les pieds de page
 \begin_inset Foot
 status collapsed
 
@@ -832,10 +844,9 @@ Vous pouvez aussi utiliser les notes en bas de page standard comme ici.
 \end_inset
 
 .
- Il vaut mieux les définir dans le préambule bien qu'il soit possible de
- le faire n'importe où dans le document.
- Si vous voulez changer ces réglages en cours de document il vaut mieux
- le faire tout en haut d'une diapo, juste après l'en-tête de diapo.
+ Il vaut mieux les définir dans le préambule bien qu'il soit possible de le faire n'importe où dans le document.
+ Si vous voulez changer ces réglages en cours de document il vaut mieux le faire tout en haut d'une diapo,
+ juste après l'en-tête de diapo.
 \end_layout
 
 \begin_layout Standard
@@ -852,8 +863,8 @@ MyLogo{}
 Restriction{}
 \family default
 .
- La première sert à inclure un logo graphique dans vos diapos, qui est par
- défaut 
+ La première sert à inclure un logo graphique dans vos diapos,
+ qui est par défaut 
 \begin_inset Quotes cld
 \end_inset
 
@@ -863,7 +874,8 @@ Restriction{}
 \end_inset
 
 .
- La seconde sert à en restreindre la diffusion, par exemple Confidentiel.
+ La seconde sert à en restreindre la diffusion,
+ par exemple Confidentiel.
 \end_layout
 
 \begin_layout Standard
@@ -914,15 +926,14 @@ height "3pt"
 
 \begin_layout Standard
 Il devrait y avoir de la documentation sur Foil\SpecialChar TeX
- dans votre distribution
- \SpecialChar LaTeX
+ dans votre distribution \SpecialChar LaTeX
 .
  Il y a bien d'autres fonctions de Foil\SpecialChar TeX
  qui n'ont pas été décrites ici.
- Par exemple, Foil\SpecialChar TeX
- peut automatiquement tracer un trait horizontal entre
- les en-têtes de page et ceux de diapo, et entre le corps et les pieds de
- page.
+ Par exemple,
+ Foil\SpecialChar TeX
+ peut automatiquement tracer un trait horizontal entre les en-têtes de page et ceux de diapo,
+ et entre le corps et les pieds de page.
 \end_layout
 
 \begin_layout Bibliography
@@ -933,7 +944,8 @@ literal "true"
 
 \end_inset
 
-Jim Hafner, 
+Jim Hafner,
+ 
 \begin_inset Quotes cld
 \end_inset
 
@@ -942,7 +954,8 @@ The Foil\SpecialChar TeX
 \begin_inset Quotes crd
 \end_inset
 
-, 
+,
+ 
 \family typewriter
 .../texmf/texmf/doc/latex/foiltex/foiltex.dvi
 \end_layout
@@ -956,7 +969,8 @@ literal "true"
 \end_inset
 
 Équipe de Documentation \SpecialChar LyX
-, manuel d'
+,
+ manuel d'
 \emph on
 Options
 \begin_inset space ~

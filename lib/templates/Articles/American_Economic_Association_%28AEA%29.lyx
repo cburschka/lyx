@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -28,9 +28,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -81,12 +81,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -97,8 +101,7 @@ status open
 
 \begin_layout Plain Layout
 This is a template \SpecialChar LyX
- file for articles to be submitted to Journals of the
- American Economic Association (AEA).
+ file for articles to be submitted to Journals of the American Economic Association (AEA).
  How to install the AEA \SpecialChar LaTeX
  class to your \SpecialChar LaTeX
  system is explained in 
@@ -159,13 +162,14 @@ AEJ American Economics Journal
 \end_layout
 
 \begin_layout Plain Layout
-If one of these is not explicitly given to the class option, the default
- AER is used.
+If one of these is not explicitly given to the class option,
+ the default AER is used.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Also, choose typesetting mode as the class option.
+Also,
+ choose typesetting mode as the class option.
  Available options are:
 \end_layout
 
@@ -179,8 +183,7 @@ reviewmode to typeset a blind review copy
 \end_layout
 
 \begin_layout Description
-draftmode to typeset a draft copy with 1.5-line spacing (or your own choice
- of spacing).
+draftmode to typeset a draft copy with 1.5-line spacing (or your own choice of spacing).
 \end_layout
 
 \end_deeper
@@ -189,7 +192,8 @@ If your system has the
 \family sans
 mathtime
 \family default
- package installed, uncomment the line about mathtime
+ package installed,
+ uncomment the line about mathtime
 \family typewriter
  
 \family default
@@ -237,8 +241,8 @@ T1
 \end_layout
 
 \begin_layout Enumerate
-When you finalize your manuscript for submission, clean up unnecessary preambles
- in the exported \SpecialChar LaTeX
+When you finalize your manuscript for submission,
+ clean up unnecessary preambles in the exported \SpecialChar LaTeX
  file.
  You need to minimize the usage of packages.
 \end_layout
@@ -262,8 +266,14 @@ Author1 and Author2
 status collapsed
 
 \begin_layout Plain Layout
-Surname1: affiliation1, address1, email1.
- Surname2: affiliation2, address2, email2.
+Surname1:
+ affiliation1,
+ address1,
+ email1.
+ Surname2:
+ affiliation2,
+ address2,
+ email2.
  Acknowledgements
 \end_layout
 
@@ -322,7 +332,8 @@ except for JEP/PP
 
 \begin_layout Acknowledgement
 Acknowledgement (valid only for JEP).
- For other journals, please use foot note in the author environment.
+ For other journals,
+ please use foot note in the author environment.
 \end_layout
 
 \begin_layout Standard
@@ -356,31 +367,35 @@ Captions are short and go below figures but above tables.
 
 \begin_layout Itemize
 The tablenotes or figurenotes environments may be used below tables or figures,
- respectively, as demonstrated below.
+ respectively,
+ as demonstrated below.
 \end_layout
 
 \begin_layout Itemize
-If you have difficulties with the mathtime package, adjust the package options
- appropriately for your platform.
- If you can't get it to work, just remove the package or see our technical
- support document online (please refer to the author instructions).
+If you have difficulties with the mathtime package,
+ adjust the package options appropriately for your platform.
+ If you can't get it to work,
+ just remove the package or see our technical support document online (please refer to the author instructions).
 \end_layout
 
 \begin_layout Itemize
-If you are using an appendix, it goes last, after the bibliography.
+If you are using an appendix,
+ it goes last,
+ after the bibliography.
  Use regular section headings to make the appendix headings.
 \end_layout
 
 \begin_layout Itemize
-If you are not using an appendix, you may delete the appendix command and
- sample appendix section heading.
+If you are not using an appendix,
+ you may delete the appendix command and sample appendix section heading.
 \end_layout
 
 \begin_layout Itemize
 Either the natbib package or the harvard package may be used with bibtex.
- To include one of these packages, uncomment the appropriate usepackage
- command above.
- Note: you can't use both packages at once or compile-time errors will result.
+ To include one of these packages,
+ uncomment the appropriate usepackage command above.
+ Note:
+ you can't use both packages at once or compile-time errors will result.
 \end_layout
 
 \begin_layout Section
@@ -393,6 +408,8 @@ Sample figure:
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -431,7 +448,8 @@ Source
 
 \end_inset
 
-Figure notes with optional leadin (Source, in this case).
+Figure notes with optional leadin (Source,
+ in this case).
 \end_layout
 
 \end_inset
@@ -445,6 +463,8 @@ Sample table:
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -580,7 +600,8 @@ Source
 
 \end_inset
 
-Table notes environment with optional leadin (Source, in this case).
+Table notes environment with optional leadin (Source,
+ in this case).
 \end_layout
 
 \end_inset
@@ -610,13 +631,14 @@ all cited references
 \end_inset
 
  is selected for the Bib\SpecialChar TeX
- bibliography, then Bib\SpecialChar TeX
- will complain if there is
- no citation in the document so let
+ bibliography,
+ then Bib\SpecialChar TeX
+ will complain if there is no citation in the document so let
 \begin_inset Quotes ers
 \end_inset
 
-s put one in: 
+s put one in:
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "book-full"

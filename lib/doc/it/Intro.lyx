@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,9 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc true
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -105,12 +105,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -128,8 +132,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-Se avete commenti o correzioni, inviateli cortesemente alla mailing list
- della documentazione di \SpecialChar LyX
+Se avete commenti o correzioni,
+ inviateli cortesemente alla mailing list della documentazione di \SpecialChar LyX
 :
 \begin_inset CommandInset href
 LatexCommand href
@@ -173,32 +177,47 @@ Che cosa è \SpecialChar LyX
 \SpecialChar LyX
  è un sistema per la preparazione di documenti.
  Eccelle nel consentirvi di creare complessi scritti tecnici e scientifici,
- con elementi matematici, riferimenti incrociati, bibliografie, indici,
+ con elementi matematici,
+ riferimenti incrociati,
+ bibliografie,
+ indici,
  eccetera.
- E' particolarmente efficace qualora siano richieste tipiche funzionalità
- di elaborazione del tipo: nu\SpecialChar softhyphen
+ E' particolarmente efficace qualora siano richieste tipiche funzionalità di elaborazione del tipo:
+ nu\SpecialChar softhyphen
 me\SpecialChar softhyphen
 ra\SpecialChar softhyphen
 zio\SpecialChar softhyphen
-ne automatica di sezioni e pagine, controllo
- ortografico, e così via – a prescindere dalla lunghezza del documento.
- Può essere anche usato per scrivere una lettera alla vostra mamma, ma sicuramen
-te esistono programmi più semplici per tale scopo.
- In definitiva, non è lo strumento migliore per creare striscioni, loghi,
- annunci pubblicitari (più avanti spiegheremo il perché), anche se – con
- qualche sforzo – può essere realizzato pure tutto questo.
+ne automatica di sezioni e pagine,
+ controllo ortografico,
+ e così via – a prescindere dalla lunghezza del documento.
+ Può essere anche usato per scrivere una lettera alla vostra mamma,
+ ma sicuramente esistono programmi più semplici per tale scopo.
+ In definitiva,
+ non è lo strumento migliore per creare striscioni,
+ loghi,
+ annunci pubblicitari (più avanti spiegheremo il perché),
+ anche se – con qualche sforzo – può essere realizzato pure tutto questo.
  Ecco alcuni esempi relativi a ciò per cui \SpecialChar LyX
- viene impiegato: memo, lettere,
- dissertazioni e tesi, estratti di conferenze, appunti da seminari, atti
- di congressi, documentazione di software, libri, articoli per pubblicazioni
- scientifiche, copioni di opere e film, proposte d'affari, presentazioni\SpecialChar ldots
+ viene impiegato:
+ memo,
+ lettere,
+ dissertazioni e tesi,
+ estratti di conferenze,
+ appunti da seminari,
+ atti di congressi,
+ documentazione di software,
+ libri,
+ articoli per pubblicazioni scientifiche,
+ copioni di opere e film,
+ proposte d'affari,
+ presentazioni\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Standard
 Il programma \SpecialChar LyX
- fornisce un approccio moderno alla scrittura di documenti
- mediante un computer, utilizzando un modello di linguaggio di marcatura;
+ fornisce un approccio moderno alla scrittura di documenti mediante un computer,
+ utilizzando un modello di linguaggio di marcatura;
  un approccio che rompe la tradizionale concezione a
 \begin_inset Quotes eld
 \end_inset
@@ -208,23 +227,25 @@ macchina da scrivere
 \end_inset
 
 .
- E' stato progettato per quegli autori che vogliono un risultato professionale
- in modo rapido e col minimo sforzo, senza diventare esperti in composizione
- tipografica.
- Le procedure di composizione tipografica vengono svolte in gran parte dal
- computer, non dall'autore; con \SpecialChar LyX
-, quest'ultimo può concentrarsi unicamente
- sul contenuto del suo scritto.
+ E' stato progettato per quegli autori che vogliono un risultato professionale in modo rapido e col minimo sforzo,
+ senza diventare esperti in composizione tipografica.
+ Le procedure di composizione tipografica vengono svolte in gran parte dal computer,
+ non dall'autore;
+ con \SpecialChar LyX
+,
+ quest'ultimo può concentrarsi unicamente sul contenuto del suo scritto.
 \end_layout
 
 \begin_layout Standard
 Buona parte dell'iniziale sfida nell'apprendere \SpecialChar LyX
- deriva dal cambiamento
- di mentalità che voi, utilizzatori, dovrete mettere in atto.
- Anni fa, per creare documenti disponevamo unicamente delle macchine da
- scrivere; quindi abbiamo tutti imparato alcuni trucchi per sopperire alle
- loro limitazioni.
- La sottolineatura, che altro non era se non ripassare il testo col carattere
+ deriva dal cambiamento di mentalità che voi,
+ utilizzatori,
+ dovrete mettere in atto.
+ Anni fa,
+ per creare documenti disponevamo unicamente delle macchine da scrivere;
+ quindi abbiamo tutti imparato alcuni trucchi per sopperire alle loro limitazioni.
+ La sottolineatura,
+ che altro non era se non ripassare il testo col carattere
 \begin_inset Quotes eld
 \end_inset
 
@@ -232,25 +253,31 @@ _
 \begin_inset Quotes erd
 \end_inset
 
-, diventò un sistema per enfatizzare il testo.
- Eravamo costretti a calcolare la dimensione di colonne e tabulazioni, e
- a impostarle – prima di creare una tabella.
- Idem dicasi per le lettere, o altro testo allineato a destra.
+,
+ diventò un sistema per enfatizzare il testo.
+ Eravamo costretti a calcolare la dimensione di colonne e tabulazioni,
+ e a impostarle – prima di creare una tabella.
+ Idem dicasi per le lettere,
+ o altro testo allineato a destra.
  La sillabazione al termine della riga richiedeva un occhio circospetto,
  e tanta premonizione.
 \end_layout
 
 \begin_layout Standard
-In altre parole, ci siamo tutti esercitati nel preoccuparci dei piccoli
- dettagli, circa quali caratteri servissero, e dove servissero.
- Di conseguenza, quasi tutti i word processor presentano questa mentalità.
+In altre parole,
+ ci siamo tutti esercitati nel preoccuparci dei piccoli dettagli,
+ circa quali caratteri servissero,
+ e dove servissero.
+ Di conseguenza,
+ quasi tutti i word processor presentano questa mentalità.
  Utilizzano ancora le ta\SpecialChar softhyphen
 bulazioni per aggiungere spazi.
  Dovete ancora preoccuparvi di dove qualcosa andrà esattamente a finire,
  nella pagina.
- Enfatizzare il testo significa cambiare un font, analogamente alla sostituzione
- di un rullo nella vecchia macchina da scrivere.
- E' la filosofia di fondo del WYSIWYG, 
+ Enfatizzare il testo significa cambiare un font,
+ analogamente alla sostituzione di un rullo nella vecchia macchina da scrivere.
+ E' la filosofia di fondo del WYSIWYG,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -271,7 +298,8 @@ Quello che vedi è quello che ottieni
 \end_inset
 
 ).
- Sfortunatamente, questo modello spesso finisce per diventare 
+ Sfortunatamente,
+ questo modello spesso finisce per diventare 
 \begin_inset Quotes eld
 \end_inset
 
@@ -297,12 +325,11 @@ Quello che vedi è tutto quello che ottieni
 \begin_layout Standard
 Ecco dove \SpecialChar LyX
  differisce da tutti gli altri word processor.
- Non dovete lambiccarvi il cervello circa la posizione che occuperà un determina
-to carattere.
+ Non dovete lambiccarvi il cervello circa la posizione che occuperà un determinato carattere.
  Direte semplicemente a \SpecialChar LyX
- quello che state facendo, e lui si prenderà cura
- di tutto il resto, seguendo l'insieme di regole definite da ciò che viene
- chiamato uno
+ quello che state facendo,
+ e lui si prenderà cura di tutto il resto,
+ seguendo l'insieme di regole definite da ciò che viene chiamato uno
 \emph on
 stile
 \emph default
@@ -311,11 +338,12 @@ stile
 status collapsed
 
 \begin_layout Plain Layout
-Per correttezza, va detto che la maggiorparte degli attuali pacchetti di
- tipo Office possiede una sorta di foglio di stile, che segue una metodologia
- smilare.
- La nostra esperienza, però, ci dice che tali funzionalità sono molto poco
- usate nella pratica.
+Per correttezza,
+ va detto che la maggiorparte degli attuali pacchetti di tipo Office possiede una sorta di foglio di stile,
+ che segue una metodologia smilare.
+ La nostra esperienza,
+ però,
+ ci dice che tali funzionalità sono molto poco usate nella pratica.
 \end_layout
 
 \end_inset
@@ -334,10 +362,13 @@ Introduzione
 \end_inset
 
 .
- Quindi, nel vostro word processor, entrate in qualunque menù che vi consenta
- di cambiare la dimensione del carattere, e ne selezionate una.
+ Quindi,
+ nel vostro word processor,
+ entrate in qualunque menù che vi consenta di cambiare la dimensione del carattere,
+ e ne selezionate una.
  Poi attivate il grassetto.
- Quindi, scrivete 
+ Quindi,
+ scrivete 
 \begin_inset Quotes eld
 \end_inset
 
@@ -354,20 +385,25 @@ Introduzione
 \end_inset
 
 .
- Logicamente, se più tardi decidete che questa sezione appartiene ad un
- altro punto del documento, o se ne inserite un'altra prima, dovrete cambiare
- la numerazione; per essa, e per tutte quelle che seguono – così come i
- rispettivi riferimenti nell'indice.
+ Logicamente,
+ se più tardi decidete che questa sezione appartiene ad un altro punto del documento,
+ o se ne inserite un'altra prima,
+ dovrete cambiare la numerazione;
+ per essa,
+ e per tutte quelle che seguono – così come i rispettivi riferimenti nell'indice.
 \end_layout
 
 \begin_layout Standard
 In \SpecialChar LyX
-, invece, fate clic sul menù a tendina posto nell'estremità sinistra
- della barra dei pulsanti, scegliete
+,
+ invece,
+ fate clic sul menù a tendina posto nell'estremità sinistra della barra dei pulsanti,
+ scegliete
 \family sans
 Sezione
 \family default
-, e scrivete 
+,
+ e scrivete 
 \begin_inset Quotes eld
 \end_inset
 
@@ -379,58 +415,65 @@ Introduzione
 \end_layout
 
 \begin_layout Standard
-Sì, è tutto qui.
- Se tagliate la sezione e la incollate in qualche altro punto, sarà automaticame
-nte ri-numerata – ovunque essa sia.
- E se inserite dei riferimenti a quella sezione in modo corretto (aggiungendo
- le etichette per i riferimenti incrociati), \SpecialChar LyX
- li aggiornerà automaticamente
- per tutto il documento, sì che voi non abbiate mai e poi mai a scriverli
- manualmente.
+Sì,
+ è tutto qui.
+ Se tagliate la sezione e la incollate in qualche altro punto,
+ sarà automaticamente ri-numerata – ovunque essa sia.
+ E se inserite dei riferimenti a quella sezione in modo corretto (aggiungendo le etichette per i riferimenti incrociati),
+ \SpecialChar LyX
+ li aggiornerà automaticamente per tutto il documento,
+ sì che voi non abbiate mai e poi mai a scriverli manualmente.
 \end_layout
 
 \begin_layout Standard
 Affrontiamo ora il problema della coerenza.
- Cinque giorni dopo, aprite nuovamente il vostro report e cominciate la
- Sezione 4.
- Ma vi eravate dimenticati di aver usato un font in grassetto a dimensione
- 18, quindi scrivete il titolo della Sezione 4 in un font diverso (diciamo
- a dimensione 16) rispetto a quello che avevate usato nella Sezione 1.
- Ebbene, questo problema in \SpecialChar LyX
+ Cinque giorni dopo,
+ aprite nuovamente il vostro report e cominciate la Sezione 4.
+ Ma vi eravate dimenticati di aver usato un font in grassetto a dimensione 18,
+ quindi scrivete il titolo della Sezione 4 in un font diverso (diciamo a dimensione 16) rispetto a quello che avevate usato nella Sezione 1.
+ Ebbene,
+ questo problema in \SpecialChar LyX
  non esiste assolutamente.
- E' il computer – e non voi – a farsi carico di questa sciocca contabilità
- in merito a quale dimensione di font si debba avere per quel determinato
- elemento.
- Del resto, è ciò per cui i computer sono stati creati.
+ E' il computer – e non voi – a farsi carico di questa sciocca contabilità in merito a quale dimensione di font si debba avere per quel determinato elemento.
+ Del resto,
+ è ciò per cui i computer sono stati creati.
 \end_layout
 
 \begin_layout Standard
 Vediamo un altro esempio.
  Immaginiamo che voi stiate scrivendo un elenco.
- In altri word processor, l'elenco non è altro che un gruppo di tabulazioni
- e ritorni a capo.
+ In altri word processor,
+ l'elenco non è altro che un gruppo di tabulazioni e ritorni a capo.
  Siete obbligati a calcolare dove inserire l'etichetta di ogni elemento,
- quale essa deve essere, quante linee vuote inserire tra ogni elemento,
+ quale essa deve essere,
+ quante linee vuote inserire tra ogni elemento,
  e così via.
  In \SpecialChar LyX
-, avete unicamente due preoccupazioni: di quale tipo d'elenco si tratta,
+,
+ avete unicamente due preoccupazioni:
+ di quale tipo d'elenco si tratta,
  e cosa volete metterci dentro.
  Tutto qui.
 \end_layout
 
 \begin_layout Standard
-Quindi, l'idea di base dietro a \SpecialChar LyX
- è: specificate
+Quindi,
+ l'idea di base dietro a \SpecialChar LyX
+ è:
+ specificate
 \emph on
 cosa
 \emph default
- state facendo, e non
+ state facendo,
+ e non
 \emph on
 come
 \emph default
  farla.
  Il modello di \SpecialChar LyX
- non è WYSIWYG, ma WYSIWYM, ossia 
+ non è WYSIWYG,
+ ma WYSIWYM,
+ ossia 
 \begin_inset Quotes eld
 \end_inset
 
@@ -454,19 +497,22 @@ Ciò che vedi è ciò che intendi
 \end_inset
 
 ).
- E' un'idea potente, che semplifica moltissimo il meccanismo della scrittura
- di documenti.
- Peraltro, questo è anche il motivo per cui \SpecialChar LyX
- non è così adatto alla creazione
- di poster e loghi: in questo caso – e dal momento che non esistono elementi
- funzionali come paragrafi, sezioni, eccetera – voi
+ E' un'idea potente,
+ che semplifica moltissimo il meccanismo della scrittura di documenti.
+ Peraltro,
+ questo è anche il motivo per cui \SpecialChar LyX
+ non è così adatto alla creazione di poster e loghi:
+ in questo caso – e dal momento che non esistono elementi funzionali come paragrafi,
+ sezioni,
+ eccetera – voi
 \emph on
 volete proprio
 \emph default
- specificare dove sono posizionate tutte le cose, e in modo esatto.
+ specificare dove sono posizionate tutte le cose,
+ e in modo esatto.
  Ciò non significa che \SpecialChar LyX
- sia privo di funzionalità interessanti, ma semplicemente
- che non è lo strumento adatto per quel mestiere.
+ sia privo di funzionalità interessanti,
+ ma semplicemente che non è lo strumento adatto per quel mestiere.
  Non si spara alle zanzare con un cannone.
 \end_layout
 
@@ -502,21 +548,25 @@ Spazio extra (cioè premere
 
 \begin_layout Standard
 Le tabulazioni sono inutili in \SpecialChar LyX
-; e idem dicasi per un righello, che mostri
- la posizione degli elementi sulla pagina.
- E' il programma a preoccuparsi di questo posizionamento: non voi.
- Lo stresso vale per lo spazio extra: \SpecialChar LyX
- lo aggiunge dove è necessario, a
- seconda del contesto.
- Inizialmente, il fatto di non poter digitare due righe vuote di fila è
- cosa fastidiosa; ma avrà molto più senso, non appena comincerete a pensare
- in termini WYSIWYM.
+;
+ e idem dicasi per un righello,
+ che mostri la posizione degli elementi sulla pagina.
+ E' il programma a preoccuparsi di questo posizionamento:
+ non voi.
+ Lo stresso vale per lo spazio extra:
+ \SpecialChar LyX
+ lo aggiunge dove è necessario,
+ a seconda del contesto.
+ Inizialmente,
+ il fatto di non poter digitare due righe vuote di fila è cosa fastidiosa;
+ ma avrà molto più senso,
+ non appena comincerete a pensare in termini WYSIWYM.
 \end_layout
 
 \begin_layout Standard
 Ecco un elenco di cose che esistono in \SpecialChar LyX
-, ma non sono utilizzate nel modo
- che vi aspettereste:
+,
+ ma non sono utilizzate nel modo che vi aspettereste:
 \end_layout
 
 \begin_layout Itemize
@@ -528,11 +578,14 @@ Interruzioni di pagina.
 \end_layout
 
 \begin_layout Itemize
-Spaziatura tra le righe (singola, doppia, ecc.).
+Spaziatura tra le righe (singola,
+ doppia,
+ ecc.).
 \end_layout
 
 \begin_layout Itemize
-Spazio bianco, orizzontale e verticale.
+Spazio bianco,
+ orizzontale e verticale.
 \end_layout
 
 \begin_layout Itemize
@@ -540,34 +593,42 @@ Caratteri e dimensione degli stessi.
 \end_layout
 
 \begin_layout Itemize
-Formattazioni del carattere (grassetto, corsivo sottolineato, ecc.).
+Formattazioni del carattere (grassetto,
+ corsivo sottolineato,
+ ecc.).
 \end_layout
 
 \begin_layout Standard
-Anche se tutte queste cose sono presenti, in genere non vi serviranno.
+Anche se tutte queste cose sono presenti,
+ in genere non vi serviranno.
  \SpecialChar LyX
- se ne occuperà al posto vostro, a seconda di quello che state facendo.
+ se ne occuperà al posto vostro,
+ a seconda di quello che state facendo.
  Parti dif\SpecialChar softhyphen
 fe\SpecialChar softhyphen
 ren\SpecialChar softhyphen
-ti del documento assumono automaticamente una differente
- dimensione e formattazione del carattere.
- Anche l'indentazione del paragrafo è dipendente dal contesto: paragrafi
- differenti posseggono indentazioni diverse.
- Lo stresso vale per le interruzioni di pagina, che sono gestite in modo
- automatico.
- In generale, lo spazio tra righe, parole, e paragrafi, è variabile, e gestito
- da \SpecialChar LyX
+ti del documento assumono automaticamente una differente dimensione e formattazione del carattere.
+ Anche l'indentazione del paragrafo è dipendente dal contesto:
+ paragrafi differenti posseggono indentazioni diverse.
+ Lo stresso vale per le interruzioni di pagina,
+ che sono gestite in modo automatico.
+ In generale,
+ lo spazio tra righe,
+ parole,
+ e paragrafi,
+ è variabile,
+ e gestito da \SpecialChar LyX
 .
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Esistono sistemi per personalizzare tutti questi spazi (solo alcuni di questi
- modi richiedono una conoscenza di \SpecialChar LaTeX
-), sia per l'intero documento, che per
- specifiche porzioni di esso.
- Per i dettagli, vedi la
+Esistono sistemi per personalizzare tutti questi spazi (solo alcuni di questi modi richiedono una conoscenza di \SpecialChar LaTeX
+),
+ sia per l'intero documento,
+ che per specifiche porzioni di esso.
+ Per i dettagli,
+ vedi la
 \emph on
 Guida utente
 \emph default
@@ -584,10 +645,10 @@ Caratteristiche estese
 \end_layout
 
 \begin_layout Standard
-Infine, esistono alcuni aspetti in cui riteniamo che \SpecialChar LyX
+Infine,
+ esistono alcuni aspetti in cui riteniamo che \SpecialChar LyX
  (e \SpecialChar LaTeX
-) sia superiore
- a molti word processor:
+) sia superiore a molti word processor:
 \end_layout
 
 \begin_layout Itemize
@@ -611,14 +672,16 @@ Riferimenti incrociati.
 \end_layout
 
 \begin_layout Standard
-Certo, molti word processor moderni sono in grado di maneggiare simboli
- matematici, tabelle, e la sillabazione; e molti si sono spostati verso
- la filosofia della definizione degli stili e il concetto WYSIWYM.
- Sono però funzionalità implementate in tempi relativamente recenti, mentre
- \SpecialChar LyX
+Certo,
+ molti word processor moderni sono in grado di maneggiare simboli matematici,
+ tabelle,
+ e la sillabazione;
+ e molti si sono spostati verso la filosofia della definizione degli stili e il concetto WYSIWYM.
+ Sono però funzionalità implementate in tempi relativamente recenti,
+ mentre \SpecialChar LyX
  è costruito intorno al sistema di preparazione documentale \SpecialChar LaTeX
-, che è operativo
- da oltre 20 anni\SpecialChar ldots
+,
+ che è operativo da oltre 20 anni\SpecialChar ldots
  e
 \emph on
 funziona
@@ -633,8 +696,8 @@ Cos'è \SpecialChar LaTeX
 
 \begin_layout Standard
 \SpecialChar LaTeX
- è un sistema per la preparazione di documenti, progettato da Leslie Lamport
- nel 1985.
+ è un sistema per la preparazione di documenti,
+ progettato da Leslie Lamport nel 1985.
 \begin_inset Foot
 status collapsed
 
@@ -652,7 +715,9 @@ A Guide to \SpecialChar LaTeX2e
 \begin_inset Quotes erd
 \end_inset
 
-, di Helmut Kopka e Patrick Daly, che ha una voce nella bibliografia della
+,
+ di Helmut Kopka e Patrick Daly,
+ che ha una voce nella bibliografia della
 \emph on
 Guida utente
 \emph default
@@ -661,12 +726,13 @@ Guida utente
 
 \end_inset
 
- E' stato implementato a partire da un linguaggio di composizione tipografica
- chiamato \SpecialChar TeX
-, creato da Donald Knuth nel 1984.
+ E' stato implementato a partire da un linguaggio di composizione tipografica chiamato \SpecialChar TeX
+,
+ creato da Donald Knuth nel 1984.
  \SpecialChar TeX
- legge una serie di comandi di composizione tipografica, scritti come sequenza
- di codice in un file ASCII, e li esegue.
+ legge una serie di comandi di composizione tipografica,
+ scritti come sequenza di codice in un file ASCII,
+ e li esegue.
  Molti
 \begin_inset Quotes eld
 \end_inset
@@ -675,22 +741,23 @@ trucchi
 \begin_inset Quotes erd
 \end_inset
 
- impiegati dalle aziende editoriali furono modellati da Knuth come algoritmi
- com\SpecialChar softhyphen
+ impiegati dalle aziende editoriali furono modellati da Knuth come algoritmi com\SpecialChar softhyphen
 pu\SpecialChar softhyphen
 ta\SpecialChar softhyphen
 zio\SpecialChar softhyphen
 na\SpecialChar softhyphen
-li, e incorporati in \SpecialChar TeX
-: ecco perché i documenti prodotti con
- \SpecialChar TeX
+li,
+ e incorporati in \SpecialChar TeX
+:
+ ecco perché i documenti prodotti con \SpecialChar TeX
  hanno un aspetto così eccellente.
  L'ouput di \SpecialChar TeX
  è un documento portabile di tipo
 \emph on
  pdf
 \emph default
-, o un cosiddetto 
+,
+ o un cosiddetto 
 \begin_inset Quotes eld
 \end_inset
 
@@ -709,77 +776,87 @@ file indipendente dalla periferica
 
 \begin_layout Standard
 \SpecialChar TeX
- non è soltanto un motore per la composizione tipografica: consente anche
- di definire le macro.
- In effetti, molti utenti di \SpecialChar TeX
- utilizzano un pacchetto di macro che Knuth
- creò per nascondere molti dettagli tipografici.
+ non è soltanto un motore per la composizione tipografica:
+ consente anche di definire le macro.
+ In effetti,
+ molti utenti di \SpecialChar TeX
+ utilizzano un pacchetto di macro che Knuth creò per nascondere molti dettagli tipografici.
  Qui è dove Leslie Lamport fa il suo ingresso nella nostra storia.
- Era alla ricerca di pacchetto macro che fosse orientato più all'utilizzatore
- che al tipografo, con un insieme di comandi in grado di comporre tipograficamen
-te (e in modo coerente) elementi quali le sezioni, le tabelle o le formule
- matematiche\SpecialChar ldots
+ Era alla ricerca di pacchetto macro che fosse orientato più all'utilizzatore che al tipografo,
+ con un insieme di comandi in grado di comporre tipograficamente (e in modo coerente) elementi quali le sezioni,
+ le tabelle o le formule matematiche\SpecialChar ldots
  Così nacque \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
 Parallelamente allo sviluppo e alla crescita di \SpecialChar LaTeX
-, poi, altre persone realizzaron
-o propri pacchetti macro per \SpecialChar TeX
-, del tipo atto a creare presentazioni o articoli
- per riviste di matematica e così via.
+,
+ poi,
+ altre persone realizzarono propri pacchetti macro per \SpecialChar TeX
+,
+ del tipo atto a creare presentazioni o articoli per riviste di matematica e così via.
  Alcuni utilizzavano la struttura di \SpecialChar TeX
- per raggiungere un risultato, mentre
- altri cominciarono a modificare \SpecialChar LaTeX
+ per raggiungere un risultato,
+ mentre altri cominciarono a modificare \SpecialChar LaTeX
 .
- Per testare e unificare questo caos, un team di \SpecialChar LaTeX
--isti cominciò a lavorare
- su \SpecialChar LaTeX2e
+ Per testare e unificare questo caos,
+ un team di \SpecialChar LaTeX
+-isti cominciò a lavorare su \SpecialChar LaTeX2e
  – l'attuale versione di \SpecialChar LaTeX
  – nel corso dei tardi anni '80.
  Questa nuova versione di \SpecialChar LaTeX
- dispone di istruzioni che forniscono un'interfaccia
- agevole da usare per i comandi di creazione delle macro di \SpecialChar TeX
-, agevolano
- l'utilizzo di nuovi font, e così via.
- In effetti, \SpecialChar LaTeX
- è un linguaggio alquanto voluminoso, anche se preso a sé stante.
- Utilizzatori di tutto il mondo hanno poi creato i propri componenti per
+ dispone di istruzioni che forniscono un'interfaccia agevole da usare per i comandi di creazione delle macro di \SpecialChar TeX
+,
+ agevolano l'utilizzo di nuovi font,
+ e così via.
+ In effetti,
  \SpecialChar LaTeX
-, che si aggiungono così a quelli standard.
+ è un linguaggio alquanto voluminoso,
+ anche se preso a sé stante.
+ Utilizzatori di tutto il mondo hanno poi creato i propri componenti per \SpecialChar LaTeX
+,
+ che si aggiungono così a quelli standard.
 \end_layout
 
 \begin_layout Standard
 Esistono due metodi per estendere le potenzialità di \SpecialChar LaTeX
-: classi e stili.
+:
+ classi e stili.
  Una
 \emph on
  classe
 \emph default
  è un set di macro \SpecialChar LaTeX
- che descrive un nuovo tipo di documento, come un libro
- o un articolo.
- Esistono classi per presentazioni, articoli scientifici di fisica, di matematic
-a\SpecialChar ldots
- molte università posseggono classi per il proprio formato di tesi! Lo
+ che descrive un nuovo tipo di documento,
+ come un libro o un articolo.
+ Esistono classi per presentazioni,
+ articoli scientifici di fisica,
+ di matematica\SpecialChar ldots
+ molte università posseggono classi per il proprio formato di tesi!
+ Lo
 \emph on
  stile
 \emph default
- differisce dalla classe per il fatto che non definisce un nuovo tipo di
- documento, ma un differente tipo di
+ differisce dalla classe per il fatto che non definisce un nuovo tipo di documento,
+ ma un differente tipo di
 \emph on
 comportamento
 \emph default
  messo in atto da un qualunque documento.
- Per esempio, \SpecialChar LyX
- controlla i margini delle pagine e l'interlinea usando due
- diversi file di stile, progettati per questo scopo.
- Esistono file di stile per una gran quantità di cose: stampare etichette
- o buste, cambiare il comportamento dell'indentazione, aggiungere nuovi
- font, manipolare gli elementi grafici, creare intestazioni di pagina fantasiose
-, personalizzare le bibliografie, modificare il posizionamento e l'aspetto
- delle note a piè di pagina o tabelle o figure, personalizzare gli elenchi,
+ Per esempio,
+ \SpecialChar LyX
+ controlla i margini delle pagine e l'interlinea usando due diversi file di stile,
+ progettati per questo scopo.
+ Esistono file di stile per una gran quantità di cose:
+ stampare etichette o buste,
+ cambiare il comportamento dell'indentazione,
+ aggiungere nuovi font,
+ manipolare gli elementi grafici,
+ creare intestazioni di pagina fantasiose,
+ personalizzare le bibliografie,
+ modificare il posizionamento e l'aspetto delle note a piè di pagina o tabelle o figure,
+ personalizzare gli elenchi,
  e così via.
 \end_layout
 
@@ -789,44 +866,49 @@ Riassumendo:
 
 \begin_layout Description
 \SpecialChar TeX
-: Un linguaggio di composizione tipografica con funzionalità macro.
+:
+ Un linguaggio di composizione tipografica con funzionalità macro.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX
-: Un pacchetto di macro costruito su \SpecialChar TeX
+:
+ Un pacchetto di macro costruito su \SpecialChar TeX
 .
 \end_layout
 
 \begin_layout Description
-Classi: Descrizioni di un tipo di documento, usando \SpecialChar LaTeX
+Classi:
+ Descrizioni di un tipo di documento,
+ usando \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Description
-Stili: Modifica in determinata entità il comportamento di base di \SpecialChar LaTeX
+Stili:
+ Modifica in determinata entità il comportamento di base di \SpecialChar LaTeX
 
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
-: Word processor visuale di tipo WYSIWYM, che utilizza \SpecialChar LaTeX
- per la sua composizione
- tipografica.
+:
+ Word processor visuale di tipo WYSIWYM,
+ che utilizza \SpecialChar LaTeX
+ per la sua composizione tipografica.
 \end_layout
 
 \begin_layout Standard
 In questa sezione abbiamo quindi cercato di spiegare le differenze tra \SpecialChar LyX
-
  e gli altri word processor.
- In breve, la differenza è \SpecialChar LaTeX
+ In breve,
+ la differenza è \SpecialChar LaTeX
 .
  \SpecialChar LyX
  – utilizzando \SpecialChar LaTeX
- come substrato – vi aiuta a pensare maggiormente a ciò
- che scrivete, e con quali parole scriverlo.
- Il computer poi si occupa della forma con la quale il vostro testo deve
- apparire.
+ come substrato – vi aiuta a pensare maggiormente a ciò che scrivete,
+ e con quali parole scriverlo.
+ Il computer poi si occupa della forma con la quale il vostro testo deve apparire.
 \end_layout
 
 \begin_layout Section
@@ -834,21 +916,25 @@ Destreggiarsi con la documentazione
 \end_layout
 
 \begin_layout Standard
-La documentazione è stata suddivisa su diversi files, per rispondere più
- facilmente alle vostre domande e descrivere tutte le funzionalità.
- Ognuno di questi files ha il proprio scopo, come specificato più sotto.
- Prima che vi addentriate in uno qualunque di essi, dovreste leggere per
- bene questo capitolo, perché contiene un sacco di informazioni e commenti
- utili: possono farvi risparmiare un po' di tempo.
+La documentazione è stata suddivisa su diversi files,
+ per rispondere più facilmente alle vostre domande e descrivere tutte le funzionalità.
+ Ognuno di questi files ha il proprio scopo,
+ come specificato più sotto.
+ Prima che vi addentriate in uno qualunque di essi,
+ dovreste leggere per bene questo capitolo,
+ perché contiene un sacco di informazioni e commenti utili:
+ possono farvi risparmiare un po' di tempo.
 \end_layout
 
 \begin_layout Standard
 Lo sviluppo di \SpecialChar LyX
- non si fermerà mai, si spera; quindi, alcuni documenti potrebber
-o essere incompleti o un po' datati, anche se cerchiamo di tenere il passo.
+ non si fermerà mai,
+ si spera;
+ quindi,
+ alcuni documenti potrebbero essere incompleti o un po' datati,
+ anche se cerchiamo di tenere il passo.
  I manuali (ma questo vale per tutto ciò che riguarda \SpecialChar LyX
-) sono frutto del
- lavoro di un gruppo di volontari che hanno un
+) sono frutto del lavoro di un gruppo di volontari che hanno un
 \begin_inset Quotes eld
 \end_inset
 
@@ -856,9 +942,13 @@ vero lavoro
 \begin_inset Quotes erd
 \end_inset
 
-, famiglie, piatti da lavare, spazzatura da vuotare, e così via.
- Se volete rendervi utili alla causa, assicuratevi di aver letto prima la
- Sezione
+,
+ famiglie,
+ piatti da lavare,
+ spazzatura da vuotare,
+ e così via.
+ Se volete rendervi utili alla causa,
+ assicuratevi di aver letto prima la Sezione
 \begin_inset space ~
 \end_inset
 
@@ -866,18 +956,25 @@ vero lavoro
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Contrib"
+nolink "false"
 
 \end_inset
 
-, unitamente al resto di questo documento.
+,
+ unitamente al resto di questo documento.
 \end_layout
 
 \begin_layout Standard
-Cortesemente, inoltre, rendeteci questo favore: se qualcosa in questi ma\SpecialChar softhyphen
+Cortesemente,
+ inoltre,
+ rendeteci questo favore:
+ se qualcosa in questi ma\SpecialChar softhyphen
 nu\SpecialChar softhyphen
 a\SpecialChar softhyphen
-li
- vi lascia confusi, è poco chiaro, o è sbagliato, non esitate a comunicarcelo!
+li vi lascia confusi,
+ è poco chiaro,
+ o è sbagliato,
+ non esitate a comunicarcelo!
  Potete scrivere a coloro che attualmente gestiscono la do\SpecialChar softhyphen
 cu\SpecialChar softhyphen
 men\SpecialChar softhyphen
@@ -894,9 +991,9 @@ literal "false"
 \end_inset
 
 .
- Se avete domande alle quali la documentazione non è riuscita a dare risposte
- chiare, e avete bisogno di un aiuto rapido, esiste una mailing list attiva
- che potete raggiungere all'indirizzo 
+ Se avete domande alle quali la documentazione non è riuscita a dare risposte chiare,
+ e avete bisogno di un aiuto rapido,
+ esiste una mailing list attiva che potete raggiungere all'indirizzo 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-users@lists.lyx.org"
@@ -914,29 +1011,40 @@ Il formato dei manuali
 
 \begin_layout Standard
 Alcuni staranno leggendo i manuali dopo averli stampati.
- Altri, invece, li staranno leggendo direttamente dall'interno di \SpecialChar LyX
+ Altri,
+ invece,
+ li staranno leggendo direttamente dall'interno di \SpecialChar LyX
 .
  Ci sono alcune differenze tra il file \SpecialChar LyX
  e la versione stampata.
- Nel primo, anzitutto, il titolo è semplicemente in cima al documento, e
- non formattato in una pagina a sé stante come in alcune versioni stampate.
- Poi, non è pienamente visibile alcuna nota a piè di pagina, e l'Indice
- generale.
- Per aprire una nota a piè di pagina, che si presenta così:
+ Nel primo,
+ anzitutto,
+ il titolo è semplicemente in cima al documento,
+ e non formattato in una pagina a sé stante come in alcune versioni stampate.
+ Poi,
+ non è pienamente visibile alcuna nota a piè di pagina,
+ e l'Indice generale.
+ Per aprire una nota a piè di pagina,
+ che si presenta così:
 \begin_inset Graphics
 	filename ../clipart/footnote.png
 	scale 95
 
 \end_inset
 
-, fate clic su di essa col tasto sinistro del mouse.
- Per l'Indice generale, cliccate sul box grigio, oppure sul menù Naviga
- (nel quale i contenuti vengono visualizzati in modo automatico).
+,
+ fate clic su di essa col tasto sinistro del mouse.
+ Per l'Indice generale,
+ cliccate sul box grigio,
+ oppure sul menù Naviga (nel quale i contenuti vengono visualizzati in modo automatico).
 \end_layout
 
 \begin_layout Standard
-Nella versione stampata, tutti i riferimenti incrociati appaiono come numeri
- effettivi di capitoli, sezioni, sottosezioni, e così via.
+Nella versione stampata,
+ tutti i riferimenti incrociati appaiono come numeri effettivi di capitoli,
+ sezioni,
+ sottosezioni,
+ e così via.
  Nella versione 
 \begin_inset Quotes eld
 \end_inset
@@ -945,7 +1053,10 @@ in linea
 \begin_inset Quotes erd
 \end_inset
 
-, invece, appaiono come box color grigio chiaro, analoghi a questo:
+,
+ invece,
+ appaiono come box color grigio chiaro,
+ analoghi a questo:
 \begin_inset Graphics
 	filename ../clipart/reference.png
 	scale 95
@@ -953,13 +1064,16 @@ in linea
 \end_inset
 
 .
- Se fate clic col tasto sinistro del mouse sul box, apparirà una finestra
- di dialogo contenente la lista di tutti i riferimenti incrociati del documento.
+ Se fate clic col tasto sinistro del mouse sul box,
+ apparirà una finestra di dialogo contenente la lista di tutti i riferimenti incrociati del documento.
  Questo Manuale,
+
 \emph on
  Introduzione
 \emph default
-, ne ha solo due; il primo ha nome 
+,
+ ne ha solo due;
+ il primo ha nome 
 \begin_inset Quotes eld
 \end_inset
 
@@ -968,8 +1082,9 @@ sec:Contrib
 \end_inset
 
 .
- Per andare direttamente alla sezione referenziata, fate clic col tasto
- destro del mouse sul box, oppure sul bottone
+ Per andare direttamente alla sezione referenziata,
+ fate clic col tasto destro del mouse sul box,
+ oppure sul bottone
 \family sans
  Vai
 \begin_inset space ~
@@ -978,7 +1093,9 @@ sec:Contrib
 all'etichetta
 \family default
  nella finestra di dialogo sopra citata.
- Se volete tornare al punto in cui eravate, è semplice: fate clic sul pulsante
+ Se volete tornare al punto in cui eravate,
+ è semplice:
+ fate clic sul pulsante
 \family sans
 Torna indietro
 \family default
@@ -986,8 +1103,7 @@ Torna indietro
 \end_layout
 
 \begin_layout Standard
-Ora che abbiamo chiarito le differenze tra la versione stampata e quella
- 
+Ora che abbiamo chiarito le differenze tra la versione stampata e quella 
 \begin_inset Quotes eld
 \end_inset
 
@@ -995,9 +1111,10 @@ in linea
 \begin_inset Quotes erd
 \end_inset
 
- di questo file, possiamo cominciare ad analizzare il formato.
- Occasionalmente, noterete che alcune parole sono scritte con caratteri
- differenti:
+ di questo file,
+ possiamo cominciare ad analizzare il formato.
+ Occasionalmente,
+ noterete che alcune parole sono scritte con caratteri differenti:
 \end_layout
 
 \begin_layout Itemize
@@ -1005,8 +1122,12 @@ in linea
 \emph on
 Corsivo
 \emph default
-: viene usato per dare genericamente enfasi, per argomenti generici, per
- titoli di libri, per nomi di sezioni da altri manuali, e note dagli autori.
+:
+ viene usato per dare genericamente enfasi,
+ per argomenti generici,
+ per titoli di libri,
+ per nomi di sezioni da altri manuali,
+ e note dagli autori.
 \end_layout
 
 \begin_layout Itemize
@@ -1014,8 +1135,11 @@ Corsivo
 \family typewriter
 Monospazio
 \family default
-: è usato per i nomi di programmi e di file, per il codice \SpecialChar LyX
-, e le funzioni.
+:
+ è usato per i nomi di programmi e di file,
+ per il codice \SpecialChar LyX
+,
+ e le funzioni.
 \end_layout
 
 \begin_layout Itemize
@@ -1023,8 +1147,11 @@ Monospazio
 \family sans
 Senza grazie
 \family default
-: viene usato per i menù, i bottoni, i nomi delle finestre di dialogo, ed
- i nomi dei tasti sulla tastiera.
+:
+ viene usato per i menù,
+ i bottoni,
+ i nomi delle finestre di dialogo,
+ ed i nomi dei tasti sulla tastiera.
 \end_layout
 
 \begin_layout Itemize
@@ -1032,7 +1159,8 @@ Senza grazie
 \noun on
 Maiuscoletto
 \noun default
-: è usato per i nomi propri di persone.
+:
+ è usato per i nomi propri di persone.
 \end_layout
 
 \begin_layout Itemize
@@ -1040,13 +1168,14 @@ Maiuscoletto
 \series bold
 Grassetto
 \series default
-: è usato per il codice \SpecialChar LaTeX
+:
+ è usato per il codice \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
-In merito alle scorciatoie da tastiera per comandi e menù, verrete probabilmente
- rimandati alla sezione
+In merito alle scorciatoie da tastiera per comandi e menù,
+ verrete probabilmente rimandati alla sezione
 \emph on
  Scorciatoie da tastiera
 \emph default
@@ -1067,8 +1196,8 @@ Caratteristiche estese
 Additional.lyx
 \family default
 ).
- Quando è necessario fare riferimento a tasti specifici, useremo questa
- notazione:
+ Quando è necessario fare riferimento a tasti specifici,
+ useremo questa notazione:
 \end_layout
 
 \begin_layout Itemize
@@ -1121,7 +1250,8 @@ M-
 \family sans
  Meta-
 \family default
-, che in alcune tastiere è presente come tasto
+,
+ che in alcune tastiere è presente come tasto
 \family sans
  Alt-.
 \end_layout
@@ -1221,7 +1351,9 @@ Giù
 \begin_inset Quotes erd
 \end_inset
 
-: sono i tasti freccia, autoesplicativi.
+:
+ sono i tasti freccia,
+ autoesplicativi.
 \end_layout
 
 \begin_layout Itemize
@@ -1296,8 +1428,8 @@ PagGiù
 \begin_inset Quotes erd
 \end_inset
 
-: sono i sei tasti solitamente collocati al sopra dei tasti di movimentazione
- del cursore (tasti freccia).
+:
+ sono i sei tasti solitamente collocati al sopra dei tasti di movimentazione del cursore (tasti freccia).
  
 \begin_inset Quotes eld
 \end_inset
@@ -1359,10 +1491,11 @@ Return
 Invio
 \family default
  si riferiscono entrambi al medesimo tasto.
- Alcune tastiere usano indifferentemente l'una o l'altra etichetta; e alcune
- hanno proprio due tasti separati.
+ Alcune tastiere usano indifferentemente l'una o l'altra etichetta;
+ e alcune hanno proprio due tasti separati.
  Siccome per \SpecialChar LyX
- sono la stessa cosa, useremo
+ sono la stessa cosa,
+ useremo
 \family sans
  Return
 \family default
@@ -1387,8 +1520,7 @@ Di tanto in tanto leggerete anche qualcosa come
 \end_inset
 
 .
- Abbiamo fatto un elenco di tutte le possibili scorciatoie da tastiera nel
- manuale 
+ Abbiamo fatto un elenco di tutte le possibili scorciatoie da tastiera nel manuale 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1400,10 +1532,13 @@ Caratteristiche estese
 \begin_inset Quotes erd
 \end_inset
 
-, quindi controllate anche lì.
- Occorre notare che, nella comunità \SpecialChar LyX
-, esistono due differenti modalità per
- mappare queste scorciatoie: lo stile 
+,
+ quindi controllate anche lì.
+ Occorre notare che,
+ nella comunità \SpecialChar LyX
+,
+ esistono due differenti modalità per mappare queste scorciatoie:
+ lo stile 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1411,8 +1546,10 @@ CUA
 \begin_inset Quotes erd
 \end_inset
 
-, che è il default, ed è più familiare per coloro che provengono dal mondo
- dei personal computer; e lo stile 
+,
+ che è il default,
+ ed è più familiare per coloro che provengono dal mondo dei personal computer;
+ e lo stile 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1420,10 +1557,11 @@ emacs
 \begin_inset Quotes erd
 \end_inset
 
-, comune per coloro che sono cresciuti nell'ambiente Unix e con l'editor
- Emacs.
- Se non diversamente specificato, la mappatura citata nella documentazione
- è quella di default, 
+,
+ comune per coloro che sono cresciuti nell'ambiente Unix e con l'editor Emacs.
+ Se non diversamente specificato,
+ la mappatura citata nella documentazione è quella di default,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1432,8 +1570,9 @@ CUA
 \end_inset
 
 .
- Se amate Emacs, dovreste essere sufficientemente brillanti da leggere la
- documentazione e capire i legami, da voi stessi.
+ Se amate Emacs,
+ dovreste essere sufficientemente brillanti da leggere la documentazione e capire i legami,
+ da voi stessi.
 \end_layout
 
 \begin_layout Subsection
@@ -1449,12 +1588,13 @@ La tabella
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:Units-for-image"
+nolink "false"
 
 \end_inset
 
  mostra tutte le unità di misura disponibili in \SpecialChar LyX
-, e vi aiuterà a comprendere
- meglio quelle descritte in questa documentazione.
+,
+ e vi aiuterà a comprendere meglio quelle descritte in questa documentazione.
 \end_layout
 
 \begin_layout Standard
@@ -1464,6 +1604,7 @@ reference "cap:Units-for-image"
 \begin_layout Standard
 \begin_inset Float table
 placement t
+alignment document
 wide false
 sideways false
 status open
@@ -1994,15 +2135,18 @@ Introduzione Il presente documento.
 
 \begin_layout Description
 Tutorial Se siete nuovi utenti di \SpecialChar LyX
-, e non avete mai usato \SpecialChar LaTeX
+,
+ e non avete mai usato \SpecialChar LaTeX
  prima d'ora,
  dovreste cominciare da qui.
  Quando anche aveste già usato \SpecialChar LaTeX
-, dovreste ugualmente leggere il
+,
+ dovreste ugualmente leggere il
 \emph on
  Tutorial
 \emph default
-, a partire dalla sezione 
+,
+ a partire dalla sezione 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2021,8 +2165,7 @@ Guida
 \end_inset
 
 utente E' la documentazione principale.
- Qui apprenderete la maggior parte delle funzionalità e caratteristiche
- di base di \SpecialChar LyX
+ Qui apprenderete la maggior parte delle funzionalità e caratteristiche di base di \SpecialChar LyX
 .
  Si dà per scontato che voi abbiate letto il
 \emph on
@@ -2041,8 +2184,13 @@ incorporati Si tratta di un'estensione della
  Guida utente
 \emph default
 .
- Dettaglia l'uso di tabelle, figure, oggetti mobili, note, e box.
- Include anche molti trucchi, a cura dei 
+ Dettaglia l'uso di tabelle,
+ figure,
+ oggetti mobili,
+ note,
+ e box.
+ Include anche molti trucchi,
+ a cura dei 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2065,7 +2213,8 @@ estese Altra estensione della
 \emph default
 .
  Approfondisce l'uso di comandi in codice sorgente \SpecialChar LaTeX
-, di layout aggiuntivi,
+,
+ di layout aggiuntivi,
  e di funzionalità 
 \begin_inset Quotes eld
 \end_inset
@@ -2079,10 +2228,11 @@ editing
 
 \begin_layout Description
 Personalizzazione E' un manuale sulle caratteristiche avanzate di \SpecialChar LyX
-, e sulle
- modalità atte a personalizzare il comportamento generale del programma.
- Ci riferiamo ad aspetti quali le scorciatoie da tastiera, le opzioni internazio
-nali, ed i files di configurazione.
+,
+ e sulle modalità atte a personalizzare il comportamento generale del programma.
+ Ci riferiamo ad aspetti quali le scorciatoie da tastiera,
+ le opzioni internazionali,
+ ed i files di configurazione.
 \end_layout
 
 \begin_layout Description
@@ -2091,18 +2241,19 @@ Configurazione
 \end_inset
 
 \SpecialChar LaTeX
- Durante l'installazione, \SpecialChar LyX
+ Durante l'installazione,
+ \SpecialChar LyX
  controlla il vostro sistema.
  Questo file contiene tutte le informazioni reperite da \SpecialChar LyX
- nel corso di questa
- verifica.
- Può esservi utile per accertare l'assenza di qualche elemento che ci piacerebbe
- fosse installato.
+ nel corso di questa verifica.
+ Può esservi utile per accertare l'assenza di qualche elemento che ci piacerebbe fosse installato.
 \end_layout
 
 \begin_layout Standard
-Questi documenti riportano l'uno all'altro, quando necessario.
- Per esempio, la
+Questi documenti riportano l'uno all'altro,
+ quando necessario.
+ Per esempio,
+ la
 \emph on
  Guida utente
 \emph default
@@ -2128,7 +2279,8 @@ Ci teniamo a ribadire ancora un punto importante:
 \begin_layout Standard
 \align center
 Se usate \SpecialChar LyX
- per la prima volta, leggete il
+ per la prima volta,
+ leggete il
 \emph on
  Tutorial
 \emph default
@@ -2144,11 +2296,11 @@ Se usate \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-In caso contrario, rischiate di ostacolare voi stessi in modo interminabile.
+In caso contrario,
+ rischiate di ostacolare voi stessi in modo interminabile.
  \SpecialChar LyX
- fa tutto quello che si richiede da un elaboratore di testi, ma utilizza
- un approccio diverso da quello utilizzato nella maggior parte degli altri
- programmi.
+ fa tutto quello che si richiede da un elaboratore di testi,
+ ma utilizza un approccio diverso da quello utilizzato nella maggior parte degli altri programmi.
 \end_layout
 
 \begin_layout Section
@@ -2172,8 +2324,9 @@ Contribuire a \SpecialChar LyX
 \SpecialChar LyX
  è scritto quasi interamente in C++ (l'importazione di \SpecialChar LaTeX
  è scritta in Python).
- E' un progetto consistente, e di conseguenza non è privo di bachi, né immune
- da migliorie al codice sorgente.
+ E' un progetto consistente,
+ e di conseguenza non è privo di bachi,
+ né immune da migliorie al codice sorgente.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2182,8 +2335,9 @@ Segnalare un errore
 
 \begin_layout Standard
 Usando \SpecialChar LyX
-, potreste notare un comportamento bizzarro, tale da essere considerato
- un vero e proprio 
+,
+ potreste notare un comportamento bizzarro,
+ tale da essere considerato un vero e proprio 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2200,11 +2354,12 @@ crash
 \begin_inset Quotes erd
 \end_inset
 
-, anche se rari, possono verificarsi.
+,
+ anche se rari,
+ possono verificarsi.
  Il team \SpecialChar LyX
  considera particolarmente critici i problemi all'interfaccia utente:
- le indicazioni più utili quindi sono quelle relative alle parti dell'interfacci
-a \SpecialChar LyX
+ le indicazioni più utili quindi sono quelle relative alle parti dell'interfaccia \SpecialChar LyX
  che trovate confuse o poco chiare.
 \end_layout
 
@@ -2218,7 +2373,8 @@ bug
 \begin_inset Quotes erd
 \end_inset
 
-, raggiungibile a 
+,
+ raggiungibile a 
 \begin_inset CommandInset href
 LatexCommand href
 target "https://www.lyx.org/trac/wiki/BugTrackerHome"
@@ -2234,8 +2390,8 @@ bug tracker
 \begin_inset Quotes erd
 \end_inset
 
- prima di segnalare qualunque errore, perché potrebbe essere già stato segnalato
- da qualcuno prima di voi.
+ prima di segnalare qualunque errore,
+ perché potrebbe essere già stato segnalato da qualcuno prima di voi.
  Alternativamente – o anche per segnalare un commento su un 
 \begin_inset Quotes eld
 \end_inset
@@ -2244,7 +2400,8 @@ bug
 \begin_inset Quotes erd
 \end_inset
 
- esistente – potete scrivere alla mailing list degli sviluppatori, 
+ esistente – potete scrivere alla mailing list degli sviluppatori,
+ 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
@@ -2254,9 +2411,9 @@ literal "false"
 \end_inset
 
 .
- Gli archivi di questa lista sono raggiungibili dal link indicato sul sito
- principale di \SpecialChar LyX
+ Gli archivi di questa lista sono raggiungibili dal link indicato sul sito principale di \SpecialChar LyX
 ,
+
 \family typewriter
  
 \family default
@@ -2273,23 +2430,28 @@ target "http://www.lyx.org"
 \end_layout
 
 \begin_layout Standard
-Per essere utile, una segnalazione di errore dovrebbe contenere almeno l'indicaz
-ione della versione di \SpecialChar LyX
+Per essere utile,
+ una segnalazione di errore dovrebbe contenere almeno l'indicazione della versione di \SpecialChar LyX
  che presenta il problema.
- Sono preferibili descrizioni accurate e dettagliate: il tempo perso dagli
- sviluppatori per individuare con esattezza un errore, infatti, non può
- essere impiegato per implementare ulteriori migliorie del programma.
- Non dimenticate di citare: il sistema operativo sul quale gira il vostro
- \SpecialChar LyX
-; quale versione di tale sistema operativo possedete; e, se è rilevante,
+ Sono preferibili descrizioni accurate e dettagliate:
+ il tempo perso dagli sviluppatori per individuare con esattezza un errore,
+ infatti,
+ non può essere impiegato per implementare ulteriori migliorie del programma.
+ Non dimenticate di citare:
+ il sistema operativo sul quale gira il vostro \SpecialChar LyX
+;
+ quale versione di tale sistema operativo possedete;
+ e,
+ se è rilevante,
  le versioni dei programmi esterni che \SpecialChar LyX
  utilizza.
- Se è un problema relativo alla compilazione o alla configurazione, includete
- il file
+ Se è un problema relativo alla compilazione o alla configurazione,
+ includete il file
 \family typewriter
  config.log
 \family default
-, e indicate quale compilatore usate.
+,
+ e indicate quale compilatore usate.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2298,10 +2460,9 @@ Contribuire alle riparazioni e a nuove funzionalità
 
 \begin_layout Standard
 Se avete effettuato delle modifiche al codice sorgente di \SpecialChar LyX
- che a vostro
- avviso dovrebbero diventare parte del programma distribuito, mandatele
- alla mailing list degli sviluppatori sopra citata, in formato diff (formato
- 
+ che a vostro avviso dovrebbero diventare parte del programma distribuito,
+ mandatele alla mailing list degli sviluppatori sopra citata,
+ in formato diff (formato 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2309,7 +2470,8 @@ unified
 \begin_inset Quotes erd
 \end_inset
 
-), unitamente ad un registro delle modifiche (
+),
+ unitamente ad un registro delle modifiche (
 \begin_inset Quotes eld
 \end_inset
 
@@ -2317,7 +2479,8 @@ change log
 \begin_inset Quotes erd
 \end_inset
 
-), ed una descrizione di ciò che la vostra
+),
+ ed una descrizione di ciò che la vostra
 \begin_inset Quotes eld
 \end_inset
 
@@ -2334,7 +2497,8 @@ Contribuire alla Documentazione
 
 \begin_layout Standard
 La documentazione di \SpecialChar LyX
- è voluminosa; il programma però è in costante sviluppo,
+ è voluminosa;
+ il programma però è in costante sviluppo,
  e nuove funzioni vengono aggiunte ad ogni 
 \begin_inset Quotes eld
 \end_inset
@@ -2345,8 +2509,8 @@ release
 
 .
  Magari potreste accorgervi che alcuni documenti necessitano di migliorie.
- Questa sezione descrive cosa fare se trovate un errore, o avete alcuni
- suggerimenti atti a migliorare la documentazione.
+ Questa sezione descrive cosa fare se trovate un errore,
+ o avete alcuni suggerimenti atti a migliorare la documentazione.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2354,8 +2518,8 @@ Comunicare errori nei Manuali
 \end_layout
 
 \begin_layout Standard
-Se trovate problemi con la documentazione, mandate un messaggio alla mailing
- list 
+Se trovate problemi con la documentazione,
+ mandate un messaggio alla mailing list 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -2374,14 +2538,15 @@ Partecipare al Team della Documentazione
 
 \begin_layout Standard
 Il Progetto Documentazione \SpecialChar LyX
- – come qualunque cosa nell'ambito del progetto
- \SpecialChar LyX
+ – come qualunque cosa nell'ambito del progetto \SpecialChar LyX
  – ha sempre bisogno di aiuto.
- Se vuoi contribuire, devi:
+ Se vuoi contribuire,
+ devi:
 \end_layout
 
 \begin_layout Enumerate
-Anzitutto, reperire il codice sorgente \SpecialChar LyX
+Anzitutto,
+ reperire il codice sorgente \SpecialChar LyX
  più recente da
 \begin_inset Newline newline
 \end_inset
@@ -2397,7 +2562,8 @@ target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
 \end_layout
 
 \begin_layout Enumerate
-Poi, leggete la
+Poi,
+ leggete la
 \emph on
  Guida Utente
 \emph default
@@ -2418,14 +2584,15 @@ Lo scopo di questo esercizio è quello di fornirvi le idee giuste.
 \emph on
  Tutorial
 \emph default
-, infatti, rappresentano quasi certamente i Manuali più aggiornati di tutta
- la Documentazione.
- Dovrebbero permettervi di estrapolare alcune idee in merito a come vogliamo
- sia l'aspetto e la sostanza dei Manuali.
+,
+ infatti,
+ rappresentano quasi certamente i Manuali più aggiornati di tutta la Documentazione.
+ Dovrebbero permettervi di estrapolare alcune idee in merito a come vogliamo sia l'aspetto e la sostanza dei Manuali.
 \end_layout
 
 \begin_layout Enumerate
-Quindi, contattate il team all'indirizzo
+Quindi,
+ contattate il team all'indirizzo
 \begin_inset Newline newline
 \end_inset
 
@@ -2446,13 +2613,13 @@ literal "false"
 
 
 \family default
-per discutere le modifiche che vorreste apportare, ed avere le relative
- informazioni di ritorno dal team.
+per discutere le modifiche che vorreste apportare,
+ ed avere le relative informazioni di ritorno dal team.
 \end_layout
 
 \begin_layout Standard
-Le modifiche che vorreste poter apportare possono spaziare da migliorie
- alla chiarezza del testo, a complete ristrutturazioni della documentazione.
+Le modifiche che vorreste poter apportare possono spaziare da migliorie alla chiarezza del testo,
+ a complete ristrutturazioni della documentazione.
  Qualunque tipo di miglioramento è comunque ben accetto.
 \end_layout
 

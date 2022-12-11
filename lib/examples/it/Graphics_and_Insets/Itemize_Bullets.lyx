@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,9 +21,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -74,16 +74,20 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \bulletLaTeX 0 "\raise1pt\hbox{\small\(\blacktriangleright\)}"
 \bulletLaTeX 1 "\raise1pt\hbox{\(\leadsto\)}"
 \bullet 2 4 8 3
 \bullet 3 0 8 -1
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -105,13 +109,13 @@ Traduzione italiana di Stefano Mastella
 \begin_layout Standard
 
 \color black
-Vi accorgerete presto che la configurazione degli elenchi puntati può divenire
- abbastanza complessa qualora vogliate pensare che davvero lo sia.
+Vi accorgerete presto che la configurazione degli elenchi puntati può divenire abbastanza complessa qualora vogliate pensare che davvero lo sia.
 
 \color none
  
 \color black
-Con queste parole non voglio spaventarvi, in realtà molti settaggi sono
+Con queste parole non voglio spaventarvi,
+ in realtà molti settaggi sono
 \color none
  
 \color inherit
@@ -191,8 +195,7 @@ Sì.
 \color none
  
 \color black
-sistema di gestione dei puntatori vi permette di scegliere i puntatori validi
- per tutto il documento.
+sistema di gestione dei puntatori vi permette di scegliere i puntatori validi per tutto il documento.
  Qualora desideraste personalizzare ogni paragrafo dovrete farlo manualmente.
 \end_layout
 
@@ -225,8 +228,7 @@ Tabelle dei puntatori:
 \begin_layout Standard
 
 \color black
-Le tabelle che seguono sono quelle utilizzate per generare i pannelli dei
- puntatori nella finestra a comparsa Scelta dell'indice degli elenchi.
+Le tabelle che seguono sono quelle utilizzate per generare i pannelli dei puntatori nella finestra a comparsa Scelta dell'indice degli elenchi.
 \end_layout
 
 \begin_layout Subsection*

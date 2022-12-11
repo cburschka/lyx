@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 95 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -93,12 +97,16 @@ As coisas mais importantes a saber para utilizar o \SpecialChar LyX
 
 \begin_layout Enumerate
 \SpecialChar LyX
- vem com uma excelente documentação—por favor, use-a! Comece com 
+ vem com uma excelente documentação—
+por favor,
+ use-a!
+ Comece com 
 \family sans
 Ajuda\SpecialChar menuseparator
 Introdução
 \family default
-, que lhe dará uma breve introdução sobre a documentação.
+,
+ que lhe dará uma breve introdução sobre a documentação.
  Então leia sobre o uso do \SpecialChar LyX
  com 
 \family sans
@@ -119,9 +127,10 @@ processador de documentos
 \end_inset
 
 .
- Ele é diferente dos processadores de texto comuns—no sentido que torna
- a escrita de documentos mais fácil.
- Mas somente um pouco diferente, então não se assuste.
+ Ele é diferente dos processadores de texto comuns—
+no sentido que torna a escrita de documentos mais fácil.
+ Mas somente um pouco diferente,
+ então não se assuste.
  A documentação tornará tudo isso claro
 \begin_inset Foot
 status collapsed
@@ -137,7 +146,8 @@ Nos já mencionamos que você deve ler a documentação?
 
 \begin_layout Enumerate
 O resultado visual dos documentos no \SpecialChar LyX
- é excelente! Selecione 
+ é excelente!
+ Selecione 
 \family sans
 Documento\SpecialChar menuseparator
 Visualizar
@@ -154,10 +164,12 @@ Visualizar
 \end_layout
 
 \begin_layout Enumerate
-Sim, \SpecialChar LyX
+Sim,
+ \SpecialChar LyX
  pode reproduzir (a maioria de) toda a funcionalidade do \SpecialChar LaTeX
 .
- E sim, \SpecialChar LyX
+ E sim,
+ \SpecialChar LyX
  pode importar arquivos do \SpecialChar LaTeX
 .
  Usuários experientes do \SpecialChar LaTeX
@@ -176,18 +188,19 @@ Tutorial
 \end_inset
 
 .
- (Para os demais: não se preocupe, você não precisa conhecer \SpecialChar LaTeX
- para usar
- o \SpecialChar LyX
+ (Para os demais:
+ não se preocupe,
+ você não precisa conhecer \SpecialChar LaTeX
+ para usar o \SpecialChar LyX
 .) 
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
- tem diversos recursos para pessoas que lêem ou escrevem em outra língua
- diferente do Inglês.
- As teclas de atalho, barra de ferramentas, e muitas outras características
- são altamente configuráveis (a maioria editando seu arquivo 
+ tem diversos recursos para pessoas que lêem ou escrevem em outra língua diferente do Inglês.
+ As teclas de atalho,
+ barra de ferramentas,
+ e muitas outras características são altamente configuráveis (a maioria editando seu arquivo 
 \family typewriter
 lyxrc
 \family default
@@ -215,9 +228,11 @@ https://www.lyx.org
 
 .
  Obtenha informações sobre o \SpecialChar LyX
-, inscreva-se na(s) lista(s) de discussão,
+,
+ inscreva-se na(s) lista(s) de discussão,
  veja a  Turnê Gráfica do \SpecialChar LyX
-: 
+:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -228,7 +243,8 @@ https://www.lyx.org/Walkthrough
 
 \end_inset
 
-, e mais.
+,
+ e mais.
 \end_layout
 
 \begin_layout Enumerate
@@ -236,6 +252,7 @@ https://www.lyx.org/Walkthrough
 \series bold
 \lang english
 Note for Linux users:
+
 \series default
  Please check that the language packages for the \SpecialChar LaTeX
  distribution 

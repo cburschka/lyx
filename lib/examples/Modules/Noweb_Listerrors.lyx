@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -32,9 +32,9 @@ noweb
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -85,12 +85,16 @@ noweb
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -129,14 +133,12 @@ mailto:kayvan@sylvan.com
 \end_layout
 
 \begin_layout Abstract
-The listerrors program used to be compiled as a C program and installed
- as 
+The listerrors program used to be compiled as a C program and installed as 
 \emph on
 BINDIR/listerrors
 \emph default
  along with \SpecialChar LyX
- in order to perform some simple re-formatting of noweb and
- GCC error messages.
+ in order to perform some simple re-formatting of noweb and GCC error messages.
  This document describes and implements the Python version of the same program.
 \end_layout
 
@@ -196,16 +198,18 @@ listerrors
 \begin_inset Quotes erd
 \end_inset
 
-? Usually, \SpecialChar LyX
+?
+ Usually,
+ \SpecialChar LyX
  has great support for parsing of error messages.
- For each error in the log file, \SpecialChar LyX
- pops up an error box at that location
- in the \SpecialChar LyX
+ For each error in the log file,
+ \SpecialChar LyX
+ pops up an error box at that location in the \SpecialChar LyX
  window.
- The error scanning routines expect these errors to be in a certain format
- (similar to \SpecialChar LaTeX
+ The error scanning routines expect these errors to be in a certain format (similar to \SpecialChar LaTeX
  errors).
- When dealing with Literate Programs, you have 
+ When dealing with Literate Programs,
+ you have 
 \begin_inset Quotes eld
 \end_inset
 
@@ -235,34 +239,35 @@ https://www.cs.tufts.edu/~nr/noweb/
 \end_inset
 
  as well as gcc error messages (and potentially others).
- The listerrors program attempts to standardize these error messages to
- a format that \SpecialChar LyX
+ The listerrors program attempts to standardize these error messages to a format that \SpecialChar LyX
  can parse and react to.
 \end_layout
 
 \begin_layout Standard
-In a nutshell, the problems with the old implementation of listerrors that
- bug 190 refers to were::
+In a nutshell,
+ the problems with the old implementation of listerrors that bug 190 refers to were::
 \end_layout
 
 \begin_layout Enumerate
-It was a C program and it was installed in the user path in the same directory
- as \SpecialChar LyX
+It was a C program and it was installed in the user path in the same directory as \SpecialChar LyX
 .
- Having such a generically named binary in, for example, 
+ Having such a generically named binary in,
+ for example,
+ 
 \emph on
 /usr/bin
 \emph default
-, was potentially confusing.
+,
+ was potentially confusing.
 \end_layout
 
 \begin_layout Enumerate
-It required that noweb be installed on the compiling machine (the source
- was extracted by noweb from 
+It required that noweb be installed on the compiling machine (the source was extracted by noweb from 
 \emph on
 SRCDIR/examples/Literate.lyx
 \emph default
-, compiled and installed by 
+,
+ compiled and installed by 
 \begin_inset Quotes eld
 \end_inset
 
@@ -278,8 +283,7 @@ The new version deals with these problems in the following fashion:
 \end_layout
 
 \begin_layout Enumerate
-Both the example file (this document) and the program are to be added to
- the \SpecialChar LyX
+Both the example file (this document) and the program are to be added to the \SpecialChar LyX
  CVS repository.
 \end_layout
 
@@ -288,7 +292,8 @@ The program itself will be installed in
 \emph on
 SHAREDIR/lyx/scripts
 \emph default
-, along with other \SpecialChar LyX
+,
+ along with other \SpecialChar LyX
 -specific helper scripts.
 \end_layout
 
@@ -301,7 +306,8 @@ listerrors
 \begin_inset Quotes erd
 \end_inset
 
-, the Python
+,
+ the Python
 \begin_inset Foot
 status collapsed
 
@@ -322,8 +328,7 @@ http://www.python.org
 
 \end_inset
 
- language was chosen since it is fully multi-platform and provides a very
- uniform and easy to read syntax.
+ language was chosen since it is fully multi-platform and provides a very uniform and easy to read syntax.
  This re-write also simplifies the code for 
 \begin_inset Quotes eld
 \end_inset
@@ -333,8 +338,7 @@ listerrors
 \end_inset
 
  greatly.
- Python is installed by default on all modern Linux systems and is freely
- available for all other platforms.
+ Python is installed by default on all modern Linux systems and is freely available for all other platforms.
 \end_layout
 
 \begin_layout Standard
@@ -382,12 +386,14 @@ __author__ = "Kayvan A.
 
 \begin_layout Plain Layout
 
-__date__ = "$Date: 2005/07/18 09:42:26 $"
+__date__ = "$Date:
+ 2005/07/18 09:42:26 $"
 \end_layout
 
 \begin_layout Plain Layout
 
-__version__ = "$Revision: 1.5 $"
+__version__ = "$Revision:
+ 1.5 $"
 \end_layout
 
 \begin_layout Plain Layout
@@ -422,7 +428,8 @@ __copyright__ = "Copyright 2002 - Kayvan Sylvan."
 
 \begin_layout Plain Layout
 
-import sys, string
+import sys,
+ string
 \end_layout
 
 \begin_layout Plain Layout
@@ -479,7 +486,9 @@ status open
 
 \begin_layout Plain Layout
 
-def write_error(msg, tool = "noweb", line_number = 1):
+def write_error(msg,
+ tool = "noweb",
+ line_number = 1):
 \end_layout
 
 \begin_layout Plain Layout
@@ -497,12 +506,17 @@ def write_error(msg, tool = "noweb", line_number = 1):
 
 \begin_layout Plain Layout
 
-  called like: write_error(msg, tool, line_number)."""
+  called like:
+ write_error(msg,
+ tool,
+ line_number)."""
 \end_layout
 
 \begin_layout Plain Layout
 
-  print "! Build Error: ==> %s ==>
+  print "!
+ Build Error:
+ ==> %s ==>
 \backslash
 n" % (tool),
 \end_layout
@@ -520,7 +534,8 @@ n" % (line_number),
 
 \begin_layout Plain Layout
 
-  if type(msg) == type("str"): # simple string
+  if type(msg) == type("str"):
+ # simple string
 \end_layout
 
 \begin_layout Plain Layout
@@ -530,7 +545,8 @@ n" % (line_number),
 
 \begin_layout Plain Layout
 
-  else: # some kind of list (sequence or tuple)
+  else:
+ # some kind of list (sequence or tuple)
 \end_layout
 
 \begin_layout Plain Layout
@@ -540,7 +556,8 @@ n" % (line_number),
 
 \begin_layout Plain Layout
 
-        if m != "": print m,
+        if m != "":
+ print m,
 \end_layout
 
 \begin_layout Plain Layout
@@ -567,8 +584,7 @@ Filtering errors
 \end_layout
 
 \begin_layout Standard
-The only complication in our filtering code is that some parsers might need
- to push back lines that are read in to be read again later.
+The only complication in our filtering code is that some parsers might need to push back lines that are read in to be read again later.
  We solve this problem by implementing a 
 \begin_inset Quotes eld
 \end_inset
@@ -740,10 +756,9 @@ listerrors
 \begin_inset Quotes erd
 \end_inset
 
- takes no options and simply filters, attempting simply to match against
- the known error message patterns.
- The listerrors C program handled a single-character command-line argument
- that the current code no longer needs.
+ takes no options and simply filters,
+ attempting simply to match against the known error message patterns.
+ The listerrors C program handled a single-character command-line argument that the current code no longer needs.
  
 \end_layout
 
@@ -793,7 +808,8 @@ def main():
 
 \begin_layout Plain Layout
 
-    if line == "": break
+    if line == "":
+ break
 \end_layout
 
 \begin_layout Plain Layout
@@ -812,8 +828,10 @@ def main():
 \end_layout
 
 \begin_layout Standard
-For each line read in, we need to find out if it matches any of our tools
- (noweb, gcc, etc.) and act accordingly.
+For each line read in,
+ we need to find out if it matches any of our tools (noweb,
+ gcc,
+ etc.) and act accordingly.
 \end_layout
 
 \begin_layout Standard
@@ -831,7 +849,9 @@ status open
 
 \begin_layout Plain Layout
 
-try_patterns_dispatch = [ noweb_try, gcc_try, xlc_try ]
+try_patterns_dispatch = [ noweb_try,
+ gcc_try,
+ xlc_try ]
 \end_layout
 
 \begin_layout Plain Layout
@@ -841,7 +861,8 @@ for predicate in try_patterns_dispatch:
 
 \begin_layout Plain Layout
 
-  if predicate(line): break
+  if predicate(line):
+ break
 \end_layout
 
 \begin_layout Plain Layout
@@ -859,8 +880,7 @@ Different Error Formats
 \end_layout
 
 \begin_layout Standard
-The following sections handle the various error message formats that we
- recognize in this program.
+The following sections handle the various error message formats that we recognize in this program.
  
 \end_layout
 
@@ -869,8 +889,8 @@ noweb errors
 \end_layout
 
 \begin_layout Standard
-Noweb errors are output on a single line, so examining just the current
- line is enough.
+Noweb errors are output on a single line,
+ so examining just the current line is enough.
 \end_layout
 
 \begin_layout Standard
@@ -898,7 +918,8 @@ def noweb_try(line):
 
 \begin_layout Plain Layout
 
-  Returns 1 on success, 0 otherwise.
+  Returns 1 on success,
+ 0 otherwise.
  Outputs on stdout."""
 \end_layout
 
@@ -942,7 +963,8 @@ def noweb_try(line):
 \end_layout
 
 \begin_layout Standard
-First, we look for the 
+First,
+ we look for the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -969,12 +991,15 @@ status open
 
 \begin_layout Plain Layout
 
-if string.find(line, ": unescaped << in documentation chunk") != -1:
+if string.find(line,
+ ":
+ unescaped << in documentation chunk") != -1:
 \end_layout
 
 \begin_layout Plain Layout
 
-  line_parts = string.split(line, ':')
+  line_parts = string.split(line,
+ ':')
 \end_layout
 
 \begin_layout Plain Layout
@@ -994,7 +1019,8 @@ if string.find(line, ": unescaped << in documentation chunk") != -1:
 
 \begin_layout Plain Layout
 
-  while i < num_len and (num_str[i] in string.digits): i = i + 1
+  while i < num_len and (num_str[i] in string.digits):
+ i = i + 1
 \end_layout
 
 \begin_layout Plain Layout
@@ -1004,7 +1030,9 @@ if string.find(line, ": unescaped << in documentation chunk") != -1:
 
 \begin_layout Plain Layout
 
-    write_error(":" + line_parts[2], "noweb", int(num_str))
+    write_error(":" + line_parts[2],
+ "noweb",
+ int(num_str))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1047,7 +1075,8 @@ if (not retval):
 
 \begin_layout Plain Layout
 
-  left = string.find(line, "<<")
+  left = string.find(line,
+ "<<")
 \end_layout
 
 \begin_layout Plain Layout
@@ -1059,12 +1088,14 @@ if (not retval):
 
 \begin_layout Plain Layout
 
-     (string.find(line[left+2:], ">>") != -1):
+     (string.find(line[left+2:],
+ ">>") != -1):
 \end_layout
 
 \begin_layout Plain Layout
 
-    write_error(line, "noweb");
+    write_error(line,
+ "noweb");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1083,7 +1114,8 @@ if (not retval):
 \end_layout
 
 \begin_layout Standard
-Finally, here is an additional list of explicit strings to check for.
+Finally,
+ here is an additional list of explicit strings to check for.
 \end_layout
 
 \begin_layout Standard
@@ -1167,12 +1199,14 @@ if (not retval):
 
 \begin_layout Plain Layout
 
-    if string.find(line, msg) != -1:
+    if string.find(line,
+ msg) != -1:
 \end_layout
 
 \begin_layout Plain Layout
 
-      write_error(line, "noweb")
+      write_error(line,
+ "noweb")
 \end_layout
 
 \begin_layout Plain Layout
@@ -1200,11 +1234,14 @@ gcc errors
 \end_layout
 
 \begin_layout Standard
-The gcc errors can be multi-line, with the following format:
+The gcc errors can be multi-line,
+ with the following format:
 \end_layout
 
 \begin_layout LyX-Code
-foo.c: In function `main': 
+foo.c:
+ In function `main':
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1213,12 +1250,14 @@ status open
 
 \begin_layout Plain Layout
 
-foo.c:3: `bar' undeclared (first use in this function) 
+foo.c:3:
+ `bar' undeclared (first use in this function) 
 \end_layout
 
 \begin_layout Plain Layout
 
-foo.c:3: (Each undeclared identifier is reported only once 
+foo.c:3:
+ (Each undeclared identifier is reported only once 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1227,12 +1266,14 @@ foo.c:3: (Each undeclared identifier is reported only once
 
 \begin_layout Plain Layout
 
-foo.c:3: for each function it appears in.) 
+foo.c:3:
+ for each function it appears in.) 
 \end_layout
 
 \begin_layout Plain Layout
 
-foo.c:3: parse error before `x'
+foo.c:3:
+ parse error before `x'
 \end_layout
 
 \end_inset
@@ -1241,8 +1282,8 @@ foo.c:3: parse error before `x'
 \end_layout
 
 \begin_layout Standard
-In order to parse this, the gcc error handler has to look ahead and return
- any and all lines that do not match the expected pattern.
+In order to parse this,
+ the gcc error handler has to look ahead and return any and all lines that do not match the expected pattern.
 \end_layout
 
 \begin_layout Standard
@@ -1271,7 +1312,8 @@ def gcc_try(line):
 
 \begin_layout Plain Layout
 
-  Returns 1 on success, 0 otherwise.
+  Returns 1 on success,
+ 0 otherwise.
  Outputs on stdout."""
 \end_layout
 
@@ -1305,8 +1347,7 @@ def gcc_try(line):
 \end_layout
 
 \begin_layout Standard
-The error message starts with a gcc header (as above) without an associated
- line number.
+The error message starts with a gcc header (as above) without an associated line number.
 \end_layout
 
 \begin_layout Standard
@@ -1320,12 +1361,15 @@ status open
 
 \begin_layout Plain Layout
 
-first_space = string.find(line, ' ')
+first_space = string.find(line,
+ ' ')
 \end_layout
 
 \begin_layout Plain Layout
 
-if first_space > 1: # The smallest would be "X: "
+if first_space > 1:
+ # The smallest would be "X:
+ "
 \end_layout
 
 \begin_layout Plain Layout
@@ -1355,12 +1399,14 @@ if first_space > 1: # The smallest would be "X: "
 
 \begin_layout Plain Layout
 
-      while next_line[num_end] in string.digits: num_end = num_end + 1
+      while next_line[num_end] in string.digits:
+ num_end = num_end + 1
 \end_layout
 
 \begin_layout Plain Layout
 
-      if num_end > first_space: # good!
+      if num_end > first_space:
+ # good!
 \end_layout
 
 \begin_layout Plain Layout
@@ -1370,7 +1416,9 @@ if first_space > 1: # The smallest would be "X: "
 
 \begin_layout Plain Layout
 
-      else: # oops! Not a gcc error.
+      else:
+ # oops!
+ Not a gcc error.
 \end_layout
 
 \begin_layout Plain Layout
@@ -1399,8 +1447,8 @@ if first_space > 1: # The smallest would be "X: "
 \end_layout
 
 \begin_layout Standard
-At the point in the code that we know that we are in the middle of an error
- message, we do the following:
+At the point in the code that we know that we are in the middle of an error message,
+ we do the following:
 \end_layout
 
 \begin_layout Standard
@@ -1454,12 +1502,15 @@ while next_line and next_line[:num_end] == header_to_see:
 
 \begin_layout Plain Layout
 
-if next_line: pushline(next_line)
+if next_line:
+ pushline(next_line)
 \end_layout
 
 \begin_layout Plain Layout
 
-write_error(msgs, "gcc", int(num_str))
+write_error(msgs,
+ "gcc",
+ int(num_str))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1483,8 +1534,10 @@ xlc errors
 
 \begin_layout Standard
 A xlc error message is easy to identify.
- Every error message starts with a quoted string with no spaces, a comma,
- a space, the word 
+ Every error message starts with a quoted string with no spaces,
+ a comma,
+ a space,
+ the word 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1492,9 +1545,10 @@ line
 \begin_inset Quotes erd
 \end_inset
 
-, a space, and some variable text.
- The following routine tests if a given buffer line matches this criteria
- (this code would probably be simpler if I used the 
+,
+ a space,
+ and some variable text.
+ The following routine tests if a given buffer line matches this criteria (this code would probably be simpler if I used the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1502,8 +1556,8 @@ re
 \begin_inset Quotes erd
 \end_inset
 
- regexp module, but we don't really need the full regular expression engine
- here).
+ regexp module,
+ but we don't really need the full regular expression engine here).
  
 \end_layout
 
@@ -1540,7 +1594,8 @@ def xlc_try(line):
 
 \begin_layout Plain Layout
 
-  Returns 1 on success, 0 otherwise.
+  Returns 1 on success,
+ 0 otherwise.
  Outputs on stdout."""
 \end_layout
 
@@ -1551,28 +1606,33 @@ def xlc_try(line):
 
 \begin_layout Plain Layout
 
-  if line[0] == '"': # This is the first character of all xlc errors
+  if line[0] == '"':
+ # This is the first character of all xlc errors
 \end_layout
 
 \begin_layout Plain Layout
 
-    next_quote = string.find(line, '"', 1)
+    next_quote = string.find(line,
+ '"',
+ 1)
 \end_layout
 
 \begin_layout Plain Layout
 
-    first_space = string.find(line, ' ')
+    first_space = string.find(line,
+ ' ')
 \end_layout
 
 \begin_layout Plain Layout
 
-    if (next_quote != -1) and (first_space > next_quote): # no space inisde
- quotes
+    if (next_quote != -1) and (first_space > next_quote):
+ # no space inisde quotes
 \end_layout
 
 \begin_layout Plain Layout
 
-      if line[first_space - 1:first_space + 6] == ", line ":
+      if line[first_space - 1:first_space + 6] == ",
+ line ":
 \end_layout
 
 \begin_layout Plain Layout
@@ -1582,7 +1642,8 @@ def xlc_try(line):
 
 \begin_layout Plain Layout
 
-        while line[num_end] in string.digits: num_end = num_end + 1
+        while line[num_end] in string.digits:
+ num_end = num_end + 1
 \end_layout
 
 \begin_layout Plain Layout
@@ -1592,7 +1653,10 @@ def xlc_try(line):
 
 \begin_layout Plain Layout
 
-          write_error(line, "xlc", int(line[num_start : num_end]))
+          write_error(line,
+ "xlc",
+ int(line[num_start :
+ num_end]))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1651,7 +1715,8 @@ notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
-This section defines our build-script, which extracts the code.
+This section defines our build-script,
+ which extracts the code.
 \end_layout
 
 \begin_layout Standard
@@ -1670,12 +1735,16 @@ status open
 
 \begin_layout Plain Layout
 
-if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=listerrors.nw; fi
+if [ -z "$NOWEB_SOURCE" ];
+ then NOWEB_SOURCE=listerrors.nw;
+ fi
 \end_layout
 
 \begin_layout Plain Layout
 
-if [ -z "$NOWEB_OUTPUT_DIR" ]; then NOWEB_OUTPUT_DIR=.; fi
+if [ -z "$NOWEB_OUTPUT_DIR" ];
+ then NOWEB_OUTPUT_DIR=.;
+ fi
 \end_layout
 
 \begin_layout Plain Layout

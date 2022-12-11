@@ -1,5 +1,5 @@
-# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
-\lyxformat 509
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -16,7 +16,7 @@
 }
 \end_preamble
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \begin_local_layout
 Style Description
 LabelIndent           MM
@@ -25,8 +25,8 @@ End
 \end_local_layout
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -34,10 +34,13 @@ End
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype 0
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,6 +70,8 @@ End
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -79,15 +84,23 @@ End
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -119,17 +132,18 @@ LyX Functions
  These are commands that are used to make \SpecialChar LyX
  perform specific actions.
  \SpecialChar LyX
- itself uses these functions internally, and every internal action is
- bound to an LFUN.
+ itself uses these functions internally,
+ and every internal action is bound to an LFUN.
 \end_layout
 
 \begin_layout Standard
-LFUNs are also used in the files that define keyboard shortcuts, menu or
- toolbar items.
+LFUNs are also used in the files that define keyboard shortcuts,
+ menu or toolbar items.
  So if you want to change\SpecialChar breakableslash
-customize the user interface, you need to deal
- with LFUNs.
- Furthermore, external programs can use LFUNs to communicate with and 
+customize the user interface,
+ you need to deal with LFUNs.
+ Furthermore,
+ external programs can use LFUNs to communicate with and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -139,8 +153,8 @@ remote-control
 
  \SpecialChar LyX
  .
- Finally, you can also issue LFUNs directly via the so called mini-buffer
- which can be opened via 
+ Finally,
+ you can also issue LFUNs directly via the so called mini-buffer which can be opened via 
 \begin_inset Info
 type  "shortcuts"
 arg   "command-execute"
@@ -150,11 +164,14 @@ arg   "command-execute"
 \end_layout
 
 \begin_layout Standard
-In the following, all LFUNs are listed, categorized by function.
+In the following,
+ all LFUNs are listed,
+ categorized by function.
 \end_layout
 
 \begin_layout Section
-Layout Functions (Font, Layout and Textclass related)
+Layout Functions (Font,
+ Layout and Textclass related)
 \end_layout
 
 \begin_layout Subsection*
@@ -186,19 +203,26 @@ Syntax environment-split [before|outer|previous]
 \end_layout
 
 \begin_layout Description
-Params outer:    If this is given, LyX will split the outermost environment in the current nesting hierarchy.
+Params outer:
+    If this is given,
+ LyX will split the outermost environment in the current nesting hierarchy.
 \begin_inset Newline newline
 \end_inset
 
-previous: If this is given, LyX will split the environment in the previous paragraph (if there is one).
+previous:
+ If this is given,
+ LyX will split the environment in the previous paragraph (if there is one).
 \begin_inset Newline newline
 \end_inset
 
-before:   If this is given, the new environment will be appended rather than prepended.
+before:
+   If this is given,
+ the new environment will be appended rather than prepended.
 \end_layout
 
 \begin_layout Description
-Origin spitz, 23 Dec 2012
+Origin spitz,
+ 23 Dec 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -238,7 +262,8 @@ Syntax font-crossout
 \end_layout
 
 \begin_layout Description
-Origin uwestoehr, 4 April 2017
+Origin uwestoehr,
+ 4 April 2017
 \end_layout
 
 \begin_layout Subsection*
@@ -270,7 +295,8 @@ font-frak
 \end_layout
 
 \begin_layout Description
-Action Toggles Fraktur family font (math-mode, selection-wise).
+Action Toggles Fraktur family font (math-mode,
+ selection-wise).
 \end_layout
 
 \begin_layout Description
@@ -278,7 +304,8 @@ Syntax font-frak
 \end_layout
 
 \begin_layout Description
-Origin vermeer, 10 Jan 2002
+Origin vermeer,
+ 10 Jan 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -286,7 +313,8 @@ font-ital
 \end_layout
 
 \begin_layout Description
-Action Toggles Italics font shape (math-mode, selection-wise).
+Action Toggles Italics font shape (math-mode,
+ selection-wise).
 \end_layout
 
 \begin_layout Description
@@ -294,7 +322,8 @@ Syntax font-ital
 \end_layout
 
 \begin_layout Description
-Origin vermeer, 10 Jan 2002
+Origin vermeer,
+ 10 Jan 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -310,7 +339,8 @@ Syntax font-nospellcheck
 \end_layout
 
 \begin_layout Description
-Origin spitz, 5 March 2021
+Origin spitz,
+ 5 March 2021
 \end_layout
 
 \begin_layout Subsection*
@@ -362,7 +392,8 @@ Syntax font-size <SIZE>
 \end_layout
 
 \begin_layout Description
-Params <SIZE>: tiny|scriptsize|footnotesize|small|normal|large|larger|
+Params <SIZE>:
+ tiny|scriptsize|footnotesize|small|normal|large|larger|
 \begin_inset Newline newline
 \end_inset
 
@@ -394,7 +425,8 @@ Syntax font-strikeout
 \end_layout
 
 \begin_layout Description
-Origin sanda, 3 May 2009
+Origin sanda,
+ 3 May 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -434,7 +466,8 @@ Syntax font-underunderline
 \end_layout
 
 \begin_layout Description
-Origin sanda, 5 May 2009
+Origin sanda,
+ 5 May 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -450,7 +483,8 @@ Syntax font-underwave
 \end_layout
 
 \begin_layout Description
-Origin sanda, 5 May 2009
+Origin sanda,
+ 5 May 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -458,7 +492,8 @@ layout
 \end_layout
 
 \begin_layout Description
-Action Sets the layout (that is, environment) for the current paragraph.
+Action Sets the layout (that is,
+ environment) for the current paragraph.
 \end_layout
 
 \begin_layout Description
@@ -466,11 +501,14 @@ Syntax layout <LAYOUT> [ignoreautonests]
 \end_layout
 
 \begin_layout Description
-Params <LAYOUT>: the layout to use
+Params <LAYOUT>:
+ the layout to use
 \begin_inset Newline newline
 \end_inset
 
-ignoreautonests: If specified, nesting advices will be ignored.
+ignoreautonests:
+ If specified,
+ nesting advices will be ignored.
 \end_layout
 
 \begin_layout Subsection*
@@ -490,11 +528,13 @@ Syntax layout-module-add <MODULE>
 \end_layout
 
 \begin_layout Description
-Params <MODULE>: the module to be added
+Params <MODULE>:
+ the module to be added
 \end_layout
 
 \begin_layout Description
-Origin rgh, 25 August 2007
+Origin rgh,
+ 25 August 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -514,7 +554,8 @@ Syntax layout-modules-clear
 \end_layout
 
 \begin_layout Description
-Origin rgh, 25 August 2007
+Origin rgh,
+ 25 August 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -538,7 +579,9 @@ Action Reloads layout information.
 \end_layout
 
 \begin_layout Description
-Notion Reloads all layout information for the current buffer from disk, thus recognizing any changes that have been made to layout files on the fly. This is intended to be used only by layout developers and should not be used when one is trying to do actual work.
+Notion Reloads all layout information for the current buffer from disk,
+ thus recognizing any changes that have been made to layout files on the fly.
+ This is intended to be used only by layout developers and should not be used when one is trying to do actual work.
 \end_layout
 
 \begin_layout Description
@@ -546,7 +589,8 @@ Syntax layout-reload
 \end_layout
 
 \begin_layout Description
-Origin rgh, 3 September 2007
+Origin rgh,
+ 3 September 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -562,7 +606,8 @@ Syntax layout-tabular
 \end_layout
 
 \begin_layout Description
-Origin Jug, 31 Jul 2000
+Origin Jug,
+ 31 Jul 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -570,11 +615,14 @@ layout-toggle
 \end_layout
 
 \begin_layout Description
-Action Toggles the layout (that is, environment) for the current paragraph.
+Action Toggles the layout (that is,
+ environment) for the current paragraph.
 \end_layout
 
 \begin_layout Description
-Notion Contrary to `layout', this function resets the current (or selection) layout to the standard layout it already has the correct layout. Useful for toolbar icons.
+Notion Contrary to `layout',
+ this function resets the current (or selection) layout to the standard layout it already has the correct layout.
+ Useful for toolbar icons.
 \end_layout
 
 \begin_layout Description
@@ -582,15 +630,19 @@ Syntax layout-toggle <LAYOUT> [ignoreautonests]
 \end_layout
 
 \begin_layout Description
-Params <LAYOUT>: the layout to toggle
+Params <LAYOUT>:
+ the layout to toggle
 \begin_inset Newline newline
 \end_inset
 
-ignoreautonests: If specified, nesting advices will be ignored.
+ignoreautonests:
+ If specified,
+ nesting advices will be ignored.
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, 14 May 2018
+Origin lasgouttes,
+ 14 May 2018
 \end_layout
 
 \begin_layout Subsection*
@@ -602,7 +654,10 @@ Action Update fonts and its metrics.
 \end_layout
 
 \begin_layout Description
-Notion Automatically called after zoom, dpi, font names, or norm change.
+Notion Automatically called after zoom,
+ dpi,
+ font names,
+ or norm change.
 \end_layout
 
 \begin_layout Description
@@ -610,7 +665,8 @@ Syntax screen-font-update
 \end_layout
 
 \begin_layout Description
-Origin ARRae, 13 Aug 2000
+Origin ARRae,
+ 13 Aug 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -626,7 +682,10 @@ Syntax textclass-apply <TEXTCLASS>
 \end_layout
 
 \begin_layout Description
-Params <TEXTCLASS>: the textclass to set. Note that this must be the filename, minus the ".layout" extension.
+Params <TEXTCLASS>:
+ the textclass to set.
+ Note that this must be the filename,
+ minus the ".layout" extension.
 \end_layout
 
 \begin_layout Subsection*
@@ -642,7 +701,10 @@ Syntax textclass-load <TEXTCLASS>
 \end_layout
 
 \begin_layout Description
-Params <TEXTCLASS>: the textclass to load. Note that this must be the filename, minus the ".layout" extension.
+Params <TEXTCLASS>:
+ the textclass to load.
+ Note that this must be the filename,
+ minus the ".layout" extension.
 \end_layout
 
 \begin_layout Subsection*
@@ -654,7 +716,8 @@ Action Apply last used text properties.
 \end_layout
 
 \begin_layout Description
-Notion These properties are stored via LFUN_TEXTSTYLE_UPDATE, which is automatically triggered when using Text Style dialog.
+Notion These properties are stored via LFUN_TEXTSTYLE_UPDATE,
+ which is automatically triggered when using Text Style dialog.
 \end_layout
 
 \begin_layout Description
@@ -662,11 +725,13 @@ Syntax textstyle-apply [<NUM>]textstyle-apply
 \end_layout
 
 \begin_layout Description
-Params <NUM>: number of the selection in the internal freefonts stack to be applied.
+Params <NUM>:
+ number of the selection in the internal freefonts stack to be applied.
 \end_layout
 
 \begin_layout Description
-Origin leeming, 12 Mar 2003
+Origin leeming,
+ 12 Mar 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -682,7 +747,20 @@ Syntax textstyle-update <FONT_INFO>
 \end_layout
 
 \begin_layout Description
-Params <FONT_INFO>: specifies font attributes, e.g. family, series, shape, size, emph, noun, underbar, number, color, language, toggleall.
+Params <FONT_INFO>:
+ specifies font attributes,
+ e.g.
+ family,
+ series,
+ shape,
+ size,
+ emph,
+ noun,
+ underbar,
+ number,
+ color,
+ language,
+ toggleall.
 \begin_inset Newline newline
 \end_inset
 
@@ -690,11 +768,13 @@ Use lyx -dbg action for exact syntax of text-style dialog parameters.
 \end_layout
 
 \begin_layout Description
-Origin leeming, 12 Mar 2003
+Origin leeming,
+ 12 Mar 2003
 \end_layout
 
 \begin_layout Section
-Editing Functions (Cursor and Mouse Movement, Copy/Paste etc.)
+Editing Functions (Cursor and Mouse Movement,
+ Copy/Paste etc.)
 \end_layout
 
 \begin_layout Subsection*
@@ -918,7 +998,8 @@ Syntax all-changes-accept
 \end_layout
 
 \begin_layout Description
-Origin Levon, 16 Oct 2002
+Origin Levon,
+ 16 Oct 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -930,7 +1011,8 @@ Action Rejects all tracked changes in the document.
 \end_layout
 
 \begin_layout Description
-Notion Reject does not work recursively; the user may have to repeat the operation.
+Notion Reject does not work recursively;
+ the user may have to repeat the operation.
 \end_layout
 
 \begin_layout Description
@@ -938,7 +1020,8 @@ Syntax all-changes-reject
 \end_layout
 
 \begin_layout Description
-Origin Levon, 16 Oct 2002
+Origin Levon,
+ 16 Oct 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -954,7 +1037,8 @@ Syntax appendix
 \end_layout
 
 \begin_layout Description
-Origin ettrich, 5 May 1998
+Origin ettrich,
+ 5 May 1998
 \end_layout
 
 \begin_layout Subsection*
@@ -970,11 +1054,13 @@ Syntax argument-insert <argument nr>
 \end_layout
 
 \begin_layout Description
-Params <argument nr>: see layout declarations
+Params <argument nr>:
+ see layout declarations
 \end_layout
 
 \begin_layout Description
-Origin vermeer, 12 Aug 2002
+Origin vermeer,
+ 12 Aug 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -982,7 +1068,8 @@ bibtex-database-add
 \end_layout
 
 \begin_layout Description
-Action Adds database, which will be used for bibtex citations.
+Action Adds database,
+ which will be used for bibtex citations.
 \end_layout
 
 \begin_layout Description
@@ -994,7 +1081,8 @@ Syntax bibtex-database-add <DATABASE-NAME>
 \end_layout
 
 \begin_layout Description
-Origin Ale, 30 May 1997
+Origin Ale,
+ 30 May 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -1002,7 +1090,8 @@ bibtex-database-del
 \end_layout
 
 \begin_layout Description
-Action Adds database, which will be used for bibtex citations.
+Action Adds database,
+ which will be used for bibtex citations.
 \end_layout
 
 \begin_layout Description
@@ -1014,7 +1103,8 @@ Syntax bibtex-database-del <DATABASE-NAME>
 \end_layout
 
 \begin_layout Description
-Origin Ale, 30 May 1997
+Origin Ale,
+ 30 May 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -1030,7 +1120,8 @@ Syntax bookmark-clear
 \end_layout
 
 \begin_layout Description
-Origin bpeng, 31 October 2006
+Origin bpeng,
+ 31 October 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -1038,23 +1129,30 @@ bookmark-goto
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor to the numbered bookmark, opening the file if necessary. Note that bookmarks are saved per-session, not per file.
+Action Moves the cursor to the numbered bookmark,
+ opening the file if necessary.
+ Note that bookmarks are saved per-session,
+ not per file.
 \end_layout
 
 \begin_layout Description
-Notion Bookmark 0 has a special purpose. It is automatically set
+Notion Bookmark 0 has a special purpose.
+ It is automatically set
 \begin_inset Newline newline
 \end_inset
 
-1. to the paragraph you are currently editing
+1.
+ to the paragraph you are currently editing
 \begin_inset Newline newline
 \end_inset
 
-2. to the paragraph from where you are jumping to the last-edited position (jump-back feature)
+2.
+ to the paragraph from where you are jumping to the last-edited position (jump-back feature)
 \begin_inset Newline newline
 \end_inset
 
-3. when jumping from crossreference to the requested label by LFUN_LABEL_GOTO.
+3.
+ when jumping from crossreference to the requested label by LFUN_LABEL_GOTO.
 \end_layout
 
 \begin_layout Description
@@ -1062,11 +1160,13 @@ Syntax bookmark-goto <NUMBER>
 \end_layout
 
 \begin_layout Description
-Params <NUMBER>: the number of the bookmark to restore.
+Params <NUMBER>:
+ the number of the bookmark to restore.
 \end_layout
 
 \begin_layout Description
-Origin Dekel, 27 January 2001
+Origin Dekel,
+ 27 January 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -1078,7 +1178,11 @@ Action Save a bookmark.
 \end_layout
 
 \begin_layout Description
-Notion Saves a numbered bookmark to the sessions file. The number must be between 1 and 9, inclusive. Note that bookmarks are saved per-session, not per file.
+Notion Saves a numbered bookmark to the sessions file.
+ The number must be between 1 and 9,
+ inclusive.
+ Note that bookmarks are saved per-session,
+ not per file.
 \end_layout
 
 \begin_layout Description
@@ -1086,11 +1190,13 @@ Syntax bookmark-save <NUMBER>
 \end_layout
 
 \begin_layout Description
-Params <NUMBER>: the number of the bookmark to save.
+Params <NUMBER>:
+ the number of the bookmark to save.
 \end_layout
 
 \begin_layout Description
-Origin Dekel, 27 January 2001
+Origin Dekel,
+ 27 January 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -1106,7 +1212,8 @@ Syntax box-insert [<TYPE>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: Boxed|Frameless|Framed|ovalbox|Ovalbox|Shadowbox|Shaded|Doublebox
+Params <TYPE>:
+ Boxed|Frameless|Framed|ovalbox|Ovalbox|Shadowbox|Shaded|Doublebox
 \begin_inset Newline newline
 \end_inset
 
@@ -1114,7 +1221,8 @@ Framed is the default one.
 \end_layout
 
 \begin_layout Description
-Origin vermeer, 7 Oct 2003
+Origin vermeer,
+ 7 Oct 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -1130,7 +1238,8 @@ Syntax branch-insert <BRANCH-NAME>
 \end_layout
 
 \begin_layout Description
-Origin vermeer, 17 Aug 2003
+Origin vermeer,
+ 17 Aug 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -1138,7 +1247,9 @@ buffer-anonymize
 \end_layout
 
 \begin_layout Description
-Action For debug purposes only. Convert all [a-zA-Z0-1] characters to single character. Useful when submitting docs to list or bugzilla.
+Action For debug purposes only.
+ Convert all [a-zA-Z0-1] characters to single character.
+ Useful when submitting docs to list or bugzilla.
 \end_layout
 
 \begin_layout Description
@@ -1146,7 +1257,8 @@ Syntax buffer-anonymize
 \end_layout
 
 \begin_layout Description
-Origin sanda, Feb 1 2018
+Origin sanda,
+ Feb 1 2018
 \end_layout
 
 \begin_layout Subsection*
@@ -1210,7 +1322,8 @@ Syntax caption-insert
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 18 Jul 2000
+Origin Lgb,
+ 18 Jul 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -1226,7 +1339,8 @@ Syntax cell-backward
 \end_layout
 
 \begin_layout Description
-Origin Jug, 22 May 2000
+Origin Jug,
+ 22 May 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -1254,7 +1368,8 @@ Syntax cell-split
 \end_layout
 
 \begin_layout Description
-Origin Ale, 15 May 1997
+Origin Ale,
+ 15 May 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -1270,7 +1385,8 @@ Syntax change-accept
 \end_layout
 
 \begin_layout Description
-Origin Levon, 16 Oct 2002
+Origin Levon,
+ 16 Oct 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -1286,7 +1402,8 @@ Syntax change-next
 \end_layout
 
 \begin_layout Description
-Origin schmitt, 4 Oct 2006
+Origin schmitt,
+ 4 Oct 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -1302,7 +1419,8 @@ Syntax change-previous
 \end_layout
 
 \begin_layout Description
-Origin vfr, 4 Apr 2009
+Origin vfr,
+ 4 Apr 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -1318,7 +1436,8 @@ Syntax change-reject
 \end_layout
 
 \begin_layout Description
-Origin Levon, 16 Oct 2002
+Origin Levon,
+ 16 Oct 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -1334,7 +1453,8 @@ Syntax changes-merge
 \end_layout
 
 \begin_layout Description
-Origin Levon, 16 Oct 2002
+Origin Levon,
+ 16 Oct 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -1350,7 +1470,8 @@ Syntax changes-output
 \end_layout
 
 \begin_layout Description
-Origin spitz, 21 Jan 2005
+Origin spitz,
+ 21 Jan 2005
 \end_layout
 
 \begin_layout Subsection*
@@ -1366,7 +1487,8 @@ Syntax changes-track
 \end_layout
 
 \begin_layout Description
-Origin levon, 1 Oct 2002
+Origin levon,
+ 1 Oct 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -1378,7 +1500,11 @@ Action Moves the cursor one position logically backwards.
 \end_layout
 
 \begin_layout Description
-Notion This is not the action which should be bound to the arrow keys, because backwards may be left or right, depending on the language. The arrow keys should be bound to LFUN_CHAR_LEFT or LFUN_CHAR_RIGHT actions, which in turn may employ this one.
+Notion This is not the action which should be bound to the arrow keys,
+ because backwards may be left or right,
+ depending on the language.
+ The arrow keys should be bound to LFUN_CHAR_LEFT or LFUN_CHAR_RIGHT actions,
+ which in turn may employ this one.
 \end_layout
 
 \begin_layout Description
@@ -1390,7 +1516,8 @@ char-backward-select
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor one position logically backwards, adding traversed position to the selection.
+Action Moves the cursor one position logically backwards,
+ adding traversed position to the selection.
 \end_layout
 
 \begin_layout Description
@@ -1414,7 +1541,9 @@ Syntax char-delete-backward [confirm]
 \end_layout
 
 \begin_layout Description
-Params confirm: Select big insets, do not directly delete them.
+Params confirm:
+ Select big insets,
+ do not directly delete them.
 \end_layout
 
 \begin_layout Subsection*
@@ -1430,7 +1559,9 @@ Syntax char-delete-forward [confirm]
 \end_layout
 
 \begin_layout Description
-Params confirm: Select big insets, do not directly delete them.
+Params confirm:
+ Select big insets,
+ do not directly delete them.
 \end_layout
 
 \begin_layout Subsection*
@@ -1442,7 +1573,11 @@ Action Moves the cursor one position logically forward.
 \end_layout
 
 \begin_layout Description
-Notion This is not the action which should be bound to the arrow keys, because forward may be left or right, depending on the language. The arrow keys should be bound to LFUN_CHAR_LEFT or LFUN_CHAR_RIGHT actions, which in turn may employ this one.
+Notion This is not the action which should be bound to the arrow keys,
+ because forward may be left or right,
+ depending on the language.
+ The arrow keys should be bound to LFUN_CHAR_LEFT or LFUN_CHAR_RIGHT actions,
+ which in turn may employ this one.
 \end_layout
 
 \begin_layout Description
@@ -1454,7 +1589,8 @@ char-forward-select
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor one position logically forward, adding traversed position to the selection.
+Action Moves the cursor one position logically forward,
+ adding traversed position to the selection.
 \end_layout
 
 \begin_layout Description
@@ -1474,7 +1610,18 @@ Action Moves the cursor one position "to the left".
 \end_layout
 
 \begin_layout Description
-Notion This is the action which should be taken when the "left" key is pressed. Generally, it moves the cursor one position to the left. However, in Bidi text this become slightly more complicated, and there are different modes of cursor movement. In "visual mode", this moves left, plain and simple. In "logical mode", movement is logically forward in RTL paragraphs, and logically backwards in LTR paragraphs.
+Notion This is the action which should be taken when the "left" key is pressed.
+ Generally,
+ it moves the cursor one position to the left.
+ However,
+ in Bidi text this become slightly more complicated,
+ and there are different modes of cursor movement.
+ In "visual mode",
+ this moves left,
+ plain and simple.
+ In "logical mode",
+ movement is logically forward in RTL paragraphs,
+ and logically backwards in LTR paragraphs.
 \end_layout
 
 \begin_layout Description
@@ -1486,7 +1633,8 @@ char-left-select
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor one position "to the left", adding traversed position to the selection.
+Action Moves the cursor one position "to the left",
+ adding traversed position to the selection.
 \end_layout
 
 \begin_layout Description
@@ -1506,7 +1654,18 @@ Action Moves the cursor one position "to the right".
 \end_layout
 
 \begin_layout Description
-Notion This is the action which should be taken when the "right" key is pressed. Generally, it moves the cursor one position to the right. However, in Bidi text this become slightly more complicated, and there are different modes of cursor movement. In "visual mode", this moves right, plain and simple. In "logical mode", movement is logically forward in LTR paragraphs, and logically backwards in RTL paragraphs.
+Notion This is the action which should be taken when the "right" key is pressed.
+ Generally,
+ it moves the cursor one position to the right.
+ However,
+ in Bidi text this become slightly more complicated,
+ and there are different modes of cursor movement.
+ In "visual mode",
+ this moves right,
+ plain and simple.
+ In "logical mode",
+ movement is logically forward in LTR paragraphs,
+ and logically backwards in RTL paragraphs.
 \end_layout
 
 \begin_layout Description
@@ -1518,7 +1677,8 @@ char-right-select
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor one position "to the right", adding traversed position to the selection.
+Action Moves the cursor one position "to the right",
+ adding traversed position to the selection.
 \end_layout
 
 \begin_layout Description
@@ -1542,7 +1702,8 @@ Syntax chars-transpose
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 25 Apr 2001
+Origin Lgb,
+ 25 Apr 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -1558,15 +1719,18 @@ Syntax citation-insert [<KEY>[|<TEXT_BEFORE>]]
 \end_layout
 
 \begin_layout Description
-Params <KEY>: Citation (shortcut listed in available citations).
+Params <KEY>:
+ Citation (shortcut listed in available citations).
 \begin_inset Newline newline
 \end_inset
 
-<TEXT_BEFORE>: text which should appear before citation.
+<TEXT_BEFORE>:
+ text which should appear before citation.
 \end_layout
 
 \begin_layout Description
-Origin AAS, 97-02-23
+Origin AAS,
+ 97-02-23
 \end_layout
 
 \begin_layout Subsection*
@@ -1582,15 +1746,18 @@ Syntax citation-open [EXTERNAL] TARGET
 \end_layout
 
 \begin_layout Description
-Params <TARGET>: URL (https:,file:) of the document.
+Params <TARGET>:
+ URL (https:,file:) of the document.
 \begin_inset Newline newline
 \end_inset
 
-<EXTERNAL>: Use external executable script for finding target
+<EXTERNAL>:
+ Use external executable script for finding target
 \begin_inset Newline newline
 \end_inset
 
-	       and launching viewer. In this case TARGET consists of author and year
+	       and launching viewer.
+ In this case TARGET consists of author and year
 \begin_inset Newline newline
 \end_inset
 
@@ -1598,7 +1765,8 @@ Params <TARGET>: URL (https:,file:) of the document.
 \end_layout
 
 \begin_layout Description
-Origin Sanda, 16 Aug 2020
+Origin Sanda,
+ 16 Aug 2020
 \end_layout
 
 \begin_layout Subsection*
@@ -1606,11 +1774,19 @@ clipboard-paste
 \end_layout
 
 \begin_layout Description
-Action Pastes text from the active clipboard (retains formatting if the clipboard contains formatted text). Pastes plain text if plain text is on the clipboard, but tries to interpret it in special ways for certain insets, e.g. converting csv data to rows and columns if the paste happens in a tabular inset.
+Action Pastes text from the active clipboard (retains formatting if the clipboard contains formatted text).
+ Pastes plain text if plain text is on the clipboard,
+ but tries to interpret it in special ways for certain insets,
+ e.g.
+ converting csv data to rows and columns if the paste happens in a tabular inset.
 \end_layout
 
 \begin_layout Description
-Notion Historically, LFUN_CLIPBOARD_PASTE was introduced as a counterpart of LFUN_PRIMARY_SELECTION_PASTE: It behaved exactly the same, but the source is the clipboard, not the selection.
+Notion Historically,
+ LFUN_CLIPBOARD_PASTE was introduced as a counterpart of LFUN_PRIMARY_SELECTION_PASTE:
+ It behaved exactly the same,
+ but the source is the clipboard,
+ not the selection.
 \end_layout
 
 \begin_layout Description
@@ -1618,11 +1794,15 @@ Syntax clipboard-paste [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
+Params <ARG>:
+ "paragraph" will cause pasting as one paragraph,
+ i.e.
+ "Join lines".
 \end_layout
 
 \begin_layout Description
-Origin Georg, 10 Jul 2006
+Origin Georg,
+ 10 Jul 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -1630,7 +1810,11 @@ clipboard-paste-simple
 \end_layout
 
 \begin_layout Description
-Action Pastes plain text from the active clipboard even if formatted LyX content is in the clipboard. Pastes plain text if plain text is on the clipboard, without trying to interpret it in special ways for certain insets, e.g. converting csv data to rows and columns if the paste happens in a tabular inset.
+Action Pastes plain text from the active clipboard even if formatted LyX content is in the clipboard.
+ Pastes plain text if plain text is on the clipboard,
+ without trying to interpret it in special ways for certain insets,
+ e.g.
+ converting csv data to rows and columns if the paste happens in a tabular inset.
 \end_layout
 
 \begin_layout Description
@@ -1638,7 +1822,10 @@ Syntax clipboard-paste-simple [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
+Params <ARG>:
+ "paragraph" will cause pasting as one paragraph,
+ i.e.
+ "Join lines".
 \end_layout
 
 \begin_layout Subsection*
@@ -1646,7 +1833,9 @@ command-execute
 \end_layout
 
 \begin_layout Description
-Action Switches the focus to the minibuffer so that the user can type in there. If necessary, it opens the minibuffer toolbar.
+Action Switches the focus to the minibuffer so that the user can type in there.
+ If necessary,
+ it opens the minibuffer toolbar.
 \end_layout
 
 \begin_layout Description
@@ -1670,7 +1859,8 @@ Syntax complete
 \end_layout
 
 \begin_layout Description
-Origin sts, Feb 19 2008
+Origin sts,
+ Feb 19 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -1686,7 +1876,8 @@ Syntax completion-accept
 \end_layout
 
 \begin_layout Description
-Origin sanda, Sep 08 2008
+Origin sanda,
+ Sep 08 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -1694,7 +1885,8 @@ completion-cancel
 \end_layout
 
 \begin_layout Description
-Action Try to cancel completion, either the popup or the inline completion.
+Action Try to cancel completion,
+ either the popup or the inline completion.
 \end_layout
 
 \begin_layout Description
@@ -1702,7 +1894,8 @@ Syntax completion-cancel
 \end_layout
 
 \begin_layout Description
-Origin sts, Sep 07 2008
+Origin sts,
+ Sep 07 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -1718,7 +1911,8 @@ Syntax completion-inline
 \end_layout
 
 \begin_layout Description
-Origin sts, Feb 19 2008
+Origin sts,
+ Feb 19 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -1734,7 +1928,8 @@ Syntax completion-popup
 \end_layout
 
 \begin_layout Description
-Origin sts, Feb 19 2008
+Origin sts,
+ Feb 19 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -1802,7 +1997,8 @@ Syntax dialog-disconnect-inset <INSET-NAME>
 \end_layout
 
 \begin_layout Description
-Origin leeming, 25 Feb 2003
+Origin leeming,
+ 25 Feb 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -1810,7 +2006,8 @@ dialog-hide
 \end_layout
 
 \begin_layout Description
-Action Hides showed dialog. Counterpart to LFUN_DIALOG_SHOW .
+Action Hides showed dialog.
+ Counterpart to LFUN_DIALOG_SHOW .
 \end_layout
 
 \begin_layout Description
@@ -1822,7 +2019,8 @@ Params See LFUN_DIALOG_SHOW .
 \end_layout
 
 \begin_layout Description
-Origin leeming, 25 Feb 2003
+Origin leeming,
+ 25 Feb 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -1838,7 +2036,8 @@ Syntax dialog-show <NAME> [<DATA>]
 \end_layout
 
 \begin_layout Description
-Params <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|
+Params <NAME>:
+ aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|
 \begin_inset Newline newline
 \end_inset
 
@@ -1862,15 +2061,20 @@ thesaurus|texinfo|toc|view-source|vspace|wrap|<SPECIAL>
 \begin_inset Newline newline
 \end_inset
 
-<SPECIAL>: latexlog|vclog
+<SPECIAL>:
+ latexlog|vclog
 \begin_inset Newline newline
 \end_inset
 
-<DATA>: data, usually settings for the given dialog. Use debug mode for the details.
+<DATA>:
+ data,
+ usually settings for the given dialog.
+ Use debug mode for the details.
 \end_layout
 
 \begin_layout Description
-Origin leeming, 17 Jun 2003
+Origin leeming,
+ 17 Jun 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -1894,7 +2098,8 @@ Params See LFUN_DIALOG_SHOW .
 \end_layout
 
 \begin_layout Description
-Origin leeming, 25 Feb 2003
+Origin leeming,
+ 25 Feb 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -1906,7 +2111,8 @@ Action Toggles dialog between showed/hidden state.
 \end_layout
 
 \begin_layout Description
-Notion Internally uses LFUN_DIALOG_SHOW , LFUN_DIALOG_HIDE .
+Notion Internally uses LFUN_DIALOG_SHOW ,
+ LFUN_DIALOG_HIDE .
 \end_layout
 
 \begin_layout Description
@@ -1918,7 +2124,8 @@ Params See LFUN_DIALOG_SHOW .
 \end_layout
 
 \begin_layout Description
-Origin spitz, 30 Apr 2007
+Origin spitz,
+ 30 Apr 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -1934,15 +2141,18 @@ Syntax dialog-update <NAME>
 \end_layout
 
 \begin_layout Description
-Params <NAME>: paragraph|prefs|<INSET>
+Params <NAME>:
+ paragraph|prefs|<INSET>
 \begin_inset Newline newline
 \end_inset
 
-<INSET>: inset name
+<INSET>:
+ inset name
 \end_layout
 
 \begin_layout Description
-Origin leeming, 25 Feb 2003
+Origin leeming,
+ 25 Feb 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -1982,7 +2192,8 @@ Syntax ert-insert
 \end_layout
 
 \begin_layout Description
-Origin Jug, 18 Feb 2000
+Origin Jug,
+ 18 Feb 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -1990,7 +2201,9 @@ escape
 \end_layout
 
 \begin_layout Description
-Action Clears the selection. If no text is selected call LFUN_FINISHED_FORWARD. Inside math mode jumps out of the math inset.
+Action Clears the selection.
+ If no text is selected call LFUN_FINISHED_FORWARD.
+ Inside math mode jumps out of the math inset.
 \end_layout
 
 \begin_layout Description
@@ -1998,7 +2211,8 @@ Syntax escape
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 17 May 2001
+Origin Lgb,
+ 17 May 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -2014,7 +2228,8 @@ Syntax export-cancel
 \end_layout
 
 \begin_layout Description
-Origin rgh, 10 December 2017
+Origin rgh,
+ 10 December 2017
 \end_layout
 
 \begin_layout Subsection*
@@ -2030,7 +2245,11 @@ Syntax file-insert [<FILE>] [ignorelang]
 \end_layout
 
 \begin_layout Description
-Params <FILE>: Filename to be inserted. ignorelang: If given, the (main) language of the inserted file is ignored (the context language is used).
+Params <FILE>:
+ Filename to be inserted.
+ ignorelang:
+ If given,
+ the (main) language of the inserted file is ignored (the context language is used).
 \end_layout
 
 \begin_layout Subsection*
@@ -2046,11 +2265,13 @@ Syntax file-insert-plaintext [<FILE>]
 \end_layout
 
 \begin_layout Description
-Params <FILE>: Filename to be inserted.
+Params <FILE>:
+ Filename to be inserted.
 \end_layout
 
 \begin_layout Description
-Origin CFO-G, 19 Nov 1997
+Origin CFO-G,
+ 19 Nov 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -2058,7 +2279,8 @@ file-insert-plaintext-para
 \end_layout
 
 \begin_layout Description
-Action Inserts plain text file as paragraph (i.e. join lines).
+Action Inserts plain text file as paragraph (i.e.
+ join lines).
 \end_layout
 
 \begin_layout Description
@@ -2066,11 +2288,13 @@ Syntax file-insert-plaintext-para [<FILE>]
 \end_layout
 
 \begin_layout Description
-Params <FILE>: Filename to be inserted.
+Params <FILE>:
+ Filename to be inserted.
 \end_layout
 
 \begin_layout Description
-Origin Levon, 14 Feb 2001
+Origin Levon,
+ 14 Feb 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -2078,7 +2302,8 @@ flex-insert
 \end_layout
 
 \begin_layout Description
-Action Inserts CharStyle, Custom inset or XML short element.
+Action Inserts CharStyle,
+ Custom inset or XML short element.
 \end_layout
 
 \begin_layout Description
@@ -2086,7 +2311,9 @@ Notion Look into the Customization manual for more information about these eleme
 \begin_inset Newline newline
 \end_inset
 
-To make this command enabled the layout file for the document class you're using has to load the character styles. There are a few contained in the Logical Markup module. You can also of course create some yourself.
+To make this command enabled the layout file for the document class you're using has to load the character styles.
+ There are a few contained in the Logical Markup module.
+ You can also of course create some yourself.
 \begin_inset Newline newline
 \end_inset
 
@@ -2098,7 +2325,11 @@ Syntax flex-insert Name
 \end_layout
 
 \begin_layout Description
-Params Name: This name must be defined either in your layout file or imported by some module. The definition is InsetLayout Name or InsetLayout <Flex:Name>. The Flex: prefix is optional.
+Params Name:
+ This name must be defined either in your layout file or imported by some module.
+ The definition is InsetLayout Name or InsetLayout <Flex:Name>.
+ The Flex:
+ prefix is optional.
 \end_layout
 
 \begin_layout Description
@@ -2118,11 +2349,16 @@ Syntax float-insert <TYPE>
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: type of float depends on the used textclass. Usually "algorithm", "table", "figure" parameters can be given.
+Params <TYPE>:
+ type of float depends on the used textclass.
+ Usually "algorithm",
+ "table",
+ "figure" parameters can be given.
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 27 Jun 2000
+Origin Lgb,
+ 27 Jun 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -2138,11 +2374,16 @@ Syntax float-list-insert <TYPE>
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: type of float depends on the used textclass. Usually "algorithm", "table", "figure" parameters can be given.
+Params <TYPE>:
+ type of float depends on the used textclass.
+ Usually "algorithm",
+ "table",
+ "figure" parameters can be given.
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 3 May 2001
+Origin Lgb,
+ 3 May 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -2154,7 +2395,9 @@ Action Inserts float insets as in LFUN_FLOAT_INSERT but span multiple columns.
 \end_layout
 
 \begin_layout Description
-Notion Corresponds to the starred floats (figure*, table*, etc.) in LaTeX.
+Notion Corresponds to the starred floats (figure*,
+ table*,
+ etc.) in LaTeX.
 \end_layout
 
 \begin_layout Description
@@ -2162,11 +2405,16 @@ Syntax float-wide-insert <TYPE>
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: type of float depends on the used textclass. Usually "algorithm", "table", "figure" parameters can be given.
+Params <TYPE>:
+ type of float depends on the used textclass.
+ Usually "algorithm",
+ "table",
+ "figure" parameters can be given.
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 31 Oct 2001
+Origin Lgb,
+ 31 Oct 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -2182,7 +2430,8 @@ Syntax footnote-insert
 \end_layout
 
 \begin_layout Description
-Origin Jug, 7 Mar 2000
+Origin Jug,
+ 7 Mar 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -2198,7 +2447,8 @@ Syntax graphics-reload
 \end_layout
 
 \begin_layout Description
-Origin vfr, 10 Aug 2009
+Origin vfr,
+ 10 Aug 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -2214,11 +2464,15 @@ Syntax graphics-set-group [<GROUP>]
 \end_layout
 
 \begin_layout Description
-Params <GROUP>: Id for an existing group. In case the Id is an empty string, the graphics inset is removed from the current group.
+Params <GROUP>:
+ Id for an existing group.
+ In case the Id is an empty string,
+ the graphics inset is removed from the current group.
 \end_layout
 
 \begin_layout Description
-Origin sanda, 6 May 2008
+Origin sanda,
+ 6 May 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -2234,11 +2488,15 @@ Syntax graphics-unify [<GROUP>]
 \end_layout
 
 \begin_layout Description
-Params <GROUP>: Id for an existing group. In case the Id is an empty string, the group Id from the first graphics inset will be used.
+Params <GROUP>:
+ Id for an existing group.
+ In case the Id is an empty string,
+ the group Id from the first graphics inset will be used.
 \end_layout
 
 \begin_layout Description
-Origin sanda, 7 Feb 2018
+Origin sanda,
+ 7 Feb 2018
 \end_layout
 
 \begin_layout Subsection*
@@ -2258,7 +2516,8 @@ Syntax href-insert [<TARGET>]
 \end_layout
 
 \begin_layout Description
-Origin CFO-G, 21 Nov 1997
+Origin CFO-G,
+ 21 Nov 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -2270,7 +2529,8 @@ Action Only active in IPA inset.
 \end_layout
 
 \begin_layout Description
-Notion Dummy function which is only active in a IPA inset. It's used to toggle the IPA toolbar if the cursor moves into an IPA inset.
+Notion Dummy function which is only active in a IPA inset.
+ It's used to toggle the IPA toolbar if the cursor moves into an IPA inset.
 \end_layout
 
 \begin_layout Description
@@ -2278,7 +2538,8 @@ Syntax in-ipa
 \end_layout
 
 \begin_layout Description
-Origin spitz, 20 May 2012
+Origin spitz,
+ 20 May 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -2298,11 +2559,16 @@ Syntax index-insert [<TYPE:Name>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE:Name>: name of the index, if multiple indices are defined. With an empty argument, the default index is selected.
+Params <TYPE:Name>:
+ name of the index,
+ if multiple indices are defined.
+ With an empty argument,
+ the default index is selected.
 \end_layout
 
 \begin_layout Description
-Origin leeming, 3 Aug 2000
+Origin leeming,
+ 3 Aug 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -2318,11 +2584,16 @@ Syntax index-print [<TYPE:Name>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE:Name>: name of the index, if multiple indices are defined. With an empty argument, the default index is selected.
+Params <TYPE:Name>:
+ name of the index,
+ if multiple indices are defined.
+ With an empty argument,
+ the default index is selected.
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 27 Feb 1997
+Origin Lgb,
+ 27 Feb 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -2342,7 +2613,8 @@ Syntax index-tag-all
 \end_layout
 
 \begin_layout Description
-Origin spitz, 5 Nov 2022
+Origin spitz,
+ 5 Nov 2022
 \end_layout
 
 \begin_layout Subsection*
@@ -2358,11 +2630,16 @@ Syntax indexmacro-insert <type>
 \end_layout
 
 \begin_layout Description
-Params <type>: see, seealso, subentry, sortkey.
+Params <type>:
+ see,
+ seealso,
+ subentry,
+ sortkey.
 \end_layout
 
 \begin_layout Description
-Origin spitz, 20 Feb 2022
+Origin spitz,
+ 20 Feb 2022
 \end_layout
 
 \begin_layout Subsection*
@@ -2370,7 +2647,9 @@ info-insert
 \end_layout
 
 \begin_layout Description
-Action Displays shortcuts, lyxrc, package and textclass availability and menu information in a non-editable boxed InsetText.
+Action Displays shortcuts,
+ lyxrc,
+ package and textclass availability and menu information in a non-editable boxed InsetText.
 \end_layout
 
 \begin_layout Description
@@ -2378,11 +2657,16 @@ Notion Apart from lfun arguments you can use the following method:
 \begin_inset Newline newline
 \end_inset
 
-1. input the type and argument of this inset, e.g. "menu paste", in the work area.
+1.
+ input the type and argument of this inset,
+ e.g.
+ "menu paste",
+ in the work area.
 \begin_inset Newline newline
 \end_inset
 
-2. select the text and run info-insert lfun.
+2.
+ select the text and run info-insert lfun.
 \end_layout
 
 \begin_layout Description
@@ -2390,81 +2674,105 @@ Syntax info-insert <TYPE> <ARG>
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: date|moddate|fixdate|time|modtime|fixtime|shortcut|shortcuts|lyxrc| lyxinfo|package|textclass|menu|l7n|icon|buffer|vcs
+Params <TYPE>:
+ date|moddate|fixdate|time|modtime|fixtime|shortcut|shortcuts|lyxrc| lyxinfo|package|textclass|menu|l7n|icon|buffer|vcs
 \begin_inset Newline newline
 \end_inset
 
-<ARG>: argument for a given type. Look into InsetInfo.h for detailed description.
+<ARG>:
+ argument for a given type.
+ Look into InsetInfo.h for detailed description.
 \begin_inset Newline newline
 \end_inset
 
-date: current date (formatted and localized)
+date:
+ current date (formatted and localized)
 \begin_inset Newline newline
 \end_inset
 
-moddate: date of last modification (saving) (formatted and localized)
+moddate:
+ date of last modification (saving) (formatted and localized)
 \begin_inset Newline newline
 \end_inset
 
-fixdate: a static date (formatted and localized)
+fixdate:
+ a static date (formatted and localized)
 \begin_inset Newline newline
 \end_inset
 
-time: current time (formatted and localized)
+time:
+ current time (formatted and localized)
 \begin_inset Newline newline
 \end_inset
 
-modtime: time of last modification (saving) (formatted and localized)
+modtime:
+ time of last modification (saving) (formatted and localized)
 \begin_inset Newline newline
 \end_inset
 
-fixtime: a static time (formatted and localized)
+fixtime:
+ a static time (formatted and localized)
 \begin_inset Newline newline
 \end_inset
 
-shortcut[s]: name of lfun (e.g math-insert 
+shortcut[s]:
+ name of lfun (e.g math-insert 
 \backslash
 alpha)
 \begin_inset Newline newline
 \end_inset
 
-lyxrc: name of rc_entry (e.g. bind_file)
+lyxrc:
+ name of rc_entry (e.g.
+ bind_file)
 \begin_inset Newline newline
 \end_inset
 
-lyxinfo: "version" - used version of LyX
+lyxinfo:
+ "version" - used version of LyX
 \begin_inset Newline newline
 \end_inset
 
-package: name of latex package (e.g. listings)
+package:
+ name of latex package (e.g.
+ listings)
 \begin_inset Newline newline
 \end_inset
 
-textclass: name of textclass (e.g. article)
+textclass:
+ name of textclass (e.g.
+ article)
 \begin_inset Newline newline
 \end_inset
 
-menu: name of lfun used in menu 
+menu:
+ name of lfun used in menu 
 \begin_inset Newline newline
 \end_inset
 
-l7n: localizable string.
+l7n:
+ localizable string.
 \begin_inset Newline newline
 \end_inset
 
-icon: icon of lfun used in toolbar or direct icon name
+icon:
+ icon of lfun used in toolbar or direct icon name
 \begin_inset Newline newline
 \end_inset
 
-buffer: "name"|"name-noext"|"path"|"class" vcs: "tree-revision"|"revision"|"author"|"date"|"time"
+buffer:
+ "name"|"name-noext"|"path"|"class" vcs:
+ "tree-revision"|"revision"|"author"|"date"|"time"
 \end_layout
 
 \begin_layout Description
-Sample command-sequence info-insert buffer path; info-insert buffer name
+Sample command-sequence info-insert buffer path;
+ info-insert buffer name
 \end_layout
 
 \begin_layout Description
-Origin bpeng, 7 Oct 2007
+Origin bpeng,
+ 7 Oct 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -2476,7 +2784,8 @@ Action Apply data for an inset.
 \end_layout
 
 \begin_layout Description
-Notion LFUN_INSET_APPLY is sent from the dialogs when the data should be applied. This is either changed to LFUN_INSET_MODIFY or LFUN_INSET_INSERT depending on the context where it is called.
+Notion LFUN_INSET_APPLY is sent from the dialogs when the data should be applied.
+ This is either changed to LFUN_INSET_MODIFY or LFUN_INSET_INSERT depending on the context where it is called.
 \end_layout
 
 \begin_layout Description
@@ -2492,7 +2801,11 @@ inset-begin
 \end_layout
 
 \begin_layout Description
-Action Move the cursor to the beginning of the current inset if it is not already there. If the cursor is already at the beginning of the current inset, move it to the beginning of the enclosing inset or the main work area, respectively, if there is no enclosing inset.
+Action Move the cursor to the beginning of the current inset if it is not already there.
+ If the cursor is already at the beginning of the current inset,
+ move it to the beginning of the enclosing inset or the main work area,
+ respectively,
+ if there is no enclosing inset.
 \end_layout
 
 \begin_layout Description
@@ -2500,7 +2813,8 @@ Syntax inset-begin
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, 16 Mar 2009
+Origin lasgouttes,
+ 16 Mar 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -2508,7 +2822,11 @@ inset-begin-select
 \end_layout
 
 \begin_layout Description
-Action Move the cursor to the beginning of the current inset if it is not already there. If the cursor is already at the beginning of the current inset, move it to the beginning of the enclosing inset or the main work area, respectively, if there is no enclosing inset (adding the traversed text to the selection).
+Action Move the cursor to the beginning of the current inset if it is not already there.
+ If the cursor is already at the beginning of the current inset,
+ move it to the beginning of the enclosing inset or the main work area,
+ respectively,
+ if there is no enclosing inset (adding the traversed text to the selection).
 \end_layout
 
 \begin_layout Description
@@ -2516,7 +2834,8 @@ Syntax inset-begin-select
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, 16 Mar 2009
+Origin lasgouttes,
+ 16 Mar 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -2536,7 +2855,8 @@ Syntax inset-copy-as
 \end_layout
 
 \begin_layout Description
-Origin vfr, 18 Apr 2010
+Origin vfr,
+ 18 Apr 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -2552,7 +2872,10 @@ Syntax inset-dissolve [<INSET>]
 \end_layout
 
 \begin_layout Description
-Params <INSET>: this can be used to make sure the right kind of inset is dissolved. For example "dissolve" entry in the charstyles sub-menu should only dissolve the charstyle inset, even if the cursor is inside several nested insets of different type.
+Params <INSET>:
+ this can be used to make sure the right kind of inset is dissolved.
+ For example "dissolve" entry in the charstyles sub-menu should only dissolve the charstyle inset,
+ even if the cursor is inside several nested insets of different type.
 \begin_inset Newline newline
 \end_inset
 
@@ -2560,7 +2883,8 @@ For values see lyx::InsetLayout::lyxtype_ .
 \end_layout
 
 \begin_layout Description
-Origin JSpitz, 7 Aug 2006
+Origin JSpitz,
+ 7 Aug 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -2568,7 +2892,16 @@ inset-edit
 \end_layout
 
 \begin_layout Description
-Action Edit the inset at cursor with an external application, if one is attributed. If the inset is file based, the referenced file is edited. Otherwise, the inset contents is written to a temporary file, the inset is locked, and the temporary file is edited. In this case, LFUN_INSET_END_EDIT must be called to overtake the changes and unlock the inset after editing is finished.
+Action Edit the inset at cursor with an external application,
+ if one is attributed.
+ If the inset is file based,
+ the referenced file is edited.
+ Otherwise,
+ the inset contents is written to a temporary file,
+ the inset is locked,
+ and the temporary file is edited.
+ In this case,
+ LFUN_INSET_END_EDIT must be called to overtake the changes and unlock the inset after editing is finished.
 \end_layout
 
 \begin_layout Description
@@ -2576,7 +2909,8 @@ Syntax inset-edit [<INSET_PARAMS>]
 \end_layout
 
 \begin_layout Description
-Params <INSET_PARAMS>: Parameters for the inset.
+Params <INSET_PARAMS>:
+ Parameters for the inset.
 \begin_inset Newline newline
 \end_inset
 
@@ -2584,7 +2918,8 @@ Currently only the filename will be considered.
 \end_layout
 
 \begin_layout Description
-Origin spitz, 27 Apr 2006
+Origin spitz,
+ 27 Apr 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -2592,7 +2927,11 @@ inset-end
 \end_layout
 
 \begin_layout Description
-Action Move the cursor to the end of the current inset if it is not already there. If the cursor is already at the end of the current inset, move it to the end of the enclosing inset or the main work area, respectively, if there is no enclosing inset.
+Action Move the cursor to the end of the current inset if it is not already there.
+ If the cursor is already at the end of the current inset,
+ move it to the end of the enclosing inset or the main work area,
+ respectively,
+ if there is no enclosing inset.
 \end_layout
 
 \begin_layout Description
@@ -2600,7 +2939,8 @@ Syntax inset-end
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, 16 Mar 2009
+Origin lasgouttes,
+ 16 Mar 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -2608,7 +2948,9 @@ inset-end-edit
 \end_layout
 
 \begin_layout Description
-Action End editing the inset at cursor with an external application. This replaces the inset contents with the contents of the temporary file, deletes the file and unlocks the inset.
+Action End editing the inset at cursor with an external application.
+ This replaces the inset contents with the contents of the temporary file,
+ deletes the file and unlocks the inset.
 \end_layout
 
 \begin_layout Description
@@ -2616,7 +2958,8 @@ Syntax inset-end-edit
 \end_layout
 
 \begin_layout Description
-Origin gb, 11 Oct 2015
+Origin gb,
+ 11 Oct 2015
 \end_layout
 
 \begin_layout Subsection*
@@ -2624,7 +2967,11 @@ inset-end-select
 \end_layout
 
 \begin_layout Description
-Action Move the cursor to the end of the current inset if it is not already there. If the cursor is already at the end of the current inset, move it to the end of the enclosing inset or the main work area, respectively, if there is no enclosing inset (adding the traversed text to the selection).
+Action Move the cursor to the end of the current inset if it is not already there.
+ If the cursor is already at the end of the current inset,
+ move it to the end of the enclosing inset or the main work area,
+ respectively,
+ if there is no enclosing inset (adding the traversed text to the selection).
 \end_layout
 
 \begin_layout Description
@@ -2632,7 +2979,8 @@ Syntax inset-end-select
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, 16 Mar 2009
+Origin lasgouttes,
+ 16 Mar 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -2644,7 +2992,14 @@ Action Apply the given commands on insets of a given name.
 \end_layout
 
 \begin_layout Description
-Notion WARNING: use at your own risks; this function gives you too many ways of shooting yourself in the foot. A typical example is inset-forall Note note-insert which starts an infinite loop. This is mitigated by the fact that the number of actions is arbitrarily limited to 100000. Note also that inset-forall does not update metrics between iterations, which can lead to bugs. This has to be eventually fixed.
+Notion WARNING:
+ use at your own risks;
+ this function gives you too many ways of shooting yourself in the foot.
+ A typical example is inset-forall Note note-insert which starts an infinite loop.
+ This is mitigated by the fact that the number of actions is arbitrarily limited to 100000.
+ Note also that inset-forall does not update metrics between iterations,
+ which can lead to bugs.
+ This has to be eventually fixed.
 \end_layout
 
 \begin_layout Description
@@ -2652,7 +3007,13 @@ Syntax inset-forall <NAME> <LFUN-COMMAND>
 \begin_inset Newline newline
 \end_inset
 
-<NAME>: Type of Inset. If <NAME> is *, all insets are matched. The name is used like for InsetLayout in layout files: "Note" matches all note insets, while "Note:Note" only matches LyX yellow note insets.
+<NAME>:
+ Type of Inset.
+ If <NAME> is *,
+ all insets are matched.
+ The name is used like for InsetLayout in layout files:
+ "Note" matches all note insets,
+ while "Note:Note" only matches LyX yellow note insets.
 \end_layout
 
 \begin_layout Description
@@ -2696,7 +3057,8 @@ inset-forall Note char-backward
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, 27 Nov 2009
+Origin lasgouttes,
+ 27 Nov 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -2712,7 +3074,8 @@ Syntax inset-insert <INSET> <ARGS>
 \end_layout
 
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|citation|ert|listings|external|graphics|tabular|
+Params <INSET>:
+ <bibitem|bibtex|citation|ert|listings|external|graphics|tabular|
 \begin_inset Newline newline
 \end_inset
 
@@ -2720,7 +3083,9 @@ hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>
 \begin_inset Newline newline
 \end_inset
 
-<ARGS>: depends on the given inset. Use "lyx -dbg action" to explore.
+<ARGS>:
+ depends on the given inset.
+ Use "lyx -dbg action" to explore.
 \end_layout
 
 \begin_layout Description
@@ -2770,7 +3135,8 @@ Syntax inset-insert-copy
 \end_layout
 
 \begin_layout Description
-Origin spitz, 1 Nov 2022
+Origin spitz,
+ 1 Nov 2022
 \end_layout
 
 \begin_layout Subsection*
@@ -2782,7 +3148,36 @@ Action Modify some properties of an inset.
 \end_layout
 
 \begin_layout Description
-Notion Used for argument, bibitem, bibtex, box, branch, caption, citation, command, ert, external, float, graphics, include, index, info, label, line, listings, newline, newpage, nomencl, note, phantom, quotes, ref, script, separator, space, tabular, vspace and wrap insets.
+Notion Used for argument,
+ bibitem,
+ bibtex,
+ box,
+ branch,
+ caption,
+ citation,
+ command,
+ ert,
+ external,
+ float,
+ graphics,
+ include,
+ index,
+ info,
+ label,
+ line,
+ listings,
+ newline,
+ newpage,
+ nomencl,
+ note,
+ phantom,
+ quotes,
+ ref,
+ script,
+ separator,
+ space,
+ tabular,
+ vspace and wrap insets.
 \end_layout
 
 \begin_layout Description
@@ -2810,7 +3205,10 @@ inset-modify changetype Ovalbox
 \begin_inset Newline newline
 \end_inset
 
-Change a quotation mark to e[nglish style], l[eft side = opening], s[ingle = inner, secondary]
+Change a quotation mark to e[nglish style],
+ l[eft side = opening],
+ s[ingle = inner,
+ secondary]
 \begin_inset Newline newline
 \end_inset
 
@@ -2818,7 +3216,9 @@ inset-modify changetype els
 \begin_inset Newline newline
 \end_inset
 
-Change only the style of a quotation mark, maintaining the other aspects (. = wildcard)
+Change only the style of a quotation mark,
+ maintaining the other aspects (.
+ = wildcard)
 \begin_inset Newline newline
 \end_inset
 
@@ -2838,7 +3238,10 @@ Action Select all contents of an inset.
 \end_layout
 
 \begin_layout Description
-Notion There are 3 successive levels: select current cell, select all cells of inset, select the inset from outside (in the enclosing inset).
+Notion There are 3 successive levels:
+ select current cell,
+ select all cells of inset,
+ select the inset from outside (in the enclosing inset).
 \end_layout
 
 \begin_layout Description
@@ -2846,7 +3249,9 @@ Syntax inset-select-all
 \end_layout
 
 \begin_layout Description
-Origin vfr, 22 Aug 2009; lasgouttes 1 Nov 2014
+Origin vfr,
+ 22 Aug 2009;
+ lasgouttes 1 Nov 2014
 \end_layout
 
 \begin_layout Subsection*
@@ -2858,7 +3263,29 @@ Action Open the inset's properties dialog.
 \end_layout
 
 \begin_layout Description
-Notion Used for bibitem, bibtex, box, branch, citation, ert, external, float, graphics, href, include, index, index_print, label, line, listings, note, phantom, ref, space, tabular, vspace, wrap insets.
+Notion Used for bibitem,
+ bibtex,
+ box,
+ branch,
+ citation,
+ ert,
+ external,
+ float,
+ graphics,
+ href,
+ include,
+ index,
+ index_print,
+ label,
+ line,
+ listings,
+ note,
+ phantom,
+ ref,
+ space,
+ tabular,
+ vspace,
+ wrap insets.
 \end_layout
 
 \begin_layout Description
@@ -2866,7 +3293,8 @@ Syntax inset-settings <INSET>
 \end_layout
 
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float|
+Params <INSET>:
+ <bibitem|bibtex|box|branch|citation|ert|external|float|
 \begin_inset Newline newline
 \end_inset
 
@@ -2890,7 +3318,10 @@ Syntax inset-split [<INSET>]
 \end_layout
 
 \begin_layout Description
-Params <INSET>: this can be used to make sure the right kind of inset 			is dissolved. For example "split" entry in the charstyles 			sub-menu should only dissolve the charstyle inset, even if the 			cursor is inside several nested insets of different type.
+Params <INSET>:
+ this can be used to make sure the right kind of inset 			is dissolved.
+ For example "split" entry in the charstyles 			sub-menu should only dissolve the charstyle inset,
+ even if the 			cursor is inside several nested insets of different type.
 \begin_inset Newline newline
 \end_inset
 
@@ -2898,7 +3329,8 @@ Params <INSET>: this can be used to make sure the right kind of inset 			is diss
 \end_layout
 
 \begin_layout Description
-Origin spitz, 22 Dec 2020
+Origin spitz,
+ 22 Dec 2020
 \end_layout
 
 \begin_layout Subsection*
@@ -2906,7 +3338,8 @@ inset-toggle
 \end_layout
 
 \begin_layout Description
-Action Toggles the collapsible inset at cursor position, or the inset we are currently in.
+Action Toggles the collapsible inset at cursor position,
+ or the inset we are currently in.
 \end_layout
 
 \begin_layout Description
@@ -2914,19 +3347,23 @@ Syntax inset-toggle [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: <open|close|toggle|assign>.
+Params <ARG>:
+ <open|close|toggle|assign>.
 \begin_inset Newline newline
 \end_inset
 
-open/close/toggle are for collapsible insets. toggle is used when no argument is given.
+open/close/toggle are for collapsible insets.
+ toggle is used when no argument is given.
 \begin_inset Newline newline
 \end_inset
 
-assign synchronize the branch-inset with activation status of the branch. Used for global toggling when changed activation.
+assign synchronize the branch-inset with activation status of the branch.
+ Used for global toggling when changed activation.
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, 19 Jul 2001
+Origin lasgouttes,
+ 19 Jul 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -2942,7 +3379,8 @@ Syntax ipa-insert
 \end_layout
 
 \begin_layout Description
-Origin spitz, 05 Mar 2012
+Origin spitz,
+ 05 Mar 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -2958,11 +3396,19 @@ Syntax ipamacro-insert <CHAR>
 \end_layout
 
 \begin_layout Description
-Params <CHAR>: tone-falling, tone-rising, tone-high-rising, tone-low-rising, tone-high-rising-falling, deco bottomtiebar, deco toptiebar.
+Params <CHAR>:
+ tone-falling,
+ tone-rising,
+ tone-high-rising,
+ tone-low-rising,
+ tone-high-rising-falling,
+ deco bottomtiebar,
+ deco toptiebar.
 \end_layout
 
 \begin_layout Description
-Origin spitz, 22 Aug 2012
+Origin spitz,
+ 22 Aug 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -2986,7 +3432,9 @@ Action Turn on the primary keyboard map.
 \end_layout
 
 \begin_layout Description
-Notion Maps were widely used in past, when X-windows didn't have nowadays keyboard support. They can be still used to maintain uniform keyboard layout across the various platforms.
+Notion Maps were widely used in past,
+ when X-windows didn't have nowadays keyboard support.
+ They can be still used to maintain uniform keyboard layout across the various platforms.
 \begin_inset Newline newline
 \end_inset
 
@@ -3022,7 +3470,8 @@ Syntax keymap-toggle
 \end_layout
 
 \begin_layout Description
-Origin leeming, 30 Mar 2004
+Origin leeming,
+ 30 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
@@ -3038,11 +3487,13 @@ Syntax copy-label-as-reference <LABEL>
 \end_layout
 
 \begin_layout Description
-Params <LABEL>: The label to copy (for multi-line math)
+Params <LABEL>:
+ The label to copy (for multi-line math)
 \end_layout
 
 \begin_layout Description
-Origin sts, 16 Nov 2008
+Origin sts,
+ 16 Nov 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -3058,11 +3509,15 @@ Syntax label-goto [<LABEL>]
 \end_layout
 
 \begin_layout Description
-Params <LABEL>: Requested label. If no label is given and reference is on cursor position, Bookmark 0 is saved and cursor moves to the position of referenced label.
+Params <LABEL>:
+ Requested label.
+ If no label is given and reference is on cursor position,
+ Bookmark 0 is saved and cursor moves to the position of referenced label.
 \end_layout
 
 \begin_layout Description
-Origin Ale, 6 Aug 1997
+Origin Ale,
+ 6 Aug 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -3078,7 +3533,9 @@ Syntax label-insert [<LABEL>]
 \end_layout
 
 \begin_layout Description
-Params <LABEL>: Requested label. If no label is given dialog requesting name will be opened.
+Params <LABEL>:
+ Requested label.
+ If no label is given dialog requesting name will be opened.
 \end_layout
 
 \begin_layout Subsection*
@@ -3094,7 +3551,8 @@ Syntax label-insert-as-reference
 \end_layout
 
 \begin_layout Description
-Origin vfr, 7 Apr 2009
+Origin vfr,
+ 7 Apr 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -3110,11 +3568,23 @@ Syntax language <LANG> [set]
 \end_layout
 
 \begin_layout Description
-Params <LANG>: Requested language. Look in lib/languages for the list. "language reset" or "language" (without param) reset to the document language. set: If used, the language will be set to the specified language. Otherwise, the language will be toggled (i.e., if the current language is LANG, switch to the document language or the default language, if LANG is the document language).
+Params <LANG>:
+ Requested language.
+ Look in lib/languages for the list.
+ "language reset" or "language" (without param) reset to the document language.
+ set:
+ If used,
+ the language will be set to the specified language.
+ Otherwise,
+ the language will be toggled (i.e.,
+ if the current language is LANG,
+ switch to the document language or the default language,
+ if LANG is the document language).
 \end_layout
 
 \begin_layout Description
-Origin Dekel, 2 Mar 2000
+Origin Dekel,
+ 2 Mar 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -3190,7 +3660,10 @@ Syntax listing-insert
 \end_layout
 
 \begin_layout Description
-Origin Herbert, 10 Nov 2001; bpeng, 2 May 2007
+Origin Herbert,
+ 10 Nov 2001;
+ bpeng,
+ 2 May 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -3206,7 +3679,8 @@ Syntax marginalnote-insert
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 26 Jun 2000
+Origin Lgb,
+ 26 Jun 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -3250,7 +3724,8 @@ Syntax mark-toggle
 \end_layout
 
 \begin_layout Description
-Origin Andre, May 5 2006
+Origin Andre,
+ May 5 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -3266,11 +3741,14 @@ Syntax newline-insert [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: <newline|linebreak> default: newline
+Params <ARG>:
+ <newline|linebreak> default:
+ newline
 \end_layout
 
 \begin_layout Description
-Origin spitz, 25 Mar 2008
+Origin spitz,
+ 25 Mar 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -3286,11 +3764,14 @@ Syntax newpage-insert <ARG>
 \end_layout
 
 \begin_layout Description
-Params <ARG>: <newpage|pagebreak|clearpage|cleardoublepage> default: newpage
+Params <ARG>:
+ <newpage|pagebreak|clearpage|cleardoublepage> default:
+ newpage
 \end_layout
 
 \begin_layout Description
-Origin uwestoehr, 24 Nov 2007
+Origin uwestoehr,
+ 24 Nov 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -3310,7 +3791,8 @@ Syntax nomencl-insert [<SYMBOL>]
 \end_layout
 
 \begin_layout Description
-Origin Ugras, 4 Nov 2006
+Origin Ugras,
+ 4 Nov 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -3326,7 +3808,8 @@ Syntax nomenclature-print
 \end_layout
 
 \begin_layout Description
-Origin Ugras, 4 Nov 2006
+Origin Ugras,
+ 4 Nov 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -3334,7 +3817,8 @@ note-insert
 \end_layout
 
 \begin_layout Description
-Action Inserts Note on the current cursor position, move selection inside the inset.
+Action Inserts Note on the current cursor position,
+ move selection inside the inset.
 \end_layout
 
 \begin_layout Description
@@ -3342,7 +3826,9 @@ Syntax note-insert [<TYPE>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: <Note|Greyedout|Comment> default: Note
+Params <TYPE>:
+ <Note|Greyedout|Comment> default:
+ Note
 \end_layout
 
 \begin_layout Subsection*
@@ -3366,7 +3852,8 @@ Action Move the current group in the downward direction in the structure of the 
 \end_layout
 
 \begin_layout Description
-Notion The "group" can be Part/Chapter/Section/etc. It moves the whole substructure of the group.
+Notion The "group" can be Part/Chapter/Section/etc.
+ It moves the whole substructure of the group.
 \end_layout
 
 \begin_layout Description
@@ -3374,7 +3861,8 @@ Syntax outline-down
 \end_layout
 
 \begin_layout Description
-Origin Vermeer, 23 Mar 2006
+Origin Vermeer,
+ 23 Mar 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -3394,7 +3882,8 @@ Syntax outline-in
 \end_layout
 
 \begin_layout Description
-Origin Vermeer, 23 Mar 2006
+Origin Vermeer,
+ 23 Mar 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -3414,7 +3903,8 @@ Syntax outline-out
 \end_layout
 
 \begin_layout Description
-Origin Vermeer, 23 Mar 2006
+Origin Vermeer,
+ 23 Mar 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -3426,7 +3916,8 @@ Action Move the current group in the upward direction in the structure of the do
 \end_layout
 
 \begin_layout Description
-Notion The "group" can be Part/Chapter/Section/etc. It moves the whole substructure of the group.
+Notion The "group" can be Part/Chapter/Section/etc.
+ It moves the whole substructure of the group.
 \end_layout
 
 \begin_layout Description
@@ -3434,7 +3925,8 @@ Syntax outline-up
 \end_layout
 
 \begin_layout Description
-Origin Vermeer, 23 Mar 2006
+Origin Vermeer,
+ 23 Mar 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -3454,11 +3946,13 @@ Syntax paragraph-break [<LAYOUT>] [ignoresep]
 \end_layout
 
 \begin_layout Description
-Params <LAYOUT>: "inverse" - decreases depth by one (or change layout to default layout) when the cursor is at the end of the line.
+Params <LAYOUT>:
+ "inverse" - decreases depth by one (or change layout to default layout) when the cursor is at the end of the line.
 \begin_inset Newline newline
 \end_inset
 
-ignoresep: Do not account for paragraph separators while breaking.
+ignoresep:
+ Do not account for paragraph separators while breaking.
 \end_layout
 
 \begin_layout Subsection*
@@ -3474,7 +3968,8 @@ Syntax paragraph-down
 \end_layout
 
 \begin_layout Description
-Origin Asger, 1 Oct 1996
+Origin Asger,
+ 1 Oct 1996
 \end_layout
 
 \begin_layout Subsection*
@@ -3490,7 +3985,8 @@ Syntax paragraph-down-select
 \end_layout
 
 \begin_layout Description
-Origin Asger, 1 Oct 1996
+Origin Asger,
+ 1 Oct 1996
 \end_layout
 
 \begin_layout Subsection*
@@ -3498,11 +3994,18 @@ paragraph-goto
 \end_layout
 
 \begin_layout Description
-Action Jump to a paragraph given by its id number and optionally the desired position within the paragraph. If given four arguments id_start, pos_start, id_end, pos_end, perform a selection from start to end.
+Action Jump to a paragraph given by its id number and optionally the desired position within the paragraph.
+ If given four arguments id_start,
+ pos_start,
+ id_end,
+ pos_end,
+ perform a selection from start to end.
 \end_layout
 
 \begin_layout Description
-Notion Note that id number of paragraph is not the sequential number of paragraph seen on the screen. Moreover the id is unique for all opened buffers (documents). Both ids must belong to the same buffer.
+Notion Note that id number of paragraph is not the sequential number of paragraph seen on the screen.
+ Moreover the id is unique for all opened buffers (documents).
+ Both ids must belong to the same buffer.
 \end_layout
 
 \begin_layout Description
@@ -3510,15 +4013,19 @@ Syntax paragraph-goto <PAR_ID> <POS_IN_PAR> [<PAR_ID> <POS_IN_PAR>]
 \end_layout
 
 \begin_layout Description
-Params <PAR_ID>:  paragraph id
+Params <PAR_ID>:
+  paragraph id
 \begin_inset Newline newline
 \end_inset
 
-<POS_IN_PAR>: desired position within the paragraph
+<POS_IN_PAR>:
+ desired position within the paragraph
 \end_layout
 
 \begin_layout Description
-Origin Dekel, 26 Aug 2000 gmunch, 5 Sep 2016
+Origin Dekel,
+ 26 Aug 2000 gmunch,
+ 5 Sep 2016
 \end_layout
 
 \begin_layout Subsection*
@@ -3534,7 +4041,8 @@ Syntax paragraph-move-down
 \end_layout
 
 \begin_layout Description
-Origin Edwin, 8 Apr 2006
+Origin Edwin,
+ 8 Apr 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -3546,7 +4054,8 @@ Action Moves the current paragraph upwards in the document.
 \end_layout
 
 \begin_layout Description
-Notion Movement through the document will possibly break the paragraph-depth (e.g. itemize structure).
+Notion Movement through the document will possibly break the paragraph-depth (e.g.
+ itemize structure).
 \end_layout
 
 \begin_layout Description
@@ -3554,7 +4063,8 @@ Syntax paragraph-move-up
 \end_layout
 
 \begin_layout Description
-Origin Edwin, 8 Apr 2006
+Origin Edwin,
+ 8 Apr 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -3566,7 +4076,12 @@ Action Change paragraph settings.
 \end_layout
 
 \begin_layout Description
-Notion Modifies the current paragraph, or currently selected paragraphs. This function only modifies, and does not override, existing settings. Note that the "leftindent" indent setting is deprecated.
+Notion Modifies the current paragraph,
+ or currently selected paragraphs.
+ This function only modifies,
+ and does not override,
+ existing settings.
+ Note that the "leftindent" indent setting is deprecated.
 \end_layout
 
 \begin_layout Description
@@ -3574,7 +4089,8 @@ Syntax paragraph-params [<INDENT>] [<SPACING>] [<ALIGN>] [<OTHERS>]
 \end_layout
 
 \begin_layout Description
-Params <INDENT>:  
+Params <INDENT>:
+  
 \backslash
 noindent|
 \backslash
@@ -3586,19 +4102,22 @@ leftindent LENGTH
 \begin_inset Newline newline
 \end_inset
 
-<SPACING>: 
+<SPACING>:
+ 
 \backslash
 paragraph_spacing default|single|onehalf|double|other SIZE
 \begin_inset Newline newline
 \end_inset
 
-<ALIGN>:   
+<ALIGN>:
+   
 \backslash
 align block|left|right|center|default
 \begin_inset Newline newline
 \end_inset
 
-<OTHERS>:  
+<OTHERS>:
+  
 \backslash
 labelwidthstring WIDTH|
 \backslash
@@ -3606,7 +4125,8 @@ start_of_appendix
 \end_layout
 
 \begin_layout Description
-Origin rgh, Aug 15 2007
+Origin rgh,
+ Aug 15 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -3618,7 +4138,8 @@ Action Change paragraph settings.
 \end_layout
 
 \begin_layout Description
-Notion Overwrite all nonspecified settings to the default ones. Use paragraph-params lfun if you don't want to overwrite others settings.
+Notion Overwrite all nonspecified settings to the default ones.
+ Use paragraph-params lfun if you don't want to overwrite others settings.
 \end_layout
 
 \begin_layout Description
@@ -3630,7 +4151,8 @@ Params For parameters see LFUN_PARAGRAPH_PARAMS
 \end_layout
 
 \begin_layout Description
-Origin leeming, 30 Mar 2004
+Origin leeming,
+ 30 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
@@ -3650,7 +4172,8 @@ Syntax paragraph-select
 \end_layout
 
 \begin_layout Description
-Origin Kornel, 16 Apr 2019
+Origin Kornel,
+ 16 Apr 2019
 \end_layout
 
 \begin_layout Subsection*
@@ -3666,7 +4189,8 @@ Syntax paragraph-up
 \end_layout
 
 \begin_layout Description
-Origin Asger, 1 Oct 1996
+Origin Asger,
+ 1 Oct 1996
 \end_layout
 
 \begin_layout Subsection*
@@ -3682,7 +4206,8 @@ Syntax paragraph-up-select
 \end_layout
 
 \begin_layout Description
-Origin Asger, 1 Oct 1996
+Origin Asger,
+ 1 Oct 1996
 \end_layout
 
 \begin_layout Subsection*
@@ -3698,11 +4223,13 @@ Syntax paste [<TYPE>|<NUM>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: emf|pdf|png|jpeg|linkback|wmf|latex|html
+Params <TYPE>:
+ emf|pdf|png|jpeg|linkback|wmf|latex|html
 \begin_inset Newline newline
 \end_inset
 
-<NUM>: number of the selection in the internal clipboard stack to be pasted.
+<NUM>:
+ number of the selection in the internal clipboard stack to be pasted.
 \end_layout
 
 \begin_layout Subsection*
@@ -3710,7 +4237,8 @@ phantom-insert
 \end_layout
 
 \begin_layout Description
-Action Inserts phantom on the current cursor position, move selection inside the inset.
+Action Inserts phantom on the current cursor position,
+ move selection inside the inset.
 \end_layout
 
 \begin_layout Description
@@ -3718,11 +4246,14 @@ Syntax phantom-insert [<TYPE>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: <Phantom|HPhantom|VPhantom> default: Phantom
+Params <TYPE>:
+ <Phantom|HPhantom|VPhantom> default:
+ Phantom
 \end_layout
 
 \begin_layout Description
-Origin uwestoehr, 30 Jan 2009
+Origin uwestoehr,
+ 30 Jan 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -3738,7 +4269,8 @@ Syntax preview-insert
 \end_layout
 
 \begin_layout Description
-Origin vfr, 28 Mar 2010
+Origin vfr,
+ 28 Mar 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -3758,7 +4290,10 @@ Syntax primary-selection-paste [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
+Params <ARG>:
+ "paragraph" will cause pasting as one paragraph,
+ i.e.
+ "Join lines".
 \end_layout
 
 \begin_layout Subsection*
@@ -3778,15 +4313,25 @@ Syntax quote-insert [<LEVEL>] [<SIDE>] [<STYLE>]
 \end_layout
 
 \begin_layout Description
-Params <LEVEL>: 'inner' for (i.e., secondary, usually single) quotes, otherwise outer (i.e., primary, usually double) quotes will be used.
+Params <LEVEL>:
+ 'inner' for (i.e.,
+ secondary,
+ usually single) quotes,
+ otherwise outer (i.e.,
+ primary,
+ usually double) quotes will be used.
 \begin_inset Newline newline
 \end_inset
 
-<SIDE>:  'opening' for opening quotes, 'closing' for closing quotes, otherwise the side will be guessed from the context.
+<SIDE>:
+  'opening' for opening quotes,
+ 'closing' for closing quotes,
+ otherwise the side will be guessed from the context.
 \begin_inset Newline newline
 \end_inset
 
-<STYLE>: 'british' for `British' quote style (with ``inner quotation'')
+<STYLE>:
+ 'british' for `British' quote style (with ``inner quotation'')
 \begin_inset Newline newline
 \end_inset
 
@@ -3846,7 +4391,8 @@ Params <LEVEL>: 'inner' for (i.e., secondary, usually single) quotes, otherwise 
 \begin_inset Newline newline
 \end_inset
 
-If no quote style is specified, the document-wide will be used.
+If no quote style is specified,
+ the document-wide will be used.
 \end_layout
 
 \begin_layout Subsection*
@@ -3874,7 +4420,8 @@ Syntax reference-next
 \end_layout
 
 \begin_layout Description
-Origin Dekel, 14 Jan 2001
+Origin Dekel,
+ 14 Jan 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -3894,7 +4441,8 @@ Syntax repeat <COUNT> <LFUN-COMMAND>
 \end_layout
 
 \begin_layout Description
-Origin Andre, 27 Oct 2003
+Origin Andre,
+ 27 Oct 2003
 \end_layout
 
 \begin_layout Subsection*
@@ -3946,7 +4494,8 @@ Syntax screen-show-cursor
 \end_layout
 
 \begin_layout Description
-Origin vfr, 25 Mar 2009
+Origin vfr,
+ 25 Mar 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -3986,11 +4535,13 @@ Syntax script-insert <TYPE>
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: subscript|superscript
+Params <TYPE>:
+ subscript|superscript
 \end_layout
 
 \begin_layout Description
-Origin Georg, 23 Nov 2010
+Origin Georg,
+ 23 Nov 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -4002,7 +4553,8 @@ Action Scroll the buffer view.
 \end_layout
 
 \begin_layout Description
-Notion Only scrolls the screen up or down; does not move the cursor.
+Notion Only scrolls the screen up or down;
+ does not move the cursor.
 \end_layout
 
 \begin_layout Description
@@ -4010,15 +4562,18 @@ Syntax scroll <TYPE> <QUANTITY>
 \end_layout
 
 \begin_layout Description
-Params <TYPE>:  line|page
+Params <TYPE>:
+  line|page
 \begin_inset Newline newline
 \end_inset
 
-<QUANTITY>: up|down|<number>
+<QUANTITY>:
+ up|down|<number>
 \end_layout
 
 \begin_layout Description
-Origin Abdel, Dec 27 2007
+Origin Abdel,
+ Dec 27 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -4034,11 +4589,16 @@ Syntax search-string-set [<DATA>]
 \end_layout
 
 \begin_layout Description
-Params <DATA>: string to search for. If no parameter is given, use (word under) selection.
+Params <DATA>:
+ string to search for.
+ If no parameter is given,
+ use (word under) selection.
 \end_layout
 
 \begin_layout Description
-Origin stwitt, spitz, Feb 12 2021
+Origin stwitt,
+ spitz,
+ Feb 12 2021
 \end_layout
 
 \begin_layout Subsection*
@@ -4058,7 +4618,8 @@ Syntax section-select
 \end_layout
 
 \begin_layout Description
-Origin vfr, 05 May 2009
+Origin vfr,
+ 05 May 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -4070,7 +4631,8 @@ Action Pastes the internal selection text in permanent selection.
 \end_layout
 
 \begin_layout Description
-Notion Created in order to have middle mouse button pasting correct (bound to command-alternatives selection-paste ; primary-selection-paste paragraph).
+Notion Created in order to have middle mouse button pasting correct (bound to command-alternatives selection-paste ;
+ primary-selection-paste paragraph).
 \end_layout
 
 \begin_layout Description
@@ -4078,7 +4640,8 @@ Syntax selection-paste
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, 14 Jan 2009
+Origin lasgouttes,
+ 14 Jan 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -4094,11 +4657,14 @@ Syntax separator-insert [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: <plain|parbreak|latexpar> default: plain
+Params <ARG>:
+ <plain|parbreak|latexpar> default:
+ plain
 \end_layout
 
 \begin_layout Description
-Origin ef, 2 May 2014
+Origin ef,
+ 2 May 2014
 \end_layout
 
 \begin_layout Subsection*
@@ -4114,19 +4680,41 @@ Syntax space-insert <NAME> [<LEN>]
 \end_layout
 
 \begin_layout Description
-Params <NAME>: normal, protected, visible, thin, quad, qquad, enspace, enskip, negthinspace, negmedspace, negthickspace, hfill, hfill*, dotfill, hrulefill, hspace, hspace*
+Params <NAME>:
+ normal,
+ protected,
+ visible,
+ thin,
+ quad,
+ qquad,
+ enspace,
+ enskip,
+ negthinspace,
+ negmedspace,
+ negthickspace,
+ hfill,
+ hfill*,
+ dotfill,
+ hrulefill,
+ hspace,
+ hspace*
 \begin_inset Newline newline
 \end_inset
 
-Only in math mode: med and thick.
+Only in math mode:
+ med and thick.
 \begin_inset Newline newline
 \end_inset
 
-<LEN>: length for custom spaces (hspace, hspace* for protected)
+<LEN>:
+ length for custom spaces (hspace,
+ hspace* for protected)
 \end_layout
 
 \begin_layout Description
-Origin spitz, 20 May 2003, Mar 17 2008
+Origin spitz,
+ 20 May 2003,
+ Mar 17 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -4142,11 +4730,24 @@ Syntax specialchar-insert <CHAR>
 \end_layout
 
 \begin_layout Description
-Params <CHAR>: hyphenation, allowbreak, ligature-break, slash, nobreakdash, dots, end-of-sentence, menu-separator, lyx, tex, latex, latex2e.
+Params <CHAR>:
+ hyphenation,
+ allowbreak,
+ ligature-break,
+ slash,
+ nobreakdash,
+ dots,
+ end-of-sentence,
+ menu-separator,
+ lyx,
+ tex,
+ latex,
+ latex2e.
 \end_layout
 
 \begin_layout Description
-Origin spitz, 6 Dec 2007
+Origin spitz,
+ 6 Dec 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -4154,7 +4755,8 @@ spelling-add
 \end_layout
 
 \begin_layout Description
-Action Add the word under the cursor to the respective spell checker dictionary. The default for the language is retrieved from the cursor position.
+Action Add the word under the cursor to the respective spell checker dictionary.
+ The default for the language is retrieved from the cursor position.
 \end_layout
 
 \begin_layout Description
@@ -4162,11 +4764,14 @@ Syntax spelling-add [<STRING>] [<LANG>]
 \end_layout
 
 \begin_layout Description
-Params <WORD>: word to add <LANG>: language name (see file languages)
+Params <WORD>:
+ word to add <LANG>:
+ language name (see file languages)
 \end_layout
 
 \begin_layout Description
-Origin spitz, 18 Jan 2010
+Origin spitz,
+ 18 Jan 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -4174,7 +4779,8 @@ spelling-add-local
 \end_layout
 
 \begin_layout Description
-Action Add the word under the cursor to the document's local spell checker dictionary. The default for the language is retrieved from the cursor position.
+Action Add the word under the cursor to the document's local spell checker dictionary.
+ The default for the language is retrieved from the cursor position.
 \end_layout
 
 \begin_layout Description
@@ -4182,11 +4788,14 @@ Syntax spelling-add-local [<STRING>] [<LANG>]
 \end_layout
 
 \begin_layout Description
-Params <WORD>: word to add 	       <LANG>: language name (see file languages)
+Params <WORD>:
+ word to add 	       <LANG>:
+ language name (see file languages)
 \end_layout
 
 \begin_layout Description
-Origin spitz, 6 Mar 2021
+Origin spitz,
+ 6 Mar 2021
 \end_layout
 
 \begin_layout Subsection*
@@ -4202,7 +4811,8 @@ Syntax spelling-continuously
 \end_layout
 
 \begin_layout Description
-Origin vfr, 24 March 2013
+Origin vfr,
+ 24 March 2013
 \end_layout
 
 \begin_layout Subsection*
@@ -4210,7 +4820,8 @@ spelling-ignore
 \end_layout
 
 \begin_layout Description
-Action Let the spell checker ignore the word under the cursor in the current session for the given language. The default for the language is retrieved from the cursor position.
+Action Let the spell checker ignore the word under the cursor in the current session for the given language.
+ The default for the language is retrieved from the cursor position.
 \end_layout
 
 \begin_layout Description
@@ -4218,11 +4829,14 @@ Syntax spelling-ignore [<WORD>] [<LANG>]
 \end_layout
 
 \begin_layout Description
-Params <WORD>: word to ignore <LANG>: language name (see file languages)
+Params <WORD>:
+ word to ignore <LANG>:
+ language name (see file languages)
 \end_layout
 
 \begin_layout Description
-Origin spitz, 18 Jan 2010
+Origin spitz,
+ 18 Jan 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -4230,7 +4844,8 @@ spelling-remove
 \end_layout
 
 \begin_layout Description
-Action Remove the word under the cursor from the respective spell checker dictionary. The default for the language is retrieved from the cursor position.
+Action Remove the word under the cursor from the respective spell checker dictionary.
+ The default for the language is retrieved from the cursor position.
 \end_layout
 
 \begin_layout Description
@@ -4238,11 +4853,14 @@ Syntax spelling-remove [<STRING>] [<LANG>]
 \end_layout
 
 \begin_layout Description
-Params <WORD>: word to remove <LANG>: language name (see file languages)
+Params <WORD>:
+ word to remove <LANG>:
+ language name (see file languages)
 \end_layout
 
 \begin_layout Description
-Origin SWitt, 28 July 2010
+Origin SWitt,
+ 28 July 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -4250,7 +4868,8 @@ spelling-remove-local
 \end_layout
 
 \begin_layout Description
-Action Remove the word under the cursor from the document's local spell checker dictionary. The default for the language is retrieved from the cursor position.
+Action Remove the word under the cursor from the document's local spell checker dictionary.
+ The default for the language is retrieved from the cursor position.
 \end_layout
 
 \begin_layout Description
@@ -4258,11 +4877,14 @@ Syntax spelling-remove-local [<STRING>] [<LANG>]
 \end_layout
 
 \begin_layout Description
-Params <WORD>: word to remove 	       <LANG>: language name (see file languages)
+Params <WORD>:
+ word to remove 	       <LANG>:
+ language name (see file languages)
 \end_layout
 
 \begin_layout Description
-Origin spitz, 7 Mar 2021
+Origin spitz,
+ 7 Mar 2021
 \end_layout
 
 \begin_layout Subsection*
@@ -4274,7 +4896,8 @@ Action Delete a tab or up to an equivalent amount of spaces from a listings inse
 \end_layout
 
 \begin_layout Description
-Notion It also works on a selection - it removes a tab or spaces from the beginning of each line spanned by the selection. This is useful if you want to indent/unindent multiple lines in one action.
+Notion It also works on a selection - it removes a tab or spaces from the beginning of each line spanned by the selection.
+ This is useful if you want to indent/unindent multiple lines in one action.
 \end_layout
 
 \begin_layout Description
@@ -4282,7 +4905,8 @@ Syntax tab-delete
 \end_layout
 
 \begin_layout Description
-Origin vfr, Sep 30 2008
+Origin vfr,
+ Sep 30 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -4302,7 +4926,8 @@ Syntax tab-insert
 \end_layout
 
 \begin_layout Description
-Origin vfr, Sep 30 2008
+Origin vfr,
+ Sep 30 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -4322,7 +4947,8 @@ Params Generally see LFUN_INSET_INSERT for further details.
 \begin_inset Newline newline
 \end_inset
 
-<FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|
+<FEATURE>:
+ append-row|append-column|delete-row|delete-column|copy-row|
 \begin_inset Newline newline
 \end_inset
 
@@ -4402,7 +5028,9 @@ tabular-valign-bottom|set-tabular-width|toggle-varwidth-column|
 \begin_inset Newline newline
 \end_inset
 
-set-border-lines|toggle-border-lines|set-inner-lines|toggle-inner-lines Various math-environment features are handled as well, e.g. add-vline-left/right for
+set-border-lines|toggle-border-lines|set-inner-lines|toggle-inner-lines Various math-environment features are handled as well,
+ e.g.
+ add-vline-left/right for
 \begin_inset Newline newline
 \end_inset
 
@@ -4410,11 +5038,14 @@ the Grid/Array environment.
 \begin_inset Newline newline
 \end_inset
 
-<ARG>: additional argument for some commands, use debug mode to explore its values.
+<ARG>:
+ additional argument for some commands,
+ use debug mode to explore its values.
 \end_layout
 
 \begin_layout Description
-Origin gm, 10 Dec 2015
+Origin gm,
+ 10 Dec 2015
 \end_layout
 
 \begin_layout Subsection*
@@ -4438,7 +5069,8 @@ Params In case no arguments are given show insert dialog.
 \end_layout
 
 \begin_layout Description
-Origin Jug, 12 Apr 2000
+Origin Jug,
+ 12 Apr 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -4458,11 +5090,13 @@ Syntax tabular-style-insert <style> <ROWS> <COLUMNS>
 \end_layout
 
 \begin_layout Description
-Params Valid styles are the names of the files in lib/tabletemplates, minus _1x<n> and .lyx suffix.
+Params Valid styles are the names of the files in lib/tabletemplates,
+ minus _1x<n> and .lyx suffix.
 \end_layout
 
 \begin_layout Description
-Origin spitz, 25 Mar 2019
+Origin spitz,
+ 25 Mar 2019
 \end_layout
 
 \begin_layout Subsection*
@@ -4478,11 +5112,14 @@ Syntax thesaurus-entry [<STRING>] [lang=<LANG>]
 \end_layout
 
 \begin_layout Description
-Params <STRING>: word to look up <LANG>: language (see file languages)
+Params <STRING>:
+ word to look up <LANG>:
+ language (see file languages)
 \end_layout
 
 \begin_layout Description
-Origin Levon, 20 Jul 2001
+Origin Levon,
+ 20 Jul 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -4510,7 +5147,10 @@ Syntax unicode-insert <CHAR1> <CHAR2> ...
 \end_layout
 
 \begin_layout Description
-Params <CHARn>: The character to insert, given as its code point, in hexadecimal.
+Params <CHARn>:
+ The character to insert,
+ given as its code point,
+ in hexadecimal.
 \end_layout
 
 \begin_layout Description
@@ -4518,7 +5158,8 @@ Sample unicode-insert 0x0100 0x0259
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 22 Oct 2006
+Origin Lgb,
+ 22 Oct 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -4554,7 +5195,11 @@ Action Moves the cursor to the logically previous beginning of a word.
 \end_layout
 
 \begin_layout Description
-Notion This is not the action which should be bound to the arrow keys, because backwards may be left or right, depending on the language. The arrow keys should be bound to LFUN_WORD_LEFT or LFUN_WORD_RIGHT actions, which in turn may employ this one.
+Notion This is not the action which should be bound to the arrow keys,
+ because backwards may be left or right,
+ depending on the language.
+ The arrow keys should be bound to LFUN_WORD_LEFT or LFUN_WORD_RIGHT actions,
+ which in turn may employ this one.
 \end_layout
 
 \begin_layout Description
@@ -4566,7 +5211,8 @@ word-backward-select
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor to the logically previous beginning of a word, adding the logically traversed text to the selection.
+Action Moves the cursor to the logically previous beginning of a word,
+ adding the logically traversed text to the selection.
 \end_layout
 
 \begin_layout Description
@@ -4582,7 +5228,8 @@ word-capitalize
 \end_layout
 
 \begin_layout Description
-Action Capitalizes the words in the selection (i.e. the first letters) or the first letter of word at cursor position.
+Action Capitalizes the words in the selection (i.e.
+ the first letters) or the first letter of word at cursor position.
 \end_layout
 
 \begin_layout Description
@@ -4590,7 +5237,11 @@ Syntax word-capitalize [<SEL_TYPE>]
 \end_layout
 
 \begin_layout Description
-Params <SEL_TYPE>: if this is equal to "partial", then the default word starts at cursor position (emacs-style). Otherwise, the whole word is considered.
+Params <SEL_TYPE>:
+ if this is equal to "partial",
+ then the default word starts at cursor position (emacs-style).
+ Otherwise,
+ the whole word is considered.
 \end_layout
 
 \begin_layout Subsection*
@@ -4606,7 +5257,9 @@ Syntax word-delete-backward [confirm]
 \end_layout
 
 \begin_layout Description
-Params confirm: Select big insets, do not directly delete them.
+Params confirm:
+ Select big insets,
+ do not directly delete them.
 \end_layout
 
 \begin_layout Subsection*
@@ -4622,7 +5275,9 @@ Syntax word-delete-forward [confirm]
 \end_layout
 
 \begin_layout Description
-Params confirm: Select big insets, do not directly delete them.
+Params confirm:
+ Select big insets,
+ do not directly delete them.
 \end_layout
 
 \begin_layout Subsection*
@@ -4638,11 +5293,16 @@ Syntax word-find [<DATA>]
 \end_layout
 
 \begin_layout Description
-Params <DATA>: data encoded from Find dialog (see lyx::find2string()). If no parameter is given, search with last find-dialog data is used for search (i.e. find-next).
+Params <DATA>:
+ data encoded from Find dialog (see lyx::find2string()).
+ If no parameter is given,
+ search with last find-dialog data is used for search (i.e.
+ find-next).
 \end_layout
 
 \begin_layout Description
-Origin Andre, Jan 7 2004
+Origin Andre,
+ Jan 7 2004
 \end_layout
 
 \begin_layout Subsection*
@@ -4654,7 +5314,10 @@ Action Search for a given string in backward direction.
 \end_layout
 
 \begin_layout Description
-Notion Case sensitive, match words. If no argument given, last search repeated.
+Notion Case sensitive,
+ match words.
+ If no argument given,
+ last search repeated.
 \end_layout
 
 \begin_layout Description
@@ -4662,7 +5325,8 @@ Syntax word-find-backward [<STRING>]
 \end_layout
 
 \begin_layout Description
-Origin Etienne, 20 Feb 1998
+Origin Etienne,
+ 20 Feb 1998
 \end_layout
 
 \begin_layout Subsection*
@@ -4674,7 +5338,10 @@ Action Search for a given string in forward direction.
 \end_layout
 
 \begin_layout Description
-Notion Case sensitive, match words. If no argument given, last search repeated.
+Notion Case sensitive,
+ match words.
+ If no argument given,
+ last search repeated.
 \end_layout
 
 \begin_layout Description
@@ -4682,7 +5349,8 @@ Syntax word-find-forward [<STRING>]
 \end_layout
 
 \begin_layout Description
-Origin Etienne, 16 Feb 1998
+Origin Etienne,
+ 16 Feb 1998
 \end_layout
 
 \begin_layout Subsection*
@@ -4698,11 +5366,16 @@ Syntax word-findadv [<DATA>]
 \end_layout
 
 \begin_layout Description
-Params <DATA>: data encoded from FindAdv dialog (see lyx::findadv2string()). If no parameter is given, search with last find-dialog data is used for search (i.e. find-next).
+Params <DATA>:
+ data encoded from FindAdv dialog (see lyx::findadv2string()).
+ If no parameter is given,
+ search with last find-dialog data is used for search (i.e.
+ find-next).
 \end_layout
 
 \begin_layout Description
-Origin Tommaso, Nov 15 2007
+Origin Tommaso,
+ Nov 15 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -4714,7 +5387,11 @@ Action Moves the cursor to the logically next beginning of a word.
 \end_layout
 
 \begin_layout Description
-Notion This is not the action which should be bound to the arrow keys, because forward may be left or right, depending on the language. The arrow keys should be bound to LFUN_WORD_LEFT or LFUN_WORD_RIGHT actions, which in turn may employ this one.
+Notion This is not the action which should be bound to the arrow keys,
+ because forward may be left or right,
+ depending on the language.
+ The arrow keys should be bound to LFUN_WORD_LEFT or LFUN_WORD_RIGHT actions,
+ which in turn may employ this one.
 \end_layout
 
 \begin_layout Description
@@ -4726,7 +5403,8 @@ word-forward-select
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor to the logically next beginning of a word, adding the logically traversed text to the selection.
+Action Moves the cursor to the logically next beginning of a word,
+ adding the logically traversed text to the selection.
 \end_layout
 
 \begin_layout Description
@@ -4746,7 +5424,19 @@ Action Moves the cursor to the next beginning of a word "on the left".
 \end_layout
 
 \begin_layout Description
-Notion This is the action which should be taken when the (e.g., ctrl-) "left" key is pressed. Generally, it moves the cursor to the next beginning of a word on the left. However, in Bidi text this become slightly more complicated, and there are different modes of cursor movement. In "visual mode", this moves left, plain and simple. In "logical mode", movement is logically forward in RTL paragraphs, and logically backwards in LTR paragraphs.
+Notion This is the action which should be taken when the (e.g.,
+ ctrl-) "left" key is pressed.
+ Generally,
+ it moves the cursor to the next beginning of a word on the left.
+ However,
+ in Bidi text this become slightly more complicated,
+ and there are different modes of cursor movement.
+ In "visual mode",
+ this moves left,
+ plain and simple.
+ In "logical mode",
+ movement is logically forward in RTL paragraphs,
+ and logically backwards in LTR paragraphs.
 \end_layout
 
 \begin_layout Description
@@ -4754,7 +5444,8 @@ Syntax word-left
 \end_layout
 
 \begin_layout Description
-Origin dov, 28 Oct 2007
+Origin dov,
+ 28 Oct 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -4762,7 +5453,8 @@ word-left-select
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor to the next beginning of a word "on the left", adding *logically* traversed text to the selection.
+Action Moves the cursor to the next beginning of a word "on the left",
+ adding *logically* traversed text to the selection.
 \end_layout
 
 \begin_layout Description
@@ -4774,7 +5466,8 @@ Syntax word-left-select
 \end_layout
 
 \begin_layout Description
-Origin dov, 28 Oct 2007
+Origin dov,
+ 28 Oct 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -4790,7 +5483,11 @@ Syntax word-lowcase [<SEL_TYPE>]
 \end_layout
 
 \begin_layout Description
-Params <SEL_TYPE>: if this is equal to "partial", then the default word starts at cursor position (emacs-style). Otherwise, the whole word is considered.
+Params <SEL_TYPE>:
+ if this is equal to "partial",
+ then the default word starts at cursor position (emacs-style).
+ Otherwise,
+ the whole word is considered.
 \end_layout
 
 \begin_layout Subsection*
@@ -4806,7 +5503,8 @@ Syntax word-replace [<DATA>]
 \end_layout
 
 \begin_layout Description
-Params <DATA>: data is of the form "<replacestring>
+Params <DATA>:
+ data is of the form "<replacestring>
 \begin_inset Newline newline
 \end_inset
 
@@ -4818,7 +5516,8 @@ Params <DATA>: data is of the form "<replacestring>
 \end_layout
 
 \begin_layout Description
-Origin Andre, Jan 7 2004
+Origin Andre,
+ Jan 7 2004
 \end_layout
 
 \begin_layout Subsection*
@@ -4830,7 +5529,19 @@ Action Moves the cursor to the next beginning of a word "on the right".
 \end_layout
 
 \begin_layout Description
-Notion This is the action which should be taken when the (e.g., ctrl-) "right" key is pressed. Generally, it moves the cursor to the next beginning of a word on the right. However, in Bidi text this become slightly more complicated, and there are different modes of cursor movement. In "visual mode", this moves right, plain and simple. In "logical mode", movement is logically forward in LTR paragraphs, and logically backwards in RTL paragraphs.
+Notion This is the action which should be taken when the (e.g.,
+ ctrl-) "right" key is pressed.
+ Generally,
+ it moves the cursor to the next beginning of a word on the right.
+ However,
+ in Bidi text this become slightly more complicated,
+ and there are different modes of cursor movement.
+ In "visual mode",
+ this moves right,
+ plain and simple.
+ In "logical mode",
+ movement is logically forward in LTR paragraphs,
+ and logically backwards in RTL paragraphs.
 \end_layout
 
 \begin_layout Description
@@ -4838,7 +5549,8 @@ Syntax word-right
 \end_layout
 
 \begin_layout Description
-Origin dov, 28 Oct 2007
+Origin dov,
+ 28 Oct 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -4846,7 +5558,8 @@ word-right-select
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor to the next beginning of a word "on the right", adding *logically* traversed text to the selection.
+Action Moves the cursor to the next beginning of a word "on the right",
+ adding *logically* traversed text to the selection.
 \end_layout
 
 \begin_layout Description
@@ -4858,7 +5571,8 @@ Syntax word-right-select
 \end_layout
 
 \begin_layout Description
-Origin dov, 28 Oct 2007
+Origin dov,
+ 28 Oct 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -4874,7 +5588,8 @@ Syntax word-select
 \end_layout
 
 \begin_layout Description
-Origin Andre, 11 Sep 2002
+Origin Andre,
+ 11 Sep 2002
 \end_layout
 
 \begin_layout Subsection*
@@ -4890,7 +5605,11 @@ Syntax word-upcase [<SEL_TYPE>]
 \end_layout
 
 \begin_layout Description
-Params <SEL_TYPE>: if this is equal to "partial", then the default word starts at cursor position (emacs-style). Otherwise, the whole word is considered.
+Params <SEL_TYPE>:
+ if this is equal to "partial",
+ then the default word starts at cursor position (emacs-style).
+ Otherwise,
+ the whole word is considered.
 \end_layout
 
 \begin_layout Subsection*
@@ -4906,11 +5625,13 @@ Syntax wrap-insert <TYPE>
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: table|figure
+Params <TYPE>:
+ table|figure
 \end_layout
 
 \begin_layout Description
-Origin Dekel, 7 Apr 2002
+Origin Dekel,
+ 7 Apr 2002
 \end_layout
 
 \begin_layout Section
@@ -4926,7 +5647,8 @@ Action Only active in Math Macro definition.
 \end_layout
 
 \begin_layout Description
-Notion Dummy function which is only active in a Math Macro definition. It's used to toggle the Math Macro toolbar if the cursor moves into a Math Macro definition.
+Notion Dummy function which is only active in a Math Macro definition.
+ It's used to toggle the Math Macro toolbar if the cursor moves into a Math Macro definition.
 \end_layout
 
 \begin_layout Description
@@ -4934,7 +5656,8 @@ Syntax in-mathmacrotemplate
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -4950,7 +5673,16 @@ Syntax math-matrix <COLS> <ROWS> [<DECORATION>]
 \end_layout
 
 \begin_layout Description
-Params <DECORATION>: Decoration determines the LaTeX name of the matrix that should be created. Possible values include pmatrix, bmatrix, Bmatrix, vmatrix, Vmatrix, smallmatrix, and matrix. The default is 'matrix'.
+Params <DECORATION>:
+ Decoration determines the LaTeX name of the matrix that should be created.
+ Possible values include pmatrix,
+ bmatrix,
+ Bmatrix,
+ vmatrix,
+ Vmatrix,
+ smallmatrix,
+ and matrix.
+ The default is 'matrix'.
 \end_layout
 
 \begin_layout Description
@@ -4962,7 +5694,9 @@ math-bigdelim
 \end_layout
 
 \begin_layout Description
-Action Inserts math fixed size delimiters (e.g. parentheses, brackets) enclosing expression.
+Action Inserts math fixed size delimiters (e.g.
+ parentheses,
+ brackets) enclosing expression.
 \end_layout
 
 \begin_layout Description
@@ -4970,11 +5704,14 @@ Syntax math-bigdelim <LSIZE> <LDELIM> <RSIZE> <RDELIM>
 \end_layout
 
 \begin_layout Description
-Params <L/RSIZE>: bigl/r|Bigl/r|biggl/r|Biggl/r
+Params <L/RSIZE>:
+ bigl/r|Bigl/r|biggl/r|Biggl/r
 \begin_inset Newline newline
 \end_inset
 
-<L/RDELIM>: TeX code for delimiter. See Delimiter dialog for delimiters to be used.
+<L/RDELIM>:
+ TeX code for delimiter.
+ See Delimiter dialog for delimiters to be used.
 \end_layout
 
 \begin_layout Description
@@ -4986,7 +5723,8 @@ Downarrow" "Bigr" "
 \end_layout
 
 \begin_layout Description
-Origin Enrico & Georg, 7 May 2006
+Origin Enrico & Georg,
+ 7 May 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -4994,7 +5732,9 @@ math-delim
 \end_layout
 
 \begin_layout Description
-Action Inserts math delimiters (e.g. parentheses, brackets) enclosing expression.
+Action Inserts math delimiters (e.g.
+ parentheses,
+ brackets) enclosing expression.
 \end_layout
 
 \begin_layout Description
@@ -5002,7 +5742,10 @@ Syntax math-delim [<LEFT>] [<RIGHT>]
 \end_layout
 
 \begin_layout Description
-Params <LEFT/RIGHT>: Delimiters to be used. Each delimiter can be specified by either a LaTeX name or a valid character. ( is the default letter.
+Params <LEFT/RIGHT>:
+ Delimiters to be used.
+ Each delimiter can be specified by either a LaTeX name or a valid character.
+ ( is the default letter.
 \end_layout
 
 \begin_layout Description
@@ -5010,7 +5753,8 @@ Sample math-delim { rangle
 \end_layout
 
 \begin_layout Description
-Origin Alejandro, 18 Jun 1996
+Origin Alejandro,
+ 18 Jun 1996
 \end_layout
 
 \begin_layout Subsection*
@@ -5018,7 +5762,8 @@ math-display
 \end_layout
 
 \begin_layout Description
-Action Creates a new displayed equation in text mode. Toggles inlined/display formula in math mode.
+Action Creates a new displayed equation in text mode.
+ Toggles inlined/display formula in math mode.
 \end_layout
 
 \begin_layout Description
@@ -5026,11 +5771,13 @@ Syntax math-display [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: this argument will be passed to LFUN_MATH_INSERT when creating new equation from the text mode.
+Params <ARG>:
+ this argument will be passed to LFUN_MATH_INSERT when creating new equation from the text mode.
 \end_layout
 
 \begin_layout Description
-Origin Alejandro, 18 Jun 1996
+Origin Alejandro,
+ 18 Jun 1996
 \end_layout
 
 \begin_layout Subsection*
@@ -5050,7 +5797,8 @@ Syntax math-extern <LANG> [<COMMAND>]
 \end_layout
 
 \begin_layout Description
-Params <LANG>: octave|maxima|maple|mathematica|script
+Params <LANG>:
+ octave|maxima|maple|mathematica|script
 \begin_inset Newline newline
 \end_inset
 
@@ -5062,7 +5810,8 @@ Sample math-extern maple simplify
 \end_layout
 
 \begin_layout Description
-Origin Andre, 24 Apr 2001
+Origin Andre,
+ 24 Apr 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -5078,7 +5827,8 @@ Syntax math-font-style <STYLE>
 \end_layout
 
 \begin_layout Description
-Params <STYLE>: mathnormal|mathcal|mathfrak|mathrm|mathsf|mathbf|textnormal
+Params <STYLE>:
+ mathnormal|mathcal|mathfrak|mathrm|mathsf|mathbf|textnormal
 \begin_inset Newline newline
 \end_inset
 
@@ -5086,7 +5836,8 @@ Params <STYLE>: mathnormal|mathcal|mathfrak|mathrm|mathsf|mathbf|textnormal
 \end_layout
 
 \begin_layout Description
-Origin vfr, 9 jan 2009
+Origin vfr,
+ 9 jan 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -5100,11 +5851,18 @@ Action Inserts math objects and symbols.
 \begin_layout Description
 Notion When <ARG> is a _single_ math inset with more than one cell (such as "x_y^z" or "
 \backslash
-frac{x}{y}"), the content of cell(0) is replaced by the current selection (only works if the selection is in mathed). As an example, if "abc" is selected in mathed, "math-insert 
+frac{x}{y}"),
+ the content of cell(0) is replaced by the current selection (only works if the selection is in mathed).
+ As an example,
+ if "abc" is selected in mathed,
+ "math-insert 
 \backslash
 frac{x}{y}" replaces "abc" with "
 \backslash
-frac{abc}{y}", and "math-insert x_y^z" replaces "abc" with "abc_y^z". If nothing is selected (or the selection is not in mathed), math-insert works as expected.
+frac{abc}{y}",
+ and "math-insert x_y^z" replaces "abc" with "abc_y^z".
+ If nothing is selected (or the selection is not in mathed),
+ math-insert works as expected.
 \end_layout
 
 \begin_layout Description
@@ -5112,7 +5870,8 @@ Syntax math-insert <ARG>
 \end_layout
 
 \begin_layout Description
-Params <ARG>: Symbol or LaTeX code to be inserted.
+Params <ARG>:
+ Symbol or LaTeX code to be inserted.
 \end_layout
 
 \begin_layout Subsection*
@@ -5120,7 +5879,10 @@ math-limits
 \end_layout
 
 \begin_layout Description
-Action Toggles the position of the limits from above/below to the right side an vice versa in integral symbol, a limit, a summation, etc.
+Action Toggles the position of the limits from above/below to the right side an vice versa in integral symbol,
+ a limit,
+ a summation,
+ etc.
 \end_layout
 
 \begin_layout Description
@@ -5132,7 +5894,8 @@ Syntax math-limits [<STATE>]
 \end_layout
 
 \begin_layout Description
-Params <STATE>: limits|nolimits
+Params <STATE>:
+ limits|nolimits
 \end_layout
 
 \begin_layout Subsection*
@@ -5148,15 +5911,26 @@ Syntax math-macro <NAME> [<NARGS>] [def]
 \end_layout
 
 \begin_layout Description
-Params <NAME>: The name of the macro, e.g. "mymacro".
+Params <NAME>:
+ The name of the macro,
+ e.g.
+ "mymacro".
 \begin_inset Newline newline
 \end_inset
 
-<NARGS>: The number of parameters of the macro. Default is 0. "def": Has no effect anymore, just for compatibility with former LyX versions.
+<NARGS>:
+ The number of parameters of the macro.
+ Default is 0.
+ "def":
+ Has no effect anymore,
+ just for compatibility with former LyX versions.
 \end_layout
 
 \begin_layout Description
-Origin ale, 10 May 1997;  sts, 21 Dec 2007
+Origin ale,
+ 10 May 1997;
+  sts,
+ 21 Dec 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -5176,7 +5950,8 @@ Syntax math-macro-add-greedy-optional-param
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5196,7 +5971,8 @@ Syntax math-macro-add-optional-param
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5216,11 +5992,16 @@ Syntax math-macro-add-param <NUM>
 \end_layout
 
 \begin_layout Description
-Params <NUM>: The number of the parameter behind which the new one will be added (1 for the first, i.e. use 0 for add a parameter at the left), defaults to the last one.
+Params <NUM>:
+ The number of the parameter behind which the new one will be added (1 for the first,
+ i.e.
+ use 0 for add a parameter at the left),
+ defaults to the last one.
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5240,7 +6021,8 @@ Syntax math-macro-append-greedy-param
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5252,7 +6034,9 @@ Action Fold a Math Macro.
 \end_layout
 
 \begin_layout Description
-Notion Fold the Math Macro the cursor is in if it was unfolded, i.e. displayed as 
+Notion Fold the Math Macro the cursor is in if it was unfolded,
+ i.e.
+ displayed as 
 \backslash
 foo before.
 \end_layout
@@ -5262,7 +6046,8 @@ Syntax math-macro-fold
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5274,7 +6059,8 @@ Action Make a parameter non-optional.
 \end_layout
 
 \begin_layout Description
-Notion Turn the last optional parameter of a Math Macro into a non-optional parameter. The default value is remembered to be reused later if the user changes his mind.
+Notion Turn the last optional parameter of a Math Macro into a non-optional parameter.
+ The default value is remembered to be reused later if the user changes his mind.
 \end_layout
 
 \begin_layout Description
@@ -5282,7 +6068,8 @@ Syntax math-macro-make-nonoptional
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5302,7 +6089,8 @@ Syntax math-macro-make-optional
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5314,7 +6102,8 @@ Action Remove a greedy parameter.
 \end_layout
 
 \begin_layout Description
-Notion Remove a greedy parameter of a Math Macro and spit out the values of it in every instance of the macro in the buffer. If it is an optional parameter the [valud] format is used.
+Notion Remove a greedy parameter of a Math Macro and spit out the values of it in every instance of the macro in the buffer.
+ If it is an optional parameter the [valud] format is used.
 \end_layout
 
 \begin_layout Description
@@ -5322,7 +6111,8 @@ Syntax math-macro-remove-greedy-param
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5342,7 +6132,8 @@ Syntax math-macro-remove-optional-param
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5362,11 +6153,14 @@ Syntax math-macro-remove-param <NUM>
 \end_layout
 
 \begin_layout Description
-Params <NUM>: The number of the parameter to be deleted (1 for the first), defaults to the last one.
+Params <NUM>:
+ The number of the parameter to be deleted (1 for the first),
+ defaults to the last one.
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5378,7 +6172,9 @@ Action Unfold a Math Macro.
 \end_layout
 
 \begin_layout Description
-Notion Unfold the Math Macro the cursor is in, i.e. display it as 
+Notion Unfold the Math Macro the cursor is in,
+ i.e.
+ display it as 
 \backslash
 foo.
 \end_layout
@@ -5388,7 +6184,8 @@ Syntax math-macro-unfold
 \end_layout
 
 \begin_layout Description
-Origin sts, 06 January 2008
+Origin sts,
+ 06 January 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5404,7 +6201,12 @@ Syntax math-matrix <COLS> <ROWS> [<ALIGN>]
 \end_layout
 
 \begin_layout Description
-Params <ALIGN>: Alignment is a word composed of the vertical alignment (b, c or t) (i.e. 1 char) and the horizontal alignments (l, c or r) (i.e. <COL> chars).
+Params <ALIGN>:
+ Alignment is a word composed of the vertical alignment (b,
+ c or t) (i.e.
+ 1 char) and the horizontal alignments (l,
+ c or r) (i.e.
+ <COL> chars).
 \end_layout
 
 \begin_layout Description
@@ -5416,11 +6218,14 @@ math-mode
 \end_layout
 
 \begin_layout Description
-Action In text mode enters math mode (i.e. puts math insets on the current cursor position), in math mode enters text mode inside math expression.
+Action In text mode enters math mode (i.e.
+ puts math insets on the current cursor position),
+ in math mode enters text mode inside math expression.
 \end_layout
 
 \begin_layout Description
-Notion If there is some selected text, it puts the text inside created math box.
+Notion If there is some selected text,
+ it puts the text inside created math box.
 \end_layout
 
 \begin_layout Description
@@ -5428,15 +6233,18 @@ Syntax math-mode [on|<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: eventual argument (LaTeX code) is passed to LFUN_MATH_INSERT .
+Params <ARG>:
+ eventual argument (LaTeX code) is passed to LFUN_MATH_INSERT .
 \begin_inset Newline newline
 \end_inset
 
-"on": allow only entering of math mode from text mode.
+"on":
+ allow only entering of math mode from text mode.
 \end_layout
 
 \begin_layout Description
-Origin Alejandro, 4 Jun 1996
+Origin Alejandro,
+ 4 Jun 1996
 \end_layout
 
 \begin_layout Subsection*
@@ -5452,11 +6260,13 @@ Syntax math-mutate <TYPE>
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: none|simple|equation|eqnarray|align|alignat|xalignat|xxalignat| multline|gather|flalign
+Params <TYPE>:
+ none|simple|equation|eqnarray|align|alignat|xalignat|xxalignat| multline|gather|flalign
 \end_layout
 
 \begin_layout Description
-Origin Andre, 23 May 2001
+Origin Andre,
+ 23 May 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -5476,7 +6286,8 @@ Syntax math-number-line-toggle
 \end_layout
 
 \begin_layout Description
-Origin Alejandro, 18 Jun 1996
+Origin Alejandro,
+ 18 Jun 1996
 \end_layout
 
 \begin_layout Subsection*
@@ -5496,7 +6307,8 @@ Syntax math-number-toggle
 \end_layout
 
 \begin_layout Description
-Origin Alejandro, 4 Jun 1996
+Origin Alejandro,
+ 4 Jun 1996
 \end_layout
 
 \begin_layout Subsection*
@@ -5516,7 +6328,8 @@ Syntax math-size <STYLE>
 \end_layout
 
 \begin_layout Description
-Params <STYLE>: 
+Params <STYLE>:
+ 
 \backslash
 displaystyle|
 \backslash
@@ -5528,7 +6341,10 @@ scriptscriptstyle
 \end_layout
 
 \begin_layout Description
-Origin Alejandro, 15 Aug 1996; sanda, 14 Jun 2008
+Origin Alejandro,
+ 15 Aug 1996;
+ sanda,
+ 14 Jun 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5548,15 +6364,19 @@ Syntax math-space [<TYPE>] [<LEN>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: negative spaces: !|negthinspace|negmedspace|negthickspace
+Params <TYPE>:
+ negative spaces:
+ !|negthinspace|negmedspace|negthickspace
 \begin_inset Newline newline
 \end_inset
 
-positive spaces: ,|thinspace|:|medspace|;|thickspace|enskip|quad|qquad
+positive spaces:
+ ,|thinspace|:|medspace|;|thickspace|enskip|quad|qquad
 \begin_inset Newline newline
 \end_inset
 
-custom space: hspace
+custom space:
+ hspace
 \begin_inset Newline newline
 \end_inset
 
@@ -5564,15 +6384,26 @@ custom space: hspace
 \begin_inset Newline newline
 \end_inset
 
-Note that ! is equivalent to negthinspace, , = thinspace, : = medspace, and ; = thickspace.
+Note that !
+ is equivalent to negthinspace,
+ ,
+ = thinspace,
+ :
+ = medspace,
+ and ;
+ = thickspace.
 \begin_inset Newline newline
 \end_inset
 
-<LEN>: length for custom spaces (hspace)
+<LEN>:
+ length for custom spaces (hspace)
 \end_layout
 
 \begin_layout Description
-Origin Andre, 25 Jul 2001; sanda, 16 Jun 2008
+Origin Andre,
+ 25 Jul 2001;
+ sanda,
+ 16 Jun 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5588,7 +6419,8 @@ Syntax math-subscript
 \end_layout
 
 \begin_layout Description
-Origin vermeer, 12 Dec 2001
+Origin vermeer,
+ 12 Dec 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -5604,7 +6436,8 @@ Syntax math-superscript
 \end_layout
 
 \begin_layout Description
-Origin vermeer, 12 Dec 2001
+Origin vermeer,
+ 12 Dec 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -5612,11 +6445,14 @@ regexp-mode
 \end_layout
 
 \begin_layout Description
-Action Enters regexp mode (i.e., puts regexp insets on the current cursor position). Used by the advanced search dialog.
+Action Enters regexp mode (i.e.,
+ puts regexp insets on the current cursor position).
+ Used by the advanced search dialog.
 \end_layout
 
 \begin_layout Description
-Notion If there is any selected text, then it is moved inside the created regexp inset.
+Notion If there is any selected text,
+ then it is moved inside the created regexp inset.
 \end_layout
 
 \begin_layout Description
@@ -5624,11 +6460,13 @@ Syntax regexp-mode [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: eventual argument (regular expression).
+Params <ARG>:
+ eventual argument (regular expression).
 \end_layout
 
 \begin_layout Description
-Origin Tommaso, 4 Oct 2008
+Origin Tommaso,
+ 4 Oct 2008
 \end_layout
 
 \begin_layout Section
@@ -5648,7 +6486,8 @@ Syntax branch-activate <BRANCH>
 \end_layout
 
 \begin_layout Description
-Params <BRANCH>: The branch to activate
+Params <BRANCH>:
+ The branch to activate
 \end_layout
 
 \begin_layout Description
@@ -5660,7 +6499,8 @@ could be used to export a pdf with the answers branch included without one's hav
 \end_layout
 
 \begin_layout Description
-Origin rgh, 27 May 2008
+Origin rgh,
+ 27 May 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5676,11 +6516,13 @@ Syntax branch-add <BRANCH>
 \end_layout
 
 \begin_layout Description
-Params <BRANCH>: Name of the branch to add
+Params <BRANCH>:
+ Name of the branch to add
 \end_layout
 
 \begin_layout Description
-Origin spitz, 7 Jul 2009
+Origin spitz,
+ 7 Jul 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -5696,11 +6538,15 @@ Syntax branch-add-insert [<NAME>]
 \end_layout
 
 \begin_layout Description
-Params <NAME>: Branch name. If it is not specified, you will be asked.
+Params <NAME>:
+ Branch name.
+ If it is not specified,
+ you will be asked.
 \end_layout
 
 \begin_layout Description
-Origin sanda, 10 Jul 2009
+Origin sanda,
+ 10 Jul 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -5716,11 +6562,13 @@ Syntax branch-deactivate <BRANCH>
 \end_layout
 
 \begin_layout Description
-Params <BRANCH>: The branch to deactivate
+Params <BRANCH>:
+ The branch to deactivate
 \end_layout
 
 \begin_layout Description
-Origin rgh, 27 May 2008
+Origin rgh,
+ 27 May 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -5736,7 +6584,8 @@ Syntax branch-invert
 \end_layout
 
 \begin_layout Description
-Origin rgheck, 12 July 2016
+Origin rgheck,
+ 12 July 2016
 \end_layout
 
 \begin_layout Subsection*
@@ -5752,7 +6601,8 @@ Syntax branch-master-activate <BRANCH>
 \end_layout
 
 \begin_layout Description
-Params <BRANCH>: The branch to activate
+Params <BRANCH>:
+ The branch to activate
 \end_layout
 
 \begin_layout Description
@@ -5764,7 +6614,8 @@ could be used to export a pdf with the answers branch included without one's hav
 \end_layout
 
 \begin_layout Description
-Origin spitz, 30 Sep 2012
+Origin spitz,
+ 30 Sep 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -5780,11 +6631,13 @@ Syntax branch-master-deactivate <BRANCH>
 \end_layout
 
 \begin_layout Description
-Params <BRANCH>: The branch to deactivate
+Params <BRANCH>:
+ The branch to deactivate
 \end_layout
 
 \begin_layout Description
-Origin spitz, 30 Sep 2012
+Origin spitz,
+ 30 Sep 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -5800,7 +6653,8 @@ Syntax branch-sync-all
 \end_layout
 
 \begin_layout Description
-Origin sanda, 15 April 2022
+Origin sanda,
+ 15 April 2022
 \end_layout
 
 \begin_layout Subsection*
@@ -5816,11 +6670,14 @@ Syntax branches-rename <OLDNAME> <NEWNAME>
 \end_layout
 
 \begin_layout Description
-Params <OLDNAME>: Current name of the branch to be renamed <NEWNAME>: New name of the branch
+Params <OLDNAME>:
+ Current name of the branch to be renamed <NEWNAME>:
+ New name of the branch
 \end_layout
 
 \begin_layout Description
-Origin spitz, 9 Jul 2009
+Origin spitz,
+ 9 Jul 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -5832,7 +6689,9 @@ Action Saves the current buffer to a temporary file.
 \end_layout
 
 \begin_layout Description
-Notion Saves the current buffer to a file named "#filename#". This LFUN is called automatically by LyX, to "autosave" the current buffer.
+Notion Saves the current buffer to a file named "#filename#".
+ This LFUN is called automatically by LyX,
+ to "autosave" the current buffer.
 \end_layout
 
 \begin_layout Description
@@ -5856,11 +6715,14 @@ Syntax buffer-child-open <FILE>
 \end_layout
 
 \begin_layout Description
-Params <FILE>: Filename of the child. The directory of the parent is assumed by default.
+Params <FILE>:
+ Filename of the child.
+ The directory of the parent is assumed by default.
 \end_layout
 
 \begin_layout Description
-Origin Ale, 28 May 1997
+Origin Ale,
+ 28 May 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -5876,7 +6738,8 @@ Syntax buffer-chktex
 \end_layout
 
 \begin_layout Description
-Origin Asger, 30 Oct 1997
+Origin Asger,
+ 30 Oct 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -5888,7 +6751,10 @@ Action Closes the current buffer.
 \end_layout
 
 \begin_layout Description
-Notion Closes the current buffer, asking whether to save it, etc, if the buffer has been modified.
+Notion Closes the current buffer,
+ asking whether to save it,
+ etc,
+ if the buffer has been modified.
 \end_layout
 
 \begin_layout Description
@@ -5904,7 +6770,10 @@ Action Closes all buffers.
 \end_layout
 
 \begin_layout Description
-Notion Closes all buffers, asking whether to save it, etc, if a buffer has been modified.
+Notion Closes all buffers,
+ asking whether to save it,
+ etc,
+ if a buffer has been modified.
 \end_layout
 
 \begin_layout Description
@@ -5924,23 +6793,31 @@ Syntax buffer-export [<FORMAT>] [<DEST>]
 \end_layout
 
 \begin_layout Description
-Params <FORMAT> is either "custom" or one of the formats which you can find in Tools->Preferences->File formats->Format. Usual format you will enter is "pdf2" (pdflatex), "pdflatex" (plain tex for pdflatex) or "ps" for postscript.
+Params <FORMAT> is either "custom" or one of the formats which you can find in Tools->Preferences->File formats->Format.
+ Usual format you will enter is "pdf2" (pdflatex),
+ "pdflatex" (plain tex for pdflatex) or "ps" for postscript.
 \begin_inset Newline newline
 \end_inset
 
-In case of "custom" you will be asked for a format you want to start from and for the command that you want to apply to this format. Internally the control is then passed to LFUN_BUFFER_EXPORT_CUSTOM.
+In case of "custom" you will be asked for a format you want to start from and for the command that you want to apply to this format.
+ Internally the control is then passed to LFUN_BUFFER_EXPORT_CUSTOM.
 \begin_inset Newline newline
 \end_inset
 
-If absent or "default", then the default output format of the document is used.
+If absent or "default",
+ then the default output format of the document is used.
 \begin_inset Newline newline
 \end_inset
 
-<DEST>   If present, this argument provides the export destination filename. Its containing folder will also be the destination folder, where all the needed external files will be copied.
+<DEST>   If present,
+ this argument provides the export destination filename.
+ Its containing folder will also be the destination folder,
+ where all the needed external files will be copied.
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 29 Jul 1997
+Origin Lgb,
+ 29 Jul 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -5956,7 +6833,10 @@ Syntax buffer-export-as [<FORMAT>]
 \end_layout
 
 \begin_layout Description
-Params <FORMAT> is the export format initially selected in the dialog. You can pass any of the formats which you can find in Tools->Preferences->File formats->Format, provided it has the "document" flag set. If no format is specified the dialog will start with the default output format of the current document.
+Params <FORMAT> is the export format initially selected in the dialog.
+ You can pass any of the formats which you can find in Tools->Preferences->File formats->Format,
+ provided it has the "document" flag set.
+ If no format is specified the dialog will start with the default output format of the current document.
 \end_layout
 
 \begin_layout Description
@@ -5964,7 +6844,8 @@ Sample buffer-export-as pdf2
 \end_layout
 
 \begin_layout Description
-Origin tommaso, 6 Oct 2011
+Origin tommaso,
+ 6 Oct 2011
 \end_layout
 
 \begin_layout Subsection*
@@ -5984,7 +6865,8 @@ Params <FORMAT> format to start from (LyX will care to produce such intermediate
 \begin_inset Newline newline
 \end_inset
 
-<COMMAND> this command will be launched on the file. Note that you can use "$$FName" string to qualify the intermediate file.
+<COMMAND> this command will be launched on the file.
+ Note that you can use "$$FName" string to qualify the intermediate file.
 \end_layout
 
 \begin_layout Description
@@ -5992,7 +6874,8 @@ Sample buffer-export-custom dvi dvips -f $$FName -o myfile.ps
 \end_layout
 
 \begin_layout Description
-Origin leeming, 27 Mar 2004
+Origin leeming,
+ 27 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
@@ -6008,7 +6891,8 @@ Syntax buffer-external-modification-clear
 \end_layout
 
 \begin_layout Description
-Origin gm, 2 March 2017
+Origin gm,
+ 2 March 2017
 \end_layout
 
 \begin_layout Subsection*
@@ -6020,7 +6904,8 @@ Action Applies a command to all non-hidden buffers.
 \end_layout
 
 \begin_layout Description
-Notion a buffer is `hidden' if it is internally open in LyX, but not visible in any window.
+Notion a buffer is `hidden' if it is internally open in LyX,
+ but not visible in any window.
 \end_layout
 
 \begin_layout Description
@@ -6028,7 +6913,8 @@ Syntax buffer-forall <LFUN-COMMAND>
 \end_layout
 
 \begin_layout Description
-Params <LFUN-COMMAND>: The command to be applied to the buffers.
+Params <LFUN-COMMAND>:
+ The command to be applied to the buffers.
 \end_layout
 
 \begin_layout Description
@@ -6084,7 +6970,8 @@ buffer-forall buffer-export pdf2
 \end_layout
 
 \begin_layout Description
-Origin skostysh, 20 Jul 2012
+Origin skostysh,
+ 20 Jul 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -6096,7 +6983,8 @@ Action Import a given file as a lyx document.
 \end_layout
 
 \begin_layout Description
-Notion File can be imported iff lyx file format is (transitively) reachable via defined converters in preferences. Look in the File->Import menu to get an idea of the currently active import formats.
+Notion File can be imported iff lyx file format is (transitively) reachable via defined converters in preferences.
+ Look in the File->Import menu to get an idea of the currently active import formats.
 \end_layout
 
 \begin_layout Description
@@ -6104,7 +6992,8 @@ Syntax buffer-import <FORMAT> [<FILE>]
 \end_layout
 
 \begin_layout Description
-Origin Asger, 24 Jul 1998
+Origin Asger,
+ 24 Jul 1998
 \end_layout
 
 \begin_layout Subsection*
@@ -6120,11 +7009,14 @@ Syntax buffer-language <LANG>
 \end_layout
 
 \begin_layout Description
-Params <LANG>: language name. See lib/languages for list.
+Params <LANG>:
+ language name.
+ See lib/languages for list.
 \end_layout
 
 \begin_layout Description
-Origin leeming, 30 Mar 2004
+Origin leeming,
+ 30 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
@@ -6140,7 +7032,8 @@ Syntax buffer-move-next
 \end_layout
 
 \begin_layout Description
-Origin skostysh, 7 Apr 2015
+Origin skostysh,
+ 7 Apr 2015
 \end_layout
 
 \begin_layout Subsection*
@@ -6156,7 +7049,8 @@ Syntax buffer-move-previous
 \end_layout
 
 \begin_layout Description
-Origin skostysh, 7 Apr 2015
+Origin skostysh,
+ 7 Apr 2015
 \end_layout
 
 \begin_layout Subsection*
@@ -6164,7 +7058,8 @@ buffer-new
 \end_layout
 
 \begin_layout Description
-Action Creates a new buffer (that is, document) and switches to it.
+Action Creates a new buffer (that is,
+ document) and switches to it.
 \end_layout
 
 \begin_layout Description
@@ -6176,7 +7071,8 @@ Syntax buffer-new [<FILE>]
 \end_layout
 
 \begin_layout Description
-Params <FILE>: filename of created file with absolute path.
+Params <FILE>:
+ filename of created file with absolute path.
 \end_layout
 
 \begin_layout Subsection*
@@ -6184,11 +7080,13 @@ buffer-new-template
 \end_layout
 
 \begin_layout Description
-Action Creates a new buffer (that is, document) from a template.
+Action Creates a new buffer (that is,
+ document) from a template.
 \end_layout
 
 \begin_layout Description
-Notion Path for new files and templates can be set in Preferences dialog. Template will be asked for via Open-dialog.
+Notion Path for new files and templates can be set in Preferences dialog.
+ Template will be asked for via Open-dialog.
 \end_layout
 
 \begin_layout Description
@@ -6196,7 +7094,14 @@ Syntax buffer-new-template [<FILE>] [<TEMPLATE FILE>]
 \end_layout
 
 \begin_layout Description
-Params <FILE>: filename of created file with absolute path. If empty or "newfile", a file with appropriate name is generated. <TEMPLATE FILE>: filename of template with absolute path. If empty, a dialog is opened to select the new file.
+Params <FILE>:
+ filename of created file with absolute path.
+ If empty or "newfile",
+ a file with appropriate name is generated.
+ <TEMPLATE FILE>:
+ filename of template with absolute path.
+ If empty,
+ a dialog is opened to select the new file.
 \end_layout
 
 \begin_layout Subsection*
@@ -6228,11 +7133,14 @@ Syntax buffer-params-apply [<ARGS>]
 \end_layout
 
 \begin_layout Description
-Params <ARGS>: contains the particular settings to be saved. They obey the syntax you can find in document header of usual .lyx file.
+Params <ARGS>:
+ contains the particular settings to be saved.
+ They obey the syntax you can find in document header of usual .lyx file.
 \end_layout
 
 \begin_layout Description
-Origin leeming, 30 Mar 2004
+Origin leeming,
+ 30 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
@@ -6260,11 +7168,15 @@ Syntax buffer-reload [dump]
 \end_layout
 
 \begin_layout Description
-Params dump: do not ask for any confirmation, just reload. All changes will be lost.
+Params dump:
+ do not ask for any confirmation,
+ just reload.
+ All changes will be lost.
 \end_layout
 
 \begin_layout Description
-Origin Asger, 2 Feb 1997
+Origin Asger,
+ 2 Feb 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -6280,7 +7192,8 @@ Syntax buffer-reset-export
 \end_layout
 
 \begin_layout Description
-Origin spitz, 27 Dec 2019
+Origin spitz,
+ 27 Dec 2019
 \end_layout
 
 \begin_layout Subsection*
@@ -6300,11 +7213,14 @@ Syntax buffer-save-as-default [<ARGS>]
 \end_layout
 
 \begin_layout Description
-Params <ARGS>: contains the particular settings to be saved. They obey the syntax you can find in document header of usual .lyx file.
+Params <ARGS>:
+ contains the particular settings to be saved.
+ They obey the syntax you can find in document header of usual .lyx file.
 \end_layout
 
 \begin_layout Description
-Origin leeming, 30 Mar 2004
+Origin leeming,
+ 30 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
@@ -6320,7 +7236,8 @@ Syntax buffer-switch <BUFFER>
 \end_layout
 
 \begin_layout Description
-Params <BUFFER>: path and filename of already opened (but possibly hidden) document which is to be shown.
+Params <BUFFER>:
+ path and filename of already opened (but possibly hidden) document which is to be shown.
 \end_layout
 
 \begin_layout Subsection*
@@ -6336,7 +7253,8 @@ Syntax buffer-toggle-compression
 \end_layout
 
 \begin_layout Description
-Origin bpeng, 27 Apr 2006
+Origin bpeng,
+ 27 Apr 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -6348,7 +7266,8 @@ Action Toggle editing mode of the current document between read/write and read-o
 \end_layout
 
 \begin_layout Description
-Notion This function is not allowed if the file is under version control, since read-only flag is often used in version control file locking.
+Notion This function is not allowed if the file is under version control,
+ since read-only flag is often used in version control file locking.
 \end_layout
 
 \begin_layout Description
@@ -6356,7 +7275,8 @@ Syntax buffer-toggle-read-only
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 27 May 1997
+Origin Lgb,
+ 27 May 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -6368,7 +7288,9 @@ Action Exports the current document and put the result into the temporary direct
 \end_layout
 
 \begin_layout Description
-Notion In case you are already viewing the exported document (see LFUN_BUFFER_VIEW) the output will be rewritten - updated. This is useful in case your viewer is able to detect such changes (e.g. ghostview for postscript).
+Notion In case you are already viewing the exported document (see LFUN_BUFFER_VIEW) the output will be rewritten - updated.
+ This is useful in case your viewer is able to detect such changes (e.g.
+ ghostview for postscript).
 \end_layout
 
 \begin_layout Description
@@ -6376,11 +7298,17 @@ Syntax buffer-update [<FORMAT>]
 \end_layout
 
 \begin_layout Description
-Params <FORMAT>: The format to display, where this is one of the formats defined in the Tools>Preferences>File Formats dialog, 			 use the "Short name" field. If no format is given, the default format as specified in the same dialog is used.
+Params <FORMAT>:
+ The format to display,
+ where this is one of the formats defined in the Tools>Preferences>File Formats dialog,
+ 			 use the "Short name" field.
+ If no format is given,
+ the default format as specified in the same dialog is used.
 \end_layout
 
 \begin_layout Description
-Origin Dekel, 5 Aug 2000
+Origin Dekel,
+ 5 Aug 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -6392,7 +7320,12 @@ Action Displays current buffer in chosen format.
 \end_layout
 
 \begin_layout Description
-Notion Displays the contents of the current buffer in the chosen format, for example, PDF or DVI. This runs the necessary converter, calls the defined viewer, and so forth.
+Notion Displays the contents of the current buffer in the chosen format,
+ for example,
+ PDF or DVI.
+ This runs the necessary converter,
+ calls the defined viewer,
+ and so forth.
 \end_layout
 
 \begin_layout Description
@@ -6400,7 +7333,11 @@ Syntax buffer-view [<FORMAT>]
 \end_layout
 
 \begin_layout Description
-Params <FORMAT>: The format to display, where this is one of the formats defined (in the current GUI) in the Tools>Preferences>File Formats dialog. If no format is given, the default format as specified in the same dialog is used.
+Params <FORMAT>:
+ The format to display,
+ where this is one of the formats defined (in the current GUI) in the Tools>Preferences>File Formats dialog.
+ If no format is given,
+ the default format as specified in the same dialog is used.
 \end_layout
 
 \begin_layout Subsection*
@@ -6412,7 +7349,10 @@ Action Opens the file that was created from last preview of this buffer.
 \end_layout
 
 \begin_layout Description
-Notion This LFUN is called by the "Show Output Anyway" button in the LaTeX Errors dialog. It can also be called by the user, which is useful if the document takes a long time to compile, and you just want to see the last previewed version.
+Notion This LFUN is called by the "Show Output Anyway" button in the LaTeX Errors dialog.
+ It can also be called by the user,
+ which is useful if the document takes a long time to compile,
+ and you just want to see the last previewed version.
 \end_layout
 
 \begin_layout Description
@@ -6428,7 +7368,9 @@ Action Saves the current buffer.
 \end_layout
 
 \begin_layout Description
-Notion Saves the current buffer to disk, using the filename that is already associated with the buffer, asking for one if none is yet assigned.
+Notion Saves the current buffer to disk,
+ using the filename that is already associated with the buffer,
+ asking for one if none is yet assigned.
 \end_layout
 
 \begin_layout Description
@@ -6436,7 +7378,8 @@ Syntax buffer-write [force]
 \end_layout
 
 \begin_layout Description
-Params force: write even if buffer is clean.
+Params force:
+ write even if buffer is clean.
 \end_layout
 
 \begin_layout Subsection*
@@ -6452,7 +7395,8 @@ Syntax buffer-write-all
 \end_layout
 
 \begin_layout Description
-Origin rgh, gpothier 6 Aug 2007
+Origin rgh,
+ gpothier 6 Aug 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -6468,7 +7412,9 @@ Syntax buffer-write-as <FILENAME>
 \end_layout
 
 \begin_layout Description
-Params <FILENAME>: New name of the buffer/file. A relative path is with respect to the original location of the buffer/file.
+Params <FILENAME>:
+ New name of the buffer/file.
+ A relative path is with respect to the original location of the buffer/file.
 \end_layout
 
 \begin_layout Subsection*
@@ -6484,7 +7430,9 @@ Syntax buffer-write-as-template <FILENAME>
 \end_layout
 
 \begin_layout Description
-Params <FILENAME>: New name of the buffer/file. A relative path 	       is with respect to the original location of the buffer/file.
+Params <FILENAME>:
+ New name of the buffer/file.
+ A relative path 	       is with respect to the original location of the buffer/file.
 \end_layout
 
 \begin_layout Subsection*
@@ -6500,11 +7448,14 @@ Syntax buffer-zoom [<ZOOM>]
 \end_layout
 
 \begin_layout Description
-Params <ZOOM>: The target zoom value in %; the default is the default zoom as saved in preferences.
+Params <ZOOM>:
+ The target zoom value in %;
+ the default is the default zoom as saved in preferences.
 \end_layout
 
 \begin_layout Description
-Origin daniel, 28 Oct 2016
+Origin daniel,
+ 28 Oct 2016
 \end_layout
 
 \begin_layout Subsection*
@@ -6520,11 +7471,15 @@ Syntax buffer-zoom-in [<ZOOM>]
 \end_layout
 
 \begin_layout Description
-Params <ZOOM>: The zoom value addition in % (neg. or pos.); the default is 10% of the default zoom as saved in preferences.
+Params <ZOOM>:
+ The zoom value addition in % (neg.
+ or pos.);
+ the default is 10% of the default zoom as saved in preferences.
 \end_layout
 
 \begin_layout Description
-Origin vfr, 30 Mar 2009
+Origin vfr,
+ 30 Mar 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -6540,11 +7495,15 @@ Syntax buffer-zoom-out [<ZOOM>]
 \end_layout
 
 \begin_layout Description
-Params <ZOOM>: The zoom value abstraction in % (neg. or pos.); the default is 10% of the default zoom as saved in preferences.
+Params <ZOOM>:
+ The zoom value abstraction in % (neg.
+ or pos.);
+ the default is 10% of the default zoom as saved in preferences.
 \end_layout
 
 \begin_layout Description
-Origin vfr, 30 Mar 2009
+Origin vfr,
+ 30 Mar 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -6558,7 +7517,8 @@ Action Generates the code (literate programming).
 \begin_layout Description
 Notion Latex file with extension 
 \backslash
-literate_extension is generated. Then LyX invokes 
+literate_extension is generated.
+ Then LyX invokes 
 \backslash
 build_command (with a default of ``make'') to generate the code and 
 \backslash
@@ -6566,7 +7526,9 @@ build_error_filter to process the compilation error messages.
 \begin_inset Newline newline
 \end_inset
 
-In case you want to process your literate file with a script, or some other program, just insert in your lyxrc file an entry with:
+In case you want to process your literate file with a script,
+ or some other program,
+ just insert in your lyxrc file an entry with:
 \begin_inset Newline newline
 \end_inset
 
@@ -6600,7 +7562,8 @@ Syntax file-open [<FILE>]
 \end_layout
 
 \begin_layout Description
-Params <FILE>: Filename to be opened.
+Params <FILE>:
+ Filename to be opened.
 \end_layout
 
 \begin_layout Subsection*
@@ -6616,11 +7579,13 @@ Syntax help-open <FILE>[.lyx]
 \end_layout
 
 \begin_layout Description
-Params <FILE>: any document from (/usr/share/)doc directory.
+Params <FILE>:
+ any document from (/usr/share/)doc directory.
 \end_layout
 
 \begin_layout Description
-Origin Jug, 27 Jun 1999
+Origin Jug,
+ 27 Jun 1999
 \end_layout
 
 \begin_layout Subsection*
@@ -6636,7 +7601,9 @@ Syntax icon-size [<SIZE>]
 \end_layout
 
 \begin_layout Description
-Params <SIZE> : the icon size in px or one of the logical settings small|normal|big|huge|giant, the default is normal (whose size in px is icon set dependent).
+Params <SIZE> :
+ the icon size in px or one of the logical settings small|normal|big|huge|giant,
+ the default is normal (whose size in px is icon set dependent).
 \end_layout
 
 \begin_layout Description
@@ -6652,7 +7619,9 @@ Action Helper function for master-related actions
 \end_layout
 
 \begin_layout Description
-Notion In a buffer, the function will be disabled if the buffer has no master or children. It thus allows to enable actions only in documents with master/children
+Notion In a buffer,
+ the function will be disabled if the buffer has no master or children.
+ It thus allows to enable actions only in documents with master/children
 \end_layout
 
 \begin_layout Description
@@ -6660,7 +7629,8 @@ Syntax ifrelatives <ACTION>
 \end_layout
 
 \begin_layout Description
-Origin spitz, 2 January 2020
+Origin spitz,
+ 2 January 2020
 \end_layout
 
 \begin_layout Subsection*
@@ -6672,7 +7642,9 @@ Action Terminates the current LyX instance.
 \end_layout
 
 \begin_layout Description
-Notion Terminates the current LyX instance, asking whether to save modified documents, etc.
+Notion Terminates the current LyX instance,
+ asking whether to save modified documents,
+ etc.
 \end_layout
 
 \begin_layout Description
@@ -6684,7 +7656,8 @@ lyxfiles-open
 \end_layout
 
 \begin_layout Description
-Action Open lyxfiles (templates/examples). Create a view if he have none.
+Action Open lyxfiles (templates/examples).
+ Create a view if he have none.
 \end_layout
 
 \begin_layout Description
@@ -6692,11 +7665,14 @@ Syntax lyxfiles-open [<TYPE>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: templates or examples. Default is templates.
+Params <TYPE>:
+ templates or examples.
+ Default is templates.
 \end_layout
 
 \begin_layout Description
-Origin spitz, 10 Feb 2021
+Origin spitz,
+ 10 Feb 2021
 \end_layout
 
 \begin_layout Subsection*
@@ -6712,7 +7688,9 @@ Syntax master-buffer-export [<FORMAT>] [<DEST>]
 \end_layout
 
 \begin_layout Description
-Params <FORMAT> is one of the formats which you can find in Tools->Preferences->File formats->Format. Usual format you will enter is "pdf2" (pdflatex), "pdflatex" (plain tex for pdflatex) or "ps" for postscript.
+Params <FORMAT> is one of the formats which you can find in Tools->Preferences->File formats->Format.
+ Usual format you will enter is "pdf2" (pdflatex),
+ "pdflatex" (plain tex for pdflatex) or "ps" for postscript.
 \begin_inset Newline newline
 \end_inset
 
@@ -6720,15 +7698,20 @@ Note that "custom" is not allowed in this case.
 \begin_inset Newline newline
 \end_inset
 
-If absent or "default", then the default output format of the document is used.
+If absent or "default",
+ then the default output format of the document is used.
 \begin_inset Newline newline
 \end_inset
 
-<DEST>   If present, this argument provides the export destination filename. Its containing folder will also be the destination folder, where all the needed external files will be copied.
+<DEST>   If present,
+ this argument provides the export destination filename.
+ Its containing folder will also be the destination folder,
+ where all the needed external files will be copied.
 \end_layout
 
 \begin_layout Description
-Origin rkh, 18 April 2018
+Origin rkh,
+ 18 April 2018
 \end_layout
 
 \begin_layout Subsection*
@@ -6736,7 +7719,8 @@ master-buffer-forall
 \end_layout
 
 \begin_layout Description
-Action Applies a command to a buffer and all it children, starting from the master.
+Action Applies a command to a buffer and all it children,
+ starting from the master.
 \end_layout
 
 \begin_layout Description
@@ -6744,7 +7728,8 @@ Syntax master-buffer-forall <LFUN-COMMAND>
 \end_layout
 
 \begin_layout Description
-Params <LFUN-COMMAND>: The command to be applied to the buffers.
+Params <LFUN-COMMAND>:
+ The command to be applied to the buffers.
 \end_layout
 
 \begin_layout Description
@@ -6792,7 +7777,8 @@ Sample Close all Notes in buffers:
 \end_layout
 
 \begin_layout Description
-Origin spitz, 31 Dec 2019
+Origin spitz,
+ 31 Dec 2019
 \end_layout
 
 \begin_layout Subsection*
@@ -6800,7 +7786,8 @@ master-buffer-update
 \end_layout
 
 \begin_layout Description
-Action Update (export) the document built from the master buffer, if the current buffer is part of a master/child document.
+Action Update (export) the document built from the master buffer,
+ if the current buffer is part of a master/child document.
 \end_layout
 
 \begin_layout Description
@@ -6808,11 +7795,16 @@ Syntax master-buffer-update [<FORMAT>]
 \end_layout
 
 \begin_layout Description
-Params <FORMAT>: The format to display, where this is one of the formats defined (in the current GUI) in the Tools>Preferences>File Formats dialog. If no format is given, the default format as specified in the same dialog is used.
+Params <FORMAT>:
+ The format to display,
+ where this is one of the formats defined (in the current GUI) in the Tools>Preferences>File Formats dialog.
+ If no format is given,
+ the default format as specified in the same dialog is used.
 \end_layout
 
 \begin_layout Description
-Origin Tommaso, 20 Sep 2007
+Origin Tommaso,
+ 20 Sep 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -6820,7 +7812,9 @@ master-buffer-view
 \end_layout
 
 \begin_layout Description
-Action Show a preview built from the master buffer, if available. if the current buffer is part of a master/child document.
+Action Show a preview built from the master buffer,
+ if available.
+ if the current buffer is part of a master/child document.
 \end_layout
 
 \begin_layout Description
@@ -6828,11 +7822,16 @@ Syntax master-buffer-view [<FORMAT>]
 \end_layout
 
 \begin_layout Description
-Params <FORMAT>: The format to display, where this is one of the formats defined (in the current GUI) in the Tools>Preferences>File Formats dialog. If no format is given, the default format as specified in the same dialog is used.
+Params <FORMAT>:
+ The format to display,
+ where this is one of the formats defined (in the current GUI) in the Tools>Preferences>File Formats dialog.
+ If no format is given,
+ the default format as specified in the same dialog is used.
 \end_layout
 
 \begin_layout Description
-Origin Tommaso, 20 Sep 2007
+Origin Tommaso,
+ 20 Sep 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -6848,7 +7847,9 @@ Syntax menu-open <NAME>
 \end_layout
 
 \begin_layout Description
-Params <NAME>: menu name. See various .inc files in lib/ui for candidates.
+Params <NAME>:
+ menu name.
+ See various .inc files in lib/ui for candidates.
 \end_layout
 
 \begin_layout Subsection*
@@ -6860,7 +7861,9 @@ Action Close the current tab group.
 \end_layout
 
 \begin_layout Description
-Notion This only closes the work areas, not the buffers themselves. The still opened buffers can be visualized in another tab group.
+Notion This only closes the work areas,
+ not the buffers themselves.
+ The still opened buffers can be visualized in another tab group.
 \end_layout
 
 \begin_layout Description
@@ -6868,7 +7871,8 @@ Syntax tab-group-close
 \end_layout
 
 \begin_layout Description
-Origin Abdel, 21 Feb 2008
+Origin Abdel,
+ 21 Feb 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -6908,11 +7912,13 @@ Syntax toolbar-movable <NAME>
 \end_layout
 
 \begin_layout Description
-Params <NAME>: *|standard|extra|table|math|mathmacrotemplate| minibuffer|review|view/update|math_panels|vcs| view-others|update-others
+Params <NAME>:
+ *|standard|extra|table|math|mathmacrotemplate| minibuffer|review|view/update|math_panels|vcs| view-others|update-others
 \end_layout
 
 \begin_layout Description
-Origin daniel, 12 July 2016
+Origin daniel,
+ 12 July 2016
 \end_layout
 
 \begin_layout Subsection*
@@ -6920,7 +7926,9 @@ toolbar-set
 \end_layout
 
 \begin_layout Description
-Action Sets visibility of a given toolbar to on, off, or auto.
+Action Sets visibility of a given toolbar to on,
+ off,
+ or auto.
 \end_layout
 
 \begin_layout Description
@@ -6932,7 +7940,8 @@ Syntax toolbar-set <NAME> [on|off|auto]
 \end_layout
 
 \begin_layout Description
-Params <NAME>: standard|extra|table|math|mathmacrotemplate|
+Params <NAME>:
+ standard|extra|table|math|mathmacrotemplate|
 \begin_inset Newline newline
 \end_inset
 
@@ -6940,7 +7949,8 @@ Params <NAME>: standard|extra|table|math|mathmacrotemplate|
 \end_layout
 
 \begin_layout Description
-Origin spitz, 17 Dec 2020
+Origin spitz,
+ 17 Dec 2020
 \end_layout
 
 \begin_layout Subsection*
@@ -6960,7 +7970,8 @@ Syntax toolbar-toggle <NAME> [allowauto]
 \end_layout
 
 \begin_layout Description
-Params <NAME>: standard|extra|table|math|mathmacrotemplate|
+Params <NAME>:
+ standard|extra|table|math|mathmacrotemplate|
 \begin_inset Newline newline
 \end_inset
 
@@ -6968,7 +7979,8 @@ minibuffer|review|view/update|math_panels|vcs| view-others|update-others
 \end_layout
 
 \begin_layout Description
-Origin Edwin, 21 May 2007
+Origin Edwin,
+ 21 May 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -6984,47 +7996,62 @@ Syntax ui-toggle <statusbar|menubar|scrollbar|frame|fullscreen>
 \end_layout
 
 \begin_layout Description
-Params statusbar     : Toggle visibility of the statusbar.
+Params statusbar     :
+ Toggle visibility of the statusbar.
 \begin_inset Newline newline
 \end_inset
 
-menubar       : Toggle visibility of the menubar.
+menubar       :
+ Toggle visibility of the menubar.
 \begin_inset Newline newline
 \end_inset
 
-scrollbar     : Toggle visibility of the scrollbar.
+scrollbar     :
+ Toggle visibility of the scrollbar.
 \begin_inset Newline newline
 \end_inset
 
-frame         : Toggle visibility of the frames around editing window.
+frame         :
+ Toggle visibility of the frames around editing window.
 \begin_inset Newline newline
 \end_inset
 
-zoomslider    : Toggle visibility of the zoom slider in statusbar.
+zoomslider    :
+ Toggle visibility of the zoom slider in statusbar.
 \begin_inset Newline newline
 \end_inset
 
-zoomlevel     : Toggle visibility of the zoom level display in statusbar.
+zoomlevel     :
+ Toggle visibility of the zoom level display in statusbar.
 \begin_inset Newline newline
 \end_inset
 
-statistics-w  : Toggle visibility of the document word count in statusbar.
+statistics-w  :
+ Toggle visibility of the document word count in statusbar.
 \begin_inset Newline newline
 \end_inset
 
-statistics-cb : Toggle visibility of the document character count (incl. blanks) in statusbar.
+statistics-cb :
+ Toggle visibility of the document character count (incl.
+ blanks) in statusbar.
 \begin_inset Newline newline
 \end_inset
 
-statistics-c  : Toggle visibility of the document character count (excl. blanks) in statusbar.
+statistics-c  :
+ Toggle visibility of the document character count (excl.
+ blanks) in statusbar.
 \begin_inset Newline newline
 \end_inset
 
-fullscreen    : Toggle fullscreen mode. This also covers calling the previous functions. However LFUN_TOOLBAR_TOGGLE for the custom tweaks of the toolbars should be used.
+fullscreen    :
+ Toggle fullscreen mode.
+ This also covers calling the previous functions.
+ However LFUN_TOOLBAR_TOGGLE for the custom tweaks of the toolbars should be used.
 \end_layout
 
 \begin_layout Description
-Origin sanda, 9 Feb 2007
+Origin sanda,
+ 9 Feb 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -7036,7 +8063,9 @@ Action Close the current document work area.
 \end_layout
 
 \begin_layout Description
-Notion Close the current work area. If no other work areas are showing the buffer, then close the associated buffer as well.
+Notion Close the current work area.
+ If no other work areas are showing the buffer,
+ then close the associated buffer as well.
 \end_layout
 
 \begin_layout Description
@@ -7044,7 +8073,8 @@ Syntax view-close
 \end_layout
 
 \begin_layout Description
-Origin Tommaso, 15 Sep 2012
+Origin Tommaso,
+ 15 Sep 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -7064,15 +8094,18 @@ Syntax view-split <vertical|horizontal>
 \end_layout
 
 \begin_layout Description
-Params horizontal : The work areas are laid out side by side.
+Params horizontal :
+ The work areas are laid out side by side.
 \begin_inset Newline newline
 \end_inset
 
-vertical   : The work areas laid out vertically.
+vertical   :
+ The work areas laid out vertically.
 \end_layout
 
 \begin_layout Description
-Origin Abdel, 20 Feb 2008
+Origin Abdel,
+ 20 Feb 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -7088,7 +8121,8 @@ Syntax window-close
 \end_layout
 
 \begin_layout Description
-Origin Abdel, 23 Oct 2006
+Origin Abdel,
+ 23 Oct 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -7108,15 +8142,19 @@ Syntax window-new [<GEOMETRY>]
 \end_layout
 
 \begin_layout Description
-Params <GEOMETRY>: pass the geometry of the window. This parameter is currently accepted only on Windows platform.
+Params <GEOMETRY>:
+ pass the geometry of the window.
+ This parameter is currently accepted only on Windows platform.
 \end_layout
 
 \begin_layout Description
-Origin Abdel, 21 Oct 2006
+Origin Abdel,
+ 21 Oct 2006
 \end_layout
 
 \begin_layout Section
-System Functions (Preferences, LyX Server etc.)
+System Functions (Preferences,
+ LyX Server etc.)
 \end_layout
 
 \begin_layout Subsection*
@@ -7128,7 +8166,10 @@ Action Toggles including of resources for forward/reverse search of the given do
 \end_layout
 
 \begin_layout Description
-Notion When toggled on, SyncTeX is invoked for PDF, while srcltx package is used for DVI. Custom LaTeX macro can be defined in preferences.
+Notion When toggled on,
+ SyncTeX is invoked for PDF,
+ while srcltx package is used for DVI.
+ Custom LaTeX macro can be defined in preferences.
 \end_layout
 
 \begin_layout Description
@@ -7136,7 +8177,8 @@ Syntax buffer-toggle-output-sync
 \end_layout
 
 \begin_layout Description
-Origin sanda, 25 May 2010
+Origin sanda,
+ 25 May 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -7154,13 +8196,16 @@ Notion The definitions are by default read from lib/commands/default.def.
 
 A .def file allows to define a command with 
 \backslash
-define "<NAME>" "<LFUN>" where <NAME> is the name of the new command and <LFUN> is the lfun code to be executed (see e.g. LFUN_COMMAND_SEQUENCE). 
+define "<NAME>" "<LFUN>" where <NAME> is the name of the new command and <LFUN> is the lfun code to be executed (see e.g.
+ LFUN_COMMAND_SEQUENCE).
+ 
 \backslash
 def_file "FileName" allows to include another .def file.
 \begin_inset Newline newline
 \end_inset
 
-This is particularly useful in connection with toolbar buttons: Since the name of the button image for this lfun is lib/images/commands/<NAME>.png this is the way to assign an image to a complex command-sequence.
+This is particularly useful in connection with toolbar buttons:
+ Since the name of the button image for this lfun is lib/images/commands/<NAME>.png this is the way to assign an image to a complex command-sequence.
 \end_layout
 
 \begin_layout Description
@@ -7168,11 +8213,13 @@ Syntax call <NAME>
 \end_layout
 
 \begin_layout Description
-Params <NAME>: Name of the command that must be called.
+Params <NAME>:
+ Name of the command that must be called.
 \end_layout
 
 \begin_layout Description
-Origin broider, 2 Oct 2007
+Origin broider,
+ 2 Oct 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -7196,7 +8243,8 @@ Action Runs the first listed command that is enabled.
 \end_layout
 
 \begin_layout Description
-Notion This can be used to bind multiple functions to a single key, and then which one is used will depend upon the context.
+Notion This can be used to bind multiple functions to a single key,
+ and then which one is used will depend upon the context.
 \end_layout
 
 \begin_layout Description
@@ -7204,7 +8252,8 @@ Syntax command-alternatives <CMDS>
 \end_layout
 
 \begin_layout Description
-Params <CMDS>: Sequence of commands separated by semicolons.
+Params <CMDS>:
+ Sequence of commands separated by semicolons.
 \end_layout
 
 \begin_layout Description
@@ -7212,7 +8261,8 @@ Sample command-alternatives completion-accept;cell-forward
 \end_layout
 
 \begin_layout Description
-Origin rgh, 24 September 2008
+Origin rgh,
+ 24 September 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -7228,17 +8278,24 @@ Syntax command-sequence <CMDS>
 \end_layout
 
 \begin_layout Description
-Params <CMDS>: Sequence of commands separated by semicolons.
+Params <CMDS>:
+ Sequence of commands separated by semicolons.
 \end_layout
 
 \begin_layout Description
-Sample command-sequence cut; ert-insert; self-insert 
+Sample command-sequence cut;
+ ert-insert;
+ self-insert 
 \backslash
-; paste; self-insert {}; inset-toggle;
+;
+ paste;
+ self-insert {};
+ inset-toggle;
 \end_layout
 
 \begin_layout Description
-Origin Andre, 11 Nov 1999
+Origin Andre,
+ 11 Nov 1999
 \end_layout
 
 \begin_layout Subsection*
@@ -7254,7 +8311,8 @@ Syntax toggle-cursor-follows-scrollbar
 \end_layout
 
 \begin_layout Description
-Origin ARRae, 2 Dec 1997
+Origin ARRae,
+ 2 Dec 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -7270,11 +8328,15 @@ Syntax debug-level-set <LEVEL>
 \end_layout
 
 \begin_layout Description
-Params <LEVEL>: comma separated list of levels or the correspondent number of their combination. 0 is equivalent to disabling all debug events. See lyx -dbg for the current list of debug levels and their numbers.
+Params <LEVEL>:
+ comma separated list of levels or the correspondent number of their combination.
+ 0 is equivalent to disabling all debug events.
+ See lyx -dbg for the current list of debug levels and their numbers.
 \end_layout
 
 \begin_layout Description
-Origin sanda, 28 Dec 2009
+Origin sanda,
+ 28 Dec 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -7286,7 +8348,9 @@ Action toggle a mode where more information is given in UI
 \end_layout
 
 \begin_layout Description
-Notion in so called "devel" mode, the information given in the status bar is more precise, and the help documents are open in editing mode.
+Notion in so called "devel" mode,
+ the information given in the status bar is more precise,
+ and the help documents are open in editing mode.
 \end_layout
 
 \begin_layout Description
@@ -7294,7 +8358,8 @@ Syntax devel-mode-toggle
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, 23 Jul 2017
+Origin lasgouttes,
+ 23 Jul 2017
 \end_layout
 
 \begin_layout Subsection*
@@ -7306,7 +8371,8 @@ Action Sets the cursor position in the previewed (dvi/pdf) file based on the row
 \end_layout
 
 \begin_layout Description
-Notion The external program used for forward search call can be specified in LyX Output preferences. See Additional manual for details of these settings.
+Notion The external program used for forward search call can be specified in LyX Output preferences.
+ See Additional manual for details of these settings.
 \end_layout
 
 \begin_layout Description
@@ -7314,7 +8380,8 @@ Syntax forward-search
 \end_layout
 
 \begin_layout Description
-Origin sanda, 14 Apr 2010
+Origin sanda,
+ 14 Apr 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -7330,7 +8397,10 @@ Syntax lyxrc-apply <SETTINGS>
 \end_layout
 
 \begin_layout Description
-Params <SETTINGS>: settings which are to be set. Take a look into ~/.lyx/preferences to get an idea which commands to use and their syntax. lyx::LyXRC::LyXRCTags has the list of possible commands.
+Params <SETTINGS>:
+ settings which are to be set.
+ Take a look into ~/.lyx/preferences to get an idea which commands to use and their syntax.
+ lyx::LyXRC::LyXRCTags has the list of possible commands.
 \end_layout
 
 \begin_layout Subsection*
@@ -7346,7 +8416,8 @@ Syntax message <STRING>
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 8 Apr 2001
+Origin Lgb,
+ 8 Apr 2001
 \end_layout
 
 \begin_layout Subsection*
@@ -7378,7 +8449,8 @@ Syntax preferences-save
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 27 Nov 1999
+Origin Lgb,
+ 27 Nov 1999
 \end_layout
 
 \begin_layout Subsection*
@@ -7394,7 +8466,8 @@ Syntax reconfigure
 \end_layout
 
 \begin_layout Description
-Origin Asger, 14 Feb 1997
+Origin Asger,
+ 14 Feb 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -7410,11 +8483,13 @@ Syntax search-ignore <type> <value>
 \end_layout
 
 \begin_layout Description
-Params <type>: language|color|sectioning|font|series|shape|family|markup|underline|strike|deleted|non-output-content
+Params <type>:
+ language|color|sectioning|font|series|shape|family|markup|underline|strike|deleted|non-output-content
 \begin_inset Newline newline
 \end_inset
 
-<value>: true|false
+<value>:
+ true|false
 \end_layout
 
 \begin_layout Subsection*
@@ -7450,7 +8525,8 @@ Action Returns the statistics (number of words and characters) in the document o
 \end_layout
 
 \begin_layout Description
-Notion Note that this function gives the number of words/chars written, not the number of characters which will be typeset.
+Notion Note that this function gives the number of words/chars written,
+ not the number of characters which will be typeset.
 \end_layout
 
 \begin_layout Description
@@ -7458,23 +8534,31 @@ Syntax server-get-statistics [<TYPE>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: <words|chars|chars-space> The requested count; if not specified, the three values are returned, separated by a space.
+Params <TYPE>:
+ <words|chars|chars-space> The requested count;
+ if not specified,
+ the three values are returned,
+ separated by a space.
 \begin_inset Newline newline
 \end_inset
 
-words: count words.
+words:
+ count words.
 \begin_inset Newline newline
 \end_inset
 
-chars: count characters.
+chars:
+ count characters.
 \begin_inset Newline newline
 \end_inset
 
-chars-space: count characters and spaces.
+chars-space:
+ count characters and spaces.
 \end_layout
 
 \begin_layout Description
-Origin brokenclock, Oct 10 2014
+Origin brokenclock,
+ Oct 10 2014
 \end_layout
 
 \begin_layout Subsection*
@@ -7498,7 +8582,8 @@ Action Sets the cursor position in LyX based on the row number of generated TeX 
 \end_layout
 
 \begin_layout Description
-Notion This can be useful for DVI inverse-search or detection of the problematic line from LaTeX compilation. Note that before this function can be used export to LaTeX output must occur (in order to map the row numbers).
+Notion This can be useful for DVI inverse-search or detection of the problematic line from LaTeX compilation.
+ Note that before this function can be used export to LaTeX output must occur (in order to map the row numbers).
 \end_layout
 
 \begin_layout Description
@@ -7506,15 +8591,20 @@ Syntax server-goto-file-row <FILE[.ext]> <ROW_NUMBER>
 \end_layout
 
 \begin_layout Description
-Params <FILE>: the path and filename. Environment variables are expanded in the path. In case this LFUN does not work make sure you are giving correct path to the file.
+Params <FILE>:
+ the path and filename.
+ Environment variables are expanded in the path.
+ In case this LFUN does not work make sure you are giving correct path to the file.
 \begin_inset Newline newline
 \end_inset
 
-If the file is located inside LyX temporary directory it will be mapped back into the appropriate opened buffer (e.g. for the case of generated .tex file).
+If the file is located inside LyX temporary directory it will be mapped back into the appropriate opened buffer (e.g.
+ for the case of generated .tex file).
 \begin_inset Newline newline
 \end_inset
 
-.ext: extensions will be automatically replaced by .lyx.
+.ext:
+ extensions will be automatically replaced by .lyx.
 \begin_inset Newline newline
 \end_inset
 
@@ -7530,7 +8620,8 @@ server-goto-file-row /tmp/lyx_tmpdir.XM3088/lyx_tmpbuf0/example.tex 41
 \end_layout
 
 \begin_layout Description
-Origin Edmar, 23 Dec 1998
+Origin Edmar,
+ 23 Dec 1998
 \end_layout
 
 \begin_layout Subsection*
@@ -7542,7 +8633,8 @@ Action Sends notify message about the last key-sequence to client.
 \end_layout
 
 \begin_layout Description
-Notion This can be used to grab last key-sequence used inside the LyX window. See also Debug extensions section in Additional features manual.
+Notion This can be used to grab last key-sequence used inside the LyX window.
+ See also Debug extensions section in Additional features manual.
 \end_layout
 
 \begin_layout Description
@@ -7566,11 +8658,13 @@ set-color
 \end_layout
 
 \begin_layout Description
-Action Set the given LyX color to the color defined by the X11 name given, and optionally a specific color for dark mode.
+Action Set the given LyX color to the color defined by the X11 name given,
+ and optionally a specific color for dark mode.
 \end_layout
 
 \begin_layout Description
-Notion A new color entry is created if the color is unknown. Color names can be stored as a part of user settings.
+Notion A new color entry is created if the color is unknown.
+ Color names can be stored as a part of user settings.
 \end_layout
 
 \begin_layout Description
@@ -7578,7 +8672,8 @@ Syntax set-color <LYX_NAME> <X11_NAME> [<X11_DARKNAME>]
 \end_layout
 
 \begin_layout Description
-Origin SLior, 11 Jun 2000
+Origin SLior,
+ 11 Jun 2000
 \end_layout
 
 \begin_layout Subsection*
@@ -7590,7 +8685,8 @@ Action Count the statistics (number of words and characters) in the document or 
 \end_layout
 
 \begin_layout Description
-Notion Note that this function gives the number of words/chars written, not the number of characters which will be typeset.
+Notion Note that this function gives the number of words/chars written,
+ not the number of characters which will be typeset.
 \end_layout
 
 \begin_layout Description
@@ -7598,7 +8694,10 @@ Syntax statistics
 \end_layout
 
 \begin_layout Description
-Origin lasgouttes, Jan 27 2004; sanda, Jan 8 2008
+Origin lasgouttes,
+ Jan 27 2004;
+ sanda,
+ Jan 8 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -7618,7 +8717,8 @@ Syntax vc-check-in
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 1 Jul 1997
+Origin Lgb,
+ 1 Jul 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -7634,7 +8734,8 @@ Syntax vc-check-out
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 1 Jul 1997
+Origin Lgb,
+ 1 Jul 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -7642,7 +8743,8 @@ vc-command
 \end_layout
 
 \begin_layout Description
-Action Executes external command. This command is intended to support additional VCS commands.
+Action Executes external command.
+ This command is intended to support additional VCS commands.
 \end_layout
 
 \begin_layout Description
@@ -7650,7 +8752,8 @@ Syntax vc-command <FLAG> <PATH> <COMMAND>
 \end_layout
 
 \begin_layout Description
-Params  <FLAG>: Flags for the command can be combined together.
+Params  <FLAG>:
+ Flags for the command can be combined together.
 \begin_inset Newline newline
 \end_inset
 
@@ -7674,11 +8777,15 @@ M - Message - ask for input string (commit message)
 \begin_inset Newline newline
 \end_inset
 
-<PATH>: path where to start. $$p will be replaced by the current document path.
+<PATH>:
+ path where to start.
+ $$p will be replaced by the current document path.
 \begin_inset Newline newline
 \end_inset
 
-<COMMAND>: command to execute. $$i/$$p/$$m will be replaced by the current document(with absolute path)/path/message.
+<COMMAND>:
+ command to execute.
+ $$i/$$p/$$m will be replaced by the current document(with absolute path)/path/message.
 \end_layout
 
 \begin_layout Description
@@ -7686,7 +8793,8 @@ Sample vc-command DR $$p "svn up"
 \end_layout
 
 \begin_layout Description
-Origin sanda, 13 Jan 2009
+Origin sanda,
+ 13 Jan 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -7706,19 +8814,24 @@ Params Revision number either points directly to commit in history or if negativ
 \begin_inset Newline newline
 \end_inset
 
-In RCS we subtract only in the last number of revision specification. Special case "0" is reserved for the last committed revision.
+In RCS we subtract only in the last number of revision specification.
+ Special case "0" is reserved for the last committed revision.
 \begin_inset Newline newline
 \end_inset
 
-<REV1>: Older file.
+<REV1>:
+ Older file.
 \begin_inset Newline newline
 \end_inset
 
-<REV2>: Newer file. Used only if REV1 > 0.
+<REV2>:
+ Newer file.
+ Used only if REV1 > 0.
 \begin_inset Newline newline
 \end_inset
 
-If no parameter is given, interactive dialog will be shown.
+If no parameter is given,
+ interactive dialog will be shown.
 \end_layout
 
 \begin_layout Description
@@ -7746,7 +8859,8 @@ vc-compare 120 155
 \end_layout
 
 \begin_layout Description
-Origin sanda, 12 Feb 2010
+Origin sanda,
+ 12 Feb 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -7758,7 +8872,9 @@ Action Copies the document to another name.
 \end_layout
 
 \begin_layout Description
-Notion Copying with revision history is only supported by SVN. For RCS and CVS it is simulated by adding the document under a new name. Disabled if uncommitted changes exist.
+Notion Copying with revision history is only supported by SVN.
+ For RCS and CVS it is simulated by adding the document under a new name.
+ Disabled if uncommitted changes exist.
 \end_layout
 
 \begin_layout Description
@@ -7766,7 +8882,8 @@ Syntax vc-copy <FILENAME>
 \end_layout
 
 \begin_layout Description
-Params <FILENAME>: New name of the document.
+Params <FILENAME>:
+ New name of the document.
 \begin_inset Newline newline
 \end_inset
 
@@ -7774,7 +8891,8 @@ A file dialog is opened if no filename is given.
 \end_layout
 
 \begin_layout Description
-Origin gb, 05 Feb 2013
+Origin gb,
+ 05 Feb 2013
 \end_layout
 
 \begin_layout Subsection*
@@ -7794,7 +8912,8 @@ Syntax vc-locking-toggle
 \end_layout
 
 \begin_layout Description
-Origin sanda, 25 Jun 2009
+Origin sanda,
+ 25 Jun 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -7806,7 +8925,8 @@ Action Register the document as an file inside version control system.
 \end_layout
 
 \begin_layout Description
-Notion File is registered inside cvs, svn or rcs repository acording to the existence of cvs/svn/rcs entries in the document's directory.
+Notion File is registered inside cvs,
+ svn or rcs repository acording to the existence of cvs/svn/rcs entries in the document's directory.
 \begin_inset Newline newline
 \end_inset
 
@@ -7818,7 +8938,8 @@ Syntax vc-register
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 1 Jul 1997
+Origin Lgb,
+ 1 Jul 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -7830,7 +8951,10 @@ Action Renames the document to another name.
 \end_layout
 
 \begin_layout Description
-Notion Renaming with revision history is only supported by SVN. For CVS it is simulated by adding the document under a new name and deleting the old one. For RCS it is not supported. Disabled if uncommitted changes exist.
+Notion Renaming with revision history is only supported by SVN.
+ For CVS it is simulated by adding the document under a new name and deleting the old one.
+ For RCS it is not supported.
+ Disabled if uncommitted changes exist.
 \end_layout
 
 \begin_layout Description
@@ -7838,7 +8962,8 @@ Syntax vc-rename <FILENAME>
 \end_layout
 
 \begin_layout Description
-Params <FILENAME>: New name of the document.
+Params <FILENAME>:
+ New name of the document.
 \begin_inset Newline newline
 \end_inset
 
@@ -7846,7 +8971,8 @@ A file dialog is opened if no filename is given.
 \end_layout
 
 \begin_layout Description
-Origin gb, 05 Feb 2013
+Origin gb,
+ 05 Feb 2013
 \end_layout
 
 \begin_layout Subsection*
@@ -7862,7 +8988,8 @@ Syntax vc-repo-update
 \end_layout
 
 \begin_layout Description
-Origin sanda, 16 Oct 2009
+Origin sanda,
+ 16 Oct 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -7878,7 +9005,8 @@ Syntax vc-revert
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 1 Jul 1997
+Origin Lgb,
+ 1 Jul 1997
 \end_layout
 
 \begin_layout Subsection*
@@ -7898,7 +9026,8 @@ Syntax vc-check-out
 \end_layout
 
 \begin_layout Description
-Origin Lgb, 1 Jul 1997
+Origin Lgb,
+ 1 Jul 1997
 \end_layout
 
 \begin_layout Section
@@ -7934,7 +9063,10 @@ Action Activates the LyX window.
 \end_layout
 
 \begin_layout Description
-Notion On Linux and Mac OS, this action brings the LyX window into focus. Such behavior is not allowed by Windows OS so instead the color of the taskbar entry is changed to indicate that the window has changed in some way. This action is useful in combination with reverse search.
+Notion On Linux and Mac OS,
+ this action brings the LyX window into focus.
+ Such behavior is not allowed by Windows OS so instead the color of the taskbar entry is changed to indicate that the window has changed in some way.
+ This action is useful in combination with reverse search.
 \end_layout
 
 \begin_layout Description
@@ -7942,7 +9074,8 @@ Syntax lyx-activate
 \end_layout
 
 \begin_layout Description
-Origin skostysh, 4 Aug 2016
+Origin skostysh,
+ 4 Aug 2016
 \end_layout
 
 \begin_layout Subsection*
@@ -7954,7 +9087,8 @@ Action Inserts the given string (accordingly to the correct keymap).
 \end_layout
 
 \begin_layout Description
-Notion Automatically replace the currently selected text. Depends on lyxrc settings "auto_region_delete".
+Notion Automatically replace the currently selected text.
+ Depends on lyxrc settings "auto_region_delete".
 \end_layout
 
 \begin_layout Description
@@ -7970,7 +9104,9 @@ Action Raises the LyX window.
 \end_layout
 
 \begin_layout Description
-Notion Brings the LyX window to the front. Such behavior is allowed on Windows only when no other application has focus. This action is used when LyX is in single instance mode.
+Notion Brings the LyX window to the front.
+ Such behavior is allowed on Windows only when no other application has focus.
+ This action is used when LyX is in single instance mode.
 \end_layout
 
 \begin_layout Description
@@ -7978,7 +9114,8 @@ Syntax window-raise
 \end_layout
 
 \begin_layout Description
-Origin forenr, 21 Apr 2020
+Origin forenr,
+ 21 Apr 2020
 \end_layout
 
 \end_body

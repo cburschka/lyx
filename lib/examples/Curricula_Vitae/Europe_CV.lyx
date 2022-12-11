@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 609
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -101,7 +101,8 @@
 \begin_body
 
 \begin_layout Name
-Testmann, Paul
+Testmann,
+ Paul
 \end_layout
 
 \begin_layout FooterName
@@ -113,7 +114,8 @@ Swiss
 \end_layout
 
 \begin_layout Birthday
-June 23, 1962
+June 23,
+ 1962
 \end_layout
 
 \begin_layout Address
@@ -211,8 +213,9 @@ optional
 status collapsed
 
 \begin_layout Plain Layout
-optional, alignment and position of the picture or text, in this case the
- picture is shifted 6
+optional,
+ alignment and position of the picture or text,
+ in this case the picture is shifted 6
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -264,7 +267,8 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-optional, in this case the following material is shifted 2
+optional,
+ in this case the following material is shifted 2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -294,8 +298,9 @@ thepage
 status collapsed
 
 \begin_layout Plain Layout
-optional, redefines what is printed in the footer, in this case only the
- page number
+optional,
+ redefines what is printed in the footer,
+ in this case only the page number
 \end_layout
 
 \end_inset
@@ -308,8 +313,9 @@ optional, redefines what is printed in the footer, in this case only the
 status open
 
 \begin_layout Plain Layout
-The europecv-class offers lots of customization possibilities; to find out
- more, look at its documentation:
+The europecv-class offers lots of customization possibilities;
+ to find out more,
+ look at its documentation:
 \end_layout
 
 \begin_layout Plain Layout
@@ -371,7 +377,11 @@ status open
 
 \end_inset
 
-Master of Economics, Institution, City, Country, Description
+Master of Economics,
+ Institution,
+ City,
+ Country,
+ Description
 \end_layout
 
 \begin_layout Item
@@ -384,7 +394,11 @@ status open
 
 \end_inset
 
-Bachelor of Economics, Institution, City, Country, Description
+Bachelor of Economics,
+ Institution,
+ City,
+ Country,
+ Description
 \end_layout
 
 \begin_layout Section
@@ -461,8 +475,11 @@ status open
 
 \end_inset
 
-Employer, Corp.
- name, City, Country
+Employer,
+ Corp.
+ name,
+ City,
+ Country
 \end_layout
 
 \begin_layout Section
@@ -485,8 +502,8 @@ French
 status open
 
 \begin_layout Plain Layout
-The optional parameter is the vertical height behind the item; negative
- values are allowed.
+The optional parameter is the vertical height behind the item;
+ negative values are allowed.
  It is available for every kind of entries.
 \end_layout
 
@@ -505,8 +522,8 @@ The optional parameter is the vertical height behind the item; negative
 status collapsed
 
 \begin_layout Plain Layout
-Optional, inserts the language level explanation and sets the symbol for
- the reference footnote.
+Optional,
+ inserts the language level explanation and sets the symbol for the reference footnote.
  
 \end_layout
 
@@ -641,8 +658,7 @@ The last info is the level how good you think you can write.
 status open
 
 \begin_layout Plain Layout
-The language level codes can be found in the documentation of the package
- europecv.
+The language level codes can be found in the documentation of the package europecv.
 \end_layout
 
 \end_inset
@@ -807,7 +823,12 @@ OS
 
 \end_inset
 
-Linux, Unix, Windows, administration, Apache, Mailman
+Linux,
+ Unix,
+ Windows,
+ administration,
+ Apache,
+ Mailman
 \end_layout
 
 \begin_layout Item
@@ -824,7 +845,12 @@ Programming
 \shape smallcaps
 Java
 \shape default
-, C/C++, scripting, PHP, Shell, Ruby
+,
+ C/C++,
+ scripting,
+ PHP,
+ Shell,
+ Ruby
 \end_layout
 
 \begin_layout Item
@@ -848,9 +874,16 @@ Scientific
 
 \end_inset
 
-Matlab, Autocad, Abaqus, typography, \SpecialChar LaTeX
-, Con\SpecialChar TeX
-t, Scribus, QuarkXPress
+Matlab,
+ Autocad,
+ Abaqus,
+ typography,
+ \SpecialChar LaTeX
+,
+ Con\SpecialChar TeX
+t,
+ Scribus,
+ QuarkXPress
 \end_layout
 
 \begin_layout Item
@@ -867,7 +900,12 @@ design
 
 \end_inset
 
-XHTML, CSS, AJAX, database, MySQL, PostgreSQL
+XHTML,
+ CSS,
+ AJAX,
+ database,
+ MySQL,
+ PostgreSQL
 \end_layout
 
 \begin_layout Section
@@ -901,8 +939,9 @@ sports
 
 
 \size small
-I like practicing adventure sports like skiing, rock climbing and scuba
- diving, and have been a boy scout for five years.
+I like practicing adventure sports like skiing,
+ rock climbing and scuba diving,
+ and have been a boy scout for five years.
 \end_layout
 
 \begin_layout Item
@@ -946,13 +985,15 @@ References
 \end_inset
 
 [1] Helmut Kopka and Patrick W.
- Daly: 
+ Daly:
+ 
 \emph on
 A Guide to \SpecialChar LaTeX
  Fourth Edition.
 
 \emph default
- Addison-Wesley, 2003
+ Addison-Wesley,
+ 2003
 \begin_inset ERT
 status collapsed
 
@@ -986,13 +1027,17 @@ newline%
 \begin_inset Newline newline
 \end_inset
 
-[2] Leslie Lamport: 
+[2] Leslie Lamport:
+ 
 \emph on
 \SpecialChar LaTeX
-: A Document Preparation System.
+:
+ A Document Preparation System.
 
 \emph default
- Addison-Wesley, second edition, 1994
+ Addison-Wesley,
+ second edition,
+ 1994
 \end_layout
 
 \begin_layout Section

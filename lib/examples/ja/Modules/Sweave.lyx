@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -33,9 +33,9 @@ sweave
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -90,12 +90,16 @@ sweave
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -124,7 +128,9 @@ status open
 
 %% 
 \backslash
-maxwidth はプリアンブル中で定義されています。文書設定をご覧ください。
+maxwidth はプリアンブル中で定義されています。
+文書設定をご覧ください。
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -152,7 +158,8 @@ Yihui Xie
 status collapsed
 
 \begin_layout Plain Layout
-アイオワ州立大学統計学部、電子メール: 
+アイオワ州立大学統計学部、電子メール:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "xie@yihui.name"
@@ -208,9 +215,12 @@ http://www.r-project.org
 
 \end_inset
 
-)ツールです。Rコードは、\SpecialChar LaTeX
-文書の中で混用することができ、文書がコンパイルされるときにRで実行されます。結果は、\SpecialChar TeX
+)ツールです。
+Rコードは、\SpecialChar LaTeX
+文書の中で混用することができ、文書がコンパイルされるときにRで実行されます。
+結果は、\SpecialChar TeX
 出力内に書きこまれます。
+
 \end_layout
 
 \begin_layout Standard
@@ -220,6 +230,7 @@ http://www.r-project.org
 Sweave
 \family default
 モジュールを使えば、どの文書クラスでもSweaveをそのまま使うことができます。
+
 \family sans
 Sweave
 \family default
@@ -229,7 +240,9 @@ Sweave
 設定\SpecialChar menuseparator
 モジュール
 \family default
-を使用します。この説明書では、Sweaveでよく使われる機能をいくつか紹介し、本モジュールがどう動作するかを説明します。この説明書のPDF版は、
+を使用します。
+この説明書では、Sweaveでよく使われる機能をいくつか紹介し、本モジュールがどう動作するかを説明します。
+この説明書のPDF版は、
 \begin_inset Flex URL
 status collapsed
 
@@ -241,6 +254,7 @@ https://github.com/downloads/yihui/lyx/sweave.pdf
 \end_inset
 
 にあります。
+
 \end_layout
 
 \begin_layout Section
@@ -260,8 +274,9 @@ Rscript
 \family sans
 PATH
 \family default
-変数に含まれるパスになくてはなりません。これは、LinuxやMac OSユーザーには大した問題とならないでしょうが、Windowsユーザーには混乱を招くかもしれ
-ません。Windowsにおける
+変数に含まれるパスになくてはなりません。
+これは、LinuxやMac OSユーザーには大した問題とならないでしょうが、Windowsユーザーには混乱を招くかもしれません。
+Windowsにおける
 \family sans
 PATH
 \family default
@@ -280,7 +295,8 @@ https://github.com/yihui/lyx
 \family sans
 add-R-path-win.R
 \family default
-を使って、パスを自動的に変更するか(推奨はできません。何にせよ
+を使って、パスを自動的に変更するか(推奨はできません。
+何にせよ
 \family sans
 PATH
 \family default
@@ -291,7 +307,8 @@ PATH
 パス\SpecialChar menuseparator
 パス接頭辞
 \family default
-からRのバイナリパスを追加することができます(推奨)。後者の場合、大抵
+からRのバイナリパスを追加することができます(推奨)。
+後者の場合、大抵
 \family sans
 C:
 \backslash
@@ -304,6 +321,7 @@ R-x.x.x
 bin
 \family default
 のような形をしており、R内で下記のようにして確認することができます。
+
 \end_layout
 
 \begin_layout Standard
@@ -343,6 +361,7 @@ R.home('bin')
 \family default
 を使って、\SpecialChar LyX
 の再設定を行う必要があります。
+
 \family typewriter
 Rscript
 \family default
@@ -354,13 +373,15 @@ PATH
 \family sans
 Sweave
 \family default
-モジュールを使うことはできません。Sweaveの更新は続いていますので、最新版のRを使用することをお勧めします。Rに同梱され、このパス下にある(CTANにはあり
-ません)\SpecialChar LaTeX
+モジュールを使うことはできません。
+Sweaveの更新は続いていますので、最新版のRを使用することをお勧めします。
+Rに同梱され、このパス下にある(CTANにはありません)\SpecialChar LaTeX
 スタイルファイル
 \family sans
 Sweave.sty
 \family default
 によって、下記のように依存関係が追加されます。
+
 \end_layout
 
 \begin_layout Standard
@@ -384,7 +405,10 @@ sweave-sty,eval=FALSE
 
 \begin_layout Plain Layout
 
-file.path(R.home('share'), 'texmf', 'tex', 'latex')
+file.path(R.home('share'),
+ 'texmf',
+ 'tex',
+ 'latex')
 \end_layout
 
 \end_inset
@@ -396,7 +420,8 @@ file.path(R.home('share'), 'texmf', 'tex', 'latex')
 Mik\SpecialChar TeX
 ユーザーは、Mik\SpecialChar TeX
 の設定で、Mik\SpecialChar TeX
-のルートディレクトリ一覧にtexmfディレクトリも追加したほうが良いかもしれません。また、
+のルートディレクトリ一覧にtexmfディレクトリも追加したほうが良いかもしれません。
+また、
 \family sans
 Sweave.sty
 \family default
@@ -412,12 +437,14 @@ ae
 \emph on
 ことも
 \emph default
-あります。\SpecialChar LyX
+あります。
+\SpecialChar LyX
 が
 \family sans
 Sweave.sty
 \family default
 を検出できないときは、直接Rからコピーしますので、このスタイルファイルがどこにあるかわからない場合でも、Sweaveモジュールは動作します。
+
 \end_layout
 
 \begin_layout Section
@@ -425,7 +452,8 @@ Sweaveの用例
 \end_layout
 
 \begin_layout Standard
-Sweave文書を書く前に、Sweaveオプションを設定しましょう。Sweaveの設定コマンドは
+Sweave文書を書く前に、Sweaveオプションを設定しましょう。
+Sweaveの設定コマンドは
 \family typewriter
 
 \backslash
@@ -445,12 +473,14 @@ Sweaveオプション
 \SpecialChar TeX
 コード
 \family default
-)ことで挿入することができます。例えば、文頭で大域オプション
+)ことで挿入することができます。
+例えば、文頭で大域オプション
 \family typewriter
 echo=FALSE
 \family default
 を設定して、すべてのRコードを抑制することもできます(既定では、Rコードとその出力は、両方とも\SpecialChar LaTeX
 文書中に表示されます)。
+
 \end_layout
 
 \begin_layout Standard
@@ -460,7 +490,9 @@ echo=FALSE
 コード組
 \family default
 環境に変更するか、あるいは、単に\SpecialChar TeX
-コード環境を開いて、Sweaveのコード組を書き込んでください。後者の方法の方が安定していますので、そちらをお勧めします。
+コード環境を開いて、Sweaveのコード組を書き込んでください。
+後者の方法の方が安定していますので、そちらをお勧めします。
+
 \end_layout
 
 \begin_layout Standard
@@ -472,8 +504,10 @@ width
 \family typewriter
 useFancyQuotes
 \family default
-のようなRオプションもSweaveの出力に便利です。前者のオプションは、出力の幅を調整するものであり、後者は引用符に関してよく起こる問題を回避することができます
-。詳細については、Rに添付のSweave取扱説明書をお読みください。
+のようなRオプションもSweaveの出力に便利です。
+前者のオプションは、出力の幅を調整するものであり、後者は引用符に関してよく起こる問題を回避することができます。
+詳細については、Rに添付のSweave取扱説明書をお読みください。
+
 \end_layout
 
 \begin_layout Standard
@@ -487,7 +521,8 @@ status open
 
 \begin_layout Plain Layout
 
-setup, keep.source=TRUE
+setup,
+ keep.source=TRUE
 \end_layout
 
 \end_inset
@@ -502,7 +537,9 @@ setup, keep.source=TRUE
 
 \begin_layout Plain Layout
 
-options(width = 70, useFancyQuotes = FALSE, digits = 4)
+options(width = 70,
+ useFancyQuotes = FALSE,
+ digits = 4)
 \end_layout
 
 \end_inset
@@ -521,7 +558,9 @@ status open
 
 \begin_layout Plain Layout
 
-sweave-manual, eval=FALSE, keep.source=TRUE
+sweave-manual,
+ eval=FALSE,
+ keep.source=TRUE
 \end_layout
 
 \end_inset
@@ -536,12 +575,14 @@ sweave-manual, eval=FALSE, keep.source=TRUE
 
 \begin_layout Plain Layout
 
-vignette("Sweave", package = "utils")
+vignette("Sweave",
+ package = "utils")
 \end_layout
 
 \end_inset
 
 下記は、どのSエンジンでも動作する単純な例です。
+
 \end_layout
 
 \begin_layout Standard
@@ -555,7 +596,8 @@ status open
 
 \begin_layout Plain Layout
 
-print-integers, keep.source=TRUE
+print-integers,
+ keep.source=TRUE
 \end_layout
 
 \end_inset
@@ -589,7 +631,8 @@ status open
 
 \begin_layout Plain Layout
 
-hide-results, results=hide
+hide-results,
+ results=hide
 \end_layout
 
 \end_inset
@@ -610,6 +653,7 @@ print(1:20)
 \end_inset
 
 単純な計算機をエミュレートすることもできます。
+
 \end_layout
 
 \begin_layout Standard
@@ -648,6 +692,7 @@ sin(pi/6)
 
 \begin_layout Standard
 今度は、ガウシアンデータを見てみましょう。
+
 \end_layout
 
 \begin_layout Standard
@@ -695,7 +740,8 @@ t1 <- t.test(x)
 \end_layout
 
 \begin_layout Standard
-数値を標準テキストに簡単に統合させることができます。これは、
+数値を標準テキストに簡単に統合させることができます。
+これは、
 \family typewriter
 
 \backslash
@@ -709,7 +755,8 @@ Sexpr{}
 S/R表現
 \family default
 ですが、\SpecialChar TeX
-コードを使うこともできます。例えば、ベクトル
+コードを使うこともできます。
+例えば、ベクトル
 \family typewriter
 x
 \family default
@@ -743,11 +790,13 @@ format.pval(t1$p.value)
 
 \end_inset
 
-です。これらの数値は、R中で
+です。
+これらの数値は、R中で
 \emph on
 round()
 \emph default
 のようなコマンドを使うことによって丸めることもできます。
+
 \end_layout
 
 \begin_layout Standard
@@ -779,6 +828,7 @@ iris
 \noun off
 \color none
 データセットの要約を見てみましょう。
+
 \end_layout
 
 \begin_layout Standard
@@ -812,6 +862,8 @@ summary(iris[,-5])
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -866,13 +918,15 @@ if (require('xtable')) {
 
 \begin_layout Plain Layout
 
-print(xtable(sapply(iris[,-5], quantile)), floating=FALSE)
+print(xtable(sapply(iris[,-5],
+ quantile)),
+ floating=FALSE)
 \end_layout
 
 \begin_layout Plain Layout
 
-} else cat('the xtable package is not available! please install.packages("xtable"
-)')
+} else cat('the xtable package is not available!
+ please install.packages("xtable")')
 \end_layout
 
 \end_inset
@@ -890,10 +944,12 @@ print(xtable(sapply(iris[,-5], quantile)), floating=FALSE)
 \series bold
 xtable
 \series default
-パッケージを使って綺麗にしてやるといいでしょう。表
+パッケージを使って綺麗にしてやるといいでしょう。
+表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:xtable-demo"
+nolink "false"
 
 \end_inset
 
@@ -901,7 +957,8 @@ reference "tab:xtable-demo"
 \series bold
 xtable
 \series default
-パッケージの使い方を示すための例です。コード組のオプション
+パッケージの使い方を示すための例です。
+コード組のオプション
 \family typewriter
 results=tex
 \family default
@@ -911,6 +968,7 @@ Soutput
 \family default
 )で包まれるのではなく、生の\SpecialChar LaTeX
 コードとして書き出されるように保証するためのものです。
+
 \end_layout
 
 \begin_layout Standard
@@ -918,6 +976,7 @@ Soutput
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:iris-pairs"
+nolink "false"
 
 \end_inset
 
@@ -925,14 +984,18 @@ reference "fig:iris-pairs"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:iris-boxplots"
+nolink "false"
 
 \end_inset
 
 は、Sweaveを使って画像を生成する簡単な例です。
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -943,7 +1006,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-epsとpdfの両方をtrueにして、latexとpdflatexの両方を動作するようにすることができます。実際には、おそらく一つを選ぶだけでよいでしょう。
+epsとpdfの両方をtrueにして、latexとpdflatexの両方を動作するようにすることができます。
+実際には、おそらく一つを選ぶだけでよいでしょう。
+
 \end_layout
 
 \end_inset
@@ -969,7 +1034,8 @@ iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE
 
 \begin_layout Plain Layout
 
-pairs(iris, col = iris$Species)
+pairs(iris,
+ col = iris$Species)
 \end_layout
 
 \end_inset
@@ -1007,6 +1073,8 @@ name "fig:iris-pairs"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1033,7 +1101,8 @@ iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F,eps=T,pdf=T
 
 \begin_layout Plain Layout
 
-par(mar=c(4,5,.1,.3), las=1)
+par(mar=c(4,5,.1,.3),
+ las=1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1076,6 +1145,7 @@ Sweave文書中のRコードは、単一のRスクリプトとして書きだす
 R CMD Stangle
 \family default
 を使って行われます。
+
 \end_layout
 
 \begin_layout Section
@@ -1093,8 +1163,8 @@ Sweave
 \family default
 モジュールは、\SpecialChar LyX
 文書が、Rを使った文芸的プログラミングのコンポーネントを含んでいることを宣言しますので、\SpecialChar LyX
-は、そのような文書を取り扱う特定の変換子を使って処理します
-(取扱説明書カスタマイズ篇参照)。
+は、そのような文書を取り扱う特定の変換子を使って処理します(取扱説明書カスタマイズ篇参照)。
+
 \family sans
 Sweave
 \family default
@@ -1111,14 +1181,17 @@ scripts
 \family sans
 lyxsweave.R
 \family default
-が本体になっています。このスクリプトは、\SpecialChar LyX
+が本体になっています。
+このスクリプトは、\SpecialChar LyX
 から
 \family sans
 Rnw
 \family default
 文書を受け取り、これを\SpecialChar TeX
-文書に変換するためにSweaveを呼び出します。その後の作業は、\SpecialChar LyX
+文書に変換するためにSweaveを呼び出します。
+その後の作業は、\SpecialChar LyX
 が面倒を見ます。
+
 \end_layout
 
 \begin_layout Standard
@@ -1128,6 +1201,7 @@ sweave
 \family default
 形式から\SpecialChar LaTeX
 への変換子は、下記のコマンド行でRを呼び出します。
+
 \end_layout
 
 \begin_layout Standard
@@ -1143,8 +1217,7 @@ begin{verbatim}
 
 \begin_layout Plain Layout
 
-Rscript --no-save --no-restore $$s/scripts/lyxsweave.R $$p$$i $$p$$o $$e
- $$r
+Rscript --no-save --no-restore $$s/scripts/lyxsweave.R $$p$$i $$p$$o $$e $$r
 \end_layout
 
 \begin_layout Plain Layout
@@ -1171,7 +1244,8 @@ $$s
 \SpecialChar LyX
 について
 \family default
-メニューに記載があります。他にRに渡すことのできるオプションは、Rスクリプト中で説明されており、また、\SpecialChar LyX
+メニューに記載があります。
+他にRに渡すことのできるオプションは、Rスクリプト中で説明されており、また、\SpecialChar LyX
 取扱説明書カスタマイズ篇には、
 \family typewriter
 $$i
@@ -1188,13 +1262,15 @@ $$e
 \family typewriter
 $$r
 \family default
-についての詳しい説明があります。一般ユーザーは、これらの意味について詳しく知る必要はありませんが、ここでは、Rコードにまつわる若干の問題について説明しておく必要
-があります。
+についての詳しい説明があります。
+一般ユーザーは、これらの意味について詳しく知る必要はありませんが、ここでは、Rコードにまつわる若干の問題について説明しておく必要があります。
+
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
-文書のエンコーディングを表す文字列は、Rにコマンドラインオプションとして渡されます。取り得る値は、
+文書のエンコーディングを表す文字列は、Rにコマンドラインオプションとして渡されます。
+取り得る値は、
 \family typewriter
 ISO-8859-15
 \family default
@@ -1202,11 +1278,13 @@ ISO-8859-15
 \family typewriter
 UTF-8
 \family default
-などです。エンコーディングは、Rが
+などです。
+エンコーディングは、Rが
 \family sans
 Rnw
 \family default
 文書を正しく読むのに使用されます。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1215,8 +1293,10 @@ Sweave文書内のRコード組は、\SpecialChar LyX
 \family typewriter
 getwd()
 \family default
-を置いてください)。この場合、データファイルは同じディレクトリ下に置くことができ、再現可能性を保証するために、R内部では相対パスを使用してください。すなわち、他
-のシステムでは存在しないかもしれない、ハードコードのパスを書く必要はありません。
+を置いてください)。
+この場合、データファイルは同じディレクトリ下に置くことができ、再現可能性を保証するために、R内部では相対パスを使用してください。
+すなわち、他のシステムでは存在しないかもしれない、ハードコードのパスを書く必要はありません。
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1231,10 +1311,12 @@ Sweave.sty
 \family default
 を一時ディレクトリにコピーし、そこで\SpecialChar LaTeX
 コンパイルを実行します。
+
 \end_layout
 
 \begin_layout Enumerate
-Sweaveは、既定でRnwファイルのファイル名を、画像出力の接頭辞文字列として使用します。既知の問題の1つ(
+Sweaveは、既定でRnwファイルのファイル名を、画像出力の接頭辞文字列として使用します。
+既知の問題の1つ(
 \begin_inset CommandInset href
 LatexCommand href
 name "#7551"
@@ -1250,12 +1332,15 @@ literal "false"
 \backslash
 includegraphics{}
 \family default
-で処理する際に失敗しうるということが知られています。したがって、接頭辞の既定値は、すべてのピリオドを「-」で置換したファイル名にしてあります。この問題は、Swe
-aveで直接的に解決することもができます。Sweaveオプションの
+で処理する際に失敗しうるということが知られています。
+したがって、接頭辞の既定値は、すべてのピリオドを「-」で置換したファイル名にしてあります。
+この問題は、Sweaveで直接的に解決することもができます。
+Sweaveオプションの
 \family typewriter
 prefix.string
 \family default
 を、ピリオドを含まない文字列に設定すると、このオプションが既定値を上書きします。
+
 \end_layout
 
 \begin_layout Standard
@@ -1263,7 +1348,9 @@ Sweaveパッケージには、事前に
 \family typewriter
 noae
 \family default
-オプションが設定されています。このオプションは、Sweaveが下記の2つのパッケージを読み込んでしまうのを防ぎます。
+オプションが設定されています。
+このオプションは、Sweaveが下記の2つのパッケージを読み込んでしまうのを防ぎます。
+
 \end_layout
 
 \begin_layout Standard
@@ -1305,12 +1392,13 @@ end{verbatim}
 
 \begin_layout Standard
 \SpecialChar LyX
-は、既定でフォントエンコーディングを取り扱うことができるので、Sweaveにこれをやってもらう必要はないのです(その上、これはパッケージオプションの衝突をもたら
-す可能性があります)。一方、ユーザーは、必要ならばプリアンブルで
+は、既定でフォントエンコーディングを取り扱うことができるので、Sweaveにこれをやってもらう必要はないのです(その上、これはパッケージオプションの衝突をもたらす可能性があります)。
+一方、ユーザーは、必要ならばプリアンブルで
 \series bold
 ae
 \series default
 パッケージを手動で読み込ませることができます。
+
 \end_layout
 
 \begin_layout Section
@@ -1324,8 +1412,11 @@ ae
 表示\SpecialChar menuseparator
 メッセージを表示
 \family default
-で見ることができるようになりました。これは、問題の解決に非常に役に立ちます。Rの処理は、メッセージパネルに表示され、エラーが発生した場合には、どのコード組がおか
-しいのか知ることができます。例えば、この文書をコンパイルする時、以下のようなメッセージを見ることができるでしょう。
+で見ることができるようになりました。
+これは、問題の解決に非常に役に立ちます。
+Rの処理は、メッセージパネルに表示され、エラーが発生した場合には、どのコード組がおかしいのか知ることができます。
+例えば、この文書をコンパイルする時、以下のようなメッセージを見ることができるでしょう。
+
 \end_layout
 
 \begin_layout Standard
@@ -1341,37 +1432,29 @@ begin{verbatim}
 
 \begin_layout Plain Layout
 
-17:58:47.868: Processing code chunks with options ...
+17:58:47.868:
+ Processing code chunks with options ...
 \end_layout
 
 \begin_layout Plain Layout
 
-17:58:47.885:  1 : echo keep.source term verbatim (label=setup)
+17:58:47.885:
+  1 :
+ echo keep.source term verbatim (label=setup)
 \end_layout
 
 \begin_layout Plain Layout
 
-17:58:47.889:  2 : echo keep.source (label=sweave-manual)
+17:58:47.889:
+  2 :
+ echo keep.source (label=sweave-manual)
 \end_layout
 
 \begin_layout Plain Layout
 
-17:58:47.908:  3 : echo keep.source term verbatim (label=print-integers)
-\end_layout
-
-\begin_layout Plain Layout
-
-....
-\end_layout
-
-\begin_layout Plain Layout
-
-17:58:47.941: Loading required package: xtable
-\end_layout
-
-\begin_layout Plain Layout
-
-17:58:47.976:  9 : echo term verbatim pdf (label=iris-pairs)
+17:58:47.908:
+  3 :
+ echo keep.source term verbatim (label=print-integers)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1381,7 +1464,27 @@ begin{verbatim}
 
 \begin_layout Plain Layout
 
-17:58:48.116: You can now run (pdf)latex on 'sweave.tex'
+17:58:47.941:
+ Loading required package:
+ xtable
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:47.976:
+  9 :
+ echo term verbatim pdf (label=iris-pairs)
+\end_layout
+
+\begin_layout Plain Layout
+
+....
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:48.116:
+ You can now run (pdf)latex on 'sweave.tex'
 \end_layout
 
 \begin_layout Plain Layout
@@ -1401,7 +1504,9 @@ end{verbatim}
 \family typewriter
 label=
 \family default
-の後の文字列が、コード組のラベルを示します。コード組のどれかがRでエラーを起こせば、即座にここにエラーメッセージを見ることができます。
+の後の文字列が、コード組のラベルを示します。
+コード組のどれかがRでエラーを起こせば、即座にここにエラーメッセージを見ることができます。
+
 \end_layout
 
 \begin_layout Standard
@@ -1417,7 +1522,9 @@ label=
 \backslash
 centering{}
 \family default
-のようなマクロを書き加えてしまうことがあるので、Sweaveコード組がエラーを起こす場合があるという事です。この場合のコード組は、下記のようになってしまいます。
+のようなマクロを書き加えてしまうことがあるので、Sweaveコード組がエラーを起こす場合があるという事です。
+この場合のコード組は、下記のようになってしまいます。
+
 \end_layout
 
 \begin_layout Standard
@@ -1455,7 +1562,8 @@ end{verbatim}
 \family typewriter
 <<>>=
 \family default
-は行頭すぐに置かれなくてはならないため、これは正しいSweaveコードではありません。したがって、コード組段落の配置に手を加える場合には、
+は行頭すぐに置かれなくてはならないため、これは正しいSweaveコードではありません。
+したがって、コード組段落の配置に手を加える場合には、
 \family sans
 表示\SpecialChar menuseparator
 ソースを表示
@@ -1464,14 +1572,17 @@ end{verbatim}
 \family typewriter
 <<>>=
 \family default
-が改行後に現れるようにすることをお勧めします。表
+が改行後に現れるようにすることをお勧めします。
+表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:xtable-demo"
+nolink "false"
 
 \end_inset
 
 のコード組に手動で空行が追加されているのは、このためです。
+
 \end_layout
 
 \begin_layout Section
@@ -1490,7 +1601,9 @@ https://stat.ethz.ch/R-manual/R-devel/library/utils/doc/Sweave.pdf
 
 \end_inset
 
-にあります。「Reproducible Research」にあるCRANタスクビューには、便利と思われるSweave関連パッケージの一覧があります。
+にあります。
+「Reproducible Research」にあるCRANタスクビューには、便利と思われるSweave関連パッケージの一覧があります。
+
 \begin_inset Flex URL
 status collapsed
 
@@ -1501,7 +1614,8 @@ http://cran.r-project.org/web/views/ReproducibleResearch.html
 
 \end_inset
 
-をご覧ください。\SpecialChar LyX
+をご覧ください。
+\SpecialChar LyX
 とSweaveに関する質問は、\SpecialChar LyX
 メーリングリスト(
 \begin_inset Flex URL
@@ -1514,7 +1628,8 @@ https://www.lyx.org/MailingLists
 
 \end_inset
 
-)に投稿してください。さらに多くの\SpecialChar LyX
+)に投稿してください。
+さらに多くの\SpecialChar LyX
 の用例は、
 \begin_inset Flex URL
 status collapsed
@@ -1527,6 +1642,7 @@ https://github.com/yihui/lyx
 \end_inset
 
 にあります。
+
 \end_layout
 
 \begin_layout Section
@@ -1540,8 +1656,9 @@ Sweaveをbeamerで使うにはどうすればよいでしょうか
 \begin_layout Standard
 beamerのスライドでSweaveを使うと、\SpecialChar LyX
 では\SpecialChar LaTeX
-エラーが発生します。その原因は、生のRコードを含むbeamerフレームのせいです。これを解決するには、通常のフ
-レームの代わりに脆弱フレームを使うか、フレーム表題に
+エラーが発生します。
+その原因は、生のRコードを含むbeamerフレームのせいです。
+これを解決するには、通常のフレームの代わりに脆弱フレームを使うか、フレーム表題に
 \family sans
 挿入\SpecialChar menuseparator
 フレームオプション
@@ -1551,6 +1668,7 @@ beamerのスライドでSweaveを使うと、\SpecialChar LyX
 fragile
 \family default
 オプションを渡します。
+
 \end_layout
 
 \begin_layout Subsection
@@ -1558,18 +1676,19 @@ Rnw文書をコンパイルするためのRスクリプトを書いてもいい�
 \end_layout
 
 \begin_layout Standard
-もちろんです。まず、前述のRスクリプト
+もちろんです。
+まず、前述のRスクリプト
 \family typewriter
 $$s
 \family sans
 /scripts/lyxsweave.R
 \family default
-がどのように動作するかを理解する必要がありますので、できればそのRソースコードを読むことをお勧めします(特に、Rがパスをどのように取得し、Rnw文書を取り扱うの
-に
+がどのように動作するかを理解する必要がありますので、できればそのRソースコードを読むことをお勧めします(特に、Rがパスをどのように取得し、Rnw文書を取り扱うのに
 \emph on
 Sweave()
 \emph default
-をどのように使っているかを見てください)。その後、カスタマイズした
+をどのように使っているかを見てください)。
+その後、カスタマイズした
 \family sans
 lyxsweave.R
 \family default
@@ -1583,7 +1702,8 @@ lyxsweave.R
 \family sans
 scripts
 \family default
-ディレクトリ下に置いてください。\SpecialChar LyX
+ディレクトリ下に置いてください。
+\SpecialChar LyX
 は自身の
 \emph on
 ライブラリディレクトリ
@@ -1596,10 +1716,11 @@ scripts
 \family sans
 lyxsweave.R
 \family default
-がユーザーディレクトリで検出されれば、それが使用されます。\SpecialChar LyX
+がユーザーディレクトリで検出されれば、それが使用されます。
+\SpecialChar LyX
 ライブラリディレクトリ下にあるスクリプトを直接ハックしてしまうと、\SpecialChar LyX
-更新時に修正したスクリプトが上書きさ
-れてしまいます(ユーザーディレクトリは影響を受けません)ので、お勧めしません。
+更新時に修正したスクリプトが上書きされてしまいます(ユーザーディレクトリは影響を受けません)ので、お勧めしません。
+
 \end_layout
 
 \begin_layout Standard
@@ -1612,6 +1733,7 @@ knitr
 Rnw (knitr)
 \family default
 となっています。
+
 \end_layout
 
 \end_body

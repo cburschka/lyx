@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,9 +25,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -78,12 +78,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -123,14 +127,14 @@ Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
 \end_layout
 
 \begin_layout Plain Layout
-En principio, este archivo puede redistribuirse y/o modificarse bajo los
- términos de GNU Public License, versión 2.
- Sin embargo, se supone que este archivo es una plantilla para ser modificada
- según las necesidades de cada cuál.
- Por esta razón, si este archivo se utiliza como tal plantilla y no se distribuy
-e específicamente como parte de otro programa/paquete, el autor otorga permiso
- extra para copiar y modificar libremente este archivo e incluso para suprimir
- esta nota de copyright.
+En principio,
+ este archivo puede redistribuirse y/o modificarse bajo los términos de GNU Public License,
+ versión 2.
+ Sin embargo,
+ se supone que este archivo es una plantilla para ser modificada según las necesidades de cada cuál.
+ Por esta razón,
+ si este archivo se utiliza como tal plantilla y no se distribuye específicamente como parte de otro programa/paquete,
+ el autor otorga permiso extra para copiar y modificar libremente este archivo e incluso para suprimir esta nota de copyright.
  
 \end_layout
 
@@ -150,7 +154,8 @@ Título breve alternativo
 status open
 
 \begin_layout Plain Layout
-opcional, sólo para títulos largos
+opcional,
+ sólo para títulos largos
 \end_layout
 
 \end_inset
@@ -235,16 +240,19 @@ Marca de Institución
 status open
 
 \begin_layout Plain Layout
-Autor, Otro
+Autor,
+ Otro
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-- opcional, usar sólo con varios autores
+- opcional,
+ usar sólo con varios autores
 \end_layout
 
 \begin_layout Plain Layout
-- si realmente son muchos autores, usar 
+- si realmente son muchos autores,
+ usar 
 \begin_inset Quotes eld
 \end_inset
 
@@ -317,7 +325,8 @@ inst sólo si hay varias afiliaciones.
 \end_layout
 
 \begin_layout Plain Layout
-- Poner algo sencillo, nadie se interesa por la dirección.
+- Poner algo sencillo,
+ nadie se interesa por la dirección.
 \end_layout
 
 \end_inset
@@ -332,7 +341,8 @@ Universidades de Algún Sitio y de Otro Sitio
 status collapsed
 
 \begin_layout Plain Layout
-opcional, aunque generalmente necesario
+opcional,
+ aunque generalmente necesario
 \end_layout
 
 \end_inset
@@ -346,7 +356,8 @@ opcional, aunque generalmente necesario
 \end_layout
 
 \begin_layout Date
-Conferencia sobre Presentaciones Fabulosas, 2003
+Conferencia sobre Presentaciones Fabulosas,
+ 2003
 \begin_inset Note Note
 status collapsed
 
@@ -356,8 +367,8 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-- Realmente no es informativo para la audiencia, pero sí para quienes (incluyend
-o Vd.mismo) lean la presentación en línea.
+- Realmente no es informativo para la audiencia,
+ pero sí para quienes (incluyendo Vd.mismo) lean la presentación en línea.
 \end_layout
 
 \end_inset
@@ -375,7 +386,8 @@ CFP 2003
 status open
 
 \begin_layout Plain Layout
-opcional, debería ser una abreviatura del nombre de la conferencia
+opcional,
+ debería ser una abreviatura del nombre de la conferencia
 \end_layout
 
 \end_inset
@@ -393,9 +405,9 @@ opcional, debería ser una abreviatura del nombre de la conferencia
 status open
 
 \begin_layout Plain Layout
-Si se dispone de un archivo como "institución-logo-nombrearchivo.xxx", donde
- xxx es un formato gráfico aceptable por latex o pdflatex, entonces se puede
- añadir un logotipo descomentando lo siguiente:
+Si se dispone de un archivo como "institución-logo-nombrearchivo.xxx",
+ donde xxx es un formato gráfico aceptable por latex o pdflatex,
+ entonces se puede añadir un logotipo descomentando lo siguiente:
 \end_layout
 
 \end_inset
@@ -494,7 +506,8 @@ tableofcontents[currentsection,currentsubsection]
 status open
 
 \begin_layout Plain Layout
-Si quieres descubrir todo en modo paso a paso, descomenta el siguiente comando:
+Si quieres descubrir todo en modo paso a paso,
+ descomenta el siguiente comando:
 \end_layout
 
 \end_inset
@@ -546,9 +559,9 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-Estructurar una exposición es una tarea difícil y la siguiente estructura
- podría no ser adecuada.
- Aquí hay unas reglas aplicadas a este caso: 
+Estructurar una exposición es una tarea difícil y la siguiente estructura podría no ser adecuada.
+ Aquí hay unas reglas aplicadas a este caso:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -557,7 +570,8 @@ Exactamente dos o tres secciones (además del sumario).
 \end_layout
 
 \begin_layout Itemize
-Como máximo, tres subsecciones por sección.
+Como máximo,
+ tres subsecciones por sección.
  
 \end_layout
 
@@ -576,19 +590,20 @@ min por diapositiva.
 
 \begin_layout Itemize
 Es probable que la audiencia sepa bastante poco sobre el tema de la conferencia,
- así pues, ¡*simplifique*!
+ así pues,
+ ¡*simplifique*!
 \end_layout
 
 \begin_layout Itemize
-En una exposición de 20min, conseguir transmitir las ideas principales es
- bastante.
- Deje fuera los detalles, aunque eso signifique ser menos preciso de lo
- que podría parecer necesario.
+En una exposición de 20min,
+ conseguir transmitir las ideas principales es bastante.
+ Deje fuera los detalles,
+ aunque eso signifique ser menos preciso de lo que podría parecer necesario.
 \end_layout
 
 \begin_layout Itemize
-Si se omiten detalles vitales para una demostración/implementación, dígalo
- una vez.
+Si se omiten detalles vitales para una demostración/implementación,
+ dígalo una vez.
  Para la audiencia será suficiente.
  
 \end_layout
@@ -632,7 +647,8 @@ status open
 N.
  del T.
 \emph default
-: En el título original pone además 
+:
+ En el título original pone además 
 \begin_inset Quotes eld
 \end_inset
 
@@ -661,8 +677,7 @@ Los subtítulos de los fotogramas son opcionales.
 status collapsed
 
 \begin_layout Plain Layout
-- Un título debería resumir el contenido de la transparencia de modo comprensibl
-e para cualquiera que no conoce lo que ésta contiene.
+- Un título debería resumir el contenido de la transparencia de modo comprensible para cualquiera que no conoce lo que ésta contiene.
  
 \end_layout
 
@@ -870,8 +885,12 @@ status open
 
 \begin_layout Plain Layout
 N.
- del T.: Para traducir en la salida las etiquetas AMS: ejemplo, teorema,
- etc, se puede usar uno de estos métodos:
+ del T.:
+ Para traducir en la salida las etiquetas AMS:
+ ejemplo,
+ teorema,
+ etc,
+ se puede usar uno de estos métodos:
 \end_layout
 
 \begin_layout Itemize
@@ -892,7 +911,8 @@ https://wiki.lyx.org/LyX/I18nLabels
 
 \end_inset
 
-, por ej.:
+,
+ por ej.:
 \begin_inset Newline newline
 \end_inset
 
@@ -1136,7 +1156,8 @@ tercer mensaje
 
 
 \color none
-, pero no más.
+,
+ pero no más.
 \end_layout
 
 \begin_layout Standard
@@ -1282,7 +1303,8 @@ newblock
 
 \end_inset
 
- Editorial, 1990.
+ Editorial,
+ 1990.
 \begin_inset ERT
 status collapsed
 
@@ -1300,7 +1322,8 @@ beamertemplatearticlebibitems
 status open
 
 \begin_layout Plain Layout
-Y seguir con artículos, una lista breve.
+Y seguir con artículos,
+ una lista breve.
  
 \end_layout
 
@@ -1354,7 +1377,8 @@ newblock
 Revista Esto y Aquello
 \emph default
 .
- 2(1):50–100, 2000.
+ 2(1):50–100,
+ 2000.
 \end_layout
 
 \end_deeper

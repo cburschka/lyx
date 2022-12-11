@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -81,9 +81,9 @@ customHeadersFooters
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -131,12 +131,12 @@ customHeadersFooters
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \branch Standalone
 \selected 1
 \filename_suffix 0
-\color #ff0000
+\color #ff0000 #00ffff
 \end_branch
-\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -153,12 +153,16 @@ customHeadersFooters
 \papercolumns 1
 \papersides 2
 \paperpagestyle fancy
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -317,18 +321,17 @@ Overview
 \end_layout
 
 \begin_layout Standard
-bla bla bla bla bla bla bla bla bla bla bla, see 
+bla bla bla bla bla bla bla bla bla bla bla,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:The-next-section"
+nolink "false"
 
 \end_inset
 
 .
- Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla DLC-coatings
+ Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla DLC-coatings
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "DLC"
@@ -337,8 +340,7 @@ literal "false"
 
 \end_inset
 
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
- bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla,
+ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla,
  see 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -352,6 +354,7 @@ literal "true"
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Integral-sine"
+nolink "false"
 
 \end_inset
 
@@ -387,14 +390,14 @@ status open
 status open
 
 \begin_layout Plain Layout
-The contents of this branch is only output if this chapter is processed
- on its own, i.
+The contents of this branch is only output if this chapter is processed on its own,
+ i.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., not from the master.
- This allows you to have a bibliography and a nomenclature if you only want
- to output this chapter.
+e.,
+ not from the master.
+ This allows you to have a bibliography and a nomenclature if you only want to output this chapter.
 \end_layout
 
 \end_inset

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -80,12 +80,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -96,7 +100,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Traduction française J.P.
- Chrétien, mars 2015
+ Chrétien,
+ mars 2015
 \end_layout
 
 \end_inset
@@ -113,8 +118,7 @@ Manuels spécifiques\SpecialChar menuseparator
 Présentation Beamer)
 \family default
 .
- Il démontre avec quelle facilité il est possible de créer un rendu papier
- via le mode 
+ Il démontre avec quelle facilité il est possible de créer un rendu papier via le mode 
 \begin_inset Quotes cld
 \end_inset
 
@@ -126,29 +130,33 @@ article
 \end_layout
 
 \begin_layout Itemize
-En dehors de la classe de document, vous souhaiterez sans doute régler la
- plupart des paramètres du document comme ceux du document inclus
+En dehors de la classe de document,
+ vous souhaiterez sans doute régler la plupart des paramètres du document comme ceux du document inclus
 \begin_inset space ~
 \end_inset
 
-: par exemple, si vous avez réglé la bibliographie comme 
+:
+ par exemple,
+ si vous avez réglé la bibliographie comme 
 \begin_inset Quotes cld
 \end_inset
 
-Natbib, auteur-année
+Natbib,
+ auteur-année
 \begin_inset Quotes crd
 \end_inset
 
- dans le document fils, mettez la même chose ici.
- Il n'est pas nécessaire de copier certains éléments du préambule, comme
- par exemple 
+ dans le document fils,
+ mettez la même chose ici.
+ Il n'est pas nécessaire de copier certains éléments du préambule,
+ comme par exemple 
 \backslash
 setbeamertemplate{...}.
 \end_layout
 
 \begin_layout Itemize
-Si vous voyez un message d'alerte au sujet de classes de texte différentes
- lors du rendu PDF, vous pouvez cocher sereinement 
+Si vous voyez un message d'alerte au sujet de classes de texte différentes lors du rendu PDF,
+ vous pouvez cocher sereinement 
 \begin_inset Quotes cld
 \end_inset
 

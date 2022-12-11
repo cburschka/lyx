@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,9 +25,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -87,12 +87,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -107,7 +111,8 @@ This template relies on the \SpecialChar LaTeX
 \family sans
 europasscv
 \family default
-, see 
+,
+ see 
 \begin_inset Flex URL
 status open
 
@@ -118,7 +123,8 @@ http://www.ctan.org/pkg/europasscv
 
 \end_inset
 
-, to create a CV according to the guidelines at 
+,
+ to create a CV according to the guidelines at 
 \begin_inset Flex URL
 status open
 
@@ -173,8 +179,7 @@ pdflatex
 status open
 
 \begin_layout Plain Layout
-The following personal information may be included within the Latex preamble
- as well:
+The following personal information may be included within the Latex preamble as well:
 \end_layout
 
 \end_inset
@@ -270,7 +275,8 @@ width
 \begin_inset Quotes ers
 \end_inset
 
-, file path):
+,
+ file path):
 \end_layout
 
 \begin_layout Picture
@@ -312,7 +318,8 @@ status open
 \series bold
 Big Item
 \series default
-: Puts left text to the left column and transforms it into capital letters.
+:
+ Puts left text to the left column and transforms it into capital letters.
  The font size for the right text will be increased.
 \end_layout
 
@@ -325,7 +332,8 @@ Vertical Space
 \begin_inset Quotes grd
 \end_inset
 
- for manual, vertical formatting.
+ for manual,
+ vertical formatting.
 \end_layout
 
 \begin_layout Itemize
@@ -378,7 +386,9 @@ status open
 \series bold
 Title Item
 \series default
-: Left text is typeset in blue, font size of right text will be increased.
+:
+ Left text is typeset in blue,
+ font size of right text will be increased.
 \end_layout
 
 \begin_layout Itemize
@@ -390,7 +400,8 @@ Vertical Space
 \begin_inset Quotes erd
 \end_inset
 
- for manual, vertical formatting.
+ for manual,
+ vertical formatting.
 \end_layout
 
 \begin_layout Itemize
@@ -424,7 +435,8 @@ newline
 
 \end_inset
 
- New Jersey, United States of America
+ New Jersey,
+ United States of America
 \begin_inset Note Note
 status open
 
@@ -433,7 +445,8 @@ status open
 \series bold
 Item
 \series default
-: Puts left text to the left column and right text to the right column.
+:
+ Puts left text to the left column and right text to the right column.
  
 \end_layout
 
@@ -446,7 +459,8 @@ Vertical Space
 \begin_inset Quotes erd
 \end_inset
 
- for manual, vertical formatting.
+ for manual,
+ vertical formatting.
 \end_layout
 
 \begin_layout Itemize
@@ -462,14 +476,15 @@ Summary
 \end_layout
 
 \begin_layout Plain Layout
-Note: The usage of 
+Note:
+ The usage of 
 \family typewriter
 
 \backslash
 newline
 \family default
- instead of a normal or forced linebreak reduces the distance between two
- consecutive items, i.e.
+ instead of a normal or forced linebreak reduces the distance between two consecutive items,
+ i.e.
  it retains the format of a single item.
  Alternatively it may be possible to manually define the 
 \begin_inset Quotes eld
@@ -528,7 +543,8 @@ Insert \SpecialChar menuseparator
  Custom Insets \SpecialChar menuseparator
  ItemInset
 \family default
-) as demonstrated above, in order to ensure correctly formatted listings.
+) as demonstrated above,
+ in order to ensure correctly formatted listings.
  
 \end_layout
 
@@ -551,20 +567,26 @@ Starship Captain
 \end_layout
 
 \begin_layout Item
-USS Enterprise (NCC-1701-D), Somewhere in the Alpha Quadrant.
+USS Enterprise (NCC-1701-D),
+ Somewhere in the Alpha Quadrant.
 \end_layout
 
 \begin_layout Item
-Space: the final frontier.
+Space:
+ the final frontier.
  These are the voyages of the starship Enterprise.
- Its continuing mission: to explore strange new worlds, to seek out new
- life and new civilizations, to boldly go where no one has gone before.
+ Its continuing mission:
+ to explore strange new worlds,
+ to seek out new life and new civilizations,
+ to boldly go where no one has gone before.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Nemeck, Larry (2003).
- Star Trek: The Next Generation Companion.
+Nemeck,
+ Larry (2003).
+ Star Trek:
+ The Next Generation Companion.
  Pocket Books.
  ISBN 0-7434-5798-6.
 \end_layout
@@ -576,8 +598,7 @@ Nemeck, Larry (2003).
 status open
 
 \begin_layout Plain Layout
-Note that you'll need the preamble code used in this example to make footnotes
- appear.
+Note that you'll need the preamble code used in this example to make footnotes appear.
 \end_layout
 
 \end_inset
@@ -609,7 +630,8 @@ Undertaker
 
 \end_inset
 
-ISCED-11: 7
+ISCED-11:
+ 7
 \begin_inset Note Note
 status open
 
@@ -618,8 +640,11 @@ status open
 \series bold
 Title Level
 \series default
-: Like Title Item, including the possibility to specify, for instance, ISCED-11
- levels.
+:
+ Like Title Item,
+ including the possibility to specify,
+ for instance,
+ ISCED-11 levels.
 \end_layout
 
 \begin_layout Itemize
@@ -631,7 +656,8 @@ Vertical Space
 \begin_inset Quotes erd
 \end_inset
 
- for manual, vertical formatting.
+ for manual,
+ vertical formatting.
 \end_layout
 
 \begin_layout Itemize
@@ -686,7 +712,8 @@ Highlight
 \begin_inset Quotes grd
 \end_inset
 
-: 
+:
+ 
 \family sans
 Edit\SpecialChar menuseparator
 Text Style\SpecialChar menuseparator
@@ -695,7 +722,8 @@ Highlight
 
 \end_inset
 
- Family, United States of America.
+ Family,
+ United States of America.
 \end_layout
 
 \begin_layout Standard
@@ -739,11 +767,13 @@ Forensic Practitioner
 
 \end_inset
 
-ISCED-11: 6
+ISCED-11:
+ 6
 \end_layout
 
 \begin_layout Item
-Miami Metro PD, United States of America.
+Miami Metro PD,
+ United States of America.
 \end_layout
 
 \begin_layout Standard
@@ -759,7 +789,8 @@ Doughnuts!
 \end_layout
 
 \begin_layout EcvItemize
-Superior: Maria LaGuerta (until 2012)
+Superior:
+ Maria LaGuerta (until 2012)
 \end_layout
 
 \end_inset
@@ -861,7 +892,8 @@ B2
 status open
 
 \begin_layout Plain Layout
-Language: 
+Language:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -885,8 +917,11 @@ Writing
 \end_layout
 
 \begin_layout Plain Layout
-Levels: A1/A2: Basic user - B1/B2: Independent user - C1/C2: Proficient
- user 
+Levels:
+ A1/A2:
+ Basic user - B1/B2:
+ Independent user - C1/C2:
+ Proficient user 
 \end_layout
 
 \end_inset
@@ -949,7 +984,8 @@ A1
 status open
 
 \begin_layout Plain Layout
-The last language in the table, as above.
+The last language in the table,
+ as above.
 \end_layout
 
 \end_inset
@@ -989,7 +1025,9 @@ status open
 \series bold
 Blue Item
 \series default
-: Like Item, blue left column appearance.
+:
+ Like Item,
+ blue left column appearance.
 \end_layout
 
 \begin_layout Itemize
@@ -1001,7 +1039,8 @@ Vertical Space
 \begin_inset Quotes erd
 \end_inset
 
- for manual, vertical formatting.
+ for manual,
+ vertical formatting.
 \end_layout
 
 \begin_layout Itemize

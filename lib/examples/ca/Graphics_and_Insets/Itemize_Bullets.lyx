@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,16 +71,20 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \bulletLaTeX 0 "\raise1pt\hbox{\small\(\blacktriangleright\)}"
 \bulletLaTeX 1 "\raise1pt\hbox{\(\leadsto\)}"
 \bullet 2 4 8 3
 \bullet 3 0 8 -1
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -90,10 +94,9 @@ Introducció
 \end_layout
 
 \begin_layout Standard
-Comprobareu deseguida que la configuració dels pics pot arribar a ser prou
- coplexa si així ho voleu.
- Pero no ho us amoineu, la configuració de la majoria de les opcions només
- necessiten alguna ordre i un o dos clics de ratolí.
+Comprobareu deseguida que la configuració dels pics pot arribar a ser prou coplexa si així ho voleu.
+ Pero no ho us amoineu,
+ la configuració de la majoria de les opcions només necessiten alguna ordre i un o dos clics de ratolí.
 \end_layout
 
 \begin_layout Enumerate
@@ -106,7 +109,8 @@ Enumeració* (itemize)
 
 \begin_deeper
 \begin_layout Itemize
-Té el seu comptador propi, limitat a quatre nivells
+Té el seu comptador propi,
+ limitat a quatre nivells
 \end_layout
 
 \begin_deeper
@@ -135,8 +139,7 @@ no
 \begin_deeper
 \begin_layout Itemize
 excepte la limitació imposada pel \SpecialChar LaTeX
- de 6 nivells de profunditat pel conjunt
- de totes les llistes.
+ de 6 nivells de profunditat pel conjunt de totes les llistes.
 \end_layout
 
 \end_deeper
@@ -152,9 +155,10 @@ Document\SpecialChar menuseparator
 Configuració\SpecialChar menuseparator
 Pics
 \family default
-, s'aplica a la totalitat del document.
- Si desitgeu personalitzar els pics per paràgrafs concrets, heu de fer-ho
- manualment.
+,
+ s'aplica a la totalitat del document.
+ Si desitgeu personalitzar els pics per paràgrafs concrets,
+ heu de fer-ho manualment.
 \series medium
 \size small
 
@@ -165,8 +169,7 @@ status collapsed
 
 \series medium
 \size small
-Podeu trobar més detalls sobre l'ús de pics en documents en català i castellà
- a la secció 3.3.6 de la Guia de l'usuari
+Podeu trobar més detalls sobre l'ús de pics en documents en català i castellà a la secció 3.3.6 de la Guia de l'usuari
 \series default
 .
 \end_layout
@@ -181,8 +184,7 @@ Taules de símbols disponbiles per als pics:
 \end_layout
 
 \begin_layout Standard
-Les taules de simbols següents són les que apareixen als panells disponibles
- en el camp desplegable 
+Les taules de simbols següents són les que apareixen als panells disponibles en el camp desplegable 
 \family sans
 Tipus de lletra
 \family default
@@ -1171,8 +1173,8 @@ status collapsed
 
 \begin_layout Plain Layout
 NFSS (New Font Selecting Scheme) és un sistema de tipus de lletra de \SpecialChar LaTeX2e
- (bàsicamen
-t, els canvis són les ordres de lletra de 
+ (bàsicament,
+ els canvis són les ordres de lletra de 
 \family typewriter
 {
 \backslash
@@ -1186,12 +1188,11 @@ bf \SpecialChar ldots
 textbf{\SpecialChar ldots
 }
 \family default
-, aunque los verdaderos cambios son internos).
+,
+ aunque los verdaderos cambios son internos).
  PS es refereix a PostScript®.
  PSNFSS és un conjunt de fitxers \SpecialChar LaTeX
- que proporcionen funcionalitats NFSS al
- conjunts bàsic de 35 pòlisses PS presents en la majoria d'impressores postscrip
-t.
+ que proporcionen funcionalitats NFSS al conjunts bàsic de 35 pòlisses PS presents en la majoria d'impressores postscript.
  
 \end_layout
 

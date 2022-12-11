@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,9 +29,9 @@ braille
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -95,12 +95,16 @@ braille
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -115,13 +119,15 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
-Nota preliminar: ¡El Braille que se puede componer con \SpecialChar LaTeX
+Nota preliminar:
+ ¡El Braille que se puede componer con \SpecialChar LaTeX
  no es completo!
  El Braille profesional puede ser de 6 u 8
 \begin_inset space \thinspace{}
 \end_inset
 
-puntos, mientras que \SpecialChar LaTeX
+puntos,
+ mientras que \SpecialChar LaTeX
  sólo soporta Braille de 6
 \begin_inset space \thinspace{}
 \end_inset
@@ -131,7 +137,8 @@ puntos sin caracteres acentuados.
 
 \begin_layout Standard
 Para escribir Braille con \SpecialChar LyX
-, hay que cargar antes el módulo 
+,
+ hay que cargar antes el módulo 
 \family sans
 Braille
 \family default
@@ -140,9 +147,9 @@ Braille
 Módulos
 \family default
  de la configuración del documento.
- Después, al final del cuadro desplegable de selección de entornos de \SpecialChar LyX
- se
- selecciona el entorno de párrafo 
+ Después,
+ al final del cuadro desplegable de selección de entornos de \SpecialChar LyX
+ se selecciona el entorno de párrafo 
 \family sans
 Braille
 \begin_inset space ~
@@ -159,8 +166,10 @@ Braille
 (tamaño de texto)
 \family default
  y se escribe el texto.
- Los demás entornos Braille, como se describe más abajo, sólo sirven para
- activar o desactivar algunas propiedades: ¡hay que dejarlos vacíos!
+ Los demás entornos Braille,
+ como se describe más abajo,
+ sólo sirven para activar o desactivar algunas propiedades:
+ ¡hay que dejarlos vacíos!
 \end_layout
 
 \begin_layout Standard
@@ -213,9 +222,9 @@ height "1pt"
 \begin_inset VSpace bigskip
 \end_inset
 
-Como se puede ver, \SpecialChar LaTeX
- no es capaz de dividir con guiones las palabras escritas
- en Braille.
+Como se puede ver,
+ \SpecialChar LaTeX
+ no es capaz de dividir con guiones las palabras escritas en Braille.
  Hay que hacerlo manualmente.
 \end_layout
 
@@ -231,8 +240,11 @@ status open
 
 \series bold
 Nota:
+
 \series default
- En Braille sólo se pueden imprimir letras latinas, números, puntuaciones,
+ En Braille sólo se pueden imprimir letras latinas,
+ números,
+ puntuaciones,
  paréntesis y corchetes.
  Caracteres especiales como 
 \begin_inset Quotes cld
@@ -250,7 +262,8 @@ $
 \begin_inset Quotes crd
 \end_inset
 
-, caracteres acentuados y saltos de línea no están soportados.
+,
+ caracteres acentuados y saltos de línea no están soportados.
 \end_layout
 
 \end_inset
@@ -270,6 +283,7 @@ status open
 
 \series bold
 Nota:
+
 \series default
  Los nombres propios de \SpecialChar LyX
  y \SpecialChar LaTeX
@@ -282,7 +296,8 @@ Nota:
 \begin_inset Quotes crd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes cld
 \end_inset
 
@@ -291,7 +306,8 @@ Nota:
 \begin_inset Quotes crd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes cld
 \end_inset
 
@@ -310,7 +326,8 @@ Nota:
 \end_inset
 
  deben insertarse en código \SpecialChar TeX
-, como en el siguiente ejemplo:
+,
+ como en el siguiente ejemplo:
 \end_layout
 
 \end_inset
@@ -332,7 +349,8 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
-Latinos: !
+Latinos:
+ !
 \begin_inset Foot
 status collapsed
 
@@ -408,8 +426,7 @@ height "1pt"
 \begin_inset VSpace bigskip
 \end_inset
 
-Ahora echaremos un vistazo a los diferentes entornos Braille usando como
- ejemplo el texto 
+Ahora echaremos un vistazo a los diferentes entornos Braille usando como ejemplo el texto 
 \begin_inset Quotes cld
 \end_inset
 
@@ -529,8 +546,7 @@ Esto es Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-Los caracteres en Braille se pueden crear de forma alternativa escribiendo
- un número en un recuadro Braille.
+Los caracteres en Braille se pueden crear de forma alternativa escribiendo un número en un recuadro Braille.
  Un marco Braille se inserta con el menú 
 \family sans
 Insertar\SpecialChar menuseparator
@@ -574,8 +590,8 @@ puntos puede ser activado con el comando
 brailleeightdotstrue
 \series default
 .
- Sin embargo, los dos puntos extras sólo están disponibles si se emplea
- un recuadro Braille.
+ Sin embargo,
+ los dos puntos extras sólo están disponibles si se emplea un recuadro Braille.
  Por ejemplo el número 
 \series bold
 8175
@@ -627,8 +643,7 @@ brailleeightdotsfalse
 \begin_inset VSpace bigskip
 \end_inset
 
-El tamaño por omisión de la fuente Braille puede cambiarse con la longitud
- 
+El tamaño por omisión de la fuente Braille puede cambiarse con la longitud 
 \series bold
 
 \backslash
@@ -640,13 +655,16 @@ brailleunit
 \end_inset
 
 mm.
- Para obtener, p.
+ Para obtener,
+ p.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., Braille de doble tamaño con los puntos diminutos también de doble tamaño,
+e.,
+ Braille de doble tamaño con los puntos diminutos también de doble tamaño,
  se emplea el siguiente comando en código \SpecialChar TeX
-: 
+:
+ 
 \end_layout
 
 \begin_layout Standard
@@ -674,7 +692,8 @@ braille{#1}}
 \end_layout
 
 \begin_layout Standard
-Braille en tamaño doble: 
+Braille en tamaño doble:
+ 
 \begin_inset ERT
 status collapsed
 

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 609
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -115,8 +115,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-La clase europecv ofrece muchas posibilidades de personalización; para detalles
- consulta la documentación:
+La clase europecv ofrece muchas posibilidades de personalización;
+ para detalles consulta la documentación:
 \end_layout
 
 \begin_layout Plain Layout
@@ -152,7 +152,8 @@ Inserta los datos personales a continuación:
 \end_layout
 
 \begin_layout Name
-Apellido Apellido, Nombre
+Apellido Apellido,
+ Nombre
 \end_layout
 
 \begin_layout FooterName
@@ -168,7 +169,8 @@ día de mes de año
 \end_layout
 
 \begin_layout Address
-C/ Calle, nº
+C/ Calle,
+ nº
 \begin_inset ERT
 status collapsed
 
@@ -263,8 +265,9 @@ Opcional
 status collapsed
 
 \begin_layout Plain Layout
-Opcional, alineamiento y posición de la foto o el texto; en este caso la
- imagen está 6
+Opcional,
+ alineamiento y posición de la foto o el texto;
+ en este caso la imagen está 6
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -316,7 +319,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-Opcional, en este caso el contenido siguiente se desplaza 2
+Opcional,
+ en este caso el contenido siguiente se desplaza 2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -346,8 +350,9 @@ thepage
 status open
 
 \begin_layout Plain Layout
-Opcional, redefine lo que se imprime al pie, en este caso solo el número
- de página
+Opcional,
+ redefine lo que se imprime al pie,
+ en este caso solo el número de página
 \end_layout
 
 \end_inset
@@ -370,7 +375,11 @@ status open
 \end_inset
 
 Master en\SpecialChar ldots
-, Institución, Ciudad, Provincia, Descripción\SpecialChar ldots
+,
+ Institución,
+ Ciudad,
+ Provincia,
+ Descripción\SpecialChar ldots
 
 \end_layout
 
@@ -385,12 +394,17 @@ status open
 \end_inset
 
 Licenciatura\SpecialChar ldots
-, Institución, Ciudad, Provincia, Descripción\SpecialChar ldots
+,
+ Institución,
+ Ciudad,
+ Provincia,
+ Descripción\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Section
-Master, Tesis
+Master,
+ Tesis
 \end_layout
 
 \begin_layout BulletedItem
@@ -463,7 +477,9 @@ status open
 
 \end_inset
 
-Empresa, Ciudad, Provincia
+Empresa,
+ Ciudad,
+ Provincia
 \end_layout
 
 \begin_layout Standard
@@ -493,8 +509,8 @@ Español
 status collapsed
 
 \begin_layout Plain Layout
-El parámetro opcional es el espacio vertical tras el ítem; se permiten valores
- negativos.
+El parámetro opcional es el espacio vertical tras el ítem;
+ se permiten valores negativos.
  Está disponible para toda clase de entradas.
 \end_layout
 
@@ -513,8 +529,8 @@ El parámetro opcional es el espacio vertical tras el ítem; se permiten valores
 status open
 
 \begin_layout Plain Layout
-Opcional, inserta la descripción del nivel de idioma y establece el símbolo
- para la nota al pie.
+Opcional,
+ inserta la descripción del nivel de idioma y establece el símbolo para la nota al pie.
  
 \end_layout
 
@@ -649,8 +665,7 @@ La última info es el nivel estimado en expresión escrita.
 status open
 
 \begin_layout Plain Layout
-Los códigos del nivel de idiomas se encuentra en la documentación del paquete
- europecv.
+Los códigos del nivel de idiomas se encuentra en la documentación del paquete europecv.
 \end_layout
 
 \end_inset
@@ -815,7 +830,9 @@ S.O.
 
 \end_inset
 
-Linux, Unix, Windows
+Linux,
+ Unix,
+ Windows
 \end_layout
 
 \begin_layout Item
@@ -828,7 +845,8 @@ Administración
 
 \end_inset
 
- Apache, Mailman
+ Apache,
+ Mailman
 \end_layout
 
 \begin_layout Item
@@ -845,7 +863,8 @@ Programación
 \shape smallcaps
 Java
 \shape default
-, C/C++ 
+,
+ C/C++ 
 \end_layout
 
 \begin_layout Item
@@ -858,7 +877,9 @@ Código
 
 \end_inset
 
- PHP, Shell, Ruby
+ PHP,
+ Shell,
+ Ruby
 \end_layout
 
 \begin_layout Item
@@ -882,7 +903,8 @@ Ciencias
 
 \end_inset
 
-Matlab, Abaqus
+Matlab,
+ Abaqus
 \end_layout
 
 \begin_layout Item
@@ -909,8 +931,11 @@ Tipografía
 \end_inset
 
  \SpecialChar LaTeX
-, Con\SpecialChar TeX
-t, Scribus, QuarkXPress
+,
+ Con\SpecialChar TeX
+t,
+ Scribus,
+ QuarkXPress
 \end_layout
 
 \begin_layout Item
@@ -923,7 +948,10 @@ Diseño web
 
 \end_inset
 
-XHTML, CSS, AJAX, 
+XHTML,
+ CSS,
+ AJAX,
+ 
 \end_layout
 
 \begin_layout Item
@@ -936,7 +964,8 @@ Bases de datos
 
 \end_inset
 
- MySQL, PostgreSQL
+ MySQL,
+ PostgreSQL
 \end_layout
 
 \begin_layout Section
@@ -966,8 +995,9 @@ Deportes
 
 
 \size small
- Me gusta practicar deportes como el esquí naútico, la escalada, el buceo
- y he sido boy scout durante cinco años.
+ Me gusta practicar deportes como el esquí naútico,
+ la escalada,
+ el buceo y he sido boy scout durante cinco años.
 \end_layout
 
 \begin_layout Item
@@ -1011,13 +1041,15 @@ Referencias
 \end_inset
 
 [1] Helmut Kopka and Patrick W.
- Daly: 
+ Daly:
+ 
 \emph on
 A Guide to \SpecialChar LaTeX
  Fourth Edition.
 
 \emph default
- Addison-Wesley, 2003
+ Addison-Wesley,
+ 2003
 \begin_inset ERT
 status collapsed
 
@@ -1051,13 +1083,17 @@ newline%
 \begin_inset Newline newline
 \end_inset
 
-[2] Leslie Lamport: 
+[2] Leslie Lamport:
+ 
 \emph on
 \SpecialChar LaTeX
-: A Document Preparation System.
+:
+ A Document Preparation System.
 
 \emph default
- Addison-Wesley, second edition, 1994
+ Addison-Wesley,
+ second edition,
+ 1994
 \end_layout
 
 \begin_layout Section

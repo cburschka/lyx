@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 95 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -101,8 +105,9 @@ u
 \size default
 \noun default
 \color inherit
-výbornou dokumentací — prosíme používejte ji! Český úvod můžete najít v
- menu 
+výbornou dokumentací —
+ prosíme používejte ji!
+ Český úvod můžete najít v menu 
 \family sans
 Nápověda\SpecialChar menuseparator
 Průvodce
@@ -126,15 +131,18 @@ editorem dokumentů.
 \begin_inset Quotes erd
 \end_inset
 
- Svým návrhem je odlišný od klasického textového editoru—způsobem, který
- činí psaní dokumentů mnohem jednodušší.
- Ale nelekejte se, je odlišný jenom trochu.
+ Svým návrhem je odlišný od klasického textového editoru—
+způsobem,
+ který činí psaní dokumentů mnohem jednodušší.
+ Ale nelekejte se,
+ je odlišný jenom trochu.
  Průvodce vám v tom udělá jasno.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Už jsme se zmínili o tom, že byste si mohli přečíst dokumentaci?
+Už jsme se zmínili o tom,
+ že byste si mohli přečíst dokumentaci?
 \end_layout
 
 \end_inset
@@ -144,7 +152,8 @@ Už jsme se zmínili o tom, že byste si mohli přečíst dokumentaci?
 
 \begin_layout Enumerate
 Výstup z \SpecialChar LyX
-u vypadá skvěle! Zkuste vybrat v menu 
+u vypadá skvěle!
+ Zkuste vybrat v menu 
 \family sans
 Dokument\SpecialChar menuseparator
 Prohlížet [PDF (pdflatex)] 
@@ -156,7 +165,8 @@ ať se přesvědčíte na vlastní oči.
 \SpecialChar LyX
  umí napodobit (téměř) veškerou funkcionalitu \SpecialChar LaTeX
 u.
- A ano, \SpecialChar LyX
+ A ano,
+ \SpecialChar LyX
  umí importovat \SpecialChar LaTeX
 ové soubory.
  Zkušení uživatelé \SpecialChar LaTeX
@@ -164,7 +174,8 @@ u mohou jen zběžně prolétnout začátek
 \emph on
 Průvodce
 \emph default
-, a pak si přečíst kapitolu 
+,
+ a pak si přečíst kapitolu 
 \begin_inset Quotes eld
 \end_inset
 
@@ -175,18 +186,19 @@ u
 \end_inset
 
 .
- (Ostatní se nemusíte znepokojovat: nepotřebujete znát \SpecialChar LaTeX
+ (Ostatní se nemusíte znepokojovat:
+ nepotřebujete znát \SpecialChar LaTeX
  pro používání \SpecialChar LyX
-u.)
- 
+u.) 
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
- nabízí mnoho možností lidem, kteří čtou a píší jiným jazykem, nežli je
- angličtina.
- Navíc jsou klávesové zkratky, nástrojová lišta a i další vlastnosti dobře
- konfigurovatelné.
+ nabízí mnoho možností lidem,
+ kteří čtou a píší jiným jazykem,
+ nežli je angličtina.
+ Navíc jsou klávesové zkratky,
+ nástrojová lišta a i další vlastnosti dobře konfigurovatelné.
  Viz 
 \family sans
 Nápověda\SpecialChar menuseparator
@@ -210,8 +222,9 @@ https://www.lyx.org
 \end_inset
 
 .
- Můžete zde najít další informace, přihlásit se do konference, udělat si
- grafickou výpravu do \SpecialChar LyX
+ Můžete zde najít další informace,
+ přihlásit se do konference,
+ udělat si grafickou výpravu do \SpecialChar LyX
 u (Graphical Tour):
 \begin_inset Newline newline
 \end_inset

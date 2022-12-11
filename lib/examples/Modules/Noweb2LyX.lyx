@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31,9 +31,9 @@ noweb
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -84,12 +84,16 @@ noweb
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -106,12 +110,12 @@ Kayvan A.
 \end_layout
 
 \begin_layout Date
-May 6, 1999
+May 6,
+ 1999
 \end_layout
 
 \begin_layout Abstract
-This document describes and implements a perl script for importing noweb
- files into \SpecialChar LyX
+This document describes and implements a perl script for importing noweb files into \SpecialChar LyX
 
 \end_layout
 
@@ -136,17 +140,17 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Since version 1.0.1, \SpecialChar LyX
+Since version 1.0.1,
+ \SpecialChar LyX
  now supports Literate Programming using 
 \noun on
 noweb
 \noun default
 .
  This addition to \SpecialChar LyX
- made it very pleasant to write programs in the literate
- style (like this one).
- In addition to being able to write new literate programs, it would be quite
- useful if old 
+ made it very pleasant to write programs in the literate style (like this one).
+ In addition to being able to write new literate programs,
+ it would be quite useful if old 
 \noun on
 noweb
 \noun default
@@ -236,7 +240,8 @@ noweb2lyx.in
 
 \begin_layout Plain Layout
 
-# $Id: noweb2lyx.lyx,v 1.5 2005/07/18 09:42:27 jamatos Exp $
+# $Id:
+ noweb2lyx.lyx,v 1.5 2005/07/18 09:42:27 jamatos Exp $
 \end_layout
 
 \begin_layout Plain Layout
@@ -246,7 +251,8 @@ noweb2lyx.in
 
 \begin_layout Plain Layout
 
-# NOTE: This file was automatically generated from noweb2lyx.lyx using noweb.
+# NOTE:
+ This file was automatically generated from noweb2lyx.lyx using noweb.
 \end_layout
 
 \begin_layout Plain Layout
@@ -391,17 +397,20 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-In the latter form, we are declaring to 
+In the latter form,
+ we are declaring to 
 \noun on
 noweb
 \noun default
- that this code chunk defines identifier1, identifier2, etc.
+ that this code chunk defines identifier1,
+ identifier2,
+ etc.
 \end_layout
 
 \begin_layout Standard
-When first tackling this problem, I spoke with members of the \SpecialChar LyX
- team that
- knew about the literate programming extensions and re\SpecialChar LyX
+When first tackling this problem,
+ I spoke with members of the \SpecialChar LyX
+ team that knew about the literate programming extensions and re\SpecialChar LyX
  (the \SpecialChar LaTeX
  importing code).
 \end_layout
@@ -424,9 +433,9 @@ Not the least of these problems is the fact that << is a quote in French.
 \end_inset
 
 .
- On the other hand, it turns out that re\SpecialChar LyX
- contains a very useful literal
- quoting mechanism.
+ On the other hand,
+ it turns out that re\SpecialChar LyX
+ contains a very useful literal quoting mechanism.
  If the input file contains the construct
 \end_layout
 
@@ -453,9 +462,9 @@ skip}
 \begin_layout Standard
 then re\SpecialChar LyX
  will copy the surrounded code to the output file verbatim.
- Given this, the first part of the translation is easy; we simply have to
- copy the code chunks into an intermediate file that surrounds them with
- 
+ Given this,
+ the first part of the translation is easy;
+ we simply have to copy the code chunks into an intermediate file that surrounds them with 
 \family typewriter
 
 \backslash
@@ -474,8 +483,8 @@ skip}
 
 \begin_layout Standard
 Once re\SpecialChar LyX
- is done with the input file, the problem is reduced to changing
- the code chunks from \SpecialChar LyX
+ is done with the input file,
+ the problem is reduced to changing the code chunks from \SpecialChar LyX
 's \SpecialChar LaTeX
  layout to the Chunk layout.
 \end_layout
@@ -486,8 +495,7 @@ There is one final constraint on
 noweb2lyx
 \noun default
 .
- We want to be able to run it as a simple pre-processor and post-processor
- from within re\SpecialChar LyX
+ We want to be able to run it as a simple pre-processor and post-processor from within re\SpecialChar LyX
 .
  We can accomplish this by setting the flags 
 \family roman
@@ -554,8 +562,8 @@ before we reach the main conversion code.
 \end_layout
 
 \begin_layout Standard
-With all that preamble out of the way, we now have the basic high-level
- outline for our code:
+With all that preamble out of the way,
+ we now have the basic high-level outline for our code:
 \end_layout
 
 \begin_layout Standard
@@ -634,10 +642,10 @@ Making a file that re\SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-In this section, we present the code that performs the task of creating
- the intermediate file that re\SpecialChar LyX
- can process, using the algorithm that we
- just outlined.
+In this section,
+ we present the code that performs the task of creating the intermediate file that re\SpecialChar LyX
+ can process,
+ using the algorithm that we just outlined.
  This algorithm is outlined in the code that follows:
 \end_layout
 
@@ -661,7 +669,8 @@ status open
 
 \begin_layout Plain Layout
 
-inputline: while(<INPUT>)
+inputline:
+ while(<INPUT>)
 \end_layout
 
 \begin_layout Plain Layout
@@ -698,7 +707,8 @@ s+(.*)/) { # Beginning of a documentation chunk
 
 \begin_layout Plain Layout
 
-    print OUTPUT $1; # We do not need the ``@'' part
+    print OUTPUT $1;
+ # We do not need the ``@'' part
 \end_layout
 
 \begin_layout Plain Layout
@@ -726,7 +736,8 @@ s+(.*)/) { # Beginning of a documentation chunk
 
 \begin_layout Plain Layout
 
-    print OUTPUT; # Just let the line pass through
+    print OUTPUT;
+ # Just let the line pass through
 \end_layout
 
 \begin_layout Plain Layout
@@ -750,10 +761,10 @@ s+(.*)/) { # Beginning of a documentation chunk
 \end_layout
 
 \begin_layout Standard
-In the code above, we do some pre-processing of the noweb ``[[...]]'' construct.
+In the code above,
+ we do some pre-processing of the noweb ``[[...]]'' construct.
  This avoids some problems with re\SpecialChar LyX
- confusing lists composed of ``[[...]]''
- constructs.
+ confusing lists composed of ``[[...]]'' constructs.
 \end_layout
 
 \begin_layout Standard
@@ -822,11 +833,13 @@ status collapsed
 \noun default
  
 \color inherit
-file, once we have identified a 
+file,
+ once we have identified a 
 \noun on
 noweb
 \noun default
- code chunk, we transform it into a form that is usable by re\SpecialChar LyX
+ code chunk,
+ we transform it into a form that is usable by re\SpecialChar LyX
 .
 \end_layout
 
@@ -873,7 +886,8 @@ In
 \noun on
 noweb2lyx
 \noun default
-, we will use 
+,
+ we will use 
 \family roman
 \series medium
 \shape up
@@ -935,11 +949,11 @@ status collapsed
  
 \color inherit
 to read and write files.
- In the code fragment above, we need to read from the input file and write
- to a file that will be later transformed by re\SpecialChar LyX
+ In the code fragment above,
+ we need to read from the input file and write to a file that will be later transformed by re\SpecialChar LyX
 .
- If we are being called only to pre-process the input file, then there is
- no need to create a temporary file.
+ If we are being called only to pre-process the input file,
+ then there is no need to create a temporary file.
 \end_layout
 
 \begin_layout Standard
@@ -963,7 +977,8 @@ if ($pre_only) {
 
 \begin_layout Plain Layout
 
-  &setup_files($input_file, $output_file);
+  &setup_files($input_file,
+ $output_file);
 \end_layout
 
 \begin_layout Plain Layout
@@ -978,7 +993,8 @@ if ($pre_only) {
 
 \begin_layout Plain Layout
 
-  &setup_files($input_file, $relyx_file);
+  &setup_files($input_file,
+ $relyx_file);
 \end_layout
 
 \begin_layout Plain Layout
@@ -992,7 +1008,8 @@ if ($pre_only) {
 \end_layout
 
 \begin_layout Standard
-This code uses a small perl subroutine, 
+This code uses a small perl subroutine,
+ 
 \family roman
 \series medium
 \shape up
@@ -1021,7 +1038,8 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-, which we define below:
+,
+ which we define below:
 \end_layout
 
 \begin_layout Standard
@@ -1040,19 +1058,24 @@ sub setup_files {
 
 \begin_layout Plain Layout
 
-  my($in, $out) = @_;
+  my($in,
+ $out) = @_;
 \end_layout
 
 \begin_layout Plain Layout
 
-  open(INPUT, "<$in") || die "Cannot read $in: $!
+  open(INPUT,
+ "<$in") || die "Cannot read $in:
+ $!
 \backslash
 n";
 \end_layout
 
 \begin_layout Plain Layout
 
-  open(OUTPUT, ">$out") || die "Cannot write $out: $!
+  open(OUTPUT,
+ ">$out") || die "Cannot write $out:
+ $!
 \backslash
 n";
 \end_layout
@@ -1081,8 +1104,8 @@ noweb
 \end_layout
 
 \begin_layout Standard
-After we see the beginning of the chunk, we need to read in and save the
- rest of the chunk for output.
+After we see the beginning of the chunk,
+ we need to read in and save the rest of the chunk for output.
 \end_layout
 
 \begin_layout Standard
@@ -1125,7 +1148,8 @@ status open
 
 \begin_layout Plain Layout
 
-chunkline: while (<INPUT>) {
+chunkline:
+ while (<INPUT>) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -1147,21 +1171,26 @@ s+/;
 
 \begin_layout Plain Layout
 
-switch: {
+switch:
+ {
 \end_layout
 
 \begin_layout Plain Layout
 
  if (/^@
 \backslash
-s+$/) {$savedchunk .= $_; last switch; }
+s+$/) {$savedchunk .= $_;
+ last switch;
+ }
 \end_layout
 
 \begin_layout Plain Layout
 
  if (/^@
 \backslash
-s+%def.*$/) {$savedchunk .= $_; last switch; }
+s+%def.*$/) {$savedchunk .= $_;
+ last switch;
+ }
 \end_layout
 
 \begin_layout Plain Layout
@@ -1170,9 +1199,11 @@ s+%def.*$/) {$savedchunk .= $_; last switch; }
 \backslash
 s+(.*)$/) {$savedchunk .= "@
 \backslash
-n"; $endLine = "$1
+n";
+ $endLine = "$1
 \backslash
-n"; }
+n";
+ }
 \end_layout
 
 \begin_layout Plain Layout
@@ -1253,7 +1284,8 @@ print OUTPUT "$endLine";
 \end_layout
 
 \begin_layout Standard
-Finally, we need to close the 
+Finally,
+ we need to close the 
 \family roman
 \series medium
 \shape up
@@ -1352,9 +1384,9 @@ Running re\SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-In this section, we describe and implement the code that runs re\SpecialChar LyX
- on the
- intermediate file 
+In this section,
+ we describe and implement the code that runs re\SpecialChar LyX
+ on the intermediate file 
 \family roman
 \series medium
 \shape up
@@ -1393,9 +1425,10 @@ Selecting the document class
 
 \begin_layout Standard
 In order to run re\SpecialChar LyX
-, we need to know the article class of the input document
- (to choose the corresponding literate document layout).
- For this, we need to parse the intermediate file.
+,
+ we need to know the article class of the input document (to choose the corresponding literate document layout).
+ For this,
+ we need to parse the intermediate file.
 \end_layout
 
 \begin_layout Standard
@@ -1429,9 +1462,10 @@ Run re\SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-In the code below, you'll see a strange regular expression to search for
- the document class.
- The reason for this kludge is that without it, we can't run 
+In the code below,
+ you'll see a strange regular expression to search for the document class.
+ The reason for this kludge is that without it,
+ we can't run 
 \noun on
 noweb2lyx
 \noun default
@@ -1508,13 +1542,15 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-class and gets confused, so we have to obfuscate it slightly.
+class and gets confused,
+ so we have to obfuscate it slightly.
 \end_layout
 
 \end_inset
 
 .
- With the regular expression as it is, we can actually run 
+ With the regular expression as it is,
+ we can actually run 
 \noun on
 noweb2lyx
 \noun default
@@ -1538,24 +1574,28 @@ Parse for document class
 
 \end_inset
 
-open(INPUT, "<$relyx_file") ||
+open(INPUT,
+ "<$relyx_file") ||
 \end_layout
 
 \begin_layout Plain Layout
 
-  die "Cannot read $relyx_file: $!
+  die "Cannot read $relyx_file:
+ $!
 \backslash
 n";
 \end_layout
 
 \begin_layout Plain Layout
 
-$class = "article"; # default if none found
+$class = "article";
+ # default if none found
 \end_layout
 
 \begin_layout Plain Layout
 
-parse: while(<INPUT>) {
+parse:
+ while(<INPUT>) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -1603,7 +1643,8 @@ Running re\SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-Now that we know what the document class ought to be, we do:
+Now that we know what the document class ought to be,
+ we do:
 \end_layout
 
 \begin_layout Standard
@@ -1623,7 +1664,8 @@ $doc_class = "literate-" .
 
 \begin_layout Plain Layout
 
-die "reLyX returned non-zero: $!
+die "reLyX returned non-zero:
+ $!
 \backslash
 n"
 \end_layout
@@ -1650,9 +1692,11 @@ re\SpecialChar LyX
 \emph on
 class
 \emph default
-'' document layout is not found, then re\SpecialChar LyX
+'' document layout is not found,
+ then re\SpecialChar LyX
  will fail with an error.
- In that case, you may need to modify your 
+ In that case,
+ you may need to modify your 
 \noun on
 noweb
 \noun default
@@ -1666,8 +1710,7 @@ Fixing the re\SpecialChar LyX
 
 \begin_layout Standard
 We need to perform some post-processing of what re\SpecialChar LyX
- produces in order to
- have the best output for our literate document.
+ produces in order to have the best output for our literate document.
  The outline of the post-processing steps are:
 \end_layout
 
@@ -1693,7 +1736,8 @@ Fix up \SpecialChar LyX
 
 \begin_layout Plain Layout
 
-line: while(<INPUT>)
+line:
+ while(<INPUT>)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1713,7 +1757,8 @@ line: while(<INPUT>)
 
 \begin_layout Plain Layout
 
-  print OUTPUT; # default
+  print OUTPUT;
+ # default
 \end_layout
 
 \begin_layout Plain Layout
@@ -1762,7 +1807,8 @@ status collapsed
 \noun default
  
 \color inherit
-loop above, the perl construct
+loop above,
+ the perl construct
 \color none
  
 \family roman
@@ -1794,8 +1840,7 @@ status collapsed
  
 \color inherit
 is sufficient to restart the loop.
- We can use this construct to do some relatively complex parsing of the
- re\SpecialChar LyX
+ We can use this construct to do some relatively complex parsing of the re\SpecialChar LyX
  generated file.
 \end_layout
 
@@ -1889,7 +1934,8 @@ if ($post_only) {
 
 \begin_layout Plain Layout
 
-  &setup_files("$input_file", "$output_file");
+  &setup_files("$input_file",
+ "$output_file");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1899,7 +1945,8 @@ if ($post_only) {
 
 \begin_layout Plain Layout
 
-  &setup_files("$relyx_file.lyx", "$output_file");
+  &setup_files("$relyx_file.lyx",
+ "$output_file");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1917,8 +1964,9 @@ Making sure the code chunks are in the Chunk layout
 \end_layout
 
 \begin_layout Standard
-Now, as we outlined before, the final step is transforming the code-chunks
- which have been put into a \SpecialChar LaTeX
+Now,
+ as we outlined before,
+ the final step is transforming the code-chunks which have been put into a \SpecialChar LaTeX
  layout by \SpecialChar LyX
  into the Chunk layout.
 \end_layout
@@ -1996,8 +2044,8 @@ latex latex line + next line
 \end_layout
 
 \begin_layout Standard
-When we are sure that we are in a code chunk, we must read in the rest of
- the code chunk and output a chunk layout for it:
+When we are sure that we are in a code chunk,
+ we must read in the rest of the code chunk and output a chunk layout for it:
 \end_layout
 
 \begin_layout Standard
@@ -2028,7 +2076,8 @@ n$line";
 
 \begin_layout Plain Layout
 
-codeline: while (<INPUT>) {
+codeline:
+ while (<INPUT>) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -2069,7 +2118,8 @@ print OUTPUT $savedchunk;
 \end_layout
 
 \begin_layout Standard
-Okay, now we just need to eat the rest of the latex layout.
+Okay,
+ now we just need to eat the rest of the latex layout.
  There should only be a few different types of lines for us to match:
 \end_layout
 
@@ -2089,7 +2139,8 @@ Slurp up to the end of the latex layout
 
 \end_inset
 
-slurp: while (<INPUT>) {
+slurp:
+ while (<INPUT>) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -2119,7 +2170,8 @@ s*$/;
 
 \begin_layout Plain Layout
 
-  warn "confused by line: $_";
+  warn "confused by line:
+ $_";
 \end_layout
 
 \begin_layout Plain Layout
@@ -2149,8 +2201,7 @@ noweb
 \noun on
 noweb
 \noun default
- allows the user to use a special code quoting mechanism in documentation
- chunks.
+ allows the user to use a special code quoting mechanism in documentation chunks.
  Fixing this ``[[quoted-code]]'' 
 \noun on
 noweb
@@ -2158,8 +2209,10 @@ noweb
  syntax means putting the ``[[quoted-code]]'' in a \SpecialChar LaTeX
  layout in the \SpecialChar LyX
  file.
- Otherwise, \SpecialChar LyX
- will backslash-quote the brackets, creating ugly output.
+ Otherwise,
+ \SpecialChar LyX
+ will backslash-quote the brackets,
+ creating ugly output.
  The quoted-code is transformed by 
 \noun on
 noweb
@@ -2283,10 +2336,10 @@ The
 \noun on
 noweb2lyx
 \noun default
- script understands two arguments, input-file and output-file.
+ script understands two arguments,
+ input-file and output-file.
  It is also set up to be used internally by re\SpecialChar LyX
- to pre-process or postprocess
- files in the import pipeline.
+ to pre-process or postprocess files in the import pipeline.
 \end_layout
 
 \begin_layout Standard
@@ -2300,7 +2353,8 @@ status open
 
 \begin_layout Plain Layout
 
-&usage() if ($#ARGV < 1); # zero or one argument 
+&usage() if ($#ARGV < 1);
+ # zero or one argument 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2315,7 +2369,9 @@ if ($ARGV[0] eq "-pre") {
 
 \begin_layout Plain Layout
 
-  $input_file = $ARGV[1]; $output_file = $ARGV[2]; $pre_only = 1;
+  $input_file = $ARGV[1];
+ $output_file = $ARGV[2];
+ $pre_only = 1;
 \end_layout
 
 \begin_layout Plain Layout
@@ -2330,7 +2386,9 @@ if ($ARGV[0] eq "-pre") {
 
 \begin_layout Plain Layout
 
-  $input_file = $ARGV[1]; $output_file = $ARGV[2]; $post_only = 1;
+  $input_file = $ARGV[1];
+ $output_file = $ARGV[2];
+ $post_only = 1;
 \end_layout
 
 \begin_layout Plain Layout
@@ -2345,12 +2403,14 @@ if ($ARGV[0] eq "-pre") {
 
 \begin_layout Plain Layout
 
-  $input_file = $ARGV[0]; $output_file = $ARGV[1];
+  $input_file = $ARGV[0];
+ $output_file = $ARGV[1];
 \end_layout
 
 \begin_layout Plain Layout
 
-  $pre_only = 0; $post_only = 0;
+  $pre_only = 0;
+ $post_only = 0;
 \end_layout
 
 \begin_layout Plain Layout
@@ -2375,7 +2435,8 @@ sub usage() {
 
 \begin_layout Plain Layout
 
-  print "Usage: noweb2lyx [-pre | -post] input-file output-file
+  print "Usage:
+ noweb2lyx [-pre | -post] input-file output-file
 \end_layout
 
 \begin_layout Plain Layout
@@ -2384,17 +2445,21 @@ sub usage() {
 
 \begin_layout Plain Layout
 
-If -pre is specified, only pre-processes the input-file for reLyX.
+If -pre is specified,
+ only pre-processes the input-file for reLyX.
 \end_layout
 
 \begin_layout Plain Layout
 
-Similarly, in the case of -post, post-processes reLyX output.
+Similarly,
+ in the case of -post,
+ post-processes reLyX output.
 \end_layout
 
 \begin_layout Plain Layout
 
-In case of bugs, Email Kayvan Sylvan <kayvan
+In case of bugs,
+ Email Kayvan Sylvan <kayvan
 \backslash
 @sylvan.com>.
 \backslash

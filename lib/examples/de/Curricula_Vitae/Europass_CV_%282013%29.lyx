@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -26,9 +26,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -88,12 +88,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -111,7 +115,8 @@ europasscv
 \begin_inset Quotes grs
 \end_inset
 
--Paket, 
+-Paket,
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -127,7 +132,9 @@ http://www.ctan.org/pkg/europasscv
 
 \end_inset
 
- (zuletzt abgerufen am: 14.03.2015), 
+ (zuletzt abgerufen am:
+ 14.03.2015),
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -167,6 +174,7 @@ https://ctan.org/tex-archive/macros/latex/contrib/europasscv/europasscv.pdf
 
 \series bold
 Achtung:
+
 \series default
  
 \end_layout
@@ -183,7 +191,8 @@ Kodierung
 \begin_inset Quotes gld
 \end_inset
 
-Andere: unicode (utf8)
+Andere:
+ unicode (utf8)
 \begin_inset Quotes grd
 \end_inset
 
@@ -208,8 +217,7 @@ Diese Dokumentklasse unterstützt ausschließlich
 status open
 
 \begin_layout Plain Layout
-Die folgenden persönlichen Informationen können auch im Latex-Vorspann spezifizi
-ert werden:
+Die folgenden persönlichen Informationen können auch im Latex-Vorspann spezifiziert werden:
 \end_layout
 
 \end_inset
@@ -305,7 +313,8 @@ Breite
 \begin_inset Quotes grs
 \end_inset
 
-, Dateipfad):
+,
+ Dateipfad):
 \end_layout
 
 \begin_layout Picture
@@ -347,8 +356,9 @@ status open
 \series bold
 Big Item
 \series default
-: Linker Text wird in blaue Kapitalbuchstaben transformiert, rechter Text
- erscheint größer.
+:
+ Linker Text wird in blaue Kapitalbuchstaben transformiert,
+ rechter Text erscheint größer.
 \end_layout
 
 \begin_layout Itemize
@@ -413,7 +423,9 @@ status open
 \series bold
 Title Item
 \series default
-: Linker Text erscheint blau, rechter Text wird vergrößert.
+:
+ Linker Text erscheint blau,
+ rechter Text wird vergrößert.
 \end_layout
 
 \begin_layout Itemize
@@ -459,7 +471,8 @@ newline
 
 \end_inset
 
- New Jersey, United States of America
+ New Jersey,
+ United States of America
 \begin_inset Note Note
 status open
 
@@ -468,7 +481,8 @@ status open
 \series bold
 Item
 \series default
-: 
+:
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -476,7 +490,8 @@ Summary
 \begin_inset Quotes grd
 \end_inset
 
- erscheint in linker Spalte, Rest in rechter Spalte.
+ erscheint in linker Spalte,
+ Rest in rechter Spalte.
 \end_layout
 
 \begin_layout Itemize
@@ -504,14 +519,14 @@ Zusammenfassung
 \end_layout
 
 \begin_layout Plain Layout
-Anmerkung: Die Verwendung von 
+Anmerkung:
+ Die Verwendung von 
 \family typewriter
 
 \backslash
 newline
 \family default
- an Stelle eines normalen oder erzwungenen Zeilenumbruchs verringert den
- Abstand zwischen zwei Stichpunkten bzw.
+ an Stelle eines normalen oder erzwungenen Zeilenumbruchs verringert den Abstand zwischen zwei Stichpunkten bzw.
  erhält die Formatierung.
  Als Alternative könnten auch zwei Stichpunkte mit angepasstem 
 \begin_inset Quotes gld
@@ -548,8 +563,7 @@ Beratung diverser Institutionen
 status open
 
 \begin_layout Plain Layout
-Für korrekte Auflistungen innerhalb von Stichpunkten kann (und sollte) eine
- 
+Für korrekte Auflistungen innerhalb von Stichpunkten kann (und sollte) eine 
 \begin_inset Quotes gls
 \end_inset
 
@@ -593,20 +607,26 @@ Starship Captain
 \end_layout
 
 \begin_layout Item
-USS Enterprise (NCC-1701-D), Somewhere in the Alpha Quadrant.
+USS Enterprise (NCC-1701-D),
+ Somewhere in the Alpha Quadrant.
 \end_layout
 
 \begin_layout Item
-Space: the final frontier.
+Space:
+ the final frontier.
  These are the voyages of the starship Enterprise.
- Its continuing mission: to explore strange new worlds, to seek out new
- life and new civilizations, to boldly go where no one has gone before.
+ Its continuing mission:
+ to explore strange new worlds,
+ to seek out new life and new civilizations,
+ to boldly go where no one has gone before.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Nemeck, Larry (2003).
- Star Trek: The Next Generation Companion.
+Nemeck,
+ Larry (2003).
+ Star Trek:
+ The Next Generation Companion.
  Pocket Books.
  ISBN 0-7434-5798-6.
 \end_layout
@@ -618,7 +638,8 @@ Nemeck, Larry (2003).
 status open
 
 \begin_layout Plain Layout
-Damit Fußnoten ausgegeben werden, ist der Code im LaTeX-Vorspann nötig.
+Damit Fußnoten ausgegeben werden,
+ ist der Code im LaTeX-Vorspann nötig.
 \end_layout
 
 \end_inset
@@ -650,7 +671,8 @@ Bestatter
 
 \end_inset
 
-ISCED-11: 7
+ISCED-11:
+ 7
 \begin_inset Note Note
 status open
 
@@ -659,8 +681,11 @@ status open
 \series bold
 Titelgrad
 \series default
-: Wie Titelstichpunkt, nur mit der Möglichkeit einen nationalen oder internation
-alen Grad, etwa ISCED-11, anzugeben.
+:
+ Wie Titelstichpunkt,
+ nur mit der Möglichkeit einen nationalen oder internationalen Grad,
+ etwa ISCED-11,
+ anzugeben.
 \end_layout
 
 \begin_layout Itemize
@@ -719,7 +744,8 @@ Fisher
 status open
 
 \begin_layout Plain Layout
-Beispiel einer Hervorhebung: 
+Beispiel einer Hervorhebung:
+ 
 \family sans
 Bearbeiten\SpecialChar menuseparator
 Textstil\SpecialChar menuseparator
@@ -728,7 +754,8 @@ Hervorhebung
 
 \end_inset
 
- Family, United States of America.
+ Family,
+ United States of America.
 \end_layout
 
 \begin_layout Standard
@@ -772,11 +799,13 @@ Forensiker
 
 \end_inset
 
-ISCED-11: 6
+ISCED-11:
+ 6
 \end_layout
 
 \begin_layout Item
-Miami Metro PD, United States of America.
+Miami Metro PD,
+ United States of America.
 \end_layout
 
 \begin_layout Standard
@@ -792,7 +821,8 @@ Doughnuts!
 \end_layout
 
 \begin_layout EcvItemize
-Vorgesetzte: Maria LaGuerta (bis 2012)
+Vorgesetzte:
+ Maria LaGuerta (bis 2012)
 \end_layout
 
 \end_inset
@@ -809,8 +839,7 @@ Vorgesetzte: Maria LaGuerta (bis 2012)
 status open
 
 \begin_layout Plain Layout
-Dieser Seitenumbruch kann entfernt werden und wurde nur aus Formatierungsgründen
- eingefügt.
+Dieser Seitenumbruch kann entfernt werden und wurde nur aus Formatierungsgründen eingefügt.
 \end_layout
 
 \end_inset
@@ -895,7 +924,8 @@ B2
 status open
 
 \begin_layout Plain Layout
-Language: 
+Language:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -919,8 +949,11 @@ Schreiben
 \end_layout
 
 \begin_layout Plain Layout
-Levels: A1/A2: Elementare Sprachverwendung - B1/B2: selbständige Sprachverwendun
-g - C1/C2: Kompetente Sprachverwendung 
+Levels:
+ A1/A2:
+ Elementare Sprachverwendung - B1/B2:
+ selbständige Sprachverwendung - C1/C2:
+ Kompetente Sprachverwendung 
 \end_layout
 
 \end_inset
@@ -983,7 +1016,8 @@ A1
 status open
 
 \begin_layout Plain Layout
-Die letzte Sprache in der Tabelle, wie oben.
+Die letzte Sprache in der Tabelle,
+ wie oben.
 \end_layout
 
 \end_inset
@@ -1023,7 +1057,9 @@ status open
 \series bold
 Blauer Stichpunkt
 \series default
-: Wie Stichpunkt, nur erscheint die linke Spalte blau.
+:
+ Wie Stichpunkt,
+ nur erscheint die linke Spalte blau.
 \end_layout
 
 \begin_layout Itemize

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -107,8 +107,8 @@ edmar-w-jr@technologist.com
 status collapsed
 
 \begin_layout Plain Layout
-Modified by Bernard Michael Hurley bernardh@westherts.ac.uk —- Don't blame
- Edmar for any errors that have crept in!
+Modified by Bernard Michael Hurley bernardh@westherts.ac.uk —
+- Don't blame Edmar for any errors that have crept in!
 \end_layout
 
 \end_inset
@@ -120,10 +120,10 @@ Modified by Bernard Michael Hurley bernardh@westherts.ac.uk —- Don't blame
 
 \series bold
 Note:
+
 \series default
  This example program is provided for educational use only.
- The functionality in this C program has been superceded by the equivalent
- Python code in 
+ The functionality in this C program has been superceded by the equivalent Python code in 
 \emph on
 scripts/listerrors
 \emph default
@@ -145,39 +145,41 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-After typesetting a document, \SpecialChar LyX
+After typesetting a document,
+ \SpecialChar LyX
  scans the \SpecialChar LaTeX
  log file looking for errors.
- For each error found, the line number is obtained and a error box is displayed
- in the \SpecialChar LyX
+ For each error found,
+ the line number is obtained and a error box is displayed in the \SpecialChar LyX
  screen at that position.
 \end_layout
 
 \begin_layout Standard
-To use this feature to view compilation errors while working with literate
- documents, we need a program that filters the compilation errors and puts
- them in a format suitable for \SpecialChar LyX
+To use this feature to view compilation errors while working with literate documents,
+ we need a program that filters the compilation errors and puts them in a format suitable for \SpecialChar LyX
  reading it.
  
 \end_layout
 
 \begin_layout Standard
-In this document we present a filter that recognizes compilation error messages
- from noweb, gnu C, and the IBM C compiler (xlc).
+In this document we present a filter that recognizes compilation error messages from noweb,
+ gnu C,
+ and the IBM C compiler (xlc).
 \end_layout
 
 \begin_layout Standard
-The filter is required to read from standard input, parse for error messages
- and copy the error messages to the standard output.
- During the output process, the filter must present the error messages in
- a format that \SpecialChar LyX
- can interpret, currently, the \SpecialChar LaTeX
+The filter is required to read from standard input,
+ parse for error messages and copy the error messages to the standard output.
+ During the output process,
+ the filter must present the error messages in a format that \SpecialChar LyX
+ can interpret,
+ currently,
+ the \SpecialChar LaTeX
  error message format.
- Of course, nothing will prevent future \SpecialChar LyX
- releases from being able to read
- other formats as well (like gcc error messages for example).
- This mechanism is necessary to fully explore the literate programming tool's
- capabilities.
+ Of course,
+ nothing will prevent future \SpecialChar LyX
+ releases from being able to read other formats as well (like gcc error messages for example).
+ This mechanism is necessary to fully explore the literate programming tool's capabilities.
 \end_layout
 
 \begin_layout Section
@@ -205,7 +207,8 @@ int
 
 \begin_layout Plain Layout
 
-main (int argc, char **argv)
+main (int argc,
+ char **argv)
 \end_layout
 
 \begin_layout Plain Layout
@@ -354,7 +357,8 @@ Function prototypes
 
 \end_inset
 
-int main (int argc, char **argv);
+int main (int argc,
+ char **argv);
 \end_layout
 
 \end_inset
@@ -367,10 +371,8 @@ Data Structures
 \end_layout
 
 \begin_layout Standard
-We resort to some global variables to allow access from several different
- routines.
- These are the buffer and related pointers used during the parse of the
- input.
+We resort to some global variables to allow access from several different routines.
+ These are the buffer and related pointers used during the parse of the input.
 \end_layout
 
 \begin_layout Standard
@@ -419,23 +421,25 @@ The output format
 \begin_layout Standard
 The output format mimics the \SpecialChar TeX
  error messages format.
- This function prints a number of lines residing in the global variable
- 
+ This function prints a number of lines residing in the global variable 
 \family typewriter
 buffer
 \family default
-, a program name and line number.
- There is no special requirement on the input strings, they can be anything.
+,
+ a program name and line number.
+ There is no special requirement on the input strings,
+ they can be anything.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-This function has been slightly changed from EW's original to make scanning
- a bit easier with \SpecialChar LaTeX
+This function has been slightly changed from EW's original to make scanning a bit easier with \SpecialChar LaTeX
 ::scanLogFile().
  The test has been added because \SpecialChar LyX
- can crash if empty lines are allowed here
- — I can't figure out why! — BMH
+ can crash if empty lines are allowed here —
+ I can't figure out why!
+ —
+ BMH
 \end_layout
 
 \end_inset
@@ -464,7 +468,9 @@ void
 
 \begin_layout Plain Layout
 
-output_error (int buf_size, int error_line, char *tool)
+output_error (int buf_size,
+ int error_line,
+ char *tool)
 \end_layout
 
 \begin_layout Plain Layout
@@ -484,20 +490,26 @@ output_error (int buf_size, int error_line, char *tool)
 
 \begin_layout Plain Layout
 
-  fprintf(stdout, "! Build Error: ==> %s ==>
+  fprintf(stdout,
+ "!
+ Build Error:
+ ==> %s ==>
 \backslash
-n", tool);
+n",
+ tool);
 \end_layout
 
 \begin_layout Plain Layout
 
-  fprintf(stdout, " ...
+  fprintf(stdout,
+ " ...
 \backslash
 n
 \backslash
 nl.%d ...
 \backslash
-n", error_line);
+n",
+ error_line);
 \end_layout
 
 \begin_layout Plain Layout
@@ -507,7 +519,9 @@ n", error_line);
 
 \begin_layout Plain Layout
 
-  for (i=0; i<buf_size; i++)
+  for (i=0;
+ i<buf_size;
+ i++)
 \end_layout
 
 \begin_layout Plain Layout
@@ -517,7 +531,9 @@ n", error_line);
 
 \begin_layout Plain Layout
 
-      fprintf(stdout, "%s", buffer[i]);
+      fprintf(stdout,
+ "%s",
+ buffer[i]);
 \end_layout
 
 \begin_layout Plain Layout
@@ -527,7 +543,8 @@ n", error_line);
 
 \begin_layout Plain Layout
 
-  fprintf(stdout, "
+  fprintf(stdout,
+ "
 \backslash
 n");
 \end_layout
@@ -558,7 +575,9 @@ Function prototypes
 
 \end_inset
 
-void output_error (int buf_size, int error_line, char *tool);
+void output_error (int buf_size,
+ int error_line,
+ char *tool);
 \end_layout
 
 \end_inset
@@ -571,12 +590,11 @@ Functions Implementation
 \end_layout
 
 \begin_layout Standard
-Both noweave and notangle routines, always output one single line for each
- error found, thus to scan the buffer for noweb error messages is enough
- to exam one input line at a time.
- Note that the noweb software does not provide a line error number, so all
- errors boxes related to noweb messages will be displayed at the beginning
- of the file.
+Both noweave and notangle routines,
+ always output one single line for each error found,
+ thus to scan the buffer for noweb error messages is enough to exam one input line at a time.
+ Note that the noweb software does not provide a line error number,
+ so all errors boxes related to noweb messages will be displayed at the beginning of the file.
 \end_layout
 
 \begin_layout Standard
@@ -605,7 +623,9 @@ Scan input for noweb error messages
 
 \begin_layout Plain Layout
 
-  while (fgets(buffer[0], 200, stdin)) {
+  while (fgets(buffer[0],
+ 200,
+ stdin)) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -615,7 +635,9 @@ Scan input for noweb error messages
 
 \begin_layout Plain Layout
 
-      output_error(1, err_line, "noweb");
+      output_error(1,
+ err_line,
+ "noweb");
 \end_layout
 
 \begin_layout Plain Layout
@@ -635,11 +657,9 @@ Scan input for noweb error messages
 
 \begin_layout Standard
 The examination itself is very inefficient.
- Unfortunately noweb doesn't have any characteristic that would help to
- identify one of its error messages.
- The solution is to collect all possible output messages in an array of
- strings, and turn the examination process into a linear search in this
- array.
+ Unfortunately noweb doesn't have any characteristic that would help to identify one of its error messages.
+ The solution is to collect all possible output messages in an array of strings,
+ and turn the examination process into a linear search in this array.
 \end_layout
 
 \begin_layout Standard
@@ -742,7 +762,8 @@ char *noweb_msgs_mimic_gcc[] = {
 
 \begin_layout Plain Layout
 
-  ": unescaped << in documentation chunk"
+  ":
+ unescaped << in documentation chunk"
 \end_layout
 
 \begin_layout Plain Layout
@@ -756,8 +777,7 @@ char *noweb_msgs_mimic_gcc[] = {
 \end_layout
 
 \begin_layout Standard
-A noweb error message can be any string that contains a matching pair of
- < <
+A noweb error message can be any string that contains a matching pair of < <
 \begin_inset space ~
 \end_inset
 
@@ -769,7 +789,8 @@ A noweb error message can be any string that contains a matching pair of
 \begin_inset space ~
 \end_inset
 
-> >, or any of the above strings
+> >,
+ or any of the above strings
 \end_layout
 
 \begin_layout Standard
@@ -793,12 +814,15 @@ int noweb_try (int buf_line)
 
 \begin_layout Plain Layout
 
-  char    *s, *t, *b;
+  char    *s,
+ *t,
+ *b;
 \end_layout
 
 \begin_layout Plain Layout
 
-  int     i; 
+  int     i;
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -821,12 +845,15 @@ int noweb_try (int buf_line)
 
 \begin_layout Plain Layout
 
-  for (i=0; i<1; i++) {
+  for (i=0;
+ i<1;
+ i++) {
 \end_layout
 
 \begin_layout Plain Layout
 
-      s = (char *)strstr (b, noweb_msgs_mimic_gcc[i]);
+      s = (char *)strstr (b,
+ noweb_msgs_mimic_gcc[i]);
 \end_layout
 
 \begin_layout Plain Layout
@@ -836,7 +863,8 @@ int noweb_try (int buf_line)
 
 \begin_layout Plain Layout
 
-        t = (char *)strchr(buffer[buf_line], ':');
+        t = (char *)strchr(buffer[buf_line],
+ ':');
 \end_layout
 
 \begin_layout Plain Layout
@@ -876,7 +904,8 @@ int noweb_try (int buf_line)
 
 \begin_layout Plain Layout
 
-  s = (char *)strstr(b, "<<");
+  s = (char *)strstr(b,
+ "<<");
 \end_layout
 
 \begin_layout Plain Layout
@@ -886,7 +915,8 @@ int noweb_try (int buf_line)
 
 \begin_layout Plain Layout
 
-    s = (char *)strstr(s+2, ">>");
+    s = (char *)strstr(s+2,
+ ">>");
 \end_layout
 
 \begin_layout Plain Layout
@@ -911,12 +941,15 @@ int noweb_try (int buf_line)
 
 \begin_layout Plain Layout
 
-     for (i = 0; i < 12; ++i) {
+     for (i = 0;
+ i < 12;
+ ++i) {
 \end_layout
 
 \begin_layout Plain Layout
 
-        s = (char *)strstr (b, noweb_msgs[i]);
+        s = (char *)strstr (b,
+ noweb_msgs[i]);
 \end_layout
 
 \begin_layout Plain Layout
@@ -989,9 +1022,8 @@ int noweb_try (int buf_line);
 \end_layout
 
 \begin_layout Standard
-The xlc compiler always outputs one single line for each error found, thus
- to scan the buffer for xlc error messages it is enough to exam one input
- line at a time.
+The xlc compiler always outputs one single line for each error found,
+ thus to scan the buffer for xlc error messages it is enough to exam one input line at a time.
 \end_layout
 
 \begin_layout Standard
@@ -1020,7 +1052,9 @@ Scan input for xlc error messages
 
 \begin_layout Plain Layout
 
-  while (fgets(buffer[last_buf_line], 200, stdin)) {
+  while (fgets(buffer[last_buf_line],
+ 200,
+ stdin)) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -1030,7 +1064,9 @@ Scan input for xlc error messages
 
 \begin_layout Plain Layout
 
-      output_error(1, err_line, "xlc");
+      output_error(1,
+ err_line,
+ "xlc");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1050,8 +1086,10 @@ Scan input for xlc error messages
 
 \begin_layout Standard
 A xlc error message is easy to identify.
- Every error message starts with a quoted string with no spaces, a comma,
- a space, the word 
+ Every error message starts with a quoted string with no spaces,
+ a comma,
+ a space,
+ the word 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1059,7 +1097,9 @@ line
 \begin_inset Quotes erd
 \end_inset
 
-, a space, and some variable text.
+,
+ a space,
+ and some variable text.
  The following routine tests if a given buffer line matches this criteria:
 \end_layout
 
@@ -1107,7 +1147,8 @@ xlc_try (int buf_line)
 
 \begin_layout Plain Layout
 
-  char    *s, *t;
+  char    *s,
+ *t;
 \end_layout
 
 \begin_layout Plain Layout
@@ -1139,7 +1180,10 @@ xlc_try (int buf_line)
 
 \begin_layout Plain Layout
 
-  if (*t != '"' || *s != '"' || strncmp(s+1, ", line ", 7) != 0)
+  if (*t != '"' || *s != '"' || strncmp(s+1,
+ ",
+ line ",
+ 7) != 0)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1201,11 +1245,12 @@ The gcc compiler error messages are more complicated to scan.
  Each error can span more than one line in the buffer.
  The good news is that every buffer line on each error has the same pattern,
  and share the same line number.
- Thus the strategy will be to accumulate lines in the buffer while the reported
- line number is still the same.
- At the time they differ, all the accumulated lines, except the last one,
- will belong to one single error message, which now can be output-ed to
- \SpecialChar LyX
+ Thus the strategy will be to accumulate lines in the buffer while the reported line number is still the same.
+ At the time they differ,
+ all the accumulated lines,
+ except the last one,
+ will belong to one single error message,
+ which now can be output-ed to \SpecialChar LyX
 .
 \end_layout
 
@@ -1219,10 +1264,10 @@ Every gcc error message contains a string with no space followed by a
 \end_inset
 
 .
- If the next character is a space, then this line is a header of a error
- message and the next line will detail the line number of the source code
- where the error was found.
- Otherwise, the next thing is a integer number followed by another 
+ If the next character is a space,
+ then this line is a header of a error message and the next line will detail the line number of the source code where the error was found.
+ Otherwise,
+ the next thing is a integer number followed by another 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1254,7 +1299,8 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-  char    *s, *t;
+  char    *s,
+ *t;
 \end_layout
 
 \begin_layout Plain Layout
@@ -1269,7 +1315,9 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-  while (fgets(buffer[last_buf_line], 200, stdin)) {
+  while (fgets(buffer[last_buf_line],
+ 200,
+ stdin)) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -1279,7 +1327,8 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-    s = (char *)strpbrk(buffer[last_buf_line], " :");
+    s = (char *)strpbrk(buffer[last_buf_line],
+ " :");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1289,7 +1338,8 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-      continue; /* No gcc error found here */
+      continue;
+ /* No gcc error found here */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1299,12 +1349,14 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-      <<gcc error message criteria is to find a "...:999:" or a "...: ">>
+      <<gcc error message criteria is to find a "...:999:" or a "...:
+ ">>
 \end_layout
 
 \begin_layout Plain Layout
 
-      /****** OK It is an error message, get line number */
+      /****** OK It is an error message,
+ get line number */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1324,8 +1376,9 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-        continue; /* It's either a header or a continuation, don't output
- yet */
+        continue;
+ /* It's either a header or a continuation,
+ don't output yet */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1335,8 +1388,8 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-      /****** Completed the scan of one error message, output it to LyX
- */
+      /****** Completed the scan of one error message,
+ output it to LyX */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1351,7 +1404,9 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-    } while (fgets(buffer[last_buf_line], 200, stdin));
+    } while (fgets(buffer[last_buf_line],
+ 200,
+ stdin));
 \end_layout
 
 \begin_layout Plain Layout
@@ -1390,7 +1445,8 @@ status open
 
 \begin_layout Plain Layout
 
-gcc error message criteria is to find a "...:999:" or a "...: "
+gcc error message criteria is to find a "...:999:" or a "...:
+ "
 \end_layout
 
 \end_inset
@@ -1400,7 +1456,8 @@ gcc error message criteria is to find a "...:999:" or a "...: "
 
 \begin_layout Plain Layout
 
-s = (char *)strpbrk(buffer[last_buf_line], " :");
+s = (char *)strpbrk(buffer[last_buf_line],
+ " :");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1415,8 +1472,8 @@ if (s == NULL || *s == ' ')
 
 \begin_layout Plain Layout
 
-  <<No gcc error found here, but it might terminate the scanning of a previous
- one>>
+  <<No gcc error found here,
+ but it might terminate the scanning of a previous one>>
 \end_layout
 
 \begin_layout Plain Layout
@@ -1426,11 +1483,11 @@ if (s == NULL || *s == ' ')
 
 \begin_layout Plain Layout
 
-t = (char *)strpbrk(s+1, " :");if (t == NULL || *t == ' ')  <<No gcc error
- found here, but it might terminate the scanning of a previous one>>/******
- Verify if is all digits between ":" */if (t != s+1+strspn(s+1, "0123456789"))
-   <<No gcc error found here, but it might terminate the scanning of a previous
- one>>@
+t = (char *)strpbrk(s+1,
+ " :");if (t == NULL || *t == ' ')  <<No gcc error found here,
+ but it might terminate the scanning of a previous one>>/****** Verify if is all digits between ":" */if (t != s+1+strspn(s+1,
+ "0123456789"))   <<No gcc error found here,
+ but it might terminate the scanning of a previous one>>@
 \end_layout
 
 \begin_layout Plain Layout
@@ -1443,8 +1500,8 @@ t = (char *)strpbrk(s+1, " :");if (t == NULL || *t == ' ')  <<No gcc error
 
 \begin_layout Plain Layout
 
-<<No gcc error found here, but it might terminate the scanning of a previous
- one>>=
+<<No gcc error found here,
+ but it might terminate the scanning of a previous one>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1478,10 +1535,10 @@ t = (char *)strpbrk(s+1, " :");if (t == NULL || *t == ' ')  <<No gcc error
 \end_layout
 
 \begin_layout Standard
-As we mentioned, when the scan of one gcc error message is completed everything
- in the buffer except the last line is one single error message.
- But if the scan terminates with a EOF or through finding one line that
- does not match the gcc error message criteria, then there is no 
+As we mentioned,
+ when the scan of one gcc error message is completed everything in the buffer except the last line is one single error message.
+ But if the scan terminates with a EOF or through finding one line that does not match the gcc error message criteria,
+ then there is no 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1544,12 +1601,15 @@ discharge_buffer (int save_last)
 
 \begin_layout Plain Layout
 
-      output_error(last_buf_line-1, last_err_line, "gcc");
+      output_error(last_buf_line-1,
+ last_err_line,
+ "gcc");
 \end_layout
 
 \begin_layout Plain Layout
 
-      strcpy (buffer[0], buffer[last_buf_line-1]);
+      strcpy (buffer[0],
+ buffer[last_buf_line-1]);
 \end_layout
 
 \begin_layout Plain Layout
@@ -1579,7 +1639,9 @@ discharge_buffer (int save_last)
 
 \begin_layout Plain Layout
 
-      output_error(last_buf_line-1, last_err_line, "gcc");
+      output_error(last_buf_line-1,
+ last_err_line,
+ "gcc");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1645,15 +1707,15 @@ cleans
 \begin_inset Quotes erd
 \end_inset
 
- superfluous information from gcc messages, namely the name of the noweb
- file and the line number of the Error.
+ superfluous information from gcc messages,
+ namely the name of the noweb file and the line number of the Error.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 More could be done.
- For instance, some way of distinguishing between gcc Errors and Warnings
- should be devised.
+ For instance,
+ some way of distinguishing between gcc Errors and Warnings should be devised.
 \end_layout
 
 \end_inset
@@ -1697,17 +1759,22 @@ clean_gcc_messages ()
 
 \begin_layout Plain Layout
 
-  char search [30]; 
+  char search [30];
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-  char *tail, *head; 
+  char *tail,
+ *head;
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-  int search_len = sprintf(search, ".nw:%d:", last_err_line);
+  int search_len = sprintf(search,
+ ".nw:%d:",
+ last_err_line);
 \end_layout
 
 \begin_layout Plain Layout
@@ -1717,12 +1784,15 @@ clean_gcc_messages ()
 
 \begin_layout Plain Layout
 
-  for (index = 0; index < last_buf_line-1; index++) {
+  for (index = 0;
+ index < last_buf_line-1;
+ index++) {
 \end_layout
 
 \begin_layout Plain Layout
 
-    tail = (char *)strstr (buffer[index], search);
+    tail = (char *)strstr (buffer[index],
+ search);
 \end_layout
 
 \begin_layout Plain Layout
@@ -1732,7 +1802,8 @@ clean_gcc_messages ()
 
 \begin_layout Plain Layout
 
-       tail = (char *) strstr (buffer[index], ".nw:");
+       tail = (char *) strstr (buffer[index],
+ ".nw:");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1825,8 +1896,7 @@ void clean_gcc_messages ();
 \end_layout
 
 \begin_layout Standard
-To combine the scan of noweb error messages and xlc error messages is very
- simple.
+To combine the scan of noweb error messages and xlc error messages is very simple.
  We just try each one for every input line:
 \end_layout
 
@@ -1851,7 +1921,9 @@ status open
 
 \begin_layout Plain Layout
 
-  while (fgets(buffer[0], 200, stdin)) {
+  while (fgets(buffer[0],
+ 200,
+ stdin)) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -1861,7 +1933,9 @@ status open
 
 \begin_layout Plain Layout
 
-     output_error(1, err_line, "noweb");
+     output_error(1,
+ err_line,
+ "noweb");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1871,7 +1945,9 @@ status open
 
 \begin_layout Plain Layout
 
-     output_error(1, err_line, "xlc");
+     output_error(1,
+ err_line,
+ "xlc");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1895,11 +1971,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-To combine the scan of noweb error messages and gcc error messages is simple
- if we realize that it is not possible to find a noweb error message in
- the middle of a gcc error message.
- So we just repeat the gcc procedure and test for noweb error messages in
- the beginning of the scan:
+To combine the scan of noweb error messages and gcc error messages is simple if we realize that it is not possible to find a noweb error message in the middle of a gcc error message.
+ So we just repeat the gcc procedure and test for noweb error messages in the beginning of the scan:
 \end_layout
 
 \begin_layout Standard
@@ -1923,7 +1996,8 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-  char    *s, *t;
+  char    *s,
+ *t;
 \end_layout
 
 \begin_layout Plain Layout
@@ -1938,7 +2012,9 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-  while (fgets(buffer[last_buf_line], 200, stdin)) {
+  while (fgets(buffer[last_buf_line],
+ 200,
+ stdin)) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -1953,7 +2029,9 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-      output_error(1, err_line, "noweb");
+      output_error(1,
+ err_line,
+ "noweb");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1968,7 +2046,8 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-    s = (char *)strpbrk(buffer[last_buf_line], " :");
+    s = (char *)strpbrk(buffer[last_buf_line],
+ " :");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1978,7 +2057,8 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-      continue; /* No gcc error found here */
+      continue;
+ /* No gcc error found here */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1988,12 +2068,14 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-      <<gcc error message criteria is to find a "...:999:" or a "...: ">>
+      <<gcc error message criteria is to find a "...:999:" or a "...:
+ ">>
 \end_layout
 
 \begin_layout Plain Layout
 
-      /****** OK It is an error, get line number */
+      /****** OK It is an error,
+ get line number */
 \end_layout
 
 \begin_layout Plain Layout
@@ -2013,8 +2095,9 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-        continue; /* It's either a header or a continuation, don't output
- yet */
+        continue;
+ /* It's either a header or a continuation,
+ don't output yet */
 \end_layout
 
 \begin_layout Plain Layout
@@ -2024,8 +2107,8 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-      /****** Completed the scan of one error message, output it to LyX
- */
+      /****** Completed the scan of one error message,
+ output it to LyX */
 \end_layout
 
 \begin_layout Plain Layout
@@ -2040,7 +2123,9 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-    } while (fgets(buffer[last_buf_line], 200, stdin));
+    } while (fgets(buffer[last_buf_line],
+ 200,
+ stdin));
 \end_layout
 
 \begin_layout Plain Layout
@@ -2122,7 +2207,8 @@ listerrors.c
 \end_layout
 
 \begin_layout Standard
-To build this program, we want to add the 
+To build this program,
+ we want to add the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2139,7 +2225,8 @@ Literate.nw
 listerrors.c
 \family default
 .
- In accordance with this, we pass the 
+ In accordance with this,
+ we pass the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2171,12 +2258,16 @@ build-script
 
 \begin_layout Plain Layout
 
-if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=Literate.nw; fi
+if [ -z "$NOWEB_SOURCE" ];
+ then NOWEB_SOURCE=Literate.nw;
+ fi
 \end_layout
 
 \begin_layout Plain Layout
 
-if [ -z "$NOWEB_OUTPUT_DIR" ]; then NOWEB_OUTPUT_DIR=.; fi
+if [ -z "$NOWEB_OUTPUT_DIR" ];
+ then NOWEB_OUTPUT_DIR=.;
+ fi
 \end_layout
 
 \begin_layout Plain Layout

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -88,6 +88,7 @@
 \html_css_as_file 0
 \html_be_strict false
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -99,8 +100,7 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align left
-Sample document for contributions to journals of the American Astronomical
- Society (AAS).
+Sample document for contributions to journals of the American Astronomical Society (AAS).
  Please consult the 
 \begin_inset CommandInset href
 LatexCommand href
@@ -141,8 +141,8 @@ status open
 \noindent
 \align left
 The AASTeX document class uses a different name since version 6.0 (2016/02/16).
- Depending on the version installed on your system, set the document class
- to American Astronomical Society (AASTeX v.
+ Depending on the version installed on your system,
+ set the document class to American Astronomical Society (AASTeX v.
  6) or American Astronomical Society (AASTeX v.
  5).
  
@@ -183,7 +183,9 @@ https://www.lyx.org/trac/ticket/10027
 \end_layout
 
 \begin_layout Title
-Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AAS\SpecialChar TeX
+Collapsed Cores in Globular Clusters,
+  Gauge-Boson Couplings,
+ and AAS\SpecialChar TeX
  Examples
 \end_layout
 
@@ -194,7 +196,10 @@ S.
 \end_layout
 
 \begin_layout Affiliation
-Astronomy Department, University of California, Berkeley, CA 94720
+Astronomy Department,
+ University of California,
+ Berkeley,
+ CA 94720
 \end_layout
 
 \begin_layout Altaffilation
@@ -214,15 +219,19 @@ under contract to the National Science Foundation.
 \end_layout
 
 \begin_layout Altaffilation
-Society of Fellows, Harvard University.
+Society of Fellows,
+ Harvard University.
 \end_layout
 
 \begin_layout Altaffilation
-present address: Center for Astrophysics
+present address:
+ Center for Astrophysics
 \begin_inset Newline newline
 \end_inset
 
-60 Garden Street, Cambridge, MA 02138
+60 Garden Street,
+ Cambridge,
+ MA 02138
 \end_layout
 
 \begin_layout Author
@@ -232,15 +241,19 @@ C.
 \end_layout
 
 \begin_layout Affiliation
-National Optical Astronomy Observatories, Tucson, AZ 85719
+National Optical Astronomy Observatories,
+ Tucson,
+ AZ 85719
 \end_layout
 
 \begin_layout Altaffilation
-Visiting Programmer, Space Telescope Science Institute
+Visiting Programmer,
+ Space Telescope Science Institute
 \end_layout
 
 \begin_layout Altaffilation
-Patron, Alonso's Bar and Grill
+Patron,
+ Alonso's Bar and Grill
 \end_layout
 
 \begin_layout Email
@@ -254,23 +267,29 @@ R.
 \end_layout
 
 \begin_layout Affiliation
-Space Telescope Science Institute, Baltimore, MD 21218
+Space Telescope Science Institute,
+ Baltimore,
+ MD 21218
 \end_layout
 
 \begin_layout Altaffilation
-Patron, Alonso's Bar and Grill
+Patron,
+ Alonso's Bar and Grill
 \end_layout
 
 \begin_layout Abstract
-This is a preliminary report on surface photometry of the major fraction
- of known globular clusters, to see which of them show the signs of a collapsed
- core.
+This is a preliminary report on surface photometry of the major fraction of known globular clusters,
+ to see which of them show the signs of a collapsed core.
  We also explore some diversionary mathematics and recreational tables.
  
 \end_layout
 
 \begin_layout Keywords
-clusters: globular, peanut—bosons: bozos
+clusters:
+ globular,
+ peanut—
+bosons:
+ bozos
 \end_layout
 
 \begin_layout Section
@@ -287,7 +306,8 @@ literal "false"
 
 \end_inset
 
-, but observation has been less alert to the phenomenon.
+,
+ but observation has been less alert to the phenomenon.
  For many years the central brightness peak in M15 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -305,8 +325,8 @@ literal "false"
 
 \end_inset
 
- suggested a central peak in NGC 6397, and a limited photographic survey
- of ours 
+ suggested a central peak in NGC 6397,
+ and a limited photographic survey of ours 
 \begin_inset CommandInset citation
 LatexCommand citep
 after "Paper I"
@@ -315,8 +335,9 @@ literal "false"
 
 \end_inset
 
- found three more cases, including NGC 6624, whose sharp center had often
- been remarked on 
+ found three more cases,
+ including NGC 6624,
+ whose sharp center had often been remarked on 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "can78"
@@ -342,13 +363,15 @@ All our observations were short direct exposures with CCD's.
 \begin_inset Formula $\times$
 \end_inset
 
-385, on the 1-m Nickel reflector.
+385,
+ on the 1-m Nickel reflector.
  The only filter available at Lick was red.
  At CTIO we used a GEC 575
 \begin_inset Formula $\times$
 \end_inset
 
-385, with 
+385,
+ with 
 \begin_inset Formula $B,V,$
 \end_inset
 
@@ -356,11 +379,13 @@ All our observations were short direct exposures with CCD's.
 \begin_inset Formula $R$
 \end_inset
 
- filters, and an RCA 512
+ filters,
+ and an RCA 512
 \begin_inset Formula $\times$
 \end_inset
 
-320, with 
+320,
+ with 
 \begin_inset Formula $U,B,V,R,$
 \end_inset
 
@@ -368,10 +393,12 @@ All our observations were short direct exposures with CCD's.
 \begin_inset Formula $I$
 \end_inset
 
- filters, on the 1.5-m reflector.
- In the CTIO observations we tried to concentrate on the shortest practicable
- wavelengths; but faintness, reddening, and poor short-wavelength sensitivity
- often kept us from observing in 
+ filters,
+ on the 1.5-m reflector.
+ In the CTIO observations we tried to concentrate on the shortest practicable wavelengths;
+ but faintness,
+ reddening,
+ and poor short-wavelength sensitivity often kept us from observing in 
 \begin_inset Formula $U$
 \end_inset
 
@@ -380,16 +407,15 @@ All our observations were short direct exposures with CCD's.
 \end_inset
 
 .
- All four cameras had scales of the order of 0.4 arcsec/pixel, and our field
- sizes were around 3 arcmin.
+ All four cameras had scales of the order of 0.4 arcsec/pixel,
+ and our field sizes were around 3 arcmin.
 \end_layout
 
 \begin_layout Standard
-The CCD images are unfortunately not always suitable, for very poor clusters
- or for clusters with large cores.
- Since the latter are easily studied by other means, we augmented our own
- CCD profiles by collecting from the literature a number of star-count profiles
- 
+The CCD images are unfortunately not always suitable,
+ for very poor clusters or for clusters with large cores.
+ Since the latter are easily studied by other means,
+ we augmented our own CCD profiles by collecting from the literature a number of star-count profiles 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kin68,pet76,har84,ort85"
@@ -397,7 +423,8 @@ literal "false"
 
 \end_inset
 
-, as well as photoelectric profiles 
+,
+ as well as photoelectric profiles 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kin66,kin75"
@@ -422,8 +449,7 @@ Helicity Amplitudes
 \end_layout
 
 \begin_layout Standard
-It has been realized that helicity amplitudes provide a convenient means
- for Feynman diagram
+It has been realized that helicity amplitudes provide a convenient means for Feynman diagram
 \begin_inset Foot
 status collapsed
 
@@ -434,11 +460,9 @@ Footnotes can be inserted like this.
 \end_inset
 
  evaluations.
- These amplitude-level techniques are particularly convenient for calculations
- involving many Feynman diagrams, where the usual trace techniques for the
- amplitude squared becomes unwieldy.
- Our calculations use the helicity techniques developed by other authors
- 
+ These amplitude-level techniques are particularly convenient for calculations involving many Feynman diagrams,
+ where the usual trace techniques for the amplitude squared becomes unwieldy.
+ Our calculations use the helicity techniques developed by other authors 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hag86"
@@ -446,7 +470,8 @@ literal "true"
 
 \end_inset
 
-; we briefly summarize below.
+;
+ we briefly summarize below.
 \end_layout
 
 \begin_layout Subsection
@@ -492,7 +517,8 @@ A tree-level amplitude in
 \begin_inset Formula $(\sigma=\pm1)$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\hat{a}_{i}=a_{i}^{\mu}\gamma_{\nu}$
 \end_inset
 
@@ -509,9 +535,8 @@ A tree-level amplitude in
 \begin_inset Formula $a_{i}^{\mu}$
 \end_inset
 
- may be formed from particle four-momenta, gauge-boson polarization vectors
- or fermion strings with an uncontracted Lorentz index associated with final-sta
-te fermions.
+ may be formed from particle four-momenta,
+ gauge-boson polarization vectors or fermion strings with an uncontracted Lorentz index associated with final-state fermions.
 \end_layout
 
 \begin_layout NoteToEditor
@@ -600,8 +625,7 @@ Floating material and so forth
 \end_layout
 
 \begin_layout Standard
-Consider a task that computes profile parameters for a modified Lorentzian
- of the form 
+Consider a task that computes profile parameters for a modified Lorentzian of the form 
 \begin_inset Formula 
 \begin{equation}
 I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
@@ -657,7 +681,8 @@ In these expressions
 \begin_inset Formula $y_{0}$
 \end_inset
 
- is the star center, and 
+ is the star center,
+ and 
 \begin_inset Formula $\Theta$
 \end_inset
 
@@ -674,17 +699,17 @@ In these expressions
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tbl-2"
+nolink "false"
 
 \end_inset
 
 .
- It is not clear how these sorts of analyses may affect determination of
- 
+ It is not clear how these sorts of analyses may affect determination of 
 \begin_inset Formula $M_{\text{\sun}}$
 \end_inset
 
-, but the assumption is that the alternate results should be less than 90°
- out of phase with previous values.
+,
+ but the assumption is that the alternate results should be less than 90° out of phase with previous values.
  We have no observations of 
 \begin_inset Preview
 
@@ -717,8 +742,10 @@ ion{Ca}{2}
 
 \begin_layout Acknowledgements
 We are grateful to V.
- Barger, T.
- Han, and R.
+ Barger,
+ T.
+ Han,
+ and R.
  J.
  N.
  Phillips for doing the math in section
@@ -729,6 +756,7 @@ We are grateful to V.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "bozomath"
+nolink "false"
 
 \end_inset
 
@@ -758,7 +786,10 @@ literal "false"
 \end_layout
 
 \begin_layout Software
-IRAF, AIPS, Astropy, ...
+IRAF,
+ AIPS,
+ Astropy,
+ ...
 \end_layout
 
 \begin_layout Appendix
@@ -770,8 +801,7 @@ Appendicial material
 \end_layout
 
 \begin_layout Standard
-Consider once again a task that computes profile parameters for a modified
- Lorentzian of the form 
+Consider once again a task that computes profile parameters for a modified Lorentzian of the form 
 \begin_inset Formula 
 \begin{equation}
 I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
@@ -815,7 +845,8 @@ y_{1} & = & -(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta
 \end_layout
 
 \begin_layout Standard
-For completeness, here is one last equation.
+For completeness,
+ here is one last equation.
  
 \begin_inset Formula 
 \begin{equation}
@@ -836,8 +867,10 @@ literal "true"
 
 \end_inset
 
-Aurière, M.
- 1982, 
+Aurière,
+ M.
+ 1982,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -850,7 +883,9 @@ aap
 
 \end_inset
 
-, 109, 301 
+,
+ 109,
+ 301 
 \end_layout
 
 \begin_layout Bibliography
@@ -862,12 +897,22 @@ literal "true"
 
 \end_inset
 
-Canizares, C.
- R., Grindlay, J.
- E., Hiltner, W.
- A., Liller, W., and McClintock, J.
+Canizares,
+ C.
+ R.,
+ Grindlay,
+ J.
+ E.,
+ Hiltner,
+ W.
+ A.,
+ Liller,
+ W.,
+ and McClintock,
+ J.
  E.
- 1978, 
+ 1978,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -880,7 +925,9 @@ apj
 
 \end_inset
 
-, 224, 39 
+,
+ 224,
+ 39 
 \end_layout
 
 \begin_layout Bibliography
@@ -892,9 +939,13 @@ literal "true"
 
 \end_inset
 
-Djorgovski, S., and King, I.
+Djorgovski,
+ S.,
+ and King,
+ I.
  R.
- 1984, 
+ 1984,
+ 
 \begin_inset Preview
 
 \begin_layout Standard
@@ -915,7 +966,9 @@ apjl
 
 \end_inset
 
-, 277, L49 
+,
+ 277,
+ L49 
 \end_layout
 
 \begin_layout Bibliography
@@ -927,8 +980,14 @@ literal "true"
 
 \end_inset
 
-Hagiwara, K., and Zeppenfeld, D.
- 1986, Nucl.Phys., 274, 1 
+Hagiwara,
+ K.,
+ and Zeppenfeld,
+ D.
+ 1986,
+ Nucl.Phys.,
+ 274,
+ 1 
 \end_layout
 
 \begin_layout Bibliography
@@ -940,9 +999,13 @@ literal "true"
 
 \end_inset
 
-Harris, W.
- E., and van den Bergh, S.
- 1984, 
+Harris,
+ W.
+ E.,
+ and van den Bergh,
+ S.
+ 1984,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -955,7 +1018,9 @@ aj
 
 \end_inset
 
-, 89, 1816 
+,
+ 89,
+ 1816 
 \end_layout
 
 \begin_layout Bibliography
@@ -967,8 +1032,12 @@ literal "true"
 
 \end_inset
 
-Hénon, M.
- 1961, Ann.d'Ap., 24, 369 
+Hénon,
+ M.
+ 1961,
+ Ann.d'Ap.,
+ 24,
+ 369 
 \end_layout
 
 \begin_layout Bibliography
@@ -980,9 +1049,11 @@ literal "true"
 
 \end_inset
 
-King, I.
+King,
+ I.
  R.
- 1966, 
+ 1966,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -995,7 +1066,9 @@ aj
 
 \end_inset
 
-, 71, 276 
+,
+ 71,
+ 276 
 \end_layout
 
 \begin_layout Bibliography
@@ -1007,10 +1080,17 @@ literal "true"
 
 \end_inset
 
-King, I.
+King,
+ I.
  R.
- 1975, Dynamics of Stellar Systems, A.
- Hayli, Dordrecht: Reidel, 1975, 99 
+ 1975,
+ Dynamics of Stellar Systems,
+ A.
+ Hayli,
+ Dordrecht:
+ Reidel,
+ 1975,
+ 99 
 \end_layout
 
 \begin_layout Bibliography
@@ -1022,11 +1102,19 @@ literal "true"
 
 \end_inset
 
-King, I.
- R., Hedemann, E., Hodge, S.
- M., and White, R.
+King,
+ I.
+ R.,
+ Hedemann,
+ E.,
+ Hodge,
+ S.
+ M.,
+ and White,
+ R.
  E.
- 1968, 
+ 1968,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -1039,7 +1127,9 @@ aj
 
 \end_inset
 
-, 73, 456 
+,
+ 73,
+ 456 
 \end_layout
 
 \begin_layout Bibliography
@@ -1051,11 +1141,17 @@ literal "true"
 
 \end_inset
 
-Kron, G.
- E., Hewitt, A.
- V., and Wasserman, L.
+Kron,
+ G.
+ E.,
+ Hewitt,
+ A.
+ V.,
+ and Wasserman,
+ L.
  H.
- 1984, 
+ 1984,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -1068,7 +1164,9 @@ pasp
 
 \end_inset
 
-, 96, 198 
+,
+ 96,
+ 198 
 \end_layout
 
 \begin_layout Bibliography
@@ -1080,8 +1178,12 @@ literal "true"
 
 \end_inset
 
-Lynden-Bell, D., and Wood, R.
- 1968, 
+Lynden-Bell,
+ D.,
+ and Wood,
+ R.
+ 1968,
+ 
 \begin_inset Preview
 
 \begin_layout Standard
@@ -1102,7 +1204,9 @@ mnras
 
 \end_inset
 
-, 138, 495 
+,
+ 138,
+ 495 
 \end_layout
 
 \begin_layout Bibliography
@@ -1114,10 +1218,14 @@ literal "true"
 
 \end_inset
 
-Newell, E.
- B., and O'Neil, E.
+Newell,
+ E.
+ B.,
+ and O'Neil,
+ E.
  J.
- 1978, 
+ 1978,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -1130,7 +1238,9 @@ apjs
 
 \end_inset
 
-, 37, 27 
+,
+ 37,
+ 27 
 \end_layout
 
 \begin_layout Bibliography
@@ -1142,8 +1252,14 @@ literal "true"
 
 \end_inset
 
-Ortolani, S., Rosino, L., and Sandage, A.
- 1985, 
+Ortolani,
+ S.,
+ Rosino,
+ L.,
+ and Sandage,
+ A.
+ 1985,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -1156,7 +1272,9 @@ aj
 
 \end_inset
 
-, 90, 473 
+,
+ 90,
+ 473 
 \end_layout
 
 \begin_layout Bibliography
@@ -1168,9 +1286,11 @@ literal "true"
 
 \end_inset
 
-Peterson, C.
+Peterson,
+ C.
  J.
- 1976, 
+ 1976,
+ 
 \begin_inset ERT
 status collapsed
 
@@ -1183,7 +1303,9 @@ aj
 
 \end_inset
 
-, 81, 617 
+,
+ 81,
+ 617 
 \end_layout
 
 \begin_layout Bibliography
@@ -1195,10 +1317,16 @@ literal "true"
 
 \end_inset
 
-Spitzer, L.
- 1985, Dynamics of Star Clusters, J.
+Spitzer,
+ L.
+ 1985,
+ Dynamics of Star Clusters,
+ J.
  Goodman and P.
- Hut, Dordrecht: Reidel, 109 
+ Hut,
+ Dordrecht:
+ Reidel,
+ 109 
 \end_layout
 
 \begin_layout Standard
@@ -1237,8 +1365,9 @@ name "fig2"
 \end_inset
 
 This is an example of a long figure caption that must be set as a paragraph.
-  The processor has to buffer the text of the caption, so it is good not
- to be too wordy, but that would make for poor communication as well.
+  The processor has to buffer the text of the caption,
+ so it is good not to be too wordy,
+ but that would make for poor communication as well.
  
 \end_layout
 
@@ -1257,7 +1386,8 @@ name "fig3"
 
 \end_inset
 
-This figure has no associated EPS file, so the optional parameter is omitted.
+This figure has no associated EPS file,
+ so the optional parameter is omitted.
  
 \end_layout
 
@@ -2277,6 +2407,7 @@ Sample footnote for table
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tbl-2"
+nolink "false"
 
 \end_inset
 
@@ -2304,6 +2435,7 @@ Yet another sample footnote for table
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tbl-2"
+nolink "false"
 
 \end_inset
 
@@ -2330,6 +2462,7 @@ Another sample footnote for table
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tbl-2"
+nolink "false"
 
 \end_inset
 
@@ -2341,23 +2474,50 @@ We can also attach a long-ish paragraph of explanatory material to a table.
  Use 
 \backslash
 tablerefs to append a list of references.
- The following references were from a different table: I've patched them
- in here to show how they look, but don't take them too seriously—I certainly
- have not.
+ The following references were from a different table:
+ I've patched them in here to show how they look,
+ but don't take them too seriously—
+I certainly have not.
 \end_layout
 
 \begin_layout TableRefs
-(1) Barbuy, Spite, & Spite 1985; (2) Bond 1980; (3) Carbon et al.
- 1987; (4) Hobbs & Duncan 1987; (5) Gilroy et al.
- 1988: (6) Gratton & Ortolani 1986; (7) Gratton & Sneden 1987; (8) Gratton
- & Sneden (1988); (9) Gratton & Sneden 1991; (10) Kraft et al.
- 1982; (11) LCL, or Laird, 1990; (12) Leep & Wallerstein 1981; (13) Luck
- & Bond 1981; (14) Luck & Bond 1985; (15) Magain 1987; (16) Magain 1989;
- (17) Peterson 1981; (18) Peterson, Kurucz, & Carney 1990; (19) RMB; (20)
- Schuster & Nissen 1988; (21) Schuster & Nissen 1989b; (22) Spite et al.
- 1984; (23) Spite & Spite 1986; (24) Hobbs & Thorburn 1991; (25) Hobbs et
- al.
- 1991; (26) Olsen 1983.
+(1) Barbuy,
+ Spite,
+ & Spite 1985;
+ (2) Bond 1980;
+ (3) Carbon et al.
+ 1987;
+ (4) Hobbs & Duncan 1987;
+ (5) Gilroy et al.
+ 1988:
+ (6) Gratton & Ortolani 1986;
+ (7) Gratton & Sneden 1987;
+ (8) Gratton & Sneden (1988);
+ (9) Gratton & Sneden 1991;
+ (10) Kraft et al.
+ 1982;
+ (11) LCL,
+ or Laird,
+ 1990;
+ (12) Leep & Wallerstein 1981;
+ (13) Luck & Bond 1981;
+ (14) Luck & Bond 1985;
+ (15) Magain 1987;
+ (16) Magain 1989;
+ (17) Peterson 1981;
+ (18) Peterson,
+ Kurucz,
+ & Carney 1990;
+ (19) RMB;
+ (20) Schuster & Nissen 1988;
+ (21) Schuster & Nissen 1989b;
+ (22) Spite et al.
+ 1984;
+ (23) Spite & Spite 1986;
+ (24) Hobbs & Thorburn 1991;
+ (25) Hobbs et al.
+ 1991;
+ (26) Olsen 1983.
 \end_layout
 
 \end_inset
@@ -2371,8 +2531,8 @@ status open
 
 \begin_layout Plain Layout
 LyX can load deluxetable files verbatim.
- To see this in action, dissolve the following Note and copy the file table.tex
- from the AASTeX 5.0 distribution into the same directory as this file.
+ To see this in action,
+ dissolve the following Note and copy the file table.tex from the AASTeX 5.0 distribution into the same directory as this file.
 \end_layout
 
 \end_inset

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -48,9 +48,9 @@ ruby
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \font_cjk min
@@ -115,11 +115,14 @@ ruby
 \paperpagestyle default
 \tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -142,8 +145,8 @@ arg   "long"
 \begin_layout Standard
 
 \lang english
-For multi-lingual documents with parts in European languages, you can use
- the CJK LaTeX bundle:
+For multi-lingual documents with parts in European languages,
+ you can use the CJK LaTeX bundle:
 \end_layout
 
 \begin_layout Itemize
@@ -203,7 +206,8 @@ Unicode (utf8)
 \begin_layout Itemize
 
 \lang english
-Select a Japanese CJK-font, e.g.
+Select a Japanese CJK-font,
+ e.g.
  
 \begin_inset Flex Code
 status collapsed
@@ -252,7 +256,8 @@ Libertine
 \noindent
 
 \lang english
-Alternatively, you can use non-TeX fonts with 
+Alternatively,
+ you can use non-TeX fonts with 
 \begin_inset Quotes bld
 \end_inset
 
@@ -275,52 +280,66 @@ luatexja
 \begin_layout Standard
 
 \lang english
-Then, the following should work:
+Then,
+ the following should work:
 \end_layout
 
 \begin_layout Enumerate
-Japanese text, of course: \SpecialChar LyX
-は優秀な取扱説明書を同梱していますので、これをお使いください！まずは
+Japanese text,
+ of course:
+ \SpecialChar LyX
+は優秀な取扱説明書を同梱していますので、これをお使いください！
+まずは
 \family sans
 ヘルプ\SpecialChar menuseparator
 はじめの一歩
 \family default
-から始めてください。これは、各取扱説明書を簡潔に紹介しています。つぎに
+から始めてください。
+これは、各取扱説明書を簡潔に紹介しています。
+つぎに
 \family sans
 ヘルプ\SpecialChar menuseparator
 入門篇
 \family default
 をお読みになれば、\SpecialChar LyX
 の使い方を学ぶことができます。
+
 \end_layout
 
 \begin_layout Enumerate
-Short texts may be written without setting the language (hyphenation will
- be missing and spell-checking complain): Greetings; Grüße; Приветы; χαιρετισμός
+Short texts may be written without setting the language (hyphenation will be missing and spell-checking complain):
+ Greetings;
+ Grüße;
+ Приветы;
+ χαιρετισμός
 \end_layout
 
 \begin_layout Enumerate
-For longer text parts, it is recommended to set the correct language:
+For longer text parts,
+ it is recommended to set the correct language:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
 
 \lang english
-English: Hello Mr.
+English:
+ Hello Mr.
  Sandman!
 \end_layout
 
 \begin_layout Description
 
 \lang ngerman
-Deutsch: Grüße aus Österreich!
+Deutsch:
+ Grüße aus Österreich!
 \end_layout
 
 \begin_layout Description
 
 \lang ngerman
 Griechisch:
+
 \lang greek
  χαιρετισμός!
 \end_layout
@@ -329,6 +348,7 @@ Griechisch:
 
 \lang ngerman
 Russisch:
+
 \lang russian
  Привет с 
 \series bold
@@ -341,17 +361,22 @@ Russisch:
 \begin_layout Enumerate
 
 \lang english
-Japanese characters, e.g., 介 し
+Japanese characters,
+ e.g.,
+ 介 し
 \family sans
  門
 \family default
-, may also be used in text parts set to other languages.
+,
+ may also be used in text parts set to other languages.
 \end_layout
 
 \begin_layout Enumerate
 
 \lang english
-Ruby (ルビ, furigana) with the help of the Ruby module:
+Ruby (ルビ,
+ furigana) with the help of the Ruby module:
+
 \lang japanese-cjk
  
 \begin_inset Flex Ruby

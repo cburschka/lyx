@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -120,11 +124,11 @@ Cómo lo hace \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  utiliza \SpecialChar LaTeX
-, un sistema de preparación de documentos diseñado por Leslie Lamport
- en 1985.
+,
+ un sistema de preparación de documentos diseñado por Leslie Lamport en 1985.
  Fue construido sobre un lenguaje de composición llamado \SpecialChar TeX
-, creado por Donald
- Knuth en 1984.
+,
+ creado por Donald Knuth en 1984.
  \SpecialChar LaTeX
  está diseñado sobre una filosofía similar a la de \SpecialChar LyX
 .
@@ -140,16 +144,16 @@ literal "true"
 \end_layout
 
 \begin_layout Quote
-La función del diseño tipográfico es ayudar al lector a comprender las ideas
- del autor.
- Para que un documento sea fácil de leer, su estructura visual debe reflejar
- su estructura lógica.
- Las citas y los programas de ordenador, al ser elementos estructuralmente
- distintos, deberían distinguirse visualmente uno de otro [...] Como \SpecialChar LaTeX
- no puede
- entenderte directamente, debes indicarle explícitamente la estructura lógica
- mediante comandos especiales [...] Mientras escribes el documento, deberías
- preocuparte de su estructura lógica, no de su apariencia.
+La función del diseño tipográfico es ayudar al lector a comprender las ideas del autor.
+ Para que un documento sea fácil de leer,
+ su estructura visual debe reflejar su estructura lógica.
+ Las citas y los programas de ordenador,
+ al ser elementos estructuralmente distintos,
+ deberían distinguirse visualmente uno de otro [...] Como \SpecialChar LaTeX
+ no puede entenderte directamente,
+ debes indicarle explícitamente la estructura lógica mediante comandos especiales [...] Mientras escribes el documento,
+ deberías preocuparte de su estructura lógica,
+ no de su apariencia.
 \end_layout
 
 \begin_layout Subsection
@@ -168,9 +172,9 @@ name "subsec:Por-qué-LyX"
 \SpecialChar LyX
  puede ser útil a más gente que \SpecialChar LaTeX
 .
- Es considerablemente más fácil de usar, ya que no necesitas aprender \SpecialChar LaTeX
- (que
- es prácticamente un lenguaje de programación).
+ Es considerablemente más fácil de usar,
+ ya que no necesitas aprender \SpecialChar LaTeX
+ (que es prácticamente un lenguaje de programación).
  \SpecialChar LyX
  es básicamente como los demás procesadores de texto 
 \begin_inset Quotes eld
@@ -180,7 +184,8 @@ lo que ves es lo que obtienes
 \begin_inset Quotes erd
 \end_inset
 
-, salvo que \SpecialChar LyX
+,
+ salvo que \SpecialChar LyX
  es 
 \begin_inset Quotes eld
 \end_inset
@@ -190,13 +195,14 @@ lo que ves es lo que quieres decir
 \end_inset
 
 .
- De esta forma, combina la facilidad de uso de los procesadores de texto
- con la potencia de \SpecialChar LaTeX
+ De esta forma,
+ combina la facilidad de uso de los procesadores de texto con la potencia de \SpecialChar LaTeX
 .
  Esto es Bueno.
- Además, el formato de archivo es independiente del ordenador o sistema
- que uses.
- Y lo mejor de todo, ¡es LIBRE y GRATUITO!
+ Además,
+ el formato de archivo es independiente del ordenador o sistema que uses.
+ Y lo mejor de todo,
+ ¡es LIBRE y GRATUITO!
 \end_layout
 
 \begin_layout Section
@@ -211,7 +217,8 @@ Características de \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-Después de todo, ¿por qué otra cosa lo querrías usar?
+Después de todo,
+ ¿por qué otra cosa lo querrías usar?
 \end_layout
 
 \end_inset
@@ -226,8 +233,7 @@ muy emocionado
 
 \begin_layout Itemize
 \SpecialChar LyX
- se engarga él solo de los márgenes y la numeración de las notas a pie de
- página
+ se engarga él solo de los márgenes y la numeración de las notas a pie de página
 \end_layout
 
 \begin_layout Itemize
@@ -237,8 +243,8 @@ muy emocionado
 
 \begin_layout Standard
 Para una discusión más filosófica de por qué \SpecialChar LyX
- es mejor que muchos procesadores
- de texto, mira la sección
+ es mejor que muchos procesadores de texto,
+ mira la sección
 \begin_inset space ~
 \end_inset
 
@@ -246,10 +252,12 @@ Para una discusión más filosófica de por qué \SpecialChar LyX
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Por-qué-LyX"
+nolink "false"
 
 \end_inset
 
-, que se encuentra en la página
+,
+ que se encuentra en la página
 \begin_inset space ~
 \end_inset
 
@@ -257,6 +265,7 @@ reference "subsec:Por-qué-LyX"
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "subsec:Por-qué-LyX"
+nolink "false"
 
 \end_inset
 
@@ -294,7 +303,8 @@ El otro día escribí un programa.
 \end_layout
 
 \begin_layout Standard
-Después de este gran esfuerzo científico, empecé a sentirme más artístico,
+Después de este gran esfuerzo científico,
+ empecé a sentirme más artístico,
  así que escribí este haiku:
 \end_layout
 
@@ -321,7 +331,8 @@ Mi ecuación favorita es la solución de la ecuación de segundo grado.
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
- (ec.1), entonces 
+ (ec.1),
+ entonces 
 \begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
@@ -330,7 +341,8 @@ Mi ecuación favorita es la solución de la ecuación de segundo grado.
 \end_layout
 
 \begin_layout Standard
-Otra de mis ecuaciones favoritas es la base del cálculo: 
+Otra de mis ecuaciones favoritas es la base del cálculo:
+ 
 \begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
@@ -349,8 +361,7 @@ Un par de apuntes sobre la adaptación a \SpecialChar LyX
 
 \begin_layout Itemize
 He quitado la línea hecha a base de guiones.
- Era simplemente para separar las referencias y el índice del resto del
- documento.
+ Era simplemente para separar las referencias y el índice del resto del documento.
  \SpecialChar LyX
  (\SpecialChar LaTeX
 ) ya sabe que debe separarlos dejando un espacio.
@@ -358,8 +369,8 @@ He quitado la línea hecha a base de guiones.
 
 \begin_layout Itemize
 No me he molestado en poner las ecuaciones en modo demostración.
- Tampoco he utilizado la numeración automática de ecuaciones, porque no
- se ha explicado en el 
+ Tampoco he utilizado la numeración automática de ecuaciones,
+ porque no se ha explicado en el 
 \emph on
 Tutorial
 \emph default
@@ -385,8 +396,8 @@ Bibliografía
 \begin_inset Quotes erd
 \end_inset
 
-, dependiendo de la clase de documento) cuando seleccionas el estilo de
- párrafo 
+,
+ dependiendo de la clase de documento) cuando seleccionas el estilo de párrafo 
 \family sans
 Bibliografía
 \family default
@@ -401,14 +412,20 @@ literal "true"
 
 \end_inset
 
-Lamport, Leslie.
+Lamport,
+ Leslie.
  
 \emph on
 \SpecialChar LaTeX
-: A Document Preparation System.
+:
+ A Document Preparation System.
 
 \emph default
- Addison-Wesley, Reading, Massachusetts, segunda edición, 1994.
+ Addison-Wesley,
+ Reading,
+ Massachusetts,
+ segunda edición,
+ 1994.
 \end_layout
 
 \end_body

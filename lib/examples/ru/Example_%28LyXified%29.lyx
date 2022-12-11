@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -108,8 +112,10 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 Основная философия \SpecialChar LyX
- заключается в том, что вы должны беспокоиться о содержании
- того, что вы пишете, а не о форме.
+ заключается в том,
+ что вы должны беспокоиться о содержании того,
+ что вы пишете,
+ а не о форме.
 \end_layout
 
 \begin_layout Subsection
@@ -120,13 +126,17 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \SpecialChar LyX
  использует \SpecialChar LaTeX
-, систему подготовки документов, разработанную Лесли Лэмпортом
- в 1985 году.
- Он, в свою очередь, был построен на базе языка верстки под названием \SpecialChar TeX
+,
+ систему подготовки документов,
+ разработанную Лесли Лэмпортом в 1985 году.
+ Он,
+ в свою очередь,
+ был построен на базе языка верстки под названием \SpecialChar TeX
 ,
  созданного Дональдом Кнутом в 1984 году.
  \SpecialChar LaTeX
- разработан вокруг философии, аналогичной философии \SpecialChar LyX
+ разработан вокруг философии,
+ аналогичной философии \SpecialChar LyX
 .
  Лесли Лэмпорт однажды сказал (см.
  
@@ -141,18 +151,18 @@ literal "true"
 \end_layout
 
 \begin_layout Quote
-Функция типографского дизайна заключается в том, чтобы помочь читателю понять
- идеи автора.
- Для удобства чтения документа его визуальная структура должна отражать
- его логическую структуру.
- Цитаты и компьютерные программы, являясь логически отличающимися структурными
- элементами, должны визуально различаться друг от друга \SpecialChar ldots
+Функция типографского дизайна заключается в том,
+ чтобы помочь читателю понять идеи автора.
+ Для удобства чтения документа его визуальная структура должна отражать его логическую структуру.
+ Цитаты и компьютерные программы,
+ являясь логически отличающимися структурными элементами,
+ должны визуально различаться друг от друга \SpecialChar ldots
  Поскольку \SpecialChar LaTeX
- не может
- понимать ваш текст, вы должны явно указать логическую структуру, введя
- специальные команды \SpecialChar ldots
- При написании документа необходимо учитывать его логическу
-ю структуру, а не внешний вид.
+ не может понимать ваш текст,
+ вы должны явно указать логическую структуру,
+ введя специальные команды \SpecialChar ldots
+ При написании документа необходимо учитывать его логическую структуру,
+ а не внешний вид.
 \end_layout
 
 \begin_layout Subsection
@@ -169,22 +179,28 @@ name "subsec:Почему-LyX-лучше"
 
 \begin_layout Standard
 \SpecialChar LyX
- может быть полезен большему количеству людей, чем \SpecialChar LaTeX
+ может быть полезен большему количеству людей,
+ чем \SpecialChar LaTeX
 .
- Его значительно проще изучить, потому что вам не нужно изучать \SpecialChar LaTeX
- (который
- является практически языком программирования).
+ Его значительно проще изучить,
+ потому что вам не нужно изучать \SpecialChar LaTeX
+ (который является практически языком программирования).
  \SpecialChar LyX
- в основном похож на другие “что вы видите, что вы получаете” текстовые
- процессоры, за исключением того, что \SpecialChar LyX
- — это “вы видите то, что вы имеете
- в виду”.
- Таким образом, он сочетает в себе простоту использования текстовых процессоров
- с мощностью \SpecialChar LaTeX
+ в основном похож на другие “что вы видите,
+ что вы получаете” текстовые процессоры,
+ за исключением того,
+ что \SpecialChar LyX
+ —
+ это “вы видите то,
+ что вы имеете в виду”.
+ Таким образом,
+ он сочетает в себе простоту использования текстовых процессоров с мощностью \SpecialChar LaTeX
 а.
  Это хорошо.
- Кроме того, формат его файлов не зависит от платформы.
- Ну и лучше всего, то что он БЕСПЛАТЕН!
+ Кроме того,
+ формат его файлов не зависит от платформы.
+ Ну и лучше всего,
+ то что он БЕСПЛАТЕН!
 \end_layout
 
 \begin_layout Section
@@ -194,12 +210,14 @@ name "subsec:Почему-LyX-лучше"
 
 \begin_layout Standard
 \SpecialChar LyX
- имеет много функций, которые облегчают написание документов
+ имеет много функций,
+ которые облегчают написание документов
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-В конце концов, почему же еще вам хотелось бы использовать его?
+В конце концов,
+ почему же еще вам хотелось бы использовать его?
 \end_layout
 
 \end_inset
@@ -224,9 +242,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Для более философского обсуждения того, почему \SpecialChar LyX
- лучше, чем многие другие
- текстовые процессоры, см.
+Для более философского обсуждения того,
+ почему \SpecialChar LyX
+ лучше,
+ чем многие другие текстовые процессоры,
+ см.
  раздел
 \begin_inset space ~
 \end_inset
@@ -238,10 +258,12 @@ reference "subsec:Почему-LyX-лучше"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
-, который можно найти на странице
+,
+ который можно найти на странице
 \begin_inset space ~
 \end_inset
 
@@ -252,6 +274,7 @@ reference "subsec:Почему-LyX-лучше"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -281,13 +304,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-После всего научного мышления, я начал чувствовать себя более художественным,
+После всего научного мышления,
+ я начал чувствовать себя более художественным,
  так что я написал эту хокку
 \end_layout
 
 \begin_layout Verse
 \SpecialChar LyX
- — это действительно хороший
+ —
+ это действительно хороший
 \begin_inset Newline newline
 \end_inset
 
@@ -303,7 +328,8 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-Моя любимая формула — это решение квадратного уравнения.
+Моя любимая формула —
+ это решение квадратного уравнения.
  Если 
 \begin_inset Formula 
 \begin{equation}
@@ -324,7 +350,8 @@ x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}.
 \end_layout
 
 \begin_layout Standard
-Еще одна любимая формула — определение производной:
+Еще одна любимая формула —
+ определение производной:
 \begin_inset Formula 
 \begin{equation}
 f'(x)=\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}.
@@ -343,14 +370,20 @@ literal "false"
 
 \end_inset
 
-Lamport, Leslie.
+Lamport,
+ Leslie.
  
 \emph on
 \SpecialChar LaTeX
-: A Document Preparation System.
+:
+ A Document Preparation System.
 
 \emph default
- Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+ Addison-Wesley,
+ Reading,
+ Massachusetts,
+ second edition,
+ 1994.
 \end_layout
 
 \end_body

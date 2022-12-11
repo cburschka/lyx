@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -51,9 +51,9 @@ linguistics
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -117,11 +117,14 @@ linguistics
 \paperpagestyle default
 \tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -154,11 +157,15 @@ literal "false"
 
 \begin_layout Abstract
 In diesem Text werden einige Funktionen von \SpecialChar LyX
- vorgestellt, die spezifisch
- auf die Bedürfnisse von Linguistinnen und Linguisten ausgerichtet sind.
- Es wird gezeigt, wie nummerierte Beispiele, Interlinear-Glossierung, OT-Tableau
-x, semantische Auszeichnung, Strukturbäume, Diskursrepräsentationsstrukturen
- und phonetische Notation (IPA) erzeugt werden können.
+ vorgestellt,
+ die spezifisch auf die Bedürfnisse von Linguistinnen und Linguisten ausgerichtet sind.
+ Es wird gezeigt,
+ wie nummerierte Beispiele,
+ Interlinear-Glossierung,
+ OT-Tableaux,
+ semantische Auszeichnung,
+ Strukturbäume,
+ Diskursrepräsentationsstrukturen und phonetische Notation (IPA) erzeugt werden können.
 \end_layout
 
 \begin_layout Section
@@ -174,7 +181,8 @@ Linguistik
 \begin_inset Quotes grd
 \end_inset
 
--Modul bereitgestellt, das seit Version 1.6.0 mit \SpecialChar LyX
+-Modul bereitgestellt,
+ das seit Version 1.6.0 mit \SpecialChar LyX
  mitgeliefert wird.
  
 \begin_inset Quotes gld
@@ -186,16 +194,16 @@ Module
 
  – das Konzept wurde ebenfalls mit \SpecialChar LyX
  1.6.0 eingeführt – sind Ergänzungsdateien,
- welche die von der Dokumentklasse bereitgestellten Möglichkeiten zumeist
- für sehr spezifische Aufgaben erweitern und die für jedes Dokument (egal
- welcher Klasse) einfach ausgewählt werden können.
- Um das Linguistik-Modul zu verwenden, gehen sie zu 
+ welche die von der Dokumentklasse bereitgestellten Möglichkeiten zumeist für sehr spezifische Aufgaben erweitern und die für jedes Dokument (egal welcher Klasse) einfach ausgewählt werden können.
+ Um das Linguistik-Modul zu verwenden,
+ gehen sie zu 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Module
 \family default
-, wählen Sie 
+,
+ wählen Sie 
 \begin_inset Quotes gld
 \end_inset
 
@@ -212,10 +220,11 @@ Hinzufügen
 
 \begin_layout Standard
 Grundsätzlich sollte das Modul in jeder von \SpecialChar LyX
- unterstützten Dokumentklasse
- funktionieren (falls nicht, informieren Sie bitte den Autor dieses Textes).
- Allerdings müssen Sie, um alle Features nutzen zu können, die folgenden
- \SpecialChar LaTeX
+ unterstützten Dokumentklasse funktionieren (falls nicht,
+ informieren Sie bitte den Autor dieses Textes).
+ Allerdings müssen Sie,
+ um alle Features nutzen zu können,
+ die folgenden \SpecialChar LaTeX
 -Pakete installiert haben:
 \end_layout
 
@@ -232,15 +241,19 @@ literal "true"
 
 \end_inset
 
-: Dieses Paket wird benötigt, um nummerierte Beispiele, Glossen und semantische
- Auszeichnungen zu erzeugen.
- Beachten Sie, dass mindestens Version 2.3 des Pakets erforderlich ist, um
- alle Funktionen zu nutzen.
+:
+ Dieses Paket wird benötigt,
+ um nummerierte Beispiele,
+ Glossen und semantische Auszeichnungen zu erzeugen.
+ Beachten Sie,
+ dass mindestens Version 2.3 des Pakets erforderlich ist,
+ um alle Funktionen zu nutzen.
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Auf Ihrem System installiert: 
+Auf Ihrem System installiert:
+ 
 \begin_inset Info
 type  "package"
 arg   "covington"
@@ -263,18 +276,21 @@ literal "true"
 
 \end_inset
 
-: Voraussetzung für den Textstil 
+:
+ Voraussetzung für den Textstil 
 \emph on
 Bedeutung
 \emph default
  und für Glossen.
- Das Paket erlaubt es, kontextsensible Anführungszeichen zu generieren (bspw.
+ Das Paket erlaubt es,
+ kontextsensible Anführungszeichen zu generieren (bspw.
  je nach aktuell verwendeter Sprache).
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Auf Ihrem System installiert: 
+Auf Ihrem System installiert:
+ 
 \begin_inset Info
 type  "package"
 arg   "csquotes"
@@ -297,17 +313,21 @@ literal "true"
 
 \end_inset
 
-: Voraussetzung für Diskursrepräsentationsstrukturen.
- Beachten Sie, dass mindestens Version 2.3 des Pakets 
+:
+ Voraussetzung für Diskursrepräsentationsstrukturen.
+ Beachten Sie,
+ dass mindestens Version 2.3 des Pakets 
 \emph on
 covington
 \emph default
- erforderlich ist, um dies mit anderen Funktionen gemeinsam zu nutzen.
+ erforderlich ist,
+ um dies mit anderen Funktionen gemeinsam zu nutzen.
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Auf Ihrem System installiert: 
+Auf Ihrem System installiert:
+ 
 \begin_inset Info
 type  "package"
 arg   "drs"
@@ -330,14 +350,16 @@ literal "true"
 
 \end_inset
 
-: Dieses Paket brauchen wir für die OT-Tableaux und das Tableaux-Verzeichnis.
+:
+ Dieses Paket brauchen wir für die OT-Tableaux und das Tableaux-Verzeichnis.
  Es sollte Bestandteil jeder \SpecialChar LaTeX
 -Distribution sein.
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Auf Ihrem System installiert: 
+Auf Ihrem System installiert:
+ 
 \begin_inset Info
 type  "package"
 arg   "float"
@@ -360,12 +382,14 @@ literal "true"
 
 \end_inset
 
-: Dieses Paket wird zur Erzeugung von Strukturbäumen verwendet.
+:
+ Dieses Paket wird zur Erzeugung von Strukturbäumen verwendet.
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Auf Ihrem System installiert: 
+Auf Ihrem System installiert:
+ 
 \begin_inset Info
 type  "package"
 arg   "forest"
@@ -388,7 +412,8 @@ literal "true"
 
 \end_inset
 
-: Voraussetzung für 
+:
+ Voraussetzung für 
 \emph on
 Duplex-Bedingungs-DRS
 \emph default
@@ -397,7 +422,8 @@ Duplex-Bedingungs-DRS
 
 \begin_deeper
 \begin_layout Itemize
-Auf Ihrem System installiert: 
+Auf Ihrem System installiert:
+ 
 \begin_inset Info
 type  "package"
 arg   "pict2e"
@@ -412,8 +438,7 @@ Nummerierte Beispiele
 \end_layout
 
 \begin_layout Standard
-Nummerierte Beispiele werden über die Absatzstil-Auswahlliste in der Werkzeuglei
-ste eingefügt.
+Nummerierte Beispiele werden über die Absatzstil-Auswahlliste in der Werkzeugleiste eingefügt.
  Es gibt drei Varianten:
 \end_layout
 
@@ -426,7 +451,8 @@ Nummeriertes Beispiel (mehrere Zeilen)
 \end_layout
 
 \begin_layout Numbered Example (multiline)
-Wie der Name sagt, kann es mehrere Absätze enthalten
+Wie der Name sagt,
+ kann es mehrere Absätze enthalten
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
@@ -468,8 +494,10 @@ Und hier noch eines
 \end_layout
 
 \begin_layout Standard
-Querverweise auf Beispiele erzeugen Sie wie gewohnt: Sie fügen im Beispiel
- eine Marke ein, und an der Stelle, an der der Querverweis erscheinen soll,
+Querverweise auf Beispiele erzeugen Sie wie gewohnt:
+ Sie fügen im Beispiel eine Marke ein,
+ und an der Stelle,
+ an der der Querverweis erscheinen soll,
  einen Verweis mittels 
 \family sans
 Einfügen\SpecialChar menuseparator
@@ -484,6 +512,7 @@ Als kleine Demonstration verweisen wir hier auf die Beispiele
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "exa:Beispiel-einzeilig"
+nolink "false"
 
 \end_inset
 
@@ -491,6 +520,7 @@ reference "exa:Beispiel-einzeilig"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Unterbeispiel"
+nolink "false"
 
 \end_inset
 
@@ -498,8 +528,8 @@ reference "subsec:Unterbeispiel"
 \end_layout
 
 \begin_layout Standard
-Wenn Sie die Nummerierung für einzelne Beispiele ändern möchten, verwenden
- Sie 
+Wenn Sie die Nummerierung für einzelne Beispiele ändern möchten,
+ verwenden Sie 
 \family sans
 Einfügen\SpecialChar menuseparator
 Benutzerdef.
@@ -527,8 +557,7 @@ Ab Version 2.3 bietet
 \emph on
 covingtons
 \emph default
- subexamples-Umgebung ein optionales Argument (mit dem man Text zwischen
- der Hauptnummer und dem ersten Unterbeispiel einfügen kann).
+ subexamples-Umgebung ein optionales Argument (mit dem man Text zwischen der Hauptnummer und dem ersten Unterbeispiel einfügen kann).
  Dieses können Sie über 
 \family sans
 Einfügen\SpecialChar menuseparator
@@ -566,9 +595,8 @@ Interlinear-Glosse (2
 
 Zeilen)
 \emph default
- besteht aus zwei Zeilen für das Glossenpaar (bestehend aus der Darstellung
- in der zu beschreibenden Sprache und einer interlinearen Wort-zu-Wort-Übersetzu
-ng) sowie einer weiteren Zeile für die freie Übersetzung, die 
+ besteht aus zwei Zeilen für das Glossenpaar (bestehend aus der Darstellung in der zu beschreibenden Sprache und einer interlinearen Wort-zu-Wort-Übersetzung) sowie einer weiteren Zeile für die freie Übersetzung,
+ die 
 \emph on
 Interlinear-Glosse (3
 \begin_inset space ~
@@ -576,18 +604,18 @@ Interlinear-Glosse (3
 
 Zeilen)
 \emph default
- bietet eine zusätzliche Zeile für Interlinear-Glossierung (diese dritte
- Zeile wird zumeist für morphologische oder phonologische Angaben verwendet).
- Die freie Übersetzung kann länger sein als eine Zeile, sie wird dann einfach
- automatisch und korrekt umbrochen.
- Die Version in der zu beschreibenden Sprache (erste Zeile der Glosse) wird
- direkt in die Glosse-Einfügung geschrieben, alle anderen Teile der Glosse
- in spezifische Unter-Einfügungen (
+ bietet eine zusätzliche Zeile für Interlinear-Glossierung (diese dritte Zeile wird zumeist für morphologische oder phonologische Angaben verwendet).
+ Die freie Übersetzung kann länger sein als eine Zeile,
+ sie wird dann einfach automatisch und korrekt umbrochen.
+ Die Version in der zu beschreibenden Sprache (erste Zeile der Glosse) wird direkt in die Glosse-Einfügung geschrieben,
+ alle anderen Teile der Glosse in spezifische Unter-Einfügungen (
 \family sans
 Interlinear-Glosse
 \family default
-, bzw.
- mit dreizeiligen Glossen: 
+,
+ bzw.
+ mit dreizeiligen Glossen:
+ 
 \family sans
 Interlinear-Glosse (Zeile
 \begin_inset space ~
@@ -603,15 +631,17 @@ Interlinear-Glosse (Zeile
 
 2)
 \family default
-, sowie 
+,
+ sowie 
 \family sans
 Glossen-Übersetzung
 \family default
 ).
  \SpecialChar LyX
- fügt diese Unter-Einfügungen automatisch ein, wenn Sie eine neue Glosse
- einfügen.
- Sie können aber auch manuell eingefügt werden, und zwar über 
+ fügt diese Unter-Einfügungen automatisch ein,
+ wenn Sie eine neue Glosse einfügen.
+ Sie können aber auch manuell eingefügt werden,
+ und zwar über 
 \family sans
 Einfügen\SpecialChar menuseparator
 Glossen-Übersetzung
@@ -630,8 +660,9 @@ Einfügen\SpecialChar menuseparator
 Glossen-Optionen
 \family default
  auch Glossen-Optionen eingeben.
- Diese Optionen erlauben es Ihnen, die Darstellung der einzelnen Zeilen
- zu verändern, eine Nummerierung oder vorangestellten Text hinzuzufügen.
+ Diese Optionen erlauben es Ihnen,
+ die Darstellung der einzelnen Zeilen zu verändern,
+ eine Nummerierung oder vorangestellten Text hinzuzufügen.
  Bitte konsultieren Sie das Handbuch des Pakets 
 \emph on
 covington 
@@ -649,25 +680,24 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-Bitte beachten Sie, dass die Unterstützung für Glossen für \SpecialChar LyX
- 2.4 komplett
- überarbeitet wurde.
- Nun werden die neuen und verbesserten Glossen-Makros verwendet, die 
+Bitte beachten Sie,
+ dass die Unterstützung für Glossen für \SpecialChar LyX
+ 2.4 komplett überarbeitet wurde.
+ Nun werden die neuen und verbesserten Glossen-Makros verwendet,
+ die 
 \emph on
 covington
 \emph default
  seit der Version 2.0 anbietet.
- Wegen der erheblichen Veränderungen können alte Glossen leider nicht in
- die neuen konvertiert werden.
- Statt dessen werden sie in ihrer ursprünglichen Form importiert (und als
- 
+ Wegen der erheblichen Veränderungen können alte Glossen leider nicht in die neuen konvertiert werden.
+ Statt dessen werden sie in ihrer ursprünglichen Form importiert (und als 
 \family sans
 Lokales Format
 \family default
  im Dokument gespeichert).
  Umgekehrt werden neue Glossen in \SpecialChar TeX
--Code exportier, wenn Sie in eine ältere
- \SpecialChar LyX
+-Code exportier,
+ wenn Sie in eine ältere \SpecialChar LyX
 -Version exportieren.
 \end_layout
 
@@ -736,8 +766,8 @@ Bearbeiten\SpecialChar menuseparator
 Textstil\SpecialChar menuseparator
 Glossierte Wortgruppen
 \family default
-, um Mehrwortelemente zusammenzuhalten (alternativ können Sie auch im TeX-Modus
- 
+,
+ um Mehrwortelemente zusammenzuhalten (alternativ können Sie auch im TeX-Modus 
 \begin_inset ERT
 status open
 
@@ -760,9 +790,10 @@ status open
 \end_inset
 
 ).
- Beachten Sie, dass Sie im \SpecialChar LyX
--Fenster mehrere Leerzeichen nacheinander einfügen
- können, um die Glossen dort schöner auszurichten.
+ Beachten Sie,
+ dass Sie im \SpecialChar LyX
+-Fenster mehrere Leerzeichen nacheinander einfügen können,
+ um die Glossen dort schöner auszurichten.
  Die Ausgabe wird davon nicht berührt.
 \end_layout
 
@@ -848,18 +879,19 @@ scshape}
 \end_layout
 
 \begin_layout Standard
-Beachten Sie, wie wir hier mit Hilfe der Glossen-Optionen die zweite Zeile
- in Kapitälchen ausgeben lassen.
+Beachten Sie,
+ wie wir hier mit Hilfe der Glossen-Optionen die zweite Zeile in Kapitälchen ausgeben lassen.
 \end_layout
 
 \begin_layout Standard
 \noindent
-Wenn Sie nummerierte Glossen benötigen, fügen Sie die Glosse entweder einfach
- in einen Absatz mit dem Format 
+Wenn Sie nummerierte Glossen benötigen,
+ fügen Sie die Glosse entweder einfach in einen Absatz mit dem Format 
 \emph on
 Nummeriertes Beispiel
 \emph default
- ein, so wie hier:
+ ein,
+ so wie hier:
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
@@ -1016,9 +1048,10 @@ Seitenumbrüche innerhalb von Glossen vermeiden
 \end_layout
 
 \begin_layout Standard
-In der Standardeinstellung können innerhalb von Glossen Seiten umbrochen
- werden, was natürlich nicht erwünscht ist.
- Um dies zu umgehen, können Sie in 
+In der Standardeinstellung können innerhalb von Glossen Seiten umbrochen werden,
+ was natürlich nicht erwünscht ist.
+ Um dies zu umgehen,
+ können Sie in 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar ldots
@@ -1031,9 +1064,10 @@ Benutzerdefiniert
 \emph on
 noglossbreaks
 \emph default
- eingeben; dies wird die meisten Umbrüche verhindern.
- Wenn trotzdem welche vorkommen, können Sie Glossen in Boxen packen (über
- 
+ eingeben;
+ dies wird die meisten Umbrüche verhindern.
+ Wenn trotzdem welche vorkommen,
+ können Sie Glossen in Boxen packen (über 
 \family sans
 Einfügen\SpecialChar menuseparator
 Box\SpecialChar menuseparator
@@ -1051,24 +1085,29 @@ Sie können zwar eine Fußnote in eine
 \emph on
 Glosse 
 \emph default
-einfügen, dies führt aber zu einem LaTeX-Fehler.
- Wenn Sie Fußnoten benötigen, schreiben Sie an der Stelle, an der das Fußnotenze
-ichen erscheinen soll, im TeX-Modus 
+einfügen,
+ dies führt aber zu einem LaTeX-Fehler.
+ Wenn Sie Fußnoten benötigen,
+ schreiben Sie an der Stelle,
+ an der das Fußnotenzeichen erscheinen soll,
+ im TeX-Modus 
 \family typewriter
 
 \backslash
 footnotemark
 \family default
  in die Glosse.
- Direkt nach (und außerhalb) der Glosse schreiben Sie, ebenfalls im TeX-Modus,
+ Direkt nach (und außerhalb) der Glosse schreiben Sie,
+ ebenfalls im TeX-Modus,
+
 \family typewriter
  
 \backslash
 footnotetext{Die Fußnote ...}
 \family default
 .
- Sollten Sie mehrere Fußnoten brauchen, geben Sie einfach mehrere dieser
- Befehlspaare ein.
+ Sollten Sie mehrere Fußnoten brauchen,
+ geben Sie einfach mehrere dieser Befehlspaare ein.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1102,7 +1141,8 @@ covington
 \emph on
 Beamer
 \emph default
--Klasse arbeiten von Haus aus nicht gut zusammen, da beide die Befehle 
+-Klasse arbeiten von Haus aus nicht gut zusammen,
+ da beide die Befehle 
 \family typewriter
 
 \backslash
@@ -1114,10 +1154,12 @@ example
 \backslash
 examples
 \family default
- zu definieren versuchen, was in diesen älteren Versionen eine \SpecialChar LaTeX
--Fehlermeldung
- erzeugt, sobald sie Glossen oder Beispiele einfügen.
- Sie können das Problem beheben, indem Sie in 
+ zu definieren versuchen,
+ was in diesen älteren Versionen eine \SpecialChar LaTeX
+-Fehlermeldung erzeugt,
+ sobald sie Glossen oder Beispiele einfügen.
+ Sie können das Problem beheben,
+ indem Sie in 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
@@ -1222,9 +1264,9 @@ OK
 \end_inset
 
 .
- Dies hat den Effekt, dass die Beispiel-Umgebungen von Beamer deaktiviert
- werden (und also nicht mehr verwendet werden können), dafür können Sie
- dann aber die des Linguistik-Moduls verwenden.
+ Dies hat den Effekt,
+ dass die Beispiel-Umgebungen von Beamer deaktiviert werden (und also nicht mehr verwendet werden können),
+ dafür können Sie dann aber die des Linguistik-Moduls verwenden.
 \end_layout
 
 \begin_layout Standard
@@ -1241,9 +1283,9 @@ Tableaux für Optimalitätstheorie
 \end_layout
 
 \begin_layout Standard
-Die OT-Tableaux selbst können natürlich einfach als normale Tabellen eingegeben
- werden (Spezifika wie gestrichelte Tabellenlinien und schattierte Tabellenzelle
-n, die man hierfür manchmal braucht, sind in 
+Die OT-Tableaux selbst können natürlich einfach als normale Tabellen eingegeben werden (Spezifika wie gestrichelte Tabellenlinien und schattierte Tabellenzellen,
+ die man hierfür manchmal braucht,
+ sind in 
 \family sans
 Hilfe\SpecialChar menuseparator
 Eingebettete Objekt
@@ -1253,12 +1295,12 @@ e beschrieben).
 \end_layout
 
 \begin_layout Standard
-Wenn Sie allerdings Ihre Tableaux durch das Dokument hindurch nummerieren
- und ein eigenes Tableaux-Verzeichnis einrichten möchten, reichen die Bordmittel
- von \SpecialChar LyX
+Wenn Sie allerdings Ihre Tableaux durch das Dokument hindurch nummerieren und ein eigenes Tableaux-Verzeichnis einrichten möchten,
+ reichen die Bordmittel von \SpecialChar LyX
  nicht aus.
  Auch hier hilft das Linguistikmodul.
- Wenn es ausgewählt ist, finden Sie unter 
+ Wenn es ausgewählt ist,
+ finden Sie unter 
 \family sans
 Einfügen\SpecialChar menuseparator
 Gleitobjekte
@@ -1271,6 +1313,7 @@ Gleitobjekte
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Beispiel-Tableau"
+nolink "false"
 
 \end_inset
 
@@ -1580,11 +1623,13 @@ name "tab:Beispiel-Tableau"
 \end_layout
 
 \begin_layout Standard
-Bitte beachten Sie, dass die Legende in der Standardeinstellung immer unter
- dem Tableau ausgegeben wird, egal, wohin Sie sie im \SpecialChar LyX
+Bitte beachten Sie,
+ dass die Legende in der Standardeinstellung immer unter dem Tableau ausgegeben wird,
+ egal,
+ wohin Sie sie im \SpecialChar LyX
 -Arbeitsfenster setzen.
- Um die Legende über das Tableau zu setzen, müssen Sie den folgenden Code
- in 
+ Um die Legende über das Tableau zu setzen,
+ müssen Sie den folgenden Code in 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
@@ -1619,8 +1664,8 @@ restylefloat{tableau}
 \end_layout
 
 \begin_layout Standard
-Wenn Sie eine KOMA-Klasse verwenden, nehmen Sie statt dessen das Folgende
- (welches im Kontext der KOMA-Klassen bessere Abstände erzeugt):
+Wenn Sie eine KOMA-Klasse verwenden,
+ nehmen Sie statt dessen das Folgende (welches im Kontext der KOMA-Klassen bessere Abstände erzeugt):
 \end_layout
 
 \begin_layout Quote
@@ -1649,7 +1694,8 @@ restylefloat{tableau}
 \end_layout
 
 \begin_layout Standard
-Ein Verzeichnis der Tableaux geben Sie, wie bei normalen Tabellen auch,
+Ein Verzeichnis der Tableaux geben Sie,
+ wie bei normalen Tabellen auch,
  über 
 \family sans
 Einfügen\SpecialChar menuseparator
@@ -1673,12 +1719,13 @@ Semantische Auszeichnung (Textstile)
 \end_layout
 
 \begin_layout Standard
-Das Linguistikmodul stellt einige Textstile zur Verfügung, die in linguistischen
- Arbeiten allgemein gebräuchlich sind:
+Das Linguistikmodul stellt einige Textstile zur Verfügung,
+ die in linguistischen Arbeiten allgemein gebräuchlich sind:
 \end_layout
 
 \begin_layout Enumerate
-Konzept (in Kapitälchen): 
+Konzept (in Kapitälchen):
+ 
 \begin_inset Flex Concepts
 status collapsed
 
@@ -1692,7 +1739,8 @@ Konzept
 \end_layout
 
 \begin_layout Enumerate
-Ausdruck (hervorgehoben): 
+Ausdruck (hervorgehoben):
+ 
 \begin_inset Flex Expression
 status collapsed
 
@@ -1706,7 +1754,8 @@ Ausdruck
 \end_layout
 
 \begin_layout Enumerate
-Bedeutung (in einfachen Anführungszeichen): 
+Bedeutung (in einfachen Anführungszeichen):
+ 
 \begin_inset Flex Meaning
 status collapsed
 
@@ -1726,11 +1775,10 @@ Bearbeiten\SpecialChar menuseparator
 Textstil
 \family default
 .
- Der Vorteil solcher Stile gegenüber direkter Hervorhebung und Auszeichnung
- ist vor allem der, dass sie alle (und nur die) damit markierten Textteile
- leicht global verändern können.
- Wenn Sie (oder Ihr Verlag) also etwa Ausdrücke doch fett gesetzt haben
- wollen, geben Sie einfach den folgenden Code in 
+ Der Vorteil solcher Stile gegenüber direkter Hervorhebung und Auszeichnung ist vor allem der,
+ dass sie alle (und nur die) damit markierten Textteile leicht global verändern können.
+ Wenn Sie (oder Ihr Verlag) also etwa Ausdrücke doch fett gesetzt haben wollen,
+ geben Sie einfach den folgenden Code in 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
@@ -1804,27 +1852,29 @@ Linguistische Strukturbäume
 
 \begin_layout Standard
 Mittlerweile gibt es mehrere \SpecialChar LaTeX
--Pakete, die bei der Erstellung von Strukturbäumen
- helfen.
+-Pakete,
+ die bei der Erstellung von Strukturbäumen helfen.
  \SpecialChar LyX
  unterstützt das Paket 
 \family sans
 forest
 \family default
-, welches hohe Flexibilität und Mächtigkeit mit einer intuitiven Syntax
- vereint.
- Das Linguistik-Modul enthält eine Strukturbaum-Einfügung, die unter 
+,
+ welches hohe Flexibilität und Mächtigkeit mit einer intuitiven Syntax vereint.
+ Das Linguistik-Modul enthält eine Strukturbaum-Einfügung,
+ die unter 
 \family sans
 Einfügen\SpecialChar menuseparator
 Spezifische Einfügung
 \family default
  zu finden ist.
- Innerhalb dieser Einfügung können Sie die Klammernotation verwenden, die
- das Paket 
+ Innerhalb dieser Einfügung können Sie die Klammernotation verwenden,
+ die das Paket 
 \family sans
 forest
 \family default
- (wie auch andere Pakete, z.
+ (wie auch andere Pakete,
+ z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1845,8 +1895,7 @@ Hier ist ein einfaches Beispiel:
 status open
 
 \begin_layout Plain Layout
-[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[D[einen]][NP[Brief]]] ]
- ]
+[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[D[einen]][NP[Brief]]] ] ]
 \end_layout
 
 \end_inset
@@ -1856,7 +1905,9 @@ status open
 
 \begin_layout Standard
 \noindent
-Wenn Sie die PDF-Ausgabe ansehen, sehen Sie, dass die Notation
+Wenn Sie die PDF-Ausgabe ansehen,
+ sehen Sie,
+ dass die Notation
 \end_layout
 
 \begin_layout Quote
@@ -1880,8 +1931,8 @@ status collapsed
 
 \end_inset
 
-Eingabefenster zu sehen, können Sie die Strukturbaum-Einfügung einfach in
- eine Vorschau-Einfügung (
+Eingabefenster zu sehen,
+ können Sie die Strukturbaum-Einfügung einfach in eine Vorschau-Einfügung (
 \family sans
 Einfügen\SpecialChar menuseparator
 Vorschau
@@ -1895,8 +1946,8 @@ Sofortige Vorschau
 \begin_inset Quotes grd
 \end_inset
 
- richtig eingerichtet und aktiviert ist, sollten Sie den Baum sofort sehen
- (zur Bearbeitung klicken Sie einfach auf das Bild):
+ richtig eingerichtet und aktiviert ist,
+ sollten Sie den Baum sofort sehen (zur Bearbeitung klicken Sie einfach auf das Bild):
 \end_layout
 
 \begin_layout Standard
@@ -1907,8 +1958,7 @@ Sofortige Vorschau
 status open
 
 \begin_layout Plain Layout
-[VP [DP[Maria]] [V' [V[schickt]] [DP[Hans]] [DP[D[eine]][NP[Antwort]]] ]
- ]
+[VP [DP[Maria]] [V' [V[schickt]] [DP[Hans]] [DP[D[eine]][NP[Antwort]]] ] ]
 \end_layout
 
 \end_inset
@@ -1945,7 +1995,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-Bitte beachten Sie, dass die Option 
+Bitte beachten Sie,
+ dass die Option 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1958,8 +2009,8 @@ roof
 forest
 \family default
  verfügbar ist.
- Für frühere Versionen haben wir in den Vorspann dieses Dokuments Code eingefügt
-, die die Verwendung dennoch gestattet.
+ Für frühere Versionen haben wir in den Vorspann dieses Dokuments Code eingefügt,
+ die die Verwendung dennoch gestattet.
  Wenn Ihre Version des Pakets 
 \family sans
 forest
@@ -1972,8 +2023,8 @@ roof
 \begin_inset Quotes grd
 \end_inset
 
- verwenden wollen, müssen Sie diesen Code in den Vorspann Ihres Dokuments
- kopieren.
+ verwenden wollen,
+ müssen Sie diesen Code in den Vorspann Ihres Dokuments kopieren.
  Statt dessen können Sie auch die alte Option 
 \begin_inset Quotes gld
 \end_inset
@@ -1995,7 +2046,8 @@ roof
 
 \end_inset
 
- erzeugt werden (beachten Sie, dass Kommata eine spezielle Bedeutung haben;
+ erzeugt werden (beachten Sie,
+ dass Kommata eine spezielle Bedeutung haben;
  sie markieren Optionen):
 \end_layout
 
@@ -2004,8 +2056,8 @@ roof
 status open
 
 \begin_layout Plain Layout
-[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[einen weiteren Brief, roof]]
- ] ]
+[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[einen weiteren Brief,
+ roof]] ] ]
 \end_layout
 
 \end_inset
@@ -2015,7 +2067,8 @@ status open
 
 \begin_layout Standard
 \noindent
-Um die Knoten des Baums besser auszurichten, verwenden Sie die Option 
+Um die Knoten des Baums besser auszurichten,
+ verwenden Sie die Option 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2024,7 +2077,8 @@ tier
 \end_inset
 
 .
- Alle Knoten, denen dieselbe 
+ Alle Knoten,
+ denen dieselbe 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2032,7 +2086,8 @@ tier
 \begin_inset Quotes grd
 \end_inset
 
- (Ebene) zugewiesen wurde, werden in einer vertikalen Linie ausgerichtet.
+ (Ebene) zugewiesen wurde,
+ werden in einer vertikalen Linie ausgerichtet.
  Hier ist ein Beispiel:
 \end_layout
 
@@ -2041,8 +2096,12 @@ tier
 status open
 
 \begin_layout Plain Layout
-[VP [DP[Hans, tier=word]] [V' [V[schickt, tier=word]] [DP[Maria, tier=word]]
- [DP[D[einen, tier=word]][NP[Brief, tier=word]]] ] ]
+[VP [DP[Hans,
+ tier=word]] [V' [V[schickt,
+ tier=word]] [DP[Maria,
+ tier=word]] [DP[D[einen,
+ tier=word]][NP[Brief,
+ tier=word]]] ] ]
 \end_layout
 
 \end_inset
@@ -2052,7 +2111,8 @@ status open
 
 \begin_layout Standard
 \noindent
-Das Paket bietet viel mehr Möglichkeiten, wie bspw.
+Das Paket bietet viel mehr Möglichkeiten,
+ wie bspw.
  Bewegungspfeile und Dekorationen.
  Sie können hier nicht eingehend besprochen werden.
  Bitte konsultieren Sie die ausführliche Dokumentation des Pakets 
@@ -2071,8 +2131,7 @@ Diskursrepräsentationsstrukturen
 \end_layout
 
 \begin_layout Standard
-Das Linguistik-Modul stellt auch Einfügungen zur Erzeugung von Diskursrepräsenta
-tionsstrukturen (DRSen) in der Box-Notation von 
+Das Linguistik-Modul stellt auch Einfügungen zur Erzeugung von Diskursrepräsentationsstrukturen (DRSen) in der Box-Notation von 
 \noun on
 Hans Kamps
 \noun default
@@ -2099,7 +2158,9 @@ Diskursrepräsentationsstruktur
 \emph on
 Bedingungen
 \emph default
-, die direkt in die Einfügung geschrieben werden, uns den (u.
+,
+ die direkt in die Einfügung geschrieben werden,
+ uns den (u.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2108,11 +2169,14 @@ U.
 \emph on
 Referenten
 \emph default
- (bzw., im DRT-Jargon, dem 
+ (bzw.,
+ im DRT-Jargon,
+ dem 
 \emph on
 Universum
 \emph default
-), welche in die (automatisch eingefügte) Untereinfügung 
+),
+ welche in die (automatisch eingefügte) Untereinfügung 
 \emph on
 Referenten
 \emph default
@@ -2121,7 +2185,8 @@ Referenten
 status collapsed
 
 \begin_layout Plain Layout
-Sollte diese nicht eingefügt werden, finden Sie sie unter 
+Sollte diese nicht eingefügt werden,
+ finden Sie sie unter 
 \family sans
 Einfügen\SpecialChar menuseparator
 DRS-Referenten
@@ -2184,8 +2249,8 @@ grün(x)
 \end_layout
 
 \begin_layout Standard
-DRSen sind durch spezifische Layout-Anpassungen so gestaltet, dass Sie gut
- auf der Seite platziert werden.
+DRSen sind durch spezifische Layout-Anpassungen so gestaltet,
+ dass Sie gut auf der Seite platziert werden.
  Die Variante 
 \family sans
 Diskursrepräsentationsstruktur (einfach)
@@ -2195,8 +2260,7 @@ Diskursrepräsentationsstruktur (einfach)
 \end_layout
 
 \begin_layout Standard
-Zusätzlich zu diesen einfachen DRSen werden die folgenden konditionalen
- DRSen unterstützt (sie werden in der Regel in einfache eingebettet):
+Zusätzlich zu diesen einfachen DRSen werden die folgenden konditionalen DRSen unterstützt (sie werden in der Regel in einfache eingebettet):
 \end_layout
 
 \begin_layout Enumerate
@@ -2204,8 +2268,7 @@ Die
 \family sans
 Implikative DRS
 \family default
- repräsentiert eine konditionale (implikative) Satzkonstruktion der Form
- 
+ repräsentiert eine konditionale (implikative) Satzkonstruktion der Form 
 \emph on
 wenn S
 \begin_inset script subscript
@@ -2218,7 +2281,8 @@ wenn S
 
 \end_inset
 
-, dann S
+,
+ dann S
 \emph default
 
 \begin_inset script subscript
@@ -2315,8 +2379,8 @@ Die
 \family sans
 Konditionale DRS
 \family default
- ist eine allgemeinere Variante, bei der Sie selbst eine beliebige Bedingung
- (statt der implikativen) spezifizieren können.
+ ist eine allgemeinere Variante,
+ bei der Sie selbst eine beliebige Bedingung (statt der implikativen) spezifizieren können.
  In die Untereinfügung 
 \family sans
 Bedingung
@@ -2524,7 +2588,8 @@ Die
 \family sans
 Negierte DRS
 \family default
- fügt eine DRS ein, der ein Negationszeichen vorangestellt ist:
+ fügt eine DRS ein,
+ der ein Negationszeichen vorangestellt ist:
 \end_layout
 
 \begin_deeper
@@ -2564,8 +2629,9 @@ grün(x)
 \family sans
 DRS mit Satz oberhalb
 \family default
- schließlich tut, was es verspricht: Es setzt einen Satz über die Box-Repräsenta
-tion:
+ schließlich tut,
+ was es verspricht:
+ Es setzt einen Satz über die Box-Repräsentation:
 \end_layout
 
 \begin_layout Standard
@@ -2624,7 +2690,8 @@ Das Paket
 \emph on
 drs
 \emph default
- bietet einige Möglichkeiten, um das Erscheinungsbild der DRS-Modelle anzupassen.
+ bietet einige Möglichkeiten,
+ um das Erscheinungsbild der DRS-Modelle anzupassen.
  Bitte konsultieren Sie das Handbuch des Pakets 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2641,7 +2708,8 @@ Phonetische Notation (IPA)
 \end_layout
 
 \begin_layout Standard
-Um phonetische Zeichen einzugeben, brauchen Sie das Linguistikmodul nicht.
+Um phonetische Zeichen einzugeben,
+ brauchen Sie das Linguistikmodul nicht.
  IPA-Unterstützung ist mittlerweile eine Grundfunktion von \SpecialChar LyX
 .
  Da IPA aber von Linguistinnen und Linguisten sehr häufig gebraucht wird,
@@ -2652,8 +2720,8 @@ Um phonetische Zeichen einzugeben, brauchen Sie das Linguistikmodul nicht.
 Um \SpecialChar LyX
 ' IPA-Funktion mit klassischem \SpecialChar LaTeX
  oder PDF\SpecialChar LaTeX
- zu benutzen, müssen Sie das
- Paket 
+ zu benutzen,
+ müssen Sie das Paket 
 \emph on
 tipa
 \emph default
@@ -2667,8 +2735,8 @@ literal "true"
 
  installiert haben.
  Es wird von \SpecialChar LyX
- automatisch geladen, wenn Sie dem unten beschriebenen Vorgehen
- folgen.
+ automatisch geladen,
+ wenn Sie dem unten beschriebenen Vorgehen folgen.
  Wenn Sie Xe\SpecialChar TeX
  oder Lua\SpecialChar TeX
  verwenden (und 
@@ -2686,11 +2754,13 @@ Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Schriften
 \family default
- aktiviert haben), wird statt dessen das Paket 
+ aktiviert haben),
+ wird statt dessen das Paket 
 \emph on
 xunicode
 \emph default
- geladen, da 
+ geladen,
+ da 
 \emph on
 tipa
 \emph default
@@ -2703,11 +2773,12 @@ xunicode
 \emph on
 tipa
 \emph default
-, ist aber nicht perfekt, so dass die Ausgabe möglicherweise nicht wie erwartet
- ist.
- Außerdem müssen Sie in diesem Fall darauf achten, dass die Nicht-\SpecialChar TeX
--Schrift
- die IPA-Symbole auch enthält (empfehlenswert sind Schriften wie 
+,
+ ist aber nicht perfekt,
+ so dass die Ausgabe möglicherweise nicht wie erwartet ist.
+ Außerdem müssen Sie in diesem Fall darauf achten,
+ dass die Nicht-\SpecialChar TeX
+-Schrift die IPA-Symbole auch enthält (empfehlenswert sind Schriften wie 
 \emph on
 CMU Serif
 \emph default
@@ -2716,8 +2787,8 @@ CMU Serif
 SIL Doulos
 \emph default
 ).
- Sie können auch eine Schrift nur für IPA definieren, indem sie das Folgende
- in 
+ Sie können auch eine Schrift nur für IPA definieren,
+ indem sie das Folgende in 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
@@ -2766,9 +2837,8 @@ ipafont}
 
 \end_inset
 
-Für eine direkte Vorschau der IPA-Symbole im Arbeitsfenster sollten Sie
- weiterhin (egal, welche der oben beschriebenen Ausgabeformate Sie verwenden)
- das 
+Für eine direkte Vorschau der IPA-Symbole im Arbeitsfenster sollten Sie weiterhin (egal,
+ welche der oben beschriebenen Ausgabeformate Sie verwenden) das 
 \emph on
 preview-latex
 \emph default
@@ -2784,35 +2854,37 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Phonetische Zeichen werden in eine spezielle Umgebung eingegeben, die Sie
- über 
+Phonetische Zeichen werden in eine spezielle Umgebung eingegeben,
+ die Sie über 
 \family sans
 Einfügen\SpecialChar menuseparator
 Sonderzeichen\SpecialChar menuseparator
 Phonetische Symbole 
 \family default
 aktivieren.
- Es wird ein kleiner umrahmter Eingabebereich eingefügt, in den Sie einzelne
- Zeichen, Wörter und Wortfolgen sowie auch mehrere Absätze mit phonetischer
- Notation eingeben können.
- Wenn Sie in dem Eingabebereich sind, wird eine Symbolleiste aktiviert,
+ Es wird ein kleiner umrahmter Eingabebereich eingefügt,
+ in den Sie einzelne Zeichen,
+ Wörter und Wortfolgen sowie auch mehrere Absätze mit phonetischer Notation eingeben können.
+ Wenn Sie in dem Eingabebereich sind,
+ wird eine Symbolleiste aktiviert,
  die die wichtigsten IPA-Symbole (nach den IPA-Kategorien sortiert) bereitstellt.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Es fehlt ein Symbol: der (2005 in das IPA aufgenommene) labiodentale Flap.
+Es fehlt ein Symbol:
+ der (2005 in das IPA aufgenommene) labiodentale Flap.
  Dieses Zeichen unterstützt das 
 \emph on
 Tipa-
 \emph default
-Paket noch nicht; daher kann es auch nicht von LyX unterstützt werden.
+Paket noch nicht;
+ daher kann es auch nicht von LyX unterstützt werden.
 \end_layout
 
 \end_inset
 
- Jeder Symbolbereich dieser Symbolleiste kann durch Klicken auf die gestrichelte
- Linie abgetrennt werden.
+ Jeder Symbolbereich dieser Symbolleiste kann durch Klicken auf die gestrichelte Linie abgetrennt werden.
  Dadurch kann phonetische Notation recht komfortabel eingegeben werden:
  
 \begin_inset IPA
@@ -2828,13 +2900,14 @@ Paket noch nicht; daher kann es auch nicht von LyX unterstützt werden.
 status collapsed
 
 \begin_layout Plain Layout
-Wenn Sie ein diakritisches Zeichen einfügen möchten, müssen Sie das Diakritikum
- 
+Wenn Sie ein diakritisches Zeichen einfügen möchten,
+ müssen Sie das Diakritikum 
 \emph on
 nach
 \emph default
  dem Basiszeichen einfügen.
- Das heißt, für 
+ Das heißt,
+ für 
 \begin_inset IPA
 
 \begin_layout Standard
@@ -2852,8 +2925,10 @@ nach
 <Stimmlos>
 \family default
  von der Symbolleiste.
- Wenn Sie nur ein Diakritikum eingeben möchten, können Sie das direkt nach
- einem Leerzeichen tun, so wie hier: 
+ Wenn Sie nur ein Diakritikum eingeben möchten,
+ können Sie das direkt nach einem Leerzeichen tun,
+ so wie hier:
+ 
 \begin_inset IPA
 
 \begin_layout Standard
@@ -2894,15 +2969,17 @@ Sofortige Vorschau
 \begin_inset Quotes grd
 \end_inset
 
- aktiviert haben, zeigt \SpecialChar LyX
- eine WYSIWYG-Vorschau der Notation an, sobald der
- Cursor den IPA-Bereich verlässt.
- Alternativ zur Symbolleiste können Sie die Zeichen auch direkt mithilfe
- der Kurznotation eingeben können, die im 
+ aktiviert haben,
+ zeigt \SpecialChar LyX
+ eine WYSIWYG-Vorschau der Notation an,
+ sobald der Cursor den IPA-Bereich verlässt.
+ Alternativ zur Symbolleiste können Sie die Zeichen auch direkt mithilfe der Kurznotation eingeben können,
+ die im 
 \emph on
 tipa
 \emph default
--Handbuch erläutert wird: hier eine 
+-Handbuch erläutert wird:
+ hier eine 
 \begin_inset IPA
 
 \begin_layout Standard
@@ -2915,7 +2992,8 @@ tipa
 \emph on
 tipa
 \emph default
--Kurznotation: 
+-Kurznotation:
+ 
 \family typewriter
 [kOst"pro:b@
 \family default
@@ -2927,32 +3005,29 @@ Sonderzeichen\SpecialChar menuseparator
 Symbole\SpecialChar ldots
 
 \family default
- in das Eingabefeld eingeben oder sie aus einem anderen Dokument kopieren
- und dort einfügen.
- Die Ausgabe sollte immer identisch sein, egal welche Eingabemethode Sie
- wählen.
+ in das Eingabefeld eingeben oder sie aus einem anderen Dokument kopieren und dort einfügen.
+ Die Ausgabe sollte immer identisch sein,
+ egal welche Eingabemethode Sie wählen.
 \end_layout
 
 \begin_layout Standard
-Bitte beachten Sie, dass Sie die meisten IPA-Zeichen über die zuletzt genannten
- Methoden auch außerhalb des IPA-Eingabebereichs einfügen können: [zoː viː
- hiːɐ̯].
- In der Ausgabe werden diese Zeichen dann ebenfalls direkt in die korrekten
- 
+Bitte beachten Sie,
+ dass Sie die meisten IPA-Zeichen über die zuletzt genannten Methoden auch außerhalb des IPA-Eingabebereichs einfügen können:
+ [zoː viː hiːɐ̯].
+ In der Ausgabe werden diese Zeichen dann ebenfalls direkt in die korrekten 
 \emph on
 tipa
 \emph default
--Makros umgewandelt (lassen Sie es uns wissen, falls das nicht der Fall
- ist).
+-Makros umgewandelt (lassen Sie es uns wissen,
+ falls das nicht der Fall ist).
  Dieses Verfahren hat aber gravierende Nachteile gegenüber der IPA-Umgebung,
- denn die direkte Eingabe resultiert in der Regel in unerwünschter Schriftmischu
-ng (die lateinischen Buchstaben werden aus der Grundschrift, die speziellen
- IPA-Zeichen aber aus der IPA-Schrift genommen, und diese beiden Schriften
- passen nicht notwendigerweise zusammen).
- Innerhalb der IPA-Eingabeumgebung wird dagegen für alle Zeichen dieselbe
- Schrift verwendet.
- Deshalb sollten Sie, wenn Sie nicht nur Einzelzeichen eingeben, unbedingt
- den IPA-Eingabebereich verwenden.
+ denn die direkte Eingabe resultiert in der Regel in unerwünschter Schriftmischung (die lateinischen Buchstaben werden aus der Grundschrift,
+ die speziellen IPA-Zeichen aber aus der IPA-Schrift genommen,
+ und diese beiden Schriften passen nicht notwendigerweise zusammen).
+ Innerhalb der IPA-Eingabeumgebung wird dagegen für alle Zeichen dieselbe Schrift verwendet.
+ Deshalb sollten Sie,
+ wenn Sie nicht nur Einzelzeichen eingeben,
+ unbedingt den IPA-Eingabebereich verwenden.
 \end_layout
 
 \begin_layout Section
@@ -2960,8 +3035,7 @@ Weitere Informationen
 \end_layout
 
 \begin_layout Standard
-Mehr und ausführlichere Informationen über die Möglichkeiten des Einsatzes
- von \SpecialChar LyX
+Mehr und ausführlichere Informationen über die Möglichkeiten des Einsatzes von \SpecialChar LyX
  für linguistische Zwecke finden Sie auf der (englischsprachigen) 
 \emph on
 Linguist\SpecialChar LyX
@@ -2977,7 +3051,8 @@ literal "true"
 \end_inset
 
 .
- Sie sind übrigens herzlich eingeladen, dort aktiv mitzuschreiben!
+ Sie sind übrigens herzlich eingeladen,
+ dort aktiv mitzuschreiben!
 \end_layout
 
 \begin_layout Bibliography
@@ -2988,7 +3063,8 @@ literal "true"
 
 \end_inset
 
-Das covington-Paket: 
+Das covington-Paket:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -3010,7 +3086,8 @@ literal "true"
 
 \end_inset
 
-Das csquotes-Paket: 
+Das csquotes-Paket:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -3032,7 +3109,8 @@ literal "false"
 
 \end_inset
 
- Das drs-Paket: 
+ Das drs-Paket:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -3054,7 +3132,8 @@ literal "true"
 
 \end_inset
 
-Das enumitem-Paket: 
+Das enumitem-Paket:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -3076,7 +3155,8 @@ literal "true"
 
 \end_inset
 
-Das float-Paket: 
+Das float-Paket:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -3098,7 +3178,8 @@ literal "true"
 
 \end_inset
 
-Das forest-Paket: 
+Das forest-Paket:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -3120,9 +3201,10 @@ literal "true"
 
 \end_inset
 
-Maria Gouskova, Stacia Hartleben und Jürgen Spitzmüller: Using \SpecialChar LyX
- for Linguistic
- Papers.
+Maria Gouskova,
+ Stacia Hartleben und Jürgen Spitzmüller:
+ Using \SpecialChar LyX
+ for Linguistic Papers.
  
 \begin_inset Flex URL
 status collapsed
@@ -3145,7 +3227,8 @@ literal "false"
 
 \end_inset
 
-Das pict2e-Paket: 
+Das pict2e-Paket:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -3167,7 +3250,8 @@ literal "true"
 
 \end_inset
 
-Das preview-latex-Paket: 
+Das preview-latex-Paket:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -3189,7 +3273,8 @@ literal "true"
 
 \end_inset
 
-Das tipa-Paket und die zugehörigen Schriften: 
+Das tipa-Paket und die zugehörigen Schriften:
+ 
 \begin_inset Flex URL
 status collapsed
 

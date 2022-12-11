@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -45,9 +45,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -112,12 +112,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -135,9 +139,10 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-Apabila anda mempunyai komentar atau menemukan kesalahan, kirimkan koreksi
- dan komentar ke tim dokumentasi \SpecialChar LyX
-: 
+Apabila anda mempunyai komentar atau menemukan kesalahan,
+ kirimkan koreksi dan komentar ke tim dokumentasi \SpecialChar LyX
+:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -147,7 +152,8 @@ literal "false"
 \end_inset
 
 .
- Versi Bahasa Indonesia disunting oleh: 
+ Versi Bahasa Indonesia disunting oleh:
+ 
 \noun on
 Waluyo Adi Siswanto
 \noun default
@@ -184,42 +190,54 @@ Apakah \SpecialChar LyX
 
 \begin_layout Standard
 \SpecialChar LyX
- adalah suatu sistem penyuntingan dokumen yang mampu mempersiapkan artikel-artik
-el teknik atau sains yang rumit dan mengandung persamaan matematika, referensi
- silang, bibliografi, indeks, dll.
- Program ini sesuai untuk menulis dokumen yang pendek maupun panjang dengan
- kemampuan pemrosesan yang diperlukan seperti: pengaturan bab dan halaman
- secara otomatis, cek ejaan, serta hal umum lainnya yang biasa digunakan
- dalam penyuntingan dokumen.
- Selain penulisan dokumen, \SpecialChar LyX
+ adalah suatu sistem penyuntingan dokumen yang mampu mempersiapkan artikel-artikel teknik atau sains yang rumit dan mengandung persamaan matematika,
+ referensi silang,
+ bibliografi,
+ indeks,
+ dll.
+ Program ini sesuai untuk menulis dokumen yang pendek maupun panjang dengan kemampuan pemrosesan yang diperlukan seperti:
+ pengaturan bab dan halaman secara otomatis,
+ cek ejaan,
+ serta hal umum lainnya yang biasa digunakan dalam penyuntingan dokumen.
+ Selain penulisan dokumen,
+ \SpecialChar LyX
  dapat juga digunakan untuk keperluan surat menyurat,
  yang umumnya menggunakan program lain yang lebih sederhana.
- Program ini bukan program terbaik untuk menyiapkan berbagai dokumen khusus
- seperti 
+ Program ini bukan program terbaik untuk menyiapkan berbagai dokumen khusus seperti 
 \emph on
 banner
 \emph default
-, 
+,
+ 
 \emph on
 flyer
 \emph default
-, atau model iklan lain (kami akan jelaskan kemudian), walaupun bisa juga
- dikerjakan.
- Beberapa contoh yang sangat sesuai adalah: makalah seminar, disertasi dan
- tesis, nota kuliah, nota seminar, makalah untuk konferensi, dokumentasi
- dan buku petunjuk perangkat lunak, buku, artikel untuk jurnal internasional
- berwasit, sekrip drama dan filem, proposal bisnis, presentasi \SpecialChar ldots
+,
+ atau model iklan lain (kami akan jelaskan kemudian),
+ walaupun bisa juga dikerjakan.
+ Beberapa contoh yang sangat sesuai adalah:
+ makalah seminar,
+ disertasi dan tesis,
+ nota kuliah,
+ nota seminar,
+ makalah untuk konferensi,
+ dokumentasi dan buku petunjuk perangkat lunak,
+ buku,
+ artikel untuk jurnal internasional berwasit,
+ sekrip drama dan filem,
+ proposal bisnis,
+ presentasi \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- adalah perangkat lunak yang menggunakan pendekatan modern untuk menulis
- dokumen dengan bantuan komputer menggunakan paradigma 
+ adalah perangkat lunak yang menggunakan pendekatan modern untuk menulis dokumen dengan bantuan komputer menggunakan paradigma 
 \emph on
 markup language
 \emph default
-, yaitu suatu metoda yang memungkinkan penulis keluar dari tradisi 
+,
+ yaitu suatu metoda yang memungkinkan penulis keluar dari tradisi 
 \begin_inset Quotes eld
 \end_inset
 
@@ -229,25 +247,23 @@ mengetik dengan mesin ketik
 
 .
  \SpecialChar LyX
- dirancang untuk para penulis yang menginginkan hasil profesional dengan
- tidak perlu menguasai atau menjadi ahli terlebih dahulu dalam 
+ dirancang untuk para penulis yang menginginkan hasil profesional dengan tidak perlu menguasai atau menjadi ahli terlebih dahulu dalam 
 \emph on
 typesetting
 \emph default
 .
- Pekerjaan pengaturan tulisan akan dilakukan oleh komputer, bukan oleh penulis;
+ Pekerjaan pengaturan tulisan akan dilakukan oleh komputer,
+ bukan oleh penulis;
  dengan bantuan \SpecialChar LyX
-, penulis dapat berkonsentrasi sepenuhnya pada isi dan kandungan
- tulisan.
+,
+ penulis dapat berkonsentrasi sepenuhnya pada isi dan kandungan tulisan.
 \end_layout
 
 \begin_layout Standard
-Salah satu kesulitan yang mungkin dirasakan ketika pertama kali menggunakan
- \SpecialChar LyX
- adalah merubah paradigma bahwa penulis harus merancang sendiri tampilan
- hasil.
- Pada masa lalu ketika masih menggunakan mesin ketik, penulis harus mempelajari
- berbagai teknik dan trik menulis untuk mengatasi keterbatasan mesin ketik.
+Salah satu kesulitan yang mungkin dirasakan ketika pertama kali menggunakan \SpecialChar LyX
+ adalah merubah paradigma bahwa penulis harus merancang sendiri tampilan hasil.
+ Pada masa lalu ketika masih menggunakan mesin ketik,
+ penulis harus mempelajari berbagai teknik dan trik menulis untuk mengatasi keterbatasan mesin ketik.
  Apabila penulis ingin memberikan penekanan makna pada kata-kata tertentu,
  biasanya dilakukan dengan cara menindihnya dengan karakter 
 \begin_inset Quotes eld
@@ -258,28 +274,26 @@ _
 \end_inset
 
 .
- Untuk menyiapkan tabel, penulis perlu mengatur lebar kolom yang diperlukan
- dan mengatur pergerakan spasi menggunakan tombol
+ Untuk menyiapkan tabel,
+ penulis perlu mengatur lebar kolom yang diperlukan dan mengatur pergerakan spasi menggunakan tombol
 \emph on
  tab
 \emph default
 .
- Demikian halnya apabila penulis ingin mengatur model penulisan rata kanan
- berbagai trik perlu dilakukan.
+ Demikian halnya apabila penulis ingin mengatur model penulisan rata kanan berbagai trik perlu dilakukan.
  Pemenggalan suku kata diakhir baris teks perlu dilihat dengan teliti.
 \end_layout
 
 \begin_layout Standard
-Aktivitas penyuntingan dokumen tadi kemungkinan masih dilestarikan dan kita
- masih selalu kawatir tentang setiap karakter yang kita ketik akan lari
- kemana.
+Aktivitas penyuntingan dokumen tadi kemungkinan masih dilestarikan dan kita masih selalu kawatir tentang setiap karakter yang kita ketik akan lari kemana.
  Kebanyakan program pengolah kata masih memiliki mentalitas ini.
  Mereka masih menggunakan hentian tab untuk menambahkan spasi kosong.
  Andapun masih kawatir di halaman mana gambar atau teks akan muncul.
- Untuk memberi perhatian pada suatu kata tertentu anda harus mengganti jenis
- huruf, atau dalam mesin ketik biasa anda harus memutar roda huruf.
- Hal-hal yang diungkapkan tadi, masih terjadi dan digunakan pada pengolah
- kata dengan filosofi WYSIWYG, yaitu 
+ Untuk memberi perhatian pada suatu kata tertentu anda harus mengganti jenis huruf,
+ atau dalam mesin ketik biasa anda harus memutar roda huruf.
+ Hal-hal yang diungkapkan tadi,
+ masih terjadi dan digunakan pada pengolah kata dengan filosofi WYSIWYG,
+ yaitu 
 \begin_inset Quotes eld
 \end_inset
 
@@ -302,16 +316,14 @@ What You See Is All You Get
 \begin_layout Standard
 Pengolah kata \SpecialChar LyX
  berbeda dari pengolah kata biasa.
- Anda tidak perlu kawatir dengan pemilihan huruf yang sesuai serta bagaimana
- penempatannya.
+ Anda tidak perlu kawatir dengan pemilihan huruf yang sesuai serta bagaimana penempatannya.
  Yang anda perlukan adalah mengatakan ke \SpecialChar LyX
  
 \emph on
 apa yang akan anda kerjakan 
 \emph default
 selanjutnya \SpecialChar LyX
- akan menyesuaikan mengikuti aturan-aturan yang didefinisikan
- di berkas 
+ akan menyesuaikan mengikuti aturan-aturan yang didefinisikan di berkas 
 \emph on
 style
 \emph default
@@ -320,8 +332,8 @@ style
 status collapsed
 
 \begin_layout Plain Layout
-Secara jujur, sebagian besar versi mutakhir dari perangkat lunak perkantoran
- sudah memiliki berkas mirip 
+Secara jujur,
+ sebagian besar versi mutakhir dari perangkat lunak perkantoran sudah memiliki berkas mirip 
 \emph on
 style
 \emph default
@@ -330,7 +342,8 @@ style
 markup
 \emph default
 .
- Namun demikian, dari pengamatan kami masih jarang yang memanfaatkannya.
+ Namun demikian,
+ dari pengamatan kami masih jarang yang memanfaatkannya.
 \end_layout
 
 \end_inset
@@ -340,7 +353,8 @@ markup
 
 \begin_layout Standard
 Misalnya anda akan menulis laporan.
- Untuk menulis laporan, anda ingin menuliskan bab 
+ Untuk menulis laporan,
+ anda ingin menuliskan bab 
 \begin_inset Quotes eld
 \end_inset
 
@@ -349,8 +363,8 @@ Pengantar\SpecialChar endofsentence
 \begin_inset Quotes erd
 \end_inset
 
- Pada pengolah kata biasa yang anda lakukan adalah memilih menu untuk mengubah
- model huruf serta ukuran, kemudian diubah menjadi huruf tebal.
+ Pada pengolah kata biasa yang anda lakukan adalah memilih menu untuk mengubah model huruf serta ukuran,
+ kemudian diubah menjadi huruf tebal.
  Setelah itu anda menulis 
 \begin_inset Quotes eld
 \end_inset
@@ -368,22 +382,24 @@ Pengantar
 \end_inset
 
 .
- Tentu saja, apabila anda ingin merubah menjadi bab lain, atau ingin menyisipkan
- bab lain sebelumnya, anda perlu menyesuaikan nomor yang anda tulis secara
- manual.
- Apabila anda mempunyai Daftar Isi, nomor bab dan nomor halaman perlu disesuaika
-n juga.
+ Tentu saja,
+ apabila anda ingin merubah menjadi bab lain,
+ atau ingin menyisipkan bab lain sebelumnya,
+ anda perlu menyesuaikan nomor yang anda tulis secara manual.
+ Apabila anda mempunyai Daftar Isi,
+ nomor bab dan nomor halaman perlu disesuaikan juga.
  
 \end_layout
 
 \begin_layout Standard
 Apabila menggunakan \SpecialChar LyX
-, anda hanya perlu menekan tombol lingkungan yang berada
- di kiri atas kemudian memilih 
+,
+ anda hanya perlu menekan tombol lingkungan yang berada di kiri atas kemudian memilih 
 \family sans
 Bab
 \family default
-, kemudian menulis 
+,
+ kemudian menulis 
 \begin_inset Quotes eld
 \end_inset
 
@@ -396,21 +412,22 @@ Pengantar\SpecialChar endofsentence
 \end_layout
 
 \begin_layout Standard
-Anda bisa lihat, akan sesederhana itu.
- Apabila anda melakukan salin, potong dan tempel, nomor akan disesuaikan
- secara otomatis.
- Demikian pula jika anda mendefinisikan acuan di bab tersebut (dengan menyisipka
-n label untuk referensi silang), \SpecialChar LyX
- akan secara otomatis selalu memperbarui
- walau tempatnya dipindah kemanapun.
- Anda tidak akan pernah perlu menuliskan nomor bab, subbab atau bagian bernomor
- lainnya.
+Anda bisa lihat,
+ akan sesederhana itu.
+ Apabila anda melakukan salin,
+ potong dan tempel,
+ nomor akan disesuaikan secara otomatis.
+ Demikian pula jika anda mendefinisikan acuan di bab tersebut (dengan menyisipkan label untuk referensi silang),
+ \SpecialChar LyX
+ akan secara otomatis selalu memperbarui walau tempatnya dipindah kemanapun.
+ Anda tidak akan pernah perlu menuliskan nomor bab,
+ subbab atau bagian bernomor lainnya.
 \end_layout
 
 \begin_layout Standard
 Sekarang kita lihat dengan masalah konsistensi.
- Misalnya, lima hari kemudian anda membuka berkas laporan yang anda buat
- dengan program pengolah kata biasa.
+ Misalnya,
+ lima hari kemudian anda membuka berkas laporan yang anda buat dengan program pengolah kata biasa.
  Anda akan mulai meneruskan pada Bab
 \begin_inset space ~
 \end_inset
@@ -424,15 +441,18 @@ hari sebelumnya (seharusnya huruf tebal 18
 \begin_inset space \thinspace{}
 \end_inset
 
-pt, tetapi yang digunakan huruf tebal 16
+pt,
+ tetapi yang digunakan huruf tebal 16
 \begin_inset space \thinspace{}
 \end_inset
 
-pt), sehingga hasilnya huruf di Bab
+pt),
+ sehingga hasilnya huruf di Bab
 \begin_inset space ~
 \end_inset
 
-4, berbeda dengan yang digunakan di Bab
+4,
+ berbeda dengan yang digunakan di Bab
 \begin_inset space ~
 \end_inset
 
@@ -441,8 +461,7 @@ pt), sehingga hasilnya huruf di Bab
 .
  Komputer akan menyimpan aturan-aturan tentang ukuran huruf dan format lainnya,
  bukannya anda yang harus setiap saat mengaturnya.
- Demikianlah seharusnya keunggulan komputer dapat mempermudah pekerjaan
- kita.
+ Demikianlah seharusnya keunggulan komputer dapat mempermudah pekerjaan kita.
 \end_layout
 
 \begin_layout Standard
@@ -452,24 +471,30 @@ Ada contoh lainnya.
 list
 \emph default
 ).
- Pada pengolah kata yang biasa, membuat daftar merupakan pengaturan menggunakan
- kombinasi tab dan pengaturan baris baru.
+ Pada pengolah kata yang biasa,
+ membuat daftar merupakan pengaturan menggunakan kombinasi tab dan pengaturan baris baru.
  Anda perlu memikirkan dimana akan menuliskan label pada tiap-tiap item,
- model apakah labelnya, seberapa banyak spasi baris kosong untuk memisahkan
- antara item, dan banyak hal lain.
+ model apakah labelnya,
+ seberapa banyak spasi baris kosong untuk memisahkan antara item,
+ dan banyak hal lain.
  Apabila menggunakan \SpecialChar LyX
-, anda hanya perlu menentukan dua hal: apakah tipe
- daftar yang diinginkan, dan apa yang anda ingin masukkan dalam daftar.
+,
+ anda hanya perlu menentukan dua hal:
+ apakah tipe daftar yang diinginkan,
+ dan apa yang anda ingin masukkan dalam daftar.
  Itu saja.
 \end_layout
 
 \begin_layout Standard
-Dengan demikian, ide dasar dibalik \SpecialChar LyX
- adalah: nyatakan 
+Dengan demikian,
+ ide dasar dibalik \SpecialChar LyX
+ adalah:
+ nyatakan 
 \emph on
 apa
 \emph default
- yang i-ngin anda kerjakan, bukan bagaimana mengerjakannya.
+ yang i-ngin anda kerjakan,
+ bukan bagaimana mengerjakannya.
  Sebagai ganti dari 
 \begin_inset Quotes eld
 \end_inset
@@ -499,17 +524,15 @@ WYSIWYM.
 \begin_inset Quotes erd
 \end_inset
 
- Hal ini adalah suatu ide besar yang akan mengubah dan menyederhanakan cara-cara
- penulisan dan penyuntingan dokumen.
+ Hal ini adalah suatu ide besar yang akan mengubah dan menyederhanakan cara-cara penulisan dan penyuntingan dokumen.
  Hal ini juga yang menyebabkan \SpecialChar LyX
- tidak akan sesuai untuk membuat poster atau
- jenis-jenis lembaran iklan.
- Pada jenis ini tidak memerlukan fungsi-fungsi seperti paragraf, bab, subbab
- atau sejenisnya.
+ tidak akan sesuai untuk membuat poster atau jenis-jenis lembaran iklan.
+ Pada jenis ini tidak memerlukan fungsi-fungsi seperti paragraf,
+ bab,
+ subbab atau sejenisnya.
  Disini bukan berarti \SpecialChar LyX
- tidak mampu mengerjakan, tetapi bisa dikatakan bukan
- alat yang tepat untuk pekerjaan tersebut - anda jangan menggunakan pisau
- untuk memukul paku.
+ tidak mampu mengerjakan,
+ tetapi bisa dikatakan bukan alat yang tepat untuk pekerjaan tersebut - anda jangan menggunakan pisau untuk memukul paku.
 \end_layout
 
 \begin_layout Subsection
@@ -549,29 +572,30 @@ Penggunaan
 \emph on
 Tab
 \emph default
- untuk lompatan spasi serta tampilan mistar yang menunjukkan tempat berhenti
- 
+ untuk lompatan spasi serta tampilan mistar yang menunjukkan tempat berhenti 
 \emph on
 tab
 \emph default
- yang ada di halaman kerja, tidak akan ditemui dan tidak berlaku di \SpecialChar LyX
+ yang ada di halaman kerja,
+ tidak akan ditemui dan tidak berlaku di \SpecialChar LyX
 .
- Demikian pula penambahan spasi kosong tidak diperlukan; \SpecialChar LyX
- akan menambahkan
- sendiri apabila diperlukan, tergantung pada kondisi.
+ Demikian pula penambahan spasi kosong tidak diperlukan;
+ \SpecialChar LyX
+ akan menambahkan sendiri apabila diperlukan,
+ tergantung pada kondisi.
  Tidak berlakunya penambahan baris kosong menggunakan 
 \family sans
 Enter
 \family default
- akan membingungkan penulis pada awalnya, namun demikian setelah memahami
- filosofi WYSIWYM, hal ini justru akan menjamin konsistensi dan memudahkan
- penyuntingan dokumen.
+ akan membingungkan penulis pada awalnya,
+ namun demikian setelah memahami filosofi WYSIWYM,
+ hal ini justru akan menjamin konsistensi dan memudahkan penyuntingan dokumen.
 \end_layout
 
 \begin_layout Standard
 Beberapa fasilitas pengaturan sebenarnya ada juga di \SpecialChar LyX
-, tetapi kemungkinan
- penggunaannya tidak seperti pada pengolah kata lain:
+,
+ tetapi kemungkinan penggunaannya tidak seperti pada pengolah kata lain:
 \end_layout
 
 \begin_layout Itemize
@@ -587,11 +611,15 @@ Spasi baris (misal
 \begin_inset space \space{}
 \end_inset
 
-satu spasi, satu setengah spasi, dua spasi, dst.)
+satu spasi,
+ satu setengah spasi,
+ dua spasi,
+ dst.)
 \end_layout
 
 \begin_layout Itemize
-Spasi kosong antara kata, spasi horisontal dan spasi vertikal
+Spasi kosong antara kata,
+ spasi horisontal dan spasi vertikal
 \end_layout
 
 \begin_layout Itemize
@@ -599,32 +627,35 @@ Jenis huruf serta ukuran huruf
 \end_layout
 
 \begin_layout Itemize
-Tipe huruf (huruf tebal, huruf miring, huruf bergaris bawah, dll.)
+Tipe huruf (huruf tebal,
+ huruf miring,
+ huruf bergaris bawah,
+ dll.)
 \end_layout
 
 \begin_layout Standard
 Walaupun ada di \SpecialChar LyX
-, anda tidak akan terlalu sering melakukan perubahan.
+,
+ anda tidak akan terlalu sering melakukan perubahan.
  \SpecialChar LyX
- akan mengatur penggunaannya, tergantung konteks penyuntingan yang sedang
- dilakukan.
- Pada bagian tertentu dalam dokumen, ukuran dan tipe huruf akan ditentukan
- secara otomatis oleh \SpecialChar LyX
+ akan mengatur penggunaannya,
+ tergantung konteks penyuntingan yang sedang dilakukan.
+ Pada bagian tertentu dalam dokumen,
+ ukuran dan tipe huruf akan ditentukan secara otomatis oleh \SpecialChar LyX
 .
- Indentasi paragraf menyesuaikan dengan tipe paragraf yang mempunyai definisi
- indentasi sendiri.
+ Indentasi paragraf menyesuaikan dengan tipe paragraf yang mempunyai definisi indentasi sendiri.
  Pemisah halaman akan diatur dengan sendirinya secara otomatis.
- Secara umum, spasi antara baris, antara kata, antara paragraf adalah variabel
- yang bisa diatur oleh \SpecialChar LyX
+ Secara umum,
+ spasi antara baris,
+ antara kata,
+ antara paragraf adalah variabel yang bisa diatur oleh \SpecialChar LyX
 .
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Ada berbagai cara (beberapa memerlukan pengetahuan \SpecialChar LaTeX
-) untuk mengatur secara
- keseluruhan yang berlaku umum atau hanya untuk lokasi tertentu saja dalam
- dokumen.
+) untuk mengatur secara keseluruhan yang berlaku umum atau hanya untuk lokasi tertentu saja dalam dokumen.
  Pembahasan terperinci dapat dilihat di buku 
 \emph on
 Petunjuk Penggunaan
@@ -640,10 +671,11 @@ Fitur Tambahan.
 \end_layout
 
 \begin_layout Standard
-Akhirnya, secara umum kami percaya bahwa \SpecialChar LyX
+Akhirnya,
+ secara umum kami percaya bahwa \SpecialChar LyX
  (juga \SpecialChar LaTeX
-) mempu-nyai keunggulan
- dari program pengolah kata lainnya, meliputi:
+) mempu-nyai keunggulan dari program pengolah kata lainnya,
+ meliputi:
 \end_layout
 
 \begin_layout Itemize
@@ -671,14 +703,15 @@ Penggunaan referensi-silang
 \end_layout
 
 \begin_layout Standard
-Berbagai pengolah kata modern dapat menyunting dan menampilkan simbol dan
- rumus matematika, mengatur pemenggalan suku kata, mendefinisikan berbagai
- model dokumen, serta menggunakan konsep WYSIWYM.
- Namun demikian kebanyakan mereka baru saja menggunakannya, sementara \SpecialChar LyX
- dirancang
- menggunakan sistem penyuntingan dokumen \SpecialChar LaTeX
-, suatu program yang sudah ada
- lebih dari 20 tahun dan pemanfaatannya sudah teruji.
+Berbagai pengolah kata modern dapat menyunting dan menampilkan simbol dan rumus matematika,
+ mengatur pemenggalan suku kata,
+ mendefinisikan berbagai model dokumen,
+ serta menggunakan konsep WYSIWYM.
+ Namun demikian kebanyakan mereka baru saja menggunakannya,
+ sementara \SpecialChar LyX
+ dirancang menggunakan sistem penyuntingan dokumen \SpecialChar LaTeX
+,
+ suatu program yang sudah ada lebih dari 20 tahun dan pemanfaatannya sudah teruji.
 \end_layout
 
 \begin_layout Subsection
@@ -688,8 +721,7 @@ Apakah \SpecialChar LaTeX
 
 \begin_layout Standard
 \SpecialChar LaTeX
- adalah sistem penyuntingan dokumen yang dirancang oleh Leslie Lamport pada
- tahun 1985.
+ adalah sistem penyuntingan dokumen yang dirancang oleh Leslie Lamport pada tahun 1985.
 \begin_inset Foot
 status collapsed
 
@@ -720,12 +752,10 @@ Petunjuk Penggunaan
 \end_inset
 
  Program ini menggunakan bahasa penyuntingan \SpecialChar TeX
- rancangan Donald Knuth tahun
- 1984.
+ rancangan Donald Knuth tahun 1984.
  \SpecialChar TeX
- merupakan kumpulan perintah pengaturan dokumen yang disusun menjadi skrip
- dalam berkas ASCII, kemudian dijalankan untuk memperoleh tampilan hasil
- penyuntingan.
+ merupakan kumpulan perintah pengaturan dokumen yang disusun menjadi skrip dalam berkas ASCII,
+ kemudian dijalankan untuk memperoleh tampilan hasil penyuntingan.
  Berbagai macam 
 \begin_inset Quotes eld
 \end_inset
@@ -735,11 +765,9 @@ trik
 \end_inset
 
  disusun oleh Knuth dalam bentuk algoritma dan dimasukkan dalam \SpecialChar TeX
- sehingga
- mampu memberikan hasil cetak yang sangat bagus.
+ sehingga mampu memberikan hasil cetak yang sangat bagus.
  Hasil keluaran langsung yang diperoleh dari \SpecialChar TeX
- adalah berkas dengan format
- dokumen portabel 
+ adalah berkas dengan format dokumen portabel 
 \emph on
 pdf
 \emph default
@@ -760,58 +788,58 @@ dvi
 \emph on
 dvi
 \emph default
- ini sering digunakan sebagai pra tampilan hasil penyuntingan sebelum dikonversi
- ke format lain seperti PostScript yang digunakan mesin cetak.
+ ini sering digunakan sebagai pra tampilan hasil penyuntingan sebelum dikonversi ke format lain seperti PostScript yang digunakan mesin cetak.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar TeX
- bukan hanya mesin untuk mengatur format penulisan, tetapi juga memungkinkan
- anda untuk mendefinisikan perintah makro.
+ bukan hanya mesin untuk mengatur format penulisan,
+ tetapi juga memungkinkan anda untuk mendefinisikan perintah makro.
  Sebagian orang yang menggunakan \SpecialChar TeX
- biasanya menggunakan paket perintah makro
- yang dibuat Knuth untuk menyembunyikan berbagai detail perintah pemformatan
- penulisan.
+ biasanya menggunakan paket perintah makro yang dibuat Knuth untuk menyembunyikan berbagai detail perintah pemformatan penulisan.
  Dari sinilah Leslie masuk dalam cerita kita.
- Dia menciptakan paket makro yang berorientasi kepada membantu pengguna
- dan mengurangi pekerjaan pengaturan penyuntingan, melalui kumpulan perintah
- yang secara konsisten akan mengatur tampilan bab, tabel, rumus matematika
- yang rapi, dengan tampilan yang selalu seragam dan konsisten.
+ Dia menciptakan paket makro yang berorientasi kepada membantu pengguna dan mengurangi pekerjaan pengaturan penyuntingan,
+ melalui kumpulan perintah yang secara konsisten akan mengatur tampilan bab,
+ tabel,
+ rumus matematika yang rapi,
+ dengan tampilan yang selalu seragam dan konsisten.
  Inilah yang kemudian dikenal sebagai \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
-Pada masa sekarang, seiring dengan pengembangan dan perkembangan \SpecialChar LaTeX
-, banyak
- orang yang sudah membuat berbagai paket makro untuk \SpecialChar TeX
-, sebagian untuk membuat
- tayangan presentasi, sebagian lagi untuk penulisan jurnal matematika, dan
- berbagai aplikasi penulisan.
+Pada masa sekarang,
+ seiring dengan pengembangan dan perkembangan \SpecialChar LaTeX
+,
+ banyak orang yang sudah membuat berbagai paket makro untuk \SpecialChar TeX
+,
+ sebagian untuk membuat tayangan presentasi,
+ sebagian lagi untuk penulisan jurnal matematika,
+ dan berbagai aplikasi penulisan.
  Ada juga yang menggunakan fasilitas \SpecialChar TeX
  asli untuk tujuan berbagai penulisan,
  dan tentu saja ada yang mulai modifikasi \SpecialChar LaTeX
 .
- Untuk menjawab perkembangan yang kacau tadi, tim teknisi \SpecialChar LaTeX
- kemudian mendefinisik
-an \SpecialChar LaTeX2e
-, yaitu versi yang sampai sekarang digunakan sejak akhir 1980an.
+ Untuk menjawab perkembangan yang kacau tadi,
+ tim teknisi \SpecialChar LaTeX
+ kemudian mendefinisikan \SpecialChar LaTeX2e
+,
+ yaitu versi yang sampai sekarang digunakan sejak akhir 1980an.
  Versi baru dari \SpecialChar LaTeX
- ini mempunyai perintah-perintah yang memberikan keleluasaan
- untuk mengkaitkan dengan perintah makro \SpecialChar TeX
-, sehingga sangat membantu dalam
- menggunakan huruf yang baru serta banyak hal.
- Pada kenyataannya, \SpecialChar LaTeX
- merupakan bahasa yang sangat luas! Banyak sekali pemakai
- di berbagai penjuru dunia menciptakan berbagai tambahan untuk \SpecialChar LaTeX
- yang melebihi
- standar aslinya.
+ ini mempunyai perintah-perintah yang memberikan keleluasaan untuk mengkaitkan dengan perintah makro \SpecialChar TeX
+,
+ sehingga sangat membantu dalam menggunakan huruf yang baru serta banyak hal.
+ Pada kenyataannya,
+ \SpecialChar LaTeX
+ merupakan bahasa yang sangat luas!
+ Banyak sekali pemakai di berbagai penjuru dunia menciptakan berbagai tambahan untuk \SpecialChar LaTeX
+ yang melebihi standar aslinya.
 \end_layout
 
 \begin_layout Standard
-Ada dua jenis media berkas yang bisa digunakan untuk memperluas kemampuan
- \SpecialChar LaTeX
-: 
+Ada dua jenis media berkas yang bisa digunakan untuk memperluas kemampuan \SpecialChar LaTeX
+:
+ 
 \emph on
 class
 \emph default
@@ -825,12 +853,13 @@ style
 class
 \emph default
  adalah suatu kumpulan makro \SpecialChar LaTeX
- yang menjelaskan tipe dari dokumen, misalnya
- 
+ yang menjelaskan tipe dari dokumen,
+ misalnya 
 \emph on
 book
 \emph default
-, atau 
+,
+ atau 
 \emph on
 article
 \emph default
@@ -839,13 +868,15 @@ article
 \emph on
 class
 \emph default
- untuk penggunaan yang berbeda-beda, untuk tayangan presentasi, untuk jurnal
- sains dan matematika\SpecialChar ldots
+ untuk penggunaan yang berbeda-beda,
+ untuk tayangan presentasi,
+ untuk jurnal sains dan matematika\SpecialChar ldots
 banyak juga berbagai universitas mendefinisikan 
 \emph on
 class
 \emph default
- untuk format penulisan tesis! 
+ untuk format penulisan tesis!
+ 
 \end_layout
 
 \begin_layout Standard
@@ -857,9 +888,11 @@ style
 \emph on
 class
 \emph default
- karena tidak mendefinisikan tipe dokumen, tetapi menentukan perilaku dokumen,
+ karena tidak mendefinisikan tipe dokumen,
+ tetapi menentukan perilaku dokumen,
  sehingga bisa digunakan di semua dokumen.
- Sebagai contoh, \SpecialChar LyX
+ Sebagai contoh,
+ \SpecialChar LyX
  menggunakan dua 
 \emph on
 style
@@ -870,14 +903,22 @@ style
 \emph on
 style
 \emph default
- digunakan untuk pengaturan lainnya: mencetak label dan amplop, merubah
- perilaku indentasi, menambah huruf baru, pengaturan grafik, pengaturan
- penajukan (
+ digunakan untuk pengaturan lainnya:
+ mencetak label dan amplop,
+ merubah perilaku indentasi,
+ menambah huruf baru,
+ pengaturan grafik,
+ pengaturan penajukan (
 \emph on
 heading
 \emph default
-) dokumen, menggunakan bibliografi, merubah dan mengatur tampilan catatan
- kaki, tabel, gambar, penulisan daftar, dan berbagai macam pengaturan lain.
+) dokumen,
+ menggunakan bibliografi,
+ merubah dan mengatur tampilan catatan kaki,
+ tabel,
+ gambar,
+ penulisan daftar,
+ dan berbagai macam pengaturan lain.
 \end_layout
 
 \begin_layout Standard
@@ -886,7 +927,8 @@ Berikut ini adalah ringkasan penjelasan diatas:
 
 \begin_layout Description
 \SpecialChar TeX
-: Bahasa pengaturan penulisan (
+:
+ Bahasa pengaturan penulisan (
 \emph on
 typesetting
 \emph default
@@ -895,27 +937,33 @@ typesetting
 
 \begin_layout Description
 \SpecialChar LaTeX
-: Paket Makro yang dibuat berdasarkan \SpecialChar TeX
+:
+ Paket Makro yang dibuat berdasarkan \SpecialChar TeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Description
-class: Definisi tipe dokumen, menggunakan \SpecialChar LaTeX
+class:
+ Definisi tipe dokumen,
+ menggunakan \SpecialChar LaTeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Description
-style: Merubah perilaku bawaan dari \SpecialChar LaTeX
+style:
+ Merubah perilaku bawaan dari \SpecialChar LaTeX
  dengan cara tertentu.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
-: Pengolah kata interaktif, WYSIWYM, yang menggunakan \SpecialChar LaTeX
- untuk mengatur format
- penulisan.
+:
+ Pengolah kata interaktif,
+ WYSIWYM,
+ yang menggunakan \SpecialChar LaTeX
+ untuk mengatur format penulisan.
 \end_layout
 
 \begin_layout Standard
@@ -924,7 +972,8 @@ Pada bab ini sudah dijelaskan perbedaan antara \SpecialChar LyX
  Secara ringkas bisa dikatakan \SpecialChar LaTeX
  berbeda dengan pengolah kata lain.
  Dengan menggunakan kekuatan \SpecialChar LaTeX
-, \SpecialChar LyX
+,
+ \SpecialChar LyX
  membantu anda berkonsentrasi tentang 
 \emph on
 apa
@@ -944,23 +993,19 @@ Bagaimana Memahami Sistem Dokumentasi Buku Petunjuk
 \begin_layout Standard
 Agar dapat menjawab pertanyaan anda dan menjelaskan fitur yang ada di \SpecialChar LyX
 ,
- perlu kami jelaskan bahwa buku petunjuk dipisah-pisah menjadi beberapa
- berkas dokumen.
+ perlu kami jelaskan bahwa buku petunjuk dipisah-pisah menjadi beberapa berkas dokumen.
  Masing-masing mempunyai tujuan sendiri-sendiri.
- Sebelum membaca secara detail buku petunjuk lain, anda perlu membaca bab
- ini dengan teliti karena disini memuat berbagai informasi penting bagaimana
- memahami buku petunjuk.
+ Sebelum membaca secara detail buku petunjuk lain,
+ anda perlu membaca bab ini dengan teliti karena disini memuat berbagai informasi penting bagaimana memahami buku petunjuk.
 \end_layout
 
 \begin_layout Standard
 Pada dasarnya pengembangan \SpecialChar LyX
- tidak pernah berhenti tetapi berkembang dari
- waktu ke waktu, sehingga buku petunjuk kemungkinan menjadi tidak lengkap
- dan kedaluwarsa.
- Agar buku petunjuk sesuai dengan perkembangan yang ada, tentunya semua
- buku petunjuk yang ada harus selalu diperbaiki.
- Buku petunjuk merupakan hasil kerja para sukarelawan/wati yang mempunyai
- 
+ tidak pernah berhenti tetapi berkembang dari waktu ke waktu,
+ sehingga buku petunjuk kemungkinan menjadi tidak lengkap dan kedaluwarsa.
+ Agar buku petunjuk sesuai dengan perkembangan yang ada,
+ tentunya semua buku petunjuk yang ada harus selalu diperbaiki.
+ Buku petunjuk merupakan hasil kerja para sukarelawan/wati yang mempunyai 
 \begin_inset Quotes eld
 \end_inset
 
@@ -968,12 +1013,17 @@ Pekerjaan Tetap
 \begin_inset Quotes erd
 \end_inset
 
-, keluarga, perlu mengerjakan pekerjaan rumah tangga, membuang sampah, dan
- banyak hal lainnya.
- Apabila anda ingin berperan serta, perlu membaca dengan teliti bab 
+,
+ keluarga,
+ perlu mengerjakan pekerjaan rumah tangga,
+ membuang sampah,
+ dan banyak hal lainnya.
+ Apabila anda ingin berperan serta,
+ perlu membaca dengan teliti bab 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Kontrib"
+nolink "false"
 
 \end_inset
 
@@ -981,10 +1031,11 @@ reference "sec:Kontrib"
 \end_layout
 
 \begin_layout Standard
-Bentuk peran serta dapat dilakukan dengan cara lain – apabila anda menemukan
- hal-hal dalam buku panduan yang dianggap membingungkan, kurang jelas, tidak
- akurat atau bahkan salah, jangan segan-segan untuk memberitahukan kepada
- kami! Anda dapat mengirimkan laporan ke perawat dokumen lewat email 
+Bentuk peran serta dapat dilakukan dengan cara lain – apabila anda menemukan hal-hal dalam buku panduan yang dianggap membingungkan,
+ kurang jelas,
+ tidak akurat atau bahkan salah,
+ jangan segan-segan untuk memberitahukan kepada kami!
+ Anda dapat mengirimkan laporan ke perawat dokumen lewat email 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -994,9 +1045,8 @@ literal "false"
 \end_inset
 
 .
- Apabila anda mempunyai pertanyaan yang tidak terjawab dalam buku panduan
- yang ada dan menginginkan jawaban segera, silakan mengirim email ke mailing
- list pengguna kami 
+ Apabila anda mempunyai pertanyaan yang tidak terjawab dalam buku panduan yang ada dan menginginkan jawaban segera,
+ silakan mengirim email ke mailing list pengguna kami 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-users@lists.lyx.org"
@@ -1020,35 +1070,45 @@ Dalam memanfaatkan buku petunjuk ada dua kelompok yang berbeda.
  Kelompok yang kedua lebih suka membaca langsung dari \SpecialChar LyX
 .
  Perlu diketahui bahwa ada perbedaan antara berkas \SpecialChar LyX
- yang asli dengan versi
- yang di-cetak.
+ yang asli dengan versi yang di-cetak.
  Apabila membaca langsung dari berkas \SpecialChar LyX
-, judul hanya tampak paling atas dokumen,
+,
+ judul hanya tampak paling atas dokumen,
  tidak terformat dan tidak terpisah dari halaman berikutnya.
- Demikian pula, catatan kaki dan Daftar Isi tidak akan tampak terperinci.
- Untuk melihat isi catatan kaki, yang akan terlihat hanya seperti ini: 
+ Demikian pula,
+ catatan kaki dan Daftar Isi tidak akan tampak terperinci.
+ Untuk melihat isi catatan kaki,
+ yang akan terlihat hanya seperti ini:
+ 
 \begin_inset Graphics
 	filename clipart/id-footnote.png
 	scale 75
 
 \end_inset
 
-, dilakukan dengan klik tombol kiri dari tetikus.
- Untuk melihat lengkap Daftar Isi, klik di kotak kelabu daftar isi atau
- dari menu 
+,
+ dilakukan dengan klik tombol kiri dari tetikus.
+ Untuk melihat lengkap Daftar Isi,
+ klik di kotak kelabu daftar isi atau dari menu 
 \family sans
 Navigasi.
 \end_layout
 
 \begin_layout Standard
-Pada versi cetakan, buku panduan akan terformat lengkap mulai Judul, Daftar
- Isi, dan catatan kaki, semuanya muncul rapi dan terperinci.
- Selain itu, semua referensi silang akan muncul dalam bentuk angka sesuai
- dengan yang diacu, seperti Bab, SubBab, SubSubBab dan lainnya.
+Pada versi cetakan,
+ buku panduan akan terformat lengkap mulai Judul,
+ Daftar Isi,
+ dan catatan kaki,
+ semuanya muncul rapi dan terperinci.
+ Selain itu,
+ semua referensi silang akan muncul dalam bentuk angka sesuai dengan yang diacu,
+ seperti Bab,
+ SubBab,
+ SubSubBab dan lainnya.
  Apabila membaca langsung dari berkas \SpecialChar LyX
-, semua referensi silang hanya akan
- tampak kotak kelabu dengan nama label yang diacu, misalnya akan tampak
- seperti ini 
+,
+ semua referensi silang hanya akan tampak kotak kelabu dengan nama label yang diacu,
+ misalnya akan tampak seperti ini 
 \begin_inset Graphics
 	filename clipart/id-contrib.png
 	scale 75
@@ -1056,10 +1116,10 @@ Pada versi cetakan, buku panduan akan terformat lengkap mulai Judul, Daftar
 \end_inset
 
 .
- Apabila anda klik menggunakan tombol kiri tetikus, kotak dialog akan muncul
- dengan daftar semua referensi silang yang ada di dokumen.
- Anda bisa langsung ke tempat acuan dengan nama label yang anda pilih dengan
- cara klik tombol kanan tetikus, atau tekan tombol dialog 
+ Apabila anda klik menggunakan tombol kiri tetikus,
+ kotak dialog akan muncul dengan daftar semua referensi silang yang ada di dokumen.
+ Anda bisa langsung ke tempat acuan dengan nama label yang anda pilih dengan cara klik tombol kanan tetikus,
+ atau tekan tombol dialog 
 \family sans
 Ke
 \begin_inset space ~
@@ -1074,15 +1134,14 @@ Kembali.
 \end_layout
 
 \begin_layout Standard
-Dengan memahami penjelasan diatas, anda pasti sudah paham akan perbedaan
- antara versi yang dicetak dan versi online (dari menu 
+Dengan memahami penjelasan diatas,
+ anda pasti sudah paham akan perbedaan antara versi yang dicetak dan versi online (dari menu 
 \family sans
 Bantuan
 \family default
 ) yang dibaca langsung dari berkas.
  Sekarang kita akan lihat mengenai format penulisan di buku panduan.
- Anda akan sering menemukan kata-kata yang ditulis dengan tipe dan corak
- huruf berbeda:
+ Anda akan sering menemukan kata-kata yang ditulis dengan tipe dan corak huruf berbeda:
 \end_layout
 
 \begin_layout Itemize
@@ -1090,10 +1149,12 @@ Bantuan
 \emph on
 Huruf Condong
 \emph default
- biasanya digunakan untuk menunjukkan kata yang penting, argumen program,
- judul buku acuan, nama bab di beberapa buku petunjuk, nota dari penulis
- buku petunjuk, atau untuk versi Bahasa Indonesia menunjukkan kata Bahasa
- Inggris yang tidak ditemui padanan kata Indonesia nya.
+ biasanya digunakan untuk menunjukkan kata yang penting,
+ argumen program,
+ judul buku acuan,
+ nama bab di beberapa buku petunjuk,
+ nota dari penulis buku petunjuk,
+ atau untuk versi Bahasa Indonesia menunjukkan kata Bahasa Inggris yang tidak ditemui padanan kata Indonesia nya.
 \end_layout
 
 \begin_layout Itemize
@@ -1101,7 +1162,8 @@ Huruf Condong
 \family typewriter
 Huruf Mesinketik
 \family default
- digunakan untuk nama berkas, program dan fungsi dalam \SpecialChar LyX
+ digunakan untuk nama berkas,
+ program dan fungsi dalam \SpecialChar LyX
 .
 \end_layout
 
@@ -1110,8 +1172,10 @@ Huruf Mesinketik
 \family sans
 Huruf Sans Serif
 \family default
- digunakan untuk menu, nama tombol, atau nama kotak dialog, juga nama-nama
- dari tombol di papan ketik.
+ digunakan untuk menu,
+ nama tombol,
+ atau nama kotak dialog,
+ juga nama-nama dari tombol di papan ketik.
 \end_layout
 
 \begin_layout Itemize
@@ -1132,8 +1196,8 @@ Huruf Tebal
 \end_layout
 
 \begin_layout Standard
-Untuk kunci pemercepat menu dan kunci ikatan, anda bisa mempelajari lebih
- terperinci pada bab 
+Untuk kunci pemercepat menu dan kunci ikatan,
+ anda bisa mempelajari lebih terperinci pada bab 
 \emph on
 Kunci Ikatan
 \emph default
@@ -1146,8 +1210,8 @@ Fitur Tambahan
 Additional.lyx
 \family default
 ).
- Sebagai sarana untuk mengacu ke kunci tertentu, kami menggunakan konvensi
- penulisan sebagai berikut:
+ Sebagai sarana untuk mengacu ke kunci tertentu,
+ kami menggunakan konvensi penulisan sebagai berikut:
 \end_layout
 
 \begin_layout Itemize
@@ -1206,7 +1270,8 @@ M-
 \family sans
 Meta
 \family default
-, atau berupa tombol 
+,
+ atau berupa tombol 
 \family sans
 Alt
 \family default
@@ -1312,7 +1377,10 @@ Down
 \begin_inset Quotes erd
 \end_inset
 
-: untuk memerintahkan pergerakan kursor kekiri, kekanan, naik dan turun.
+:
+ untuk memerintahkan pergerakan kursor kekiri,
+ kekanan,
+ naik dan turun.
  
 \end_layout
 
@@ -1388,7 +1456,8 @@ PageDown
 \begin_inset Quotes erd
 \end_inset
 
-: keenam tombol ini biasanya ada di papan ketik.
+:
+ keenam tombol ini biasanya ada di papan ketik.
  Beberapa papan ketik ada yang menggunakan 
 \begin_inset Quotes eld
 \end_inset
@@ -1468,8 +1537,8 @@ Enter,
 
  bahkan ada yang mempunyai keduanya.
  \SpecialChar LyX
- menggunakan kedua tombol untuk makna yang sama, sehingga kami terkadang
- menggunakan 
+ menggunakan kedua tombol untuk makna yang sama,
+ sehingga kami terkadang menggunakan 
 \family sans
 Return
 \family default
@@ -1481,8 +1550,7 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Kami sudah membuat daftar kunci ikatan bawaan dan cara pintas yang bisa
- anda temukan di buku panduan 
+Kami sudah membuat daftar kunci ikatan bawaan dan cara pintas yang bisa anda temukan di buku panduan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1495,9 +1563,10 @@ Cara Pintas
 \end_inset
 
  silakan untuk membacanya.
- Perlu dipahami ada dua peta kunci ikatan yang biasa digunakan oleh para
- pemakai \SpecialChar LyX
-, yaitu: gaya 
+ Perlu dipahami ada dua peta kunci ikatan yang biasa digunakan oleh para pemakai \SpecialChar LyX
+,
+ yaitu:
+ gaya 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1505,8 +1574,9 @@ CUA
 \begin_inset Quotes erd
 \end_inset
 
- yang digunakan sebagai setelan bawaan; berasal dari PC world, sedangkan
- yang kedua adalah gaya 
+ yang digunakan sebagai setelan bawaan;
+ berasal dari PC world,
+ sedangkan yang kedua adalah gaya 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1515,10 +1585,10 @@ emacs
 \end_inset
 
  yang sangat umum di sistem Unix dimana menggunakan editor Emacs.
- Apabila tidak dinyatakan secara eksplisit, maka definisi kunci ikatan dalam
- dokumentasi berasal dari peta CUA.
- Apabila ingin menggunakan emacs, anda perlu membaca buku petunjuknya dan
- perlu menemukan sendiri kunci ikatan yang didefiniskan.
+ Apabila tidak dinyatakan secara eksplisit,
+ maka definisi kunci ikatan dalam dokumentasi berasal dari peta CUA.
+ Apabila ingin menggunakan emacs,
+ anda perlu membaca buku petunjuknya dan perlu menemukan sendiri kunci ikatan yang didefiniskan.
 \end_layout
 
 \begin_layout Subsection
@@ -1526,9 +1596,9 @@ Satuan Yang Digunakan di Buku Petunjuk
 \end_layout
 
 \begin_layout Standard
-Agar memudahkan dalam memahami satuan yang digunakan dalam buku petunjuk
- \SpecialChar LyX
-, disini akan dipaparkan terlebih dahulu semua satuan yang dipakai di \SpecialChar LyX
+Agar memudahkan dalam memahami satuan yang digunakan dalam buku petunjuk \SpecialChar LyX
+,
+ disini akan dipaparkan terlebih dahulu semua satuan yang dipakai di \SpecialChar LyX
 .
  Tabel
 \begin_inset space ~
@@ -1538,6 +1608,7 @@ Agar memudahkan dalam memahami satuan yang digunakan dalam buku petunjuk
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:Units-for-image"
+nolink "false"
 
 \end_inset
 
@@ -1548,6 +1619,7 @@ reference "cap:Units-for-image"
 \begin_layout Standard
 \begin_inset Float table
 placement t
+alignment document
 wide false
 sideways false
 status open
@@ -2071,8 +2143,7 @@ Buku Panduan Penggunaan \SpecialChar LyX
 
 \begin_layout Standard
 \SpecialChar LyX
- menyediakan beberapa Buku Panduan Penggunaan yang bisa dibaca melalui menu
- 
+ menyediakan beberapa Buku Panduan Penggunaan yang bisa dibaca melalui menu 
 \family sans
 Bantuan
 \family default
@@ -2087,12 +2158,12 @@ Pengantar Dokumen ini merupakan buku Pengantar \SpecialChar LyX
 
 \begin_layout Description
 Tutorial Apabila anda baru saja menggunakan \SpecialChar LyX
- dan belum pernah me-ngenal
- dan menggunakan \SpecialChar LaTeX
-, anda perlu mulai belajar dari dokumen Tutorial.
+ dan belum pernah me-ngenal dan menggunakan \SpecialChar LaTeX
+,
+ anda perlu mulai belajar dari dokumen Tutorial.
  Apabila anda sudah menggunakan \SpecialChar LaTeX
- sebelumnya, anda tidak perlu membaca Tutorial
- dari awal tetapi langsung ke bab 
+ sebelumnya,
+ anda tidak perlu membaca Tutorial dari awal tetapi langsung ke bab 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2112,10 +2183,8 @@ Petunjuk
 
 Penggunaan Dokumen ini adalah buku petunjuk utama.
  Dokumen ini menjelaskan sebagian besar cara menggunakan \SpecialChar LyX
- bagi pe-mula serta
- memaparkan fitur-fitur yang ada.
- Buku Petunjuk utama ini menganggap bahwa pembaca sudah memahami apa yang
- tertulis di Tutorial.
+ bagi pe-mula serta memaparkan fitur-fitur yang ada.
+ Buku Petunjuk utama ini menganggap bahwa pembaca sudah memahami apa yang tertulis di Tutorial.
 \end_layout
 
 \begin_layout Description
@@ -2128,11 +2197,16 @@ Tambahan Buku petunjuk ini merupakan bahan tambahan dari buku
 Petunjuk Penggunaan
 \emph default
 .
- Dalam dokumen ini, penggunaan tabel, gambar, 
+ Dalam dokumen ini,
+ penggunaan tabel,
+ gambar,
+ 
 \emph on
 float
 \emph default
-, nota, dan kotak dibahas secara terperinci.
+,
+ nota,
+ dan kotak dibahas secara terperinci.
  Berbagai perintah tambahan dari \SpecialChar LaTeX
  yang terkait juga diberikan.
 \end_layout
@@ -2147,10 +2221,10 @@ Tambahan Buku ini juga merupakan tambahan terperinci dari buku
 Petunjuk Penggunaan
 \emph default
 .
- Disini dijelaskan dengan terperinci bagaimana menerapkan perintah dari
- \SpecialChar LaTeX
-, penambahan dan pendefinisian layout, serta berbagai fitur penyuntingan
- untuk hal-hal yang khusus.
+ Disini dijelaskan dengan terperinci bagaimana menerapkan perintah dari \SpecialChar LaTeX
+,
+ penambahan dan pendefinisian layout,
+ serta berbagai fitur penyuntingan untuk hal-hal yang khusus.
  Pada buku ini juga dipaparkan berbagai trik dari para pakar \SpecialChar LaTeX
 .
 \end_layout
@@ -2161,11 +2235,12 @@ Pengaturan
 \end_inset
 
 Mandiri Menjelaskan pemakaian lanjut fitur \SpecialChar LyX
-, termasuk bagaimana mengatur
- perilaku \SpecialChar LyX
+,
+ termasuk bagaimana mengatur perilaku \SpecialChar LyX
  secara keseluruhan.
- Pengaturan fitur termasuk pengaturan kunci ikatan untuk cara pintas, internasio
-nalisasi bahasa, dan pengaturan berkas konfigurasi.
+ Pengaturan fitur termasuk pengaturan kunci ikatan untuk cara pintas,
+ internasionalisasi bahasa,
+ dan pengaturan berkas konfigurasi.
 \end_layout
 
 \begin_layout Description
@@ -2176,11 +2251,9 @@ Konfigurasi
 \SpecialChar LaTeX
  \SpecialChar LyX
  akan memeriksa sistem komputer anda setelah instalasi.
- Dokumen ini memberikan informasi lengkap tentang berkas penting yang dikenal
- oleh \SpecialChar LyX
+ Dokumen ini memberikan informasi lengkap tentang berkas penting yang dikenal oleh \SpecialChar LyX
  di sistem yang diinstal.
- Periksa dokumen ini untuk melihat apakah ada yang tidak lengkap atau belum
- terinstal dengan sempurna.
+ Periksa dokumen ini untuk melihat apakah ada yang tidak lengkap atau belum terinstal dengan sempurna.
 \end_layout
 
 \begin_layout Description
@@ -2192,20 +2265,22 @@ Petunjuk
 \begin_inset space ~
 \end_inset
 
-Khusus Ada beberapa buku petunjuk yang sangat spesifik, meliputi Petunjuk
- Penggunaan Linguistik, Petunjuk Penggunaan Braille, Petunjuk Penggunaan
- x-y pic, serta Petunjuk Penggunaan Multikolom.
+Khusus Ada beberapa buku petunjuk yang sangat spesifik,
+ meliputi Petunjuk Penggunaan Linguistik,
+ Petunjuk Penggunaan Braille,
+ Petunjuk Penggunaan x-y pic,
+ serta Petunjuk Penggunaan Multikolom.
 \end_layout
 
 \begin_layout Standard
-Dokumen yang ada diatas akan mempunyai tautan dari buku satu ke lainnya
- tergantung keperluan.
- Sebagai contoh, dalam buku 
+Dokumen yang ada diatas akan mempunyai tautan dari buku satu ke lainnya tergantung keperluan.
+ Sebagai contoh,
+ dalam buku 
 \emph on
 Petunjuk Penggunaan 
 \emph default
-memberikan informasi tentang instalasi dan pengaturan mandiri yang mengacu
- dan mempunyai tautan di buku petunjuk lainnya, yaitu buku 
+memberikan informasi tentang instalasi dan pengaturan mandiri yang mengacu dan mempunyai tautan di buku petunjuk lainnya,
+ yaitu buku 
 \emph on
 Pengaturan Mandiri
 \emph default
@@ -2213,7 +2288,8 @@ Pengaturan Mandiri
 \end_layout
 
 \begin_layout Standard
-Untuk melanjutkan, terlebih dahulu perlu memahami tahapan ini:
+Untuk melanjutkan,
+ terlebih dahulu perlu memahami tahapan ini:
 \end_layout
 
 \begin_layout Standard
@@ -2226,7 +2302,8 @@ Untuk melanjutkan, terlebih dahulu perlu memahami tahapan ini:
 \begin_layout Standard
 \align center
 Apabila anda baru mengenal \SpecialChar LyX
-, silakan anda membaca 
+,
+ silakan anda membaca 
 \emph on
 Tutorial
 \emph default
@@ -2242,12 +2319,12 @@ Tutorial
 \end_layout
 
 \begin_layout Standard
-Apabila belum membaca, anda kemungkinan mendapatkan kesulitan.
+Apabila belum membaca,
+ anda kemungkinan mendapatkan kesulitan.
  \SpecialChar LyX
  dapat melakukan hal-hal yang anda harapkan dari program pengolah kata,
  namun mempunyai cara pandang yang sedikit berbeda.
- Oleh karena itu perlu mengenal dan membiasakan dengan membaca dan mengikuti
- 
+ Oleh karena itu perlu mengenal dan membiasakan dengan membaca dan mengikuti 
 \emph on
 Tutorial
 \emph default
@@ -2273,12 +2350,11 @@ Kontribusi ke \SpecialChar LyX
 
 \begin_layout Standard
 Sebagian besar program dalam \SpecialChar LyX
- ditulis menggunakan bahasa C++ (program memanggil
- fungsi \SpecialChar LaTeX
+ ditulis menggunakan bahasa C++ (program memanggil fungsi \SpecialChar LaTeX
  ditulis dalam Python).
  Proyek \SpecialChar LyX
- adalah suatu pekerjaan yang besar dan rumit, oleh karena itu belum
- terbebas dari kutu program (
+ adalah suatu pekerjaan yang besar dan rumit,
+ oleh karena itu belum terbebas dari kutu program (
 \emph on
 bugs
 \emph default
@@ -2299,23 +2375,25 @@ bug
 
 \begin_layout Standard
 Ketika menggunakan \SpecialChar LyX
-, kemungkinan anda menemukan perilaku program yang tidak
- seperti yang diharapkan; hal ini merupakan tanda adanya tidak kesempurnaan
- program karena kutu program.
- Ada kemungkinan terjadi, walaupun jarang, \SpecialChar LyX
- berhenti dan keluar dengan sendiriny
-a (
+,
+ kemungkinan anda menemukan perilaku program yang tidak seperti yang diharapkan;
+ hal ini merupakan tanda adanya tidak kesempurnaan program karena kutu program.
+ Ada kemungkinan terjadi,
+ walaupun jarang,
+ \SpecialChar LyX
+ berhenti dan keluar dengan sendirinya (
 \emph on
 crash
 \emph default
 ) atau beku (
 \emph on
-hang, freeze
+hang,
+ freeze
 \emph default
 ) sehingga tidak bisa dikontrol sama sekali.
  Bagi Tim \SpecialChar LyX
-, permasalahan dengan antarmuka pengguna dapat dikatagorikan sebagai
- kutu-kutu yang serius dan perlu diatasi.
+,
+ permasalahan dengan antarmuka pengguna dapat dikatagorikan sebagai kutu-kutu yang serius dan perlu diatasi.
  
 \end_layout
 
@@ -2337,11 +2415,13 @@ https://www.lyx.org/trac/wiki/BugTrackerHome
 
 \family default
 .
- Sebelum melaporkan adanya kutu program, anda perlu memeriksa apakah sudah
- ada yang melaporkan dengan kasus serupa.
- Apabila anda mempunyai komentar tentang kutu program sebelumnya, atau melaporka
-n adanya kutu program yang baru, anda bisa menggunakan sistem pelacak kutu
- program, atau mengirim email langsung ke mailing list, 
+ Sebelum melaporkan adanya kutu program,
+ anda perlu memeriksa apakah sudah ada yang melaporkan dengan kasus serupa.
+ Apabila anda mempunyai komentar tentang kutu program sebelumnya,
+ atau melaporkan adanya kutu program yang baru,
+ anda bisa menggunakan sistem pelacak kutu program,
+ atau mengirim email langsung ke mailing list,
+ 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
@@ -2352,7 +2432,8 @@ literal "false"
 
 .
  Arsipnya akan ditautkan ke halaman web \SpecialChar LyX
-, 
+,
+ 
 \family typewriter
 
 \begin_inset Flex URL
@@ -2372,25 +2453,22 @@ https://www.lyx.org/
 
 \begin_layout Standard
 Laporan kutu program hendaknya dilengkapi dengan versi \SpecialChar LyX
- yang digunakan ketika
- menemui masalah.
- Laporan yang akurat serta terperinci dengan penjelasan akan sangat membantu
- agar mempercepat menemukan dan membersihkan dari kutu program.
- Waktu dari para pemrogram untuk mengatasi kutu program akan mengurangi
- waktu mereka untuk pengembangan lain di \SpecialChar LyX
+ yang digunakan ketika menemui masalah.
+ Laporan yang akurat serta terperinci dengan penjelasan akan sangat membantu agar mempercepat menemukan dan membersihkan dari kutu program.
+ Waktu dari para pemrogram untuk mengatasi kutu program akan mengurangi waktu mereka untuk pengembangan lain di \SpecialChar LyX
 .
- Anda juga perlu memberikan informasi sistem operasi dan versi yang digunakan
- menjalankan \SpecialChar LyX
+ Anda juga perlu memberikan informasi sistem operasi dan versi yang digunakan menjalankan \SpecialChar LyX
 .
- Apabila memungkinkan, berikan juga daftar versi 
+ Apabila memungkinkan,
+ berikan juga daftar versi 
 \emph on
 library
 \emph default
- yang diinstall dalam sistem operasi anda, juga program eksternal yang digunakan
- \SpecialChar LyX
+ yang diinstall dalam sistem operasi anda,
+ juga program eksternal yang digunakan \SpecialChar LyX
  ketika menemui masalah.
- Apabila permasalahan terkait dengan kompilasi dan konfigurasi, sebutkan
- nama kompiler yang dipakai.
+ Apabila permasalahan terkait dengan kompilasi dan konfigurasi,
+ sebutkan nama kompiler yang dipakai.
  Ada baiknya apabila melampirkan berkas 
 \family typewriter
 config.log
@@ -2404,15 +2482,15 @@ Peran serta mengatasi masalah dan pengembangan baru
 
 \begin_layout Standard
 Apabila anda melakukan perubahan di sumber program \SpecialChar LyX
- dan menurut anda seharusnya
- menjadi bagian sumber program \SpecialChar LyX
-, silakan kirim perubahan dalam berkas diff
- (
+ dan menurut anda seharusnya menjadi bagian sumber program \SpecialChar LyX
+,
+ silakan kirim perubahan dalam berkas diff (
 \emph on
 unified format
 \emph default
-) ke alamat pengembangan yang sudah disebutkan sebelumnya, dilengkapi dengan
- catatan perubahan, serta gambaran ringkas mengenai tempelan program anda.
+) ke alamat pengembangan yang sudah disebutkan sebelumnya,
+ dilengkapi dengan catatan perubahan,
+ serta gambaran ringkas mengenai tempelan program anda.
 \end_layout
 
 \begin_layout Subsection
@@ -2422,13 +2500,14 @@ Peran Serta Membuat Buku Petunjuk
 \begin_layout Standard
 Dokumentasi buku petunjuk yang dimiliki \SpecialChar LyX
  sudah sangat lengkap.
- Namun demikian, karena pengembangan \SpecialChar LyX
- terus-menerus dilakukan, dan setiap
- rilis baru pasti mempunyai fitur baru, dokumentasi buku petunjuk perlu
- disesuaikan setiap saat mengikuti perkembangan \SpecialChar LyX
+ Namun demikian,
+ karena pengembangan \SpecialChar LyX
+ terus-menerus dilakukan,
+ dan setiap rilis baru pasti mempunyai fitur baru,
+ dokumentasi buku petunjuk perlu disesuaikan setiap saat mengikuti perkembangan \SpecialChar LyX
 .
- Pada bab ini dijelaskan apakah yang perlu anda lakukan ketika menemui kesalahan
- di buku petunjuk, atau saran perbaikan buku petunjuk.
+ Pada bab ini dijelaskan apakah yang perlu anda lakukan ketika menemui kesalahan di buku petunjuk,
+ atau saran perbaikan buku petunjuk.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2455,10 +2534,12 @@ Bergabung dengan Tim Dokumentasi
 \end_layout
 
 \begin_layout Standard
-Pekerjaan Tim Dokumentasi, seperti pekerjaan lainnya di \SpecialChar LyX
-, akan selalu memerlukan
- bantuan! Apabila anda ingin berperan serta aktif dan ingin andil dalam
- Tim Dokumentasi, anda perlu mengikuti langkah-langkah sebagai berikut:
+Pekerjaan Tim Dokumentasi,
+ seperti pekerjaan lainnya di \SpecialChar LyX
+,
+ akan selalu memerlukan bantuan!
+ Apabila anda ingin berperan serta aktif dan ingin andil dalam Tim Dokumentasi,
+ anda perlu mengikuti langkah-langkah sebagai berikut:
 \end_layout
 
 \begin_layout Enumerate
@@ -2482,7 +2563,8 @@ https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 \end_layout
 
 \begin_layout Enumerate
-Selanjutnya, anda perlu membaca buku 
+Selanjutnya,
+ anda perlu membaca buku 
 \emph on
 Petunjuk Penggunaan
 \emph default
@@ -2494,8 +2576,7 @@ Tutorial
 \begin_inset Newline newline
 \end_inset
 
-Tujuan membaca dokumen tersebut adalah untuk memberikan pemahaman dan ide
- kepada anda.
+Tujuan membaca dokumen tersebut adalah untuk memberikan pemahaman dan ide kepada anda.
  Buku 
 \emph on
 Tutorial
@@ -2526,16 +2607,14 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-untuk membahas tentang perubahan yang akan dilakukan, serta untuk memperoleh
- masukan dari mereka.
+untuk membahas tentang perubahan yang akan dilakukan,
+ serta untuk memperoleh masukan dari mereka.
 \end_layout
 
 \begin_layout Standard
-Perubahan yang anda usulkan mungkin berupa perubahan untuk meningkat-kan
- kejelasan yang sudah ada, atau bisa berupa perombakan besar dan pengaturan
- ulang dari buku petunjuk sebelumnya.
- Pada dasarnya semua perbaikan akan kami terima dengan terbuka agar lebih
- bermanfaat bagi masyarakat pemakai \SpecialChar LyX
+Perubahan yang anda usulkan mungkin berupa perubahan untuk meningkat-kan kejelasan yang sudah ada,
+ atau bisa berupa perombakan besar dan pengaturan ulang dari buku petunjuk sebelumnya.
+ Pada dasarnya semua perbaikan akan kami terima dengan terbuka agar lebih bermanfaat bagi masyarakat pemakai \SpecialChar LyX
 .
 \end_layout
 

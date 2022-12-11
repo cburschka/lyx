@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -55,9 +55,9 @@ multicol
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -108,12 +108,16 @@ multicol
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -127,7 +131,8 @@ The whole poster is a single (huge) beamer frame!
 \end_layout
 
 \begin_layout Plain Layout
-You can use any beamer element, especially the use of blocks is advisable.
+You can use any beamer element,
+ especially the use of blocks is advisable.
 \end_layout
 
 \end_inset
@@ -147,8 +152,8 @@ status open
 \begin_layout Plain Layout
 Below we set up a title line manually with \SpecialChar TeX
  mode.
- If you use a dedicated beamerposter theme, the title will be generated
- automatically from the information given in the preamble.
+ If you use a dedicated beamerposter theme,
+ the title will be generated automatically from the information given in the preamble.
 \end_layout
 
 \end_inset
@@ -216,7 +221,8 @@ insertdate}
 status collapsed
 
 \begin_layout Plain Layout
-Fontsizes: From tiny to very huge!
+Fontsizes:
+ From tiny to very huge!
 \end_layout
 
 \end_inset
@@ -439,7 +445,8 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-To set text in columns in this wide block, we use the 
+To set text in columns in this wide block,
+ we use the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -473,8 +480,8 @@ columnsep}
 \end_inset
 
  that can be seen above in the \SpecialChar LyX
- work area, and we went for four columns
- to get a reasonable line length.
+ work area,
+ and we went for four columns to get a reasonable line length.
  The 
 \begin_inset Quotes eld
 \end_inset
@@ -502,42 +509,42 @@ Additional Features
 \end_layout
 
 \begin_layout Plain Layout
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+ sed diam voluptua.
  At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
+ Stet clita kasd gubergren,
+ no sea takimata sanctus est Lorem ipsum dolor sit amet.
 \end_layout
 
 \begin_layout Plain Layout
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
- consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
- accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
- augue duis dolore te feugait nulla facilisi.
- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
- nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+ vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+ Lorem ipsum dolor sit amet,
+ consectetuer adipiscing elit,
+ sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 \end_layout
 
 \begin_layout Plain Layout
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
- lobortis nisl ut aliquip ex ea commodo consequat.
- Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
- consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
- accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
- augue duis dolore te feugait nulla facilisi.
+Ut wisi enim ad minim veniam,
+ quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+ vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
 \end_layout
 
 \end_inset

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -30,9 +30,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -83,12 +83,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -103,7 +107,15 @@ In order to properly typeset the document and have instant preview working,
 \end_layout
 
 \begin_layout LyX-Code
-xy, qtree, tipa, pstricks, pst-plot, rotating, tikz, pgf, etex
+xy,
+ qtree,
+ tipa,
+ pstricks,
+ pst-plot,
+ rotating,
+ tikz,
+ pgf,
+ etex
 \end_layout
 
 \begin_layout Standard
@@ -111,12 +123,14 @@ Due to the use of postscript specials in Section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:PSTricks"
+nolink "false"
 
 \end_inset
 
-, only the Postscript or PDF (ps2pdf) output formats will correctly render
- the included images.
- Starting with TeX Live 2021, you may need to add the flag 
+,
+ only the Postscript or PDF (ps2pdf) output formats will correctly render the included images.
+ Starting with TeX Live 2021,
+ you may need to add the flag 
 \family typewriter
 -dALLOWPSTRANSPARENCY
 \family default
@@ -126,8 +140,8 @@ ps2pdf
 \family default
  converter.
  The PDF (Xe\SpecialChar TeX
-) output seems to also work, while trying to typeset the document
- with 
+) output seems to also work,
+ while trying to typeset the document with 
 \family typewriter
 pdflatex
 \family default
@@ -143,8 +157,8 @@ Diagrams by XY(-pic)
 \end_layout
 
 \begin_layout Standard
-Few examples of diagrams were taken from Aaron Landa's archive of xy-pic
- examples, see 
+Few examples of diagrams were taken from Aaron Landa's archive of xy-pic examples,
+ see 
 \begin_inset Flex URL
 status collapsed
 
@@ -178,7 +192,8 @@ xy
 
 \begin_layout Plain Layout
 
-(5,10)*{}; (-10,-10)*{} **
+(5,10)*{};
+ (-10,-10)*{} **
 \backslash
 crv{(6,-2)&(-12,4)}
 \end_layout
@@ -202,7 +217,8 @@ hole}="z";
 
 \begin_layout Plain Layout
 
-"y"+(0,-1); (2,-10)*{} **
+"y"+(0,-1);
+ (2,-10)*{} **
 \backslash
 crv{}
 \backslash
@@ -213,28 +229,32 @@ hole}="M";
 
 \begin_layout Plain Layout
 
-(-10,10)*{}; "z" **
+(-10,10)*{};
+ "z" **
 \backslash
 crv{(-9,0)};
 \end_layout
 
 \begin_layout Plain Layout
 
-"z"; "M" **
+"z";
+ "M" **
 \backslash
 crv{};
 \end_layout
 
 \begin_layout Plain Layout
 
-"M"; "x" **
+"M";
+ "x" **
 \backslash
 crv{(5,0)};
 \end_layout
 
 \begin_layout Plain Layout
 
-"x"; "y" **
+"x";
+ "y" **
 \backslash
 crv{(0,7) & (-5,6)};
 \end_layout
@@ -775,9 +795,11 @@ bullet}="LD"+(-1,2)*{x};
 
 "RU";"RD" **
 \backslash
-crv{(4,2) & (4,-1)}; ?(.1)*
+crv{(4,2) & (4,-1)};
+ ?(.1)*
 \backslash
-dir{<}; ?(.85)*
+dir{<};
+ ?(.85)*
 \backslash
 dir{<};
 \end_layout
@@ -793,19 +815,22 @@ crv{(-4,-2) & (-4,1)};
 
 ?(.08)*
 \backslash
-dir{<}; ?(.85)*
+dir{<};
+ ?(.85)*
 \backslash
 dir{<};
 \end_layout
 
 \begin_layout Plain Layout
 
-(7.5,0)*{}="x1"; (-7.5,0)*{}="x2";
+(7.5,0)*{}="x1";
+ (-7.5,0)*{}="x2";
 \end_layout
 
 \begin_layout Plain Layout
 
-"x1"; "x2" **
+"x1";
+ "x2" **
 \backslash
 crv{(7,-10) & (-7,-10)};
 \end_layout
@@ -844,65 +869,76 @@ bullet}="LUD";
 
 \begin_layout Plain Layout
 
-(-16,-2.5)*{}="A"; (16.1,-14.9)*{}="B";
+(-16,-2.5)*{}="A";
+ (16.1,-14.9)*{}="B";
 \end_layout
 
 \begin_layout Plain Layout
 
-"RD"; "RDD" **
+"RD";
+ "RDD" **
 \backslash
 dir{-};
 \end_layout
 
 \begin_layout Plain Layout
 
-"LD"; "LDD" **
+"LD";
+ "LDD" **
 \backslash
 dir{-};
 \end_layout
 
 \begin_layout Plain Layout
 
-"A"; "LUD" **
+"A";
+ "LUD" **
 \backslash
 dir{.};
 \end_layout
 
 \begin_layout Plain Layout
 
-"RDD"; "LDD" **
+"RDD";
+ "LDD" **
 \backslash
-crv{(0,-17)}; ?(.57)*
+crv{(0,-17)};
+ ?(.57)*
 \backslash
 dir{>};
 \end_layout
 
 \begin_layout Plain Layout
 
-"RU"; "RUD" **
+"RU";
+ "RUD" **
 \backslash
 dir{-};
 \end_layout
 
 \begin_layout Plain Layout
 
-"LU"; "A" **
+"LU";
+ "A" **
 \backslash
 dir{-};
 \end_layout
 
 \begin_layout Plain Layout
 
-"B"; "RUD" **
+"B";
+ "RUD" **
 \backslash
 crv{(18,-14.15)};
 \end_layout
 
 \begin_layout Plain Layout
 
-"B"; "LUD" **
+"B";
+ "LUD" **
 \backslash
-crv{~*=<4pt>{.}(0,-18)}; ?(.4)*
+crv{~*=<4pt>{.}(0,-18)};
+ ?(.4)*
 \backslash
 dir{<};
 \end_layout
@@ -962,7 +998,9 @@ xy
 
 \begin_layout Plain Layout
 
-(-10,12)*{}; (-10,-12)*{}; **
+(-10,12)*{};
+ (-10,-12)*{};
+ **
 \backslash
 dir{-}?(.5)*
 \backslash
@@ -1862,8 +1900,7 @@ begin{pspicture*}(-1.1,-1.1)(1.1,1.1)
 
 
 \backslash
-parametricplot[plotstyle=line,plotpoints=50,linecolor=red]{0}{8}{50 t mul
- cos 100 t mul sin}
+parametricplot[plotstyle=line,plotpoints=50,linecolor=red]{0}{8}{50 t mul cos 100 t mul sin}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1902,8 +1939,7 @@ begin{pspicture*}(-1.1,-1.1)(1.1,1.1)
 
 
 \backslash
-parametricplot[plotstyle=line,plotpoints=100,linecolor=red]{0}{8}{150 t
- mul cos 100 t mul sin}
+parametricplot[plotstyle=line,plotpoints=100,linecolor=red]{0}{8}{150 t mul cos 100 t mul sin}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1942,8 +1978,7 @@ begin{pspicture*}(-1.1,-1.1)(1.1,1.1)
 
 
 \backslash
-parametricplot[plotstyle=line,plotpoints=150,linecolor=red]{0}{8}{150 t
- mul cos 200 t mul sin}
+parametricplot[plotstyle=line,plotpoints=150,linecolor=red]{0}{8}{150 t mul cos 200 t mul sin}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1982,8 +2017,7 @@ begin{pspicture*}(-1.1,-1.1)(1.1,1.1)
 
 
 \backslash
-parametricplot[plotstyle=line,plotpoints=200,linecolor=red]{0}{8}{250 t
- mul cos 200 t mul sin}
+parametricplot[plotstyle=line,plotpoints=200,linecolor=red]{0}{8}{250 t mul cos 200 t mul sin}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2095,7 +2129,8 @@ small},
 
 \begin_layout Plain Layout
 
-    string/.style={draw=red, thick},
+    string/.style={draw=red,
+ thick},
 \end_layout
 
 \begin_layout Plain Layout

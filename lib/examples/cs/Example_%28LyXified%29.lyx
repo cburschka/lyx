@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -110,7 +114,9 @@ Základní filosofie
 
 \begin_layout Standard
 Základní filosofií \SpecialChar LyX
-u je, že byste se měli starat o obsah toho, co píšete,
+u je,
+ že byste se měli starat o obsah toho,
+ co píšete,
  a ne o formu.
 \end_layout
 
@@ -122,11 +128,12 @@ Jak to dělá \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  používá \SpecialChar LaTeX
-, systém pro přípravu dokumentů, který vytvořil Leslie Lamport
- v roce 1985.
+,
+ systém pro přípravu dokumentů,
+ který vytvořil Leslie Lamport v roce 1985.
  Tento systém je zase postaven nad sázecím jazykem zvaným \SpecialChar TeX
-, vytvořeným Donaldem
- Knuthem roku 1984.
+,
+ vytvořeným Donaldem Knuthem roku 1984.
  \SpecialChar LaTeX
  je postaven na podobné filosofii jako \SpecialChar LyX
 .
@@ -144,15 +151,15 @@ literal "true"
 
 \begin_layout Quote
 Účelem typografického designu je pomoct čtenáři pochopit autorovy myšlenky.
- Aby byl dokument snadno čitelný, musí jeho vizuální struktura odpovídat
- jeho logické struktuře.
- Logicky rozdílné části textu, jako třeba citáty a počítačové programy,
+ Aby byl dokument snadno čitelný,
+ musí jeho vizuální struktura odpovídat jeho logické struktuře.
+ Logicky rozdílné části textu,
+ jako třeba citáty a počítačové programy,
  by měly být rozdílné i co se týče vzhledu...
  Protože \SpecialChar LaTeX
- nerozumí vašemu textu, musíte explicitně vyjádřit logickou strukturu
- napsáním speciálních příkazů.
- Při psaní dokumentu byste se měli zabývat jeho logickou strukturou a ne
- jeho výsledným vzhledem.
+ nerozumí vašemu textu,
+ musíte explicitně vyjádřit logickou strukturu napsáním speciálních příkazů.
+ Při psaní dokumentu byste se měli zabývat jeho logickou strukturou a ne jeho výsledným vzhledem.
 \end_layout
 
 \begin_layout Subsection
@@ -170,8 +177,8 @@ name "subsec:LyX_lepsi"
 \SpecialChar LyX
  může být užitečný pro více lidí než \SpecialChar LaTeX
 .
- Naučit se s ním pracovat je mnohem jednodušší, protože se nemusíte učit
- \SpecialChar LaTeX
+ Naučit se s ním pracovat je mnohem jednodušší,
+ protože se nemusíte učit \SpecialChar LaTeX
  (což je v podstatě programovací jazyk).
  \SpecialChar LyX
  je podobný ostatním textovým procesorům typu 
@@ -182,7 +189,9 @@ what you see is what you get
 \begin_inset Quotes grd
 \end_inset
 
- (vidíš to, co dostaneš) až na to, že \SpecialChar LyX
+ (vidíš to,
+ co dostaneš) až na to,
+ že \SpecialChar LyX
  je 
 \begin_inset Quotes gld
 \end_inset
@@ -191,12 +200,14 @@ what you see is what you mean
 \begin_inset Quotes grd
 \end_inset
 
- (vidíš to, co jsi myslel).
+ (vidíš to,
+ co jsi myslel).
  Jednoduché používání textových procesorů tak kombinuje se silou \SpecialChar LaTeX
-u, což
- je skvělé.
+u,
+ což je skvělé.
  Dále je formát souboru nezávislý na operačním systému.
- A to nejlepší nakonec: \SpecialChar LyX
+ A to nejlepší nakonec:
+ \SpecialChar LyX
  je zadarmo!
 \end_layout
 
@@ -207,12 +218,14 @@ u
 
 \begin_layout Standard
 \SpecialChar LyX
- má spoustu vlastností, které usnadňují psaní dokumentů.
+ má spoustu vlastností,
+ které usnadňují psaní dokumentů.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-nakonec, proč byste ho jinak chtěli používat?
+nakonec,
+ proč byste ho jinak chtěli používat?
 \end_layout
 
 \end_inset
@@ -236,19 +249,23 @@ em je jednoduché psát a upravovat matematické vzorce.
 \end_layout
 
 \begin_layout Standard
-Filosofičtější pojednání o tom, proč je \SpecialChar LyX
- lepší než spousta jiných textových
- procesorů, najdete v Sekci 
+Filosofičtější pojednání o tom,
+ proč je \SpecialChar LyX
+ lepší než spousta jiných textových procesorů,
+ najdete v Sekci 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:LyX_lepsi"
+nolink "false"
 
 \end_inset
 
-, která je na straně 
+,
+ která je na straně 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "subsec:LyX_lepsi"
+nolink "false"
 
 \end_inset
 
@@ -286,8 +303,8 @@ JSEM SKVĚLÝ
 \end_layout
 
 \begin_layout Standard
-Po všem tom vědátorování jsem se začal cítit víc jako umělec, a tak jsem
- napsal toto haiku.
+Po všem tom vědátorování jsem se začal cítit víc jako umělec,
+ a tak jsem napsal toto haiku.
 \end_layout
 
 \begin_layout Verse
@@ -308,7 +325,8 @@ Matematika
 \end_layout
 
 \begin_layout Standard
-Moje nejoblíbenější rovnice, je řešení kvadratické rovnice.
+Moje nejoblíbenější rovnice,
+ je řešení kvadratické rovnice.
  Pokud 
 \lang english
 
@@ -318,7 +336,8 @@ Moje nejoblíbenější rovnice, je řešení kvadratické rovnice.
 
 \lang czech
  (rov.
- 1), pak 
+ 1),
+ pak 
 \lang english
 
 \begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
@@ -331,7 +350,8 @@ Moje nejoblíbenější rovnice, je řešení kvadratické rovnice.
 \end_layout
 
 \begin_layout Standard
-Moje další oblíbená rovnice je základem diferenciálního počtu: 
+Moje další oblíbená rovnice je základem diferenciálního počtu:
+ 
 \lang english
 
 \begin_inset Formula $f'(x)=\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
@@ -354,15 +374,16 @@ ování tohoto dokumentu.
 
 \begin_layout Itemize
 Odstranil jsem linky z pomlček.
- Byly tu jen proto, aby oddělily titulek a reference od zbytku dokumentu.
+ Byly tu jen proto,
+ aby oddělily titulek a reference od zbytku dokumentu.
  \SpecialChar LyX
  (\SpecialChar LaTeX
 ) umí tyto části dokumentu od zbytku oddělit automaticky vynecháním místa.
 \end_layout
 
 \begin_layout Itemize
-Matematické rovnice jsem nedával do vzorce na celou řádku (display) a také
- jsem nepoužil jejich automatické číslování, protože není popsané v 
+Matematické rovnice jsem nedával do vzorce na celou řádku (display) a také jsem nepoužil jejich automatické číslování,
+ protože není popsané v 
 \emph on
 Průvodci \SpecialChar LyX
 em.
@@ -379,7 +400,8 @@ Reference
 
  níže.
  \SpecialChar LyX
- ho napíše automaticky, když vyberete styl 
+ ho napíše automaticky,
+ když vyberete styl 
 \family sans
 Literatura.
 \end_layout
@@ -392,14 +414,18 @@ literal "true"
 
 \end_inset
 
-Lamport, Leslie.
+Lamport,
+ Leslie.
  
 \emph on
 \SpecialChar LaTeX
  – A document preparation system.
 
 \emph default
- Massachusetts: Addison-Wesley, second edition, 1994.
+ Massachusetts:
+ Addison-Wesley,
+ second edition,
+ 1994.
 \end_layout
 
 \end_body

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,9 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -89,12 +89,12 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \branch english
 \selected 0
 \filename_suffix 0
-\color #fa1849
+\color #fa1849 #05e7b6
 \end_branch
-\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -110,12 +110,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -133,7 +137,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-Keď to chcete komentovať alebo korigovať, páčte nám poslať správu na: 
+Keď to chcete komentovať alebo korigovať,
+ páčte nám poslať správu na:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -165,34 +171,48 @@ e!
 \end_layout
 
 \begin_layout Standard
-Tento súbor je určený všetkým, ktorí nepočuli o \SpecialChar LaTeX
-e, alebo ho veľmi nepoznajú.
+Tento súbor je určený všetkým,
+ ktorí nepočuli o \SpecialChar LaTeX
+e,
+ alebo ho veľmi nepoznajú.
  Teraz hlavne nepanikárte - pre používanie \SpecialChar LyX
 u sa nemusíte učiť \SpecialChar LaTeX
 .
- To je, nakoniec, hlavný účel \SpecialChar LyX
-u: poskytnúť skoro-WYSIWYG rozhranie pre \SpecialChar LaTeX
+ To je,
+ nakoniec,
+ hlavný účel \SpecialChar LyX
+u:
+ poskytnúť skoro-WYSIWYG rozhranie pre \SpecialChar LaTeX
 .
- Na druhej strane, je pár vecí, ktoré sa budete musieť naučiť, aby ste mohli
- používať \SpecialChar LyX
+ Na druhej strane,
+ je pár vecí,
+ ktoré sa budete musieť naučiť,
+ aby ste mohli používať \SpecialChar LyX
  efektívne.
 \end_layout
 
 \begin_layout Standard
 Niektorí z vás sa už pravdepodobne pokúšali robiť niečo s týmto dokumentom,
  napr.
- vložiť dve medzery za bodku, alebo tri prázdne riadky medzi odseky.
- Po chvíli ste zistili, že to neide.
- V podstate zistíte, že väčšina malých trikov, ktoré ste používali v iných
- textových procesoroch jednoducho v \SpecialChar LyX
+ vložiť dve medzery za bodku,
+ alebo tri prázdne riadky medzi odseky.
+ Po chvíli ste zistili,
+ že to neide.
+ V podstate zistíte,
+ že väčšina malých trikov,
+ ktoré ste používali v iných textových procesoroch jednoducho v \SpecialChar LyX
 e nefunguje.
- Je to tak pretože väčšina textových procesorov ktoré ste v minulosti používali
- sú len vyčačkané písacie stroje.
- Vyžadujú od vás, aby ste vložili všetky medzery, veľkosti písem atď.
- Takže skončíte nielen písaním textu, ale aj jeho formátovaním.
+ Je to tak pretože väčšina textových procesorov ktoré ste v minulosti používali sú len vyčačkané písacie stroje.
+ Vyžadujú od vás,
+ aby ste vložili všetky medzery,
+ veľkosti písem atď.
+ Takže skončíte nielen písaním textu,
+ ale aj jeho formátovaním.
  A na to je \SpecialChar LyX
-: formátuje za vás a to konzistentne v celom dokumente.
- Necháva vás zamerať sa na dôležité veci, ako napríklad obsah vášho textu.
+:
+ formátuje za vás a to konzistentne v celom dokumente.
+ Necháva vás zamerať sa na dôležité veci,
+ ako napríklad obsah vášho textu.
 \end_layout
 
 \begin_layout Standard
@@ -218,11 +238,17 @@ Prehľad
 
 \begin_layout Standard
 Používanie \SpecialChar LyX
-u vychádza zo zmeny myslenia, ktoré vy, užívateľ, musíte urobiť.
- Viete, že väčšina textových procesorov sú jednoducho vylepšené písacie
- stroje.
- Kedysi všetko, čo sme mali na tvorbu dokumentov, boli písacie stroje, tak
- všetci sme sa naučili určité triky, ako obísť ich obmedzenia.
+u vychádza zo zmeny myslenia,
+ ktoré vy,
+ užívateľ,
+ musíte urobiť.
+ Viete,
+ že väčšina textových procesorov sú jednoducho vylepšené písacie stroje.
+ Kedysi všetko,
+ čo sme mali na tvorbu dokumentov,
+ boli písacie stroje,
+ tak všetci sme sa naučili určité triky,
+ ako obísť ich obmedzenia.
  Podčiarkovanie znakom 
 \begin_inset Quotes gld
 \end_inset
@@ -232,27 +258,28 @@ _
 \end_inset
 
  sa stalo spôsobom ako zvýrazniť text.
- Na vytvorenie tabuľky ste najprv museli vypočítať aký široký bude každý
- stĺpec a nastaviť príslušné tabelačné zarážky.
+ Na vytvorenie tabuľky ste najprv museli vypočítať aký široký bude každý stĺpec a nastaviť príslušné tabelačné zarážky.
  Rozdeľovanie na konci riadku vyžadovalo pozorné oko a veľa predvídania.
 \end_layout
 
 \begin_layout Standard
-Inými slovami, všetci sme boli cvičený zaoberať sa detailmi, kam ktorý znak
- má ísť.
+Inými slovami,
+ všetci sme boli cvičený zaoberať sa detailmi,
+ kam ktorý znak má ísť.
 \end_layout
 
 \begin_layout Standard
 Následkom toho všetky textové procesory majú tieto spôsoby.
  Stále používajú tabulátory na vloženie prázdnych miest.
  Stále sa musíte trápiť kde presne na stránke sa niečo zobrazí.
- Zvýrazniť text znamená zmeniť písmo, podobne ako zmeniť koliesko na písacom
- stroji.
+ Zvýrazniť text znamená zmeniť písmo,
+ podobne ako zmeniť koliesko na písacom stroji.
  Prišli ste na nápad.
 \end_layout
 
 \begin_layout Standard
-Toto je to, v čom sa odlišuje \SpecialChar LyX
+Toto je to,
+ v čom sa odlišuje \SpecialChar LyX
  od bežného textového procesora.
  Nezaujímate sa ktorý znak kam ide.
  Poviete \SpecialChar LyX
@@ -260,8 +287,10 @@ u
 \emph on
 čo robíte
 \emph toggle
-, a \SpecialChar LyX
- sa postará o zvyšok, používajúc množinu pravidiel nazývaných
+,
+ a \SpecialChar LyX
+ sa postará o zvyšok,
+ používajúc množinu pravidiel nazývaných
 \emph default
  
 \emph on
@@ -272,7 +301,8 @@ u
 \end_layout
 
 \begin_layout Standard
-Predpokladajme, že píšete správu.
+Predpokladajme,
+ že píšete správu.
  Na jej začiatku chcete časť nazvanú 
 \begin_inset Quotes gld
 \end_inset
@@ -282,8 +312,9 @@ Predpokladajme, že píšete správu.
 \end_inset
 
 .
- Tak pôjdete do nejakého menu vo vašom textovom procesore, ktoré mení veľkosť
- písma, a zmeníte ju.
+ Tak pôjdete do nejakého menu vo vašom textovom procesore,
+ ktoré mení veľkosť písma,
+ a zmeníte ju.
  Potom písmo prepnete na tučné.
  Potom napíšete 
 \begin_inset Quotes gld
@@ -302,15 +333,16 @@ Predpokladajme, že píšete správu.
 \end_inset
 
 .
- Samozrejme, že keď sa neskôr rozhodnete, že táto časť patrí v dokumente
- niekde inde, alebo vložíte pred ňu inú časť, musíte zmeniť číslovanie a
- tiež položku v obsahu.
+ Samozrejme,
+ že keď sa neskôr rozhodnete,
+ že táto časť patrí v dokumente niekde inde,
+ alebo vložíte pred ňu inú časť,
+ musíte zmeniť číslovanie a tiež položku v obsahu.
 \end_layout
 
 \begin_layout Standard
 V \SpecialChar LyX
-e sa nastavíte na rozbalovacie menu v ľavej časti tlačítkovej lišty a
- vyberiete 
+e sa nastavíte na rozbalovacie menu v ľavej časti tlačítkovej lišty a vyberiete 
 \begin_inset Quotes gld
 \end_inset
 
@@ -332,44 +364,56 @@ Sekcia
 \begin_layout Standard
 Áno.
  To je všetko.
- Ak vystrihnete a vložíte sekciu (časť), automaticky bude prečíslovaná —
+ Ak vystrihnete a vložíte sekciu (časť),
+ automaticky bude prečíslovaná —
  všade.
- Je aj spôsob, aby \SpecialChar LyX
- automaticky aktualizoval všetky referencie v súbore
- na danú časť.
+ Je aj spôsob,
+ aby \SpecialChar LyX
+ automaticky aktualizoval všetky referencie v súbore na danú časť.
 \end_layout
 
 \begin_layout Standard
 Ďalej je tu problém dôslednosti.
  O päť dní neskôr si otvoríte svoju správu a začnete písať časť 4.
- Avšak zabudli ste, že ste používali 18
+ Avšak zabudli ste,
+ že ste používali 18
 \begin_inset space \thinspace{}
 \end_inset
 
-pt tučné písmo, namiesto 16
+pt tučné písmo,
+ namiesto 16
 \begin_inset space \thinspace{}
 \end_inset
 
-pt, takže nadpis časti 4 bude napísaný iným písmom, ako nadpis časti 1.
+pt,
+ takže nadpis časti 4 bude napísaný iným písmom,
+ ako nadpis časti 1.
  Tento problém v \SpecialChar LyX
 e neexistuje.
- Počítač sa stará o všetko to, ktorá vec má akú veľkosť písma.
+ Počítač sa stará o všetko to,
+ ktorá vec má akú veľkosť písma.
 \end_layout
 
 \begin_layout Standard
 Tu je ďalší príklad.
- Predpokladajme, že vytvárate zoznam.
+ Predpokladajme,
+ že vytvárate zoznam.
  V iných textových procesoroch je zoznam kopa tabulátorov a prázdnych riadkov.
- Potrebujete vypočítať kde dať názov každej položky zoznamu, aký bude názov
- vyzerať, koľko prázdnych riadkov dať medzi jednotlivé položky atď.
+ Potrebujete vypočítať kde dať názov každej položky zoznamu,
+ aký bude názov vyzerať,
+ koľko prázdnych riadkov dať medzi jednotlivé položky atď.
  V \SpecialChar LyX
-e máte len dve starosti: aký typ zoznamu to bude, a čo do neho dáte.
+e máte len dve starosti:
+ aký typ zoznamu to bude,
+ a čo do neho dáte.
  To je všetko.
 \end_layout
 
 \begin_layout Standard
 Takže základná myšlienka v \SpecialChar LyX
-e je: špecifikovať čo robiť, nie ako to robiť.
+e je:
+ špecifikovať čo robiť,
+ nie ako to robiť.
 \end_layout
 
 \begin_layout Subsection
@@ -378,7 +422,9 @@ om a textovými procesormi
 \end_layout
 
 \begin_layout Standard
-Je veľa malých trikov, ktoré ste používali, a ktoré neexistujú v \SpecialChar LyX
+Je veľa malých trikov,
+ ktoré ste používali,
+ a ktoré neexistujú v \SpecialChar LyX
 e.
  Zo začiatku z toho budete šalieť.
  To je v poriadku.
@@ -386,12 +432,14 @@ e.
 \end_layout
 
 \begin_layout Standard
-Tu je malý zoznam vecí, ktoré v \SpecialChar LyX
+Tu je malý zoznam vecí,
+ ktoré v \SpecialChar LyX
 e nenájdete:
 \end_layout
 
 \begin_layout Itemize
-Neslávne pravítko, vyskytujúce sa vo veľa komerčných textových procesoroch
+Neslávne pravítko,
+ vyskytujúce sa vo veľa komerčných textových procesoroch
 \end_layout
 
 \begin_layout Itemize
@@ -408,12 +456,17 @@ u dva alebo viac krát)
 \end_layout
 
 \begin_layout Standard
-Tabulátory, spolu s pravítkom ukazujúcim pozíciu vecí na stránke, sú v \SpecialChar LyX
-e
- celkom zbytočné.
- O to, kde sa čo zobrazí na stránke, sa stará program a nie vy.
- Extra prázdne riadky sú podobné: \SpecialChar LyX
- ich pridáva tam, kde je to potrebné,
+Tabulátory,
+ spolu s pravítkom ukazujúcim pozíciu vecí na stránke,
+ sú v \SpecialChar LyX
+e celkom zbytočné.
+ O to,
+ kde sa čo zobrazí na stránke,
+ sa stará program a nie vy.
+ Extra prázdne riadky sú podobné:
+ \SpecialChar LyX
+ ich pridáva tam,
+ kde je to potrebné,
  záleží to na kontexte.
  Tiež riadkovanie je v \SpecialChar LyX
 e úplne zastaralé.
@@ -421,13 +474,14 @@ e úplne zastaralé.
 \emph on
 premenlivé
 \emph toggle
-, tak isto ako medzery medzi slovami.
+,
+ tak isto ako medzery medzi slovami.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Sú spôsoby ako nastaviť maximálnu a minimálnu medzeru, ale to vyžaduje nejaké
- znalosti \SpecialChar LaTeX
+Sú spôsoby ako nastaviť maximálnu a minimálnu medzeru,
+ ale to vyžaduje nejaké znalosti \SpecialChar LaTeX
 u.
  Takými vecami sa teraz nemusíme trápiť.
 \end_layout
@@ -438,9 +492,11 @@ u.
 \end_layout
 
 \begin_layout Standard
-Tu je niekoľko vecí, ktoré v \SpecialChar LyX
-e existujú, ale nepožívajú sa tak, ako by ste
- si mohli myslieť:
+Tu je niekoľko vecí,
+ ktoré v \SpecialChar LyX
+e existujú,
+ ale nepožívajú sa tak,
+ ako by ste si mohli myslieť:
 \end_layout
 
 \begin_layout Itemize
@@ -452,11 +508,15 @@ Zlomy strán
 \end_layout
 
 \begin_layout Itemize
-Riadkovanie (napr.: jednoduché, dvojité, atď.)
+Riadkovanie (napr.:
+ jednoduché,
+ dvojité,
+ atď.)
 \end_layout
 
 \begin_layout Itemize
-Biela medzera, horizontálna a vertikálna
+Biela medzera,
+ horizontálna a vertikálna
 \end_layout
 
 \begin_layout Itemize
@@ -464,24 +524,30 @@ Písma a veľkosti písem
 \end_layout
 
 \begin_layout Itemize
-Vlastnosti písma (tučné, kurzíva, podčiarknuté, atď.)
+Vlastnosti písma (tučné,
+ kurzíva,
+ podčiarknuté,
+ atď.)
 \end_layout
 
 \begin_layout Standard
 I keď existujú v \SpecialChar LyX
-e, vo všeobecnosti ich nepotrebujete.
+e,
+ vo všeobecnosti ich nepotrebujete.
  \SpecialChar LyX
- sa o ne postará za vás, v závislosti na tom, čo robíte.
- Rôznym častiam dokumentu sú automaticky nastavované rôzne vlastnosti a
- veľkosť písma.
- Zarovnanie Odsekov je závislé na kontexte: rôzne typy odsekov sa zarovnajú
- rôzne.
+ sa o ne postará za vás,
+ v závislosti na tom,
+ čo robíte.
+ Rôznym častiam dokumentu sú automaticky nastavované rôzne vlastnosti a veľkosť písma.
+ Zarovnanie Odsekov je závislé na kontexte:
+ rôzne typy odsekov sa zarovnajú rôzne.
  Zlomy strán sú tak isto spravované automaticky.
- Jediná výnimka sú medzery medzi riadkami, kde môžete potrebovať určité
- medzery medzi odstavcami, pritom určité medzery medzi riadkami v odstavci.
+ Jediná výnimka sú medzery medzi riadkami,
+ kde môžete potrebovať určité medzery medzi odstavcami,
+ pritom určité medzery medzi riadkami v odstavci.
  pokúsime sa popísať ako Medzery medzi riadkami v \SpecialChar LyX
-e fungujú, ale väčšina
- detailov je v 
+e fungujú,
+ ale väčšina detailov je v 
 \emph on
 Užívateľskej príručke
 \emph toggle
@@ -489,7 +555,8 @@ Užívateľskej príručke
 \end_layout
 
 \begin_layout Standard
-Nakoniec niekoľko oblastí, v ktorých \SpecialChar LyX
+Nakoniec niekoľko oblastí,
+ v ktorých \SpecialChar LyX
  (a \SpecialChar LaTeX
 ) prekonávajú bežné textové procesory:
 \end_layout
@@ -515,11 +582,12 @@ Krížové odkazy (kros-referencie)
 \end_layout
 
 \begin_layout Standard
-Súhlasíme, veľa moderných textových procesorov môže narábať s matematickými
- symbolmi, tabuľkami a rozdeľovaním.
- Avšak dokázali to len v poslednej dobe, zatiaľ čo \SpecialChar LyX
- je postavený nad systémom
- prípravy dokumentov \SpecialChar LaTeX
+Súhlasíme,
+ veľa moderných textových procesorov môže narábať s matematickými symbolmi,
+ tabuľkami a rozdeľovaním.
+ Avšak dokázali to len v poslednej dobe,
+ zatiaľ čo \SpecialChar LyX
+ je postavený nad systémom prípravy dokumentov \SpecialChar LaTeX
 .
  Ten tu je už 10 rokov a 
 \emph on
@@ -532,19 +600,22 @@ status collapsed
 
 \begin_layout Plain Layout
 Tak dobre.
- Nikto nie je perfektný, ale \SpecialChar LaTeX
- je tak bezchybný, ako len počítačový program
- môže byť.
+ Nikto nie je perfektný,
+ ale \SpecialChar LaTeX
+ je tak bezchybný,
+ ako len počítačový program môže byť.
 \end_layout
 
 \end_inset
 
- Ďalej takmer žiadny textový procesor nepodporuje krížové odkazy, ktoré,
- tak isto ako matematické vzorce, boli časťou \SpecialChar LaTeX
+ Ďalej takmer žiadny textový procesor nepodporuje krížové odkazy,
+ ktoré,
+ tak isto ako matematické vzorce,
+ boli časťou \SpecialChar LaTeX
 u od prvého dňa.
  O niektorých týchto schopnostiach budeme hovoriť neskôr.
- Ďalšie sú trochu pokročilé a sú predstavené na konci tohto dokumentu, alebo
- v
+ Ďalšie sú trochu pokročilé a sú predstavené na konci tohto dokumentu,
+ alebo v
 \emph default
  
 \emph on
@@ -566,7 +637,8 @@ je
 
 \begin_layout Standard
 \SpecialChar LaTeX
- je systém prípravy dokumentov, vytvorený Lesliem Lamportom v roku 1985.
+ je systém prípravy dokumentov,
+ vytvorený Lesliem Lamportom v roku 1985.
 \begin_inset Foot
 status collapsed
 
@@ -586,7 +658,8 @@ A Guide to \SpecialChar LaTeX2e
 \emph default
  
 \emph toggle
-od Helmuta Kopka a Patricka Dalyho, ktorý má záznam v bibliografii
+od Helmuta Kopka a Patricka Dalyho,
+ ktorý má záznam v bibliografii
 \emph default
  
 \emph on
@@ -598,8 +671,8 @@ Užívateľskej príručky
 \end_inset
 
  Ten bol vytvorený zo sádzacieho jazyka nazývaného \SpecialChar TeX
-, vytvoreného Donaldom
- Knuthom v roku 1984.
+,
+ vytvoreného Donaldom Knuthom v roku 1984.
  
 \begin_inset Quotes gld
 \end_inset
@@ -617,11 +690,13 @@ plech!
 \begin_inset Quotes grd
 \end_inset
 
-, čo je ako ho vníma veľa ľudí.
+,
+ čo je ako ho vníma veľa ľudí.
  Avšak väčšina ľudí jednoducho nerozumie na čo \SpecialChar TeX
  je.
  \SpecialChar TeX
- prijíma postupnosť sádzacích príkazov, napísaných v skripte v ASCII súbore,
+ prijíma postupnosť sádzacích príkazov,
+ napísaných v skripte v ASCII súbore,
  a vykonáva ich.
  Výsledkom je súbor formátu 
 \begin_inset Quotes gld
@@ -639,7 +714,8 @@ independent
 \begin_inset Quotes grd
 \end_inset
 
-, alebo v skratke 
+,
+ alebo v skratke 
 \begin_inset Quotes gld
 \end_inset
 
@@ -648,57 +724,72 @@ Dvi
 \end_inset
 
 .
- Dvi súbor môžete potom poslať hocičomu, čo mu bude rozumieť, alebo ho konvertov
-ať do iného formátu, napr.
+ Dvi súbor môžete potom poslať hocičomu,
+ čo mu bude rozumieť,
+ alebo ho konvertovať do iného formátu,
+ napr.
  PostScript.
 \end_layout
 
 \begin_layout Standard
-Keby nebolo ďalšej vlastnosti, celý \SpecialChar TeX
+Keby nebolo ďalšej vlastnosti,
+ celý \SpecialChar TeX
  by bol len sádzací program.
  \SpecialChar TeX
  ale dovoľuje definovať makrá.
- Toto je miesto, kde začína akcia.
+ Toto je miesto,
+ kde začína akcia.
 \end_layout
 
 \begin_layout Standard
-Väčšina ľudí, ktorí používajú \SpecialChar TeX
-, v podstate používajú balík makier, ktoré
- vytvoril Knuth, aby zakryl veľa sádzacích detailov.
- Toto je na čo myslia ľudia, keď myslia na \SpecialChar TeX
+Väčšina ľudí,
+ ktorí používajú \SpecialChar TeX
+,
+ v podstate používajú balík makier,
+ ktoré vytvoril Knuth,
+ aby zakryl veľa sádzacích detailov.
+ Toto je na čo myslia ľudia,
+ keď myslia na \SpecialChar TeX
 .
  Bežní používatelia nepracujú s čistým \SpecialChar TeX
-om, ktorý tvoria prosté sádzacie
- príkazy.
- To robia ľudia, ktorí vytvárajú nové balíky makier.
+om,
+ ktorý tvoria prosté sádzacie príkazy.
+ To robia ľudia,
+ ktorí vytvárajú nové balíky makier.
  A tam Leslie Lamport vstúpil do príbehu.
- Chcel balík makier, ktorý by bol užívateľsky orientovaný a nie orientovaný
- na sádzanie.
- Chcel sadu príkazov, ktoré konzistentne vytvoria veci ako sekcie, alebo
- tabuľky, alebo matematické vzorce jednotným spôsobom a bez zbytočného zmätku.
+ Chcel balík makier,
+ ktorý by bol užívateľsky orientovaný a nie orientovaný na sádzanie.
+ Chcel sadu príkazov,
+ ktoré konzistentne vytvoria veci ako sekcie,
+ alebo tabuľky,
+ alebo matematické vzorce jednotným spôsobom a bez zbytočného zmätku.
  Takto sa zrodil \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
-Teraz, paralelne s vývojom a rastom \SpecialChar LaTeX
-u, ďalší ľudia vytvárajú svoje vlastné
- užívateľské balíky makier pre \SpecialChar TeX
+Teraz,
+ paralelne s vývojom a rastom \SpecialChar LaTeX
+u,
+ ďalší ľudia vytvárajú svoje vlastné užívateľské balíky makier pre \SpecialChar TeX
 .
  Niektorí používajú čistý \SpecialChar TeX
-, iní začali modifikovať \SpecialChar LaTeX
+,
+ iní začali modifikovať \SpecialChar LaTeX
 .
- Aby sa zjednotil tento neporiadok, skupina \SpecialChar LaTeX
-ákov (samozrejme vrátane Lamporta)
- začala pracovať na \SpecialChar LaTeX2e
-, súčasnej verzii \SpecialChar LaTeX
-u, počas konca roku 1980.
+ Aby sa zjednotil tento neporiadok,
+ skupina \SpecialChar LaTeX
+ákov (samozrejme vrátane Lamporta) začala pracovať na \SpecialChar LaTeX2e
+,
+ súčasnej verzii \SpecialChar LaTeX
+u,
+ počas konca roku 1980.
  Táto nová verzia \SpecialChar LaTeX
-u má príkazy, ktoré poskytujú jednoduchší interfejs na
- vytváranie \SpecialChar TeX
+u má príkazy,
+ ktoré poskytujú jednoduchší interfejs na vytváranie \SpecialChar TeX
 ových makro-vytvárajúcich príkazov (pamätáte na \SpecialChar TeX
-?), pomáhajú
- v používaní nových fontov atď.
+?),
+ pomáhajú v používaní nových fontov atď.
  \SpecialChar LaTeX
  je dosť obsiahly jazyk.
  Užívatelia na celom svete vytvárali svoje vlastné prídavky pre \SpecialChar LaTeX
@@ -707,7 +798,8 @@ ových makro-vytvárajúcich príkazov (pamätáte na \SpecialChar TeX
 
 \begin_layout Standard
 Sú dva spôsoby ako rozšíriť \SpecialChar LaTeX
-: 
+:
+ 
 \emph on
 triedy
 \emph default
@@ -740,19 +832,22 @@ Trieda
 \emph toggle
 je množina makier \SpecialChar LaTeX
 u (a \SpecialChar TeX
-u), popisujúca nový typ dokumentu, napríklad kniha
- (
+u),
+ popisujúca nový typ dokumentu,
+ napríklad kniha (
 \lang british
 book
 \lang slovak
-), článok (
+),
+ článok (
 \lang british
 article
 \lang slovak
 ).
- Sú triedy pre fólie, pre fyzikálne a matematické časopisy \SpecialChar ldots
- niektoré univerzity
- dokonca majú formát triedy pre svoje diplomové práce!
+ Sú triedy pre fólie,
+ pre fyzikálne a matematické časopisy \SpecialChar ldots
+ niektoré univerzity dokonca majú formát triedy pre svoje diplomové práce!
+
 \emph default
  
 \emph on
@@ -760,16 +855,26 @@ article
 \emph default
  
 \emph toggle
-sa odlišuje od triedy v tom, že nedefinuje typ dokumentu, ale rôzny typ
- vzhľadu, ktorý môže použiť ľubovoľný dokument.
+sa odlišuje od triedy v tom,
+ že nedefinuje typ dokumentu,
+ ale rôzny typ vzhľadu,
+ ktorý môže použiť ľubovoľný dokument.
  Napríklad \SpecialChar LyX
- ovláda okraje stránky a riadkové medzery používaním dvoch rôznych
- \SpecialChar LaTeX
-ových štýlových-súborov, navrhnutých pre tento účel.
- Rôzne typy štýlov: tlač štítkov a obálok, zmena správania sa odsadenia,
- pridávanie nových písem, práca s grafikou, vytváranie pekných titulkov
- stránok, zmena umiestnenia a vzhľadu poznámok, tabuliek a obrázkov, prispôsobov
-anie zoznamov, atď, atď, atď.
+ ovláda okraje stránky a riadkové medzery používaním dvoch rôznych \SpecialChar LaTeX
+ových štýlových-súborov,
+ navrhnutých pre tento účel.
+ Rôzne typy štýlov:
+ tlač štítkov a obálok,
+ zmena správania sa odsadenia,
+ pridávanie nových písem,
+ práca s grafikou,
+ vytváranie pekných titulkov stránok,
+ zmena umiestnenia a vzhľadu poznámok,
+ tabuliek a obrázkov,
+ prispôsobovanie zoznamov,
+ atď,
+ atď,
+ atď.
 \end_layout
 
 \begin_layout Standard
@@ -778,38 +883,48 @@ Tu je prehľad:
 
 \begin_layout Description
 \SpecialChar TeX
-: Sádzací jazyk s možnosťami makier.
+:
+ Sádzací jazyk s možnosťami makier.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX
-: Balík makier postavený na \SpecialChar TeX
+:
+ Balík makier postavený na \SpecialChar TeX
 e.
 \end_layout
 
 \begin_layout Description
-triedy: Popis typu dokumentu, používajúci \SpecialChar LaTeX
+triedy:
+ Popis typu dokumentu,
+ používajúci \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Description
-štýly: Nejakým spôsobom mení všeobecné správanie sa \SpecialChar LaTeX
+štýly:
+ Nejakým spôsobom mení všeobecné správanie sa \SpecialChar LaTeX
 u.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
-: Vizuálny, WYSIWYM textový procesor, ktorý používa \SpecialChar LaTeX
+:
+ Vizuálny,
+ WYSIWYM textový procesor,
+ ktorý používa \SpecialChar LaTeX
  v celej jeho sláve,
  aby urobil svoju tlač.
 \end_layout
 
 \begin_layout Standard
 Základom tohto všetkého je starý dobrý \SpecialChar TeX
-, ktorý vytvára Dvi súbory.
- Väčšina z nás konvertuje tieto Dvi súbory na PostScriptové súbory, ktoré
- môžeme vytlačiť na laserovej tlačiarni.
- Sú správy o zariadeniach, ktoré priamo 
+,
+ ktorý vytvára Dvi súbory.
+ Väčšina z nás konvertuje tieto Dvi súbory na PostScriptové súbory,
+ ktoré môžeme vytlačiť na laserovej tlačiarni.
+ Sú správy o zariadeniach,
+ ktoré priamo 
 \emph on
 rozumejú
 \emph default
@@ -826,12 +941,15 @@ prečo
 \emph toggle
 \SpecialChar LyX
  pracuje trochu odlišne od iných textových procesoroch.
- Dôvod je jednoduchý: \SpecialChar LyX
+ Dôvod je jednoduchý:
+ \SpecialChar LyX
  používa \SpecialChar LaTeX
  ako svoj formátovací backend.
  Tak ako \SpecialChar LaTeX
-, \SpecialChar LyX
+,
+ \SpecialChar LyX
  sa zameriava na kontext vášho textu —
+
 \emph default
  
 \emph on
@@ -844,7 +962,8 @@ píšete.
 \end_layout
 
 \begin_layout Standard
-Ou — posledná vec.
+Ou —
+ posledná vec.
  \SpecialChar LaTeX
  sa vyslovuje ako \SpecialChar TeX
 .
@@ -866,7 +985,8 @@ hey plech
 \begin_inset Quotes grd
 \end_inset
 
- ako meno spoločnosti ktorá vyrába kondómy, vyslovujete ho zle.
+ ako meno spoločnosti ktorá vyrába kondómy,
+ vyslovujete ho zle.
  Na druhej strane 
 \begin_inset Quotes gld
 \end_inset
@@ -893,7 +1013,8 @@ lucks
 \begin_inset Quotes grd
 \end_inset
 
-, alebo 
+,
+ alebo 
 \begin_inset Quotes gld
 \end_inset
 
@@ -901,7 +1022,8 @@ looks
 \begin_inset Quotes grd
 \end_inset
 
-, záleží z akej krajiny ste\SpecialChar ldots
+,
+ záleží z akej krajiny ste\SpecialChar ldots
 
 \end_layout
 
@@ -911,34 +1033,39 @@ Navigácia v dokumentácii
 
 \begin_layout Standard
 Aby sa ľahšie odpovedalo na vaše otázky a opísalo všetky vlastnosti \SpecialChar LyX
-u, sme
- dokumentáciu rozdelili na niekoľké rozličné súbory.
+u,
+ sme dokumentáciu rozdelili na niekoľké rozličné súbory.
  Každý má svoj vlast\SpecialChar softhyphen
-ný zámer, ako nižšie opísané.
- Ale predtým ako sa vrhnete do niektorých z týchto súborov, mali by ste
- túto kapitolu celkom prečítať, však ona obsahuje množstvo užitočných informácií
- a komentárov ktoré vám môžu ušetriť niečo času.
+ný zámer,
+ ako nižšie opísané.
+ Ale predtým ako sa vrhnete do niektorých z týchto súborov,
+ mali by ste túto kapitolu celkom prečítať,
+ však ona obsahuje množstvo užitočných informácií a komentárov ktoré vám môžu ušetriť niečo času.
 \end_layout
 
 \begin_layout Standard
-Máme nádej, že sa vývoj \SpecialChar LyX
-u nikdy nezastaví, čiže je možné, že tá dokumentácia
- je nekompletná alebo zastaralá
+Máme nádej,
+ že sa vývoj \SpecialChar LyX
+u nikdy nezastaví,
+ čiže je možné,
+ že tá dokumentácia je nekompletná alebo zastaralá
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Čo sa týka slovenskej dokumentácie, to je naozaj zastaralá a nekompletná.
- Ale existuje aj česká dokumentácia, a Pavel Sanda (jej autor) ju stále
- opravuje.
+Čo sa týka slovenskej dokumentácie,
+ to je naozaj zastaralá a nekompletná.
+ Ale existuje aj česká dokumentácia,
+ a Pavel Sanda (jej autor) ju stále opravuje.
 \end_layout
 
 \end_inset
 
-, aj keď sa pokúšame držať krok.
+,
+ aj keď sa pokúšame držať krok.
  Ako aj všetko ostatné v \SpecialChar LyX
-e, manuály sú prácou skupiny dobrovoľníkov ktorí
- majú 
+e,
+ manuály sú prácou skupiny dobrovoľníkov ktorí majú 
 \begin_inset Quotes gld
 \end_inset
 
@@ -946,8 +1073,13 @@ skutočnú prácu
 \begin_inset Quotes grd
 \end_inset
 
-, rodinu, nádoby chcejúce očistenia, smeti čo treba odstrániť, atď.
- Keď by ste chceli pomôcť, uistite sa prečítať Sekciu
+,
+ rodinu,
+ nádoby chcejúce očistenia,
+ smeti čo treba odstrániť,
+ atď.
+ Keď by ste chceli pomôcť,
+ uistite sa prečítať Sekciu
 \begin_inset space ~
 \end_inset
 
@@ -955,6 +1087,7 @@ skutočnú prácu
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Contrib"
+nolink "false"
 
 \end_inset
 
@@ -962,8 +1095,11 @@ reference "sec:Contrib"
 \end_layout
 
 \begin_layout Standard
-Ešte jedna prosba: keď je v manuáloch niečo nejasné, alebo proste mylné,
- neváhajte nám to povedať! Dosiahnete náš dokumentárny \SpecialChar LyX
+Ešte jedna prosba:
+ keď je v manuáloch niečo nejasné,
+ alebo proste mylné,
+ neváhajte nám to povedať!
+ Dosiahnete náš dokumentárny \SpecialChar LyX
  Tím cez 
 \begin_inset CommandInset href
 LatexCommand href
@@ -974,8 +1110,8 @@ literal "false"
 \end_inset
 
 .
- Pre otázky ktoré sú očividne v dokumentácii neodpovedané a potrebujú súrnu
- pomoc, existuje aktívna 
+ Pre otázky ktoré sú očividne v dokumentácii neodpovedané a potrebujú súrnu pomoc,
+ existuje aktívna 
 \lang british
 mailing
 \lang slovak
@@ -1016,10 +1152,13 @@ Niektorí drukujú manuály.
 e.
  Sú rozdiely medzi \SpecialChar LyX
 -súborom a tlačenou verziou.
- Ako prvé, titul je na začiatku dokumentu, neformátovaný na separátnej strane
- (ako je v tlačených verziách).
+ Ako prvé,
+ titul je na začiatku dokumentu,
+ neformátovaný na separátnej strane (ako je v tlačených verziách).
  Aj poznámky pod čiarou a obsah nevidno naplno.
- Na otvorenie poznámky pod čiarou, ktorá vyzerá ako toto: 
+ Na otvorenie poznámky pod čiarou,
+ ktorá vyzerá ako toto:
+ 
 \begin_inset Foot
 status collapsed
 
@@ -1029,26 +1168,32 @@ Pekná poznámka
 
 \end_inset
 
-, kliknite na ňu ľavým tlačidlom myši.
- Pre obsah môžte kliknúť na sivé okienko, alebo navigačné menu, kde sa obsah
- automaticky zobrazuje.
+,
+ kliknite na ňu ľavým tlačidlom myši.
+ Pre obsah môžte kliknúť na sivé okienko,
+ alebo navigačné menu,
+ kde sa obsah automaticky zobrazuje.
 \end_layout
 
 \begin_layout Standard
-V tlačených verziách, všetky referencie vidieť ako aktuálne čísla pre kapitolu,
- sekciu, podsekciu, atď.
+V tlačených verziách,
+ všetky referencie vidieť ako aktuálne čísla pre kapitolu,
+ sekciu,
+ podsekciu,
+ atď.
  Ale online všetky referencie vidno ako slabo sivé okienko 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Contrib"
+nolink "false"
 
 \end_inset
 
 .
- Keď na to kliknete ľavým tlačidlom myši, objaví sa dialógové okienko, obsahujúc
-e lištu všetkých referencií v dokumente.
- Na referovanú sekciu sa môžte dostať kliknutím pravého tlačidla na políčko
- 
+ Keď na to kliknete ľavým tlačidlom myši,
+ objaví sa dialógové okienko,
+ obsahujúce lištu všetkých referencií v dokumente.
+ Na referovanú sekciu sa môžte dostať kliknutím pravého tlačidla na políčko 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1069,8 +1214,9 @@ Prejsť na návestie
 \end_layout
 
 \begin_layout Standard
-Teraz, keď sme si objasnili rozdiel medzi tlačenou a online verziou tohto
- súboru, pozrime sa na formát tohto dokumentu.
+Teraz,
+ keď sme si objasnili rozdiel medzi tlačenou a online verziou tohto súboru,
+ pozrime sa na formát tohto dokumentu.
  Príležitostne ste si už všimli veci v rozličných fontoch:
 \end_layout
 
@@ -1079,8 +1225,11 @@ Teraz, keď sme si objasnili rozdiel medzi tlačenou a online verziou tohto
 \emph on
 Zvýraznenie
 \emph default
- Štýl sa používa pre všeobecné zvýraznenie, argumenty, tituly kníh, názvy
- sekcií iných manuálov, a poznámok autorov.
+ Štýl sa používa pre všeobecné zvýraznenie,
+ argumenty,
+ tituly kníh,
+ názvy sekcií iných manuálov,
+ a poznámok autorov.
 \end_layout
 
 \begin_layout Itemize
@@ -1088,7 +1237,8 @@ Zvýraznenie
 \family typewriter
 Strojopis 
 \family default
-je použitý pre programy a názvy súborov, \SpecialChar LyX
+je použitý pre programy a názvy súborov,
+ \SpecialChar LyX
  kód a funkcie.
 \end_layout
 
@@ -1097,8 +1247,10 @@ je použitý pre programy a názvy súborov, \SpecialChar LyX
 \family sans
 Bezserifové
 \family default
- je užívané pre menu, tlačidlá, alebo názvy dialógových okienok, a názvy
- kláves.
+ je užívané pre menu,
+ tlačidlá,
+ alebo názvy dialógových okienok,
+ a názvy kláves.
 \end_layout
 
 \begin_layout Itemize
@@ -1119,7 +1271,8 @@ Tučné
 \end_layout
 
 \begin_layout Standard
-Keď je nutné referovať klávesy, používame túto prefixnú konvenciu:
+Keď je nutné referovať klávesy,
+ používame túto prefixnú konvenciu:
 \end_layout
 
 \begin_layout Itemize
@@ -1152,7 +1305,8 @@ Escape
 \lang british
 Left Right Up Down
 \lang slovak
-: samo-vysvetľujúce.
+:
+ samo-vysvetľujúce.
 \end_layout
 
 \begin_layout Itemize
@@ -1160,8 +1314,8 @@ Left Right Up Down
 \lang british
 Insert Delete Home End PageUp PageDown
 \lang slovak
-: je to šesť kláves ktoré sa často nájdu povyše kurzorových kláves na mnohých
- PC klávesniciach.
+:
+ je to šesť kláves ktoré sa často nájdu povyše kurzorových kláves na mnohých PC klávesniciach.
  PageUp a PageDown sa nazývajú Prior a 
 \lang british
 Next
@@ -1187,13 +1341,16 @@ RETURN
 \lang british
 Return
 \lang slovak
-, iné ako 
+,
+ iné ako 
 \lang british
 Enter
 \lang slovak
-, a ešte iné majú aj dva klávesy.
+,
+ a ešte iné majú aj dva klávesy.
  \SpecialChar LyX
- to pokladá za jeden a ten istý kláves, a my používame 
+ to pokladá za jeden a ten istý kláves,
+ a my používame 
 \lang british
 Return
 \lang slovak
@@ -1229,7 +1386,8 @@ Jednotky používané v manuáloch
 \end_layout
 
 \begin_layout Standard
-Na porozumenie jednotiek používaných v tejto dokumentácii, tabuľka 
+Na porozumenie jednotiek používaných v tejto dokumentácii,
+ tabuľka 
 \begin_inset space ~
 \end_inset
 
@@ -1237,6 +1395,7 @@ Na porozumenie jednotiek používaných v tejto dokumentácii, tabuľka
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:Units-for-image"
+nolink "false"
 
 \end_inset
 
@@ -1247,6 +1406,7 @@ e.
 \begin_layout Standard
 \begin_inset Float table
 placement t
+alignment document
 wide false
 sideways false
 status collapsed
@@ -1773,8 +1933,8 @@ Manuály
 \end_layout
 
 \begin_layout Standard
-Nasledujúca lišta popisuje obsah základných súborov dokumentácie, ktoré
- nájdete pod menu 
+Nasledujúca lišta popisuje obsah základných súborov dokumentácie,
+ ktoré nájdete pod menu 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1802,15 +1962,18 @@ Až na Príručku je všetko ešte len po anglicky.
 
 \begin_layout Description
 Príručka Keď s \SpecialChar LyX
-om ešte len začínate, a zatiaľ ste \SpecialChar LaTeX
- ešte nepoužívali, začnite
- tu.
+om ešte len začínate,
+ a zatiaľ ste \SpecialChar LaTeX
+ ešte nepoužívali,
+ začnite tu.
  Keď \SpecialChar LaTeX
- poznáte, mali by ste predsa len 
+ poznáte,
+ mali by ste predsa len 
 \emph on
 Príručku
 \emph default
- čítať, začínajúc sekciou 
+ čítať,
+ začínajúc sekciou 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1866,7 +2029,10 @@ objekty Rozšírenie
 Užívateľskej príručky
 \emph default
 .
- Dokumentuje detailne ako použiť tabuľky, grafiku, plávajúce objekty, poznámky,
+ Dokumentuje detailne ako použiť tabuľky,
+ grafiku,
+ plávajúce objekty,
+ poznámky,
  programové výpisy a rámiky.
  Zahrňuje aj mnoho trikov majstrov \SpecialChar LaTeX
 u.
@@ -1892,20 +2058,24 @@ vlastnosti Rozšírenie
 \emph default
 .
  Dokumentuje ako použiť čisté \SpecialChar LaTeX
- príkazy, prídavné rozloženia (layouts), a
- editačné možnosti pre špeciálne ciele.
+ príkazy,
+ prídavné rozloženia (layouts),
+ a editačné možnosti pre špeciálne ciele.
 \end_layout
 
 \begin_layout Description
 Prispôsobenie Popis pokročilých možností \SpecialChar LyX
-u, zahrňujúc úpravu celkového správania
- \SpecialChar LyX
+u,
+ zahrňujúc úpravu celkového správania \SpecialChar LyX
 u\SpecialChar endofsentence
- To zahrňuje také veci, ako skratky(
+ To zahrňuje také veci,
+ ako skratky(
 \lang british
 keybindings
 \lang slovak
-), internacionalizácia, a konfiguračné súbory.
+),
+ internacionalizácia,
+ a konfiguračné súbory.
 \end_layout
 
 \begin_layout Description
@@ -1920,14 +2090,18 @@ Konfigurácia
 \SpecialChar LaTeX
 u \SpecialChar LyX
  preskúma váš systém pri inštalácii.
- Tento súbor obsahuje informáciu o tom, čo sa \SpecialChar LyX
+ Tento súbor obsahuje informáciu o tom,
+ čo sa \SpecialChar LyX
  dozvedel o vašej inštalácii.
- Overte či vám nechýba niečo, čo by ste tam radi mali.
+ Overte či vám nechýba niečo,
+ čo by ste tam radi mali.
 \end_layout
 
 \begin_layout Standard
-Tieto súbory sa referujú navzájom, podľa potreby.
- Napríklad, 
+Tieto súbory sa referujú navzájom,
+ podľa potreby.
+ Napríklad,
+ 
 \emph on
 Užívateľská príručka
 \emph default
@@ -1935,7 +2109,8 @@ Užívateľská príručka
 \emph on
 niekoľko
 \emph default
- informácií o inštalácii a úprave, ale referuje čitateľa na 
+ informácií o inštalácii a úprave,
+ ale referuje čitateľa na 
 \emph on
 Prispôsobenie 
 \emph default
@@ -1943,7 +2118,8 @@ pre viac informácií.
 \end_layout
 
 \begin_layout Standard
-Nuž, konštatujme ešte raz ten dôležitý bod:
+Nuž,
+ konštatujme ešte raz ten dôležitý bod:
 \end_layout
 
 \begin_layout Standard
@@ -1956,7 +2132,8 @@ Nuž, konštatujme ešte raz ten dôležitý bod:
 \begin_layout Standard
 \align center
 Keď s \SpecialChar LyX
-om ešte len začínate, čítajte 
+om ešte len začínate,
+ čítajte 
 \emph on
 Príručku
 \emph default
@@ -1997,8 +2174,9 @@ Prispieť k \SpecialChar LyX
 \SpecialChar LyX
  je prevážne písaný v C++ (\SpecialChar LaTeX
  importér je písaný v Python).
- Je to mohutný projekt, a výsledkom toho nie je bez chýb, alebo potrebuje
- vylepšenia v zdrojovom kóde.
+ Je to mohutný projekt,
+ a výsledkom toho nie je bez chýb,
+ alebo potrebuje vylepšenia v zdrojovom kóde.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2007,16 +2185,19 @@ Oznámiť chybu
 
 \begin_layout Standard
 Používajúc \SpecialChar LyX
- možno zbadáte správanie, ktoré považujete za chybné.
+ možno zbadáte správanie,
+ ktoré považujete za chybné.
  
 \lang british
 Crash
 \lang slovak
-, aj keď zriedka, sa môže stať.
+,
+ aj keď zriedka,
+ sa môže stať.
  Problémy s užívateľským rozhraním považuje \SpecialChar LyX
- Tím za veľké chyby: Veľmi nám
- pomáha keď sa dozvieme, ktorá časť užívateľského interfejsu vás pletie
- alebo je nejasná.
+ Tím za veľké chyby:
+ Veľmi nám pomáha keď sa dozvieme,
+ ktorá časť užívateľského interfejsu vás pletie alebo je nejasná.
 \end_layout
 
 \begin_layout Standard
@@ -2025,7 +2206,8 @@ Crash
 \lang british
 bug tracking
 \lang slovak
-), ktorý nájdete na 
+),
+ ktorý nájdete na 
 \family typewriter
 
 \begin_inset Flex URL
@@ -2043,7 +2225,8 @@ https://www.lyx.org/trac/wiki/BugTrackerHome
 .
  Preskúmajte ho pred hlásením nejakých chýb.
  Možno tá chyba už bola hlásená.
- Keď máte nejaký komentár k hlásenej chybe, alebo chcete hlásiť novú chybu,
+ Keď máte nejaký komentár k hlásenej chybe,
+ alebo chcete hlásiť novú chybu,
  môžte použiť 
 \lang british
 bug tracker
@@ -2079,14 +2262,17 @@ https://www.lyx.org/
 \begin_layout Standard
 Hlásenie chyby zahrňuje minimálne verziu \SpecialChar LyX
 u s ktorým máte problém.
- Presné a detailné popisy preferujeme - čím viac času potrebujú vývojári
- s hľadaním príčiny chyby, tým menej zostane pre nápravu.
+ Presné a detailné popisy preferujeme - čím viac času potrebujú vývojári s hľadaním príčiny chyby,
+ tým menej zostane pre nápravu.
  Oznámte aj systém a verziu systému na ktorom váš \SpecialChar LyX
  beží.
- Zadajte aj verzie knižníc ktoré sú inštalované na vašom systéme, a, keď
- relevantné, aj verzie externých programov ktoré \SpecialChar LyX
+ Zadajte aj verzie knižníc ktoré sú inštalované na vašom systéme,
+ a,
+ keď relevantné,
+ aj verzie externých programov ktoré \SpecialChar LyX
  používa.
- Keď je to kompilačný alebo konfiguračný problém, zahrňte aj súbor config.log,
+ Keď je to kompilačný alebo konfiguračný problém,
+ zahrňte aj súbor config.log,
  a uveďte ktorý kompilátor používate.
 \end_layout
 
@@ -2096,9 +2282,9 @@ Prispieť opravou a novými vlastnosťami
 
 \begin_layout Standard
 Keď ste zmenili niektoré \SpecialChar LyX
-ové zdroje a myslíte že by sa mali stať časťou
- \SpecialChar LyX
-u, pošlite tie zmeny ako diff-súbor (v zjednotenom formáte) na 
+ové zdroje a myslíte že by sa mali stať časťou \SpecialChar LyX
+u,
+ pošlite tie zmeny ako diff-súbor (v zjednotenom formáte) na 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
@@ -2107,7 +2293,8 @@ literal "false"
 
 \end_inset
 
-, spolu s 
+,
+ spolu s 
 \begin_inset Branch english
 inverted 0
 status collapsed
@@ -2118,7 +2305,8 @@ change log
 
 \end_inset
 
- a opisom toho, čo tá oprava robí.
+ a opisom toho,
+ čo tá oprava robí.
 \end_layout
 
 \begin_layout Subsection
@@ -2127,12 +2315,14 @@ Prispieť k Dokumentácii
 
 \begin_layout Standard
 Dokumentácia \SpecialChar LyX
-u je obsiahla; Avšak \SpecialChar LyX
- je pod konštantným vývojom, a každé vydanie
- pridáva nové funkcie a vlastnosti.
+u je obsiahla;
+ Avšak \SpecialChar LyX
+ je pod konštantným vývojom,
+ a každé vydanie pridáva nové funkcie a vlastnosti.
  Možno nájdete dokumentáciu ktorá by potrebovala zlepšenia.
- Táto sekcia opisuje, čo treba robiť keď nájdete chybu, alebo máte návrh
- na zlepšenie dokumentácie.
+ Táto sekcia opisuje,
+ čo treba robiť keď nájdete chybu,
+ alebo máte návrh na zlepšenie dokumentácie.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2140,7 +2330,8 @@ Ohlásiť Chyby v Manuáloch
 \end_layout
 
 \begin_layout Standard
-Keď nájdete problém v dokumentácii, pošlite správu na 
+Keď nájdete problém v dokumentácii,
+ pošlite správu na 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -2159,9 +2350,12 @@ Pripojiť sa k Dokumentačnému Tímu.
 
 \begin_layout Standard
 Dokumentačný Projekt \SpecialChar LyX
-, ako aj každý iný \SpecialChar LyX
--projekt, rád a vždy použije asistenciu!
- Keď chcete podporiť Dokumentačný Projekt, treba nasledujúce:
+,
+ ako aj každý iný \SpecialChar LyX
+-projekt,
+ rád a vždy použije asistenciu!
+ Keď chcete podporiť Dokumentačný Projekt,
+ treba nasledujúce:
 \end_layout
 
 \begin_layout Enumerate
@@ -2185,7 +2379,8 @@ https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 \end_layout
 
 \begin_layout Enumerate
-Potom, prečítajte si 
+Potom,
+ prečítajte si 
 \emph on
 Užívateľskú príručku
 \emph default
@@ -2198,7 +2393,8 @@ Príručku
 status collapsed
 
 \begin_layout Plain Layout
-Aj tu, na nešťastie ešte nič nie je.
+Aj tu,
+ na nešťastie ešte nič nie je.
  Čiže treba brať anglické súbory ako zdroj.
  
 \end_layout
@@ -2213,7 +2409,8 @@ Aj tu, na nešťastie ešte nič nie je.
 
 
 \emph default
-Ide o to, aby ste dostali idei.
+Ide o to,
+ aby ste dostali idei.
  
 \emph on
 Príručka
@@ -2223,8 +2420,8 @@ Príručka
 Užívateľská príručka
 \emph default
  je pravdepodobne v pomerne najlepšom stave celej dokumentácie.
- Malo by vám pomôcť pri získaní pocitu toho, ako chceme manuály čítať a
- ako by mali vyzerať.
+ Malo by vám pomôcť pri získaní pocitu toho,
+ ako chceme manuály čítať a ako by mali vyzerať.
  
 \end_layout
 
@@ -2246,7 +2443,8 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-kde by sa vaše zmeny diskutovali, a kde by ste dostali nejaký 
+kde by sa vaše zmeny diskutovali,
+ a kde by ste dostali nejaký 
 \lang british
 feedback
 \lang slovak
@@ -2254,8 +2452,8 @@ feedback
 \end_layout
 
 \begin_layout Standard
-Zmeny, ktoré si prajete siahajú od zlepšenia jasnosti textu do závažnej
- reštruktúry celej dokumentácie.
+Zmeny,
+ ktoré si prajete siahajú od zlepšenia jasnosti textu do závažnej reštruktúry celej dokumentácie.
  Každé a všetky zlepšováky radi prijímame.
 \end_layout
 

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -102,7 +106,9 @@ status collapsed
 \end_inset
 
 \SpecialChar LyX
- مستنداتی عالی دارد—لطفا از آن استفاده کنید! از قسمت 
+ مستنداتی عالی دارد—
+لطفا از آن استفاده کنید!
+ از قسمت 
 \family sans
 \lang english
 Help
@@ -113,7 +119,8 @@ Help
 Introduction
 \family default
 \lang farsi
- شروع کنید، که مستندات را به صورت خلاصه به شما معرفی می‌کند.
+ شروع کنید،
+ که مستندات را به صورت خلاصه به شما معرفی می‌کند.
  پس از آن از 
 \family sans
 \lang english
@@ -141,9 +148,11 @@ status collapsed
 
 \SpecialChar LyX
  چیزی است که به آن »پردازشگر متن« می‌گویند.
- از لحاظ طراحی، با دیگر پردازشگرهای متن معمول تفاوت دارد—به گونه‌ای که نوشتن
- متون را ساده‌تر می‌کند.
- ولی تفاوتی اندک، در نتیجه نهراسید.
+ از لحاظ طراحی،
+ با دیگر پردازشگرهای متن معمول تفاوت دارد—
+به گونه‌ای که نوشتن متون را ساده‌تر می‌کند.
+ ولی تفاوتی اندک،
+ در نتیجه نهراسید.
  مستندات این امر را کاملا واضح می‌کند.
 \begin_inset Foot
 status collapsed
@@ -159,7 +168,8 @@ status collapsed
 
 \begin_layout Enumerate
 خروجی \SpecialChar LyX
- بسیار زیبا به نظر می‌رسد! 
+ بسیار زیبا به نظر می‌رسد!
+ 
 \family sans
 \lang english
 Document\SpecialChar menuseparator
@@ -178,7 +188,8 @@ View
 \end_layout
 
 \begin_layout Enumerate
-درست است! \SpecialChar LyX
+درست است!
+ \SpecialChar LyX
  می‌تواند (تا اندازه‌ی زیادی) تمام کارکرد \SpecialChar LaTeX
  را به شما ارائه دهد.
  همین طور \SpecialChar LyX
@@ -188,8 +199,10 @@ View
  باید از فصل »\SpecialChar LyX
  برای کاربران \SpecialChar LaTeX
 « شروع کنند.
- (دیگران: برای استفاده از \SpecialChar LyX
-،  لازم نیست \SpecialChar LaTeX
+ (دیگران:
+ برای استفاده از \SpecialChar LyX
+،
+  لازم نیست \SpecialChar LaTeX
  بدانید.)
 \end_layout
 
@@ -204,10 +217,10 @@ status collapsed
 \end_inset
 
 \SpecialChar LyX
- امکانات فراوانی برای کسانی که از زبانی غیر از انگلیسی برای خواندن و نوشتن
- استفاده می‌کنند فراهم می‌کند.
- بعلاوه انتساب کلیدها، جعبه ابزارها، و بسیاری دیگر از ویژگیها تا اندازه‌ی
- زیادی تنظیم پذیرند.
+ امکانات فراوانی برای کسانی که از زبانی غیر از انگلیسی برای خواندن و نوشتن استفاده می‌کنند فراهم می‌کند.
+ بعلاوه انتساب کلیدها،
+ جعبه ابزارها،
+ و بسیاری دیگر از ویژگیها تا اندازه‌ی زیادی تنظیم پذیرند.
  برای اطلاعات بیشتر به 
 \family sans
 \lang english
@@ -236,8 +249,11 @@ https://www.lyx.org/
 
  قرار دارد.
  در مورد \SpecialChar LyX
- اطلاعات بگیرید، در لیست-نامه(ها) مشترک شوید، تور گرافیکی \SpecialChar LyX
-: 
+ اطلاعات بگیرید،
+ در لیست-نامه(ها) مشترک شوید،
+ تور گرافیکی \SpecialChar LyX
+:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -248,7 +264,8 @@ https://www.lyx.org/Walkthrough
 
 \end_inset
 
- را ملاحظه کنید، و چیزهای دیگر.
+ را ملاحظه کنید،
+ و چیزهای دیگر.
 \end_layout
 
 \begin_layout Enumerate
@@ -256,6 +273,7 @@ https://www.lyx.org/Walkthrough
 \series bold
 \lang english
 Note for Linux users:
+
 \series default
  Please check that the language packages for the \SpecialChar LaTeX
  distribution 

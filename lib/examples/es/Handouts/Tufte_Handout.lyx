@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -90,17 +94,19 @@ status open
 \series bold
 Nota
 \series default
- 1: Para ver el archivo en PDF debes estar instalado el paquete \SpecialChar LaTeX
+ 1:
+ Para ver el archivo en PDF debes estar instalado el paquete \SpecialChar LaTeX
  
 \family sans
 fpl
 \family default
 .
  Si usas MiK\SpecialChar TeX
-, se te pedirá automáticamente al intentar previsualizar el
- archivo; si usas \SpecialChar TeX
-Live, instálalo mediante el administrador de paquetes
- de \SpecialChar TeX
+,
+ se te pedirá automáticamente al intentar previsualizar el archivo;
+ si usas \SpecialChar TeX
+Live,
+ instálalo mediante el administrador de paquetes de \SpecialChar TeX
 Live.
 \end_layout
 
@@ -109,10 +115,11 @@ Live.
 \series bold
 Nota 2
 \series default
-: Si deseas compilar a PDF con plain-\SpecialChar LaTeX
+:
+ Si deseas compilar a PDF con plain-\SpecialChar LaTeX
  (en vez de pdf\SpecialChar TeX
-), actualmente hay un
- fallo en la clase Tufte que genera errores.
+),
+ actualmente hay un fallo en la clase Tufte que genera errores.
  Puedes añadir la opción 'nols' (en el campo 
 \begin_inset Quotes eld
 \end_inset
@@ -131,7 +138,8 @@ Documento\SpecialChar menuseparator
 Configuración \SpecialChar menuseparator
 Clase del documento
 \family default
-) para sortear los errores, aunque esto también quita el espacio entre letras,
+) para sortear los errores,
+ aunque esto también quita el espacio entre letras,
  una parte importante en el diseño Tufte.
 \end_layout
 
@@ -149,7 +157,8 @@ Si se omite
 \emph on
 Fecha
 \emph default
-, se usará la fecha actual.
+,
+ se usará la fecha actual.
 \end_layout
 
 \end_inset
@@ -177,7 +186,8 @@ Tufte handout
 \emph on
 tufte-handout.cls
 \emph default
-, pero adaptado para su uso en \SpecialChar LyX
+,
+ pero adaptado para su uso en \SpecialChar LyX
 .
 \end_layout
 
@@ -213,11 +223,11 @@ http://ctan.org/tex-archive/macros/latex/contrib/tufte-latex
 Edward Tufte
 \noun default
  utiliza en sus libros y folletos.
- El estilo Tufte es conocido por un uso exhaustivo de notas al margen, una
- ajustada integración de los gráficos con el texto y una buena composición
- tipográfica.
- Este documento intenta ofrecer una demostración de las características
- de la clase de documento y, a la vez, servir como guía de estilo.
+ El estilo Tufte es conocido por un uso exhaustivo de notas al margen,
+ una ajustada integración de los gráficos con el texto y una buena composición tipográfica.
+ Este documento intenta ofrecer una demostración de las características de la clase de documento y,
+ a la vez,
+ servir como guía de estilo.
 \end_layout
 
 \begin_layout Part
@@ -255,7 +265,8 @@ a
 \shape smallcaps
 b
 \shape default
- (es decir, 
+ (es decir,
+ 
 \emph on
 sección
 \emph default
@@ -263,12 +274,16 @@ sección
 \emph on
 subsección
 \emph default
-, tanto numeradas como sin numerar), como se ve arriba.
+,
+ tanto numeradas como sin numerar),
+ como se ve arriba.
 \end_layout
 
 \begin_layout Standard
-Si necesitas más de dos niveles de encabezados de sección, tendrás que definirla
-s personalmente, por el momento; 
+Si necesitas más de dos niveles de encabezados de sección,
+ tendrás que definirlas personalmente,
+ por el momento;
+ 
 \begin_inset Foot
 status collapsed
 
@@ -289,6 +304,7 @@ Definición de secciones nuevas
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "subsec:definición-de-secciones"
+nolink "false"
 
 \end_inset
 
@@ -322,7 +338,9 @@ literal "true"
 \begin_inset Quotes eld
 \end_inset
 
-usar tantos niveles de encabezado como sea necesario: ni más, ni menos.
+usar tantos niveles de encabezado como sea necesario:
+ ni más,
+ ni menos.
 \begin_inset Quotes erd
 \end_inset
 
@@ -347,13 +365,14 @@ literal "true"
 
 \end_inset
 
- Tufte inicia cada sección con un pequeño espacio vertical, un párrafo no
- sangrado y pone las primeras palabras de la frase en 
+ Tufte inicia cada sección con un pequeño espacio vertical,
+ un párrafo no sangrado y pone las primeras palabras de la frase en 
 \noun on
 versalitas
 \noun default
 .
- Para conseguir esto, usa el estilo de texto 
+ Para conseguir esto,
+ usa el estilo de texto 
 \family typewriter
 Idea nueva 
 \family default
@@ -378,8 +397,7 @@ name "subsec:notas-laterales"
 \end_layout
 
 \begin_layout Standard
-Una de las características más destacadas y peculiares de este estilo es
- el uso exhaustivo de notas que se ubican en el margen de la página.
+Una de las características más destacadas y peculiares de este estilo es el uso exhaustivo de notas que se ubican en el margen de la página.
  Hay un amplio margen para dejar sitio a notas y pequeñas figuras.
  Las notas al pie se convertirán automáticamente a notas laterales (numeradas).
 \begin_inset Foot
@@ -399,7 +417,8 @@ Nota al pie
 \family typewriter
 Nota lateral
 \family default
-, usando el menú
+,
+ usando el menú
 \family sans
  Insertar\SpecialChar menuseparator
 Recuadro personalizado
@@ -422,8 +441,8 @@ Nota lateral
 \end_layout
 
 \begin_layout Standard
-Si quieres poner información complementaria en el margen sin la marca de
- nota (el número voladito), puedes usar la inserción 
+Si quieres poner información complementaria en el margen sin la marca de nota (el número voladito),
+ puedes usar la inserción 
 \family sans
 Nota marginal
 \family default
@@ -434,8 +453,8 @@ status open
 
 \begin_layout Plain Layout
 Esto es una nota marginal de Tufte.
- Observa que no hay número antepuesto, y no hay número en el lugar de inserción
- en el cuerpo del texto.
+ Observa que no hay número antepuesto,
+ y no hay número en el lugar de inserción en el cuerpo del texto.
 \end_layout
 
 \end_inset
@@ -445,7 +464,8 @@ Esto es una nota marginal de Tufte.
 Insertar\SpecialChar menuseparator
 Nota al margen
 \family default
-) también funciona, pero se verá un poco rara.
+) también funciona,
+ pero se verá un poco rara.
 \begin_inset Marginal
 status open
 
@@ -464,7 +484,8 @@ Referencias
 \end_layout
 
 \begin_layout Standard
-Las referencias se colocan al lado de sus citas, como las notas al margen.
+Las referencias se colocan al lado de sus citas,
+ como las notas al margen.
  Esto se puede conseguir usando el habitual comando de citas.
 \begin_inset Foot
 status collapsed
@@ -479,8 +500,7 @@ El primer párrafo de este documento incluye citas.
 \end_layout
 
 \begin_layout Standard
-La lista completa de referencias se puede además imprimir automáticamente
- usando 
+La lista completa de referencias se puede además imprimir automáticamente usando 
 \family sans
 Insertar\SpecialChar menuseparator
 /Índices\SpecialChar menuseparator
@@ -492,8 +512,8 @@ Bib\SpecialChar TeX
 
 \family default
  (véase el final del documento para un ejemplo).
- Si no quieres imprimir una bibliografía al final de un documento, inserta
- la
+ Si no quieres imprimir una bibliografía al final de un documento,
+ inserta la
 \family sans
  Bibliografía
 \begin_inset space ~
@@ -534,18 +554,18 @@ figura
 \emph on
 tabla
 \emph default
-, esta clase provee entornos especiales para figuras y tablas flotantes
- de anchura completa.
+,
+ esta clase provee entornos especiales para figuras y tablas flotantes de anchura completa.
 \end_layout
 
 \begin_layout Standard
-Las figuras y cuadros de ancho total de página se pueden generar usando
- flotantes de figura o de cuadro y marcando 
+Las figuras y cuadros de ancho total de página se pueden generar usando flotantes de figura o de cuadro y marcando 
 \emph on
 Extender columnas
 \emph default
  en el diálogo de configuración de flotantes.
- Para colocar figuras o tablas en el margen, usa los flotantes 
+ Para colocar figuras o tablas en el margen,
+ usa los flotantes 
 \emph on
 Figura al margen
 \emph default
@@ -561,6 +581,7 @@ Cuadro al margen
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:figmargen"
+nolink "false"
 
 \end_inset
 
@@ -569,16 +590,20 @@ reference "fig:figmargen"
 status collapsed
 
 \begin_layout Plain Layout
-Nota: desafortunadamente, el cálculo en \SpecialChar LyX
+Nota:
+ desafortunadamente,
+ el cálculo en \SpecialChar LyX
  es incorrecto.
- Los flotantes al margen y los normales se cuentan de distinta manera, mientras
- que en la salida se usa el mismo contador.
+ Los flotantes al margen y los normales se cuentan de distinta manera,
+ mientras que en la salida se usa el mismo contador.
 \end_layout
 
 \end_inset
 
  
 \begin_inset Float marginfigure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -647,8 +672,9 @@ status collapsed
 \color none
 Nota
 \series default
-: Si insertas figuras o cuadros al margen debes usar la opción predeterminada
- de colocación de flotantes en la configuración del documento, en 
+:
+ Si insertas figuras o cuadros al margen debes usar la opción predeterminada de colocación de flotantes en la configuración del documento,
+ en 
 \family sans
 Posición de flotantes
 \family default
@@ -670,6 +696,7 @@ La figura
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:figcompleta"
+nolink "false"
 
 \end_inset
 
@@ -681,12 +708,15 @@ reference "fig:figcompleta"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:figtexto"
+nolink "false"
 
 \end_inset
 
  es un ejemplo de figura flotante normal.
  
 \begin_inset Float figure
+placement document
+alignment document
 wide true
 sideways false
 status open
@@ -756,6 +786,7 @@ name "fig:figcompleta"
 \begin_layout Standard
 \begin_inset Float figure
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -827,6 +858,7 @@ El cuadro
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:normaltab"
+nolink "false"
 
 \end_inset
 
@@ -843,13 +875,14 @@ formal
 \end_inset
 
  de bordes en el diálogo de configuración de cuadros).
- Observa la ausencia de bordes verticales —sólo sirven para que los datos
- se vean amontonados.
+ Observa la ausencia de bordes verticales —
+sólo sirven para que los datos se vean amontonados.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
 placement ht
+alignment document
 wide false
 sideways false
 status open
@@ -1036,33 +1069,55 @@ Bloques de texto de anchura total
 \end_layout
 
 \begin_layout Standard
-Además de los nuevos tipos de flotantes hay un entorno, 
+Además de los nuevos tipos de flotantes hay un entorno,
+ 
 \emph on
 Ancho total
 \emph default
-, que se extiende a través del bloque principal de texto y el área de las
- notas, con el margen irregular:
+,
+ que se extiende a través del bloque principal de texto y el área de las notas,
+ con el margen irregular:
 \end_layout
 
 \begin_layout Full Width
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
- Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+Lorem ipsum dolor sit amet,
+ consectetuer adipiscing elit.
+ Ut purus elit,
+ vestibulum ut,
+ placerat ac,
+ adipiscing vitae,
+ felis.
  Curabitur dictum gravida mauris.
- Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.
+ Nam arcu libero,
+ nonummy eget,
+ consectetuer id,
+ vulputate a,
+ magna.
  Donec vehicula augue eu neque.
- Pellentesque habitant morbi tristique senectus et netus et malesuada fames
- ac turpis egestas.
+ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
  Mauris ut leo.
  Cras viverra metus rhoncus sem.
  Nulla et lectus vestibulum urna fringilla ultrices.
  Phasellus eu tellus sit amet tortor gravida placerat.
- Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+ Integer sapien est,
+ iaculis in,
+ pretium quis,
+ viverra ac,
+ nunc.
  Praesent eget sem vel leo ultrices bibendum.
  Aenean faucibus.
- Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla.
+ Morbi dolor nulla,
+ malesuada eu,
+ pulvinar at,
+ mollis ac,
+ nulla.
  Curabitur auctor semper nulla.
  Donec varius orci eget risus.
- Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
+ Duis nibh mi,
+ congue eu,
+ accumsan eleifend,
+ sagittis quis,
+ diam.
  Duis eget orci sit amet orci dignissim rutrum.
 \end_layout
 
@@ -1101,8 +1156,10 @@ Palatino
 \emph on
 Bera Mono
 \emph default
-, este estilo los usará automáticamente.
- Si no, se utilizarán los tipos 
+,
+ este estilo los usará automáticamente.
+ Si no,
+ se utilizarán los tipos 
 \emph on
 Computer Modern
 \emph default
@@ -1121,8 +1178,7 @@ name "subsec:espacio-entre-letras"
 \end_layout
 
 \begin_layout Standard
-Esta clase de documento incluye dos nuevos estilos de texto y algunas mejoras
- de los comandos existentes para el espaciado de letras.
+Esta clase de documento incluye dos nuevos estilos de texto y algunas mejoras de los comandos existentes para el espaciado de letras.
 \end_layout
 
 \begin_layout Standard
@@ -1146,8 +1202,11 @@ Versalitas
 
 \end_inset
 
-, el espaciado de las letras —o sea, entre ellas— debería ser levemente
- aumentado.
+,
+ el espaciado de las letras —
+o sea,
+ entre ellas—
+ debería ser levemente aumentado.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bringhurst2005"
@@ -1211,7 +1270,8 @@ EN MAYÚSCULAS
 
 \end_inset
 
-, y el estilo 
+,
+ y el estilo 
 \emph on
 Versalitas 
 \emph default
@@ -1268,8 +1328,8 @@ letras versalitas
 \end_inset
 
 .
- Estos comandos también cambiarán automáticamente la caja del texto a mayúscula
- o minúscula, respectivamente.
+ Estos comandos también cambiarán automáticamente la caja del texto a mayúscula o minúscula,
+ respectivamente.
 \end_layout
 
 \begin_layout Standard
@@ -1278,9 +1338,10 @@ La forma normal de
 Versalitas
 \emph default
  también se ha redefinido para incluir espacio entre las letras.
- Su caja se deja tal cual, sin embargo.
- Esto permite usar tanto letras de caja alta como de caja baja para la misma
- forma de letra: 
+ Su caja se deja tal cual,
+ sin embargo.
+ Esto permite usar tanto letras de caja alta como de caja baja para la misma forma de letra:
+ 
 \noun on
 Las Letras Iniciales De Las Palabras En Esta Frase Son Capitales.
 \end_layout
@@ -1316,9 +1377,11 @@ tufte-handout
 \family sans
 article
 \family default
-, por tanto, admite cualquiera de las opciones típicas de artículo.
- No obstante, hay unas cuantas opciones específicas de la clase de documento
- 
+,
+ por tanto,
+ admite cualquiera de las opciones típicas de artículo.
+ No obstante,
+ hay unas cuantas opciones específicas de la clase de documento 
 \family sans
 tufte-handout
 \family default
@@ -1342,7 +1405,8 @@ sfsidenotes
 \family sans
 palo seco
 \family default
- para las notas laterales, en vez del predeterminado romana.
+ para las notas laterales,
+ en vez del predeterminado romana.
 \end_layout
 
 \begin_layout Itemize
@@ -1350,9 +1414,7 @@ La opción
 \emph on
 twoside
 \emph default
- modificará los encabezamientos de página de modo que el número de página
- se imprima en el lado externo de la misma (en vez de imprimir siempre el
- número de página en el lado derecho en modo 
+ modificará los encabezamientos de página de modo que el número de página se imprima en el lado externo de la misma (en vez de imprimir siempre el número de página en el lado derecho en modo 
 \emph on
 una cara
 \emph default
@@ -1365,9 +1427,9 @@ La opción
 symmetric
 \emph default
  inserta las notas en el margen externo de la página.
- Así es como se imprimen tradicionalmente los libros, pero no es así en
- el diseño de libros de Tufte, que pone las notas siempre en el lado derecho
- de la página.
+ Así es como se imprimen tradicionalmente los libros,
+ pero no es así en el diseño de libros de Tufte,
+ que pone las notas siempre en el lado derecho de la página.
  Esta opción establece implícitamente la opción 
 \emph on
 twoside
@@ -1380,12 +1442,11 @@ La opción
 \emph on
 justified
 \emph default
- establece el estilo justificado para todo el texto (al mismo nivel por
- la izquierda y por la derecha).
- Por omisión, el texto presenta un margen derecho irregular.
+ establece el estilo justificado para todo el texto (al mismo nivel por la izquierda y por la derecha).
+ Por omisión,
+ el texto presenta un margen derecho irregular.
  El cuerpo de texto de los libros de Tufte tiene el margen derecho irregular;
- esto evita la innecesaria partición con guión y hace más fácil leer el
- texto en la columna ligeramente más estrecha.
+ esto evita la innecesaria partición con guión y hace más fácil leer el texto en la columna ligeramente más estrecha.
 \end_layout
 
 \begin_layout Subsection
@@ -1408,10 +1469,12 @@ Como se ha mencionado en la página
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "subsec:diseño-de-encabezados"
+nolink "false"
 
 \end_inset
 
-, la clase de documento 
+,
+ la clase de documento 
 \family sans
 tufte-handout
 \family default
@@ -1427,11 +1490,14 @@ subsección
 \end_layout
 
 \begin_layout Standard
-Si quieres definir, digamos, un entorno de 
+Si quieres definir,
+ digamos,
+ un entorno de 
 \emph on
 párrafo
 \emph default
-, podrías hacer lo siguiente:
+,
+ podrías hacer lo siguiente:
 \end_layout
 
 \begin_layout LyX-Code
@@ -1513,7 +1579,8 @@ paragraph
 \end_layout
 
 \begin_layout Standard
-Para más detalles sobre definición de niveles de sección, véase 
+Para más detalles sobre definición de niveles de sección,
+ véase 
 \shape italic
 The \SpecialChar LaTeX
 
@@ -1560,8 +1627,7 @@ name "sec:dependencias"
 \end_layout
 
 \begin_layout Standard
-Lo siguiente es una lista de paquetes de los que depende la clase de documento
- 
+Lo siguiente es una lista de paquetes de los que depende la clase de documento 
 \family sans
 tufte-handout
 \family default
@@ -1661,8 +1727,9 @@ GitHub
 
 \end_inset
 
- del proyecto tufte-latex, listas de correo, rastreador de fallos y documentació
-n.
+ del proyecto tufte-latex,
+ listas de correo,
+ rastreador de fallos y documentación.
 \end_layout
 
 \begin_layout Standard

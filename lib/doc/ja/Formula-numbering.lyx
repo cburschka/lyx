@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -59,9 +59,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -113,18 +113,24 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-この文書は，二つの数式カテゴリの使い方を示すものです．一つのカテゴリにはアラビア数字，もう一つはローマ数字で番号が振られています．
+この文書は，
+二つの数式カテゴリの使い方を示すものです．一つのカテゴリにはアラビア数字，
+もう一つはローマ数字で番号が振られています．
 \end_layout
 
 \begin_layout Standard
@@ -235,58 +241,74 @@ A=I\label{eq:I}
 
 \begin_layout Standard
 相互参照：
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:B"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:C"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:F"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:G"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:D"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:E"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:H"
+nolink "false"
 
 \end_inset
 
- , 
+ ,
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:I"
+nolink "false"
 
 \end_inset
 
@@ -307,7 +329,9 @@ height "1pt"
 \begin_inset VSpace medskip
 \end_inset
 
-この例を作成するには，ローマ数字の数式のカウンタをまず定義しなくてはなりません．そのためには，\SpecialChar LaTeX
+この例を作成するには，
+ローマ数字の数式のカウンタをまず定義しなくてはなりません．そのためには，
+\SpecialChar LaTeX
 プリアンブルに以下のように入力します．
 \end_layout
 
@@ -337,7 +361,8 @@ roman{rom}}
 \series bold
 equation
 \series default
-の値を保存するには，プリアンブルに以下のように入力します．
+の値を保存するには，
+プリアンブルに以下のように入力します．
 \end_layout
 
 \begin_layout Standard
@@ -379,7 +404,8 @@ theequation
 \end_layout
 
 \begin_layout Standard
-文書中で二つの連番スキームの間を切り替えるには，ローマ数字用に
+文書中で二つの連番スキームの間を切り替えるには，
+ローマ数字用に
 \end_layout
 
 \begin_layout Standard
@@ -405,7 +431,8 @@ therom}
 \end_layout
 
 \begin_layout Standard
-というコマンドをプリアンブルで定義し，アラビア数字用には
+というコマンドをプリアンブルで定義し，
+アラビア数字用には
 \end_layout
 
 \begin_layout Standard
@@ -435,7 +462,8 @@ org@theeq}
 \end_layout
 
 \begin_layout Standard
-各数式は，既定ではアラビア数字で連番が振られます．ローマ数字に切り替えるには\SpecialChar TeX
+各数式は，
+既定ではアラビア数字で連番が振られます．ローマ数字に切り替えるには\SpecialChar TeX
 コードで
 \series bold
 

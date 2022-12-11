@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -46,9 +46,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -111,12 +111,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -135,17 +139,21 @@ Feynman
 \series bold
 feyn
 \series default
-を導入しておく必要があります。ファインマン図は、数式中にコマンド
+を導入しておく必要があります。
+ファインマン図は、数式中にコマンド
 \series bold
 
 \backslash
 Diagram
 \series default
-を挿入することで作ることができます。すると、新しい行列を通常の行列と同じようにして作ることができます。
+を挿入することで作ることができます。
+すると、新しい行列を通常の行列と同じようにして作ることができます。
+
 \end_layout
 
 \begin_layout Standard
 以下に示すように、「分子」や「伝搬関数」として振る舞うコマンドを、行列の項目として入力することができます。
+
 \end_layout
 
 \begin_layout Standard
@@ -687,7 +695,8 @@ vertexlabel{p}{文字列}
 \begin_layout Plain Layout
 \noindent
 \align left
-頂点ラベル（vertex label）。頂点の上にラベルを付けるときは
+頂点ラベル（vertex label）。
+頂点の上にラベルを付けるときは
 \emph on
 p
 \emph default
@@ -769,7 +778,8 @@ $
 \series bold
 feyn
 \series default
-パッケージのオプションの一部に過ぎません。ユーザーの手引きは
+パッケージのオプションの一部に過ぎません。
+ユーザーの手引きは
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Feyn"
@@ -778,6 +788,7 @@ literal "true"
 \end_inset
 
 にあります。
+
 \end_layout
 
 \begin_layout Bibliography

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -26,9 +26,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -83,12 +83,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -162,13 +166,14 @@ status open
 
 \begin_layout Abstract
 \noindent
-This example poster is not nice, but you get an idea of what is possible
- with the 
+This example poster is not nice,
+ but you get an idea of what is possible with the 
 \family sans
 a0poster
 \family default
  document class within \SpecialChar LyX
-, when not using additional modules (such as 
+,
+ when not using additional modules (such as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -313,7 +318,8 @@ Insert\SpecialChar menuseparator
 Custom Insets
 \family default
 .
- For small inline snippets, there are variants at 
+ For small inline snippets,
+ there are variants at 
 \family sans
 Edit\SpecialChar menuseparator
 Text Style.
@@ -524,8 +530,7 @@ The
 \family sans
 a0poster
 \family default
- class and layout provide the means to create a poster in A3 through A0big
- size using \SpecialChar LyX
+ class and layout provide the means to create a poster in A3 through A0big size using \SpecialChar LyX
 .
 \end_layout
 
@@ -561,8 +566,11 @@ The usual paragraph and text styles can be used.
 
 \begin_layout Itemize
 \SpecialChar LyX
-'s boxes, as used here, are a simple means for structuring the content,
- simple colored boxes (of one color, predefined in 
+'s boxes,
+ as used here,
+ are a simple means for structuring the content,
+ simple colored boxes (of one color,
+ predefined in 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar ldots
@@ -589,7 +597,8 @@ fancy
 \begin_inset Quotes erd
 \end_inset
 
- boxes, try the 
+ boxes,
+ try the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -609,8 +618,9 @@ Colored Boxes
 \emph on
 poster-sciposter
 \emph default
- template, but also works with a0poster, the latter is documented in the
- 
+ template,
+ but also works with a0poster,
+ the latter is documented in the 
 \emph on
 poster-a0poster-colored
 \emph default
@@ -618,7 +628,8 @@ poster-a0poster-colored
 \end_layout
 
 \begin_layout Itemize
-For multiple columns, use the 
+For multiple columns,
+ use the 
 \begin_inset Quotes eld
 \end_inset
 

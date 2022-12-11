@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -28,9 +28,9 @@ theorems-std
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -81,12 +81,16 @@ theorems-std
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -97,8 +101,7 @@ status open
 
 \begin_layout Plain Layout
 This is a template \SpecialChar LyX
- file for articles to be submitted to journals of the
- Elsevier publishing company.
+ file for articles to be submitted to journals of the Elsevier publishing company.
  For general infos see 
 \begin_inset Flex URL
 status open
@@ -123,9 +126,10 @@ https://wiki.lyx.org/Examples/Elsevier
 status open
 
 \begin_layout Plain Layout
-The Journal is specified in the document preamble! For the right document
- class options to get the page format for your journal, have a look at the
- elsarticle documentation: 
+The Journal is specified in the document preamble!
+ For the right document class options to get the page format for your journal,
+ have a look at the elsarticle documentation:
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -193,8 +197,7 @@ t1
 \end_layout
 
 \begin_layout Title footnote
-The second title footnote which is a longer longer than the first one and
- with an intention to fill in up more than one line while formatting.
+The second title footnote which is a longer longer than the first one and with an intention to fill in up more than one line while formatting.
 \begin_inset Argument 1
 status open
 
@@ -287,7 +290,9 @@ Email
 \end_layout
 
 \begin_layout Plain Layout
-——-
+—
+—
+-
 \begin_inset space \hfill{}
 \end_inset
 
@@ -442,7 +447,8 @@ fn1
 \end_layout
 
 \begin_layout Author footnote
-Another author footnote, but a little more longer.
+Another author footnote,
+ but a little more longer.
 \begin_inset Argument 1
 status open
 
@@ -484,7 +490,11 @@ cor2
 \end_layout
 
 \begin_layout Address
-River Valley Technologies, SJP Building, Cotton Hills, Trivandrum, Kerala,
+River Valley Technologies,
+ SJP Building,
+ Cotton Hills,
+ Trivandrum,
+ Kerala,
  India 695014
 \begin_inset Argument 1
 status open
@@ -499,7 +509,12 @@ rvt
 \end_layout
 
 \begin_layout Address
-River Valley Technologies, 9, Browns Court, Kennford, Exeter, United Kingdom
+River Valley Technologies,
+ 9,
+ Browns Court,
+ Kennford,
+ Exeter,
+ United Kingdom
 \begin_inset Argument 1
 status open
 
@@ -530,7 +545,11 @@ cvr@river-valley.com
 \end_layout
 
 \begin_layout Address
-River Valley Technologies, SJP Building, Cotton Hills, Trivandrum, Kerala,
+River Valley Technologies,
+ SJP Building,
+ Cotton Hills,
+ Trivandrum,
+ Kerala,
  India 695014
 \end_layout
 
@@ -557,7 +576,12 @@ url
 \end_layout
 
 \begin_layout Address
-River Valley Technologies, 9, Browns Court, Kennford, Exeter, United Kingdom
+River Valley Technologies,
+ 9,
+ Browns Court,
+ Kennford,
+ Exeter,
+ United Kingdom
 \end_layout
 
 \end_inset
@@ -566,7 +590,8 @@ River Valley Technologies, 9, Browns Court, Kennford, Exeter, United Kingdom
 \end_layout
 
 \begin_layout Abstract
-Abstract, should normally be not longer than 200 words.
+Abstract,
+ should normally be not longer than 200 words.
 \end_layout
 
 \begin_layout Keywords
@@ -715,7 +740,8 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Bla bla, as listed in 
+Bla bla,
+ as listed in 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "article-full,booklet-full"
@@ -770,7 +796,8 @@ test
 status open
 
 \begin_layout Plain Layout
-To get another numbering scheme, you cannot use an option argument (a.k.a.
+To get another numbering scheme,
+ you cannot use an option argument (a.k.a.
  short title) as described in the elsarticle manual.
  But you can use the following \SpecialChar TeX
 -code command to achieve the same:
@@ -844,7 +871,8 @@ Subsubsection
 \end_layout
 
 \begin_layout Standard
-Bla, bla
+Bla,
+ bla
 \end_layout
 
 \begin_layout Section
@@ -853,11 +881,17 @@ Appendix name
 \end_layout
 
 \begin_layout Standard
-Appendix, only when needed.
+Appendix,
+ only when needed.
 \end_layout
 
 \begin_layout Section*
-—————–
+—
+—
+—
+—
+—
+–
 \end_layout
 
 \begin_layout Standard
@@ -867,15 +901,18 @@ You can use either Bib\SpecialChar TeX
 status open
 
 \begin_layout Plain Layout
-The following bibliography styles are allowed: 
+The following bibliography styles are allowed:
+ 
 \family sans
 elsarticle-harv
 \family default
-, 
+,
+ 
 \family sans
 elsarticle-num-names
 \family default
-, or 
+,
+ or 
 \family sans
 elsarticle-num
 \end_layout
@@ -897,7 +934,14 @@ options "bibtotoc,elsarticle-harv"
 \end_layout
 
 \begin_layout Section*
-———————
+—
+—
+—
+—
+—
+—
+—
+
 \end_layout
 
 \begin_layout Standard
@@ -913,13 +957,15 @@ literal "true"
 
 \end_inset
 
-Frank Mittelbach and Michel Goossens: 
+Frank Mittelbach and Michel Goossens:
+ 
 \emph on
 The \SpecialChar LaTeX
  Companion Second Edition.
 
 \emph default
- Addison-Wesley, 2004.
+ Addison-Wesley,
+ 2004.
 \end_layout
 
 \begin_layout Bibliography
@@ -932,7 +978,8 @@ literal "true"
 
 Scott Pakin.
  The comprehensive \SpecialChar LaTeX
- symbol list, 2005.
+ symbol list,
+ 2005.
 \end_layout
 
 \end_body

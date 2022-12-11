@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -48,9 +48,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -115,12 +115,16 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -134,9 +138,9 @@ status collapsed
 \begin_layout Plain Layout
 Dokumen ini dirancang untuk dicetak bolak-balik.
  Permulaan semua bab akan selalu berada di halaman ganjil.
- Apabila akhir halaman di suatu bab berada pada halaman ganjil, maka secara
- otomatis akan menambah satu halaman transisi kosong, sebelum memulai bab
- berikutnya di halaman ganjil.
+ Apabila akhir halaman di suatu bab berada pada halaman ganjil,
+ maka secara otomatis akan menambah satu halaman transisi kosong,
+ sebelum memulai bab berikutnya di halaman ganjil.
  Nomor halaman kosong transisi tetap diperhitungkan namun tidak dituliskan.
  Cara pengaturannya ditulis di \SpecialChar LaTeX
  preamble (Dokumen\SpecialChar menuseparator
@@ -168,7 +172,8 @@ dan
 .
  Apabila anda mempunyai komentar atau menemukan kesalahan yang perlu dikoreksi,
  silakan kirim komentar ke mailing list \SpecialChar LyX
-, 
+,
+ 
 \family typewriter
 
 \begin_inset CommandInset href
@@ -210,13 +215,12 @@ Selamat Datang di \SpecialChar LyX
 
 \begin_layout Standard
 Buku ini dirancang untuk anda yang belum mengenal \SpecialChar LaTeX
-, atau hanya sedikit pengetahu
-an mengenai \SpecialChar LaTeX
+,
+ atau hanya sedikit pengetahuan mengenai \SpecialChar LaTeX
 .
  Anda jangan terlalu kawatir karena belajar \SpecialChar LyX
  tidak perlu memahami \SpecialChar LaTeX
- terlebih
- dahulu.
+ terlebih dahulu.
  \SpecialChar LyX
  akan memberikan fasilitas antarmuka ke \SpecialChar LaTeX
  yang hampir mendekati WYSIWYG.
@@ -225,8 +229,8 @@ an mengenai \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Standard
-Mungkin anda pernah atau bahkan sering melakukan ketika melakukan  penyuntingan
- dokumen; setelah akhir kalimat yang diakhiri dengan tanda 
+Mungkin anda pernah atau bahkan sering melakukan ketika melakukan  penyuntingan dokumen;
+ setelah akhir kalimat yang diakhiri dengan tanda 
 \begin_inset Quotes eld
 \end_inset
 
@@ -235,14 +239,13 @@ Mungkin anda pernah atau bahkan sering melakukan ketika melakukan  penyuntingan
 \end_inset
 
  kemudian anda menambahkan dua spasi sebelum memulai awal kalimat selanjutnya.
- Hal lain yang sering anda lakukan adalah mengatur jarak antara paragraf
- dengan menambahkan, misalnya 3 baris kosong sebelum paragraf berikutnya.
- Hal-hal yang biasa dilakukan seperti contoh tadi sudah merupakan hal umum
- apabila anda menggunakan program pengolah kata biasa.
+ Hal lain yang sering anda lakukan adalah mengatur jarak antara paragraf dengan menambahkan,
+ misalnya 3 baris kosong sebelum paragraf berikutnya.
+ Hal-hal yang biasa dilakukan seperti contoh tadi sudah merupakan hal umum apabila anda menggunakan program pengolah kata biasa.
  Apabila menggunakan \SpecialChar LyX
-, anda tidak perlu melakukan lagi karena \SpecialChar LyX
- akan mengatur
- secara otomatis dan rapi.
+,
+ anda tidak perlu melakukan lagi karena \SpecialChar LyX
+ akan mengatur secara otomatis dan rapi.
 \end_layout
 
 \begin_layout Standard
@@ -250,8 +253,8 @@ Anda silakan mencoba pada dokumen
 \emph on
 Tutorial
 \emph default
- ini dengan menambah-kan dua spasi setelah akhir kalimat, yaitu setelah
- tanda 
+ ini dengan menambah-kan dua spasi setelah akhir kalimat,
+ yaitu setelah tanda 
 \begin_inset Quotes eld
 \end_inset
 
@@ -261,17 +264,16 @@ Tutorial
 
  atau anda boleh mencoba untuk menambahkan 3 baris kosong diantara dua paragraf.
  Anda tidak akan bisa.
- Banyak lagi trik yang biasa dilakukan di pengolah kata lain tidak bisa
- diterapkan di \SpecialChar LyX
+ Banyak lagi trik yang biasa dilakukan di pengolah kata lain tidak bisa diterapkan di \SpecialChar LyX
 .
- Pada pengolah kata biasa, pengaturan spasi, perubahan huruf serta berbagai
- pengaturan lainnya dilakukan secara manual, sehingga yang anda lakukan
- tidak hanya menulis atau menyunting dokumen, tetapi juga melakukan pengaturan
- format penulisan.
+ Pada pengolah kata biasa,
+ pengaturan spasi,
+ perubahan huruf serta berbagai pengaturan lainnya dilakukan secara manual,
+ sehingga yang anda lakukan tidak hanya menulis atau menyunting dokumen,
+ tetapi juga melakukan pengaturan format penulisan.
  Sebaliknya \SpecialChar LyX
- akan melakukan pengaturan format penulisan untuk anda secara
- konsisten, sehingga anda hanya perlu berkonsentrasi pada isi dan apa yang
- anda tulis di dokumen.
+ akan melakukan pengaturan format penulisan untuk anda secara konsisten,
+ sehingga anda hanya perlu berkonsentrasi pada isi dan apa yang anda tulis di dokumen.
 \end_layout
 
 \begin_layout Standard
@@ -294,8 +296,8 @@ Ada
 \end_layout
 
 \begin_layout Standard
-Sebelum kita mulai belajar, kami ingatkan sesuatu hal yang perlu dipahami
- terlebih dahulu.
+Sebelum kita mulai belajar,
+ kami ingatkan sesuatu hal yang perlu dipahami terlebih dahulu.
  Buku 
 \emph on
 Tutorial
@@ -309,7 +311,8 @@ Pengantar
 \emph on
 Pengantar
 \emph default
-, silakan anda membacanya dahulu sebelum kita lanjutkan dengan 
+,
+ silakan anda membacanya dahulu sebelum kita lanjutkan dengan 
 \emph on
 Tutorial
 \emph default
@@ -321,8 +324,8 @@ Setelah membaca buku
 \emph on
 Pengantar
 \emph default
- anda pasti mengerti makna huruf yang digunakan, sekarang kita lihat secara
- ringkas tentang buku 
+ anda pasti mengerti makna huruf yang digunakan,
+ sekarang kita lihat secara ringkas tentang buku 
 \emph on
 Tutorial
 \emph default
@@ -335,13 +338,14 @@ Bagaimana belajar dengan Tutorial
 
 \begin_layout Standard
 Dalam buku tutorial akan diberikan contoh dan latihan-latihan.
- Agar dapat memahami dengan baik, anda perlu membaca dengan teliti seluruh
- penjelasan yang ada dibuku ini, lakukan dan ikuti hal-hal kecil yang kita
- sarankan untuk ditulis.
- Latihan-latihan bertujuan agar anda benar-benar memahami serta mengetahui
- bahwa yang anda kerjakan sudah benar.
- Agar mempermudah belajar, ada baiknya anda mencetak buku ini.
- Anda perlu mengekspor dahulu ke PDF, dari menu 
+ Agar dapat memahami dengan baik,
+ anda perlu membaca dengan teliti seluruh penjelasan yang ada dibuku ini,
+ lakukan dan ikuti hal-hal kecil yang kita sarankan untuk ditulis.
+ Latihan-latihan bertujuan agar anda benar-benar memahami serta mengetahui bahwa yang anda kerjakan sudah benar.
+ Agar mempermudah belajar,
+ ada baiknya anda mencetak buku ini.
+ Anda perlu mengekspor dahulu ke PDF,
+ dari menu 
 \family sans
 Berkas
 \family default
@@ -355,19 +359,21 @@ Expor
 \family sans
 PDF(pdflatex)
 \family default
-, kemudian anda cetak berkas ini di mesin cetak.
+,
+ kemudian anda cetak berkas ini di mesin cetak.
 \end_layout
 
 \begin_layout Standard
 Apabila sudah mengenal \SpecialChar LaTeX
-, anda akan bisa mengikuti Tutorial dengan cepat,
+,
+ anda akan bisa mengikuti Tutorial dengan cepat,
  karena banyak ide yang ada di \SpecialChar LyX
  sebenarnya juga berasal dari \SpecialChar LaTeX
 .
  Namun demikian \SpecialChar LyX
  memiliki berbagai fitur yang perlu dipelajari.
- Apabila  anda merasa tidak perlu membaca keseluruhan, anda tetap harus
- membaca subbab
+ Apabila  anda merasa tidak perlu membaca keseluruhan,
+ anda tetap harus membaca subbab
 \begin_inset space ~
 \end_inset
 
@@ -375,10 +381,12 @@ Apabila sudah mengenal \SpecialChar LaTeX
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:latexusers"
+nolink "false"
 
 \end_inset
 
-, yang khusus ditulis bagi yang sudah mengenal \SpecialChar LaTeX
+,
+ yang khusus ditulis bagi yang sudah mengenal \SpecialChar LaTeX
 .
 \end_layout
 
@@ -419,8 +427,8 @@ Tutorial
 .
  Apabila anda ingin mempelajari berbagai trik penggunaan \SpecialChar LaTeX
  di dalam \SpecialChar LyX
-, anda
- perlu melihat ke buku 
+,
+ anda perlu melihat ke buku 
 \emph on
 Obyek Tambahan
 \emph default
@@ -447,21 +455,22 @@ Dokumen \SpecialChar LyX
 \begin_layout Standard
 Baiklah\SpecialChar endofsentence
  Anda sudah siap menulis dokumen.
- Tetapi sebelum memulai, ada beberapa hal penting yang perlu mendapat perhatian
- agar tutorial ini dapat diikuti dengan baik dan bermanfaat.
+ Tetapi sebelum memulai,
+ ada beberapa hal penting yang perlu mendapat perhatian agar tutorial ini dapat diikuti dengan baik dan bermanfaat.
 \end_layout
 
 \begin_layout Standard
-Ada beberapa informasi yang tidak lengkap di Tutorial, oleh karena itu anda
- perlu membuka berkas buku panduan yang lain dari menu 
+Ada beberapa informasi yang tidak lengkap di Tutorial,
+ oleh karena itu anda perlu membuka berkas buku panduan yang lain dari menu 
 \family sans
 Bantuan
 \family default
 .
  Apabila anda membaca dokumen cetakan dan belum membuka \SpecialChar LyX
-, maka sekarang
- silakan jalankan \SpecialChar LyX
-, ke menu 
+,
+ maka sekarang silakan jalankan \SpecialChar LyX
+,
+ ke menu 
 \family sans
 Bantuan
 \family default
@@ -469,7 +478,8 @@ Bantuan
 \emph on
 Pan-duan Penggunaan
 \emph default
-, kemudian anda juga bisa membuka buku 
+,
+ kemudian anda juga bisa membuka buku 
 \emph on
 Tutorial
 \emph default
@@ -479,36 +489,35 @@ Tutorial
 \emph default
  dari dalam \SpecialChar LyX
 ).
- Dengan cara ini anda dapat membaca buku panduan sambil menulis ke berkas
- anda sendiri.
+ Dengan cara ini anda dapat membaca buku panduan sambil menulis ke berkas anda sendiri.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Buku panduan yang anda buka memuat dan menerapkan contoh penggunaan berbagai
- fitur \SpecialChar LyX
+Buku panduan yang anda buka memuat dan menerapkan contoh penggunaan berbagai fitur \SpecialChar LyX
 .
 \end_layout
 
 \end_inset
 
- Yang perlu anda ketahui, ketika anda mempunyai lebih dari satu dokumen
- yang dibuka, anda dapat menggunakan menu 
+ Yang perlu anda ketahui,
+ ketika anda mempunyai lebih dari satu dokumen yang dibuka,
+ anda dapat menggunakan menu 
 \family sans
 Tampilan
 \family default
- untuk pindah dari satu dokumen ke lainnya atau secara cepat menggunakan
- memilih tab dokumen yang dikehendaki.
+ untuk pindah dari satu dokumen ke lainnya atau secara cepat menggunakan memilih tab dokumen yang dikehendaki.
 \end_layout
 
 \begin_layout Standard
-Dalam Tutorial ini, kami menganggap anda menggunakan versi \SpecialChar LyX
- yang sesuai
- dengan buku Panduan, demikian pula \SpecialChar LaTeX
- yang diinstal, serta adanya fasilitas
- untuk melihat tampilan PDF.
- Hal ini biasanya sudah ada hampir semua distribusi Linux dan BSD, juga
- Windows yang instalasinya dilakukan oleh \SpecialChar LyX
+Dalam Tutorial ini,
+ kami menganggap anda menggunakan versi \SpecialChar LyX
+ yang sesuai dengan buku Panduan,
+ demikian pula \SpecialChar LaTeX
+ yang diinstal,
+ serta adanya fasilitas untuk melihat tampilan PDF.
+ Hal ini biasanya sudah ada hampir semua distribusi Linux dan BSD,
+ juga Windows yang instalasinya dilakukan oleh \SpecialChar LyX
  
 \emph on
 Installer
@@ -518,13 +527,14 @@ Installer
 
 \begin_layout Standard
 Untuk memudahkan latihan agar mahir menggunakan \SpecialChar LyX
-, kami sudah mempersiapkan
- berkas dengan nama 
+,
+ kami sudah mempersiapkan berkas dengan nama 
 \family typewriter
 example_raw.lyx
 \family default
 .
- Untuk memanggil berkas ini, dari menu 
+ Untuk memanggil berkas ini,
+ dari menu 
 \family sans
 Berkas
 \family default
@@ -547,11 +557,11 @@ Contoh
 example_raw.lyx
 \family default
 .
- Berkas ini anggap saja dibuat oleh seseorang yang belum memahami fitur-fitur
- yang ada di \SpecialChar LyX
+ Berkas ini anggap saja dibuat oleh seseorang yang belum memahami fitur-fitur yang ada di \SpecialChar LyX
 .
  Sambil belajar menggunakan \SpecialChar LyX
-, silakan anda memperbaiki berkas tersebut.
+,
+ silakan anda memperbaiki berkas tersebut.
  Anda perlu perlu memperhatikan 
 \begin_inset Quotes eld
 \end_inset
@@ -579,20 +589,20 @@ Nota
 
 \end_inset
 
- Apabila ingin melihat bagaimana seharusnya perbaikan yang dilakukan, anda
- bisa melihat berkas dengan nama 
+ Apabila ingin melihat bagaimana seharusnya perbaikan yang dilakukan,
+ anda bisa melihat berkas dengan nama 
 \family typewriter
 example_lyxified.lyx.
 
 \family default
- Pada berkas ini sudah diatur menggunakan pemformatan dokumen oleh orang
- sudah memahami \SpecialChar LyX
+ Pada berkas ini sudah diatur menggunakan pemformatan dokumen oleh orang sudah memahami \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Standard
-Apabila sudah anda perbaiki, cobalah simpan berkas latihan ke lokasi direktori
- kerja anda, dengan cara menu Berkas\SpecialChar menuseparator
+Apabila sudah anda perbaiki,
+ cobalah simpan berkas latihan ke lokasi direktori kerja anda,
+ dengan cara menu Berkas\SpecialChar menuseparator
 Simpan
 \begin_inset space ~
 \end_inset
@@ -615,7 +625,8 @@ Tampilam
 \family sans
 DVI
 \family default
-, atau 
+,
+ atau 
 \family sans
 Tampilan
 \family default
@@ -650,17 +661,17 @@ Contoh
 \family default
 ) ada berbagai berkas contoh yang bisa anda lihat.
  Berkas-berkas tersebut mengandung berbagai contoh fitur \SpecialChar LyX
- yang bisa dipakai
- dan digunakan sebagai bahan perbandingan, baik setelah selesai mengikuti
- Tutorial, atau ketika anda kurang yakin bagaimana seharusnya melakukan
- pengaturan di \SpecialChar LyX
+ yang bisa dipakai dan digunakan sebagai bahan perbandingan,
+ baik setelah selesai mengikuti Tutorial,
+ atau ketika anda kurang yakin bagaimana seharusnya melakukan pengaturan di \SpecialChar LyX
 .
- Dengan melihat berbagai berkas yang ada di direktori tersebut akan sangat
- membantu anda.
+ Dengan melihat berbagai berkas yang ada di direktori tersebut akan sangat membantu anda.
 \end_layout
 
 \begin_layout Subsection
-Menyunting, Melihat Hasil, dan Mengekspor
+Menyunting,
+ Melihat Hasil,
+ dan Mengekspor
 \end_layout
 
 \begin_layout Itemize
@@ -671,14 +682,17 @@ Baru
 \end_layout
 
 \begin_layout Itemize
-Tulislah kalimat ini: 
+Tulislah kalimat ini:
+ 
 \family typewriter
 Ini kalimat pertama di \SpecialChar LyX
-, coba!
+,
+ coba!
 \end_layout
 
 \begin_layout Itemize
-Simpan berkas dan beri nama, dari 
+Simpan berkas dan beri nama,
+ dari 
 \family sans
 Berkas\SpecialChar menuseparator
 Simpan
@@ -699,7 +713,8 @@ Lain\SpecialChar endofsentence
 
 \begin_layout Itemize
 Jalankan \SpecialChar LaTeX
- untuk membuat berkas PDF, melalui 
+ untuk membuat berkas PDF,
+ melalui 
 \family sans
 Tampilan\SpecialChar menuseparator
 PDFI
@@ -712,14 +727,15 @@ arg   "buffer-view"
 
 .
  \SpecialChar LyX
- akan menjalankan program penampil DVI yang memperlihatkan tampilan hasil
- dokumen anda seperti bila dicetak.
+ akan menjalankan program penampil DVI yang memperlihatkan tampilan hasil dokumen anda seperti bila dicetak.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Anda tidak perlu menutup tampilan DVI, biarkan sebagai latar belakang.
- Untuk memperbarui bila ada perubahan, gunakan 
+Anda tidak perlu menutup tampilan DVI,
+ biarkan sebagai latar belakang.
+ Untuk memperbarui bila ada perubahan,
+ gunakan 
 \family sans
 Tampilan\SpecialChar menuseparator
 Perbarui\SpecialChar menuseparator
@@ -733,8 +749,8 @@ arg   "buffer-update"
 
 .
  Setelah \SpecialChar LaTeX
- selesai memperbarui, kemudian klik di jendela penampil PDF (atau
- kembalikan ke ukuran semula bila sebelumnya jendela tampilan PDF diperkecil).
+ selesai memperbarui,
+ kemudian klik di jendela penampil PDF (atau kembalikan ke ukuran semula bila sebelumnya jendela tampilan PDF diperkecil).
 \end_layout
 
 \end_inset
@@ -743,21 +759,24 @@ arg   "buffer-update"
 \end_layout
 
 \begin_layout Itemize
-Expor ke format yang bisa dicetak, dari menu 
+Expor ke format yang bisa dicetak,
+ dari menu 
 \family sans
 Berkas\SpecialChar menuseparator
 Expor
 \family default
- kemudian pilih ke format yang anda inginkan, misal PDF(pdflatex)
+ kemudian pilih ke format yang anda inginkan,
+ misal PDF(pdflatex)
 \family sans
 .
 \end_layout
 
 \begin_layout Standard
-Selamat! Anda telah berhasil menulis dokumen yang pertama menggunakan \SpecialChar LyX
+Selamat!
+ Anda telah berhasil menulis dokumen yang pertama menggunakan \SpecialChar LyX
 .
- Selanjutnya hanyalah hal-hal yang sifatnya lebih terperinci, anda akan
- bisa pelajari dari buku petunjuk lainnya.
+ Selanjutnya hanyalah hal-hal yang sifatnya lebih terperinci,
+ anda akan bisa pelajari dari buku petunjuk lainnya.
 \end_layout
 
 \begin_layout Subsection
@@ -766,18 +785,16 @@ Penyuntingan Dasar
 
 \begin_layout Standard
 \SpecialChar LyX
- pada dasarnya mampu melakukan berbagai hal yang biasa dilakukan di pengolah
- kata lain, seperti penataan teks sesuai lebar teks yang ditentukan juga
- indentasi paragraf secara otomatis.
- Disini akan dipaparkan berbagai operasi yang sering digunakan sebagai alat
- penyuntingan dokumen.
+ pada dasarnya mampu melakukan berbagai hal yang biasa dilakukan di pengolah kata lain,
+ seperti penataan teks sesuai lebar teks yang ditentukan juga indentasi paragraf secara otomatis.
+ Disini akan dipaparkan berbagai operasi yang sering digunakan sebagai alat penyuntingan dokumen.
 \end_layout
 
 \begin_layout Description
 Batalkan \SpecialChar LyX
- mempunyai kemampuan untuk membatalkan proses penyun-tingan sampai
- beberapa tahap, artinya anda dapat membatalkan hal-hal yang sudah dilakukan
- sejak dimulai sesi penyuntingan, caranya melalui 
+ mempunyai kemampuan untuk membatalkan proses penyun-tingan sampai beberapa tahap,
+ artinya anda dapat membatalkan hal-hal yang sudah dilakukan sejak dimulai sesi penyuntingan,
+ caranya melalui 
 \family sans
 Suntingan\SpecialChar menuseparator
 Batalkan
@@ -793,7 +810,8 @@ arg   "undo"
 \family sans
 Batalkan
 \family default
- terlalu jauh, anda cukup ke menu 
+ terlalu jauh,
+ anda cukup ke menu 
 \family sans
 Suntingan\SpecialChar menuseparator
 Kembalikan
@@ -810,7 +828,9 @@ arg   "redo"
 
 \begin_deeper
 \begin_layout Standard
-Namun perlu dicatat, saat ini, proses 
+Namun perlu dicatat,
+ saat ini,
+ proses 
 \family sans
 Batalkan
 \family default
@@ -823,14 +843,17 @@ Batalkan
 \emph on
 semua
 \emph default
- proses penyuntingan; contohnya, untuk perubahan pengaturan tata letak dokumen.
+ proses penyuntingan;
+ contohnya,
+ untuk perubahan pengaturan tata letak dokumen.
  Oleh karena itu anda perlu memperhatikan masalah ini.
 \end_layout
 
 \end_deeper
 \begin_layout Description
 Potong/Salin/Tempelkan Proses penyuntingan ini sangat sering dimanfaatkan.
- Untuk memotong, dari 
+ Untuk memotong,
+ dari 
 \family sans
 Suntingan\SpecialChar menuseparator
 Potong
@@ -841,7 +864,8 @@ type  "icon"
 arg   "cut"
 \end_inset
 
-), untuk menyalin bisa dari 
+),
+ untuk menyalin bisa dari 
 \family sans
 Suntingan\SpecialChar menuseparator
 Salin
@@ -852,7 +876,8 @@ type  "icon"
 arg   "copy"
 \end_inset
 
-), sedangkan untuk menempelkan dengan cara 
+),
+ sedangkan untuk menempelkan dengan cara 
 \family sans
 Suntingan\SpecialChar menuseparator
 Tempelkan
@@ -864,10 +889,8 @@ arg   "paste"
 \end_inset
 
 ).
- Ada cara lain yang lebih sederhana untuk menempelkan teks yang sudah ditandai
- (bisa juga dari program lain untuk ditempelkan di \SpecialChar LyX
-) yaitu dengan cara tekan
- 
+ Ada cara lain yang lebih sederhana untuk menempelkan teks yang sudah ditandai (bisa juga dari program lain untuk ditempelkan di \SpecialChar LyX
+) yaitu dengan cara tekan 
 \emph on
 tombol tengah dari tetikus
 \emph default
@@ -895,11 +918,13 @@ arg   "dialog-show findreplace"
 \end_inset
 
 ) untuk pencarian.
- Dalam jendela dialog, untuk meneruskan pencarian gunakan tombol
+ Dalam jendela dialog,
+ untuk meneruskan pencarian gunakan tombol
 \family sans
  Berikutnya
 \family default
-, sedangkan menginginkan mengganti kata dengan kata baru yang anda inginkan,
+,
+ sedangkan menginginkan mengganti kata dengan kata baru yang anda inginkan,
  gunakan tombol 
 \family sans
 Ganti
@@ -921,25 +946,22 @@ Cari dan Ganti
  apabila sewaktu-waktu memerlukan mencari kata tertentu.
  Sebagian besar jendela dialog yang ada di \SpecialChar LyX
  dapat dibiarkan tetap terbuka.
- Anda hanya perlu memastikan dimana kursor anda berada pada jendela yang
- seharusnya, apakah anda mengetik di jendela kerja \SpecialChar LyX
- atau di salah satu jendela
- dialog \SpecialChar LyX
+ Anda hanya perlu memastikan dimana kursor anda berada pada jendela yang seharusnya,
+ apakah anda mengetik di jendela kerja \SpecialChar LyX
+ atau di salah satu jendela dialog \SpecialChar LyX
 .
 \end_layout
 
 \end_inset
 
- Apabila anda menginginkan, anda bisa mengatur sistem pencarian yang mempertimba
-ngkan huruf besar atau kecil.
- Anda juga bisa mengatur pencarian untuk seluruh kata yang anda tuliskan
- dalam kotak 
+ Apabila anda menginginkan,
+ anda bisa mengatur sistem pencarian yang mempertimbangkan huruf besar atau kecil.
+ Anda juga bisa mengatur pencarian untuk seluruh kata yang anda tuliskan dalam kotak 
 \family sans
 Cari
 \family default
 .
- Pencarian dapat dilakukan dengan cara pencarian mundur dimulai dari lokasi
- kursor.
+ Pencarian dapat dilakukan dengan cara pencarian mundur dimulai dari lokasi kursor.
 \end_layout
 
 \begin_layout Description
@@ -955,22 +977,23 @@ Gaya
 \begin_inset space ~
 \end_inset
 
-Teks Anda dapat memberikan suatu penekanan pada teks tertentu dengan membuat
- 
+Teks Anda dapat memberikan suatu penekanan pada teks tertentu dengan membuat 
 \emph on
 condong
 \emph default
- (yaitu mencetak huruf dengan huruf miring), atau merubah menjadi 
+ (yaitu mencetak huruf dengan huruf miring),
+ atau merubah menjadi 
 \series bold
 huruf tebal
 \series default
-, atau dengan corak 
+,
+ atau dengan corak 
 \noun on
 Huruf Besar
 \noun default
- (atau disebut dengan huruf kapital, untuk menulis nama orang).
- Pengaturan corak dan gaya teks dilakukan dari dialog yang akan muncul dari
- menu 
+ (atau disebut dengan huruf kapital,
+ untuk menulis nama orang).
+ Pengaturan corak dan gaya teks dilakukan dari dialog yang akan muncul dari menu 
 \family sans
 Suntingan\SpecialChar menuseparator
 Corak
@@ -1006,8 +1029,7 @@ alat
 \begin_inset space ~
 \end_inset
 
-bantu Ada bermacam-macam tombol bantuan di kotak alat bantu (letaknya dibawah
- menu) untuk mempermudah anda memanggil fungsi pengaturan yang biasa digunakan,
+bantu Ada bermacam-macam tombol bantuan di kotak alat bantu (letaknya dibawah menu) untuk mempermudah anda memanggil fungsi pengaturan yang biasa digunakan,
  seperti 
 \family sans
 Tempelkan
@@ -1024,42 +1046,45 @@ atau lainnya.
 \end_layout
 
 \begin_layout Standard
-Tentu saja, saat ini anda belum banyak memanfaatkan.
- Namun demikian ketika anda mulai menulis dan menyunting dokumen, anda pasti
- banyak sekali menggunakan berbagai fungsi penyuntingan dasar yang sudah
- kami jelaskan.
+Tentu saja,
+ saat ini anda belum banyak memanfaatkan.
+ Namun demikian ketika anda mulai menulis dan menyunting dokumen,
+ anda pasti banyak sekali menggunakan berbagai fungsi penyuntingan dasar yang sudah kami jelaskan.
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: Spasi kosong di \SpecialChar LyX
+WYSIWYM:
+ Spasi kosong di \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Standard
-Salah satu hal penting dan perlu dibiasakan bagi yang baru saja mempelajari
- \SpecialChar LyX
+Salah satu hal penting dan perlu dibiasakan bagi yang baru saja mempelajari \SpecialChar LyX
  adalah bagaimana pengaturan spasi kosong.
  Berapa kalipun anda coba menekan 
 \family sans
 Return
 \family default
-, yang anda peroleh hanyalah satu baris kosong.
- Demikian pula untuk spasi, hanya akan ada satu spasi.
- Bahkan di baris kosong, anda tidak akan bisa membuat spasi sama sekali.
+,
+ yang anda peroleh hanyalah satu baris kosong.
+ Demikian pula untuk spasi,
+ hanya akan ada satu spasi.
+ Bahkan di baris kosong,
+ anda tidak akan bisa membuat spasi sama sekali.
  Tombol 
 \family sans
 Tab 
 \family default
-di papan ketik tidak akan berfungsi sebagaimana biasanya! Demikian pula
- di \SpecialChar LyX
- anda tidak akan menemukan mistar yang biasanya di pengolah kata untuk
- mengatur batas dan tempat hentian 
+di papan ketik tidak akan berfungsi sebagaimana biasanya!
+ Demikian pula di \SpecialChar LyX
+ anda tidak akan menemukan mistar yang biasanya di pengolah kata untuk mengatur batas dan tempat hentian 
 \family sans
 Tab.
 \end_layout
 
 \begin_layout Standard
-Pengolah kata biasanya menggunakan suatu prinsip yaitu WYSIWYG: 
+Pengolah kata biasanya menggunakan suatu prinsip yaitu WYSIWYG:
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1072,7 +1097,8 @@ What You See Is What You Get
 \end_inset
 
  \SpecialChar LyX
- tidak menggunakan prinsip itu tetapi WYSIWYM: 
+ tidak menggunakan prinsip itu tetapi WYSIWYM:
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1085,34 +1111,34 @@ What You See Is What You Mean
 \end_inset
 
 .
- Jadi apa yang anda ketik adalah yang anda maksudkan, kemudian \SpecialChar LyX
- akan mengatur
- berbagai tata letak sehingga hasil cetakan nanti akan cantik seperti yang
- anda kehendaki.
+ Jadi apa yang anda ketik adalah yang anda maksudkan,
+ kemudian \SpecialChar LyX
+ akan mengatur berbagai tata letak sehingga hasil cetakan nanti akan cantik seperti yang anda kehendaki.
  Perintah dengan tombol papan ketik 
 \family sans
 Return 
 \family default
-merupakan perintah untuk mengganti paragraf, dan 
+merupakan perintah untuk mengganti paragraf,
+ dan 
 \family sans
 Spasi
 \family default
  berarti memisahkan antara kata.
- Dengan perintah tersebut sudah cukup dan tidak perlu lagi mengulanginya
- beberapa kali.
+ Dengan perintah tersebut sudah cukup dan tidak perlu lagi mengulanginya beberapa kali.
  Untuk perintah 
 \family sans
 Tab
 \family default
- sama sekali tidak mempunyai arti dalam tata bahasa, oleh karena itu \SpecialChar LyX
- tidak
- menggunakannya.
+ sama sekali tidak mempunyai arti dalam tata bahasa,
+ oleh karena itu \SpecialChar LyX
+ tidak menggunakannya.
  Dengan demikian menggunakan \SpecialChar LyX
  hanya perlu berkonsentrasi pada 
 \emph on
 isi
 \emph default
- dokumen, tidak terlalu banyak waktu terbuang untuk pengaturan 
+ dokumen,
+ tidak terlalu banyak waktu terbuang untuk pengaturan 
 \emph on
 format
 \emph default
@@ -1133,14 +1159,13 @@ Pengantar
 \emph on
 Petunjuk Penggunaan
 \emph default
- memberikan cara dan informasi bagaimana pengaturan berbagai hal, termasuk
- pengaturan spasi horisontal dan vertikal yang pemanfaatannya mirip dengan
- spasi berganda dan baris kosong.
- Selain itu akan ditemui juga pengaturan ukuran dan corak huruf, pengaturan
- paragraf serta pelurusan kerataan secara manual.
- Walaupun diperlukan pengaturan akhir, namun idenya tetap sama yaitu tetap
- berkonsentrasi pada isi dokumen, sementara pengolah kata biasa perlu terus-mene
-rus mengatur format dokumen sambil menulis.
+ memberikan cara dan informasi bagaimana pengaturan berbagai hal,
+ termasuk pengaturan spasi horisontal dan vertikal yang pemanfaatannya mirip dengan spasi berganda dan baris kosong.
+ Selain itu akan ditemui juga pengaturan ukuran dan corak huruf,
+ pengaturan paragraf serta pelurusan kerataan secara manual.
+ Walaupun diperlukan pengaturan akhir,
+ namun idenya tetap sama yaitu tetap berkonsentrasi pada isi dokumen,
+ sementara pengolah kata biasa perlu terus-menerus mengatur format dokumen sambil menulis.
 \end_layout
 
 \begin_layout Section
@@ -1148,19 +1173,22 @@ Lingkungan
 \end_layout
 
 \begin_layout Standard
-Biasanya dalam suatu dokumen terbagi dalam beberapa bagian yang mempunyai
- maksud dan tujuan sendiri-sendiri.
+Biasanya dalam suatu dokumen terbagi dalam beberapa bagian yang mempunyai maksud dan tujuan sendiri-sendiri.
  Bagian dari dokumen ini kami sebut dengan 
 \emph on
 lingkungan
 \emph default
  yang merupakan kumpulan dari teks.
- Misalnya, judul dari bab atau subbab memberikan informasi kepada pembaca
- mengenai topik atau sub topik yang akan dibahas.
- Contoh lain, pada artikel jurnal ada bagian dari dokumen yang memberi informasi
- mengenai judul, setelah itu ada abstrak, kemudian di bagian tertentu dalam
- jurnal ada tempat untuk memberikan informasi tentang alamat penulisnya.
- Oleh karena itu Judul, penulis, abstrak, alamat disebut 
+ Misalnya,
+ judul dari bab atau subbab memberikan informasi kepada pembaca mengenai topik atau sub topik yang akan dibahas.
+ Contoh lain,
+ pada artikel jurnal ada bagian dari dokumen yang memberi informasi mengenai judul,
+ setelah itu ada abstrak,
+ kemudian di bagian tertentu dalam jurnal ada tempat untuk memberikan informasi tentang alamat penulisnya.
+ Oleh karena itu Judul,
+ penulis,
+ abstrak,
+ alamat disebut 
 \emph on
 lingkungan
 \emph default
@@ -1168,8 +1196,7 @@ lingkungan
 \end_layout
 
 \begin_layout Standard
-Berbagai lingkungan yang ada inilah yang merupakan bagian utama yang di
- sebut sebagai penerapan dari filosofi 
+Berbagai lingkungan yang ada inilah yang merupakan bagian utama yang di sebut sebagai penerapan dari filosofi 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1179,18 +1206,19 @@ What You See Is What You Mean
 
  dalam \SpecialChar LyX
 .
- Pada lingkungan mengandung definisi jenis huruf, ukuran huruf, indentasi
- paragraf, spasi baris dan berbagai definisi format lain.
- Permasalahan yang sering terjadi adalah lingkungan dapat didefinisikan
- dengan berbagai variasi.
- Pada satu jurnal, misalnya menggunakan definisi lingkungan judul adalah
- berhuruf tebal ukuran 18 poin, posisi tulisan di tengah.
+ Pada lingkungan mengandung definisi jenis huruf,
+ ukuran huruf,
+ indentasi paragraf,
+ spasi baris dan berbagai definisi format lain.
+ Permasalahan yang sering terjadi adalah lingkungan dapat didefinisikan dengan berbagai variasi.
+ Pada satu jurnal,
+ misalnya menggunakan definisi lingkungan judul adalah berhuruf tebal ukuran 18 poin,
+ posisi tulisan di tengah.
  Jurnal lainnya menggunakan huruf miring 15 poin ditulis dari batas kiri.
- Ada juga kebiasaan di bahasa tertentu menggunakan format indentasi yang
- berbeda; serta cara penulisan bibliografi yang sangat bervariasi.
+ Ada juga kebiasaan di bahasa tertentu menggunakan format indentasi yang berbeda;
+ serta cara penulisan bibliografi yang sangat bervariasi.
  Dengan bantuan \SpecialChar LyX
- anda tidak perlu lagi mempelajari berbagai macam format
- penulisan.
+ anda tidak perlu lagi mempelajari berbagai macam format penulisan.
 \end_layout
 
 \begin_layout Standard
@@ -1198,8 +1226,9 @@ Pilihan
 \family sans
 Lingkungan
 \family default
- terletak di bagian paling kiri di kotak bantuan dibawah pilihan menu; anda
- akan mudah menemukannya dengan bentuk seperti ini: 
+ terletak di bagian paling kiri di kotak bantuan dibawah pilihan menu;
+ anda akan mudah menemukannya dengan bentuk seperti ini:
+ 
 \begin_inset Graphics
 	filename clipart/id-lingkungan.png
 	scale 60
@@ -1208,7 +1237,8 @@ Lingkungan
 
 .
  Kotak ini menandakan lingkungan yang yang digunakan saat menulis.
- Ketika anda mulai menyunting dokumen, lingkungan yang muncul adalah 
+ Ketika anda mulai menyunting dokumen,
+ lingkungan yang muncul adalah 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1229,7 +1259,8 @@ Ketiklah
 \family typewriter
 Pendahuluan
 \family default
- di baris pertama berkas latihan anda, kemudian pi-lihlah 
+ di baris pertama berkas latihan anda,
+ kemudian pi-lihlah 
 \family sans
 SubBab
 \family default
@@ -1252,8 +1283,7 @@ standar
 SubBab
 \family default
 .
- Silakan anda mencoba merubah paragraf yang sudah anda tulis menjadi lingkungan
- lainnya.
+ Silakan anda mencoba merubah paragraf yang sudah anda tulis menjadi lingkungan lainnya.
 \end_layout
 
 \end_inset
@@ -1307,13 +1337,14 @@ Standar
 \end_inset
 
 .
- Judul dari SubBab, seperti lingkungan lainnya akan berakhir ketika anda
- menekan 
+ Judul dari SubBab,
+ seperti lingkungan lainnya akan berakhir ketika anda menekan 
 \family sans
 Return
 \family default
 \SpecialChar endofsentence
- Sekarang cobalah menulis teks seperti dibawah ini: 
+ Sekarang cobalah menulis teks seperti dibawah ini:
+ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1326,7 +1357,8 @@ Setelah itu tekan
 \family sans
 Return
 \family default
- lagi, kemudian pilihlah lingkungan 
+ lagi,
+ kemudian pilihlah lingkungan 
 \family sans
 SubBab
 \family default
@@ -1361,7 +1393,8 @@ Lainnya
 \begin_inset Quotes erd
 \end_inset
 
-, anda lihat \SpecialChar LyX
+,
+ anda lihat \SpecialChar LyX
  kembali mengatur ukuran huruf yang sama untuk judul subbab.
 \end_layout
 
@@ -1388,7 +1421,8 @@ menggunakan \SpecialChar LyX
 \family sans
 Return
 \family default
-, kemudian ubah ke lingkungan 
+,
+ kemudian ubah ke lingkungan 
 \family sans
 SubBab
 \family default
@@ -1420,16 +1454,20 @@ Contoh Lainnya
 \begin_inset Quotes erd
 \end_inset
 
-, yang tadinya SubBab
+,
+ yang tadinya SubBab
 \begin_inset space ~
 \end_inset
 
-2, secara otomatis berubah menjadi SubBab
+2,
+ secara otomatis berubah menjadi SubBab
 \begin_inset space ~
 \end_inset
 
-3! Inilah yang menjadi ciri WYSIWYM, anda cukup menuliskan judul, selanjutnya
- \SpecialChar LyX
+3!
+ Inilah yang menjadi ciri WYSIWYM,
+ anda cukup menuliskan judul,
+ selanjutnya \SpecialChar LyX
  akan mengatur penomoran dan formatnya.
 \end_layout
 
@@ -1438,11 +1476,13 @@ Tekanlah
 \family sans
 Return
 \family default
- lagi, lingkungan kembali ke 
+ lagi,
+ lingkungan kembali ke 
 \family sans
 Standar
 \family default
-, kemudian ketikkan lima baris kalimat berikut:
+,
+ kemudian ketikkan lima baris kalimat berikut:
 \end_layout
 
 \begin_layout LyX-Code
@@ -1466,8 +1506,8 @@ Sub-SubBab mempunyai ukuran lebih kecil dari SubBab.
 \end_layout
 
 \begin_layout Standard
-Setelah selesai menulis lima baris kalimat tadi, pindahkan kursor ke baris
- kedua kemudian dari kotak 
+Setelah selesai menulis lima baris kalimat tadi,
+ pindahkan kursor ke baris kedua kemudian dari kotak 
 \family sans
 Lingkungan
 \family default
@@ -1485,14 +1525,15 @@ Sub-SubBab
 \begin_inset Quotes erd
 \end_inset
 
-, ukuran hurufnya akan lebih besar dari ukuran huruf di lingkungan standar
- tetapi masih lebih kecil dari ukuran huruf judul subbab.
+,
+ ukuran hurufnya akan lebih besar dari ukuran huruf di lingkungan standar tetapi masih lebih kecil dari ukuran huruf judul subbab.
  Demikian pula gantilah baris keempat ke lingkungan 
 \family sans
 Sub-SubBab
 \family default
 .
- Seperti yang anda harapkan, \SpecialChar LyX
+ Seperti yang anda harapkan,
+ \SpecialChar LyX
  secara otomatis akan memberi nomor 
 \begin_inset Quotes eld
 \end_inset
@@ -1506,7 +1547,8 @@ Sub-SubBab
 \begin_inset space ~
 \end_inset
 
-2, maka SubBab
+2,
+ maka SubBab
 \begin_inset space ~
 \end_inset
 
@@ -1514,7 +1556,8 @@ Sub-SubBab
 \begin_inset space ~
 \end_inset
 
-3, dan Sub-SubBab nya akan berubah nomor menjadi 
+3,
+ dan Sub-SubBab nya akan berubah nomor menjadi 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1536,11 +1579,13 @@ Sub-SubBab
 
 \begin_layout Standard
 Tingkatan bab yang ada di \SpecialChar LyX
- termasuk Sub-SubSubBab, 
+ termasuk Sub-SubSubBab,
+ 
 \family sans
 Paragra
 \family default
-f, dan 
+f,
+ dan 
 \family sans
 Subparagra
 \family default
@@ -1554,13 +1599,13 @@ Paragraf
 \family sans
 Subparagraf
 \family default
- tidak memiliki nomor, dan untuk 
+ tidak memiliki nomor,
+ dan untuk 
 \family sans
 Subparagraf
 \family default
  memiliki indentasi.
- Penjelasan lanjut mengenai penggunaan serta bagaimana merubahnya dapat
- dilihat di buku 
+ Penjelasan lanjut mengenai penggunaan serta bagaimana merubahnya dapat dilihat di buku 
 \emph on
 Petunjuk Penggunaan
 \emph default
@@ -1577,8 +1622,8 @@ SubBab
 \family sans
 Bab
 \family default
-, namun demikian anda akan melihat lingkungan Bab apabila anda menggunakan
- class dokumen tertentu yang tersedia di \SpecialChar LyX
+,
+ namun demikian anda akan melihat lingkungan Bab apabila anda menggunakan class dokumen tertentu yang tersedia di \SpecialChar LyX
  (lihat SubBab
 \begin_inset space ~
 \end_inset
@@ -1587,6 +1632,7 @@ Bab
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Document-Classes"
+nolink "false"
 
 \end_inset
 
@@ -1595,7 +1641,8 @@ reference "sec:Document-Classes"
 \family sans
 Article
 \family default
-, yang tidak mempunyai lingkungan 
+,
+ yang tidak mempunyai lingkungan 
 \family sans
 Bab
 \family default
@@ -1622,8 +1669,8 @@ SubBab
 \family sans
 lingkungan
 \family default
-), maka judulnya menjadi tidak bernomor tetapi tetap menggunakan ukuran
- yang huruf yang sama.
+),
+ maka judulnya menjadi tidak bernomor tetapi tetap menggunakan ukuran yang huruf yang sama.
  Demikian pula ada lingkungan berbintang 
 \begin_inset Quotes erd
 \end_inset
@@ -1632,8 +1679,7 @@ lingkungan
 \begin_inset Quotes erd
 \end_inset
 
- yang mempunyai kesetaraan dengan lingku-ngan yang tidak berbintang untuk
- 
+ yang mempunyai kesetaraan dengan lingku-ngan yang tidak berbintang untuk 
 \family sans
 Sub-SubBab
 \family default
@@ -1663,7 +1709,8 @@ SubBab
 \series bold
 Latihan
 \series default
-: Perbaiki 
+:
+ Perbaiki 
 \family sans
 SubBab
 \family default
@@ -1690,14 +1737,14 @@ List
 \begin_layout Standard
 \SpecialChar LyX
  memiliki berbagai lingkungan untuk penulisan daftar.
- Dari semua lingkungan yang ada, anda tidak perlu menggunakan tombol 
+ Dari semua lingkungan yang ada,
+ anda tidak perlu menggunakan tombol 
 \family sans
 Tab
 \family default
- untuk menulis suatu daftar bertingkat, atau untuk menggerakkan kursor ke
- tengah daftar.
- Masing-masing tipe dokumen biasanya memerlukan tipe lingkungan daftar yang
- berbeda juga:
+ untuk menulis suatu daftar bertingkat,
+ atau untuk menggerakkan kursor ke tengah daftar.
+ Masing-masing tipe dokumen biasanya memerlukan tipe lingkungan daftar yang berbeda juga:
 \end_layout
 
 \begin_layout Itemize
@@ -1718,8 +1765,7 @@ Daftar dengan perincian akan memerlukan lingkungan
 \family sans
 Bernomor
 \family default
- pada rincian utama kemudian dengan kode huruf untuk menuliskan sub perincian
- berikutnya.
+ pada rincian utama kemudian dengan kode huruf untuk menuliskan sub perincian berikutnya.
  
 \end_layout
 
@@ -1729,8 +1775,7 @@ Untuk penjelasan suatu paket program bisa menggunakan lingkungan
 Des
 \family default
 kripsi.
- Pada lingkungan ini kata-kata yang dijelaskan diawal daftar akan ditulis
- dengan huruf tebal.
+ Pada lingkungan ini kata-kata yang dijelaskan diawal daftar akan ditulis dengan huruf tebal.
  
 \end_layout
 
@@ -1753,8 +1798,7 @@ Daftar
 
 \begin_layout Standard
 Sekarang mari kita coba untuk menuliskan daftar alasan mengapa \SpecialChar LyX
- lebih baik
- dari program pengolah kata lain.
+ lebih baik dari program pengolah kata lain.
  Tuliskan di berkas latihan anda dengan mengetikkan:
 \end_layout
 
@@ -1762,7 +1806,8 @@ Sekarang mari kita coba untuk menuliskan daftar alasan mengapa \SpecialChar LyX
 
 \family typewriter
 \SpecialChar LyX
- lebih baik dari program pengolah kata lain karena: 
+ lebih baik dari program pengolah kata lain karena:
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1793,7 +1838,8 @@ bersimbol
 \begin_inset Quotes erd
 \end_inset
 
- Cobalah ketikkan alasan-alasan ini: 
+ Cobalah ketikkan alasan-alasan ini:
+ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1813,15 +1859,13 @@ Lingkungan
 \family sans
 Daftar
 \family default
- tidak seperti lingkungan yang lainnya yang akan berakhir ketika anda menekan
- tombol 
+ tidak seperti lingkungan yang lainnya yang akan berakhir ketika anda menekan tombol 
 \family sans
 Return.
  
 \family default
 Pada lingkungan ini \SpecialChar LyX
- akan terus menganggap anda meneruskan daftar yang anda
- tulis.
+ akan terus menganggap anda meneruskan daftar yang anda tulis.
  Apabila anda ingin menulis beberapa baris pada satu lingkungan bersimbol,
  anda perlu menggunakan pemisahan baris 
 \emph on
@@ -1846,37 +1890,37 @@ S.
 Anda baru saja belajar menuliskan daftar dengan rapi.
  Sekarang anda perlu menjalankan \SpecialChar LaTeX
  untuk melihat tampilan hasil apabila dicetak.
- Tapi sebelum itu, bagaimana jika anda ingin daftar yang bernomor bukan
- daftar bersimbol.
- Baiklah, mari kita coba; tandai semua daftar yang anda inginkan 
+ Tapi sebelum itu,
+ bagaimana jika anda ingin daftar yang bernomor bukan daftar bersimbol.
+ Baiklah,
+ mari kita coba;
+ tandai semua daftar yang anda inginkan 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Anda tidak akan bisa memilih simbol yang pertama kecuali pilihan anda termasuk
- paragraf 
+Anda tidak akan bisa memilih simbol yang pertama kecuali pilihan anda termasuk paragraf 
 \emph on
 sebelum
 \emph default
  daftar bersimbol.
- Hal ini juga terjadi ketika anda memilih salah satu subbab bernomor, anda
- juga perlu memilih paragraf sebelumnya.
- Hal ini disengaja karena sesungguhnya simbol atau nomor tergantung dari
- teks sebelumnya.
+ Hal ini juga terjadi ketika anda memilih salah satu subbab bernomor,
+ anda juga perlu memilih paragraf sebelumnya.
+ Hal ini disengaja karena sesungguhnya simbol atau nomor tergantung dari teks sebelumnya.
 \end_layout
 
 \end_inset
 
  kemudian gantilah kotak lingkungan menjadi Bernomor.
  Seketika semuanya akan bernomor.
- Apabila anda menghapus atau menyisipkan daftar, \SpecialChar LyX
- secara otomatis akan menyesuai
-kan nomornya.
+ Apabila anda menghapus atau menyisipkan daftar,
+ \SpecialChar LyX
+ secara otomatis akan menyesuaikan nomornya.
 \end_layout
 
 \begin_layout Standard
-Silakan mencoba menggantikan daftar yang ada dengan tipe lingkungan daftar
- lainnya, 
+Silakan mencoba menggantikan daftar yang ada dengan tipe lingkungan daftar lainnya,
+ 
 \family sans
 Deskripsi
 \family default
@@ -1884,10 +1928,9 @@ Deskripsi
 \family sans
 Daftar
 \family default
-, lihatlah perbedaannya.
- Kedua tipe lingkungan daftar ini menganggap kata pertama adalah terminologi
- yang didefinisikan dengan kata-kata berikutnya sampai akhir paragraf (sebelum
- menekan tombol 
+,
+ lihatlah perbedaannya.
+ Kedua tipe lingkungan daftar ini menganggap kata pertama adalah terminologi yang didefinisikan dengan kata-kata berikutnya sampai akhir paragraf (sebelum menekan tombol 
 \family sans
 Return
 \family default
@@ -1895,12 +1938,12 @@ Return
 \family sans
 Deskripsi
 \family default
- terminologi akan ditulis dengan huruf tebal, sedangkan pada 
+ terminologi akan ditulis dengan huruf tebal,
+ sedangkan pada 
 \family sans
 Daftar
 \family default
- terminologi ditulis dengan huruf yang biasa tetapi kemudian ada semacam
- spasi pemisah yang mirip hasil 
+ terminologi ditulis dengan huruf yang biasa tetapi kemudian ada semacam spasi pemisah yang mirip hasil 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1913,9 +1956,9 @@ Tab
 status collapsed
 
 \begin_layout Plain Layout
-Hasil dari pengatur format tab, yang bisa menyesuaikan dengan lebar kata
- terminologi yang dipakai; bukan lebar tab yang kaku dan tidak bisa berubah
- seperti pada 
+Hasil dari pengatur format tab,
+ yang bisa menyesuaikan dengan lebar kata terminologi yang dipakai;
+ bukan lebar tab yang kaku dan tidak bisa berubah seperti pada 
 \family sans
 Tab
 \family default
@@ -1925,8 +1968,8 @@ Tab
 \end_inset
 
  dengan kata berikutnya.
- Yang perlu mendapat perhatian adalah apabila anda mempunyai terminologi
- yang terdiri dari lebih satu kata, anda harus menggunakan spasi 
+ Yang perlu mendapat perhatian adalah apabila anda mempunyai terminologi yang terdiri dari lebih satu kata,
+ anda harus menggunakan spasi 
 \emph on
 protected
 \emph default
@@ -1934,7 +1977,8 @@ protected
 \family sans
 Ctrl+Space
 \family default
-) bukan spasi biasa, agar kata-kata tersebut menjadi satu terminologi.
+) bukan spasi biasa,
+ agar kata-kata tersebut menjadi satu terminologi.
 \end_layout
 
 \begin_layout Standard
@@ -1942,19 +1986,17 @@ Ctrl+Space
 \series bold
 Latihan
 \series default
-: Ubahlah penulisan daftar yang ada di berkas 
+:
+ Ubahlah penulisan daftar yang ada di berkas 
 \family typewriter
 example_raw.lyx
 \end_layout
 
 \begin_layout Standard
 Anda dapat menuliskan daftar bertingkat dengan penampilan yang menarik.
- Salah satu contoh yang mudah dipahami adalah ketika anda ingin menuliskan
- daftar bertingkat untuk suatu bagan garis besar.
- Daftar bernomor dan bersimbol mempunyai cara penulisan nomor dan simbol
- yang berbeda di setiap tingkatan (sub-daftar).
- Cara pengaturan yang lebih detail nomor atau simbol dalam lingkungan daftar
- dapat dipelajari dan ditemui di buku 
+ Salah satu contoh yang mudah dipahami adalah ketika anda ingin menuliskan daftar bertingkat untuk suatu bagan garis besar.
+ Daftar bernomor dan bersimbol mempunyai cara penulisan nomor dan simbol yang berbeda di setiap tingkatan (sub-daftar).
+ Cara pengaturan yang lebih detail nomor atau simbol dalam lingkungan daftar dapat dipelajari dan ditemui di buku 
 \emph on
 Petunjuk Penggunaan
 \emph default
@@ -1963,12 +2005,16 @@ Petunjuk Penggunaan
 \end_layout
 
 \begin_layout Subsection
-Lingkungan kutipan: Quotation, Quote, Verse, dan Kode-LyX
+Lingkungan kutipan:
+ Quotation,
+ Quote,
+ Verse,
+ dan Kode-LyX
 \end_layout
 
 \begin_layout Standard
-Ada dua jenis lingkungan kutipan yang bisa digunakan: yang pertama adalah
- 
+Ada dua jenis lingkungan kutipan yang bisa digunakan:
+ yang pertama adalah 
 \family sans
 Quote
 \family default
@@ -1999,32 +2045,34 @@ Tutorial
 \family typewriter
 mesin ketik
 \family default
-; lingkungan ini adalah satu-satunya lingkungan \SpecialChar LyX
- yang mengijinkan anda menggunak
-an spasi berganda untuk pengaturan indentasi kode program yang anda tulis.
- Apabila anda ingin menuliskan dan menyunting sajak, anda bisa menggunakan
- lingkungan 
+;
+ lingkungan ini adalah satu-satunya lingkungan \SpecialChar LyX
+ yang mengijinkan anda menggunakan spasi berganda untuk pengaturan indentasi kode program yang anda tulis.
+ Apabila anda ingin menuliskan dan menyunting sajak,
+ anda bisa menggunakan lingkungan 
 \family sans
 Verse
 \family default
 .
- Untuk memisahkan stansa sajak, gunakan 
+ Untuk memisahkan stansa sajak,
+ gunakan 
 \family sans
 Return
 \family default
-, sedangkan untuk mengganti baris stansa gunakan 
+,
+ sedangkan untuk mengganti baris stansa gunakan 
 \family sans
 Ctrl+Return
 \family default
 .
  Untuk memahami semua lingkungan yang ada di \SpecialChar LyX
-, silakan lihat buku 
+,
+ silakan lihat buku 
 \emph on
 Petunjuk Penggunaan
 \emph default
 .
- Di buku tersebut anda akan dapat membaca semua penjelasan dan penggunaan
- lingkungan yang ada di \SpecialChar LyX
+ Di buku tersebut anda akan dapat membaca semua penjelasan dan penggunaan lingkungan yang ada di \SpecialChar LyX
 .
 \end_layout
 
@@ -2033,9 +2081,12 @@ Petunjuk Penggunaan
 \series bold
 Latihan
 \series default
-: Cobalah gunakan lingkungan 
+:
+ Cobalah gunakan lingkungan 
 \family sans
-Quote, Kode-LyX,
+Quote,
+ Kode-LyX,
+
 \family default
  dan 
 \family sans
@@ -2052,21 +2103,24 @@ Menulis Dokumen
 
 \begin_layout Standard
 Pada bab sebelumnya anda sudah diperkenalkan menulis dengan \SpecialChar LyX
- dan harapan
- kami anda sudah mulai terbiasa.
+ dan harapan kami anda sudah mulai terbiasa.
  Anda sudah diperkenalkan tentang dasar penyuntingan dalam \SpecialChar LyX
-, disamping juga
- diperkenalkan dengan lingkungan.
+,
+ disamping juga diperkenalkan dengan lingkungan.
  Sebagian besar pemakai menggunakan \SpecialChar LyX
- untuk menulis dokumen: makalah, artikel,
- buku, buku petunjuk, atau surat.
- Bab ini akan meningkatkan kemampuan anda dari sekedar menulis teks menggunakan
- \SpecialChar LyX
+ untuk menulis dokumen:
+ makalah,
+ artikel,
+ buku,
+ buku petunjuk,
+ atau surat.
+ Bab ini akan meningkatkan kemampuan anda dari sekedar menulis teks menggunakan \SpecialChar LyX
  menjadi mampu menulis dokumen yang lengkap.
- Disini anda akan diperkenalkan dengan class dokumen yang digunakan untuk
- menulis jenis dokumen yang berbeda.
- Setelah itu anda mempelajari bagaimana merubah teks menjadi judul, catatan
- kaki, referensi silang, bibliografi serta daftar isi.
+ Disini anda akan diperkenalkan dengan class dokumen yang digunakan untuk menulis jenis dokumen yang berbeda.
+ Setelah itu anda mempelajari bagaimana merubah teks menjadi judul,
+ catatan kaki,
+ referensi silang,
+ bibliografi serta daftar isi.
 \end_layout
 
 \begin_layout Section
@@ -2082,10 +2136,12 @@ name "sec:Document-Classes"
 
 \begin_layout Standard
 Dokumen perlu ditata secara berbeda tergantung dari jenis dokumen.
- Sebagai contoh, buku biasanya dicetak secara bolak-balik, sedangkan artikel
- hanya dicetak di satu sisi kertas saja.
- Disamping itu, dokumen mempunyai lingkungan yang khusus: dokumen surat
- - misalnya mempunyai lingkungan untuk pengirim dan untuk tanda tangan,
+ Sebagai contoh,
+ buku biasanya dicetak secara bolak-balik,
+ sedangkan artikel hanya dicetak di satu sisi kertas saja.
+ Disamping itu,
+ dokumen mempunyai lingkungan yang khusus:
+ dokumen surat - misalnya mempunyai lingkungan untuk pengirim dan untuk tanda tangan,
  yang tidak akan ditemui dalam dokumen buku atau artikel.
  Class dokumen 
 \begin_inset Foot
@@ -2093,7 +2149,8 @@ status collapsed
 
 \begin_layout Plain Layout
 untuk pemakai \SpecialChar LaTeX
-: hal ini bermakna sama dengan \SpecialChar LaTeX
+:
+ hal ini bermakna sama dengan \SpecialChar LaTeX
  
 \emph on
 document class
@@ -2102,21 +2159,23 @@ document class
 \end_inset
 
  yang ada di \SpecialChar LyX
- akan mengatur berbagai aturan penulisan yang ada untuk berbagai
- jenis dokumen.
- Tutorial ini sebagai salah satu contoh, ditulis dalam class dokumen 
+ akan mengatur berbagai aturan penulisan yang ada untuk berbagai jenis dokumen.
+ Tutorial ini sebagai salah satu contoh,
+ ditulis dalam class dokumen 
 \family sans
 Book.
 
 \family default
- Berbagai jenis class dokumen yang ada merupakan salah satu bagian utama
- dari filosofi WYSIWYM; class dokumen akan mengatur format aturan dalam
- \SpecialChar LyX
-, sehingga anda tidak perlu melakukannya sendiri.
+ Berbagai jenis class dokumen yang ada merupakan salah satu bagian utama dari filosofi WYSIWYM;
+ class dokumen akan mengatur format aturan dalam \SpecialChar LyX
+,
+ sehingga anda tidak perlu melakukannya sendiri.
 \end_layout
 
 \begin_layout Standard
-Sebelum ini, pada bab sebelumnya, anda menggunakan class dokumen yaitu
+Sebelum ini,
+ pada bab sebelumnya,
+ anda menggunakan class dokumen yaitu
 \family sans
  Article.
  
@@ -2132,8 +2191,7 @@ Ini adalah class dokumen bawaan di \SpecialChar LyX
 
 \end_inset
 
- Sekarang cobalah merubah dokumen latihan anda ke class dokumen yang lain
- (dari menu 
+ Sekarang cobalah merubah dokumen latihan anda ke class dokumen yang lain (dari menu 
 \family sans
 Dokumen\SpecialChar menuseparator
 Pengaturan
@@ -2147,39 +2205,40 @@ Book
 \family sans
 Lingkungan
 \family default
-, anda akan melihat bahwa sebagian besar lingkungan yang tersedia sama.
+,
+ anda akan melihat bahwa sebagian besar lingkungan yang tersedia sama.
  Namun demikian sekarang anda akan melihat lingkungan 
 \family sans
 Bab
 \family default
  yang bisa anda gunakan.
- Apabila anda tidak yakin tentang lingkungan yang dimiliki oleh suatu class
- dokumen, anda bisa melihat di kotak 
+ Apabila anda tidak yakin tentang lingkungan yang dimiliki oleh suatu class dokumen,
+ anda bisa melihat di kotak 
 \family sans
 Environment.
 \end_layout
 
 \begin_layout Standard
-Ukuran huruf, penulisan satu atau dua kolom, dan aturan 
+Ukuran huruf,
+ penulisan satu atau dua kolom,
+ dan aturan 
 \emph on
 heading
 \emph default
- halaman adalah contoh beberapa aturan dan format penulisan yang berbeda
- dari satu dokumen ke lainnya.
- Dengan semakin matangnya dunia komputer, beberapa penerbit Jurnal dapat
- menerima naskah secara elektronik, dan menyediakan berkas \SpecialChar LaTeX
+ halaman adalah contoh beberapa aturan dan format penulisan yang berbeda dari satu dokumen ke lainnya.
+ Dengan semakin matangnya dunia komputer,
+ beberapa penerbit Jurnal dapat menerima naskah secara elektronik,
+ dan menyediakan berkas \SpecialChar LaTeX
  
 \emph on
 style
 \emph default
- yang dapat digunakan penulis untuk menyusun naskahnya yang sudah mengikuti
- secara akurat aturan penulisan yang dikehendaki jurnal tersebut.
+ yang dapat digunakan penulis untuk menyusun naskahnya yang sudah mengikuti secara akurat aturan penulisan yang dikehendaki jurnal tersebut.
  \SpecialChar LyX
  sudah dirancang untuk dapat mendukung sistem seperti itu juga.
- Sebagai contoh, \SpecialChar LyX
- mendukung aturan penulisan (juga lingkungan tambahan)
- untuk jurnal-jurnal terbitan American Mathematics Society dengan menggunakan
- class dokumen 
+ Sebagai contoh,
+ \SpecialChar LyX
+ mendukung aturan penulisan (juga lingkungan tambahan) untuk jurnal-jurnal terbitan American Mathematics Society dengan menggunakan class dokumen 
 \family sans
 Article
 \begin_inset space ~
@@ -2189,10 +2248,9 @@ Article
 \end_layout
 
 \begin_layout Standard
-Tabel dibawah ini dapat anda gunakan sebagai acuan ringkas dari beberapa
- class dokumen.
- Untuk mendapatkan informasi lebih terperinci, silakan lihat pada bab Class
- Dokumen Khusus yang ada di buku petunjuk 
+Tabel dibawah ini dapat anda gunakan sebagai acuan ringkas dari beberapa class dokumen.
+ Untuk mendapatkan informasi lebih terperinci,
+ silakan lihat pada bab Class Dokumen Khusus yang ada di buku petunjuk 
 \emph on
 Fitur Tambahan
 \emph default
@@ -2240,7 +2298,8 @@ article
 \begin_inset Text
 
 \begin_layout Plain Layout
-dicetak satu sisi, tanpa bab
+dicetak satu sisi,
+ tanpa bab
 \end_layout
 
 \end_inset
@@ -2280,7 +2339,8 @@ report
 \begin_inset Text
 
 \begin_layout Plain Layout
-lebih lengkap dari artikel, halaman bolak-balik
+lebih lengkap dari artikel,
+ halaman bolak-balik
 \end_layout
 
 \end_inset
@@ -2340,7 +2400,8 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-berbagai lingkungan ekstra untuk alamat, tanda tangan\SpecialChar ldots
+berbagai lingkungan ekstra untuk alamat,
+ tanda tangan\SpecialChar ldots
 
 \end_layout
 
@@ -2355,12 +2416,13 @@ berbagai lingkungan ekstra untuk alamat, tanda tangan\SpecialChar ldots
 \end_layout
 
 \begin_layout Section
-Templet: Menulis Surat
+Templet:
+ Menulis Surat
 \end_layout
 
 \begin_layout Standard
-Salah satu cara untuk menulis surat adalah dengan membuka berkas baru, kemudian
- dari menu
+Salah satu cara untuk menulis surat adalah dengan membuka berkas baru,
+ kemudian dari menu
 \family sans
  Dokumen\SpecialChar menuseparator
 Pengaturan 
@@ -2372,17 +2434,23 @@ Letter
 .
  Walaupun cara ini merupakan cara yang benar untuk menulis surat dari awal,
  tampaknya memerlukan waktu untuk menulis surat dari halaman kosong.
- Setiap kali anda ingin menulis surat, anda harus menuliskan alamat anda,
- alamat yang dikirim, menulis isi surat, menulis nama yang bertanda tangan,
+ Setiap kali anda ingin menulis surat,
+ anda harus menuliskan alamat anda,
+ alamat yang dikirim,
+ menulis isi surat,
+ menulis nama yang bertanda tangan,
  dll.
- Untuk menyederhanakan proses penulisan surat, \SpecialChar LyX
+ Untuk menyederhanakan proses penulisan surat,
+ \SpecialChar LyX
  menyediakan 
 \emph on
 templet
 \emph default
- untuk menulis surat, yang berupa contoh surat.
- Apabila anda sudah memiliki templet sendiri, maka sewaktu-waktu anda ingin
- menulis surat, anda tinggal mengganti di beberapa bagian yang perlu saja.
+ untuk menulis surat,
+ yang berupa contoh surat.
+ Apabila anda sudah memiliki templet sendiri,
+ maka sewaktu-waktu anda ingin menulis surat,
+ anda tinggal mengganti di beberapa bagian yang perlu saja.
 \end_layout
 
 \begin_layout Standard
@@ -2399,13 +2467,13 @@ dari
 
 Templ
 \family default
-et, kemudian pilihlah berkas templet 
+et,
+ kemudian pilihlah berkas templet 
 \family typewriter
 letter.lyx
 \family default
 .
- Simpanlah dengan nama lain kemudian cetaklah untuk melihat berbagai lingkungan
- diatur.
+ Simpanlah dengan nama lain kemudian cetaklah untuk melihat berbagai lingkungan diatur.
 \end_layout
 
 \begin_layout Standard
@@ -2413,8 +2481,9 @@ Apabila anda lihat di kotak
 \family sans
 Lingkungan
 \family default
-, anda akan lihat berbagai lingkungan yang berhubungan dengan surat, seperti
- misalnya lingkungan 
+,
+ anda akan lihat berbagai lingkungan yang berhubungan dengan surat,
+ seperti misalnya lingkungan 
 \family sans
 Alamat
 \begin_inset space ~
@@ -2422,9 +2491,9 @@ Alamat
 
 Saya
 \family default
-, yang tidak akan ditemui dalam class dokumen lainnya.
- Silakan anda mencoba berbagai lingkungan yang tersedia serta bagaimana
- hasil penulisannya.
+,
+ yang tidak akan ditemui dalam class dokumen lainnya.
+ Silakan anda mencoba berbagai lingkungan yang tersedia serta bagaimana hasil penulisannya.
  Anda bisa lihat ada lingkungan 
 \family sans
 Tandatangan
@@ -2441,8 +2510,7 @@ Tandatangan:
 \begin_inset Quotes erd
 \end_inset
 
- yang berwarna merah sebelum teks sesungguhnya yang menyatakan nama penanda
- tangan.
+ yang berwarna merah sebelum teks sesungguhnya yang menyatakan nama penanda tangan.
  Tentu saja kata 
 \begin_inset Quotes eld
 \end_inset
@@ -2451,38 +2519,37 @@ Tandatangan:
 \begin_inset Quotes erd
 \end_inset
 
- tidak akan muncul dalam surat yang dicetak, bila ditampilan melalui tampilan/pd
-f atau ekspor ke pdf.
- Kata tersebut hanya sebagai petunjuk dimana anda harus menuliskan nama
- penanda tangan.
+ tidak akan muncul dalam surat yang dicetak,
+ bila ditampilan melalui tampilan/pdf atau ekspor ke pdf.
+ Kata tersebut hanya sebagai petunjuk dimana anda harus menuliskan nama penanda tangan.
  Selain itu letak lingkungan juga tidak penting.
  Anda perlu ingat bahwa \SpecialChar LyX
- adalah WYSIWYM; anda bisa menempatkan lingkungan
- 
+ adalah WYSIWYM;
+ anda bisa menempatkan lingkungan 
 \family sans
 Tandatangan 
 \family default
-dimana saja, tetapi \SpecialChar LyX
- mengetahui dimana lokasi menempatkan tandatangan dengan
- tepat yaitu di bagian akhir.
+dimana saja,
+ tetapi \SpecialChar LyX
+ mengetahui dimana lokasi menempatkan tandatangan dengan tepat yaitu di bagian akhir.
 \end_layout
 
 \begin_layout Standard
 Berkas templet sebenarnya berkas \SpecialChar LyX
  biasa.
- Hal ini berarti anda dapat mengisi alamat, tanda tangan kemudian menyimpan
- sebagai templet baru.
- Setelah ini, apabila anda ingin menulis surat, anda tinggal membuka berkas
- templet anda dan merubah seperlunya sehingga dapat menghemat waktu penulisan
- surat.
+ Hal ini berarti anda dapat mengisi alamat,
+ tanda tangan kemudian menyimpan sebagai templet baru.
+ Setelah ini,
+ apabila anda ingin menulis surat,
+ anda tinggal membuka berkas templet anda dan merubah seperlunya sehingga dapat menghemat waktu penulisan surat.
  Untuk latihan menulis surat
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Ada satu peringatan sewaktu anda menulis surat menggunakan templet yang
- ada.
- Apabila anda menghapus semua teks di salah satu lingkungan — misalnya,
+Ada satu peringatan sewaktu anda menulis surat menggunakan templet yang ada.
+ Apabila anda menghapus semua teks di salah satu lingkungan —
+ misalnya,
  apabila anda menghapus keseluruhan teks yang ada di lingkungan 
 \family sans
 Alamat
@@ -2491,11 +2558,12 @@ Alamat
 
 Saya
 \family default
- dengan maksud akan mengganti dengan informasi yang baru milik anda sendiri
- — kemudian memindahkan kursor ke lingkungan lain sebelum menuliskan informasi
- baru, maka lingkungan tadi akan hilang.
+ dengan maksud akan mengganti dengan informasi yang baru milik anda sendiri —
+ kemudian memindahkan kursor ke lingkungan lain sebelum menuliskan informasi baru,
+ maka lingkungan tadi akan hilang.
  Hal ini karena lingkungan tidak bisa muncul tanpa adanya teks.
- Untuk mendefinisikan baru, pilihlah lingkungan 
+ Untuk mendefinisikan baru,
+ pilihlah lingkungan 
 \family sans
 Alamat
 \begin_inset space ~
@@ -2508,22 +2576,20 @@ yang tadi hilang kemudian menuliskan informasi yang anda inginkan.
 
 \end_inset
 
-; tulislah surat kepada seseorang menggunakan templet yang sudah ada!
+;
+ tulislah surat kepada seseorang menggunakan templet yang sudah ada!
 \end_layout
 
 \begin_layout Standard
-Templet akan sangat membantu anda untuk menghemat waktu, kami menyarankan
- untuk menggunakan templet apabila memungkinkan.
- Selain daripada itu, berbagai templet dapat membantu anda untuk mempelajari
- bagaimana menggunakan berbagai class dokumen dengan variasi pengaturan.
+Templet akan sangat membantu anda untuk menghemat waktu,
+ kami menyarankan untuk menggunakan templet apabila memungkinkan.
+ Selain daripada itu,
+ berbagai templet dapat membantu anda untuk mempelajari bagaimana menggunakan berbagai class dokumen dengan variasi pengaturan.
  Templet juga dapat membantu anda untuk menyiapkan berkas \SpecialChar LyX
- yang akan digunakan
- untuk pemakai yang kurang dalam pemahaman komputer atau kurang mengerti
- \SpecialChar LyX
+ yang akan digunakan untuk pemakai yang kurang dalam pemahaman komputer atau kurang mengerti \SpecialChar LyX
 .
  Bagi pemula akan lebih mudah mempelajari penggunaan \SpecialChar LyX
- apabila ada contoh
- templet yang hanya memerlukan merubah sebagian isinya saja.
+ apabila ada contoh templet yang hanya memerlukan merubah sebagian isinya saja.
 \end_layout
 
 \begin_layout Section
@@ -2533,15 +2599,18 @@ Judul Dokumen
 \begin_layout Standard
 Dokumen di \SpecialChar LyX
  (seperti juga \SpecialChar LaTeX
-) selalu menggunakan halaman judul — yang biasanya
- mengandung informasi judul sesungguhnya, penulis, tanggal, atau abstrak
- dari suatu makalah — dipisahkan dari bagian isi dokumen.
+) selalu menggunakan halaman judul —
+ yang biasanya mengandung informasi judul sesungguhnya,
+ penulis,
+ tanggal,
+ atau abstrak dari suatu makalah —
+ dipisahkan dari bagian isi dokumen.
 \end_layout
 
 \begin_layout Standard
-Untuk memahami hal ini, silakan ke berkas \SpecialChar LyX
- anda dan pastikan anda menggunakan
- class dokumen 
+Untuk memahami hal ini,
+ silakan ke berkas \SpecialChar LyX
+ anda dan pastikan anda menggunakan class dokumen 
 \family sans
 Article
 \family default
@@ -2554,7 +2623,8 @@ Anda sekarang tidak lagi menggunakan class dokumen
 \family sans
 Letter
 \family default
-, karena dalam class dokumen 
+,
+ karena dalam class dokumen 
 \family sans
 Letter
 \family default
@@ -2563,16 +2633,14 @@ Letter
 
 \end_inset
 
- Ketiklah suatu judul pada baris pertama kemudian ubahlah lingkungan baris
- yang anda tulis judul ke lingkungan Judul.
- Selanjutnya pada baris berikutnya ketikkan nama anda kemudian ubahlah ke
- lingkungan 
+ Ketiklah suatu judul pada baris pertama kemudian ubahlah lingkungan baris yang anda tulis judul ke lingkungan Judul.
+ Selanjutnya pada baris berikutnya ketikkan nama anda kemudian ubahlah ke lingkungan 
 \family sans
 Penulis
 \family default
 .
- Pada baris berikutnya, tulislah tanggal dan pastikan baris ini dalam lingkungan
- 
+ Pada baris berikutnya,
+ tulislah tanggal dan pastikan baris ini dalam lingkungan 
 \family sans
 Tanggal
 \family default
@@ -2581,9 +2649,10 @@ Tanggal
 \family sans
  Abstrak kemudian
 \family default
- tulislah beberapa kalimat, satu atau dua paragraf.
- Anda bisa lihat bagaimana halaman judul ini ditampilkan bila dicetak, melalui
- menu 
+ tulislah beberapa kalimat,
+ satu atau dua paragraf.
+ Anda bisa lihat bagaimana halaman judul ini ditampilkan bila dicetak,
+ melalui menu 
 \family sans
 Tampilan
 \family default
@@ -2593,8 +2662,9 @@ PDF(pdflatex).
 \family sans
 Book
 \family default
-, anda akan lihat halaman judul akan terpisah, seperti pada buku Tutorial
- ini.
+,
+ anda akan lihat halaman judul akan terpisah,
+ seperti pada buku Tutorial ini.
 \end_layout
 
 \begin_layout Standard
@@ -2602,7 +2672,9 @@ Book
 \series bold
 Latihan
 \series default
-: Ubahlah judul, penulis dan tanggal yang ada dalam berkas latihan 
+:
+ Ubahlah judul,
+ penulis dan tanggal yang ada dalam berkas latihan 
 \family typewriter
 example_raw.lyx
 \family default
@@ -2614,14 +2686,16 @@ Label dan Referensi-Silang
 \end_layout
 
 \begin_layout Standard
-Anda dapat memberi label pada bagian yang masuk katagori SubBab, Daftar,
- rumus matematika, catatan kaki, dan katagori float
+Anda dapat memberi label pada bagian yang masuk katagori SubBab,
+ Daftar,
+ rumus matematika,
+ catatan kaki,
+ dan katagori float
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Untuk melihat yang termasuk dalam katagori SubBab dan Daftar anda dapat
- melihat dari kotak lingkungan.
+Untuk melihat yang termasuk dalam katagori SubBab dan Daftar anda dapat melihat dari kotak lingkungan.
  Berbagai tipe float dijelaskan dalam buku 
 \emph on
 Petunjuk Penggunaan
@@ -2636,14 +2710,14 @@ Petunjuk Penggunaan
 \end_inset
 
  yang ada dalam dokumen anda.
- Setelah anda memberi label, bagian lain dalam dokumen anda dapat mengacu
- pada bagian yang mempunyai label, dengan menggunakan referensi silang.
+ Setelah anda memberi label,
+ bagian lain dalam dokumen anda dapat mengacu pada bagian yang mempunyai label,
+ dengan menggunakan referensi silang.
  Anda dapat mengacu menggunakan nomor acuan atau nomor halaman lokasi acuan.
- Apabila memilih nomor acuan, \SpecialChar LyX
- akan mengatur penomoran referensi-silang
- secara otomatis.
- Referensi-silang dan pemberian nama label secara otomatis merupakan salah
- satu keunggulan \SpecialChar LyX
+ Apabila memilih nomor acuan,
+ \SpecialChar LyX
+ akan mengatur penomoran referensi-silang secara otomatis.
+ Referensi-silang dan pemberian nama label secara otomatis merupakan salah satu keunggulan \SpecialChar LyX
  (dan \SpecialChar LaTeX
 ) daripada program pengolah kata lain.
 \end_layout
@@ -2663,7 +2737,8 @@ Tentang Dokumen Ini
 \end_inset
 
 .
- Klik di akhir judul subbab ini, kemudian dari menu 
+ Klik di akhir judul subbab ini,
+ kemudian dari menu 
 \family sans
 Sisipan\SpecialChar menuseparator
 Label
@@ -2681,24 +2756,23 @@ arg   "label-insert"
 \family sans
 Setuju
 \family default
-, nama label akan ditempatkan dalam kotak disebelah judul subbab tadi.
+,
+ nama label akan ditempatkan dalam kotak disebelah judul subbab tadi.
 \end_layout
 
 \begin_layout Standard
-Sebenarnya anda diperkenankan meletakkan label di sembarang tempat dalam
- judul yang anda pilih; teks yang mengacu akan selalu mengacu pada judul
- acuan terakhir sebelum acuan muncul.
- Namun demikian, meletakkan label pada baris yang sama dengan judul subbab
- yang diberi label (atau mungkin pada awal judul) akan meyakinkan bahwa
- acuan halaman akan akurat pada judul yang diacu.
+Sebenarnya anda diperkenankan meletakkan label di sembarang tempat dalam judul yang anda pilih;
+ teks yang mengacu akan selalu mengacu pada judul acuan terakhir sebelum acuan muncul.
+ Namun demikian,
+ meletakkan label pada baris yang sama dengan judul subbab yang diberi label (atau mungkin pada awal judul) akan meyakinkan bahwa acuan halaman akan akurat pada judul yang diacu.
 \end_layout
 
 \begin_layout Standard
-Sampai pada pemberian label anda sebenarnya belum melakukan perubahan sesuatu
- — tampilan DVI belum ada perbedaan sama sekali, karena label tidak akan
- muncul pada dokumen yang dicetak.
- Namun demikian, anda sudah mengerti bagaimana memberikan label yang dapat
- diacu menggunakan referensi-silang.
+Sampai pada pemberian label anda sebenarnya belum melakukan perubahan sesuatu —
+ tampilan DVI belum ada perbedaan sama sekali,
+ karena label tidak akan muncul pada dokumen yang dicetak.
+ Namun demikian,
+ anda sudah mengerti bagaimana memberikan label yang dapat diacu menggunakan referensi-silang.
  Selanjutnya kita akan pelajari bagaimana menggunakannya.
 \end_layout
 
@@ -2707,8 +2781,8 @@ Referensi-silang anda yang pertama
 \end_layout
 
 \begin_layout Standard
-Masih menggunakan berkas latihan anda, tempatkan kursor anda di sembarang
- tempat pada subbab
+Masih menggunakan berkas latihan anda,
+ tempatkan kursor anda di sembarang tempat pada subbab
 \begin_inset space ~
 \end_inset
 
@@ -2717,11 +2791,13 @@ Masih menggunakan berkas latihan anda, tempatkan kursor anda di sembarang
 \end_layout
 
 \begin_layout LyX-Code
-Apabila anda ingin mengetahui lebih lanjut, silakan lihat 
+Apabila anda ingin mengetahui lebih lanjut,
+ silakan lihat 
 \begin_inset Newline newline
 \end_inset
 
-subbab, yang dapat ditemukan pada halaman.
+subbab,
+ yang dapat ditemukan pada halaman.
 \end_layout
 
 \begin_layout Standard
@@ -2754,8 +2830,10 @@ arg   "dialog-show-new-inset ref"
 Referensi-silang
 \family default
  akan muncul.
- Dalam kotak dialog, anda dapat melihat daftar label yang dapat diacu.
- Pada saat ini tentunya hanya ada satu label, 
+ Dalam kotak dialog,
+ anda dapat melihat daftar label yang dapat diacu.
+ Pada saat ini tentunya hanya ada satu label,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2764,7 +2842,8 @@ sec:Tentang-Dokumen-Ini
 \end_inset
 
 .
- Pilihlah label ini, kemudian tekan tombol 
+ Pilihlah label ini,
+ kemudian tekan tombol 
 \family sans
 Terapkan
 \family default
@@ -2777,13 +2856,14 @@ halaman
 \begin_inset Quotes erd
 \end_inset
 
-, kemudian gantilah format acuan menjadi <halaman> kemudian tekan tombol
- 
+,
+ kemudian gantilah format acuan menjadi <halaman> kemudian tekan tombol 
 \family sans
 Terapkan
 \family default
 .
- (Agar lebih rapi, anda perlu menggunakan 
+ (Agar lebih rapi,
+ anda perlu menggunakan 
 \family sans
 Spasi
 \begin_inset space ~
@@ -2812,14 +2892,14 @@ halaman
 \end_layout
 
 \begin_layout Standard
-Metoda lain yang bisa digunakan; anda klik kanan pada label yang anda acu
- kemudian pilihlah menu 
+Metoda lain yang bisa digunakan;
+ anda klik kanan pada label yang anda acu kemudian pilihlah menu 
 \family sans
 Referensi-Silang
 \family default
 .
- Selanjutnya anda dapat menempelkan di lokasi tertentu yang mengacu acuan
- dengan label yang sudah dipilih, dengan menggunakan menu 
+ Selanjutnya anda dapat menempelkan di lokasi tertentu yang mengacu acuan dengan label yang sudah dipilih,
+ dengan menggunakan menu 
 \family sans
 Suntingan\SpecialChar menuseparator
 Tempelkan
@@ -2833,17 +2913,16 @@ Ctrl+V
 
 \begin_layout Standard
 \SpecialChar LyX
- akan menempatkan acuan dalam kotak tepat disebelah kanan dari posisi kursor
- berada.
- Bila dokumen yang dicetak, tanda kotak acuan tersebut akan diganti dengan
- nomor halaman atau nomor subbab (tergantung dari pilihan dalam kotak dialog
- 
+ akan menempatkan acuan dalam kotak tepat disebelah kanan dari posisi kursor berada.
+ Bila dokumen yang dicetak,
+ tanda kotak acuan tersebut akan diganti dengan nomor halaman atau nomor subbab (tergantung dari pilihan dalam kotak dialog 
 \family sans
 Referensi-Silang
 \family default
 ).
- Cobalah melihat dokumen dalam tampilan DVI, maka anda akan lihat, kalimat
- yang anda ketikkan tadi dengan referensi silang sekarang tertulis 
+ Cobalah melihat dokumen dalam tampilan DVI,
+ maka anda akan lihat,
+ kalimat yang anda ketikkan tadi dengan referensi silang sekarang tertulis 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2875,13 +2954,15 @@ halaman
 \end_layout
 
 \begin_layout Standard
-Referensi-silang juga berfungsi sebagai tautan ketika anda melakukan penyuntinga
-n dokumen di \SpecialChar LyX
-; bila anda klik di kotak acuan, dialog 
+Referensi-silang juga berfungsi sebagai tautan ketika anda melakukan penyuntingan dokumen di \SpecialChar LyX
+;
+ bila anda klik di kotak acuan,
+ dialog 
 \family sans
 Referensi-Silang
 \family default
- akan muncul, selanjutnya jika anda menekan tombol 
+ akan muncul,
+ selanjutnya jika anda menekan tombol 
 \family sans
 Langsung
 \begin_inset space ~
@@ -2902,15 +2983,18 @@ Bermain-main dengan label
 
 \begin_layout Standard
 Tadi sudah dikatakan bahwa \SpecialChar LyX
- mengatur secara otomatis penomoran dalam referensi-s
-ilang; sekarang anda boleh mencobanya.
+ mengatur secara otomatis penomoran dalam referensi-silang;
+ sekarang anda boleh mencobanya.
  Tambahkan SubBab baru sebelum SubBab
 \begin_inset space ~
 \end_inset
 
 2.
- Perbarui tampilan DVI, maka — Simsalabim! — nomor acuan referensi-silang
- berubah dengan sendirinya menjadi 
+ Perbarui tampilan DVI,
+ maka —
+ Simsalabim!
+ —
+ nomor acuan referensi-silang berubah dengan sendirinya menjadi 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2918,7 +3002,8 @@ ilang; sekarang anda boleh mencobanya.
 \begin_inset Quotes erd
 \end_inset
 
-! Sekarang ubahlah 
+!
+ Sekarang ubahlah 
 \family sans
 SubBab
 \family default
@@ -2934,19 +3019,20 @@ Tentang Dokumen Ini
 \family sans
 Sub-SubBab
 \family default
-, sekarang bila anda lihat pada tampilan DVI yang sudah diperbarui, nomor
- acuan yang baru menjadi 2.1 bukannya 3.
- Untuk halaman, tentu saja tetap tidak berubah selama tidak ada penambahan
- halaman.
+,
+ sekarang bila anda lihat pada tampilan DVI yang sudah diperbarui,
+ nomor acuan yang baru menjadi 2.1 bukannya 3.
+ Untuk halaman,
+ tentu saja tetap tidak berubah selama tidak ada penambahan halaman.
 \end_layout
 
 \begin_layout Standard
-Apabila anda ingin mencoba dan latihan menggunakan label, silakan mencoba
- menambahkan label baru di tempat label pertama berada.
- Kemudian di suatu tempat dalam dokumen, anda mengacu pada label yang baru
- anda buat.
- Apabila anda sering membuat label dan mengacu, akan lebih mudah membiarkan
- jendela dialog 
+Apabila anda ingin mencoba dan latihan menggunakan label,
+ silakan mencoba menambahkan label baru di tempat label pertama berada.
+ Kemudian di suatu tempat dalam dokumen,
+ anda mengacu pada label yang baru anda buat.
+ Apabila anda sering membuat label dan mengacu,
+ akan lebih mudah membiarkan jendela dialog 
 \family sans
 Referensi-Silang
 \family default
@@ -2954,14 +3040,14 @@ Referensi-Silang
 \end_layout
 
 \begin_layout Standard
-Apabila anda ingin melihat bagaimana perubahan acuan halaman, anda bisa
- menyalin beberapa halaman teks buku 
+Apabila anda ingin melihat bagaimana perubahan acuan halaman,
+ anda bisa menyalin beberapa halaman teks buku 
 \emph on
 Petunjuk Penggunaan
 \emph default
-, kemudian tempelkan dalam dokumen anda.
- Anda akan lihat bahwa nomor halaman yang diacu akan menyesuaikan dengan
- perubahan nomor halaman tempat label berada.
+,
+ kemudian tempelkan dalam dokumen anda.
+ Anda akan lihat bahwa nomor halaman yang diacu akan menyesuaikan dengan perubahan nomor halaman tempat label berada.
 \begin_inset Foot
 status collapsed
 
@@ -2973,17 +3059,21 @@ Petunjuk Penggunaan
  termasuk judul dari lingkungan 
 \family sans
 Bab,
+
 \family default
- kemudian anda tempelkan pada dokumen anda, hal ini akan menyebabkan kesalahan.
+ kemudian anda tempelkan pada dokumen anda,
+ hal ini akan menyebabkan kesalahan.
  Dokumen latihan anda menggunakan class dokumen 
 \family sans
 Article
 \family default
-, yang tidak mempunyai lingkungan 
+,
+ yang tidak mempunyai lingkungan 
 \family sans
 Bab
 \family default
-, lihat pada bab
+,
+ lihat pada bab
 \begin_inset space ~
 \end_inset
 
@@ -2991,6 +3081,7 @@ Bab
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Document-Classes"
+nolink "false"
 
 \end_inset
 
@@ -2999,7 +3090,8 @@ reference "sec:Document-Classes"
 \family sans
 Bab
 \family default
-, hapuslah judul di lingkungan 
+,
+ hapuslah judul di lingkungan 
 \emph on
 Bab
 \emph default
@@ -3016,7 +3108,8 @@ Bab
 \series bold
 Latihan
 \series default
-: Perbaiki acuan yang ada dalam berkas 
+:
+ Perbaiki acuan yang ada dalam berkas 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3051,16 +3144,14 @@ kaki
 \begin_inset Quotes erd
 \end_inset
 
- dalam dokumen latihan anda dan letakkan kursor setelah kata tersebut kemudian
- tekan tombol bantuan 
+ dalam dokumen latihan anda dan letakkan kursor setelah kata tersebut kemudian tekan tombol bantuan 
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
 .
- Kotak catatan kaki akan muncul untuk menuliskan teks informasi dalam catatan
- kaki.
+ Kotak catatan kaki akan muncul untuk menuliskan teks informasi dalam catatan kaki.
  \SpecialChar LyX
  akan menempatkan kursor di dalam kotak penyuntingan catatan kaki.
  Tulislah:
@@ -3072,7 +3163,8 @@ arg   "footnote-insert"
 \end_layout
 
 \begin_layout Standard
-Setelah selesai menulis, sekarang klik pada kotak dengan label 
+Setelah selesai menulis,
+ sekarang klik pada kotak dengan label 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3081,8 +3173,8 @@ kaki
 \end_inset
 
 .
- Kotak penyuntingan catatan kaki akan tertutup, sehingga akan tinggal tanda
- berlabel 
+ Kotak penyuntingan catatan kaki akan tertutup,
+ sehingga akan tinggal tanda berlabel 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3090,7 +3182,8 @@ kaki
 \begin_inset Quotes erd
 \end_inset
 
- sebagai tanda adanya catatan kaki; ini disebut dengan 
+ sebagai tanda adanya catatan kaki;
+ ini disebut dengan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3099,8 +3192,7 @@ menyimpan
 \end_inset
 
  catatan kaki.
- Anda bisa membentangkan catatan kaki sewaktu-waktu untuk penyuntingan teks
- catatan kaki dengan cara menekan kotak yang mempunyai label 
+ Anda bisa membentangkan catatan kaki sewaktu-waktu untuk penyuntingan teks catatan kaki dengan cara menekan kotak yang mempunyai label 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3120,25 +3212,27 @@ kaki
 \begin_inset Quotes erd
 \end_inset
 
-, \SpecialChar LyX
+,
+ \SpecialChar LyX
  juga memberikan nomor.
  Nomor ini merupakan nomor catatan kaki.
- Apabila anda menyisipkan catatan kaki, maka nomor ini akan secara otomatis
- disesuaikan.
+ Apabila anda menyisipkan catatan kaki,
+ maka nomor ini akan secara otomatis disesuaikan.
  Anda dapat melihat tampilan berkas DVI (atau hasil cetakan).
  
 \end_layout
 
 \begin_layout Standard
-Catatan kaki dapat disalin, dipotong dan ditempelkan seperti teks biasa.
- Silakan mencoba! Anda hanya perlu menandai kotak catatan kaki
+Catatan kaki dapat disalin,
+ dipotong dan ditempelkan seperti teks biasa.
+ Silakan mencoba!
+ Anda hanya perlu menandai kotak catatan kaki
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Akan lebih mudah menggunakan tombol papan ketik.
- Dengan tetikus mungkin secara tidak sengaja anda akan membuka ketika anda
- menandai kotak catatan kaki.
+ Dengan tetikus mungkin secara tidak sengaja anda akan membuka ketika anda menandai kotak catatan kaki.
 \end_layout
 
 \end_inset
@@ -3152,8 +3246,8 @@ Potong
 Tempelkan
 \family default
 .
- Ada hal yang perlu anda ketahui juga; anda bisa merubah teks menjadi catatan
- kaki setelah menandai teks kemudian menekan tombol bantuan 
+ Ada hal yang perlu anda ketahui juga;
+ anda bisa merubah teks menjadi catatan kaki setelah menandai teks kemudian menekan tombol bantuan 
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
@@ -3161,14 +3255,12 @@ arg   "footnote-insert"
 
 .
  Untuk merubah catatan kaki menjadi teks bisa dilakukan dengan dua cara.
- Apabila kursor berada pada awal kotak penyuntingan catatan kaki anda bisa
- menggunakan tombol 
+ Apabila kursor berada pada awal kotak penyuntingan catatan kaki anda bisa menggunakan tombol 
 \family sans
 Backspace
 \family default
 .
- Apabila kursor berada pada akhir teks dalam kotak penyuntingan catatan
- kaki anda bisa menggunakan tombol 
+ Apabila kursor berada pada akhir teks dalam kotak penyuntingan catatan kaki anda bisa menggunakan tombol 
 \family sans
 Delete.
 \end_layout
@@ -3190,7 +3282,9 @@ arg   "marginalnote-insert"
 \end_inset
 
 \SpecialChar endofsentence
- Catatan tepi sama dengan catatan kaki, kecuali dalam beberapa hal: 
+ Catatan tepi sama dengan catatan kaki,
+ kecuali dalam beberapa hal:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -3214,8 +3308,8 @@ kaki
 \end_layout
 
 \begin_layout Itemize
-catatan akan ditempatkan di tepi dokumen yaitu pada batas halaman, bukan
- dibawah dokumen 
+catatan akan ditempatkan di tepi dokumen yaitu pada batas halaman,
+ bukan dibawah dokumen 
 \end_layout
 
 \begin_layout Itemize
@@ -3223,12 +3317,12 @@ catatan tepi tidak bernomor
 \end_layout
 
 \begin_layout Standard
-Untuk percobaan, kembalikanlah catatan kaki untuk kata \SpecialChar LyX
+Untuk percobaan,
+ kembalikanlah catatan kaki untuk kata \SpecialChar LyX
  menjadi teks biasa,
  kemudian tandai dan buatlah menjadi catatan tepi.
  Jalankan \SpecialChar LaTeX
- (lihat berkas DVI atau PDF) untuk melihat bagaimana bentuk catatan
- tepi ini.
+ (lihat berkas DVI atau PDF) untuk melihat bagaimana bentuk catatan tepi ini.
 \end_layout
 
 \begin_layout Standard
@@ -3236,7 +3330,8 @@ Untuk percobaan, kembalikanlah catatan kaki untuk kata \SpecialChar LyX
 \series bold
 Latihan
 \series default
-: Perbaiki catatan kaki yang ada dalam berkas 
+:
+ Perbaiki catatan kaki yang ada dalam berkas 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3253,15 +3348,12 @@ name "sec:bibliographies"
 \end_layout
 
 \begin_layout Standard
-Bibliografi (dalam penerapan bidang sains) sebenarnya mirip dengan referensi-sil
-ang.
+Bibliografi (dalam penerapan bidang sains) sebenarnya mirip dengan referensi-silang.
  Bibliografi mengandung daftar acuan yang dituliskan di bagian akhir dokumen,
  dan daftar tersebut dapat diacu di teks dalam dokumen.
  \SpecialChar LyX
  dan \SpecialChar LaTeX
- membuat pekerjaan menjadi lebih mudah karena secara otomatis mengatur
- nomor dalam daftar bibliografi serta merubah nomor acuan bila ada perubahan
- dalam daftar bibliografi.
+ membuat pekerjaan menjadi lebih mudah karena secara otomatis mengatur nomor dalam daftar bibliografi serta merubah nomor acuan bila ada perubahan dalam daftar bibliografi.
 \end_layout
 
 \begin_layout Standard
@@ -3277,7 +3369,8 @@ Setiap paragraf yang anda tuliskan merupakan satu referensi.
 
 
 \family typewriter
-The Lyx Tutorial, by the \SpecialChar LyX
+The Lyx Tutorial,
+ by the \SpecialChar LyX
  Documentation Team
 \family default
 
@@ -3297,7 +3390,8 @@ Nama
  Kunci
 \family default
  merupakan nama acuan dalam dokumen \SpecialChar LyX
-, sedangkan nama 
+,
+ sedangkan nama 
 \family sans
 Label
 \family default
@@ -3306,7 +3400,8 @@ Label
 \family sans
 Label
 \family default
- (default), maka anda akan melihat nomor bibliografi dalam hasil cetakannya.
+ (default),
+ maka anda akan melihat nomor bibliografi dalam hasil cetakannya.
  Ubahlah nama 
 \family sans
 Kunci
@@ -3324,7 +3419,8 @@ lyxtutorial
 
 \begin_layout Standard
 Kita akan mencoba untuk mengacu pada daftar acuan di Bibliografi.
- Dari tempat teks akan mengacu ke daftar acuan, melalui menu 
+ Dari tempat teks akan mengacu ke daftar acuan,
+ melalui menu 
 \family sans
 Sisipan\SpecialChar menuseparator
 Acuan
@@ -3337,8 +3433,8 @@ arg   "dialog-show-new-inset citation"
 
 .
  Selanjutnya dialog acuan akan muncul.
- Kotak bagian kanan merupakan daftar semua bibliografi, dalam kotak ini
- anda diperbolehkan untuk memilih item bibliografi yang akan diacu.
+ Kotak bagian kanan merupakan daftar semua bibliografi,
+ dalam kotak ini anda diperbolehkan untuk memilih item bibliografi yang akan diacu.
  Pilihlah 
 \begin_inset Quotes eld
 \end_inset
@@ -3347,16 +3443,14 @@ lyxtutorial
 \begin_inset Quotes erd
 \end_inset
 
- (saat ini, inilah satu-satunya item yang ada dalam bibliografi), kemudian
- tekan tombol 
+ (saat ini,
+ inilah satu-satunya item yang ada dalam bibliografi),
+ kemudian tekan tombol 
 \family sans
 Gabung
 \family default
- untuk memasukkannya (Anda boleh menggunakan beberapa acuan pada satu tempat
- dengan cara menggabungkan beberapa kunci bibliografi yang ada di daftar
- kotak sebelah kiri dengan cara ini.) Cobalah untuk melihat tampilan DVI,
- anda akan melihat acuan dengan tanda kurung kotak yang mengacu pada bibliografi
- yang ada di akhir dokumen.
+ untuk memasukkannya (Anda boleh menggunakan beberapa acuan pada satu tempat dengan cara menggabungkan beberapa kunci bibliografi yang ada di daftar kotak sebelah kiri dengan cara ini.) Cobalah untuk melihat tampilan DVI,
+ anda akan melihat acuan dengan tanda kurung kotak yang mengacu pada bibliografi yang ada di akhir dokumen.
 \end_layout
 
 \begin_layout Standard
@@ -3368,12 +3462,9 @@ Teks
 
 setelah
 \family default
- dalam kotak dialog Acuan akan memberikan catatan tambahan (seperti misalnya
- informasi halaman atau bab yang diacu dari buku atau artikel dalam bibliografi)
- yang ditulis dalam tanda kurung kotak setelah informasi acuan.
- Apabila anda menginginkan acuan yang diiginkan ditulis bukan dalam bentuk
- nomor acuan tetapi dalam bentuk label (mi-salnya, dalam beberapa jurnal
- menggunakan 
+ dalam kotak dialog Acuan akan memberikan catatan tambahan (seperti misalnya informasi halaman atau bab yang diacu dari buku atau artikel dalam bibliografi) yang ditulis dalam tanda kurung kotak setelah informasi acuan.
+ Apabila anda menginginkan acuan yang diiginkan ditulis bukan dalam bentuk nomor acuan tetapi dalam bentuk label (mi-salnya,
+ dalam beberapa jurnal menggunakan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3381,8 +3472,8 @@ setelah
 \begin_inset Quotes erd
 \end_inset
 
- untuk mengacu satu artikel yang ditulis oleh Smith tahun 1995), maka anda
- perlu mengisi nama 
+ untuk mengacu satu artikel yang ditulis oleh Smith tahun 1995),
+ maka anda perlu mengisi nama 
 \family sans
 Label
 \family default
@@ -3395,7 +3486,8 @@ Untuk memperoleh penjelasan terperinci bagaimana menggunakan
 \family sans
 Bibliografi
 \family default
-, anda perlu membaca buku 
+,
+ anda perlu membaca buku 
 \emph on
 Petunjuk Penggunaan.
 \end_layout
@@ -3404,6 +3496,7 @@ Petunjuk Penggunaan.
 
 \series bold
 Latihan:
+
 \series default
  Perbaiki penulisan bibliografi dan acuan yang ada dalam berkas 
 \family typewriter
@@ -3426,7 +3519,8 @@ Return
 \family sans
 Judul
 \family default
- tetapi sebelum Bab atau SubBab yang pertama, kemudian pilih menu 
+ tetapi sebelum Bab atau SubBab yang pertama,
+ kemudian pilih menu 
 \family sans
 Sisipan\SpecialChar menuseparator
 Daftar
@@ -3454,19 +3548,22 @@ Daftar Isi
 
 \begin_layout Standard
 Tampaknya kotak ini tidak memuat daftar isi yang anda harapkan.
- Namun demikian, apabila anda melihat tampilan berkas DVI, anda akan melihat
- daftar isi yang sesungguhnya sudah ada, mengandung semua Bab, SubBab yang
- ada dalam dokumen anda.
- Apabila ada perubahan dalam dokumen anda, kemudian anda memperbarui tampilan
- DVI, maka perubahan di daftar isi akan secara otomatis mengikuti perubahan.
+ Namun demikian,
+ apabila anda melihat tampilan berkas DVI,
+ anda akan melihat daftar isi yang sesungguhnya sudah ada,
+ mengandung semua Bab,
+ SubBab yang ada dalam dokumen anda.
+ Apabila ada perubahan dalam dokumen anda,
+ kemudian anda memperbarui tampilan DVI,
+ maka perubahan di daftar isi akan secara otomatis mengikuti perubahan.
 \end_layout
 
 \begin_layout Standard
 Bawaan awal dari \SpecialChar LyX
-, daftar isi secara lengkap tidak ditampilkan di layar
- anda.
- Namun demikian jika anda menginginkan melihat daftar isi, anda dapat menampilka
-n di jendela 
+,
+ daftar isi secara lengkap tidak ditampilkan di layar anda.
+ Namun demikian jika anda menginginkan melihat daftar isi,
+ anda dapat menampilkan di jendela 
 \family sans
 Tampilan
 \begin_inset space ~
@@ -3480,7 +3577,8 @@ type  "icon"
 arg   "dialog-toggle toc"
 \end_inset
 
-, atau dari menu 
+,
+ atau dari menu 
 \family sans
 Dokumen\SpecialChar menuseparator
 Paparan
@@ -3490,8 +3588,7 @@ Paparan
 Isi.
  
 \family default
-Pemaparan isi disini akan menampilkan daftar isi dari dokumen anda walaupun
- anda belum memerintahkan daftar isi (dari menu 
+Pemaparan isi disini akan menampilkan daftar isi dari dokumen anda walaupun anda belum memerintahkan daftar isi (dari menu 
 \family sans
 Sisipan\SpecialChar menuseparator
 Daftar
@@ -3513,38 +3610,38 @@ Tampilan
 \end_inset
 
 Isi,
+
 \family default
- anda dapat melakukan navigasi dokumen dari satu bagian ke bagian lainnya
- dengan mudah.
+ anda dapat melakukan navigasi dokumen dari satu bagian ke bagian lainnya dengan mudah.
  Anda hanya perlu klik di judul-judul yang ada dalam jendela 
 \family sans
 Tampilan
 \begin_inset space ~
 \end_inset
 
-Isi, kursor
+Isi,
+ kursor
 \family default
  akan berpindah ke lokasi judul yang anda pilih dengan akurat.
- Anda juga bisa menggunakan tombol panah dari papan ketik untuk berpindah
- naik dan turun dalam jendela 
+ Anda juga bisa menggunakan tombol panah dari papan ketik untuk berpindah naik dan turun dalam jendela 
 \family sans
 Tampilan Isi
 \family default
 .
- Untuk memudahkan anda, jendela ini bisa tetap dibiarkan aktif selama anda
- menulis atau menyunting di jendela kerja anda.
- Fungsi melihat isi dokumen serta navigasi bisa juga anda lakukan dari menu
- 
+ Untuk memudahkan anda,
+ jendela ini bisa tetap dibiarkan aktif selama anda menulis atau menyunting di jendela kerja anda.
+ Fungsi melihat isi dokumen serta navigasi bisa juga anda lakukan dari menu 
 \family sans
 Navigasi
 \family default
-, dimana daftar isi akan ditampilan secara otomatis melalui menu ini.
+,
+ dimana daftar isi akan ditampilan secara otomatis melalui menu ini.
 \end_layout
 
 \begin_layout Standard
-Untuk menghapus daftar isi dari dokumen anda, anda hanya perlu menghapus
- kotak Daftar Isi yang ada di awal dokumen, seperti cara menghapus satu
- simbol yang ada dalam teks.
+Untuk menghapus daftar isi dari dokumen anda,
+ anda hanya perlu menghapus kotak Daftar Isi yang ada di awal dokumen,
+ seperti cara menghapus satu simbol yang ada dalam teks.
 \end_layout
 
 \begin_layout Standard
@@ -3552,7 +3649,8 @@ Untuk menghapus daftar isi dari dokumen anda, anda hanya perlu menghapus
 \series bold
 Latihan
 \series default
-: Perbaiki daftar isi yang ada dalam berkas 
+:
+ Perbaiki daftar isi yang ada dalam berkas 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3563,25 +3661,22 @@ Menggunakan Rumus Matematika
 
 \begin_layout Standard
 Salah satu alasan \SpecialChar LaTeX
- banyak digunakan oleh para saintis adalah karena dapat
- menghasilkan rumus matematika yang sangat rapi dan bagus, tanpa menggunakan
- berbagai kombinasi karakter yang biasa dipakai di berbagai program pengolah
- kata atau program penyunting rumus matematika.
+ banyak digunakan oleh para saintis adalah karena dapat menghasilkan rumus matematika yang sangat rapi dan bagus,
+ tanpa menggunakan berbagai kombinasi karakter yang biasa dipakai di berbagai program pengolah kata atau program penyunting rumus matematika.
  Namun demikian banyak juga saintis yang kesulitan menggunakan \SpecialChar LaTeX
- karena menulis
- persamaan matematika bagaikan menulis program komputer, bukannya menulis
- biasa.
+ karena menulis persamaan matematika bagaikan menulis program komputer,
+ bukannya menulis biasa.
  Dengan menggunakan \SpecialChar LyX
- kesulitan tidak akan terjadi, karena \SpecialChar LyX
- mempunyai fasilitas
- WYSIWYM untuk penulisan rumus matematika.
+ kesulitan tidak akan terjadi,
+ karena \SpecialChar LyX
+ mempunyai fasilitas WYSIWYM untuk penulisan rumus matematika.
  Apabila anda biasa menggunakan \SpecialChar LaTeX
-, semua kebiasaan anda menuliskan rumus
- matematika masih anda gunakan seperti biasa, namun apa yang anda tuliskan
- akan berubah dalam tampilan WYSIWYM.
- Apabila anda belum pernah mengenal bagaimana menulis persamaan matematika
- dalam \SpecialChar LaTeX
-, berbagai tombol bantuan yang ada di kotak bantuan 
+,
+ semua kebiasaan anda menuliskan rumus matematika masih anda gunakan seperti biasa,
+ namun apa yang anda tuliskan akan berubah dalam tampilan WYSIWYM.
+ Apabila anda belum pernah mengenal bagaimana menulis persamaan matematika dalam \SpecialChar LaTeX
+,
+ berbagai tombol bantuan yang ada di kotak bantuan 
 \family sans
 Rumus
 \begin_inset space ~
@@ -3589,8 +3684,7 @@ Rumus
 
 Mate-matika
 \family default
- akan membantu anda menyusun rumus matematika dengan mudah dan akan mempunyai
- tampilan hasil yang profesional.
+ akan membantu anda menyusun rumus matematika dengan mudah dan akan mempunyai tampilan hasil yang profesional.
 \end_layout
 
 \begin_layout Section
@@ -3599,32 +3693,33 @@ Lingkungan Rumus Matematika
 
 \begin_layout Standard
 Sekarang coba ketikkan di berkas latihan \SpecialChar LyX
- anda: 
+ anda:
+ 
 \end_layout
 
 \begin_layout LyX-Code
-Saya mengerti rumus Einstein, E=mc^2, karena sangat mudah.
+Saya mengerti rumus Einstein,
+ E=mc^2,
+ karena sangat mudah.
  
 \end_layout
 
 \begin_layout Standard
-Anda dapat lihat sendiri, rumus yang anda tulis tidak nampak rapi, baik
- di layar maupun tampilan hasilnya.
- Dikatakan tidak rapi karena tidak mempunyai spasi antara variabel demikian
- pula dengan tanda sama de-ngan.
- Demikian pula tanda pangkat 2 tidak tertulis diatas seperti bagaimana tanda
- pangkat yang kita kenal.
- Tidak rapinya rumus yang anda tulis dikarenakan anda tidak mengatakan kepada
- \SpecialChar LyX
- bahwa rumus yang anda tulis merupakan rumus matematika, sehingga \SpecialChar LyX
- masih
- menganggap bahwa rumus tadi adalah teks biasa.
+Anda dapat lihat sendiri,
+ rumus yang anda tulis tidak nampak rapi,
+ baik di layar maupun tampilan hasilnya.
+ Dikatakan tidak rapi karena tidak mempunyai spasi antara variabel demikian pula dengan tanda sama de-ngan.
+ Demikian pula tanda pangkat 2 tidak tertulis diatas seperti bagaimana tanda pangkat yang kita kenal.
+ Tidak rapinya rumus yang anda tulis dikarenakan anda tidak mengatakan kepada \SpecialChar LyX
+ bahwa rumus yang anda tulis merupakan rumus matematika,
+ sehingga \SpecialChar LyX
+ masih menganggap bahwa rumus tadi adalah teks biasa.
 \end_layout
 
 \begin_layout Standard
-Sekarang kita akan lihat bagaimana seharusnya menulis rumus matematika dengan
- benar.
- Untuk memulai menulis rumus matematika, tekanlah tombol bantuan 
+Sekarang kita akan lihat bagaimana seharusnya menulis rumus matematika dengan benar.
+ Untuk memulai menulis rumus matematika,
+ tekanlah tombol bantuan 
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
@@ -3646,34 +3741,32 @@ Inline
 \family default
 .
  \SpecialChar LyX
- akan memunculkan lingkungan rumus matematika, berupa kotak kecil berwarna
- biru yang masih kosong.
- Cobalah menulis dalam lingkungan rumus matematika yang masih kosong tersebut
- dengan 
+ akan memunculkan lingkungan rumus matematika,
+ berupa kotak kecil berwarna biru yang masih kosong.
+ Cobalah menulis dalam lingkungan rumus matematika yang masih kosong tersebut dengan 
 \family typewriter
 E=mc^2
 \family default
 .
- Tulisan dalam lingkungan rumus matematika akan berwarna biru, setelah anda
- memulai menulis sesuatu, kotak biru akan hilang.
- Untuk keluar dari lingkungan rumus matematika gunakan tombol papan ketik
- 
+ Tulisan dalam lingkungan rumus matematika akan berwarna biru,
+ setelah anda memulai menulis sesuatu,
+ kotak biru akan hilang.
+ Untuk keluar dari lingkungan rumus matematika gunakan tombol papan ketik 
 \family sans
 Esc
 \family default
 .
- Anda akan lihat bahwa kotak berwarna ungu hilang dan kursor berada di sebelah
- kanan ekspresi matematika yang sudah anda tulis.
- Ini menandakan kursor sudah berada pada lingkungan teks standar sehingga
- anda bisa melanjutkan penulisan teks atau penyuntingan selanjutnya.
+ Anda akan lihat bahwa kotak berwarna ungu hilang dan kursor berada di sebelah kanan ekspresi matematika yang sudah anda tulis.
+ Ini menandakan kursor sudah berada pada lingkungan teks standar sehingga anda bisa melanjutkan penulisan teks atau penyuntingan selanjutnya.
 \end_layout
 
 \begin_layout Standard
-Untuk melihat hasilnya, kita perlu menjalankan \SpecialChar LaTeX
+Untuk melihat hasilnya,
+ kita perlu menjalankan \SpecialChar LaTeX
  untuk menampilkan hasil.
  Anda akan lihat sendiri rumus matematika yang anda tuliskan terlihat cantik,
- ada spasi antara variabel serta tanda sama dengan, demikian pula tanda
- pangkat diatas baris 
+ ada spasi antara variabel serta tanda sama dengan,
+ demikian pula tanda pangkat diatas baris 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3682,31 +3775,29 @@ Untuk melihat hasilnya, kita perlu menjalankan \SpecialChar LaTeX
 \end_inset
 
  akan tampak rapi.
- Dalam lingkungan rumus matematika, huruf dikenal sebagai variabel dan ditulis
- dengan huruf miring, sedangkan untuk angka ditulis dengan huruf biasa bukan
- huruf miring.
+ Dalam lingkungan rumus matematika,
+ huruf dikenal sebagai variabel dan ditulis dengan huruf miring,
+ sedangkan untuk angka ditulis dengan huruf biasa bukan huruf miring.
 \end_layout
 
 \begin_layout Standard
-Penyuntingan rumus matematika merupakan salah satu contoh dari filosofi
- WYSIWYM.
+Penyuntingan rumus matematika merupakan salah satu contoh dari filosofi WYSIWYM.
  Apabila anda menggunakan perintah \SpecialChar LaTeX
- biasa, misalnya anda akan menuliskan
- suatu ekspresi matematika yang mengandung akar menggunakan perintah 
+ biasa,
+ misalnya anda akan menuliskan suatu ekspresi matematika yang mengandung akar menggunakan perintah 
 \family typewriter
 
 \backslash
 sqrt
 \family default
-; kemungkinan anda akan menemui kesulitan, karena anda tidak biasa melihat
- bagaimana ekspresi tersebut sampai anda menjalankan \SpecialChar LaTeX
- untuk melihat tampilan
- hasil.
- Kesulitan lain adalah apabila ingin mencari lokasi penambahan tanda kurung
- yang masih belum lengkap.
+;
+ kemungkinan anda akan menemui kesulitan,
+ karena anda tidak biasa melihat bagaimana ekspresi tersebut sampai anda menjalankan \SpecialChar LaTeX
+ untuk melihat tampilan hasil.
+ Kesulitan lain adalah apabila ingin mencari lokasi penambahan tanda kurung yang masih belum lengkap.
  \SpecialChar LyX
- tidak menampilkan rumus matematika secara WYSIWYG dengan sempurna, namun
- akan memberikan gambaran bagaimana tampilan hasil yang anda inginkan.
+ tidak menampilkan rumus matematika secara WYSIWYG dengan sempurna,
+ namun akan memberikan gambaran bagaimana tampilan hasil yang anda inginkan.
  \SpecialChar LaTeX
  lah yang kemudian akan mengatur secara profesional tampilan hasil akhirnya.
 \end_layout
@@ -3725,11 +3816,9 @@ Sekarang kita akan merubah rumus yang sudah ditulis
 \end_inset
 
 .
- Caranya adalah gunakan tombol panah di papan ketik ke tempat dalam lingkungan
- rumus matematika yang akan ditulis.
- Apabila kursor masuk dalam lingkungan rumus matematika, maka tanda kotak
- warna ungu akan muncul yang menandakan anda berada dalam lingkungan rumus
- matematika dan siap untuk melakukan penyuntingan.
+ Caranya adalah gunakan tombol panah di papan ketik ke tempat dalam lingkungan rumus matematika yang akan ditulis.
+ Apabila kursor masuk dalam lingkungan rumus matematika,
+ maka tanda kotak warna ungu akan muncul yang menandakan anda berada dalam lingkungan rumus matematika dan siap untuk melakukan penyuntingan.
  Gunakan panah 
 \family sans
 Kiri
@@ -3751,16 +3840,14 @@ Kanan
 \end_inset
 
 .
- Untuk keluar dari lingkungan rumus matematika anda dapat menggunakan tombol
- 
+ Untuk keluar dari lingkungan rumus matematika anda dapat menggunakan tombol 
 \family sans
 Esc\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Penyuntingan dalam lingkungan rumus matematika sama dengan proses penyuntingan
- teks biasa.
+Penyuntingan dalam lingkungan rumus matematika sama dengan proses penyuntingan teks biasa.
  Anda bisa menggunakan 
 \family sans
 Delete
@@ -3769,28 +3856,31 @@ Delete
 \family sans
 Backspace
 \family default
-) untuk menghapus, demikian pula anda bisa memilih, memotong, menyalin atau
- menempel atau membatalkan penyuntingan dengan 
+) untuk menghapus,
+ demikian pula anda bisa memilih,
+ memotong,
+ menyalin atau menempel atau membatalkan penyuntingan dengan 
 \family sans
 Suntingan\SpecialChar menuseparator
 Batalkan
 \family default
 .
- Yang perlu mendapat perhatian adalah: apabila kursor anda berada tepat
- di kiri kotak lingkungan rumus matematika, kemudian anda menggunakan tombol
- 
+ Yang perlu mendapat perhatian adalah:
+ apabila kursor anda berada tepat di kiri kotak lingkungan rumus matematika,
+ kemudian anda menggunakan tombol 
 \family sans
 Delete
 \family default
-, maka anda akan menghapus kotak bersama seluruh isinya.
- Demikian pula bila kursor tepat diluar sebelah kanan kemudian anda menekan
- tombol 
+,
+ maka anda akan menghapus kotak bersama seluruh isinya.
+ Demikian pula bila kursor tepat diluar sebelah kanan kemudian anda menekan tombol 
 \family sans
 Backspace
 \family default
-, kotak dan isinya akan terhapus.
- Namun bila hal tersebut tidak anda kehendaki, anda bisa mengembalikannya
- dengan 
+,
+ kotak dan isinya akan terhapus.
+ Namun bila hal tersebut tidak anda kehendaki,
+ anda bisa mengembalikannya dengan 
 \family sans
 Suntingan\SpecialChar menuseparator
 Batalkan
@@ -3807,9 +3897,10 @@ Bagaimana seandainya anda menginginkan merubah
 \begin_inset Formula $E=mc^{2.5}+1$
 \end_inset
 
-? Sekali lagi kami ingatkan, anda gunakan tombol panah seperti yang kami
- sarankan tadi, atau anda bisa juga menggunakan tetikus anda untuk menempatkan
- kursor ke lokasi yang anda kehendaki.
+?
+ Sekali lagi kami ingatkan,
+ anda gunakan tombol panah seperti yang kami sarankan tadi,
+ atau anda bisa juga menggunakan tetikus anda untuk menempatkan kursor ke lokasi yang anda kehendaki.
  Apabila kursor berada tepat setelah 
 \begin_inset Quotes eld
 \end_inset
@@ -3826,7 +3917,8 @@ c
 \begin_inset Quotes erd
 \end_inset
 
-, tekanlah tombol panah keatas (
+,
+ tekanlah tombol panah keatas (
 \family sans
 Up
 \family default
@@ -3835,7 +3927,8 @@ Up
 \emph on
 subscript
 \emph default
-), sebelum angka 
+),
+ sebelum angka 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3853,7 +3946,8 @@ subscript
 \end_inset
 
 .
- Sekarang tekanlah tombol spasi, maka kursor berpindah ke baris utama lagi,
+ Sekarang tekanlah tombol spasi,
+ maka kursor berpindah ke baris utama lagi,
  kemudian anda bisa menuliskan 
 \begin_inset Quotes eld
 \end_inset
@@ -3874,11 +3968,9 @@ Subscript
 \end_layout
 
 \begin_layout Standard
-Penulisan pangkat dalam lingkungan rumus matematika dapat dibantu dengan
- salah satu tombol di kotak bantuan matematika (berada di bawah jendela
- kerja \SpecialChar LyX
-), atau dapat dengan cara sederhana dan cepat yaitu menggunakan tombol
- papan ketik 
+Penulisan pangkat dalam lingkungan rumus matematika dapat dibantu dengan salah satu tombol di kotak bantuan matematika (berada di bawah jendela kerja \SpecialChar LyX
+),
+ atau dapat dengan cara sederhana dan cepat yaitu menggunakan tombol papan ketik 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3888,22 +3980,20 @@ Penulisan pangkat dalam lingkungan rumus matematika dapat dibantu dengan
 
 .
  \SpecialChar LyX
- akan menampilan kotak biru di baris atas, 
+ akan menampilan kotak biru di baris atas,
+ 
 \emph on
 superscript
 \emph default
 .
- Disinilah anda dapat menuliskan pangkat yang mempunyai ukuran huruf lebih
- kecil.
- Setelah selesai menuliskan pangkat, anda keluar dari lingkungan pangkat
- tetapi masih dalam lingkungan rumus matematika dengan cara menekan tombol
- 
+ Disinilah anda dapat menuliskan pangkat yang mempunyai ukuran huruf lebih kecil.
+ Setelah selesai menuliskan pangkat,
+ anda keluar dari lingkungan pangkat tetapi masih dalam lingkungan rumus matematika dengan cara menekan tombol 
 \family sans
 Spasi.
  
 \family default
-Apabila ingin langsung keluar dari lingkungan rumus matematika anda perlu
- menekan tombol 
+Apabila ingin langsung keluar dari lingkungan rumus matematika anda perlu menekan tombol 
 \family sans
 Esc
 \family default
@@ -3911,12 +4001,15 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Untuk menuliskan indeks di baris bawah, 
+Untuk menuliskan indeks di baris bawah,
+ 
 \emph on
 subscript
 \emph default
-, ada cara yang mudah juga.
- Gunakan tombol garis bawah di papan ketik, 
+,
+ ada cara yang mudah juga.
+ Gunakan tombol garis bawah di papan ketik,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3925,8 +4018,8 @@ _
 \end_inset
 
 .
- Dengan cara penulisan pangkat dan indeks baris yang sudah kami jelaskan
- anda pasti bisa menulis rumus matematika seperti ini: 
+ Dengan cara penulisan pangkat dan indeks baris yang sudah kami jelaskan anda pasti bisa menulis rumus matematika seperti ini:
+ 
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
 \end_inset
 
@@ -3939,7 +4032,8 @@ _
 \series bold
 Latihan
 \series default
-: Ubahlah persamaan 1 di 
+:
+ Ubahlah persamaan 1 di 
 \family typewriter
 example_raw.lyx
 \family default
@@ -3963,8 +4057,7 @@ Bantuan
 
 Matematika
 \family default
- disediakan untuk memudahkan anda menuliskan atau menyunting persamaan matematik
-a.
+ disediakan untuk memudahkan anda menuliskan atau menyunting persamaan matematika.
  Berbagai macam penulisan rumus juga dapat dilakukan dari menu 
 \family sans
 Suntingan\SpecialChar menuseparator
@@ -3996,15 +4089,15 @@ Bantuan
 
 Matematika
 \family default
-, apa saja yang bisa anda lakukan.
- Untuk penggunaan cara pintas tidak dibahas sekarang, anda bisa membacanya
- di buku petunjuk lainnya.
+,
+ apa saja yang bisa anda lakukan.
+ Untuk penggunaan cara pintas tidak dibahas sekarang,
+ anda bisa membacanya di buku petunjuk lainnya.
 \end_layout
 
 \begin_layout Standard
-Kotak bantuan matematika ini akan muncul secara otomatis bila kursor berada
- dalam lingkungan rumus matematika, serta dapat dimunculkan secara manual
- dari menu 
+Kotak bantuan matematika ini akan muncul secara otomatis bila kursor berada dalam lingkungan rumus matematika,
+ serta dapat dimunculkan secara manual dari menu 
 \family sans
 Tampilan\SpecialChar menuseparator
 Kotak
@@ -4036,10 +4129,8 @@ Matematika (otomatis)
 \end_inset
 
  akan diberi tanda centang.
- Apabila anda menekan sekali lagi maka tanda centang akan dihilangkan dan
- kotak bantuan matematika akan kembali pada kondisi otomatis, artinya kotak
- bantuan matematika hanya akan muncul apabila kursor berada di dalam kotak
- lingkungan rumus matematika.
+ Apabila anda menekan sekali lagi maka tanda centang akan dihilangkan dan kotak bantuan matematika akan kembali pada kondisi otomatis,
+ artinya kotak bantuan matematika hanya akan muncul apabila kursor berada di dalam kotak lingkungan rumus matematika.
 \end_layout
 
 \begin_layout Subsection
@@ -4059,12 +4150,14 @@ Bantuan
 
 Matematika 
 \family default
-menyediakan bantuan untuk menuliskan berbagai simbol yang sering digunakan
- untuk menuliskan rumus, seperti: huruf yunani, tanda panah, relasi matematika,
- operator, diferensial dan integral.
- Ada hal yang perlu anda ketahui adalah untuk menuliskan batas bawah dan
- batas atas dari integral dan jumlah sigma anda dapat menggunakan bantuan
- baris bawah (
+menyediakan bantuan untuk menuliskan berbagai simbol yang sering digunakan untuk menuliskan rumus,
+ seperti:
+ huruf yunani,
+ tanda panah,
+ relasi matematika,
+ operator,
+ diferensial dan integral.
+ Ada hal yang perlu anda ketahui adalah untuk menuliskan batas bawah dan batas atas dari integral dan jumlah sigma anda dapat menggunakan bantuan baris bawah (
 \emph on
 subscript
 \emph default
@@ -4092,12 +4185,14 @@ Tidak ada yang tidak bisa dilakukan\SpecialChar ldots
 \end_layout
 
 \begin_layout Subsection
-Akar, Simbol Dekorasi, dan Simbol Pembatas
+Akar,
+ Simbol Dekorasi,
+ dan Simbol Pembatas
 \end_layout
 
 \begin_layout Standard
-Untuk menuliskan akar, tekan tombol akar di kotak bantuan di bawah jendela
- kerja 
+Untuk menuliskan akar,
+ tekan tombol akar di kotak bantuan di bawah jendela kerja 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\sqrt"
@@ -4105,47 +4200,49 @@ arg   "math-insert \\sqrt"
 
 .
  Tanda akar akan muncul dan kursor akan berada dalam kotak penyuntingan.
- Anda bisa menuliskan variabel, angka, tanda pangkat lainnya, pembagian,
+ Anda bisa menuliskan variabel,
+ angka,
+ tanda pangkat lainnya,
+ pembagian,
  atau apa saja yang anda perlukan untuk menuliskan rumus matematika.
  \SpecialChar LyX
- akan secara otomatis menyesuaikan ukuran simbol akar agar sesuai dengan
- keperluan yang ada di dalam tanda akar.
+ akan secara otomatis menyesuaikan ukuran simbol akar agar sesuai dengan keperluan yang ada di dalam tanda akar.
  
 \end_layout
 
 \begin_layout Standard
-Cara pemberian simbol dekorasi untuk suatu variabel, misalnya 
+Cara pemberian simbol dekorasi untuk suatu variabel,
+ misalnya 
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
 
-, atau kelompok beberapa variabel seperti 
+,
+ atau kelompok beberapa variabel seperti 
 \begin_inset Formula $\overrightarrow{a+b}$
 \end_inset
 
  dilakukan dengan prosedur yang sama seperti menulis akar.
- Untuk dekorasi, anda juga perlu memilih dekorasi terlebih dahulu dengan
- menekan tombol bantuan 
+ Untuk dekorasi,
+ anda juga perlu memilih dekorasi terlebih dahulu dengan menekan tombol bantuan 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\hat"
 \end_inset
 
 .
- Setelah anda memilih salah satu simbol dekorasi, \SpecialChar LyX
- akan menampilkan kotak
- biru kosong tempat penyuntingan beserta dekorasi pilihan anda.
- Ada dua tipe dekorasi yang bisa anda lakukan: yang pertama adalah dekorasi
- yang besar dan panjangnya mengikuti rumus yang ada di dalam dekorasi, dan
- yang kedua adalah dekorasi dengan ukuran tetap yaitu bila digunakan hanya
- untuk satu variabel saja.
+ Setelah anda memilih salah satu simbol dekorasi,
+ \SpecialChar LyX
+ akan menampilkan kotak biru kosong tempat penyuntingan beserta dekorasi pilihan anda.
+ Ada dua tipe dekorasi yang bisa anda lakukan:
+ yang pertama adalah dekorasi yang besar dan panjangnya mengikuti rumus yang ada di dalam dekorasi,
+ dan yang kedua adalah dekorasi dengan ukuran tetap yaitu bila digunakan hanya untuk satu variabel saja.
  
 \end_layout
 
 \begin_layout Standard
-Simbol pembatas matematika seperti tanda kurung biasa, kurung kurawal atau
- berbagai tipe tanda kurung yang rumit lainnya dapat dilakukan.
- Pengaturan tanda kurung secara umum dapat dilakukan dengan menekan tombol
- 
+Simbol pembatas matematika seperti tanda kurung biasa,
+ kurung kurawal atau berbagai tipe tanda kurung yang rumit lainnya dapat dilakukan.
+ Pengaturan tanda kurung secara umum dapat dilakukan dengan menekan tombol 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathdelimiter"
@@ -4161,10 +4258,9 @@ Matematika
 \family default
 .
  Anda dapat melihat berbagai tipe pembatas dalam kotak dialog.
- Pilihan awal adalah tanda kurung biasa yang sama untuk batas kanan dan
- kiri.
- Anda bisa memilih pembatas yang anda inginkan serta anda juga bisa mengatur
- kombinasi pembatas kiri dan kanan sesuai kehendak anda,  misalnya 
+ Pilihan awal adalah tanda kurung biasa yang sama untuk batas kanan dan kiri.
+ Anda bisa memilih pembatas yang anda inginkan serta anda juga bisa mengatur kombinasi pembatas kiri dan kanan sesuai kehendak anda,
+  misalnya 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4190,8 +4286,7 @@ tidak ada
 \end_layout
 
 \begin_layout Standard
-Simbol pembatas dapat anda ketikkan langsung dalam lingkungan rumus matematika
- tanpa melalui dialog
+Simbol pembatas dapat anda ketikkan langsung dalam lingkungan rumus matematika tanpa melalui dialog
 \family sans
  Pembatas
 \begin_inset space ~
@@ -4200,23 +4295,19 @@ Simbol pembatas dapat anda ketikkan langsung dalam lingkungan rumus matematika
 Matematika
 \family default
 .
- Namun demikian pembatas yang anda ketikkan manual akan mempunyai ukuran
- sesuai dengan ukuran teks standar sehingga tidak akan sesuai apabila digunakan
- sebagai pembatas pembagian atau matriks.
+ Namun demikian pembatas yang anda ketikkan manual akan mempunyai ukuran sesuai dengan ukuran teks standar sehingga tidak akan sesuai apabila digunakan sebagai pembatas pembagian atau matriks.
  Untuk pembatas kiri kanan yang sesuai dan mampu menyesuaikan dengan isi,
- kami sarankan anda menggunakan salah satu dari tiga tombol sisipan pembatas
- yang ada, misalnya anda bisa menekan tombol pasangan () yang ada di kotak
- bantuan matematika.
+ kami sarankan anda menggunakan salah satu dari tiga tombol sisipan pembatas yang ada,
+ misalnya anda bisa menekan tombol pasangan () yang ada di kotak bantuan matematika.
 \end_layout
 
 \begin_layout Standard
-Anda dapat menambahkan pembatas, tanda akar atau simbol dekorasi pada rumus
- matematika yang sudah ada.
+Anda dapat menambahkan pembatas,
+ tanda akar atau simbol dekorasi pada rumus matematika yang sudah ada.
  Caranya adalah dengan memilih bagian rumus yang anda inginkan untuk ditambah,
- kemudian tekan tombol dekorasi atau tanda pembatas, atau tanda akar di
- kotak bantuan matematika.
- Cobalah untuk merubah rumus hukum kedua Newton yang sudah ditulis dalam
- bentuk skalar menjadi vektor (
+ kemudian tekan tombol dekorasi atau tanda pembatas,
+ atau tanda akar di kotak bantuan matematika.
+ Cobalah untuk merubah rumus hukum kedua Newton yang sudah ditulis dalam bentuk skalar menjadi vektor (
 \begin_inset Formula $f=ma$
 \end_inset
 
@@ -4225,8 +4316,8 @@ Anda dapat menambahkan pembatas, tanda akar atau simbol dekorasi pada rumus
 \end_inset
 
 ).
- Setelah anda mempelajari penulisan matriks, anda dapat melakukan penambahan
- tanda kurung matriks dengan cara yang dijelaskan disini.
+ Setelah anda mempelajari penulisan matriks,
+ anda dapat melakukan penambahan tanda kurung matriks dengan cara yang dijelaskan disini.
 \end_layout
 
 \begin_layout Subsection
@@ -4234,7 +4325,8 @@ Pembagian
 \end_layout
 
 \begin_layout Standard
-Untuk menuliskan pembagian, tekan tombol pembagian 
+Untuk menuliskan pembagian,
+ tekan tombol pembagian 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac-square"
@@ -4255,10 +4347,9 @@ Matematika
 .
  \SpecialChar LyX
  akan menyediakan dua kotak penyuntingan yang dipisahkan garis pembagian.
- Seperti yang mungkin sudah anda duga, anda bisa menggunakan tombol tanda
- panah di papan ketik anda untuk memindahkan lokasi kursor anda, atau anda
- juga bisa menggunakan tetikus untuk menempatkan kursor di lokasi pembagian
- yang anda inginkan.
+ Seperti yang mungkin sudah anda duga,
+ anda bisa menggunakan tombol tanda panah di papan ketik anda untuk memindahkan lokasi kursor anda,
+ atau anda juga bisa menggunakan tetikus untuk menempatkan kursor di lokasi pembagian yang anda inginkan.
  Cobalah klik tetikus anda di kotak atas dan ketik angka 
 \begin_inset Quotes eld
 \end_inset
@@ -4267,7 +4358,8 @@ Matematika
 \begin_inset Quotes erd
 \end_inset
 
-, kemudian tekan tombol papan ketik dengan tanda panah kebawah atau 
+,
+ kemudian tekan tombol papan ketik dengan tanda panah kebawah atau 
 \family sans
 Down
 \family default
@@ -4280,9 +4372,12 @@ Down
 \end_inset
 
 .
- Anda telah menulis pembagian! Tentu saja anda bisa menulis rumus matematika
- di dalam dua kotak pembagian yang ada: variabel dengan pangkat, tanda akar,
- pembagian lainnya, rumus matematika apa saja.
+ Anda telah menulis pembagian!
+ Tentu saja anda bisa menulis rumus matematika di dalam dua kotak pembagian yang ada:
+ variabel dengan pangkat,
+ tanda akar,
+ pembagian lainnya,
+ rumus matematika apa saja.
  
 \end_layout
 
@@ -4291,7 +4386,8 @@ Down
 \series bold
 Latihan
 \series default
-: Tuliskan persamaan 2 yang ada di berkas 
+:
+ Tuliskan persamaan 2 yang ada di berkas 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4299,12 +4395,15 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-Fungsi Matematika: Limit, log, sin dan lainnya
+Fungsi Matematika:
+ Limit,
+ log,
+ sin dan lainnya
 \end_layout
 
 \begin_layout Standard
-Huruf yang anda tuliskan dalam lingkungan rumus matematika akan dikenal
- sebagai variabel, apabila anda mengetik 
+Huruf yang anda tuliskan dalam lingkungan rumus matematika akan dikenal sebagai variabel,
+ apabila anda mengetik 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4312,24 +4411,25 @@ sin
 \begin_inset Quotes erd
 \end_inset
 
- dalam lingkungan rumus matematika, \SpecialChar LyX
- akan mengira bahwa yang anda ketikkan
- adalah gabungan dari tiga variabel 
+ dalam lingkungan rumus matematika,
+ \SpecialChar LyX
+ akan mengira bahwa yang anda ketikkan adalah gabungan dari tiga variabel 
 \begin_inset Formula $s$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $i$
 \end_inset
 
-, dan 
+,
+ dan 
 \begin_inset Formula $n$
 \end_inset
 
 .
  Oleh karena itu tiga variabel tersebut akan dituliskan dengan huruf miring,
- padahal sesungguhnya yang anda inginkan adalah satu kata dari fungsi matematika
- 
+ padahal sesungguhnya yang anda inginkan adalah satu kata dari fungsi matematika 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4338,7 +4438,8 @@ sin
 \end_inset
 
  dan seharusnya ditulis dengan huruf Roman.
- Selain dari hal tadi, \SpecialChar LyX
+ Selain dari hal tadi,
+ \SpecialChar LyX
  akan menambahkan spasi setelah menuliskan kata 
 \begin_inset Quotes eld
 \end_inset
@@ -4424,14 +4525,16 @@ sin
 \end_inset
 
  akan ditampilkan \SpecialChar LyX
- dengan warna hitam, dan mempunyai huruf tegak dari tipe
- huruf roman.
- Kata ini akan dikenal sebagai satu simbol, sehingga bila anda menghapus
- dengan tombol 
+ dengan warna hitam,
+ dan mempunyai huruf tegak dari tipe huruf roman.
+ Kata ini akan dikenal sebagai satu simbol,
+ sehingga bila anda menghapus dengan tombol 
 \family sans
 Backspace
 \family default
-, maka langsung terhapus satu kata sekaligus, bukan hanya satu karakter.
+,
+ maka langsung terhapus satu kata sekaligus,
+ bukan hanya satu karakter.
  Setelah memilih 
 \begin_inset Quotes eld
 \end_inset
@@ -4448,18 +4551,23 @@ sin
 \begin_inset Quotes erd
 \end_inset
 
-, yang ditulis dengan huruf biru dan dalam huruf miring, seperti pada rumus
- matematika.
+,
+ yang ditulis dengan huruf biru dan dalam huruf miring,
+ seperti pada rumus matematika.
  Hasil tampilan setelah menjalankan \SpecialChar LaTeX
-, penulisan tadi akan rapi dan cantik.
+,
+ penulisan tadi akan rapi dan cantik.
  Silakan mencobanya.
 \end_layout
 
 \begin_layout Standard
 Fungsi matematika yang ada termasuk semua fungsi trigonometri dan kebalikannya,
- fungsi hiperbolik, fungsi logaritma, limit, serta berbagai fungsi lain.
- Fungsi yang ada dalam daftar, semuanya dapat mempunyai tambahan baris atas
- (
+ fungsi hiperbolik,
+ fungsi logaritma,
+ limit,
+ serta berbagai fungsi lain.
+ Fungsi yang ada dalam daftar,
+ semuanya dapat mempunyai tambahan baris atas (
 \emph on
 superscript
 \emph default
@@ -4467,7 +4575,8 @@ superscript
 \emph on
 subscript
 \emph default
-), sebagai contoh untuk penulisan 
+),
+ sebagai contoh untuk penulisan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4499,7 +4608,8 @@ subscript
 \series bold
 Latihan
 \series default
-: Tuliskan persamaan 3 di berkas  
+:
+ Tuliskan persamaan 3 di berkas  
 \family typewriter
 example_raw.lyx
 \family default
@@ -4530,8 +4640,7 @@ Bantuan
 Matematika
 \family default
 .
- Anda dapat menentukan jumlah baris dan dan kolom dari jendela dialog matriks
- yang muncul.
+ Anda dapat menentukan jumlah baris dan dan kolom dari jendela dialog matriks yang muncul.
  Pilihlah 2 baris dan 3 kolom kemudian tekan 
 \family sans
 Setuju
@@ -4543,10 +4652,12 @@ Setuju
 \end_inset
 
 .
- Seperti yang kami jelaskan sebelumnya, anda dapat menuliskan ekspresi matematik
-a di setiap kotak penyuntingan (termasuk tanda akar, matriks lainnya, dll.).
- Apabila anda tidak ingin mengisi kotak juga tidak menjadikan masalah, dan
- hasil tampilan akan kosong.
+ Seperti yang kami jelaskan sebelumnya,
+ anda dapat menuliskan ekspresi matematika di setiap kotak penyuntingan (termasuk tanda akar,
+ matriks lainnya,
+ dll.).
+ Apabila anda tidak ingin mengisi kotak juga tidak menjadikan masalah,
+ dan hasil tampilan akan kosong.
 \end_layout
 
 \begin_layout Standard
@@ -4554,24 +4665,23 @@ Disini tombol papan ketik
 \family sans
 Tab
 \family default
- dapat digunakan untuk memindah kursor pada arah horisontal yaitu bergerak
- dari satu kolom ke kolom lainnya.
- Anda juga dapat menggunakan tombol panah yang ada di papan ketik - tombol
- panah ke kanan 
+ dapat digunakan untuk memindah kursor pada arah horisontal yaitu bergerak dari satu kolom ke kolom lainnya.
+ Anda juga dapat menggunakan tombol panah yang ada di papan ketik - tombol panah ke kanan 
 \family sans
 (Right) 
 \family default
-akan memindahkan kursor ke kotak berikutnya di sebelah kanan, tombol panah
- ke bawah 
+akan memindahkan kursor ke kotak berikutnya di sebelah kanan,
+ tombol panah ke bawah 
 \family sans
 (Down)
 \family default
- menggerakkan kursor ke kotak berikutnya yang ada di baris bawahnya, demikian
- panah lainnya akan menggerakkan kursor sesuai dengan tanda panah.
+ menggerakkan kursor ke kotak berikutnya yang ada di baris bawahnya,
+ demikian panah lainnya akan menggerakkan kursor sesuai dengan tanda panah.
 \end_layout
 
 \begin_layout Standard
-Apabila anda ingin merubah jumlah baris dan kolom, gunakan menu 
+Apabila anda ingin merubah jumlah baris dan kolom,
+ gunakan menu 
 \family sans
 Suntingan\SpecialChar menuseparator
 Baris
@@ -4590,19 +4700,22 @@ type  "icon"
 arg   "tabular-feature append-row"
 \end_inset
 
-, 
+,
+ 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature delete-row"
 \end_inset
 
-, 
+,
+ 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature append-column"
 \end_inset
 
-, 
+,
+ 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature delete-column"
@@ -4612,16 +4725,17 @@ arg   "tabular-feature delete-column"
 \end_layout
 
 \begin_layout Standard
-Pengaturan lebih lanjut bagaimana perataan horisontal di setiap kolom, serta
- bagaimana merubah posisi vertikal matriks dapat dibaca di buku 
+Pengaturan lebih lanjut bagaimana perataan horisontal di setiap kolom,
+ serta bagaimana merubah posisi vertikal matriks dapat dibaca di buku 
 \emph on
 Petunjuk Penggunaan
 \emph default
 .
- Perlu mendapat perhatian anda, apabila anda ingin menu-liskan tabel yang
- berisi informasi teks, anda perlu menggunakan fasilitas tabel yang disediakan
- \SpecialChar LyX
-, jangan mendefinisikan tabel menggunakan matriks.
+ Perlu mendapat perhatian anda,
+ apabila anda ingin menu-liskan tabel yang berisi informasi teks,
+ anda perlu menggunakan fasilitas tabel yang disediakan \SpecialChar LyX
+,
+ jangan mendefinisikan tabel menggunakan matriks.
 \end_layout
 
 \begin_layout Subsection
@@ -4629,16 +4743,15 @@ Rumus Matematika Dalam Mode Display
 \end_layout
 
 \begin_layout Standard
-Semua cara penulisan rumus matematika yang dijelaskan sebelumnya adalah
- tipe rumus matematika 
+Semua cara penulisan rumus matematika yang dijelaskan sebelumnya adalah tipe rumus matematika 
 \emph on
 inline
 \emph default
-, yaitu rumus matematika ditulis pada baris teks.
+,
+ yaitu rumus matematika ditulis pada baris teks.
  Hal ini biasa dituliskan bila rumus ini tidak terlalu panjang.
- Namun demikian, apabila anda ingin menuliskan rumus yang panjang atau ingin
- menuliskan rumus secara terpisah dari teks dan ditulis pada baris tersendiri
- maka anda perlu menulis rumus dalam mode 
+ Namun demikian,
+ apabila anda ingin menuliskan rumus yang panjang atau ingin menuliskan rumus secara terpisah dari teks dan ditulis pada baris tersendiri maka anda perlu menulis rumus dalam mode 
 \emph on
 display
 \emph default
@@ -4652,12 +4765,13 @@ display
 Petunjuk Penggunaan
 \emph default
 ).
- Selain itu, bila anda menginginkan rumus yang terdiri dari beberapa baris
- (
+ Selain itu,
+ bila anda menginginkan rumus yang terdiri dari beberapa baris (
 \emph on
 multi-line
 \emph default
-), hanya dapat dilakukan pada mode 
+),
+ hanya dapat dilakukan pada mode 
 \emph on
 display
 \emph default
@@ -4675,8 +4789,9 @@ type  "icon"
 arg   "math-display"
 \end_inset
 
-, yaitu tanda kotak biru diantara baris teks diatas dan dibawah, yang ada
- di 
+,
+ yaitu tanda kotak biru diantara baris teks diatas dan dibawah,
+ yang ada di 
 \family sans
 Kotak
 \begin_inset space ~
@@ -4690,16 +4805,14 @@ Matematika
 \family default
 .
  \SpecialChar LyX
- akan menyisipkan tempat formula pada baris yang baru, dan berada di tengah
- baris.
+ akan menyisipkan tempat formula pada baris yang baru,
+ dan berada di tengah baris.
  Cobalah menulis pada mode display ini kemudian jalankan \SpecialChar LaTeX
- dengan menampilkan
- hasil pdf.
- Tombol mode display ini sebenarnya tombol pengaturan yang bisa digunakan
- untuk merubah tipe rumus inline ke rumus display atau sebaliknya.
- Cobalah sekarang ke salah satu rumus yang sudah anda tuliskan kemudian
- tekan tombol mode display ini, dan amati perubahannya, kemudian tekanlah
- kembali.
+ dengan menampilkan hasil pdf.
+ Tombol mode display ini sebenarnya tombol pengaturan yang bisa digunakan untuk merubah tipe rumus inline ke rumus display atau sebaliknya.
+ Cobalah sekarang ke salah satu rumus yang sudah anda tuliskan kemudian tekan tombol mode display ini,
+ dan amati perubahannya,
+ kemudian tekanlah kembali.
  Anda tentunya sekarang jelas bagaimana memanfaatkan tombol ini.
  
 \end_layout
@@ -4721,7 +4834,8 @@ Pada beberapa simbol seperti
 \begin_inset Formula $\int$
 \end_inset
 
-, ditulis dengan standar ukuran yang lebih besar.
+,
+ ditulis dengan standar ukuran yang lebih besar.
 \end_layout
 
 \begin_layout Itemize
@@ -4729,9 +4843,11 @@ Batas bawah dan batas atas pada jumlah sigma
 \begin_inset Formula $\sum$
 \end_inset
 
-, dituliskan di bagian bawah dan bagian atas simbol sigma.
- Untuk fungsi limit, batas ditulis di bawah simbol limit, sedangkan untuk
- pada rumus baris tertulis di sebelah tanda limit.
+,
+ dituliskan di bagian bawah dan bagian atas simbol sigma.
+ Untuk fungsi limit,
+ batas ditulis di bawah simbol limit,
+ sedangkan untuk pada rumus baris tertulis di sebelah tanda limit.
 \end_layout
 
 \begin_layout Itemize
@@ -4739,26 +4855,26 @@ Rumus ditulis di tengah baris
 \end_layout
 
 \begin_layout Standard
-Selain dari hal yang dijelaskan diatas, penulisan rumus baris dan rumus
- display pada dasarnya sama saja.
+Selain dari hal yang dijelaskan diatas,
+ penulisan rumus baris dan rumus display pada dasarnya sama saja.
 \end_layout
 
 \begin_layout Standard
-Salah satu hal penting yang perlu anda catat adalah mengenai penga-turan
- setelah rumus display: Anda harus memahami benar apakah setelah rumus display
- merupakan paragraf baru atau tidak.
- Apabila rumus display berada di tengah suatu paragraf, maka anda jangan
- menekan tombol 
+Salah satu hal penting yang perlu anda catat adalah mengenai penga-turan setelah rumus display:
+ Anda harus memahami benar apakah setelah rumus display merupakan paragraf baru atau tidak.
+ Apabila rumus display berada di tengah suatu paragraf,
+ maka anda jangan menekan tombol 
 \family sans
 Return
 \family default
 .
- Jika anda melakukannya, maka teks 
+ Jika anda melakukannya,
+ maka teks 
 \emph on
 setelah
 \emph default
- rumus display akan menjadi awal paragraf baru, sehingga kata pertamanya
- akan masuk kedalam karena adanya identasi awal paragraf.
+ rumus display akan menjadi awal paragraf baru,
+ sehingga kata pertamanya akan masuk kedalam karena adanya identasi awal paragraf.
  Kemungkinan hal ini tidak anda kehendaki.
 \end_layout
 
@@ -4767,11 +4883,13 @@ setelah
 \series bold
 Latihan
 \series default
-: Ubahlah rumus-rumus dalam berkas 
+:
+ Ubahlah rumus-rumus dalam berkas 
 \family typewriter
 example_raw.lyx
 \family default
- menjadi rumus display, dan perhatikanlah bagaimana hasilnya menjadi berbeda.
+ menjadi rumus display,
+ dan perhatikanlah bagaimana hasilnya menjadi berbeda.
 \end_layout
 
 \begin_layout Standard
@@ -4779,15 +4897,15 @@ example_raw.lyx
 \series bold
 Latihan
 \series default
-: Dengan menggunakan berbagai tombol bantuan yang sudah anda pelajari sampai
- saat ini, anda tentunya dapat menulis persamaan mate-matika seperti dibawah
- ini:
+:
+ Dengan menggunakan berbagai tombol bantuan yang sudah anda pelajari sampai saat ini,
+ anda tentunya dapat menulis persamaan mate-matika seperti dibawah ini:
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Setelah anda mencoba yang mungkin tidak mudah, cobalah menulis persamaan
- tadi dari menu 
+Setelah anda mencoba yang mungkin tidak mudah,
+ cobalah menulis persamaan tadi dari menu 
 \family sans
 Sisipan\SpecialChar menuseparator
 Rumus
@@ -4826,10 +4944,10 @@ Berbagai Pengaturan Rumus Matematika
 \end_layout
 
 \begin_layout Standard
-Sebenarnya masih banyak lagi pengaturan rumus matematika yang bisa dilakukan
- dalam \SpecialChar LyX
+Sebenarnya masih banyak lagi pengaturan rumus matematika yang bisa dilakukan dalam \SpecialChar LyX
 .
- Untuk sementara ini, anda sudah menguasai dasar pengaturan yang ada.
+ Untuk sementara ini,
+ anda sudah menguasai dasar pengaturan yang ada.
  Pengaturan lanjutan dapat anda pelajari dari buku
 \emph on
  Petunjuk Penggunaan.
@@ -4851,18 +4969,20 @@ Multi-line equations
 \end_layout
 
 \begin_layout Itemize
-Perubahan jenis huruf dalam persamaan, misalnya merubah menjadi teks dengan
- huruf tebal.
+Perubahan jenis huruf dalam persamaan,
+ misalnya merubah menjadi teks dengan huruf tebal.
 \end_layout
 
 \begin_layout Itemize
-Perubahan ukuran huruf, serta pengaturan spasi dalam rumus.
+Perubahan ukuran huruf,
+ serta pengaturan spasi dalam rumus.
  (biasanya anda memerlukan ini untuk penyelesaian dan pengaturan draf terakhir!)
 \end_layout
 
 \begin_layout Itemize
 Penulisan dan penyusunan program makro.
- Hal ini sangat bermanfaat, anda hanya perlu mendefinisikan di awal dokumen,
+ Hal ini sangat bermanfaat,
+ anda hanya perlu mendefinisikan di awal dokumen,
  kemudian dapat digunakan di seluruh dokumen sampai akhir.
 \end_layout
 
@@ -4880,10 +5000,11 @@ Fitur Utama \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-Sampai bab ini, kita belum membahas secara tuntas semua fasilitas yang dapat
- dimanfaatkan dari \SpecialChar LyX
+Sampai bab ini,
+ kita belum membahas secara tuntas semua fasilitas yang dapat dimanfaatkan dari \SpecialChar LyX
 .
- Seperti biasanya yang bisa kami katakan adalah, silakan membaca buku 
+ Seperti biasanya yang bisa kami katakan adalah,
+ silakan membaca buku 
 \emph on
 Petunjuk Penggunaan
 \emph default
@@ -4915,7 +5036,8 @@ arg   "tabular-insert"
 \end_inset
 
 ) untuk pengaturan tabel.
- Apabila anda klik tombol kanan dalam sel tabel, anda dapat menemukan 
+ Apabila anda klik tombol kanan dalam sel tabel,
+ anda dapat menemukan 
 \family sans
 Pengaturan
 \begin_inset space ~
@@ -4924,18 +5046,17 @@ Pengaturan
 Tabel
 \family default
  yang memunculkan jendela dialog untuk penyuntingan tabel.
- Selain itu bila apabila kursor anda masuk pada salah satu sel tabel, maka
- secara otomatis akan muncul kotak bantuan tabel di bawah jendela kerja
- \SpecialChar LyX
+ Selain itu bila apabila kursor anda masuk pada salah satu sel tabel,
+ maka secara otomatis akan muncul kotak bantuan tabel di bawah jendela kerja \SpecialChar LyX
 .
- Kotak bantuan otomatis akan hilang dengan sendirinya bila kursor tidak
- berada dalam sel tabel.
+ Kotak bantuan otomatis akan hilang dengan sendirinya bila kursor tidak berada dalam sel tabel.
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
  juga dapat melibatkan gambar dari berbagai format masuk dalam dokumen.
- (Anda bisa menebak: dari menu 
+ (Anda bisa menebak:
+ dari menu 
 \family sans
 Sisipan\SpecialChar menuseparator
 Gambar
@@ -4947,8 +5068,9 @@ arg   "dialog-show-new-inset graphics"
 \end_inset
 
 ).
- Kemudian anda cari berkas gambar yang akan dimasukkan, anda bisa juga memutar
- atau mengatur skala, dll.) Apabila tabel dan gambar merupakan obyek float,
+ Kemudian anda cari berkas gambar yang akan dimasukkan,
+ anda bisa juga memutar atau mengatur skala,
+ dll.) Apabila tabel dan gambar merupakan obyek float,
  dari 
 \family sans
 Sisipan
@@ -4962,7 +5084,8 @@ Obyek
 
 Float
 \family default
-, \SpecialChar LyX
+,
+ \SpecialChar LyX
  akan memberi nama tabel atau gambar secara otomatis.
 \end_layout
 
@@ -4970,8 +5093,7 @@ Float
 \SpecialChar LyX
  dapat diubah sesuai keinginan pengguna.
  Segala sesuatu yang ada di \SpecialChar LyX
- mulai dari bagaimana tampilan jendela kerja
- \SpecialChar LyX
+ mulai dari bagaimana tampilan jendela kerja \SpecialChar LyX
  sampai bentuk tampilan output dokumen dapat diatur dengan berbagai cara.
  Sebagian besar pengaturan konfigurasi dapat dilakukan dari 
 \family sans
@@ -4979,7 +5101,8 @@ AlatBantuan\SpecialChar menuseparator
 Prefere
 \family default
 nsi.
- Penjelasan lebih lanjut, silakan lihat di 
+ Penjelasan lebih lanjut,
+ silakan lihat di 
 \family sans
 Bantuan\SpecialChar menuseparator
 Perubahan
@@ -4997,24 +5120,27 @@ Pengaturan\SpecialChar endofsentence
 \begin_layout Itemize
 \SpecialChar LyX
  dikembangkan oleh tim gabungan dari lima benua.
- Oleh karena itu, \SpecialChar LyX
- sangat mendukung berbagai bahasa selain bahasa Inggris
- (seperti Belanda, Jerman, Perancis, Yunani, Turki, Indonesia,\SpecialChar ldots
-) lebih dari
- dukungan bahasa di program pengolah kata yang lain.
- Bahkan bahasa dengan sistem penulisan dari kanan ke kiri seperti bahasa
- Arab, Persia, Hibrani serta bahasa dari Asia yang mempunyai huruf rumit
- seperti Cina, Jepang dan Korea juga didukung.
- Anda dapat menulis dokumen dalam bahasa pilihan anda dan anda juga bisa
- merubah menu yang ada di \SpecialChar LyX
+ Oleh karena itu,
+ \SpecialChar LyX
+ sangat mendukung berbagai bahasa selain bahasa Inggris (seperti Belanda,
+ Jerman,
+ Perancis,
+ Yunani,
+ Turki,
+ Indonesia,\SpecialChar ldots
+) lebih dari dukungan bahasa di program pengolah kata yang lain.
+ Bahkan bahasa dengan sistem penulisan dari kanan ke kiri seperti bahasa Arab,
+ Persia,
+ Hibrani serta bahasa dari Asia yang mempunyai huruf rumit seperti Cina,
+ Jepang dan Korea juga didukung.
+ Anda dapat menulis dokumen dalam bahasa pilihan anda dan anda juga bisa merubah menu yang ada di \SpecialChar LyX
  sesuai bahasa pilihan anda.
  
 \end_layout
 
 \begin_layout Itemize
 Menu yang ada di \SpecialChar LyX
- mempunyai berbagai kunci ikatan yang akan mempercepat
- akses ke menu.
+ mempunyai berbagai kunci ikatan yang akan mempercepat akses ke menu.
  Hal ini berarti bahwa anda dapat mengakses menu 
 \family sans
 Berkas\SpecialChar menuseparator
@@ -5028,8 +5154,8 @@ berkas
 \family sans
 Alt+e
 \family default
- kemudian menekan tombol B atau langsung menggunakan cara pintas yang tertulis
- disebelah menu (untuk membuka berkas baru, Ctrl+O).
+ kemudian menekan tombol B atau langsung menggunakan cara pintas yang tertulis disebelah menu (untuk membuka berkas baru,
+ Ctrl+O).
  Kunci ikatan ini dapat diubah.
  Penjelasan terperinci dapat dibaca dari 
 \family sans
@@ -5058,6 +5184,7 @@ Pengaturan\SpecialChar endofsentence
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:tex2lyx"
+nolink "false"
 
 \end_inset
 
@@ -5065,13 +5192,14 @@ reference "sec:tex2lyx"
 \end_layout
 
 \begin_layout Itemize
-Pemeriksa ejaaan, padanan kata, serta fasilitas statistik seperti penghitungan
- kata semuanya tersedia.
+Pemeriksa ejaaan,
+ padanan kata,
+ serta fasilitas statistik seperti penghitungan kata semuanya tersedia.
 \end_layout
 
 \begin_layout Itemize
-Fasilitas pembuatan indeks, nomenklatur atau daftar istilah juga ada di
- \SpecialChar LyX
+Fasilitas pembuatan indeks,
+ nomenklatur atau daftar istilah juga ada di \SpecialChar LyX
 .
 \end_layout
 
@@ -5090,36 +5218,39 @@ name "sec:latexusers"
 
 \begin_layout Standard
 Apabila anda belum tahu sama sekali tentang \SpecialChar LaTeX
-, anda tidak harus membaca bagian
- ini.
+,
+ anda tidak harus membaca bagian ini.
  Namun demikian jika anda ingin 
 \emph on
 mempelajari
 \emph default
  \SpecialChar LaTeX
-, silakan teruskan membaca bab ini.
+,
+ silakan teruskan membaca bab ini.
  Bagi yang sudah mengenal \SpecialChar LaTeX
  dan sekarang akan menggunakan \SpecialChar LyX
-, anda mungkin
- akan bertanya apakah yang anda lakukan di \SpecialChar LaTeX
+,
+ anda mungkin akan bertanya apakah yang anda lakukan di \SpecialChar LaTeX
  bisa juga diterapkan di \SpecialChar LyX
 .
- Jawabannya ringkas saja; \SpecialChar LyX
- dapat menjalankan hampir semua yang bisa dikerjakan
- \SpecialChar LaTeX
+ Jawabannya ringkas saja;
+ \SpecialChar LyX
+ dapat menjalankan hampir semua yang bisa dikerjakan \SpecialChar LaTeX
  dan akan menyederhanakan sebagian besar perintah \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
-Buku ini bukanlah sekedar tutorial, kami akan membahas beberapa hal yang
- mungkin akan menarik perhatian bagi yang baru menggunakan \SpecialChar LyX
+Buku ini bukanlah sekedar tutorial,
+ kami akan membahas beberapa hal yang mungkin akan menarik perhatian bagi yang baru menggunakan \SpecialChar LyX
 .
- Namun demikian, agar buku 
+ Namun demikian,
+ agar buku 
 \emph on
 Tutorial
 \emph default
- ini ringkas, untuk sementara kami hanya memberikan penjelasan yang sederhana.
+ ini ringkas,
+ untuk sementara kami hanya memberikan penjelasan yang sederhana.
  Buku petunjuk 
 \emph on
 Fitur
@@ -5136,10 +5267,10 @@ Obyek
 
 Tempelan
 \emph default
- dapat membantu anda mempelajari lebih lanjut berbagai penjelasan tentang
- perbedaan \SpecialChar LyX
+ dapat membantu anda mempelajari lebih lanjut berbagai penjelasan tentang perbedaan \SpecialChar LyX
  dan \SpecialChar LaTeX
-, serta berbagai teknik dan trik \SpecialChar LaTeX
+,
+ serta berbagai teknik dan trik \SpecialChar LaTeX
  untuk diterapkan di \SpecialChar LyX
 .
  
@@ -5152,9 +5283,9 @@ Perintah \SpecialChar TeX
 
 \begin_layout Standard
 Semua perintah \SpecialChar TeX
- yang anda ketikkan di dokumen akan diteruskan langsung ke
- \SpecialChar LaTeX
-, serta akan ditampilkan di layar kerja dengan warna merah.
+ yang anda ketikkan di dokumen akan diteruskan langsung ke \SpecialChar LaTeX
+,
+ serta akan ditampilkan di layar kerja dengan warna merah.
  Untuk menuliskan perintah \SpecialChar TeX
  dalam berkas \SpecialChar LyX
  gunakan 
@@ -5192,31 +5323,35 @@ Rumus
 
 Matematika
 \family default
-), pada dasarnya menggunakan perintah \SpecialChar TeX
+),
+ pada dasarnya menggunakan perintah \SpecialChar TeX
  tetapi \SpecialChar LyX
  mengaturnya dengan cara berbeda.
  Apabila menggunakan sisipan perintah \SpecialChar TeX
-, anda perlu menuliskan perintah \SpecialChar TeX
-
+,
+ anda perlu menuliskan perintah \SpecialChar TeX
  seperti biasanya yaitu menggunakan 
 \emph on
 backslash
 \emph default
-, tetapi bila menggunakan rumus matematika semua perintah 
+,
+ tetapi bila menggunakan rumus matematika semua perintah 
 \emph on
 backslash
 \emph default
- tidak akan dimunculkan, hanya semua rumus yang anda tuliskan akan dikenali
- dengan warna biru.
+ tidak akan dimunculkan,
+ hanya semua rumus yang anda tuliskan akan dikenali dengan warna biru.
  Setelah selesai menuliskan perintah \SpecialChar TeX
  kemudian mengetik 
 \family sans
 Spasi
 \family default
- atau karakter selain huruf, seperti angka, atau garis bawah, maka secara
- otomatis akan berubah menjadi MYSIWYM\SpecialChar endofsentence
- Sebagai contoh, apabila anda mengetik
- 
+ atau karakter selain huruf,
+ seperti angka,
+ atau garis bawah,
+ maka secara otomatis akan berubah menjadi MYSIWYM\SpecialChar endofsentence
+ Sebagai contoh,
+ apabila anda mengetik 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5247,7 +5382,8 @@ Matematika
 \family sans
 Spa
 \family default
-si, \SpecialChar LyX
+si,
+ \SpecialChar LyX
  akan merubah perintah yang anda ketikkan 
 \begin_inset Quotes eld
 \end_inset
@@ -5273,8 +5409,7 @@ gamma
  dan berwarna biru.
  Hal ini akan berlaku pada hampir semua makro matematika yang ada.
  Bagi para pemakai \SpecialChar LaTeX
- yang biasa menuliskan perintah makro matematika dapat
- bekerja lebih cepat daripada menggunakan 
+ yang biasa menuliskan perintah makro matematika dapat bekerja lebih cepat daripada menggunakan 
 \family sans
 Kotak Bantuan Matematika
 \family default
@@ -5282,45 +5417,44 @@ Kotak Bantuan Matematika
 \end_layout
 
 \begin_layout Standard
-Ada satu kasus khusus dalam lingkungan rumus matematika, apabila anda mengetik
- tanda kurung kurawal pembuka dalam program \SpecialChar TeX
-, maka otomatis tanda kurung
- pembuka 
+Ada satu kasus khusus dalam lingkungan rumus matematika,
+ apabila anda mengetik tanda kurung kurawal pembuka dalam program \SpecialChar TeX
+,
+ maka otomatis tanda kurung pembuka 
 \emph on
 dan
 \emph default
- tanda kurung penutup akan muncul dengan warna merah, kemudian secara otomatis
- akan keluar dari mode program \SpecialChar TeX
+ tanda kurung penutup akan muncul dengan warna merah,
+ kemudian secara otomatis akan keluar dari mode program \SpecialChar TeX
 .
  Dengan cara ini akan memudahkan menuliskan perintah \SpecialChar LaTeX
  yang \SpecialChar LyX
- tidak mengetahui
- dimana memerlukan informasi argumen dari suatu perintah \SpecialChar LaTeX
+ tidak mengetahui dimana memerlukan informasi argumen dari suatu perintah \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
  tidak bisa melakukan semua yang dapat dilakukan dalam \SpecialChar LaTeX
-, terutama fungsi
- yang berkaitan dengan berbagai 
+,
+ terutama fungsi yang berkaitan dengan berbagai 
 \emph on
 fancy
 \emph default
- yang sifatnya tambahan, atau tidak semuanya WYSIWYM.
+ yang sifatnya tambahan,
+ atau tidak semuanya WYSIWYM.
  Dalam hal ini 
 \family sans
 Perintah \SpecialChar TeX
 
 \family default
- merupakan media untuk menerapkan dan menggunakan semua fleksibilitas yang
- ada di \SpecialChar LaTeX
+ merupakan media untuk menerapkan dan menggunakan semua fleksibilitas yang ada di \SpecialChar LaTeX
  dalam lingkungan \SpecialChar LyX
- yang mempunyai kemudahan dalam penulisan rumus
- matematika, tabel serta fasilitas lain yang sifatnya WYSIWYM.
+ yang mempunyai kemudahan dalam penulisan rumus matematika,
+ tabel serta fasilitas lain yang sifatnya WYSIWYM.
  Anda bisa juga memanfaatkan semua paket \SpecialChar LaTeX
- yang ada, dengan menuliskan misalnya
- 
+ yang ada,
+ dengan menuliskan misalnya 
 \family typewriter
 
 \backslash
@@ -5334,16 +5468,19 @@ usepackage{foo}
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:preamble"
+nolink "false"
 
 \end_inset
 
-) — walaupun untuk ini anda tidak menemui fitur WYSIWYM.
+) —
+ walaupun untuk ini anda tidak menemui fitur WYSIWYM.
 \end_layout
 
 \begin_layout Subsection
 Memuat Berkas \SpecialChar LaTeX
  ke \SpecialChar LyX
- — 
+ —
+ 
 \family typewriter
 tex2lyx
 \family default
@@ -5384,7 +5521,8 @@ dari berkas yang dikonversi
 \family typewriter
  foo.tex
 \family default
-, kemudian langsung membuka di jendela kerja \SpecialChar LyX
+,
+ kemudian langsung membuka di jendela kerja \SpecialChar LyX
 .
  Anda bisa juga menjalankan program 
 \family typewriter
@@ -5408,15 +5546,16 @@ Program
  tex2lyx
 \family default
  akan mengkonversi sebagian besar perintah \SpecialChar LaTeX
-, walaupun masih ada kemungkinan
- ada yang tidak dikonversi ke \SpecialChar LyX
+,
+ walaupun masih ada kemungkinan ada yang tidak dikonversi ke \SpecialChar LyX
 .
  Sangat disarankan setelah menjalankan 
 \family typewriter
 tex2lyx
 \family default
-, anda lihat teks yang masih berwarna merah, kalau perlu anda bisa memperbaikiny
-a secara manual.
+,
+ anda lihat teks yang masih berwarna merah,
+ kalau perlu anda bisa memperbaikinya secara manual.
 \end_layout
 
 \begin_layout Standard
@@ -5426,12 +5565,10 @@ Program
 \family default
  mempunyai penjelasan dan buku petunjuk sendiri.
  Anda perlu membacanya untuk mengenali perintah-perintah \SpecialChar LaTeX
- serta lingkungan
- yang tidak bisa dikonversi ke \SpecialChar LyX
+ serta lingkungan yang tidak bisa dikonversi ke \SpecialChar LyX
 .
- Selain itu anda juga dapat mengenali kutu program yang ada (dan bagaimana
- mengatasinya), juga akan anda temukan penjelasan mengenai berbagai perintah
- tambahan untuk menjalankan 
+ Selain itu anda juga dapat mengenali kutu program yang ada (dan bagaimana mengatasinya),
+ juga akan anda temukan penjelasan mengenai berbagai perintah tambahan untuk menjalankan 
 \family typewriter
 tex2lyx
 \family default
@@ -5447,11 +5584,11 @@ Konversi Berkas \SpecialChar LyX
 \begin_layout Standard
 Apabila anda ingin menyimpan berkas \SpecialChar LyX
  ke berkas \SpecialChar LaTeX
-, misalnya anda ingin mengirimkan
- ke mitra kerja atau mitra penulis yang tidak memiliki \SpecialChar LyX
- tetapi memahami
- \SpecialChar LaTeX
-, maka anda perlu mengkonversi \SpecialChar LyX
+,
+ misalnya anda ingin mengirimkan ke mitra kerja atau mitra penulis yang tidak memiliki \SpecialChar LyX
+ tetapi memahami \SpecialChar LaTeX
+,
+ maka anda perlu mengkonversi \SpecialChar LyX
  ke \SpecialChar LaTeX
 .
  Caranya adalah dari menu 
@@ -5472,8 +5609,7 @@ whatever.lyx
  yang sedang anda sunting.
  Sebenarnya \SpecialChar LyX
  selalu membuat berkas sementara dalam format \SpecialChar LaTeX
- sebelum menampilkan
- hasil atau mencetak berkas \SpecialChar LyX
+ sebelum menampilkan hasil atau mencetak berkas \SpecialChar LyX
 .
 \end_layout
 
@@ -5501,16 +5637,16 @@ ialog Class Dokumen sama halnya dengan perintah \SpecialChar LaTeX
 documentclass
 \family default
 .
- Selain dari pemilihan class dokumen dan perubahan ukuran huruf, pengaturan
- ukuran kertas serta batas kertas juga dilakukan dari dialog pengaturan
- dokumen.
+ Selain dari pemilihan class dokumen dan perubahan ukuran huruf,
+ pengaturan ukuran kertas serta batas kertas juga dilakukan dari dialog pengaturan dokumen.
  Apabila anda ingin menambahkan perintah tambahan di 
 \family typewriter
 
 \backslash
 documentclass
 \family default
- ada fasilitas untuk menuliskan perintah tersebut, dari kotak 
+ ada fasilitas untuk menuliskan perintah tersebut,
+ dari kotak 
 \family sans
 Aturan
 \begin_inset space ~
@@ -5535,8 +5671,8 @@ name "sec:preamble"
 
 \begin_layout Standard
 Bagi yang biasa menggunakan \SpecialChar LaTeX
-, seringkali anda menambahkan perintah tertentu
- yang berada di bagian 
+,
+ seringkali anda menambahkan perintah tertentu yang berada di bagian 
 \family sans
 Preamble
 \family default
@@ -5556,8 +5692,7 @@ Preamble
 \family default
  kemudian ketikkan perintah yang anda inginkan dalam kotak yang tersedia.
  Semua perintah yang ada disini akan dikirim langsung ke \SpecialChar LaTeX
- yang didefinisikan
- sebagai bagian dari \SpecialChar LaTeX
+ yang didefinisikan sebagai bagian dari \SpecialChar LaTeX
 
 \begin_inset space ~
 \end_inset
@@ -5573,8 +5708,7 @@ Bib\SpecialChar TeX
 \begin_layout Standard
 \SpecialChar LyX
  mempunyai fitur untuk Bib\SpecialChar TeX
- yang memungkinkan anda memanfaatkan basis data
- referensi bibliografi Bib\SpecialChar TeX
+ yang memungkinkan anda memanfaatkan basis data referensi bibliografi Bib\SpecialChar TeX
  untuk digunakan dalam \SpecialChar LyX
 .
  Caranya adalah dari menu 
@@ -5594,15 +5728,15 @@ BibTeX
 kemudian memilih berkas yang berisi basis data Bib\SpecialChar TeX
 .
  Anda mempunyai keleluasaan memuat berkas Bib\SpecialChar TeX
- yang anda gunakan, demikian
- pula anda boleh memilih gaya tulis Bib\SpecialChar TeX
+ yang anda gunakan,
+ demikian pula anda boleh memilih gaya tulis Bib\SpecialChar TeX
  pilihan anda.
 \end_layout
 
 \begin_layout Standard
 Setelah anda memuat berkas basis data Bib\SpecialChar TeX
-, anda akan bisa mengacu ke isi
- basis data dari menu 
+,
+ anda akan bisa mengacu ke isi basis data dari menu 
 \family sans
 Sisipan\SpecialChar menuseparator
 Acuan
@@ -5619,12 +5753,12 @@ subbab
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:bibliographies"
+nolink "false"
 
 \end_inset
 
 ).
- Di kotak dialog Acuan anda akan melihat semua data referensi dari berkas
- Bib\SpecialChar TeX
+ Di kotak dialog Acuan anda akan melihat semua data referensi dari berkas Bib\SpecialChar TeX
  yang sudah anda muat.
  \SpecialChar LyX
  akan mengatur sistem acuan.
@@ -5641,11 +5775,11 @@ Errors
 
 \begin_layout Standard
 Kadang-kadang ketika anda menuliskan perintah \SpecialChar LaTeX
- dalam dokumen, terjadi kesalahan,
+ dalam dokumen,
+ terjadi kesalahan,
  sehingga baik \SpecialChar LyX
  ataupun \SpecialChar LaTeX
- tidak bisa mengenal atau menjalankan perintah yang
- anda definisikan.
+ tidak bisa mengenal atau menjalankan perintah yang anda definisikan.
  Apabila kasus seperti terjadi \SpecialChar LyX
  akan membuka jendela dialog
 \family sans
@@ -5657,8 +5791,8 @@ Kadang-kadang ketika anda menuliskan perintah \SpecialChar LaTeX
 
 \family default
 .
- Dengan cara meng klik pesan kesalahan yang ada di dialog, akan membawa
- anda ke tempat teks dalam berkas \SpecialChar LyX
+ Dengan cara meng klik pesan kesalahan yang ada di dialog,
+ akan membawa anda ke tempat teks dalam berkas \SpecialChar LyX
  anda yang menyebabkan kesalahan terjadi.
  Pada dialog tersebut akan ada penjelasan detail dari pesan kesalahan \SpecialChar LaTeX
 .

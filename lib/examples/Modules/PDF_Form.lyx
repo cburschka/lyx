@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -169,7 +169,8 @@ status open
 
 \begin_layout Plain Layout
 
-action=mailto:forms@lyx.test?subject=The submitted PDF form, method=post
+action=mailto:forms@lyx.test?subject=The submitted PDF form,
+ method=post
 \end_layout
 
 \end_inset
@@ -196,8 +197,7 @@ To export all parts of this document to PDF the \SpecialChar LaTeX
 insdljs
 \series default
  must be installed.
- If it is not installed you can export the document anyway but the example
- in the section about dynamic form elements will not appear in the output.
+ If it is not installed you can export the document anyway but the example in the section about dynamic form elements will not appear in the output.
 
 \series bold
  insdljs.sty 
@@ -207,8 +207,8 @@ is part of the
 acrotex
 \series default
  bundle available on CTAN.
- As the name suggests, the style files of the bundle produce pdf files which
- will work correctly 
+ As the name suggests,
+ the style files of the bundle produce pdf files which will work correctly 
 \emph on
 only
 \emph default
@@ -247,7 +247,8 @@ At first load the module PDF
 \end_inset
 
 Form in the document settings of your file.
- To make the whole document a form, insert the environment
+ To make the whole document a form,
+ insert the environment
 \family sans
  Begin
 \begin_inset space ~
@@ -261,7 +262,8 @@ Form
 \family default
  from \SpecialChar LyX
 's dropdown menu at the beginning of the document.
- If only a part of the document should be a form, add 
+ If only a part of the document should be a form,
+ add 
 \family sans
 Begin
 \begin_inset space ~
@@ -284,6 +286,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  It is only possible to have one form in a PDF file!
 \end_layout
@@ -294,8 +297,8 @@ Note:
 \end_layout
 
 \begin_layout Standard
-If the form data should be submitted to a server or the like, then you must
- specify the URL as parameter of the 
+If the form data should be submitted to a server or the like,
+ then you must specify the URL as parameter of the 
 \family sans
 Begin
 \begin_inset space ~
@@ -322,8 +325,7 @@ Form
 Parameters
 \family default
 .
- For example in this document the following was inserted to the parameter
- inset:
+ For example in this document the following was inserted to the parameter inset:
 \end_layout
 
 \begin_layout Standard
@@ -367,6 +369,7 @@ get
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Submit-button"
+nolink "false"
 
 \end_inset
 
@@ -411,8 +414,7 @@ Custom
 Insets
 \family default
 .
- Write inside the inset the label for the text field that will be printed
- in the PDF output before the field.
+ Write inside the inset the label for the text field that will be printed in the PDF output before the field.
  Here is an example:
 \begin_inset Newline newline
 \end_inset
@@ -457,10 +459,8 @@ customer
 \end_layout
 
 \begin_layout Standard
-Using the same name for several text fields results in an automatic duplication
- of the inserted text.
- This is for example useful if the user should input a date that should
- appear at different places in the form.
+Using the same name for several text fields results in an automatic duplication of the inserted text.
+ This is for example useful if the user should input a date that should appear at different places in the form.
 \begin_inset Newline newline
 \end_inset
 
@@ -468,8 +468,8 @@ Here are 2
 \begin_inset space ~
 \end_inset
 
-fields as example: Fill one and see that the other one will be filled automatica
-lly when you click outside of the field:
+fields as example:
+ Fill one and see that the other one will be filled automatically when you click outside of the field:
 \begin_inset Newline newline
 \end_inset
 
@@ -526,6 +526,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  Special characters should be avoided in element names.
 \end_layout
@@ -544,7 +545,8 @@ Here is a customized multiline text field with a width of 60
 \begin_inset space \thinspace{}
 \end_inset
 
-% of the text width, 3
+% of the text width,
+ 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -565,9 +567,13 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=customer2, multiline, width=0.6
+name=customer2,
+ multiline,
+ width=0.6
 \backslash
-textwidth, height=3cm, value={proposed text}
+textwidth,
+ height=3cm,
+ value={proposed text}
 \end_layout
 
 \end_inset
@@ -588,6 +594,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  It is highly recommended to use a uniform layout of all fields in a form.
  See sec.
@@ -598,6 +605,7 @@ Note:
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Form-element-customization"
+nolink "false"
 
 \end_inset
 
@@ -700,8 +708,7 @@ Radio Only one choice can be selected
 \end_layout
 
 \begin_layout Description
-Combo The choices are listed in a combo box (dropdown list) but the user
- is allowed to input something that is not in the predefined list.
+Combo The choices are listed in a combo box (dropdown list) but the user is allowed to input something that is not in the predefined list.
 \end_layout
 
 \begin_layout Description
@@ -714,7 +721,8 @@ To determine the choice menu type one uses the parameter
 \series bold
 radio
 \series default
-, 
+,
+ 
 \series bold
 combo
 \series default
@@ -743,12 +751,14 @@ status open
 status open
 
 \begin_layout Plain Layout
-radio, name=radio
+radio,
+ name=radio
 \end_layout
 
 \end_inset
 
-male=m, female=f
+male=m,
+ female=f
 \begin_inset Argument 2
 status open
 
@@ -784,12 +794,15 @@ status open
 status open
 
 \begin_layout Plain Layout
-combo, name=combo
+combo,
+ name=combo
 \end_layout
 
 \end_inset
 
-Albania=Al, Armenia=Ar, Azerbaidschan=Az
+Albania=Al,
+ Armenia=Ar,
+ Azerbaidschan=Az
 \begin_inset Argument 2
 status open
 
@@ -825,12 +838,15 @@ status open
 status open
 
 \begin_layout Plain Layout
-popdown, name=country
+popdown,
+ name=country
 \end_layout
 
 \end_inset
 
-Albania=Al, Armenia=Ar, Azerbaidschan=Az
+Albania=Al,
+ Armenia=Ar,
+ Azerbaidschan=Az
 \begin_inset Argument 2
 status open
 
@@ -866,8 +882,7 @@ Params
 \end_layout
 
 \begin_layout Standard
-It is recommended to add a short name for every choice to be able to access
- them and to know which one was chosen by the user.
+It is recommended to add a short name for every choice to be able to access them and to know which one was chosen by the user.
  This is done by adding 
 \series bold
 =name
@@ -878,8 +893,10 @@ name
 \series default
  is the choice name).
  For example the radio type example contains this choice list:
+
 \series bold
- male=m, female=f
+ male=m,
+ female=f
 \series default
 .
  If the user chose 
@@ -928,12 +945,15 @@ status open
 status open
 
 \begin_layout Plain Layout
-radio, name=sex, default=m
+radio,
+ name=sex,
+ default=m
 \end_layout
 
 \end_inset
 
-male=m, female=f
+male=m,
+ female=f
 \begin_inset Argument 2
 status open
 
@@ -988,14 +1008,16 @@ Don't click on this button or your fridge will be destroyed!!!
 \end_layout
 
 \begin_layout Standard
-The action that is triggered by pressing the button is specified by JavaScript
- code.
- To do this, add the parameter 
+The action that is triggered by pressing the button is specified by JavaScript code.
+ To do this,
+ add the parameter 
 \series bold
 onclick={}
 \series default
  and insert the JavaScript code between the braces.
- For info about JavaScript, see its documentation, 
+ For info about JavaScript,
+ see its documentation,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "JavaScript"
@@ -1021,7 +1043,8 @@ status collapsed
 
 \end_inset
 
-What the hell? Now you destroyed your fridge.
+What the hell?
+ Now you destroyed your fridge.
  
 \begin_inset Quotes eld
 \end_inset
@@ -1064,7 +1087,8 @@ status collapsed
 
 \end_inset
 
-What the hell? Now you destroyed your fridge.
+What the hell?
+ Now you destroyed your fridge.
  
 \begin_inset Quotes eld
 \end_inset
@@ -1105,9 +1129,9 @@ status open
 
 \series bold
 Note:
+
 \series default
- The outer quotes are part of the JavaScript code and must therefore be
- inserted as \SpecialChar TeX
+ The outer quotes are part of the JavaScript code and must therefore be inserted as \SpecialChar TeX
  code!
 \end_layout
 
@@ -1154,8 +1178,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-To get rid of the predefined frame for weblinks add this to the additional
- options in the document settings under 
+To get rid of the predefined frame for weblinks add this to the additional options in the document settings under 
 \family sans
 PDF
 \begin_inset space ~
@@ -1173,8 +1196,8 @@ urlbordercolor={1 0 0}
 \end_layout
 
 \begin_layout Standard
-if your push button border color is red (the default), otherwise use the
- same color definition as for your push button border color.
+if your push button border color is red (the default),
+ otherwise use the same color definition as for your push button border color.
 \end_layout
 
 \begin_layout Subsection
@@ -1222,11 +1245,9 @@ Send your data via email
 \end_layout
 
 \begin_layout Standard
-The submit button creates a forms data format (FDF) file (file extension
- *.fdf) which is then submitted.
+The submit button creates a forms data format (FDF) file (file extension *.fdf) which is then submitted.
  The FDF file contains only the form data.
- They can later only be applied to a PDF form if all elements in the form
- have a name.
+ They can later only be applied to a PDF form if all elements in the form have a name.
 \end_layout
 
 \begin_layout Standard
@@ -1237,9 +1258,9 @@ status open
 
 \series bold
 Note:
+
 \series default
- You can only use a submit button if you specified the submit method and
- a target in the inset 
+ You can only use a submit button if you specified the submit method and a target in the inset 
 \family sans
 PDF
 \begin_inset space ~
@@ -1251,7 +1272,8 @@ Form
 
 Parameters
 \family default
-! See sec.
+!
+ See sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1259,6 +1281,7 @@ Parameters
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Preparation"
+nolink "false"
 
 \end_inset
 
@@ -1321,8 +1344,8 @@ name "sec:Form-element-customization"
 \end_layout
 
 \begin_layout Standard
-Since all form elements should look uniform, one can determine their layout
- using the following styles:
+Since all form elements should look uniform,
+ one can determine their layout using the following styles:
 \end_layout
 
 \begin_layout Description
@@ -1452,7 +1475,8 @@ Forms optional parameters
 \series bold
 hyperref
 \series default
-, 
+,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -1475,8 +1499,14 @@ Here are some examples:
 \end_layout
 
 \begin_layout Text Field Style
-print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
- maxlen=10, align=2, charsize=16pt
+print,
+ bordercolor=red,
+ borderstyle=U,
+ backgroundcolor=lightgray,
+ color=lime,
+ maxlen=10,
+ align=2,
+ charsize=16pt
 \begin_inset Note Note
 status open
 
@@ -1489,15 +1519,18 @@ borderstyle
 \series bold
 U
 \series default
- (underlined), 
+ (underlined),
+ 
 \series bold
 S
 \series default
- (solid), 
+ (solid),
+ 
 \series bold
 D
 \series default
- (dashed), 
+ (dashed),
+ 
 \series bold
 B
 \series default
@@ -1514,17 +1547,22 @@ I
 \end_layout
 
 \begin_layout Check Box Style
-print, borderstyle=S, checkboxsymbol=
+print,
+ borderstyle=S,
+ checkboxsymbol=
 \backslash
 ding{55}
 \end_layout
 
 \begin_layout Combo Box Style
-print, bordercolor={0.33 0.66 0.33}, borderstyle=D
+print,
+ bordercolor={0.33 0.66 0.33},
+ borderstyle=D
 \end_layout
 
 \begin_layout Popdown Box Style
-print, menulength=2
+print,
+ menulength=2
 \begin_inset Note Note
 status collapsed
 
@@ -1548,24 +1586,34 @@ hyperref
 \end_layout
 
 \begin_layout Radio Box Style
-print, borderstyle=I, radiosymbol=3
+print,
+ borderstyle=I,
+ radiosymbol=3
 \end_layout
 
 \begin_layout Push Button Style
-print, borderstyle=B, bordercolor=lime
+print,
+ borderstyle=B,
+ bordercolor=lime
 \end_layout
 
 \begin_layout Submit Button Style
-print, borderwidth=0, bordercolor=white
+print,
+ borderwidth=0,
+ bordercolor=white
 \end_layout
 
 \begin_layout Reset Button Style
-print, bordercolor=lime
+print,
+ bordercolor=lime
 \end_layout
 
 \begin_layout Itemize
-Text field with gray background, lime text color, a red border only below
- the field, right alignment, 16
+Text field with gray background,
+ lime text color,
+ a red border only below the field,
+ right alignment,
+ 16
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1611,6 +1659,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  To see in 
 \emph on
@@ -1620,8 +1669,7 @@ Adobe Reader
 \emph on
 Acrobat
 \emph default
- custom background colors you must disable in these programs the highlighting
- of form fields.
+ custom background colors you must disable in these programs the highlighting of form fields.
  (Option 
 \begin_inset Quotes eld
 \end_inset
@@ -1699,7 +1747,8 @@ number
 \series bold
 pifont
 \series default
-, 
+,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pifont"
@@ -1711,8 +1760,8 @@ literal "true"
 \end_layout
 
 \begin_layout Itemize
-Combo choice menu with dashed, colored border where the last entry is preselecte
-d:
+Combo choice menu with dashed,
+ colored border where the last entry is preselected:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -1729,12 +1778,16 @@ status open
 status open
 
 \begin_layout Plain Layout
-combo, name=combo2, default=Az
+combo,
+ name=combo2,
+ default=Az
 \end_layout
 
 \end_inset
 
-Albania=Al, Armenia=Ar, Azerbaidschan=Az
+Albania=Al,
+ Armenia=Ar,
+ Azerbaidschan=Az
 \begin_inset Argument 2
 status open
 
@@ -1770,12 +1823,16 @@ status open
 status open
 
 \begin_layout Plain Layout
-popdown, name=country2, default=Ar
+popdown,
+ name=country2,
+ default=Ar
 \end_layout
 
 \end_inset
 
-Albania=Al, Armenia=Ar, Azerbaidschan=Az
+Albania=Al,
+ Armenia=Ar,
+ Azerbaidschan=Az
 \begin_inset Argument 2
 status open
 
@@ -1804,7 +1861,8 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note: 
+Note:
+ 
 \series default
 The parameters 
 \series bold
@@ -1848,12 +1906,14 @@ status open
 status open
 
 \begin_layout Plain Layout
-radio, name=radio2
+radio,
+ name=radio2
 \end_layout
 
 \end_inset
 
-male=m, female=f
+male=m,
+ female=f
 \begin_inset Argument 2
 status open
 
@@ -1883,16 +1943,19 @@ status open
 
 \series bold
 Note:
+
 \series default
  The parameters 
 \series bold
 backgroundcolor
 \series default
-, 
+,
+ 
 \series bold
 color
 \series default
-, 
+,
+ 
 \series bold
 height 
 \series default
@@ -1900,7 +1963,8 @@ and
 \series bold
 width
 \series default
- have no effect for push, submit and reset buttons.
+ have no effect for push,
+ submit and reset buttons.
 \end_layout
 
 \end_inset
@@ -1997,7 +2061,8 @@ Don't click on this button!!!
 \end_layout
 
 \begin_layout Itemize
-Submit button without border, with cyan background and increased height:
+Submit button without border,
+ with cyan background and increased height:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -2152,10 +2217,9 @@ PDF action buttons
 \end_layout
 
 \begin_layout Standard
-One often needs basic actions to be done by the PDF viewer program, for
- example to print the form.
- Such PDF program-specific actions can be triggered by adding inserting
- the custom inset 
+One often needs basic actions to be done by the PDF viewer program,
+ for example to print the form.
+ Such PDF program-specific actions can be triggered by adding inserting the custom inset 
 \family sans
 PDFAction
 \family default
@@ -2168,13 +2232,15 @@ Acrobat
 \emph on
 Adobe Reader
 \emph default
- can handle all possible actions while other PDF viewers might only support
- some of them.
- However, all PDF viewers support the basic things like printing, save
+ can handle all possible actions while other PDF viewers might only support some of them.
+ However,
+ all PDF viewers support the basic things like printing,
+ save
 \begin_inset space ~
 \end_inset
 
-as, view in fullscreen etc..
+as,
+ view in fullscreen etc..
 \end_layout
 
 \begin_layout Standard
@@ -2200,7 +2266,8 @@ Acrobat-specific behavior
 \series bold
 hyperref
 \series default
-, 
+,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -2216,7 +2283,8 @@ Here are some examples:
 \end_layout
 
 \begin_layout Description
-Printing: 
+Printing:
+ 
 \begin_inset Flex PDFAction
 status open
 
@@ -2243,7 +2311,8 @@ Save
 \begin_inset space ~
 \end_inset
 
-as: 
+as:
+ 
 \begin_inset Flex PDFAction
 status open
 
@@ -2274,7 +2343,8 @@ in
 \begin_inset space ~
 \end_inset
 
-fullscreen: 
+fullscreen:
+ 
 \begin_inset Flex PDFAction
 status open
 
@@ -2308,9 +2378,8 @@ name "subsec:Action-button-customization"
 \end_layout
 
 \begin_layout Standard
-Customizing the action buttons requires the usage of boxes because things
- like the width, height and border separation cannot be specified as button
- parameters.
+Customizing the action buttons requires the usage of boxes because things like the width,
+ height and border separation cannot be specified as button parameters.
 \end_layout
 
 \begin_layout Standard
@@ -2427,13 +2496,14 @@ Sets the thickness of the predefined link border to zero as described below.
 \end_layout
 
 \begin_layout Standard
-To customize the border color, border thickness and the distance to the
- border one changes the border settings of the box.
+To customize the border color,
+ border thickness and the distance to the border one changes the border settings of the box.
  An example with a 4
 \begin_inset space \thinspace{}
 \end_inset
 
-pt thick, teal border and 3
+pt thick,
+ teal border and 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2494,7 +2564,8 @@ Save form as
 \end_layout
 
 \begin_layout Standard
-To customize the border thickness, add the command 
+To customize the border thickness,
+ add the command 
 \series bold
 pdfborder={0 0 t}
 \series default
@@ -2511,8 +2582,8 @@ properties
 t
 \series default
  with a number that is the thickness in pixels.
- If you want to change the border thickness only for certain buttons, use
- the environment 
+ If you want to change the border thickness only for certain buttons,
+ use the environment 
 \family sans
 PDF
 \begin_inset space ~
@@ -2548,12 +2619,14 @@ status open
 
 \series bold
 Note:
+
 \series default
  
 \series bold
 pdfborder
 \series default
- affects all link types, not only the action links.
+ affects all link types,
+ not only the action links.
 \end_layout
 
 \end_inset
@@ -2631,7 +2704,8 @@ menubordercolor={r g b}
 \series bold
 r
 \series default
-, 
+,
+ 
 \series bold
 g
 \series default
@@ -2639,7 +2713,8 @@ g
 \series bold
 b
 \series default
- are numbers between 0 and 1 for the colors red, green and blue.
+ are numbers between 0 and 1 for the colors red,
+ green and blue.
  The default value of 
 \series bold
 menubordercolor
@@ -2652,7 +2727,8 @@ menubordercolor
 \end_layout
 
 \begin_layout PDF Link Setup
-pdfborder={0 0 1}, menubordercolor={0.1 0.9 0.5}
+pdfborder={0 0 1},
+ menubordercolor={0.1 0.9 0.5}
 \end_layout
 
 \begin_layout Standard
@@ -2774,7 +2850,8 @@ Save form as
 \end_layout
 
 \begin_layout PDF Link Setup
-pdfborder={0 0 1}, menubordercolor={1 0 0}
+pdfborder={0 0 1},
+ menubordercolor={1 0 0}
 \end_layout
 
 \begin_layout Section
@@ -2783,9 +2860,9 @@ Dynamic form elements
 
 \begin_layout Standard
 It is also possible to have dynamic form elements.
- This means that depending on the actions of the user elements can (dis)appear
- or change their appearance.
- To use this feature, add these lines to your LaTeX preamble:
+ This means that depending on the actions of the user elements can (dis)appear or change their appearance.
+ To use this feature,
+ add these lines to your LaTeX preamble:
 \end_layout
 
 \begin_layout Standard
@@ -2809,10 +2886,11 @@ space 0 R}
 \end_layout
 
 \begin_layout Standard
-Then add the necessary JavaScript code to your document LaTeX preamble or
- as \SpecialChar TeX
+Then add the necessary JavaScript code to your document LaTeX preamble or as \SpecialChar TeX
  code to your document.
- For info about JavaScript, see its documentation, 
+ For info about JavaScript,
+ see its documentation,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "JavaScript"
@@ -2951,6 +3029,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  
 \emph on
@@ -2996,7 +3075,8 @@ name=contract,radio,default=tl,validate={validateTime();}
 
 \end_inset
 
-term-limited=tl, unlimited=u
+term-limited=tl,
+ unlimited=u
 \begin_inset Argument 2
 status open
 
@@ -3138,8 +3218,7 @@ name=until,width=10em
 \end_layout
 
 \begin_layout Standard
-To check and assure that the user only enters a number to a text field you
- can for example use this JavaScript code:
+To check and assure that the user only enters a number to a text field you can for example use this JavaScript code:
 \end_layout
 
 \begin_layout Standard
@@ -3194,7 +3273,8 @@ function checkNumber() {
 \end_layout
 
 \begin_layout Standard
-An example text field: 
+An example text field:
+ 
 \begin_inset Flex TextField
 status open
 
@@ -3203,7 +3283,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=onlyNumbers, align=1, validate={checkNumber();}
+name=onlyNumbers,
+ align=1,
+ validate={checkNumber();}
 \end_layout
 
 \end_inset
@@ -3317,8 +3399,7 @@ Adobe Reader
 \emph on
 Acrobat
 \emph default
- custom background colors you must disable in these programs the highlighting
- of form fields.
+ custom background colors you must disable in these programs the highlighting of form fields.
  (Option 
 \begin_inset Quotes eld
 \end_inset

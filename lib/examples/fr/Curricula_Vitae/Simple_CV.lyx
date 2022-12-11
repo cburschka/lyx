@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -45,9 +45,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -98,18 +98,23 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
 
 \begin_layout Left Header
-123, rue Hamlet
+123,
+ rue Hamlet
 \begin_inset Note Note
 status collapsed
 
@@ -118,11 +123,18 @@ Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour OK, Date : 07/07/2003
+Traduction :
+ Mise à jour OK,
+ Date :
+ 07/07/2003
 \end_layout
 
 \begin_layout Plain Layout
-Original : Révision: 1.4, Date : 17/01/2003
+Original :
+ Révision:
+ 1.4,
+ Date :
+ 17/01/2003
 \end_layout
 
 \end_inset
@@ -136,7 +148,8 @@ Stratford-upon-Avon
 
 \begin_layout Right Header
 Tél.
- : 08.36.68.TR.UC
+ :
+ 08.36.68.TR.UC
 \begin_inset Newline newline
 \end_inset
 
@@ -152,8 +165,8 @@ William Shakespeare
 
 \begin_layout Standard
 Ici certaines personnes mettent un résumé.
- Note : dans le préambule vous pouvez paramétrer de nombreuses variables
- \SpecialChar LaTeX
+ Note :
+ dans le préambule vous pouvez paramétrer de nombreuses variables \SpecialChar LaTeX
  pour modifier l'aspect du CV.
  Allez-y (faites 
 \family sans
@@ -171,10 +184,10 @@ Expérience Professionnelle
 
 \begin_layout Topic
 \labelwidthstring MMMMM
-1593–1609 J'ai écrit et mis en scène des pièces pour la Reine, puis pour
- le Roi.
- Il les a vraiment beaucoup aimées, mais elles lui rappelaient celles d'un
- certain Comte d'Oxford.
+1593–1609 J'ai écrit et mis en scène des pièces pour la Reine,
+ puis pour le Roi.
+ Il les a vraiment beaucoup aimées,
+ mais elles lui rappelaient celles d'un certain Comte d'Oxford.
 \end_layout
 
 \begin_layout Topic
@@ -182,7 +195,8 @@ Expérience Professionnelle
 \begin_inset space ~
 \end_inset
 
- Si un élément n'a pas de sous-titre, vous devez mettre une espace insécable,
+ Si un élément n'a pas de sous-titre,
+ vous devez mettre une espace insécable,
  comme ici.
  C'est un inconvénient de \SpecialChar LyX
 .
@@ -190,8 +204,8 @@ Expérience Professionnelle
 
 \begin_deeper
 \begin_layout Standard
-Mais vous pouvez aussi vous servir de la profondeur d'environnement, selon
- ce que vous voulez obtenir.
+Mais vous pouvez aussi vous servir de la profondeur d'environnement,
+ selon ce que vous voulez obtenir.
 \end_layout
 
 \end_deeper
@@ -220,9 +234,10 @@ mai
 
 1581 J'ai essayé le lycée.
  Je détestais mon professeur d'Anglais.
- [Deux choses à noter : remarquez d'abord qu'un passage à la ligne apparaît
- à l'impression si votre sous-titre est trop long ; ensuite, que vous devez
- utiliser des espaces insécables pour mettre des espaces dans le sous-titre.]
+ [Deux choses à noter :
+ remarquez d'abord qu'un passage à la ligne apparaît à l'impression si votre sous-titre est trop long ;
+ ensuite,
+ que vous devez utiliser des espaces insécables pour mettre des espaces dans le sous-titre.]
 \end_layout
 
 \begin_layout Section
@@ -252,8 +267,8 @@ literal "true"
 
 Vous auriez pu entrer ces références avec Bib\SpecialChar TeX
 \SpecialChar ldots
- Dans tous les cas, je peux
- citer ici mon œuvre 
+ Dans tous les cas,
+ je peux citer ici mon œuvre 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "premiere_ref"

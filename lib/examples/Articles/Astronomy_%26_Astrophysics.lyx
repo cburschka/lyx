@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -18,9 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +71,16 @@
 \papercolumns 2
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -91,8 +95,7 @@ status open
 \series medium
 \size normal
 This is an example \SpecialChar LyX
- file for articles to be submitted to the Journal of
- Astronomy & Astrophysics (A&A).
+ file for articles to be submitted to the Journal of Astronomy & Astrophysics (A&A).
  How to install the A&A \SpecialChar LaTeX
  class to your \SpecialChar LaTeX
  system is explained in 
@@ -110,8 +113,8 @@ https://wiki.lyx.org/Layouts/Astronomy-Astrophysics
 \begin_inset Newline newline
 \end_inset
 
-Depending on the submission state and the abstract layout, you need to use
- different document class options that are listed in the aa manual.
+Depending on the submission state and the abstract layout,
+ you need to use different document class options that are listed in the aa manual.
 \family default
 
 \begin_inset Newline newline
@@ -121,9 +124,10 @@ Depending on the submission state and the abstract layout, you need to use
 \family roman
 \series default
 Note:
+
 \series medium
- If you use accented characters in your document, you must use the predefined
- document class option 
+ If you use accented characters in your document,
+ you must use the predefined document class option 
 \series default
 latin9
 \series medium
@@ -228,8 +232,10 @@ G.
 \end_layout
 
 \begin_layout Address
-Institute for Astronomy (IfA), University of Vienna, Türkenschanzstrasse
- 17, A-1180 Vienna
+Institute for Astronomy (IfA),
+ University of Vienna,
+ Türkenschanzstrasse 17,
+ A-1180 Vienna
 \begin_inset Newline newline
 \end_inset
 
@@ -256,7 +262,9 @@ and
 
 \end_inset
 
-University of Alexandria, Department of Geography, ...
+University of Alexandria,
+ Department of Geography,
+ ...
 \begin_inset Newline newline
 \end_inset
 
@@ -284,36 +292,37 @@ The university of heaven temporarily does not accept e-mails
 \end_layout
 
 \begin_layout Date
-Received September 15, 1996; accepted March 16, 1997
+Received September 15,
+ 1996;
+ accepted March 16,
+ 1997
 \end_layout
 
 \begin_layout Abstract (unstructured)
 To investigate the physical nature of the `nuc\SpecialChar softhyphen
-leated instability' of proto
- giant planets, the stability of layers in static, radiative gas spheres
- is analysed on the basis of Baker's standard one-zone model.
- It is shown that stability depends only upon the equations of state, the
- opacities and the local thermodynamic state in the layer.
- Stability and instability can therefore be expressed in the form of stability
- equations of state which are universal for a given composition.
- The stability equations of state are calculated for solar composition and
- are displayed in the domain 
+leated instability' of proto giant planets,
+ the stability of layers in static,
+ radiative gas spheres is analysed on the basis of Baker's standard one-zone model.
+ It is shown that stability depends only upon the equations of state,
+ the opacities and the local thermodynamic state in the layer.
+ Stability and instability can therefore be expressed in the form of stability equations of state which are universal for a given composition.
+ The stability equations of state are calculated for solar composition and are displayed in the domain 
 \begin_inset Formula $-14\leq\lg\rho/[\mathrm{g}\,\mathrm{cm}^{-3}]\leq0$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $8.8\leq\lg e/[\mathrm{erg}\,\mathrm{g}^{-1}]\leq17.7$
 \end_inset
 
 .
- These displays may be used to determine the one-zone stability of layers
- in stellar or planetary structure models by directly reading off the value
- of the stability equations for the thermodynamic state of these layers,
+ These displays may be used to determine the one-zone stability of layers in stellar or planetary structure models by directly reading off the value of the stability equations for the thermodynamic state of these layers,
  specified by state quantities as density 
 \begin_inset Formula $\rho$
 \end_inset
 
-, temperature 
+,
+ temperature 
 \begin_inset Formula $T$
 \end_inset
 
@@ -327,8 +336,7 @@ leated instability' of proto
 \end_inset
 
 -plane are described and related to the underlying microphysical processes.
- Vibrational instability is found to be a common phenomenon at temperatures
- lower than the second He ionisation zone.
+ Vibrational instability is found to be a common phenomenon at temperatures lower than the second He ionisation zone.
  The 
 \begin_inset Formula $\kappa$
 \end_inset
@@ -348,8 +356,8 @@ Citations are not allowed in A&A abstracts.
 status open
 
 \begin_layout Plain Layout
-This is the unstructured abstract type, an example for the structured abstract
- is in the 
+This is the unstructured abstract type,
+ an example for the structured abstract is in the 
 \family sans
 aa.lyx
 \family default
@@ -379,8 +387,8 @@ In the
 \emph on
 nucleated instability
 \emph default
- (also called core instability) hypothesis of giant planet formation, a
- critical mass for static core envelope protoplanets has been found.
+ (also called core instability) hypothesis of giant planet formation,
+ a critical mass for static core envelope protoplanets has been found.
  Mizuno (
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -397,20 +405,16 @@ literal "true"
 \begin_inset Formula $M_{\oplus}=5.975\,10^{27}\,\mathrm{g}$
 \end_inset
 
- is the Earth mass), which is independent of the outer boundary conditions
- and therefore independent of the location in the solar nebula.
- This critical value for the core mass corresponds closely to the cores
- of today's giant planets.
+ is the Earth mass),
+ which is independent of the outer boundary conditions and therefore independent of the location in the solar nebula.
+ This critical value for the core mass corresponds closely to the cores of today's giant planets.
 \end_layout
 
 \begin_layout Standard
-Although no hydrodynamical study has been available many workers conjectured
- that a collapse or rapid contraction will ensue after accumulating the
- critical mass.
- The main motivation for this article is to investigate the stability of
- the static envelope at the critical mass.
- With this aim the local, linear stability of static radiative gas spheres
- is investigated on the basis of Baker's (
+Although no hydrodynamical study has been available many workers conjectured that a collapse or rapid contraction will ensue after accumulating the critical mass.
+ The main motivation for this article is to investigate the stability of the static envelope at the critical mass.
+ With this aim the local,
+ linear stability of static radiative gas spheres is investigated on the basis of Baker's (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Abernethy2003"
@@ -422,9 +426,7 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Phenomena similar to the ones described above for giant planet formation
- have been found in hydrodynamical models concerning star formation where
- protostellar cores explode (Tscharnuter 
+Phenomena similar to the ones described above for giant planet formation have been found in hydrodynamical models concerning star formation where protostellar cores explode (Tscharnuter 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Cotton1999"
@@ -432,7 +434,8 @@ literal "true"
 
 \end_inset
 
-, Balluch 
+,
+ Balluch 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mena2000"
@@ -440,8 +443,10 @@ literal "true"
 
 \end_inset
 
-), whereas earlier studies found quasi-steady collapse flows.
- The similarities in the (micro)physics, i.
+),
+ whereas earlier studies found quasi-steady collapse flows.
+ The similarities in the (micro)physics,
+ i.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -449,8 +454,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-constitutive relations of protostellar cores and protogiant planets serve
- as a further motivation for this study.
+constitutive relations of protostellar cores and protogiant planets serve as a further motivation for this study.
 \end_layout
 
 \begin_layout Section
@@ -459,6 +463,8 @@ Baker's standard one-zone model
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide true
 sideways false
 status open
@@ -516,10 +522,11 @@ literal "true"
 
 \end_inset
 
-), originally used to study the Cepheïd pulsation mechanism, will be briefly
- reviewed.
- The resulting stability criteria will be rewritten in terms of local state
- variables, local timescales and constitutive relations.
+),
+ originally used to study the Cepheïd pulsation mechanism,
+ will be briefly reviewed.
+ The resulting stability criteria will be rewritten in terms of local state variables,
+ local timescales and constitutive relations.
 \end_layout
 
 \begin_layout Standard
@@ -531,16 +538,19 @@ literal "true"
 
 \end_inset
 
-) investigates the stability of thin layers in self-gravitating, spherical
- gas clouds with the following properties: 
+) investigates the stability of thin layers in self-gravitating,
+ spherical gas clouds with the following properties:
+ 
 \end_layout
 
 \begin_layout Itemize
-hydrostatic equilibrium, 
+hydrostatic equilibrium,
+ 
 \end_layout
 
 \begin_layout Itemize
-thermal equilibrium, 
+thermal equilibrium,
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -607,6 +617,7 @@ local cooling time
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:FigGam"
+nolink "false"
 
 \end_inset
 
@@ -638,7 +649,8 @@ local free-fall time
 \begin_inset Formula $\sigma_{0}$
 \end_inset
 
- have the following form: 
+ have the following form:
+ 
 \begin_inset Formula 
 \begin{eqnarray}
 \sigma_{0} & = & \frac{\pi}{\sqrt{8}}\frac{1}{\tau_{\mathrm{ff}}}\\
@@ -690,8 +702,9 @@ e=mc^{2}
 \end_inset
 
  is proportional to the ratio of the free-fall time and the cooling time.
- Substituting into Baker's criteria, using thermodynamic identities and
- definitions of thermodynamic quantities, 
+ Substituting into Baker's criteria,
+ using thermodynamic identities and definitions of thermodynamic quantities,
+ 
 \begin_inset Formula 
 \[
 \Gamma_{1}=\left(\frac{\partial\ln P}{\partial\ln\rho}\right)_{S}\,,\;\chi_{\rho}^{}=\left(\frac{\partial\ln P}{\partial\ln\rho}\right)_{T}\,,\;\kappa_{P}^{}=\left(\frac{\partial\ln\kappa}{\partial\ln P}\right)_{T}
@@ -707,11 +720,14 @@ e=mc^{2}
 
 \end_inset
 
- one obtains, after some pages of algebra, the conditions for 
+ one obtains,
+ after some pages of algebra,
+ the conditions for 
 \emph on
 stability
 \emph default
- given below: 
+ given below:
+ 
 \begin_inset Formula 
 \begin{eqnarray}
 \frac{\pi^{2}}{8}\frac{1}{\tau_{\mathrm{ff}}^{2}}(3\Gamma_{1}-4) & > & 0\label{ZSDynSta}\\
@@ -741,12 +757,15 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-We observe that these criteria for dynamical, secular and vibrational stability,
- respectively, can be factorized into 
+We observe that these criteria for dynamical,
+ secular and vibrational stability,
+ respectively,
+ can be factorized into 
 \end_layout
 
 \begin_layout Enumerate
-a factor containing local timescales only, 
+a factor containing local timescales only,
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -755,7 +774,9 @@ a factor containing only constitutive relations and their derivatives.
 \end_layout
 
 \begin_layout Standard
-The first factors, depending on only timescales, are positive by definition.
+The first factors,
+ depending on only timescales,
+ are positive by definition.
  The signs of the left hand sides of the inequalities
 \begin_inset space ~
 \end_inset
@@ -764,13 +785,16 @@ The first factors, depending on only timescales, are positive by definition.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ZSDynSta"
+nolink "false"
 
 \end_inset
 
-), (
+),
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ZSSecSta"
+nolink "false"
 
 \end_inset
 
@@ -778,20 +802,22 @@ reference "ZSSecSta"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ZSVibSta"
+nolink "false"
 
 \end_inset
 
-) therefore depend exclusively on the second factors containing the constitutive
- relations.
- Since they depend only on state variables, the stability criteria themselves
- are 
+) therefore depend exclusively on the second factors containing the constitutive relations.
+ Since they depend only on state variables,
+ the stability criteria themselves are 
 \emph on
  functions of the thermodynamic state in the local zone
 \emph default
 .
- The one-zone stability can therefore be determined from a simple equation
- of state, given for example, as a function of density and temperature.
- Once the microphysics, i.
+ The one-zone stability can therefore be determined from a simple equation of state,
+ given for example,
+ as a function of density and temperature.
+ Once the microphysics,
+ i.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -807,20 +833,20 @@ the thermodynamics and opacities (see Table
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:KapSou"
+nolink "false"
 
 \end_inset
 
-), are specified (in practice by specifying a chemical composition) the
- one-zone stability can be inferred if the thermodynamic state is specified.
- The zone – or in other words the layer – will be stable or unstable in
- whatever object it is imbedded as long as it satisfies the one-zone-model
- assumptions.
- Only the specific growth rates (depending upon the time scales) will be
- different for layers in different objects.
+),
+ are specified (in practice by specifying a chemical composition) the one-zone stability can be inferred if the thermodynamic state is specified.
+ The zone – or in other words the layer – will be stable or unstable in whatever object it is imbedded as long as it satisfies the one-zone-model assumptions.
+ Only the specific growth rates (depending upon the time scales) will be different for layers in different objects.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -878,7 +904,8 @@ Source
 \begin_inset Text
 
 \begin_layout Plain Layout
-Yorke 1979, Yorke 1980a
+Yorke 1979,
+ Yorke 1980a
 \end_layout
 
 \end_inset
@@ -958,18 +985,20 @@ This is footnote a
 
 \end_inset
 
- We will now write down the sign (and therefore stability) determining parts
- of the left-hand sides of the inequalities (
+ We will now write down the sign (and therefore stability) determining parts of the left-hand sides of the inequalities (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ZSDynSta"
+nolink "false"
 
 \end_inset
 
-), (
+),
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ZSSecSta"
+nolink "false"
 
 \end_inset
 
@@ -977,6 +1006,7 @@ reference "ZSSecSta"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ZSVibSta"
+nolink "false"
 
 \end_inset
 
@@ -996,6 +1026,7 @@ The sign determining part of inequality
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ZSDynSta"
+nolink "false"
 
 \end_inset
 
@@ -1046,6 +1077,7 @@ reference "ZSDynSta"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ZSSecSta"
+nolink "false"
 
 \end_inset
 
@@ -1053,6 +1085,7 @@ reference "ZSSecSta"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ZSVibSta"
+nolink "false"
 
 \end_inset
 
@@ -1061,7 +1094,9 @@ reference "ZSVibSta"
 \emph on
 stability
 \emph default
-, respectively: 
+,
+ respectively:
+ 
 \begin_inset Formula 
 \begin{eqnarray}
 3\Gamma_{1}-4=:S_{\mathrm{dyn}}> & 0\label{DynSta}\\
@@ -1071,33 +1106,33 @@ stability
 
 \end_inset
 
- The constitutive relations are to be evaluated for the unperturbed thermodynami
-c state (say 
+ The constitutive relations are to be evaluated for the unperturbed thermodynamic state (say 
 \begin_inset Formula $(\rho_{0},T_{0})$
 \end_inset
 
 ) of the zone.
- We see that the one-zone stability of the layer depends only on the constitutiv
-e relations 
+ We see that the one-zone stability of the layer depends only on the constitutive relations 
 \begin_inset Formula $\Gamma_{1}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\nabla_{\mathrm{ad}}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\chi_{T}^{},\,\chi_{\rho}^{}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\kappa_{P}^{},\,\kappa_{T}^{}$
 \end_inset
 
 .
  These depend only on the unperturbed thermodynamical state of the layer.
- Therefore the above relations define the one-zone-stability equations of
- state 
+ Therefore the above relations define the one-zone-stability equations of state 
 \begin_inset Formula $S_{\mathrm{dyn}},\,S_{\mathrm{sec}}$
 \end_inset
 
@@ -1114,6 +1149,7 @@ e relations
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:VibStabEquation"
+nolink "false"
 
 \end_inset
 
@@ -1131,6 +1167,8 @@ reference "fig:VibStabEquation"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1172,7 +1210,8 @@ Conclusions
 \end_layout
 
 \begin_layout Enumerate
-The conditions for the stability of static, radiative layers in gas spheres,
+The conditions for the stability of static,
+ radiative layers in gas spheres,
  as described by Baker's (
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1181,16 +1220,15 @@ literal "true"
 
 \end_inset
 
-) standard one-zone model, can be expressed as stability equations of state.
- These stability equations of state depend only on the local thermodynamic
- state of the layer.
+) standard one-zone model,
+ can be expressed as stability equations of state.
+ These stability equations of state depend only on the local thermodynamic state of the layer.
  
 \end_layout
 
 \begin_layout Enumerate
-If the constitutive relations – equations of state and Rosseland mean opacities
- – are specified, the stability equations of state can be evaluated without
- specifying properties of the layer.
+If the constitutive relations – equations of state and Rosseland mean opacities – are specified,
+ the stability equations of state can be evaluated without specifying properties of the layer.
  
 \end_layout
 
@@ -1199,15 +1237,15 @@ For solar composition gas the
 \begin_inset Formula $\kappa$
 \end_inset
 
--mechanism is working in the regions of the ice and dust features in the
- opacities, the 
+-mechanism is working in the regions of the ice and dust features in the opacities,
+ the 
 \begin_inset Formula $\mathrm{H}_{2}$
 \end_inset
 
- dissociation and the combined H, first He ionization zone, as indicated
- by vibrational instability.
- These regions of instability are much larger in extent and degree of instabilit
-y than the second He ionization zone that drives the Cepheïd pulsations.
+ dissociation and the combined H,
+ first He ionization zone,
+ as indicated by vibrational instability.
+ These regions of instability are much larger in extent and degree of instability than the second He ionization zone that drives the Cepheïd pulsations.
  
 \end_layout
 
@@ -1219,7 +1257,8 @@ sche For\SpecialChar softhyphen
 schungs\SpecialChar softhyphen
 ge\SpecialChar softhyphen
 mein\SpecialChar softhyphen
-schaft, DFG
+schaft,
+ DFG
 \emph default
  project number Ts
 \begin_inset space ~
@@ -1245,9 +1284,10 @@ status open
 
 \series bold
 Note:
+
 \series default
- If you cannot see the bibliography in the output, assure that you have
- given the full path to the Bib\SpecialChar TeX
+ If you cannot see the bibliography in the output,
+ assure that you have given the full path to the Bib\SpecialChar TeX
  style file 
 \family sans
 aa.bst

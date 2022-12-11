@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -56,9 +56,9 @@ theorems-std
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -109,12 +109,16 @@ theorems-std
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -125,8 +129,7 @@ status open
 
 \begin_layout Plain Layout
 This is an OBSOLETE template \SpecialChar LyX
- file for articles to be submitted to Journals
- of the American Geophysical Union (AGU).
+ file for articles to be submitted to Journals of the American Geophysical Union (AGU).
  How to install the AGU\SpecialChar TeX
  \SpecialChar LaTeX
  class to your \SpecialChar LaTeX
@@ -141,7 +144,8 @@ https://wiki.lyx.org/Examples/AGUTeX
 
 \end_inset
 
-: the new AGU class name is 
+:
+ the new AGU class name is 
 \family sans
 agujournal.cls
 \family default
@@ -163,8 +167,10 @@ status open
 \series bold
 Note
 \series default
-: To be able to compile Agu\SpecialChar TeX
- articles, assure that in the menu 
+:
+ To be able to compile Agu\SpecialChar TeX
+ articles,
+ assure that in the menu 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -200,8 +206,8 @@ status open
 
 \begin_layout Plain Layout
 The Journal is specified as document class option in the document settings!
- For the available document class options have a look at the agutex documentatio
-n: 
+ For the available document class options have a look at the agutex documentation:
+ 
 \begin_inset Flex URL
 status open
 
@@ -231,7 +237,8 @@ Title of article
 \begin_layout Authors
 R.
  C.
- Bales, 
+ Bales,
+ 
 \begin_inset Flex Affiliation Mark
 status collapsed
 
@@ -246,7 +253,8 @@ status collapsed
 \end_inset
 
 E.
- Mosley-Thompson, 
+ Mosley-Thompson,
+ 
 \begin_inset Flex Affiliation Mark
 status collapsed
 
@@ -261,7 +269,8 @@ status collapsed
 \end_inset
 
 R.
- Williams, 
+ Williams,
+ 
 \begin_inset Flex Affiliation Mark
 status collapsed
 
@@ -301,8 +310,11 @@ status open
 
 \end_inset
 
-Department of Hydrology and Water Resources, University of Arizona, Tucson,
- Arizona, USA.
+Department of Hydrology and Water Resources,
+ University of Arizona,
+ Tucson,
+ Arizona,
+ USA.
 \end_layout
 
 \begin_layout Author affiliation
@@ -316,7 +328,11 @@ status open
 
 \end_inset
 
-Department of Geography, Ohio State University, Columbus, Ohio, USA.
+Department of Geography,
+ Ohio State University,
+ Columbus,
+ Ohio,
+ USA.
 \end_layout
 
 \begin_layout Author affiliation
@@ -330,7 +346,10 @@ status open
 
 \end_inset
 
-Department of Space Sciences, University of Michigan, Ann Arbor, Michigan,
+Department of Space Sciences,
+ University of Michigan,
+ Ann Arbor,
+ Michigan,
  USA.
 \end_layout
 
@@ -345,7 +364,10 @@ status open
 
 \end_inset
 
-Division of Hydrologic Sciences, Desert Research Institute, Reno, Nevada,
+Division of Hydrologic Sciences,
+ Desert Research Institute,
+ Reno,
+ Nevada,
  USA.
 \end_layout
 
@@ -437,15 +459,18 @@ Subsubsection
 \end_layout
 
 \begin_layout Standard
-Bla, bla
+Bla,
+ bla
 \end_layout
 
 \begin_layout Section*
-Appendix: Title
+Appendix:
+ Title
 \end_layout
 
 \begin_layout Standard
-Appendix, only when needed.
+Appendix,
+ only when needed.
 \end_layout
 
 \begin_layout Section*
@@ -509,7 +534,12 @@ status collapsed
 \end_layout
 
 \begin_layout Section*
-—————–
+—
+—
+—
+—
+—
+–
 \end_layout
 
 \begin_layout Standard
@@ -519,11 +549,9 @@ You can use either Bib\SpecialChar TeX
 status open
 
 \begin_layout Plain Layout
-Remember though that your final submission is supposed to have all the bibliogra
-phy entries embedded in the \SpecialChar LaTeX
+Remember though that your final submission is supposed to have all the bibliography entries embedded in the \SpecialChar LaTeX
 -file.
- This means you eventually have to copy the .bbl file into the latex file
- at this position.
+ This means you eventually have to copy the .bbl file into the latex file at this position.
  Follow these steps:
 \end_layout
 
@@ -540,8 +568,7 @@ Run BiB\SpecialChar TeX
 \end_layout
 
 \begin_layout Enumerate
-Open the new .bbl file containing the reference list and copy all the contents
- into your \SpecialChar LaTeX
+Open the new .bbl file containing the reference list and copy all the contents into your \SpecialChar LaTeX
  file here.
 \end_layout
 
@@ -556,8 +583,8 @@ bibliography commands.
 \begin_layout Enumerate
 Run \SpecialChar LaTeX
  on your new file before submitting.
- AGU does not want a .bib or a .bbl file, but asks that you copy in the contents
- of your .bbl file here.
+ AGU does not want a .bib or a .bbl file,
+ but asks that you copy in the contents of your .bbl file here.
 \end_layout
 
 \end_inset
@@ -577,7 +604,14 @@ options "agu"
 \end_layout
 
 \begin_layout Section*
-———————
+—
+—
+—
+—
+—
+—
+—
+
 \end_layout
 
 \begin_layout Standard
@@ -594,18 +628,23 @@ literal "true"
 
 \end_inset
 
-Kilby, J.
+Kilby,
+ J.
  S.
- (2008), Invention of the integrated circuit, 
+ (2008),
+ Invention of the integrated circuit,
+ 
 \emph on
 IEEE Trans.
  Electron Devices,
+
 \emph default
  
 \shape italic
 23
 \shape default
-, 648–650.
+,
+ 648–650.
 \end_layout
 
 \begin_layout Bibliography
@@ -617,19 +656,26 @@ literal "true"
 
 \end_inset
 
-Kilby, J.
- S., S.
- Smith, and R.
- Jones (2008), Invention of the integrated circuit, 
+Kilby,
+ J.
+ S.,
+ S.
+ Smith,
+ and R.
+ Jones (2008),
+ Invention of the integrated circuit,
+ 
 \emph on
 IEEE Trans.
  Electron Devices,
+
 \emph default
  
 \shape italic
 23
 \shape default
-, 648–650.
+,
+ 648–650.
 \end_layout
 
 \begin_layout Standard
@@ -673,6 +719,8 @@ Enter Figures and Tables here:
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -707,6 +755,8 @@ under
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open

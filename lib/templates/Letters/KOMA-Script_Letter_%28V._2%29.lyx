@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -75,9 +75,9 @@ parskip=false%          Change to true to use indent instead of skip (more optio
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -128,12 +128,16 @@ parskip=false%          Change to true to use indent instead of skip (more optio
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -228,8 +232,7 @@ Dear Mr.
 \end_layout
 
 \begin_layout Standard
-This template illustrates the use of the new scrlttr2 class (introduced
- with KOMA-script v.
+This template illustrates the use of the new scrlttr2 class (introduced with KOMA-script v.
  2.9).
  This letter class is very flexible.
  Have a look at 
@@ -244,8 +247,7 @@ Preamble
 status collapsed
 
 \begin_layout Plain Layout
-http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguie
-n.pdf
+http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguien.pdf
 \end_layout
 
 \end_inset
@@ -262,8 +264,9 @@ p.
 \begin_inset space \thinspace{}
 \end_inset
 
-s.: The blue colored items have to be before the address, the magenta colored
- after it.
+s.:
+ The blue colored items have to be before the address,
+ the magenta colored after it.
 \end_layout
 
 \begin_layout CC

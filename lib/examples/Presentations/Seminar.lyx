@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -24,9 +24,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -86,12 +86,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -177,7 +181,8 @@ literal "false"
 \end_inset
 
  class is designed to produce overhead slides (transparencies).
- For PowerPoint-like presentations, a document class like
+ For PowerPoint-like presentations,
+ a document class like
 \family sans
  beamer
 \family default
@@ -207,15 +212,16 @@ Insets).
 
 \begin_layout Itemize
 Virtually everything that can appear in normal \SpecialChar LaTeX
- (except floats) can also
- be on a slide.
+ (except floats) can also be on a slide.
 \end_layout
 
 \begin_deeper
 \begin_layout Plain Layout
-Additional styles: 
+Additional styles:
+ 
 \family sans
-SlideHeading, SlideSubheading
+SlideHeading,
+ SlideSubheading
 \end_layout
 
 \end_deeper
@@ -259,9 +265,8 @@ literal "false"
 
 \end_inset
 
- graphic specials: size and orientation of the slides show problems depending
- on the output format and viewing application (see Troubleshooting and the
- Appendix below).
+ graphic specials:
+ size and orientation of the slides show problems depending on the output format and viewing application (see Troubleshooting and the Appendix below).
 \end_layout
 
 \begin_layout Itemize
@@ -283,8 +288,9 @@ Slide
 notes.
 
 \emph default
- (See Configuration below on how to print only slides, only notes, or both.)
- 
+ (See Configuration below on how to print only slides,
+ only notes,
+ or both.) 
 \end_layout
 
 \begin_layout Section
@@ -381,7 +387,8 @@ LaTeX Preamble:
 \begin_layout Description
 
 \backslash
-onlyslides{8,9,11} print only slides number 8, 9 and 11 (e.
+onlyslides{8,9,11} print only slides number 8,
+ 9 and 11 (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -421,8 +428,8 @@ Lists/ToC
 \end_layout
 
 \begin_layout Standard
-Seminar defines additional content-listing commands, as the Table of Contents
- only lists 
+Seminar defines additional content-listing commands,
+ as the Table of Contents only lists 
 \begin_inset Quotes eld
 \end_inset
 
@@ -435,7 +442,8 @@ normal
 \end_layout
 
 \begin_layout Standard
-: 
+:
+ 
 \begin_inset Flex LandscapeSlide
 status open
 
@@ -465,11 +473,13 @@ s)
 \end_layout
 
 \begin_layout Standard
-Analogue to a list of tables, the 
+Analogue to a list of tables,
+ the 
 \family sans
 ListOfSlides
 \family default
- style lists all slides in your document: 
+ style lists all slides in your document:
+ 
 \end_layout
 
 \begin_layout ListOfSlides
@@ -480,7 +490,8 @@ ListOfSlides
 \begin_inset VSpace defskip
 \end_inset
 
-If you want to assure the audience, that the presentation is almost over,
+If you want to assure the audience,
+ that the presentation is almost over,
  insert a slide with 
 \family sans
 ProgressContents
@@ -506,8 +517,7 @@ Formatting
 \end_layout
 
 \begin_layout Standard
-You can set sans-serif as default font family and select suitable fonts
- under Document\SpecialChar menuseparator
+You can set sans-serif as default font family and select suitable fonts under Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Fonts.
 \end_layout
@@ -519,7 +529,8 @@ The \SpecialChar LaTeX
 \begin_inset space \thinspace{}
 \end_inset
 
-g., fancy frames:
+g.,
+ fancy frames:
 \end_layout
 
 \begin_layout LyX-Code
@@ -587,7 +598,8 @@ seminar.cls
 \end_layout
 
 \begin_layout Itemize
-Originally, 
+Originally,
+ 
 \family typewriter
 seminar.cls
 \family default
@@ -602,7 +614,8 @@ literal "false"
 
 \end_inset
 
-, if you want to use non-TeX fonts.
+,
+ if you want to use non-TeX fonts.
 \end_layout
 
 \begin_layout Itemize
@@ -611,12 +624,13 @@ literal "false"
 Seminar
 \family default
  defaults to landscape orientation.
- Therefore, Document\SpecialChar menuseparator
+ Therefore,
+ Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Page Layout\SpecialChar menuseparator
-Orientation has no effect on the
- output.
- Instead, add the 
+Orientation has no effect on the output.
+ Instead,
+ add the 
 \family typewriter
 portrait
 \family default
@@ -625,17 +639,19 @@ portrait
 
 \begin_layout Itemize
 Correct size and orientation of the slides is somewhat tricky.
- Depending on the use case, different settings and export routes work best.
+ Depending on the use case,
+ different settings and export routes work best.
  For details see the Appendix.
 \end_layout
 
 \begin_layout Itemize
-Do not mix LandscapeSlide and PortraitSlide, if you want to present on screen
- or with a video projector.
+Do not mix LandscapeSlide and PortraitSlide,
+ if you want to present on screen or with a video projector.
 \end_layout
 
 \begin_layout Itemize
-Compiling with Xe/LuaTeX works with both, TeX-fonts and Unicode fonts.
+Compiling with Xe/LuaTeX works with both,
+ TeX-fonts and Unicode fonts.
 \end_layout
 
 \begin_layout Section
@@ -644,13 +660,14 @@ Output formats and supported options
 \end_layout
 
 \begin_layout Itemize
-The default settings work nice for landscape slides on screen with PDF (dvipdfm)
-, PDF (pdflatex), and PDF (XeTeX).
+The default settings work nice for landscape slides on screen with PDF (dvipdfm),
+ PDF (pdflatex),
+ and PDF (XeTeX).
 \end_layout
 
 \begin_layout Itemize
-When printing on transparencies, LandscapeSlides and PortraitSlides can
- be mixed if the option 
+When printing on transparencies,
+ LandscapeSlides and PortraitSlides can be mixed if the option 
 \family typewriter
 semrot
 \family default
@@ -664,13 +681,16 @@ LuaTeX scales the content by a factor 0.5 when generating PDF.
 \begin_deeper
 \begin_layout Standard
 With the option “trim margins” in the PDF viewer (e.g.
- Okular), this can be used as a workaround for mixed slides on screen.
+ Okular),
+ this can be used as a workaround for mixed slides on screen.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Output formats DVI, DVI (LuaTeX), Postscript, and PDF (ps2pdf) require the
- option 
+Output formats DVI,
+ DVI (LuaTeX),
+ Postscript,
+ and PDF (ps2pdf) require the option 
 \family typewriter
 portrait
 \family default
@@ -691,7 +711,8 @@ Custom
 \begin_inset space ~
 \end_inset
 
-Options: [] (none)
+Options:
+ [] (none)
 \end_layout
 
 \begin_layout Standard
@@ -1193,7 +1214,8 @@ Custom
 \begin_inset space ~
 \end_inset
 
-Options: [semrot] 
+Options:
+ [semrot] 
 \end_layout
 
 \begin_layout Standard
@@ -1671,7 +1693,8 @@ Custom
 \begin_inset space ~
 \end_inset
 
-Options: [portrait]
+Options:
+ [portrait]
 \end_layout
 
 \begin_layout Standard
@@ -2141,7 +2164,8 @@ Custom
 \begin_inset space ~
 \end_inset
 
-Options: [semrot,portrait] 
+Options:
+ [semrot,portrait] 
 \end_layout
 
 \begin_layout Standard

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,9 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -105,12 +105,16 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -126,7 +130,8 @@ by Amir Karger and the \SpecialChar LyX
 \begin_inset Newline newline
 \end_inset
 
-polskie tłumaczenie: Wojtek Pękala
+polskie tłumaczenie:
+ Wojtek Pękala
 \end_layout
 
 \begin_layout Standard
@@ -152,14 +157,14 @@ Bez obaw - aby móc używać \SpecialChar LyX
 -a nie trzeba uczyć się \SpecialChar LaTeX
 -a.
  O to w końcu w \SpecialChar LyX
--ie chodzi: ma on być wizualnym interfejsem do \SpecialChar LaTeX
--a w stylu
- prawie WYSIWYG.
+-ie chodzi:
+ ma on być wizualnym interfejsem do \SpecialChar LaTeX
+-a w stylu prawie WYSIWYG.
 \end_layout
 
 \begin_layout Standard
-Niektórzy zapewne sięgnęli do tego dokumentu, bo próbowali wpisać dwie spacje
- po kropce (
+Niektórzy zapewne sięgnęli do tego dokumentu,
+ bo próbowali wpisać dwie spacje po kropce (
 \begin_inset Quotes gld
 \end_inset
 
@@ -168,19 +173,21 @@ Niektórzy zapewne sięgnęli do tego dokumentu, bo próbowali wpisać dwie spac
 \end_inset
 
 ) albo wstawić 3 puste linie między akapitami.
- Po paru frustrujących próbach zrozumieli jednak, że to niemożliwe.
- Z czasem zauważą, że większość chwytów używanych w innych edytorach po
- prostu nie działa w \SpecialChar LyX
+ Po paru frustrujących próbach zrozumieli jednak,
+ że to niemożliwe.
+ Z czasem zauważą,
+ że większość chwytów używanych w innych edytorach po prostu nie działa w \SpecialChar LyX
 -ie.
- Dzieje się tak, ponieważ większość innych edytorów jest w gruncie rzeczy
- przereklamowanymi maszynami do pisania.
- Wymagają od użytkownika ręcznego wprowadzania wszystkich spacji, zmian
- czcionki itd.
- W końcu autor oprócz napisania dokumentu wykonuje chcąc nie chcąc skład
- drukarski.
+ Dzieje się tak,
+ ponieważ większość innych edytorów jest w gruncie rzeczy przereklamowanymi maszynami do pisania.
+ Wymagają od użytkownika ręcznego wprowadzania wszystkich spacji,
+ zmian czcionki itd.
+ W końcu autor oprócz napisania dokumentu wykonuje chcąc nie chcąc skład drukarski.
  I tu pojawia się \SpecialChar LyX
-; jego rolą jest przejęcie składu drukarskiego.
- Pozwala przez to skupić się na istotnych sprawach, takich jak treść utworu.
+;
+ jego rolą jest przejęcie składu drukarskiego.
+ Pozwala przez to skupić się na istotnych sprawach,
+ takich jak treść utworu.
 \end_layout
 
 \begin_layout Standard
@@ -193,9 +200,10 @@ O podręczniku
 \end_layout
 
 \begin_layout Standard
-Na wstępie tej sekcji należy zaznaczyć, że w przeciwieństwie do innych pod\SpecialChar softhyphen
-ręczni
-ków ten zakłada, że użytkownik 
+Na wstępie tej sekcji należy zaznaczyć,
+ że w przeciwieństwie do innych pod\SpecialChar softhyphen
+ręczników ten zakłada,
+ że użytkownik 
 \series bold
 \emph on
 NIE
@@ -204,8 +212,8 @@ NIE
  
 \emph toggle
 jest głupi i wie po co jest kla\SpecialChar softhyphen
-wiatura, umie użyć myszy oraz posługiwać
- się oknami.
+wiatura,
+ umie użyć myszy oraz posługiwać się oknami.
  Z drugiej strony z założenia nie musi mieć pojęcia o \SpecialChar LaTeX
 -u.
 \end_layout
@@ -239,15 +247,15 @@ Wprowadzeniu
 
 \emph toggle
 .
- Jeśli go jeszcze nie przeczytałeś, zrób to teraz.
+ Jeśli go jeszcze nie przeczytałeś,
+ zrób to teraz.
 \end_layout
 
 \begin_layout Standard
 Powodem odsyłania do innych rozdziałów osobnego podręcznika jest lenistwo.
  Zespół \SpecialChar LyX
 -a jest wystarczająco zajęty rozbudową programu i usuwaniem błędów,
- żeby nie redagować 5 identycznych wersji tej samej sekcji w 5 różnych dokumenta
-ch.
+ żeby nie redagować 5 identycznych wersji tej samej sekcji w 5 różnych dokumentach.
  Zatem przeczytaj 
 \emph on
 
@@ -260,7 +268,9 @@ Wprowadzenie
 \begin_inset Quotes grd
 \end_inset
 
-, zawierające wszystko, co potrzebne na temat
+,
+ zawierające wszystko,
+ co potrzebne na temat
 \emph default
  
 \emph on
@@ -273,7 +283,9 @@ podręczników.
 \end_layout
 
 \begin_layout Standard
-Skoro już wiadomo, co oznaczają różne czcionki, opiszemy po krótce cel 
+Skoro już wiadomo,
+ co oznaczają różne czcionki,
+ opiszemy po krótce cel 
 \emph on
 
 \begin_inset Quotes pld
@@ -314,7 +326,8 @@ Oto krótka notka
 John'a Weiss'a
 \emph default
 \noun default
-, pierwszego autora 
+,
+ pierwszego autora 
 \emph on
 
 \begin_inset Quotes pld
@@ -344,12 +357,16 @@ Elementarza
 \emph toggle
 \noun toggle
 .
- Lecz, tak jak w przypadku innych przedsięwzięć, rzeczywistość je zwe\SpecialChar softhyphen
+ Lecz,
+ tak jak w przypadku innych przedsięwzięć,
+ rzeczywistość je zwe\SpecialChar softhyphen
 ryfikowała.
- Uświadomiłem sobie, że mogę spędzić nad nim resztę życia, jeśli nie ograniczę
- go do sensownego zakresu.
+ Uświadomiłem sobie,
+ że mogę spędzić nad nim resztę życia,
+ jeśli nie ograniczę go do sensownego zakresu.
  Stwier\SpecialChar softhyphen
-dziłem również, że pokryje się on w dużej mierze z
+dziłem również,
+ że pokryje się on w dużej mierze z
 \emph default
  
 \emph on
@@ -368,7 +385,9 @@ Podręcznikiem użytkownika
 \end_layout
 
 \begin_layout Quotation
-Tak czy inaczej, zacząłem rozumieć, że ludzie najlepiej uczą się przez:
+Tak czy inaczej,
+ zacząłem rozumieć,
+ że ludzie najlepiej uczą się przez:
 \end_layout
 
 \begin_deeper
@@ -388,12 +407,13 @@ robienie rzeczy samemu.
 
 \end_deeper
 \begin_layout Quotation
-Z ciężkim sercem wyrzuciłem jakieś 20 stron, które już napisałem i zacząłem
- od początku.
+Z ciężkim sercem wyrzuciłem jakieś 20 stron,
+ które już napisałem i zacząłem od początku.
  Jedyną pozostałością jest podrozdział 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:what-is-lyx"
+nolink "false"
 
 \end_inset
 
@@ -421,8 +441,9 @@ Elementarz
  
 \emph toggle
 składa się z ćwiczeń i przykładów.
- Aby jak najlepiej z niego skorzystać należy przeczytać go, pisząc po drodze
- wszystkie rzeczy, o które proszą i wykonując wszystkie ćwiczenia.
+ Aby jak najlepiej z niego skorzystać należy przeczytać go,
+ pisząc po drodze wszystkie rzeczy,
+ o które proszą i wykonując wszystkie ćwiczenia.
  Dla wygody warto wydrukować niniejszy dokument.
 \end_layout
 
@@ -431,6 +452,7 @@ Podrozdział
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:what-is-lyx"
+nolink "false"
 
 \end_inset
 
@@ -450,8 +472,7 @@ Elementarza
 \emph toggle
 i cechuje go swoista bezpośredniość.
  Tym niemniej stanowi sympatyczne wprowadzenie do \SpecialChar LyX
--a i wykładnię idei tej
- aplikacji.
+-a i wykładnię idei tej aplikacji.
 \end_layout
 
 \begin_layout Subsection
@@ -480,17 +501,16 @@ posługiwać się klawiaturą
 \end_layout
 
 \begin_layout Standard
-Opanowanie powyższych umiejętności jest konieczne i nie wchodzi w zakres
- tego podręcznika.
+Opanowanie powyższych umiejętności jest konieczne i nie wchodzi w zakres tego podręcznika.
  Spełnia on za to mnóstwo innych zadań
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar ldots
-and occupational therapy ain't one of 'em! (Sarkastyczny styl oryginału
- rozmija się ze skromnymi możliwościami tłumacza, jak również jego poglądem
- na rzetelny podręcznik)
+and occupational therapy ain't one of 'em!
+ (Sarkastyczny styl oryginału rozmija się ze skromnymi możliwościami tłumacza,
+ jak również jego poglądem na rzetelny podręcznik)
 \end_layout
 
 \end_inset
@@ -500,14 +520,19 @@ and occupational therapy ain't one of 'em! (Sarkastyczny styl oryginału
 
 \end_deeper
 \begin_layout Itemize
-Prowadzenia za rękę, protekcjonalności czy łopatologii .
+Prowadzenia za rękę,
+ protekcjonalności czy łopatologii .
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-To przecież tylko program komputerowy, bez obaw ! Poza tym zakładamy, że
- czytelnik jest rozgarnięty.
- Może być zagubiony, zdezorientowany, ale nie głupi.
+To przecież tylko program komputerowy,
+ bez obaw !
+ Poza tym zakładamy,
+ że czytelnik jest rozgarnięty.
+ Może być zagubiony,
+ zdezorientowany,
+ ale nie głupi.
 \end_layout
 
 \end_deeper
@@ -532,8 +557,8 @@ Podręcznika użytkownika
 \end_layout
 
 \begin_layout Standard
-Celem tego dokumentu jest wprowadzenie czytelnika na właściwe obroty, tak
- by po jego przeczytaniu nie potrzebował niczego poza 
+Celem tego dokumentu jest wprowadzenie czytelnika na właściwe obroty,
+ tak by po jego przeczytaniu nie potrzebował niczego poza 
 \emph on
 
 \begin_inset Quotes pld
@@ -563,16 +588,18 @@ Elementarzu
 \end_layout
 
 \begin_layout Standard
-Nie znaczy to oczywiście, że nie zostaną przedstawione żadne z możliwości
- \SpecialChar LyX
+Nie znaczy to oczywiście,
+ że nie zostaną przedstawione żadne z możliwości \SpecialChar LyX
 -a.
- Zaprezentowane będą czynności, które najprawdopodobniej nie ulegną zmianie,
+ Zaprezentowane będą czynności,
+ które najprawdopodobniej nie ulegną zmianie,
  jak np.
  otwieranie i drukowanie pliku.
- Nie obejdzie się bez paru rozdziałów z przykładami i ćwiczeniami dotyczącymi
- kilku bardziej zaawansowanych funkcji, jak tryb formuł.
+ Nie obejdzie się bez paru rozdziałów z przykładami i ćwiczeniami dotyczącymi kilku bardziej zaawansowanych funkcji,
+ jak tryb formuł.
  [Naturalnie sposób pracy z formułami nie ulegnie istotnej zmianie.
- Być może zostanie udoskonalony, ale całkowita zmiana jest raczej niemożliwa.]
+ Być może zostanie udoskonalony,
+ ale całkowita zmiana jest raczej niemożliwa.]
 \end_layout
 
 \end_deeper
@@ -591,12 +618,13 @@ Niepotrzebne.
 
 \end_deeper
 \begin_layout Standard
-Komu w drogę, temu czas.
- Można rzucić okiem na następny podrozdział lub przejść wprost do podrozdziału
- 
+Komu w drogę,
+ temu czas.
+ Można rzucić okiem na następny podrozdział lub przejść wprost do podrozdziału 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:first-doc-ex"
+nolink "false"
 
 \end_inset
 
@@ -621,14 +649,12 @@ Przegląd
 
 \begin_layout Standard
 Niektórzy nowi użytkownicy \SpecialChar LyX
--a mają kłopoty z przestawieniem się na właściwe
- temu programowi podejście do zagadnienia edycji tekstu.
- Większość innych procesorów tekstu nie jest bowiem niczym innym niż przereklamo
-wanymi maszynami do pisania.
- W przeszłości były one jedynym narzędziem do tworzenia dokumentów, co zmusiło
- użytkowników do wynalezienia repertuaru chwytów pozwalających obejść ich
- ograniczenia.
- Podkreślanie, które sprowadza się do nadpisywania wyrazów znakiem 
+-a mają kłopoty z przestawieniem się na właściwe temu programowi podejście do zagadnienia edycji tekstu.
+ Większość innych procesorów tekstu nie jest bowiem niczym innym niż przereklamowanymi maszynami do pisania.
+ W przeszłości były one jedynym narzędziem do tworzenia dokumentów,
+ co zmusiło użytkowników do wynalezienia repertuaru chwytów pozwalających obejść ich ograniczenia.
+ Podkreślanie,
+ które sprowadza się do nadpisywania wyrazów znakiem 
 \begin_inset Quotes pld
 \end_inset
 
@@ -636,26 +662,25 @@ _
 \begin_inset Quotes prd
 \end_inset
 
-, stało się sposobem na wyróżnienie tekstu.
+,
+ stało się sposobem na wyróżnienie tekstu.
  Aby utworzyć tabele należało najpierw określić wielkość każdej kolumny,
  a następnie ustawić tabulatory.
  To samo dotyczyło liczb i tekstu wyrównywanego do prawej.
- Dzielenie wyrazów u końca linii wymagało wprawnego oka i zdolności przewidywani
-a.
+ Dzielenie wyrazów u końca linii wymagało wprawnego oka i zdolności przewidywania.
 \end_layout
 
 \begin_layout Standard
-Innymi słowy użytkownicy nauczyli się martwić detalami i rozmieszczeniem
- poszczególnych znaków.
+Innymi słowy użytkownicy nauczyli się martwić detalami i rozmieszczeniem poszczególnych znaków.
 \end_layout
 
 \begin_layout Standard
 W konsekwencji prawie wszystkie procesory tekstu powielają to podejście.
  Wciąż używają tabulatorów celem uzyskania pustego miejsca.
- Użytkownik nadal musi się martwić, w którym miejscu strony pojawi się dany
- element.
- Wyróżnienie tekstu polega na zmianie czcionki, tak jakby się zmieniało
- głowi\SpecialChar softhyphen
+ Użytkownik nadal musi się martwić,
+ w którym miejscu strony pojawi się dany element.
+ Wyróżnienie tekstu polega na zmianie czcionki,
+ tak jakby się zmieniało głowi\SpecialChar softhyphen
 cę w elektrycznej maszynie do pisania.
  Wiadomo w czym rzecz.
 \end_layout
@@ -664,14 +689,16 @@ cę w elektrycznej maszynie do pisania.
 Tu właśnie \SpecialChar LyX
  różni się od pozostałych procesorów tekstu.
  Nie trzeba się martwić położeniem każdego znaku.
- Użytkownik określa, 
+ Użytkownik określa,
+ 
 \emph on
 co zamierza pisać
 \emph default
  
 \emph toggle
 a \SpecialChar LyX
- troszczy się o resztę, stosując zestaw reguł zwany
+ troszczy się o resztę,
+ stosując zestaw reguł zwany
 \emph default
  
 \emph on
@@ -682,8 +709,10 @@ stylem
 \end_layout
 
 \begin_layout Standard
-Załóżmy, że piszesz raport.
- Aby go rozpocząć, potrzebujesz podrozdziału zwanego 
+Załóżmy,
+ że piszesz raport.
+ Aby go rozpocząć,
+ potrzebujesz podrozdziału zwanego 
 \begin_inset Quotes pld
 \end_inset
 
@@ -692,8 +721,8 @@ Wprowadzenie
 \end_inset
 
 .
- Otwierasz w swoim procesorze tekstu menu, które zmienia rozmiar czcionki
- i wybierasz odpowiednią wielkość.
+ Otwierasz w swoim procesorze tekstu menu,
+ które zmienia rozmiar czcionki i wybierasz odpowiednią wielkość.
  Następnie wpisujesz 
 \begin_inset Quotes pld
 \end_inset
@@ -703,15 +732,15 @@ Wprowadzenie
 \end_inset
 
 .
- Oczywiście jeżeli zechcesz przenieść dany podrozdział w inne miejsce lub
- wstawić przed nim coś innego, musisz zadbać o zmianę numeracji, jak również
- zawartości spisu treści.
+ Oczywiście jeżeli zechcesz przenieść dany podrozdział w inne miejsce lub wstawić przed nim coś innego,
+ musisz zadbać o zmianę numeracji,
+ jak również zawartości spisu treści.
 \end_layout
 
 \begin_layout Standard
 W \SpecialChar LyX
--ie rozwijasz listę umieszczoną na lewym skraju paska zadań, wybierasz
- pozycję 
+-ie rozwijasz listę umieszczoną na lewym skraju paska zadań,
+ wybierasz pozycję 
 \family sans
 Section
 \family default
@@ -724,44 +753,50 @@ Wprowadzenie
 \end_inset
 
 .
- Tak, to wszystko.
- Jeśli wytniesz ten podrozdział i wkleisz gdzie indziej, zostanie automatycznie
- przenumerowany, gdziekolwiek się znajdzie.
- Jest nawet sposób na automatyczną aktualizację wszelkich odnośników do
- tego podrozdziału w obrębie pliku.
+ Tak,
+ to wszystko.
+ Jeśli wytniesz ten podrozdział i wkleisz gdzie indziej,
+ zostanie automatycznie przenumerowany,
+ gdziekolwiek się znajdzie.
+ Jest nawet sposób na automatyczną aktualizację wszelkich odnośników do tego podrozdziału w obrębie pliku.
 \end_layout
 
 \begin_layout Standard
 Istnieje jeszcze problem spójności.
  Po pięciu dniach ponownie otwierasz raport i zaczynasz czwarty podrozdział,
- jednakże zapominasz, że używałeś wytłuszczonej czcionki 18-punktowej zamiast
- 16-punktowej.
- W ten sposób nagłówek podrozdziału czwartego różni się od nagłówka podrozdziału
- pierw\SpecialChar softhyphen
+ jednakże zapominasz,
+ że używałeś wytłuszczonej czcionki 18-punktowej zamiast 16-punktowej.
+ W ten sposób nagłówek podrozdziału czwartego różni się od nagłówka podrozdziału pierw\SpecialChar softhyphen
 szego.
  Tego rodzaju problem w \SpecialChar LyX
 -ie w ogóle nie występuje.
- To komputer martwi się o uciążliwe księgowanie, jaki element ma jaką czcionkę,
+ To komputer martwi się o uciążliwe księgowanie,
+ jaki element ma jaką czcionkę,
  nie użytkownik.
  W końcu z tym komputery radzą sobie najlepiej.
 \end_layout
 
 \begin_layout Standard
 Oto inny przykład.
- Załóżmy, że tworzysz listę.
+ Załóżmy,
+ że tworzysz listę.
  W innych edytorach lista jest po prostu grupą tabulatorów i końców linii.
- Sam musisz dojść, gdzie wstawić numer/symbol dla każdej pozycji listy,
- jaki numer to ma być, ile pustych linijek wstawić między nimi itd.
+ Sam musisz dojść,
+ gdzie wstawić numer/symbol dla każdej pozycji listy,
+ jaki numer to ma być,
+ ile pustych linijek wstawić między nimi itd.
  W \SpecialChar LyX
--ie trzeba wiedzieć tylko dwie rzeczy: jakiego rodzaju ma być ta lista
- i co ma zawierać.
+-ie trzeba wiedzieć tylko dwie rzeczy:
+ jakiego rodzaju ma być ta lista i co ma zawierać.
  To wszystko.
  
 \end_layout
 
 \begin_layout Standard
 Na tym polega podstawowa idea \SpecialChar LyX
--a: określ co robisz, a nie jak to zrobić.
+-a:
+ określ co robisz,
+ a nie jak to zrobić.
 \end_layout
 
 \begin_layout Subsection
@@ -770,8 +805,8 @@ Różnice między \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-Istnieje cała gama sposobików z innych edytorów, które nie znajdą zastosowania
- w \SpecialChar LyX
+Istnieje cała gama sposobików z innych edytorów,
+ które nie znajdą zastosowania w \SpecialChar LyX
 -ie.
  Na początku może to irytować.
  Nie szkodzi.
@@ -779,13 +814,14 @@ Istnieje cała gama sposobików z innych edytorów, które nie znajdą zastosowa
 \end_layout
 
 \begin_layout Standard
-Oto mała lista rzeczy, których nie ma w \SpecialChar LyX
+Oto mała lista rzeczy,
+ których nie ma w \SpecialChar LyX
 -ie:
 \end_layout
 
 \begin_layout Itemize
-Niesławna linijka tabulatora, szeroko obecna we współczesnych komercyjnych
- edytorach tekstu.
+Niesławna linijka tabulatora,
+ szeroko obecna we współczesnych komercyjnych edytorach tekstu.
 \end_layout
 
 \begin_layout Itemize
@@ -793,26 +829,31 @@ Tabulatory
 \end_layout
 
 \begin_layout Itemize
-Dodatkowe puste linie [uzyskiwane dwu- lub więcejkrotnym przyciśnięciem
- Enter]
+Dodatkowe puste linie [uzyskiwane dwu- lub więcejkrotnym przyciśnięciem Enter]
 \end_layout
 
 \begin_layout Standard
-Tabulatory, które wraz z linijką służą do wskazania położenia poszczególnych
- słów na stronie, są w \SpecialChar LyX
+Tabulatory,
+ które wraz z linijką służą do wskazania położenia poszczególnych słów na stronie,
+ są w \SpecialChar LyX
 -ie kompletnie bezużyteczne.
- To program zajmuje się takimi rzeczami, nie użytkownik.
+ To program zajmuje się takimi rzeczami,
+ nie użytkownik.
  Podobnie z dodatkowymi pustymi liniami.
  \SpecialChar LyX
- dodaje je tam, gdzie są niezbędne, w zależności od kontekstu.
- Co do odstępów, samodzielne ich określanie to kompletny przeżytek.
- Odstępy między liniami tekstu są zmienne, tak jak odstępy między słowami.
+ dodaje je tam,
+ gdzie są niezbędne,
+ w zależności od kontekstu.
+ Co do odstępów,
+ samodzielne ich określanie to kompletny przeżytek.
+ Odstępy między liniami tekstu są zmienne,
+ tak jak odstępy między słowami.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Istnieją sposoby regulacji minimalnych i maksymalnych odstepów, lecz wymagają
- znajomości \SpecialChar LaTeX
+Istnieją sposoby regulacji minimalnych i maksymalnych odstepów,
+ lecz wymagają znajomości \SpecialChar LaTeX
 -a.
  O tym potem.
 \end_layout
@@ -824,8 +865,8 @@ Istnieją sposoby regulacji minimalnych i maksymalnych odstepów, lecz wymagają
 
 \begin_layout Standard
 A to lista elementów obecnych w \SpecialChar LyX
--ie, lecz zachowujących się w sposób nieco
- odmienny od oczekiwanego:
+-ie,
+ lecz zachowujących się w sposób nieco odmienny od oczekiwanego:
 \end_layout
 
 \begin_layout Itemize
@@ -841,7 +882,8 @@ Odstępy między liniami
 \end_layout
 
 \begin_layout Itemize
-Puste miejsca, poziome i pionowe
+Puste miejsca,
+ poziome i pionowe
 \end_layout
 
 \begin_layout Itemize
@@ -849,28 +891,33 @@ Czcionki różnych rozmiarów
 \end_layout
 
 \begin_layout Itemize
-Różne kształty [wytłuszczenie, kursywa, podkreślenie]
+Różne kształty [wytłuszczenie,
+ kursywa,
+ podkreślenie]
 \end_layout
 
 \begin_layout Standard
 Choć wyżej wymienione występują w \SpecialChar LyX
--ie, użytkownik zasadniczo ich nie potrzebuje.
+-ie,
+ użytkownik zasadniczo ich nie potrzebuje.
  To program zajmuje się nimi w sposób zależny od treści publikacji.
- Różne części dokumentu automatycznie są pisane czcionką różnego kształtu
- i rozmiaru.
+ Różne części dokumentu automatycznie są pisane czcionką różnego kształtu i rozmiaru.
  Wcięcia akapitów zależą od ich rodzaju.
  Końce stron również wstawiane są w automatyczny sposób.
- Jedynym wyjątkiem są odstępy między liniami, gdzie można określić odległość
- między akapitami, jak również między liniami w obrębie akapitu.
+ Jedynym wyjątkiem są odstępy między liniami,
+ gdzie można określić odległość między akapitami,
+ jak również między liniami w obrębie akapitu.
  Choć większość szczegółów znajduje się w 
 \emph on
 Podręczniku użytkownika
 \emph toggle
-, czytelnik zostanie ogólnie zapoznany z powyższymi możliwościami.
+,
+ czytelnik zostanie ogólnie zapoznany z powyższymi możliwościami.
 \end_layout
 
 \begin_layout Standard
-W końcu istnieją obszary, w których \SpecialChar LyX
+W końcu istnieją obszary,
+ w których \SpecialChar LyX
  [i \SpecialChar LaTeX
 ] przewyższa zwykłe edytory:
 \end_layout
@@ -896,11 +943,11 @@ Odnośniki
 \end_layout
 
 \begin_layout Standard
-Oczywiście wiele nowoczesnych edytorów obsługuje symbole matematyczne, tabele
- i przenoszenie wyrazów.
- Jednakże tymi możliwościami dysponują od niedawna, podczas gdy \SpecialChar LyX
- jest nakładką
- \SpecialChar LaTeX
+Oczywiście wiele nowoczesnych edytorów obsługuje symbole matematyczne,
+ tabele i przenoszenie wyrazów.
+ Jednakże tymi możliwościami dysponują od niedawna,
+ podczas gdy \SpecialChar LyX
+ jest nakładką \SpecialChar LaTeX
 -a.
  \SpecialChar LaTeX
  z kolei funkcjonuje od ponad 10 lat i sprawdza się.
@@ -909,21 +956,26 @@ Oczywiście wiele nowoczesnych edytorów obsługuje symbole matematyczne, tabele
 status collapsed
 
 \begin_layout Plain Layout
-Wprawdzie nic nie jest doskonałe, ale \SpecialChar LaTeX
+Wprawdzie nic nie jest doskonałe,
+ ale \SpecialChar LaTeX
  jest naprawdę bliski ideału.
 \end_layout
 
 \end_inset
 
 .
- Co więcej, rzadko który z nowoczesnych edytorów obsługuje pośrednie odnośniki,
- które, podobnie jak formuły matematyczne, są obecne w \SpecialChar LyX
+ Co więcej,
+ rzadko który z nowoczesnych edytorów obsługuje pośrednie odnośniki,
+ które,
+ podobnie jak formuły matematyczne,
+ są obecne w \SpecialChar LyX
 -ie od samego początku.
  Niektóre z tych funkcji zostaną omówione w dalszych pod\SpecialChar softhyphen
 roz\SpecialChar softhyphen
 działach.
- Inne, jako nieco bardziej zaawansowane, zostaną przedstawione pod koniec
- tego dokumentu lub w 
+ Inne,
+ jako nieco bardziej zaawansowane,
+ zostaną przedstawione pod koniec tego dokumentu lub w 
 \emph on
 Podręczniku użytkownika
 \emph toggle
@@ -937,8 +989,7 @@ Czym u licha jest \SpecialChar LaTeX
 
 \begin_layout Standard
 \SpecialChar LaTeX
- to system przygotowywania dokumentów zaprojektowany przez Leslie Lamport-a
- w 1985
+ to system przygotowywania dokumentów zaprojektowany przez Leslie Lamport-a w 1985
 \begin_inset Foot
 status collapsed
 
@@ -956,7 +1007,9 @@ A Guide to \SpecialChar LaTeX2e
 \begin_inset Quotes erd
 \end_inset
 
-, praca Helmuta Kopki i Patrick-a Daly, znajdująca się w bibliografii 
+,
+ praca Helmuta Kopki i Patrick-a Daly,
+ znajdująca się w bibliografii 
 \emph on
 Podręcznika użytkownika
 \emph default
@@ -968,8 +1021,8 @@ Podręcznika użytkownika
 .
  \SpecialChar LaTeX
  jest nakładką języka typograficznego o nazwie \SpecialChar TeX
-, stworzonego przez Donalda
- Knuth-a w 1984.
+,
+ stworzonego przez Donalda Knuth-a w 1984.
  
 \begin_inset Quotes pld
 \end_inset
@@ -1000,7 +1053,8 @@ sprzętowo niezależnym
 \begin_inset Quotes prd
 \end_inset
 
-, skrótowo (z angielska) 
+,
+ skrótowo (z angielska) 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1009,14 +1063,14 @@ Dvi
 \end_inset
 
 .
- Plik taki można wysłać do dowolnego urządzenia obsługującego Dvi lub przetworzy
-ć na inny format, jak Postscript.
+ Plik taki można wysłać do dowolnego urządzenia obsługującego Dvi lub przetworzyć na inny format,
+ jak Postscript.
 \end_layout
 
 \begin_layout Standard
 Gdyby \SpecialChar TeX
- nie miał innych możliwości, byłby niczym więcej niż procesorem składu
- drukarskiego.
+ nie miał innych możliwości,
+ byłby niczym więcej niż procesorem składu drukarskiego.
  Jednakże \SpecialChar TeX
  pozwala na definiownie makr.
  I tu zaczyna się właściwa akcja.
@@ -1024,33 +1078,37 @@ Gdyby \SpecialChar TeX
 
 \begin_layout Standard
 Większość użytkowników \SpecialChar TeX
--a tak naprawdę używa pakietu makr stworzonych przez
- Knutha celem ukrycia szczegółów składu.
+-a tak naprawdę używa pakietu makr stworzonych przez Knutha celem ukrycia szczegółów składu.
  To właśnie ten pakiet mają oni na myśli mówiąc o \SpecialChar TeX
 -u.
  Zwykli użytkownicy nie pracują z surowym \SpecialChar TeX
--em, składającym się z gołych
- poleceń drukarskich.
+-em,
+ składającym się z gołych poleceń drukarskich.
  Tym zajmują się twórcy nowych pakietów makr.
- Jednym z nich jest Leslie Lamport, który pracował nad pakietem bardziej
- przyjaznym dla użytkownika niż zorientowanym drukarsko.
- Jego polecenia składają rozdziały, tabele czy formuły matematyczne w spójny,
+ Jednym z nich jest Leslie Lamport,
+ który pracował nad pakietem bardziej przyjaznym dla użytkownika niż zorientowanym drukarsko.
+ Jego polecenia składają rozdziały,
+ tabele czy formuły matematyczne w spójny,
  przystępny sposób.
  Pakietem tym stał się \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
-Odtąd, obok rozwoju \SpecialChar LaTeX
--a, inni użytkownicy tworzyli własne pakiety makr, obsługują
-ce prezentacje, artykuły dla pism matematycznych itp.
+Odtąd,
+ obok rozwoju \SpecialChar LaTeX
+-a,
+ inni użytkownicy tworzyli własne pakiety makr,
+ obsługujące prezentacje,
+ artykuły dla pism matematycznych itp.
  Jedni używali surowego \SpecialChar TeX
--a, inni modyfikowali \SpecialChar LaTeX
+-a,
+ inni modyfikowali \SpecialChar LaTeX
 -a.
  W celu opanowania tego bałaganu pod koniec lat 80-tych grupa \SpecialChar LaTeX
--owców z Lamportem
- na czele rozpoczęła prace nad \SpecialChar LaTeX
--em 2e, obecną wersją \SpecialChar LaTeX
+-owców z Lamportem na czele rozpoczęła prace nad \SpecialChar LaTeX
+-em 2e,
+ obecną wersją \SpecialChar LaTeX
 -a.
  Ta nowa wersja ułatwia dostęp do poleceń \SpecialChar TeX
 -a służących do tworzenia makr,
@@ -1061,8 +1119,8 @@ ce prezentacje, artykuły dla pism matematycznych itp.
 status collapsed
 
 \begin_layout Plain Layout
-...i był nim również przed wersją 2e, która jedynie poszerzyła niektóre jego
- możliwości.
+...i był nim również przed wersją 2e,
+ która jedynie poszerzyła niektóre jego możliwości.
 \end_layout
 
 \end_inset
@@ -1071,14 +1129,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Użytkownicy na całym świecie dodają swoje własne rozszerzenia do standardowych
- funkcji \SpecialChar LaTeX
+Użytkownicy na całym świecie dodają swoje własne rozszerzenia do standardowych funkcji \SpecialChar LaTeX
 -a.
 \end_layout
 
 \begin_layout Standard
 Istnieją dwa sposoby rozszerzania \SpecialChar LaTeX
--a: klasy i style.
+-a:
+ klasy i style.
  
 \emph on
 Klasa
@@ -1091,8 +1149,11 @@ to zbiór makr \SpecialChar LaTeX
 \end_inset
 
 \SpecialChar TeX
--a opisujący nowy typ dokumentu, jak książka czy artykuł.
- Istnieją klasy dla prezentacji, pism fizycznych, matematycznych...
+-a opisujący nowy typ dokumentu,
+ jak książka czy artykuł.
+ Istnieją klasy dla prezentacji,
+ pism fizycznych,
+ matematycznych...
  niektóre uniwersytety mają nawet własne klasy dla prac naukowych.
 
 \emph default
@@ -1102,7 +1163,9 @@ Styl
 \emph default
  
 \emph toggle
-różni się od klasy tym, że nie definiuje nowego typu dokumentów, lecz
+różni się od klasy tym,
+ że nie definiuje nowego typu dokumentów,
+ lecz
 \emph default
  
 \emph on
@@ -1112,13 +1175,18 @@ zachowanie
 \emph toggle
 już istniejących.
  Na przykład \SpecialChar LyX
- określa marginesy stron i odstępy między liniami w oparciu
- o dwa różne pliki stylów \SpecialChar LaTeX
+ określa marginesy stron i odstępy między liniami w oparciu o dwa różne pliki stylów \SpecialChar LaTeX
 -a.
- Istnieją pliki stylów dla mnóstwa rzeczy: drukowania etykiet na koperty,
- zmianę zasad wcięć akapitów, dodanie nowych czcionek, obsługę grafiki,
- efektowne nagłówki stron, własne bibliografie, zmianę położenia i wyglądu
- przypisów, tabel i rysunków, specjalne rodzaje list itd.
+ Istnieją pliki stylów dla mnóstwa rzeczy:
+ drukowania etykiet na koperty,
+ zmianę zasad wcięć akapitów,
+ dodanie nowych czcionek,
+ obsługę grafiki,
+ efektowne nagłówki stron,
+ własne bibliografie,
+ zmianę położenia i wyglądu przypisów,
+ tabel i rysunków,
+ specjalne rodzaje list itd.
  itp.
 \end_layout
 
@@ -1129,44 +1197,50 @@ Oto podsumowanie:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \SpecialChar TeX
-: Język składu drukarskiego używający makr.
+:
+ Język składu drukarskiego używający makr.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \SpecialChar LaTeX
-: Pakiet makr \SpecialChar TeX
+:
+ Pakiet makr \SpecialChar TeX
 -a\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-klasa: Opis typu dokumentu w \SpecialChar LaTeX
+klasa:
+ Opis typu dokumentu w \SpecialChar LaTeX
 -u\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-styl: Modyfikuje sposób działania \SpecialChar LaTeX
+styl:
+ Modyfikuje sposób działania \SpecialChar LaTeX
 -a.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \SpecialChar LyX
-: Graficzny WYSIWYM procesor tekstu używający \SpecialChar LaTeX
+:
+ Graficzny WYSIWYM procesor tekstu używający \SpecialChar LaTeX
 -a do drukowania.
 \end_layout
 
 \begin_layout Standard
 U podstaw tego wszystkiego leży stary dobry \SpecialChar TeX
-, tworzący pliki Dvi.
- Większość użytkowników przekształca te pliki na format Postscript, wysyłane
- następnie do drukarek laserowych.
- Krążą również pogłoski o urządzeniach, które naprawdę obsługują format
- Dvi.
+,
+ tworzący pliki Dvi.
+ Większość użytkowników przekształca te pliki na format Postscript,
+ wysyłane następnie do drukarek laserowych.
+ Krążą również pogłoski o urządzeniach,
+ które naprawdę obsługują format Dvi.
  Tak czy inaczej rozdział niniejszy miał wyjaśnić 
 \emph on
 czemu
@@ -1175,11 +1249,11 @@ czemu
 \emph toggle
 \SpecialChar LyX
  działa trochę inaczej od innych edytorów.
- Powód jest prosty: \SpecialChar LyX
+ Powód jest prosty:
+ \SpecialChar LyX
  używa \SpecialChar LaTeX
 -a jako zaplecza drukarskiego i tak jak \SpecialChar LaTeX
- koncentruje
- się na zawartości dokumentu.
+ koncentruje się na zawartości dokumentu.
  To komputer zajmuje się jego wizualną stroną.
 \end_layout
 
@@ -1187,7 +1261,8 @@ czemu
 I jeszcze jedno.
  \SpecialChar LaTeX
  wymawia się jak \SpecialChar TeX
- — czyli 
+ —
+ czyli 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1196,8 +1271,10 @@ latech
 \end_inset
 
 .
- Inna wymowa, a szczególnie taka, jak w nazwie materiału szeroko stosowanego
- w przemyśle gumowym, jest błędna.
+ Inna wymowa,
+ a szczególnie taka,
+ jak w nazwie materiału szeroko stosowanego w przemyśle gumowym,
+ jest błędna.
  Z kolei 
 \begin_inset Quotes pld
 \end_inset
@@ -1224,7 +1301,8 @@ laks
 \begin_inset Quotes prd
 \end_inset
 
-, albo 
+,
+ albo 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1232,7 +1310,8 @@ luks
 \begin_inset Quotes prd
 \end_inset
 
-, zależnie od kraju pochodzenia użytkownika\SpecialChar ldots
+,
+ zależnie od kraju pochodzenia użytkownika\SpecialChar ldots
 
 \end_layout
 
@@ -1253,8 +1332,7 @@ name "sec:first-doc-ex"
 
 \end_inset
 
-Przed przystąpieniem do pisania przyda się kilka informacji ułatwiających
- pracę z 
+Przed przystąpieniem do pisania przyda się kilka informacji ułatwiających pracę z 
 \emph on
 
 \begin_inset Quotes pld
@@ -1270,11 +1348,12 @@ Elementarzem
 \end_layout
 
 \begin_layout Standard
-Ponieważ nie ujęto w nim mnóstwa wiadomości, pierwszą rzeczą jest umieć
- dotrzeć do innych plików z pomocą.
+Ponieważ nie ujęto w nim mnóstwa wiadomości,
+ pierwszą rzeczą jest umieć dotrzeć do innych plików z pomocą.
  To na szczęście jest dość proste.
  Należy uruchomić \SpecialChar LyX
--a, następnie wybrać 
+-a,
+ następnie wybrać 
 \family sans
 Podręcznik użytkownika
 \family default
@@ -1306,16 +1385,14 @@ Elementarz
 status collapsed
 
 \begin_layout Plain Layout
-Same podręczniki mogą być jednocześnie dobrymi przykładami użycia różnorodnych
- funkcji \SpecialChar LyX
+Same podręczniki mogą być jednocześnie dobrymi przykładami użycia różnorodnych funkcji \SpecialChar LyX
 -a.
 \end_layout
 
 \end_inset
 
 .
- Jeżeli otwarto więcej niż jeden dokument to do przełączania między nimi
- służy menu 
+ Jeżeli otwarto więcej niż jeden dokument to do przełączania między nimi służy menu 
 \family sans
 \bar under
 D
@@ -1340,7 +1417,8 @@ Elementarz
  
 \emph toggle
 nie będzie objaśniał szczegółowo tematów opisanych w innych podręcznikach.
- Może to na początku nieco utrudnić lekturę, ale zapobiega rozdęciu
+ Może to na początku nieco utrudnić lekturę,
+ ale zapobiega rozdęciu
 \emph default
  
 \emph on
@@ -1371,11 +1449,13 @@ Elementarz
 \emph default
  
 \emph toggle
-zakłada, że działa pełna wersja \SpecialChar LyX
+zakłada,
+ że działa pełna wersja \SpecialChar LyX
 -a i \SpecialChar LaTeX
--a, xdvi lub inna przeglądarka dvi,
- dvips lub inny sposób konwersji dokumentu dvi do formatu Postscript, oraz
- drukarka.
+-a,
+ xdvi lub inna przeglądarka dvi,
+ dvips lub inny sposób konwersji dokumentu dvi do formatu Postscript,
+ oraz drukarka.
  To dość duże wymagania.
  Jeżeli któryś z w/w warunków nie jest spełniony trzeba będzie (np.
  z pomocą administratora systemu) system należycie doposażyć.
@@ -1389,21 +1469,24 @@ Ponadto napisano ćwiczebny dokument \SpecialChar LyX
 \family typewriter
 example_raw.lyx
 \family default
- i wygląda, jakby został napisany przez kogoś nie mającego pojęcia o fantastyczn
-ych możliwościach \SpecialChar LyX
+ i wygląda,
+ jakby został napisany przez kogoś nie mającego pojęcia o fantastycznych możliwościach \SpecialChar LyX
 -a.
- W miarę poznawania nowych funkcji programu należy poprawiać odpowiednie
- fragmenty tego pliku.
+ W miarę poznawania nowych funkcji programu należy poprawiać odpowiednie fragmenty tego pliku.
  Zawiera on także wskazówki co do ulepszenia dokumentu.
  Drogą na skróty albo sprawdzeniem rezultatów pracy może być plik 
 \family typewriter
 example_lyxified.lyx
 \family default
-, zawierający ten sam tekst, napisany i złożony przez eksperta.
+,
+ zawierający ten sam tekst,
+ napisany i złożony przez eksperta.
 \end_layout
 
 \begin_layout Subsection
-Pisanie, oglądanie, drukowanie
+Pisanie,
+ oglądanie,
+ drukowanie
 \end_layout
 
 \begin_layout Itemize
@@ -1417,7 +1500,9 @@ Plik
 \end_layout
 
 \begin_layout Itemize
-Napisz zdanie, np.: 
+Napisz zdanie,
+ np.:
+ 
 \family typewriter
 To mój pierwszy dokument w \SpecialChar LyX
 -ie !
@@ -1428,8 +1513,9 @@ status collapsed
 W porządku.
  Można wpisać cokolwiek.
  To naprawdę wszystko jedno.
- Przepraszamy za powyższy przykład, jak również za pozostałe zdania, o wpisanie
- których poprosimy w przyszłości.
+ Przepraszamy za powyższy przykład,
+ jak również za pozostałe zdania,
+ o wpisanie których poprosimy w przyszłości.
 \end_layout
 
 \end_inset
@@ -1457,7 +1543,8 @@ Plik\SpecialChar endofsentence
 
 \begin_layout Itemize
 Uruchom \SpecialChar LaTeX
--a celem utworzenia pliku dvi, używając polecenia 
+-a celem utworzenia pliku dvi,
+ używając polecenia 
 \family sans
 Obejrzyj jako
 \family default
@@ -1485,14 +1572,13 @@ lik
 \family default
 .
  \SpecialChar LyX
- uruchomi kdvi (lub inną przeglądarkę dvi), co otworzy nowe okno przedstawiając
-e wygląd dokumentu na wydruku
+ uruchomi kdvi (lub inną przeglądarkę dvi),
+ co otworzy nowe okno przedstawiające wygląd dokumentu na wydruku
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Dobrym pomysłem oszczędzającym czas jest pozostawienie otwartego okna kdvi
- po obejrzeniu dokumentu.
+Dobrym pomysłem oszczędzającym czas jest pozostawienie otwartego okna kdvi po obejrzeniu dokumentu.
  Następnym razem wystarczy użyć polecenia 
 \family sans
 Aktualizuj DVI
@@ -1501,7 +1587,8 @@ Aktualizuj DVI
 \family sans
 Podgląd
 \family default
-, by móc dużo szybciej ujrzeć dokument w kdvi.
+,
+ by móc dużo szybciej ujrzeć dokument w kdvi.
 \end_layout
 
 \end_inset
@@ -1524,14 +1611,17 @@ P
 \bar default
 lik
 \family default
-, po naciśnięciu OK\SpecialChar endofsentence
+,
+ po naciśnięciu OK\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Gratulacje ! Napisałeś i wydrukowałeś Twój pierwszy dokument w \SpecialChar LyX
+Gratulacje !
+ Napisałeś i wydrukowałeś Twój pierwszy dokument w \SpecialChar LyX
 -ie.
- Cała reszta to tylko szczegóły, opisane w 
+ Cała reszta to tylko szczegóły,
+ opisane w 
 \emph on
 
 \begin_inset Quotes pld
@@ -1544,6 +1634,7 @@ Elementarzu
 
 \emph toggle
 ,
+
 \emph default
  
 \emph on
@@ -1584,8 +1675,8 @@ Proste operacje
 W \SpecialChar LyX
 -ie można wykonać większość czynności znanych z innych procesorów tekstu.
  Przenosi on automatycznie słowa czy robi wcięcia w akapitach.
- Otwórz kilka menu by przekonać się, że większość prostych poleceń jest
- na swoim miejscu (np.
+ Otwórz kilka menu by przekonać się,
+ że większość prostych poleceń jest na swoim miejscu (np.
  
 \family sans
 \bar under
@@ -1593,21 +1684,24 @@ W
 \bar default
 yjście
 \family default
-, 
+,
+ 
 \family sans
 \bar under
 W
 \bar default
 klej
 \family default
-, 
+,
+ 
 \family sans
 \bar under
 D
 \bar default
 rukuj
 \family default
-) pod nazwami jakich mogłeś oczekiwać, i zachowuje się zgodnie z przewidywaniami.
+) pod nazwami jakich mogłeś oczekiwać,
+ i zachowuje się zgodnie z przewidywaniami.
  Poniżej znajduje się krótki opis innych funkcji:
 \end_layout
 
@@ -1621,8 +1715,9 @@ nieograniczone cofnięcie
 \begin_inset Quotes prd
 \end_inset
 
-, co oznacza , że można cofnąć wszystkie zmiany dokonane od otwarcia dokumentu
- używając polecenia 
+,
+ co oznacza ,
+ że można cofnąć wszystkie zmiany dokonane od otwarcia dokumentu używając polecenia 
 \family sans
 \bar under
 C
@@ -1637,8 +1732,7 @@ E
 dycja
 \family default
 .
- Jeśli cofnąłeś się zbyt głęboko polecenie Przywróć z tego samego menu naprawi
- błąd.
+ Jeśli cofnąłeś się zbyt głęboko polecenie Przywróć z tego samego menu naprawi błąd.
 \end_layout
 
 \begin_layout Description
@@ -1653,7 +1747,8 @@ t
 \bar default
 nij
 \family default
-, 
+,
+ 
 \family sans
 \bar under
 E
@@ -1676,8 +1771,7 @@ K
 opiuj
 \family default
  służą do wycinania wklejania i kopiowania.
- Automatyczne wklejanie zaznaczonego tekstu odbywa się za pomocą środkowego
- przycisku myszy.
+ Automatyczne wklejanie zaznaczonego tekstu odbywa się za pomocą środkowego przycisku myszy.
 \end_layout
 
 \begin_layout Description
@@ -1715,9 +1809,12 @@ astąp
 status collapsed
 
 \begin_layout Plain Layout
-Po zakończeniu zamknij okno, lub jeśli to wygodniejsze, zostaw je otwarte.
+Po zakończeniu zamknij okno,
+ lub jeśli to wygodniejsze,
+ zostaw je otwarte.
  Większość okien w \SpecialChar LyX
--ie — włącznie z 
+-ie —
+ włącznie z 
 \family sans
 \bar under
 Z
@@ -1732,7 +1829,8 @@ i
 
 zastąp
 \family default
-, 
+,
+ 
 \family sans
 Spisem
 \begin_inset space ~
@@ -1747,9 +1845,11 @@ U
 \bar default
 kładem
 \family default
-, jak również różnymi oknami fromuł—daje się wysłać w tło bez konieczności
- zamykania.
- Klika okien, jak 
+,
+ jak również różnymi oknami fromuł—
+daje się wysłać w tło bez konieczności zamykania.
+ Klika okien,
+ jak 
 \family sans
 \bar under
 P
@@ -1780,6 +1880,7 @@ wyróżniony
  
 \emph toggle
 (z reguły kursywą),
+
 \emph default
  
 \series bold
@@ -1793,7 +1894,8 @@ lub napisany jako
 \noun on
 nazwa własna
 \noun toggle
- (zwykle kapitalikami, np.
+ (zwykle kapitalikami,
+ np.
  nazwiska) za pomocą przełączalnych przycisków z menu Układ.
 \end_layout
 
@@ -1802,20 +1904,23 @@ Pasek
 \begin_inset space ~
 \end_inset
 
-narzędzi Poniżej menu znajduje się pasek narzędzi, ułatwiający wykonanie
- najpopularniejszych poleceń, takich jak Wklej i Drukuj.
+narzędzi Poniżej menu znajduje się pasek narzędzi,
+ ułatwiający wykonanie najpopularniejszych poleceń,
+ takich jak Wklej i Drukuj.
  Jeśli kursor myszy znajdzie się na dłużej nad przyciskiem z paska zadań,
  pojawi się mała żółta podpowiedź funkcji tego przycisku.
 \end_layout
 
 \begin_layout Standard
-Naturalnie jak dotąd nie napisałeś tak dużo, by skorzystać z większości
- tych funkcji.
- W miarę postępów jednak próbuj cofania, wklejania itd.
+Naturalnie jak dotąd nie napisałeś tak dużo,
+ by skorzystać z większości tych funkcji.
+ W miarę postępów jednak próbuj cofania,
+ wklejania itd.
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: puste miejsca w \SpecialChar LyX
+WYSIWYM:
+ puste miejsca w \SpecialChar LyX
 -ie
 \end_layout
 
@@ -1826,21 +1931,23 @@ name "sec:whitespace"
 
 \end_inset
 
- Jedną z najtrudniejszych dla nowego użytkownika nowinek jest sposób w jaki
- \SpecialChar LyX
+ Jedną z najtrudniejszych dla nowego użytkownika nowinek jest sposób w jaki \SpecialChar LyX
  obchodzi się z pustymi miejscami.
- Nieważne, ile razy przyciśnie się Return, w efekcie powstanie tylko jedna
- pusta linijka.
+ Nieważne,
+ ile razy przyciśnie się Return,
+ w efekcie powstanie tylko jedna pusta linijka.
  W pustej linijce nie można wpisać nawet jednej spacji.
- Klawisz Tab nie przesuwa kursora do następnego tabulatora - tak naprawdę
- nie ma tabulatorów! Brak linijki u szczytu strony, która pozwalałaby na
- ustawienie marginesów lub tabulatorów.
+ Klawisz Tab nie przesuwa kursora do następnego tabulatora - tak naprawdę nie ma tabulatorów!
+ Brak linijki u szczytu strony,
+ która pozwalałaby na ustawienie marginesów lub tabulatorów.
 \end_layout
 
 \begin_layout Standard
 Wiele komercyjnych edytorów bazuje na zasadzie 
 \emph toggle
-WYSIWYG — What You See Is What You Get (Dostajesz to, co widzisz).
+WYSIWYG —
+ What You See Is What You Get (Dostajesz to,
+ co widzisz).
  \SpecialChar LyX
  z kolei spełnia zasadę 
 \begin_inset Quotes eld
@@ -1856,24 +1963,30 @@ Mean
 \begin_inset Quotes erd
 \end_inset
 
- (Dostajesz to, o co ci chodzi).
- Wpisujesz treść, a \SpecialChar LyX
- składa ją tak, żeby całość miała ładny wygląd.
+ (Dostajesz to,
+ o co ci chodzi).
+ Wpisujesz treść,
+ a \SpecialChar LyX
+ składa ją tak,
+ żeby całość miała ładny wygląd.
  Naciśnięcie 
 \family sans
 Return
 \family default
- w sensie gramatycznym rozdziela akapity, zaś spacja słowa, tak więc nie
- ma sensu powielanie ich obok siebie; tabulator nie ma żadnej funkcji gramatyczn
-ej, zatem \SpecialChar LyX
+ w sensie gramatycznym rozdziela akapity,
+ zaś spacja słowa,
+ tak więc nie ma sensu powielanie ich obok siebie;
+ tabulator nie ma żadnej funkcji gramatycznej,
+ zatem \SpecialChar LyX
  go nie używa.
  Pracując z \SpecialChar LyX
--em użytkownik koncentruje się na zawartości dokumentu, a nie
- jego formacie.
+-em użytkownik koncentruje się na zawartości dokumentu,
+ a nie jego formacie.
  Przejrzyj podrozdział 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:what-is-lyx"
+nolink "false"
 
 \end_inset
 
@@ -1890,15 +2003,15 @@ dokładnie
 \emph default
  
 \emph toggle
-to, o co chodzi.
+to,
+ o co chodzi.
  Podręcznik użytkownika opisuje szczegółowo te metody.
- Należą do nich wypełnienia poziome i pionowe — bardziej skuteczne i wszechstron
-ne niż grupy spacji czy pustych linijek — i ręczne sposoby zmiany wielkości
- i stylu czcionki, jak i wyrównywania akapitów.
- Zasadą jednakże jest pisanie treści dokumentu i wprowadzanie zmian formatu
- na końcu.
- Standardowe edytory wymagają rozpraszanie się formatowaniem w trakcie powstawan
-ia dokumentu.
+ Należą do nich wypełnienia poziome i pionowe —
+ bardziej skuteczne i wszechstronne niż grupy spacji czy pustych linijek —
+ i ręczne sposoby zmiany wielkości i stylu czcionki,
+ jak i wyrównywania akapitów.
+ Zasadą jednakże jest pisanie treści dokumentu i wprowadzanie zmian formatu na końcu.
+ Standardowe edytory wymagają rozpraszanie się formatowaniem w trakcie powstawania dokumentu.
 \end_layout
 
 \begin_layout Section
@@ -1906,13 +2019,15 @@ ia dokumentu.
 \end_layout
 
 \begin_layout Standard
-Różne części dokumentu pełnią różną funkcję; części te nazwiemy środowiskami.
+Różne części dokumentu pełnią różną funkcję;
+ części te nazwiemy środowiskami.
  Dokument składa się w większości ze zwykłego tekstu.
- Tytuły podrozdziału (rozdziału, sekcji itd.) pozwalają czytelnikowi zorientować
- się w jego zawartości.
+ Tytuły podrozdziału (rozdziału,
+ sekcji itd.) pozwalają czytelnikowi zorientować się w jego zawartości.
  Pewne typy dokumentów wymagają specjalnych środowisk.
  Artykuł będzie wymagał streszczenia i tytułu.
- List ich nie potrzebuje, ale zawiera zapewne środowisko dla adresu nadawcy.
+ List ich nie potrzebuje,
+ ale zawiera zapewne środowisko dla adresu nadawcy.
 \end_layout
 
 \begin_layout Standard
@@ -1921,18 +2036,22 @@ Różne części dokumentu pełnią różną funkcję; części te nazwiemy śro
 \begin_inset Quotes pld
 \end_inset
 
-dostajesz, o co Ci chodzi
+dostajesz,
+ o co Ci chodzi
 \begin_inset Quotes prd
 \end_inset
 
 .
- Środowisko może określać styl, rozmiar czcionki, rodzaj wcięć akapitu,
+ Środowisko może określać styl,
+ rozmiar czcionki,
+ rodzaj wcięć akapitu,
  odstępy między linijkami i inne.
- Co więcej, konkretny format danego środowiska może się zmieniać: jedno
- wydawnictwo drukuje wycentrowane nagłówki podrozdziałów wytłuszczoną czcionką
- 18 punktową, podczas gdy inne wyrównuje je do lewej używając 15 punktowej
- kursywy; w różnych językach różnie wyglądają wcięcia akapitów, w dużym
- zakresie zmieniają się także standardy bibliografii.
+ Co więcej,
+ konkretny format danego środowiska może się zmieniać:
+ jedno wydawnictwo drukuje wycentrowane nagłówki podrozdziałów wytłuszczoną czcionką 18 punktową,
+ podczas gdy inne wyrównuje je do lewej używając 15 punktowej kursywy;
+ w różnych językach różnie wyglądają wcięcia akapitów,
+ w dużym zakresie zmieniają się także standardy bibliografii.
  \SpecialChar LyX
  pomaga uniknąć konieczności uczenia się tych różnych stylów formatowania.
 \end_layout
@@ -1954,11 +2073,10 @@ Standard
 \begin_inset Quotes prd
 \end_inset
 
-, domyślnym dla tekstu.
- Tytułem ćwiczenia użyj kilku różnych środowisk w pisanym przez siebie dokumenci
-e.
- W tym celu wybierz konkretne środowisko klikając na strzałce w dół umieszczonej
- przy prawym brzegu rozwijalnej listy środowisk.
+,
+ domyślnym dla tekstu.
+ Tytułem ćwiczenia użyj kilku różnych środowisk w pisanym przez siebie dokumencie.
+ W tym celu wybierz konkretne środowisko klikając na strzałce w dół umieszczonej przy prawym brzegu rozwijalnej listy środowisk.
 \end_layout
 
 \begin_layout Subsection
@@ -1988,10 +2106,9 @@ zaznaczać
 \emph toggle
 linijki.
  Jeśli niczego nie zaznaczyłeś \SpecialChar LyX
- zmienia środowisko akapitu, w którym znajduje
- się kursor.
- Środowisko kilku akapitów naraz może zostać zmienione przez zaznaczenie
- ich przed wyborem nowego środowiska.
+ zmienia środowisko akapitu,
+ w którym znajduje się kursor.
+ Środowisko kilku akapitów naraz może zostać zmienione przez zaznaczenie ich przed wyborem nowego środowiska.
 \end_layout
 
 \end_inset
@@ -2007,14 +2124,14 @@ linijki.
 \end_inset
 
  i składa tytuł podrozdziału większą czcionką.
- (Oczywiście tytuł ten zostanie prawidłowo złożony w pliku dvi lub na wydruku.)
- Następnie naciśnij 
+ (Oczywiście tytuł ten zostanie prawidłowo złożony w pliku dvi lub na wydruku.) Następnie naciśnij 
 \family sans
 \emph toggle
 Return
 \family default
 .
- Zauważ, że zawartość listy środowisk zmieniła się z 
+ Zauważ,
+ że zawartość listy środowisk zmieniła się z 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2031,8 +2148,8 @@ Standard
 \end_inset
 
 .
- Tytuły podrozdziałów, jak większość środowisk kończą się automatycznie
- wraz z naciśnięciem Return..
+ Tytuły podrozdziałów,
+ jak większość środowisk kończą się automatycznie wraz z naciśnięciem Return..
  Wpisz klika słów wprowadzenia:
 \end_layout
 
@@ -2065,19 +2182,22 @@ Section
 \family typewriter
 Takie tam
 \family default
- i zauważ, że \SpecialChar LyX
+ i zauważ,
+ że \SpecialChar LyX
  ponownie składa tekst jako tytuł podrozdziału.
  
 \end_layout
 
 \begin_layout Standard
 To nie koniec.
- Idź na koniec pierwszego podrozdziału (po: 
+ Idź na koniec pierwszego podrozdziału (po:
+ 
 \family typewriter
 mojego pierwszego dokumentu w \SpecialChar LyX
 -ie
 \family default
-) i naciśnij Return raz jeszcze, następnie wybierając środowisko 
+) i naciśnij Return raz jeszcze,
+ następnie wybierając środowisko 
 \family sans
 Section
 \family default
@@ -2105,9 +2225,12 @@ Takie tam
 \begin_inset Quotes prd
 \end_inset
 
-, który miał numer 2, został automatycznie przenumerowany na 3! W stylu
- prawdziwego WYSIWYM twoim jedynym zadaniem jest wskazanie fragmentów, które
- będą tytułami, a \SpecialChar LyX
+,
+ który miał numer 2,
+ został automatycznie przenumerowany na 3!
+ W stylu prawdziwego WYSIWYM twoim jedynym zadaniem jest wskazanie fragmentów,
+ które będą tytułami,
+ a \SpecialChar LyX
  zajmuje się ich numeracją i składem.
 \end_layout
 
@@ -2154,8 +2277,8 @@ Subsection
 \begin_inset Quotes prd
 \end_inset
 
-, i złoży ją czcionką większą od normalnego tekstu lecz mniejszą od tytułu
- podrozdziału.
+,
+ i złoży ją czcionką większą od normalnego tekstu lecz mniejszą od tytułu podrozdziału.
  Zmień środowisko czwartej linijki na 
 \family sans
 Subsection
@@ -2171,8 +2294,8 @@ Subsection
 \end_inset
 
 .
- Gdyby wstawić jeszcze jeden podrozdział przed podrozdziałem 2, zostałby
- on przenumerowany na 3 i sekcje nosiły by numery 
+ Gdyby wstawić jeszcze jeden podrozdział przed podrozdziałem 2,
+ zostałby on przenumerowany na 3 i sekcje nosiły by numery 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2196,32 +2319,37 @@ Kolejne poziomy zawierają
 \family sans
 Subsubsection
 \family default
-, 
+,
+ 
 \family sans
 Paragraph
 \family default
-, 
+,
+ 
 \family sans
 i Subparagraph
 \family default
 .
  Przetrenuj je na własną rękę.
- Być może zauważysz, że nagłówki akapitów i podakapitów nie są numerowane
- i że podakapity są wcinane.
+ Być może zauważysz,
+ że nagłówki akapitów i podakapitów nie są numerowane i że podakapity są wcinane.
  Jeśli chcesz to zmienić przeczytaj 
 \emph on
 Podręcznik użytkownika
 \emph toggle
 .
- Tytuły rozdziałów — środowisko Chapter — są najwyższym poziomem, powyżej
- podrozdziałów, ale można ich używać tylko w niektórych typach (klasach)
- dokumentów \SpecialChar LyX
+ Tytuły rozdziałów —
+ środowisko Chapter —
+ są najwyższym poziomem,
+ powyżej podrozdziałów,
+ ale można ich używać tylko w niektórych typach (klasach) dokumentów \SpecialChar LyX
 -a (patrz podrozdział
 \emph default
  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:textclasses"
+nolink "false"
 
 \end_inset
 
@@ -2230,10 +2358,9 @@ reference "sec:textclasses"
 \end_layout
 
 \begin_layout Standard
-Jeżeli nie chcesz numerowanych rozdziałów i podrozdziałów, użyj odpowiednich
- środowisk.
- Środowisko Section* (znalezienie go na liście może wymagać jej przewinięcia)
- nadaje tytułowi podrozdziału te same atrybuty ale bez numerowania go.
+Jeżeli nie chcesz numerowanych rozdziałów i podrozdziałów,
+ użyj odpowiednich środowisk.
+ Środowisko Section* (znalezienie go na liście może wymagać jej przewinięcia) nadaje tytułowi podrozdziału te same atrybuty ale bez numerowania go.
  Istnieją odpowiednie środowiska 
 \begin_inset Quotes pld
 \end_inset
@@ -2267,7 +2394,8 @@ z gwiazdką
 \series bold
 Ćwiczenie
 \series default
-: Popraw tytuły sekcji i podrozdziałów w 
+:
+ Popraw tytuły sekcji i podrozdziałów w 
 \family typewriter
 example_raw.lyx
 \family default
@@ -2292,20 +2420,21 @@ Listy i podlisty
 \begin_layout Standard
 \SpecialChar LyX
  dysponuje szeregiem różnych środowisk do składu list.
- Środowiska te uwalniają użytkownika od uciążliwego naciskania Tab milion
- razy lub przenumerowywania listy za każdym razem gdy wstawia coś w środek,
+ Środowiska te uwalniają użytkownika od uciążliwego naciskania Tab milion razy lub przenumerowywania listy za każdym razem gdy wstawia coś w środek,
  pozwalając mu skoncentrować się na zawartości
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Tak, przesadzamy z ciągłym podkreślaniem tego faktu w 
+Tak,
+ przesadzamy z ciągłym podkreślaniem tego faktu w 
 \emph on
 Elementarzu
 \emph toggle
 .
  Ale na tym polega \SpecialChar LyX
-, więc prosimy o wyrozumiałość.
+,
+ więc prosimy o wyrozumiałość.
 \end_layout
 
 \end_inset
@@ -2315,8 +2444,9 @@ Elementarzu
 \end_layout
 
 \begin_layout Itemize
-Lista z wierszami rozpoczynanymi znaczkiem — środowisko Itemize — nadaje
- się do prezentacji celem opisania poszczególnych punktów.
+Lista z wierszami rozpoczynanymi znaczkiem —
+ środowisko Itemize —
+ nadaje się do prezentacji celem opisania poszczególnych punktów.
 \end_layout
 
 \begin_layout Itemize
@@ -2332,7 +2462,8 @@ Dokument opisujący pakiety oprogramowania może używać środowiska
 \family sans
 Description
 \family default
-, w którym każda pozycja listy rozpoczyna się wytłuszczonym drukiem.
+,
+ w którym każda pozycja listy rozpoczyna się wytłuszczonym drukiem.
 \end_layout
 
 \begin_layout Itemize
@@ -2340,8 +2471,10 @@ Description
 \family sans
 List
 \family default
- — nieobecne w \SpecialChar LaTeX
--u — to trochę inna forma środowiska 
+ —
+ nieobecne w \SpecialChar LaTeX
+-u —
+ to trochę inna forma środowiska 
 \family sans
 Description
 \family default
@@ -2350,7 +2483,8 @@ Description
 \end_layout
 
 \begin_layout Standard
-Wypisz listę powodów, dla których \SpecialChar LyX
+Wypisz listę powodów,
+ dla których \SpecialChar LyX
  jest lepszy niż inne edytory .
  W dowolnym miejscu dokumentu napisz:
 \end_layout
@@ -2359,7 +2493,8 @@ Wypisz listę powodów, dla których \SpecialChar LyX
 
 \family typewriter
 \SpecialChar LyX
- jest lepszy niż inne edytory, ponieważ:
+ jest lepszy niż inne edytory,
+ ponieważ:
 \end_layout
 
 \begin_layout Standard
@@ -2370,13 +2505,14 @@ Itemize
 \family default
  z listy środowisk.
  \SpecialChar LyX
- postawi znaczek (konkretnie znak mnożenia, który zostanie wydrukowany
- jako kółko).
+ postawi znaczek (konkretnie znak mnożenia,
+ który zostanie wydrukowany jako kółko).
  Wylicz swoje argumenty i naciśnij 
 \family sans
 Return
 \family default
-: 
+:
+ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -2392,20 +2528,22 @@ Bardzo łatwo tworzy listy!
 \end_layout
 
 \begin_layout Standard
-Środowiska list, w przeciwieństwie do tytułów nie kończą się wraz z przyciśnięci
-em Return.
- Zamiast tego, \SpecialChar LyX
+Środowiska list,
+ w przeciwieństwie do tytułów nie kończą się wraz z przyciśnięciem Return.
+ Zamiast tego,
+ \SpecialChar LyX
  zakłada kontynuację wpisywania pozycji listy.
  Powyższy przykład utworzy zatem listę trzech argumentów.
- Jeśli któraś z pozycji listy ma mieć więcej niż jeden akapit, należy użyć
- bezpiecznego końca linii, uzyskiwanego przyciśnięciem 
+ Jeśli któraś z pozycji listy ma mieć więcej niż jeden akapit,
+ należy użyć bezpiecznego końca linii,
+ uzyskiwanego przyciśnięciem 
 \family sans
 C-Return
 \family default
 \emph toggle
 .
- Aby zakończyć listę, należy ponownie wybrać środowisko Standard z listy
- środowisk (lub kombinacją klawiszy
+ Aby zakończyć listę,
+ należy ponownie wybrać środowisko Standard z listy środowisk (lub kombinacją klawiszy
 \emph default
  
 \family sans
@@ -2422,14 +2560,16 @@ s
 Powstała piękna lista argumentów.
  Można obejrzeć jak \SpecialChar LaTeX
  poradzi sobie z wydrukiem.
- Ale jak uzyskać numerację argumentów? Po prostu zaznacz całą listę
+ Ale jak uzyskać numerację argumentów?
+ Po prostu zaznacz całą listę
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
- nie pozwoli na zaznaczenie pierwszego znaczka, o ile nie zostanie zaznaczony
- akapit przed listą, co akurat nie jest potrzebne.
+ nie pozwoli na zaznaczenie pierwszego znaczka,
+ o ile nie zostanie zaznaczony akapit przed listą,
+ co akurat nie jest potrzebne.
  Podobnie nie można zaznaczyć numeru postawionego przed tytułem rozdziału.
  Nie szkodzi.
 \end_layout
@@ -2441,9 +2581,10 @@ status collapsed
 Enumerate
 \family default
 .
- Voila ! Jak wspomniano, \SpecialChar LyX
- troszczy się o numerację listy w przypadku dodania
- lub wstawienia pozycji.
+ Voila !
+ Jak wspomniano,
+ \SpecialChar LyX
+ troszczy się o numerację listy w przypadku dodania lub wstawienia pozycji.
 \end_layout
 
 \begin_layout Standard
@@ -2457,8 +2598,8 @@ Description
 List
 \family default
 .
- W obu lista składa się z hasła – pierwszego słowa danej pozycji oraz następując
-ej po nim definicji, która tworzy resztę akapitu (aż do naciśnięcia 
+ W obu lista składa się z hasła – pierwszego słowa danej pozycji oraz następującej po nim definicji,
+ która tworzy resztę akapitu (aż do naciśnięcia 
 \family sans
 Return
 \family default
@@ -2480,8 +2621,10 @@ tabulatorem
 status collapsed
 
 \begin_layout Plain Layout
-Ale jest to tabulator drukarski, a nie żałosny, ograniczony, niereformowalny
- tabulator maszyny do pisania.
+Ale jest to tabulator drukarski,
+ a nie żałosny,
+ ograniczony,
+ niereformowalny tabulator maszyny do pisania.
 \end_layout
 
 \end_inset
@@ -2491,12 +2634,13 @@ Ale jest to tabulator drukarski, a nie żałosny, ograniczony, niereformowalny
 List
 \family default
 ) od reszty akapitu.
- Hasło składające się z więcej niż jednego słowa można uzyskać rozdzielając
- jego składniki twardą spacją, wstawianą naciśnięciem 
+ Hasło składające się z więcej niż jednego słowa można uzyskać rozdzielając jego składniki twardą spacją,
+ wstawianą naciśnięciem 
 \family sans
 C-Space
 \family default
- i wyświetlaną jako małe, różowe 
+ i wyświetlaną jako małe,
+ różowe 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2512,7 +2656,8 @@ u
 \series bold
 Ćwiczenie
 \series default
-: Sformatuj listy z pliku 
+:
+ Sformatuj listy z pliku 
 \family typewriter
 example_raw.lyx.
 \end_layout
@@ -2520,16 +2665,15 @@ example_raw.lyx.
 \begin_layout Standard
 Listy można zagnieżdżać na wszelkie możliwe sposoby.
  Narzucającym się przykładem byłoby pisanie planu.
- Listy numerowane i ze znaczkami mają różne sposoby numerowania i oznaczania
- podlist.
+ Listy numerowane i ze znaczkami mają różne sposoby numerowania i oznaczania podlist.
  W 
 \emph on
 Podręczniku użytkownika
 \emph default
  
 \emph toggle
-można znaleźć szczegółowy opis różnych typów list, jak również przykłady
- z użyciem
+można znaleźć szczegółowy opis różnych typów list,
+ jak również przykłady z użyciem
 \emph default
  
 \emph on
@@ -2541,15 +2685,20 @@ zagnieżdżeń.
 \end_layout
 
 \begin_layout Subsection
-Inne środowiska: Verses, Quotations, i inne
+Inne środowiska:
+ Verses,
+ Quotations,
+ i inne
 \end_layout
 
 \begin_layout Standard
-Istnieją dwa środowiska wyróżniające cytaty z otaczającego tekstu: 
+Istnieją dwa środowiska wyróżniające cytaty z otaczającego tekstu:
+ 
 \family sans
 Quote
 \family default
- dla krótkich, a 
+ dla krótkich,
+ a 
 \family sans
 Quotation
 \family default
@@ -2559,10 +2708,11 @@ Quotation
 \SpecialChar LyX
 -Code
 \family default
-, używane również w Elementarzu w przykładach dłuższych tekstów) pisane
- są czcionką maszynową.; środowisko to jest jedynym w \SpecialChar LyX
--ie, gdzie można używać
- wielokrotnych spacji celem formatowania kodu.
+,
+ używane również w Elementarzu w przykładach dłuższych tekstów) pisane są czcionką maszynową.;
+ środowisko to jest jedynym w \SpecialChar LyX
+-ie,
+ gdzie można używać wielokrotnych spacji celem formatowania kodu.
  Do pisania poezji służy środowisko 
 \family sans
 Verse
@@ -2575,9 +2725,11 @@ nie wspominając o odrobinie talentu.
 
 \end_inset
 
-, z klawiszem Return
+,
+ z klawiszem Return
 \family default
- rozdzielającym strofy, a 
+ rozdzielającym strofy,
+ a 
 \family sans
 C-Return
 \family default
@@ -2596,10 +2748,13 @@ drobiazgowo opisuje wszystkie dostępne środowiska.
 \series bold
 Ćwiczenie
 \series default
-: Użyj środowisk 
+:
+ Użyj środowisk 
 \family sans
-Quote, \SpecialChar LyX
+Quote,
+ \SpecialChar LyX
 -Code,
+
 \family default
  i 
 \family sans
@@ -2615,23 +2770,31 @@ Pisanie dokumentów
 \end_layout
 
 \begin_layout Standard
-Zadaniem poprzedniego rozdziału było wdrożenie użytkownika do pisania tekstów
- w \SpecialChar LyX
+Zadaniem poprzedniego rozdziału było wdrożenie użytkownika do pisania tekstów w \SpecialChar LyX
 -ie.
- Przedstawiono tam podstawowe operacje, jak również posługiwanie się środowiskam
-i.
+ Przedstawiono tam podstawowe operacje,
+ jak również posługiwanie się środowiskami.
  Większość użytkowników zamierza jednak pisać za pomocą \SpecialChar LyX
--a dokumenty: artykuły,
- prace, książki, podręczniki lub listy.
- Ten rozdział ma poszerzyć umiejętność pisania tekstu o tworzenie całych
- dokumentów.
- Zostaną wprowadzone klasy tekstu, pozwalające na pisanie różnych typów
- dokumentów, oraz dodatki, które stanowią o różnicy między tekstem, a dokumentem
-, takie jak tytuły, przypisy, odsyłacze, bibliografie i spisy treści.
+-a dokumenty:
+ artykuły,
+ prace,
+ książki,
+ podręczniki lub listy.
+ Ten rozdział ma poszerzyć umiejętność pisania tekstu o tworzenie całych dokumentów.
+ Zostaną wprowadzone klasy tekstu,
+ pozwalające na pisanie różnych typów dokumentów,
+ oraz dodatki,
+ które stanowią o różnicy między tekstem,
+ a dokumentem,
+ takie jak tytuły,
+ przypisy,
+ odsyłacze,
+ bibliografie i spisy treści.
 \end_layout
 
 \begin_layout Section
-Klasy tekstu i wzorce: pisanie listów
+Klasy tekstu i wzorce:
+ pisanie listów
 \end_layout
 
 \begin_layout Standard
@@ -2646,17 +2809,19 @@ name "sec:textclasses"
 
 \begin_layout Standard
 Różne typy dokumentów wymagają różnego formatowania.
- Na przykład książki zasadniczo są drukowane na obu stronach kartki, zaś
- artykuły na jednej.
- W dodatku wiele dokumentów zawiera specjalne środowiska: listy mają adres
- nadawcy i podpis, którenie mają sensu w książce czy artykule.
+ Na przykład książki zasadniczo są drukowane na obu stronach kartki,
+ zaś artykuły na jednej.
+ W dodatku wiele dokumentów zawiera specjalne środowiska:
+ listy mają adres nadawcy i podpis,
+ którenie mają sensu w książce czy artykule.
  Klasy tekstu
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Dla użytkowników \SpecialChar LaTeX
--a: ekwiwalent latexowej 
+-a:
+ ekwiwalent latexowej 
 \emph on
 documentclass
 \end_layout
@@ -2679,9 +2844,10 @@ został napisany w klasie
 Book
 \family default
 .
- Klasy to kolejny element WYSIWYM; informują \SpecialChar LyX
--a jak składać dokument, uwalniając
- od tego użytkownika.
+ Klasy to kolejny element WYSIWYM;
+ informują \SpecialChar LyX
+-a jak składać dokument,
+ uwalniając od tego użytkownika.
 \end_layout
 
 \begin_layout Standard
@@ -2692,7 +2858,8 @@ Article
 status collapsed
 
 \begin_layout Plain Layout
-To domyślna klasa, chyba że ją zmienić w pliku 
+To domyślna klasa,
+ chyba że ją zmienić w pliku 
 \family typewriter
 lyxrc
 \family default
@@ -2704,34 +2871,35 @@ lyxrc
 .
  Spróbuj zmienić klasę używając listy klas w oknie polecenia Układ->Dokument
 \family default
-, celem obejrzenia różnic w formatowaniu dokumentów.
+,
+ celem obejrzenia różnic w formatowaniu dokumentów.
  Jeśli zmienisz klasę swojego dokumentu na 
 \family sans
 Book
 \family default
- i obejrzysz listę środowisk, zauważysz, że większość z nich nie uległa
- zmianie.
+ i obejrzysz listę środowisk,
+ zauważysz,
+ że większość z nich nie uległa zmianie.
  Dodatkowo pojawi się środowisko 
 \family sans
 Chapter
 \family default
 .
- W razie wątpliwości, czy dane środowisko istnieje w klasie najlepiej zajrzeć
- na listę środowisk.
+ W razie wątpliwości,
+ czy dane środowisko istnieje w klasie najlepiej zajrzeć na listę środowisk.
 \end_layout
 
 \begin_layout Standard
-Rozmiary czcionek, druk jedno- lub dwukolumnowy, nagłówki stron to możliwe
- różnice między formatami czasopism.
- W miarę rozpowszechniania się komputerów czasopisma zaczęły przyjmować
- artykuły drogą elektroniczną i stworzyły pliki stylu \SpecialChar LaTeX
--a, tak by autorzy
- mogli dokonać prawidłowego składu.
+Rozmiary czcionek,
+ druk jedno- lub dwukolumnowy,
+ nagłówki stron to możliwe różnice między formatami czasopism.
+ W miarę rozpowszechniania się komputerów czasopisma zaczęły przyjmować artykuły drogą elektroniczną i stworzyły pliki stylu \SpecialChar LaTeX
+-a,
+ tak by autorzy mogli dokonać prawidłowego składu.
  \SpecialChar LyX
  również je akceptuje.
  Na przykład \SpecialChar LyX
- obsługuje format (i dodatkowe środowiska) dla biuletynu Amerykańsk
-iego Towarzystwa Matematycznego stosując klasę 
+ obsługuje format (i dodatkowe środowiska) dla biuletynu Amerykańskiego Towarzystwa Matematycznego stosując klasę 
 \family sans
 Article
 \begin_inset space ~
@@ -2795,7 +2963,8 @@ article
 \begin_inset Text
 
 \begin_layout Plain Layout
-druk jednostronny, bez rozdziałów
+druk jednostronny,
+ bez rozdziałów
 \end_layout
 
 \end_inset
@@ -2835,7 +3004,8 @@ report
 \begin_inset Text
 
 \begin_layout Plain Layout
-dłuższy niż article, druk dwustronny
+dłuższy niż article,
+ druk dwustronny
 \end_layout
 
 \end_inset
@@ -2896,7 +3066,9 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-list—mnóstwo dodatkowych środowisk dla adresu, podpisu\SpecialChar ldots
+list—
+mnóstwo dodatkowych środowisk dla adresu,
+ podpisu\SpecialChar ldots
 
 \end_layout
 
@@ -2918,25 +3090,28 @@ list—mnóstwo dodatkowych środowisk dla adresu, podpisu\SpecialChar ldots
 \end_layout
 
 \begin_layout Section
-Wzorce: pisanie listu
+Wzorce:
+ pisanie listu
 \end_layout
 
 \begin_layout Standard
 Jedną z najbardziej popularnych klas tekstu jest Letter (list).
- Nowy list można rozpocząć tworząc nowy plik poleceniem Nowy, i wybierając
- Letter z listy Klasa w oknie polecenia Układ->Dokument.
- Choć taki sposób wydaje się najbardziej oczywisty, nie jest wcale ekonomiczny.
- Za każdym razem chcąc napisać list musimy w nim zawrzeć adresy nadawcy
- i odbiorcy, podpis itp.
+ Nowy list można rozpocząć tworząc nowy plik poleceniem Nowy,
+ i wybierając Letter z listy Klasa w oknie polecenia Układ->Dokument.
+ Choć taki sposób wydaje się najbardziej oczywisty,
+ nie jest wcale ekonomiczny.
+ Za każdym razem chcąc napisać list musimy w nim zawrzeć adresy nadawcy i odbiorcy,
+ podpis itp.
  Dlatego \SpecialChar LyX
- posiada wzorzec listu, będący przykładowym listem.
- Posiadając wzorzec można po prostu zastąpić jego fragmenty własnym tekstem
- kiedy pisze się własny list.
+ posiada wzorzec listu,
+ będący przykładowym listem.
+ Posiadając wzorzec można po prostu zastąpić jego fragmenty własnym tekstem kiedy pisze się własny list.
 \end_layout
 
 \begin_layout Standard
 Utwórz nowy plik poleceniem Plik->Nowy ze wzorca.
- Po podaniu nazwy nowego pliku, w oknie Wybierz wzorzec wybierz 
+ Po podaniu nazwy nowego pliku,
+ w oknie Wybierz wzorzec wybierz 
 \family typewriter
 latex_letter.lyx
 \family default
@@ -2945,8 +3120,7 @@ latex_letter.lyx
 \end_layout
 
 \begin_layout Standard
-Na liście środowisk znajduje się teraz kilka pozycji włącznie ze środowiskiem
- 
+Na liście środowisk znajduje się teraz kilka pozycji włącznie ze środowiskiem 
 \family sans
 My
 \begin_inset space ~
@@ -2954,15 +3128,18 @@ My
 
 Address
 \family default
- (mój adres), których nie ma w innych klasach.
+ (mój adres),
+ których nie ma w innych klasach.
  Inne środowiska jak 
 \family sans
 Description
 \family default
-, są już znane.
+,
+ są już znane.
  Warto wypróbować ich działanie.
  Można np.
- zauważyć, że środowisko 
+ zauważyć,
+ że środowisko 
 \family sans
 Signature
 \family default
@@ -2977,23 +3154,28 @@ Signature:
  na czerwono przed właściwym podpisem.
  Słowo to nie pokaże się na wydruku.
  Istnieje tylko w celu pokazania miejsca podpisu.
- Nieważne zresztą, gdzie to środowisku znajduje się w pliku.
- Należy pamiętać, że \SpecialChar LyX
- jest WYSIWYM; środowisko 
+ Nieważne zresztą,
+ gdzie to środowisku znajduje się w pliku.
+ Należy pamiętać,
+ że \SpecialChar LyX
+ jest WYSIWYM;
+ środowisko 
 \family sans
 Signature
 \family default
- może być wstawione gdziekolwiek, ale \SpecialChar LyX
- sprawi, że na wydruku zostanie umieszczon
-e na końcu.
+ może być wstawione gdziekolwiek,
+ ale \SpecialChar LyX
+ sprawi,
+ że na wydruku zostanie umieszczone na końcu.
 \end_layout
 
 \begin_layout Standard
 Wzorzec jest normalnym plikiem \SpecialChar LyX
 -a.
- Oznacza to, że możesz wstawić swój adres i podpis i zapisać tak zmieniony
- plik jako nowy wzorzec.
- Od tego momentu, każdy list możesz zacząć od otworzenia tego nowego wzorca.
+ Oznacza to,
+ że możesz wstawić swój adres i podpis i zapisać tak zmieniony plik jako nowy wzorzec.
+ Od tego momentu,
+ każdy list możesz zacząć od otworzenia tego nowego wzorca.
  Nie proponujemy tu żadnego szczególnego ćwiczenia.
  Po prostu napisz do kogoś list
 \begin_inset Foot
@@ -3012,7 +3194,8 @@ Address
 \family default
  celem wpisania własnego adresu i przemieścisz kursor nic nie wpisując,
  ryzykujesz zniknięcie środowiska.
- Dzieje się tak , ponieważ środowisko nie może istnieć bez tekstu.
+ Dzieje się tak ,
+ ponieważ środowisko nie może istnieć bez tekstu.
  Aby je odzyskać należy wybrać je ponownie z listy środowisk.
 \end_layout
 
@@ -3026,8 +3209,9 @@ Tytuły dokumentu
 \end_layout
 
 \begin_layout Standard
-Tytuł (który może składać się z właściwego tytułu, autora, a nawet streszczenia)
- jest uważany w \SpecialChar LyX
+Tytuł (który może składać się z właściwego tytułu,
+ autora,
+ a nawet streszczenia) jest uważany w \SpecialChar LyX
 -ie (podobnie jak w \SpecialChar LaTeX
 -u) za osobną część dokumentu.
 \end_layout
@@ -3040,13 +3224,15 @@ newfile.lyx i
  upewnij się
 \family typewriter
 ,
+
 \family default
  że używa klasy 
 \family sans
 Article
 \family default
 .
- Wpisz tytuł w pierwszej linijce, i zmień środowisko na 
+ Wpisz tytuł w pierwszej linijce,
+ i zmień środowisko na 
 \family sans
 Title
 \family default
@@ -3074,7 +3260,9 @@ Abstract
 \series bold
 Ćwiczenie
 \series default
-: Popraw tytuł, datę i autora 
+:
+ Popraw tytuł,
+ datę i autora 
 \family typewriter
 w example_raw.lyx
 \end_layout
@@ -3084,19 +3272,19 @@ Etykiety i odnośniki
 \end_layout
 
 \begin_layout Standard
- Zaetykietować można podrozdział (albo sekcję, czy też, rzadziej, pop prostu
- kawałek tekstu) w dowolnym dokumencie.
- Dzięki temu powstaje możliwość odwołania się do tego podrozdziału w innych
- miejscach dokumentu przy użyciu odnośników.
- Można odwoływać się albo do numeru podrozdziału, albo do numeru strony
- jego początku.
- Podobnie jak w przypadku przypisów i notatek, \SpecialChar LyX
- zajmuje się aktualizacją
- odnośników.
+ Zaetykietować można podrozdział (albo sekcję,
+ czy też,
+ rzadziej,
+ pop prostu kawałek tekstu) w dowolnym dokumencie.
+ Dzięki temu powstaje możliwość odwołania się do tego podrozdziału w innych miejscach dokumentu przy użyciu odnośników.
+ Można odwoływać się albo do numeru podrozdziału,
+ albo do numeru strony jego początku.
+ Podobnie jak w przypadku przypisów i notatek,
+ \SpecialChar LyX
+ zajmuje się aktualizacją odnośników.
  Automatyczne etykiety i odnośniki to jedna z największych zalet \SpecialChar LyX
 -a (i \SpecialChar LaTeX
--a)
- w porównaniu do zwykłych edytorów.
+-a) w porównaniu do zwykłych edytorów.
 \end_layout
 
 \begin_layout Subsection*
@@ -3118,12 +3306,14 @@ O tym dokumencie
 Wstaw->Etykietę
 \family default
 .
- W oknie wpisz nazwę podrozdziału: 
+ W oknie wpisz nazwę podrozdziału:
+ 
 \family typewriter
 sec:o_dok
 \family default
-, która wygląda na dobre opisowe oznaczenie, niekolidujące z ewentualnymi
- innymi nazwami etykiet
+,
+ która wygląda na dobre opisowe oznaczenie,
+ niekolidujące z ewentualnymi innymi nazwami etykiet
 \begin_inset Foot
 status collapsed
 
@@ -3136,34 +3326,34 @@ sec:
 \begin_inset Quotes prd
 \end_inset
 
- , bo można etykietować także równania.
+ ,
+ bo można etykietować także równania.
  tabele i rysunki.
 \end_layout
 
 \end_inset
 
 .
- Po naciśnięciu OK nazwa etykiety zostanie umieszczona w prostokącie obok
- tytułu podrozdziału.
+ Po naciśnięciu OK nazwa etykiety zostanie umieszczona w prostokącie obok tytułu podrozdziału.
 \end_layout
 
 \begin_layout Standard
 Skądinąd etykieta mogłaby być wstawiona w dowolnym miejscu w środku podrozdziału.
- Odnośniki do podrozdziału wskazują na ostatni podrozdział lub sekcję, której
- tytuł znajduje się przed etykietą.
- Umieszczenie jej w linijce tytułu (czy w pierwszej linijce tekstu) zapewnia
- odwołanie do początku podrozdziału.
+ Odnośniki do podrozdziału wskazują na ostatni podrozdział lub sekcję,
+ której tytuł znajduje się przed etykietą.
+ Umieszczenie jej w linijce tytułu (czy w pierwszej linijce tekstu) zapewnia odwołanie do początku podrozdziału.
 \end_layout
 
 \begin_layout Standard
-Jak dotąd niewiele się zmieniło — plik 
+Jak dotąd niewiele się zmieniło —
+ plik 
 \family typewriter
 dvi
 \family default
- wygląda dokładnie jak wyglądał, ponieważ etykiety nie pojawiają się na
- wydruku.
- Tym niemniej jeśli dołożono etykietę, to można się do niej odwołać za pomocą
- odnośnika.
+ wygląda dokładnie jak wyglądał,
+ ponieważ etykiety nie pojawiają się na wydruku.
+ Tym niemniej jeśli dołożono etykietę,
+ to można się do niej odwołać za pomocą odnośnika.
  Zrobimy to w następnym kroku.
 \end_layout
 
@@ -3177,12 +3367,14 @@ Umieść kursor w dowolnym miejscu swojego dokumentu.
 \end_layout
 
 \begin_layout LyX-Code
-Jeśli chcesz zasięgnąć więcej informacji o tym dokumencie,zobacz podrozdział
- , który rozpoczyna się na stronie .
+Jeśli chcesz zasięgnąć więcej informacji o tym dokumencie,zobacz podrozdział ,
+ który rozpoczyna się na stronie .
 \end_layout
 
 \begin_layout Standard
-Następnie — z kursorem po słowie podrozdział — użyj polecenia 
+Następnie —
+ z kursorem po słowie podrozdział —
+ użyj polecenia 
 \family sans
 Wstaw->Odnośnik
 \family default
@@ -3195,8 +3387,10 @@ Wstaw
 
 odnośnik
 \family default
-, pokazując listę możliwych etykiet.
- W tej chwili powinna być tylko jedna: 
+,
+ pokazując listę możliwych etykiet.
+ W tej chwili powinna być tylko jedna:
+ 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3258,9 +3452,9 @@ Wstaw
 odnośnik
 \family default
 ).
- Dla wygody odnośniki działają jak hiperłącza w trakcie edycji dokumentu
- \SpecialChar LyX
--a; kliknięcie na nich przenosi kursor do wskazywanej etykiety.
+ Dla wygody odnośniki działają jak hiperłącza w trakcie edycji dokumentu \SpecialChar LyX
+-a;
+ kliknięcie na nich przenosi kursor do wskazywanej etykiety.
  Użyj polecenia 
 \family sans
 Plik->Podgląd->Obejrzyj
@@ -3273,7 +3467,8 @@ jako
 
 DVI
 \family default
- aby zobaczyć, że na ostatniej stronie odsyłamy do 
+ aby zobaczyć,
+ że na ostatniej stronie odsyłamy do 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3289,7 +3484,8 @@ strony 1
 \begin_inset Quotes prd
 \end_inset
 
- (czy innej, na której akurat jest tytuł 2.
+ (czy innej,
+ na której akurat jest tytuł 2.
  podrozdziału).
 \end_layout
 
@@ -3299,11 +3495,14 @@ Więcej o etykietach
 
 \begin_layout Standard
 Wspomniano o obsłudze numerowania odnośników przez \SpecialChar LyX
--a; teraz można ją przetestow
-ać.
+-a;
+ teraz można ją przetestować.
  Dodaj nowy podrozdział przed podrozdziałem 2.
- Uaktualnij podgląd — voilŕ! — odnośnik zmienił numer na 3! Zmień środowisko
- 
+ Uaktualnij podgląd —
+ voilŕ!
+ —
+ odnośnik zmienił numer na 3!
+ Zmień środowisko 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3315,9 +3514,10 @@ O tym dokumencie
 \family sans
 Subsection
 \family default
-, a odnośnik wskaże sekcję 2.1 zamiast podrozdziału 3.
- Odnośnik do strony nie zmieni się oczywiście tak długo, aż nie wpiszesz
- całej strony tekstu przed wskazywaną etykietą.
+,
+ a odnośnik wskaże sekcję 2.1 zamiast podrozdziału 3.
+ Odnośnik do strony nie zmieni się oczywiście tak długo,
+ aż nie wpiszesz całej strony tekstu przed wskazywaną etykietą.
 \end_layout
 
 \begin_layout Standard
@@ -3329,8 +3529,7 @@ sec:moja_etykieta
 \begin_inset Quotes prd
 \end_inset
 
- w miejsce pierwszego odnośnika i umieść w innym miejscu dokumentu odnośnik
- do niej.
+ w miejsce pierwszego odnośnika i umieść w innym miejscu dokumentu odnośnik do niej.
  Podczas częstego wstawiania odnośników warto zostawić otwarte okno 
 \family sans
 Wstaw
@@ -3343,8 +3542,9 @@ odnośnik
 \end_layout
 
 \begin_layout Standard
-Jeżeli chcesz sprawdzić, czy odnośniki wyświetlają prawidłowe strony we
- większych dokumentach, skopiuj kilka stron z 
+Jeżeli chcesz sprawdzić,
+ czy odnośniki wyświetlają prawidłowe strony we większych dokumentach,
+ skopiuj kilka stron z 
 \emph on
 Podręcznika użytkownika
 \emph default
@@ -3354,13 +3554,16 @@ status collapsed
 
 \begin_layout Plain Layout
 Skopiowanie tytułu rozdziału może spowodować błąd \SpecialChar LyX
--a, ponieważ rozdziały
- nie są dozwolone w klasie Article.
+-a,
+ ponieważ rozdziały nie są dozwolone w klasie Article.
  W takim przypadku skasuj tytuł rozdziału.
- Jeśli chcesz wiedzieć, czemu tak się dzieje, zobacz podrozdział 
+ Jeśli chcesz wiedzieć,
+ czemu tak się dzieje,
+ zobacz podrozdział 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:textclasses"
+nolink "false"
 
 \end_inset
 
@@ -3378,7 +3581,8 @@ reference "sec:textclasses"
 \series bold
 Ćwiczenie
 \series default
-: Popraw odnośniki w 
+:
+ Popraw odnośniki w 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3439,8 +3643,8 @@ foot
 \end_inset
 
  napisane czerwonym kolorem na szarym tle.
- Reszta linijki jest okolona czerwoną linią.; tu właśnie należy wpisać tekst
- przypisu.
+ Reszta linijki jest okolona czerwoną linią.;
+ tu właśnie należy wpisać tekst przypisu.
  Kursor powinien znajdować się na początku tej linijki.
  Napisz
 \end_layout
@@ -3468,8 +3672,9 @@ foot
 \begin_inset Quotes prd
 \end_inset
 
- zapisane jako czerwony indeks górny, pokazując gdzie na wydruku znajdzie
- się przypis; nazwiemy to 
+ zapisane jako czerwony indeks górny,
+ pokazując gdzie na wydruku znajdzie się przypis;
+ nazwiemy to 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3482,25 +3687,29 @@ zwijaniem
 \end_layout
 
 \begin_layout Standard
-Można zapytać, czemu przypis pokazywany jest jako czerwony indeks, a nie
- jako liczba.
- Dzieje się tak, gdyż \SpecialChar LyX
+Można zapytać,
+ czemu przypis pokazywany jest jako czerwony indeks,
+ a nie jako liczba.
+ Dzieje się tak,
+ gdyż \SpecialChar LyX
  zajmuje się numerowaniem przypisów 
 \emph on
 na wydrukach
 \emph default
-, o czym możesz się przekonać oglądając plik dvi (lub wydruk).
+,
+ o czym możesz się przekonać oglądając plik dvi (lub wydruk).
  Dodanie nowego przypisu powoduje odpowiednie przenumerowanie już istniejących.
  Ponieważ \SpecialChar LyX
  (a właściwie \SpecialChar LaTeX
-) radzi sobie z tym na bieżąco, nie ma potrzeby
- zapisywania numerów przypisów w pliku \SpecialChar LyX
+) radzi sobie z tym na bieżąco,
+ nie ma potrzeby zapisywania numerów przypisów w pliku \SpecialChar LyX
 -a.
 \end_layout
 
 \begin_layout Standard
 Przypis może być wycinany i wklejany tak jak zwykły tekst.
- Przekonaj się o tym sam ! Wystarczy zaznaczyć znaczek przypisu,
+ Przekonaj się o tym sam !
+ Wystarczy zaznaczyć znaczek przypisu,
 \begin_inset Foot
 status collapsed
 
@@ -3512,8 +3721,8 @@ Być może łatwiej zaznaczyć go przy pomocy klawiszy.
 \end_inset
 
  poczym wyciąć go i wkleić.
- Poza tym można zamienić w przypis zwykły tekst, zaznaczając go i naciskając
- przycisk 
+ Poza tym można zamienić w przypis zwykły tekst,
+ zaznaczając go i naciskając przycisk 
 \family sans
 Wstaw
 \begin_inset space ~
@@ -3534,8 +3743,7 @@ notatkę dodaje notatki na marginesach
 status collapsed
 
 \begin_layout Plain Layout
-Przycisk przedstawia strzałkę wskazującą kolumnę tekstu na marginesie i
- powinien znajdować się po prawej stronie przycisku 
+Przycisk przedstawia strzałkę wskazującą kolumnę tekstu na marginesie i powinien znajdować się po prawej stronie przycisku 
 \family sans
 Wstaw
 \begin_inset space ~
@@ -3548,12 +3756,15 @@ stopkę
 
 \end_inset
 
-, co osiągnąć można również poleceniem 
+,
+ co osiągnąć można również poleceniem 
 \family sans
 Wstaw->Notatkę
 \family default
 \SpecialChar endofsentence
- Notatki zachowują się jak przypisy, z tym że: 
+ Notatki zachowują się jak przypisy,
+ z tym że:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -3577,7 +3788,8 @@ foot
 \end_layout
 
 \begin_layout Itemize
-notatki pojawią się na marginesie, a nie pod tekstem 
+notatki pojawią się na marginesie,
+ a nie pod tekstem 
 \end_layout
 
 \begin_layout Itemize
@@ -3585,13 +3797,15 @@ notatki nie są numerowane
 \end_layout
 
 \begin_layout Itemize
-Kiedy notatka jest zwinięta, na marginesie pojawia się wykrzyknik, który
- nie pokaże się na wydruku.
+Kiedy notatka jest zwinięta,
+ na marginesie pojawia się wykrzyknik,
+ który nie pokaże się na wydruku.
 \end_layout
 
 \begin_layout Standard
 Zmień swój przypis o \SpecialChar LyX
--ie z powrotem w tekst, a następnie w notatkę.
+-ie z powrotem w tekst,
+ a następnie w notatkę.
  Obejrzyj plik dvi aby zobaczyć jak wygląda taka notatka.
 \end_layout
 
@@ -3600,7 +3814,8 @@ Zmień swój przypis o \SpecialChar LyX
 \series bold
 Ćwiczenie
 \series default
-: Popraw przypis w 
+:
+ Popraw przypis w 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3621,8 +3836,8 @@ name "sec:bibliographies"
  do których można się odwoływać w tekście.
  Podobnie jak tytuły podrozdziałów pozycje bibliografii są przez \SpecialChar LyX
 -a i \SpecialChar LaTeX
--a
- automatycznie numerowane, jak również odwołania do nich.
+-a automatycznie numerowane,
+ jak również odwołania do nich.
 \end_layout
 
 \begin_layout Standard
@@ -3635,13 +3850,16 @@ Bibliography
  Napisz 
 \family typewriter
 Elementarz \SpecialChar LyX
--a, Zespół Dokumentacji \SpecialChar LyX
+-a,
+ Zespół Dokumentacji \SpecialChar LyX
 -a
 \family default
  jako swoją pierwszą pozycję.
- Zauważ, że \SpecialChar LyX
+ Zauważ,
+ że \SpecialChar LyX
  automatycznie umieszcza numer w prostokącie przed każdą pozycją.
- Kliknij na takim numerze, aby otworzyć okno 
+ Kliknij na takim numerze,
+ aby otworzyć okno 
 \family sans
 Pozycja
 \begin_inset space ~
@@ -3650,11 +3868,14 @@ Pozycja
 bibliografii
 \family default
 .
- Pierwsze z pól, edycyjnych, 
+ Pierwsze z pól,
+ edycyjnych,
+ 
 \family sans
 Klucz
 \family default
-, służy do odwołań z tekstu dokumentu \SpecialChar LyX
+,
+ służy do odwołań z tekstu dokumentu \SpecialChar LyX
 -a.
  Domyślnie jest on liczbą.
  Wpisz w to pole 
@@ -3669,8 +3890,7 @@ elementarz
 \end_layout
 
 \begin_layout Standard
-Znajdź teraz w swoim dokumencie jakieś miejsce do umieszczenia odwołania
- do literatury.
+Znajdź teraz w swoim dokumencie jakieś miejsce do umieszczenia odwołania do literatury.
  Wstaw je za pomocą 
 \family sans
 Wstaw->Odwołanie
@@ -3685,8 +3905,7 @@ literatury
 \family default
 \SpecialChar endofsentence
  \SpecialChar LyX
- wstawi w tekst prostokąt z trzema znakami zapytania w nawiasach kwadratowych
- i pojawi się okno 
+ wstawi w tekst prostokąt z trzema znakami zapytania w nawiasach kwadratowych i pojawi się okno 
 \family sans
 Wstaw
 \begin_inset space ~
@@ -3699,7 +3918,8 @@ odwołanie
 \family sans
 Klucz
 \family default
-, wybierz 
+,
+ wybierz 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3712,7 +3932,8 @@ elementarz
 \end_layout
 
 \begin_layout Standard
-Do czego służą pozostałe pola? Pole 
+Do czego służą pozostałe pola?
+ Pole 
 \family sans
 Uwaga
 \family default
@@ -3720,8 +3941,7 @@ Uwaga
 \family sans
 Odwołanie
 \family default
- wstawia notkę (jak strona lub rozdział w przywołanej książce lub artykule)
- w nawiasach po odwołaniu.
+ wstawia notkę (jak strona lub rozdział w przywołanej książce lub artykule) w nawiasach po odwołaniu.
  Jeśli wolisz skróty zamiast liczb (np.
  
 \begin_inset Quotes pld
@@ -3756,6 +3976,7 @@ Podręczniku użytkownika.
 
 \series bold
 Ćwiczenie:
+
 \series default
  Wykonaj bibliografię i odwołania w 
 \family typewriter
@@ -3767,9 +3988,9 @@ Spis treści
 \end_layout
 
 \begin_layout Standard
-Jeśli zamierzasz wstawić spis treści na początku dokumentu, \SpecialChar LyX
- znakomicie
- to ułatwi.
+Jeśli zamierzasz wstawić spis treści na początku dokumentu,
+ \SpecialChar LyX
+ znakomicie to ułatwi.
  Naciśnij 
 \family sans
 Return
@@ -3781,9 +4002,9 @@ status collapsed
 \begin_layout Plain Layout
 Nawet nie próbuj umieścić kursora przed numerem podrozdziału.
  Nie uda się.
- Tak czy inaczej nie można ręcznie poprawiać tego numeru, bo \SpecialChar LyX
- numeruje podrozdzi
-ały automatycznie.
+ Tak czy inaczej nie można ręcznie poprawiać tego numeru,
+ bo \SpecialChar LyX
+ numeruje podrozdziały automatycznie.
 \end_layout
 
 \end_inset
@@ -3809,15 +4030,16 @@ Spis treści
 \end_layout
 
 \begin_layout Standard
-Wygląda to niepozornie, ale na podglądzie widać kompletny spis treści dokumentu
- w całej okazałości.
- Jak zwykle, w przypadku zmiany kolejności rozdziałów lub dodania nowych,
+Wygląda to niepozornie,
+ ale na podglądzie widać kompletny spis treści dokumentu w całej okazałości.
+ Jak zwykle,
+ w przypadku zmiany kolejności rozdziałów lub dodania nowych,
  spis treści na wydruku zostanie uaktualniony.
 \end_layout
 
 \begin_layout Standard
-Spis treści nie pokazuje się w edytowanej wersji dokumentu, bo i tak nie
- ma możliwości jego edycji.
+Spis treści nie pokazuje się w edytowanej wersji dokumentu,
+ bo i tak nie ma możliwości jego edycji.
  Można jednak wyświetlić go za pomocą polecenia 
 \family sans
 Edycja->Struktura
@@ -3827,8 +4049,8 @@ Edycja->Struktura
 dokumentu
 \family default
 .
- To bardzo użyteczne narzędzie, które umożliwia łatwe poruszanie się po
- dokumencie.
+ To bardzo użyteczne narzędzie,
+ które umożliwia łatwe poruszanie się po dokumencie.
  Kliknięcie na tytule podrozdziału w oknie 
 \family sans
 Struktura
@@ -3849,7 +4071,8 @@ Pozbyć się spisu treści można kasując go tak jak inne znaki.
 \series bold
 Ćwiczenie
 \series default
-: Wstaw spis treści w pliku 
+:
+ Wstaw spis treści w pliku 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3860,28 +4083,30 @@ Formuły matematyczne
 
 \begin_layout Standard
 \SpecialChar LaTeX
- jest używany przez wielu naukowców z powodu jego świetnie wyglądających
- równań, powstających bez potrzeby używania znaków kontrolnych i edytorów
- równań spotykanych w innych procesorach tekstu.
+ jest używany przez wielu naukowców z powodu jego świetnie wyglądających równań,
+ powstających bez potrzeby używania znaków kontrolnych i edytorów równań spotykanych w innych procesorach tekstu.
  Wielu z nich zżyma się jednak na styl pracy z \SpecialChar LaTeX
--em, bardziej przypominający
- programowanie niż pisanie tekstu.
+-em,
+ bardziej przypominający programowanie niż pisanie tekstu.
  Na szczęście \SpecialChar LyX
  obsługuje równania w trybie wizualnym.
  Przyzwyczajeni do pisania w \SpecialChar LaTeX
--u zauważą, że wszystkie normalne polecenia
- \SpecialChar LaTeX
--a działają jak zwykle, poza tym, że ich efekt pokazuje się na bieżąco.
+-u zauważą,
+ że wszystkie normalne polecenia \SpecialChar LaTeX
+-a działają jak zwykle,
+ poza tym,
+ że ich efekt pokazuje się na bieżąco.
  Z drugiej strony użytkownicy nigdy nie korzystający z \SpecialChar LaTeX
--a mogą użyć paska
- narzędzi formuł matematycznych, który umożliwia tworzenie profesjonalnie
- wyglądających równań w sposób łatwy i szybki
+-a mogą użyć paska narzędzi formuł matematycznych,
+ który umożliwia tworzenie profesjonalnie wyglądających równań w sposób łatwy i szybki
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
- nie potrafi, niestety, sprawdzić 
+ nie potrafi,
+ niestety,
+ sprawdzić 
 \emph on
 poprawności
 \emph default
@@ -3900,17 +4125,20 @@ Tryb formuł matematycznych
 \end_layout
 
 \begin_layout Standard
-W dowolnym miejscu swojego dokumentu napisz: 
+W dowolnym miejscu swojego dokumentu napisz:
+ 
 \end_layout
 
 \begin_layout LyX-Code
-Lubię równanie Einsteina, E=mc^2, bo  jest takie proste
+Lubię równanie Einsteina,
+ E=mc^2,
+ bo  jest takie proste
 \end_layout
 
 \begin_layout Standard
-Takie równanie nie wygląda za ładnie, nawet na podglądzie.
- Brak w nim spacji między literami a znakiem równości i prawdziwego indeksu
- górnego dla 
+Takie równanie nie wygląda za ładnie,
+ nawet na podglądzie.
+ Brak w nim spacji między literami a znakiem równości i prawdziwego indeksu górnego dla 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3919,30 +4147,30 @@ Takie równanie nie wygląda za ładnie, nawet na podglądzie.
 \end_inset
 
 .
- Taki nieciekawy skład jest skutkiem tego, że \SpecialChar LyX
- nie został poinformowany
- o pisaniu równania i złożył je jak zwykły tekst.
+ Taki nieciekawy skład jest skutkiem tego,
+ że \SpecialChar LyX
+ nie został poinformowany o pisaniu równania i złożył je jak zwykły tekst.
 \end_layout
 
 \begin_layout Standard
 Tekst matematyczny powinno pisać się w trybie formuł matematycznych.
- Aby wejść w tryb formuł wystarczy nacisnąć przycisk na pasku narzędzi oznaczony
- niebieskim symbolem 
+ Aby wejść w tryb formuł wystarczy nacisnąć przycisk na pasku narzędzi oznaczony niebieskim symbolem 
 \begin_inset Formula $\frac{a+b}{c}$
 \end_inset
 
  .
  \SpecialChar LyX
  wstawi w tekst mały niebieski prostokąt okolony czerwoną ramką.
- Niebieski prostokąt to punkt wstawiania, gdzie pojawią się elementy formuły,
+ Niebieski prostokąt to punkt wstawiania,
+ gdzie pojawią się elementy formuły,
  zaś czerwona ramka sygnalizuje tryb formuł.
  \SpecialChar LyX
- umieścił już kursor w niebieskim prostokącie, więc wystarczy wpisać ponownie
- E=mc^2.
- Wyrażenie napisane jest na niebiesko, a niebieski prostokąt znika kiedy
- punkt wstawiania nie jest pusty.
- Teraz naciśnij Esc celem opuszczenia trybu matematycznego (zauważ, że powtórne
- przyciśnięcie przycisku Tryb
+ umieścił już kursor w niebieskim prostokącie,
+ więc wystarczy wpisać ponownie E=mc^2.
+ Wyrażenie napisane jest na niebiesko,
+ a niebieski prostokąt znika kiedy punkt wstawiania nie jest pusty.
+ Teraz naciśnij Esc celem opuszczenia trybu matematycznego (zauważ,
+ że powtórne przyciśnięcie przycisku Tryb
 \begin_inset space ~
 \end_inset
 
@@ -3953,13 +4181,15 @@ nie opuszcza
  
 \emph toggle
 trybu formuł).
- Znika czerwona ramka, kursor znajduje się na prawo od wyrażenia, ewentualne
- dalsze pisanie będzie w trybie zwykłego tekstu.
+ Znika czerwona ramka,
+ kursor znajduje się na prawo od wyrażenia,
+ ewentualne dalsze pisanie będzie w trybie zwykłego tekstu.
 \end_layout
 
 \begin_layout Standard
-Obejrzyj podgląd i zauważ ładnie złożone równanie, zawierające spacje między
- literami i znakiem równaości, a także 
+Obejrzyj podgląd i zauważ ładnie złożone równanie,
+ zawierające spacje między literami i znakiem równaości,
+ a także 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3975,21 +4205,22 @@ Obejrzyj podgląd i zauważ ładnie złożone równanie, zawierające spacje mi�
 \begin_layout Standard
 Edycja formuł to kolejny przykład podejścia WYSIWYM.
  W \SpecialChar LaTeX
--u wyrażenie matematyczne tworzy się pisząc tekst i używając poleceń
- typu 
+-u wyrażenie matematyczne tworzy się pisząc tekst i używając poleceń typu 
 \backslash
-sqrt; może to być uciążliwe, z braku możliwości zobaczenia wyrażenia zanim
- uruchomi się program \SpecialChar LaTeX
--a, co powoduje stratę czasu na poprawkę ewentualnych
- błędów jak zgubione nawiasy itd.
+sqrt;
+ może to być uciążliwe,
+ z braku możliwości zobaczenia wyrażenia zanim uruchomi się program \SpecialChar LaTeX
+-a,
+ co powoduje stratę czasu na poprawkę ewentualnych błędów jak zgubione nawiasy itd.
  Z drugiej strony \SpecialChar LyX
- nie próbuje przedstawiać wyglądu równania dokładnie tak
- jak na wydruku, ale prezentuje bardzo dobre przybliżenie końcowego efektu.
+ nie próbuje przedstawiać wyglądu równania dokładnie tak jak na wydruku,
+ ale prezentuje bardzo dobre przybliżenie końcowego efektu.
  W następnej kolejności \SpecialChar LaTeX
- zajmuje się profesjonalnym składem, po którym w
- 99% nie trzeba ręcznie poprawiać rozmiarów czcionki czy odstępów.
- W ten sposób (przepraszamy za powtarzanie się), użytkownik może skupić
- się na zawartości wyrażeń matematycznych, a nie na ich formacie.
+ zajmuje się profesjonalnym składem,
+ po którym w 99% nie trzeba ręcznie poprawiać rozmiarów czcionki czy odstępów.
+ W ten sposób (przepraszamy za powtarzanie się),
+ użytkownik może skupić się na zawartości wyrażeń matematycznych,
+ a nie na ich formacie.
 \end_layout
 
 \begin_layout Section
@@ -4007,10 +4238,10 @@ Zmień teraz
 
 .
  Użyj klawiszy strzałek aby przemieścić kursor do wnętrza wyrażenia.
- Zauważ, że kiedy kursor znajdzie się w środku, pojawi się czerwona ramka
- informując o przejściu w tryb formuł.
- Za pomocą strzałki w lewo i w prawo przesuń kursor za znak równości i napisz
- 
+ Zauważ,
+ że kiedy kursor znajdzie się w środku,
+ pojawi się czerwona ramka informując o przejściu w tryb formuł.
+ Za pomocą strzałki w lewo i w prawo przesuń kursor za znak równości i napisz 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4023,15 +4254,16 @@ Zmień teraz
 \family sans
 Esc
 \family default
- celem opuszczenia trybu formuł, co spowoduje zniknięcie czerwonej ramki.
- W opinii wielu użytkowników wejście w tryb formuł kursorem jest bardzo
- wygodne, ale zawsze można kliknąć w którymś miejscu wyrażenia, żeby przenieść
- tam kursor i przejść tym samym do trybu formuł.
+ celem opuszczenia trybu formuł,
+ co spowoduje zniknięcie czerwonej ramki.
+ W opinii wielu użytkowników wejście w tryb formuł kursorem jest bardzo wygodne,
+ ale zawsze można kliknąć w którymś miejscu wyrażenia,
+ żeby przenieść tam kursor i przejść tym samym do trybu formuł.
 \end_layout
 
 \begin_layout Standard
-W odróżnieniu od specjalnych klawiszy opisanych poniżej, pisanie w trybie
- formuł nie różni się od pisania zwykłego tekstu.
+W odróżnieniu od specjalnych klawiszy opisanych poniżej,
+ pisanie w trybie formuł nie różni się od pisania zwykłego tekstu.
  
 \family sans
 Delete
@@ -4040,13 +4272,16 @@ Delete
 \family sans
 Backspace
 \family default
- kasują znaki, zaznaczać tekst można za pomocą klawiszy lub myszy, działa
- 
+ kasują znaki,
+ zaznaczać tekst można za pomocą klawiszy lub myszy,
+ działa 
 \family sans
 Edycja->Cofnij
 \family default
-, wycinanie oraz wklejanie.
- Z jednym trzeba ostrożnie: po wyjściu z trybu formuł nieopatrzne 
+,
+ wycinanie oraz wklejanie.
+ Z jednym trzeba ostrożnie:
+ po wyjściu z trybu formuł nieopatrzne 
 \family sans
 Backspace/Delete
 \family default
@@ -4067,7 +4302,9 @@ Jak zmienić
 \begin_inset Formula $E=mc^{2.5}+1$
 \end_inset
 
-? Jak poprzednio, można od razu kliknąć myszą we właściwe miejsce.
+?
+ Jak poprzednio,
+ można od razu kliknąć myszą we właściwe miejsce.
  Można także użyć klawiszy strzałek.
  Jeśli kursor znajduje się zaraz za 
 \begin_inset Quotes pld
@@ -4077,7 +4314,8 @@ c
 \begin_inset Quotes prd
 \end_inset
 
-, ale przed 
+,
+ ale przed 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4085,7 +4323,8 @@ c
 \begin_inset Quotes prd
 \end_inset
 
-, naciśnięcie strzałki w górę przesunie kursor na poziom indeksu górnego,
+,
+ naciśnięcie strzałki w górę przesunie kursor na poziom indeksu górnego,
  tuż przed 
 \begin_inset Quotes pld
 \end_inset
@@ -4105,8 +4344,7 @@ c
 
 .
  Naciśnięcie strzałki w dół przesunie kursor z powrotem na zwykły poziom.
- Naciśnięcie tej strzałki w dowolnym miejscu indeksu górnego przenosi kursor
- w miejsce zaraz 
+ Naciśnięcie tej strzałki w dowolnym miejscu indeksu górnego przenosi kursor w miejsce zaraz 
 \emph on
 za
 \emph default
@@ -4126,17 +4364,23 @@ tym indeksem (tak że od razu możesz dopisać
 \begin_layout Standard
 Do poruszania się po wyrażeniu można także użyć spacji.
  Jeżeli kursor znajduje się w strukturze matematycznej (indeksie dolnym,
- górnym, ułamku, pierwiastku, ograniczniku czy macierzy, które zostaną opisane
- w następnych podrozdziałach), naciśnięcie spacji przesunie kursor za tę
- strukturę, ale nie wyłączy trybu formuł.
- Tak więc jeśli kursor znajduje się gdziekolwiek w indeksie górnym, naciśnięcie
- spacji przeniesie go na zwykły poziom tuż za indeksem.
- Oznacza to, że możesz napisać 
+ górnym,
+ ułamku,
+ pierwiastku,
+ ograniczniku czy macierzy,
+ które zostaną opisane w następnych podrozdziałach),
+ naciśnięcie spacji przesunie kursor za tę strukturę,
+ ale nie wyłączy trybu formuł.
+ Tak więc jeśli kursor znajduje się gdziekolwiek w indeksie górnym,
+ naciśnięcie spacji przeniesie go na zwykły poziom tuż za indeksem.
+ Oznacza to,
+ że możesz napisać 
 \begin_inset Formula $E=mc^{1+x}-2$
 \end_inset
 
  bez używania myszy czy klawiszy strzałek.
- Uważaj, żeby nie nacisnąć spacji między 
+ Uważaj,
+ żeby nie nacisnąć spacji między 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4152,8 +4396,10 @@ Do poruszania się po wyrażeniu można także użyć spacji.
 \begin_inset Quotes prd
 \end_inset
 
-, inaczej opuścisz indeks górny.
- W miejscach, gdzie spacja nie ma sensu (np.
+,
+ inaczej opuścisz indeks górny.
+ W miejscach,
+ gdzie spacja nie ma sensu (np.
  między 
 \begin_inset Quotes pld
 \end_inset
@@ -4170,28 +4416,31 @@ c
 \begin_inset Quotes prd
 \end_inset
 
-), naciśnięcie spacji jest ignorowane
+),
+ naciśnięcie spacji jest ignorowane
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Spacja i tabulator nie służą do wstawiania dodatkowego wolnego miejsca między
- częściami równania.
- Odstępy są zagadnieniem składu drukarskiego, co oznacza, że użytkownik
- powinien pozostawić je \SpecialChar LyX
+Spacja i tabulator nie służą do wstawiania dodatkowego wolnego miejsca między częściami równania.
+ Odstępy są zagadnieniem składu drukarskiego,
+ co oznacza,
+ że użytkownik powinien pozostawić je \SpecialChar LyX
 -owi (\SpecialChar LaTeX
 -owi) (zobacz podrozdz.
  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:whitespace"
+nolink "false"
 
 \end_inset
 
 ) Jeśli nie satysfakcjonuje Cię efekt składu \SpecialChar LyX
--a, istnieją sposoby zmiany
- odstępów, o czym więcej pisze Podręcznik użytkownika — ale odłóż poprawki
- dopóki nie ukończysz pisania treści dokumentu.
+-a,
+ istnieją sposoby zmiany odstępów,
+ o czym więcej pisze Podręcznik użytkownika —
+ ale odłóż poprawki dopóki nie ukończysz pisania treści dokumentu.
 \end_layout
 
 \end_inset
@@ -4200,14 +4449,18 @@ reference "sec:whitespace"
 \end_layout
 
 \begin_layout Standard
-Zauważ, że opuszczenie trybu formuł klawiszem 
+Zauważ,
+ że opuszczenie trybu formuł klawiszem 
 \family sans
 Esc
 \family default
  powoduje brak spacji za wyrażeniem.
- Nie jest to problem, jeżeli piszesz potem kropkę lub przecinek, ale jeśli
- chcesz napisać jakieś słowo, musisz dodatkowo nacisnąć spację.
- Istnieje skrót, działający na samym końcu obszaru w trybie formuł.
+ Nie jest to problem,
+ jeżeli piszesz potem kropkę lub przecinek,
+ ale jeśli chcesz napisać jakieś słowo,
+ musisz dodatkowo nacisnąć spację.
+ Istnieje skrót,
+ działający na samym końcu obszaru w trybie formuł.
  Naciśnięcie spacji wychodzi z tego trybu i wstawia spację za formułą.
  W ten sposób można szybciej napisać 
 \begin_inset Quotes pld
@@ -4241,8 +4494,8 @@ Potęgi i indeksy
 \end_layout
 
 \begin_layout Standard
-Wykładnik może być wprowadzony z paska narzędzi, ale prościej jest użyć
- znak 
+Wykładnik może być wprowadzony z paska narzędzi,
+ ale prościej jest użyć znak 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4254,13 +4507,13 @@ Wykładnik może być wprowadzony z paska narzędzi, ale prościej jest użyć
  \SpecialChar LyX
  ustawia wówczas punkt wstawiania (niebieski prostokąt) w indeks górny,
  dzięki czemu cokolwiek napiszesz będzie wyżej i mniejszą czcionką.
- Cały dalszy pisany tekst do naciśnięcia spacji (lub Esc celem opuszczenia
- trybu formuł) będzie indeksem górnym.
+ Cały dalszy pisany tekst do naciśnięcia spacji (lub Esc celem opuszczenia trybu formuł) będzie indeksem górnym.
 \end_layout
 
 \begin_layout Standard
-Pisanie indeksów dolnych jest równie proste — zaczyna się naciśnięciem klawisza
- podkreślenia, 
+Pisanie indeksów dolnych jest równie proste —
+ zaczyna się naciśnięciem klawisza podkreślenia,
+ 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4269,7 +4522,8 @@ _
 \end_inset
 
 .
- Można podnosić i opuszczać oba indeksy, np.:
+ Można podnosić i opuszczać oba indeksy,
+ np.:
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
 \end_inset
 
@@ -4282,7 +4536,8 @@ _
 \series bold
 Ćwiczenie
 \series default
-: Przerób equation 1 z 
+:
+ Przerób equation 1 z 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4308,7 +4563,8 @@ texorpdfstring{
 status collapsed
 
 \begin_layout Plain Layout
-W klyx-ie jest to pasek, w lyx-ie panel
+W klyx-ie jest to pasek,
+ w lyx-ie panel
 \end_layout
 
 \end_inset
@@ -4345,14 +4601,12 @@ texorpdfstring
 \end_layout
 
 \begin_layout Standard
-Pasek narzędzi do wygodny sposób na wprowadzanie symboli i wykonywanie skompliko
-wanej edycji formuł.
+Pasek narzędzi do wygodny sposób na wprowadzanie symboli i wykonywanie skomplikowanej edycji formuł.
  Wiele z jego funkcji może być przywołanych z klawiatury.
- Na razie jednak skupimy się na posługiwaniu się paskiem narzędzi, aby zapoznać
- się z jego zawartością; skrótów klawiaturowych można się nauczyć z innych
- podręczników.
- Otwórz zatem pasek narzędzi i pozostaw go otwartym na czas lektury tego
- podrozdziału.
+ Na razie jednak skupimy się na posługiwaniu się paskiem narzędzi,
+ aby zapoznać się z jego zawartością;
+ skrótów klawiaturowych można się nauczyć z innych podręczników.
+ Otwórz zatem pasek narzędzi i pozostaw go otwartym na czas lektury tego podrozdziału.
 \end_layout
 
 \begin_layout Subsection
@@ -4374,14 +4628,21 @@ Naciśnięcie przycisku oznaczonego napisem
 
  otwiera menu z greckimi literami.
  Wybór którejś powoduje wstawienie jej do tekstu.
- Zauważ, że istnieje kilka wariantów epsilon, pi, fi, teta, i sigma.
- Wybór elementu z paska narzędzi formuł zawsze powoduje przejście w tryb
- formuł
+ Zauważ,
+ że istnieje kilka wariantów epsilon,
+ pi,
+ fi,
+ teta,
+ i sigma.
+ Wybór elementu z paska narzędzi formuł zawsze powoduje przejście w tryb formuł
 \end_layout
 
 \begin_layout Standard
-Cztery pozostałe przyciski u końca paska oferują szeroką gamę symboli matematycz
-nych: strzałek, relacji, operatorów, sum i całek.
+Cztery pozostałe przyciski u końca paska oferują szeroką gamę symboli matematycznych:
+ strzałek,
+ relacji,
+ operatorów,
+ sum i całek.
  Ostatni przycisk przeznaczono na 
 \begin_inset Quotes pld
 \end_inset
@@ -4408,15 +4669,21 @@ Nothing you can do that can't be done\SpecialChar ldots
 \end_layout
 
 \begin_layout Subsection
-Pierwiastki, wektory i nawiasy
+Pierwiastki,
+ wektory i nawiasy
 \end_layout
 
 \begin_layout Standard
 Aby utworzyć pierwiastek wystarczy nacisnąć przycisk oznaczony pierwiastkiem.
- Pierwiastek pojawi się w tekście, a pod nim kursor w punkcie wstawiania.
- Możesz wpisywać zmienne, liczby, inne pierwiastki, ułamki itp.
+ Pierwiastek pojawi się w tekście,
+ a pod nim kursor w punkcie wstawiania.
+ Możesz wpisywać zmienne,
+ liczby,
+ inne pierwiastki,
+ ułamki itp.
  \SpecialChar LyX
- automatycznie dostosuje rozmiar pierwiastka do tego, co w środku.
+ automatycznie dostosuje rozmiar pierwiastka do tego,
+ co w środku.
 \end_layout
 
 \begin_layout Standard
@@ -4431,27 +4698,33 @@ Nadpisywanie znaków (
 ) odbywa się w ten sam sposób.
  Naciśnij przycisk 
 \family sans
-Daszki, tyldy, wektory
+Daszki,
+ tyldy,
+ wektory
 \family default
-, oznaczony niebieskim prostokątem przykrytym czarną tyldą
+,
+ oznaczony niebieskim prostokątem przykrytym czarną tyldą
 \begin_inset space ~
 \end_inset
 
 (~).
- Kliknij na symbolu, żeby wstawić go w tekst wraz punktem wstawiania nad
- lub pod symbolem.
- Następnie napisz, co chcesz, w punkcie wstawiania i opuść tryb formuł naciśnięc
-iem spacji.
+ Kliknij na symbolu,
+ żeby wstawić go w tekst wraz punktem wstawiania nad lub pod symbolem.
+ Następnie napisz,
+ co chcesz,
+ w punkcie wstawiania i opuść tryb formuł naciśnięciem spacji.
 \end_layout
 
 \begin_layout Standard
-Ograniczniki takie jak nawiasy okrągłe, kwadratowe i klamrowe działają podobnie,
+Ograniczniki takie jak nawiasy okrągłe,
+ kwadratowe i klamrowe działają podobnie,
  ale są trochę bardziej skomplikowane.
  Naciśnij przycisk 
 \family sans
 Ogranicznik
 \family default
-, oznaczony niebieskim prostokątem w czarnych nawiasach kwadratowych.
+,
+ oznaczony niebieskim prostokątem w czarnych nawiasach kwadratowych.
  Otwiera on okno ograniczników.
  Kliknij na lewym ograniczniku używając 
 \emph on
@@ -4459,7 +4732,8 @@ lewego klawisza
 \emph default
  
 \emph toggle
-myszy, następnie na prawym używając
+myszy,
+ następnie na prawym używając
 \emph default
  
 \emph on
@@ -4491,9 +4765,9 @@ lewym
  
 \emph toggle
 klawiszem myszy.) Wybrane ograniczniki pokazane są w ramce u szczytu okna.
- Domyślnie jest to para nawiasów okrągłych, ale w opisany powyżej sposób
- można je zmienić na kwadratowe, parę kwadratowy – okrągły a nawet wybrać
- nawias 
+ Domyślnie jest to para nawiasów okrągłych,
+ ale w opisany powyżej sposób można je zmienić na kwadratowe,
+ parę kwadratowy – okrągły a nawet wybrać nawias 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4516,8 +4790,8 @@ pusty
 \end_inset
 
  (pusty ogranicznik wyświetlany jest jako linia przerywana w \SpecialChar LyX
--ie, ale nie
- pojawia się na wydruku).
+-ie,
+ ale nie pojawia się na wydruku).
 \end_layout
 
 \begin_layout Standard
@@ -4529,21 +4803,21 @@ OK
 \family sans
 Zastosuj
 \family default
-, jeśli chcesz pozostawić okno otwarte).
- Leniuchy mogą pisać nawiasy wprost z klawiatury zamiast wybierać je z paska
- narzędzi, ale tak wstawiane nawiasy będą wielkości normalnego tekstu, co
- wygląda źle, kiedy otaczają duży ułamek albo macierz.
- Pośrednictwo paska narzędzi gwarantuje, że rozmiar ograniczników dostosowuje
- się wyrażeń pomiędzy nimi.
+,
+ jeśli chcesz pozostawić okno otwarte).
+ Leniuchy mogą pisać nawiasy wprost z klawiatury zamiast wybierać je z paska narzędzi,
+ ale tak wstawiane nawiasy będą wielkości normalnego tekstu,
+ co wygląda źle,
+ kiedy otaczają duży ułamek albo macierz.
+ Pośrednictwo paska narzędzi gwarantuje,
+ że rozmiar ograniczników dostosowuje się wyrażeń pomiędzy nimi.
 \end_layout
 
 \begin_layout Standard
-Istnieje możliwość obudowania istniejącego tekstu pierwiastkiem, wektorem
- lub ogranicznikami.
- W tym celu należy zaznaczyć potrzebny fragment formuły i użyć paska narzędzi
- do wyboru odpowiedniego symbolu.
- Zastosuj ten sposób do zmiany formy zapisu drugiego prawa Newton'a ze skalarnej
- na wektorową (
+Istnieje możliwość obudowania istniejącego tekstu pierwiastkiem,
+ wektorem lub ogranicznikami.
+ W tym celu należy zaznaczyć potrzebny fragment formuły i użyć paska narzędzi do wyboru odpowiedniego symbolu.
+ Zastosuj ten sposób do zmiany formy zapisu drugiego prawa Newton'a ze skalarnej na wektorową (
 \begin_inset Formula $f=ma$
 \end_inset
 
@@ -4560,12 +4834,12 @@ Ułamki
 \end_layout
 
 \begin_layout Standard
-Aby w trybie formuł wstawić ułamek, wystarczy nacisnąć przycisk oznaczony
- niebieskimi kwadratami oddzielonymi czarną kreską ułamkową.
+Aby w trybie formuł wstawić ułamek,
+ wystarczy nacisnąć przycisk oznaczony niebieskimi kwadratami oddzielonymi czarną kreską ułamkową.
  \SpecialChar LyX
  umieszcza w ułamku dwa punkty wstawiania.
- Jak można się domyślać, po ułamku można poruszać się klawiszami strzałek
- lub myszą.
+ Jak można się domyślać,
+ po ułamku można poruszać się klawiszami strzałek lub myszą.
  Kliknij na górnym prostokącie i naciśnij 
 \begin_inset Quotes pld
 \end_inset
@@ -4584,8 +4858,10 @@ Aby w trybie formuł wstawić ułamek, wystarczy nacisnąć przycisk oznaczony
 \end_inset
 
 .
- Stworzyłeś ułamek ! Oczywiście w każdy z prostokątów można wpisać wszystko:
- zmienne z wykładnikami, pierwiastki czy inne ułamki.
+ Stworzyłeś ułamek !
+ Oczywiście w każdy z prostokątów można wpisać wszystko:
+ zmienne z wykładnikami,
+ pierwiastki czy inne ułamki.
 \end_layout
 
 \begin_layout Standard
@@ -4593,7 +4869,8 @@ Aby w trybie formuł wstawić ułamek, wystarczy nacisnąć przycisk oznaczony
 \series bold
 Ćwiczenie
 \series default
-: Napisz 2 równanie z 
+:
+ Napisz 2 równanie z 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4602,12 +4879,15 @@ example_raw.lyx
 
 \begin_layout Subsection
 Tryb \SpecialChar TeX
--a: granice, log, sin i inne
+-a:
+ granice,
+ log,
+ sin i inne
 \end_layout
 
 \begin_layout Standard
-Ponieważ litery w trybie formuł interpretowane są jako zmienne, jeżeli napiszesz
- 
+Ponieważ litery w trybie formuł interpretowane są jako zmienne,
+ jeżeli napiszesz 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4615,12 +4895,14 @@ sin
 \begin_inset Quotes prd
 \end_inset
 
-, \SpecialChar LyX
+,
+ \SpecialChar LyX
  zrozumie to jako iloczyn zmiennych 
 \begin_inset Formula $s$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $i$
 \end_inset
 
@@ -4629,8 +4911,8 @@ sin
 \end_inset
 
 .
- Te trzy litery zostaną napisane kursywą, podczas gdy tak naprawdę powinny
- być symbolem 
+ Te trzy litery zostaną napisane kursywą,
+ podczas gdy tak naprawdę powinny być symbolem 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4681,7 +4963,8 @@ x
 \begin_inset Quotes erd
 \end_inset
 
-? 
+?
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4710,11 +4993,12 @@ sin
 \begin_inset Quotes prd
 \end_inset
 
- napisane jest na czerwono, czcionką Roman, w trybie znanym skądinąd jako
- tryb \SpecialChar TeX
+ napisane jest na czerwono,
+ czcionką Roman,
+ w trybie znanym skądinąd jako tryb \SpecialChar TeX
 -a.
- Całe słowo traktowane jest jak symbol, tak więc użycie Backspace spowoduje
- skasowanie całego słowa.
+ Całe słowo traktowane jest jak symbol,
+ tak więc użycie Backspace spowoduje skasowanie całego słowa.
  Teraz napisz 
 \begin_inset Quotes pld
 \end_inset
@@ -4723,18 +5007,21 @@ x
 \begin_inset Quotes prd
 \end_inset
 
-, które wyświetlone będzie niebieską kursywą, jak tego można się spodziewać
- po trybie formuł.
- Sprawdź, że na podglądzie wyrażenie zostało poprawnie złożone.
+,
+ które wyświetlone będzie niebieską kursywą,
+ jak tego można się spodziewać po trybie formuł.
+ Sprawdź,
+ że na podglądzie wyrażenie zostało poprawnie złożone.
 \end_layout
 
 \begin_layout Standard
 Inne polecenia wymagające wstawiania w trybie \SpecialChar TeX
--a z użyciem listy funkcji
- to funkcje trygonometryczne i ich odwrotności, funkcje hiperboliczne, logarytmy
-, granice i kilka innych.
- Funkcje te mogą być wzbogacane o indeksy górne i dolne, konieczne w wyrażeniach
- typu 
+-a z użyciem listy funkcji to funkcje trygonometryczne i ich odwrotności,
+ funkcje hiperboliczne,
+ logarytmy,
+ granice i kilka innych.
+ Funkcje te mogą być wzbogacane o indeksy górne i dolne,
+ konieczne w wyrażeniach typu 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4766,7 +5053,8 @@ Inne polecenia wymagające wstawiania w trybie \SpecialChar TeX
 \series bold
 Ćwiczenie
 \series default
-: Przepisz equation 3 z 
+:
+ Przepisz equation 3 z 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4795,7 +5083,8 @@ Macierz
 Macierz
 \family default
  ma dwa suwaki pozwalające wybrać ilość wierszy i kolumn macierzy.
- Wybierz 2 wiersze i 3 kolumny, poczym naciśnij 
+ Wybierz 2 wiersze i 3 kolumny,
+ poczym naciśnij 
 \family sans
 Zastosuj
 \family default
@@ -4822,8 +5111,8 @@ Tab
 \family default
 .
  Dodatkowo można użyć klawiszy strzałek.
- Strzałka w prawo użyta na prawym brzegu jednej komórki przenosi kursor
- do komórki obok, strzałka w dół do kolejnego wiersza itd.
+ Strzałka w prawo użyta na prawym brzegu jednej komórki przenosi kursor do komórki obok,
+ strzałka w dół do kolejnego wiersza itd.
 \end_layout
 
 \begin_layout Standard
@@ -4833,12 +5122,11 @@ Podręczniku użytkownika
 \emph default
  
 \emph toggle
-jak zmienić poziome wyrównywanie wyrażeń w każdej kolumnie i jak zmienić
- pionowe położenie całej macierzy.
- Jeżeli zachodzi potrzeba utworzenia tabeli wypełnionej tekstem, należy
- raczej użyć doskonale obsługiwanych prze \SpecialChar LyX
--a tabel, niż próbować pisać tekst
- w macierzy.
+jak zmienić poziome wyrównywanie wyrażeń w każdej kolumnie i jak zmienić pionowe położenie całej macierzy.
+ Jeżeli zachodzi potrzeba utworzenia tabeli wypełnionej tekstem,
+ należy raczej użyć doskonale obsługiwanych prze \SpecialChar LyX
+-a tabel,
+ niż próbować pisać tekst w macierzy.
 \end_layout
 
 \begin_layout Subsection
@@ -4860,8 +5148,8 @@ texorpdfstring{
 status collapsed
 
 \begin_layout Plain Layout
-Ten podrozdział dotyczy opcji nieobecnej w menu klyx 0.9.6, gdzie występuje
- ona na pasku narzędzi.
+Ten podrozdział dotyczy opcji nieobecnej w menu klyx 0.9.6,
+ gdzie występuje ona na pasku narzędzi.
  (przyp.
  tłum.)
 \end_layout
@@ -4900,22 +5188,25 @@ texorpdfstring
 \end_layout
 
 \begin_layout Standard
-Wszystkie wyrażenia poznane dotychczas znajdowały się w jednej linijce z
- tekstem.
- Wystarcza to w przypadku krótkich, prostych wyrażeń, ale większe powinny
- odróżniać się od tekstu.
+Wszystkie wyrażenia poznane dotychczas znajdowały się w jednej linijce z tekstem.
+ Wystarcza to w przypadku krótkich,
+ prostych wyrażeń,
+ ale większe powinny odróżniać się od tekstu.
  Do pisania takich wyrażeń służy tryb równań.
- Dodatkowo, tylko wyrażenia w tym trybie mogą być numerowane i etykietowane
- (patrz: 
+ Dodatkowo,
+ tylko wyrażenia w tym trybie mogą być numerowane i etykietowane (patrz:
+ 
 \emph on
 Podręcznik użytkownika
 \emph toggle
-), a ponadto równania wielolinijkowe (patrz podrozdz.
+),
+ a ponadto równania wielolinijkowe (patrz podrozdz.
 \emph default
 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:multiline"
+nolink "false"
 
 \end_inset
 
@@ -4929,10 +5220,11 @@ Naciśnij przycisk
 \family sans
 Równanie
 \family default
- na pasku narzędzi, oznaczony czarnymi linijkami tekstu nad i pod niebieskim
- prostokątem.
+ na pasku narzędzi,
+ oznaczony czarnymi linijkami tekstu nad i pod niebieskim prostokątem.
  \SpecialChar LyX
- umieści w tekście punkt wstawiania, który pojawi się na środku nowej linijki.
+ umieści w tekście punkt wstawiania,
+ który pojawi się na środku nowej linijki.
  Następnie obejrzyj podgląd.
  Przycisk 
 \family sans
@@ -4968,25 +5260,26 @@ Tekst jest wyrównywany do środka
 \end_layout
 
 \begin_layout Standard
-Poza tymi różnicami wyrażenia zwykłe i te w trybie równań są do siebie bardzo
- podobne.
+Poza tymi różnicami wyrażenia zwykłe i te w trybie równań są do siebie bardzo podobne.
 \end_layout
 
 \begin_layout Standard
-Końcowa uwaga co do składu wyrażeń w trybie równań: wyrażenie może być w
- nowym akapicie lub nie.
- Jeśli równanie ma być w środku zdania lub akapitu, nie naciskaj 
+Końcowa uwaga co do składu wyrażeń w trybie równań:
+ wyrażenie może być w nowym akapicie lub nie.
+ Jeśli równanie ma być w środku zdania lub akapitu,
+ nie naciskaj 
 \family sans
 Return
 \family default
-, w przeciwnym razie 
+,
+ w przeciwnym razie 
 \emph on
 za
 \emph default
  
 \emph toggle
-równaniem rozpocznie się nowy akapit, którego pierwsza linijka będzie wcięta
- - efekt którego zapewne chciałbyś uniknąć.
+równaniem rozpocznie się nowy akapit,
+ którego pierwsza linijka będzie wcięta - efekt którego zapewne chciałbyś uniknąć.
 \end_layout
 
 \begin_layout Standard
@@ -4994,7 +5287,8 @@ równaniem rozpocznie się nowy akapit, którego pierwsza linijka będzie wcięt
 \series bold
 Ćwiczenie
 \series default
-: Obejrzyj formuły z pliku 
+:
+ Obejrzyj formuły z pliku 
 \family typewriter
 example_raw.lyx
 \family default
@@ -5006,8 +5300,10 @@ example_raw.lyx
 \series bold
 Ćwiczenie
 \series default
-: Posługując się różnymi narzędziami poznanymi w tym podrozdziale, powinieneś
- umieć złożyć następujące równanie: 
+:
+ Posługując się różnymi narzędziami poznanymi w tym podrozdziale,
+ powinieneś umieć złożyć następujące równanie:
+ 
 \begin_inset Formula 
 \[
 f(x)=\left\{ \begin{array}{cc}
@@ -5060,12 +5356,12 @@ x=y+y+y+y+y
 \end_layout
 
 \begin_layout Standard
-Wynik wygląda źle ! Jeżeli pisze się dwa lub więcej równań jedno za drugim,
- wyglądają o wiele lepiej kiedy ich znaki równości są wyrównane; widać to
- zwłaszcza gdy drugie równanie nie ma lewej strony.
+Wynik wygląda źle !
+ Jeżeli pisze się dwa lub więcej równań jedno za drugim,
+ wyglądają o wiele lepiej kiedy ich znaki równości są wyrównane;
+ widać to zwłaszcza gdy drugie równanie nie ma lewej strony.
  \SpecialChar LyX
- pozwala pisać równania wielolinijkowe panując do pewnego stopnia nad wyrównywa
-niem.
+ pozwala pisać równania wielolinijkowe panując do pewnego stopnia nad wyrównywaniem.
 \end_layout
 
 \begin_layout Standard
@@ -5087,25 +5383,29 @@ dużo
 \emph default
  
 \emph toggle
-lepiej! Znaki równości są wyrównane i jest mniejszy pionowy odstęp między
- równaniami.
+lepiej!
+ Znaki równości są wyrównane i jest mniejszy pionowy odstęp między równaniami.
 \end_layout
 
 \begin_layout Standard
-Aby móc zacząć równanie wielolinijkowe, należy wejść w tryb równań i nacisnąć
- C-Return.
- Pojawią się dwie linijki, każda z trzema pustymi punktami wstawiania.
+Aby móc zacząć równanie wielolinijkowe,
+ należy wejść w tryb równań i nacisnąć C-Return.
+ Pojawią się dwie linijki,
+ każda z trzema pustymi punktami wstawiania.
  Spróbuj samemu odtworzyć wyżej pokazane równanie.
- Podobnie jak w macierzach, do poruszania się po równaniu można użyć myszy,
+ Podobnie jak w macierzach,
+ do poruszania się po równaniu można użyć myszy,
  klawisza 
 \family sans
 Tab
 \family default
  lub klawiszy strzałek.
- Nie szkodzi jeśli w równaniu wielolinijkowym zostanie jeden lub więcej
- pustych punktów wstawiania.
- Może być to użyteczne, jak w poprzednim przykładzie, albo w przypadku podziału
- na mniejsze bardzo długich równań, jak np.: 
+ Nie szkodzi jeśli w równaniu wielolinijkowym zostanie jeden lub więcej pustych punktów wstawiania.
+ Może być to użyteczne,
+ jak w poprzednim przykładzie,
+ albo w przypadku podziału na mniejsze bardzo długich równań,
+ jak np.:
+ 
 \begin_inset Formula 
 \begin{eqnarray*}
 x & = & a+b+c+d\\
@@ -5119,15 +5419,16 @@ x & = & a+b+c+d\\
 
 \begin_layout Standard
 \SpecialChar LyX
- wyrównuje drugie (środkowe) pole w każdej linijce, tak więc zwykle tam
- będziesz umieszczać znak równości czy inny operator relacji; w gruncie
- rzeczy można go wstawić gdziekolwiek.
+ wyrównuje drugie (środkowe) pole w każdej linijce,
+ tak więc zwykle tam będziesz umieszczać znak równości czy inny operator relacji;
+ w gruncie rzeczy można go wstawić gdziekolwiek.
  Nie należy jednak używać równania wielolinijkowego do tworzenia macierzy;
  służy do tego osobny symbol macierzy (patrz podrozdz.
  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:matrices"
+nolink "false"
 
 \end_inset
 
@@ -5135,7 +5436,8 @@ reference "sec:matrices"
 \end_layout
 
 \begin_layout Standard
-Jeżeli chcesz pisać jeszcze dłuższe równania, posłuż się 
+Jeżeli chcesz pisać jeszcze dłuższe równania,
+ posłuż się 
 \family sans
 C-Return
 \family default
@@ -5144,18 +5446,16 @@ C-Return
 \family sans
 C-Return
 \family default
- kursor nie jest na końcu linijki, reszta linijki zostanie przeniesiona
- do nowoutworzonej.
+ kursor nie jest na końcu linijki,
+ reszta linijki zostanie przeniesiona do nowoutworzonej.
  Jeśli naciśniesz 
 \family sans
 C-Return
 \family default
- po napisaniu równania jednolinijkowego, znajdzie się ono całe w pierwszym
- polu.
- Przesuń kursor przed pierwszy znak równości i naciśnij C-Tab aby przenieść
- resztę równania do następnego pola.
- Następnie przesuń kursor za znak równości i powtórnie naciśnij C-Tab aby
- przenieść prawą stronę równania na trzecie pole.
+ po napisaniu równania jednolinijkowego,
+ znajdzie się ono całe w pierwszym polu.
+ Przesuń kursor przed pierwszy znak równości i naciśnij C-Tab aby przenieść resztę równania do następnego pola.
+ Następnie przesuń kursor za znak równości i powtórnie naciśnij C-Tab aby przenieść prawą stronę równania na trzecie pole.
  Spróbuj przerobić równanie 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -5173,8 +5473,8 @@ E & = & mc^{2}\\
 \end_layout
 
 \begin_layout Standard
-Jeżeli wstawiłeś za dużo linijek, przesuń kursor na koniec bieżącej linijki
- i naciśnij 
+Jeżeli wstawiłeś za dużo linijek,
+ przesuń kursor na koniec bieżącej linijki i naciśnij 
 \family sans
 M-e
 \begin_inset space ~
@@ -5183,10 +5483,11 @@ M-e
 k
 \family default
  aby skasować następną nadmiarową linijkę.
- Usunie to koniec linijki i dołączy (wszystkie trzy punkty wstawiania) do
- bieżącej linijki.
- Jeżeli następna linijka jest pusta, spowoduje to jej skasowanie.
- Ostrzeżenie: naciśnięcie 
+ Usunie to koniec linijki i dołączy (wszystkie trzy punkty wstawiania) do bieżącej linijki.
+ Jeżeli następna linijka jest pusta,
+ spowoduje to jej skasowanie.
+ Ostrzeżenie:
+ naciśnięcie 
 \family sans
 M-e
 \begin_inset space ~
@@ -5203,7 +5504,8 @@ Jeszcze więcej matematyki
 
 \begin_layout Standard
 Tryb formuł matematycznych posiada dużo więcej możliwości.
- Dotychczas pokazano podstawy, w 
+ Dotychczas pokazano podstawy,
+ w 
 \emph on
 Podręczniku użytkownika
 \emph default
@@ -5215,10 +5517,11 @@ Etykietowania i numerowania wyrażeń.
 \end_layout
 
 \begin_layout Itemize
-Zmiany czcionki, np.
+Zmiany czcionki,
+ np.
  pisania tłustym drukiem w wyrażeniu.
- Tutaj wspomnimy tylko, że przyciśnięcie przycisku trybu formuł w trakcie
- pisania formuły zmienia czcionkę na Roman aż do naciśnięcia spacji.
+ Tutaj wspomnimy tylko,
+ że przyciśnięcie przycisku trybu formuł w trakcie pisania formuły zmienia czcionkę na Roman aż do naciśnięcia spacji.
 \end_layout
 
 \begin_layout Itemize
@@ -5235,7 +5538,8 @@ Pisania makr.
 \end_layout
 
 \begin_layout Itemize
-Mnóstwa innych rzeczy, które nie zmieściły się w niniejszym 
+Mnóstwa innych rzeczy,
+ które nie zmieściły się w niniejszym 
 \emph on
 Elementarzu
 \emph default
@@ -5254,7 +5558,8 @@ Inne ważniejsze możliwości \SpecialChar LyX
 \begin_layout Standard
 Nie opisano wszystkich poleceń \SpecialChar LyX
 -a i nie było to zamiarem tego podręcznika.
- Jak zwykle, więcej informacji można znaleźć w 
+ Jak zwykle,
+ więcej informacji można znaleźć w 
 \emph on
 Podręczniku użytkownika
 \emph toggle
@@ -5300,7 +5605,8 @@ prawym klawiszem
 \SpecialChar LyX
  obsługuje grafikę postscriptową (lub w \SpecialChar LaTeX
 -u) wstawianą do dokumentu.
- (Zgadłeś: 
+ (Zgadłeś:
+ 
 \family sans
 W
 \bar under
@@ -5313,15 +5619,16 @@ R
 ysunek
 \family default
 .
- Następnie kliknij na rysunku, by wybrać plik z rysunkiem do wstawienia,
- możesz go potem rozciągnąć, obrócić itp.) Tabele i rysunki mogą mieć podpisy,
+ Następnie kliknij na rysunku,
+ by wybrać plik z rysunkiem do wstawienia,
+ możesz go potem rozciągnąć,
+ obrócić itp.) Tabele i rysunki mogą mieć podpisy,
  a \SpecialChar LyX
  automatycznie generuje ich spisy.
 \end_layout
 
 \begin_layout Itemize
-Istnieje kontrola wersji dokumentów za pośrednictwem RCS (po więcej informacji
- wykonaj polecenie 
+Istnieje kontrola wersji dokumentów za pośrednictwem RCS (po więcej informacji wykonaj polecenie 
 \family typewriter
 man rcsintro
 \family default
@@ -5347,10 +5654,13 @@ Program \SpecialChar LyX
  jest tworzony przez zespół programistów z pięciu kontynentów.
  Z tego powodu \SpecialChar LyX
  ma lepszą obsługę języków innych niż angielski (niderlandzkiego,
- niemieckiego, greckiego, czeskiego, tureckiego,\SpecialChar ldots
-) niż niejeden procesor
- tekstu.
- Co więcej, obsługa ta wciąż się poprawia.
+ niemieckiego,
+ greckiego,
+ czeskiego,
+ tureckiego,\SpecialChar ldots
+) niż niejeden procesor tekstu.
+ Co więcej,
+ obsługa ta wciąż się poprawia.
 \end_layout
 
 \begin_layout Itemize
@@ -5379,7 +5689,8 @@ od kursora do końca dokumentu
 
 \begin_layout Standard
 Jeśli nie masz pojęcia o \SpecialChar LaTeX
--u, nie musisz czytać tego podrozdziału.
+-u,
+ nie musisz czytać tego podrozdziału.
  Mógłbyś wszakże nauczyć się \SpecialChar LaTeX
 -a i dopiero tutaj wrócić.
  Jednakże wielu użytkowników \SpecialChar LyX
@@ -5388,20 +5699,20 @@ Jeśli nie masz pojęcia o \SpecialChar LaTeX
  Zastanawiają się oni czy rzeczywiście \SpecialChar LyX
  potrafi to samo co \SpecialChar LaTeX
 .
- Odpowiadając w skrócie, \SpecialChar LyX
- potrafi zrobić w ten czy inny sposób prawie wszystko
- to co \SpecialChar LaTeX
+ Odpowiadając w skrócie,
+ \SpecialChar LyX
+ potrafi zrobić w ten czy inny sposób prawie wszystko to co \SpecialChar LaTeX
  i zasadniczo upraszcza większość faz pisania dokumentu \SpecialChar LaTeX
 -a.
  Obecnie może irytować konwersja starszych dokumentów \SpecialChar LaTeX
--a i parę innych zagadnień
-, ale następne wersje \SpecialChar LyX
+-a i parę innych zagadnień,
+ ale następne wersje \SpecialChar LyX
 -a rozwiążą i te problemy.
 \end_layout
 
 \begin_layout Standard
-Ponieważ jest to tylko elementarz, poruszymy w nim wyłącznie rzeczy których
- nowi użytkownicy \SpecialChar LyX
+Ponieważ jest to tylko elementarz,
+ poruszymy w nim wyłącznie rzeczy których nowi użytkownicy \SpecialChar LyX
 -a najprawdopodobniej są ciekawi.
  Aby przesadnie nie rozdymać 
 \emph on
@@ -5420,8 +5731,8 @@ Podręcznik Użytkownika
 \emph toggle
 jest obfitym źródłem wiadomości o różnicach między \SpecialChar LyX
 -em i \SpecialChar LaTeX
--em, oraz stosowaniu
- \SpecialChar LaTeX
+-em,
+ oraz stosowaniu \SpecialChar LaTeX
 -owych trików w \SpecialChar LyX
 -ie.
 \end_layout
@@ -5434,8 +5745,7 @@ Tryb \SpecialChar TeX
 \begin_layout Standard
 Cokolwiek napisze się w trybie \SpecialChar TeX
 -a jest przekazywane wprost do \SpecialChar LaTeX
--a i wyświetlane
- na ekranie czerwonym kolorem.
+-a i wyświetlane na ekranie czerwonym kolorem.
  W tryb \SpecialChar TeX
 -a wchodzi się poleceniem 
 \family sans
@@ -5453,7 +5763,8 @@ ormat
 \SpecialChar TeX
 -a
 \family default
-, albo klikając na czerwonym przycisku-przełączniku \SpecialChar TeX
+,
+ albo klikając na czerwonym przycisku-przełączniku \SpecialChar TeX
 -a na pasku narzędzi.
 \end_layout
 
@@ -5462,21 +5773,26 @@ W trybie formuł format \SpecialChar TeX
 -a jest obsługiwany trochę inaczej.
  Do formatu \SpecialChar TeX
 -a wchodzi się pisząc backslash.
- Nie jest on pokazywany, ale cokolwiek napisze się później wyświetlane jest
- na czerwono.
- Wyjście z tego formatu następuje po naciśnięciu spacji lub innego znaku
- niealfabetycznego, jak liczba, podkreślenie, caret czy nawiasy.
+ Nie jest on pokazywany,
+ ale cokolwiek napisze się później wyświetlane jest na czerwono.
+ Wyjście z tego formatu następuje po naciśnięciu spacji lub innego znaku niealfabetycznego,
+ jak liczba,
+ podkreślenie,
+ caret czy nawiasy.
  Po wyjściu z trybu formatu \SpecialChar TeX
--a, jeżeli \SpecialChar LyX
- zna wpisane polecenie, przekształca
- je wizualnie.
+-a,
+ jeżeli \SpecialChar LyX
+ zna wpisane polecenie,
+ przekształca je wizualnie.
  Tak więc jeśli w trybie formuł napiszesz 
 \family typewriter
 
 \backslash
 gamma
 \family default
-, a potem spację, \SpecialChar LyX
+,
+ a potem spację,
+ \SpecialChar LyX
  zastąpi czerwone 
 \begin_inset Quotes pld
 \end_inset
@@ -5498,16 +5814,17 @@ gamma
 \end_inset
 
 .
- Tak się dzieje dla prawie wszystkich prostych makr matematycznych (jednakże
- zauważ, że funkcje jak 
+ Tak się dzieje dla prawie wszystkich prostych makr matematycznych (jednakże zauważ,
+ że funkcje jak 
 \family typewriter
 
 \backslash
 sin
 \family default
- pozostaną na czerwono, bo ich forma nie różni się od zapisu).
- Taka procedura może być szybsza niż korzystanie z paska narzędzi, zwłaszcza
- dla doświadczonych użytkowników \SpecialChar LaTeX
+ pozostaną na czerwono,
+ bo ich forma nie różni się od zapisu).
+ Taka procedura może być szybsza niż korzystanie z paska narzędzi,
+ zwłaszcza dla doświadczonych użytkowników \SpecialChar LaTeX
 -a.
 \end_layout
 
@@ -5522,39 +5839,46 @@ poza
  
 \emph toggle
 formatem \SpecialChar TeX
--a, co pomaga przy wprowadzaniu poleceń nieznanych \SpecialChar LyX
--owi, które
- to polecenia wymagają argumentów.
+-a,
+ co pomaga przy wprowadzaniu poleceń nieznanych \SpecialChar LyX
+-owi,
+ które to polecenia wymagają argumentów.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
  nie potrafi zrobić absolutnie wszystkiego co \SpecialChar LaTeX
  (jeszcze?).
- Kilka wyszukanych funkcji nie jest wcale obsługiwanych, inne nie działają
- w trybie wizualnym.
+ Kilka wyszukanych funkcji nie jest wcale obsługiwanych,
+ inne nie działają w trybie wizualnym.
  Format \SpecialChar TeX
 -a pozwala użytkownikom korzystać z pełnej elastyczności \SpecialChar LaTeX
--a oraz
- wygody \SpecialChar LyX
--a, takich jak wizualny tryb formuł, tabele i edycja.
+-a oraz wygody \SpecialChar LyX
+-a,
+ takich jak wizualny tryb formuł,
+ tabele i edycja.
  \SpecialChar LyX
  nigdy nie będzie mógł obsługiwać każdego pakietu \SpecialChar LaTeX
 -owego.
- Jednak, pisząc 
+ Jednak,
+ pisząc 
 \family typewriter
 
 \backslash
 usepackage{foo}
 \family default
-w preambule (zobacz podrozdz.: 
+w preambule (zobacz podrozdz.:
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:preamble"
+nolink "false"
 
 \end_inset
 
-), możesz użyć dowolnego pakietu, choć bez wizualnej obsługi jego funkcji.
+),
+ możesz użyć dowolnego pakietu,
+ choć bez wizualnej obsługi jego funkcji.
 \end_layout
 
 \begin_layout Subsection
@@ -5600,12 +5924,15 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
- — and then open that file.
- If the translation doesn't work, you can try calling 
+ —
+ and then open that file.
+ If the translation doesn't work,
+ you can try calling 
 \family typewriter
 tex2lyx
 \family default
- from the command line, possibly using fancier options.
+ from the command line,
+ possibly using fancier options.
 \end_layout
 
 \begin_layout Standard
@@ -5615,14 +5942,16 @@ tex2lyx
 tex2lyx
 \family default
  will translate most legal \SpecialChar LaTeX
-, but not everything.
+,
+ but not everything.
  It will leave things it doesn't understand in \SpecialChar TeX
- mode, so after translating
- a file with 
+ mode,
+ so after translating a file with 
 \family typewriter
 tex2lyx
 \family default
-, you can look for red text and hand-edit it to look right.
+,
+ you can look for red text and hand-edit it to look right.
 \end_layout
 
 \begin_layout Standard
@@ -5634,7 +5963,8 @@ tex2lyx
  has its own manpage.
  Read it to find out about which \SpecialChar LaTeX
  commands and environments aren't supported,
- bugs (and how to get around them), and how to use the various options.
+ bugs (and how to get around them),
+ and how to use the various options.
 \end_layout
 
 \begin_layout Subsection
@@ -5648,8 +5978,7 @@ Może zaistnieć potrzeba konwersji dokumentu \SpecialChar LyX
 -a na format \SpecialChar LaTeX
 -a.
  Na przykład współpracownik lub współautor nie ma \SpecialChar LyX
--a aby móc przeczytać
- dokument.
+-a aby móc przeczytać dokument.
  Wystarczy w tym celu wykonać polecenie 
 \family sans
 Plik->Eksport->jako
@@ -5663,8 +5992,8 @@ Plik->Eksport->jako
  Utworzy to plik coś.tex z edytowanego coś.lyx.
  \SpecialChar LyX
  zawsze tworzy tymczasowy plik \SpecialChar LaTeX
--a zanim uruchomi ten program, ale pliki
- te są trudne do czytania i zapisywane w tymczasowych katalogach.
+-a zanim uruchomi ten program,
+ ale pliki te są trudne do czytania i zapisywane w tymczasowych katalogach.
 \end_layout
 
 \begin_layout Subsection
@@ -5677,16 +6006,16 @@ Klasa dokumentu
 \end_layout
 
 \begin_layout Standard
-Okno wywoływanie poleceniem Układ->Dokument ustawia szereg opcji, które
- przekazywane są do polecenia 
+Okno wywoływanie poleceniem Układ->Dokument ustawia szereg opcji,
+ które przekazywane są do polecenia 
 \family typewriter
 
 \backslash
 documentclass
 \family default
  .
- W tym oknie można zmienić klasę dokumentu, domyślny rozmiar czcionki i
- papieru.
+ W tym oknie można zmienić klasę dokumentu,
+ domyślny rozmiar czcionki i papieru.
  Ewentualne dodatkowe opcje dla 
 \family typewriter
 
@@ -5729,9 +6058,9 @@ Układ->Preambuła
 -a
 \family default
  i napisz je w otworzonym oknie.
- Cokolwiek tam wpiszesz, zostanie bezpośrednio przekazane \SpecialChar LaTeX
--owi (podobnie
- jak tekst pisany w trybie \SpecialChar TeX
+ Cokolwiek tam wpiszesz,
+ zostanie bezpośrednio przekazane \SpecialChar LaTeX
+-owi (podobnie jak tekst pisany w trybie \SpecialChar TeX
 -a).
 \end_layout
 
@@ -5745,8 +6074,7 @@ Bib\SpecialChar TeX
  obsługuje Bib\SpecialChar TeX
  w sposób dobry acz niekompletny.
  Bib\SpecialChar TeX
- pozwala budować bazy danych odwołań do literatury celem użycia w wielu
- dokumentach.
+ pozwala budować bazy danych odwołań do literatury celem użycia w wielu dokumentach.
  Użyj 
 \family sans
 Wstaw->Spisy->Odsyłacz
@@ -5782,8 +6110,9 @@ status collapsed
 
 \begin_layout Plain Layout
 Tak jak w \SpecialChar LaTeX
--u, bibliografie powinny być odseparowane przecinkami, nie spacjami/ta
-bulatorami.
+-u,
+ bibliografie powinny być odseparowane przecinkami,
+ nie spacjami/tabulatorami.
 \end_layout
 
 \end_inset
@@ -5795,7 +6124,8 @@ bulatorami.
 \family sans
 Styl
 \family default
- wpisz, to co wpisałbyś nawiasach polecenia 
+ wpisz,
+ to co wpisałbyś nawiasach polecenia 
 \family typewriter
 
 \backslash
@@ -5805,8 +6135,7 @@ bibliographystyle{}
 \end_layout
 
 \begin_layout Standard
-Po wykonaniu powyższych czynności można używać cytatów z dowolnych bibliografii
- włączanych poleceniem 
+Po wykonaniu powyższych czynności można używać cytatów z dowolnych bibliografii włączanych poleceniem 
 \family sans
 Wstaw->Odwołanie
 \begin_inset space ~
@@ -5822,6 +6151,7 @@ literatury
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:bibliographies"
+nolink "false"
 
 \end_inset
 
@@ -5829,7 +6159,10 @@ reference "sec:bibliographies"
  \SpecialChar LyX
  zajmie się użyciem Bib\SpecialChar TeX
 -a.
- Powód, dla którego, piszemy, że \SpecialChar LyX
+ Powód,
+ dla którego,
+ piszemy,
+ że \SpecialChar LyX
  ma 
 \begin_inset Quotes pld
 \end_inset
@@ -5838,9 +6171,9 @@ dobrą lecz niepełną obsługę bibliografii
 \begin_inset Quotes prd
 \end_inset
 
- jest ten, że \SpecialChar LyX
- nie potrafi samodzielnie tworzyć plików bib i nie podpowie
- listy wszystkich odwołań do literatury w oknie 
+ jest ten,
+ że \SpecialChar LyX
+ nie potrafi samodzielnie tworzyć plików bib i nie podpowie listy wszystkich odwołań do literatury w oknie 
 \family sans
 Literatura
 \family default
@@ -5857,7 +6190,8 @@ Twardą spację wstawia się przez
 C-space
 \family default
 .
- Na ekranie wygląda jak małe, różowe 
+ Na ekranie wygląda jak małe,
+ różowe 
 \begin_inset Quotes pld
 \end_inset
 
@@ -5871,8 +6205,9 @@ u
 \begin_inset space ~
 \end_inset
 
-specjalny znajduje się więcej znaków specjalnych, z wielokropkiem, wymuszonym
- końcem linii i punktem podziału włącznie.
+specjalny znajduje się więcej znaków specjalnych,
+ z wielokropkiem,
+ wymuszonym końcem linii i punktem podziału włącznie.
 \end_layout
 
 \begin_layout Section
@@ -5880,9 +6215,9 @@ Błędy!
 \end_layout
 
 \begin_layout Standard
-Czasem, po uruchomieniu \SpecialChar LaTeX
--a pojawiają się błędy na skutek nie zrozumienia
- przez \SpecialChar LaTeX
+Czasem,
+ po uruchomieniu \SpecialChar LaTeX
+-a pojawiają się błędy na skutek nie zrozumienia przez \SpecialChar LaTeX
  lub \SpecialChar LyX
  fragmentów dokumentu.
  W takim wypadku \SpecialChar LyX
@@ -5899,10 +6234,11 @@ Błąd
  Bardzo rzadko błąd dotyczy \SpecialChar LyX
 -a.
  Błędy \SpecialChar LaTeX
--a, występujące najczęściej we wstawkach \SpecialChar TeX
--a, cytowane są przez \SpecialChar LyX
--a
- dosłownie.
+-a,
+ występujące najczęściej we wstawkach \SpecialChar TeX
+-a,
+ cytowane są przez \SpecialChar LyX
+-a dosłownie.
 \end_layout
 
 \end_body

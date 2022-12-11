@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -23,9 +23,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -78,12 +78,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -93,8 +97,8 @@
 status open
 
 \begin_layout Plain Layout
-The moderncv class offers lots of customization possibilities; for more
- information look at the documentation of the \SpecialChar LaTeX
+The moderncv class offers lots of customization possibilities;
+ for more information look at the documentation of the \SpecialChar LaTeX
 -package 
 \series bold
 moderncv
@@ -146,8 +150,11 @@ casual
 status open
 
 \begin_layout Plain Layout
-required, possible styles are 'casual' (default), 'classic', 'fancy' ('fancy'
- requires moderncv 2.0), 'oldstyle' and 'banking'
+required,
+ possible styles are 'casual' (default),
+ 'classic',
+ 'fancy' ('fancy' requires moderncv 2.0),
+ 'oldstyle' and 'banking'
 \end_layout
 
 \end_inset
@@ -176,8 +183,14 @@ blue
 status open
 
 \begin_layout Plain Layout
-required, possible colors are 'blue' (default), 'orange', 'green', 'red',
- 'purple', 'burgundy' ('burgundy' requires moderncv 2.0), 'grey' and 'black'
+required,
+ possible colors are 'blue' (default),
+ 'orange',
+ 'green',
+ 'red',
+ 'purple',
+ 'burgundy' ('burgundy' requires moderncv 2.0),
+ 'grey' and 'black'
 \end_layout
 
 \end_inset
@@ -191,13 +204,14 @@ awesome
 status collapsed
 
 \begin_layout Plain Layout
-optional, must be inserted after the 
+optional,
+ must be inserted after the 
 \family sans
 CV Style
 \family default
-, possible icon sets are 'awesome' (default for style 'casual' and 'banking'),
- 'marvosym' (default for the other styles) and 'letters' (default for style
- 'oldstyle')
+,
+ possible icon sets are 'awesome' (default for style 'casual' and 'banking'),
+ 'marvosym' (default for the other styles) and 'letters' (default for style 'oldstyle')
 \end_layout
 
 \end_inset
@@ -211,7 +225,9 @@ CV Style
 status collapsed
 
 \begin_layout Plain Layout
-optional, the width of the column with the dates, default is '3cm'
+optional,
+ the width of the column with the dates,
+ default is '3cm'
 \end_layout
 
 \end_inset
@@ -225,9 +241,11 @@ UseOutlines
 status collapsed
 
 \begin_layout Plain Layout
-optional, controls how the PDF will be shown; use either 'UseNone' (only
- the document), 'UseThumbs' (show thumbnails), 'UseOutlines' (show bookmarks)
- or 'FullScreen' (open in fullscreen mode).
+optional,
+ controls how the PDF will be shown;
+ use either 'UseNone' (only the document),
+ 'UseThumbs' (show thumbnails),
+ 'UseOutlines' (show bookmarks) or 'FullScreen' (open in fullscreen mode).
 \end_layout
 
 \end_inset
@@ -244,7 +262,8 @@ General hints:
 \end_layout
 
 \begin_layout Itemize
-To suppress the page numbering, enable the option 
+To suppress the page numbering,
+ enable the option 
 \family sans
 Suppress default date on front page
 \family default
@@ -259,7 +278,8 @@ The default page margins are left and right 3.5
 \end_inset
 
 cm.
- To get smaller ones, use the 
+ To get smaller ones,
+ use the 
 \family sans
 Page Margins
 \family default
@@ -267,7 +287,8 @@ Page Margins
 \end_layout
 
 \begin_layout Itemize
-To get for example sans-serif fonts for the whole CV, set them as 
+To get for example sans-serif fonts for the whole CV,
+ set them as 
 \family sans
 Default Family
 \family default
@@ -425,7 +446,8 @@ currently only
 \series bold
 twitter
 \series default
-, 
+,
+ 
 \series bold
 linkedin
 \series default
@@ -499,8 +521,8 @@ status open
 
 \begin_layout Plain Layout
 The name of the image file.
- The first argument is the height the photo is resized to, the second one
- the thickness of the surrounding frame
+ The first argument is the height the photo is resized to,
+ the second one the thickness of the surrounding frame
 \end_layout
 
 \end_inset
@@ -517,7 +539,8 @@ The name of the image file.
 status collapsed
 
 \begin_layout Plain Layout
-outputs the title part; optional
+outputs the title part;
+ optional
 \end_layout
 
 \end_inset
@@ -745,6 +768,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  If you use the 
 \emph on
@@ -754,7 +778,8 @@ banking
 \emph on
 fancy
 \emph default
- theme, no linebreaks are allowed in entries.
+ theme,
+ no linebreaks are allowed in entries.
 \end_layout
 
 \end_inset
@@ -892,7 +917,9 @@ OS
 status open
 
 \begin_layout Plain Layout
-Linux, Unix, Windows
+Linux,
+ Unix,
+ Windows
 \end_layout
 
 \end_inset
@@ -907,7 +934,8 @@ Administration
 
 \end_inset
 
-Apache, Mailman
+Apache,
+ Mailman
 \end_layout
 
 \begin_layout DoubleItem
@@ -929,7 +957,8 @@ status open
 \shape smallcaps
 Java
 \shape default
-, C/C++
+,
+ C/C++
 \end_layout
 
 \end_inset
@@ -944,7 +973,9 @@ Scripting
 
 \end_inset
 
-PHP, Shell, Ruby
+PHP,
+ Shell,
+ Ruby
 \end_layout
 
 \begin_layout DoubleItem
@@ -962,7 +993,9 @@ Scientific
 status open
 
 \begin_layout Plain Layout
-Matlab, AutoCAD, Abaqus
+Matlab,
+ AutoCAD,
+ Abaqus
 \end_layout
 
 \end_inset
@@ -978,8 +1011,11 @@ Typography
 \end_inset
 
 \SpecialChar LaTeX
-, Con\SpecialChar TeX
-t, Scribus, QuarkXPress
+,
+ Con\SpecialChar TeX
+t,
+ Scribus,
+ QuarkXPress
 \end_layout
 
 \begin_layout DoubleItem
@@ -1001,7 +1037,9 @@ design
 status open
 
 \begin_layout Plain Layout
-XHTML, CSS, AJAX
+XHTML,
+ CSS,
+ AJAX
 \end_layout
 
 \end_inset
@@ -1016,7 +1054,8 @@ Database
 
 \end_inset
 
-MySQL, PostgreSQL
+MySQL,
+ PostgreSQL
 \end_layout
 
 \begin_layout Section
@@ -1037,8 +1076,9 @@ sports
 
 \end_inset
 
-I like practicing adventure sports like skiing, rock climbing and scuba
- diving, and have been a boy scout for five years.
+I like practicing adventure sports like skiing,
+ rock climbing and scuba diving,
+ and have been a boy scout for five years.
 \end_layout
 
 \begin_layout Standard
@@ -1121,7 +1161,8 @@ listitemsymbol}{-~}
 status open
 
 \begin_layout Plain Layout
-optional, changes the symbol for lists
+optional,
+ changes the symbol for lists
 \end_layout
 
 \end_inset
@@ -1152,7 +1193,8 @@ Item 2
 
 \end_inset
 
-Item 4, see 
+Item 4,
+ see 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Jobs95"
@@ -1185,7 +1227,8 @@ labelitemi~}
 status open
 
 \begin_layout Plain Layout
-optional, resets the symbol for lists to the default one
+optional,
+ resets the symbol for lists to the default one
 \end_layout
 
 \end_inset
@@ -1225,9 +1268,8 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-the optional width is a number in the range 0 - 1 and specifies the fraction
- of the line length; if no width is given all available width is used for
- the column
+the optional width is a number in the range 0 - 1 and specifies the fraction of the line length;
+ if no width is given all available width is used for the column
 \end_layout
 
 \end_inset
@@ -1278,8 +1320,10 @@ status open
 
 \series bold
 Note:
+
 \series default
- paragraph alignments are not allowed, so e.
+ paragraph alignments are not allowed,
+ so e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1324,7 +1368,8 @@ Section with your own content
 \end_layout
 
 \begin_layout Standard
-Your content here, inside an unformatted environment.
+Your content here,
+ inside an unformatted environment.
  You can use here e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -1341,7 +1386,8 @@ E=mc^{2}
 
 \end_inset
 
-put some table or figure, etc.
+put some table or figure,
+ etc.
 \end_layout
 
 \begin_layout EmptySection
@@ -1377,7 +1423,8 @@ Now
 
 \end_inset
 
-Back to moderncv layout, without making a new section
+Back to moderncv layout,
+ without making a new section
 \end_layout
 
 \begin_layout Standard
@@ -1404,7 +1451,8 @@ Publications
 \begin_inset Quotes erd
 \end_inset
 
-), uncomment this:
+),
+ uncomment this:
 \end_layout
 
 \end_inset
@@ -1449,7 +1497,8 @@ arabic{enumiv}]}
 status open
 
 \begin_layout Plain Layout
-optional, numbers the bibliography items
+optional,
+ numbers the bibliography items
 \end_layout
 
 \end_inset
@@ -1466,13 +1515,15 @@ literal "true"
 \end_inset
 
 Helmut Kopka and Patrick W.
- Daly: 
+ Daly:
+ 
 \emph on
 A Guide to \SpecialChar LaTeX
  Fourth Edition.
 
 \emph default
- Addison-Wesley, 2003
+ Addison-Wesley,
+ 2003
 \end_layout
 
 \begin_layout Bibliography
@@ -1483,13 +1534,17 @@ literal "true"
 
 \end_inset
 
-Leslie Lamport: 
+Leslie Lamport:
+ 
 \emph on
 \SpecialChar LaTeX
-: A Document Preparation System.
+:
+ A Document Preparation System.
 
 \emph default
- Addison-Wesley, second edition, 1994
+ Addison-Wesley,
+ second edition,
+ 1994
 \end_layout
 
 \begin_layout Standard
@@ -1529,7 +1584,8 @@ Company Recruitment team
 
 \end_inset
 
-Company, Inc.
+Company,
+ Inc.
 \begin_inset Newline newline
 \end_inset
 
@@ -1541,7 +1597,8 @@ some city
 \end_layout
 
 \begin_layout Date
-January 01, 1984
+January 01,
+ 1984
 \end_layout
 
 \begin_layout Opening
@@ -1570,7 +1627,8 @@ curriculum vitae
 status collapsed
 
 \begin_layout Plain Layout
-generates the letter title; must be behind the letter closing and the enclosing
+generates the letter title;
+ must be behind the letter closing and the enclosing
 \end_layout
 
 \end_inset
@@ -1589,39 +1647,56 @@ Keep entries with green labels empty!
 \end_layout
 
 \begin_layout Standard
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Lorem ipsum dolor sit amet,
+ consectetur adipiscing elit.
  Duis ullamcorper neque sit amet lectus facilisis sed luctus nisl iaculis.
- Vivamus at neque arcu, sed tempor quam.
+ Vivamus at neque arcu,
+ sed tempor quam.
  Curabitur pharetra tincidunt tincidunt.
- Morbi volutpat feugiat mauris, quis tempor neque vehicula volutpat.
+ Morbi volutpat feugiat mauris,
+ quis tempor neque vehicula volutpat.
  Duis tristique justo vel massa fermentum accumsan.
- Mauris ante elit, feugiat vestibulum tempor eget, eleifend ac ipsum.
+ Mauris ante elit,
+ feugiat vestibulum tempor eget,
+ eleifend ac ipsum.
  Donec scelerisque lobortis ipsum eu vestibulum.
  Pellentesque vel massa at felis accumsan rhoncus.
 \end_layout
 
 \begin_layout Standard
-Suspendisse commodo, massa eu congue tincidunt, elit mauris pellentesque
- orci, cursus tempor odio nisl euismod augue.
+Suspendisse commodo,
+ massa eu congue tincidunt,
+ elit mauris pellentesque orci,
+ cursus tempor odio nisl euismod augue.
  Aliquam adipiscing nibh ut odio sodales et pulvinar tortor laoreet.
  Mauris a accumsan ligula.
- Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
- inceptos himenaeos.
+ Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+ per inceptos himenaeos.
  Suspendisse vulputate sem vehicula ipsum varius nec tempus dui dapibus.
- Phasellus et est urna, ut auctor erat.
+ Phasellus et est urna,
+ ut auctor erat.
  Sed tincidunt odio id odio aliquam mattis.
- Donec sapien nulla, feugiat eget adipiscing sit amet, lacinia ut dolor.
- Phasellus tincidunt, leo a fringilla consectetur, felis diam aliquam urna,
+ Donec sapien nulla,
+ feugiat eget adipiscing sit amet,
+ lacinia ut dolor.
+ Phasellus tincidunt,
+ leo a fringilla consectetur,
+ felis diam aliquam urna,
  vitae aliquet lectus orci nec velit.
  Vivamus dapibus varius blandit.
 \end_layout
 
 \begin_layout Standard
-Duis sit amet magna ante, at sodales diam.
+Duis sit amet magna ante,
+ at sodales diam.
  Aenean consectetur porta risus et sagittis.
- Ut interdum, enim varius pellentesque tincidunt, magna libero sodales tortor,
+ Ut interdum,
+ enim varius pellentesque tincidunt,
+ magna libero sodales tortor,
  ut fermentum nunc metus a ante.
- Vivamus odio leo, tincidunt eu luctus ut, sollicitudin sit amet metus.
+ Vivamus odio leo,
+ tincidunt eu luctus ut,
+ sollicitudin sit amet metus.
  Nunc sed orci lectus.
  Ut sodales magna sed velit volutpat sit amet pulvinar diam venenatis.
 \end_layout

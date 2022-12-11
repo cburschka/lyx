@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -27,9 +27,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -80,12 +80,16 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -96,8 +100,7 @@ status open
 
 \begin_layout Plain Layout
 This is a template \SpecialChar LyX
- file for articles to be submitted to Journals of the
- Institute of Physics (IOP).
+ file for articles to be submitted to Journals of the Institute of Physics (IOP).
  How to install the IOP \SpecialChar LaTeX
  class to your \SpecialChar LaTeX
  system is explained in 
@@ -127,8 +130,12 @@ status open
 
 \series bold
 Important:
+
 \series default
- To be able to compile your document to a PDF, PS, or DVI, assure that
+ To be able to compile your document to a PDF,
+ PS,
+ or DVI,
+ assure that
 \end_layout
 
 \begin_layout Itemize
@@ -275,7 +282,8 @@ Letter
 \begin_layout Author
 
 \size larger
-X Dummyname, Y Testman and Z Another-Name
+X Dummyname,
+ Y Testman and Z Another-Name
 \size default
 
 \begin_inset Note Note
@@ -293,7 +301,9 @@ Use no dots behind the letter for the forenames.
 \begin_layout Address
 
 \size large
-Department of Award-winning research, University of Beautifulcity, Nicecountry
+Department of Award-winning research,
+ University of Beautifulcity,
+ Nicecountry
 \end_layout
 
 \begin_layout Email
@@ -315,17 +325,22 @@ At least one Email address is required.
 \end_layout
 
 \begin_layout Abstract
-Abstract, should normally be not longer than 200 words.
+Abstract,
+ should normally be not longer than 200 words.
 \end_layout
 
 \begin_layout Keywords
-bla, blub
+bla,
+ blub
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-required for the journals: Measurement Science and Technology, Physical
- Biology, Physiological Measurement, and both parts of Journal of Optics.
+required for the journals:
+ Measurement Science and Technology,
+ Physical Biology,
+ Physiological Measurement,
+ and both parts of Journal of Optics.
  For other journals it is optional.
 \end_layout
 
@@ -380,7 +395,8 @@ CQG
 status collapsed
 
 \begin_layout Plain Layout
-optional, you can specify to which journal your paper was or should be submitted
+optional,
+ you can specify to which journal your paper was or should be submitted
 \end_layout
 
 \begin_layout Plain Layout
@@ -392,6 +408,7 @@ See Table
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Abbreviations-for-the"
+nolink "false"
 
 \end_inset
 
@@ -408,7 +425,8 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Bla bla, as listed in 
+Bla bla,
+ as listed in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mastersthesis-full,misc-full"
@@ -422,6 +440,7 @@ literal "true"
 \begin_layout Standard
 \begin_inset Float table
 placement hb
+alignment document
 wide false
 sideways false
 status open
@@ -630,7 +649,8 @@ JOA
 \begin_layout Plain Layout
 J.
  Opt.
- A: Pure and Applied Opt.
+ A:
+ Pure and Applied Opt.
 \end_layout
 
 \end_inset
@@ -654,7 +674,8 @@ JOB
 \begin_layout Plain Layout
 J.
  Opt.
- B: Quantum and Semiclass.
+ B:
+ Quantum and Semiclass.
  Opt.
 \end_layout
 
@@ -679,7 +700,8 @@ JPA
 \begin_layout Plain Layout
 J.
  Phys.
- A: Math.
+ A:
+ Math.
  Gen.
 \end_layout
 
@@ -704,7 +726,8 @@ jpb
 \begin_layout Plain Layout
 J.
  Phys.
- B: At.
+ B:
+ At.
  Mol.
  Opt.
  Phys.
@@ -730,7 +753,8 @@ JPCM
 
 \begin_layout Plain Layout
 J.
- Phys: Condens.
+ Phys:
+ Condens.
  Matter
 \end_layout
 
@@ -755,7 +779,8 @@ JPD
 \begin_layout Plain Layout
 J.
  Phys.
- D: Appl.
+ D:
+ Appl.
  Phys.
 \end_layout
 
@@ -780,7 +805,8 @@ jpg
 \begin_layout Plain Layout
 J.
  Phys.
- G: Nucl.
+ G:
+ Nucl.
  Part.
  Phys.
 \end_layout
@@ -1142,6 +1168,7 @@ A & = & \prod_{i=1}^{\infty}B\nonumber \\
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:multiply"
+nolink "false"
 
 \end_inset
 
@@ -1151,7 +1178,9 @@ reference "eq:multiply"
 status open
 
 \begin_layout Plain Layout
-Try to avoid footnotes; they are not numbered; only 9 footnotes are allowed
+Try to avoid footnotes;
+ they are not numbered;
+ only 9 footnotes are allowed
 \end_layout
 
 \end_inset
@@ -1176,7 +1205,8 @@ Subsubsection
 \end_layout
 
 \begin_layout Standard
-Bla, bla
+Bla,
+ bla
 \end_layout
 
 \begin_layout Acknowledgments
@@ -1184,7 +1214,8 @@ Bla, bla
 status collapsed
 
 \begin_layout Plain Layout
-Keep this paragraph empty, it's only a heading.
+Keep this paragraph empty,
+ it's only a heading.
 \end_layout
 
 \end_inset
@@ -1202,12 +1233,18 @@ Appendix name
 \end_layout
 
 \begin_layout Standard
-Appendix, only when needed, inserted behind the acknowledgments but before
- the bibliography.
+Appendix,
+ only when needed,
+ inserted behind the acknowledgments but before the bibliography.
 \end_layout
 
 \begin_layout Section*
-—————–
+—
+—
+—
+—
+—
+–
 \end_layout
 
 \begin_layout Standard
@@ -1217,7 +1254,8 @@ You can use either Bib\SpecialChar TeX
 status open
 
 \begin_layout Plain Layout
-The following bibliography styles are allowed: 
+The following bibliography styles are allowed:
+ 
 \family sans
 unsrt
 \family default
@@ -1250,7 +1288,14 @@ options "bibtotoc,unsrt"
 \end_layout
 
 \begin_layout Section*
-———————
+—
+—
+—
+—
+—
+—
+—
+
 \end_layout
 
 \begin_layout Standard
@@ -1266,13 +1311,15 @@ literal "true"
 
 \end_inset
 
-Frank Mittelbach and Michel Goossens: 
+Frank Mittelbach and Michel Goossens:
+ 
 \emph on
 The \SpecialChar LaTeX
  Companion Second Edition.
 
 \emph default
- Addison-Wesley, 2004.
+ Addison-Wesley,
+ 2004.
 \end_layout
 
 \begin_layout Bibliography (plain)
@@ -1285,7 +1332,8 @@ literal "true"
 
 Scott Pakin.
  The comprehensive \SpecialChar LaTeX
- symbol list, 2005.
+ symbol list,
+ 2005.
 \end_layout
 
 \end_body

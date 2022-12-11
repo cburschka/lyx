@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -24,9 +24,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -90,12 +90,16 @@
 \papercolumns 2
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -133,6 +137,7 @@ https://wiki.lyx.org/Examples/IEEE
 
 \series bold
 Note:
+
 \series default
  to write other IEEE documents which are not for 
 \begin_inset Quotes eld
@@ -159,9 +164,9 @@ template files instead of this one!
 status open
 
 \begin_layout Plain Layout
-It is important that you use the correct document class options for your
- document..
- These are explained in the IEEEtran documentation: 
+It is important that you use the correct document class options for your document..
+ These are explained in the IEEEtran documentation:
+ 
 \begin_inset Flex URL
 status open
 
@@ -276,8 +281,11 @@ Your
 \begin_inset space ~
 \end_inset
 
-Name is with the Department of ..., ...
- Institute of ..., City, Country
+Name is with the Department of ...,
+ ...
+ Institute of ...,
+ City,
+ Country
 \begin_inset ERT
 status collapsed
 
@@ -294,7 +302,8 @@ protect
 \begin_inset Newline newline
 \end_inset
 
-E-mail: 
+E-mail:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 target "xxx@xxx.xxx"
@@ -357,8 +366,13 @@ Name and Third
 \begin_inset space ~
 \end_inset
 
-Name is with the Department of ..., ...
- Institute of ..., City, Country, e-mail: 
+Name is with the Department of ...,
+ ...
+ Institute of ...,
+ City,
+ Country,
+ e-mail:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 target "xxx@xxx.xxx"
@@ -377,6 +391,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  Each author must be mentioned at least once.
 \end_layout
@@ -393,7 +408,10 @@ Note:
 status collapsed
 
 \begin_layout Plain Layout
-Manuscript received April 19, 2005; revised December 27, 2012.
+Manuscript received April 19,
+ 2005;
+ revised December 27,
+ 2012.
 \end_layout
 
 \end_inset
@@ -461,7 +479,8 @@ et al.
 
 \end_inset
 
-: Your Title
+:
+ Your Title
 \end_layout
 
 \begin_layout Publication ID
@@ -530,7 +549,9 @@ This is the abstract text.
 \end_layout
 
 \begin_layout Keywords
-simplicity, beauty, elegance
+simplicity,
+ beauty,
+ elegance
 \end_layout
 
 \begin_layout Standard in Title
@@ -607,7 +628,8 @@ required if you use the document class option
 \family sans
 peerreview
 \family default
-, must otherwise not be used
+,
+ must otherwise not be used
 \end_layout
 
 \end_inset
@@ -652,8 +674,7 @@ Paragraph Start
 
 \end_inset
 
- is the text text text text text text text text text text text text text
- text text text.
+ is the text text text text text text text text text text text text text text text text.
 \end_layout
 
 \begin_layout Section
@@ -686,13 +707,13 @@ Theorem name
 
 \end_inset
 
-For a named theorem or theorem-like environment you need to insert the name
- through 
+For a named theorem or theorem-like environment you need to insert the name through 
 \family sans
 Insert\SpecialChar menuseparator
 Short Title
 \family default
-, as done here.
+,
+ as done here.
 \end_layout
 
 \begin_layout Lemma
@@ -710,6 +731,7 @@ Results
 \begin_layout Standard
 \begin_inset Float figure
 placement htbp
+alignment document
 wide false
 sideways false
 status open
@@ -742,6 +764,7 @@ under
 
 \begin_inset Float table
 placement htbp
+alignment document
 wide false
 sideways false
 status open
@@ -847,7 +870,8 @@ First appendix
 \end_layout
 
 \begin_layout Standard
-Citation: 
+Citation:
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "IEEEexample:beebe_archive"
@@ -875,11 +899,9 @@ bla bla
 status open
 
 \begin_layout Plain Layout
-Remember though that your final submission is supposed to have all the bibliogra
-phy entries embedded in the \SpecialChar LaTeX
+Remember though that your final submission is supposed to have all the bibliography entries embedded in the \SpecialChar LaTeX
 -file.
- This means you eventually have to copy the .bbl file into the latex file
- and remove the bibtex lines.
+ This means you eventually have to copy the .bbl file into the latex file and remove the bibtex lines.
 \end_layout
 
 \end_inset
@@ -970,7 +992,8 @@ Coauthor
 
 \end_inset
 
-Same again for the co-author, but without photo
+Same again for the co-author,
+ but without photo
 \end_layout
 
 \end_body

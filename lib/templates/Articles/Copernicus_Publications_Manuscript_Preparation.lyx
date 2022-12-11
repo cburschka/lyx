@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -82,6 +82,7 @@
 \html_css_as_file 0
 \html_be_strict false
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -103,13 +104,13 @@ This template should be used for copernicus.cls
 \end_layout
 
 \begin_layout Plain Layout
-The class file and some style files are bundled in the Copernicus Latex
- Package, which can be downloaded from the different journal webpages.
+The class file and some style files are bundled in the Copernicus Latex Package,
+ which can be downloaded from the different journal webpages.
 \end_layout
 
 \begin_layout Plain Layout
-For further assistance please contact Copernicus Publications at: production@cop
-ernicus.org
+For further assistance please contact Copernicus Publications at:
+ production@copernicus.org
 \end_layout
 
 \begin_layout Plain Layout
@@ -117,8 +118,7 @@ https://publications.copernicus.org/for_authors/manuscript_preparation.html
 \end_layout
 
 \begin_layout Plain Layout
-Please use the following documentclass and journal abbreviations for discussion
- papers and final revised papers.
+Please use the following documentclass and journal abbreviations for discussion papers and final revised papers.
 \end_layout
 
 \end_inset
@@ -214,8 +214,7 @@ status open
 
 \begin_layout Plain Layout
 
-%% Dates above will be inserted by Copernicus Publications during the typesettin
-g process.
+%% Dates above will be inserted by Copernicus Publications during the typesetting process.
 \end_layout
 
 \end_inset
@@ -302,14 +301,11 @@ TEXT
 status collapsed
 
 \begin_layout Plain Layout
-The following commands are for the statements about the availability of
- data sets and/or software code corresponding to the manuscript.
+The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
 \end_layout
 
 \begin_layout Plain Layout
-It is strongly recommended to make use of these sections in case data sets
- and/or software code have been part of your research the article is based
- on.
+It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
 \end_layout
 
 \end_inset
@@ -399,7 +395,9 @@ Appendix A
 status collapsed
 
 \begin_layout Plain Layout
-Appendix A1, A2, etc.
+Appendix A1,
+ A2,
+ etc.
 \end_layout
 
 \end_inset
@@ -412,15 +410,14 @@ Appendix A1, A2, etc.
 status collapsed
 
 \begin_layout Plain Layout
-Regarding figures and tables in appendices, the following two options are
- possible depending on your general handling of figures and tables in the
- manuscript environment:
+Regarding figures and tables in appendices,
+ the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
 \end_layout
 
 \begin_layout Plain Layout
-Option 1: If you sorted all figures and tables into the sections of the
- text, please also sort the appendix figures and appendix tables into the
- respective appendix sections.
+Option 1:
+ If you sorted all figures and tables into the sections of the text,
+ please also sort the appendix figures and appendix tables into the respective appendix sections.
 \end_layout
 
 \begin_layout Plain Layout
@@ -428,13 +425,16 @@ They will be correctly named automatically.
 \end_layout
 
 \begin_layout Plain Layout
-Option 2: If you put all figures after the reference list, please insert
- appendix tables and figures after the normal tables and figures.
+Option 2:
+ If you put all figures after the reference list,
+ please insert appendix tables and figures after the normal tables and figures.
 \end_layout
 
 \begin_layout Plain Layout
-To rename them correctly to A1, A2, etc., please add the following commands
- in front of them:
+To rename them correctly to A1,
+ A2,
+ etc.,
+ please add the following commands in front of them:
 \end_layout
 
 \end_inset
@@ -466,8 +466,7 @@ TEXT
 status collapsed
 
 \begin_layout Plain Layout
-this section is mandatory even if you declare that no competing interests
- are present
+this section is mandatory even if you declare that no competing interests are present
 \end_layout
 
 \end_inset
@@ -612,31 +611,41 @@ citet{jones90}| & Jones et al.
 \begin_layout Plain Layout
 
 \backslash
-citep{jones90}| & (Jones et al., 1990)
+citep{jones90}| & (Jones et al.,
+ 1990)
 \end_layout
 
 \begin_layout Plain Layout
 
 \backslash
-citep{jones90,jones93}| & (Jones et al., 1990, 1993)
+citep{jones90,jones93}| & (Jones et al.,
+ 1990,
+ 1993)
 \end_layout
 
 \begin_layout Plain Layout
 
 \backslash
-citep[p.~32]{jones90}| & (Jones et al., 1990, p.~32)
+citep[p.~32]{jones90}| & (Jones et al.,
+ 1990,
+ p.~32)
 \end_layout
 
 \begin_layout Plain Layout
 
 \backslash
-citep[e.g.,][]{jones90}| & (e.g., Jones et al., 1990)
+citep[e.g.,][]{jones90}| & (e.g.,
+ Jones et al.,
+ 1990)
 \end_layout
 
 \begin_layout Plain Layout
 
 \backslash
-citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
+citep[e.g.,][p.~32]{jones90}| & (e.g.,
+ Jones et al.,
+ 1990,
+ p.~32)
 \end_layout
 
 \begin_layout Plain Layout

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,9 +29,9 @@ braille
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -96,12 +96,16 @@ braille
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -116,18 +120,21 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Author
-Serbian translation: Zoran T.
+Serbian translation:
+ Zoran T.
  Filipović
 \end_layout
 
 \begin_layout Standard
-Prvo opšta napomena: Brajeva azbuka koju kreirate sa \SpecialChar LaTeX
+Prvo opšta napomena:
+ Brajeva azbuka koju kreirate sa \SpecialChar LaTeX
 -om nije kompletna!
  Brajevo pismo može da ima 6 ili 8
 \begin_inset space \thinspace{}
 \end_inset
 
-tačkica, dok \SpecialChar LaTeX
+tačkica,
+ dok \SpecialChar LaTeX
  (i stoga \SpecialChar LyX
 ) podržava samo Brajevo pismo od 6
 \begin_inset space \thinspace{}
@@ -138,7 +145,8 @@ tačkica bez akcentovanih znakova.
 
 \begin_layout Standard
 Za pisanje Brajevom azbukom sa \SpecialChar LyX
--om, učitajte modul 
+-om,
+ učitajte modul 
 \family sans
 Braille
 \family default
@@ -165,8 +173,8 @@ Braille
 \family default
  iz \SpecialChar LyX
  kompleta okruženja i pišite Vaš tekst.
- Za druga Brajeva okruženja samo uključite/isključite neke osobine kao što
- je opisano u nastavku; čuvajte ih praznim!
+ Za druga Brajeva okruženja samo uključite/isključite neke osobine kao što je opisano u nastavku;
+ čuvajte ih praznim!
 \end_layout
 
 \begin_layout Standard
@@ -224,8 +232,8 @@ height "1pt"
 
 \begin_layout Standard
 Možete videti da \SpecialChar LaTeX
- nije u stanju da napiše reči sa crticom pisane na Brajevom
- pismu, što treba da uradite ručno.
+ nije u stanju da napiše reči sa crticom pisane na Brajevom pismu,
+ što treba da uradite ručno.
 \end_layout
 
 \begin_layout Standard
@@ -240,9 +248,12 @@ status open
 
 \series bold
 Napomena:
+
 \series default
- Samo Latinska slova, brojevi, znakovi interpukcije, zagrade se mogu štampati
- u Brajevom pismu.
+ Samo Latinska slova,
+ brojevi,
+ znakovi interpukcije,
+ zagrade se mogu štampati u Brajevom pismu.
  Specijalni karakteri kao što su 
 \begin_inset Quotes eld
 \end_inset
@@ -251,7 +262,8 @@ Napomena:
 \begin_inset Quotes erd
 \end_inset
 
-, ili 
+,
+ ili 
 \begin_inset Quotes eld
 \end_inset
 
@@ -259,7 +271,9 @@ $
 \begin_inset Quotes erd
 \end_inset
 
-, akcentovani karakteri kao što su umlauti, kao i prelomi redova nisu podržani.
+,
+ akcentovani karakteri kao što su umlauti,
+ kao i prelomi redova nisu podržani.
 \end_layout
 
 \end_inset
@@ -279,6 +293,7 @@ status open
 
 \series bold
 Note:
+
 \series default
  \SpecialChar LyX
  i \SpecialChar LaTeX
@@ -291,7 +306,8 @@ Note:
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -300,7 +316,8 @@ Note:
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -309,7 +326,8 @@ Note:
 \begin_inset Quotes erd
 \end_inset
 
-, and 
+,
+ and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -319,7 +337,8 @@ Note:
 \end_inset
 
  moraju da se ubace kao \SpecialChar TeX
- kod, što je prikazano u sledećem primeru:
+ kod,
+ što je prikazano u sledećem primeru:
 \end_layout
 
 \end_inset
@@ -341,7 +360,8 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
-Latin: 
+Latin:
+ 
 \begin_inset ERT
 status collapsed
 
@@ -387,8 +407,7 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
-Sledi pregled o različitim okruženjima u Brajevom pismu na primeru teksta
- 
+Sledi pregled o različitim okruženjima u Brajevom pismu na primeru teksta 
 \begin_inset Quotes eld
 \end_inset
 
@@ -465,8 +484,7 @@ This is Braille.
 \end_layout
 
 \begin_layout Standard
-Tekst može biti odštampan u ogledaju tak da ste kasnije u stanju da izaberete
- Brajevom ručno štampanje sa iglom ili drugi odgovarajući metod:
+Tekst može biti odštampan u ogledaju tak da ste kasnije u stanju da izaberete Brajevom ručno štampanje sa iglom ili drugi odgovarajući metod:
 \end_layout
 
 \begin_layout Standard
@@ -509,8 +527,7 @@ This is Braille.
 \end_layout
 
 \begin_layout Standard
-Brajeva slova mogu alternativno biti kreirana pisanjem broja u Brajevom
- kutiji.
+Brajeva slova mogu alternativno biti kreirana pisanjem broja u Brajevom kutiji.
  Brajeva kutija je ubačena u meni
 \family sans
  Insert\SpecialChar menuseparator
@@ -522,7 +539,8 @@ insets
 \family default
 .
  Svaki broj u ovom polju uključuje odgovarajuće Brajevom tačku.
- Na primer, vodi broj 
+ Na primer,
+ vodi broj 
 \series bold
 6145
 \series default
@@ -562,8 +580,10 @@ tačkica može biti uključen komandom
 brailleeightdotstrue
 \series default
 .
- Međutim, dve dodatne tačke se samo štampaju kada se koristi Brajeva kutija.
- Na primer, vodeći broj
+ Međutim,
+ dve dodatne tačke se samo štampaju kada se koristi Brajeva kutija.
+ Na primer,
+ vodeći broj
 \series bold
  8175
 \series default
@@ -614,8 +634,7 @@ brailleeightdotsfalse
 \begin_inset VSpace bigskip
 \end_inset
 
-Veličina podrazumevanog fonta Brajeve azbuke može da se promeniti dužinom
- 
+Veličina podrazumevanog fonta Brajeve azbuke može da se promeniti dužinom 
 \series bold
 
 \backslash
@@ -627,8 +646,7 @@ brailleunit
 \end_inset
 
 mm.
- Da biste dobili primer dvostruke veličine Brajevog pisma koristite sledeću
- komandu u \SpecialChar TeX
+ Da biste dobili primer dvostruke veličine Brajevog pisma koristite sledeću komandu u \SpecialChar TeX
  kodu u vašem dokumentu:
 \end_layout
 
