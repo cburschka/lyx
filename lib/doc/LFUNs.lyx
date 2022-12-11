@@ -2404,7 +2404,7 @@ inset-edit
 \end_layout
 
 \begin_layout Description
-Action Edit the inset at cursor with an external application, if one is attributed.
+Action Edit the inset at cursor with an external application, if one is attributed. If the inset is file based, the referenced file is edited. Otherwise, the inset contents is written to a temporary file, the inset is locked, and the temporary file is edited. In this case, LFUN_INSET_END_EDIT must be called to overtake the changes and unlock the inset after editing is finished.
 \end_layout
 
 \begin_layout Description
@@ -2437,6 +2437,22 @@ Syntax inset-end
 
 \begin_layout Description
 Origin lasgouttes, 16 Mar 2009
+\end_layout
+
+\begin_layout Subsection*
+inset-end-edit
+\end_layout
+
+\begin_layout Description
+Action End editing the inset at cursor with an external application. This replaces the inset contents with the contents of the temporary file, deletes the file and unlocks the inset.
+\end_layout
+
+\begin_layout Description
+Syntax inset-end-edit
+\end_layout
+
+\begin_layout Description
+Origin gb, 11 Oct 2015
 \end_layout
 
 \begin_layout Subsection*
