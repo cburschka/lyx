@@ -2448,8 +2448,6 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 	langModule->encodingCO->setEnabled(tex_fonts);
 	inputencodingToDialog();
 
-	fontModule->fontsDefaultCO->setEnabled(tex_fonts);
-	fontModule->fontsDefaultLA->setEnabled(tex_fonts);
 	fontModule->cjkFontLE->setEnabled(tex_fonts);
 	fontModule->cjkFontLA->setEnabled(tex_fonts);
 
@@ -3864,11 +3862,8 @@ void GuiDocument::applyView()
 	bp_.fonts_sans_osf = fontModule->fontSansOsfCB->isChecked();
 	bp_.fonts_typewriter_osf = fontModule->fontTypewriterOsfCB->isChecked();
 
-	if (nontexfonts)
-		bp_.fonts_default_family = "default";
-	else
-		bp_.fonts_default_family = GuiDocument::fontfamilies[
-			fontModule->fontsDefaultCO->currentIndex()];
+	bp_.fonts_default_family = GuiDocument::fontfamilies[
+		fontModule->fontsDefaultCO->currentIndex()];
 
 	if (fontModule->fontsizeCO->currentIndex() == 0)
 		bp_.fontsize = "default";

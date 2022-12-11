@@ -4540,6 +4540,7 @@ def revert_index_macros(document):
             
 
 def revert_starred_refs(document):
+    " Revert starred refs "
     i = find_token(document.header, "\\use_hyperref true", 0)
     use_hyperref = (i != -1)
     i = 0
@@ -4604,6 +4605,7 @@ def revert_starred_refs(document):
 
 
 def convert_starred_refs(document):
+    " Convert inset index macros "
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset ref", i)
@@ -4617,7 +4619,25 @@ def convert_starred_refs(document):
         newlineat = end - 2
         document.body.insert(newlineat, "nolink \"false\"")
         i = end + 1
-            
+
+
+def revert_familydefault(document):
+    " Revert \\font_default_family for non-TeX fonts "
+
+    if find_token(document.header, "\\use_non_tex_fonts true", 0) == -1:
+        return
+ 
+    i = find_token(document.header, "\\font_default_family", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\font_default_family header")
+        return
+ 
+    dfamily = get_value(document.header, "\\font_default_family", i)
+    if dfamily == "default":
+        return
+        
+    document.header[i] = "\\font_default_family default"
+    add_to_preamble(document, ["\\renewcommand{\\familydefault}{\\" + dfamily + "}"])
         
 ##
 # Conversion hub
@@ -4692,10 +4712,12 @@ convert = [
            [609, []],
            [610, []],
            [611, []],
-           [612, [convert_starred_refs]]
+           [612, [convert_starred_refs]],
+           [613, []]
           ]
 
-revert =  [[611, [revert_starred_refs]],
+revert =  [[612, [revert_familydefault]],
+           [611, [revert_starred_refs]],
            [610, []],
            [609, [revert_index_macros]],
            [608, [revert_document_metadata]],
