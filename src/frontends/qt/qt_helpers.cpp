@@ -239,10 +239,12 @@ void setValid(QWidget * widget, bool valid)
 		if (qobject_cast<QCheckBox*>(widget) != nullptr) {
 			// Check boxes need to be treated differenty, see
 			// https://forum.qt.io/topic/93253/
-			widget->setStyleSheet("QCheckBox:unchecked{ color: red; }QCheckBox:checked{ color: red; }");
+			if (qobject_cast<QCheckBox*>(widget)->isChecked())
+				widget->setStyleSheet("QCheckBox:unchecked{ color: red; }QCheckBox:checked{ color: red; }");
 		} else {
 			QPalette pal = widget->palette();
 			pal.setColor(QPalette::Active, QPalette::WindowText, QColor(255, 0, 0));
+			pal.setColor(QPalette::Active, QPalette::Text, QColor(255, 0, 0));
 			widget->setPalette(pal);
 		}
 	}

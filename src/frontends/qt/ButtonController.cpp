@@ -53,6 +53,13 @@ CheckedLineEdit::CheckedLineEdit(QLineEdit * input, QWidget * label)
 
 bool CheckedLineEdit::check() const
 {
+	if (!input_->isEnabled()) {
+		// we do not check diabled widgets
+		if (label_)
+			setValid(label_, true);
+		return true;
+	}
+
 	QValidator const * validator = input_->validator();
 	if (!validator)
 		return true;

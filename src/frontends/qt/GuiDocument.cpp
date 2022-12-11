@@ -876,8 +876,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	textLayoutModule->lspacingCO->insertItem(
 		Spacing::Other, qt_("Custom"));
 	// initialize the length validator
-	bc().addCheckedLineEdit(textLayoutModule->indentLE);
-	bc().addCheckedLineEdit(textLayoutModule->skipLE);
+	bc().addCheckedLineEdit(textLayoutModule->indentLE, textLayoutModule->indentRB);
+	bc().addCheckedLineEdit(textLayoutModule->skipLE, textLayoutModule->skipRB);
 
 	textLayoutModule->tableStyleCO->addItem(qt_("Default"), toqstr("default"));
 	getTableStyles();
@@ -937,7 +937,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	outputModule->synccustomCB->addItem("\\synctex=-1");
 	outputModule->synccustomCB->addItem("\\usepackage[active]{srcltx}");
 
-	outputModule->synccustomCB->setValidator(new NoNewLineValidator(
+	outputModule->synccustomCB->lineEdit()->setValidator(new NoNewLineValidator(
 		outputModule->synccustomCB));
 
 	connect(outputModule->saveTransientPropertiesCB, SIGNAL(clicked()),
@@ -1523,13 +1523,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 
 	connect(mathsModule->MathIndentCB, SIGNAL(toggled(bool)),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->MathIndentCB, SIGNAL(toggled(bool)),
 		this, SLOT(allowMathIndent()));
-	connect(mathsModule->MathIndentCO, SIGNAL(activated(int)),
+	connect(mathsModule->MathIndentCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->MathIndentCO, SIGNAL(activated(int)),
 		this, SLOT(enableMathIndent(int)));
+	connect(mathsModule->MathIndentCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
 	connect(mathsModule->MathIndentLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->MathIndentLengthCO, SIGNAL(activated(int)),
@@ -1541,7 +1541,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	mathsModule->MathIndentLE->setValidator(new LengthValidator(
 		mathsModule->MathIndentLE));
 	// initialize the length validator
-	bc().addCheckedLineEdit(mathsModule->MathIndentLE);
+	bc().addCheckedLineEdit(mathsModule->MathIndentLE, mathsModule->MathIndentCB);
 	mathsModule->MathNumberingPosCO->addItem(qt_("Left"));
 	mathsModule->MathNumberingPosCO->addItem(qt_("Default"));
 	mathsModule->MathNumberingPosCO->addItem(qt_("Right"));
