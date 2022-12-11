@@ -1,25 +1,20 @@
-Public release of LyX version 2.3.6
+Public release of LyX version 2.3.7
 ===================================
 
-We are proud to announce the release of LyX 2.3.6. This is the sixth
+We are proud to announce the release of LyX 2.3.7. This is the seventh
 maintenance release in the 2.3.x series. We encourage all users to
 upgrade to this version.
 
-You can download LyX 2.3.6 from http://www.lyx.org/Download/.
+You can download LyX 2.3.7 from http://www.lyx.org/Download/.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-LyX 2.3.6 is the sixth maintenance release in the 2.3.x series. It is the 
-result of on-going efforts to make our stable version more reliable and 
-more stable. Most of the changes are fairly minor, fixes of smallish bugs, 
-but a couple crashes have been fixed, as well. 
-
-One oft-requested feature (going back 13 years) is the ability to create
-new child documents from within the 'include file' dialog. This is now
-possible. Another equally old bug that has been fixed is that pasting
-table content outside a table no longer pastes tab characters.
+LyX 2.3.7 is the  result of on-going efforts to make our stable version
+more reliable and more stable. Since it has been quite a long time (for
+unsurprising reasons) since the last update, this one contains more fixes
+than usual. We have fixed a number of crashes.
 
 If you think you have found a bug in LyX 2.3.6, please open a bug report at
 http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
@@ -32,7 +27,7 @@ is at http://wiki.lyx.org/. If you can't find the answer there, e-mail the
 LyX users' list (lyx-users <at> lists.lyx.org), where you will find an 
 active community of people who are ready to help.
 
-We hope you enjoy using LyX 2.3.6.
+We hope you enjoy using LyX 2.3.7.
 
 The LyX team.
 http://www.lyx.org
@@ -46,49 +41,36 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Added layout for American Psychological Association (APA), v. 7 (apa7).
+- Support \bigtimes from the mathtools package (bug 11223).
+
+- Support 0x019b via tipa (bug 12426).
 
 
 * USER INTERFACE
 
-- Improve UI of math matrix dialog UI (bug 11888).
+- If the bibliography processor requested by a document is not available, do not
+  silently fall back to default. Rather than that, warn the user, keep the requested
+  processor and only fall back to an alternative at processing stage.
 
-- Fix display of 'by chapter' labels in AMS classes (bug 11741).
+- Backspace at the very start of a cell part of eqnarray or align environments
+  does not move the cursor out of the whole equation anymore and is now
+  equivalent to hitting the left arrow key (bug 11678).
 
-- Add support for the doublestroke package in mathed (bug 11887).
+- Other than directly inserted, now references can also be pasted as insets
+  into an equation, instead of simply as text (bug 11539).
 
-- Fix behavior of text style dialog when "Immediate Apply" is checked (bug 11926).
+- Add support for High DPI screens in Windows and Linux (bug 12060).
 
-- Focus keyword field in Thesaurus dialog.
+- Add Qt platform name in About dialog.
 
-- Allow creation of a child file from the include dialog (bug 4475).
+- Add new pref variable \draw_strategy to fix some cases where display
+  is blinking (bug 12119).
 
-- Make sure to load the correct math fonts in certain cases.
-
-- Update autocorrect in mathed so that pressing '*' after a delimiter will
-  cycle through all sizes.
-
-- Display character styles along with fonts in status bar (bug 11951).
-
-
-* MISCELLANEOUS
-
-- Adjust debug output for fonts by not breaking lines that should go together.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Update Czech, German, Italian, Slovak, Russian and French user interface localizations. 
-
-- Update French translation of Customization manual
-
-
-* BUILD/INSTALLATION
-
-- Wininstaller, temporary remove the option to run LyX from the finish page
-  due to upcoming fix of the issue where after installing LyX as admin, this option
-  would execute LyX as admin too.
-
+- Update the H-P-Statments example document.
 
 
 ** Bug fixes:
@@ -96,70 +78,129 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix output of titles in branches and other insets (follow-up to bug 11787).
+- Fix Open Document (tex4ht) output converter.
 
-- Fix clipping of vector images and when exporting from command line
-  (follow-up to bug 11180).
+- Fix output of bibliography environment to make backref work
+  (bug 12041).
+
+- Fix tables in title.
+
+- Fix issue causing the coalesce of an empty description list item and an
+  immediately following nested itemize environment when loading documents
+  created with version 2.1 or earlier (bug 12148).
+
+- Fix export of the optional argument of \sqrt when it contains other
+  commands with optional arguments (bug 3294).
+
+- Fix loading subscript package with only LaTeX < 2005/12/01 (bug 12387).
+
+- Fix modernCV.lyx for Texlive 2021 (bug 12311).
+
+- Fix validating a macro definitions (bug 12524).
+
+- Fix crashing due to uncodable character in math macro name (bug 11855).
+
 
 
 * USER INTERFACE
 
-- Fix crash when pasting math grid with more rows in source than target
-  (bug 11897).
+- Re-enable input of non-LyX files (e.g., tex, pgf) (bug 12056).
 
-- Fix problem with drawing of auto-opened insets (bug 11870).
+- Fix problem with display of menus on Gnome Wayland (bug 11746).
 
-- Fix crash when rejecting changes and the cursor is in an inset that will be
-  deleted (bug 10316).
+- Improve error message for VCS file registration when RCS package
+  is not installed.
 
-- Ask to save hidden dirty documents (bug 11405).
+- Make bibliographies work with grandchildren (bug 12033).
 
-- Fix background color of collapsible insets with sublabel.
+- Do not close spellchecker after "Replace All" action (bug 11310).
 
-- Do not paste tabulators when pasting multiple cell outside table (bug 4449).
+- Fix width of collapsible insets with sublabels (bug 12046).
 
-- Fix language when pasting multiple cell outside table (bug 11898).
+- Fix Hebrew characters overflow in insets (bug 12030).
 
-- Fix input of decimal numbers in RtL context (bug 11900).
+- Fix unwanted scrolling of window when using "copy". (bug 11225).
 
-- Fix the LyX icon in the Wayland dash (bug 11847).
+- Disable direct insertion of multiple spaces in mathed text (bug 1311).
 
-- Fix display bug when typing in a paragraph where row heights change (bug 11601).
+- Fix crash in tabular when an empty paragraph is removed
+  automatically (bug 12117).
 
-- Fix wrong marking-text-behavior with doubleclick on notebook touchpads (Windows)
+- Fix crash in tabular when resetting font (bug 12566).
 
-- Fix spacing of limits of sum-like operators in display style.
+- Fix crash when using Hebrew (bug 12464).
 
-- Fix positioning of super- and subscripts with integral signs.
+- On screen, show upper case greek letters in \mathbf as bold (bug 3751).
 
-- Fix counter in bibliography inset (bug 11920).
+- Fix coloring of text-mode material in math equations (bug 11007).
 
-- Do not allow editing of math package list in Document > Settings > Math Options,
-  thus preventing a crash (bug 11931).
+- Fix crash with undo when the document has errors (bug 12163).
 
-- Maintain standard layout for separating paragraphs when switching layouts (bug 11936).
+- Fix Thesaurus usage with large text selection (#10528).
 
-- Prevent permanent disabling of widgets in Vertical/Horizontal Space dialogs
-  (bug 11952).
+- Fix wrap-around of spellchecker (#10383).
 
-- Fix behavior of Edit button in Include dialog.
+- Avoid pointless 'undefined flex inset' errors when changing document
+  settings (bug 12163).
 
-- Localize some previously unlocalized strings (bug 11954 ).
+- Fix display of emphasize in slanted text (bug 12175).
 
-- Fix bug where cursor blinks at the wrong position after changing layout (bug 11912).
+- Fix copy of multi-cells in table (bug 12196).
 
-- Fix PrettyFormat for Part (bug 11986).
+- Fix some wrongly initialized internal buffers (bug 12246).
 
-- Fix on-screen display of special math fonts (bug 11802).
+- Fix reverse search on Mac (bug 12063).
 
-- Fix white frame border in fullscreen mode.
+- Fix misaligned math frame decoration (bug 11491).
+
+- Fix painting of nested environment overlaping with inset (bug 12243).
+
+- Fix outline filter search for "\" symbol (bug 12359).
+
+- Fix inset cornes painting on HiDPI screens (bug 12336).
+
+- Fix instant preview foreground color in Beamer documents (bug 12563).
+
+- Properly update font info at cursor position after toggling
+  (bug 12450).
+
+- Fix broken modifier handling for Qt-5.12 on Mac (bug 12247).
+
+- Limit zoom value to 1000% to avoid crashes (bug 12452).
+
+- Limit graphics scaling in LyX to 1--1000% to avoid crashes (12353).
+
+- Fix potential crash with 32bit ucs4 codepoints (bug 12519).
+
+- Catch warnings from packages that contain a hyphen in their name
+  in the Log dialog.
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Updated most localizations.
 
 
 * BUILD/INSTALLATION
 
-- Wininstaller, fix bug where previous installations, with emergency version
-  greater than 1, could not be seen in registry on overinstall
+- compilation with configure now defaults to Qt5, use --disable-qt5 to compile with Qt4.
 
-- Do not break configuration if a module file is not decodable (file
-  not encoded in utf-8). Rather than that, issue a warning and skip
-  that file (a variant of bug 11736).
+- Remove use of deprecated Qt methods.
+
+- Update in-tree hunspell library to 1.7.0.
+
+- The WM class of LyX for X Window environment is now the package name, typically
+  "lyx" or "lyx[suffix]" (bug 11930).
+
+- Fix warnings with recent compilers (gcc 11, clang+++ >= 10) and compilation with gcc 12.
+
+- Fix warnings with autoconf 2.71.
+
+- Fix framework name case error for QtDBus on Mac (bug 12305)
+
+- Fix directory permission of .app bundle on Mac (bug 12150)
+
+- Fix configuration bug on Windows which prevented LyX from
+  installing (bug 12369).
+
+- With autoconf, fix the "distcheck" make target.
