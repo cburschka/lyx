@@ -188,8 +188,13 @@ Dimension InsetCollapsible::dimensionCollapsed(BufferView const & bv) const
 	Dimension dim;
 	FontInfo labelfont(getLabelfont());
 	labelfont.realize(sane_font);
+	int const offset = Inset::textOffset(&bv);
 	theFontMetrics(labelfont).buttonText(
-		buttonLabel(bv), Inset::textOffset(&bv), dim.wid, dim.asc, dim.des);
+		buttonLabel(bv), offset, dim.wid, dim.asc, dim.des);
+	// remove spacing on the right for left buttons
+	if (geometry(bv) == LeftButton)
+		// this form makes a difference if offset is even
+		dim.wid -= offset - offset / 2;
 	return dim;
 }
 
@@ -236,8 +241,8 @@ void InsetCollapsible::metrics(MetricsInfo & mi, Dimension & dim) const
 			InsetText::metrics(mi, textdim);
 			view_[&bv].openinlined_ = (textdim.wid + dim.wid) < mi.base.textwidth;
 			if (view_[&bv].openinlined_) {
-				// Correct for button width.
-				dim.wid += textdim.wid;
+				// Correct for button width but remove spacing before frame
+				dim.wid += textdim.wid - leftOffset(mi.base.bv) / 2;
 				dim.des = max(dim.des - textdim.asc + dim.asc, textdim.des);
 				dim.asc = textdim.asc;
 			} else {
@@ -314,7 +319,9 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 	case LeftButton:
 	case TopButton: {
 		if (g == LeftButton) {
-			textx = x + dimc.width();
+			// correct for spacing added before the frame in
+			// InsetText::draw. We want the button to touch the frame.
+			textx = x + dimc.width() - leftOffset(pi.base.bv) / 2;
 			texty = baseline;
 		} else {
 			textx = x;
