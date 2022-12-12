@@ -81,7 +81,7 @@ $DEBUG cd $BASE/lyx-build/
 
 echo "Building distribution...";
 $DEBUG $BASE/lyx-export/configure --enable-build-type=rel --enable-qt5
-if ! $DEBUG make lyxdist; then
+if ! $DEBUG make dist; then
   echo "Couldn't make distribution!";
   exit 1;
 fi
