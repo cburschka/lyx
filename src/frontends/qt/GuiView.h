@@ -164,7 +164,7 @@ public:
 	/// closes the buffer
 	bool closeBuffer(Buffer & buf);
 	///
-	void openDocument(std::string const & filename);
+	void openDocument(std::string const & filename, int origin);
 	///
 	void importDocument(std::string const &);
 

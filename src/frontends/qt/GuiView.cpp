@@ -2792,7 +2792,7 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 }
 
 
-void GuiView::openDocument(string const & fname)
+void GuiView::openDocument(string const & fname, int origin)
 {
 	string initpath = lyxrc.document_path;
 
@@ -2849,7 +2849,18 @@ void GuiView::openDocument(string const & fname)
 	// let the user create one
 	if (!fullname.exists() && !theBufferList().exists(fullname) &&
 	    !LyXVC::file_not_found_hook(fullname)) {
-		// The user specifically chose this name. Believe them.
+		// see bug #12609
+		if (origin == FuncRequest::MENU) {
+			docstring const & msg =
+				bformat(_("File\n %1$s\n does not exist. Create empty file?"),
+						from_utf8(filename));
+			int ret = Alert::prompt(_("File does not exist"),
+						msg, 0, 1,
+						_("&Create File"),
+						_("&Cancel"));
+			if (ret == 1)
+				return;
+		}
 		Buffer * const b = newFile(filename, string(), true);
 		if (b)
 			setBuffer(b);

@@ -1858,7 +1858,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// We want the ui session to be saved per document and not per
 			// window number. The filename crc is a good enough identifier.
 			createView(support::checksum(fname));
-			current_view_->openDocument(fname);
+			current_view_->openDocument(fname, cmd.origin());
 			if (!current_view_->documentBufferView())
 				current_view_->close();
 			else if (cmd.origin() == FuncRequest::LYXSERVER) {
@@ -1867,7 +1867,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				current_view_->showNormal();
 			}
 		} else {
-			current_view_->openDocument(fname);
+			current_view_->openDocument(fname, cmd.origin());
 			if (cmd.origin() == FuncRequest::LYXSERVER) {
 				current_view_->raise();
 				current_view_->activateWindow();
