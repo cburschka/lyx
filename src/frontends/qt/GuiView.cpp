@@ -2856,7 +2856,7 @@ void GuiView::openDocument(string const & fname, int origin)
 						from_utf8(filename));
 			int ret = Alert::prompt(_("File does not exist"),
 						msg, 0, 1,
-						_("&Create File"),
+						_("Create &File"),
 						_("&Cancel"));
 			if (ret == 1)
 				return;
