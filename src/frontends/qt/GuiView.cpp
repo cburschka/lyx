@@ -2849,7 +2849,7 @@ void GuiView::openDocument(string const & fname)
 	// let the user create one
 	if (!fullname.exists() && !theBufferList().exists(fullname) &&
 	    !LyXVC::file_not_found_hook(fullname)) {
-		// the user specifically chose this name. Believe him.
+		// The user specifically chose this name. Believe them.
 		Buffer * const b = newFile(filename, string(), true);
 		if (b)
 			setBuffer(b);
