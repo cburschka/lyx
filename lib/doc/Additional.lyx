@@ -4606,6 +4606,8 @@ status collapsed
 \change_inserted 564990737 1670794716
 
 https://www.aanda.org/for-authors/latex-issues/texnical-background-information
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -5635,6 +5637,1091 @@ aa.dem
 \family default
  with the \SpecialChar LyX
  way of writing.
+\end_layout
+
+\begin_layout Subsection
+AAS\SpecialChar TeX
+
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Mike Ressler
+\end_layout
+
+\begin_layout Subsubsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+AAS\SpecialChar TeX
+ is a set of macros produced by the American Astronomical Society to
+ facilitate electronic manuscript submission to the three journals they
+ publish: the Astrophysical Journal (including the Letters and Supplement),
+ the Astronomical Journal, and the Publications of the Astronomical Society
+ of the Pacific.
+ \SpecialChar LyX
+ has proven to be an excellent tool for generating these documents, especially
+ given its equation, citation, and figure handling capabilities.
+ \SpecialChar LyX
+ requires version 5.0 (or higher) of these macros; preferably 6.0, which
+ is the version described here, or higher.
+ Versions prior to 5.0 are intended for use with \SpecialChar LaTeX
+2.09 and are fundamentally
+ incompatible with \SpecialChar LyX
+.
+ The AAS\SpecialChar TeX
+ package may be downloaded from the AAS\SpecialChar TeX
+ Web site
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://aas.org/aastex/aastex-downloads
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A complete user guide is contained in that package and you should familiarize
+ yourself with it thoroughly before embarking on writing a paper in \SpecialChar LyX
+.
+ \SpecialChar LyX
+ will not reduce the need to figure out all the AAS\SpecialChar TeX
+ commands, it will only
+ reduce the drudgery of typing everything in.
+ It is your responsibility to ensure that the final exported \SpecialChar LaTeX
+ document conforms
+ completely to the requirements of the journal to which you are submitting
+ your paper.
+\end_layout
+
+\begin_layout Subsubsection
+Starting a New Paper
+\end_layout
+
+\begin_layout Standard
+I strongly suggest that you start with the AAS\SpecialChar TeX
+ template file.
+ Click on 
+\family sans
+File\SpecialChar menuseparator
+New from
+\family default
+ 
+\family sans
+Template
+\family default
+, enter the new file name, then choose the 
+\family typewriter
+aastex6.lyx
+\family default
+ template.
+ This will show the most common fields found in a manuscript.
+ Simply overwrite the existing text (including the brackets, 
+\family typewriter
+<>
+\family default
+) with the correct information.
+ Many of the AAS\SpecialChar TeX
+ commands and environments can be implemented directly in
+ \SpecialChar LyX
+, but some cannot.
+ For commands such as these, the \SpecialChar LaTeX
+ code must be entered directly and marked
+ as such.
+ Such commands are referred to as \SpecialChar TeX
+ code, or Evil Red Text.
+ I tried to minimize the amount of \SpecialChar TeX
+ code needed in an AAS\SpecialChar TeX
+ document.
+\end_layout
+
+\begin_layout Subsubsection
+Finishing Your Paper
+\end_layout
+
+\begin_layout Standard
+When the paper is finished to your satisfaction and previews/prints correctly,
+ there are a few 
+\begin_inset Quotes eld
+\end_inset
+
+postprocessing
+\begin_inset Quotes erd
+\end_inset
+
+ actions which need to be done before you submit it to the journals.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Export your paper as a \SpecialChar LaTeX
+ file (
+\family sans
+File\SpecialChar menuseparator
+Export\SpecialChar menuseparator
+\SpecialChar LaTeX
+
+\family default
+).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Edit the resulting 
+\family typewriter
+.tex
+\family default
+ file with your favorite text editor
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+remove the comment lines before the 
+\family typewriter
+
+\backslash
+documentclass
+\family default
+ command
+\end_layout
+
+\begin_layout Enumerate
+remove the 
+\family typewriter
+
+\backslash
+usepackage...{fontenc}
+\family default
+ line if it appears (usually just after 
+\family typewriter
+
+\backslash
+documentclass
+\family default
+}; also remove the 
+\family typewriter
+
+\backslash
+secnumdepth
+\family default
+ line if it appears.
+\end_layout
+
+\begin_layout Enumerate
+remove everything between (and including) the 
+\family typewriter
+
+\backslash
+makeatletter
+\family default
+ and 
+\family typewriter
+
+\backslash
+makeatother
+\family default
+ commands, except for any commands you specifically put into the \SpecialChar LaTeX
+ preamble
+ (which should appear immediately after the 
+\begin_inset Quotes eld
+\end_inset
+
+User specified \SpecialChar LaTeX
+ commands
+\begin_inset Quotes erd
+\end_inset
+
+ comment in the 
+\family typewriter
+.tex
+\family default
+ file).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Run the resulting file through \SpecialChar LaTeX
+ to make sure it still processes correctly.
+\end_layout
+
+\begin_layout Enumerate
+Reread the journal requirements to make sure your filenames and formats
+ are correct.
+\end_layout
+
+\begin_layout Enumerate
+Submit it.
+\end_layout
+
+\begin_layout Subsubsection
+Comments On Specific Commands
+\end_layout
+
+\begin_layout Standard
+I will not describe the detailed usage of the individual AAS\SpecialChar TeX
+ commands: the
+ AAS\SpecialChar TeX
+ User Guide (
+\family typewriter
+aasguide.tex
+\family default
+) gives a good description of each.
+ Thus it's probably easiest for me to go down the list as found in the guide
+ and offer comments where necessary.
+ So let's begin \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Paragraph
+Things that work as expected
+\end_layout
+
+\begin_layout Standard
+Because they work as you might expect, I simply list them and the section
+ they are found in: 
+\family typewriter
+
+\backslash
+documentclass
+\family default
+ (2.1.1), 
+\family typewriter
+
+\backslash
+begin{document}
+\family default
+ (2.2), 
+\family typewriter
+
+\backslash
+title
+\family default
+ (2.3), 
+\family typewriter
+
+\backslash
+author
+\family default
+ (2.3), 
+\family typewriter
+
+\backslash
+affil
+\family default
+ (2.3), 
+\family typewriter
+
+\backslash
+abstract
+\family default
+ (2.4), 
+\family typewriter
+
+\backslash
+keywords
+\family default
+ (2.5), 
+\family typewriter
+
+\backslash
+section
+\family default
+ (2.7), 
+\family typewriter
+
+\backslash
+subsection
+\family default
+ (2.7), 
+\family typewriter
+
+\backslash
+subsubsection
+\family default
+ (2.7), 
+\family typewriter
+
+\backslash
+paragraph
+\family default
+ (2.7), 
+\family typewriter
+
+\backslash
+facility
+\family default
+ (2.10), 
+\family typewriter
+
+\backslash
+begin{displaymath}
+\family default
+ (2.12), 
+\family typewriter
+
+\backslash
+begin{equation}
+\family default
+ (2.12), 
+\family typewriter
+
+\backslash
+begin{eqnarray}
+\family default
+ (2.12), 
+\family typewriter
+
+\backslash
+begin{mathletters}
+\family default
+ (2.12), 
+\family typewriter
+
+\backslash
+begin{thebibliography}
+\family default
+ (2.13.1), 
+\family typewriter
+
+\backslash
+bibitem
+\family default
+ (2.13.2), all the cite commands and their variations (2.13.2), the generic
+ graphicx figure commands (2.14.1), 
+\family typewriter
+
+\backslash
+begin{table}
+\family default
+ (2.15.4), 
+\family typewriter
+
+\backslash
+begin{tabular}
+\family default
+ (2.15.4), 
+\family typewriter
+
+\backslash
+caption
+\family default
+ (2.15.4), 
+\family typewriter
+
+\backslash
+label
+\family default
+ (2.15.4, amongst other places), 
+\family typewriter
+
+\backslash
+tablerefs
+\family default
+ (2.15.5), 
+\family typewriter
+
+\backslash
+tablecomments
+\family default
+ (2.15.5), 
+\family typewriter
+
+\backslash
+url
+\family default
+ (2.17.4), 
+\family typewriter
+
+\backslash
+end{document}
+\family default
+ (2.18).
+\end_layout
+
+\begin_layout Standard
+The following style options also work correctly: 
+\family typewriter
+longabstract
+\family default
+ (2.4), 
+\family typewriter
+preprint
+\family default
+ (3.2.1), 
+\family typewriter
+preprint2
+\family default
+ (3.2.2), 
+\family typewriter
+eqsecnum
+\family default
+ (3.3), 
+\family typewriter
+flushrt
+\family default
+ (3.4).
+ Simply put them in the 
+\family sans
+Options
+\family default
+ box in 
+\family sans
+Layout\SpecialChar menuseparator
+Document
+\family default
+.
+\end_layout
+
+\begin_layout Paragraph
+Things that work, but require more comment
+\end_layout
+
+\begin_layout Standard
+The following items work, but require a little more discussion:
+\end_layout
+
+\begin_layout Itemize
+These items are reserved for use by the journal editors, but you can put
+ them into the \SpecialChar LaTeX
+ preamble if you feel compelled to do so: 
+\family typewriter
+
+\backslash
+received
+\family default
+, 
+\family typewriter
+
+\backslash
+revised
+\family default
+, 
+\family typewriter
+
+\backslash
+accepted
+\family default
+, 
+\family typewriter
+
+\backslash
+ccc
+\family default
+, 
+\family typewriter
+
+\backslash
+cpright
+\family default
+ (all from 2.1.3)
+\end_layout
+
+\begin_layout Itemize
+These items may be placed in the \SpecialChar LaTeX
+ preamble, and are included as blanks in
+ the template file: 
+\family typewriter
+
+\backslash
+slugcomment
+\family default
+ (2.1.4), 
+\family typewriter
+
+\backslash
+shorttitle
+\family default
+ (2.1.5), 
+\family typewriter
+
+\backslash
+shortauthors
+\family default
+ (2.1.5)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+email
+\family default
+ (2.3) – can only be used 
+\begin_inset Quotes eld
+\end_inset
+
+standalone
+\begin_inset Quotes erd
+\end_inset
+
+, not in the middle of a paragraph.
+ Use \SpecialChar TeX
+ code if you need to embed it.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+and
+\family default
+ (2.3) – will have extra {} after it.
+ This should not cause an error.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+notetoeditor
+\family default
+ (2.6) – can only be used 
+\begin_inset Quotes eld
+\end_inset
+
+standalone
+\begin_inset Quotes erd
+\end_inset
+
+, not in the middle of a paragraph.
+ Use \SpecialChar TeX
+ code if you need to embed it.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+placetable
+\family default
+ (2.8) – can't insert a cross-reference tag, you must type the tag name by
+ hand
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+placefigure
+\family default
+ (2.8) – same as for 
+\family typewriter
+
+\backslash
+placetable
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+acknowledgements
+\family default
+ (2.9) – will have extra {} after it.
+ This should not cause an error.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+appendix
+\family default
+ (2.11) – will have extra {} after it.
+ This should not cause an error.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+figcaption
+\family default
+ (2.14.2) – you can insert an optional filename argument by placing the cursor
+ at the beginning of the text and selecting 
+\family sans
+Insert\SpecialChar menuseparator
+Short Title
+\family default
+.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Short Title
+\begin_inset Quotes erd
+\end_inset
+
+ inserts an optional argument of the type needed by 
+\family typewriter
+
+\backslash
+figcaption
+\family default
+.
+ Hopefully it will be renamed someday.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+objectname
+\family default
+ (2.17.1) – same as 
+\family typewriter
+
+\backslash
+figcaption
+\family default
+ for the catalog ID optional parameter
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+dataset
+\family default
+ (2.17.1) – same as 
+\family typewriter
+
+\backslash
+figcaption
+\family default
+ for the catalog ID optional parameter
+\end_layout
+
+\begin_layout Paragraph
+Things not implemented, use \SpecialChar TeX
+ code
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+eqnum
+\family default
+ (2.12), 
+\family typewriter
+
+\backslash
+setcounter{equation}
+\family default
+ (2.12), Journal name abbreviations (2.13.4), 
+\family typewriter
+
+\backslash
+figurenum
+\family default
+ (2.14.1), 
+\family typewriter
+
+\backslash
+epsscale
+\family default
+ (2.14.1), 
+\family typewriter
+
+\backslash
+plotone
+\family default
+ (2.14.1), 
+\family typewriter
+
+\backslash
+plottwo
+\family default
+ (2.14.1), 
+\family typewriter
+
+\backslash
+tablenum
+\family default
+ (2.15.4), 
+\family typewriter
+
+\backslash
+tableline
+\family default
+ (2.15.4, insert it as the first element in the lefthand cell after where
+ you want it.
+ Don't use any of \SpecialChar LyX
+'s rules in the table), 
+\family typewriter
+
+\backslash
+tablenotemark
+\family default
+ (2.15.5), 
+\family typewriter
+
+\backslash
+tablenotetext
+\family default
+ (2.15.5), much of Misc (2.17, except 
+\family typewriter
+
+\backslash
+objectname
+\family default
+, 
+\family typewriter
+
+\backslash
+dataset
+\family default
+, 
+\family typewriter
+
+\backslash
+url
+\family default
+, and 
+\family typewriter
+
+\backslash
+email
+\family default
+; see above), 
+\family typewriter
+
+\backslash
+singlespace
+\family default
+ (3.1), 
+\family typewriter
+
+\backslash
+doublespace
+\family default
+ (3.1), 
+\family typewriter
+
+\backslash
+onecolumn
+\family default
+ (3.2), 
+\family typewriter
+
+\backslash
+twocolumn
+\family default
+ (3.2)
+\end_layout
+
+\begin_layout Paragraph
+Things that cannot be implemented
+\end_layout
+
+\begin_layout Standard
+\SpecialChar ldots
+ at least in any meaningful sort of way, so I suggest ignoring them.
+ They are the references environment (2.13.3), and the deluxetable environment
+ (2.15).
+ If you really, really need to use deluxetable, I suggest editing it in
+ a separate file with a text editor, then using 
+\family sans
+Insert\SpecialChar menuseparator
+Child
+\begin_inset space ~
+\end_inset
+
+Document
+\family default
+ to include it in your \SpecialChar LyX
+ document.
+ See the 
+\family typewriter
+aas_sample.lyx
+\family default
+ file to see an example of this.
+\end_layout
+
+\begin_layout Subsubsection
+FAQs, Tips, Tricks, and Other Ruminations
+\end_layout
+
+\begin_layout Paragraph
+Getting \SpecialChar LyX
+ and AAS\SpecialChar TeX
+ to cooperate
+\end_layout
+
+\begin_layout Standard
+It can be a bit tricky to get \SpecialChar LyX
+ to recognize a new layout and document class.
+ When all else fails, do this:
+\end_layout
+
+\begin_layout Enumerate
+Make certain that \SpecialChar LaTeX
+ can find AAS\SpecialChar TeX
+.
+ Copy sample.tex (and perhaps table.tex) from the AAS\SpecialChar TeX
+ distribution into a
+ directory completely unrelated to \SpecialChar LaTeX
+ or AAS\SpecialChar TeX
+ and run \SpecialChar LaTeX
+ on 
+\family typewriter
+sample.tex
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Make certain that 
+\family typewriter
+aastex.layout
+\family default
+ appears in \SpecialChar LyX
+'s 
+\family typewriter
+layouts
+\family default
+ folder
+\end_layout
+
+\begin_layout Enumerate
+Rerun 
+\family sans
+Tools\SpecialChar menuseparator
+Reconfigure
+\family default
+ in \SpecialChar LyX
+, then restart \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Enumerate
+Open a regular new file, not from a template.
+ Does AAS\SpecialChar TeX
+ appear in the class list in 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+?
+\end_layout
+
+\begin_layout Standard
+If you get a warning from an existing AAS\SpecialChar TeX
+ document about not being able
+ to find the AAS\SpecialChar TeX
+ layout or a message about 
+\begin_inset Quotes eld
+\end_inset
+
+You should not mix title layouts with normal ones
+\begin_inset Quotes erd
+\end_inset
+
+, things haven't been installed correctly.
+\end_layout
+
+\begin_layout Paragraph
+\SpecialChar LaTeX
+ error processing a table 
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+, by default, attempts to center the table caption/title.
+ This seems to produce a bad interaction in AAS\SpecialChar TeX
+ so you should click somewhere
+ in the caption/title, then select 
+\family sans
+Edit\SpecialChar menuseparator
+Paragraph
+\begin_inset space ~
+\end_inset
+
+Settings
+\family default
+, then set the 
+\family sans
+Alignment
+\family default
+ to 
+\family sans
+Block
+\family default
+.
+ This took care of it for me.
+\end_layout
+
+\begin_layout Paragraph
+References
+\end_layout
+
+\begin_layout Standard
+A couple of things: 1) I have noticed some funny spacing in the reference
+ entries in the text.
+ When you enter the bibliography item data, make sure their is 
+\emph on
+no
+\emph default
+ space between the last author and the parenthesis setting off the year;
+ 
+\emph on
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\emph default
+type 
+\family typewriter
+Ressler(1992)
+\family default
+, not 
+\family typewriter
+Ressler (1992)
+\family default
+.
+ 2) Entering the references at all is not obvious.
+ The easiest thing is to start typing your first reference at the end of
+ the document, then mark it as type 
+\family sans
+References
+\family default
+.
+ That will put a small gray box in front of what you just typed.
+ Click on the box to fill in the rest of the information.
+ For new references, go to the end of an existing reference and press return.
+ That will create a new line with its own box, etc.
+\end_layout
+
+\begin_layout Paragraph
+Including EPS files
+\end_layout
+
+\begin_layout Standard
+Even though AAS\SpecialChar TeX
+ provides its own figure commands (
+\family typewriter
+
+\backslash
+plotone
+\family default
+, for example), I much prefer \SpecialChar LaTeX
+'s standard figure commands (with the default
+ graphicx).
+ You can insert the 
+\family typewriter
+
+\backslash
+plotone
+\family default
+, etc.
+\begin_inset space ~
+\end_inset
+
+commands as \SpecialChar TeX
+ code into a Figure Float box if you desire, but I never have
+ much luck getting the layout right.
+ With the standard graphics, \SpecialChar LyX
+ will insert a 
+\family typewriter
+
+\backslash
+usepackage{graphicx}
+\family default
+ command into the \SpecialChar LaTeX
+ preamble and handle the figures in the standard \SpecialChar LaTeX2e
+ way,
+ interspersing the figures in the text.
+ I believe ApJ accepts figures exactly this way now; AJ might still use
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+stack everything at the end
+\begin_inset Quotes erd
+\end_inset
+
+ technique.
+\end_layout
+
+\begin_layout Paragraph
+Things I could have done, but didn't
+\end_layout
+
+\begin_layout Standard
+There are a few 
+\begin_inset Quotes eld
+\end_inset
+
+pretty
+\begin_inset Quotes erd
+\end_inset
+
+ things I could have implemented, but chose not to.
+ For instance, I saw no point in double-spacing the text in the \SpecialChar LyX
+ window,
+ even though it is double-spaced in the paper manuscript.
+ Also, I chose not to make separate layouts for the preprint and preprint2
+ styles.
+ Since I assume you will spend most of your time in the plain manuscript
+ mode anyway, I decided not to chew up more disk space with this.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Final Caveat
+\end_layout
+
+\begin_layout Standard
+Your mileage may vary.
+ I've now had papers published by both ApJ and AJ that have had 98% of the
+ effort done in \SpecialChar LyX
+; the last 2% was the \SpecialChar LaTeX
+ post-processing and a few cleanups.
+ I have had no trouble with the submission process, and I'm sure the journals
+ were never aware that there might be a difference.
+ So, go forth and publish!
 \end_layout
 
 \begin_layout Section
@@ -13700,1091 +14787,6 @@ Examples
  Use it for inspiration, and compare the original \SpecialChar LaTeX
  code with \SpecialChar LyX
  way of writing.
-\end_layout
-
-\begin_layout Section
-AAS\SpecialChar TeX
-
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Mike Ressler
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Standard
-AAS\SpecialChar TeX
- is a set of macros produced by the American Astronomical Society to
- facilitate electronic manuscript submission to the three journals they
- publish: the Astrophysical Journal (including the Letters and Supplement),
- the Astronomical Journal, and the Publications of the Astronomical Society
- of the Pacific.
- \SpecialChar LyX
- has proven to be an excellent tool for generating these documents, especially
- given its equation, citation, and figure handling capabilities.
- \SpecialChar LyX
- requires version 5.0 (or higher) of these macros; preferably 6.0, which
- is the version described here, or higher.
- Versions prior to 5.0 are intended for use with \SpecialChar LaTeX
-2.09 and are fundamentally
- incompatible with \SpecialChar LyX
-.
- The AAS\SpecialChar TeX
- package may be downloaded from the AAS\SpecialChar TeX
- Web site
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://aas.org/aastex/aastex-downloads
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A complete user guide is contained in that package and you should familiarize
- yourself with it thoroughly before embarking on writing a paper in \SpecialChar LyX
-.
- \SpecialChar LyX
- will not reduce the need to figure out all the AAS\SpecialChar TeX
- commands, it will only
- reduce the drudgery of typing everything in.
- It is your responsibility to ensure that the final exported \SpecialChar LaTeX
- document conforms
- completely to the requirements of the journal to which you are submitting
- your paper.
-\end_layout
-
-\begin_layout Subsection
-Starting a New Paper
-\end_layout
-
-\begin_layout Standard
-I strongly suggest that you start with the AAS\SpecialChar TeX
- template file.
- Click on 
-\family sans
-File\SpecialChar menuseparator
-New from
-\family default
- 
-\family sans
-Template
-\family default
-, enter the new file name, then choose the 
-\family typewriter
-aastex6.lyx
-\family default
- template.
- This will show the most common fields found in a manuscript.
- Simply overwrite the existing text (including the brackets, 
-\family typewriter
-<>
-\family default
-) with the correct information.
- Many of the AAS\SpecialChar TeX
- commands and environments can be implemented directly in
- \SpecialChar LyX
-, but some cannot.
- For commands such as these, the \SpecialChar LaTeX
- code must be entered directly and marked
- as such.
- Such commands are referred to as \SpecialChar TeX
- code, or Evil Red Text.
- I tried to minimize the amount of \SpecialChar TeX
- code needed in an AAS\SpecialChar TeX
- document.
-\end_layout
-
-\begin_layout Subsection
-Finishing Your Paper
-\end_layout
-
-\begin_layout Standard
-When the paper is finished to your satisfaction and previews/prints correctly,
- there are a few 
-\begin_inset Quotes eld
-\end_inset
-
-postprocessing
-\begin_inset Quotes erd
-\end_inset
-
- actions which need to be done before you submit it to the journals.
- 
-\end_layout
-
-\begin_layout Enumerate
-Export your paper as a \SpecialChar LaTeX
- file (
-\family sans
-File\SpecialChar menuseparator
-Export\SpecialChar menuseparator
-\SpecialChar LaTeX
-
-\family default
-).
- 
-\end_layout
-
-\begin_layout Enumerate
-Edit the resulting 
-\family typewriter
-.tex
-\family default
- file with your favorite text editor
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-remove the comment lines before the 
-\family typewriter
-
-\backslash
-documentclass
-\family default
- command
-\end_layout
-
-\begin_layout Enumerate
-remove the 
-\family typewriter
-
-\backslash
-usepackage...{fontenc}
-\family default
- line if it appears (usually just after 
-\family typewriter
-
-\backslash
-documentclass
-\family default
-}; also remove the 
-\family typewriter
-
-\backslash
-secnumdepth
-\family default
- line if it appears.
-\end_layout
-
-\begin_layout Enumerate
-remove everything between (and including) the 
-\family typewriter
-
-\backslash
-makeatletter
-\family default
- and 
-\family typewriter
-
-\backslash
-makeatother
-\family default
- commands, except for any commands you specifically put into the \SpecialChar LaTeX
- preamble
- (which should appear immediately after the 
-\begin_inset Quotes eld
-\end_inset
-
-User specified \SpecialChar LaTeX
- commands
-\begin_inset Quotes erd
-\end_inset
-
- comment in the 
-\family typewriter
-.tex
-\family default
- file).
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Run the resulting file through \SpecialChar LaTeX
- to make sure it still processes correctly.
-\end_layout
-
-\begin_layout Enumerate
-Reread the journal requirements to make sure your filenames and formats
- are correct.
-\end_layout
-
-\begin_layout Enumerate
-Submit it.
-\end_layout
-
-\begin_layout Subsection
-Comments On Specific Commands
-\end_layout
-
-\begin_layout Standard
-I will not describe the detailed usage of the individual AAS\SpecialChar TeX
- commands: the
- AAS\SpecialChar TeX
- User Guide (
-\family typewriter
-aasguide.tex
-\family default
-) gives a good description of each.
- Thus it's probably easiest for me to go down the list as found in the guide
- and offer comments where necessary.
- So let's begin \SpecialChar ldots
-
-\end_layout
-
-\begin_layout Subsubsection
-Things that work as expected
-\end_layout
-
-\begin_layout Standard
-Because they work as you might expect, I simply list them and the section
- they are found in: 
-\family typewriter
-
-\backslash
-documentclass
-\family default
- (2.1.1), 
-\family typewriter
-
-\backslash
-begin{document}
-\family default
- (2.2), 
-\family typewriter
-
-\backslash
-title
-\family default
- (2.3), 
-\family typewriter
-
-\backslash
-author
-\family default
- (2.3), 
-\family typewriter
-
-\backslash
-affil
-\family default
- (2.3), 
-\family typewriter
-
-\backslash
-abstract
-\family default
- (2.4), 
-\family typewriter
-
-\backslash
-keywords
-\family default
- (2.5), 
-\family typewriter
-
-\backslash
-section
-\family default
- (2.7), 
-\family typewriter
-
-\backslash
-subsection
-\family default
- (2.7), 
-\family typewriter
-
-\backslash
-subsubsection
-\family default
- (2.7), 
-\family typewriter
-
-\backslash
-paragraph
-\family default
- (2.7), 
-\family typewriter
-
-\backslash
-facility
-\family default
- (2.10), 
-\family typewriter
-
-\backslash
-begin{displaymath}
-\family default
- (2.12), 
-\family typewriter
-
-\backslash
-begin{equation}
-\family default
- (2.12), 
-\family typewriter
-
-\backslash
-begin{eqnarray}
-\family default
- (2.12), 
-\family typewriter
-
-\backslash
-begin{mathletters}
-\family default
- (2.12), 
-\family typewriter
-
-\backslash
-begin{thebibliography}
-\family default
- (2.13.1), 
-\family typewriter
-
-\backslash
-bibitem
-\family default
- (2.13.2), all the cite commands and their variations (2.13.2), the generic
- graphicx figure commands (2.14.1), 
-\family typewriter
-
-\backslash
-begin{table}
-\family default
- (2.15.4), 
-\family typewriter
-
-\backslash
-begin{tabular}
-\family default
- (2.15.4), 
-\family typewriter
-
-\backslash
-caption
-\family default
- (2.15.4), 
-\family typewriter
-
-\backslash
-label
-\family default
- (2.15.4, amongst other places), 
-\family typewriter
-
-\backslash
-tablerefs
-\family default
- (2.15.5), 
-\family typewriter
-
-\backslash
-tablecomments
-\family default
- (2.15.5), 
-\family typewriter
-
-\backslash
-url
-\family default
- (2.17.4), 
-\family typewriter
-
-\backslash
-end{document}
-\family default
- (2.18).
-\end_layout
-
-\begin_layout Standard
-The following style options also work correctly: 
-\family typewriter
-longabstract
-\family default
- (2.4), 
-\family typewriter
-preprint
-\family default
- (3.2.1), 
-\family typewriter
-preprint2
-\family default
- (3.2.2), 
-\family typewriter
-eqsecnum
-\family default
- (3.3), 
-\family typewriter
-flushrt
-\family default
- (3.4).
- Simply put them in the 
-\family sans
-Options
-\family default
- box in 
-\family sans
-Layout\SpecialChar menuseparator
-Document
-\family default
-.
-\end_layout
-
-\begin_layout Subsubsection
-Things that work, but require more comment
-\end_layout
-
-\begin_layout Standard
-The following items work, but require a little more discussion:
-\end_layout
-
-\begin_layout Itemize
-These items are reserved for use by the journal editors, but you can put
- them into the \SpecialChar LaTeX
- preamble if you feel compelled to do so: 
-\family typewriter
-
-\backslash
-received
-\family default
-, 
-\family typewriter
-
-\backslash
-revised
-\family default
-, 
-\family typewriter
-
-\backslash
-accepted
-\family default
-, 
-\family typewriter
-
-\backslash
-ccc
-\family default
-, 
-\family typewriter
-
-\backslash
-cpright
-\family default
- (all from 2.1.3)
-\end_layout
-
-\begin_layout Itemize
-These items may be placed in the \SpecialChar LaTeX
- preamble, and are included as blanks in
- the template file: 
-\family typewriter
-
-\backslash
-slugcomment
-\family default
- (2.1.4), 
-\family typewriter
-
-\backslash
-shorttitle
-\family default
- (2.1.5), 
-\family typewriter
-
-\backslash
-shortauthors
-\family default
- (2.1.5)
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-email
-\family default
- (2.3) – can only be used 
-\begin_inset Quotes eld
-\end_inset
-
-standalone
-\begin_inset Quotes erd
-\end_inset
-
-, not in the middle of a paragraph.
- Use \SpecialChar TeX
- code if you need to embed it.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-and
-\family default
- (2.3) – will have extra {} after it.
- This should not cause an error.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-notetoeditor
-\family default
- (2.6) – can only be used 
-\begin_inset Quotes eld
-\end_inset
-
-standalone
-\begin_inset Quotes erd
-\end_inset
-
-, not in the middle of a paragraph.
- Use \SpecialChar TeX
- code if you need to embed it.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-placetable
-\family default
- (2.8) – can't insert a cross-reference tag, you must type the tag name by
- hand
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-placefigure
-\family default
- (2.8) – same as for 
-\family typewriter
-
-\backslash
-placetable
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-acknowledgements
-\family default
- (2.9) – will have extra {} after it.
- This should not cause an error.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-appendix
-\family default
- (2.11) – will have extra {} after it.
- This should not cause an error.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-figcaption
-\family default
- (2.14.2) – you can insert an optional filename argument by placing the cursor
- at the beginning of the text and selecting 
-\family sans
-Insert\SpecialChar menuseparator
-Short Title
-\family default
-.
- 
-\begin_inset Quotes eld
-\end_inset
-
-Short Title
-\begin_inset Quotes erd
-\end_inset
-
- inserts an optional argument of the type needed by 
-\family typewriter
-
-\backslash
-figcaption
-\family default
-.
- Hopefully it will be renamed someday.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-objectname
-\family default
- (2.17.1) – same as 
-\family typewriter
-
-\backslash
-figcaption
-\family default
- for the catalog ID optional parameter
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-dataset
-\family default
- (2.17.1) – same as 
-\family typewriter
-
-\backslash
-figcaption
-\family default
- for the catalog ID optional parameter
-\end_layout
-
-\begin_layout Subsubsection
-Things not implemented, use \SpecialChar TeX
- code
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-eqnum
-\family default
- (2.12), 
-\family typewriter
-
-\backslash
-setcounter{equation}
-\family default
- (2.12), Journal name abbreviations (2.13.4), 
-\family typewriter
-
-\backslash
-figurenum
-\family default
- (2.14.1), 
-\family typewriter
-
-\backslash
-epsscale
-\family default
- (2.14.1), 
-\family typewriter
-
-\backslash
-plotone
-\family default
- (2.14.1), 
-\family typewriter
-
-\backslash
-plottwo
-\family default
- (2.14.1), 
-\family typewriter
-
-\backslash
-tablenum
-\family default
- (2.15.4), 
-\family typewriter
-
-\backslash
-tableline
-\family default
- (2.15.4, insert it as the first element in the lefthand cell after where
- you want it.
- Don't use any of \SpecialChar LyX
-'s rules in the table), 
-\family typewriter
-
-\backslash
-tablenotemark
-\family default
- (2.15.5), 
-\family typewriter
-
-\backslash
-tablenotetext
-\family default
- (2.15.5), much of Misc (2.17, except 
-\family typewriter
-
-\backslash
-objectname
-\family default
-, 
-\family typewriter
-
-\backslash
-dataset
-\family default
-, 
-\family typewriter
-
-\backslash
-url
-\family default
-, and 
-\family typewriter
-
-\backslash
-email
-\family default
-; see above), 
-\family typewriter
-
-\backslash
-singlespace
-\family default
- (3.1), 
-\family typewriter
-
-\backslash
-doublespace
-\family default
- (3.1), 
-\family typewriter
-
-\backslash
-onecolumn
-\family default
- (3.2), 
-\family typewriter
-
-\backslash
-twocolumn
-\family default
- (3.2)
-\end_layout
-
-\begin_layout Subsubsection
-Things that cannot be implemented
-\end_layout
-
-\begin_layout Standard
-\SpecialChar ldots
- at least in any meaningful sort of way, so I suggest ignoring them.
- They are the references environment (2.13.3), and the deluxetable environment
- (2.15).
- If you really, really need to use deluxetable, I suggest editing it in
- a separate file with a text editor, then using 
-\family sans
-Insert\SpecialChar menuseparator
-Child
-\begin_inset space ~
-\end_inset
-
-Document
-\family default
- to include it in your \SpecialChar LyX
- document.
- See the 
-\family typewriter
-aas_sample.lyx
-\family default
- file to see an example of this.
-\end_layout
-
-\begin_layout Subsection
-FAQs, Tips, Tricks, and Other Ruminations
-\end_layout
-
-\begin_layout Subsubsection
-Getting \SpecialChar LyX
- and AAS\SpecialChar TeX
- to cooperate
-\end_layout
-
-\begin_layout Standard
-It can be a bit tricky to get \SpecialChar LyX
- to recognize a new layout and document class.
- When all else fails, do this:
-\end_layout
-
-\begin_layout Enumerate
-Make certain that \SpecialChar LaTeX
- can find AAS\SpecialChar TeX
-.
- Copy sample.tex (and perhaps table.tex) from the AAS\SpecialChar TeX
- distribution into a
- directory completely unrelated to \SpecialChar LaTeX
- or AAS\SpecialChar TeX
- and run \SpecialChar LaTeX
- on 
-\family typewriter
-sample.tex
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Make certain that 
-\family typewriter
-aastex.layout
-\family default
- appears in \SpecialChar LyX
-'s 
-\family typewriter
-layouts
-\family default
- folder
-\end_layout
-
-\begin_layout Enumerate
-Rerun 
-\family sans
-Tools\SpecialChar menuseparator
-Reconfigure
-\family default
- in \SpecialChar LyX
-, then restart \SpecialChar LyX
-.
-\end_layout
-
-\begin_layout Enumerate
-Open a regular new file, not from a template.
- Does AAS\SpecialChar TeX
- appear in the class list in 
-\family sans
-Document\SpecialChar menuseparator
-Settings
-\family default
-?
-\end_layout
-
-\begin_layout Standard
-If you get a warning from an existing AAS\SpecialChar TeX
- document about not being able
- to find the AAS\SpecialChar TeX
- layout or a message about 
-\begin_inset Quotes eld
-\end_inset
-
-You should not mix title layouts with normal ones
-\begin_inset Quotes erd
-\end_inset
-
-, things haven't been installed correctly.
-\end_layout
-
-\begin_layout Subsubsection
-\SpecialChar LaTeX
- error processing a table 
-\end_layout
-
-\begin_layout Standard
-\SpecialChar LyX
-, by default, attempts to center the table caption/title.
- This seems to produce a bad interaction in AAS\SpecialChar TeX
- so you should click somewhere
- in the caption/title, then select 
-\family sans
-Edit\SpecialChar menuseparator
-Paragraph
-\begin_inset space ~
-\end_inset
-
-Settings
-\family default
-, then set the 
-\family sans
-Alignment
-\family default
- to 
-\family sans
-Block
-\family default
-.
- This took care of it for me.
-\end_layout
-
-\begin_layout Subsubsection
-References
-\end_layout
-
-\begin_layout Standard
-A couple of things: 1) I have noticed some funny spacing in the reference
- entries in the text.
- When you enter the bibliography item data, make sure their is 
-\emph on
-no
-\emph default
- space between the last author and the parenthesis setting off the year;
- 
-\emph on
-e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\emph default
-type 
-\family typewriter
-Ressler(1992)
-\family default
-, not 
-\family typewriter
-Ressler (1992)
-\family default
-.
- 2) Entering the references at all is not obvious.
- The easiest thing is to start typing your first reference at the end of
- the document, then mark it as type 
-\family sans
-References
-\family default
-.
- That will put a small gray box in front of what you just typed.
- Click on the box to fill in the rest of the information.
- For new references, go to the end of an existing reference and press return.
- That will create a new line with its own box, etc.
-\end_layout
-
-\begin_layout Subsubsection
-Including EPS files
-\end_layout
-
-\begin_layout Standard
-Even though AAS\SpecialChar TeX
- provides its own figure commands (
-\family typewriter
-
-\backslash
-plotone
-\family default
-, for example), I much prefer \SpecialChar LaTeX
-'s standard figure commands (with the default
- graphicx).
- You can insert the 
-\family typewriter
-
-\backslash
-plotone
-\family default
-, etc.
-\begin_inset space ~
-\end_inset
-
-commands as \SpecialChar TeX
- code into a Figure Float box if you desire, but I never have
- much luck getting the layout right.
- With the standard graphics, \SpecialChar LyX
- will insert a 
-\family typewriter
-
-\backslash
-usepackage{graphicx}
-\family default
- command into the \SpecialChar LaTeX
- preamble and handle the figures in the standard \SpecialChar LaTeX2e
- way,
- interspersing the figures in the text.
- I believe ApJ accepts figures exactly this way now; AJ might still use
- the 
-\begin_inset Quotes eld
-\end_inset
-
-stack everything at the end
-\begin_inset Quotes erd
-\end_inset
-
- technique.
-\end_layout
-
-\begin_layout Subsubsection
-Things I could have done, but didn't
-\end_layout
-
-\begin_layout Standard
-There are a few 
-\begin_inset Quotes eld
-\end_inset
-
-pretty
-\begin_inset Quotes erd
-\end_inset
-
- things I could have implemented, but chose not to.
- For instance, I saw no point in double-spacing the text in the \SpecialChar LyX
- window,
- even though it is double-spaced in the paper manuscript.
- Also, I chose not to make separate layouts for the preprint and preprint2
- styles.
- Since I assume you will spend most of your time in the plain manuscript
- mode anyway, I decided not to chew up more disk space with this.
- 
-\end_layout
-
-\begin_layout Subsection
-Final Caveat
-\end_layout
-
-\begin_layout Standard
-Your mileage may vary.
- I've now had papers published by both ApJ and AJ that have had 98% of the
- effort done in \SpecialChar LyX
-; the last 2% was the \SpecialChar LaTeX
- post-processing and a few cleanups.
- I have had no trouble with the submission process, and I'm sure the journals
- were never aware that there might be a difference.
- So, go forth and publish!
 \end_layout
 
 \begin_layout Section
