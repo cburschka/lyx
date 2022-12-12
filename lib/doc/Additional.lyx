@@ -7196,6 +7196,1507 @@ Letters
 Presentations
 \end_layout
 
+\begin_layout Subsection
+Foils [aka 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+]
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:foiltex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Allan Rae
+\end_layout
+
+\begin_layout Subsubsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+This section describes how to use \SpecialChar LyX
+ to make slides for overhead projectors.
+ There are two document classes that can do this: the default slides class
+ and the 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ slides class.
+ This section documents the latter.
+\end_layout
+
+\begin_layout Standard
+I'm going to say this again, nice and clear, so that there's no misunderstanding
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+This section documents the class 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+FoilTeX
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+only.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you're looking for the documentation for 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+slides (default)
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, check out section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:slitex"
+
+\end_inset
+
+.
+ If your machine doesn't have the 
+\family sans
+foils
+\family default
+ class 
+\family sans
+FoilTeX
+\family default
+ installed, you'll probably have to use the default 
+\family sans
+slides
+\family default
+ class, which isn't quite as good as 
+\family sans
+foils.
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+foils
+\family default
+ class is designed for use with version
+\begin_inset space ~
+\end_inset
+
+2.1 of the 
+\family sans
+foils.cls
+\family default
+ \SpecialChar LaTeX
+ class file which is now an integral part of \SpecialChar LaTeX2e
+.
+\end_layout
+
+\begin_layout Subsubsection
+Getting Started
+\end_layout
+
+\begin_layout Standard
+Obviously, to use this document class, you need to select 
+\family sans
+FoilTeX
+\family default
+ from the 
+\family sans
+Class
+\family default
+ entry in the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog.
+ There are some settings in the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog that you should know about that are specific to this class:
+\end_layout
+
+\begin_layout Itemize
+Don't change the options 
+\family sans
+Sides
+\family default
+ and 
+\family sans
+Columns
+\family default
+ on the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog.
+ They're ignored by the 
+\family sans
+foils
+\family default
+ class.
+\end_layout
+
+\begin_layout Itemize
+The default font size is 20
+\begin_inset space \thinspace{}
+\end_inset
+
+pt with the other options being 17
+\begin_inset space \thinspace{}
+\end_inset
+
+pt, 25
+\begin_inset space \thinspace{}
+\end_inset
+
+pt and 30
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+\end_layout
+
+\begin_layout Itemize
+The default font is 
+\family sans
+sans
+\family default
+ 
+\family sans
+serif
+\family default
+ but all math equations are still typeset in the usual roman font.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ supports A4 and Letter paper sizes as well as a special size for working
+ with 35
+\begin_inset space \thinspace{}
+\end_inset
+
+mm slides.
+ It doesn't support A5, B5, legal or executive paper sizes.
+\end_layout
+
+\begin_layout Itemize
+Don't bother changing the 
+\family sans
+Float Placement
+\family default
+ settings because they are ignored anyway.
+ All floats appear where they are defined in the text.
+\end_layout
+
+\begin_layout Itemize
+The 
+\family sans
+Pagestyle
+\family default
+ setting behaves a bit differently for this class.
+ 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ provides extensive footer and header capabilities including a user-defined
+ logo.
+ See section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:foilfoot"
+
+\end_inset
+
+ for more details.
+ The title page is treated differently to all other pages in the document
+ and is 
+\emph on
+always
+\emph default
+ unnumbered and 
+\emph on
+always
+\emph default
+ has the logo centered at the bottom of the page (if one is defined).
+ The possible page style choices and what they do are as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring MMMMMMM
+
+\family sans
+\series bold
+empty
+\family default
+\series default
+ The final output contains no page numbers, or other headers or footers
+ (except footnotes of course).
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMM
+
+\family sans
+\series bold
+plain
+\family default
+\series default
+ The final output contains page numbers centered at the bottom of the page.
+ No other headings or footers (other than footnotes).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMM
+
+\series bold
+foilheadings
+\series default
+ Page numbers in lower right corner.
+ Additional headers and footers are also shown.
+ This is also the default.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMM
+
+\series bold
+fancy
+\series default
+ Gives you access to the 
+\family sans
+fancyheadings
+\family default
+ package although its use with 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ is discouraged by the writer of the 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ package because of some potential page layout clashes.
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Extra Options
+\end_layout
+
+\begin_layout Standard
+The following options may be used in the extra class options in the 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+ dialog.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+35mmSlide
+\series default
+ This sets up the page layout for 7.33
+\begin_inset space \thinspace{}
+\end_inset
+
+in by 11
+\begin_inset space \thinspace{}
+\end_inset
+
+in paper, which is about the same aspect ratio as a 35
+\begin_inset space \thinspace{}
+\end_inset
+
+mm slide, making it a bit easier to work with this medium.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+headrule
+\series default
+ Places a rule across the page below the header on every page except the
+ title page.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+footrule
+\series default
+ Places a rule across the page above the footer on every page except the
+ title page.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+dvips
+\series default
+ This is automatically set each time you create a new 
+\family sans
+foils
+\family default
+ document.
+ This option tells 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ to use the dvips driver to rotate those pages that are set as landscape
+ foils.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+landscape
+\series default
+ Simply changes the page dimensions to those of a landscape page but doesn't
+ do any rotation.
+ Thus if you use this option you need to use an external program to rotate
+ each page or feed your paper through your printer as landscape.
+ Note that this option effectively reverses the roles of the 
+\family sans
+Foilhead
+\family default
+ and 
+\family sans
+Rotatefoilhead
+\family default
+ environments (don't worry these are described in the next section).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+leqno
+\series default
+ Equation numbers on the left.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+fleqn
+\series default
+ Flush-left equations.
+\end_layout
+
+\begin_layout Subsubsection
+Supported Environments
+\end_layout
+
+\begin_layout Standard
+Most of the environments commonly supported in other classes are also supported
+ by the 
+\family sans
+foils
+\family default
+ class.
+ There are several additional environments provided by 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ as well as a couple added by \SpecialChar LyX
+.
+ The following environments are shared with other classes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Itemize
+
+\family sans
+Standard
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Itemize
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Enumerate
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Description
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+List
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\SpecialChar LyX
+-Code
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Verse
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Quote
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Quotation
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+TitleAuthor
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Date
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Abstract
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Bibliography
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Address
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+RightAddress
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is, all the major environments apart from the sectioning environments.
+ Since foils are essentially self-contained sections, with a title and body,
+ 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ provides specific commands for starting new foils and these are:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Foilhead
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Rotatefoilhead
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ also provides slightly modified versions of these two environments called:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ShortFoilhead
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ShortRotatefoilhead
+\end_layout
+
+\begin_layout Standard
+and the differences will be explained in the next section.
+\end_layout
+
+\begin_layout Standard
+Since foils are often used in presenting ideas or new theorems and such
+ 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ also provides a comprehensive box of goodies for presenting them:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Itemize
+
+\family sans
+Theorem
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Lemma
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Corollary
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Proposition
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Definition
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Proof
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Theorem*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Lemma*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Corollary*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Proposition*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Definition*
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The starred versions are unnumbered while the unstarred versions are numbered.
+ There are also two list environments added by \SpecialChar LyX
+ and these are:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+TickList
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+CrossList
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ provides some powerful header and footer capabilities that are best set
+ in the preamble although they may be set at any point in a document.
+ If you want to change these settings in your document the best place to
+ do so is at the very top of a foil, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\emph on
+
+\begin_inset space \space{}
+\end_inset
+
+
+\emph default
+straight after the foilhead.
+\end_layout
+
+\begin_layout Standard
+For this purpose, the following command styles are provided [
+\shape smallcaps
+Martin Vermeer
+\shape default
+]:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Itemize
+
+\family sans
+My
+\begin_inset space ~
+\end_inset
+
+Logo
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Restriction
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Right
+\begin_inset space ~
+\end_inset
+
+Footer
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Right
+\begin_inset space ~
+\end_inset
+
+Header
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Left
+\begin_inset space ~
+\end_inset
+
+Header
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are also a few commands provided by 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ that aren't directly supported by \SpecialChar LyX
+ but I'll tell you what they do and how
+ to use them in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:unsuppfoils"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Building a Set of Foils
+\end_layout
+
+\begin_layout Standard
+This section will give a simple introduction to using the different environments
+ to build a set of foils.
+ If you want to see an example set of foils, take a look at the 
+\family typewriter
+Foils.lyx
+\family default
+ file you find in \SpecialChar LyX
+'s 
+\family typewriter
+examples
+\family default
+ folder.
+\end_layout
+
+\begin_layout Paragraph
+Give It a Title Page
+\end_layout
+
+\begin_layout Standard
+Unlike other classes that provide 
+\family sans
+Title
+\family default
+, 
+\family sans
+Author
+\family default
+, 
+\family sans
+Date
+\family default
+ and 
+\family sans
+Abstract
+\family default
+ environments, 
+\family sans
+foils
+\family default
+ creates the title on a page of its own.
+ If you leave out the 
+\family sans
+Date
+\family default
+ environment \SpecialChar LaTeX
+ will substitute the current date (every time you regenerate
+ the output).
+\end_layout
+
+\begin_layout Paragraph
+Start a New Foil
+\end_layout
+
+\begin_layout Standard
+As I mentioned earlier, there are four ways of starting a new foil.
+ For portrait foils you should use 
+\family sans
+Foilhead
+\family default
+ or 
+\family sans
+ShortFoilhead.
+
+\family default
+ The difference between these two environments is the amount of space between
+ the title of the foil (the foilhead) and the body of the foil.
+\end_layout
+
+\begin_layout Standard
+Landscape foils are generated using the 
+\family sans
+Rotatefoilhead
+\family default
+ and 
+\family sans
+ShortRotatefoilhead
+\family default
+ environments.
+ Again the only difference is the spacing between foilhead and body.
+ Both of the short versions have 0.5
+\begin_inset space ~
+\end_inset
+
+inches less separation between the foilhead and the body.
+ 
+\end_layout
+
+\begin_layout Standard
+One problem with the support for landscape foils is the requirement that
+ you have to use the 
+\family typewriter
+dvips
+\family default
+ driver to generate the PostScript output otherwise the foils won't be rotated.
+ It is possible to get landscape foils even if you haven't got the 
+\family typewriter
+dvips
+\family default
+ driver provided you can feed your foils sideways through your printer ;-)
+\end_layout
+
+\begin_layout Paragraph
+Theorems, Lemmas, Proofs and more
+\end_layout
+
+\begin_layout Standard
+You can't have two of the same type of these environments directly following
+ each other.
+ If you use a normal paragraph break, , you will just be extending the previous
+ environment as if you had merged the two environments together.
+ Rather than that, you need to insert a so-called separator.
+ Please refer to the section entitled 
+\emph on
+Separate Nestings
+\emph default
+ in the 
+\emph on
+User's Guide
+\emph default
+.
+\end_layout
+
+\begin_layout Paragraph
+Lists
+\end_layout
+
+\begin_layout Standard
+You get all the commonly supported list styles found in other classes as
+ well as two new ones.
+ I'll only describe the new ones here.
+ If you want to find out more about the other list environments check out
+ the 
+\emph on
+User's Guide.
+
+\emph default
+ If you intend to use itemized lists you might also want to read about the
+ 
+\family sans
+Itemize
+\begin_inset space ~
+\end_inset
+
+Bullet
+\begin_inset space ~
+\end_inset
+
+Selection
+\family default
+ dialog described above in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:bullet"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The two new list styles, 
+\family sans
+TickList
+\family default
+ and 
+\family sans
+CrossList
+\family default
+, are designed to make it easier for you to create lists of do's and don'ts
+ or right and wrong by providing dedicated environments that use a tick
+ or a cross as the label of the list.
+ These lists are in fact dedicated variants of the 
+\family sans
+Itemize
+\family default
+ environment.
+ They do however require that you have the 
+\family typewriter
+psnfss
+\family default
+ packages installed.
+\end_layout
+
+\begin_layout Paragraph
+Figures and Tables
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ redefines the floating tables and figures so that they appear exactly where
+ they are in the text rather than pushing them to the top of the page or
+ to some user specified location.
+ In fact if you change the float placement settings they are simply ignored.
+\end_layout
+
+\begin_layout Paragraph
+Page Headers and Footers
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:foilfoot"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+My
+\begin_inset space ~
+\end_inset
+
+Logo
+\family default
+ and 
+\family sans
+Restriction
+\family default
+ are two commands used to control the left-footer text string.
+ The first is meant to allow you to include a graphic logo on your foils
+ and defaults to 
+\begin_inset Quotes eld
+\end_inset
+
+-Typeset by 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+-
+\begin_inset Quotes erd
+\end_inset
+
+.
+ While the second is meant to provide a classification for the audience,
+ 
+\emph on
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\emph default
+
+\begin_inset space \space{}
+\end_inset
+
+Confidential.
+ It is empty by default.
+\end_layout
+
+\begin_layout Standard
+The remaining page corners can be filled by 
+\family sans
+Right
+\begin_inset space ~
+\end_inset
+
+Footer
+\family default
+ (which defaults to page numbers), 
+\family sans
+Right
+\begin_inset space ~
+\end_inset
+
+Header
+\family default
+ (top right) and 
+\family sans
+Left
+\begin_inset space ~
+\end_inset
+
+Header
+\family default
+ (top left).
+\end_layout
+
+\begin_layout Subsubsection
+Unsupported 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ Goodies
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:unsuppfoils"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All the commands mentioned below need to be set in a 
+\family sans
+\SpecialChar LaTeX
+
+\family default
+ environment or as 
+\family sans
+\SpecialChar TeX
+
+\family default
+ within another environment.
+\end_layout
+
+\begin_layout Paragraph
+Lengths
+\end_layout
+
+\begin_layout Standard
+All lengths are adjusted using the 
+\family typewriter
+
+\backslash
+setlength{
+\family default
+\emph on
+lengthname
+\family typewriter
+\emph default
+}{
+\family default
+\emph on
+newlength
+\family typewriter
+\emph default
+}
+\family default
+ command.
+ Where 
+\emph on
+lengthname
+\emph default
+ should be replaced by the name given to the length you want to change and
+ 
+\emph on
+newlength
+\emph default
+ is the length value.
+ All lengths should be specified in units of length such as inches (
+\family typewriter
+in
+\family default
+), millimeters (
+\family typewriter
+mm
+\family default
+) or points (
+\family typewriter
+pt
+\family default
+) or relative to some document or font-based length such as 
+\family typewriter
+
+\backslash
+textwidth
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+It's possible to change the spacing between a foilhead and the body of the
+ foil by adjusting the length specified by 
+\family typewriter
+
+\backslash
+foilheadskip
+\family default
+.
+ For example, to make 
+\emph on
+all
+\emph default
+ foilheads 0.5
+\begin_inset space \space{}
+\end_inset
+
+in closer to their bodies put the following in the preamble: 
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+foilheadskip}{-0.5in}
+\end_layout
+
+\begin_layout Standard
+The spacings around floats can be adjusted by setting these lengths:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+abovefloatskip
+\family default
+ Separation between the text and the top of the float
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+abovecaptionskip
+\family default
+ Separation between the float and the caption
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+belowcaptionskip
+\family default
+ Separation between the caption and the following text
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+captionwidth
+\family default
+ You can make the captions narrower than the surrounding text by adjusting
+ this length.
+ Best done relative to 
+\family typewriter
+
+\backslash
+textwidth
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+There are also several title page related lengths that you may find useful
+ if you have a long title or several authors:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+abovetitleskip
+\family default
+ Separation from headers to 
+\family sans
+Title
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+titleauthorskip
+\family default
+ between 
+\family sans
+Title
+\family default
+ and 
+\family sans
+Author
+\family default
+ environments
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+authorauthorskip
+\family default
+ between multiple 
+\family sans
+Author
+\family default
+ lines
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+authordateskip
+\family default
+ between the 
+\family sans
+Author
+\family default
+ and the 
+\family sans
+Date
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+dateabstractskip
+\family default
+ between the 
+\family sans
+Date
+\family default
+ and the 
+\family sans
+Abstract
+\end_layout
+
+\begin_layout Standard
+The last length related command affects all the list environments.
+ If you place 
+\family typewriter
+
+\backslash
+zerolistvertdimens
+\family default
+ 
+\emph on
+inside
+\emph default
+ a list environment then all the vertical spacing between the list items
+ is removed.
+ Note that this is a command not a length so it doesn't require 
+\family typewriter
+
+\backslash
+setlength
+\family default
+ like the stuff mentioned above.
+\end_layout
+
+\begin_layout Paragraph
+Headers and Footers
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+
+\backslash
+LogoOn
+\family default
+ and 
+\family typewriter
+
+\backslash
+LogoOff
+\family default
+ commands control whether the logo in the 
+\family sans
+MyLogo
+\family default
+ definition appear on a given page.
+ If you put 
+\family typewriter
+
+\backslash
+LogoOff
+\family default
+ in the preamble then none of the foils will have the logo on them.
+ If you don't want the logo on a particular page place the 
+\family typewriter
+
+\backslash
+LogoOff
+\family default
+ directly after the foilhead of that page and the 
+\family typewriter
+
+\backslash
+LogoOn
+\family default
+ directly after the next foilhead.
+\end_layout
+
+\begin_layout Standard
+If you decide to use the 
+\family sans
+fancy
+\family default
+ page style setting in the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog you should probably add 
+\family typewriter
+
+\backslash
+let
+\backslash
+headwidth
+\backslash
+textwidth
+\family default
+ to your preamble so headers and footers on landscape pages are correctly
+ placed when rotated.
+ This is due to some clashes between the page layouts provided by the 
+\family sans
+fancyheadings
+\family default
+ package and the 
+\family sans
+foils
+\family default
+ class.
+\end_layout
+
 \begin_layout Section
 
 \change_inserted 564990737 1670439661
@@ -14818,1507 +16319,6 @@ elsarticle.lyx
 \family default
 .
  It contains all infos you need.
-\end_layout
-
-\begin_layout Section
-Foils [aka 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
-]
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:foiltex"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Allan Rae
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Standard
-This section describes how to use \SpecialChar LyX
- to make slides for overhead projectors.
- There are two document classes that can do this: the default slides class
- and the 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- slides class.
- This section documents the latter.
-\end_layout
-
-\begin_layout Standard
-I'm going to say this again, nice and clear, so that there's no misunderstanding
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-
-\size large
-This section documents the class 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-FoilTeX
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- 
-\emph on
-only.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-If you're looking for the documentation for 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-slides (default)
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-, check out section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:slitex"
-
-\end_inset
-
-.
- If your machine doesn't have the 
-\family sans
-foils
-\family default
- class 
-\family sans
-FoilTeX
-\family default
- installed, you'll probably have to use the default 
-\family sans
-slides
-\family default
- class, which isn't quite as good as 
-\family sans
-foils.
-\end_layout
-
-\begin_layout Standard
-The 
-\family sans
-foils
-\family default
- class is designed for use with version
-\begin_inset space ~
-\end_inset
-
-2.1 of the 
-\family sans
-foils.cls
-\family default
- \SpecialChar LaTeX
- class file which is now an integral part of \SpecialChar LaTeX2e
-.
-\end_layout
-
-\begin_layout Subsection
-Getting Started
-\end_layout
-
-\begin_layout Standard
-Obviously, to use this document class, you need to select 
-\family sans
-FoilTeX
-\family default
- from the 
-\family sans
-Class
-\family default
- entry in the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog.
- There are some settings in the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog that you should know about that are specific to this class:
-\end_layout
-
-\begin_layout Itemize
-Don't change the options 
-\family sans
-Sides
-\family default
- and 
-\family sans
-Columns
-\family default
- on the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog.
- They're ignored by the 
-\family sans
-foils
-\family default
- class.
-\end_layout
-
-\begin_layout Itemize
-The default font size is 20
-\begin_inset space \thinspace{}
-\end_inset
-
-pt with the other options being 17
-\begin_inset space \thinspace{}
-\end_inset
-
-pt, 25
-\begin_inset space \thinspace{}
-\end_inset
-
-pt and 30
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
-\end_layout
-
-\begin_layout Itemize
-The default font is 
-\family sans
-sans
-\family default
- 
-\family sans
-serif
-\family default
- but all math equations are still typeset in the usual roman font.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- supports A4 and Letter paper sizes as well as a special size for working
- with 35
-\begin_inset space \thinspace{}
-\end_inset
-
-mm slides.
- It doesn't support A5, B5, legal or executive paper sizes.
-\end_layout
-
-\begin_layout Itemize
-Don't bother changing the 
-\family sans
-Float Placement
-\family default
- settings because they are ignored anyway.
- All floats appear where they are defined in the text.
-\end_layout
-
-\begin_layout Itemize
-The 
-\family sans
-Pagestyle
-\family default
- setting behaves a bit differently for this class.
- 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- provides extensive footer and header capabilities including a user-defined
- logo.
- See section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:foilfoot"
-
-\end_inset
-
- for more details.
- The title page is treated differently to all other pages in the document
- and is 
-\emph on
-always
-\emph default
- unnumbered and 
-\emph on
-always
-\emph default
- has the logo centered at the bottom of the page (if one is defined).
- The possible page style choices and what they do are as follows:
-\end_layout
-
-\begin_deeper
-\begin_layout Labeling
-\labelwidthstring MMMMMMM
-
-\family sans
-\series bold
-empty
-\family default
-\series default
- The final output contains no page numbers, or other headers or footers
- (except footnotes of course).
- 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMM
-
-\family sans
-\series bold
-plain
-\family default
-\series default
- The final output contains page numbers centered at the bottom of the page.
- No other headings or footers (other than footnotes).
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMM
-
-\series bold
-foilheadings
-\series default
- Page numbers in lower right corner.
- Additional headers and footers are also shown.
- This is also the default.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMM
-
-\series bold
-fancy
-\series default
- Gives you access to the 
-\family sans
-fancyheadings
-\family default
- package although its use with 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- is discouraged by the writer of the 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- package because of some potential page layout clashes.
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-Extra Options
-\end_layout
-
-\begin_layout Standard
-The following options may be used in the extra class options in the 
-\family sans
-Document\SpecialChar menuseparator
-Settings
-\family default
- dialog.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-35mmSlide
-\series default
- This sets up the page layout for 7.33
-\begin_inset space \thinspace{}
-\end_inset
-
-in by 11
-\begin_inset space \thinspace{}
-\end_inset
-
-in paper, which is about the same aspect ratio as a 35
-\begin_inset space \thinspace{}
-\end_inset
-
-mm slide, making it a bit easier to work with this medium.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-headrule
-\series default
- Places a rule across the page below the header on every page except the
- title page.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-footrule
-\series default
- Places a rule across the page above the footer on every page except the
- title page.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-dvips
-\series default
- This is automatically set each time you create a new 
-\family sans
-foils
-\family default
- document.
- This option tells 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- to use the dvips driver to rotate those pages that are set as landscape
- foils.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-landscape
-\series default
- Simply changes the page dimensions to those of a landscape page but doesn't
- do any rotation.
- Thus if you use this option you need to use an external program to rotate
- each page or feed your paper through your printer as landscape.
- Note that this option effectively reverses the roles of the 
-\family sans
-Foilhead
-\family default
- and 
-\family sans
-Rotatefoilhead
-\family default
- environments (don't worry these are described in the next section).
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-leqno
-\series default
- Equation numbers on the left.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-fleqn
-\series default
- Flush-left equations.
-\end_layout
-
-\begin_layout Subsection
-Supported Environments
-\end_layout
-
-\begin_layout Standard
-Most of the environments commonly supported in other classes are also supported
- by the 
-\family sans
-foils
-\family default
- class.
- There are several additional environments provided by 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- as well as a couple added by \SpecialChar LyX
-.
- The following environments are shared with other classes:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Multiple Columns
-status open
-
-\begin_layout Itemize
-
-\family sans
-Standard
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Itemize
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Enumerate
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Description
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-List
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-\SpecialChar LyX
--Code
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Verse
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Quote
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Quotation
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-TitleAuthor
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Date
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Abstract
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Bibliography
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Address
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-RightAddress
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-That is, all the major environments apart from the sectioning environments.
- Since foils are essentially self-contained sections, with a title and body,
- 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- provides specific commands for starting new foils and these are:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Foilhead
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Rotatefoilhead
-\end_layout
-
-\begin_layout Standard
-\SpecialChar LyX
- also provides slightly modified versions of these two environments called:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-ShortFoilhead
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-ShortRotatefoilhead
-\end_layout
-
-\begin_layout Standard
-and the differences will be explained in the next section.
-\end_layout
-
-\begin_layout Standard
-Since foils are often used in presenting ideas or new theorems and such
- 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- also provides a comprehensive box of goodies for presenting them:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Multiple Columns
-status open
-
-\begin_layout Itemize
-
-\family sans
-Theorem
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Lemma
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Corollary
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Proposition
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Definition
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Proof
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Theorem*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Lemma*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Corollary*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Proposition*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Definition*
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The starred versions are unnumbered while the unstarred versions are numbered.
- There are also two list environments added by \SpecialChar LyX
- and these are:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-TickList
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-CrossList
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- provides some powerful header and footer capabilities that are best set
- in the preamble although they may be set at any point in a document.
- If you want to change these settings in your document the best place to
- do so is at the very top of a foil, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\emph on
-
-\begin_inset space \space{}
-\end_inset
-
-
-\emph default
-straight after the foilhead.
-\end_layout
-
-\begin_layout Standard
-For this purpose, the following command styles are provided [
-\shape smallcaps
-Martin Vermeer
-\shape default
-]:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Multiple Columns
-status open
-
-\begin_layout Itemize
-
-\family sans
-My
-\begin_inset space ~
-\end_inset
-
-Logo
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Restriction
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Right
-\begin_inset space ~
-\end_inset
-
-Footer
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Right
-\begin_inset space ~
-\end_inset
-
-Header
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Left
-\begin_inset space ~
-\end_inset
-
-Header
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-There are also a few commands provided by 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- that aren't directly supported by \SpecialChar LyX
- but I'll tell you what they do and how
- to use them in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:unsuppfoils"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Building a Set of Foils
-\end_layout
-
-\begin_layout Standard
-This section will give a simple introduction to using the different environments
- to build a set of foils.
- If you want to see an example set of foils, take a look at the 
-\family typewriter
-Foils.lyx
-\family default
- file you find in \SpecialChar LyX
-'s 
-\family typewriter
-examples
-\family default
- folder.
-\end_layout
-
-\begin_layout Subsubsection
-Give It a Title Page
-\end_layout
-
-\begin_layout Standard
-Unlike other classes that provide 
-\family sans
-Title
-\family default
-, 
-\family sans
-Author
-\family default
-, 
-\family sans
-Date
-\family default
- and 
-\family sans
-Abstract
-\family default
- environments, 
-\family sans
-foils
-\family default
- creates the title on a page of its own.
- If you leave out the 
-\family sans
-Date
-\family default
- environment \SpecialChar LaTeX
- will substitute the current date (every time you regenerate
- the output).
-\end_layout
-
-\begin_layout Subsubsection
-Start a New Foil
-\end_layout
-
-\begin_layout Standard
-As I mentioned earlier, there are four ways of starting a new foil.
- For portrait foils you should use 
-\family sans
-Foilhead
-\family default
- or 
-\family sans
-ShortFoilhead.
-
-\family default
- The difference between these two environments is the amount of space between
- the title of the foil (the foilhead) and the body of the foil.
-\end_layout
-
-\begin_layout Standard
-Landscape foils are generated using the 
-\family sans
-Rotatefoilhead
-\family default
- and 
-\family sans
-ShortRotatefoilhead
-\family default
- environments.
- Again the only difference is the spacing between foilhead and body.
- Both of the short versions have 0.5
-\begin_inset space ~
-\end_inset
-
-inches less separation between the foilhead and the body.
- 
-\end_layout
-
-\begin_layout Standard
-One problem with the support for landscape foils is the requirement that
- you have to use the 
-\family typewriter
-dvips
-\family default
- driver to generate the PostScript output otherwise the foils won't be rotated.
- It is possible to get landscape foils even if you haven't got the 
-\family typewriter
-dvips
-\family default
- driver provided you can feed your foils sideways through your printer ;-)
-\end_layout
-
-\begin_layout Subsubsection
-Theorems, Lemmas, Proofs and more
-\end_layout
-
-\begin_layout Standard
-You can't have two of the same type of these environments directly following
- each other.
- If you use a normal paragraph break, , you will just be extending the previous
- environment as if you had merged the two environments together.
- Rather than that, you need to insert a so-called separator.
- Please refer to the section entitled 
-\emph on
-Separate Nestings
-\emph default
- in the 
-\emph on
-User's Guide
-\emph default
-.
-\end_layout
-
-\begin_layout Subsubsection
-Lists
-\end_layout
-
-\begin_layout Standard
-You get all the commonly supported list styles found in other classes as
- well as two new ones.
- I'll only describe the new ones here.
- If you want to find out more about the other list environments check out
- the 
-\emph on
-User's Guide.
-
-\emph default
- If you intend to use itemized lists you might also want to read about the
- 
-\family sans
-Itemize
-\begin_inset space ~
-\end_inset
-
-Bullet
-\begin_inset space ~
-\end_inset
-
-Selection
-\family default
- dialog described above in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:bullet"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The two new list styles, 
-\family sans
-TickList
-\family default
- and 
-\family sans
-CrossList
-\family default
-, are designed to make it easier for you to create lists of do's and don'ts
- or right and wrong by providing dedicated environments that use a tick
- or a cross as the label of the list.
- These lists are in fact dedicated variants of the 
-\family sans
-Itemize
-\family default
- environment.
- They do however require that you have the 
-\family typewriter
-psnfss
-\family default
- packages installed.
-\end_layout
-
-\begin_layout Subsubsection
-Figures and Tables
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- redefines the floating tables and figures so that they appear exactly where
- they are in the text rather than pushing them to the top of the page or
- to some user specified location.
- In fact if you change the float placement settings they are simply ignored.
-\end_layout
-
-\begin_layout Subsubsection
-Page Headers and Footers
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:foilfoot"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-My
-\begin_inset space ~
-\end_inset
-
-Logo
-\family default
- and 
-\family sans
-Restriction
-\family default
- are two commands used to control the left-footer text string.
- The first is meant to allow you to include a graphic logo on your foils
- and defaults to 
-\begin_inset Quotes eld
-\end_inset
-
--Typeset by 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
--
-\begin_inset Quotes erd
-\end_inset
-
-.
- While the second is meant to provide a classification for the audience,
- 
-\emph on
-e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\emph default
-
-\begin_inset space \space{}
-\end_inset
-
-Confidential.
- It is empty by default.
-\end_layout
-
-\begin_layout Standard
-The remaining page corners can be filled by 
-\family sans
-Right
-\begin_inset space ~
-\end_inset
-
-Footer
-\family default
- (which defaults to page numbers), 
-\family sans
-Right
-\begin_inset space ~
-\end_inset
-
-Header
-\family default
- (top right) and 
-\family sans
-Left
-\begin_inset space ~
-\end_inset
-
-Header
-\family default
- (top left).
-\end_layout
-
-\begin_layout Subsection
-Unsupported 
-\family sans
-Foil\SpecialChar TeX
-
-\family default
- Goodies
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:unsuppfoils"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-All the commands mentioned below need to be set in a 
-\family sans
-\SpecialChar LaTeX
-
-\family default
- environment or as 
-\family sans
-\SpecialChar TeX
-
-\family default
- within another environment.
-\end_layout
-
-\begin_layout Subsubsection
-Lengths
-\end_layout
-
-\begin_layout Standard
-All lengths are adjusted using the 
-\family typewriter
-
-\backslash
-setlength{
-\family default
-\emph on
-lengthname
-\family typewriter
-\emph default
-}{
-\family default
-\emph on
-newlength
-\family typewriter
-\emph default
-}
-\family default
- command.
- Where 
-\emph on
-lengthname
-\emph default
- should be replaced by the name given to the length you want to change and
- 
-\emph on
-newlength
-\emph default
- is the length value.
- All lengths should be specified in units of length such as inches (
-\family typewriter
-in
-\family default
-), millimeters (
-\family typewriter
-mm
-\family default
-) or points (
-\family typewriter
-pt
-\family default
-) or relative to some document or font-based length such as 
-\family typewriter
-
-\backslash
-textwidth
-\family default
-.
- 
-\end_layout
-
-\begin_layout Standard
-It's possible to change the spacing between a foilhead and the body of the
- foil by adjusting the length specified by 
-\family typewriter
-
-\backslash
-foilheadskip
-\family default
-.
- For example, to make 
-\emph on
-all
-\emph default
- foilheads 0.5
-\begin_inset space \space{}
-\end_inset
-
-in closer to their bodies put the following in the preamble: 
-\family typewriter
-
-\backslash
-setlength{
-\backslash
-foilheadskip}{-0.5in}
-\end_layout
-
-\begin_layout Standard
-The spacings around floats can be adjusted by setting these lengths:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-abovefloatskip
-\family default
- Separation between the text and the top of the float
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-abovecaptionskip
-\family default
- Separation between the float and the caption
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-belowcaptionskip
-\family default
- Separation between the caption and the following text
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-captionwidth
-\family default
- You can make the captions narrower than the surrounding text by adjusting
- this length.
- Best done relative to 
-\family typewriter
-
-\backslash
-textwidth
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-There are also several title page related lengths that you may find useful
- if you have a long title or several authors:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-abovetitleskip
-\family default
- Separation from headers to 
-\family sans
-Title
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-titleauthorskip
-\family default
- between 
-\family sans
-Title
-\family default
- and 
-\family sans
-Author
-\family default
- environments
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-authorauthorskip
-\family default
- between multiple 
-\family sans
-Author
-\family default
- lines
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-authordateskip
-\family default
- between the 
-\family sans
-Author
-\family default
- and the 
-\family sans
-Date
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-dateabstractskip
-\family default
- between the 
-\family sans
-Date
-\family default
- and the 
-\family sans
-Abstract
-\end_layout
-
-\begin_layout Standard
-The last length related command affects all the list environments.
- If you place 
-\family typewriter
-
-\backslash
-zerolistvertdimens
-\family default
- 
-\emph on
-inside
-\emph default
- a list environment then all the vertical spacing between the list items
- is removed.
- Note that this is a command not a length so it doesn't require 
-\family typewriter
-
-\backslash
-setlength
-\family default
- like the stuff mentioned above.
-\end_layout
-
-\begin_layout Subsubsection
-Headers and Footers
-\end_layout
-
-\begin_layout Standard
-The 
-\family typewriter
-
-\backslash
-LogoOn
-\family default
- and 
-\family typewriter
-
-\backslash
-LogoOff
-\family default
- commands control whether the logo in the 
-\family sans
-MyLogo
-\family default
- definition appear on a given page.
- If you put 
-\family typewriter
-
-\backslash
-LogoOff
-\family default
- in the preamble then none of the foils will have the logo on them.
- If you don't want the logo on a particular page place the 
-\family typewriter
-
-\backslash
-LogoOff
-\family default
- directly after the foilhead of that page and the 
-\family typewriter
-
-\backslash
-LogoOn
-\family default
- directly after the next foilhead.
-\end_layout
-
-\begin_layout Standard
-If you decide to use the 
-\family sans
-fancy
-\family default
- page style setting in the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog you should probably add 
-\family typewriter
-
-\backslash
-let
-\backslash
-headwidth
-\backslash
-textwidth
-\family default
- to your preamble so headers and footers on landscape pages are correctly
- placed when rotated.
- This is due to some clashes between the page layouts provided by the 
-\family sans
-fancyheadings
-\family default
- package and the 
-\family sans
-foils
-\family default
- class.
 \end_layout
 
 \begin_layout Section
