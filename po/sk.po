@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-10 17:01+0100\n"
-"PO-Revision-Date: 2022-12-10 16:17+0000\n"
+"POT-Creation-Date: 2022-12-12 23:47+0100\n"
+"PO-Revision-Date: 2022-12-12 22:52+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -34513,6 +34513,25 @@ msgstr ""
 "Adresár v uvedenej ceste\n"
 "%1$s\n"
 "neexistuje."
+
+#: src/frontends/qt/GuiView.cpp:2855
+#, c-format
+msgid ""
+"File\n"
+" %1$s\n"
+" does not exist. Create empty file?"
+msgstr ""
+"Súbor\n"
+" %1$s\n"
+" neexistuje. Vytvoriť prázdny súbor?"
+
+#: src/frontends/qt/GuiView.cpp:2857
+msgid "File does not exist"
+msgstr "Súbor neexistuje"
+
+#: src/frontends/qt/GuiView.cpp:2859
+msgid "Create &File"
+msgstr "&Vytvoriť súbor"
 
 #: src/frontends/qt/GuiView.cpp:2532
 #, c-format
