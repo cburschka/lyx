@@ -4521,6 +4521,172 @@ Skip
  to produce the gap, which is not what is wanted in this case.
 \end_layout
 
+\begin_layout Subsection
+
+\change_inserted 564990737 1670924924
+Polish M.
+\begin_inset space \thinspace{}
+\end_inset
+
+W.
+\begin_inset space \space{}
+\end_inset
+
+collection
+\change_deleted 564990737 1670924933
+Article (mwart), book (mwbk) and report (mwrep)
+\begin_inset Argument status
+status collapsed
+
+\begin_layout Plain Layout
+The 
+\family typewriter
+mw
+\family default
+ Classes
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Tomasz Luczak
+\end_layout
+
+\begin_layout Standard
+The \SpecialChar LyX
+ document classes 
+\emph on
+article (mwart)
+\emph default
+, 
+\emph on
+report (mwrep)
+\emph default
+ and 
+\emph on
+book
+\emph default
+ 
+\emph on
+(mwbk)
+\emph default
+ correspond to the \SpecialChar LaTeX
+ document classes 
+\family typewriter
+mwart.cls
+\family default
+, 
+\family typewriter
+mwrep.cls
+\family default
+ and 
+\family typewriter
+mwbk.cls
+\family default
+, resp.
+ They are replacements for the standard document classes 
+\family typewriter
+article.cls
+\family default
+, 
+\family typewriter
+report.cls
+\family default
+ and 
+\family typewriter
+book.cls
+\family default
+, resp., and fit better to Polish typography conventions in a number of points.
+ 
+\end_layout
+
+\begin_layout Standard
+Basic differences:
+\end_layout
+
+\begin_layout Itemize
+Unnumbered titles (with star, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\family sans
+Section*
+\family default
+) are added into table of contents,
+\end_layout
+
+\begin_layout Itemize
+Additional page styles:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+uheadings header with separated lines,
+\end_layout
+
+\begin_layout Description
+myheadings custom header, contents headers via commands: 
+\family typewriter
+
+\backslash
+markright
+\family default
+ and 
+\family typewriter
+
+\backslash
+markboth
+\family default
+,
+\end_layout
+
+\begin_layout Description
+myuheadings custom header with separated lines,
+\end_layout
+
+\begin_layout Description
+outer page number is placed on outer side of page
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Options 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+rmheadings serif titles — default,
+\end_layout
+
+\begin_layout Description
+sfheadings sansserif titles,
+\end_layout
+
+\begin_layout Description
+authortitle on title page first placed is author next title — default,
+\end_layout
+
+\begin_layout Description
+titleauthor on title page first placed is title next author,
+\end_layout
+
+\begin_layout Description
+withmarginpar reserve place on page for margins.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 
 \change_inserted 564990737 1670439534
@@ -17578,158 +17744,6 @@ copy the example bibliography item included in the template and modify it
  as necessary to enter new bibliography items.
 \end_layout
 
-\begin_layout Section
-Article (mwart), book (mwbk) and report (mwrep)
-\begin_inset Argument status
-status collapsed
-
-\begin_layout Plain Layout
-The 
-\family typewriter
-mw
-\family default
- Classes
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Tomasz Luczak
-\end_layout
-
-\begin_layout Standard
-The \SpecialChar LyX
- document classes 
-\emph on
-article (mwart)
-\emph default
-, 
-\emph on
-report (mwrep)
-\emph default
- and 
-\emph on
-book
-\emph default
- 
-\emph on
-(mwbk)
-\emph default
- correspond to the \SpecialChar LaTeX
- document classes 
-\family typewriter
-mwart.cls
-\family default
-, 
-\family typewriter
-mwrep.cls
-\family default
- and 
-\family typewriter
-mwbk.cls
-\family default
-, resp.
- They are replacements for the standard document classes 
-\family typewriter
-article.cls
-\family default
-, 
-\family typewriter
-report.cls
-\family default
- and 
-\family typewriter
-book.cls
-\family default
-, resp., and fit better to Polish typography conventions in a number of points.
- 
-\end_layout
-
-\begin_layout Standard
-Basic differences:
-\end_layout
-
-\begin_layout Itemize
-Unnumbered titles (with star, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\family sans
-Section*
-\family default
-) are added into table of contents,
-\end_layout
-
-\begin_layout Itemize
-Additional page styles:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-uheadings header with separated lines,
-\end_layout
-
-\begin_layout Description
-myheadings custom header, contents headers via commands: 
-\family typewriter
-
-\backslash
-markright
-\family default
- and 
-\family typewriter
-
-\backslash
-markboth
-\family default
-,
-\end_layout
-
-\begin_layout Description
-myuheadings custom header with separated lines,
-\end_layout
-
-\begin_layout Description
-outer page number is placed on outer side of page
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Options 
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-rmheadings serif titles — default,
-\end_layout
-
-\begin_layout Description
-sfheadings sansserif titles,
-\end_layout
-
-\begin_layout Description
-authortitle on title page first placed is author next title — default,
-\end_layout
-
-\begin_layout Description
-titleauthor on title page first placed is title next author,
-\end_layout
-
-\begin_layout Description
-withmarginpar reserve place on page for margins.
-\end_layout
-
-\end_deeper
 \begin_layout Section
 Paper
 \end_layout
