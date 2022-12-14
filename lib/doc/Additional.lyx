@@ -6891,6 +6891,139 @@ Your mileage may vary.
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 564990737 1671042028
+
+\lang american
+Elsevier
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671042028
+
+\lang american
+The document class 
+\family sans
+article
+\begin_inset space \thinspace{}
+\end_inset
+
+(Elsevier)
+\family default
+ provides the 
+\family typewriter
+elsarticle.cls
+\family default
+ document class.
+ This provides the following additional environments: 
+\family sans
+Title
+\begin_inset space ~
+\end_inset
+
+footnote
+\family default
+, 
+\family sans
+Author
+\begin_inset space ~
+\end_inset
+
+footnote
+\family default
+, 
+\family sans
+Corresponding
+\begin_inset space ~
+\end_inset
+
+author
+\family default
+, 
+\family sans
+Address
+\family default
+, 
+\family sans
+Email
+\family default
+ and 
+\family sans
+Keywords
+\family default
+.
+ A template 
+\family typewriter
+elsarticle.lyx
+\family default
+.
+ is available in the menu 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar menuseparator
+New
+\begin_inset space ~
+\end_inset
+
+fro
+\bar under
+m
+\bar default
+
+\begin_inset space ~
+\end_inset
+
+Template
+\family default
+.
+ It has been customized with further environments and contains all the informati
+on you may need.
+ However, the documentation is also available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/elsarticle/doc/elsdoc.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671042046
+
+\lang american
+Paper
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671042046
+
+\lang american
+The document class 
+\family sans
+article
+\begin_inset space \thinspace{}
+\end_inset
+
+(paper)
+\family default
+ provides an alternative to the 
+\family typewriter
+article.cls
+\family default
+ document class.
+ It provides similar functionality, but you might prefer this layout with
+ sans serif sections, headings, and more.
+\end_layout
+
+\begin_layout Subsection
 Rev\SpecialChar TeX
 4
 \end_layout
@@ -6965,6 +7098,44 @@ addition
  4.0 documents, so we don't describe any of the special Rev\SpecialChar TeX
  macros,
  and assume you'll know what to put in the preamble if necessary.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671042072
+
+\lang american
+Springer Journals
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671042072
+
+\lang american
+All the 
+\family sans
+svj*
+\family default
+ classes were replaced in 2013 with a completely new 
+\family sans
+sr-vorl.cls
+\family default
+.
+ This package provides a \SpecialChar LaTeX
+ class and templates for books to be published
+ at Springer Gabler Research, Springer Vieweg Research, Springer Spektrum
+ Research, Springer VS Research, or Springer VS Forschung.
+ The documentation is available in German from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/springer/sr-vorl/sr-vorl.pdf"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -7429,8 +7600,71 @@ Curricula vitarum
 
 \begin_layout Section
 
-\change_inserted 564990737 1670439627
+\change_inserted 564990737 1671041968
 Letters
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671041970
+
+\lang american
+Din-Brief
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671041970
+
+\lang american
+The document class 
+\family sans
+Din-Brief
+\family default
+ provides the 
+\family typewriter
+dinbrief.cls
+\family default
+ document class for writing letters according to the 
+\emph on
+Deutsches Institut für Normung
+\emph default
+ conventions.
+ The file 
+\emph on
+dinbrief.lyx
+\emph default
+ in the menu 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar menuseparator
+New
+\begin_inset space ~
+\end_inset
+
+fro
+\bar under
+m
+\bar default
+
+\begin_inset space ~
+\end_inset
+
+Template
+\family default
+ offers guidance on its use.
+ The documentation is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/dinbrief/liesmich"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
