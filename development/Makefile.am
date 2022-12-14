@@ -28,6 +28,7 @@ tools/README \
 tools/count_total_lines_of_compiled_code.sh \
 tools/count_lines_of_included_code.sh \
 tools/lyxeditor \
+unix/lyxrc.dist.in \
 Win32/lyxrc.dist.in \
 Win32/pdfview/pdfview-old.nsi \
 Win32/pdfview/pdfview.nsi \
