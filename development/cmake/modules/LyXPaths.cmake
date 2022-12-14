@@ -40,17 +40,6 @@ else()
 		endif()
 
 		set(GNUWIN32_DIR ${WINDEPSDIR})
-
-		# don't stop in FindQt4.cmake because qmake will
-		# report wrong paths
-		set(QT_HEADERS_DIR "${WINDEPSDIR}/qt-4/include" CACHE STRING "Qt4 headers directory" FORCE)
-		set(QT_LIBRARY_DIR "${WINDEPSDIR}/qt-4/lib" CACHE STRING "Qt4 libraries directory" FORCE)
-		set(QT_BINARY_DIR  "${WINDEPSDIR}/qt-4/bin" CACHE STRING "Qt4 binaries directory" FORCE)
-		set(QT_MKSPECS_DIR "${WINDEPSDIR}/qt-4/mkspecs" CACHE STRING "Qt4 mkspecs directory" FORCE)
-		set(QT_PLUGINS_DIR "${WINDEPSDIR}/qt-4/plugins" CACHE STRING "Qt4 plugins directory" FORCE)
-		set(QT_MOC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/moc.exe" CACHE STRING "Qt4 moc executable" FORCE)
-		set(QT_UIC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/uic.exe" CACHE STRING "Qt4 uic executable" FORCE)
-		set(QT_RCC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/rcc.exe" CACHE STRING "Qt4 rcc executable" FORCE)
 	endif()
 
 	find_package(GNUWIN32 REQUIRED)
