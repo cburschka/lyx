@@ -59,4 +59,5 @@ liblyxhunspell_a_SOURCES = \
 	1.7.0/src/parsers/textparser.cxx \
 	1.7.0/src/parsers/textparser.hxx \
 	1.7.0/src/parsers/xmlparser.cxx \
-	1.7.0/src/parsers/xmlparser.hxx
+	1.7.0/src/parsers/xmlparser.hxx \
+	1.7.0/src/win_api/config.h
