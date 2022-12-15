@@ -57,6 +57,12 @@ What's new
 
 * BUILD/INSTALLATION
 
+- Add support for macOS 11.x SDKs for macOS builds.
+
+- Improved LyX version extraction from configure.ac for macOS builds.
+
+- Support for different compiler and linker flags for macOS builds.
+
 
 ** Bug fixes:
 *************
