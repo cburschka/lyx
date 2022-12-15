@@ -7100,6 +7100,281 @@ addition
  and assume you'll know what to put in the preamble if necessary.
 \end_layout
 
+\begin_layout Subsubsection
+Installation
+\end_layout
+
+\begin_layout Standard
+All you need to do is install Rev\SpecialChar TeX
+ 4, as described in the package's README
+ file.
+ The package can be found at The Rev\SpecialChar TeX
+ 4 Web Site 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://publish.aps.org/revtex4/
+\end_layout
+
+\end_inset
+
+.
+ Install it somewhere that \SpecialChar LaTeX
+ can see it.
+ Test it by trying to \SpecialChar LaTeX
+ a short Rev\SpecialChar TeX
+ 4 document in some random directory (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space \space{}
+\end_inset
+
+not the directory where you installed the class file.) Then, if you reconfigure
+ \SpecialChar LyX
+, it will find the class file and let you use the Rev\SpecialChar TeX
+4 textclass.
+\end_layout
+
+\begin_layout Standard
+Probably the easiest way to get started is either to import a Rev\SpecialChar TeX
+ 4 document
+ using 
+\family typewriter
+tex2lyx
+\family default
+, or to use the 
+\family sans
+Revtex
+\begin_inset space ~
+\end_inset
+
+4
+\family default
+ template, found in the templates directory.
+\end_layout
+
+\begin_layout Subsubsection
+Preamble Matter
+\end_layout
+
+\begin_layout Standard
+Optional arguments to 
+\family typewriter
+
+\backslash
+documentclass
+\family default
+, like 
+\begin_inset Quotes eld
+\end_inset
+
+preprint
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+aps
+\begin_inset Quotes erd
+\end_inset
+
+, go in the 
+\family sans
+Extra
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ field in the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog, as usual.
+ Remember that in Rev\SpecialChar TeX
+, at least one optional argument is required! 
+\end_layout
+
+\begin_layout Standard
+Other preamble matter, like 
+\family typewriter
+
+\backslash
+draft
+\family default
+ etc.
+\begin_inset space ~
+\end_inset
+
+goes in the 
+\family sans
+\SpecialChar LaTeX
+
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+ dialog, also as usual.
+\end_layout
+
+\begin_layout Subsubsection
+Layouts
+\end_layout
+
+\begin_layout Standard
+The layouts basically correspond to the commands in Rev\SpecialChar TeX
+4.0.
+ For example, the Email layout corresponds to 
+\family typewriter
+
+\backslash
+email{}
+\family default
+.
+ Note that (at least as of Rev\SpecialChar TeX
+ 4.0 Beta), the 
+\family sans
+Address
+\family default
+ and 
+\family sans
+Affiliation
+\family default
+ layouts are exactly equivalent, so you shouldn't need to use both.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In case you're curious, both were included so that 
+\family typewriter
+tex2lyx
+\family default
+ would be able to translate both 
+\family typewriter
+
+\backslash
+address
+\family default
+ and 
+\family typewriter
+
+\backslash
+affiliation
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Important Notes
+\end_layout
+
+\begin_layout Standard
+There are a couple of important unique aspects of Rev\SpecialChar TeX
+ 4 which might cause
+ bugs that will be even more confusing in \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Standard
+In Rev\SpecialChar TeX
+, the 
+\family typewriter
+
+\backslash
+thanks
+\family default
+ command goes 
+\emph on
+outside
+\emph default
+ the 
+\family typewriter
+
+\backslash
+author
+\family default
+ command.
+ The \SpecialChar LyX
+ equivalent is that there is a separate Thanks layout.
+ Do 
+\emph on
+not
+\emph default
+ write footnotes in the 
+\family sans
+Author
+\family default
+ layout, or weird things may happen.
+ See the Rev\SpecialChar TeX
+ 4 documentation for more details.
+\end_layout
+
+\begin_layout Standard
+Also, the 
+\family sans
+Author
+\begin_inset space ~
+\end_inset
+
+Email
+\family default
+, 
+\family sans
+Author
+\begin_inset space ~
+\end_inset
+
+URL
+\family default
+, and 
+\family sans
+Thanks
+\family default
+ layouts must be placed 
+\emph on
+in between
+\emph default
+ the 
+\family sans
+Author
+\family default
+ layout and the corresponding 
+\family sans
+Address
+\family default
+ (or equivalent 
+\family sans
+Affiliation
+\family default
+) layout.
+ If you put the 
+\family sans
+Thanks
+\family default
+ after the 
+\family sans
+Address
+\family default
+, the \SpecialChar LaTeX
+ won't compile.
+\end_layout
+
 \begin_layout Subsection
 
 \change_inserted 564990737 1671042072
@@ -11889,281 +12164,6 @@ PAN — camera movement
 
 \begin_layout Itemize
 INSERT — cut to close-up of
-\end_layout
-
-\begin_layout Chapter
-Installation
-\end_layout
-
-\begin_layout Standard
-All you need to do is install Rev\SpecialChar TeX
- 4, as described in the package's README
- file.
- The package can be found at The Rev\SpecialChar TeX
- 4 Web Site 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://publish.aps.org/revtex4/
-\end_layout
-
-\end_inset
-
-.
- Install it somewhere that \SpecialChar LaTeX
- can see it.
- Test it by trying to \SpecialChar LaTeX
- a short Rev\SpecialChar TeX
- 4 document in some random directory (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space \space{}
-\end_inset
-
-not the directory where you installed the class file.) Then, if you reconfigure
- \SpecialChar LyX
-, it will find the class file and let you use the Rev\SpecialChar TeX
-4 textclass.
-\end_layout
-
-\begin_layout Standard
-Probably the easiest way to get started is either to import a Rev\SpecialChar TeX
- 4 document
- using 
-\family typewriter
-tex2lyx
-\family default
-, or to use the 
-\family sans
-Revtex
-\begin_inset space ~
-\end_inset
-
-4
-\family default
- template, found in the templates directory.
-\end_layout
-
-\begin_layout Chapter
-Preamble Matter
-\end_layout
-
-\begin_layout Standard
-Optional arguments to 
-\family typewriter
-
-\backslash
-documentclass
-\family default
-, like 
-\begin_inset Quotes eld
-\end_inset
-
-preprint
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-aps
-\begin_inset Quotes erd
-\end_inset
-
-, go in the 
-\family sans
-Extra
-\begin_inset space ~
-\end_inset
-
-Options
-\family default
- field in the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog, as usual.
- Remember that in Rev\SpecialChar TeX
-, at least one optional argument is required! 
-\end_layout
-
-\begin_layout Standard
-Other preamble matter, like 
-\family typewriter
-
-\backslash
-draft
-\family default
- etc.
-\begin_inset space ~
-\end_inset
-
-goes in the 
-\family sans
-\SpecialChar LaTeX
-
-\begin_inset space ~
-\end_inset
-
-Preamble
-\family default
- dialog, also as usual.
-\end_layout
-
-\begin_layout Chapter
-Layouts
-\end_layout
-
-\begin_layout Standard
-The layouts basically correspond to the commands in Rev\SpecialChar TeX
-4.0.
- For example, the Email layout corresponds to 
-\family typewriter
-
-\backslash
-email{}
-\family default
-.
- Note that (at least as of Rev\SpecialChar TeX
- 4.0 Beta), the 
-\family sans
-Address
-\family default
- and 
-\family sans
-Affiliation
-\family default
- layouts are exactly equivalent, so you shouldn't need to use both.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-In case you're curious, both were included so that 
-\family typewriter
-tex2lyx
-\family default
- would be able to translate both 
-\family typewriter
-
-\backslash
-address
-\family default
- and 
-\family typewriter
-
-\backslash
-affiliation
-\family default
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
-Important Notes
-\end_layout
-
-\begin_layout Standard
-There are a couple of important unique aspects of Rev\SpecialChar TeX
- 4 which might cause
- bugs that will be even more confusing in \SpecialChar LyX
-.
-\end_layout
-
-\begin_layout Standard
-In Rev\SpecialChar TeX
-, the 
-\family typewriter
-
-\backslash
-thanks
-\family default
- command goes 
-\emph on
-outside
-\emph default
- the 
-\family typewriter
-
-\backslash
-author
-\family default
- command.
- The \SpecialChar LyX
- equivalent is that there is a separate Thanks layout.
- Do 
-\emph on
-not
-\emph default
- write footnotes in the 
-\family sans
-Author
-\family default
- layout, or weird things may happen.
- See the Rev\SpecialChar TeX
- 4 documentation for more details.
-\end_layout
-
-\begin_layout Standard
-Also, the 
-\family sans
-Author
-\begin_inset space ~
-\end_inset
-
-Email
-\family default
-, 
-\family sans
-Author
-\begin_inset space ~
-\end_inset
-
-URL
-\family default
-, and 
-\family sans
-Thanks
-\family default
- layouts must be placed 
-\emph on
-in between
-\emph default
- the 
-\family sans
-Author
-\family default
- layout and the corresponding 
-\family sans
-Address
-\family default
- (or equivalent 
-\family sans
-Affiliation
-\family default
-) layout.
- If you put the 
-\family sans
-Thanks
-\family default
- after the 
-\family sans
-Address
-\family default
-, the \SpecialChar LaTeX
- won't compile.
 \end_layout
 
 \begin_layout Chapter
