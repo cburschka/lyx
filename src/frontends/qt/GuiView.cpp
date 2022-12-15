@@ -2852,7 +2852,9 @@ void GuiView::openDocument(string const & fname, int origin)
 		// see bug #12609
 		if (origin == FuncRequest::MENU) {
 			docstring const & msg =
-				bformat(_("File\n %1$s\n does not exist. Create empty file?"),
+				bformat(_("File\n"
+					  "%1$s\n"
+					  "does not exist. Create empty file?"),
 						from_utf8(filename));
 			int ret = Alert::prompt(_("File does not exist"),
 						msg, 0, 1,
