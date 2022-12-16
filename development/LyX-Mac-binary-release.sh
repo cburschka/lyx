@@ -1012,15 +1012,18 @@ EOF
 # The image was made with with inkscape and tiffutil from dmg-background.svgz
 make_image() {
 	INKSCAPE=/Applications/Inkscape.app/Contents/MacOS/inkscape
-	cd "${LyxSourceDir}"/development/MacOSX
-	${INKSCAPE} --export-type=png -w 560 -o dmg-background.png dmg-background.svgz
-	${INKSCAPE} --export-type=png -w 1120 -o dmg-background@2x.png dmg-background.svgz
-	tiffutil -cathidpicheck dmg-background.png dmg-background@2x.png -out dmg-background.tiff
+	(
+		cd "${LyxSourceDir}"/development/MacOSX
+		test -x ${INKSCAPE} && ${INKSCAPE} --export-type=png -w 560 -o dmg-background.png dmg-background.svgz
+		test -x ${INKSCAPE} && ${INKSCAPE} --export-type=png -w 1120 -o dmg-background@2x.png dmg-background.svgz
+		tiffutil -cathidpicheck dmg-background.png dmg-background@2x.png -out dmg-background.tiff
+	)
 }
 
 make_dmg() {
 	cd "${1}"
 
+	test -f "${DmgBackground}" || make_image
 	BGSIZE=$(file "$DmgBackground" | awk -F , '/TIFF/{ print $10 $4 ;}/PNG/{ print $2; }'|sed -e 's/width=//' -e 's/height=//' -e 's/x//')
 	BG_W=$(echo ${BGSIZE} | awk '{print $1 }')
 	BG_H=$(echo ${BGSIZE} | awk '{print $2 }')

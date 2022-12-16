@@ -10,7 +10,7 @@ nodist_bundle_DATA = Info.plist
 
 dist_bin_SCRIPTS = lyxeditor maxima inkscape lilypond lilypond-book
 
-dist_pkgdata_DATA = COPYING LyXapp.icns LyX.icns LyX.sdef dmg-background.png
+dist_pkgdata_DATA = COPYING LyXapp.icns LyX.icns LyX.sdef dmg-background.png dmg-background@2x.png dmg-background.svgz
 nodist_pkgdata_DATA = lyxrc.dist
 
 
