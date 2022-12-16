@@ -558,6 +558,7 @@ Section -ProgramFiles
   File "${FILES_DEPS}\bin\concrt140.dll"
   File "${FILES_DEPS}\bin\msvcp140.dll"
   File "${FILES_DEPS}\bin\msvcp140_1.dll"
+  File "${FILES_DEPS}\bin\msvcp140_2.dll"
   File "${FILES_DEPS}\bin\vcamp140.dll"
   File "${FILES_DEPS}\bin\vccorlib140.dll"
   File "${FILES_DEPS}\bin\vcomp140.dll"
@@ -603,7 +604,8 @@ Section -ProgramFiles
     File "${FILES_QT}\bin\Qt5WinExtras.dll"
   !endif
   !if ${Qt_Version} = 6
-    File "${FILES_DEPS}\bin\Qt6Core5Compat.dll"
+    File "${FILES_Qt}\bin\Qt6Core5Compat.dll"
+    File "${FILES_QT}\bin\Qt6SvgWidgets.dll"
   !endif
 
   # Qt plugin DLLs
