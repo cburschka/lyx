@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-04 19:23+0100\n"
-"PO-Revision-Date: 2022-11-24 11:25+0000\n"
+"POT-Creation-Date: 2022-12-16 09:42+0100\n"
+"PO-Revision-Date: 2022-12-16 08:50+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -16138,7 +16138,7 @@ msgstr ""
 "rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné číslovanie "
 "(čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, oproti veta "
 "1, veta 2, lemma 3, tvrdenie 4…). Číslovanie sa reštartuje na začiatku "
-"každej kapitoli: teoréma 1.1, teoréma 2.1, … "
+"každej kapitoli: teoréma 1.1, teoréma 2.1, …"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
@@ -33572,18 +33572,20 @@ msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 
-#: src/mathed/InsetMathMacro.cpp:1116
-#, fuzzy
+#: src/mathed/InsetMathMacro.cpp:1118
 msgid "Uncodable characters in math macro"
-msgstr "Nekódovateľné znaky v ceste"
+msgstr "Nekódovateľné znaky v matematickom makre"
 
-#: src/mathed/InsetMathMacro.cpp:1117
+#: src/mathed/InsetMathMacro.cpp:1119
 #, c-format
 msgid ""
 "The macro name '%1$s' contains a character\n"
 "that is not encodable in the current encoding (%2$s).\n"
 "Please fix this macro."
 msgstr ""
+"V mene makra '%1$s' sú nekódovateľné znaky\n"
+"ktoré neexistujú v aktuálnom kódovaní (%2$s).\n"
+"Opravte toto makro."
 
 #: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
 #, c-format
