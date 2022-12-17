@@ -13674,6 +13674,1071 @@ go back to the default
 
 \end_layout
 
+\begin_layout Section
+
+\change_inserted 564990737 1671270380
+Paragraph Styles
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671270398
+Custom
+\change_deleted 564990737 1671270396
+Non-standard
+\change_unchanged
+ Paragraph Shapes
+\end_layout
+
+\begin_layout Standard
+\noindent
+\SpecialChar LaTeX
+ as well as any other text processor uses by default rectangular paragraphs.
+ For special cases like for example posters, invitation cards or poems you
+ can modify the paragraph shape to one of your choice.
+ This can be done by using the \SpecialChar LaTeX
+-package 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+shapepar
+\end_layout
+
+\end_inset
+
+ which is loaded by using in the document settings the module 
+\family sans
+Custom paragraph shapes
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Predefined shapes
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+shapepar
+\series default
+ provides the following shapes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="3">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="middle" width="16col%">
+<column alignment="left" valignment="middle" width="40col%">
+<column alignment="left" valignment="middle" width="35col%">
+<row endhead="true">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size small
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size small
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size small
+Annotation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CDlabel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Circle with circular hole (in the size of a CD/DVD)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Cannot be scaled, take care there is not too much text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Circle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Circle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Fragile, calculation might fail
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Diamond
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Rhomboid (symbolizing a 
+\begin_inset Quotes eld
+\end_inset
+
+diamond
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Heart
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Heart-like shape
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Hexagon
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Hexagon
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Nut
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Nut for bolt (hexagon with circular hole)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Square
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Square
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Star
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Five-point star
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Candle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Burning candle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Drop down/up
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Normal/reversed rain drop
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Fragile, calculation might fail
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\SpecialChar TeX
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+The \SpecialChar TeX
+ logo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Triangle up/down/
+\begin_inset Newline newline
+\end_inset
+
+left/right
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Triangles in different orientations
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To use a shape for your paragraph, simply select it in \SpecialChar LyX
+'s pull-down box
+ for environments in the toolbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is an example paragraph in the shape of a nut:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Nut
+
+\lang latin
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+: 
+\family sans
+shapepar
+\family default
+ paragraphs cannot run over a page break.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The package 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+shapepar
+\end_layout
+
+\end_inset
+
+ takes care that the shape will always be preserved, no matter how much
+ text is in the paragraph.
+ Therefore the paragraph size changes with the amount of contained text.
+ This can lead to paragraph sizes exceeding the page margins.
+ To demonstrate the size scaling, here is the same example paragraph but
+ with twice as much text:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Nut
+
+\lang latin
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An exception is the shape 
+\family sans
+CDlabel
+\family default
+.
+ It cannot be scaled because it must fit the size of a CD/DVD.
+ Therefore the amount of text that fits into the shape is limited.
+\begin_inset Newline newline
+\end_inset
+
+The 
+\family sans
+drop
+\family default
+ shapes and the 
+\family sans
+circle
+\family default
+ shape are fragile, meaning that the calculation of their size can fail,
+ depending on the amount of text.
+ You will then get the \SpecialChar LaTeX
+ error 
+\begin_inset Quotes eld
+\end_inset
+
+Arithmetic overflow
+\begin_inset Quotes erd
+\end_inset
+
+.
+ In this case one can try to remove or add some text; if nothing works one
+ has to use another shape.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For shapes with tips you will maybe see that \SpecialChar LaTeX
+'s hyphenation routine fails
+ for text in the tips.
+ Therefore it is often necessary to add hyphenation points 
+\family sans
+(
+\begin_inset Info
+type  "shortcut"
+arg   "specialchar-insert hyphenation"
+\end_inset
+
+
+\family default
+) to the corresponding text parts.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Shapepar paragraphs are either always centered or placed on the page so
+ that their left border touches the left page margin.
+ You can therefore not use the paragraph dialog to align such paragraphs.
+ A solution is to put the paragraph into a minipage or parbox and align
+ the box.
+ The problem is hereby to find the right width for the box.
+ Because if it is too wide and you center the box, the paragraph is not
+ centered too because it sticks at the left side of the box.
+ So you might have to play a bit with the width until it fits.
+ Here are two heart-shaped paragraphs, the first one is not aligned, the
+ second one is right-aligned:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Heart
+\noindent
+
+\lang latin
+Lo\SpecialChar softhyphen
+rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align right
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "42col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Heart
+\noindent
+
+\lang latin
+Lo\SpecialChar softhyphen
+rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Custom shapes
+\end_layout
+
+\begin_layout Standard
+You can define any shape you want.
+ Doing this manually is a lot of work because every coordinate must be specified.
+ But there is a way to let the computer calculate the coordinates:
+\end_layout
+
+\begin_layout Enumerate
+Install the program 
+\begin_inset CommandInset href
+LatexCommand href
+name "Jpgfdraw"
+target "https://www.ctan.org/tex-archive/graphics/jpgfdraw"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+In 
+\family sans
+Jpgfdraw
+\family default
+ go to the menu 
+\family sans
+TeX/LaTeX\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Set Normal Size
+\family default
+ and select the font size you are using in your document.
+ For example this document uses the size 12
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+\end_layout
+
+\begin_layout Enumerate
+Draw a shape.
+\end_layout
+
+\begin_layout Enumerate
+Use the menu 
+\family sans
+TeX/LaTeX\SpecialChar menuseparator
+Shapepar
+\family default
+ to export the shape to coordinates.
+ In the appearing dialog use either the outline of your shape for the coordinate
+s or the path itself.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For more information see 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The coordinates are written into a \SpecialChar TeX
+ file.
+ To use it for your \SpecialChar LyX
+ document
+\end_layout
+
+\begin_layout Enumerate
+Place the cursor before the first character of your paragraph (or into a
+ new empty one).
+\end_layout
+
+\begin_layout Enumerate
+Open in \SpecialChar LyX
+ the menu 
+\family sans
+Insert\SpecialChar menuseparator
+File\SpecialChar menuseparator
+Child
+\begin_inset space ~
+\end_inset
+
+Document
+\family default
+, select the file and use 
+\family sans
+Input
+\family default
+ as 
+\family sans
+Include Type.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+: The changed shape only applies to the current paragraph; everything is
+ reset to normal for the next paragraph.
+ Therefore the shape definition file must be input into every paragraph
+ with the desired shape.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is an example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "SpecialParagraphShape.tex"
+literal "true"
+
+\end_inset
+
+
+\lang latin
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+A tip:
+\series default
+ to draw complexer shapes in 
+\family sans
+Jpgfdraw
+\family default
+ you can draw the shape in a program of your choice and import the resulting
+ image to 
+\family sans
+Jpgfdraw
+\family default
+.
+ Then you only need to draw a line or spline along the outline of the image.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The module 
+\family sans
+Custom paragraph shapes
+\family default
+ also provides the two commands 
+\family sans
+shapepar
+\family default
+ and 
+\family sans
+Shapepar
+\family default
+ which can be used to define custom shapes coordinate by coordinate.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+These commands are internally used for all shapes described here.
+\end_layout
+
+\end_inset
+
+ For information how these styles are used and about further customization
+ possibilities, have a look at the 
+\begin_inset CommandInset href
+LatexCommand href
+name "documentation"
+target "https://www.ctan.org/tex-archive/macros/latex/contrib/shapepar/shapepar.pdf"
+literal "false"
+
+\end_inset
+
+ of the package 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+shapepar
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Chapter
 Supplemental Tools
 \end_layout
@@ -27768,1059 +28833,6 @@ Embedded
 Objects
 \emph default
  manual.
-\end_layout
-
-\begin_layout Section
-Non-standard Paragraph Shapes
-\end_layout
-
-\begin_layout Standard
-\noindent
-\SpecialChar LaTeX
- as well as any other text processor uses by default rectangular paragraphs.
- For special cases like for example posters, invitation cards or poems you
- can modify the paragraph shape to one of your choice.
- This can be done by using the \SpecialChar LaTeX
--package 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-shapepar
-\end_layout
-
-\end_inset
-
- which is loaded by using in the document settings the module 
-\family sans
-Custom paragraph shapes
-\family default
-.
-\end_layout
-
-\begin_layout Subsection
-Predefined shapes
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-shapepar
-\series default
- provides the following shapes:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="3">
-<features booktabs="true" islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="middle" width="16col%">
-<column alignment="left" valignment="middle" width="40col%">
-<column alignment="left" valignment="middle" width="35col%">
-<row endhead="true">
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size small
-Name
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size small
-Description
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size small
-Annotation
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-CDlabel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Circle with circular hole (in the size of a CD/DVD)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Cannot be scaled, take care there is not too much text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Circle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Circle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Fragile, calculation might fail
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Diamond
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Rhomboid (symbolizing a 
-\begin_inset Quotes eld
-\end_inset
-
-diamond
-\begin_inset Quotes erd
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Heart
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Heart-like shape
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Hexagon
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Hexagon
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Nut
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Nut for bolt (hexagon with circular hole)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Square
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Square
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Star
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Five-point star
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Candle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Burning candle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Drop down/up
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Normal/reversed rain drop
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Fragile, calculation might fail
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-\SpecialChar TeX
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-The \SpecialChar TeX
- logo
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="default">
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Triangle up/down/
-\begin_inset Newline newline
-\end_inset
-
-left/right
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-Triangles in different orientations
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To use a shape for your paragraph, simply select it in \SpecialChar LyX
-'s pull-down box
- for environments in the toolbar.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Here is an example paragraph in the shape of a nut:
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Nut
-
-\lang latin
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
- At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note
-\series default
-: 
-\family sans
-shapepar
-\family default
- paragraphs cannot run over a page break.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The package 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-shapepar
-\end_layout
-
-\end_inset
-
- takes care that the shape will always be preserved, no matter how much
- text is in the paragraph.
- Therefore the paragraph size changes with the amount of contained text.
- This can lead to paragraph sizes exceeding the page margins.
- To demonstrate the size scaling, here is the same example paragraph but
- with twice as much text:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Nut
-
-\lang latin
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
- At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
- At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-An exception is the shape 
-\family sans
-CDlabel
-\family default
-.
- It cannot be scaled because it must fit the size of a CD/DVD.
- Therefore the amount of text that fits into the shape is limited.
-\begin_inset Newline newline
-\end_inset
-
-The 
-\family sans
-drop
-\family default
- shapes and the 
-\family sans
-circle
-\family default
- shape are fragile, meaning that the calculation of their size can fail,
- depending on the amount of text.
- You will then get the \SpecialChar LaTeX
- error 
-\begin_inset Quotes eld
-\end_inset
-
-Arithmetic overflow
-\begin_inset Quotes erd
-\end_inset
-
-.
- In this case one can try to remove or add some text; if nothing works one
- has to use another shape.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For shapes with tips you will maybe see that \SpecialChar LaTeX
-'s hyphenation routine fails
- for text in the tips.
- Therefore it is often necessary to add hyphenation points 
-\family sans
-(
-\begin_inset Info
-type  "shortcut"
-arg   "specialchar-insert hyphenation"
-\end_inset
-
-
-\family default
-) to the corresponding text parts.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Shapepar paragraphs are either always centered or placed on the page so
- that their left border touches the left page margin.
- You can therefore not use the paragraph dialog to align such paragraphs.
- A solution is to put the paragraph into a minipage or parbox and align
- the box.
- The problem is hereby to find the right width for the box.
- Because if it is too wide and you center the box, the paragraph is not
- centered too because it sticks at the left side of the box.
- So you might have to play a bit with the width until it fits.
- Here are two heart-shaped paragraphs, the first one is not aligned, the
- second one is right-aligned:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Heart
-\noindent
-
-\lang latin
-Lo\SpecialChar softhyphen
-rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
- At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align right
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 1
-use_makebox 0
-width "42col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Heart
-\noindent
-
-\lang latin
-Lo\SpecialChar softhyphen
-rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
- At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Custom shapes
-\end_layout
-
-\begin_layout Standard
-You can define any shape you want.
- Doing this manually is a lot of work because every coordinate must be specified.
- But there is a way to let the computer calculate the coordinates:
-\end_layout
-
-\begin_layout Enumerate
-Install the program 
-\begin_inset CommandInset href
-LatexCommand href
-name "Jpgfdraw"
-target "https://www.ctan.org/tex-archive/graphics/jpgfdraw"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-In 
-\family sans
-Jpgfdraw
-\family default
- go to the menu 
-\family sans
-TeX/LaTeX\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Set Normal Size
-\family default
- and select the font size you are using in your document.
- For example this document uses the size 12
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
-\end_layout
-
-\begin_layout Enumerate
-Draw a shape.
-\end_layout
-
-\begin_layout Enumerate
-Use the menu 
-\family sans
-TeX/LaTeX\SpecialChar menuseparator
-Shapepar
-\family default
- to export the shape to coordinates.
- In the appearing dialog use either the outline of your shape for the coordinate
-s or the path itself.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-For more information see 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The coordinates are written into a \SpecialChar TeX
- file.
- To use it for your \SpecialChar LyX
- document
-\end_layout
-
-\begin_layout Enumerate
-Place the cursor before the first character of your paragraph (or into a
- new empty one).
-\end_layout
-
-\begin_layout Enumerate
-Open in \SpecialChar LyX
- the menu 
-\family sans
-Insert\SpecialChar menuseparator
-File\SpecialChar menuseparator
-Child
-\begin_inset space ~
-\end_inset
-
-Document
-\family default
-, select the file and use 
-\family sans
-Input
-\family default
- as 
-\family sans
-Include Type.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note
-\series default
-: The changed shape only applies to the current paragraph; everything is
- reset to normal for the next paragraph.
- Therefore the shape definition file must be input into every paragraph
- with the desired shape.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Here is an example:
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "SpecialParagraphShape.tex"
-literal "true"
-
-\end_inset
-
-
-\lang latin
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
- At vero eos et accusam et justo duo dolores et ea rebum.
- Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
- sit amet.
- Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
- eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
- voluptua.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-A tip:
-\series default
- to draw complexer shapes in 
-\family sans
-Jpgfdraw
-\family default
- you can draw the shape in a program of your choice and import the resulting
- image to 
-\family sans
-Jpgfdraw
-\family default
-.
- Then you only need to draw a line or spline along the outline of the image.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The module 
-\family sans
-Custom paragraph shapes
-\family default
- also provides the two commands 
-\family sans
-shapepar
-\family default
- and 
-\family sans
-Shapepar
-\family default
- which can be used to define custom shapes coordinate by coordinate.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-These commands are internally used for all shapes described here.
-\end_layout
-
-\end_inset
-
- For information how these styles are used and about further customization
- possibilities, have a look at the 
-\begin_inset CommandInset href
-LatexCommand href
-name "documentation"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/shapepar/shapepar.pdf"
-literal "false"
-
-\end_inset
-
- of the package 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-shapepar
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \end_body
