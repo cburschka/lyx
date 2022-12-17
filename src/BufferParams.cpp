@@ -3394,35 +3394,15 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		Encoding::Package const package =
 			language->encoding()->package();
 
-		// Create list of inputenc options:
-		set<string> encoding_set;
-		// luainputenc fails with more than one encoding
-		if (features.runparams().flavor != Flavor::LuaTeX
-			&& features.runparams().flavor != Flavor::DviLuaTeX)
-			// list all input encodings used in the document
-			encoding_set = features.getEncodingSet(doc_encoding);
-
 		// The "japanese" babel-language requires  the pLaTeX engine
 		// which conflicts with "inputenc".
 		// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
-		if ((!encoding_set.empty() || package == Encoding::inputenc)
+		if (package == Encoding::inputenc
 		    && !features.isRequired("japanese")
 		    && !features.isProvided("inputenc")) {
-			os << "\\usepackage[";
-			set<string>::const_iterator it = encoding_set.begin();
-			set<string>::const_iterator const end = encoding_set.end();
-			if (it != end) {
-				os << from_ascii(*it);
-				++it;
-			}
-			for (; it != end; ++it)
-				os << ',' << from_ascii(*it);
-			if (package == Encoding::inputenc) {
-				if (!encoding_set.empty())
-					os << ',';
-				os << from_ascii(doc_encoding);
-			}
-		   	if (features.runparams().flavor == Flavor::LuaTeX
+			os << "\\usepackage["
+			   << from_ascii(doc_encoding);
+			if (features.runparams().flavor == Flavor::LuaTeX
 			    || features.runparams().flavor == Flavor::DviLuaTeX)
 				os << "]{luainputenc}\n";
 			else
