@@ -1472,8 +1472,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		docstring const & name = cmd.argument();
-		if (name == "space")
-			flag.setEnabled(false);
+		flag.setEnabled(name == "ref" || name == "mathspace");
 		break;
 	}
 
@@ -1498,7 +1497,29 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(false);
 		break;
 
+	// these are nonfunctional in math
+	case LFUN_BOX_INSERT:
+	case LFUN_BRANCH_INSERT:
+	case LFUN_BRANCH_ADD_INSERT:
 	case LFUN_CAPTION_INSERT:
+	case LFUN_FLEX_INSERT:
+	case LFUN_FLOAT_INSERT:
+	case LFUN_FLOAT_LIST_INSERT:
+	case LFUN_FOOTNOTE_INSERT:
+	case LFUN_HREF_INSERT:
+	case LFUN_INDEX_INSERT:
+	case LFUN_INDEX_PRINT:
+	case LFUN_INFO_INSERT:
+	case LFUN_IPA_INSERT:
+	case LFUN_LISTING_INSERT:
+	case LFUN_MARGINALNOTE_INSERT:
+	case LFUN_NEWPAGE_INSERT:
+	case LFUN_NOMENCL_INSERT:
+	case LFUN_NOMENCL_PRINT:
+	case LFUN_NOTE_INSERT:
+	case LFUN_PREVIEW_INSERT:
+	case LFUN_TABULAR_INSERT:
+	case LFUN_WRAP_INSERT:
 		flag.setEnabled(false);
 		break;
 
