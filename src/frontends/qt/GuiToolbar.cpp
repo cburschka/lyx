@@ -439,12 +439,18 @@ void DynamicMenuButton::updateTriggered()
 				default_act = act;
 			++i;
 		}
-		// Add item to reset to defaults
+		// Add items to reset to defaults
 		Action * reset_act = new Action(FuncRequest(LFUN_FONT_DEFAULT, FuncRequest::TOOLBAR),
 						icon_undo_,
-						qt_("&Reset to default"),
-						qt_("Reset all font settings to their defaults"), this);
+						qt_("&Reset to default (keep language)"),
+						qt_("Reset all font settings to their defaults but keep language settings"), this);
 		m->addAction(reset_act);
+		Action * reset_act_lang = new Action(FuncRequest(LFUN_COMMAND_SEQUENCE, "font-default ; language reset",
+								 FuncRequest::TOOLBAR),
+						icon_undo_,
+						qt_("Reset to default (including &language)"),
+						qt_("Reset all font settings and the language to their defaults"), this);
+		m->addAction(reset_act_lang);
 		if (default_act)
 			QToolButton::setDefaultAction(default_act);
 		QToolButton::setIcon(icon_textstyle_apply_);
