@@ -132,6 +132,8 @@
   The function outputs absolute paths in the OS style and separated by the os-specific
   path separator. This function is intended for bibliography managers.
 
+* branch-sync-all: Open/close all insets of selected branch (depending on its activation status).
+
 * buffer-reset-export advises LyX to remove the auxiliary files before doing the next
   export.
 
@@ -178,18 +180,18 @@
 
 !!!The following LyX functions have been changed in 2.4:
 
-* set-graphics-group was renamed to graphics-set-group.
-
-* info-insert buffer vcs-*: renamed to info-insert vcs *
+* citation-insert now returns a list of undefined citations if passed through the LyX Server.
 
 * file-insert: optional second parameter "ignorelang" to make the insertion
   ignore the inserted file's main language (and rather adapt it to the insertion
   context's language).
 
+* info-insert buffer vcs-*: renamed to info-insert vcs *
+
+* set-graphics-group was renamed to graphics-set-group.
+
 * tabular-feature: added toggle parameters "toggle-all-lines", "toggle-border-lines"
   and "toggle-inner-lines"
-
-* branch-sync-all: Open/close all insets of selected branch (depending on its activation status).
 
 * word-delete-forward, word-delete-backward, char-delete-forward,
   char-delete-backward
