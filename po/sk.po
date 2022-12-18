@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-15 16:52+0100\n"
-"PO-Revision-Date: 2022-12-15 15:56+0000\n"
+"POT-Creation-Date: 2022-12-18 17:36+0100\n"
+"PO-Revision-Date: 2022-12-18 16:43+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -34279,13 +34279,22 @@ msgstr "Nedostupný tezaurus pre tento jazyk!"
 msgid "Outline"
 msgstr "Osnova"
 
-#: src/frontends/qt/GuiToolbar.cpp:415
-msgid "&Reset to default"
-msgstr "Nastaviť na '&Predvolené'"
+#: src/frontends/qt/GuiToolbar.cpp:445
+msgid "&Reset to default (keep language)"
+msgstr "Nastaviť na '&Predvolené' (držať jazyk)"
 
-#: src/frontends/qt/GuiToolbar.cpp:416
-msgid "Reset all font settings to their defaults"
-msgstr "Nastaviť všetko vlastnosti fontu na štandard"
+#: src/frontends/qt/GuiToolbar.cpp:446
+msgid "Reset all font settings to their defaults but keep language settings"
+msgstr ""
+"Nastaviť všetky vlastnosti fontu na štandard, ale držať jazykové nastavenia"
+
+#: src/frontends/qt/GuiToolbar.cpp:451
+msgid "Reset to default (including &language)"
+msgstr "Nastaviť na '&Predvolené' (aj jazyk)"
+
+#: src/frontends/qt/GuiToolbar.cpp:452
+msgid "Reset all font settings and the language to their defaults"
+msgstr "Nastaviť všetky vlastnosti fontu i jazyka na štandard"
 
 #: src/frontends/qt/GuiToolbar.cpp:629
 msgid "auto"
