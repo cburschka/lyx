@@ -2755,7 +2755,6 @@ dist_articletemplates_DATA = \
 	templates/Articles/International_Union_of_Crystallography_%28IUCr%29.lyx \
 	templates/Articles/Journal_of_Statistical_Software_%28JSS%29_version_2.lyx \
 	templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%29.lyx \
-	templates/Articles/Kluwer.lyx \
 	templates/Articles/Mathematical_Monthly.lyx \
 	templates/Articles/R_Journal.lyx \
 	templates/Articles/REVTeX_%28V._4%29.lyx \
