@@ -94,16 +94,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-15 08:37+0100\n"
-"PO-Revision-Date: 2022-12-15 08:35+0100\n"
+"POT-Creation-Date: 2022-12-18 17:31+0100\n"
+"PO-Revision-Date: 2022-12-18 17:35+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
-"Language-Team: German <lyx-docs@lists.lyx.org>\n"
+"Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 3.32.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt/ui/AboutUi.ui:27
 msgid "Version"
@@ -5962,7 +5962,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/TabularUi.ui:1368 src/frontends/qt/ui/TabularUi.ui:1405
 #: src/frontends/qt/ui/TabularUi.ui:1446 src/frontends/qt/ui/TabularUi.ui:1477
-#: src/frontends/qt/ui/TabularUi.ui:1515 src/frontends/qt/GuiToolbar.cpp:671
+#: src/frontends/qt/ui/TabularUi.ui:1515 src/frontends/qt/GuiToolbar.cpp:677
 #: src/insets/InsetBranch.cpp:79 src/insets/InsetBranch.cpp:82
 msgid "on"
 msgstr "an"
@@ -17274,34 +17274,6 @@ msgstr "Kapitel \\thechapter"
 msgid "Appendix \\thechapter"
 msgstr "Anhang \\thechapter"
 
-#: lib/layouts/stdspecialchars.inc:8 lib/ui/stdmenus.inc:464
-msgid "Ligature Break|k"
-msgstr "Ligaturtrenner|r"
-
-#: lib/layouts/stdspecialchars.inc:17 lib/ui/stdmenus.inc:416
-msgid "End of Sentence|E"
-msgstr "Satzendepunkt|S"
-
-#: lib/layouts/stdspecialchars.inc:26 lib/ui/stdmenus.inc:415
-msgid "Ellipsis|i"
-msgstr "Fortsetzungspunkte|F"
-
-#: lib/layouts/stdspecialchars.inc:36 lib/ui/stdmenus.inc:422
-msgid "Menu Separator|M"
-msgstr "Menütrenner|M"
-
-#: lib/layouts/stdspecialchars.inc:49 lib/ui/stdmenus.inc:463
-msgid "Hyphenation Point|H"
-msgstr "Trennmöglichkeit|ö"
-
-#: lib/layouts/stdspecialchars.inc:56 lib/ui/stdmenus.inc:420
-msgid "Breakable Slash|a"
-msgstr "Umbruchfähiger Schrägstrich|ä"
-
-#: lib/layouts/stdspecialchars.inc:65
-msgid "Protected Hyphen|y"
-msgstr "Geschützter Trennstrich|T"
-
 #: lib/layouts/stdstarsections.inc:109
 msgid "Subparagraph*"
 msgstr "Unterparagraph*"
@@ -19804,13 +19776,13 @@ msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:109
-#: lib/ui/stdtoolbars.inc:90 src/BufferView.cpp:2347
+#: lib/ui/stdtoolbars.inc:90 src/BufferView.cpp:2391
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:110
 #: lib/ui/stdtoolbars.inc:91 src/Text3.cpp:1509
-#: src/frontends/qt/GuiToolbar.cpp:458 src/mathed/InsetMathGrid.cpp:1564
+#: src/frontends/qt/GuiToolbar.cpp:464 src/mathed/InsetMathGrid.cpp:1564
 #: src/mathed/InsetMathNest.cpp:539
 msgid "Paste"
 msgstr "Einfügen"
@@ -21382,6 +21354,14 @@ msgstr "Eingebettete Vorschau|i"
 msgid "Symbols...|b"
 msgstr "Symbole...|b"
 
+#: lib/ui/stdmenus.inc:415
+msgid "Ellipsis|i"
+msgstr "Fortsetzungspunkte|F"
+
+#: lib/ui/stdmenus.inc:416
+msgid "End of Sentence|E"
+msgstr "Satzendepunkt|S"
+
 #: lib/ui/stdmenus.inc:417
 msgid "Plain Quotation Mark|Q"
 msgstr "Nicht-typographisches Anführungszeichen|N"
@@ -21394,9 +21374,17 @@ msgstr "Inneres Anführungszeichen|I"
 msgid "Non-Breaking Hyphen|y"
 msgstr "Geschützter Trennstrich|T"
 
+#: lib/ui/stdmenus.inc:420
+msgid "Breakable Slash|a"
+msgstr "Umbruchfähiger Schrägstrich|ä"
+
 #: lib/ui/stdmenus.inc:421
 msgid "Visible Space|V"
 msgstr "Sichtbares Leerzeichen|L"
+
+#: lib/ui/stdmenus.inc:422
+msgid "Menu Separator|M"
+msgstr "Menütrenner|M"
 
 #: lib/ui/stdmenus.inc:423
 msgid "Phonetic Symbols|P"
@@ -21497,6 +21485,14 @@ msgstr "Vertikaler Abstand...|V"
 #: lib/ui/stdmenus.inc:461
 msgid "Phantom|m"
 msgstr "Phantom|m"
+
+#: lib/ui/stdmenus.inc:463
+msgid "Hyphenation Point|H"
+msgstr "Trennmöglichkeit|ö"
+
+#: lib/ui/stdmenus.inc:464
+msgid "Ligature Break|k"
+msgstr "Ligaturtrenner|r"
 
 #: lib/ui/stdmenus.inc:465
 msgid "Optional Line Break|B"
@@ -21844,11 +21840,11 @@ msgstr "Rechtschreibung prüfen"
 msgid "Spellcheck continuously"
 msgstr "Rechtschreibung während der Eingabe überprüfen"
 
-#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:1477
+#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:1480
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.inc:88 src/BufferView.cpp:1498
+#: lib/ui/stdtoolbars.inc:88 src/BufferView.cpp:1501
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -27208,12 +27204,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 2"
-msgstr "Spiel 2"
-
-#: lib/examples/Articles:0
 msgid "Game 1"
 msgstr "Spiel 1"
+
+#: lib/examples/Articles:0
+msgid "Game 2"
+msgstr "Spiel 2"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -27233,32 +27229,32 @@ msgid "External Material"
 msgstr "Externes Material"
 
 #: lib/examples/Articles:0
-msgid "Instant Preview"
-msgstr "Eingebettete Vorschau"
-
-#: lib/examples/Articles:0
-msgid "XY-Figure"
-msgstr "XY-Figure"
-
-#: lib/examples/Articles:0
-msgid "Minted File Listing"
-msgstr "Minted-Programmlistings (Dateien)"
-
-#: lib/examples/Articles:0
 msgid "Feynman Diagrams"
 msgstr "Feynman-Diagramme"
+
+#: lib/examples/Articles:0
+msgid "Instant Preview"
+msgstr "Eingebettete Vorschau"
 
 #: lib/examples/Articles:0
 msgid "Itemize Bullets"
 msgstr "Auflistungszeichen"
 
 #: lib/examples/Articles:0
-msgid "XY-Pic"
-msgstr "XY-Pic"
+msgid "Minted File Listing"
+msgstr "Minted-Programmlistings (Dateien)"
 
 #: lib/examples/Articles:0
 msgid "Minted Listings"
 msgstr "Minted-Programmlistings"
+
+#: lib/examples/Articles:0
+msgid "XY-Figure"
+msgstr "XY-Figure"
+
+#: lib/examples/Articles:0
+msgid "XY-Pic"
+msgstr "XY-Pic"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
@@ -27269,40 +27265,44 @@ msgid "Serial Letter 1"
 msgstr "Serienbrief 1"
 
 #: lib/examples/Articles:0
-msgid "Serial Letter 3"
-msgstr "Serienbrief 3"
-
-#: lib/examples/Articles:0
 msgid "Serial Letter 2"
 msgstr "Serienbrief 2"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 3"
+msgstr "Serienbrief 3"
 
 #: lib/examples/Articles:0
 msgid "Localization Test"
 msgstr "Übersetzungstest"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Captions"
-msgstr "Mehrsprachige Legenden"
+msgid "Hazard and Precautionary Statements"
+msgstr "H- und P-Sätze"
 
 #: lib/examples/Articles:0
 msgid "LilyPond Book"
 msgstr "LilyPond-Buch"
 
 #: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr "Noweb-Fehlerbericht"
+msgid "Multilingual Captions"
+msgstr "Mehrsprachige Legenden"
 
 #: lib/examples/Articles:0
 msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "H- und P-Sätze"
+msgid "Noweb Listerrors"
+msgstr "Noweb-Fehlerbericht"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1761
 msgid "Modules"
 msgstr "Module"
+
+#: lib/examples/Articles:0
+msgid "Beamer (Complex)"
+msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
 msgid "Foils"
@@ -27311,10 +27311,6 @@ msgstr "Foils"
 #: lib/examples/Articles:0
 msgid "Foils Landslide"
 msgstr "Foils (Querformat)"
-
-#: lib/examples/Articles:0
-msgid "Beamer (Complex)"
-msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
 msgid "Welcome"
@@ -27329,18 +27325,6 @@ msgid "Multilingual Typesetting with platex"
 msgstr "Mehrsprachige Dokumente mit platex"
 
 #: lib/examples/Articles:0
-msgid "IEEE Transactions Journal"
-msgstr "IEEE Transactions Journal"
-
-#: lib/examples/Articles:0
-msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly"
-
-#: lib/examples/Articles:0
-msgid "Hebrew Article (KOMA-Script)"
-msgstr "Hebräischer Aufsatz (KOMA-Script)"
-
-#: lib/examples/Articles:0
 msgid "Springers Global Journal Template (V. 3)"
 msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
 
@@ -27349,60 +27333,40 @@ msgid "IEEE Transactions Conference"
 msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01 Widmung"
+msgid "Hebrew Article (KOMA-Script)"
+msgstr "Hebräischer Aufsatz (KOMA-Script)"
+
+#: lib/examples/Articles:0
+msgid "IEEE Transactions Journal"
+msgstr "IEEE Transactions Journal"
+
+#: lib/examples/Articles:0
+msgid "Mathematical Monthly"
+msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
 msgid "00 Main File"
 msgstr "00 Hauptdatei"
 
 #: lib/examples/Articles:0
-msgid "08 Appendix"
-msgstr "08 Anhang"
+msgid "01 Dedication"
+msgstr "01 Widmung"
 
 #: lib/examples/Articles:0
 msgid "02 Foreword"
 msgstr "02 Vorwort"
 
 #: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07 Kapitel"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Literaturverzeichnis"
-
-#: lib/examples/Articles:0
 msgid "03 Preface"
 msgstr "03 Vorwort"
-
-#: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Akronyme"
-
-#: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09 Glossar"
-
-#: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06 Teil"
-
-#: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Lösungen"
 
 #: lib/examples/Articles:0
 msgid "04 Acknowledgements"
 msgstr "04 Danksagungen"
 
 #: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossar"
-
-#: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Autor"
+msgid "05 Contributor List"
+msgstr "05 Liste der Mitwirkenden"
 
 #: lib/examples/Articles:0
 msgid "06 Acronym"
@@ -27413,24 +27377,52 @@ msgid "07 Part"
 msgstr "07 Teil"
 
 #: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Autor"
+
+#: lib/examples/Articles:0
 msgid "09 Appendix"
 msgstr "09 Anhang"
 
 #: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste der Mitwirkenden"
+msgid "10 Glossary"
+msgstr "10 Glossar"
 
 #: lib/examples/Articles:0
-msgid "Simple"
-msgstr "Schlicht"
+msgid "11 References"
+msgstr "11 Literaturverzeichnis"
+
+#: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "06 Part"
+msgstr "06 Teil"
+
+#: lib/examples/Articles:0
+msgid "07 Chapter"
+msgstr "07 Kapitel"
+
+#: lib/examples/Articles:0
+msgid "08 Appendix"
+msgstr "08 Anhang"
+
+#: lib/examples/Articles:0
+msgid "09 Glossary"
+msgstr "09 Glossar"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Lösungen"
 
 #: lib/examples/Articles:0
 msgid "Colored"
 msgstr "Farbig"
 
 #: lib/examples/Articles:0
-msgid "Main File"
-msgstr "Hauptdatei"
+msgid "Simple"
+msgstr "Schlicht"
 
 #: lib/examples/Articles:0
 msgid "Chapter 1"
@@ -27439,6 +27431,10 @@ msgstr "Kapitel 1"
 #: lib/examples/Articles:0
 msgid "Chapter 2"
 msgstr "Kapitel 2"
+
+#: lib/examples/Articles:0
+msgid "Main File"
+msgstr "Hauptdatei"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
@@ -28393,7 +28389,7 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2670 src/BufferView.cpp:1429 src/BufferView.cpp:1461
+#: src/BufferParams.cpp:2670 src/BufferView.cpp:1432 src/BufferView.cpp:1464
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
@@ -28405,11 +28401,11 @@ msgstr "Fehler beim Einlesen interner Format-Informationen"
 msgid "Read Error"
 msgstr "Lesefehler"
 
-#: src/BufferParams.cpp:3743
+#: src/BufferParams.cpp:3723
 msgid "No bibliography processor found!"
 msgstr "Kein Literaturverzeichnis-Prozessor gefunden!"
 
-#: src/BufferParams.cpp:3745
+#: src/BufferParams.cpp:3725
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -28423,11 +28419,11 @@ msgstr ""
 "Literaturverweise erzeugt werden.\n"
 "Bitte reparieren Sie Ihr System!"
 
-#: src/BufferParams.cpp:3753
+#: src/BufferParams.cpp:3733
 msgid "Requested bibliography processor not found!"
 msgstr "Verlangter Literaturverzeichnis-Prozessor nicht gefunden!"
 
-#: src/BufferParams.cpp:3755
+#: src/BufferParams.cpp:3735
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -28443,139 +28439,139 @@ msgstr ""
 "sorgfältig!\n"
 "Wie empfehlen Ihnen, das fehlende Programm zu installieren."
 
-#: src/BufferView.cpp:181
+#: src/BufferView.cpp:183
 msgid "No more insets"
 msgstr "Keine weiteren Einfügungen"
 
-#: src/BufferView.cpp:886
+#: src/BufferView.cpp:888
 msgid "Save bookmark"
 msgstr "Lesezeichen speichern"
 
-#: src/BufferView.cpp:1142
+#: src/BufferView.cpp:1144
 msgid "Document is read-only"
 msgstr "Dokument ist schreibgeschützt"
 
-#: src/BufferView.cpp:1144
+#: src/BufferView.cpp:1146
 msgid "Document has been modified externally"
 msgstr "Das Dokument wurde extern bearbeitet"
 
-#: src/BufferView.cpp:1153
+#: src/BufferView.cpp:1155
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
-#: src/BufferView.cpp:1196 src/BufferView.cpp:2332
+#: src/BufferView.cpp:1198 src/BufferView.cpp:2376
 #: src/frontends/qt/GuiView.cpp:4455 src/frontends/qt/GuiView.cpp:4543
 msgid "Absolute filename expected."
 msgstr "Ein absoluter Dateipfad wird erwartet."
 
-#: src/BufferView.cpp:1427 src/BufferView.cpp:1459
+#: src/BufferView.cpp:1430 src/BufferView.cpp:1462
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Die Dokumentklasse ,%1$s` konnte nicht geladen werden."
 
-#: src/BufferView.cpp:1485
+#: src/BufferView.cpp:1488
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView.cpp:1506
+#: src/BufferView.cpp:1509
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:1698 src/BufferView.cpp:1713 src/BufferView.cpp:1746
+#: src/BufferView.cpp:1701 src/BufferView.cpp:1716 src/BufferView.cpp:1749
 msgid "Search string not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/BufferView.cpp:1839
+#: src/BufferView.cpp:1842
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.cpp:1845
+#: src/BufferView.cpp:1848
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.cpp:1852
+#: src/BufferView.cpp:1855
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.cpp:1855
+#: src/BufferView.cpp:1858
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.cpp:1946
+#: src/BufferView.cpp:1968
 msgid "Statistics for the selection:"
 msgstr "Statistik für die Auswahl:"
 
-#: src/BufferView.cpp:1948
+#: src/BufferView.cpp:1970
 msgid "Statistics for the document:"
 msgstr "Statistik für das Dokument:"
 
-#: src/BufferView.cpp:1951
+#: src/BufferView.cpp:1973
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d Wörter"
 
-#: src/BufferView.cpp:1953
+#: src/BufferView.cpp:1975
 msgid "One word"
 msgstr "Ein Wort"
 
-#: src/BufferView.cpp:1956
+#: src/BufferView.cpp:1978
 #, c-format
 msgid "%1$d characters"
 msgstr "%1$d Zeichen"
 
-#: src/BufferView.cpp:1958
+#: src/BufferView.cpp:1980
 msgid "One character"
 msgstr "1 Zeichen"
 
-#: src/BufferView.cpp:1961
+#: src/BufferView.cpp:1983
 #, c-format
 msgid "%1$d characters (no blanks)"
 msgstr "%1$d Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1963
+#: src/BufferView.cpp:1985
 msgid "One character (no blanks)"
 msgstr "1 Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1965
+#: src/BufferView.cpp:1987
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2190
+#: src/BufferView.cpp:2212
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 ",inset-forall` wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
 
-#: src/BufferView.cpp:2192
+#: src/BufferView.cpp:2214
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Einfügungen angewandt"
 
-#: src/BufferView.cpp:2200
+#: src/BufferView.cpp:2222
 msgid "Branch name"
 msgstr "Name des Zweigs"
 
-#: src/BufferView.cpp:2207 src/frontends/qt/GuiBranches.cpp:225
+#: src/BufferView.cpp:2229 src/frontends/qt/GuiBranches.cpp:225
 msgid "Branch already exists"
 msgstr "Zweig existiert bereits"
 
-#: src/BufferView.cpp:3143
+#: src/BufferView.cpp:3187
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:3159
+#: src/BufferView.cpp:3203
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:3161
+#: src/BufferView.cpp:3205
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3656
+#: src/BufferView.cpp:3700
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -28586,11 +28582,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3658
+#: src/BufferView.cpp:3702
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3665
+#: src/BufferView.cpp:3709
 #, c-format
 msgid ""
 "%1$s\n"
@@ -28599,17 +28595,17 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3666 src/frontends/qt/qt_helpers.cpp:312
+#: src/BufferView.cpp:3710 src/frontends/qt/qt_helpers.cpp:312
 #: src/frontends/qt/qt_helpers.cpp:315 src/frontends/qt/qt_helpers.cpp:321
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3673
+#: src/BufferView.cpp:3717
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3674
+#: src/BufferView.cpp:3718
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -34721,37 +34717,49 @@ msgid "Outline"
 msgstr "Gliederung"
 
 #: src/frontends/qt/GuiToolbar.cpp:445
-msgid "&Reset to default"
-msgstr "Auf &Voreinstellungen zurücksetzen"
+msgid "&Reset to default (keep language)"
+msgstr "Auf &Voreinstellungen zurücksetzen (Sprache behalten)"
 
 #: src/frontends/qt/GuiToolbar.cpp:446
-msgid "Reset all font settings to their defaults"
-msgstr "Alle Schrifteigenschaften auf die Voreinstellungen zurücksetzen"
+msgid "Reset all font settings to their defaults but keep language settings"
+msgstr ""
+"Alle Schrifteigenschaften auf die Voreinstellungen zurücksetzen, die Sprache "
+"bleibt unangetastet"
 
-#: src/frontends/qt/GuiToolbar.cpp:659
+#: src/frontends/qt/GuiToolbar.cpp:451
+msgid "Reset to default (including &language)"
+msgstr "Auf Voreinstellungen zurücksetzen (inkl. &Sprache)"
+
+#: src/frontends/qt/GuiToolbar.cpp:452
+msgid "Reset all font settings and the language to their defaults"
+msgstr ""
+"Alle Schrifteigenschaften und die Sprache auf die Voreinstellungen "
+"zurücksetzen"
+
+#: src/frontends/qt/GuiToolbar.cpp:665
 msgid "auto"
 msgstr "automatisch"
 
-#: src/frontends/qt/GuiToolbar.cpp:661
+#: src/frontends/qt/GuiToolbar.cpp:667
 #, c-format
 msgid "Toolbar \"%1$s\" does not support state \"auto\""
 msgstr "Die Werkzeugleiste \"%1$s\" unterstützt den Status \"auto\" nicht."
 
-#: src/frontends/qt/GuiToolbar.cpp:668 src/insets/InsetBranch.cpp:79
+#: src/frontends/qt/GuiToolbar.cpp:674 src/insets/InsetBranch.cpp:79
 #: src/insets/InsetBranch.cpp:82
 msgid "off"
 msgstr "aus"
 
-#: src/frontends/qt/GuiToolbar.cpp:675 src/frontends/qt/GuiToolbar.cpp:715
+#: src/frontends/qt/GuiToolbar.cpp:681 src/frontends/qt/GuiToolbar.cpp:721
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Status der Werkzeugleiste \"%1$s\" auf %2$s gesetzt"
 
-#: src/frontends/qt/GuiToolbar.cpp:712
+#: src/frontends/qt/GuiToolbar.cpp:718
 msgid "movable"
 msgstr "beweglich"
 
-#: src/frontends/qt/GuiToolbar.cpp:714
+#: src/frontends/qt/GuiToolbar.cpp:720
 msgid "immovable"
 msgstr "verankert"
 
@@ -37785,7 +37793,7 @@ msgstr "Mathe-Textmodus betreten (textrm)"
 msgid "Regular expression editor mode"
 msgstr "Bearbeitungsmodus für reguläre Ausdrücke"
 
-#: src/mathed/InsetMathNest.cpp:1975
+#: src/mathed/InsetMathNest.cpp:1996
 #, c-format
 msgid "Cannot apply %1$s here."
 msgstr "%1$s kann hier nicht angewendet werden."
@@ -38253,6 +38261,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Protected Hyphen|y"
+#~ msgstr "Geschützter Trennstrich|T"
 
 #~ msgid "Search on&ly in maths"
 #~ msgstr "Nu&r im Mathe-Umfeld"
