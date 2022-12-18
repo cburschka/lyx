@@ -337,7 +337,7 @@ void LyXAction::init()
  *             on the used OS).
  * \li Notion: Used by bibliographic managers
  * \li Syntax: bibtex-database-list
- * \li Origin: bpiwowar, 11 june 2012
+ * \li Origin: bpiwowar, 18 December 2022
  * \endvar
  */
 		{ LFUN_BIBTEX_DATABASE_LIST, "bibtex-database-list", ReadOnly, System },
