@@ -128,6 +128,10 @@
 
 !!!The following new LyX functions have been introduced in 2.4:
 
+* bibtex-database-list: output a list of all bibtex files used in the current buffer.
+  The function outputs absolute paths in the OS style and separated by the os-specific
+  path separator. This function is intended for bibliography managers.
+
 * buffer-reset-export advises LyX to remove the auxiliary files before doing the next
   export.
 

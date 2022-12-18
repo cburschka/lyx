@@ -331,6 +331,16 @@ void LyXAction::init()
  */
 		{ LFUN_BIBTEX_DATABASE_DEL, "bibtex-database-del", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BIBTEX_DATABASE_LIST
+ * \li Action: Lists the available databases (separated by path separator common
+ *             on the used OS).
+ * \li Notion: Used by bibliographic managers
+ * \li Syntax: bibtex-database-list
+ * \li Origin: bpiwowar, 11 june 2012
+ * \endvar
+ */
+		{ LFUN_BIBTEX_DATABASE_LIST, "bibtex-database-list", ReadOnly, System },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BOOKMARK_CLEAR

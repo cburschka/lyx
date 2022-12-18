@@ -20,6 +20,7 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
+#include "BiblioInfo.h"
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
@@ -69,6 +70,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstring.h"
+#include "support/docstring_list.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
@@ -1223,6 +1225,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_SCREEN_SHOW_CURSOR:
 	case LFUN_BIBTEX_DATABASE_ADD:
 	case LFUN_BIBTEX_DATABASE_DEL:
+	case LFUN_BIBTEX_DATABASE_LIST:
 	case LFUN_STATISTICS:
 	case LFUN_KEYMAP_OFF:
 	case LFUN_KEYMAP_PRIMARY:
@@ -1928,6 +1931,25 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 
+	case LFUN_BIBTEX_DATABASE_LIST: {
+		docstring_list const & files = buffer_.getBibfiles();
+		bool first = true;
+		docstring result;
+		char const separator(os::path_separator());
+		for (auto const & file : files) {
+			if (first)
+				first = false;
+			else
+				result += separator;
+
+			FileName const fn = buffer_.getBibfilePath(file);
+			string const path = fn.realPath();
+			result += from_utf8(os::external_path(path));
+		}
+		dr.setMessage(result);
+		break;
+	}
+
 	case LFUN_STATISTICS: {
 		DocIterator from, to;
 		if (cur.selection()) {
@@ -2281,6 +2303,28 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		string icstr = InsetCommand::params2string(icp);
 		FuncRequest fr(LFUN_INSET_INSERT, icstr);
 		lyx::dispatch(fr);
+
+		// if the request comes from the LyX server, then we
+		// return a list of the undefined keys, in case some
+		// action could be taken.
+		if (cmd.origin() != FuncRequest::LYXSERVER)
+			break;
+
+		vector<docstring> keys = getVectorFromString(from_utf8(arg));
+		vector<docstring>::iterator it = keys.begin();
+		vector<docstring>::const_iterator end = keys.end();
+
+		BiblioInfo const & bibInfo = buffer_.masterBibInfo();
+		const BiblioInfo::const_iterator bibEnd = bibInfo.end();
+		while (it != end) {
+			if (bibInfo.find(*it) != bibEnd) {
+				it = keys.erase(it);
+				end = keys.end();
+			} else
+				++it;
+		}
+		dr.setMessage(getStringFromVector(keys));
+
 		break;
 	}
 
