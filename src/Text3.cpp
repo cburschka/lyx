@@ -2511,7 +2511,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		string const lang_arg = cmd.getArg(0);
 		bool const reset = (lang_arg.empty() || lang_arg == "reset");
 		Language const * lang =
-			reset ? reset_language
+			reset ? cur.bv().buffer().params().language
 			      : languages.getLanguage(lang_arg);
 		// we allow reset_language, which is 0, but only if it
 		// was requested via empty or "reset" arg.
