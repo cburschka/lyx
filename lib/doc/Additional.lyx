@@ -7115,6 +7115,51 @@ Your mileage may vary.
 
 \begin_layout Subsection
 
+\change_inserted 564990737 1671442131
+
+\lang american
+Chess
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442131
+
+\lang american
+The document class 
+\family sans
+article
+\begin_inset space \thinspace{}
+\end_inset
+
+(Chess)
+\family default
+ uses the 
+\family typewriter
+article.cls
+\family default
+ document class together with the style 
+\family sans
+lyxskak.sty
+\family default
+ to facilitate the description of chess games.
+ The example files 
+\family typewriter
+chess-article.lyx
+\family default
+ and 
+\family typewriter
+chessgame.lyx
+\family default
+ are in the 
+\family sans
+Examples
+\family default
+ directory.
+\end_layout
+
+\begin_layout Subsection
+
 \change_inserted 564990737 1671042028
 
 \lang american
@@ -8090,10 +8135,337 @@ Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
 Poemtitle*: Same as poemtitle, but it adds no entry to the table of contents.
 \end_layout
 
+\begin_layout Subsection
+
+\change_inserted 564990737 1671442175
+
+\lang american
+Recipe Book
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442175
+
+\lang american
+The document class 
+\family typewriter
+RecipeBook.cls
+\family default
+ uses the 
+\family sans
+book
+\begin_inset space \thinspace{}
+\end_inset
+
+(KOMA-Script)
+\family default
+ document class but adds two environments:
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 564990737 1671442175
+
+\lang american
+Recipe a numbered section environment at the 
+\family typewriter
+Subsubsection
+\family default
+ level which generates a bold centered heading above a double horizontal
+ rule
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 564990737 1671442175
+
+\lang american
+Ingredients a 
+\family typewriter
+Description
+\family default
+ environment where 
+\series bold
+\emph on
+Ingredients
+\series default
+\emph default
+ are what are being described and the environment ends with a horizontal
+ rule.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442175
+
+\lang american
+The file 
+\emph on
+recipebook.lyx
+\emph default
+ in the 
+\family sans
+Examples
+\family default
+ directory illustrates its use.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442175
+
+\lang american
+It is designed for typesetting one or two recipes per page, with dimensions
+ of 5.5
+\begin_inset Quotes qrd
+\end_inset
+
+ x 8.5
+\begin_inset Quotes qrd
+\end_inset
+
+.
+ The hyperlinked table of contents (ToC) and page numbers make browsing
+ recipes convenient, and the pages can be joined together or printed 2 per
+ page to normal letterpaper easily.
+ The size was chosen to work in half-page 3-ring binder cover sheets, because
+ un-laminated paper just doesn't last in the kitchen.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442175
+
+\lang american
+The half-letter pages can be printed two per page using your printer driver,
+ or bound together using 
+\family typewriter
+pdfjam --nup 2x1 --papersize '{11in,8.5in}'
+\family default
+ 
+\family typewriter
+Recipes.pdf
+\family default
+ where 
+\family typewriter
+Recipes.pdf
+\family default
+ is the compiled version of your recipes.
+\end_layout
+
 \begin_layout Section
 
-\change_inserted 564990737 1670439605
+\change_inserted 564990737 1671442207
 Curricula vitarum
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671442208
+
+\lang american
+Europass
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442208
+
+\lang american
+The document class 
+\family sans
+curriculum
+\begin_inset space \space{}
+\end_inset
+
+vitae
+\begin_inset space \thinspace{}
+\end_inset
+
+(Europass)
+\family default
+ provides the 
+\family typewriter
+europasscv.cls
+\family default
+ document class, an unofficial implementation of the ‘Europass CV’ recommended
+ by the European Commission in 2013.
+ The file 
+\emph on
+europassCV.lyx
+\emph default
+ in the 
+\family sans
+Examples
+\family default
+ directory offers guidance on its use.
+ Its documentation is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/europasscv/europasscv.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671442208
+
+\lang american
+European
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442208
+
+\lang american
+The document class 
+\family sans
+curriculum
+\begin_inset space \space{}
+\end_inset
+
+vitae
+\begin_inset space \thinspace{}
+\end_inset
+
+(Europe)
+\family default
+ provides the 
+\family typewriter
+europecv.cls
+\family default
+ document class, an unofficial implementation of the “Europass CV” recommended
+ by the European Commission in 2002.
+ The file 
+\emph on
+europeCV.lyx
+\emph default
+ in the 
+\family sans
+Examples
+\family default
+ directory offers guidance on its use.
+ Its documentation is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/europecv/europecv.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671442208
+
+\lang american
+Modern
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442208
+
+\lang american
+The document class 
+\family sans
+curriculum
+\begin_inset space \space{}
+\end_inset
+
+vitae
+\begin_inset space \thinspace{}
+\end_inset
+
+(modern)
+\family default
+ provides the 
+\family typewriter
+moderncv.cls
+\family default
+ document class.
+ This allows the creation of customizable CVs.
+ The file 
+\emph on
+modernCV.lyx
+\emph default
+ in the 
+\family sans
+Examples
+\family default
+ directory offers guidance on its use.
+ Its documentation is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/moderncv/manual/moderncv_userguide.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671442208
+
+\lang american
+Simple
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442208
+
+\lang american
+The document class 
+\family sans
+curriculum
+\begin_inset space \space{}
+\end_inset
+
+vitae
+\begin_inset space \thinspace{}
+\end_inset
+
+(simple)
+\family default
+ provides the 
+\family typewriter
+simplecv.cls
+\family default
+ document class, originally developed for use with \SpecialChar LyX
+.
+ The file 
+\emph on
+simplecv.lyx
+\emph default
+ in the 
+\family sans
+Examples
+\family default
+ directory offers guidance on its use.
+ Its documentation is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/simplecv/simplecv.pdf"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
