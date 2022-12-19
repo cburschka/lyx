@@ -8484,7 +8484,7 @@ Din-Brief
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671041970
+\change_inserted 564990737 1671458834
 
 \lang american
 The document class 
@@ -8537,10 +8537,122 @@ literal "false"
 .
 \end_layout
 
+\begin_layout Subsection
+
+\change_inserted 564990737 1671458835
+
+\lang american
+letter
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671458835
+
+\lang american
+The document class 
+\family sans
+letter
+\family default
+ provides the 
+\family sans
+letter.cls
+\family default
+ document class for English letters and to create mailing labels.
+ The file 
+\emph on
+letter.lyx
+\emph default
+ in the menu 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar menuseparator
+New
+\begin_inset space ~
+\end_inset
+
+fro
+\bar under
+m
+\bar default
+
+\begin_inset space ~
+\end_inset
+
+Template
+\family default
+ offers guidance on its use.
+\end_layout
+
 \begin_layout Section
 
 \change_inserted 564990737 1670439660
 Presentations
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671458922
+
+\lang american
+Beamer
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671458922
+
+\lang american
+The document class 
+\family sans
+presentation
+\begin_inset space \thinspace{}
+\end_inset
+
+(beamer)
+\family default
+ uses the 
+\family typewriter
+beamer.cls
+\family default
+ document class for creating presentations.
+ The file 
+\emph on
+beamer-conference-ornate-20min.lyx
+\emph default
+ in the menu 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar menuseparator
+New
+\begin_inset space ~
+\end_inset
+
+fro
+\bar under
+m
+\bar default
+
+\begin_inset space ~
+\end_inset
+
+Template
+\family default
+ offers guidance on its use.
+ The documentation is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -10055,6 +10167,108 @@ fancyheadings
 foils
 \family default
  class.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671459032
+
+\lang american
+Powerdot
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671459032
+
+\lang american
+The document class 
+\family sans
+presentation
+\begin_inset space \thinspace{}
+\end_inset
+
+(powerdot)
+\family default
+ uses the 
+\family typewriter
+powerdot.cls
+\family default
+ document class for creating presentations.
+ The file 
+\emph on
+powerdot-example.lyx
+\emph default
+ in the 
+\family sans
+Examples
+\family default
+ directory offers guidance on its use.
+ The documentation is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/powerdot/doc/powerdot.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671459032
+
+\lang american
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Seminar"
+
+\end_inset
+
+
+\family sans
+Seminar
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671459032
+
+\lang american
+The document class 
+\family sans
+presentations
+\begin_inset space \thinspace{}
+\end_inset
+
+(seminar)
+\family default
+ uses the 
+\family typewriter
+seminar.cls
+\family default
+ document class for creating presentations.
+ The file 
+\emph on
+seminar.lyx
+\emph default
+ in the 
+\family sans
+Examples
+\family default
+ directory offers guidance on its use.
+ The documentation is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
