@@ -3388,28 +3388,44 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 	if (useNonTeXFonts)
 		return;
 
-	if (inputenc == "auto-legacy") {
-		string const doc_encoding =
-			language->encoding()->latexName();
-		Encoding::Package const package =
-			language->encoding()->package();
+	string const doc_encoding = encoding().latexName();
+	Encoding::Package const package = encoding().package();
+	// (dvi)lualatex uses luainputenc rather than inputenc
+	string const inputenc_package = 
+		(features.runparams().flavor == Flavor::LuaTeX
+		 || features.runparams().flavor == Flavor::DviLuaTeX)
+		? "luainputenc" : "inputenc";
 
-		// The "japanese" babel-language requires  the pLaTeX engine
+	if (inputenc == "auto-legacy") {
+		// The "japanese" babel language requires the pLaTeX engine
 		// which conflicts with "inputenc".
 		// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
-		if (package == Encoding::inputenc
-		    && !features.isRequired("japanese")
+		if (!features.isRequired("japanese")
 		    && !features.isProvided("inputenc")) {
-			os << "\\usepackage["
-			   << from_ascii(doc_encoding);
-			if (features.runparams().flavor == Flavor::LuaTeX
-			    || features.runparams().flavor == Flavor::DviLuaTeX)
-				os << "]{luainputenc}\n";
-			else
-				os << "]{inputenc}\n";
+			if (package == Encoding::inputenc) {
+				// Main language requires (lua)inputenc
+				os << "\\usepackage["
+				   << from_ascii(doc_encoding);
+				os << "]{" << inputenc_package << "}\n";
+			} else {
+				// We might have an additional language that requires inputenc
+				set<string> encoding_set = features.getEncodingSet(doc_encoding);
+				bool inputenc = false;
+				for (auto const & enc : encoding_set) {
+					if (encodings.fromLaTeXName(enc)
+					    && encodings.fromLaTeXName(enc)->package() == Encoding::inputenc) {
+						inputenc = true;
+						break;
+					}
+				}
+				if (inputenc)
+					// load (lua)inputenc without options
+					// (the encoding is loaded later)
+					os << "\\usepackage{" << inputenc_package << "}\n";
+			}
 		}
 	} else if (inputenc != "auto-legacy-plain") {
-		switch (encoding().package()) {
+		switch (package) {
 		case Encoding::none:
 		case Encoding::CJK:
 		case Encoding::japanese:
@@ -3425,7 +3441,6 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			if (features.isRequired("japanese")
 			    || features.isProvided("inputenc"))
 				break;
-			string const doc_encoding = encoding().latexName();
 			// The 2022 release of ucs.sty uses the default utf8
 			// inputenc encoding with 'utf8x' inputenc if the ucs
 			// package is not loaded before inputenc.
@@ -3437,12 +3452,9 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			    && features.isAvailable("ucs-2022/08/07")
 			    && !features.isProvided("ucs"))
 				os << "\\usepackage{ucs}\n";
-			os << "\\usepackage[" << from_ascii(doc_encoding);
-			if (features.runparams().flavor == Flavor::LuaTeX
-			    || features.runparams().flavor == Flavor::DviLuaTeX)
-				os << "]{luainputenc}\n";
-			else
-				os << "]{inputenc}\n";
+			os << "\\usepackage["
+			   << from_ascii(doc_encoding)
+			   << "]{" << inputenc_package << "}\n";
 			break;
 		}
 	}
