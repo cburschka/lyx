@@ -3429,10 +3429,10 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		case Encoding::CJK:
 		case Encoding::japanese:
 			if (encoding().iconvName() != "UTF-8"
-				&& !features.runparams().isFullUnicode())
-			  // don't default to [utf8]{inputenc} with TeXLive >= 18
-			  os << "\\ifdefined\\UseRawInputEncoding\n"
-				 << "  \\UseRawInputEncoding\\fi\n";
+			    && !features.runparams().isFullUnicode()
+			    && features.isAvailable("LaTeX-2018/04/01"))
+				// don't default to [utf8]{inputenc} with LaTeX >= 2018/04
+				os << "\\UseRawInputEncoding\n";
 			break;
 		case Encoding::inputenc:
 			// do not load inputenc if japanese is used
@@ -3456,11 +3456,10 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			break;
 		}
 	}
-	if (inputenc == "auto-legacy-plain" || features.isRequired("japanese")) {
-		// don't default to [utf8]{inputenc} with TeXLive >= 18
-		os << "\\ifdefined\\UseRawInputEncoding\n";
-		os << "  \\UseRawInputEncoding\\fi\n";
-	}
+	if ((inputenc == "auto-legacy-plain" || features.isRequired("japanese"))
+	    && features.isAvailable("LaTeX-2018/04/01"))
+		// don't default to [utf8]{inputenc} with LaTeX >= 2018/04
+		os << "\\UseRawInputEncoding\n";
 }
 
 
