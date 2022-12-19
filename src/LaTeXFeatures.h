@@ -108,6 +108,10 @@ public:
 	void provide(std::string const & name);
 	/// Is the (required) package available?
 	static bool isAvailable(std::string const & name);
+	/// Is the (required) package available at least as of version
+	/// y/m/d?
+	static bool isAvailableAtLeastFrom(std::string const & name,
+					   int const y, int const m, int const d = 1);
 	/// Has the package been required?
 	bool isRequired(std::string const & name) const;
 	/** Is this feature already provided

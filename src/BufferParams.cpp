@@ -1703,7 +1703,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			      FileName const & filepath) const
 {
 	// DocumentMetadata must come before anything else
-	if (features.isAvailable("LaTeX-2022/06/01")
+	if (features.isAvailableAtLeastFrom("LaTeX", 2022, 6)
 	    && !containsOnly(document_metadata, " \n\t")) {
 		// Check if the user preamble contains uncodable glyphs
 		odocstringstream doc_metadata;
@@ -3430,7 +3430,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		case Encoding::japanese:
 			if (encoding().iconvName() != "UTF-8"
 			    && !features.runparams().isFullUnicode()
-			    && features.isAvailable("LaTeX-2018/04/01"))
+			    && features.isAvailableAtLeastFrom("LaTeX", 2018, 4))
 				// don't default to [utf8]{inputenc} with LaTeX >= 2018/04
 				os << "\\UseRawInputEncoding\n";
 			break;
@@ -3457,7 +3457,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		}
 	}
 	if ((inputenc == "auto-legacy-plain" || features.isRequired("japanese"))
-	    && features.isAvailable("LaTeX-2018/04/01"))
+	    && features.isAvailableAtLeastFrom("LaTeX", 2018, 4))
 		// don't default to [utf8]{inputenc} with LaTeX >= 2018/04
 		os << "\\UseRawInputEncoding\n";
 }

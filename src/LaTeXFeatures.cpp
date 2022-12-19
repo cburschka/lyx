@@ -827,6 +827,12 @@ bool LaTeXFeatures::isAvailable(string const & name)
 }
 
 
+bool LaTeXFeatures::isAvailableAtLeastFrom(string const & name, int const y, int const m, int const d)
+{
+	return LaTeXPackages::isAvailableAtLeastFrom(name, y, m, d);
+}
+
+
 namespace {
 
 void addSnippet(std::list<TexString> & list, TexString ts, bool allow_dupes)
@@ -1514,7 +1520,7 @@ string const LaTeXFeatures::getPackages() const
 
 	// fixltx2e provides subscript
 	if (mustProvide("subscript") && !isRequired("fixltx2e")
-	    && !isAvailable("LaTeX-2005/12/01"))
+	    && !isAvailableAtLeastFrom("LaTeX", 2005, 12))
 		packages << "\\usepackage{subscript}\n";
 
 	// footmisc must be loaded after setspace

@@ -1966,7 +1966,7 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 					docdir = subst(docdir, "~", "\\string~");
 				bool const nonascii = !isAscii(from_utf8(docdir));
 				// LaTeX 2019/10/01 handles non-ascii path without detokenize
-				bool const utfpathlatex = features.isAvailable("LaTeX-2019/10/01");
+				bool const utfpathlatex = features.isAvailableAtLeastFrom("LaTeX", 2019, 10);
 				bool const detokenize = !utfpathlatex && nonascii;
 				bool const quote = contains(docdir, ' ');
 				if (utfpathlatex && nonascii)
