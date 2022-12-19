@@ -62,7 +62,7 @@ void LaTeXPackages::getAvailable()
 			string const p = lex.getString();
 			// Parse optional version info
 			lex.eatLine();
-			string const v = lex.getString();
+			string const v = trim(lex.getString());
 			packages_.insert(make_pair(p, v));
 		}
 		}
@@ -92,8 +92,8 @@ bool LaTeXPackages::isAvailableAtLeastFrom(string const & name,
 		getAvailable();
 
 	bool result = false;
-	// Check for yyyy-mm-dd
-	static regex const reg("([\\d]{4})-([\\d]{2})-([\\d]{2})");
+	// Check for yyyy[-/]mm[-/]dd
+	static regex const reg("([\\d]{4})[-/]?([\\d]{2})[-/]?([\\d]{2})");
 	for (auto const & package : packages_) {
 		if (package.first == name && !package.second.empty()) {
 			smatch sub;

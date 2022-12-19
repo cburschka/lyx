@@ -1922,7 +1922,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (useNonTeXFonts) {
 		// Babel (as of 2017/11/03) loads fontspec itself
 		if (!features.isProvided("fontspec")
-		    && !(features.useBabel() && features.isAvailable("babel-2017/11/03")))
+		    && !(features.useBabel() && features.isAvailableAtLeastFrom("babel", 2017, 11, 3)))
 			os << "\\usepackage{fontspec}\n";
 		if (features.mustProvide("unicode-math")
 		    && features.isAvailable("unicode-math"))
@@ -3448,7 +3448,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			// Thus we load ucs.sty in order to keep functionality
 			// that would otherwise be silently dropped.
 			if (doc_encoding == "utf8x"
-			    && features.isAvailable("ucs-2022/08/07")
+			    && features.isAvailableAtLeastFrom("ucs", 2022, 8, 7)
 			    && !features.isProvided("ucs"))
 				os << "\\usepackage{ucs}\n";
 			os << "\\usepackage[" << doc_encoding << "]{"
@@ -3507,7 +3507,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 		// As of 2017/11/03, Babel has its own higher-level
 		// interface on top of fontspec that is to be used.
 		bool const babelfonts = features.useBabel()
-				&& features.isAvailable("babel-2017/11/03");
+				&& features.isAvailableAtLeastFrom("babel", 2017, 11, 3);
 		string const texmapping =
 			(features.runparams().flavor == Flavor::XeTeX) ?
 			"Mapping=tex-text" : "Ligatures=TeX";

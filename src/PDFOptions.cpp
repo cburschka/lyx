@@ -108,7 +108,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 	// Since LyX uses unicode, also set the PDF strings to unicode strings
 	// with the hyperref option "unicode". This is only needed with pdflatex.
 	// As of 2021/02/04, unicode=true is default.
-	if (!LaTeXFeatures::isAvailable("hyperref-2021/02/04")
+	if (!LaTeXFeatures::isAvailableAtLeastFrom("hyperref", 2021, 2, 4)
 	     && !runparams.isFullUnicode() && !runparams.use_japanese)
 		opt += "unicode=true,";
 

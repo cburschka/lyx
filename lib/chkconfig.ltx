@@ -120,33 +120,18 @@
     #6
   \fi}
 
-% Tests whether an package is present in a specific version (or newer)
-% Syntax: \TestPackageVersion{<name>}{<yyyy/mm/dd>}
-
-\newcommand{\TestPackageVersion}[2]{
-   % The actual test only works if the package has been loaded before
-   \IfFileExists{#1.sty}{\RequirePackage{#1}}{}
-   \@TestPackageVersion{#1}{#2}
+% Tests whether an package is present and also adds the version to the package list
+\newcommand{\TestPackageAddVersion}[2][\default]{
+   \def\default{#2}
+   \def\package@version{}
+   % The actual test only works after the package has been loaded
+   \IfFileExists{#1.sty}{%
+      \RequirePackage{#1}%
+      \protected@edef\package@@version{\csname ver@#1.sty\endcsname}%
+      \protected@edef\package@version{\expandafter\@parse@version\package@@version//00\@nil}%
+   }{}
+   \TestItem[#1]{#2}{package}{sty}{\AddPackage[\package@version]{#2}}{}
 }
-
-\newcommand{\@TestPackageVersion}[2]{
-  \message{^^J\prefix checking for package #1 at least as of #2...}
-  \IfFileExists{#1.sty}
-  {
-    \@ifpackagelater{#1}{#2}{\existstrue}{\existsfalse}
-  }
-  {
-    \existsfalse
-  }
-  \ifexists
-    \message{yes^^J}
-    \AddVariable{#1}{yes}
-    \AddPackage{#1-#2}
-  \else
-    \message{no^^J}
-    \AddVariable{#1}{no}
-  \fi}
-
 
 % Adapted from ltxcheck.tex
 \newcommand{\TestFont}[2][\default]{
@@ -222,7 +207,7 @@
 \AddVariable{fmtversion}{\fmtversion}
 
 %%% Store the current LaTeX version
-\AddPackage[\fmtversion]{LaTeX}
+\AddPackage[\expandafter\@parse@version\fmtversion//00\@nil]{LaTeX}
 
 %%% And now, the list of available languages
 % The trick is to know that \the\everyjob contains something like
@@ -307,7 +292,7 @@
 \TestPackage{array}
 \TestPackage{astron}
 \TestPackage{authordate1-4}
-\TestPackage{babel}
+\TestPackageAddVersion{babel}
 \TestPackage{beamerposter}
 \TestPackage{biblatex}
 \TestPackage{biblatex-chicago}
@@ -356,7 +341,7 @@
 \TestPackage[iso-8859-7.def]{greek-inputenc}
 \TestPackage{harvard}
 \TestPackage{hhline}
-\TestPackage{hyperref}
+\TestPackageAddVersion{hyperref}
 \TestPackage{hyphenat}
 \TestPackage{iftex}
 \TestPackage{ifthen}
@@ -378,7 +363,7 @@
 \TestPackage{mhchem}
 \TestPackage[mongolian.ldf]{mongolian}
 \TestPackage{mslapa}
-\TestPackage{multirow}
+\TestPackageAddVersion{multirow}
 \TestPackage{named}
 \TestPackage{natbib}
 \TestPackage{nicefrac}
@@ -416,6 +401,7 @@
 \TestPackage{thswitch}
 \TestPackage{tikz}
 \TestPackage[turkmen.ldf]{turkmen}
+\TestPackageAddVersion{ucs}
 \TestPackage{ulem}
 \TestPackage{undertilde}
 \TestPackage{unicode-math}
@@ -561,18 +547,6 @@
 %\TestPackage{pxfonts}
 %\TestPackage{mathabx}
 %\TestPackage{mathdesign}% But see above!
-
-%%% Specific package versions
-% This introduces \babelfonts
-\TestPackageVersion{babel}{2017/11/03}
-% This introduces multiple paragraphs in multirows
-\TestPackageVersion{multirow}{2021/01/29}
-% With this version, hyperref option unicode is true
-% by default
-\TestPackageVersion{hyperref}{2021/02/04}
-% As of this version, the ucs package must be explicitly
-% loaded to get utf8x (rather than utf8) encoding tables
-\TestPackageVersion{ucs}{2022/08/07}
 
 %%% Document classes
 % The list of layout files has been put in this file here by the
