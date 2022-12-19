@@ -986,7 +986,19 @@ void InsetInfo::build()
 		if (initialized_)
 			break;
 		// check in packages.lst
-		if (LaTeXFeatures::isAvailable(params_.name)) {
+		bool available;
+		// we also allow version check with version separated by blank
+		if (contains(params_.name, ' ')) {
+			string name;
+			string const version = split(params_.name, name, ' ');
+			int const y = convert<int>(version.substr(0,4));
+			int const m = convert<int>(version.substr(4,2));
+			int const d = convert<int>(version.substr(6,2));
+			available = LaTeXFeatures::isAvailableAtLeastFrom(name, y, m, d);
+		} else
+			available = LaTeXFeatures::isAvailable(params_.name);
+
+		if (available) {
 			gui = _("yes");
 			info(from_ascii("yes"), params_.lang);
 		} else {
