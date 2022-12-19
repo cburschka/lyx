@@ -3404,9 +3404,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		    && !features.isProvided("inputenc")) {
 			if (package == Encoding::inputenc) {
 				// Main language requires (lua)inputenc
-				os << "\\usepackage["
-				   << from_ascii(doc_encoding);
-				os << "]{" << inputenc_package << "}\n";
+				os << "\\usepackage[" << doc_encoding << "]{"
+				   << inputenc_package << "}\n";
 			} else {
 				// We might have an additional language that requires inputenc
 				set<string> encoding_set = features.getEncodingSet(doc_encoding);
@@ -3452,9 +3451,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			    && features.isAvailable("ucs-2022/08/07")
 			    && !features.isProvided("ucs"))
 				os << "\\usepackage{ucs}\n";
-			os << "\\usepackage["
-			   << from_ascii(doc_encoding)
-			   << "]{" << inputenc_package << "}\n";
+			os << "\\usepackage[" << doc_encoding << "]{"
+			   << inputenc_package << "}\n";
 			break;
 		}
 	}
