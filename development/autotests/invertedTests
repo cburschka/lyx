@@ -148,6 +148,11 @@ export/examples/ko/Welcome_lyx2[23]
 # https://www.mail-archive.com/search?l=mid&q=20200915233446.atwbyulny5gsbtyi%40tallinn
 export/examples/ru/Presentations/Beamer_lyx(16|20)
 
+# lyx2lyx bug in lyx_2_4.py that is triggered in the Russian User Guide
+# for some reason.
+# https://www.mail-archive.com/search?l=mid&q=20221211202917.f6py2kmrcdxtwaps%40gary
+export/doc/ru/UserGuide_lyx(16|20|21|22|23)
+
 
 # ==============================================================
 Sublabel: ert
