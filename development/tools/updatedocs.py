@@ -40,10 +40,7 @@ def convertdir(docdir, prefix, lyx2lyx, lyx, systemlyxdir):
         sys.stderr.write('Converting %s\n' % os.path.join(prefix, i))
         subprocess.call(cmd)
         if lyx != '':
-            # This is a hack, but without modifying the doc LyX refuses to save and stays open
-            # FIXME: Is self-insert a; char-delete-backward always a noop?
-            #        What if change-tracking is enabled?
-            cmd = [lyx, '-f', '-x', 'command-sequence self-insert a; char-delete-backward; buffer-write; lyx-quit', i]
+            cmd = [lyx, '-f', '-x', 'command-sequence buffer-write force; lyx-quit', i]
             subprocess.call(cmd)
     os.chdir(olddir)
 
