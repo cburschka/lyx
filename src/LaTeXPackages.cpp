@@ -19,6 +19,7 @@
 #include "Lexer.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -92,9 +93,15 @@ bool LaTeXPackages::isAvailableAtLeastFrom(string const & name,
 	// required date as int (yyyymmdd)
 	int const req_date = (y * 10000) + (m * 100) + d;
 	for (auto const & package : packages_) {
-		if (package.first == name && !package.second.empty())
+		if (package.first == name && !package.second.empty()) {
+			if (!isStrInt(package.second)) {
+				LYXERR0("Warning: Invalid date of package "
+					<< package.first << " (" << package.second << ")");
+				continue;
+			}
 			// required date not newer than available date
 			return req_date <= convert<int>(package.second);
+		}
 	}
 	return false;
 }
