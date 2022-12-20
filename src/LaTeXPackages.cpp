@@ -23,8 +23,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-#include <regex>
-
 
 using namespace std;
 using namespace lyx::support;
@@ -91,45 +89,14 @@ bool LaTeXPackages::isAvailableAtLeastFrom(string const & name,
 	if (packages_.empty())
 		getAvailable();
 
-	bool result = false;
-	// Check for yyyy[-/]mm[-/]dd
-	static regex const reg("([\\d]{4})[-/]?([\\d]{2})[-/]?([\\d]{2})");
+	// required date as int (yyyymmdd)
+	int const req_date = (y * 10000) + (m * 100) + d;
 	for (auto const & package : packages_) {
-		if (package.first == name && !package.second.empty()) {
-			smatch sub;
-			if (regex_match(package.second, sub, reg)) {
-				// Test whether date is same or newer.
-				//
-				// Test for year first
-				int const avail_y = convert<int>(sub.str(1));
-				if (avail_y < y)
-					// our year is older: bad!
-					break;
-				if (avail_y > y) {
-					// our year is newer: good!
-					result = true;
-					break;
-				}
-				// Same year: now test month
-				int const avail_m = convert<int>(sub.str(2));
-				if (avail_m < m)
-					// our month is older: bad!
-					break;
-				if (avail_m > m) {
-					// our month is newer: good!
-					result = true;
-					break;
-				}
-				// Same year and month: test day
-				if (convert<int>(sub.str(3)) >= d) {
-					// day same or newer: good!
-					result = true;
-					break;
-				}
-			}
-		}
+		if (package.first == name && !package.second.empty())
+			// required date not newer than available date
+			return req_date <= convert<int>(package.second);
 	}
-	return result;
+	return false;
 }
 
 } // namespace lyx
