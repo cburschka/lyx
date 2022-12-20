@@ -2792,7 +2792,7 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 }
 
 
-void GuiView::openDocument(string const & fname, int origin)
+void GuiView::openDocuments(string const & fname, int origin)
 {
 	string initpath = lyxrc.document_path;
 
@@ -2803,10 +2803,10 @@ void GuiView::openDocument(string const & fname, int origin)
 			initpath = trypath;
 	}
 
-	string filename;
+	QStringList files;
 
 	if (fname.empty()) {
-		FileDialog dlg(qt_("Select document to open"));
+		FileDialog dlg(qt_("Select documents to open"));
 		dlg.setButton1(qt_("D&ocuments"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("&Examples"), toqstr(lyxrc.example_path));
 
@@ -2815,74 +2815,79 @@ void GuiView::openDocument(string const & fname, int origin)
 				qt_("LyX Document Backups (*.lyx~)"),
 				qt_("All Files (*.*)")
 		});
-		FileDialog::Result result =
-			dlg.open(toqstr(initpath), filter);
+		FileDialog::Results results =
+			dlg.openMulti(toqstr(initpath), filter);
 
-		if (result.first == FileDialog::Later)
+		if (results.first == FileDialog::Later)
 			return;
 
-		filename = fromqstr(result.second);
+		files = results.second;
 
 		// check selected filename
-		if (filename.empty()) {
+		if (files.isEmpty()) {
 			message(_("Canceled."));
 			return;
 		}
 	} else
-		filename = fname;
+		files << toqstr(fname);
 
-	// get absolute path of file and add ".lyx" to the filename if
-	// necessary.
-	FileName const fullname =
-			fileSearch(string(), filename, "lyx", support::may_not_exist);
-	if (!fullname.empty())
-		filename = fullname.absFileName();
+	// iterate over all selected files
+	for (auto const & file : files) {
+		string filename = fromqstr(file);
 
-	if (!fullname.onlyPath().isDirectory()) {
-		Alert::warning(_("Invalid filename"),
-				bformat(_("The directory in the given path\n%1$s\ndoes not exist."),
-				from_utf8(fullname.absFileName())));
-		return;
-	}
+		// get absolute path of file and add ".lyx" to the filename if
+		// necessary.
+		FileName const fullname =
+				fileSearch(string(), filename, "lyx", support::may_not_exist);
+		if (!fullname.empty())
+			filename = fullname.absFileName();
 
-	// if the file doesn't exist and isn't already open (bug 6645),
-	// let the user create one
-	if (!fullname.exists() && !theBufferList().exists(fullname) &&
-	    !LyXVC::file_not_found_hook(fullname)) {
-		// see bug #12609
-		if (origin == FuncRequest::MENU) {
-			docstring const & msg =
-				bformat(_("File\n"
-					  "%1$s\n"
-					  "does not exist. Create empty file?"),
-						from_utf8(filename));
-			int ret = Alert::prompt(_("File does not exist"),
-						msg, 0, 1,
-						_("Create &File"),
-						_("&Cancel"));
-			if (ret == 1)
-				return;
+		if (!fullname.onlyPath().isDirectory()) {
+			Alert::warning(_("Invalid filename"),
+					bformat(_("The directory in the given path\n%1$s\ndoes not exist."),
+					from_utf8(fullname.absFileName())));
+			continue;
 		}
-		Buffer * const b = newFile(filename, string(), true);
-		if (b)
-			setBuffer(b);
-		return;
-	}
 
-	docstring const disp_fn = makeDisplayPath(filename);
-	message(bformat(_("Opening document %1$s..."), disp_fn));
+		// if the file doesn't exist and isn't already open (bug 6645),
+		// let the user create one
+		if (!fullname.exists() && !theBufferList().exists(fullname) &&
+			!LyXVC::file_not_found_hook(fullname)) {
+			// see bug #12609
+			if (origin == FuncRequest::MENU) {
+				docstring const & msg =
+					bformat(_("File\n"
+						"%1$s\n"
+						"does not exist. Create empty file?"),
+							from_utf8(filename));
+				int ret = Alert::prompt(_("File does not exist"),
+							msg, 0, 1,
+							_("Create &File"),
+							_("&Cancel"));
+				if (ret == 1)
+					continue;
+			}
+			Buffer * const b = newFile(filename, string(), true);
+			if (b)
+				setBuffer(b);
+			continue;
+		}
 
-	docstring str2;
-	Buffer * buf = loadDocument(fullname);
-	if (buf) {
-		str2 = bformat(_("Document %1$s opened."), disp_fn);
-		if (buf->lyxvc().inUse())
-			str2 += " " + from_utf8(buf->lyxvc().versionString()) +
-				" " + _("Version control detected.");
-	} else {
-		str2 = bformat(_("Could not open document %1$s"), disp_fn);
+		docstring const disp_fn = makeDisplayPath(filename);
+		message(bformat(_("Opening document %1$s..."), disp_fn));
+
+		docstring str2;
+		Buffer * buf = loadDocument(fullname);
+		if (buf) {
+			str2 = bformat(_("Document %1$s opened."), disp_fn);
+			if (buf->lyxvc().inUse())
+				str2 += " " + from_utf8(buf->lyxvc().versionString()) +
+					" " + _("Version control detected.");
+		} else {
+			str2 = bformat(_("Could not open document %1$s"), disp_fn);
+		}
+		message(str2);
 	}
-	message(str2);
 }
 
 // FIXME: clean that

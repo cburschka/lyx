@@ -134,20 +134,38 @@ FileDialog::Result FileDialog::save(QString const & path,
 FileDialog::Result FileDialog::open(QString const & path,
 	QStringList const & filters, QString const & suggested)
 {
+	FileDialog::Result result;
+	FileDialog::Results results = openMulti(path, filters, suggested, false);
+	result.first = results.first;
+	result.second = results.second.at(0);
+	return result;
+}
+
+
+FileDialog::Results FileDialog::openMulti(QString const & path,
+	QStringList const & filters, QString const & suggested, bool multi)
+{
 	LYXERR(Debug::GUI, "Select with path \"" << path
 			   << "\", mask \"" << filters.join(";;")
 			   << "\", suggested \"" << suggested << '"');
-	FileDialog::Result result;
-	result.first = FileDialog::Chosen;
+	FileDialog::Results results;
+	results.first = FileDialog::Chosen;
 
 	if (lyxrc.use_native_filedialog) {
 		QString const startsWith = makeAbsPath(suggested, path);
-		QString const file = QFileDialog::getOpenFileName(qApp->focusWidget(),
-				title_, startsWith, filters.join(";;"));
-		if (file.isNull())
-			result.first = FileDialog::Later;
+		QStringList files;
+		if (multi)
+			files = QFileDialog::getOpenFileNames(qApp->focusWidget(),
+					title_, startsWith, filters.join(";;"));
 		else
-			result.second = internalPath(file);
+			files << QFileDialog::getOpenFileName(qApp->focusWidget(),
+					title_, startsWith, filters.join(";;"));
+		if (files.isEmpty())
+			results.first = FileDialog::Later;
+		else {
+			for (const auto& file : files)
+				results.second << internalPath(file);
+		}
 	} else {
 		LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 
@@ -158,12 +176,12 @@ FileDialog::Result FileDialog::open(QString const & path,
 		int res = dlg.exec();
 		LYXERR(Debug::GUI, "result " << res);
 		if (res == QDialog::Accepted)
-			result.second = internalPath(dlg.selectedFiles()[0]);
+			results.second << internalPath(dlg.selectedFiles()[0]);
 		else
-			result.first = FileDialog::Later;
+			results.first = FileDialog::Later;
 		dlg.hide();
 	}
-	return result;
+	return results;
 }
 
 

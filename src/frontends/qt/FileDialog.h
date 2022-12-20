@@ -41,6 +41,9 @@ public:
 	/// result return
 	typedef std::pair<FileDialog::ResultType, QString> Result;
 
+	/// result return
+	typedef std::pair<FileDialog::ResultType, QStringList> Results;
+
 	/**
 	 * Constructs a file dialog with title \param title.
 	 *
@@ -58,6 +61,9 @@ public:
 	/// Choose a file for opening, starting in directory \c path.
 	Result open(QString const & path, QStringList const & filters,
 			  QString const & suggested = QString());
+	/// Choose several files for opening, starting in directory \c path.
+	Results openMulti(QString const & path, QStringList const & filters,
+			  QString const & suggested = QString(), bool multi = true);
 
 	/// Choose a directory, starting in directory \c path.
 	Result opendir(QString const & path = QString(),
