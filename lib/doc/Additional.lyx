@@ -4642,12 +4642,47 @@ Extra Options
 
 \end_inset
 
- Have a look at the 
+ Have a look at the
+\change_deleted 564990737 1671617922
+ 
 \emph on
 koma-letter2
+\change_unchanged
+
 \emph default
- template that is included in \SpecialChar LyX
- for examples.
+ template 
+\change_deleted 564990737 1671617938
+that is included in \SpecialChar LyX
+ for examples
+\change_inserted 564990737 1671617997
+ in 
+\family sans
+\bar under
+\lang american
+F
+\bar default
+ile\SpecialChar menuseparator
+New
+\begin_inset space ~
+\end_inset
+
+fro
+\bar under
+m
+\bar default
+
+\begin_inset space ~
+\end_inset
+
+Template\SpecialChar menuseparator
+Letters
+\lang english
+\SpecialChar menuseparator
+KOMA-Script Letter (V.2)
+\change_unchanged
+
+\family default
+.
  A detailed description is to be found in the Koma-Script documentation
  (
 \emph on
@@ -5064,14 +5099,10 @@ Getting started
 
 \begin_layout Standard
 
-\change_inserted 564990737 1670794716
+\change_inserted 564990737 1671617129
 
 \lang american
-It is recommended you start from the template 
-\emph on
-aa.lyx
-\emph default
- in the menu 
+It is recommended you start from the template in the menu 
 \family sans
 \bar under
 F
@@ -5090,7 +5121,12 @@ m
 \end_inset
 
 Template
+\lang english
+\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+Astronomy & Astrophysics
 \family default
+\lang american
 .
  If you are not using the template, note the following settings:
 \end_layout
@@ -6123,12 +6159,20 @@ New from
  
 \family sans
 Template
+\change_inserted 564990737 1671617265
+\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+American Astronomical Society
+\change_deleted 564990737 1671617310
+
 \family default
 , enter the new file name, then choose the 
 \family typewriter
 aastex6.lyx
 \family default
- template.
+ template
+\change_unchanged
+.
  This will show the most common fields found in a manuscript.
  Simply overwrite the existing text (including the brackets, 
 \family typewriter
@@ -7168,7 +7212,7 @@ Elsevier
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671042028
+\change_inserted 564990737 1671617396
 
 \lang american
 The document class 
@@ -7221,12 +7265,7 @@ Email
 Keywords
 \family default
 .
- A template 
-\family typewriter
-elsarticle.lyx
-\family default
-.
- is available in the menu 
+ A template is available in the menu 
 \family sans
 \bar under
 F
@@ -7245,7 +7284,12 @@ m
 \end_inset
 
 Template
+\lang english
+\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+Elsevier
 \family default
+\lang american
 .
  It has been customized with further environments and contains all the informati
 on you may need.
@@ -8484,7 +8528,7 @@ Din-Brief
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671458834
+\change_inserted 564990737 1671617528
 
 \lang american
 The document class 
@@ -8500,11 +8544,7 @@ dinbrief.cls
 Deutsches Institut für Normung
 \emph default
  conventions.
- The file 
-\emph on
-dinbrief.lyx
-\emph default
- in the menu 
+ The file in the menu 
 \family sans
 \bar under
 F
@@ -8522,7 +8562,9 @@ m
 \begin_inset space ~
 \end_inset
 
-Template
+Template\SpecialChar menuseparator
+Letters\SpecialChar menuseparator
+DIN-Brief
 \family default
  offers guidance on its use.
  The documentation is available from 
@@ -8547,7 +8589,7 @@ letter
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671458835
+\change_inserted 564990737 1671617591
 
 \lang american
 The document class 
@@ -8559,11 +8601,7 @@ letter
 letter.cls
 \family default
  document class for English letters and to create mailing labels.
- The file 
-\emph on
-letter.lyx
-\emph default
- in the menu 
+ The file in the menu 
 \family sans
 \bar under
 F
@@ -8581,7 +8619,9 @@ m
 \begin_inset space ~
 \end_inset
 
-Template
+Template\SpecialChar menuseparator
+Letters\SpecialChar menuseparator
+Letter (Standard Class)
 \family default
  offers guidance on its use.
 \end_layout
@@ -8602,7 +8642,7 @@ Beamer
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671458922
+\change_inserted 564990737 1671617655
 
 \lang american
 The document class 
@@ -8618,11 +8658,7 @@ presentation
 beamer.cls
 \family default
  document class for creating presentations.
- The file 
-\emph on
-beamer-conference-ornate-20min.lyx
-\emph default
- in the menu 
+ The file in the menu 
 \family sans
 \bar under
 F
@@ -8640,7 +8676,9 @@ m
 \begin_inset space ~
 \end_inset
 
-Template
+Template\SpecialChar menuseparator
+Presentations\SpecialChar menuseparator
+Beamer
 \family default
  offers guidance on its use.
  The documentation is available from 
@@ -10588,7 +10626,9 @@ reference "sec:slideNote"
 
 \end_deeper
 \begin_layout Standard
-You can also use the template file 
+You can also use the template file
+\change_deleted 564990737 1671617694
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10600,11 +10640,17 @@ slides.lyx
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_unchanged
  to automatically set up a document to use the 
 \family sans
 slides
 \family default
- class [using 
+ class 
+\change_deleted 564990737 1671617699
+[
+\change_unchanged
+using 
 \family sans
 File\SpecialChar menuseparator
 New
@@ -10616,8 +10662,18 @@ from
 \end_inset
 
 Template
+\change_inserted 564990737 1671617723
+\SpecialChar menuseparator
+Presentations\SpecialChar menuseparator
+Slides
+\change_unchanged
+
 \family default
- to open your new document].
+ to open your new document
+\change_deleted 564990737 1671617728
+]
+\change_unchanged
+.
  The template file also contains some examples of the special paragraph
  environments used by this class.
  I'll describe those next.
@@ -12186,7 +12242,9 @@ slides
 \end_layout
 
 \begin_layout Standard
-I have also provided a template file, 
+I have also provided a template file
+\change_deleted 564990737 1671617750
+, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12198,7 +12256,9 @@ slides.lyx
 \begin_inset Quotes erd
 \end_inset
 
-, with the 
+,
+\change_unchanged
+ with the 
 \family sans
 slides
 \family default
@@ -12215,6 +12275,12 @@ from
 \end_inset
 
 Template
+\change_inserted 564990737 1671616988
+\SpecialChar menuseparator
+Presentations\SpecialChar menuseparator
+Slides
+\change_unchanged
+
 \family default
 .
  Your new \SpecialChar LyX
