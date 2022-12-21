@@ -4580,6 +4580,7 @@ def revert_starred_refs(document):
                 # document.warning("Skipping " + cmd + " " + ref)
                 if nolinkline != -1:
                     del document.body[nolinkline]
+                    nolinkline = -1
                 continue
             # We need to construct a new command and put it in ERT
             newcmd = "\\" + cmd + "*{" + ref + "}"
