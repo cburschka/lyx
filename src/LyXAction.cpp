@@ -898,7 +898,7 @@ void LyXAction::init()
                is already associated with the buffer, asking for one if
                none is yet assigned.
  * \li Syntax: buffer-write [force]
- * \li Params: force: write even if buffer is clean.
+ * \li Params: force: write even if buffer is not marked as modified.
  * \endvar
  */
 		{ LFUN_BUFFER_WRITE, "buffer-write", ReadOnly, Buffer },
