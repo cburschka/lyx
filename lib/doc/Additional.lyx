@@ -5374,22 +5374,24 @@ email{address}
 
 \begin_layout Standard
 
-\change_inserted 564990737 1670794716
+\change_inserted 564990737 1671642374
 
 \lang american
 In all cases, the appropriate command has to be entered as \SpecialChar TeX
  code in \SpecialChar LyX
 .
- See the examples in the template and in the file 
-\emph on
-aa_sample.lyx
-\emph default
- in the 
+ See the examples in the template and in 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+Astronomy & Astrophysics
 \family default
- directory.
- 
+\lang american
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -5955,18 +5957,19 @@ t
 
 \begin_layout Standard
 
-\change_inserted 564990737 1670794716
+\change_inserted 564990737 1671642458
 
 \lang american
-Also, refer to the figures in the file 
-\emph on
-aa_sample.lyx
-\emph default
- in the 
+Also, refer to the figures in the file in 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+Astronomy & Astrophysics
 \family default
- directory.
+\lang american
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6031,13 +6034,18 @@ The example paper
 
 \begin_layout Standard
 
-\change_inserted 564990737 1670794716
+\change_inserted 564990737 1671642520
 
 \lang american
-The example paper 
-\emph on
-aa_sample.lyx
-\emph default
+The example in 
+\family sans
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+Astronomy & Astrophysics
+\family default
+\lang american
  was written with \SpecialChar LyX
 .
  It is the example paper from the original macro package, 
@@ -6901,11 +6909,30 @@ Document
 \family default
  to include it in your \SpecialChar LyX
  document.
- See the 
+ See 
+\change_deleted 564990737 1671642564
+the 
 \family typewriter
 aas_sample.lyx
 \family default
- file to see an example of this.
+ file to see
+\change_inserted 564990737 1671642618
+
+\family sans
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+American Astronomical Society
+\change_unchanged
+
+\family default
+\lang english
+ 
+\change_inserted 564990737 1671642621
+for 
+\change_unchanged
+an example of this.
 \end_layout
 
 \begin_layout Subsubsection
@@ -7167,7 +7194,7 @@ Chess
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671442131
+\change_inserted 564990737 1671642768
 
 \lang american
 The document class 
@@ -7187,19 +7214,30 @@ article.cls
 lyxskak.sty
 \family default
  to facilitate the description of chess games.
- The example files 
-\family typewriter
-chess-article.lyx
-\family default
- and 
-\family typewriter
-chessgame.lyx
-\family default
- are in the 
+ See 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example
+\lang english
+\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+Chess
 \family default
- directory.
+\lang american
+ where you will find 
+\family sans
+\lang english
+Game 1
+\family default
+\lang american
+ and 
+\family sans
+\lang english
+Game 2
+\family default
+\lang american
+.
 \end_layout
 
 \begin_layout Subsection
@@ -8241,18 +8279,17 @@ Ingredients
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671442175
+\change_inserted 564990737 1671642866
 
-\lang american
-The file 
-\emph on
-recipebook.lyx
-\emph default
- in the 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Books\SpecialChar menuseparator
+Recipe Book
 \family default
- directory illustrates its use.
+\lang american
+ illustrates its use.
 \end_layout
 
 \begin_layout Standard
@@ -8314,7 +8351,7 @@ Europass
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671442208
+\change_inserted 564990737 1671642942
 
 \lang american
 The document class 
@@ -8335,15 +8372,16 @@ europasscv.cls
 \family default
  document class, an unofficial implementation of the ‘Europass CV’ recommended
  by the European Commission in 2013.
- The file 
-\emph on
-europassCV.lyx
-\emph default
- in the 
+ 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Curricula Vitae\SpecialChar menuseparator
+Europass CV (2013)
 \family default
- directory offers guidance on its use.
+\lang american
+ offers guidance on its use.
  Its documentation is available from 
 \begin_inset CommandInset href
 LatexCommand href
@@ -8366,7 +8404,7 @@ European
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671442208
+\change_inserted 564990737 1671642984
 
 \lang american
 The document class 
@@ -8387,15 +8425,16 @@ europecv.cls
 \family default
  document class, an unofficial implementation of the “Europass CV” recommended
  by the European Commission in 2002.
- The file 
-\emph on
-europeCV.lyx
-\emph default
- in the 
+ 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Curricula Vitae\SpecialChar menuseparator
+Europe CV
 \family default
- directory offers guidance on its use.
+\lang american
+ offers guidance on its use.
  Its documentation is available from 
 \begin_inset CommandInset href
 LatexCommand href
@@ -8418,7 +8457,7 @@ Modern
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671442208
+\change_inserted 564990737 1671643003
 
 \lang american
 The document class 
@@ -8439,15 +8478,16 @@ moderncv.cls
 \family default
  document class.
  This allows the creation of customizable CVs.
- The file 
-\emph on
-modernCV.lyx
-\emph default
- in the 
+ 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Curricula Vitae\SpecialChar menuseparator
+Modern CV
 \family default
- directory offers guidance on its use.
+\lang american
+ offers guidance on its use.
  Its documentation is available from 
 \begin_inset CommandInset href
 LatexCommand href
@@ -8470,7 +8510,7 @@ Simple
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671442208
+\change_inserted 564990737 1671643024
 
 \lang american
 The document class 
@@ -8491,15 +8531,16 @@ simplecv.cls
 \family default
  document class, originally developed for use with \SpecialChar LyX
 .
- The file 
-\emph on
-simplecv.lyx
-\emph default
- in the 
+ 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Curricula Vitae\SpecialChar menuseparator
+Simple CV
 \family default
- directory offers guidance on its use.
+\lang american
+ offers guidance on its use.
  Its documentation is available from 
 \begin_inset CommandInset href
 LatexCommand href
@@ -9551,7 +9592,9 @@ Building a Set of Foils
 \begin_layout Standard
 This section will give a simple introduction to using the different environments
  to build a set of foils.
- If you want to see an example set of foils, take a look at the 
+ If you want to see an example set of foils, take a look at 
+\change_deleted 564990737 1671643085
+the 
 \family typewriter
 Foils.lyx
 \family default
@@ -9560,7 +9603,21 @@ Foils.lyx
 \family typewriter
 examples
 \family default
- folder.
+ folder
+\change_inserted 564990737 1671643099
+
+\family sans
+\lang british
+File\SpecialChar menuseparator
+Open Example
+\lang english
+\SpecialChar menuseparator
+Presentations\SpecialChar menuseparator
+Foils
+\change_unchanged
+
+\family default
+.
 \end_layout
 
 \begin_layout Paragraph
@@ -10217,7 +10274,7 @@ Powerdot
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671459032
+\change_inserted 564990737 1671643165
 
 \lang american
 The document class 
@@ -10233,15 +10290,16 @@ presentation
 powerdot.cls
 \family default
  document class for creating presentations.
- The file 
-\emph on
-powerdot-example.lyx
-\emph default
- in the 
+ 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Presentations\SpecialChar menuseparator
+Powerdot
 \family default
- directory offers guidance on its use.
+\lang american
+ offers guidance on its use.
  The documentation is available from 
 \begin_inset CommandInset href
 LatexCommand href
@@ -10272,7 +10330,7 @@ Seminar
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671459032
+\change_inserted 564990737 1671643194
 
 \lang american
 The document class 
@@ -10288,15 +10346,16 @@ presentations
 seminar.cls
 \family default
  document class for creating presentations.
- The file 
-\emph on
-seminar.lyx
-\emph default
- in the 
+ 
 \family sans
-Examples
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Presentations\SpecialChar menuseparator
+Seminar
 \family default
- directory offers guidance on its use.
+\lang american
+ offers guidance on its use.
  The documentation is available from 
 \begin_inset CommandInset href
 LatexCommand href
@@ -29716,16 +29775,45 @@ knitr
 \family sans
 Sweave
 \family default
- is documented in the 
+ is documented in 
+\change_deleted 564990737 1671643409
+the 
 \emph on
 knitr.lyx
 \emph default
- example file and in the Sweave manual (menu 
+ example file
+\change_inserted 564990737 1671643443
+
+\family sans
+\lang british
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Rnw (knitr)
+\change_unchanged
+
+\family default
+\lang english
+ and in 
+\change_deleted 564990737 1671643461
+the Sweave manual (menu 
 \family sans
 Help\SpecialChar menuseparator
 Specific Manuals
 \family default
-).
+)
+\change_inserted 564990737 1671643461
+
+\family sans
+\lang british
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+Sweave
+\change_unchanged
+
+\family default
+\lang english
+.
 \end_layout
 
 \begin_layout Chapter
