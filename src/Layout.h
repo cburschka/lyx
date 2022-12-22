@@ -582,7 +582,8 @@ private:
 	bool docbooksection_;
 	/// Whether this tag must/can/can't go into an <info> tag (default: never, as it only makes sense for metadata).
 	mutable std::string docbookininfo_;
-	/// Wehther this paragraph should be considered as abstract.
+	/// Whether this paragraph should be considered as abstract. Such paragraphs are output as a part of the document
+	/// abstract element (corresponding to the root tag).
 	bool docbookabstract_;
 	/// Whether this element (root or not) does not accept text without a section (i.e. the first text that is met
 	/// in LyX must be considered as the abstract if this is true); this text must be output with the specific tag
