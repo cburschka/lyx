@@ -1,10 +1,10 @@
-# Author : David L. Johnson <dlj0@lehigh.edu>
+# Author: David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 # This version has Theorems and other results numbered in one sequence, and all
-# numbered environments (figures as well) containing the section number.
-# (Themorem (1.1), Corollary (1.2) Theorem (1.3), etc.
-# These are only the theorems styles environnements
+# numbered environments (figures as well) containing the section number
+# (Theorem (1.1), Corollary (1.2) Theorem (1.3), etc.)
+# These are only the theorems styles environments
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Kimberly Heck <rikiheck@lyx.org>
 
