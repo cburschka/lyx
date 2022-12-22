@@ -333,8 +333,10 @@ Style Theorem
 	  Shape               Up
 	  Series              Bold
 	EndFont
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='theorem'
 	DocBookTag            para
-	DocBookAttr           role='theorem'
+	DocBookGenerateTitle  true
 End
 
 
@@ -364,8 +366,10 @@ Style Proof
 	LabelFont
 	  Series              Bold
 	EndFont
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='proof'
 	DocBookTag            para
-	DocBookAttr           role='proof'
+	DocBookGenerateTitle  true
 End
 
 
@@ -373,8 +377,10 @@ Style Lemma
 	CopyStyle             Theorem
 	LatexName             lem
 	LabelString           "Lemma \arabic{theorem}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='lemma'
 	DocBookTag            para
-	DocBookAttr           role='lemma'
+	DocBookGenerateTitle  true
 End
 
 
@@ -382,8 +388,10 @@ Style Corollary
 	CopyStyle             Theorem
 	LatexName             cor
 	LabelString           "Corollary \arabic{theorem}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='corollary'
 	DocBookTag            para
-	DocBookAttr           role='corollary'
+	DocBookGenerateTitle  true
 End
 
 
@@ -391,8 +399,10 @@ Style Proposition
 	CopyStyle             Theorem
 	LatexName             prop
 	LabelString           "Proposition \arabic{theorem}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='proposition'
 	DocBookTag            para
-	DocBookAttr           role='proposition'
+	DocBookGenerateTitle  true
 End
 
 
@@ -400,8 +410,10 @@ Style Criterion
 	CopyStyle             Theorem
 	LatexName             crit
 	LabelString           "Criterion \arabic{theorem}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='criterion'
 	DocBookTag            para
-	DocBookAttr           role='criterion'
+	DocBookGenerateTitle  true
 End
 
 
@@ -409,8 +421,10 @@ Style Algorithm
 	CopyStyle             Theorem
 	LatexName             alg
 	LabelString           "Algorithm \arabic{theorem}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='algorithm'
 	DocBookTag            para
-	DocBookAttr           role='algorithm'
+	DocBookGenerateTitle  true
 End
 
 
@@ -425,8 +439,10 @@ Style Definition
 	  Shape               Up
 	  Series              Bold
 	EndFont
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='definition'
 	DocBookTag            para
-	DocBookAttr           role='definition'
+	DocBookGenerateTitle  true
 End
 
 
@@ -434,8 +450,10 @@ Style Conjecture
 	CopyStyle             Theorem
 	LatexName             conj
 	LabelString           "Conjecture \arabic{theorem}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='conjecture'
 	DocBookTag            para
-	DocBookAttr           role='conjecture'
+	DocBookGenerateTitle  true
 End
 
 
@@ -453,8 +471,10 @@ Style Problem
 	CopyStyle             Theorem
 	LatexName             prob
 	LabelString           "Problem \arabic{theorem}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='problem'
 	DocBookTag            para
-	DocBookAttr           role='problem'
+	DocBookGenerateTitle  true
 End
 
 
@@ -462,8 +482,10 @@ Style Remark
 	CopyStyle             Theorem
 	LatexName             rem
 	LabelString           "Remark \arabic{theorem}"
-	DocBookTag            note
-	DocBookItemTag        para
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='remark'
+	DocBookTag            para
+	DocBookGenerateTitle  true
 End
 
 
@@ -471,8 +493,10 @@ Style Note
 	CopyStyle             Theorem
 	LatexName             note
 	LabelString           "Note \arabic{theorem}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='note'
 	DocBookTag            para
-	DocBookAttr           role='note'
+	DocBookGenerateTitle  true
 End
 
 
@@ -480,8 +504,10 @@ Style Claim
 	CopyStyle             Theorem
 	LatexName             claim
 	LabelString           "Claim \arabic{theorem}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='claim'
 	DocBookTag            para
-	DocBookAttr           role='claim'
+	DocBookGenerateTitle  true
 End
 
 
@@ -490,8 +516,10 @@ Style Summary
 	LatexName             summ
 	LabelCounter          summ
 	LabelString           "Summary \arabic{summ}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='summary'
 	DocBookTag            para
-	DocBookAttr           role='summary'
+	DocBookGenerateTitle  true
 End
 
 
@@ -500,8 +528,10 @@ Style Case
 	LatexName             case
 	LabelCounter          case
 	LabelString           "Case \arabic{case}"
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='case'
 	DocBookTag            para
-	DocBookAttr           role='case'
+	DocBookGenerateTitle  true
 End
 
 

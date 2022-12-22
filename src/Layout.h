@@ -265,6 +265,8 @@ public:
 	///
 	bool docbooknofontinside() const { return docbooknofontinside_; }
 	///
+	bool docbookgeneratetitle() const { return docbookgeneratetitle_; }
+	///
 	bool isParagraph() const { return latextype == LATEX_PARAGRAPH; }
 	///
 	bool isCommand() const { return latextype == LATEX_COMMAND; }
@@ -587,10 +589,14 @@ private:
 	bool docbookabstract_;
 	/// Whether this element (root or not) does not accept text without a section (i.e. the first text that is met
 	/// in LyX must be considered as the abstract if this is true); this text must be output with the specific tag
-	/// held by this attribute
+	/// held by this attribute.
 	mutable std::string docbookforceabstracttag_;
 	/// Whether font tags are allowed inside this tag.
 	bool docbooknofontinside_ = false;
+	/// Whether LyX should create a title on its own, just after the wrapper tag. Typically, this parameter is required
+	/// because the wrapper tag requires a title (like a figure). The generated title will be similar to a LyXHTML label
+	/// (environment type and a number).
+	bool docbookgeneratetitle_ = false;
 	/// Should we generate the default CSS for this layout, even if HTMLStyle
 	/// has been given? Default is false.
 	/// Note that the default CSS is output first, then the user CSS, so it is

@@ -69,8 +69,10 @@ Style Theorem
 		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
 	Requires              amsthm
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='theorem'
 	DocBookTag            para
-	DocBookAttr           role='theorem'
+	DocBookGenerateTitle  true
 End
 
 
@@ -89,8 +91,10 @@ Style Corollary
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='corollary'
 	DocBookTag            para
-	DocBookAttr           role='corollary'
+	DocBookGenerateTitle  true
 End
 
 
@@ -109,8 +113,10 @@ Style Lemma
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='lemma'
 	DocBookTag            para
-	DocBookAttr           role='lemma'
+	DocBookGenerateTitle  true
 End
 
 
@@ -129,8 +135,10 @@ Style Proposition
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='proposition'
 	DocBookTag            para
-	DocBookAttr           role='proposition'
+	DocBookGenerateTitle  true
 End
 
 
@@ -149,8 +157,10 @@ Style Conjecture
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='conjecture'
 	DocBookTag            para
-	DocBookAttr           role='conjecture'
+	DocBookGenerateTitle  true
 End
 
 
@@ -169,8 +179,10 @@ Style Fact
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='fact'
 	DocBookTag            para
-	DocBookAttr           role='fact'
+	DocBookGenerateTitle  true
 End
 
 
@@ -196,8 +208,10 @@ Style Definition
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='definition'
 	DocBookTag            para
-	DocBookAttr           role='definition'
+	DocBookGenerateTitle  true
 End
 
 
@@ -235,8 +249,10 @@ Style Problem
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='problem'
 	DocBookTag            para
-	DocBookAttr           role='problem'
+	DocBookGenerateTitle  true
 End
 
 
@@ -254,8 +270,10 @@ Style Exercise
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='exercise'
 	DocBookTag            para
-	DocBookAttr           role='exercise'
+	DocBookGenerateTitle  true
 End
 
 
@@ -273,8 +291,10 @@ Style Solution
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='solution'
 	DocBookTag            para
-	DocBookAttr           role='solution'
+	DocBookGenerateTitle  true
 End
 
 
@@ -301,8 +321,10 @@ Style Remark
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
 	EndBabelPreamble
-	DocBookTag            note
-	DocBookItemTag        para
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='remark'
+	DocBookTag            para
+	DocBookGenerateTitle  true
 End
 
 
@@ -320,9 +342,10 @@ Style Claim
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='claim'
 	DocBookTag            para
-	DocBookAttr           role='claim'
-	DocBookItemTag        ""
+	DocBookGenerateTitle  true
 End
 
 Input theorems-case.inc

@@ -72,8 +72,10 @@ Style Theorem
 		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
 	Requires              amsthm
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='theorem'
 	DocBookTag            para
-	DocBookAttr           role='theorem'
+	DocBookGenerateTitle  true
 End
 
 
@@ -92,8 +94,10 @@ Style Corollary
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
 	EndBabelPreamble
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='corollary'
 	DocBookTag            para
-	DocBookAttr           role='corollary'
+	DocBookGenerateTitle  true
 End
 
 
@@ -112,8 +116,10 @@ Style Lemma
 	  \addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
 	EndBabelPreamble
 	LabelCounter          lemma
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='lemma'
 	DocBookTag            para
-	DocBookAttr           role='lemma'
+	DocBookGenerateTitle  true
 End
 
 
@@ -132,8 +138,10 @@ Style Proposition
 	  \addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
 	EndBabelPreamble
 	LabelCounter          proposition
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='proposition'
 	DocBookTag            para
-	DocBookAttr           role='proposition'
+	DocBookGenerateTitle  true
 End
 
 
@@ -152,8 +160,10 @@ Style Conjecture
 	  \addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
 	EndBabelPreamble
 	LabelCounter          conjecture
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='conjecture'
 	DocBookTag            para
-	DocBookAttr           role='conjecture'
+	DocBookGenerateTitle  true
 End
 
 
@@ -172,8 +182,10 @@ Style Fact
 	  \addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
 	EndBabelPreamble
 	LabelCounter          fact
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='fact'
 	DocBookTag            para
-	DocBookAttr           role='fact'
+	DocBookGenerateTitle  true
 End
 
 
@@ -199,8 +211,10 @@ Style Definition
 	  \addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
 	EndBabelPreamble
 	LabelCounter          definition
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='definition'
 	DocBookTag            para
-	DocBookAttr           role='definition'
+	DocBookGenerateTitle  true
 End
 
 
@@ -222,7 +236,7 @@ Style Example
 	LabelCounter          example
 	DocBookWrapperTag     informalexample
 	DocBookTag            para
-	DocBookAttr        ""
+	DocBookAttr           ""
 End
 
 
@@ -242,8 +256,10 @@ Style Problem
 	  \addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
 	EndBabelPreamble
 	LabelCounter          problem
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='problem'
 	DocBookTag            para
-	DocBookAttr           role='problem'
+	DocBookGenerateTitle  true
 End
 
 
@@ -263,8 +279,10 @@ Style Exercise
 	  \addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
 	EndBabelPreamble
 	LabelCounter          exercise
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='exercise'
 	DocBookTag            para
-	DocBookAttr           role='exercise'
+	DocBookGenerateTitle  true
 End
 
 
@@ -284,8 +302,10 @@ Style Solution
 		\addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
 	EndBabelPreamble
 	LabelCounter          solution
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='solution'
 	DocBookTag            para
-	DocBookAttr           role='solution'
+	DocBookGenerateTitle  true
 End
 
 
@@ -312,8 +332,10 @@ Style Remark
 	  \addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
 	EndBabelPreamble
 	LabelCounter          remark
-	DocBookTag            note
-	DocBookItemTag        para
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='remark'
+	DocBookTag            para
+	DocBookGenerateTitle  true
 End
 
 
@@ -333,9 +355,10 @@ Style Claim
 	  \addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
 	EndBabelPreamble
 	LabelCounter          claim
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='claim'
 	DocBookTag            para
-	DocBookAttr           role='claim'
-	DocBookItemTag        ""
+	DocBookGenerateTitle  true
 End
 
 Input theorems-case.inc

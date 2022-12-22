@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0-beta2
+  See https://www.lyx.org/ for more information -->
+<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>Ensure that maths are properly converted in theorems</title>
+<para>Equation outside environments: <inlineequation>
+<alt role='tex'>\pi\,r^{2}</alt>
+<m:math display="inline">
+ 
+<m:mrow>
+ <m:mrow><m:mi>&#x3C0;</m:mi>
+  <m:mspace width="6px"/>
+  <m:msup>
+   <m:mi>r</m:mi>
+   <m:mn>2</m:mn>
+  </m:msup>
+ </m:mrow>
+</m:mrow>
+</m:math>
+</inlineequation>.
+<informalequation>
+<alt role='tex'>\pi\,\rho^{3}</alt>
+<m:math display="block">
+ 
+<m:mrow>
+ <m:mrow><m:mi>&#x3C0;</m:mi>
+  <m:mspace width="6px"/>
+  <m:msup><m:mi>&#x3C1;</m:mi>
+   <m:mn>3</m:mn>
+  </m:msup>
+ </m:mrow>
+</m:mrow>
+</m:math>
+</informalequation>
+</para>
+<figure role='theorem'>
+<title>Theorem 1.</title>
+<para>This is a theorem: hypothesis <inlineequation>
+<alt role='tex'>a=b</alt>
+<m:math display="inline">
+ 
+<m:mrow>
+ <m:mrow>
+  <m:mi>a</m:mi>
+  <m:mo>=</m:mo>
+  <m:mi>b</m:mi>
+ </m:mrow>
+</m:mrow>
+</m:math>
+</inlineequation>, thesis 
+<informalequation>
+<alt role='tex'>a\neq b.</alt>
+<m:math display="block">
+ 
+<m:mrow>
+ <m:mrow>
+  <m:mi>a</m:mi><m:mo>&#x2260;</m:mo>
+  <m:mi>b</m:mi>
+  <m:mn>.</m:mn>
+ </m:mrow>
+</m:mrow>
+</m:math>
+</informalequation>
+Clear, don&#8217;t you think?</para>
+</figure>
+<para role='proof'>Left as exercise for the reader.</para>
+<figure role='remark'>
+<title>Remark 2.</title>
+<para>This is real math, you know. <inlineequation>
+<alt role='tex'>a=b=a</alt>
+<m:math display="inline">
+ 
+<m:mrow>
+ <m:mrow>
+  <m:mi>a</m:mi>
+  <m:mo>=</m:mo>
+  <m:mi>b</m:mi>
+  <m:mo>=</m:mo>
+  <m:mi>a</m:mi>
+ </m:mrow>
+</m:mrow>
+</m:math>
+</inlineequation>.</para>
+</figure>
+</article>

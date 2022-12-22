@@ -111,6 +111,7 @@ enum LayoutTags {
 	LT_DOCBOOKINNERTAGTYPE,
 	LT_DOCBOOKININFO,
 	LT_DOCBOOKABSTRACT,
+	LT_DOCBOOKGENERATETITLE,
 	LT_DOCBOOKWRAPPERTAG,
 	LT_DOCBOOKWRAPPERATTR,
 	LT_DOCBOOKWRAPPERTAGTYPE,
@@ -240,6 +241,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "docbookabstract",           LT_DOCBOOKABSTRACT },
 		{ "docbookattr",               LT_DOCBOOKATTR },
 		{ "docbookforceabstracttag",   LT_DOCBOOKFORCEABSTRACTTAG },
+		{ "docbookgeneratetitle",      LT_DOCBOOKGENERATETITLE },
 		{ "docbookininfo",             LT_DOCBOOKININFO },
 		{ "docbookinnerattr",          LT_DOCBOOKINNERATTR },
 		{ "docbookinnertag",           LT_DOCBOOKINNERTAG },
@@ -870,6 +872,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 
         case LT_DOCBOOKNOFONTINSIDE:
             lex >> docbooknofontinside_;
+            break;
+
+        case LT_DOCBOOKGENERATETITLE:
+            lex >> docbookgeneratetitle_;
             break;
 
 		case LT_SPELLCHECK:

@@ -200,8 +200,17 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	}
 
 	// Main logic.
-	if (openWrapper)
+	if (openWrapper) {
 		xml::openTag(xs, lay.docbookwrappertag(), lay.docbookwrapperattr(), lay.docbookwrappertagtype());
+
+		if (lay.docbookgeneratetitle()) {
+			docstring const label = par->params().labelString();
+
+			xml::openTag(xs, "title", "", "paragraph");
+			xs << (!label.empty() ? label : from_ascii("No title"));
+			xml::closeTag(xs, "title", "paragraph");
+		}
+	}
 
 	const string & tag = lay.docbooktag();
 	if (tag != "NONE") {
@@ -508,7 +517,9 @@ void makeEnvironment(Text const &text,
 		std::vector<docstring> pars_prepend;
         std::vector<docstring> pars;
         std::vector<docstring> pars_append;
-        tie(pars_prepend, pars, pars_append) = par->simpleDocBookOnePar(buf, runparams, text.outerFont(std::distance(text.paragraphs().begin(), par)), 0, false, ignoreFonts);
+        tie(pars_prepend, pars, pars_append) =
+				par->simpleDocBookOnePar(buf, runparams, text.outerFont(std::distance(text.paragraphs().begin(), par)),
+										 0, false, ignoreFonts);
 
         for (docstring const & parXML : pars_prepend)
             xs << XMLStream::ESCAPE_NONE << parXML;
