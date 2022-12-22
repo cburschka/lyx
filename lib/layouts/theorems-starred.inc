@@ -4,7 +4,7 @@
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Kimberly Heck <rikiheck@lyx.org>
 
-# The starred environnements defined are :
+# The starred environments defined are :
 # - Theorem
 # - Corollary
 # - Lemma
