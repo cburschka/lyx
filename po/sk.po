@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-18 17:36+0100\n"
-"PO-Revision-Date: 2022-12-18 16:43+0000\n"
+"POT-Creation-Date: 2022-12-22 15:25+0100\n"
+"PO-Revision-Date: 2022-12-22 14:32+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -31026,6 +31026,10 @@ msgstr "Dings 3"
 msgid "Dings 4"
 msgstr "Dings 4"
 
+#: src/frontends/qt/ButtonController.cpp:94
+msgid "This tab contains invalid input. Please fix!"
+msgstr "Táto karta obsahuje neplatný vstup. Opravte to prosím!"
+
 #: src/frontends/qt/ButtonController.cpp:222
 #: src/frontends/qt/GuiApplication.cpp:1950 src/frontends/qt/GuiCompare.cpp:193
 #: src/frontends/qt/GuiSymbols.cpp:346
@@ -35337,6 +35341,10 @@ msgstr "Nijaká akcia nebola definovaná!"
 #: src/frontends/qt/PanelStack.cpp:75
 msgid "Search"
 msgstr "Hľadať"
+
+#: src/frontends/qt/PanelStack.cpp:160
+msgid "This section contains invalid input. Please fix!"
+msgstr "Táto sekcia obsahuje neplatný vstup. Opravte to prosím!"
 
 #: src/frontends/qt/Toolbars.cpp:246
 #, c-format
