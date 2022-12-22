@@ -812,7 +812,8 @@ void xml::openTag(XMLStream & xs, const docstring & tag, const docstring & attr,
 	else if (tagtype == "none")
 		xs << xml::StartTag(tag, attr);
 	else
-		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + to_utf8(tag) + " " + to_utf8(attr) + "'");
+		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + to_utf8(tag) + (attr.empty() ? "" : " ") +
+				to_utf8(attr) + "'");
 }
 
 
