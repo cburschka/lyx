@@ -18,6 +18,7 @@ class QWidget;
 class QPushButton;
 class QLineEdit;
 class QCheckBox;
+class QString;
 
 namespace lyx {
 namespace frontend {
@@ -106,7 +107,12 @@ public:
 	/** Add a widget to the list of all widgets whose validity should
 	 *  be checked explicitly when the buttons are refreshed.
 	 */
-	void addCheckedLineEdit(QLineEdit * input, QWidget * label = 0);
+	void addCheckedLineEdit(QLineEdit * input, QWidget * target = 0, int tabindex = -1);
+
+	/** Add a widget to the list of all widgets whose validity should
+	 *  be checked explicitly when the buttons are refreshed.
+	 */
+	void addCheckedLineEditPanel(QLineEdit * input, QWidget * target, QString const panel);
 
 private:
 	/// noncopyable

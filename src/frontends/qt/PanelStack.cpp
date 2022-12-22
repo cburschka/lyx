@@ -146,6 +146,22 @@ void PanelStack::showPanel(QString const & name, bool show)
 }
 
 
+void PanelStack::markPanelValid(QString const & name, bool valid)
+{
+	QTreeWidgetItem * item = panel_map_.value(name, 0);
+	LASSERT(item, return);
+
+	if (valid) {
+		item->setIcon(0, QIcon());
+		item->setToolTip(0, QString());
+	} else {
+		QIcon warn(getPixmap("images/", "emblem-shellescape", "svgz,png"));
+		item->setIcon(0, warn);
+		item->setToolTip(0, qt_("This section contains invalid input. Please fix!"));
+	}
+}
+
+
 void PanelStack::setCurrentPanel(QString const & name)
 {
 	QTreeWidgetItem * item = panel_map_.value(name, 0);

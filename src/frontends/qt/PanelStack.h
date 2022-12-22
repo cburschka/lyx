@@ -41,6 +41,8 @@ public:
 		QString const & parent = QString());
 	/// show or hide panel
 	void showPanel(QString const & name, bool show);
+	/// Mark panel (content) valid
+	void markPanelValid(QString const & name, bool valid);
 	/// set current panel by logical name
 	void setCurrentPanel(QString const &);
 	///

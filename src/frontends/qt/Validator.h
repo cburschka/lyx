@@ -48,7 +48,7 @@ class LengthValidator : public QValidator
 	Q_OBJECT
 public:
 	/// Define a validator for widget @c parent.
-	LengthValidator(QWidget * parent);
+	LengthValidator(QWidget * parent, bool const accept_empty = true);
 
 	/** @returns QValidator::Acceptable if @c data is a GlueLength.
 	 *  If not, returns QValidator::Intermediate.
@@ -73,6 +73,7 @@ private:
 	bool glue_length_ = false;
 	bool unsigned_ = false;
 	bool positive_ = false;
+	bool acceptable_if_empty_ = false;
 };
 
 

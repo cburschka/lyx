@@ -33,13 +33,15 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-LengthValidator::LengthValidator(QWidget * parent)
-	: QValidator(parent)
+LengthValidator::LengthValidator(QWidget * parent, bool const accept_empty)
+	: QValidator(parent), acceptable_if_empty_(accept_empty)
 {}
 
 
 QValidator::State LengthValidator::validate(QString & qtext, int &) const
 {
+	if (!acceptable_if_empty_ && qtext.isEmpty())
+		return QValidator::Intermediate;
 	QLocale loc;
 	bool ok;
 	double d = loc.toDouble(qtext.trimmed(), &ok);

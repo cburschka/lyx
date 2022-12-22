@@ -84,7 +84,9 @@ GuiInclude::GuiInclude(GuiView & lv)
 	bc().addReadOnly(typeCO);
 	bc().addReadOnly(listingsED);
 
-	bc().addCheckedLineEdit(filenameED, filenameLA);
+	// FIXME does not make sense, as we do not have a validator
+	// for this widget
+	//bc().addCheckedLineEdit(filenameED, filenameLA);
 }
 
 

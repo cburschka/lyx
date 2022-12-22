@@ -224,17 +224,32 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	bc().addReadOnly(getPB);
 	bc().addReadOnly(rotateOrderCB);
 
-	// initialize the length validator
+	// Add validated widgets to those that will be
+	// visually marked if invalid
 	bc().addCheckedLineEdit(Scale, scaleCB);
 	bc().addCheckedLineEdit(Width, WidthCB);
 	bc().addCheckedLineEdit(Height, HeightCB);
-	bc().addCheckedLineEdit(displayscale, scaleLA);
 	bc().addCheckedLineEdit(angle, angleL);
+	bc().addCheckedLineEdit(filename, filenameL);
+	bc().addCheckedLineEdit(displayscale, scaleLA);
 	bc().addCheckedLineEdit(lbX, xL);
 	bc().addCheckedLineEdit(lbY, yL);
 	bc().addCheckedLineEdit(rtX, xL_2);
 	bc().addCheckedLineEdit(rtY, yL_2);
-	bc().addCheckedLineEdit(filename, filenameL);
+
+	// We also mark the tabs the widgets are in
+	int tabindex = tabWidget->indexOf(Graphics);
+	bc().addCheckedLineEdit(Scale, tabWidget, tabindex);
+	bc().addCheckedLineEdit(Width, tabWidget, tabindex);
+	bc().addCheckedLineEdit(Height, tabWidget, tabindex);
+	bc().addCheckedLineEdit(angle, tabWidget, tabindex);
+	bc().addCheckedLineEdit(filename, tabWidget, tabindex);
+	bc().addCheckedLineEdit(displayscale, tabWidget, tabWidget->indexOf(ExtraOptions));
+	tabindex = tabWidget->indexOf(Clipping);
+	bc().addCheckedLineEdit(lbX, tabWidget, tabindex);
+	bc().addCheckedLineEdit(lbY, tabWidget, tabindex);
+	bc().addCheckedLineEdit(rtX, tabWidget, tabindex);
+	bc().addCheckedLineEdit(rtY, tabWidget, tabindex);
 }
 
 

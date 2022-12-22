@@ -187,6 +187,8 @@ GuiExternal::GuiExternal(GuiView & lv)
 	bc().addReadOnly(extraFormatCO);
 	bc().addReadOnly(extraED);
 
+	// Add validated widgets to those that will be
+	// visually marked if invalid
 	bc().addCheckedLineEdit(angleED, angleLA);
 	bc().addCheckedLineEdit(displayscaleED, scaleLA);
 	bc().addCheckedLineEdit(heightED, heightLA);
@@ -196,6 +198,18 @@ GuiExternal::GuiExternal(GuiView & lv)
 	bc().addCheckedLineEdit(xrED, rtLA);
 	bc().addCheckedLineEdit(ytED, rtLA);
 	bc().addCheckedLineEdit(fileED, fileLA);
+
+	// We also mark the tabs the widgets are in
+	int const tabindex = tab->indexOf(sizetab);
+	bc().addCheckedLineEdit(angleED, tab, tabindex);
+	bc().addCheckedLineEdit(heightED, tab, tabindex);
+	bc().addCheckedLineEdit(widthED, tab, tabindex);
+	bc().addCheckedLineEdit(xlED, tab, tabindex);
+	bc().addCheckedLineEdit(ybED, tab, tabindex);
+	bc().addCheckedLineEdit(xrED, tab, tabindex);
+	bc().addCheckedLineEdit(ytED, tab, tabindex);
+	bc().addCheckedLineEdit(displayscaleED, tab, tab->indexOf(lyxviewtab));
+	bc().addCheckedLineEdit(fileED, tab, tab->indexOf(filetab));
 
 	external::TemplateManager::Templates::const_iterator i1, i2;
 	i1 = external::TemplateManager::get().getTemplates().begin();

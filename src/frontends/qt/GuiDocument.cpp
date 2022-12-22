@@ -576,6 +576,7 @@ void PreambleModule::editExternal() {
 		preambleTE->document()->setPlainText(toqstr(s));
 		tempfile_.reset();
 		editPB->setText(qt_("&Edit Externally"));
+		editPB->setStyleSheet("");
 		changed();
 		return;
 	}
@@ -592,6 +593,8 @@ void PreambleModule::editExternal() {
 	preambleTE->setReadOnly(true);
 	theFormats().edit(*current_id_, tempfilename, format);
 	editPB->setText(qt_("&End Edit"));
+	editPB->setStyleSheet(
+		colorButtonStyleSheet(QColor(255, 0, 0)));
 	changed();
 }
 
@@ -855,9 +858,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
 	textLayoutModule->indentLE->setValidator(new LengthValidator(
-		textLayoutModule->indentLE));
+		textLayoutModule->indentLE, false));
 	textLayoutModule->skipLE->setValidator(new LengthValidator(
-		textLayoutModule->skipLE));
+		textLayoutModule->skipLE, false));
 
 	textLayoutModule->indentCO->addItem(qt_("Default"), toqstr("default"));
 	textLayoutModule->indentCO->addItem(qt_("Custom"), toqstr("custom"));
@@ -877,7 +880,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 		Spacing::Other, qt_("Custom"));
 	// initialize the length validator
 	bc().addCheckedLineEdit(textLayoutModule->indentLE, textLayoutModule->indentRB);
+	bc().addCheckedLineEditPanel(textLayoutModule->indentLE, docPS, N_("Text Layout"));
 	bc().addCheckedLineEdit(textLayoutModule->skipLE, textLayoutModule->skipRB);
+	bc().addCheckedLineEditPanel(textLayoutModule->skipLE, docPS, N_("Text Layout"));
 
 	textLayoutModule->tableStyleCO->addItem(qt_("Default"), toqstr("default"));
 	getTableStyles();
@@ -1184,8 +1189,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	pageLayoutModule->pagestyleCO->addItem(qt_("fancy"));
 	bc().addCheckedLineEdit(pageLayoutModule->paperheightLE,
 		pageLayoutModule->paperheightL);
+	bc().addCheckedLineEditPanel(pageLayoutModule->paperheightLE, docPS, N_("Page Layout"));
 	bc().addCheckedLineEdit(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthL);
+	bc().addCheckedLineEditPanel(pageLayoutModule->paperwidthLE, docPS, N_("Page Layout"));
 
 	QComboBox * cb = pageLayoutModule->papersizeCO;
 	cb->addItem(qt_("Default"));
@@ -1287,20 +1294,36 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	bc().addCheckedLineEdit(marginsModule->topLE,
 		marginsModule->topL);
+	bc().addCheckedLineEditPanel(marginsModule->topLE,
+				     docPS, N_("Page Margins"));
 	bc().addCheckedLineEdit(marginsModule->bottomLE,
 		marginsModule->bottomL);
+	bc().addCheckedLineEditPanel(marginsModule->bottomLE,
+				     docPS, N_("Page Margins"));
 	bc().addCheckedLineEdit(marginsModule->innerLE,
 		marginsModule->innerL);
+	bc().addCheckedLineEditPanel(marginsModule->innerLE,
+				     docPS, N_("Page Margins"));
 	bc().addCheckedLineEdit(marginsModule->outerLE,
 		marginsModule->outerL);
+	bc().addCheckedLineEditPanel(marginsModule->outerLE,
+				     docPS, N_("Page Margins"));
 	bc().addCheckedLineEdit(marginsModule->headsepLE,
 		marginsModule->headsepL);
+	bc().addCheckedLineEditPanel(marginsModule->headsepLE,
+				     docPS, N_("Page Margins"));
 	bc().addCheckedLineEdit(marginsModule->headheightLE,
 		marginsModule->headheightL);
+	bc().addCheckedLineEditPanel(marginsModule->headheightLE,
+				     docPS, N_("Page Margins"));
 	bc().addCheckedLineEdit(marginsModule->footskipLE,
 		marginsModule->footskipL);
+	bc().addCheckedLineEditPanel(marginsModule->footskipLE,
+				     docPS, N_("Page Margins"));
 	bc().addCheckedLineEdit(marginsModule->columnsepLE,
 		marginsModule->columnsepL);
+	bc().addCheckedLineEditPanel(marginsModule->columnsepLE,
+				     docPS, N_("Page Margins"));
 
 
 	// color
@@ -1539,9 +1562,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	mathsModule->MathIndentCO->addItem(qt_("Default"), toqstr("default"));
 	mathsModule->MathIndentCO->addItem(qt_("Custom"), toqstr("custom"));
 	mathsModule->MathIndentLE->setValidator(new LengthValidator(
-		mathsModule->MathIndentLE));
+		mathsModule->MathIndentLE, false));
 	// initialize the length validator
 	bc().addCheckedLineEdit(mathsModule->MathIndentLE, mathsModule->MathIndentCB);
+	bc().addCheckedLineEditPanel(mathsModule->MathIndentLE, docPS, N_("Math Options"));
 	mathsModule->MathNumberingPosCO->addItem(qt_("Left"));
 	mathsModule->MathNumberingPosCO->addItem(qt_("Default"));
 	mathsModule->MathNumberingPosCO->addItem(qt_("Right"));
@@ -1996,16 +2020,16 @@ void GuiDocument::setListingsMessage()
 	static bool isOK = true;
 	QString msg = validateListingsParameters();
 	if (msg.isEmpty()) {
+		listingsModule->listingsTB->setTextColor(QColor());
 		if (isOK)
 			return;
 		isOK = true;
-		// listingsModule->listingsTB->setTextColor("black");
 		listingsModule->listingsTB->setPlainText(
 			qt_("Input listings parameters below. "
 		            "Enter ? for a list of parameters."));
 	} else {
 		isOK = false;
-		// listingsModule->listingsTB->setTextColor("red");
+		listingsModule->listingsTB->setTextColor(QColor(255, 0, 0));
 		listingsModule->listingsTB->setPlainText(msg);
 	}
 }
@@ -2040,6 +2064,8 @@ void GuiDocument::setIndent(int item)
 	textLayoutModule->indentLengthCO->setEnabled(enable);
 	textLayoutModule->skipLE->setEnabled(false);
 	textLayoutModule->skipLengthCO->setEnabled(false);
+	// needed to catch empty custom case
+	bc().refresh();
 	isValid();
 }
 
@@ -2060,6 +2086,8 @@ void GuiDocument::setSkip(int item)
 	bool const enable = (kind == VSpace::LENGTH);
 	textLayoutModule->skipLE->setEnabled(enable);
 	textLayoutModule->skipLengthCO->setEnabled(enable);
+	// needed to catch empty custom case
+	bc().refresh();
 	isValid();
 }
 
@@ -2091,6 +2119,8 @@ void GuiDocument::enableMathIndent(int item)
 	bool const enable = (item == 1);
 	mathsModule->MathIndentLE->setEnabled(enable);
 	mathsModule->MathIndentLengthCO->setEnabled(enable);
+	// needed to catch empty custom case
+	bc().refresh();
 	isValid();
 }
 
@@ -4881,39 +4911,15 @@ void GuiDocument::setLayoutComboByIDString(string const & idString)
 
 bool GuiDocument::isValid()
 {
-	return
-		validateListingsParameters().isEmpty() &&
-		!localLayout->editing() &&
-		!preambleModule->editing() &&
-		(
-			// if we're asking for skips between paragraphs
-			!textLayoutModule->skipRB->isChecked() ||
-			// then either we haven't chosen custom
-			VSpace::VSpaceKind(
-				textLayoutModule->skipCO->itemData(
-					textLayoutModule->skipCO->currentIndex()).toInt())
-				!= VSpace::LENGTH ||
-			// or else a length has been given
-			!textLayoutModule->skipLE->text().isEmpty()
-		) &&
-		(
-			// if we're asking for indentation
-			!textLayoutModule->indentRB->isChecked() ||
-			// then either we haven't chosen custom
-			(textLayoutModule->indentCO->itemData(
-				textLayoutModule->indentCO->currentIndex()) != "custom") ||
-			// or else a length has been given
-			!textLayoutModule->indentLE->text().isEmpty()
-		) &&
-		(
-			// if we're asking for math indentation
-			!mathsModule->MathIndentCB->isChecked() ||
-			// then either we haven't chosen custom
-			(mathsModule->MathIndentCO->itemData(
-				mathsModule->MathIndentCO->currentIndex()) != "custom") ||
-			// or else a length has been given
-			!mathsModule->MathIndentLE->text().isEmpty()
-		);
+	bool const listings_valid = validateListingsParameters().isEmpty();
+	bool const local_layout_valid = !localLayout->editing();
+	bool const preamble_valid = !preambleModule->editing();
+
+	docPS->markPanelValid(N_("Listings[[inset]]"), listings_valid);
+	docPS->markPanelValid(N_("Local Layout"), local_layout_valid && localLayout->isValid());
+	docPS->markPanelValid(N_("LaTeX Preamble"), preamble_valid);
+	
+	return listings_valid && local_layout_valid && preamble_valid;
 }
 
 

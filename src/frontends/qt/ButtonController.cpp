@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "ButtonController.h"
+#include "GuiApplication.h"
+#include "PanelStack.h"
 
 #include "qt_helpers.h"
 
@@ -21,6 +23,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QList>
+#include <QTabWidget>
 #include <QValidator>
 
 
@@ -36,18 +39,25 @@ namespace frontend {
 class CheckedLineEdit
 {
 public:
-	CheckedLineEdit(QLineEdit * input, QWidget * label = nullptr);
+	CheckedLineEdit(QLineEdit * input, QWidget * label = nullptr,
+			int tabindex = -1, QString const panel = QString());
+	/// check the widget and do visual marking
 	bool check() const;
+	/// reset all visual markings for tabs or panel sections
+	void setSectionsValid() const;
 
 private:
 	// non-owned
 	QLineEdit * input_;
-	QWidget * label_;
+	QWidget * target_;
+	int tab_index_;
+	QString panel_name_;
 };
 
 
-CheckedLineEdit::CheckedLineEdit(QLineEdit * input, QWidget * label)
-	: input_(input), label_(label)
+CheckedLineEdit::CheckedLineEdit(QLineEdit * input, QWidget * label,
+				 int tabindex, QString const panel)
+	: input_(input), target_(label), tab_index_(tabindex), panel_name_(panel)
 {}
 
 
@@ -55,8 +65,8 @@ bool CheckedLineEdit::check() const
 {
 	if (!input_->isEnabled()) {
 		// we do not check diabled widgets
-		if (label_)
-			setValid(label_, true);
+		if (target_)
+			setValid(target_, true);
 		return true;
 	}
 
@@ -70,10 +80,34 @@ bool CheckedLineEdit::check() const
 
 	// Visual feedback.
 	setValid(input_, valid);
-	if (label_)
-		setValid(label_, valid);
+	if (target_) {
+		if (!valid && !panel_name_.isEmpty() && qobject_cast<PanelStack*>(target_) != nullptr) {
+			qobject_cast<PanelStack*>(target_)->markPanelValid(panel_name_, false);
+			// this is a panel, so stop here.
+			return valid;
+		}
+		setValid(target_, valid);
+		if (!valid && tab_index_ >= 0 && qobject_cast<QTabWidget*>(target_) != nullptr) {
+			QIcon warn(getPixmap("images/", "emblem-shellescape", "svgz,png"));
+			QTabBar * tb = qobject_cast<QTabWidget*>(target_)->tabBar();
+			tb->setTabIcon(tab_index_, warn);
+			tb->setTabToolTip(tab_index_, qt_("This tab contains invalid input. Please fix!"));
+		}
+	}
 
 	return valid;
+}
+
+
+void CheckedLineEdit::setSectionsValid() const
+{
+	if (target_ && tab_index_ >= 0 && qobject_cast<QTabWidget*>(target_) != nullptr) {
+		QTabBar * tb = qobject_cast<QTabWidget*>(target_)->tabBar();
+		tb->setTabIcon(tab_index_, QIcon());
+		tb->setTabToolTip(tab_index_, QString());
+	}
+	else if (!panel_name_.isEmpty() && qobject_cast<PanelStack*>(target_) != nullptr)
+		qobject_cast<PanelStack*>(target_)->markPanelValid(panel_name_, true);
 }
 
 
@@ -94,6 +128,9 @@ public:
 	bool checkWidgets() const
 	{
 		bool valid = true;
+		for (const CheckedLineEdit & w : checked_widgets_) {
+			w.setSectionsValid();
+		}
 		for (const CheckedLineEdit & w : checked_widgets_)
 			valid &= w.check();
 		return valid;
@@ -240,9 +277,15 @@ void ButtonController::refresh() const
 }
 
 
-void ButtonController::addCheckedLineEdit(QLineEdit * input, QWidget * label)
+void ButtonController::addCheckedLineEdit(QLineEdit * input, QWidget * target, int tabindex)
 {
-	d->checked_widgets_.append(CheckedLineEdit(input, label));
+	d->checked_widgets_.append(CheckedLineEdit(input, target, tabindex));
+}
+
+
+void ButtonController::addCheckedLineEditPanel(QLineEdit * input, QWidget * target, QString const panel)
+{
+	d->checked_widgets_.append(CheckedLineEdit(input, target, -1, panel));
 }
 
 
