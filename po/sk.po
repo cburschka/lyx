@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-22 15:25+0100\n"
-"PO-Revision-Date: 2022-12-22 14:32+0000\n"
+"POT-Creation-Date: 2022-12-23 14:04+0100\n"
+"PO-Revision-Date: 2022-12-23 13:19+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1177,14 +1177,14 @@ msgstr "Farby písma"
 msgid "Main text:"
 msgstr "Hlavný text:"
 
+#: src/frontends/qt/ui/ColorUi.ui:110
+msgid "C&hange..."
+msgstr "V&ymeniť…"
+
 #: src/frontends/qt/ui/ColorUi.ui:54 src/frontends/qt/ui/ColorUi.ui:115
 #: src/frontends/qt/ui/ColorUi.ui:192 src/frontends/qt/ui/ColorUi.ui:253
 msgid "Click to change the color"
 msgstr "Kliknite na zmenu farby"
-
-#: src/frontends/qt/ui/ColorUi.ui:57 src/frontends/qt/ui/ColorUi.ui:195
-msgid "Default..."
-msgstr "Štandard…"
 
 #: src/frontends/qt/ui/ColorUi.ui:70 src/frontends/qt/ui/ColorUi.ui:131
 #: src/frontends/qt/ui/ColorUi.ui:208 src/frontends/qt/ui/ColorUi.ui:269
@@ -1195,10 +1195,9 @@ msgstr "Návrat farby na štandard"
 msgid "Greyed-out notes:"
 msgstr "Zosivelé poznámky:"
 
-#: src/frontends/qt/ui/ColorUi.ui:118 src/frontends/qt/ui/ColorUi.ui:256
-#: src/frontends/qt/GuiDocument.cpp:2205 src/frontends/qt/GuiDocument.cpp:2235
+#: src/frontends/qt/ui/ColorUi.ui:48
 msgid "&Change..."
-msgstr "&Zmena…"
+msgstr "&Vymeniť…"
 
 #: src/frontends/qt/ui/ColorUi.ui:165
 msgid "Background Colors"
@@ -1211,6 +1210,18 @@ msgstr "Strana:"
 #: src/frontends/qt/ui/ColorUi.ui:237
 msgid "Shaded boxes:"
 msgstr "Tieňované rámiky:"
+
+#: src/frontends/qt/ui/ColorUi.ui:298
+msgid "Ch&ange..."
+msgstr "Vy&meniť…"
+
+#: src/frontends/qt/ui/ColorUi.ui:314
+msgid "Re&set"
+msgstr "O&bnoviť"
+
+#: src/frontends/qt/ui/ColorUi.ui:336
+msgid "Chan&ge..."
+msgstr "Vym&eniť…"
 
 #: src/frontends/qt/ui/CompareHistoryUi.ui:23
 msgid "Compare Revisions"
@@ -32453,10 +32464,6 @@ msgid ""
 msgstr ""
 "Bez danej hodnoty sa predvoľby berú z balíka geometry alebo z triedy "
 "použitého balíka."
-
-#: src/frontends/qt/GuiDocument.cpp:2218 src/frontends/qt/GuiDocument.cpp:2248
-msgid "&Default..."
-msgstr "Štan&dard…"
 
 #: src/frontends/qt/GuiDocument.cpp:2449
 msgid "Direct (No inputenc)"
