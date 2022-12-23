@@ -36,6 +36,7 @@ theorems-ams
 theorems-ams-extended
 multicol
 shapepar
+graphicboxes
 \end_modules
 \maintain_unincluded_children no
 \language english
@@ -61,6 +62,8 @@ shapepar
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -13515,6 +13518,585 @@ LatexCommand href
 name "todonotes documentation"
 target "http://mirrors.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf"
 literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 564990737 1671829045
+
+\lang american
+Bibliography 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671829045
+
+\lang american
+APA Style with NatBib
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+This module adds support for using natbib together with apacite (the bibliograph
+y style need not be apacite — it could be apacite, apacitex, or any bibliography
+ that works with both the natbib and apacite packages.) 
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 564990737 1671829045
+
+\lang american
+Boxes
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671829045
+
+\lang american
+Fancy Colored Boxes
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+This module adds ten custom insets that support colored boxes via the tcolorbox
+ package.
+ See 
+\family sans
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+Colored boxes
+\family default
+, 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Fancy Color Boxes
+\family default
+ the 
+\begin_inset CommandInset href
+LatexCommand href
+name "tcolorbox documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
+literal "false"
+
+\end_inset
+
+ for details.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671829045
+
+\lang american
+Graphic boxes
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+This provides the custom insets 
+\family sans
+Reflectbox
+\family default
+, 
+\family sans
+Resizebox
+\family default
+, 
+\family sans
+Rotatebox
+\family default
+ and 
+\family sans
+Scalebox
+\family default
+ to scale and rotate its content.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\family sans
+\lang american
+Reflectbox
+\family default
+ is a simple way of reversing text without any other enhancement:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+Great Western Railway
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+(You will need to use Ctrl-R to see any of these examples.)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\family sans
+\lang american
+Resizebox
+\family default
+ allows you to specify the dimensions of the text or image; permissible
+ units are em, ex, in, pt, pc, cm, mm, dd, cc, nd, nc, bp, or sp; if you
+ enter 
+\family typewriter
+!
+\family default
+ for 
+\family typewriter
+Height
+\family default
+ it scales by the width factor:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+48mm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+!
+\end_layout
+
+\end_inset
+
+Great Western Railway
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\family sans
+\lang american
+Rotatebox
+\family default
+ allows you to rotate text around the reference point of the box.
+ If you wish to rotate the box around a different origin, place the cursor
+ inside the box and select Insert\SpecialChar menuseparator
+Origin; o
+\family typewriter
+rigin
+\family default
+ is specified as 
+\family typewriter
+c
+\family default
+,
+\family typewriter
+ l
+\family default
+,
+\family typewriter
+ r
+\family default
+,
+\family typewriter
+ b
+\family default
+,
+\family typewriter
+ t
+\family default
+ or meaningful combinations of these and the counterclockwise rotation angle
+ is expressed in degrees.
+ For example:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+\begin_inset Flex Rotatebox
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+=c
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+30
+\end_layout
+
+\end_inset
+
+Great Western Railway
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+You can combine boxes as in:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang british
+\begin_inset Flex Rotatebox
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+=c
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+-15
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+48mm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+!
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+Great Western Railway
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\family sans
+\lang american
+Scalebox
+\family default
+ scales text; select Insert\SpecialChar menuseparator
+V-Factor to add a vertical factor.
+ If the vertical factor is omitted, the horizontal is used.
+ Adding different horizontal and vertical values creates distortion as in
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\family typewriter
+\lang american
+\begin_inset Flex Scalebox
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+1.5
+\end_layout
+
+\end_inset
+
+
+\family roman
+Great Western Railway
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+A negative horizontal value reverses the text and a negative vertical value
+ inverts it so that you get 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671829045
+
+\lang american
+\begin_inset Flex Scalebox
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+-1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+1
+\end_layout
+
+\end_inset
+
+Great Western Railway
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Scalebox
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang american
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1671829045
+
+\lang british
+-1
+\end_layout
+
+\end_inset
+
+Great Western Railway
+\end_layout
 
 \end_inset
 
