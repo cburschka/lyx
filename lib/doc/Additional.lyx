@@ -13252,6 +13252,276 @@ Linguistics
 \end_layout
 
 \begin_layout Section
+
+\change_inserted 564990737 1671788778
+
+\lang american
+Accessibility
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671788778
+
+\lang american
+Braille
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671788778
+
+\lang american
+This module supports the Braille writing system.
+ It requires the \SpecialChar LaTeX
+ package 
+\family typewriter
+braille.sty
+\family default
+.
+ This and its documentation can be obtained from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "https://www.ctan.org/pkg/braille"
+literal "false"
+
+\end_inset
+
+.
+ You do not have to reconfigure your system after installing it.
+ See 
+\family sans
+\bar under
+H
+\bar default
+elp\SpecialChar menuseparator
+S
+\bar under
+p
+\bar default
+ecific
+\begin_inset space ~
+\end_inset
+
+Manuals\SpecialChar menuseparator
+
+\bar under
+B
+\bar default
+raille
+\family default
+ and 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Braille
+\family default
+.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 564990737 1671788778
+
+\lang american
+Annotation & Revision
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671788778
+
+\lang american
+FiXme Notes
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671788778
+
+\lang american
+This module provides “FiXme” (marginal) annotations for document revision
+ purposes.
+ A list of annotations can be produced by using the “List of FIXMEs” paragraph
+ style.
+ The annotations are customizable via the LaTeX preamble.
+ See the FiXme documentation which can be obtained from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/fixme/fixme.pdf"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\change_inserted 564990737 1671788778
+
+\lang american
+Note:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671788778
+
+\lang american
+by default, the notes are only displayed in “draft” mode (if the option
+ “draft” has been inserted in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options\SpecialChar menuseparator
+Custom
+\family default
+).
+ To display them always, insert 
+\family typewriter
+
+\backslash
+fxsetup{draft}
+\family default
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+\SpecialChar LaTeX
+ Preamble
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671788778
+
+\lang american
+PDF Comments
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671788778
+
+\lang american
+This module provides various kinds of annotations for PDF output.
+ See 
+\family sans
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+PDF comments and File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+PDF Comments
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671788778
+
+\series bold
+\lang american
+PDF Form
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671788778
+
+\lang american
+This module provides fields and buttons for PDF forms.
+ See the 
+\begin_inset CommandInset href
+LatexCommand href
+name "hyperref documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
+literal "false"
+
+\end_inset
+
+, 
+\family sans
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+PDF forms and File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+PDF Form
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671788778
+
+\series bold
+\lang american
+Ruby (Furigana)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671788778
+
+\lang american
+This module defines an inset to typeset reading aids (ruby, furigana) to
+ Chinese characters.
+ It uses the “okumakro,” “luatexja-ruby” or “ruby” package (depending on
+ the TeX engine) or a fallback definition.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671788778
+
+\series bold
+\lang american
+TODO notes
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671788778
+
+\lang american
+This module provides custom insets to insert TODO items in your document.
+ In order to generate a “List of TODOs,” the module provides a paragraph
+ style.
+ Inserting “final” in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options\SpecialChar menuseparator
+Custom
+\family default
+) suppresses the output of TODO notes.
+ See the 
+\begin_inset CommandInset href
+LatexCommand href
+name "todonotes documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Multiple Text Columns
 \end_layout
 
