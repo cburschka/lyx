@@ -6,7 +6,7 @@
 #   Richard Kimberly Heck <rikiheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
 
 
-Format 98
+Format 99
 
 #
 # GLOBAL SETTINGS
@@ -822,7 +822,7 @@ Style Overprint
   BottomSep        0.7
   ParSep           0.3
   Align            Left
-  LabelType        Static
+  LabelType        Itemize
   LabelString      "Overprint"
   LabelFont
     Family         Roman

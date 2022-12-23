@@ -13,7 +13,7 @@
 #     - add support for \onlinecite{}
 
 
-Format 98
+Format 99
 
 Input stdclass.inc
 Input numrevtex.inc
@@ -32,6 +32,7 @@ Style Section
 	Font
 	  Shape			Smallcaps
 	EndFont
+	TocLevel 1
 End
 
 
@@ -39,6 +40,7 @@ Style Subsubsection
 	Font
 	  Shape			Italic
 	EndFont
+	TocLevel 3
 End
 
 
@@ -46,6 +48,7 @@ Style Paragraph
 	Font
 	  Shape			Italic
 	EndFont
+	TocLevel 4
 End
 
 

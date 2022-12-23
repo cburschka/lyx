@@ -1,6 +1,6 @@
 # Theorem-like counters, separately for each type of theorem
 
-Format 98
+Format 99
 Counter theorem
 	GuiName Theorem
 	LaTeXName thm

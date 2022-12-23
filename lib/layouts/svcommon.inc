@@ -19,7 +19,7 @@
 # see http://www.springer.com/authors for class files and further instructions
 
 
-Format 98
+Format 99
 PageStyle		Plain
 
 
@@ -169,6 +169,7 @@ Style Chapter
 	DocBookTagType        paragraph
 	DocBookInInfo         maybe
 	DocBookSectionTag     chapter
+	TocLevel 0
 End
 
 Style ChapSubtitle
