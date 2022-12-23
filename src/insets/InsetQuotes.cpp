@@ -470,79 +470,6 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op,
 }
 
 
-docstring InsetQuotesParams::getHTMLQuote(char_type c) const
-{
-	string res;
-
-	switch (c){
-	case 0x201a: // ,
-		res = "&sbquo;";
-		break;
-	case 0x2019: // '
-		res = "&rsquo;";
-		break;
-	case 0x2018: // `
-		res = "&lsquo;";
-		break;
-	case 0x2039: // <
-		res = "&lsaquo;";
-		break;
-	case 0x203a: // >
-		res = "&rsaquo;";
-		break;
-	case 0x0027: // ' (plain)
-		res = "&#x27;";
-		break;
-	case 0x201e: // ,,
-		res = "&bdquo;";
-		break;
-	case 0x201d: // ''
-		res = "&rdquo;";
-		break;
-	case 0x201c: // ``
-		res = "&ldquo;";
-		break;
-	case 0x00ab: // <<
-		res = "&laquo;";
-		break;
-	case 0x00bb: // >>
-		res = "&raquo;";
-		break;
-	case 0x0022: // "
-		res = "&quot;";
-		break;
-	case 0x300c: // LEFT CORNER BRACKET
-		res = "&#x300c;";
-		break;
-	case 0x300d: // RIGHT CORNER BRACKET
-		res = "&#x300d;";
-		break;
-	case 0x300e: // LEFT WHITE CORNER BRACKET
-		res = "&#x300e;";
-		break;
-	case 0x300f: // RIGHT WHITE CORNER BRACKET
-		res = "&#x300f;";
-		break;
-	case 0x300a: // LEFT DOUBLE ANGLE BRACKET
-		res = "&#x300a;";
-		break;
-	case 0x300b: // RIGHT DOUBLE ANGLE BRACKET
-		res = "&#x300b;";
-		break;
-	case 0x3008: // LEFT ANGLE BRACKET
-		res = "&#x3008;";
-		break;
-	case 0x3009: // RIGHT ANGLE BRACKET
-		res = "&#x3009;";
-		break;
-	default:
-		break;
-	}
-
-	return from_ascii(res);
-}
-
-
 docstring InsetQuotesParams::getXMLQuote(char_type c) const
 {
 	// Directly output the character Unicode form.
@@ -959,11 +886,10 @@ int InsetQuotes::plaintext(odocstringstream & os,
 }
 
 
-docstring InsetQuotes::getQuoteEntity(bool isHTML) const {
+docstring InsetQuotes::getQuoteXMLEntity() const {
 	QuoteStyle style =
 			(style_ == QuoteStyle::Dynamic) ? global_style_ : style_;
-	docstring res = isHTML ? quoteparams.getHTMLQuote(quoteparams.getQuoteChar(style, level_, side_)) :
-					quoteparams.getXMLQuote(quoteparams.getQuoteChar(style, level_, side_));
+	docstring res = quoteparams.getXMLQuote(quoteparams.getQuoteChar(style, level_, side_));
 
 	// in French, thin spaces are added inside double guillemets
 	if (prefixIs(context_lang_, "fr")
@@ -984,13 +910,13 @@ docstring InsetQuotes::getQuoteEntity(bool isHTML) const {
 
 void InsetQuotes::docbook(XMLStream & xs, OutputParams const &) const
 {
-	xs << XMLStream::ESCAPE_NONE << getQuoteEntity(false);
+	xs << XMLStream::ESCAPE_NONE << getQuoteXMLEntity();
 }
 
 
 docstring InsetQuotes::xhtml(XMLStream & xs, OutputParams const &) const
 {
-	xs << XMLStream::ESCAPE_NONE << getQuoteEntity(true);
+	xs << XMLStream::ESCAPE_NONE << getQuoteXMLEntity();
 	return docstring();
 }
 

@@ -57,8 +57,6 @@ public:
 	docstring dsp_draw;
 	/// operator/..., fontname e
 	docstring extra;
-	/// how is this called as HTML entity in MathML?
-	docstring htmlname;
 	/// how is this called as XML entity in MathML?
 	docstring xmlname;
 	/// required LaTeXFeatures

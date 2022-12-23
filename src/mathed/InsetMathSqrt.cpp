@@ -107,7 +107,7 @@ void InsetMathSqrt::mathmlize(MathMLStream & ms) const
 void InsetMathSqrt::htmlize(HtmlStream & os) const
 {
 	os << MTag("span", "class='sqrt'")
-	   << from_ascii("&radic;")
+	   << from_ascii("&#8730;")
 	   << MTag("span", "class='sqrtof'")	<< cell(0) << ETag("span")
 		 << ETag("span");
 }

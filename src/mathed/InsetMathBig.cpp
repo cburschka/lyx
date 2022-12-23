@@ -138,7 +138,7 @@ void InsetMathBig::normalize(NormalStream & os) const
 void InsetMathBig::mathmlize(MathMLStream & ms) const
 {
 	ms << MTagInline("mo", "fence='true' stretchy='true' symmetric='true'")
-	   << convertDelimToXMLEscape(delim_, ms.xmlMode())
+	   << convertDelimToXMLEscape(delim_)
 	   << ETagInline("mo");
 }
 
@@ -153,7 +153,7 @@ void InsetMathBig::htmlize(HtmlStream & os) const
 	default: name  = "big"; break;
 	}
 	os << MTag("span", "class='" + name + "symbol'")
-	   << convertDelimToXMLEscape(delim_, false)
+	   << convertDelimToXMLEscape(delim_)
 	   << ETag("span");
 }
 

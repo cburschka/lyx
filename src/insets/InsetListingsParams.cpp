@@ -1139,10 +1139,10 @@ string InsetListingsParams::encodedString() const
 	// '"' is handled differently because it will
 	// terminate a lyx token.
 	string par = params();
-	// '"' is now &quot;  ==> '"' is now &amp;quot;
+	// '"' is now &#34;  ==> '"' is now &amp;#34;
 	par = subst(par, "&", "&amp;");
-	// '"' is now &amp;quot; ==> '&quot;' is now &amp;quot;
-	par = subst(par, "\"", "&quot;");
+	// '"' is now &amp;#34; ==> '&#34;' is now &amp;#34;
+	par = subst(par, "\"", "&#34;");
 	return par;
 }
 
@@ -1160,9 +1160,9 @@ void InsetListingsParams::fromEncodedString(string const & in)
 {
 	// Decode string! Reversal of encodedString
 	string par = in;
-	// '&quot;' is now &amp;quot; ==> '"' is now &amp;quot;
-	par = subst(par, "&quot;", "\"");
-	//  '"' is now &amp;quot; ==> '"' is now &quot;
+	// '&#34;' is now &amp;#34; ==> '"' is now &amp;#34;
+	par = subst(par, "&#34;", "\"");
+	//  '"' is now &amp;#34; ==> '"' is now &#34;
 	par = subst(par, "&amp;", "&");
 	setParams(par);
 }

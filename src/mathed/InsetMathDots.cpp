@@ -74,60 +74,34 @@ void InsetMathDots::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetMathDots::mathmlize(MathMLStream & ms) const
-{
+namespace {
+std::string symbolToXMLEntity(docstring const & n) {
 	// which symbols we support is decided by what is listed in
 	// lib/symbols as generating a dots inset
-	docstring const & n = key_->name;
-	std::string ent;
-	if (ms.xmlMode()) {
-		if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
-			ent = "&#x2026;";
-		else if (n == "adots" || n == "iddots")
-			ent = "&#x22F0;";
-		else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
-			ent = "&#x22EF;";
-		else if (n == "ddots")
-			ent = "&#x22F1;";
-		else if (n == "vdots")
-			ent = "&#x22EE;";
-		else LASSERT(false, ent = "&#x2026;");
-	} else {
-		if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
-			ent = "&hellip;";
-		else if (n == "adots" || n == "iddots")
-			ent = "&utdot;";
-		else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
-			ent = "&ctdot;";
-		else if (n == "ddots")
-			ent = "&dtdot;";
-		else if (n == "vdots")
-			ent = "&vellip;";
-		else LASSERT(false, ent = "&hellip;");
-	}
-	ms << MTagInline("mi") << from_ascii(ent) << ETagInline("mi");
+	if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
+		return "&#x2026;";
+	else if (n == "adots" || n == "iddots")
+		return "&#x22F0;";
+	else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
+		return "&#x22EF;";
+	else if (n == "ddots")
+		return "&#x22F1;";
+	else if (n == "vdots")
+		return "&#x22EE;";
+	else LASSERT(false, return "&#x2026;");
+}
+}
+
+
+void InsetMathDots::mathmlize(MathMLStream & ms) const
+{
+	ms << MTagInline("mi") << from_ascii(symbolToXMLEntity(key_->name)) << ETagInline("mi");
 }
 
 
 void InsetMathDots::htmlize(HtmlStream & os) const
 {
-	// which symbols we support is decided by what is listed in
-	// lib/symbols as generating a dots inset
-	docstring const & n = key_->name;
-	std::string ent;
-	if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
-		ent = "&#x02026;";
-	else if (n == "adots" || n == "iddots")
-		ent = "&#x022F0;";
-	else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
-		ent = "&#x022EF;";
-	else if (n == "ddots")
-		ent = "&#x022F1;";
-	else if (n == "vdots")
-		ent = "&#x022EE;";
-	else
-		LASSERT(false, ent = "#x02026;");
-	os << from_ascii(ent);
+	os << from_ascii(symbolToXMLEntity(key_->name));
 }
 
 } // namespace lyx

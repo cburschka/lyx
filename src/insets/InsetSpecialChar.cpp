@@ -530,96 +530,55 @@ int InsetSpecialChar::plaintext(odocstringstream & os,
 }
 
 
+namespace {
+string specialCharKindToXMLEntity(InsetSpecialChar::Kind kind) {
+	switch (kind) {
+	case InsetSpecialChar::Kind::HYPHENATION:
+		// Soft hyphen.
+		return "&#xAD;";
+	case InsetSpecialChar::Kind::ALLOWBREAK:
+		// Zero-width space
+		return "&#x200B;";
+	case InsetSpecialChar::Kind::LIGATURE_BREAK:
+		// Zero width non-joiner
+		return "&#x200C;";
+	case InsetSpecialChar::Kind::END_OF_SENTENCE:
+		return ".";
+	case InsetSpecialChar::Kind::LDOTS:
+		// &hellip;
+		return "&#x2026;";
+	case InsetSpecialChar::Kind::MENU_SEPARATOR:
+		// &rArr;, right arrow.
+		return "&#x21D2;";
+	case InsetSpecialChar::Kind::SLASH:
+		// &frasl;, fractional slash.
+		return "&#x2044;";
+	case InsetSpecialChar::Kind::NOBREAKDASH:
+		// Non-breaking hyphen.
+		return "&#x2011;";
+	case InsetSpecialChar::Kind::PHRASE_LYX:
+		return "LyX";
+	case InsetSpecialChar::Kind::PHRASE_TEX:
+		return "TeX";
+	case InsetSpecialChar::Kind::PHRASE_LATEX2E:
+		// Lower-case epsilon.
+		return "LaTeX2&#x03b5;";
+	case InsetSpecialChar::Kind::PHRASE_LATEX:
+		return "LaTeX";
+	}
+}
+}
+
+
 void InsetSpecialChar::docbook(XMLStream & xs, OutputParams const &) const
 {
-	switch (kind_) {
-    case HYPHENATION:
-    	// Soft hyphen.
-        xs << XMLStream::ESCAPE_NONE << "&#xAD;";
-        break;
-    case ALLOWBREAK:
-    	// Zero-width space
-        xs << XMLStream::ESCAPE_NONE << "&#x200B;";
-        break;
-	case LIGATURE_BREAK:
-		// Zero width non-joiner
-		xs << XMLStream::ESCAPE_NONE << "&#x200C;";
-		break;
-	case END_OF_SENTENCE:
-		xs << '.';
-		break;
-	case LDOTS:
-		// &hellip;
-		xs << XMLStream::ESCAPE_NONE << "&#x2026;";
-		break;
-	case MENU_SEPARATOR:
-		// &rArr;, right arrow.
-		xs << XMLStream::ESCAPE_NONE << "&#x21D2;";
-		break;
-	case SLASH:
-		// &frasl;, fractional slash.
-		xs << XMLStream::ESCAPE_NONE << "&#x2044;";
-		break;
-		// Non-breaking hyphen.
-	case NOBREAKDASH:
-		xs << XMLStream::ESCAPE_NONE << "&#x2011;";
-		break;
-	case PHRASE_LYX:
-		xs << "LyX";
-		break;
-	case PHRASE_TEX:
-		xs << "TeX";
-		break;
-	case PHRASE_LATEX2E:
-		// Lower-case epsilon.
-		xs << "LaTeX2" << XMLStream::ESCAPE_NONE << "&#x03b5;";
-		break;
-	case PHRASE_LATEX:
-		xs << "LaTeX";
-		break;
-	}
+	xs << XMLStream::ESCAPE_NONE << from_ascii(specialCharKindToXMLEntity(kind_));
 }
 
 
 docstring InsetSpecialChar::xhtml(XMLStream & xs, OutputParams const &) const
 {
-	switch (kind_) {
-	case HYPHENATION:
-		break;
-	case ALLOWBREAK:
-		xs << XMLStream::ESCAPE_NONE << "&#8203;";
-		break;
-	case LIGATURE_BREAK:
-		xs << XMLStream::ESCAPE_NONE << "&#8204;";
-		break;
-	case END_OF_SENTENCE:
-		xs << '.';
-		break;
-	case LDOTS:
-		xs << XMLStream::ESCAPE_NONE << "&hellip;";
-		break;
-	case MENU_SEPARATOR:
-		xs << XMLStream::ESCAPE_NONE << "&rArr;";
-		break;
-	case SLASH:
-		xs << XMLStream::ESCAPE_NONE << "&frasl;";
-		break;
-	case NOBREAKDASH:
-		xs << XMLStream::ESCAPE_NONE << "&#8209;";
-		break;
-	case PHRASE_LYX:
-		xs << "LyX";
-		break;
-	case PHRASE_TEX:
-		xs << "TeX";
-		break;
-	case PHRASE_LATEX2E:
-		xs << "LaTeX2" << XMLStream::ESCAPE_NONE << "&#x3b5;";
-		break;
-	case PHRASE_LATEX:
-		xs << "LaTeX";
-		break;
-	}
+	xs << XMLStream::ESCAPE_NONE << from_ascii(specialCharKindToXMLEntity(kind_));
 	return docstring();
 }
 
@@ -636,7 +595,7 @@ void InsetSpecialChar::toString(odocstream & os) const
 		break;
 	}
 	odocstringstream ods;
-	plaintext(ods, OutputParams(0));
+	plaintext(ods, OutputParams(nullptr));
 	os << ods.str();
 }
 
@@ -645,7 +604,7 @@ void InsetSpecialChar::forOutliner(docstring & os, size_t const,
 								   bool const) const
 {
 	odocstringstream ods;
-	plaintext(ods, OutputParams(0));
+	plaintext(ods, OutputParams(nullptr));
 	os += ods.str();
 }
 

@@ -377,7 +377,7 @@ class MathExportException : public std::exception {};
 class MathMLStream {
 public:
 	/// Builds a stream proxy for os; the MathML namespace is given by xmlns (supposed to be already defined elsewhere in the document).
-	explicit MathMLStream(odocstream & os, std::string const & xmlns = "", bool xmlMode = false);
+	explicit MathMLStream(odocstream & os, std::string const & xmlns = "");
 	///
 	void cr();
 	///
@@ -398,8 +398,6 @@ public:
 	bool inText() const { return in_text_; }
 	///
 	std::string xmlns() const { return xmlns_; }
-	///
-	bool xmlMode() const { return xml_mode_; }
 	/// Returns the tag name prefixed by the name space if needed.
 	std::string namespacedTag(std::string const & tag) const {
 		return (xmlns().empty() ? "" : xmlns() + ":") + tag;
@@ -423,8 +421,6 @@ private:
 	odocstringstream deferred_;
 	///
 	std::string xmlns_;
-	///
-	bool xml_mode_;
 	/// The only important part of a FontInfo object.
 	MathStyle font_math_style_;
 	///
@@ -699,7 +695,7 @@ OctaveStream & operator<<(OctaveStream &, char);
 OctaveStream & operator<<(OctaveStream &, int);
 
 
-docstring convertDelimToXMLEscape(docstring const & name, bool xmlmode);
+docstring convertDelimToXMLEscape(docstring const & name);
 
 } // namespace lyx
 

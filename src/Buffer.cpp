@@ -2173,14 +2173,14 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 		}
 
 		// Directly output the root tag, based on the current type of document.
-		string params = "xml:lang=\"" + params().language->code() + '"'
-						+ " xmlns=\"http://docbook.org/ns/docbook\""
-						+ " xmlns:xlink=\"http://www.w3.org/1999/xlink\""
-						+ mathmlNamespace
-						+ " xmlns:xi=\"http://www.w3.org/2001/XInclude\""
-						+ " version=\"5.2\"";
+		string attributes = "xml:lang=\"" + params().language->code() + '"'
+						    + " xmlns=\"http://docbook.org/ns/docbook\""
+						    + " xmlns:xlink=\"http://www.w3.org/1999/xlink\""
+						    + mathmlNamespace
+						    + " xmlns:xi=\"http://www.w3.org/2001/XInclude\""
+						    + " version=\"5.2\"";
 
-		os << "<" << from_ascii(tclass.docbookroot()) << " " << from_ascii(params) << ">\n";
+		os << "<" << from_ascii(tclass.docbookroot()) << " " << from_ascii(attributes) << ">\n";
 	}
 
 	if (output_body) {
@@ -2238,11 +2238,11 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 	  output == FullSource || output == OnlyBody || output == IncludedFile;
 
 	if (output_preamble) {
-		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-		   << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd\">\n"
+		os << "<!DOCTYPE html>\n"
 		   << "<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"" << from_ascii(params().language->code()) << "\">\n"
 		   << "<head>\n"
 		   << "<meta name=\"GENERATOR\" content=\"" << PACKAGE_STRING << "\" />\n"
+		   << "<meta charset=\"UTF-8\" />\n"
 		   // FIXME Presumably need to set this right
 		   << "<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />\n";
 

@@ -188,11 +188,12 @@ void initSymbols()
 			// \def\macroname{definition} requires
 			// or
 			// \def\macroname{definition} extra htmlname xmlname requires
+			// TODO: remove htmlname
 			istringstream is(line);
 			string macro;
 			string required;
 			string extra;
-			string htmlname;
+			string htmlname; // Ignored. TODO: remove.
 			string xmlname;
 			bool hidden = false;
 			is >> setw(65536) >> macro >> required;
@@ -201,10 +202,10 @@ void initSymbols()
 				if (!(is >> required))
 					required = "";
 			} else
-				htmlname = xmlname = "";
+				xmlname = "";
 			MacroTable::iterator it = MacroTable::globalMacros().insert(
 					nullptr, from_utf8(macro));
-			if (!extra.empty() || !htmlname.empty() || !xmlname.empty() || !required.empty()) {
+			if (!extra.empty() || !xmlname.empty() || !required.empty()) {
 				MathWordList::iterator wit = theMathWordList.find(it->first);
 				if (wit != theMathWordList.end())
 					LYXERR(Debug::MATHED, "readSymbols: inset "
@@ -214,7 +215,6 @@ void initSymbols()
 					tmp.inset = "macro";
 					tmp.name = it->first;
 					tmp.extra = from_utf8(extra);
-					tmp.htmlname = from_utf8(htmlname);
 					tmp.xmlname = from_utf8(xmlname);
 					if (required == "hiddensymbol") {
 						required = "";
@@ -232,7 +232,6 @@ void initSymbols()
 			    << "  inset: macro"
 			    << "  draw: 0"
 			    << "  extra: " << extra
-			    << "  html: " << htmlname
 			    << "  xml: " << xmlname
 				<< "  requires: " << required
 				<< "  hidden: " << hidden << '\'');
@@ -245,7 +244,7 @@ void initSymbols()
 		is >> tmp.name >> help;
 		tmp.inset = to_ascii(help);
 		if (isFontName(tmp.inset)) {
-			is >> help >> fallbackid >> tmp.extra >> tmp.htmlname >> tmp.xmlname;
+			is >> help >> fallbackid >> tmp.extra >> tmp.xmlname;
 			docstring cid, dsp_cid;
 			idocstringstream is2(subst(help, '|', ' '));
 			is2 >> charid >> dsp_charid;
@@ -338,7 +337,6 @@ void initSymbols()
 			<< "  inset: " << tmp.inset
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
 			<< "  extra: " << to_utf8(tmp.extra)
-			<< "  html: " << to_utf8(tmp.htmlname)
 			<< "  xml: " << to_utf8(tmp.xmlname)
 			<< "  requires: " << tmp.required
 			<< "  hidden: " << tmp.hidden << '\'');

@@ -860,9 +860,9 @@ docstring InsetSpace::xhtml(XMLStream & xs, OutputParams const &) const
 	case InsetSpaceParams::NEGTHIN:
 	case InsetSpaceParams::NEGMEDIUM:
 	case InsetSpaceParams::NEGTHICK:
-		output ="&nbsp;";
+		output ="&#160;";
 		break;
-	// no XHTML entity, only unicode code for space character exists
+	// no XML entity, only Unicode code for space character exists
 	case InsetSpaceParams::VISIBLE:
 		output ="&#x2423;";
 		break;
@@ -884,7 +884,7 @@ docstring InsetSpace::xhtml(XMLStream & xs, OutputParams const &) const
 	case InsetSpaceParams::CUSTOM_PROTECTED:
 		// FIXME XHTML
 		// Probably we could do some sort of blank span?
-		output ="&nbsp;";
+		output ="&#160;";
 		break;
 	}
 	// don't escape the entities!

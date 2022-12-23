@@ -95,7 +95,7 @@ void InsetMathMatrix::mathematica(MathematicaStream & os) const
 void InsetMathMatrix::mathmlize(MathMLStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mo")) << " form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
-	   << convertDelimToXMLEscape(left_, ms.xmlMode())
+	   << convertDelimToXMLEscape(left_)
 	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
 	   << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -114,7 +114,7 @@ void InsetMathMatrix::mathmlize(MathMLStream & ms) const
 	}
 	ms << ETag("mtable")
 	   << "<" << from_ascii(ms.namespacedTag("mo")) << " form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
-	   << convertDelimToXMLEscape(right_, ms.xmlMode())
+	   << convertDelimToXMLEscape(right_)
 	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">";
 }
 

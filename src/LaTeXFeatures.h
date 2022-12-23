@@ -79,10 +79,6 @@ public:
 	docstring const getTClassHTMLStyles() const;
 	///
 	docstring const getTClassHTMLPreamble() const;
-	/// The sgml definitions needed by the document (docbook)
-	docstring const getLyXSGMLEntities() const;
-	/// The SGML Required to include the files added with includeFile();
-	docstring const getIncludedFiles(std::string const & fname) const;
 	/// Include a file for use with the SGML entities
 	void includeFile(docstring const & key, std::string const & name);
 	/// The float definitions.

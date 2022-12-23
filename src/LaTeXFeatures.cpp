@@ -2164,37 +2164,6 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel,
 }
 
 
-docstring const LaTeXFeatures::getLyXSGMLEntities() const
-{
-	// Definition of entities used in the document that are LyX related.
-	odocstringstream entities;
-
-	if (mustProvide("lyxarrow")) {
-		entities << "<!ENTITY lyxarrow \"-&gt;\">" << '\n';
-	}
-
-	return entities.str();
-}
-
-
-docstring const LaTeXFeatures::getIncludedFiles(string const & fname) const
-{
-	odocstringstream sgmlpreamble;
-	// FIXME UNICODE
-	docstring const basename(from_utf8(onlyPath(fname)));
-
-	FileMap::const_iterator end = IncludedFiles_.end();
-	for (FileMap::const_iterator fi = IncludedFiles_.begin();
-	     fi != end; ++fi)
-		// FIXME UNICODE
-		sgmlpreamble << "\n<!ENTITY " << fi->first
-			     << (isSGMLFileName(fi->second) ? " SYSTEM \"" : " \"")
-			     << makeRelPath(from_utf8(fi->second), basename) << "\">";
-
-	return sgmlpreamble.str();
-}
-
-
 void LaTeXFeatures::showStruct() const
 {
 	lyxerr << "LyX needs the following commands when LaTeXing:"

@@ -64,10 +64,14 @@
 * Documents that use TeX fonts can only be compiled with XeTeX if the input
   encoding is set to "utf8-plain" or "ascii".
 
-* With LyXHTML output, there are now different CSS classees generated for
+* With LyXHTML output, there are now different CSS classes generated for
   different depths: enumi, enumii, enumiii, and enumiv, and similarly for
   itemize: lyxitemi, etc. There is also a new HTMLClass tag, which makes it
   easier to provide specific classes for paragraphs.
+
+* HTML support has been updated to output XHTML5 files. A major change is the
+  use of XML entities instead of HTML ones (e.g., LyX now outputs &#45;
+  instead of &quot;).
 
 * DocBook support has been revamped and now targets DocBook 5 (i.e.
   only XML, SGML is gone). Some supporting files for the previous

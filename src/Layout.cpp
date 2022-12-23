@@ -515,7 +515,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 
 		case LT_LATEXPARAM:
 			lex >> latexparam_;
-			latexparam_ = subst(latexparam_, "&quot;", "\"");
+			latexparam_ = subst(latexparam_, "&#34;", "\"");
 			break;
 
 		case LT_LEFTDELIM:
@@ -1455,7 +1455,7 @@ void Layout::write(ostream & os) const
 	if (!latexname_.empty())
 		os << "\tLatexName \"" << latexname_ << "\"\n";
 	if (!latexparam_.empty())
-		os << "\tLatexParam \"" << subst(latexparam_, "\"", "&quot;")
+		os << "\tLatexParam \"" << subst(latexparam_, "\"", "&#34;")
 		   << "\"\n";
 	if (!leftdelim_.empty())
 		os << "\tLeftDelim "

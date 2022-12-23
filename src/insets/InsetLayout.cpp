@@ -312,7 +312,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 			break;
 		case IL_LATEXPARAM:
 			lex >> tmp;
-			latexparam_ = subst(tmp, "&quot;", "\"");
+			latexparam_ = subst(tmp, "&#34;", "\"");
 			break;
 		case IL_LEFTDELIM:
 			lex >> leftdelim_;

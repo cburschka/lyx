@@ -2419,7 +2419,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	}
 
 	odocstringstream osmath;
-	MathMLStream ms(osmath, mathmlNamespacePrefix, true);
+	MathMLStream ms(osmath, mathmlNamespacePrefix);
 
 	// Output the MathML subtree.
 	// TeX transcription. Avoid MTag/ETag so that there are no extraneous spaces.
@@ -2442,7 +2442,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 		// First, generate the MathML expression. If there is an error in the generation, this block is not fully
 		// executed, and the formula is not output to the DocBook stream.
 		odocstringstream ostmp;
-		MathMLStream mstmp(ostmp, ms.xmlns(), ms.xmlMode());
+		MathMLStream mstmp(ostmp, ms.xmlns());
 		mathmlize(mstmp);
 
 		// Choose the display style for the formula, to be output as an attribute near the formula root.

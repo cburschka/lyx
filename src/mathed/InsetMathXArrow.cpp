@@ -84,25 +84,6 @@ void InsetMathXArrow::normalize(NormalStream & os) const
 }
 
 
-static std::map<string, string> latex_to_html_entities = {
-		{"xleftarrow", "&larr;"},
-		{"xrightarrow", "&rarr;"},
-		{"xhookleftarrow", "&larrhk;"},
-		{"xhookrightarrow", "&rarrhk;"},
-		{"xLeftarrow", "&lArr;"},
-		{"xRightarrow", "&rArr;"},
-		{"xleftrightarrow", "&leftrightarrow;"},
-		{"xLeftrightarrow", "&Leftrightarrow;"},
-		{"xleftharpoondown", "&leftharpoondown;"},
-		{"xleftharpoonup", "&leftharpoonup;"},
-		{"xleftrightharpoons", "&leftrightharpoons;"},
-		{"xrightharpoondown", "&rightharpoondown;"},
-		{"xrightharpoonup", "&rightharpoonup;"},
-		{"xrightleftharpoons", "&rightleftharpoons;"},
-		{"xmapsto", "&mapsto;"},
-};
-
-
 static std::map<string, string> latex_to_xml_entities = {
 		{"xleftarrow", "&#x2190;"},
 		{"xrightarrow", "&#x2192;"},
@@ -122,17 +103,14 @@ static std::map<string, string> latex_to_xml_entities = {
 };
 
 
-docstring map_latex_to(docstring latex, bool xml = false)
+docstring map_latex_to(docstring latex)
 {
-	auto dict = (xml) ? latex_to_xml_entities : latex_to_html_entities;
-
-	auto mapping = dict.find(to_ascii(latex));
-	if (mapping != dict.end()) {
+	auto mapping = latex_to_xml_entities.find(to_ascii(latex));
+	if (mapping != latex_to_xml_entities.end()) {
 		return from_ascii(mapping->second);
 	} else {
-		std::string format = (xml) ? "XML" : "HTML";
-		lyxerr << "mathmlize " << format << " conversion for '" << latex << "' not implemented" << endl;
-		LASSERT(false, return from_ascii(dict["xrightarrow"]));
+		lyxerr << "mathmlize conversion for '" << latex << "' not implemented" << endl;
+		LASSERT(false, return from_ascii(latex_to_xml_entities["xrightarrow"]));
 		return docstring();
 	}
 }
@@ -140,7 +118,7 @@ docstring map_latex_to(docstring latex, bool xml = false)
 
 void InsetMathXArrow::mathmlize(MathMLStream & ms) const
 {
-	docstring arrow = map_latex_to(name_, ms.xmlMode());
+	docstring arrow = map_latex_to(name_);
 	ms << "<" << from_ascii(ms.namespacedTag("munderover")) << " accent='false' accentunder='false'>"
 	   << MTagInline("mo") << arrow << ETagInline("mo")
 	   << cell(1) << cell(0)

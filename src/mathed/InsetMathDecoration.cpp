@@ -188,10 +188,9 @@ void InsetMathDecoration::infoize(odocstream & os) const
 namespace {
 	struct Attributes {
 		Attributes() : over(false) {}
-		Attributes(bool o, string const & t, string const & entity)
-			: over(o), tag(t), entity(entity) {}
+		Attributes(bool o, string_view entity)
+			: over(o), entity(entity) {}
 		bool over;
-		string tag;
 		string entity;
 	};
 
@@ -199,35 +198,35 @@ namespace {
 
 	void buildTranslationMap(TranslationMap & t) {
 		// the decorations we need to support are listed in lib/symbols
-		t["acute"] = Attributes(true, "&acute;", "&#x00B4;");
-		t["bar"]   = Attributes(true, "&OverBar;", "&#x00AF;");
-		t["breve"] = Attributes(true, "&breve;", "&#x02D8;");
-		t["check"] = Attributes(true, "&caron;", "&#x02C7;");
-		t["ddddot"] = Attributes(true, "&DotDot;", "&#x20DC;");
-		t["dddot"] = Attributes(true, "&TripleDot;", "&#x20DB;");
-		t["ddot"] = Attributes(true, "&Dot;", "&#x00A8;");
-		t["dot"] = Attributes(true, "&dot;", "&#x02D9;");
-		t["grave"] = Attributes(true, "&grave;", "&#x0060;");
-		t["hat"] = Attributes(true, "&circ;", "&#x02C6;");
-		t["mathring"] = Attributes(true, "&ring;", "&#x02DA;");
-		t["overbrace"] = Attributes(true, "&OverBrace;", "&#x23DE;");
-		t["overleftarrow"] = Attributes(true, "&xlarr;", "&#x27F5;");
-		t["overleftrightarrow"] = Attributes(true, "&xharr;", "&#x27F7;");
-		t["overline"] = Attributes(true, "&macr;", "&#x00AF;");
-		t["overrightarrow"] = Attributes(true, "&xrarr;", "&#x27F6;");
-		t["tilde"] = Attributes(true, "&tilde;", "&#x02DC;");
-		t["underbar"] = Attributes(false, "&UnderBar;", "&#x0332;");
-		t["underbrace"] = Attributes(false, "&UnderBrace;", "&#x23DF;");
-		t["underleftarrow"] = Attributes(false, "&xlarr;", "&#x27F5;");
-		t["underleftrightarrow"] = Attributes(false, "&xharr;", "&#x27F7;");
+		t["acute"] = Attributes(true, "&#x00B4;");
+		t["bar"]   = Attributes(true, "&#x00AF;");
+		t["breve"] = Attributes(true, "&#x02D8;");
+		t["check"] = Attributes(true, "&#x02C7;");
+		t["ddddot"] = Attributes(true, "&#x20DC;");
+		t["dddot"] = Attributes(true, "&#x20DB;");
+		t["ddot"] = Attributes(true, "&#x00A8;");
+		t["dot"] = Attributes(true, "&#x02D9;");
+		t["grave"] = Attributes(true, "&#x0060;");
+		t["hat"] = Attributes(true, "&#x02C6;");
+		t["mathring"] = Attributes(true, "&#x02DA;");
+		t["overbrace"] = Attributes(true, "&#x23DE;");
+		t["overleftarrow"] = Attributes(true, "&#x27F5;");
+		t["overleftrightarrow"] = Attributes(true, "&#x27F7;");
+		t["overline"] = Attributes(true, "&#x00AF;");
+		t["overrightarrow"] = Attributes(true, "&#x27F6;");
+		t["tilde"] = Attributes(true, "&#x02DC;");
+		t["underbar"] = Attributes(false, "&#x0332;");
+		t["underbrace"] = Attributes(false, "&#x23DF;");
+		t["underleftarrow"] = Attributes(false, "&#x27F5;");
+		t["underleftrightarrow"] = Attributes(false, "&#x27F7;");
 		// this is the macron, again, but it works
-		t["underline"] = Attributes(false, "&macr;", "&#x00AF;");
-		t["underrightarrow"] = Attributes(false, "&xrarr;", "&#x27F6;");
-		t["undertilde"] = Attributes(false, "&Tilde;", "&#x223C;");
-		t["utilde"] = Attributes(false, "&Tilde;", "&#x223C;");
-		t["vec"] = Attributes(true, "&rarr;", "&#x2192;");
-		t["widehat"] = Attributes(true, "&Hat;", "&#x005E;");
-		t["widetilde"] = Attributes(true, "&Tilde;", "&#x223C;");
+		t["underline"] = Attributes(false, "&#x00AF;");
+		t["underrightarrow"] = Attributes(false, "&#x27F6;");
+		t["undertilde"] = Attributes(false, "&#x223C;");
+		t["utilde"] = Attributes(false, "&#x223C;");
+		t["vec"] = Attributes(true, "&#x2192;");
+		t["widehat"] = Attributes(true, "&#x005E;");
+		t["widetilde"] = Attributes(true, "&#x223C;");
 	}
 
 	TranslationMap const & translationMap() {
@@ -244,7 +243,7 @@ void InsetMathDecoration::mathmlize(MathMLStream & ms) const
 	TranslationMap::const_iterator cur = t.find(to_utf8(key_->name));
 	LASSERT(cur != t.end(), return);
 	char const * const outag = cur->second.over ? "mover" : "munder";
-	std::string decoration = ms.xmlMode() ? cur->second.entity : cur->second.tag;
+	std::string decoration = cur->second.entity;
 	ms << MTag(outag)
 	   << cell(0)
 	   << "<" << from_ascii(ms.namespacedTag("mo")) << " stretchy=\"true\">"
@@ -277,14 +276,14 @@ void InsetMathDecoration::htmlize(HtmlStream & os) const
 	   << '\n';
 
 	if (symontop)
-		os << MTag("span", "class='symbol'") << from_ascii(cur->second.tag);
+		os << MTag("span", "class='symbol'") << from_ascii(cur->second.entity);
 	else
 		os << MTag("span", "class='base'") << cell(0);
 	os << ETag("span") << '\n';
 	if (symontop)
 		os << MTag("span", "class='base'") << cell(0);
 	else
-		os << MTag("span", "class='symbol'") << from_ascii(cur->second.tag);
+		os << MTag("span", "class='symbol'") << from_ascii(cur->second.entity);
 	os << ETag("span") << '\n' << ETag("span") << '\n';
 }
 

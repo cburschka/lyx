@@ -87,8 +87,6 @@ public:
 	docstring getLaTeXQuote(char_type c, std::string const &,
 				bool const rtl = false) const;
 	///
-	docstring getHTMLQuote(char_type c) const;
-	///
 	docstring getXMLQuote(char_type c) const;
 	/// Returns a descriptive label of a style suitable for dialog and menu
 	docstring const getGuiLabel(QuoteStyle const & qs,
@@ -188,7 +186,7 @@ private:
 	///
 	docstring displayString() const;
 	///
-	docstring getQuoteEntity(bool isHTML) const;
+	docstring getQuoteXMLEntity() const;
 	///
 	QuoteStyle getStyle(std::string const &);
 

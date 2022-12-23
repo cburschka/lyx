@@ -183,11 +183,11 @@ void InsetMathDelim::mathmlize(MathMLStream & ms) const
 {
 	ms << MTag("mrow")
 	   << MTagInline("mo", "form='prefix' fence='true' stretchy='true' symmetric='true'")
-	   << convertDelimToXMLEscape(left_, ms.xmlMode())
+	   << convertDelimToXMLEscape(left_)
 	   << ETagInline("mo")
 	   << cell(0)
 	   << MTagInline("mo", "form='postfix' fence='true' stretchy='true' symmetric='true'")
-	   << convertDelimToXMLEscape(right_, ms.xmlMode())
+	   << convertDelimToXMLEscape(right_)
 	   << ETagInline("mo")
 	   << ETag("mrow");
 }
@@ -195,9 +195,9 @@ void InsetMathDelim::mathmlize(MathMLStream & ms) const
 
 void InsetMathDelim::htmlize(HtmlStream & os) const
 {
-	os << convertDelimToXMLEscape(left_, false)
+	os << convertDelimToXMLEscape(left_)
 	   << cell(0)
-	   << convertDelimToXMLEscape(right_, false);
+	   << convertDelimToXMLEscape(right_);
 }
 
 

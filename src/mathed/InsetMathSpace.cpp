@@ -225,7 +225,7 @@ void InsetMathSpace::htmlize(HtmlStream & ms) const
 		ms << from_ascii("&thinsp;");
 		break;
 	case InsetSpaceParams::MEDIUM:
-		ms << from_ascii("&nbsp;");
+		ms << from_ascii("&#160;");
 		break;
 	case InsetSpaceParams::THICK:
 		ms << from_ascii("&emsp;");
@@ -248,12 +248,12 @@ void InsetMathSpace::htmlize(HtmlStream & ms) const
 	case InsetSpaceParams::CUSTOM_PROTECTED: {
 		string l = length_.asHTMLString();
 		ms << MTag("span", "width='" + l + "'")
-		   << from_ascii("&nbsp;") << ETag("span");
+		   << from_ascii("&#160;") << ETag("span");
 		break;
 	}
 	case InsetSpaceParams::NORMAL:
 	case InsetSpaceParams::PROTECTED:
-		ms << from_ascii("&nbsp;");
+		ms << from_ascii("&#160;");
 		break;
 	default:
 		break;

@@ -231,7 +231,7 @@ void InsetMathRoot::htmlize(HtmlStream & os) const
 {
 	os << MTag("span", "class='root'")
 	   << MTag("sup") << cell(1) << ETag("sup")
-	   << from_ascii("&radic;")
+	   << from_ascii("&#8730;")
 	   << MTag("span", "class='rootof'")	<< cell(0) << ETag("span")
 		 << ETag("span");
 }
