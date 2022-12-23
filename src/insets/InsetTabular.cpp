@@ -3208,7 +3208,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		bool rtl = par.isRTL(buffer().params())
 			&& !par.empty()
 			&& getPWidth(cell).zero()
-			&& !runparams.use_polyglossia;
+			&& !runparams.isFullUnicode();
 
 		if (rtl) {
 			string const lang =

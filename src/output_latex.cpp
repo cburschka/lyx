@@ -1063,7 +1063,7 @@ void TeXOnePar(Buffer const & buf,
 				else if (outer_language->lang() == "arabic_arabi")
 					os << "\\textLR{";
 				// remaining RTL languages currently is hebrew
-				else if (par_language->rightToLeft())
+				else if (par_language->rightToLeft() && !runparams.isFullUnicode())
 					os << "\\R{";
 				else
 					os << "\\L{";

@@ -294,7 +294,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			os << "\\textLR{";
 			count += 8;
 		// currently the remaining RTL languages are arabic_arabtex and hebrew
-		} else if (isRightToLeft() != prev.isRightToLeft()) {
+		} else if (isRightToLeft() != prev.isRightToLeft() && !runparams.isFullUnicode()) {
 			if (needs_cprotection) {
 				os << "\\cprotect";
 				count += 9;
