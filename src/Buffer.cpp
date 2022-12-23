@@ -2179,6 +2179,7 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 						    + mathmlNamespace
 						    + " xmlns:xi=\"http://www.w3.org/2001/XInclude\""
 						    + " version=\"5.2\"";
+		// Version 5.2 is required for formalgroup.
 
 		os << "<" << from_ascii(tclass.docbookroot()) << " " << from_ascii(attributes) << ">\n";
 	}
