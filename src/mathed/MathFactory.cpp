@@ -187,17 +187,15 @@ void initSymbols()
 			// or
 			// \def\macroname{definition} requires
 			// or
-			// \def\macroname{definition} extra htmlname xmlname requires
-			// TODO: remove htmlname
+			// \def\macroname{definition} extra xmlname requires
 			istringstream is(line);
 			string macro;
 			string required;
 			string extra;
-			string htmlname; // Ignored. TODO: remove.
 			string xmlname;
 			bool hidden = false;
 			is >> setw(65536) >> macro >> required;
-			if ((is >> htmlname >> xmlname)) {
+			if ((is >> xmlname)) {
 				extra = required;
 				if (!(is >> required))
 					required = "";
