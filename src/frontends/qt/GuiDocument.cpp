@@ -576,7 +576,7 @@ void PreambleModule::editExternal() {
 		preambleTE->document()->setPlainText(toqstr(s));
 		tempfile_.reset();
 		editPB->setText(qt_("&Edit Externally"));
-		editPB->setStyleSheet("");
+		editPB->setIcon(QIcon());
 		changed();
 		return;
 	}
@@ -593,8 +593,8 @@ void PreambleModule::editExternal() {
 	preambleTE->setReadOnly(true);
 	theFormats().edit(*current_id_, tempfilename, format);
 	editPB->setText(qt_("&End Edit"));
-	editPB->setStyleSheet(
-		colorButtonStyleSheet(QColor(255, 0, 0)));
+	QIcon warn(getPixmap("images/", "emblem-shellescape", "svgz,png"));
+	editPB->setIcon(warn);
 	changed();
 }
 
@@ -755,6 +755,7 @@ void LocalLayout::editExternal() {
 		locallayoutTE->document()->setPlainText(toqstr(s));
 		tempfile_.reset();
 		editPB->setText(qt_("&Edit Externally"));
+		editPB->setIcon(QIcon());
 		changed();
 		return;
 	}
@@ -771,6 +772,8 @@ void LocalLayout::editExternal() {
 	locallayoutTE->setReadOnly(true);
 	theFormats().edit(*current_id_, tempfilename, format);
 	editPB->setText(qt_("&End Edit"));
+	QIcon warn(getPixmap("images/", "emblem-shellescape", "svgz,png"));
+	editPB->setIcon(warn);
 	validatePB->setEnabled(false);
 	hideConvert();
 	changed();
