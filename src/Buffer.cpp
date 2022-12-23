@@ -2173,8 +2173,7 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 		}
 
 		// Directly output the root tag, based on the current type of document.
-		string languageCode = params().language->code();
-		string params = "xml:lang=\"" + languageCode + '"'
+		string params = "xml:lang=\"" + params().language->code() + '"'
 						+ " xmlns=\"http://docbook.org/ns/docbook\""
 						+ " xmlns:xlink=\"http://www.w3.org/1999/xlink\""
 						+ mathmlNamespace
@@ -2241,8 +2240,7 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 	if (output_preamble) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 		   << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd\">\n"
-		   // FIXME Language should be set properly.
-		   << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
+		   << "<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"" << from_ascii(params().language->code()) << "\">\n"
 		   << "<head>\n"
 		   << "<meta name=\"GENERATOR\" content=\"" << PACKAGE_STRING << "\" />\n"
 		   // FIXME Presumably need to set this right
