@@ -86,9 +86,8 @@
 #include <vector>
 
 
-// a style sheet for buttons
-// this is for example used for the background color setting button
-static inline QString colorButtonStyleSheet(QColor const & bgColor)
+// a style sheet for color frame widgets
+static inline QString colorFrameStyleSheet(QColor const & bgColor)
 {
 	if (bgColor.isValid()) {
 		QString rc = QLatin1String("background-color:");
@@ -2260,10 +2259,10 @@ void GuiDocument::changeBackgroundColor()
 		rgb2qcolor(set_backgroundcolor), asQWidget());
 	if (!newColor.isValid())
 		return;
-	// set the button color and text
-	colorModule->backgroundPB->setStyleSheet(
-		colorButtonStyleSheet(newColor));
-	colorModule->backgroundPB->setText(qt_("&Change..."));
+	// set the color
+	colorModule->pageBackgroundCF->setVisible(true);
+	colorModule->pageBackgroundCF->setStyleSheet(
+		colorFrameStyleSheet(newColor));
 	// save color
 	set_backgroundcolor = rgbFromHexName(fromqstr(newColor.name()));
 	is_backgroundcolor = true;
@@ -2273,10 +2272,9 @@ void GuiDocument::changeBackgroundColor()
 
 void GuiDocument::deleteBackgroundColor()
 {
-	// set the button color back to default by setting an empty StyleSheet
-	colorModule->backgroundPB->setStyleSheet(QLatin1String(""));
-	// change button text
-	colorModule->backgroundPB->setText(qt_("&Default..."));
+	// set the color back to default by setting an empty StyleSheet
+	colorModule->pageBackgroundCF->setStyleSheet(QLatin1String(""));
+	colorModule->pageBackgroundCF->setVisible(false);
 	// save default color (white)
 	set_backgroundcolor = rgbFromHexName("#ffffff");
 	is_backgroundcolor = false;
@@ -2290,10 +2288,10 @@ void GuiDocument::changeFontColor()
 		rgb2qcolor(set_fontcolor), asQWidget());
 	if (!newColor.isValid())
 		return;
-	// set the button color and text
-	colorModule->fontColorPB->setStyleSheet(
-		colorButtonStyleSheet(newColor));
-	colorModule->fontColorPB->setText(qt_("&Change..."));
+	//  set the color
+	colorModule->mainTextCF->setVisible(true);
+	colorModule->mainTextCF->setStyleSheet(
+		colorFrameStyleSheet(newColor));
 	// save color
 	set_fontcolor = rgbFromHexName(fromqstr(newColor.name()));
 	is_fontcolor = true;
@@ -2304,9 +2302,8 @@ void GuiDocument::changeFontColor()
 void GuiDocument::deleteFontColor()
 {
 	// set the button color back to default by setting an empty StyleSheet
-	colorModule->fontColorPB->setStyleSheet(QLatin1String(""));
-	// change button text
-	colorModule->fontColorPB->setText(qt_("&Default..."));
+	colorModule->mainTextCF->setStyleSheet(QLatin1String(""));
+	colorModule->mainTextCF->setVisible(false);
 	// save default color (black)
 	set_fontcolor = rgbFromHexName("#000000");
 	is_fontcolor = false;
@@ -2320,9 +2317,9 @@ void GuiDocument::changeNoteFontColor()
 		rgb2qcolor(set_notefontcolor), asQWidget());
 	if (!newColor.isValid())
 		return;
-	// set the button color
-	colorModule->noteFontColorPB->setStyleSheet(
-		colorButtonStyleSheet(newColor));
+	// set the color
+	colorModule->noteFontCF->setStyleSheet(
+		colorFrameStyleSheet(newColor));
 	// save color
 	set_notefontcolor = rgbFromHexName(fromqstr(newColor.name()));
 	is_notefontcolor = true;
@@ -2332,10 +2329,10 @@ void GuiDocument::changeNoteFontColor()
 
 void GuiDocument::deleteNoteFontColor()
 {
-	// set the button color back to pref
+	// set the color back to pref
 	theApp()->getRgbColor(Color_greyedouttext, set_notefontcolor);
-	colorModule->noteFontColorPB->setStyleSheet(
-		colorButtonStyleSheet(rgb2qcolor(set_notefontcolor)));
+	colorModule->noteFontCF->setStyleSheet(
+		colorFrameStyleSheet(rgb2qcolor(set_notefontcolor)));
 	is_notefontcolor = false;
 	change_adaptor();
 }
@@ -2347,9 +2344,9 @@ void GuiDocument::changeBoxBackgroundColor()
 		rgb2qcolor(set_boxbgcolor), asQWidget());
 	if (!newColor.isValid())
 		return;
-	// set the button color
-	colorModule->boxBackgroundPB->setStyleSheet(
-		colorButtonStyleSheet(newColor));
+	// set the color
+	colorModule->boxBackgroundCF->setStyleSheet(
+		colorFrameStyleSheet(newColor));
 	// save color
 	set_boxbgcolor = rgbFromHexName(fromqstr(newColor.name()));
 	is_boxbgcolor = true;
@@ -2359,10 +2356,10 @@ void GuiDocument::changeBoxBackgroundColor()
 
 void GuiDocument::deleteBoxBackgroundColor()
 {
-	// set the button color back to pref
+	// set the color back to pref
 	theApp()->getRgbColor(Color_shadedbg, set_boxbgcolor);
-	colorModule->boxBackgroundPB->setStyleSheet(
-		colorButtonStyleSheet(rgb2qcolor(set_boxbgcolor)));
+	colorModule->boxBackgroundCF->setStyleSheet(
+		colorFrameStyleSheet(rgb2qcolor(set_boxbgcolor)));
 	is_boxbgcolor = false;
 	change_adaptor();
 }
@@ -4099,26 +4096,30 @@ void GuiDocument::paramsToDialog()
 
 	//color
 	if (bp_.isfontcolor) {
-		colorModule->fontColorPB->setStyleSheet(
-			colorButtonStyleSheet(rgb2qcolor(bp_.fontcolor)));
-	}
+		colorModule->mainTextCF->setStyleSheet(
+			colorFrameStyleSheet(rgb2qcolor(bp_.fontcolor)));
+		colorModule->mainTextCF->setVisible(true);
+	} else
+		colorModule->mainTextCF->setVisible(false);
 	set_fontcolor = bp_.fontcolor;
 	is_fontcolor = bp_.isfontcolor;
 
-	colorModule->noteFontColorPB->setStyleSheet(
-		colorButtonStyleSheet(rgb2qcolor(bp_.notefontcolor)));
+	colorModule->noteFontCF->setStyleSheet(
+		colorFrameStyleSheet(rgb2qcolor(bp_.notefontcolor)));
 	set_notefontcolor = bp_.notefontcolor;
 	is_notefontcolor = bp_.isnotefontcolor;
 
 	if (bp_.isbackgroundcolor) {
-		colorModule->backgroundPB->setStyleSheet(
-			colorButtonStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
-	}
+		colorModule->pageBackgroundCF->setStyleSheet(
+			colorFrameStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
+		colorModule->pageBackgroundCF->setVisible(true);
+	} else
+		colorModule->pageBackgroundCF->setVisible(false);
 	set_backgroundcolor = bp_.backgroundcolor;
 	is_backgroundcolor = bp_.isbackgroundcolor;
 
-	colorModule->boxBackgroundPB->setStyleSheet(
-		colorButtonStyleSheet(rgb2qcolor(bp_.boxbgcolor)));
+	colorModule->boxBackgroundCF->setStyleSheet(
+		colorFrameStyleSheet(rgb2qcolor(bp_.boxbgcolor)));
 	set_boxbgcolor = bp_.boxbgcolor;
 	is_boxbgcolor = bp_.isboxbgcolor;
 
