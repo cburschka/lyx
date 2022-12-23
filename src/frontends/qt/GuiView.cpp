@@ -655,7 +655,7 @@ GuiView::GuiView(int id)
 	stat_counts_->hide();
 	statusBar()->addPermanentWidget(stat_counts_);
 
-	connect(stat_counts_, SIGNAL(clicked()), this, SLOT(statsPressed()));
+	connect(stat_counts_, SIGNAL(pressed()), this, SLOT(statsPressed()));
 
 	zoom_slider_ = new QSlider(Qt::Horizontal, statusBar());
 	// Small size slider for macOS to prevent the status bar from enlarging
@@ -701,8 +701,8 @@ GuiView::GuiView(int id)
 	connect(zoom_slider_, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
 	connect(zoom_slider_, SIGNAL(valueChanged(int)), this, SLOT(zoomValueChanged(int)));
 	connect(this, SIGNAL(currentZoomChanged(int)), zoom_slider_, SLOT(setValue(int)));
-	connect(zoom_in_, SIGNAL(clicked()), this, SLOT(zoomInPressed()));
-	connect(zoom_out_, SIGNAL(clicked()), this, SLOT(zoomOutPressed()));
+	connect(zoom_in_, SIGNAL(pressed()), this, SLOT(zoomInPressed()));
+	connect(zoom_out_, SIGNAL(pressed()), this, SLOT(zoomOutPressed()));
 
 	// QPalette palette = statusBar()->palette();
 
