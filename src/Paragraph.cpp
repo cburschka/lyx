@@ -1094,16 +1094,21 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	odocstream::pos_type const len = os.os().tellp();
 
 	if (inset->forceLTR(runparams)
+	    // babel with Xe/LuaTeX does not need a switch
+	    // and \L is not defined there.
+	    && (!runparams.isFullUnicode() || !runparams.use_babel)
 	    && running_font.isRightToLeft()
 	    // ERT is an exception, it should be output with no
 	    // decorations at all
 	    && inset->lyxCode() != ERT_CODE) {
-		if (runparams.use_polyglossia) {
+		if (runparams.use_polyglossia)
+			// (lua)bidi
 			os << "\\LRE{";
-		} else if (running_font.language()->lang() == "farsi"
-			   || running_font.language()->lang() == "arabic_arabi")
+		else if (running_font.language()->lang() == "farsi"
+			 || running_font.language()->lang() == "arabic_arabi")
 			os << "\\textLR{" << termcmd;
 		else
+			// babel classic
 			os << "\\L{";
 		close = true;
 	}
