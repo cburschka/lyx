@@ -13656,6 +13656,8 @@ status open
 
 \lang american
 Great Western Railway
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13714,6 +13716,8 @@ status open
 
 \lang american
 48mm
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13728,11 +13732,15 @@ status open
 
 \lang american
 !
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 Great Western Railway
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13802,6 +13810,8 @@ status open
 
 \lang british
 =c
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13816,11 +13826,15 @@ status open
 
 \lang british
 30
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 Great Western Railway
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13858,6 +13872,8 @@ status open
 
 \lang british
 =c
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13872,6 +13888,8 @@ status open
 
 \lang british
 -15
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13894,6 +13912,8 @@ status open
 
 \lang british
 48mm
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13908,6 +13928,8 @@ status open
 
 \lang british
 !
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13922,15 +13944,21 @@ status open
 
 \lang british
 Great Western Railway
-\end_layout
-
-\end_inset
-
+\change_unchanged
 
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -13977,6 +14005,8 @@ status open
 
 \lang american
 2
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13991,6 +14021,8 @@ status open
 
 \lang american
 1.5
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13998,6 +14030,8 @@ status open
 
 \family roman
 Great Western Railway
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -14036,6 +14070,8 @@ status open
 
 \lang british
 -1
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -14050,11 +14086,15 @@ status open
 
 \lang british
 1
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 Great Western Railway
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -14077,6 +14117,8 @@ status open
 
 \lang british
 1
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -14091,16 +14133,285 @@ status open
 
 \lang british
 -1
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 Great Western Railway
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671884699
+
+\lang american
+Section Boxes
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671884699
+
+\lang american
+This module defines Boxes with section header.
+ It is mainly intended for the SciPoster Document class.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671884699
+
+\lang american
+Variable-width Minipages
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671884699
+
+\lang american
+This module adds a 
+\family sans
+Minipage (Var.
+\begin_inset space \thinspace{}
+\end_inset
+
+Width)
+\family default
+ inset to 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Inset
+\family default
+ using the 
+\family sans
+varwidth
+\family default
+ LaTeX package.
+ The 
+\family sans
+varwidth
+\family default
+ package provides a variable-width minipage, whose resulting width is the
+ width of its contents (if this does not exceed the specified maximum width).
+ The inset has two optional arguments which can be added by placing the
+ cursor inside the minipage and entering 
+\family sans
+Insert\SpecialChar menuseparator
+Vert.
+\begin_inset space \thinspace{}
+\end_inset
+
+Adjustment
+\family default
+ (
+\family typewriter
+c|t|b
+\family default
+) or 
+\family sans
+Insert\SpecialChar menuseparator
+Max.
+\begin_inset space \thinspace{}
+\end_inset
+
+Width
+\family default
+ (defaults to 
+\family typewriter
+
+\backslash
+linewidth
+\family default
+).
+ See 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Variable-width Minipages
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 564990737 1671884699
+
+\lang american
+Fixes & Hacks
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671884699
+
+\lang american
+Fix Computer Modern Fonts
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671884699
+
+\lang american
+This module uses the 
+\family sans
+fix-cm
+\family default
+ package to improve the appearance of Computer Modern fonts and make them
+ available with arbitrary sizes.
+ See the 
+\begin_inset CommandInset href
+LatexCommand href
+name "fix-cm documentation"
+target "http://mirrors.ctan.org/macros/latex/base/fix-cm.pdf"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671884699
+
+\lang american
+\SpecialChar LaTeX
+ Kernel Fixes (Obsolete)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671884699
+
+\lang american
+This module loads the \SpecialChar LaTeX
+ package 
+\family sans
+fixltx2e
+\family default
+ which contains some bug fixes for \SpecialChar LaTeX
+.
+ If you use this module your typeset document may look different when you
+ process it, depending on the respective version of 
+\family sans
+fixltx2e
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\change_inserted 564990737 1671884699
+
+\lang american
+Note:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671884699
+
+\lang american
+recent \SpecialChar LaTeX
+ kernels (as of 2015/01/01) include the functionality of 
+\family sans
+fixltx2e
+\family default
+, so the 
+\family sans
+fixltx2e
+\family default
+ module is obsolete with newer \SpecialChar LaTeX
+ distributions.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671884699
+
+\lang american
+Minimalistic Insets
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671884699
+
+\lang american
+This module redefines several insets (Index, Branch, URL) as being Minimalistic.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1671884699
+
+\lang american
+Title and Preamble Hacks
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671884699
+
+\lang american
+This module provides two new paragraph styles: 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1671884699
+
+\family sans
+\lang american
+In Preamble
+\family default
+ which puts whatever is entered into it into the preamble.
+ This can be used, if one wishes, to include preamble code in the body of
+ a LyX document.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 564990737 1671884699
+
+\family sans
+\lang american
+In Title
+\family default
+ which that will put its contents into the body of the LaTeX document, but
+ before 
+\family typewriter
+
+\backslash
+maketitle
+\family default
+ is issued.
+ This is useful for making branches and notes in title-related material.
+ (However, if you put these in a Standard layout, this signals to LyX to
+ output 
+\family typewriter
+
+\backslash
+maketitle
+\family default
+, which may then come too early.)
 \end_layout
 
 \begin_layout Section
