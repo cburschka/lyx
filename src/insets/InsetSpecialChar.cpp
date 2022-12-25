@@ -565,6 +565,8 @@ string specialCharKindToXMLEntity(InsetSpecialChar::Kind kind) {
 		return "LaTeX2&#x03b5;";
 	case InsetSpecialChar::Kind::PHRASE_LATEX:
 		return "LaTeX";
+	default:
+		return "";
 	}
 }
 }
