@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 611
+\lyxformat 614
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -295,6 +295,7 @@ LatexCommand tableofcontents
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:latexusers"
 
 \end_inset
@@ -1592,6 +1593,7 @@ Enter
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:docclasses"
 
 \end_inset
@@ -3076,6 +3078,7 @@ Article
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:docclasses"
 
 \end_inset
@@ -5068,6 +5071,7 @@ arg   "file-open"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:tex2lyx"
 
 \end_inset
@@ -5320,6 +5324,7 @@ usepackage{foo}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:preamble"
 
 \end_inset
@@ -5605,6 +5610,7 @@ BibTeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:bibliographies"
 
 \end_inset

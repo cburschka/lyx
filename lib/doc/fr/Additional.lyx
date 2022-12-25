@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 610
+\lyxformat 614
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2902,6 +2902,7 @@ Code \SpecialChar TeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Insérer-du-code-LaTeX"
 
 \end_inset
@@ -3595,6 +3596,7 @@ document maître
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Bibliographies-multiples"
 
 \end_inset
@@ -6603,6 +6605,7 @@ sation manuelle.
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Configuration-et-utilisation"
 
 \end_inset
@@ -7984,6 +7987,7 @@ Pour rendre la recherche directe active, vous devez d'abord créer le fichier
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Activation-automatique"
 
 \end_inset
@@ -11233,6 +11237,7 @@ slides
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:slitex"
 
 \end_inset
@@ -11438,6 +11443,7 @@ Foil\SpecialChar TeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:foil-en-tetes"
 
 \end_inset
@@ -12032,6 +12038,7 @@ Foil\SpecialChar TeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:foil-non-supporte"
 
 \end_inset
@@ -12212,6 +12219,7 @@ l'Utilisateur
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:puces"
 
 \end_inset
@@ -12883,6 +12891,7 @@ slides
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:foiltex"
 
 \end_inset
@@ -13134,6 +13143,7 @@ s.
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:note-slides"
 
 \end_inset
@@ -13668,6 +13678,7 @@ Diapo
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:subtilité-slides"
 
 \end_inset
@@ -14020,6 +14031,7 @@ Texte_Invisible
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:subtilité-slides"
 
 \end_inset
@@ -14488,6 +14500,7 @@ clock
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:demarrer-slides"
 
 \end_inset
@@ -14912,6 +14925,7 @@ Foils
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:foiltex"
 
 \end_inset
@@ -16141,6 +16155,7 @@ particulières
  du paquetage (voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:particularités_kluwer"
 
 \end_inset
@@ -18472,6 +18487,7 @@ Voir la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Insérer-du-code-LaTeX"
 
 \end_inset
@@ -19868,6 +19884,7 @@ section
  : voyez la section 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:chktex"
 
 \end_inset
@@ -21744,6 +21761,7 @@ Informations de révision
 Lyx ne connaît que le numéro de version RCS, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:VCS-Revision-Information"
 
 \end_inset
@@ -22618,6 +22636,7 @@ cvs log -r <file-name>
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:VCS-Revision-Information"
 
 \end_inset
@@ -22660,6 +22679,7 @@ status collapsed
 Most of the commands will work with 1.4 too, see 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:SVN-Repo-Update"
 
 \end_inset
@@ -22768,6 +22788,7 @@ In case locking is not enabled.
  See Section 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:SVN-File-Locking"
 
 \end_inset
@@ -23256,6 +23277,7 @@ SVN has two such mechanisms to provide mutual exclusivity for file access
  
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Automatical-Locking-Property"
 
 \end_inset
@@ -24780,6 +24802,7 @@ git describe --abbrev --dirty --long
 Voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:VCS-Revision-Information"
 
 \end_inset
@@ -26112,6 +26135,7 @@ Notez cependant qu'il vous faut activer cette fonction du serveur \SpecialChar L
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Démarrer-le-Serveur"
 
 \end_inset

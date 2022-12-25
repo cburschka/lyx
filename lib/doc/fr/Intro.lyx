@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 610
+\lyxformat 614
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1080,6 +1080,7 @@ vrai
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Contrib"
 
 \end_inset
@@ -1190,6 +1191,7 @@ Sur la version papier, les références croisées sont affichées avec les bons
  
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Contrib"
 
 \end_inset
@@ -1740,6 +1742,7 @@ Le tableau
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Unités"
 
 \end_inset

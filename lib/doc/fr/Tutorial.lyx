@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 614
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -431,6 +431,7 @@ d'apprentissage
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:utilisateurs-latex"
 
 \end_inset
@@ -1629,6 +1630,7 @@ Section
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:classes-de-documents"
 
 \end_inset
@@ -3261,6 +3263,7 @@ Comme les environnements de chapitre ne sont pas autorisés dans les classes
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:classes-de-documents"
 
 \end_inset
@@ -5553,6 +5556,7 @@ Personnalisation
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:tex2lyx"
 
 \end_inset
@@ -5828,6 +5832,7 @@ usepackage{machin}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:preambule-latex"
 
 \end_inset
@@ -6132,6 +6137,7 @@ Citation
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:bibliographies"
 
 \end_inset

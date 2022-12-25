@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 611
+\lyxformat 614
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -513,6 +513,7 @@ arg   "dialog-show-new-inset graphics"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "cha:Units-available-in"
 
 \end_inset
@@ -692,6 +693,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Image-Formats"
 
 \end_inset
@@ -788,6 +790,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:FloatIntroduction"
 
 \end_inset
@@ -819,6 +822,7 @@ arg   "float-insert figure"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:A-star-in"
 
 \end_inset
@@ -831,6 +835,7 @@ reference "fig:A-star-in"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:A-3D-object"
 
 \end_inset
@@ -844,6 +849,7 @@ reference "fig:A-3D-object"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Caption-Placement"
 
 \end_inset
@@ -961,6 +967,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:A-star-in"
 
 \end_inset
@@ -969,6 +976,7 @@ reference "fig:A-star-in"
  а также 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:A-3D-object"
 
 \end_inset
@@ -1022,6 +1030,7 @@ arg   "dialog-show-new-inset ref"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Referencing-Floats"
 
 \end_inset
@@ -1047,6 +1056,7 @@ reference "sec:Referencing-Floats"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:Two-distorted-images"
 
 \end_inset
@@ -1062,6 +1072,7 @@ reference "fig:Two-distorted-images"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:Pink-object"
 
 \end_inset
@@ -1070,6 +1081,7 @@ reference "fig:Pink-object"
  а также 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:A-star"
 
 \end_inset
@@ -1258,6 +1270,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "cha:Output-File-Formats"
 
 \end_inset
@@ -1281,6 +1294,7 @@ ImageMagick
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "cha:Output-File-Formats"
 
 \end_inset
@@ -2121,6 +2135,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Formal-Tables"
 
 \end_inset
@@ -2215,6 +2230,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Special-Cell-Alignment"
 
 \end_inset
@@ -2231,6 +2247,7 @@ reference "subsec:Special-Cell-Alignment"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multiple-Lines-in"
 
 \end_inset
@@ -2251,6 +2268,7 @@ reference "subsec:Multiple-Lines-in"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multicolumns"
 
 \end_inset
@@ -2265,6 +2283,7 @@ reference "subsec:Multicolumns"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multirows"
 
 \end_inset
@@ -2290,6 +2309,7 @@ reference "subsec:Multirows"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Rotated-Table-Cells"
 
 \end_inset
@@ -2541,6 +2561,7 @@ A
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multicolumn-Calculations"
 
 \end_inset
@@ -2548,6 +2569,7 @@ reference "subsec:Multicolumn-Calculations"
  и 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Colored-Tables"
 
 \end_inset
@@ -2572,6 +2594,7 @@ reference "sec:Colored-Tables"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Row-Spacing"
 
 \end_inset
@@ -2597,6 +2620,7 @@ reference "subsec:Row-Spacing"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Multi-page-Tables"
 
 \end_inset
@@ -2604,6 +2628,7 @@ reference "sec:Multi-page-Tables"
  и 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Special-Longtable-Issues"
 
 \end_inset
@@ -3027,6 +3052,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:FloatIntroduction"
 
 \end_inset
@@ -3264,6 +3290,7 @@ arg   "float-insert table"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:a table float"
 
 \end_inset
@@ -3332,6 +3359,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Caption-Placement"
 
 \end_inset
@@ -3363,6 +3391,7 @@ caption
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Caption-Formatting"
 
 \end_inset
@@ -3422,6 +3451,7 @@ arg   "dialog-show-new-inset ref"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Referencing-Floats"
 
 \end_inset
@@ -3526,6 +3556,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multi-page-Table-Captions"
 
 \end_inset
@@ -5718,6 +5749,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multi-page-Table-Captions"
 
 \end_inset
@@ -5767,6 +5799,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:DiffCaptions"
 
 \end_inset
@@ -5840,6 +5873,7 @@ LTleft}{значение}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Units"
 
 \end_inset
@@ -6199,6 +6233,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multi-page-Table-Captions"
 
 \end_inset
@@ -6252,6 +6287,7 @@ name "subsec:Multi-page-Table-Captions"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Multi-page-Tables"
 
 \end_inset
@@ -7044,6 +7080,7 @@ asd
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Referenced-multi-page-table"
 
 \end_inset
@@ -7080,6 +7117,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Caption-Formatting"
 
 \end_inset
@@ -7152,6 +7190,7 @@ LTcapwidth}{ширина}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "cha:Units-available-in"
 
 \end_inset
@@ -7973,6 +8012,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:DiffCaptions"
 
 \end_inset
@@ -10053,6 +10093,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:ForcedPagebreak"
 
 \end_inset
@@ -11631,6 +11672,7 @@ i
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-multiple"
 
 \end_inset
@@ -11682,6 +11724,7 @@ pt.
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-and"
 
 \end_inset
@@ -12375,6 +12418,7 @@ i
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-centered"
 
 \end_inset
@@ -12394,6 +12438,7 @@ reference "tab:Table-with-centered"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-without-half"
 
 \end_inset
@@ -12588,6 +12633,7 @@ i
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "cha:Explanation-of-Equation"
 
 \end_inset
@@ -12637,6 +12683,7 @@ cm (значения по умолчанию для длин),
  так что уравнение 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "eq:Wgn"
 
 \end_inset
@@ -15214,6 +15261,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Example-booktabs-table"
 
 \end_inset
@@ -15621,6 +15669,7 @@ in % of pixel size
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Row-Spacing"
 
 \end_inset
@@ -15724,6 +15773,7 @@ midrule
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "cha:Units-available-in"
 
 \end_inset
@@ -15739,6 +15789,7 @@ reference "cha:Units-available-in"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Example-booktabs-table"
 
 \end_inset
@@ -15881,6 +15932,7 @@ TeX Code
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Special-booktabs-table"
 
 \end_inset
@@ -15903,6 +15955,7 @@ cmidrules
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Special-booktabs-table"
 
 \end_inset
@@ -15934,6 +15987,7 @@ morecmidrules
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Special-booktabs-table"
 
 \end_inset
@@ -16456,6 +16510,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Box-Dialog"
 
 \end_inset
@@ -16476,6 +16531,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Minipages"
 
 \end_inset
@@ -17182,6 +17238,7 @@ Raisebox'ы описаны в разделе
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Vertical-Alignment"
 
 \end_inset
@@ -17486,6 +17543,7 @@ arg   "dialog-show character"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-colored-without"
 
 \end_inset
@@ -17591,6 +17649,7 @@ columncolor{название-цвета}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multicolumn-Calculations"
 
 \end_inset
@@ -17664,6 +17723,7 @@ dvipsnames
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "chap:List-of-dvips-colornames"
 
 \end_inset
@@ -17686,6 +17746,7 @@ reference "chap:List-of-dvips-colornames"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-colored-using"
 
 \end_inset
@@ -17899,6 +17960,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-colored-using"
 
 \end_inset
@@ -18404,6 +18466,7 @@ rowcolors{1}{white}{lightgray}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-rowcolors"
 
 \end_inset
@@ -18430,6 +18493,7 @@ hline]{1}{lightgray}{cyan}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-rowcolors-2"
 
 \end_inset
@@ -18942,6 +19006,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Line-Thickness"
 
 \end_inset
@@ -18987,6 +19052,7 @@ arrayrulewidth}{1.5pt}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Customized-Format"
 
 \end_inset
@@ -19014,6 +19080,7 @@ vline}}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-vertical-colored"
 
 \end_inset
@@ -19193,6 +19260,7 @@ sd
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-horizontal-colored"
 
 \end_inset
@@ -19461,6 +19529,7 @@ myHlineC}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-colored"
 
 \end_inset
@@ -19684,6 +19753,7 @@ arrayrulecolor{black}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-different-hor"
 
 \end_inset
@@ -20213,6 +20283,7 @@ arrayrulecolor{blue}%
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-different-ver"
 
 \end_inset
@@ -21115,6 +21186,7 @@ LatexCommand ref
 reference "tab:Table-with-rotated"
 plural "false"
 caps "false"
+nolink "false"
 noprefix "false"
 
 \end_inset
@@ -21273,6 +21345,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Minipages"
 
 \end_inset
@@ -21280,6 +21353,7 @@ reference "sec:Minipages"
  и 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Parboxes"
 
 \end_inset
@@ -21316,6 +21390,7 @@ Minipage (перем.ширина)
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-rotated-multi"
 
 \end_inset
@@ -21585,6 +21660,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multicolumn-Calculations"
 
 \end_inset
@@ -21842,6 +21918,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Formal-Tables"
 
 \end_inset
@@ -22179,6 +22256,7 @@ array
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "cha:Units-available-in"
 
 \end_inset
@@ -22210,6 +22288,7 @@ strut
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Vertical-alignment-of"
 
 \end_inset
@@ -22553,6 +22632,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-cells-align"
 
 \end_inset
@@ -22813,6 +22893,7 @@ name "tab:Table-align-operator"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-align-operator"
 
 \end_inset
@@ -22844,6 +22925,7 @@ reference "tab:Table-align-operator"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Several-table-cell"
 
 \end_inset
@@ -22857,6 +22939,7 @@ reference "tab:Several-table-cell"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-align-operator"
 
 \end_inset
@@ -23219,6 +23302,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Table-Width-Calculation"
 
 \end_inset
@@ -23231,6 +23315,7 @@ reference "sec:Table-Width-Calculation"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multicolumn-Calculations"
 
 \end_inset
@@ -23329,6 +23414,7 @@ hspace{0pt}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multiple-Lines-in"
 
 \end_inset
@@ -23405,6 +23491,7 @@ arrayrulewidth)*(1-#2))/#2}}
 В этом формате используется уравнение 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:Wgn"
 
 \end_inset
@@ -23483,6 +23570,7 @@ K{color name}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-using-user-defined"
 
 \end_inset
@@ -23728,6 +23816,7 @@ pt,
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-1.5"
 
 \end_inset
@@ -23954,6 +24043,7 @@ pt только для горизонтальных линий,
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-horizontal"
 
 \end_inset
@@ -24267,6 +24357,7 @@ pt только для вертикальных линий,
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Customized-Format"
 
 \end_inset
@@ -24292,6 +24383,7 @@ vrule width 1.5pt}}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-vertical"
 
 \end_inset
@@ -24933,6 +25025,7 @@ cdashline{2-4}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Table-with-dashed"
 
 \end_inset
@@ -24984,6 +25077,7 @@ cdashline{4-5}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Colored-table-with"
 
 \end_inset
@@ -25603,6 +25697,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Colored-Tables"
 
 \end_inset
@@ -25877,6 +25972,7 @@ arydshln
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Colored-table-with"
 
 \end_inset
@@ -26090,6 +26186,7 @@ name "sec:FloatIntroduction"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Referencing-Floats"
 
 \end_inset
@@ -26134,6 +26231,7 @@ arg   "float-insert table"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Caption-Placement"
 
 \end_inset
@@ -26182,6 +26280,7 @@ reference "sec:Caption-Placement"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Figure-Floats"
 
 \end_inset
@@ -26189,6 +26288,7 @@ reference "sec:Figure-Floats"
  и 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Table-Floats"
 
 \end_inset
@@ -26219,6 +26319,7 @@ reference "sec:Table-Floats"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Wrap-Floats"
 
 \end_inset
@@ -26307,6 +26408,7 @@ end loop
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "cha:Program-Code-Listings"
 
 \end_inset
@@ -26331,6 +26433,7 @@ reference "cha:Program-Code-Listings"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "alg:Example-Algorithm-float"
 
 \end_inset
@@ -26515,6 +26618,7 @@ amsmath
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Footnote-Numbering"
 
 \end_inset
@@ -26693,6 +26797,7 @@ status collapsed
  
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:Two-distorted-images"
 
 \end_inset
@@ -26708,6 +26813,7 @@ reference "fig:Two-distorted-images"
  
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:Wgn"
 
 \end_inset
@@ -26725,6 +26831,7 @@ reference "eq:Wgn"
 
 \begin_inset CommandInset ref
 LatexCommand pageref
+nolink "false"
 reference "fig:Two-distorted-images"
 
 \end_inset
@@ -26755,6 +26862,7 @@ reference "fig:Two-distorted-images"
  
 \begin_inset CommandInset ref
 LatexCommand vpageref
+nolink "false"
 reference "fig:Two-distorted-images"
 
 \end_inset
@@ -26790,6 +26898,7 @@ reference "fig:Two-distorted-images"
  
 \begin_inset CommandInset ref
 LatexCommand vref
+nolink "false"
 reference "fig:Two-distorted-images"
 
 \end_inset
@@ -26974,6 +27083,7 @@ refstyle
  
 \begin_inset CommandInset ref
 LatexCommand nameref
+nolink "false"
 reference "fig:Two-distorted-images"
 
 \end_inset
@@ -26995,6 +27105,7 @@ LatexCommand labelonly
 reference "fig:Two-distorted-images"
 plural "false"
 caps "false"
+nolink "false"
 noprefix "false"
 
 \end_inset
@@ -27016,6 +27127,7 @@ LatexCommand labelonly
 reference "fig:Two-distorted-images"
 plural "false"
 caps "false"
+nolink "false"
 noprefix "true"
 
 \end_inset
@@ -27344,6 +27456,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Cross-Reference-Formats"
 
 \end_inset
@@ -28172,6 +28285,7 @@ literal "true"
  раздел 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Rotated-Floats"
 
 \end_inset
@@ -28249,6 +28363,7 @@ figureright
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Rotated-table"
 
 \end_inset
@@ -28397,6 +28512,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Two-subtables-side"
 
 \end_inset
@@ -28404,6 +28520,7 @@ reference "tab:Two-subtables-side"
  и 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Two-subtables-upon"
 
 \end_inset
@@ -28421,6 +28538,7 @@ reference "tab:Two-subtables-upon"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:This-is-subtable-a"
 
 \end_inset
@@ -28428,6 +28546,7 @@ reference "tab:This-is-subtable-a"
  и 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:This-is-subtable-b"
 
 \end_inset
@@ -28440,6 +28559,7 @@ reference "tab:This-is-subtable-b"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Two-subtables-side"
 
 \end_inset
@@ -28912,6 +29032,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:Float-left"
 
 \end_inset
@@ -28919,6 +29040,7 @@ reference "fig:Float-left"
  и 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:Float-right"
 
 \end_inset
@@ -28937,6 +29059,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Minipages"
 
 \end_inset
@@ -29095,6 +29218,7 @@ name "fig:Float-right"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Minipages"
 
 \end_inset
@@ -29247,6 +29371,7 @@ captionsetup[тип-плавающего-объекта]{определение-
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:This-is-an-fig"
 
 \end_inset
@@ -29258,6 +29383,7 @@ reference "fig:This-is-an-fig"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:This-is-an-tab"
 
 \end_inset
@@ -29795,6 +29921,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Caption-Formatting"
 
 \end_inset
@@ -29876,6 +30003,7 @@ KOMA-Script
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:A-caption-marked"
 
 \end_inset
@@ -29896,6 +30024,7 @@ reference "tab:A-caption-marked"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:A-standard-table"
 
 \end_inset
@@ -30661,6 +30790,7 @@ TabBesEnd
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:cap-beside-fig"
 
 \end_inset
@@ -30672,6 +30802,7 @@ reference "fig:cap-beside-fig"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:cap-beside-tab"
 
 \end_inset
@@ -30758,6 +30889,7 @@ sidecaptionvpos{figure}{c}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:cap-beside-fig-2"
 
 \end_inset
@@ -30783,6 +30915,7 @@ reference "fig:cap-beside-fig-2"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:cap-beside-tab"
 
 \end_inset
@@ -30833,6 +30966,7 @@ FigBesBeg
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:cap-beside-tab-wider"
 
 \end_inset
@@ -30924,6 +31058,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Reference-Position"
 
 \end_inset
@@ -31404,6 +31539,7 @@ name "tab:cap-beside-tab-wider"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:cap-beside-tab"
 
 \end_inset
@@ -32169,6 +32305,7 @@ thefootnote}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Referencing-Floats"
 
 \end_inset
@@ -32184,6 +32321,7 @@ reference "sec:Referencing-Floats"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "foot:This-is-an"
 
 \end_inset
@@ -32209,6 +32347,7 @@ reference "foot:This-is-an"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Footnotes-in-Multi-page"
 
 \end_inset
@@ -32234,6 +32373,7 @@ reference "subsec:Footnotes-in-Multi-page"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Minipages"
 
 \end_inset
@@ -32394,6 +32534,7 @@ footnotemark[номер]
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "foot:This-is-an"
 
 \end_inset
@@ -32902,6 +33043,7 @@ vspace{1.5mm}}}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:Standard-footnote-placement"
 
 \end_inset
@@ -32915,6 +33057,7 @@ reference "fig:Standard-footnote-placement"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:Footnote-placement-in"
 
 \end_inset
@@ -33101,6 +33244,7 @@ ftnright
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:Endnotes"
 
 \end_inset
@@ -33251,6 +33395,7 @@ notesname}{Anmerkungen}
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Footnote-Numbering"
 
 \end_inset
@@ -33284,6 +33429,7 @@ theendnote
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Footnote-Numbering"
 
 \end_inset
@@ -33321,6 +33467,7 @@ footnotemark
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Footnotes"
 
 \end_inset
@@ -33647,6 +33794,7 @@ AVeryLongMarginParWord that isn't hyphenated
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multiple-Lines-in"
 
 \end_inset
@@ -33867,6 +34015,7 @@ marginnote
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Units"
 
 \end_inset
@@ -34393,6 +34542,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Minipages"
 
 \end_inset
@@ -34407,6 +34557,7 @@ reference "sec:Minipages"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Decoration"
 
 \end_inset
@@ -34421,6 +34572,7 @@ reference "sec:Decoration"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Prevent-Hyphenation"
 
 \end_inset
@@ -34435,6 +34587,7 @@ reference "sec:Prevent-Hyphenation"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Vertical-Alignment"
 
 \end_inset
@@ -34448,6 +34601,7 @@ reference "subsec:Vertical-Alignment"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Colored-Boxes"
 
 \end_inset
@@ -34513,6 +34667,7 @@ Minipage
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Minipages"
 
 \end_inset
@@ -34529,6 +34684,7 @@ Parbox
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Parboxes"
 
 \end_inset
@@ -34541,6 +34697,7 @@ Makebox
  в 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Prevent-Hyphenation"
 
 \end_inset
@@ -34600,6 +34757,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Prevent-Hyphenation"
 
 \end_inset
@@ -34670,6 +34828,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Units"
 
 \end_inset
@@ -35471,6 +35630,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Colored-Boxes"
 
 \end_inset
@@ -35835,6 +35995,7 @@ definecolor
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Colored-Tables"
 
 \end_inset
@@ -35865,6 +36026,7 @@ color
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Colored-Boxes"
 
 \end_inset
@@ -36157,6 +36319,7 @@ This is an English footnote.
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Colored-Boxes"
 
 \end_inset
@@ -36974,6 +37137,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Colored-Tables"
 
 \end_inset
@@ -37948,6 +38112,7 @@ status open
  В таблице 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Units"
 
 \end_inset
@@ -38570,6 +38735,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "fig:This-is-a"
 
 \end_inset
@@ -38650,6 +38816,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "chap:Floats"
 
 \end_inset
@@ -38683,6 +38850,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Wrap-Floats"
 
 \end_inset
@@ -39636,6 +39804,7 @@ footnotetext
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Footnotes"
 
 \end_inset
@@ -40499,6 +40668,7 @@ Omit text in PDF
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Child-Documents"
 
 \end_inset
@@ -40815,6 +40985,7 @@ Beamer
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Graphics-Dialog"
 
 \end_inset
@@ -40915,6 +41086,7 @@ spreadsheet.lyx
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Graphics-Dialog"
 
 \end_inset
@@ -41162,6 +41334,7 @@ literal "true"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:External-Subsection-1"
 
 \end_inset
@@ -41390,6 +41563,7 @@ status open
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "cha:Program-Code-Listings"
 
 \end_inset
@@ -41887,6 +42061,7 @@ p
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Float-Settings"
 
 \end_inset
@@ -41931,6 +42106,7 @@ h
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "lst:Example-Listing"
 
 \end_inset
@@ -42365,6 +42541,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Child-Documents"
 
 \end_inset
@@ -42403,6 +42580,7 @@ reference "sec:Child-Documents"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "lst:file-listing"
 
 \end_inset
@@ -42618,6 +42796,7 @@ name "cha:Units-available-in"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Units"
 
 \end_inset
@@ -47301,6 +47480,7 @@ status collapsed
 (
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "eq:Wgn"
 
 \end_inset
@@ -47380,6 +47560,7 @@ pt.
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:Wtot_n"
 
 \end_inset
@@ -47409,6 +47590,7 @@ W_{\mathrm{tot\,mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\c
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:Wtot_n"
 
 \end_inset
@@ -47416,6 +47598,7 @@ reference "eq:Wtot_n"
  и 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:Wtot_mult"
 
 \end_inset

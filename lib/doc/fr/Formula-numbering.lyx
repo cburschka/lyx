@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 614
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -239,6 +239,7 @@ A=I\label{eq:I}
 Références croisées: 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:B"
 
 \end_inset
@@ -246,6 +247,7 @@ reference "eq:B"
  , 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:C"
 
 \end_inset
@@ -253,6 +255,7 @@ reference "eq:C"
  , 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:F"
 
 \end_inset
@@ -260,6 +263,7 @@ reference "eq:F"
  , 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:G"
 
 \end_inset
@@ -267,6 +271,7 @@ reference "eq:G"
  , 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:D"
 
 \end_inset
@@ -274,6 +279,7 @@ reference "eq:D"
  , 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:E"
 
 \end_inset
@@ -281,6 +287,7 @@ reference "eq:E"
  , 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:H"
 
 \end_inset
@@ -288,6 +295,7 @@ reference "eq:H"
  , 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:I"
 
 \end_inset

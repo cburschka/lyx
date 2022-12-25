@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 611
+\lyxformat 614
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1249,6 +1249,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Contrib"
 
 \end_inset
@@ -1390,6 +1391,7 @@ LatexCommand ref
 reference "sec:Contrib"
 plural "false"
 caps "false"
+nolink "false"
 noprefix "false"
 
 \end_inset
@@ -1804,6 +1806,7 @@ Enter
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Units"
 
 \end_inset

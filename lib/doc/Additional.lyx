@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 610
+\lyxformat 614
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -4964,6 +4964,7 @@ See also the document classes in the Collections (section
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Collections"
 
 \end_inset
@@ -7782,6 +7783,7 @@ See also the document classes in the Collections (section
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Collections"
 
 \end_inset
@@ -7872,6 +7874,7 @@ section
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Inserting-TeX-Code"
 
 \end_inset
@@ -8836,6 +8839,7 @@ slides (default)
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:slitex"
 
 \end_inset
@@ -9010,6 +9014,7 @@ Foil\SpecialChar TeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:foilfoot"
 
 \end_inset
@@ -9581,6 +9586,7 @@ Foil\SpecialChar TeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:unsuppfoils"
 
 \end_inset
@@ -9767,6 +9773,7 @@ Selection
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "chap:bullets"
 
 \end_inset
@@ -9776,6 +9783,7 @@ reference "chap:bullets"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:bullet"
 
 \end_inset
@@ -10473,6 +10481,7 @@ slides (Foil\SpecialChar TeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:foiltex"
 
 \end_inset
@@ -10679,6 +10688,7 @@ s.
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:slideNote"
 
 \end_inset
@@ -11218,6 +11228,7 @@ Slide
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:slideQuirk"
 
 \end_inset
@@ -11574,6 +11585,7 @@ VisibleText
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:slideQuirk"
 
 \end_inset
@@ -12029,6 +12041,7 @@ clock
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:slidesetup"
 
 \end_inset
@@ -12448,6 +12461,7 @@ Foils
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:foiltex"
 
 \end_inset
@@ -12533,6 +12547,7 @@ report
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Collections"
 
 \end_inset
@@ -17815,6 +17830,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Inserting-TeX-Code"
 
 \end_inset
@@ -19204,6 +19220,7 @@ main document
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Multiple-Bibliographies"
 
 \end_inset
@@ -21742,6 +21759,7 @@ ation manually.
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:configuring-viewers"
 
 \end_inset
@@ -22986,6 +23004,7 @@ To make forward search possible, you first need to provide the generated
  This can be done via the methods described in the section 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:rev-search"
 
 \end_inset
@@ -24906,6 +24925,7 @@ peculiar
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:kluwer_peculiarities"
 
 \end_inset
@@ -25740,6 +25760,7 @@ If you have bad luck, the text will break right between the referenced text
  See section 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:chktex"
 
 \end_inset
@@ -27096,6 +27117,7 @@ rlog -r <file-name>
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:VCS-Revision-Information"
 
 \end_inset
@@ -27796,6 +27818,7 @@ cvs log -r <file-name>
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:VCS-Revision-Information"
 
 \end_inset
@@ -27832,6 +27855,7 @@ status collapsed
 Most of the commands will work with 1.4 too, see 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:SVN-Repo-Update"
 
 \end_inset
@@ -27922,6 +27946,7 @@ In case locking is not enabled.
  See Section 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:SVN-File-Locking"
 
 \end_inset
@@ -28337,6 +28362,7 @@ SVN has two such mechanisms to provide mutual exclusivity for file access
  
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Automatical-Locking-Property"
 
 \end_inset
@@ -29675,6 +29701,7 @@ git describe --abbrev --dirty --long
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:VCS-Revision-Information"
 
 \end_inset
@@ -30878,6 +30905,7 @@ Note however that you must enable the \SpecialChar LyX
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Starting-the-Server"
 
 \end_inset

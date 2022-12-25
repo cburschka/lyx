@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 610
+\lyxformat 614
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -878,6 +878,7 @@ intertext,
  voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Texte-dans-multi-lignes"
 
 \end_inset
@@ -2453,6 +2454,7 @@ Vous ne pouvez donc pas l'utiliser en code \SpecialChar TeX
 Dans 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Fractions-personnalisées"
 
 \end_inset
@@ -2469,6 +2471,7 @@ Les fractions multi-lignes sont détaillées à la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Fractions-multilignes"
 
 \end_inset
@@ -3493,6 +3496,7 @@ Les accents et autres trémas, comme ceux présents dans la formule précédente
  sont expliqués dans 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Accents-sur-un-caractère"
 
 \end_inset
@@ -3719,6 +3723,7 @@ Le dernier exemple montre que toutes les négations n'ont pas forcément un
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Symboles-mathématiques"
 
 \end_inset
@@ -3730,6 +3735,7 @@ reference "subsec:Symboles-mathématiques"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Relations"
 
 \end_inset
@@ -3813,6 +3819,7 @@ status collapsed
 Plus d'information sur les symboles chimiques dans 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Symboles-chimiques"
 
 \end_inset
@@ -4292,6 +4299,7 @@ int
  insère le signe de l'intégrale, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Grands-opérateurs"
 
 \end_inset
@@ -4309,6 +4317,7 @@ reference "subsec:Grands-opérateurs"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Crochets-multilignes"
 
 \end_inset
@@ -4673,6 +4682,7 @@ Le décalage vertical optionnel déplace la ligne vers le haut (ou vers le
  Les unités utilisables pour ces valeurs sont listées dans 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "tab:Unités-disponibles"
 
 \end_inset
@@ -5425,6 +5435,7 @@ hfill
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Espace-variable"
 
 \end_inset
@@ -5851,6 +5862,7 @@ parenthèse
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Taille-parenthèses-automatique"
 
 \end_inset
@@ -6223,6 +6235,7 @@ arraycolsep
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Séparation-des-colonnes"
 
 \end_inset
@@ -7955,6 +7968,7 @@ Pour les vecteurs physiques, il existe un paquetage \SpecialChar LaTeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Vecteurs-physiques"
 
 \end_inset
@@ -8625,6 +8639,7 @@ Les commandes concernant les espaces sont expliquées dans
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Espace-prédéfini"
 
 \end_inset
@@ -8676,6 +8691,7 @@ Parce que l'accolade n'est pas traitée comme un caractère, voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Opérateurs-binaires"
 
 \end_inset
@@ -8717,6 +8733,7 @@ hphantom
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Garnitures"
 
 \end_inset
@@ -8884,6 +8901,7 @@ pt juste après la formule, en utilisant la même commande.
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Séparation-des-lignes"
 
 \end_inset
@@ -9682,6 +9700,7 @@ Les flèches qui sont utilisées comme accentuation, comme par exemple les
  flèches des vecteurs, sont listées dans 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Accents"
 
 \end_inset
@@ -10784,6 +10803,7 @@ Les flèches verticales peuvent aussi être utilisées comme séparateurs en
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Taille-parenthèses-manuelle"
 
 \end_inset
@@ -10795,6 +10815,7 @@ reference "subsec:Taille-parenthèses-manuelle"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Taille-parenthèses-automatique"
 
 \end_inset
@@ -10862,6 +10883,7 @@ status collapsed
 pour les accents dans le texte, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Accents-dans-le-texte"
 
 \end_inset
@@ -10907,6 +10929,7 @@ texorpdfstring
  dans la section 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:formules-dans-les-entêtes"
 
 \end_inset
@@ -12848,6 +12871,7 @@ Les tailles 5
 7 sont des espaces variables qui sont décrites en 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Espace-variable"
 
 \end_inset
@@ -13300,6 +13324,7 @@ status collapsed
 pour les espacements verticaux dans les formules, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Séparation-des-lignes"
 
 \end_inset
@@ -13337,6 +13362,7 @@ Plus au sujet de
 texorpdfstring dans la section 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:formules-dans-les-entêtes"
 
 \end_inset
@@ -13714,6 +13740,7 @@ Indenté
  (Les styles de formules sont expliqués dans 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Styles-de-formules"
 
 \end_inset
@@ -13743,6 +13770,7 @@ hrulefill
  qui remplissent l'espace avec un motif, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Points-de-suspension"
 
 \end_inset
@@ -15563,6 +15591,7 @@ Un exemple:
 La formule 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:rouge"
 
 \end_inset
@@ -15574,6 +15603,7 @@ reference "eq:rouge"
 La formule 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:rougevert"
 
 \end_inset
@@ -16512,6 +16542,7 @@ tag
 , voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Numérotation-personnalisée"
 
 \end_inset
@@ -16623,6 +16654,7 @@ hfill
  (pour les styles de formules, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Styles-de-formules"
 
 \end_inset
@@ -17515,6 +17547,7 @@ int
 dans la manière dont sont affichés les limites, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Limites-des-opérateurs"
 
 \end_inset
@@ -17553,6 +17586,7 @@ status collapsed
 Pour les styles de polices, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Styles-de-polices"
 
 \end_inset
@@ -18271,6 +18305,7 @@ Comme dans le cas de la formule
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:substack"
 
 \end_inset
@@ -18374,6 +18409,7 @@ Appliqué à la formule
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:substack"
 
 \end_inset
@@ -18579,6 +18615,7 @@ On décrit comment utiliser une limite pour plusieurs opérateurs dans
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Opérateurs-personnalisés"
 
 \end_inset
@@ -20168,6 +20205,7 @@ L'affichage peut être composé de caractères ou de symboles qui définissent
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Limites-des-opérateurs"
 
 \end_inset
@@ -20207,6 +20245,7 @@ Losange
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Symboles-divers"
 
 \end_inset
@@ -21390,6 +21429,7 @@ Vous pouvez aussi définir vos propres couleurs comme il est expliqué dans
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Boîtes-colorées"
 
 \end_inset
@@ -22965,6 +23005,7 @@ On explique comment obtenir des lettres grecques droites spéciales dans
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:minuscules-grecques-droites"
 
 \end_inset
@@ -23687,6 +23728,7 @@ Plus au sujet de
 texorpdfstring dans la section 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:formules-dans-les-entêtes"
 
 \end_inset
@@ -25399,6 +25441,7 @@ Certains symboles peuvent être affichés dans plusieurs tailles, voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Tailles-polices"
 
 \end_inset
@@ -28096,6 +28139,7 @@ DeclareMathOperator
  voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Opérateurs-personnalisés"
 
 \end_inset
@@ -28623,6 +28667,7 @@ Voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Limites-des-opérateurs"
 
 \end_inset
@@ -30095,6 +30140,7 @@ v
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Accents-sur-un-caractère"
 
 \end_inset
@@ -30288,6 +30334,7 @@ Voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Tailles-polices"
 
 \end_inset
@@ -30316,6 +30363,7 @@ Voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Boîtes-sans-cadre"
 
 \end_inset
@@ -30522,6 +30570,7 @@ voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Environnement-Flalign"
 
 \end_inset
@@ -30584,6 +30633,7 @@ qui est décrit dans
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Environnement-align-standard"
 
 \end_inset
@@ -30607,6 +30657,7 @@ qui est décrit dans
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Environnement-eqnarray"
 
 \end_inset
@@ -31287,6 +31338,7 @@ hspace
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Espace-variable"
 
 \end_inset
@@ -31475,6 +31527,7 @@ d'autres méthodes pour créer des formules longues sont offertes par les
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Environnement-Multline"
 
 \end_inset
@@ -31486,6 +31539,7 @@ reference "subsec:Environnement-Multline"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Portions-de-formules-en-multiligne"
 
 \end_inset
@@ -31773,6 +31827,7 @@ right
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Taille-parenthèses-automatique"
 
 \end_inset
@@ -32108,6 +32163,7 @@ hfill
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Espace-variable"
 
 \end_inset
@@ -32134,6 +32190,7 @@ Pour les styles de formules, voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Styles-de-formules"
 
 \end_inset
@@ -32203,6 +32260,7 @@ alignat
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Espace"
 
 \end_inset
@@ -32312,6 +32370,7 @@ soit utilisé.
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:VolInt"
 
 \end_inset
@@ -32510,6 +32569,7 @@ gather
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:lefteqn"
 
 \end_inset
@@ -32546,6 +32606,7 @@ Pour les styles de numérotation, voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Styles-de-formules"
 
 \end_inset
@@ -32928,6 +32989,7 @@ aligned
  Comme exemple, voici la formule
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:courtlong"
 
 \end_inset
@@ -33523,6 +33585,7 @@ Sauf pour les formules en ligne, toutes les formules peuvent être numérotées
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Styles-de-formules"
 
 \end_inset
@@ -33680,6 +33743,7 @@ Les équations
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:tag"
 
 \end_inset
@@ -33691,6 +33755,7 @@ reference "eq:tag"
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:c"
 
 \end_inset
@@ -33703,6 +33768,7 @@ reference "eq:c"
 (
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "eq:Lat"
 
 \end_inset
@@ -33715,6 +33781,7 @@ reference "eq:Lat"
 (
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "eq:Rom"
 
 \end_inset
@@ -33744,6 +33811,7 @@ tag
  est décrit dans 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Numérotation-personnalisée"
 
 \end_inset
@@ -33762,6 +33830,7 @@ reference "subsec:Numérotation-personnalisée"
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Boîtes-de-paragraphes"
 
 \end_inset
@@ -33882,6 +33951,7 @@ Les références croisées aux sous-numéros fonctionnent comme pour les référ
  aux équations normales:
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:b"
 
 \end_inset
@@ -33889,6 +33959,7 @@ reference "eq:b"
 , 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:c"
 
 \end_inset
@@ -33907,6 +33978,7 @@ reference "eq:c"
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:Voici-un-exemple"
 
 \end_inset
@@ -33939,6 +34011,7 @@ Pour les styles de formules, voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Styles-de-formules"
 
 \end_inset
@@ -33998,6 +34071,7 @@ roman{equation}
  Pour en savoir plus sur les variantes de la numérotation, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Numérotation-avec-des"
 
 \end_inset
@@ -34217,6 +34291,7 @@ newcommand
  qui est décrite dans 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Commandes-personnalisées"
 
 \end_inset
@@ -35650,6 +35725,7 @@ status collapsed
 Style de polices, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Styles-de-polices"
 
 \end_inset
@@ -36157,6 +36233,7 @@ ce
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:reaction-chimique"
 
 \end_inset
@@ -36205,6 +36282,7 @@ Pour créer des équations chimiques multi-lignes, on crée d'abord une formule
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Formules-multi-lignes"
 
 \end_inset
@@ -36224,6 +36302,7 @@ ce
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:TEOS-reaction-1"
 
 \end_inset
@@ -36235,6 +36314,7 @@ reference "eq:TEOS-reaction-1"
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:TEOS-reaction-2"
 
 \end_inset
@@ -36635,6 +36715,7 @@ xymatrix
  comme pour une matrice normale, voi 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Matrices"
 
 \end_inset
@@ -36722,6 +36803,7 @@ Diagram
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Matrices"
 
 \end_inset
@@ -37148,6 +37230,7 @@ framebox
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Boîtes-avec-cadre"
 
 \end_inset
@@ -37892,6 +37975,7 @@ fb
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:La-commande-newcommand"
 
 \end_inset
@@ -39358,6 +39442,7 @@ middle
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Taille-parenthèses-automatique"
 
 \end_inset
@@ -39630,6 +39715,7 @@ tbinom
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Fractions"
 
 \end_inset
@@ -40491,6 +40577,7 @@ Voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Formules-en-gras"
 
 \end_inset
@@ -40688,6 +40775,7 @@ status collapsed
 voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Styles-de-formules"
 
 \end_inset
@@ -40848,6 +40936,7 @@ Pour décrire les variables au sein d'une formule, comme dans la formule
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:within"
 
 \end_inset
@@ -40876,6 +40965,7 @@ status collapsed
 Pour les matrices, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Matrices"
 
 \end_inset
@@ -40905,6 +40995,7 @@ Pour les tailles de polices, voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Tailles-polices"
 
 \end_inset
@@ -40928,6 +41019,7 @@ status collapsed
 pour les styles de formules, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "sec:Styles-de-formules"
 
 \end_inset
@@ -40963,6 +41055,7 @@ Indenté
 , voir 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Espace-variable"
 
 \end_inset
@@ -40988,6 +41081,7 @@ Quand on utilise le style de formules
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Environnement-Flalign"
 
 \end_inset
@@ -41000,6 +41094,7 @@ reference "subsec:Environnement-Flalign"
 
 \begin_inset CommandInset ref
 LatexCommand eqref
+nolink "false"
 reference "eq:within"
 
 \end_inset
@@ -41319,6 +41414,7 @@ Voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Opérateurs-binaires"
 
 \end_inset
@@ -41529,6 +41625,7 @@ Obtenus avec les styles de polices, voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Styles-de-polices"
 
 \end_inset
@@ -41553,6 +41650,7 @@ Entre la valeur numérique et l'unité on a la plus petite espace, voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Espace-prédéfini"
 
 \end_inset
@@ -41705,6 +41803,7 @@ les fonctions mathématiques dont le nom est composé de plusieurs lettres
 
 \begin_inset CommandInset ref
 LatexCommand ref
+nolink "false"
 reference "subsec:Fonctions-prédéfinies"
 
 \end_inset
