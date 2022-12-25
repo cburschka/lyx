@@ -4639,7 +4639,38 @@ def revert_familydefault(document):
         
     document.header[i] = "\\font_default_family default"
     add_to_preamble(document, ["\\renewcommand{\\familydefault}{\\" + dfamily + "}"])
-        
+
+
+def revert_hyper_other(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset href", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Cannot find end of inset at line " << str(i))
+            i += 1
+            continue
+        k = find_token(document.body, "type \"other\"", i, j)
+        if k == -1:
+            i = j
+            continue
+        # build command
+        n = find_token(document.body, "name", i, j)
+        t = find_token(document.body, "target", i, j)
+        if n == -1 or t == -1:
+            document.warning("Malformed hyperlink inset at line " + str(i))
+            i = j
+            continue
+        name = document.body[n][6:-1]
+        target = document.body[t][8:-1]
+        cmd = "\href{" + target + "}{" + name + "}"
+        ecmd = put_cmd_in_ert(cmd)
+        document.body[i:j+1] = ecmd
+        i += 1
+
+                   
 ##
 # Conversion hub
 #
@@ -4714,10 +4745,12 @@ convert = [
            [610, []],
            [611, []],
            [612, [convert_starred_refs]],
-           [613, []]
+           [613, []],
+           [614, []]
           ]
 
-revert =  [[612, [revert_familydefault]],
+revert =  [[613, [revert_hyper_other]],
+           [612, [revert_familydefault]],
            [611, [revert_starred_refs]],
            [610, []],
            [609, [revert_index_macros]],

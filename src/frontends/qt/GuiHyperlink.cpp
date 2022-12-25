@@ -17,6 +17,8 @@
 
 #include "insets/InsetHyperlink.h"
 
+#include "support/debug.h"
+
 #if defined(LYX_MERGE_FILES) && !defined(Q_CC_MSVC)
 // GCC couldn't find operator==
 namespace lyx {
@@ -48,6 +50,8 @@ GuiHyperlink::GuiHyperlink(QWidget * parent) : InsetParamsWidget(parent)
 		this, SIGNAL(changed()));
 	connect(fileRB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(noneRB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 
 	setFocusProxy(targetED);
 }
@@ -68,6 +72,10 @@ void GuiHyperlink::paramsToDialog(Inset const * inset)
 		emailRB->setChecked(true);
 	else if (type == "file:")
 		fileRB->setChecked(true);
+	else if (type == "other")
+		noneRB->setChecked(true);
+	else
+		LYXERR0("Unknown hyperlink type: " << type);
 }
 
 
@@ -79,10 +87,12 @@ bool GuiHyperlink::initialiseParams(std::string const & sdata)
 	targetED->setText(toqstr(params["target"]));
 	nameED->setText(toqstr(params["name"]));
 	literalCB->setChecked(params["literal"] == "true");
-	if (params["type"] == from_utf8("mailto:"))
+	if (params["type"] == "mailto:")
 		emailRB->setChecked(true);
-	else if (params["type"] == from_utf8("file:"))
+	else if (params["type"] == "file:")
 		fileRB->setChecked(true);
+	else if (params["type"] == "other")
+		noneRB->setChecked(true);
 	else
 		webRB->setChecked(true);
 	return true;
@@ -101,6 +111,8 @@ docstring GuiHyperlink::dialogToParams() const
 		params["type"] = from_utf8("mailto:");
 	else if (fileRB->isChecked())
 		params["type"] = from_utf8("file:");
+	else if (noneRB->isChecked())
+		params["type"] = from_utf8("other");
 	params["literal"] = literalCB->isChecked()
 			? from_ascii("true") : from_ascii("false");
 	params.setCmdName("href");

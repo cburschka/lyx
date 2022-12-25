@@ -109,10 +109,10 @@ bool InsetHyperlink::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_EDIT: {
+		docstring const & utype = getParam("type");
 		QUrl url(toqstr(getParam("target")),QUrl::StrictMode);
-		bool url_valid = getParam("type").empty() && url.isValid();
-
-		flag.setEnabled(url_valid || getParam("type") == "file:");
+		bool url_valid = utype.empty() && url.isValid();
+		flag.setEnabled(url_valid || utype == "file:");
 		return true;
 		}
 
@@ -128,7 +128,6 @@ void InsetHyperlink::viewTarget() const
 		QUrl url(toqstr(getParam("target")),QUrl::StrictMode);
 		if (!QDesktopServices::openUrl(url))
 			LYXERR0("Unable to open URL!");
-
 	} else if (getParam("type") == "file:") {
 		FileName url = makeAbsPath(to_utf8(getParam("target")), buffer().filePath());
 		string const format = theFormats().getFormatFromFile(url);
@@ -137,11 +136,20 @@ void InsetHyperlink::viewTarget() const
 }
 
 
+docstring makeURL(docstring const & url, docstring const & type) {
+	if (type == "other" ||
+			(!type.empty() && url.find(type) == 0))
+		return url;
+	return type + url;
+}
+
+
 void InsetHyperlink::latex(otexstream & os,
 			   OutputParams const & runparams) const
 {
-	docstring url = getParam("target");
-	docstring name = getParam("name");
+	docstring url   = getParam("target");
+	docstring name  = getParam("name");
+	docstring const & utype = getParam("type");
 	static char_type const chars_url[2] = {'%', '#'};
 
 	// For the case there is no name given, the target is set as name.
@@ -177,10 +185,9 @@ void InsetHyperlink::latex(otexstream & os,
 
 		// add "http://" when the type is web (type = empty)
 		// and no "://" or "run:" is given
-		docstring type = getParam("type");
 		if (url.find(from_ascii("://")) == string::npos
 			&& url.find(from_ascii("run:")) == string::npos
-			&& type.empty())
+			&& utype.empty())
 			url = from_ascii("http://") + url;
 
 	} // end if (!url.empty())
@@ -190,7 +197,7 @@ void InsetHyperlink::latex(otexstream & os,
 					ParamInfo::HANDLING_LATEXIFY);
 		// replace the tilde by the \sim character as suggested in the
 		// LaTeX FAQ for URLs
-		if (getParam("literal") != from_ascii("true")) {
+		if (getParam("literal") != "true") {
 			docstring const sim = from_ascii("$\\sim$");
 			for (size_t i = 0, pos;
 				(pos = name.find('~', i)) != string::npos;
@@ -203,7 +210,7 @@ void InsetHyperlink::latex(otexstream & os,
 		os << "\\protect";
 
 	// output the ready \href command
-	os << "\\href{" << getParam("type") << url << "}{" << name << '}';
+	os << "\\href{" << makeURL(url, utype) << "}{" << name << '}';
 }
 
 
@@ -226,7 +233,8 @@ int InsetHyperlink::plaintext(odocstringstream & os,
 
 void InsetHyperlink::docbook(XMLStream & xs, OutputParams const &) const
 {
-	xs << xml::StartTag("link", "xlink:href=\"" + subst(getParam("target"), from_ascii("&"), from_ascii("&amp;")) + "\"");
+	docstring target = subst(getParam("target"), from_ascii("&"), from_ascii("&amp;")) ;
+	xs << xml::StartTag("link", "xlink:href=\"" + makeURL(target, getParam("type")) + "\"");
 	xs << xml::escapeString(getParam("name"));
 	xs << xml::EndTag("link");
 }
@@ -236,8 +244,8 @@ docstring InsetHyperlink::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	docstring const & target =
 		xml::escapeString(getParam("target"), XMLStream::ESCAPE_AND);
-	docstring const & name   = getParam("name");
-	xs << xml::StartTag("a", to_utf8("href=\"" + target + "\""));
+	docstring const & name = getParam("name");
+	xs << xml::StartTag("a", to_utf8("href=\"" + makeURL(target, getParam("type")) + "\""));
 	xs << (name.empty() ? target : name);
 	xs << xml::EndTag("a");
 	return docstring();
@@ -265,13 +273,15 @@ void InsetHyperlink::forOutliner(docstring & os, size_t const, bool const) const
 
 docstring InsetHyperlink::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) const
 {
-	docstring url = getParam("target");
-	docstring type = getParam("type");
+	docstring const & url = getParam("target");
+	docstring const & type = getParam("type");
 	docstring guitype = _("www");
 	if (type == "mailto:")
 		guitype = _("email");
 	else if (type == "file:")
 		guitype = _("file");
+	else if (type == "other")
+		guitype = _("other");
 	return bformat(_("Hyperlink (%1$s) to %2$s"), guitype, url);
 }
 
