@@ -553,59 +553,34 @@ int InsetIPAChar::plaintext(odocstringstream & os, OutputParams const &, size_t)
 }
 
 
+namespace {
+std::string ipaCharToXMLEntity(InsetIPAChar::Kind kind) {
+	switch (kind) {
+	case InsetIPAChar::Kind::TONE_FALLING:
+		return "&#x2e5;&#x2e9;";
+	case InsetIPAChar::Kind::TONE_RISING:
+		return "&#x2e9;&#x2e5;";
+	case InsetIPAChar::Kind::TONE_HIGH_RISING:
+		return "&#x2e7;&#x2e5;";
+	case InsetIPAChar::Kind::TONE_LOW_RISING:
+		return "&#x2e9;&#x2e7;";
+	case InsetIPAChar::Kind::TONE_HIGH_RISING_FALLING:
+		return "&#x2e8;&#x2e5;&#x2e8;";
+	}
+	return "";
+}
+}
+
+
 void InsetIPAChar::docbook(XMLStream & xs, OutputParams const &) const
 {
-	switch (kind_) {
-	case TONE_FALLING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
-		xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
-		break;
-	case TONE_RISING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
-		xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
-		break;
-	case TONE_HIGH_RISING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e7;";
-		xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
-		break;
-	case TONE_LOW_RISING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e9;";
-		xs << XMLStream::ESCAPE_NONE << "&#x2e7;";
-		break;
-	case TONE_HIGH_RISING_FALLING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e8;";
-		xs << XMLStream::ESCAPE_NONE << "&#x2e5;";
-		xs << XMLStream::ESCAPE_NONE << "&#x2e8;";
-		break;
-	}
+	xs << XMLStream::ESCAPE_NONE << from_ascii(ipaCharToXMLEntity(kind()));
 }
 
 
 docstring InsetIPAChar::xhtml(XMLStream & xs, OutputParams const &) const
 {
-	switch (kind_) {
-	case TONE_FALLING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e5;"
-		   << XMLStream::ESCAPE_NONE << "&#x2e9;";
-		break;
-	case TONE_RISING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e9;"
-		   << XMLStream::ESCAPE_NONE << "&#x2e5;";
-		break;
-	case TONE_HIGH_RISING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e7;"
-		   << XMLStream::ESCAPE_NONE << "&#x2e5;";
-		break;
-	case TONE_LOW_RISING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e9;"
-		   << XMLStream::ESCAPE_NONE << "&#x2e7;";
-		break;
-	case TONE_HIGH_RISING_FALLING:
-		xs << XMLStream::ESCAPE_NONE << "&#x2e8;"
-		   << XMLStream::ESCAPE_NONE << "&#x2e5;"
-		   << XMLStream::ESCAPE_NONE << "&#x2e8;";
-		break;
-	}
+	xs << XMLStream::ESCAPE_NONE << from_ascii(ipaCharToXMLEntity(kind()));
 	return docstring();
 }
 
