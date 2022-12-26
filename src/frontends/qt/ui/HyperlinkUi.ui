@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>306</width>
+    <width>319</width>
     <height>226</height>
    </rect>
   </property>
@@ -130,7 +130,7 @@
       <item>
        <widget class="QRadioButton" name="webRB">
         <property name="toolTip">
-         <string>Link to the web or to every other target</string>
+         <string>Link to the web</string>
         </property>
         <property name="text">
          <string>&amp;Web</string>
@@ -162,8 +162,11 @@
       </item>
       <item>
        <widget class="QRadioButton" name="noneRB">
+        <property name="toolTip">
+         <string>Link to an arbitrary other URI scheme (to be specified in the Target field above)</string>
+        </property>
         <property name="text">
-         <string>Other</string>
+         <string>&amp;Other[[Link Type]]</string>
         </property>
        </widget>
       </item>
