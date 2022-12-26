@@ -3528,9 +3528,12 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
                                                       bool is_last_par,
                                                       bool ignore_fonts) const
 {
-	std::vector<docstring> prependedParagraphs;
-	std::vector<docstring> generatedParagraphs;
-	std::vector<docstring> appendedParagraphs;
+	// Return values: segregation of the content of this paragraph.
+	std::vector<docstring> prependedParagraphs; // Anything that must be output before the main tag of this paragraph.
+	std::vector<docstring> generatedParagraphs; // The main content of the paragraph.
+	std::vector<docstring> appendedParagraphs;  // Anything that must be output after the main tag of this paragraph.
+
+	// Internal string stream to store the output before being added to one of the previous lists.
 	odocstringstream os;
 
 	// If there is an argument that must be output before the main tag, do it before handling the rest of the paragraph.
@@ -3560,13 +3563,15 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
     std::vector<docstring> delayedChars; // When a font tag ends with a space, output it after the closing font tag.
     // This requires to store delayed characters at some point.
 
-    DocBookFontState fs; // Track whether we have opened font tags
+	// Track whether we have opened font tags
+    DocBookFontState fs;
     DocBookFontState old_fs = fs;
 
     Layout const & style = *d->layout_;
     FontInfo font_old = style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
     string const default_family = buf.masterBuffer()->params().fonts_default_family;
 
+	// Conversion of the font opening/closing into DocBook tags.
     vector<xml::FontTag> tagsToOpen;
     vector<xml::EndFontTag> tagsToClose;
 
