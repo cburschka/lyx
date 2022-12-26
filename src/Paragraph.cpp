@@ -3568,8 +3568,6 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
     DocBookFontState old_fs = fs;
 
     Layout const & style = *d->layout_;
-    FontInfo font_old = style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
-    string const default_family = buf.masterBuffer()->params().fonts_default_family;
 
 	// Conversion of the font opening/closing into DocBook tags.
     vector<xml::FontTag> tagsToOpen;
@@ -3602,14 +3600,17 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
 
 			// Restore the fonts for the new paragraph, so that the right tags are opened for the new entry.
 			if (!ignore_fonts_i) {
-				font_old = outerfont.fontInfo();
 				fs = old_fs;
 			}
 		}
 
 		// Determine which tags should be opened or closed regarding fonts.
+		FontInfo const font_old = (i == 0 ?
+				(style.labeltype == LABEL_MANUAL ? style.labelfont : style.font) :
+				getFont(buf.masterBuffer()->params(), i - 1, outerfont).fontInfo());
 		Font const font = getFont(buf.masterBuffer()->params(), i, outerfont);
-        tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(font_old, font, default_family, fs);
+        tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(
+				font_old, font, buf.masterBuffer()->params().fonts_default_family, fs);
 
 		if (!ignore_fonts_i) {
             vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
@@ -3665,7 +3666,6 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
 					*xs << c;
 			}
 		}
-		font_old = font.fontInfo();
 	}
 
 	// FIXME, this code is just imported from XHTML
