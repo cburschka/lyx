@@ -203,11 +203,8 @@ void InsetMathSpace::mathmlize(MathMLStream & ms) const
 	string l;
 	if (si.custom)
 		l = length_.asHTMLString();
-	else if (si.kind != InsetSpaceParams::MEDIUM) {
-		stringstream ss;
-		ss << si.width;
-		l = ss.str() + "px";
-	}
+	else if (si.kind != InsetSpaceParams::MEDIUM)
+		l = to_string(si.width) + "px";
 
 	std::string attr;
 	if (!l.empty())
@@ -222,23 +219,23 @@ void InsetMathSpace::htmlize(HtmlStream & ms) const
 	SpaceInfo const & si = space_info[space_];
 	switch (si.kind) {
 	case InsetSpaceParams::THIN:
-		ms << from_ascii("&thinsp;");
+		ms << from_ascii("&#x2009;"); // HTML: &thinsp;
 		break;
 	case InsetSpaceParams::MEDIUM:
 		ms << from_ascii("&#160;");
 		break;
 	case InsetSpaceParams::THICK:
-		ms << from_ascii("&emsp;");
+		ms << from_ascii("&#x2003;"); // HTML: &emsp;
 		break;
 	case InsetSpaceParams::ENSKIP:
 	case InsetSpaceParams::ENSPACE:
-		ms << from_ascii("&ensp;");
+		ms << from_ascii("&#x2002;"); // HTML: &ensp;
 		break;
 	case InsetSpaceParams::QUAD:
-		ms << from_ascii("&emsp;");
+		ms << from_ascii("&#x2003;"); // HTML: &emsp;
 		break;
 	case InsetSpaceParams::QQUAD:
-		ms << from_ascii("&emsp;&emsp;");
+		ms << from_ascii("&#x2003;&#x2003;"); // HTML: &emsp;&emsp;
 		break;
 	case InsetSpaceParams::HFILL:
 	case InsetSpaceParams::HFILL_PROTECTED:
