@@ -12,6 +12,15 @@
  * Full author contact details are available in file CREDITS.
  */
 
+// TODO: respect languages when opening tags: par.getParLanguage(bparams) in output_latex.cpp
+// TODO: if the user specifically asks, output change-tracking information (choice between revisionflag attribute and
+//  Oxygen's formatting)
+//    <?oxy_options track_changes="on"?> <!-- After closing root tag -->
+//    <?oxy_comment_start author="XXX" timestamp="20221226T235332+0100" comment="XXX"?>...<?oxy_comment_end?>
+//    <?oxy_insert_start author="XXX" timestamp="20221226T235458+0100"?>XXX<?oxy_insert_end?>
+//    <?oxy_delete author="XXX" timestamp="20221226T235519+0100" content="XXX"?> <!-- XML-encoded deleted text
+//    (including tags) -->
+
 #ifndef OUTPUT_DOCBOOK_H
 #define OUTPUT_DOCBOOK_H
 
