@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-26 10:33+0100\n"
-"PO-Revision-Date: 2022-12-26 09:56+0000\n"
+"POT-Creation-Date: 2022-12-26 11:28+0100\n"
+"PO-Revision-Date: 2022-12-26 10:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2324,8 +2324,12 @@ msgid "Link type"
 msgstr "Typ odkazu"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:133
-msgid "Link to the web"
-msgstr "Odkaz na web"
+msgid ""
+"Link to the web or any other target with an \"authority\" component (i."
+"e., :// in the URI)"
+msgstr ""
+"Odkaz na web alebo iný ľubovoľný cieľ obsahujúci protokol (čiže má '://' v "
+"URI)"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:136
 msgid "&Web"
@@ -2349,10 +2353,11 @@ msgstr "&Súbor"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:166
 msgid ""
-"Link to an arbitrary other URI scheme (to be specified in the Target field "
-"above)"
+"Link to an arbitrary URI scheme not matched by the other three types (to be "
+"fully spelled out in the Target field above)"
 msgstr ""
-"Odkaz na ľubovoľnú URI schému (musí byť špecifikovaný v cieľovom poli hore)"
+"Odkaz na ľubovoľnú URI schému ktorý nepasuje do tých iných troch typov (musí "
+"byť špecifikovaný v cieľovom poli hore)"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:169
 msgid "&Other[[Link Type]]"
@@ -35932,7 +35937,7 @@ msgid "file"
 msgstr "súbor"
 
 #: src/insets/InsetHyperlink.cpp:284
-msgid "other"
+msgid "other[[Hyperlink Type]]"
 msgstr "iný"
 
 #: src/insets/InsetHyperlink.cpp:275
