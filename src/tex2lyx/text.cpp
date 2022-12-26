@@ -4454,6 +4454,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				type = target.substr(0, i + 1);
 				if (type == "mailto:" || type == "file:")
 					target = target.substr(i + 1);
+				else if (target.find("://") == string::npos)
+					type = "other";
 				// handle the case that name is equal to target, except of "http(s)://"
 				else if (target.substr(i + 3) == name && (type == "http:" || type == "https:"))
 					target = name;
@@ -4462,7 +4464,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (name != target)
 				os << "name \"" << name << "\"\n";
 			os << "target \"" << target << "\"\n";
-			if (type == "mailto:" || type == "file:")
+			if (type == "mailto:" || type == "file:" || type == "other")
 				os << "type \"" << type << "\"\n";
 			os << "literal " << lit << "\n";
 			end_inset(os);
