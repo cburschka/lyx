@@ -9917,10 +9917,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -9933,6 +9935,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -9958,6 +9961,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -31644,7 +31648,18 @@ literal "false"
 
 \end_inset
 
- oder einen Link auf eine Datei handelt.
+,
+ einen Link auf eine Datei oder irgend ein anderer zulässiger 
+\emph on
+\lang english
+Uniform Resource Identifier
+\emph default
+\lang ngerman
+ (URI) wie etwa 
+\family sans
+tel:<telefonnummer>
+\family default
+ handelt.
  Die Option 
 \family sans
 Unformatiert
@@ -31670,7 +31685,8 @@ run:
 
 \family default
  einfügen,
- wird eine Anwendung gestartet:
+ wird das System angewiesen,
+ eine Anwendung zu starten:
  
 \begin_inset CommandInset href
 LatexCommand href
@@ -31682,6 +31698,8 @@ literal "false"
 \end_inset
 
 .
+ Beachten Sie aber,
+ dass die meisten PDF-Betrachter solche Links aus Sicherheitsgründen deaktivieren.
 \end_layout
 
 \begin_layout Standard

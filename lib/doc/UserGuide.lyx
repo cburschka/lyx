@@ -33870,7 +33870,19 @@ literal "false"
 \end_inset
 
 ,
- or a link to a file.
+ 
+\change_deleted -712698321 1672058176
+or 
+\change_unchanged
+a link to a file
+\change_inserted -712698321 1672058271
+ or any other valid URI (such as 
+\family sans
+tel:<phone no.>
+\family default
+)
+\change_unchanged
+.
  The option 
 \family sans
 Literal
@@ -33896,7 +33908,12 @@ run:
 \begin_inset Quotes erd
 \end_inset
 
- to the link target.
+ to the link target
+\change_inserted -712698321 1672058343
+,
+ but note that most PDF viewers disable such links for security reasons
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
