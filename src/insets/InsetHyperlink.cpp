@@ -281,7 +281,7 @@ docstring InsetHyperlink::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*
 	else if (type == "file:")
 		guitype = _("file");
 	else if (type == "other")
-		guitype = _("other");
+		guitype = _("other[[Hyperlink Type]]");
 	return bformat(_("Hyperlink (%1$s) to %2$s"), guitype, url);
 }
 
