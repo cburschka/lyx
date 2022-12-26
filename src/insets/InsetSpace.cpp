@@ -774,44 +774,36 @@ int InsetSpace::plaintext(odocstringstream & os,
 }
 
 
-void InsetSpace::docbook(XMLStream & xs, OutputParams const &) const
-{
-	switch (params_.kind) {
+namespace {
+std::string spaceToXMLEntity(InsetSpaceParams::Kind kind) {
+	switch (kind) {
 	case InsetSpaceParams::NORMAL:
-		xs << XMLStream::ESCAPE_NONE << " ";
-		break;
+		return " ";
 	case InsetSpaceParams::QUAD:
-		xs << XMLStream::ESCAPE_NONE << "&#x2003;"; // HTML: &emsp;
-		break;
+		return "&#x2003;"; // HTML: &emsp;
 	case InsetSpaceParams::QQUAD:
-		xs << XMLStream::ESCAPE_NONE << "&#x2003;&#x2003;"; // HTML: &emsp;&emsp;
-		break;
+		return "&#x2003;&#x2003;"; // HTML: &emsp;&emsp;
 	case InsetSpaceParams::ENSKIP:
-		xs << XMLStream::ESCAPE_NONE << "&#x2002;"; // HTML: &ensp;
-		break;
-	case InsetSpaceParams::PROTECTED:
-		xs << XMLStream::ESCAPE_NONE << "&#xA0;"; // HTML: &nbsp;
-		break;
+		return "&#x2002;"; // HTML: &ensp;
 	case InsetSpaceParams::VISIBLE:
-		xs << XMLStream::ESCAPE_NONE << "&#x2423;";
-		break;
+		return "&#x2423;";
 	case InsetSpaceParams::ENSPACE: // HTML: &#x2060;&ensp;&#x2060; (word joiners)
-		xs << XMLStream::ESCAPE_NONE << "&#x2060;&#x2002;&#x2060;";
-		break;
+		return "&#x2060;&#x2002;&#x2060;";
 	case InsetSpaceParams::THIN:
-		xs << XMLStream::ESCAPE_NONE << "&#x2009;"; // HTML: &thinspace;
-		break;
+		return "&#x2009;"; // HTML: &thinspace;
 	case InsetSpaceParams::MEDIUM:
-		xs << XMLStream::ESCAPE_NONE << "&#x2005;"; // HTML: &emsp14;
-		break;
+		return "&#x2005;"; // HTML: &emsp14;
 	case InsetSpaceParams::THICK:
-		xs << XMLStream::ESCAPE_NONE << "&#x2004;"; // HTML: &emsp13;
-		break;
+		return "&#x2004;"; // HTML: &emsp13;
+	case InsetSpaceParams::PROTECTED:
 	case InsetSpaceParams::NEGTHIN:
 	case InsetSpaceParams::NEGMEDIUM:
 	case InsetSpaceParams::NEGTHICK:
-		xs << XMLStream::ESCAPE_NONE << "&#xA0;"; // HTML: &nbsp;
-		break;
+		return "&#xA0;"; // HTML: &nbsp;
+	case InsetSpaceParams::CUSTOM_PROTECTED:
+		// FIXME XHTML/DocBook
+		// Probably we could do some sort of blank span?
+		return "&#160;";
 	case InsetSpaceParams::HFILL:
 	case InsetSpaceParams::HFILL_PROTECTED:
 	case InsetSpaceParams::DOTFILL:
@@ -821,74 +813,24 @@ void InsetSpace::docbook(XMLStream & xs, OutputParams const &) const
 	case InsetSpaceParams::UPBRACEFILL:
 	case InsetSpaceParams::DOWNBRACEFILL:
 	case InsetSpaceParams::CUSTOM:
-	case InsetSpaceParams::CUSTOM_PROTECTED:
-		xs << '\n';
-		break;
+		// FIXME XHTML/DocBook
+		// Can we do anything with those?
+		return "\n";
 	}
+	return "";
+}
+}
+
+
+void InsetSpace::docbook(XMLStream & xs, OutputParams const &) const
+{
+	xs << XMLStream::ESCAPE_NONE << from_ascii(spaceToXMLEntity(params_.kind));
 }
 
 
 docstring InsetSpace::xhtml(XMLStream & xs, OutputParams const &) const
 {
-	string output;
-	switch (params_.kind) {
-	case InsetSpaceParams::NORMAL:
-		output = " ";
-		break;
-	case InsetSpaceParams::ENSKIP:
-		output ="&ensp;";
-		break;
-	case InsetSpaceParams::ENSPACE:
-		output ="&#x2060;&ensp;&#x2060;";
-		break;
-	case InsetSpaceParams::QQUAD:
-		output ="&emsp;&emsp;";
-		break;
-	case InsetSpaceParams::THICK:
-		output ="&#x2004;";
-		break;
-	case InsetSpaceParams::QUAD:
-		output ="&emsp;";
-		break;
-	case InsetSpaceParams::MEDIUM:
-		output ="&#x2005;";
-		break;
-	case InsetSpaceParams::THIN:
-		output ="&thinsp;";
-		break;
-	case InsetSpaceParams::PROTECTED:
-	case InsetSpaceParams::NEGTHIN:
-	case InsetSpaceParams::NEGMEDIUM:
-	case InsetSpaceParams::NEGTHICK:
-		output ="&#160;";
-		break;
-	// no XML entity, only Unicode code for space character exists
-	case InsetSpaceParams::VISIBLE:
-		output ="&#x2423;";
-		break;
-	case InsetSpaceParams::HFILL:
-	case InsetSpaceParams::HFILL_PROTECTED:
-	case InsetSpaceParams::DOTFILL:
-	case InsetSpaceParams::HRULEFILL:
-	case InsetSpaceParams::LEFTARROWFILL:
-	case InsetSpaceParams::RIGHTARROWFILL:
-	case InsetSpaceParams::UPBRACEFILL:
-	case InsetSpaceParams::DOWNBRACEFILL:
-		// FIXME XHTML
-		// Can we do anything with those in HTML?
-		break;
-	case InsetSpaceParams::CUSTOM:
-		// FIXME XHTML
-		// Probably we could do some sort of blank span?
-		break;
-	case InsetSpaceParams::CUSTOM_PROTECTED:
-		// FIXME XHTML
-		// Probably we could do some sort of blank span?
-		output ="&#160;";
-		break;
-	}
-	// don't escape the entities!
-	xs << XMLStream::ESCAPE_NONE << from_ascii(output);
+	xs << XMLStream::ESCAPE_NONE << from_ascii(spaceToXMLEntity(params_.kind));
 	return docstring();
 }
 
