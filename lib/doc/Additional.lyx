@@ -14415,6 +14415,406 @@ maketitle
 \end_layout
 
 \begin_layout Section
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Floats & captions
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Algorithm2e Float
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module uses the 
+\family sans
+algorithm2e
+\family default
+ package for algorithm floats rather than LyX’s home-brewed algorithm floats.
+ Use the Algorithm paragraph style to enter and indent the algorithm.
+ See the 
+\begin_inset CommandInset href
+LatexCommand href
+name "algorithm2e documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Bilingual Captions AKA Multilingual Captions
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module provides the paragraph style 
+\family sans
+Caption
+\begin_inset space ~
+\end_inset
+
+setup
+\family default
+ with which to typeset multilingual captions.
+ Within this paragraph style 
+\family sans
+Insert\SpecialChar menuseparator
+Language
+\family default
+ allows you to enter the desired language using one of the babel names.
+ See 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Multilingual Captions
+\family default
+ and 
+\family sans
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+Multilingual Captions
+\family default
+ further information on its use.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Number Figures by Section
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module resets the figure number at section start and prepends the section
+ number to the figure number, as in “Figure 2.1.” (By default book and report
+ document classes number by Chapter and article document classes have a
+ single sequence.) 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Number Tables by Section
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module resets the table number at section start and prepends the section
+ number to the table number, as in “Table 2.1.” (By default book and report
+ document classes number by Chapter and article document classes have a
+ single sequence.) 
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Foot- and Endnotes
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Endnotes (Basic)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module adds an endnote inset, in addition to footnotes.
+ This uses the 
+\family sans
+endnotes
+\family default
+ package, which has some limitations but works with older LaTeX distributions
+ as well.
+ Use 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Inset\SpecialChar menuseparator
+Endnote
+\family default
+ to insert an endnote and 
+\family sans
+Insert\SpecialChar menuseparator
+List/Contents/References\SpecialChar menuseparator
+Endnotes
+\family default
+ to insert the endnotes list where you want the endnotes to appear.
+ See also 
+\family sans
+Help\SpecialChar menuseparator
+Embedded\SpecialChar menuseparator
+ Objects\SpecialChar menuseparator
+Notes\SpecialChar menuseparator
+Footnotes
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Endnotes (Extended)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module adds an endnote inset, in addition to footnotes.
+ This uses the 
+\family sans
+enotez
+\family default
+ package which is more powerful and customizable than the 
+\family sans
+endnotes
+\family default
+ package, but requires a fairly modern LaTeX distribution (with LaTeX3).
+ Use 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Inset\SpecialChar menuseparator
+Endnote
+\family default
+ to insert an endnote and 
+\family sans
+Insert\SpecialChar menuseparator
+List/Contents/References\SpecialChar menuseparator
+Endnotes
+\family default
+ to insert the endnotes list where you want the endnotes to appear.
+ See also 
+\family sans
+Help\SpecialChar menuseparator
+Embedded\SpecialChar menuseparator
+ Objects\SpecialChar menuseparator
+Notes\SpecialChar menuseparator
+Footnotes
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Footnotes as Endnotes (Basic)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module sets all footnotes as endnotes.
+ This uses the 
+\family sans
+endnotes
+\family default
+ package, which has some limitations but works with older LaTeX distributions
+ as well.
+ Use 
+\family sans
+Insert\SpecialChar menuseparator
+List/Contents/References\SpecialChar menuseparator
+Endnotes
+\family default
+ to insert the endnotes list where you want the endnotes to appear.
+ See also 
+\family sans
+Help\SpecialChar menuseparator
+Embedded\SpecialChar menuseparator
+ Objects\SpecialChar menuseparator
+Notes\SpecialChar menuseparator
+Footnotes
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Footnotes as Endnotes (Extended)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module sets all footnotes as endnotes.
+ This uses the 
+\family sans
+enotez
+\family default
+ package which is more powerful and customizable than then 
+\family sans
+endnotes
+\family default
+ package, but requires a fairly modern LaTeX distribution (with LaTeX3).
+ Use 
+\family sans
+Insert\SpecialChar menuseparator
+List/Contents/References\SpecialChar menuseparator
+Endnotes
+\family default
+ to insert the endnotes list where you want the endnotes to appear.
+ See also 
+\family sans
+Help\SpecialChar menuseparator
+Embedded\SpecialChar menuseparator
+ Objects\SpecialChar menuseparator
+Notes\SpecialChar menuseparator
+Footnotes
+\family default
+.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Leisure, Sports and Music
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Chess Board
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module provides support for the 
+\family sans
+chessboard
+\family default
+ package to print chess games.
+ See 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+Chess
+\family default
+ where you will find 
+\family sans
+Game 1
+\family default
+ and 
+\family sans
+Game 2
+\family default
+ and the 
+\begin_inset CommandInset href
+LatexCommand href
+name "chessboard documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/chessboard/chessboard.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672081439
+
+\lang american
+Lilypond Music Notation
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672081439
+
+\lang american
+This module provides an inset via 
+\family sans
+\bar under
+I
+\bar default
+nsert\SpecialChar menuseparator
+Custom Inset\SpecialChar menuseparator
+Lilypond
+\family default
+ in which to enter code for the LilyPond music editor.
+ It will then be processed in the output.
+ See 
+\family sans
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+Lilypond
+\family default
+ and 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Lilypond Book
+\family default
+.
+ It cannot be used if the modules 
+\family sans
+Rnw
+\begin_inset space \thinspace{}
+\end_inset
+
+(knitr) or Sweave
+\family default
+ have been loaded.
+\end_layout
+
+\begin_layout Section
 Multiple Text Columns
 \end_layout
 
