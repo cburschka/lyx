@@ -14662,7 +14662,91 @@ string
 \end_inset
 
 ] Copies all the features of an existing style into the current one.
- 
+
+\change_deleted 1075283030 1671679775
+
+\change_inserted 1075283030 1671679774
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1672014806
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1671679781
+DocBookGenerateTitle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1672014763
+bool=false
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] Generates a
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1672014789
+title
+\end_layout
+
+\end_inset
+
+ tag after the wrapper tag.
+ This parameter should only be used with
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1671679828
+DocBookWrapperTag
+\end_layout
+
+\end_inset
+
+,
+ otherwise the title will be output
+\emph on
+ before
+\emph default
+ the contents of the environment.
+ The generated title is the same as the LyXHTML label:
+ a combination of the environment type and its number.
+ A major use is when DocBook has no close mapping for LaTeX environments and users must fallback to using a generic container such as
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1672014801
+figure
+\end_layout
+
+\end_inset
+
+,
+ which requires a title although there is none in LaTeX.
+ This feature is heavily used for theorem-like environments.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -15162,6 +15246,8 @@ nolink "false"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 1075283030 1672014684
 \begin_inset Flex Code
 status collapsed
 
@@ -15172,6 +15258,8 @@ InnerTag
 \end_inset
 
  [FIXME] (Used only with XML-type formats.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -15511,6 +15599,8 @@ ItemSep
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 1075283030 1672014680
 \begin_inset Flex Code
 status collapsed
 
@@ -15521,6 +15611,8 @@ ItemTag
 \end_inset
 
  [FIXME] (Used only with XML-type formats.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -15979,9 +16071,13 @@ LabelStringAppendix
 \end_inset
 
  too.
+\change_deleted 1075283030 1672015070
+
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 1075283030 1672015070
 \begin_inset Flex Code
 status collapsed
 
@@ -15992,6 +16088,8 @@ LabelTag
 \end_inset
 
  [FIXME] (Used only with XML-type formats.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
