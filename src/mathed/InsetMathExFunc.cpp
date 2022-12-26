@@ -128,7 +128,7 @@ void InsetMathExFunc::mathmlize(MathMLStream & ms) const
 	   << name_
        << ETagInline("mi")
 	   << MTagInline("mo")
-	   << "&af;"
+	   << "&#x2061;"
 	   << ETagInline("mo")
 	   << cell(0);
 }
