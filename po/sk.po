@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-23 14:04+0100\n"
-"PO-Revision-Date: 2022-12-23 13:19+0000\n"
+"POT-Creation-Date: 2022-12-26 10:33+0100\n"
+"PO-Revision-Date: 2022-12-26 09:56+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2324,8 +2324,8 @@ msgid "Link type"
 msgstr "Typ odkazu"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:133
-msgid "Link to the web or to every other target"
-msgstr "Odkaz na web alebo každý iný ciel"
+msgid "Link to the web"
+msgstr "Odkaz na web"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:136
 msgid "&Web"
@@ -2337,7 +2337,7 @@ msgstr "Odkaz na e-mailovú adresu"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:149
 msgid "E&mail"
-msgstr "E-ma&il"
+msgstr "&E-mail"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:156
 msgid "Link to a file"
@@ -2345,7 +2345,18 @@ msgstr "Odkaz na súbor"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:159
 msgid "Fi&le"
-msgstr "Súbo&r"
+msgstr "&Súbor"
+
+#: src/frontends/qt/ui/HyperlinkUi.ui:166
+msgid ""
+"Link to an arbitrary other URI scheme (to be specified in the Target field "
+"above)"
+msgstr ""
+"Odkaz na ľubovoľnú URI schému (musí byť špecifikovaný v cieľovom poli hore)"
+
+#: src/frontends/qt/ui/HyperlinkUi.ui:169
+msgid "&Other[[Link Type]]"
+msgstr "&Iný"
 
 #: src/frontends/qt/ui/IncludeUi.ui:35
 msgid "I&nclude Type:"
@@ -35919,6 +35930,10 @@ msgstr "e-mail"
 #: src/insets/InsetHyperlink.cpp:274
 msgid "file"
 msgstr "súbor"
+
+#: src/insets/InsetHyperlink.cpp:284
+msgid "other"
+msgstr "iný"
 
 #: src/insets/InsetHyperlink.cpp:275
 #, c-format
