@@ -3589,7 +3589,7 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
 			// Output one paragraph (i.e. one string entry in generatedParagraphs).
 			generatedParagraphs.push_back(os.str());
 
-			// Create a new XMLStream for the new paragraph, completely independent from the previous one. This implies
+			// Create a new XMLStream for the new paragraph, completely independent of the previous one. This implies
 			// that the string stream must be reset.
 			os.str(from_ascii(""));
 			delete xs;
