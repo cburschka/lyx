@@ -283,14 +283,27 @@ void InsetIPADeco::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetIPADeco::plaintext(odocstringstream & os,
-			    OutputParams const & runparams, size_t max_length) const
+namespace {
+std::pair<docstring, docstring> splitPlainTextInHalves(
+		const InsetIPADeco * inset, OutputParams const & runparams,
+		size_t max_length = INT_MAX)
 {
 	odocstringstream ods;
-	int h = InsetCollapsible::plaintext(ods, runparams, max_length) / 2;
+	int h = inset->InsetCollapsible::plaintext(ods, runparams, max_length) / 2;
 	docstring result = ods.str();
 	docstring const before = result.substr(0, h);
 	docstring const after = result.substr(h, result.size());
+	return {before, after};
+}
+}
+
+
+int InsetIPADeco::plaintext(odocstringstream & os,
+			    OutputParams const & runparams, size_t max_length) const
+{
+	docstring before;
+	docstring after;
+	tie(before, after) = splitPlainTextInHalves(this, runparams, max_length);
 
 	if (params_.type == InsetIPADecoParams::Toptiebar) {
 		os << before;
@@ -302,7 +315,7 @@ int InsetIPADeco::plaintext(odocstringstream & os,
 		os.put(0x035c);
 		os << after;
 	}
-	return result.size();
+	return before.size() + after.size();
 }
 
 
@@ -310,11 +323,9 @@ void InsetIPADeco::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
 	// The special combining character must be put in the middle, between the two other characters.
 	// It will not work if there is anything else than two pure characters, so going back to plaintext.
-	odocstringstream ods;
-	int h = InsetText::plaintext(ods, runparams) / 2;
-	docstring result = ods.str();
-	docstring const before = result.substr(0, h);
-	docstring const after = result.substr(h, result.size());
+	docstring before;
+	docstring after;
+	tie(before, after) = splitPlainTextInHalves(this, runparams);
 
 	xs << XMLStream::ESCAPE_NONE << before;
 	if (params_.type == InsetIPADecoParams::Toptiebar)
@@ -327,10 +338,10 @@ void InsetIPADeco::docbook(XMLStream & xs, OutputParams const & runparams) const
 
 docstring InsetIPADeco::xhtml(XMLStream & xs, OutputParams const & runparams) const
 {
-	// FIXME: Like in plaintext, the combining characters "&#x361;" (toptiebar)
-	// or "&#x35c;" (bottomtiebar) would need to be inserted just in the mid
-	// of the text string. (How) can this be done with the xhtml stream?
-	return InsetCollapsible::xhtml(xs, runparams);
+	// The DocBook encoding for this inset has no DocBook tag, but sheer XML (relying on a plaintext
+	// transformation of the inset).
+	docbook(xs, runparams);
+	return docstring();
 }
 
 
