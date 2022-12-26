@@ -184,9 +184,8 @@ void InsetHyperlink::latex(otexstream & os,
 				url.replace(pos, 1, from_ascii("\\") + chars_url[k]);
 
 		// add "http://" when the type is web (type = empty)
-		// and no "://" or "run:" is given
+		// and no "://" is given
 		if (url.find(from_ascii("://")) == string::npos
-			&& url.find(from_ascii("run:")) == string::npos
 			&& utype.empty())
 			url = from_ascii("http://") + url;
 

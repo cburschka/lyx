@@ -4641,7 +4641,37 @@ def revert_familydefault(document):
     add_to_preamble(document, ["\\renewcommand{\\familydefault}{\\" + dfamily + "}"])
 
 
+def convert_hyper_other(document):
+    " Classify \"run:\" links as other "
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset href", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Cannot find end of inset at line " << str(i))
+            i += 1
+            continue
+        k = find_token(document.body, "type \"", i, j)
+        if k != -1:
+            # not a "Web" type. Continue.
+            i = j
+            continue
+        t = find_token(document.body, "target", i, j)
+        if t == -1:
+            document.warning("Malformed hyperlink inset at line " + str(i))
+            i = j
+            continue
+        if document.body[t][8:12] == "run:":
+            document.body.insert(t, "type \"other\"")
+        i += 1
+
+
 def revert_hyper_other(document):
+    " Revert other link type to ERT and \"run:\" to Web "
+
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset href", i)
@@ -4665,9 +4695,12 @@ def revert_hyper_other(document):
             continue
         name = document.body[n][6:-1]
         target = document.body[t][8:-1]
-        cmd = "\href{" + target + "}{" + name + "}"
-        ecmd = put_cmd_in_ert(cmd)
-        document.body[i:j+1] = ecmd
+        if target[:4] == "run:":
+            del document.body[k]
+        else:
+            cmd = "\href{" + target + "}{" + name + "}"
+            ecmd = put_cmd_in_ert(cmd)
+            document.body[i:j+1] = ecmd
         i += 1
 
                    
@@ -4746,7 +4779,7 @@ convert = [
            [611, []],
            [612, [convert_starred_refs]],
            [613, []],
-           [614, []]
+           [614, [convert_hyper_other]]
           ]
 
 revert =  [[613, [revert_hyper_other]],
