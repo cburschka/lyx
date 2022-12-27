@@ -15063,6 +15063,8 @@ Alph{enumi}
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15104,6 +15106,8 @@ arabic{enumii}
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -15155,6 +15159,8 @@ arabic{enumiii}}
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15196,6 +15202,8 @@ roman{enumiv})}
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -15494,6 +15502,8 @@ arabic{enumi}.
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15665,6 +15675,8 @@ start=4
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15689,6 +15701,8 @@ status collapsed
 
 \lang american
 Lists ! Spacing
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15762,6 +15776,8 @@ nolistsep
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15807,6 +15823,8 @@ status collapsed
 \lang american
 \SpecialChar LaTeX
 -packages ! enumitem
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15867,6 +15885,8 @@ parindent, labelsep=2cm
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15899,6 +15919,8 @@ status collapsed
 
 \lang american
 Lists ! Customization
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16012,6 +16034,8 @@ itshape, style=nextline
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16057,6 +16081,8 @@ status collapsed
 \lang american
 \SpecialChar LaTeX
 -packages ! enumitem
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16122,6 +16148,289 @@ literal "false"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 564990737 1672161542
+
+\lang american
+Literate Programming 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672161542
+
+\lang american
+Noweb
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672161542
+
+\lang american
+This module allows the use of Noweb as a literate programming tool.
+ The files and the documentation for Noweb can be obtained from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "https://www.ctan.org/pkg/noweb"
+literal "false"
+
+\end_inset
+
+.
+ Literate programming is described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Literate-Programming"
+
+\end_inset
+
+ and there are three example files: 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Noweb
+\family default
+, 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Noweb Listerrors
+\family default
+ and 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Noweb2\SpecialChar LyX
+
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672161542
+
+\lang american
+Rnw (knitr)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672161542
+
+\lang american
+This module uses the 
+\family typewriter
+knitr
+\family default
+ and 
+\family sans
+includernw
+\family default
+ packages.
+ The
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672161542
+
+\lang american
+knitr
+\end_layout
+
+\end_inset
+
+ package in R for dynamic report generation has to be installed for this
+ module to work: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672161542
+
+\lang american
+install.packages(“knitr”)
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\change_inserted 564990737 1672161542
+
+\lang american
+Note 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672161542
+
+\lang american
+it depends on R >= 2.14.1.
+ For more info see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672161542
+
+http://yihui.name/knitr
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672161542
+
+\lang american
+The package 
+\family sans
+includernw
+\family default
+ also has to be installed.
+ It cannot be used if the modules 
+\family sans
+LilyPond
+\begin_inset space ~
+\end_inset
+
+Book
+\family default
+ or 
+\family sans
+Sweave
+\family default
+ are loaded.
+ See 
+\family sans
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+Knitr
+\family default
+, 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Rnw (knitr)
+\family default
+ and section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Literate-Programming"
+
+\end_inset
+
+ for information about literate programming.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672161542
+
+\lang american
+Sweave
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672161542
+
+\lang american
+This module allows the use of the statistical language S/R as a literate
+ programming tool.
+ It requires the 
+\family sans
+includernw
+\family default
+ and 
+\family sans
+fancyvrb
+\family default
+ packages.
+ Both 
+\begin_inset CommandInset href
+LatexCommand href
+name "includernw"
+target "https://www.ctan.org/pkg/includernw"
+literal "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "fancyvrb"
+target "https://www.ctan.org/pkg/fancyvrb"
+literal "false"
+
+\end_inset
+
+ are available from CTAN.
+ It cannot be used if the module 
+\family sans
+LilyPond
+\begin_inset space ~
+\end_inset
+
+Book
+\family default
+ has been loaded.
+ See 
+\family sans
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+Sweave,
+\family default
+ 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Sweave
+\family default
+ and section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Literate-Programming"
+
+\end_inset
+
+ for information about literate programming.
 \end_layout
 
 \begin_layout Section
@@ -31540,6 +31849,16 @@ HEAD~X
 \end_layout
 
 \begin_layout Section
+
+\change_inserted 564990737 1672161575
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Literate-Programming"
+
+\end_inset
+
+
+\change_unchanged
 Literate Programming
 \end_layout
 
@@ -32338,14 +32657,32 @@ fi
 
 \begin_layout Standard
 Look in 
+\change_deleted 564990737 1672161716
+
 \emph on
 LIBDIR/examples/listerrors.lyx
 \emph default
  or in 
 \emph on
 LIBDIR/examples/Literate.lyx
+\change_inserted 564990737 1672161716
+
+\family sans
 \emph default
- which implement two versions of the 
+\lang american
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Noweb Listerrors
+\change_unchanged
+
+\family default
+\lang english
+ which implement 
+\change_deleted 564990737 1672161729
+two 
+\change_unchanged
+versions of the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -32355,14 +32692,39 @@ listerrors
 
  program for some illustrations of how all of these pieces go together or
  in 
+\change_deleted 564990737 1672161756
+
 \emph on
-LIBDIR/examples/noweb2lyx.lyx.
+LIBDIR/examples/noweb2lyx.lyx
+\change_inserted 564990737 1672161756
+
+\family sans
+\emph default
+\lang american
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Noweb2\SpecialChar LyX
+
+\change_unchanged
+
+\family default
+\emph on
+\lang english
+.
 
 \emph default
- Interestingly, these three files show off the language-indepence of the
- \SpecialChar LyX
- literate programming support since they are written in Python, C and Perl
- respectively.
+ Interestingly, these 
+\change_deleted 564990737 1672161767
+three 
+\change_unchanged
+files show off the language-indepence of the \SpecialChar LyX
+ literate programming support
+ since they are written in Python
+\change_deleted 564990737 1672161782
+, C
+\change_unchanged
+ and Perl respectively.
 \end_layout
 
 \begin_layout Subsubsection
@@ -32790,14 +33152,27 @@ knitr
 \family sans
 Sweave
 \family default
- is documented in 
+ is documented in
+\change_inserted 564990737 1672161863
+ 
+\family sans
+\lang american
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+Knitr
+\family default
+ and
+\change_unchanged
+
+\lang english
+ 
 \change_deleted 564990737 1671643409
 the 
 \emph on
 knitr.lyx
 \emph default
  example file
-\change_inserted 564990737 1671643443
+\change_inserted 564990737 1672161856
 
 \family sans
 \lang british
@@ -32817,18 +33192,31 @@ Help\SpecialChar menuseparator
 Specific Manuals
 \family default
 )
-\change_inserted 564990737 1671643461
+\change_inserted 564990737 1672161856
 
 \family sans
 \lang british
 Help\SpecialChar menuseparator
 Specific Manuals\SpecialChar menuseparator
 Sweave
-\change_unchanged
+\change_deleted 564990737 1672161921
 
 \family default
 \lang english
 .
+
+\change_inserted 564990737 1672161917
+ and 
+\family sans
+\lang american
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Sweave
+\family default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Chapter
