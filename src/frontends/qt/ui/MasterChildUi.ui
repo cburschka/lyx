@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>306</width>
-    <height>435</height>
+    <width>359</width>
+    <height>444</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,16 +23,6 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <widget class="QRadioButton" name="includeallRB">
-        <property name="toolTip">
-         <string>Include all subdocuments in the output</string>
-        </property>
-        <property name="text">
-         <string>&amp;Include all children</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0">
        <widget class="QRadioButton" name="includeonlyRB">
         <property name="toolTip">
@@ -41,15 +31,22 @@
         <property name="text">
          <string>Include only &amp;selected children</string>
         </property>
+        <attribute name="buttonGroup">
+         <string notr="true">buttonGroup</string>
+        </attribute>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QTreeWidget" name="childrenTW">
-        <column>
-         <property name="text">
-          <string notr="true">1</string>
-         </property>
-        </column>
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="includeallRB">
+        <property name="toolTip">
+         <string>Include all subdocuments in the output</string>
+        </property>
+        <property name="text">
+         <string>&amp;Include all children</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">buttonGroup</string>
+        </attribute>
        </widget>
       </item>
       <item row="3" column="0">
@@ -94,6 +91,15 @@
         </layout>
        </widget>
       </item>
+      <item row="2" column="0">
+       <widget class="QTreeWidget" name="childrenTW">
+        <column>
+         <property name="text">
+          <string notr="true">1</string>
+         </property>
+        </column>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -104,4 +110,7 @@
  </includes>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>
