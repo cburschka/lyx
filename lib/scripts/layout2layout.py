@@ -454,7 +454,6 @@ def convert(lines, end_format):
     re_CopyStyle2 = re.compile(b'(\\s*CopyStyle\\s+)"?([^"]+)"?\\s*$')
     re_Separator = re.compile(b'^(?:(-*)|(\\s*))(Separator|EndOfSlide)(?:(-*)|(\\s*))$', re.IGNORECASE)
     # for categories
-    re_Declaration = re.compile(b'^#\\s*\\Declare\\w+Class.*$')
     re_ExtractCategory = re.compile(b'^(#\\s*\\Declare\\w+Class(?:\\[[^]]*?\\])?){([^(]+?)\\s+\\(([^)]+?)\\)\\s*}\\s*$')
     ConvDict = {b"article": b"Articles", b"book": b"Books", b"letter": b"Letters", b"report": b"Reports",
                 b"presentation": b"Presentations", b"curriculum vitae": b"Curricula Vitae", b"handout": b"Handouts"}
