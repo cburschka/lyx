@@ -123,12 +123,6 @@ docstring StartTag::writeEndTag() const
 }
 
 
-bool StartTag::operator==(FontTag const &rhs) const
-{
-	return rhs == *this;
-}
-
-
 docstring EndTag::writeEndTag() const
 {
 	return from_utf8("</") + tag_ + from_utf8(">");
@@ -150,15 +144,6 @@ docstring CompTag::writeTag() const
 	}
 	output += " />";
 	return output;
-}
-
-
-bool FontTag::operator==(StartTag const & tag) const
-{
-	FontTag const * const ftag = tag.asFontTag();
-	if (!ftag)
-		return false;
-	return (font_type_ == ftag->font_type_);
 }
 
 } // namespace xml
@@ -679,6 +664,44 @@ docstring xml::cleanID(docstring const & orig)
 }
 
 
+bool operator==(xml::StartTag const & lhs, xml::StartTag const & rhs)
+{
+	xml::FontTag const * const lhs_ft = lhs.asFontTag();
+	xml::FontTag const * const rhs_ft = rhs.asFontTag();
+
+	if ((!lhs_ft && rhs_ft) || (lhs_ft && !rhs_ft))
+		return false;
+	if (!lhs_ft && !rhs_ft)
+		return lhs.tag_ == rhs.tag_;
+	return lhs_ft->tag_ == rhs_ft->tag_ && lhs_ft->font_type_ == rhs_ft->font_type_;
+}
+
+
+bool operator==(xml::EndTag const & lhs, xml::StartTag const & rhs)
+{
+	xml::EndFontTag const * const lhs_ft = lhs.asFontTag();
+	xml::FontTag const * const rhs_ft = rhs.asFontTag();
+
+	if ((!lhs_ft && rhs_ft) || (lhs_ft && !rhs_ft))
+		return false;
+	if (!lhs_ft && !rhs_ft)
+		return lhs.tag_ == rhs.tag_;
+	return lhs_ft->tag_ == rhs_ft->tag_ && lhs_ft->font_type_ == rhs_ft->font_type_;
+}
+
+
+bool operator!=(xml::EndTag const & lhs, xml::StartTag const & rhs)
+{
+	return !(lhs == rhs);
+}
+
+
+bool operator!=(xml::StartTag const & lhs, xml::StartTag const & rhs)
+{
+	return !(lhs == rhs);
+}
+
+
 void xml::openTag(odocstream & os, string const & name, string const & attribute)
 {
     // FIXME UNICODE
@@ -800,10 +823,10 @@ void closeBlockTag(XMLStream & xs, const docstring & tag)
 
 void xml::openTag(XMLStream & xs, const docstring & tag, const docstring & attr, const std::string & tagtype)
 {
-	if (tag.empty() || tag == "NONE") // Common check to be performed elsewhere, if it was not here.
+	if (tag.empty() || tag == from_ascii("NONE")) // Common check to be performed elsewhere, if it was not here.
 		return;
 
-	if (tag == "para" || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
+	if (tag == from_ascii("para") || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
 		openParTag(xs, tag, attr);
 	else if (tagtype == "block")
 		openBlockTag(xs, tag, attr);

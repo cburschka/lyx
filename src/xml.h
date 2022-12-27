@@ -196,14 +196,6 @@ struct StartTag
 	///
 	virtual FontTag const * asFontTag() const { return nullptr; }
 	///
-	virtual bool operator==(StartTag const & rhs) const
-	{ return tag_ == rhs.tag_; }
-	///
-	virtual bool operator!=(StartTag const & rhs) const
-	{ return !(*this == rhs); }
-	///
-	virtual bool operator==(FontTag const & rhs) const;
-	///
 	docstring tag_;
 	///
 	docstring attr_;
@@ -228,12 +220,6 @@ struct EndTag
 	virtual ~EndTag() = default;
 	/// </tag_>
 	virtual docstring writeEndTag() const;
-	///
-	bool operator==(StartTag const & rhs) const
-	{ return tag_ == rhs.tag_; }
-	///
-	bool operator!=(StartTag const & rhs) const
-	{ return !(*this == rhs); }
 	///
 	virtual EndFontTag const * asFontTag() const { return nullptr; }
 	///
@@ -342,8 +328,6 @@ struct FontTag : public StartTag
 	///
 	FontTag const * asFontTag() const override { return this; }
 	///
-	bool operator==(StartTag const &) const override;
-	///
 	FontTypes font_type_;
 };
 
@@ -418,6 +402,15 @@ void compTag(XMLStream & xs, const docstring & tag, const std::string & attr, co
 void compTag(XMLStream & xs, const std::string & tag, const docstring & attr, const std::string & tagtype);
 
 } // namespace xml
+
+
+/// Comparison operators for tags. They are defined as free functions, otherwise comparison of casts does not work.
+/// For font tags, do not only compare the XML tag, but also the font type: several fonts can be using the same tag.
+/// In XHTML, <span>; in DocBook, <emphasis>.
+bool operator==(xml::StartTag const & lhs, xml::StartTag const & rhs);
+bool operator==(xml::EndTag const & lhs, xml::StartTag const & rhs);
+bool operator!=(xml::EndTag const & lhs, xml::StartTag const & rhs);
+bool operator!=(xml::StartTag const & lhs, xml::StartTag const & rhs);
 
 } // namespace lyx
 
