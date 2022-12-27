@@ -1989,16 +1989,16 @@ void GuiDocument::includeonlyClicked(QTreeWidgetItem * item, int)
 		return;
 
 	string child = fromqstr(item->text(0));
+
 	if (child.empty())
 		return;
 
-	if (std::find(includeonlys_.begin(),
-		      includeonlys_.end(), child) != includeonlys_.end())
+	if (isChildIncluded(child))
 		includeonlys_.remove(child);
 	else
 		includeonlys_.push_back(child);
 
-	updateIncludeonlys();
+	updateIncludeonlys(false);
 	change_adaptor();
 }
 
@@ -3768,6 +3768,7 @@ void GuiDocument::applyView()
 
 	// Master/Child
 	bp_.clearIncludedChildren();
+	updateIncludeonlys();
 	if (masterChildModule->includeonlyRB->isChecked()) {
 		list<string>::const_iterator it = includeonlys_.begin();
 		for (; it != includeonlys_.end() ; ++it) {
@@ -4690,7 +4691,7 @@ void GuiDocument::updateIncludeonlyDisplay()
 }
 
 
-void GuiDocument::updateIncludeonlys()
+void GuiDocument::updateIncludeonlys(bool const cleanup)
 {
 	masterChildModule->childrenTW->clear();
 	QString const no = qt_("No");
@@ -4716,7 +4717,7 @@ void GuiDocument::updateIncludeonlys()
 	}
 	// Both if all children are included and if none is included
 	// is equal to "include all" (i.e., omit \includeonly).
-	if (!has_unincluded || all_unincluded)
+	if (cleanup && (!has_unincluded || all_unincluded))
 		includeonlys_.clear();
 }
 

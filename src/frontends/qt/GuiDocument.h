@@ -215,7 +215,7 @@ private:
 	///
 	void updateIncludeonlyDisplay();
 	///
-	void updateIncludeonlys();
+	void updateIncludeonlys(bool const cleanup = true);
 	///
 	void updateDefaultBiblio(std::string const & style,
 				 std::string const & which = std::string());
