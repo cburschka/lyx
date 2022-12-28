@@ -10,7 +10,7 @@
 
 /**
  * This file contains dummy implementation of some methods that are
- * needed byclasses used by tex2lyx. This allows to reduce the number
+ * needed by classes used by tex2lyx. This allows to reduce the number
  * of classes we have to link against.
 */
 
