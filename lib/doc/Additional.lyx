@@ -17017,10 +17017,857 @@ Subnumbering
 \end_layout
 
 \begin_layout Section
+
+\change_inserted 564990737 1672236008
+
+\lang american
+Page Layout
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672236008
+
+\lang american
+Custom Header/Footer Text
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+This module requires the 
+\family sans
+Page
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+s
+\bar default
+tyle
+\family default
+ option in the 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar menuseparator
+
+\bar under
+S
+\bar default
+ettings\SpecialChar menuseparator
+Page
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog to be set to 
+\family typewriter
+fancy
+\family default
+.
+ It adds six environments to document classes which support the 
+\family typewriter
+fancyhdr
+\family default
+ package:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+Left Header
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+Center Header
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+Right Header
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+Left Footer
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+Center Footer
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+Right Footer
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1672236008
+
+\lang american
+Fancy Headers and Footers
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+The default page layout is rather plain; for an 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672236008
+
+\lang american
+article
+\end_layout
+
+\end_inset
+
+ document class, all you get is a centered page number at the bottom of
+ the page.
+ This document uses KOMA-script’s book class; so it appears to be a bit
+ fancier.
+ Once the 
+\family sans
+Page
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+s
+\bar default
+tyle
+\family default
+ in 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar menuseparator
+
+\bar under
+S
+\bar default
+ettings\SpecialChar menuseparator
+Page Layout
+\family default
+ is set to 
+\begin_inset Quotes eld
+\end_inset
+
+fancy
+\begin_inset Quotes erd
+\end_inset
+
+, you will find that the page header is divided into three fields, not surprisin
+gly labeled 
+\begin_inset Quotes eld
+\end_inset
+
+left
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+center
+\begin_inset Quotes erd
+\end_inset
+
+, and 
+\begin_inset Quotes eld
+\end_inset
+
+right
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The footer is also divided into these three fields.
+ The \SpecialChar LaTeX
+ commands to set these fields in the simplest manner are 
+\family sans
+
+\backslash
+lhead
+\family default
+, 
+\family sans
+
+\backslash
+chead
+\family default
+, 
+\family sans
+
+\backslash
+rhead
+\family default
+, 
+\family sans
+
+\backslash
+lfoot
+\family default
+, etc.
+ Suppose you wish to put your name in the upper left hand corner of each
+ page.
+ Simply insert the following command in the preamble: 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+
+\backslash
+lhead
+\family default
+\series bold
+{
+\series default
+John Q.
+ DocWriter
+\series bold
+}
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+You will now see your name in the upper left.
+ If a field has a default entry that you would like to get rid of (often
+ the page number appears in the central footer) simply include a command
+ with a blank argument, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+
+\backslash
+cfoot{}
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+There is, however, an easier way to make simple changes.
+ If you load the 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar menuseparator
+
+\bar under
+S
+\bar default
+ettings\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Page Layout\SpecialChar menuseparator
+Custom Header/Footer Text
+\family default
+ module, you will find you have six new environments corresponding to the
+ six fields described above.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+Let's get really fancy: lets put the section number with the word 
+\begin_inset Quotes eld
+\end_inset
+
+Section
+\begin_inset Quotes erd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+Section 3) in the upper left, the page number (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+Page 4) in the upper right, your name in the lower left, and the date in
+ the lower right.
+ Use your newly enabled environments to add these entries:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\color green
+\lang american
+Left
+\begin_inset space ~
+\end_inset
+
+header:
+\series bold
+\color inherit
+ 
+\series default
+Section
+\family typewriter
+ 
+\family sans
+
+\backslash
+thesection
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\color green
+\lang american
+Center header:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\color green
+\lang american
+Right header:
+\color inherit
+ Page
+\family typewriter
+ 
+\family sans
+
+\backslash
+thepage
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\color green
+\lang american
+Left footer:
+\color inherit
+ John Q.
+ DocWriter
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\color green
+\lang american
+Center footer:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\color green
+\lang american
+Right footer:
+\series bold
+\color inherit
+ 
+\family sans
+\series default
+
+\backslash
+today
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+Make sure you enter the commands 
+\family sans
+
+\backslash
+thesection
+\family default
+, 
+\family sans
+
+\backslash
+thepage
+\family default
+ and 
+\family sans
+
+\backslash
+today
+\family default
+ as \SpecialChar TeX
+ Code commands
+\series bold
+.
+
+\series default
+ The commands 
+\family sans
+
+\backslash
+thesection
+\family default
+ and 
+\family sans
+
+\backslash
+thepage
+\family default
+ access \SpecialChar LaTeX
+’s section and page counters, and so print out the current section
+ and page numbers.
+ 
+\family sans
+
+\backslash
+today
+\family default
+ simply prints out today’s date.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+The thicknesses of the horizontal rules drawn beneath the header and above
+ the footer can also be modified.
+ If you don't want one of the rules, set its thickness to 0.
+ The header rule has a default thickness of 0.4pt, the footer rule is 0pt.
+ For this you will need to use \SpecialChar TeX
+ Code commands like 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+
+\backslash
+renewcommand{
+\backslash
+headrulewidth}{0.4pt}
+\family default
+ and 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+
+\backslash
+renewcommand{
+\backslash
+footrulewidth}{0.4pt}
+\family default
+ to set the thicknesses.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+You can switch the header/footer settings on and off for individual pages
+ using \SpecialChar TeX
+ Code commands like 
+\family sans
+
+\backslash
+thispagestyle{empty}
+\family default
+, 
+\family sans
+
+\backslash
+thispagestyle{plain}
+\family default
+, and 
+\family sans
+
+\backslash
+thispagestyle{fancy}
+\family default
+.
+ Simply insert them in the text on the page you want changed and mark them
+ as \SpecialChar TeX
+ code.
+ In fact, title pages are marked as plain by default, while following pages
+ are marked fancy when using the global fancy setting.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+If you want a header or footer to be on the outer side of a two sided document,
+ you need to use something like:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+\begin_inset Flex Strong
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\series medium
+\lang american
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+\begin_inset Flex Strong
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\series medium
+\lang american
+
+\backslash
+fancyfoot[LE,RO]{
+\backslash
+thepage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+The first command clears all existing footers avoiding any conflicts with
+ your new command.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+You can enter any of these commands, the simpler ones in any of your new
+ environments, the more complex ones as \SpecialChar TeX
+ Code commands, at any point in
+ your document and they will take effect on the next page.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+As a final example, it is possible to include an image in the header or
+ footer.
+ Suppose you want to put a company logo in the upper left hand corner.
+ You might try something like
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\family sans
+\lang american
+
+\backslash
+lhead{
+\backslash
+resizebox{1in}{!}{
+\backslash
+includegraphics{logo.eps}}}
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\change_inserted 564990737 1672236008
+
+\lang american
+(you may need to preface this with 
+\family sans
+
+\backslash
+usepackage{graphics}
+\family default
+ if you don't include graphics elsewhere in your document).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+For more information on fancy headers, you can get the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672236008
+
+\lang american
+fancyhdr
+\end_layout
+
+\end_inset
+
+ documentation from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://www.ctan.org/pkg/fancyhdr"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672236008
+
+\lang american
+Landscape Document Parts
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+This module outputs parts of the document in landscape mode using 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Landscape
+\family default
+ or 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Landscape (Floating)
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672236008
+
+\lang american
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Multiple-Columns"
+
+\end_inset
+
+Multiple Columns
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+
+\lang american
+This module uses the 
+\family sans
+multicol
+\family default
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672236008
+
+\lang american
+\SpecialChar LaTeX
+-packages ! multicol
+\end_layout
+
+\end_inset
+
+ package and is independent of the option 
+\family sans
+Two-
+\bar under
+c
+\bar default
+olumn document
+\family default
+ in the 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar menuseparator
+
+\bar under
+S
+\bar default
+ettings\SpecialChar menuseparator
+Text
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog.
+ If you want to have two columns for the whole document, you are recommended
+ to use the 
+\family sans
+Two-
+\bar under
+c
+\bar default
+olumn document
+\family default
+ option.
+ For all other cases use this module.
+\change_deleted 564990737 1672236008
+
+\lang english
 Multiple Text Columns
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672236008
 This feature is independent of the option 
 \family sans
 Two-column document
@@ -17043,6 +17890,8 @@ Two-column document
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672236008
 To use multiple text columns in your document, you have to load the module
  
 \family sans
@@ -17066,20 +17915,57 @@ multicol
 \end_inset
 
  installed.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Footnotes within multiple columns will be placed at the bottom of the page
  and not under each column.
  Within the different columns you can use everything, with the limitation
- that for floats you need to use the float option 
+ that for floats you need to 
+\change_deleted 564990737 1672236179
+use the float option 
 \family sans
 Span columns
+\change_inserted 564990737 1672236179
+
 \family default
+\lang american
+check the option 
+\family sans
+\bar under
+S
+\bar default
+pan
+\begin_inset space ~
+\end_inset
+
+columns
+\family default
+ in 
+\family sans
+\bar under
+E
+\bar default
+dit\SpecialChar menuseparator
+Flo
+\bar under
+a
+\bar default
+t
+\begin_inset space ~
+\end_inset
+
+Settings
+\change_unchanged
+
+\family default
+\lang english
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Basics
 \end_layout
 
@@ -17256,13 +18142,17 @@ columns if you want to, but that might not be very pleasant for the readers
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672236245
 \begin_inset Newpage newpage
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Columns inside Columns
 \end_layout
 
@@ -17354,7 +18244,7 @@ The evidence of those who had played with him
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Advanced Examples
 \end_layout
 
@@ -17387,7 +18277,7 @@ multicol
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Preface
 \end_layout
 
@@ -17665,7 +18555,7 @@ On the evening of the crime, he returned from the club exactly at ten.
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Surrounding Space
 \end_layout
 
@@ -17836,13 +18726,17 @@ go back to the default
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672236355
 \begin_inset Newpage newpage
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Column Breaks
 \end_layout
 
@@ -17987,7 +18881,7 @@ The Holy War
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Column Separation
 \end_layout
 
@@ -18107,7 +19001,7 @@ go back to the default
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Vertical Lines
 \end_layout
 
