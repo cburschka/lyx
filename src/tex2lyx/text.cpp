@@ -2701,9 +2701,14 @@ void parse_comment(Parser & p, ostream & os, Token const & t, Context & context,
 		   bool skipNewlines = false)
 {
 	LASSERT(t.cat() == catComment, return);
-	if (!t.cs().empty()) {
+	string comment = t.cs();
+	// Join multiple consecutive comment lines into one ERT inset
+	while (p.next_token().cat() == catComment)
+		comment += "\n%" + p.get_token().cs();
+
+	if (!comment.empty()) {
 		context.check_layout(os);
-		output_comment(p, os, t.cs(), context);
+		output_comment(p, os, comment, context);
 		if (p.next_token().cat() == catNewline) {
 			// A newline after a comment line starts a new
 			// paragraph
