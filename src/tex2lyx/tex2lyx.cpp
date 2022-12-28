@@ -979,16 +979,9 @@ bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
 
 
 /// convert TeX from \p infilename to LyX and write it to \p os
-bool tex2lyx(FileName const & infilename_in, ostream & os, string encoding,
+bool tex2lyx(FileName const & infilename, ostream & os, string encoding,
              string const & outfiledir)
 {
-	FileName infilename = infilename_in;
-	// Like TeX, we consider files without extensions as *.tex files
-	// and append the extension if the file without ext does not exist
-	// (#12340)
-	if (!infilename.exists() && infilename.extension().empty())
-		infilename.changeExtension("tex");
-
 	// Set a sensible default encoding.
 	// This is used until an encoding command is found.
 	// For child documents use the encoding of the master, else try to
@@ -1046,6 +1039,18 @@ bool tex2lyx(FileName const & infilename_in, ostream & os, string encoding,
 bool tex2lyx(string const & infilename, FileName const & outfilename,
 	     string const & encoding)
 {
+	FileName ifname = FileName(infilename);
+	// Like TeX, we consider files without extensions as *.tex files
+	// and append the extension if the file without ext does not exist
+	// (#12340)
+	if (!ifname.exists() && ifname.extension().empty()) {
+		ifname.changeExtension("tex");
+		if (!ifname.exists()) {
+			cerr << "Could not open input file \"" << infilename
+			     << "\" for reading." << endl;
+			return false;
+		}
+	}
 	if (outfilename.isReadableFile()) {
 		if (overwrite_files) {
 			cerr << "Overwriting existing file "
@@ -1065,10 +1070,10 @@ bool tex2lyx(string const & infilename, FileName const & outfilename,
 		return false;
 	}
 #ifdef FILEDEBUG
-	cerr << "Input file: " << infilename << "\n";
+	cerr << "Input file: " << ifname << "\n";
 	cerr << "Output file: " << outfilename << "\n";
 #endif
-	return tex2lyx(FileName(infilename), os, encoding,
+	return tex2lyx(ifname, os, encoding,
 	               outfilename.onlyPath().absFileName() + '/');
 }
 
