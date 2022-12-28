@@ -979,9 +979,16 @@ bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
 
 
 /// convert TeX from \p infilename to LyX and write it to \p os
-bool tex2lyx(FileName const & infilename, ostream & os, string encoding,
+bool tex2lyx(FileName const & infilename_in, ostream & os, string encoding,
              string const & outfiledir)
 {
+	FileName infilename = infilename_in;
+	// Like TeX, we consider files without extensions as *.tex files
+	// and append the extension if the file without ext does not exist
+	// (#12340)
+	if (!infilename.exists() && infilename.extension().empty())
+		infilename.changeExtension("tex");
+
 	// Set a sensible default encoding.
 	// This is used until an encoding command is found.
 	// For child documents use the encoding of the master, else try to
