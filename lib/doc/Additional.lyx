@@ -16250,6 +16250,8 @@ status collapsed
 
 \lang american
 knitr
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16265,6 +16267,8 @@ status collapsed
 
 \lang american
 install.packages(“knitr”)
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16296,6 +16300,8 @@ status collapsed
 \change_inserted 564990737 1672161542
 
 http://yihui.name/knitr
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16431,6 +16437,583 @@ reference "sec:Literate-Programming"
 \end_inset
 
  for information about literate programming.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Maths
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+AMS Theorems
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This modules defines theorem environments and the proof environment using
+ the extended AMS machinery.
+ Both numbered and unnumbered types are provided.
+ By default, the theorems are numbered consecutively throughout the document.
+ This can be changed by loading one of the 
+\family sans
+AMS Theorems (Numbered by \SpecialChar ldots
+)
+\family default
+ modules.
+ It cannot be used if the modules 
+\family sans
+Standard Theorems
+\family default
+ or 
+\family sans
+Standard Theorems (Unnumbered)
+\family default
+ have been loaded.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+AMS Theorems (Extended)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines some additional theorem environments for use with the
+ 
+\family sans
+AMS Theorems
+\family default
+ package (which must be loaded).
+ It includes Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary,
+ Acknowledgement, Conclusion, Fact, Assumption, Case and Question in both
+ numbered and unnumbered forms.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+AMS Theorems (Extended, Numbered by Type within Chapters)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines some additional theorem environments for use with the
+ 
+\family sans
+AMS Theorems (Numbered by Type within Chapters)
+\family default
+ package (which must be loaded).
+ It includes Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary,
+ Acknowledgement, Conclusion, Assumption and Case in both numbered and unnumbere
+d forms.
+ Unlike the 
+\family sans
+AMS Theorems (Extended)
+\family default
+ module, the different theorem types provided here each have a separate
+ counter, restarted with each new chapter (e.g., criterion 1.1, criterion 1.2,
+ axiom 1.1, assumption 1.1, criterion 2.1, criterion 2.2, axiom 2.1\SpecialChar ldots
+, as opposed
+ to criterion 1, criterion 2, axiom 3, assumption 4...).
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+AMS Theorems (Extended, Numbered by Type)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines some additional theorem environments for use with the
+ 
+\family sans
+AMS Theorems (Numbered by Type)
+\family default
+ package (which must be loaded).
+ It includes Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary,
+ Acknowledgement, Conclusion, Assumption and Case in both numbered and unnumbere
+d forms.
+ Unlike the 
+\family sans
+AMS Theorems (Extended)
+\family default
+ module, the different theorem types provided here each have a separate
+ counter (e.g., criterion 1, criterion 2, axiom 1, assumption 1, criterion
+ 3, \SpecialChar ldots
+, as opposed to criterion 1, criterion 2, axiom 3, assumption 4, \SpecialChar ldots
+).
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+AMS Theorems (Numbered by Type within Chapters) 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines theorem environments and the proof environment using
+ the extended AMS machinery.
+ Both numbered and unnumbered types are provided.
+ Unlike the 
+\family sans
+AMS Theorems
+\family default
+ module, the different theorem types provided here each have a separate
+ counter (e.g., theorem 1.1, theorem 1.2, lemma 1.1, proposition 1.1, theorem
+ 1.3, lemma 1.2, \SpecialChar ldots
+, as opposed to theorem 1, theorem 2, lemma 3, proposition
+ 4, \SpecialChar ldots
+).
+ The numbering restarts for each chapter: theorem 1.1, theorem 2.1, \SpecialChar ldots
+ It cannot
+ be used if the modules 
+\family sans
+AMS Theorems
+\family default
+, 
+\family sans
+Standard Theorems
+\family default
+,
+\family sans
+ Standard Theorems (Numbered by Type)
+\family default
+ or
+\family sans
+ Standard Theorems (Unnumbered)
+\family default
+ have been loaded.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+AMS Theorems (Numbered by Type)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines theorem environments and the proof environment using
+ the extended AMS machinery.
+ Both numbered and unnumbered types are provided.
+ Unlike the 
+\family sans
+AMS Theorems
+\family default
+ module, the different theorem types provided here each have a separate
+ counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma
+ 2, \SpecialChar ldots
+, as opposed to theorem 1, theorem 2, lemma 3, proposition 4, \SpecialChar ldots
+).
+ The numbering’s scope is the whole document.
+ For chapter- and section-wide numbering, use one of the ‘within Sections’/‘with
+in Chapters’ modules, respectively.
+ It cannot be used if the modules 
+\family sans
+AMS Theorems
+\family default
+, 
+\family sans
+Standard Theorems
+\family default
+,
+\family sans
+ Standard Theorems (Numbered by Type)
+\family default
+ or
+\family sans
+ Standard Theorems (Unnumbered)
+\family default
+ have been loaded.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Number Equations by Section
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module resets the equation number at section start and prepends the
+ section number to the equation number, as in “(2.1).” 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Standard Theorems
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines some theorem environments for use with non-AMS classes.
+ By default, the theorems are numbered consecutively throughout the document.
+ This can be changed by loading one of the 
+\family sans
+Standard Theorems (Numbered by \SpecialChar ldots
+)
+\family default
+ modules.
+ It cannot be used if the modules 
+\family sans
+AMS Theorems
+\family default
+ or
+\family sans
+ Standard Theorems (Unnumbered)
+\family default
+ have been loaded.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Standard Theorems (Nameable)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module facilitates the use of named theorems.
+ The name of the theorem goes into the “Additional Theorem Text” argument.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Standard Theorems (Numbered by Chapter)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module numbers theorems and the like by chapter (i.e., the counter is
+ reset at each chapter start).
+ Use this module only with document classes that provide a chapter environment.
+ One of the modules 
+\family sans
+AMS Theorems
+\family default
+ or 
+\family sans
+Standard Theorems
+\family default
+ must be loaded.
+ It cannot be used if the module
+\family sans
+ Standard Theorems (Numbered by Section)
+\family default
+ has been loaded.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Standard Theorems (Numbered by Section)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module numbers theorems and the like by section (i.e., the counter is
+ reset at each section start).
+ One of the modules 
+\family sans
+AMS Theorems
+\family default
+ or 
+\family sans
+Standard Theorems
+\family default
+ must be loaded.
+ It cannot be used if the module
+\family sans
+ Standard Theorems (Numbered by Chapter)
+\family default
+ has been loaded.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Standard Theorems (Numbered by Type within Chapters) 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines some theorem environments for use with non-AMS classes.
+ Unlike the
+\family sans
+ AMS Theorems
+\family default
+ and 
+\family sans
+Standard Theorems
+\family default
+ modules, the different theorem types provided here each have a separate
+ counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma
+ 2, \SpecialChar ldots
+, as opposed to theorem 1, theorem 2, lemma 3, proposition 4, \SpecialChar ldots
+).
+ The numbering is reset at each chapter start.
+ One of the modules 
+\family sans
+AMS Theorems (Numbered by Type)
+\family default
+ or 
+\family sans
+Standard Theorems (Numbered by Type)
+\family default
+ must be loaded.
+ It cannot be used if any of the modules
+\family sans
+ AMS Theorems
+\family default
+, 
+\family sans
+Standard Theorems
+\family default
+, 
+\family sans
+Standard Theorems (Unnumbered)
+\family default
+,
+\family sans
+ Standard Theorems (Numbered by Sections)
+\family default
+ or 
+\family sans
+Standard Theorems (Numbered by Type within Sections)
+\family default
+ have been loaded.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Standard Theorems (Numbered by Type within Sections) 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines some theorem environments for use with non-AMS classes.
+ Unlike the
+\family sans
+ AMS Theorems
+\family default
+ and 
+\family sans
+Standard Theorems
+\family default
+ modules, the different theorem types provided here each have a separate
+ counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma
+ 2, \SpecialChar ldots
+, as opposed to theorem 1, theorem 2, lemma 3, proposition 4, \SpecialChar ldots
+).
+ The numbering is reset at each section start.
+ One of the modules 
+\family sans
+AMS Theorems (Numbered by Type)
+\family default
+ or 
+\family sans
+Standard Theorems (Numbered by Type)
+\family default
+ must be loaded.
+ It cannot be used if any of the modules
+\family sans
+ AMS Theorems
+\family default
+, 
+\family sans
+Standard Theorems
+\family default
+, 
+\family sans
+Standard Theorems (Unnumbered)
+\family default
+,
+\family sans
+ Standard Theorems (Numbered by Chapters)
+\family default
+ or 
+\family sans
+Standard Theorems (Numbered by Type within Chapters)
+\family default
+ have been loaded.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Standard Theorems (Numbered by Type)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines some theorem environments for use with non-AMS classes.
+ Unlike the 
+\family sans
+AMS Theorems
+\family default
+ and 
+\family sans
+Standard Theorems
+\family default
+ modules, the different theorem types provided here each have a separate
+ counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma
+ 2, \SpecialChar ldots
+, as opposed to theorem 1, theorem 2, lemma 3, proposition 4, \SpecialChar ldots
+).
+ The numbering’s scope is the whole document.
+ For chapter- and section-wide numbering, use one of the “within Chapters”/“with
+in Sections” modules, respectively.
+ It cannot be used if any of the modules
+\family sans
+ AMS Theorems
+\family default
+, 
+\family sans
+Standard Theorems
+\family default
+, 
+\family sans
+Standard Theorems (Unnumbered)
+\family default
+ or
+\family sans
+ AMS Theorems (Numbered by Type)
+\family default
+ have been loaded.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Standard Theorems (Unnumbered)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module defines only unnumbered theorem environments and the proof environme
+nt, using the extended AMS machinery.
+ It cannot be used if either of the modules
+\family sans
+ AMS Theorems
+\family default
+ or
+\family sans
+ Standard Theorems
+\family default
+ have been loaded.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672224959
+
+\lang american
+Subequations
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+
+\lang american
+This module provides a straightforward way to segregate subequations in
+ LyX.
+ See 
+\family sans
+Help\SpecialChar menuseparator
+Math\SpecialChar menuseparator
+Subnumbering
+\family default
+.
+ 
 \end_layout
 
 \begin_layout Section
