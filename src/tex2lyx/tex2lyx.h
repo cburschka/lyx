@@ -215,6 +215,8 @@ bool tex2lyx(std::string const & infilename,
 	     support::FileName const & outfilename,
 	     std::string const & encoding);
 
+/// A general warning message that can be silenced with -q
+void warning_message(std::string const & message);
 
 } // namespace lyx
 

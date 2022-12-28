@@ -1696,8 +1696,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 				encoding, Encoding::inputenc, true);
 			if (!enc) {
 				if (!detectEncoding)
-					cerr << "Unknown encoding " << encoding
-					     << ". Ignoring." << std::endl;
+					warning_message("Unknown encoding " + encoding + ". Ignoring.");
 			} else {
 				if (!enc->unsafe() && options.size() == 1 && one_language == true) {
 					h_inputencoding = enc->name();
@@ -1833,8 +1832,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 			    || opt == "subsection")
 				h_multibib = opt;
 			else
-				cerr << "Ignoring unknown refsection value '"
-				     << opt << "'.";
+				warning_message("Ignoring unknown refsection value '" + opt + "'.");
 		}
 		opt = process_keyval_opt(options, "bibencoding");
 		if (!opt.empty())
@@ -1908,8 +1906,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	// We need to do something with the options...
 	if (!options.empty() && !detectEncoding)
-		cerr << "Ignoring options '" << join(options, ",")
-		     << "' of package " << name << '.' << endl;
+		warning_message("Ignoring options '" + join(options, ",")
+				+ "' of package " + name + '.');
 
 	// remove the whitespace
 	p.skip_spaces();
@@ -2236,7 +2234,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				  && comment.substr(0, magicXeLaTeX.size()) == magicXeLaTeX
 				  && h_inputencoding == "auto-legacy") {
 				if (!detectEncoding)
-					cerr << "XeLaTeX comment found, switching to UTF8\n";
+					warning_message("XeLaTeX comment found, switching to UTF8");
 				h_inputencoding = "utf8";
 			}
 			smatch sub;
@@ -2829,8 +2827,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				encoding, Encoding::inputenc, true);
 			if (!enc) {
 				if (!detectEncoding)
-					cerr << "Unknown encoding " << encoding
-					     << ". Ignoring." << std::endl;
+					warning_message("Unknown encoding " + encoding + ". Ignoring.");
 			} else {
 				if (!enc->unsafe())
 					h_inputencoding = enc->name();
@@ -3064,8 +3061,8 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				if (makeAbsPath(filename, path).exists())
 					fix_child_filename(filename);
 				else
-					cerr << "Warning: Could not find included file '"
-					     << filename << "'." << endl;
+					warning_message("Warning: Could not find included file '"
+							+ filename + "'.");
 				outname = changeExtension(filename, "lyx");
 				h_includeonlys.push_back(outname);
 			}

@@ -12,6 +12,8 @@
 
 #include "Parser.h"
 
+#include "tex2lyx.h"
+
 #include "Encoding.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
@@ -142,7 +144,7 @@ iparserdocstream & iparserdocstream::get(char_type &c)
 	if (s_.empty())
 		is_.get(c);
 	else {
-		//cerr << "unparsed: " << to_utf8(s_) <<endl;
+		//warning_message("unparsed: " + to_utf8(s_));
 		c = s_[0];
 		s_.erase(0,1);
 	}
@@ -206,7 +208,7 @@ bool Parser::setEncoding(std::string const & e, int p)
 	// instead. Therefore, we cannot misparse high bytes as {, } or \\.
 	Encoding const * const enc = encodings.fromLaTeXName(e, p, true);
 	if (!enc) {
-		cerr << "Unknown encoding " << e << ". Ignoring." << std::endl;
+		warning_message("Unknown encoding " + e + ". Ignoring.");
 		return false;
 	}
 	return setEncoding(enc->iconvName());
@@ -268,7 +270,7 @@ void Parser::setCatcodes(cat_type t)
 
 bool Parser::setEncoding(std::string const & e)
 {
-	//cerr << "setting encoding to " << e << std::endl;
+	//warning_message("setting encoding to " + e);
 	encoding_iconv_ = e;
 	// If the encoding is fixed, we must not change the stream encoding
 	// (because the whole input uses that encoding, e.g. if it comes from
@@ -341,8 +343,8 @@ Token const Parser::get_token()
 		if (pos_ >= tokens_.size())
 			return dummy;
 	}
-	// cerr << "looking at token " << tokens_[pos_]
-	//      << " pos: " << pos_ << '\n';
+	// warning_message("looking at token " + tokens_[pos_]
+	//      + " pos: " + pos_ <<);
 	return tokens_[pos_++];
 }
 
@@ -387,8 +389,7 @@ bool Parser::skip_spaces(bool skip_comments)
 			// If positions_ is not empty we are doing some kind
 			// of look ahead
 			if (!positions_.empty())
-				cerr << "  Ignoring comment: "
-				     << curr_token().asInput();
+				warning_message("Ignoring comment: " + curr_token().asInput());
 		} else {
 			putback();
 			break;
@@ -409,8 +410,7 @@ void Parser::unskip_spaces(bool skip_comments)
 			// If positions_ is not empty we are doing some kind
 			// of look ahead
 			if (!positions_.empty())
-				cerr << "Unignoring comment: "
-				     << curr_token().asInput();
+				warning_message("Unignoring comment: " + curr_token().asInput());
 			putback();
 		}
 		else
@@ -555,7 +555,7 @@ Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping, char 
 			// Ignore comments
 			if (t.cat() == catComment) {
 				if (!t.cs().empty())
-					cerr << "Ignoring comment: " << t.asInput();
+					warning_message("Ignoring comment: " + t.asInput());
 				continue;
 			}
 			if (allow_escaping) {
@@ -657,14 +657,14 @@ string const Parser::ertEnvironment(string const & name)
 		} else if (t.asInput() == "\\end") {
 			string const end = getArg('{', '}');
 			if (end != name)
-				cerr << "\\end{" << end
-				     << "} does not match \\begin{" << name
-				     << "}." << endl;
+				warning_message("\\end{" + end
+						+ "} does not match \\begin{"
+						+ name + "}.");
 			return os.str();
 		} else
 			os << t.asInput();
 	}
-	cerr << "unexpected end of input" << endl;
+	warning_message("unexpected end of input");
 	return os.str();
 }
 
@@ -685,7 +685,7 @@ string const Parser::plainEnvironment(string const & name)
 		} else
 			os << t.asInput();
 	}
-	cerr << "unexpected end of input" << endl;
+	warning_message("unexpected end of input");
 	return os.str();
 }
 
@@ -697,7 +697,7 @@ string const Parser::plainCommand(char left, char right, string const & name)
 	// check if first token is really the start character
 	Token tok = get_token();
 	if (tok.character() != left) {
-		cerr << "first character does not match start character of command \\" << name << endl;
+		warning_message("first character does not match start character of command \\" + name);
 		return string();
 	}
 	ostringstream os;
@@ -707,7 +707,7 @@ string const Parser::plainCommand(char left, char right, string const & name)
 		} else
 			os << t.asInput();
 	}
-	cerr << "unexpected end of input" << endl;
+	warning_message("unexpected end of input");
 	return os.str();
 }
 
@@ -751,7 +751,7 @@ Parser::Arg Parser::verbatimStuff(string const & end_string, bool const allow_li
 				break;
 		} else {
 			if (!allow_linebreak && t.asInput() == "\n") {
-				cerr << "unexpected end of input" << endl;
+				warning_message("unexpected end of input");
 				popPosition();
 				setCatcodes(NORMAL_CATCODES);
 				return Arg(false, string());
@@ -766,7 +766,7 @@ Parser::Arg Parser::verbatimStuff(string const & end_string, bool const allow_li
 	}
 
 	if (!good()) {
-		cerr << "unexpected end of input" << endl;
+		warning_message("unexpected end of input");
 		popPosition();
 		setCatcodes(NORMAL_CATCODES);
 		return Arg(false, string());
@@ -895,14 +895,14 @@ void Parser::tokenize_one()
 	}
 
 	case catIgnore: {
-		cerr << "ignoring a char: " << static_cast<uint32_t>(c) << "\n";
+		warning_message("ignoring a char: " + static_cast<uint32_t>(c));
 		break;
 	}
 
 	default:
 		push_back(Token(docstring(1, c), catcode(c)));
 	}
-	//cerr << tokens_.back();
+	//warning_message(tokens_.back());
 }
 
 

@@ -18,6 +18,7 @@
 
 #include <config.h>
 
+#include "tex2lyx.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "output_xhtml.h"
@@ -40,7 +41,7 @@ namespace frontend {
 namespace Alert {
 	void warning(docstring const & title, docstring const & message, bool)
 	{
-		cerr << to_utf8(title) << "\n" << to_utf8(message) << endl;
+		warning_message(to_utf8(title) + "\n" + to_utf8(message));
 	}
 } // namespace Alert
 } // namespace frontend

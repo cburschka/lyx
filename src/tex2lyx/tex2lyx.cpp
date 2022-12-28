@@ -57,12 +57,12 @@ string const trimSpaceAndEol(string const & a)
 
 void split(string const & s, vector<string> & result, char delim)
 {
-	//cerr << "split 1: '" << s << "'\n";
+	//warning_message("split 1: '" + s + "'");
 	istringstream is(s);
 	string t;
 	while (getline(is, t, delim))
 		result.push_back(t);
-	//cerr << "split 2\n";
+	//warning_message("split 2");
 }
 
 
@@ -215,12 +215,12 @@ bool addModule(string const & module, LayoutFile const & baseClass, LayoutModule
 	vector<string>::const_iterator const vb = visited.begin();
 	vector<string>::const_iterator const ve = visited.end();
 	if (find(vb, ve, module) != ve) {
-		cerr << "Circular dependency detected for module " << module << '\n';
+		warning_message("Circular dependency detected for module " + module);
 		return false;
 	}
 	LyXModule const * const lm = theModuleList[module];
 	if (!lm) {
-		cerr << "Could not find module " << module << " in module list.\n";
+		warning_message("Could not find module " + module + " in module list.");
 		return false;
 	}
 	bool foundone = false;
@@ -260,7 +260,7 @@ bool addModule(string const & module, LayoutFile const & baseClass, LayoutModule
 		}
 	}
 	if (!foundone) {
-		cerr << "Could not add required modules for " << module << ".\n";
+		warning_message("Could not add required modules for " + module + ".");
 		return false;
 	}
 	if (!m.moduleCanBeAdded(module, &baseClass))
@@ -556,8 +556,8 @@ bool read_syntaxfile(FileName const & file_name)
 {
 	ifdocstream is(file_name.toFilesystemEncoding().c_str());
 	if (!is.good()) {
-		cerr << "Could not open syntax file \"" << file_name
-		     << "\" for reading." << endl;
+		cerr << "Could not open syntax file \""
+		     << file_name << "\" for reading." << std::endl;
 		return false;
 	}
 	// We can use our TeX parser, since the syntax of the layout file is
@@ -594,6 +594,7 @@ bool fixed_encoding = false;
 string syntaxfile;
 bool copy_files = false;
 bool overwrite_files = false;
+bool no_warnings = false;
 bool skip_children = false;
 int error_code = 0;
 
@@ -650,10 +651,11 @@ int parse_help(string const &, string const &)
 		"\t-fixedenc encoding Like -e, but ignore encoding changing commands while parsing.\n"
 		"\t-f                 Force overwrite of .lyx files.\n"
 		"\t-help              Print this message and quit.\n"
-		"\t-n                 translate literate programming (noweb, sweave,... ) file.\n"
+		"\t-n                 Translate literate programming (noweb, sweave,... ) file.\n"
+		"\t-q                 Omit warnings.\n"
+		"\t-roundtrip         Re-export created .lyx file infile.lyx.lyx to infile.lyx.tex.\n"
 		"\t-skipchildren      Do not translate included child documents.\n"
-		"\t-roundtrip         re-export created .lyx file infile.lyx.lyx to infile.lyx.tex.\n"
-		"\t-s syntaxfile      read additional syntax file.\n"
+		"\t-s syntaxfile      Read additional syntax file.\n"
 		"\t-sysdir SYSDIR     Set system directory to SYSDIR.\n"
 		"\t                   Default: " << package().system_support() << "\n"
 		"\t-userdir USERDIR   Set user directory to USERDIR.\n"
@@ -763,6 +765,13 @@ int parse_force(string const &, string const &)
 }
 
 
+int parse_quite(string const &, string const &)
+{
+	no_warnings = true;
+	return 0;
+}
+
+
 int parse_noweb(string const &, string const &)
 {
 	noweb_mode = true;
@@ -811,6 +820,7 @@ void TeX2LyXApp::easyParse()
 	cmdmap["-skipchildren"] = parse_skipchildren;
 	cmdmap["-sysdir"] = parse_sysdir;
 	cmdmap["-userdir"] = parse_userdir;
+	cmdmap["-q"] = parse_quite;
 	cmdmap["-roundtrip"] = parse_roundtrip;
 	cmdmap["-copyfiles"] = parse_copyfiles;
 
@@ -1053,15 +1063,14 @@ bool tex2lyx(string const & infilename, FileName const & outfilename,
 	}
 	if (outfilename.isReadableFile()) {
 		if (overwrite_files) {
-			cerr << "Overwriting existing file "
-			     << outfilename << endl;
+			warning_message("Overwriting existing file " + outfilename.absFileName());
 		} else {
 			cerr << "Not overwriting existing file "
 			     << outfilename << endl;
 			return false;
 		}
 	} else {
-		cerr << "Creating file " << outfilename << endl;
+		warning_message("Creating file " + outfilename.absFileName());
 	}
 	ofstream os(outfilename.toFilesystemEncoding().c_str());
 	if (!os.good()) {
@@ -1100,6 +1109,13 @@ bool tex2tex(string const & infilename, FileName const & outfilename,
 		return true;
 	cerr << "Error: Running '" << command << "' failed." << endl;
 	return false;
+}
+
+
+void warning_message(string const & message)
+{
+	if (!no_warnings)
+		cerr << "tex2lyx warning: " << message << endl;
 }
 
 

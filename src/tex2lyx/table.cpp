@@ -346,9 +346,8 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 		     ColInfo const & start)
 {
 	if (p.get_token().cat() != catBegin)
-		cerr << "Wrong syntax for table column alignment.\n"
-			"Expected '{', got '" << p.curr_token().asInput()
-		     << "'.\n";
+		warning_message("Wrong syntax for table column alignment.\n"
+			"Expected '{', got '" + p.curr_token().asInput()+ "'");
 
 	ColInfo next = start;
 	for (Token t = p.get_token(); p.good() && t.cat() != catEnd;
@@ -363,7 +362,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 				// "%\n" combination
 				p.skip_spaces();
 			} else
-				cerr << "Ignoring comment: " << t.asInput();
+				warning_message("Ignoring comment: " + t.asInput());
 			continue;
 		}
 
@@ -472,8 +471,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 				string const s = trimSpaceAndEol(p.verbatim_item());
 				if (colinfo.empty())
 					// This is not possible in LaTeX.
-					cerr << "Ignoring separator '<{"
-					     << s << "}'." << endl;
+					warning_message("Ignoring separator '<{" + s + "}'.");
 				else {
 					ColInfo & ci = colinfo.back();
 					ci2special(ci);
@@ -497,9 +495,8 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 					handle_colalign(p2, colinfo, next);
 					next = ColInfo();
 				} else {
-					cerr << "Ignoring column specification"
-						" '*{" << num << "}{"
-					     << arg << "}'." << endl;
+					warning_message("Ignoring column specification"
+							" '*{" + num + "}{" + arg + "}'.");
 				}
 				break;
 			}
@@ -734,13 +731,12 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 				 t.cs() == "\\" ||
 				 t.cs() == "cr") {
 				if (t.cs() == "cr")
-					cerr << "Warning: Converting TeX "
-						"'\\cr' to LaTeX '\\\\'."
-					     << endl;
+					warning_message("Warning: Converting TeX "
+							"'\\cr' to LaTeX '\\\\'.");
 				// stuff before the line break
 				os << comments << HLINE << hlines << HLINE
 				   << LINE;
-				//cerr << "hlines: " << hlines << endl;
+				//warning_message("hlines: " + hlines);
 				hlines.erase();
 				comments.erase();
 				pos = ROW_START;
@@ -798,8 +794,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 			if (support::contains(hlines, "\\hline") ||
 			    support::contains(hlines, "\\cline") ||
 			    support::contains(hlines, "\\newpage"))
-				cerr << "Ignoring '" << hlines
-				     << "' in a cell" << endl;
+				warning_message("Ignoring '" + hlines + "' in a cell");
 			else
 				os << hlines;
 			hlines.erase();
@@ -853,7 +848,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
-			cerr << "unexpected '}'\n";
+			warning_message("unexpected '}'");
 		}
 
 		else if (t.cat() == catAlign) {
@@ -912,8 +907,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 	// We can have hline stuff if the last line is incomplete
 	if (!hlines.empty()) {
 		// this does not work in LaTeX, so we ignore it
-		cerr << "Ignoring '" << hlines << "' at end of tabular"
-		     << endl;
+		warning_message("Ignoring '" + hlines + "' at end of tabular");
 	}
 }
 
@@ -1013,8 +1007,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		else if (posopts == "[b]")
 			tabularvalignment = "bottom";
 		else
-			cerr << "vertical tabular positioning '"
-			     << posopts << "' ignored\n";
+			warning_message("vertical tabular positioning '"
+					+ posopts + "' ignored");
 	}
 
 	vector<ColInfo> colinfo;
@@ -1040,7 +1034,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 	ltType endlastfoot;
 
 	// split into rows
-	//cerr << "// split into rows\n";
+	//warning_message("// split into rows");
 	for (size_t row = 0; row < rowinfo.size();) {
 
 		// init row
@@ -1049,7 +1043,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 		// split row
 		vector<string> dummy;
-		//cerr << "\n########### LINE: " << lines[row] << "########\n";
+		//warning_message("########### LINE: " << lines[row] << "########");
 		split(lines[row], dummy, HLINE);
 
 		// handle horizontal line fragments
@@ -1057,22 +1051,22 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		if (dummy.size() != 3) {
 			if ((dummy.size() != 1 && dummy.size() != 2) ||
 			    row != rowinfo.size() - 1)
-				cerr << "unexpected dummy size: " << dummy.size()
-					<< " content: " << lines[row] << "\n";
+				warning_message("unexpected dummy size: " + convert<string>(dummy.size())
+						+ " content: " + lines[row]);
 			dummy.resize(3);
 		}
 		lines[row] = dummy[1];
 
-		//cerr << "line: " << row << " above 0: " << dummy[0] << "\n";
-		//cerr << "line: " << row << " below 2: " << dummy[2] <<  "\n";
-		//cerr << "line: " << row << " cells 1: " << dummy[1] <<  "\n";
+		//warning_message("line: " + row + " above 0: " + dummy[0]);
+		//warning_message("line: " + row + " below 2: " + dummy[2]);
+		//warning_message("line: " + row + " cells 1: " + dummy[1]);
 
 		for (int i = 0; i <= 2; i += 2) {
-			//cerr << "   reading from line string '" << dummy[i] << "'\n";
+			//warning_message("   reading from line string '" + dummy[i]);
 			Parser p1(dummy[size_type(i)]);
 			while (p1.good()) {
 				Token t = p1.get_token();
-				//cerr << "read token: " << t << "\n";
+				//warning_message("read token: " + t);
 				if (t.cs() == "hline" || t.cs() == "toprule" ||
 				    t.cs() == "midrule" ||
 				    t.cs() == "bottomrule") {
@@ -1083,15 +1077,14 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 							if (row > 0) // extra bottomline above
 								handle_hline_below(rowinfo[row - 1], cellinfo[row - 1]);
 							else
-								cerr << "dropping extra "
-								     << t.cs() << '\n';
-							//cerr << "below row: " << row-1 << endl;
+								warning_message("dropping extra " + t.cs());
+							//warning_message("below row: " + row-1);
 						} else {
 							handle_hline_above(rowinfo[row], cellinfo[row]);
-							//cerr << "above row: " << row << endl;
+							//warning_message("above row: " + row);
 						}
 					} else {
-						//cerr << "below row: " << row << endl;
+						//warning_message("below row: " + row);
 						handle_hline_below(rowinfo[row], cellinfo[row]);
 					}
 				} else if (t.cs() == "cline" || t.cs() == "cmidrule") {
@@ -1101,40 +1094,34 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 						trim = p1.getFullParentheseArg();
 					}
 					string arg = p1.verbatim_item();
-					//cerr << "read " << t.cs() << " arg: '" << arg << "', trim: '" << trim << "'\n";
+					//warning_message("read " + t.cs() + " arg: '" + arg + "', trim: '" + trim);
 					vector<string> cols;
 					split(arg, cols, '-');
 					cols.resize(2);
 					size_t from = convert<unsigned int>(cols[0]);
 					if (from == 0)
-						cerr << "Could not parse "
-						     << t.cs() << " start column."
-						     << endl;
+						warning_message("Could not parse " + t.cs() + " start column.");
 					else
 						// 1 based index -> 0 based
 						--from;
 					if (from >= colinfo.size()) {
-						cerr << t.cs() << " starts at "
-							"non existing column "
-						     << (from + 1) << endl;
+						warning_message(t.cs() + " starts at "
+							"non existing column " + convert<string>(from + 1));
 						from = colinfo.size() - 1;
 					}
 					size_t to = convert<unsigned int>(cols[1]);
 					if (to == 0)
-						cerr << "Could not parse "
-						     << t.cs() << " end column."
-						     << endl;
+						warning_message("Could not parse " + t.cs() + " end column.");
 					else
 						// 1 based index -> 0 based
 						--to;
 					if (to >= colinfo.size()) {
-						cerr << t.cs() << " ends at "
-							"non existing column "
-						     << (to + 1) << endl;
+						warning_message(t.cs() + " ends at non existing column "
+								+ convert<string>(to + 1));
 						to = colinfo.size() - 1;
 					}
 					for (size_t col = from; col <= to; ++col) {
-						//cerr << "row: " << row << " col: " << col << " i: " << i << endl;
+						//warning_message("row: " + row + " col: " + col + " i: " + i);
 						if (i == 0) {
 							rowinfo[row].topline = true;
 							cellinfo[row][col].topline = true;
@@ -1233,14 +1220,13 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 							rowinfo[row - 1].newpage = true;
 						else
 							// This does not work in LaTeX
-							cerr << "Ignoring "
-								"'\\newpage' "
-								"before rows."
-							     << endl;
+							warning_message("Ignoring "
+									"'\\newpage' "
+									"before rows.");
 					} else
 						rowinfo[row].newpage = true;
 				} else {
-					cerr << "unexpected line token: " << t << endl;
+					warning_message("unexpected line token: " + t.cs());
 				}
 			}
 		}
@@ -1292,11 +1278,10 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		split(lines[row], cells, TAB);
 		for (size_t col = 0, cell = 0; cell < cells.size();
 		     ++col, ++cell) {
-			//cerr << "cell content: '" << cells[cell] << "'\n";
+			//warning_message("cell content: '" + cells[cell]);
 			if (col >= colinfo.size()) {
 				// This does not work in LaTeX
-				cerr << "Ignoring extra cell '"
-				     << cells[cell] << "'." << endl;
+				warning_message("Ignoring extra cell '" + cells[cell] + "'.");
 				continue;
 			}
 			string cellcont = cells[cell];
@@ -1312,8 +1297,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				if (parse.hasOpt()) {
 					string const vpos = parse.getArg('[', ']');
 					parse.skip_spaces(true);
-					cerr << "Ignoring multirow's vpos arg '"
-					     << vpos << "'!" << endl;
+					warning_message("Ignoring multirow's vpos arg '"
+					     + vpos + "'!");
 				}
 				// how many cells?
 				parse.get_token();
@@ -1323,8 +1308,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				if (parse.hasOpt()) {
 					string const bs = parse.getArg('[', ']');
 					parse.skip_spaces(true);
-					cerr << "Ignoring multirow's bigstrut arg '"
-					     << bs << "'!" << endl;
+					warning_message("Ignoring multirow's bigstrut arg '"
+					     + bs + "'!");
 				}
 				// the width argument
 				string const width = parse.getArg('{', '}');
@@ -1354,11 +1339,10 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					// This may or may not work in LaTeX,
 					// but it does not work in LyX.
 					// FIXME: Handle it correctly!
-					cerr << "Moving cell content '"
-					     << cells[cell]
-					     << "' into a multirow cell. "
-						"This will probably not work."
-					     << endl;
+					warning_message("Moving cell content '"
+							+ cells[cell]
+							+ "' into a multirow cell. "
+							  "This will probably not work.");
 				}
 				cellinfo[row][col].content += os2.str();
 			} else if (parse.next_token().cs() == "multicolumn") {
@@ -1395,11 +1379,10 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					// This may or may not work in LaTeX,
 					// but it does not work in LyX.
 					// FIXME: Handle it correctly!
-					cerr << "Moving cell content '"
-					     << cells[cell]
-					     << "' into a multicolumn cell. "
-						"This will probably not work."
-					     << endl;
+					warning_message("Moving cell content '"
+							+ cells[cell]
+							+ "' into a multicolumn cell. "
+							  "This will probably not work.");
 				}
 				cellinfo[row][col].content += os2.str();
 
@@ -1407,15 +1390,14 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				for (size_t i = 0; i < ncells - 1; ++i) {
 					++col;
 					if (col >= colinfo.size()) {
-						cerr << "The cell '"
-							<< cells[cell]
-							<< "' specifies "
-							<< convert<string>(ncells)
-							<< " columns while the table has only "
-							<< convert<string>(colinfo.size())
-							<< " columns!"
-							<< " Therefore the surplus columns will be ignored."
-							<< endl;
+						warning_message("The cell '"
+							+ cells[cell]
+							+ "' specifies "
+							+ convert<string>(ncells)
+							+ " columns while the table has only "
+							+ convert<string>(colinfo.size())
+							+ " columns!"
+							+ " Therefore the surplus columns will be ignored.");
 						break;
 					}
 					cellinfo[row][col].multi = CELL_PART_OF_MULTICOLUMN;
@@ -1436,11 +1418,10 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				rowinfo[row].caption = true;
 				for (size_t c = 1; c < cells.size(); ++c) {
 					if (!cells[c].empty()) {
-						cerr << "Moving cell content '"
-						     << cells[c]
-						     << "' into the caption cell. "
-							"This will probably not work."
-						     << endl;
+						warning_message("Moving cell content '"
+						     + cells[c]
+						     + "' into the caption cell. "
+						       "This will probably not work.");
 						cells[0] += cells[c];
 					}
 				}
@@ -1467,11 +1448,10 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				rowinfo[row].caption = true;
 				for (size_t c = 1; c < cells.size(); ++c) {
 					if (!cells[c].empty()) {
-						cerr << "Moving cell content '"
-						     << cells[c]
-						     << "' into the caption cell. "
-							"This will probably not work."
-						     << endl;
+						warning_message("Moving cell content '"
+						     + cells[c]
+						     + "' into the caption cell. "
+							"This will probably not work.");
 						cells[0] += cells[c];
 					}
 				}
@@ -1496,10 +1476,10 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 			}
 		}
 
-		//cerr << "//  handle almost empty last row what we have\n";
+		//warning_message("//  handle almost empty last row what we have");
 		// handle almost empty last row
 		if (row && lines[row].empty() && row + 1 == rowinfo.size()) {
-			//cerr << "remove empty last line\n";
+			//warning_message("remove empty last line");
 			if (rowinfo[row].topline)
 				rowinfo[row - 1].bottomline = true;
 			for (size_t col = 0; col < colinfo.size(); ++col)
@@ -1584,7 +1564,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 	else if (name == "tabularx")
 		preamble.registerAutomaticallyLoadedPackage("tabularx");
 
-	//cerr << "// output what we have\n";
+	//warning_message("output what we have");
 	// output what we have
 	size_type cols = colinfo.size();
 	for (auto const & col : colinfo) {
@@ -1615,7 +1595,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		   
 	os << write_attribute("tabularwidth", tabularwidth) << ">\n";
 
-	//cerr << "// after header\n";
+	//warning_message("after header");
 	for (auto const & col : colinfo) {
 		if (col.decimal_point != '\0' && col.align != 'd')
 			continue;
@@ -1630,7 +1610,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		   << write_attribute("varwidth", col.varwidth)
 		   << ">\n";
 	}
-	//cerr << "// after cols\n";
+	//warning_message("after cols");
 
 	for (size_t row = 0; row < rowinfo.size(); ++row) {
 		os << "<row"
@@ -1675,11 +1655,11 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 			   << write_attribute("rightline", cell.rightlines > 0)
 			   << write_attribute("rotate", cell.rotate)
 			   << write_attribute("mroffset", cell.mroffset);
-			//cerr << "\nrow: " << row << " col: " << col;
+			//warning_message("\nrow: " + row + " col: " + col);
 			//if (cell.topline)
-			//	cerr << " topline=\"true\"";
+			//	warning_message(" topline=\"true\"");
 			//if (cell.bottomline)
-			//	cerr << " bottomline=\"true\"";
+			//	warning_message(" bottomline=\"true\"");
 			os << " usebox=\"none\""
 			   << write_attribute("width", translate_len(cell.width));
 			if (cell.multi != CELL_NORMAL)

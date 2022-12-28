@@ -1129,8 +1129,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			position = "t";
 		}
 		if (position != "t" && position != "c" && position != "b") {
-			cerr << "invalid position " << position << " for "
-			     << inner_type << endl;
+			warning_message("invalid position " + position
+					+ " for " + inner_type);
 			position = "c";
 		}
 		if (p.hasOpt()) {
@@ -1143,8 +1143,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 					hor_pos = opt;
 					if (hor_pos != "l" && hor_pos != "c" &&
 					    hor_pos != "r" && hor_pos != "s") {
-						cerr << "invalid hor_pos " << hor_pos
-						     << " for " << inner_type << endl;
+						warning_message("invalid hor_pos "
+								+ hor_pos + " for "
+								+ inner_type);
 						hor_pos = "c";
 					}
 				}
@@ -1154,9 +1155,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 				inner_pos = p.getArg('[', ']');
 				if (inner_pos != "c" && inner_pos != "t" &&
 				    inner_pos != "b" && inner_pos != "s") {
-					cerr << "invalid inner_pos "
-					     << inner_pos << " for "
-					     << inner_type << endl;
+					warning_message("invalid inner_pos "
+							+ inner_pos + " for "
+							+ inner_type);
 					inner_pos = position;
 				}
 			}
@@ -1176,8 +1177,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 				hor_pos = opt;
 				if (hor_pos != "l" && hor_pos != "c" &&
 				    hor_pos != "r" && hor_pos != "s") {
-					cerr << "invalid hor_pos " << hor_pos
-					     << " for " << outer_type << endl;
+					warning_message("invalid hor_pos "
+							+ hor_pos + " for "
+							+ outer_type);
 					hor_pos = "c";
 				}
 			} else {
@@ -1451,8 +1453,8 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 		if (p.next_token().cat() == catBegin)
 			p.get_token();
 		else
-			cerr << "Warning: Ignoring missing '{' after \\"
-			     << outer_type << '.' << endl;
+			warning_message("Ignoring missing '{' after \\"
+					+ outer_type + '.');
 		eat_whitespace(p, os, parent_context, false);
 	}
 	string inner;
@@ -2808,24 +2810,24 @@ void copy_file(FileName const & src, string const & dstname)
 		return;
 	if (!dstpath.isDirectory()) {
 		if (!dstpath.createPath()) {
-			cerr << "Warning: Could not create directory for file `"
-			     << dst.absFileName() << "´." << endl;
+			warning_message("Could not create directory for file `"
+					+ dst.absFileName() + "´.");
 			return;
 		}
 	}
 	if (dst.isReadableFile()) {
 		if (overwriteFiles())
-			cerr << "Warning: Overwriting existing file `"
-			     << dst.absFileName() << "´." << endl;
+			warning_message("Overwriting existing file `"
+					+ dst.absFileName() + "´.");
 		else {
-			cerr << "Warning: Not overwriting existing file `"
-			     << dst.absFileName() << "´." << endl;
+			warning_message("Not overwriting existing file `"
+					+ dst.absFileName() + "´.");
 			return;
 		}
 	}
 	if (!src.copyTo(dst))
-		cerr << "Warning: Could not copy file `" << src.absFileName()
-		     << "´ to `" << dst.absFileName() << "´." << endl;
+		warning_message("Could not copy file `" + src.absFileName()
+				+ "´ to `" + dst.absFileName() + "´.");
 }
 
 
@@ -2860,7 +2862,7 @@ bool parse_chunk(Parser & p, ostream & os, Context & context)
 	p.putback();
 	p.deparse();
 
-	//cerr << "params=[" << params.second << "], code=[" << code.second << "]" <<endl;
+	//warning_message("params=[" + params.second + "], code=[" + code.second + "]");
 	// We must have a valid layout before outputting the Chunk inset.
 	context.check_layout(os);
 	Context chunkcontext(true, context.textclass);
@@ -3261,7 +3263,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		if (t.cat() == catSuper || t.cat() == catSub) {
-			cerr << "catcode " << t << " illegal in text mode\n";
+			string const cc = (t.cat() == catSuper) ? "catSuper" : "catSub";
+			warning_message("catcode " + cc + " illegal in text mode");
 			continue;
 		}
 
@@ -3363,8 +3366,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (p.next_token().character() == ']')
 				p.get_token();
 			else
-				cerr << "Warning: Inserting missing ']' in '"
-				     << s << "'." << endl;
+				warning_message("Inserting missing ']' in '" + s + "'.");
 			output_ert_inset(os, s, context);
 			continue;
 		}
@@ -3556,7 +3558,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (flags & FLAG_BRACE_LAST) {
 				return;
 			}
-			cerr << "stray '}' in text\n";
+			warning_message("stray '}' in text");
 			output_ert_inset(os, "}", context);
 			continue;
 		}
@@ -3598,8 +3600,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// eat environment name
 				string const name = p.getArg('{', '}');
 				if (name != active_environment())
-					cerr << "\\end{" + name + "} does not match \\begin{"
-						+ active_environment() + "}\n";
+					warning_message("\\end{" + name + "} does not match \\begin{"
+						+ active_environment() + "}");
 				return;
 			}
 			p.error("found 'end' unexpectedly");
@@ -3724,8 +3726,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 							fix_child_filename(name);
 							copy_file(absname, name);
 						} else
-							cerr << "Warning: Could not find file '"
-							     << name << "'." << endl;
+							warning_message("Could not find file '" + name + "'.");
 						context.check_layout(os);
 						begin_inset(os, "External\n\ttemplate ");
 						os << "GnumericSpreadsheet\n\tfilename "
@@ -3959,19 +3960,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						  known_pdftex_graphics_formats);
 				if (!dvips_name.empty()) {
 					if (!pdftex_name.empty()) {
-						cerr << "This file contains the "
-							"latex snippet\n"
-							"\"\\includegraphics{"
-						     << name << "}\".\n"
-							"However, files\n\""
-						     << dvips_name << "\" and\n\""
-						     << pdftex_name << "\"\n"
-							"both exist, so I had to make a "
-							"choice and took the first one.\n"
-							"Please move the unwanted one "
-							"someplace else and try again\n"
-							"if my choice was wrong."
-						     << endl;
+						warning_message("This file contains the "
+								"latex snippet\n"
+								"\"\\includegraphics{" + name + "}\".\n"
+								"However, files\n\""
+								+ dvips_name + "\" and\n\""
+								+ pdftex_name + "\"\n"
+								"both exist, so I had to make a "
+								"choice and took the first one.\n"
+								"Please move the unwanted one "
+								"someplace else and try again\n"
+								"if my choice was wrong.");
 					}
 					name = dvips_name;
 				} else if (!pdftex_name.empty()) {
@@ -3985,8 +3984,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				fix_child_filename(name);
 				copy_file(absname, name);
 			} else
-				cerr << "Warning: Could not find graphics file '"
-				     << name << "'." << endl;
+				warning_message("Could not find graphics file '" + name + "'.");
 
 			context.check_layout(os);
 			begin_inset(os, "Graphics ");
@@ -4030,7 +4028,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!ss.str().empty())
 					os << "\trotateOrigin " << ss.str() << '\n';
 				else
-					cerr << "Warning: Ignoring unknown includegraphics origin argument '" << opt << "'\n";
+					warning_message("Ignoring unknown includegraphics origin argument '" + opt + "'");
 			}
 			if (opts.find("keepaspectratio") != opts.end())
 				os << "\tkeepAspectRatio\n";
@@ -4055,7 +4053,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				   << opts["bbllx"] << " " << opts["bblly"] << " "
 				   << opts["bburx"] << " " << opts["bbury"] << '\n';
 			else if (numberOfbbOptions > 0)
-				cerr << "Warning: Ignoring incomplete includegraphics boundingbox arguments.\n";
+				warning_message("Ignoring incomplete includegraphics boundingbox arguments.");
 			numberOfbbOptions = 0;
 			if (opts.find("natwidth") != opts.end())
 				numberOfbbOptions++;
@@ -4065,7 +4063,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "\tBoundingBox 0bp 0bp "
 				   << opts["natwidth"] << " " << opts["natheight"] << '\n';
 			else if (numberOfbbOptions > 0)
-				cerr << "Warning: Ignoring incomplete includegraphics boundingbox arguments.\n";
+				warning_message("Ignoring incomplete includegraphics boundingbox arguments.");
 			ostringstream special;
 			if (opts.find("hiresbb") != opts.end())
 				special << "hiresbb,";
@@ -4327,8 +4325,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// time in the text language.
 			time_t ptime = from_asctime_utc(localtime);
 			if (ptime == static_cast<time_t>(-1)) {
-				cerr << "Warning: Could not parse time `" << localtime
-				     << "´ for change tracking, using current time instead.\n";
+				warning_message("Could not parse time `" + localtime
+				     + "´ for change tracking, using current time instead.");
 				ptime = current_time();
 			}
 			if (t.cs() == "lyxadded")
@@ -4877,13 +4875,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 			string const citation = p.verbatim_item();
 			if (!before.empty() && argumentOrder == '\0') {
-				cerr << "Warning: Assuming argument order "
-					"of jurabib version 0.6 for\n'"
-				     << command << before << after << '{'
-				     << citation << "}'.\n"
-					"Add 'jurabiborder' to the jurabib "
-					"package options if you used an\n"
-					"earlier jurabib version." << endl;
+				warning_message("Assuming argument order "
+						"of jurabib version 0.6 for\n'"
+						+ command + before + after + '{'
+						+ citation + "}'.\n"
+						"Add 'jurabiborder' to the jurabib "
+						"package options if you used an\n"
+						"earlier jurabib version.");
 			}
 			bool literal = false;
 			pair<bool, string> aft;
@@ -5297,7 +5295,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				output_ert_inset(os, "\\verb" + delim
 						 + arg.second + delim, context);
 			else
-				cerr << "invalid \\verb command. Skipping" << endl;
+				warning_message("invalid \\verb command. Skipping");
 			continue;
 		}
 
@@ -5493,8 +5491,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					copy_file(abssrc, outname);
 				}
 			} else {
-				cerr << "Warning: Could not find included file '"
-				     << filename << "'." << endl;
+				warning_message("Could not find included file '" + filename + "'.");
 				outname = filename;
 			}
 			if (external) {
@@ -5615,8 +5612,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				Encoding const * const enc = encodings.fromIconvName(
 					p.getEncoding(), Encoding::inputenc, true);
 				if (!enc) {
-					cerr << "Unknown bib encoding " << p.getEncoding()
-					     << ". Ignoring." << std::endl;
+					warning_message("Unknown bib encoding " + p.getEncoding()
+					     + ". Ignoring.");
 				} else
 					os << "encoding " << '"' << enc->name() << '"' << "\n";
 			}
@@ -5664,8 +5661,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				Encoding const * const enc = encodings.fromLaTeXName(
 					preamble.bibencoding, Encoding::inputenc, true);
 				if (!enc) {
-					cerr << "Unknown bib encoding " << preamble.bibencoding
-					     << ". Ignoring." << std::endl;
+					warning_message("Unknown bib encoding " + preamble.bibencoding
+					     + ". Ignoring.");
 				} else
 					os << "encoding " << '"' << enc->name() << '"' << "\n";
 			}
@@ -6142,7 +6139,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.setCatcodes(VERBATIM_CATCODES);
 				string delim = p.get_token().asInput();
 				if (delim != "{")
-					cerr << "Warning: bad delimiter for command " << t.asInput() << endl;
+					warning_message("bad delimiter for command " + t.asInput());
 				//FIXME: handle error condition
 				string const arg = p.verbatimStuff("}").second;
 				Context newcontext(true, context.textclass);
@@ -6190,7 +6187,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.setCatcodes(VERBATIM_CATCODES);
 				string delim = p.get_token().asInput();
 				if (delim != "{")
-					cerr << "Warning: bad delimiter for command " << t.asInput() << endl;
+					warning_message("bad delimiter for command " + t.asInput());
 				//FIXME: handle error condition
 				string const arg = p.verbatimStuff("}").second;
 				Context newcontext(true, context.textclass);
@@ -6235,8 +6232,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				fix_child_filename(name);
 				copy_file(absname, name);
 			} else
-				cerr << "Warning: Could not find file '"
-				     << name << "'." << endl;
+				warning_message("Could not find file '" + name + "'.");
 			// write output
 			context.check_layout(os);
 			begin_inset(os, "External\n\ttemplate ");
@@ -6265,7 +6261,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!ss.str().empty())
 					os << "\trotateOrigin " << ss.str() << '\n';
 				else
-					cerr << "Warning: Ignoring unknown includegraphics origin argument '" << opt << "'\n";
+					warning_message("Ignoring unknown includegraphics origin argument '" + opt + "'");
 			}
 			if (opts.find("width") != opts.end())
 				os << "\twidth "
@@ -6302,8 +6298,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				fix_child_filename(name);
 				copy_file(absname, name);
 			} else
-				cerr << "Warning: Could not find file '"
-				     << name << "'." << endl;
+				warning_message("Could not find file '" + name + "'.");
 			context.check_layout(os);
 			begin_inset(os, "External\n\ttemplate ");
 			os << "ChessDiagram\n\tfilename "
@@ -6431,17 +6426,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
 				preamble.registerAutomaticallyLoadedPackage(*it);
 		}
-		//cerr << "#: " << t << " mode: " << mode << endl;
+		//warning_message("#: " + t + " mode: " + mode);
 		// heuristic: read up to next non-nested space
 		/*
 		string s = t.asInput();
 		string z = p.verbatim_item();
 		while (p.good() && z != " " && !z.empty()) {
-			//cerr << "read: " << z << endl;
+			//warning_message("read: " + z);
 			s += z;
 			z = p.verbatim_item();
 		}
-		cerr << "found ERT: " << s << endl;
+		warning_message("found ERT: " + s);
 		output_ert_inset(os, s + ' ', context);
 		*/
 		else {
