@@ -2350,15 +2350,15 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		if (t.cs() == "babelfont") {
 			xetex = true;
 			h_use_non_tex_fonts = true;
-                        h_language_package = "babel";
+			h_language_package = "babel";
 			if (h_inputencoding == "auto-legacy")
-			p.setEncoding("UTF-8");
+				p.setEncoding("UTF-8");
 			// we don't care about the lang option
 			string const lang = p.hasOpt() ? p.getArg('[', ']') : string();
-                        string const family = p.getArg('{', '}');
+			string const family = p.getArg('{', '}');
 			string fontopts = p.hasOpt() ? p.getArg('[', ']') : string();
 			string const fontname = p.getArg('{', '}');
-                        if (lang.empty() && family == "rm") {
+			if (lang.empty() && family == "rm") {
 				h_font_roman[1] = fontname;
 				if (!fontopts.empty()) {
 					vector<string> opts = getVectorFromString(fontopts);
