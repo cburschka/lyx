@@ -17,6 +17,7 @@
 #include "tex2lyx.h"
 
 #include "Encoding.h"
+#include "LaTeXPackages.h"
 #include "LayoutFile.h"
 #include "Lexer.h"
 #include "TextClass.h"
@@ -757,7 +758,11 @@ void Preamble::handle_package(Parser &p, string const & name,
 		registerAutomaticallyLoadedPackage("fontspec");
 		if (h_inputencoding == "auto-legacy")
 			p.setEncoding("UTF-8");
-	}
+	} else if (h_inputencoding == "auto-legacy"
+		   && LaTeXPackages::isAvailableAtLeastFrom("LaTeX", 2018, 04))
+		// As of LaTeX 2018/04/01, utf8 is the default input encoding
+		// So use that if no inputencoding is set
+		h_inputencoding = "utf8";
 
 	// vector of all options for easier parsing and
 	// skipping
@@ -1694,8 +1699,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 					cerr << "Unknown encoding " << encoding
 					     << ". Ignoring." << std::endl;
 			} else {
-				if (!enc->unsafe() && options.size() == 1 && one_language == true)
+				if (!enc->unsafe() && options.size() == 1 && one_language == true) {
 					h_inputencoding = enc->name();
+					docencoding = enc->iconvName();
+				}
 				p.setEncoding(enc->iconvName());
 			}
 			options.clear();
