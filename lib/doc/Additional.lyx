@@ -2329,8 +2329,64 @@ perhaps
 
 \begin_layout Chapter
 
-\change_inserted 564990737 1670439508
+\change_inserted 564990737 1672345271
 Document classes
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672345272
+
+\lang american
+As explained in the 
+\emph on
+User's Guide
+\emph default
+, \SpecialChar LaTeX
+ originally offered four standard document classes, article, report, book
+ and letter, but individuals and organizations, most notably the American
+ Mathematical Society in the early days, have made many contributions to
+ extending the range of document classes.
+ In this chapter we summarize the main externally maintained classes, some
+ of which are marked “Unavailable:” in the pull-down 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+c
+\bar default
+lass
+\family default
+ list in the 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar menuseparator
+
+\bar under
+S
+\bar default
+ettings\SpecialChar menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+class
+\family default
+ dialog and which you will need to install as described in the 
+\emph on
+Installing New Document Classes
+\emph default
+ chapter of the 
+\emph on
+Customization
+\emph default
+ manual if you want to use them.
+ 
 \end_layout
 
 \begin_layout Section
@@ -2346,11 +2402,73 @@ Collections
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 564990737 1672345298
+
+\lang american
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:AMS-LaTeX-(American-Mathematical"
+
+\end_inset
+
+AMS-\SpecialChar LaTeX
+ (American Mathematical Society)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672345298
+
+\lang american
+The \SpecialChar LyX
+ supported document classes 
+\family sans
+article (AMS)
+\family default
+ and 
+\family sans
+book (AMS)
+\family default
+ are maintained by the Society; use of their features is described in the
+ Math manual and on their website 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672345298
+
+http://www.ams.org/publications/authors/tex/amslatex
+\end_layout
+
+\end_inset
+
+.
+ The following summary was originally provided by 
+\noun on
+David Johnson
+\noun default
+ and updated by 
+\noun on
+Richard Heck
+\noun default
+ and the \SpecialChar LyX
+ Team
+\noun on
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_deleted 564990737 1672345297
 AMS \SpecialChar LaTeX
 
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672345297
 by 
 \noun on
 David Johnson
@@ -2358,6 +2476,8 @@ David Johnson
 ; updated by 
 \noun on
 Richard Kimberly Heck
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -2410,12 +2530,73 @@ There are two basic AMS \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Itemize
-amsart: The standard AMS article format.
+amsart: The standard AMS article format
+\change_inserted 564990737 1672345333
+
+\lang american
+; see 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+American Mathematical Society (AMS)
+\change_unchanged
+
+\family default
+\lang english
+.
 \end_layout
 
 \begin_layout Itemize
-amsbook: the standard AMS book (really, monograph) format.
- 
+amsbook: the standard AMS book (really, monograph) format
+\change_inserted 564990737 1672345366
+
+\lang american
+; see 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Books\SpecialChar menuseparator
+American Mathematical Society (AMS)
+\change_unchanged
+
+\family default
+\lang english
+.
+\change_inserted 564990737 1672345369
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672345383
+
+\family sans
+\lang american
+amsproc
+\family default
+: the standard AMS proceedings format.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672345383
+
+\lang american
+\SpecialChar LyX
+ only supports the first two natively; see the 
+\emph on
+Installing New Document Classes
+\emph default
+ chapter of the 
+\emph on
+Customization
+\emph default
+ manual if you want to use 
+\family sans
+amsproc
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -2424,6 +2605,8 @@ The layouts themselves contain only the minimum necessary to use the AMS
  They do not, in particular, contain any of the `theorem' environments used
  for setting theorems, lemmas, and the like.
  These are contained, instead, in the 
+\change_deleted 564990737 1672345416
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2433,9 +2616,21 @@ Theorems (AMS)
 
 \end_inset
 
+
+\change_inserted 564990737 1672345416
+
+\family sans
+\lang american
+AMS Theorems
+\change_unchanged
+
+\family default
+\lang english
  module, which is loaded by default when you select one of the AMS classes.
  (It can also be used with other classes and can be removed, if you would
  rather use something else.) Less commonly used environments are in the 
+\change_deleted 564990737 1672345436
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2445,12 +2640,25 @@ Theorems (AMS-Extended)
 
 \end_inset
 
+
+\change_inserted 564990737 1672345436
+
+\lang american
+ 
+\family sans
+AMS Theorems (Extended)
+\change_unchanged
+
+\family default
+\lang english
  module, which must be loaded manually.
 \end_layout
 
 \begin_layout Standard
 By default, theorems and the like are numbered consecutively throughout
  the document, but this may be modified by loading the module 
+\change_deleted 564990737 1672345461
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2460,6 +2668,16 @@ Theorems (Order by Section)
 
 \end_inset
 
+
+\change_inserted 564990737 1672345461
+
+\family sans
+\lang american
+Standard Theorems (Numbered by Section)
+\change_unchanged
+
+\family default
+\lang english
  or, if you are using 
 \begin_inset Flex Code
 status collapsed
@@ -2471,6 +2689,8 @@ book (AMS)
 \end_inset
 
 , the module 
+\change_deleted 564990737 1672345479
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2480,6 +2700,16 @@ Theorems (Order by Chapter)
 
 \end_inset
 
+
+\change_inserted 564990737 1672345480
+
+\family sans
+\lang american
+Standard Theorems (Numbered by Chapter)
+\change_unchanged
+
+\family default
+\lang english
 .
  These will number the results as 
 \begin_inset Formula $n.m$
@@ -2494,6 +2724,8 @@ Theorems (Order by Chapter)
 only
 \emph default
  unnumbered results, the module 
+\change_deleted 564990737 1672345498
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2503,6 +2735,16 @@ Theorems (Starred)
 
 \end_inset
 
+
+\change_inserted 564990737 1672345498
+
+\family sans
+\lang american
+Standard Theorems (Unnumbered)
+\change_unchanged
+
+\family default
+\lang english
  provides that option.
 \end_layout
 
@@ -2513,6 +2755,8 @@ have
 \emph default
  to be used with the AMS classes.
  It is perfectly possible to use the 
+\change_deleted 564990737 1672345520
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2522,6 +2766,16 @@ Theorems (AMS)
 
 \end_inset
 
+
+\change_inserted 564990737 1672345520
+
+\family sans
+\lang american
+AMS Theorems
+\change_unchanged
+
+\family default
+\lang english
  module, and the others mentioned, with other classes, such as 
 \begin_inset Flex Code
 status collapsed
@@ -2694,6 +2948,8 @@ Translator
 
 \begin_layout Standard
 The following environments are provided by both the 
+\change_deleted 564990737 1672345566
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2703,7 +2959,19 @@ Theorems
 
 \end_inset
 
+
+\change_inserted 564990737 1672345566
+
+\family sans
+\lang american
+Standard Theorems
+\change_unchanged
+
+\family default
+\lang english
  and 
+\change_deleted 564990737 1672345580
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2713,10 +2981,22 @@ Theorems (AMS)
 
 \end_inset
 
+
+\change_inserted 564990737 1672345580
+
+\family sans
+\lang american
+AMS Theorems
+\change_unchanged
+
+\family default
+\lang english
  modules, in the latter case in both starred (unnumbered) and unstarred
  (numbered) versions.
  These same environments are provided only in the starred versions by the
  
+\change_deleted 564990737 1672345596
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2726,6 +3006,16 @@ Theorems (Starred)
 
 \end_inset
 
+
+\change_inserted 564990737 1672345596
+
+\family sans
+\lang american
+Standard Theorems
+\change_unchanged
+
+\family default
+\lang english
  module:
 \end_layout
 
@@ -2811,8 +3101,16 @@ User's Guide
  for information on nesting.
 \end_layout
 
+\begin_layout Fact
+
+\change_inserted 564990737 1672345651
+Used in a way similar to Proposition, though perhaps lower on the scale.
+\end_layout
+
 \begin_layout Standard
 And these environments are provided by 
+\change_deleted 564990737 1672345684
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2822,6 +3120,16 @@ Theorems (AMS-Extended)
 
 \end_inset
 
+
+\change_inserted 564990737 1672345689
+
+\family sans
+\lang american
+AMS Theorems (Extended
+\family default
+\lang english
+)
+\change_unchanged
 :
 \end_layout
 
@@ -2860,10 +3168,48 @@ Acknowledgement.
 
 \begin_layout Conclusion*
 Sometimes used at the end of a long train of argument.
+\change_deleted 564990737 1672345729
+
 \end_layout
 
 \begin_layout Fact
+
+\change_deleted 564990737 1672345638
 Used in a way similar to Proposition, though perhaps lower on the scale.
+\change_inserted 564990737 1672345720
+
+\end_layout
+
+\begin_layout Assumption*
+
+\change_inserted 564990737 1672345721
+
+\lang american
+Assumption
+\end_layout
+
+\begin_layout Question*
+
+\change_inserted 564990737 1672345721
+
+\lang american
+Question
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672345721
+
+\lang american
+There are ten more Maths modules available including several offering options
+ ordered on 
+\family sans
+(Numbered by Type \SpecialChar ldots
+)
+\family default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -20554,6 +20900,8 @@ status open
 
 \lang british
 T
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20568,6 +20916,8 @@ status open
 
 \lang american
 his
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20704,6 +21054,8 @@ status collapsed
 \noun on
 \lang american
 noun
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20723,6 +21075,8 @@ status collapsed
 \emph on
 \lang american
 emph
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20739,6 +21093,8 @@ status collapsed
 
 \lang american
 strong
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20753,6 +21109,8 @@ status collapsed
 
 \lang american
 code
+\change_unchanged
+
 \end_layout
 
 \end_inset
