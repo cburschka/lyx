@@ -15,6 +15,8 @@
 #include "Preamble.h"
 #include "tex2lyx.h"
 
+#include "support/convert.h"
+
 #include <iostream>
 
 using namespace std;
@@ -43,9 +45,7 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 	while (p.good()) {
 		Token const & t = p.get_token();
 
-#ifdef FILEDEBUG
-		cerr << "t: " << t << " flags: " << flags << "\n";
-#endif
+		debug_message("t: " + t.asInput() + " flags: " + convert<string>(flags));
 
 		if (flags & FLAG_ITEM) {
 			if (t.cat() == catSpace)
@@ -92,7 +92,7 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			}
 
 			else {
-				cerr << "\nmode: " << mode << endl;
+				warning_message("\nmode: " + mode);
 				p.error("something strange in the parser\n");
 				break;
 			}

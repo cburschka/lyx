@@ -352,9 +352,8 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 	ColInfo next = start;
 	for (Token t = p.get_token(); p.good() && t.cat() != catEnd;
 	     t = p.get_token()) {
-#ifdef FILEDEBUG
-		cerr << "t: " << t << "  c: '" << t.character() << "'\n";
-#endif
+
+		debug_message("t: " + t.asInput() + "  c: '" + t.character() + "'");
 
 		// We cannot handle comments here
 		if (t.cat() == catComment) {

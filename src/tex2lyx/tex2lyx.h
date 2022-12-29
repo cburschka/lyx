@@ -217,6 +217,11 @@ bool tex2lyx(std::string const & infilename,
 
 /// A general warning message that can be silenced with -q
 void warning_message(std::string const & message);
+/// A general error message
+void error_message(std::string const & message);
+/// A general debug message that outputs if
+/// FILEDEBUG is definied
+void debug_message(std::string const & message);
 
 } // namespace lyx
 

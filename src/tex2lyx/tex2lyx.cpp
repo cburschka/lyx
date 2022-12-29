@@ -43,6 +43,9 @@
 #include <vector>
 #include <map>
 
+// comment out to enable debug_messages
+//#define FILEDEBUG
+
 using namespace std;
 using namespace lyx::support;
 using namespace lyx::support::os;
@@ -556,8 +559,8 @@ bool read_syntaxfile(FileName const & file_name)
 {
 	ifdocstream is(file_name.toFilesystemEncoding().c_str());
 	if (!is.good()) {
-		cerr << "Could not open syntax file \""
-		     << file_name << "\" for reading." << std::endl;
+		error_message("Could not open syntax file \""
+			      + file_name.absFileName() + "\" for reading.");
 		return false;
 	}
 	// We can use our TeX parser, since the syntax of the layout file is
@@ -682,9 +685,9 @@ int parse_version(string const &, string const &)
 }
 
 
-void error_message(string const & message)
+void error_with_message(string const & message)
 {
-	cerr << "tex2lyx: " << message << "\n\n";
+	error_message(message);
 	error_code = EXIT_FAILURE;
 	parse_help(string(), string());
 }
@@ -693,7 +696,7 @@ void error_message(string const & message)
 int parse_class(string const & arg, string const &)
 {
 	if (arg.empty())
-		error_message("Missing textclass string after -c switch");
+		error_with_message("Missing textclass string after -c switch");
 	documentclass = arg;
 	return 1;
 }
@@ -709,7 +712,7 @@ int parse_module(string const & arg, string const &)
 int parse_encoding(string const & arg, string const &)
 {
 	if (arg.empty())
-		error_message("Missing encoding string after -e switch");
+		error_with_message("Missing encoding string after -e switch");
 	default_encoding = arg;
 	return 1;
 }
@@ -718,7 +721,7 @@ int parse_encoding(string const & arg, string const &)
 int parse_fixed_encoding(string const & arg, string const &)
 {
 	if (arg.empty())
-		error_message("Missing encoding string after -fixedenc switch");
+		error_with_message("Missing encoding string after -fixedenc switch");
 	default_encoding = arg;
 	fixed_encoding = true;
 	return 1;
@@ -728,7 +731,7 @@ int parse_fixed_encoding(string const & arg, string const &)
 int parse_syntaxfile(string const & arg, string const &)
 {
 	if (arg.empty())
-		error_message("Missing syntaxfile string after -s switch");
+		error_with_message("Missing syntaxfile string after -s switch");
 	syntaxfile = internal_path(arg);
 	return 1;
 }
@@ -743,7 +746,7 @@ string cl_user_support;
 int parse_sysdir(string const & arg, string const &)
 {
 	if (arg.empty())
-		error_message("Missing directory for -sysdir switch");
+		error_with_message("Missing directory for -sysdir switch");
 	cl_system_support = internal_path(arg);
 	return 1;
 }
@@ -752,7 +755,7 @@ int parse_sysdir(string const & arg, string const &)
 int parse_userdir(string const & arg, string const &)
 {
 	if (arg.empty())
-		error_message("Missing directory for -userdir switch");
+		error_with_message("Missing directory for -userdir switch");
 	cl_user_support = internal_path(arg);
 	return 1;
 }
@@ -831,7 +834,7 @@ void TeX2LyXApp::easyParse()
 		// don't complain if not found - may be parsed later
 		if (it == cmdmap.end()) {
 			if (argv_[i][0] == '-')
-				error_message(string("Unknown option `") + argv_[i] + "'.");
+				error_with_message(string("Unknown option `") + argv_[i] + "'.");
 			else
 				continue;
 		}
@@ -926,7 +929,7 @@ bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
 	list<string> removed_modules;
 	LayoutFile const & baseClass = LayoutFileList::get()[textclass.name()];
 	if (!used_modules.adaptToBaseClass(&baseClass, removed_modules)) {
-		cerr << "Could not load default modules for text class." << endl;
+		error_message("Could not load default modules for text class.");
 		return false;
 	}
 
@@ -938,8 +941,8 @@ bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
 	// Empty module names are silently skipped.
 	for (auto const & module : preloaded_modules) {
 		if (!module.empty() && !addModule(module)) {
-			cerr << "Error: Could not load module \""
-			     << module << "\"." << endl;
+			error_message("Error: Could not load module \""
+				      + module + "\".");
 			return false;
 		}
 	}
@@ -971,7 +974,7 @@ bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
 			preamble.addModule(*it);
 	}
 	if (!preamble.writeLyXHeader(os, !active_environments.empty(), outfiledir)) {
-		cerr << "Could not write LyX file header." << endl;
+		error_message( "Could not write LyX file header.");
 		return false;
 	}
 
@@ -1032,8 +1035,8 @@ bool tex2lyx(FileName const & infilename, ostream & os, string encoding,
 	is.rdbuf()->pubsetbuf(0, 0);
 	is.open(infilename.toFilesystemEncoding().c_str());
 	if (!is.good()) {
-		cerr << "Could not open input file \"" << infilename
-		     << "\" for reading." << endl;
+		error_message("Could not open input file \""
+			      + infilename.absFileName() + "\" for reading.");
 		return false;
 	}
 	string const oldParentFilePath = parentFilePathTeX;
@@ -1056,17 +1059,18 @@ bool tex2lyx(string const & infilename, FileName const & outfilename,
 	if (!ifname.exists() && ifname.extension().empty()) {
 		ifname.changeExtension("tex");
 		if (!ifname.exists()) {
-			cerr << "Could not open input file \"" << infilename
-			     << "\" for reading." << endl;
+			error_message("Could not open input file \""
+				      + infilename + "\" for reading.");
 			return false;
 		}
 	}
 	if (outfilename.isReadableFile()) {
 		if (overwrite_files) {
-			warning_message("Overwriting existing file " + outfilename.absFileName());
+			warning_message("Overwriting existing file "
+					+ outfilename.absFileName());
 		} else {
-			cerr << "Not overwriting existing file "
-			     << outfilename << endl;
+			error_message("Not overwriting existing file "
+				      + outfilename.absFileName());
 			return false;
 		}
 	} else {
@@ -1074,14 +1078,14 @@ bool tex2lyx(string const & infilename, FileName const & outfilename,
 	}
 	ofstream os(outfilename.toFilesystemEncoding().c_str());
 	if (!os.good()) {
-		cerr << "Could not open output file \"" << outfilename
-		     << "\" for writing." << endl;
+		error_message("Could not open output file \""
+			      + outfilename.absFileName() + "\" for writing.");
 		return false;
 	}
-#ifdef FILEDEBUG
-	cerr << "Input file: " << ifname << "\n";
-	cerr << "Output file: " << outfilename << "\n";
-#endif
+
+	debug_message("Input file: " + ifname.absFileName());
+	debug_message("Output file: " + outfilename.absFileName());
+
 	return tex2lyx(ifname, os, encoding,
 	               outfilename.onlyPath().absFileName() + '/');
 }
@@ -1107,7 +1111,7 @@ bool tex2tex(string const & infilename, FileName const & outfilename,
 	Systemcall one;
 	if (one.startscript(Systemcall::Wait, command) == 0)
 		return true;
-	cerr << "Error: Running '" << command << "' failed." << endl;
+	error_message("Running '" + command + "' failed.");
 	return false;
 }
 
@@ -1117,6 +1121,21 @@ void warning_message(string const & message)
 	if (!no_warnings)
 		cerr << "tex2lyx warning: " << message << endl;
 }
+
+
+void error_message(string const & message)
+{
+	cerr << "tex2lyx error: " << message << endl;
+}
+
+#ifdef FILEDEBUG
+void debug_message(string const & message)
+{
+	cerr << "tex2lyx debug info: " << message << endl;
+}
+#else
+void debug_message(string const &){}
+#endif
 
 
 namespace {
@@ -1129,8 +1148,8 @@ int TeX2LyXApp::run()
 	try {
 		init_package(internal_path(os::utf8_argv(0)), string(), string());
 	} catch (ExceptionMessage const & message) {
-		cerr << to_utf8(message.title_) << ":\n"
-		     << to_utf8(message.details_) << endl;
+		error_message(to_utf8(message.title_) + ":\n"
+			      + to_utf8(message.details_));
 		if (message.type_ == ErrorException)
 			return EXIT_FAILURE;
 	}
@@ -1144,8 +1163,8 @@ int TeX2LyXApp::run()
 		init_package(internal_path(os::utf8_argv(0)),
 			     cl_system_support, cl_user_support);
 	} catch (ExceptionMessage const & message) {
-		cerr << to_utf8(message.title_) << ":\n"
-		     << to_utf8(message.details_) << endl;
+		error_message(to_utf8(message.title_) + ":\n"
+			      + to_utf8(message.details_));
 		if (message.type_ == ErrorException)
 			return EXIT_FAILURE;
 	}
@@ -1178,16 +1197,15 @@ int TeX2LyXApp::run()
 			outfilename = makeAbsPath(outfilename).absFileName();
 		if (roundtrip) {
 			if (outfilename == "-") {
-				cerr << "Error: Writing to standard output is "
-				        "not supported in roundtrip mode."
-				     << endl;
+				error_message("Writing to standard output is "
+					      "not supported in roundtrip mode.");
 				return EXIT_FAILURE;
 			}
 			string texfilename = changeExtension(outfilename, ".tex");
 			if (equivalent(FileName(infilename), FileName(texfilename))) {
-				cerr << "Error: The input file `" << infilename
-				     << "´ would be overwritten by the TeX file exported from `"
-				     << outfilename << "´ in roundtrip mode." << endl;
+				error_message("The input file `" + infilename
+					      + "´ would be overwritten by the TeX file exported from `"
+					      + outfilename + "´ in roundtrip mode.");
 				return EXIT_FAILURE;
 			}
 		}
@@ -1200,7 +1218,7 @@ int TeX2LyXApp::run()
 	// Read the syntax tables
 	FileName const system_syntaxfile = libFileSearch("", "syntax.default");
 	if (system_syntaxfile.empty()) {
-		cerr << "Error: Could not find syntax file \"syntax.default\"." << endl;
+		error_message("Could not find syntax file \"syntax.default\".");
 		return EXIT_FAILURE;
 	}
 	if (!read_syntaxfile(system_syntaxfile))
@@ -1212,14 +1230,12 @@ int TeX2LyXApp::run()
 	// Read the encodings table.
 	FileName const symbols_path = libFileSearch(string(), "unicodesymbols");
 	if (symbols_path.empty()) {
-		cerr << "Error: Could not find file \"unicodesymbols\"."
-		     << endl;
+		error_message("Could not find file \"unicodesymbols\".");
 		return EXIT_FAILURE;
 	}
 	FileName const enc_path = libFileSearch(string(), "encodings");
 	if (enc_path.empty()) {
-		cerr << "Error: Could not find file \"encodings\"."
-		     << endl;
+		error_message("Could not find file \"encodings\".");
 		return EXIT_FAILURE;
 	}
 	encodings.read(enc_path, symbols_path);
@@ -1252,8 +1268,8 @@ int TeX2LyXApp::run()
 			FileName const path(masterFilePathLyX);
 			if (!path.isDirectory()) {
 				if (!path.createPath()) {
-					cerr << "Warning: Could not create directory for file `"
-					     << masterFilePathLyX << "´." << endl;
+					error_message("Could not create directory for file `"
+						      + masterFilePathLyX + "´.");
 					return EXIT_FAILURE;
 				}
 			}

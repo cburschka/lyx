@@ -475,7 +475,7 @@ void Preamble::setTextClass(string const & tclass, TeX2LyXDocClass & tc)
 	h_textclass = tclass;
 	tc.setName(h_textclass);
 	if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
-		cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
+		error_message("Could not read layout file for textclass \"" + h_textclass + "\".");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -2192,10 +2192,8 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		Token const & t = p.get_token();
 
-#ifdef FILEDEBUG
 		if (!detectEncoding)
-			cerr << "t: " << t << '\n';
-#endif
+			debug_message("t: " + t.asInput());
 
 		//
 		// cat codes

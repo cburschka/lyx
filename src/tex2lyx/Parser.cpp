@@ -15,6 +15,7 @@
 #include "tex2lyx.h"
 
 #include "Encoding.h"
+#include "support/convert.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
@@ -920,7 +921,7 @@ void Parser::dump() const
 
 void Parser::error(string const & msg) const
 {
-	cerr << "Line ~" << lineno_ << ":  parse error: " << msg << endl;
+	error_message("Line ~" + convert<string>(lineno_) + ":  parse error: " + msg);
 	dump();
 	//exit(1);
 }
