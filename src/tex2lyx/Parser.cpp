@@ -895,7 +895,7 @@ void Parser::tokenize_one()
 	}
 
 	case catIgnore: {
-		warning_message("ignoring a char: " + static_cast<uint32_t>(c));
+		warning_message("ignoring a char: " + std::to_string(static_cast<uint32_t>(c)));
 		break;
 	}
 
