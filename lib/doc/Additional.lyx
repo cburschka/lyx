@@ -38,6 +38,8 @@ multicol
 shapepar
 graphicboxes
 enumitem
+hanging
+initials
 \end_modules
 \maintain_unincluded_children no
 \language english
@@ -17155,6 +17157,8 @@ status collapsed
 
 \lang american
 article
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17626,6 +17630,8 @@ status collapsed
 
 \backslash
 fancyfoot{}
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17654,6 +17660,8 @@ status collapsed
 fancyfoot[LE,RO]{
 \backslash
 thepage}
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17737,6 +17745,8 @@ status collapsed
 
 \lang american
 fancyhdr
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17818,6 +17828,8 @@ status collapsed
 \lang american
 \SpecialChar LaTeX
 -packages ! multicol
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -19434,7 +19446,9 @@ Non-standard
  as well as any other text processor uses by default rectangular paragraphs.
  For special cases like for example posters, invitation cards or poems you
  can modify the paragraph shape to one of your choice.
- This can be done by using the \SpecialChar LaTeX
+ 
+\change_deleted 564990737 1672311802
+This can be done by using the \SpecialChar LaTeX
 -package 
 \begin_inset Flex Code
 status collapsed
@@ -19450,6 +19464,18 @@ shapepar
 Custom paragraph shapes
 \family default
 .
+\change_inserted 564990737 1672311802
+
+\lang american
+This module uses the 
+\family sans
+shapepar
+\family default
+ package to provide over a dozen paragraph shapes as well as commands to
+ define custom shapes.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -20475,6 +20501,283 @@ shapepar
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672311925
+
+\lang american
+Hanging Paragraphs
+\end_layout
+
+\begin_layout Hanging
+
+\change_inserted 564990737 1672311925
+
+\lang american
+This module adds the 
+\family sans
+Hanging
+\family default
+ paragraph style, that is, one where all but the first line of the paragraph
+ is indented.
+ This may not appear in your \SpecialChar LyX
+ document but will appear in the final output.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672311925
+
+\lang american
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Initials"
+
+\end_inset
+
+Initials (Drop Caps)
+\end_layout
+
+\begin_layout Initial
+
+\change_inserted 564990737 1672311925
+
+\lang american
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672311925
+
+\lang british
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672311925
+
+\lang american
+his
+\end_layout
+
+\end_inset
+
+ module adds a drop capitals paragraph style 
+\family sans
+Initials
+\family default
+ for paragraph environments which you can use wherever you want to have
+ drop capitals.
+ You then have three more items in the 
+\family sans
+Insert
+\family default
+ menu:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672311925
+
+\family sans
+\lang american
+Initial
+\family default
+ which creates an inset for the drop capital
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672311925
+
+\family sans
+\lang american
+Rest of initial
+\family default
+ which creates an inset for the rest of the word
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672311925
+
+\family sans
+\lang american
+Options
+\family default
+ which allow you configure the formatting of the drop capital.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672311925
+
+\lang american
+To customize the appearance of the style, see 
+\family sans
+Help\SpecialChar menuseparator
+Embedded Objects\SpecialChar menuseparator
+Objects Surrounded by Text\SpecialChar menuseparator
+Initials
+\family default
+.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 564990737 1672312011
+
+\lang american
+Text Markup
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672312011
+
+\lang american
+Hyphenatable Text Markup
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672312011
+
+\lang american
+This package defines text styles to highlight, space-out, strike-through,
+ underline and capitalize/small-cap text by means of the 
+\family sans
+soul
+\family default
+ package.
+ As opposed to the markup provided by the Text Properties dialog, words
+ marked-up with 
+\family sans
+soul
+\family default
+ are hyphenated.
+ See the 
+\begin_inset CommandInset href
+LatexCommand href
+name "soul documentation"
+target "http://mirrors.ctan.org/macros/generic/soul/soul.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 564990737 1672312011
+
+\lang american
+Logical Markup
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672312011
+
+\lang american
+This module defines some character styles for logical markup: 
+\noun on
+
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672312011
+
+\noun on
+\lang american
+noun
+\end_layout
+
+\end_inset
+
+
+\noun default
+, 
+\emph on
+
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672312011
+
+\emph on
+\lang american
+emph
+\end_layout
+
+\end_inset
+
+
+\emph default
+, 
+\begin_inset Flex Strong
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672312011
+
+\lang american
+strong
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672312011
+
+\lang american
+code
+\end_layout
+
+\end_inset
+
+ which are accessed via the 
+\family sans
+\bar under
+E
+\bar default
+dit\SpecialChar menuseparator
+Custom
+\begin_inset space ~
+\end_inset
+
+Text
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+S
+\bar default
+tyles
+\family default
+ menu.
 \end_layout
 
 \begin_layout Chapter
