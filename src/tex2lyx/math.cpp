@@ -92,7 +92,7 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			}
 
 			else {
-				warning_message("\nmode: " + mode);
+				warning_message("\nmode: " + std::to_string(mode));
 				p.error("something strange in the parser\n");
 				break;
 			}
