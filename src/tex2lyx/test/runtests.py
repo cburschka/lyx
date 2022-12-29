@@ -108,8 +108,8 @@ def main(argv):
         proc.wait()
         err = proc.returncode
         errorstring = proc.stderr.read()
-        if not errorstring is None:
-            print(errorstring)
+        if errorstring:
+            print(errorstring.decode(sys.getfilesystemencoding()))
         if err != 0:
             errors.append(f)
         elif not overwrite:
