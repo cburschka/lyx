@@ -1096,7 +1096,7 @@ if [ ${LyxOnlyPackage:-"no"} = "no" ]; then
 	build_lyx
 	convert_universal
 	copy_dictionaries
-	test -n "${CODESIGN_IDENTITY}" && code_sign "${LYX_BUNDLE_PATH}"
 	find "${LyxAppPrefix}" -type d -exec chmod go-w '{}' \;
+	test -n "${CODESIGN_IDENTITY}" && code_sign "${LYX_BUNDLE_PATH}"
 fi
 build_package
