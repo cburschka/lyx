@@ -716,6 +716,7 @@ build_lyx() {
 		echo CPPFLAGS="${CPPFLAGS}"
 		export CPPFLAGS
 		echo CONFIGURE_OPTIONS="${LyXConfigureOptions}" ${QtInstallDir:+"--with-qt-dir=${QtInstallDir}"}
+		export PATH="${QtInstallDir}/libexec:$PATH"
 		"${LyxSourceDir}/configure"\
 			--prefix="${LyxAppPrefix}" --with-version-suffix="-${LyXVersionSuffix}"\
 			${QtInstallDir:+"--with-qt-dir=${QtInstallDir}"} \
