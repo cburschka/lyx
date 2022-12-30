@@ -2440,6 +2440,8 @@ status collapsed
 \change_inserted 564990737 1672345298
 
 http://www.ams.org/publications/authors/tex/amslatex
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2457,11 +2459,10 @@ Richard Heck
  Team
 \noun on
 .
-\end_layout
-
-\begin_layout Subsection
-
 \change_deleted 564990737 1672345297
+
+\noun default
+\lang english
 AMS \SpecialChar LaTeX
 
 \end_layout
@@ -3443,17 +3444,70 @@ report
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 564990737 1672429136
+
+\lang american
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:KOMA-Script"
+
+\end_inset
+
+KOMA-Script
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429136
+
+\lang american
+Original by 
+\noun on
+Bernd Rellermeyer
+\noun default
+; updated by 
+\noun on
+Jürgen Spitzmüller
+\noun default
+ and the \SpecialChar LyX
+ Team
+\change_deleted 564990737 1672429136
+
+\lang english
 Koma-Script
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672429136
 by 
 \noun on
 Bernd Rellermeyer
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
 Overview
+\change_inserted 564990737 1672429161
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429162
+
+\lang american
+The KOMA-Script collection of document classes is a development of the Script
+ classes created by Frank Neukam in the early 1990s; it was formally launched
+ with the addition of a letter class in 1994.
+ Since then, a second letter class has been added.
+ Frank Neukam's classes were inspired by the principles of typography and
+ this has been fully integrated into the design of the KOMA-Script classes.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -3525,7 +3579,17 @@ letter.cls
 \end_layout
 
 \begin_layout Itemize
-Standard character size is 11pt in 
+
+\change_deleted 564990737 1672429262
+Standard character size is
+\change_inserted 564990737 1672429263
+
+\lang american
+The base character sizes when you select a KOMA-Script class are
+\change_unchanged
+
+\lang english
+ 11pt in 
 \emph on
 article (koma-script)
 \emph default
@@ -3536,8 +3600,12 @@ report (koma-script)
 , and 
 \emph on
 book (koma-script)
+\change_deleted 564990737 1672429267
+
 \emph default
-, and 12pt in 
+,
+\change_unchanged
+ and 12pt in 
 \emph on
 letter (koma-script)
 \emph default
@@ -3611,6 +3679,8 @@ Document
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429310
 The main means in the Koma-Script document classes to design the type area
  are the options 
 \family sans
@@ -3635,8 +3705,130 @@ Settings
 \family default
 .
  
+\change_inserted 564990737 1672429310
+
+\lang american
+The layout of a KOMA-Script page follows one of two traditional typesetting
+ conventions based on dividing the page into strips or drawing a circle.
+ The default is to imagine that a page is divided horizontally and vertically
+ into strips and allocate strips to the margins leaving the unused strips
+ for the text area.
+ You can change the sizes of the margins by changing the factor by which
+ the page is divided into strips; the default for an A4 page is 9 and increasing
+ this factor will produce increasingly narrower strips and therefore narrower
+ margins.
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted 564990737 1672429310
+
+\lang american
+Whatever the factor, two strips are allocated to the outer and bottom margins
+ of a two-sided document and one strip to the inner and top margins, leaving
+ a text area occupying around half the page.
+ Since most two-sided documents have a binding, this can make the inner
+ margins appear too narrow; so you can apply a binding correction to the
+ page which is deducted before the size of the strips is calculated.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429310
+
+\lang american
+The main means in the Koma-Script document classes to design the type area
+ are the options 
+\family sans
+BCOR
+\family default
+ and 
+\family sans
+DIV
+\family default
+ entered in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options\SpecialChar menuseparator
+Custom
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429310
+
+\lang american
+In this document, the binding correction is 7.5mm which is added in the form
+ 
+\family typewriter
+BCOR7.5mm
+\family default
+ to 
+\family sans
+Class
+\begin_inset space ~
+\end_inset
+
+options\SpecialChar menuseparator
+Cus
+\bar under
+t
+\bar default
+om
+\family default
+ dialog.
+ To change the factor to 11, for example, add the entry 
+\family typewriter
+DIV=11
+\family default
+ to the comma separated list of entries in the 
+\family sans
+Cus
+\bar under
+t
+\bar default
+om
+\family default
+ 
+\family sans
+Class
+\begin_inset space ~
+\end_inset
+
+options
+\family default
+.
+ If you want the default value of this factor for a page size other than
+ A4, add the entry 
+\family typewriter
+DIV=calc
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429310
+
+\lang american
+To use the circle method of calculating the page layout, use 
+\family typewriter
+DIV=classic
+\family default
+ instead.
+\change_unchanged
+
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 The \SpecialChar LaTeX
  document classes of the Koma-Script family define a number of additional
@@ -3661,7 +3853,26 @@ scrguien
 \end_layout
 
 \begin_layout Subsubsection
+
+\change_inserted 564990737 1672429358
+
+\series bold
+\lang american
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:article-(KOMA-Script),-report"
+
+\end_inset
+
+
+\series default
+article (KOMA-Script), report (KOMA-Script), and book (KOMA-Script)
+\change_deleted 564990737 1672429367
+
+\lang english
 article (koma-script), report (koma-script), and book (koma-script)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -4119,6 +4330,294 @@ dirty
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\lang american
+KOMA-Script offers a wide range of 
+\family sans
+Cus
+\bar under
+t
+\bar default
+om Class
+\begin_inset space ~
+\end_inset
+
+options
+\family default
+ for the 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar menuseparator
+
+\bar under
+S
+\bar default
+ettings\SpecialChar menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+class
+\family default
+ dialog which you can apply to the whole document, among them
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 564990737 1672429680
+
+\family typewriter
+\series medium
+\lang american
+draft=true
+\family default
+\series default
+ which produces a PDF with a small black box at the end any line in which
+ a formatting error occurs; the default setting is 
+\family typewriter
+false
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 564990737 1672429680
+
+\family typewriter
+\series medium
+\lang american
+headings=
+\family default
+\series default
+ which may take the values 
+\family typewriter
+big
+\family default
+, 
+\family typewriter
+normal
+\family default
+ or 
+\family typewriter
+small
+\family default
+; the first and last adjust the sizes of the headings to take account of
+ page sizes where the default values may not be suitable
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 564990737 1672429680
+
+\family typewriter
+\series medium
+\lang american
+numbers=
+\family default
+\series default
+ which may take the values 
+\family typewriter
+auto
+\family default
+ (the default), 
+\family typewriter
+enddot
+\family default
+ or 
+\family typewriter
+noenddot
+\family default
+; the first leaves it up to KOMA-Script to add periods after chapter, section
+ numbers, etc.; the second forces the addition of periods and third suppresses
+ them
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\lang american
+and the math options:
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 564990737 1672429680
+
+\family typewriter
+\series medium
+\lang american
+leqno
+\family default
+\series default
+ which causes equations to be numbered on the left rather than on the right,
+ and
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 564990737 1672429680
+
+\family typewriter
+\series medium
+\lang american
+fleqn
+\family default
+\series default
+ which causes equations to be left justified rather than centered.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\lang american
+It also provides commands to affect the output of the document independently
+ of the standard \SpecialChar LaTeX
+ commands and packages; for example, if you want your captions
+ in bold add
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\family typewriter
+\lang american
+
+\backslash
+setkomafont{captionlabel}{
+\backslash
+bfseries}
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\lang american
+to 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar menuseparator
+
+\bar under
+S
+\bar default
+ettings
+\family default
+\SpecialChar menuseparator
+
+\family sans
+\SpecialChar LaTeX
+
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+) and the problem is solved.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\lang american
+If you are writing a book, it is normal to have the preliminary pages numbered
+ in Roman numerals and the Chapters in this part unnumbered.
+ If you use the Chapter* environment, your Foreword and Preface will not
+ appear in the Table of Contents; to make them to appear in the Table of
+ contents, you need to use Chapter environments and add the \SpecialChar TeX
+ code
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\family typewriter
+\lang american
+
+\backslash
+frontmatter
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\lang american
+at the very start of the book (not in the \SpecialChar LaTeX
+ Preamble) and
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\family typewriter
+\lang american
+
+\backslash
+mainmatter
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\lang american
+before the first chapter of the body of the text.
+ You may also want to have some unnumbered Chapter environments at the end
+ of the book after the Appendices, if any.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 564990737 1672429680
+
+\lang american
+Appendices are normally “numbered” with letters.
+\end_layout
+
+\end_inset
+
+ If you use the Chapter* environment, they will not appear in the Table
+ of Contents; so add the \SpecialChar TeX
+ code
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+
+\family typewriter
+\lang american
+
+\backslash
+backmatter
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429682
+
+\lang american
+before the first of these headings and use the Chapter environment.
+ These commands will have no effect on the numbering in \SpecialChar LyX
+, only on the PDF
+ output where the headings will be unnumbered and appear in the Table of
+ Contents.
+\end_layout
+
+\begin_layout Standard
 The layout files for the document classes 
 \emph on
 article (koma-script)
@@ -4142,13 +4641,19 @@ scrmacros.inc
 .inc
 \family default
  in your personal layout directory and edit the file!
+\change_deleted 564990737 1672430255
+
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Standard
+
+\change_deleted 564990737 1672430255
 letter (koma-script)
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 564990737 1672429749
 Note: This section discusses the obsolete 
 \family sans
 KOMA-Script-Letter (v.
@@ -4168,6 +4673,8 @@ KOMA-Script-Letter (v.
 
 \begin_layout Standard
 \noindent
+
+\change_deleted 564990737 1672429749
 The document class 
 \emph on
 letter (koma-script)
@@ -4224,6 +4731,8 @@ Verse
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672429749
 The appearance of the letter produced by this document class can be controlled
  by a number of \SpecialChar LaTeX
  commands, which you can put in the \SpecialChar LaTeX
@@ -4313,6 +4822,8 @@ scrguide
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672429749
 The types 
 \family sans
 Letter
@@ -4369,6 +4880,8 @@ Encl
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Letter
 \family default
@@ -4377,6 +4890,8 @@ Letter
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 Opening
@@ -4387,6 +4902,8 @@ Opening
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Closing
 \family default
@@ -4394,6 +4911,8 @@ Closing
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 PS
@@ -4403,6 +4922,8 @@ PS
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 CC
 \family default
@@ -4411,6 +4932,8 @@ CC
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Encl
 \family default
@@ -4418,6 +4941,8 @@ Encl
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672429749
 The types 
 \family sans
 Name
@@ -4496,6 +5021,8 @@ Opening
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672429749
 An implementation of these types in a WYSIWYG fashion does not seem to make
  sense, because the real appearance of the produced letter does not only
  depend on the usage of the particular type, but also on other factors.
@@ -4520,6 +5047,8 @@ Telephone
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672429749
 The input types can also be used as empty paragraphs.
  This makes sense e.
 \begin_inset space \thinspace{}
@@ -4550,12 +5079,16 @@ Signature
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672429749
 By using the input types it is possible to write a letter template, containing
  filled input types with your personal dates (name, address, etc.) and empty
  input types for other dates you want to enter.
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 Name
@@ -4565,6 +5098,8 @@ Name
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 Signature
@@ -4587,6 +5122,8 @@ Name
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Address
 \family default
@@ -4595,6 +5132,8 @@ Address
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 Telephone
@@ -4612,6 +5151,8 @@ telephonenum
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Place
 \family default
@@ -4619,6 +5160,8 @@ Place
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 Date
@@ -4653,6 +5196,8 @@ Date
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Backaddress
 \family default
@@ -4661,6 +5206,8 @@ Backaddress
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 Specialmail
@@ -4671,6 +5218,8 @@ Specialmail
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Location
 \family default
@@ -4680,6 +5229,8 @@ Location
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Title
 \family default
@@ -4688,6 +5239,8 @@ Title
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 Subject
@@ -4701,6 +5254,8 @@ Opening
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672429749
 The types 
 \family sans
 Yourref
@@ -4811,6 +5366,8 @@ Opening
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Yourref
 \family default
@@ -4818,6 +5375,8 @@ Yourref
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 Yourmail
@@ -4827,6 +5386,8 @@ Yourmail
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Myref
 \family default
@@ -4834,6 +5395,8 @@ Myref
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1672429749
 
 \family sans
 Customer
@@ -4843,14 +5406,33 @@ Customer
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1672429749
+
 \family sans
 Invoice
 \family default
 : Invoice no.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
+
+\change_deleted 564990737 1672429773
 The new letter class: letter (koma-script v.2)
+\change_inserted 564990737 1672429774
+
+\lang american
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:The-new-letter"
+
+\end_inset
+
+The new letter class: letter (KOMA-Script v.2)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
