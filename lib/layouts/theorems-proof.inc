@@ -18,8 +18,8 @@ Style Proof
 	NextNoIndent          1
 	ResetArgs             1
 	Argument 1
-		LabelString   "Alternative Proof String"
-		Tooltip       "Alternative proof string"
+		LabelString       "Alternative Proof String"
+		Tooltip           "Alternative proof string"
 	EndArgument
 	LabelSep              xx
 	ParIndent             MMM
@@ -34,13 +34,16 @@ Style Proof
 	LabelString           "Proof."
 	EndLabelType          Box
 	Font
-	  Shape               Up
-	  Size                Normal
+	    Shape             Up
+	    Size              Normal
 	EndFont
 	LabelFont
-	  Shape               Italic
+	    Shape             Italic
 	EndFont
+	Requires              amsthm
+	DocBookWrapperTag     figure
+	DocBookWrapperAttr    role='proof'
 	DocBookTag            para
-	DocBookAttr           role='proof'
+	DocBookGenerateTitle  true
 End
 

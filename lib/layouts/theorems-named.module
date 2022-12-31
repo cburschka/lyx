@@ -6,23 +6,30 @@
 # goes into the 'Additional Theorem Text' argument.
 #DescriptionEnd
 #Original Author: John Perry
+#Edited by Udi Fogiel
 
 Format 99
 
-ProvideStyle Theorem*
-	Category              Reasoning
-	LatexType             Environment
+OutlinerName thm "Definitions & Theorems"
+
+Style "Named Theorem"
+	CopyStyle Theorem*
+	Category Reasoning
 	Margin                First_Dynamic
-	LatexName             thm*
 	LabelType             Static
-	LabelString           "Theorem."
-	NextNoIndent          1
-	ResetArgs             1
+	AddToToc              thm
+	IsTocCaption          0
+	LatexType             Environment
+	LabelString           ""
+	LatexName             namedthm
+	AddToToc              thm
 	Argument 1
-		LabelString    "Additional Theorem Text"
-		Tooltip        "Additional text appended to the theorem header"
+		LabelString       "Theorem Title"
+		Tooltip           "Theorem Title"
+		AutoInsert	      1
+		IsTocCaption      1
+		PassThru		  1
 	EndArgument
-	LabelSep              xx
 	ParIndent             MMM
 	ParSkip               0.4
 	ItemSep               0.2
@@ -32,43 +39,30 @@ ProvideStyle Theorem*
 	Align                 Block
 	AlignPossible         Left
 	Font
-	  Shape               Italic
-	  Size                Normal
+	    Shape             Italic
+	    Size              Normal
 	EndFont
 	LabelFont
-	  Shape               Up
-	  Series              Bold
+	    Shape             Up
+	    Series            Bold
 	EndFont
 	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{thm*}{\protect\theoremname}
+		\newcommand\thmsname\namedthmname
+		\newtheorem*{namedtheorem}{\protect\thmsname}
+		\newenvironment{namedthm}[1][]{%
+			\if\relax\detokenize{#1}\relax
+				\begin{namedtheorem}
+			\else
+				\renewcommand\thmsname{#1}%
+				\begin{namedtheorem}%
+			\fi
+			}{\end{namedtheorem}}
 	EndPreamble
 	LangPreamble
-	  \providecommand{\theoremname}{_(Theorem)}
+	    \providecommand\namedthmname{_(Theorem)}
 	EndLangPreamble
 	BabelPreamble
-	  \addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
+	    \addto\captions$$lang{\renewcommand{\namedthmname}{_(Theorem)}}
 	EndBabelPreamble
 	Requires              amsthm
 End
-
-
-Style "Named Theorem"
-  CopyStyle Theorem*
-  Category Reasoning
-  LabelString "Named Theorem."
-  LatexName namedthm
-  Preamble
-    \newcommand\thmsname{\protect\theoremname}
-    \newcommand\nm@thmtype{theorem}
-    \theoremstyle{plain}
-    \newtheorem*{namedtheorem}{\thmsname}
-    \newenvironment{namedthm}[1][Undefined Theorem Name]{
-      \ifx{#1}{Undefined Theorem Name}\renewcommand\nm@thmtype{theorem*}
-      \else\renewcommand\thmsname{#1}\renewcommand\nm@thmtype{namedtheorem}
-      \fi
-      \begin{\nm@thmtype}}
-      {\end{\nm@thmtype}}
-  EndPreamble
-End
-
