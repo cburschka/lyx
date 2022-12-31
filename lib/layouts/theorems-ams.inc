@@ -10,7 +10,6 @@
 # - Lemma
 # - Proposition
 # - Conjecture
-# - Fact
 # - Definition
 # - Example
 # - Problem
@@ -18,6 +17,7 @@
 # - Solution
 # - Remark
 # - Claim
+# - Proof
 # - Case (by inclusion)
 
 Format 99
@@ -29,7 +29,7 @@ Style Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             thm
-	NextNoIndent          1
+	NextNoIndent          0
 	ResetArgs             1
 	AddToToc              thm
 	IsTocCaption          1
@@ -66,7 +66,7 @@ Style Theorem
 		\providecommand{\theoremname}{_(Theorem)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
+	  \addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
 	Requires              amsthm
 	DocBookWrapperTag     figure
@@ -82,14 +82,14 @@ Style Corollary
 	LatexName             cor
 	LabelString           "Corollary \thetheorem."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{cor}[thm]{\protect\corollaryname}
+	  \theoremstyle{plain}
+	  \newtheorem{cor}[thm]{\protect\corollaryname}
 	EndPreamble
 	LangPreamble
-		\providecommand{\corollaryname}{_(Corollary)}
+	  \providecommand{\corollaryname}{_(Corollary)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
+	  \addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='corollary'
@@ -104,14 +104,14 @@ Style Lemma
 	LatexName             lem
 	LabelString           "Lemma \thetheorem."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{lem}[thm]{\protect\lemmaname}
+	  \theoremstyle{plain}
+	  \newtheorem{lem}[thm]{\protect\lemmaname}
 	EndPreamble
 	LangPreamble
-		\providecommand{\lemmaname}{_(Lemma)}
+	  \providecommand{\lemmaname}{_(Lemma)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
+	  \addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='lemma'
@@ -126,14 +126,14 @@ Style Proposition
 	LatexName             prop
 	LabelString           "Proposition \thetheorem."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{prop}[thm]{\protect\propositionname}
+	  \theoremstyle{plain}
+	  \newtheorem{prop}[thm]{\protect\propositionname}
 	EndPreamble
 	LangPreamble
-		\providecommand{\propositionname}{_(Proposition)}
+	  \providecommand{\propositionname}{_(Proposition)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
+	  \addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='proposition'
@@ -148,14 +148,14 @@ Style Conjecture
 	LatexName             conjecture
 	LabelString           "Conjecture \thetheorem."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{conjecture}[thm]{\protect\conjecturename}
+	  \theoremstyle{plain}
+	  \newtheorem{conjecture}[thm]{\protect\conjecturename}
 	EndPreamble
 	LangPreamble
-		\providecommand{\conjecturename}{_(Conjecture)}
+	  \providecommand{\conjecturename}{_(Conjecture)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
+	  \addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='conjecture'
@@ -170,14 +170,14 @@ Style Fact
 	LatexName             fact
 	LabelString           "Fact \thetheorem."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{fact}[thm]{\protect\factname}
+	  \theoremstyle{plain}
+	  \newtheorem{fact}[thm]{\protect\factname}
 	EndPreamble
 	LangPreamble
-		\providecommand{\factname}{_(Fact)}
+	  \providecommand{\factname}{_(Fact)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
+	  \addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='fact'
@@ -199,14 +199,14 @@ Style Definition
 	  Series              Bold
 	EndFont
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{defn}[thm]{\protect\definitionname}
+	  \theoremstyle{definition}
+	  \newtheorem{defn}[thm]{\protect\definitionname}
 	EndPreamble
 	LangPreamble
-		\providecommand{\definitionname}{_(Definition)}
+	  \providecommand{\definitionname}{_(Definition)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
+	  \addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='definition'
@@ -220,14 +220,14 @@ Style Example
 	LatexName             example
 	LabelString           "Example \thetheorem."
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{example}[thm]{\protect\examplename}
+	  \theoremstyle{definition}
+	  \newtheorem{example}[thm]{\protect\examplename}
 	EndPreamble
 	LangPreamble
-		\providecommand{\examplename}{_(Example)}
+	  \providecommand{\examplename}{_(Example)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}
+	  \addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}
 	EndBabelPreamble
 	DocBookWrapperTag     informalexample
 	DocBookTag            para
@@ -240,14 +240,14 @@ Style Problem
 	LatexName             problem
 	LabelString           "Problem \thetheorem."
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{problem}[thm]{\protect\problemname}
+	  \theoremstyle{definition}
+	  \newtheorem{problem}[thm]{\protect\problemname}
 	EndPreamble
 	LangPreamble
-		\providecommand{\problemname}{_(Problem)}
+	  \providecommand{\problemname}{_(Problem)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
+	  \addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='problem'
@@ -261,14 +261,14 @@ Style Exercise
 	LatexName             xca
 	LabelString           "Exercise \thetheorem."
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{xca}[thm]{\protect\exercisename}
+	  \theoremstyle{definition}
+	  \newtheorem{xca}[thm]{\protect\exercisename}
 	EndPreamble
 	LangPreamble
-		\providecommand{\exercisename}{_(Exercise)}
+	  \providecommand{\exercisename}{_(Exercise)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
+	  \addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='exercise'
@@ -282,8 +282,8 @@ Style Solution
 	LatexName             sol
 	LabelString           "Solution \thetheorem."
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{sol}[thm]{\protect\solutionname}
+	  \theoremstyle{definition}
+	  \newtheorem{sol}[thm]{\protect\solutionname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\solutionname}{_(Solution)}
@@ -312,14 +312,14 @@ Style Remark
 	  Shape               Italic
 	EndFont
 	Preamble
-		\theoremstyle{remark}
-		\newtheorem{rem}[thm]{\protect\remarkname}
+	  \theoremstyle{remark}
+	  \newtheorem{rem}[thm]{\protect\remarkname}
 	EndPreamble
 	LangPreamble
-		\providecommand{\remarkname}{_(Remark)}
+	  \providecommand{\remarkname}{_(Remark)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
+	  \addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='remark'
@@ -333,14 +333,14 @@ Style Claim
 	LatexName             claim
 	LabelString           "Claim \thetheorem."
 	Preamble
-		\theoremstyle{remark}
-		\newtheorem{claim}[thm]{\protect\claimname}
+	  \theoremstyle{remark}
+	  \newtheorem{claim}[thm]{\protect\claimname}
 	EndPreamble
 	LangPreamble
-		\providecommand{\claimname}{_(Claim)}
+	  \providecommand{\claimname}{_(Claim)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
+	  \addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
 	EndBabelPreamble
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='claim'

@@ -8,57 +8,32 @@
 #The numbering's scope is the whole document. For chapter- and section-wide numbering,
 #use one of the 'within Sections'/'within Chapters' modules, respectively.
 #DescriptionEnd
-#Excludes: theorems-std | theorems-ams | theorems-ams-bytype
+#Excludes: theorems-std | theorems-ams | theorems-starred | theorems-ams-bytype
 
 # Author: Paul Rubin <rubin@msu.edu> (hacked from Richard Kimberly Heck's theorems-std.module)
-# Edited sep '22 by Udi Fogiel <udifoglle@gmail.com>
 
 Format 99
 
 Input theorems-counters-bytype.inc
-Input theorems.inc
-Input theorems-labels.inc
-Input theorems-proof-std.inc
+Input theorems-bytype.inc
+Input theorems-proof.inc
 
-Style Theorem
-	Preamble
-		\def\lyx@reverse@two#1#2{#2#1}
-		\def\lyx@plain{plain}
-		\def\lyx@definition{definition}
-		\def\lyx@remark{remark}
-		\newcommand\theoremstyle[1]{%
-			\def\lyx@style{#1}%
-			\ifx\lyx@style\lyx@plain
-				\def\lyx@headfont{\bfseries}%
-				\def\lyx@bodyfont{\itshape}%
-			\else
-				\ifx\lyx@style\lyx@definition
-					\def\lyx@headfont{\bfseries}%
-					\def\lyx@bodyfont{\upshape}%
-				\else
-					\ifx\lyx@style\lyx@remark
-						\def\lyx@headfont{\itshape}%
-						\def\lyx@bodyfont{\upshape}%
-					\fi
-				\fi
-			\fi
-		}
-		\def\@xthm#1#2{%
-			\@begintheorem{\normalfont\csname lyx@\@firstoftwo#2@headfont\endcsname \@secondoftwo#2}{\begingroup\upshape\csname the#1\endcsname\endgroup.}\normalfont\csname lyx@\@firstoftwo#2@bodyfont\endcsname\ignorespaces
-		}
-		\def\@ythm#1#2[#3]{%
-			\@opargbegintheorem{\normalfont{\csname lyx@\@firstoftwo#2@headfont\endcsname \@secondoftwo#2}}{\begingroup\csname lyx@\@firstoftwo#2@headfont\endcsname\upshape\csname the#1\endcsname\endgroup}{#3\lyx@reverse@two{\begingroup\normalfont\csname lyx@\@firstoftwo#2@headfont\endcsname.\endgroup}}\normalfont\csname lyx@\@firstoftwo#2@bodyfont\endcsname\ignorespaces
-		}
-		\def\lyx@othm#1[#2]#3{\@othm{#1}[#2]{{#1}{#3}}}
-		\def\lyx@nthm#1#2{\@ifnextchar[{\@xnthm{#1}{{#1}{#2}}}{\@ynthm{#1}{{#1}{#2}}}}
-		\renewcommand\newtheorem[1]{%
-			\expandafter\let\csname lyx@#1@headfont\expandafter\endcsname\lyx@headfont
-			\expandafter\let\csname lyx@#1@bodyfont\expandafter\endcsname\lyx@bodyfont
-			\@ifnextchar[{\lyx@othm{#1}}{\lyx@nthm{#1}}}
-		\newcommand\lyx@starred@newtheorem[2]{\newtheorem{#1}{#2}\expandafter\def\csname the#1\endcsname{\unskip}}
-		\newcommand\lyx@reg@newtheorem[2]{\newtheorem{#1}{#2}}
-		\newcommand\lyx@newtheorem{\@ifstar{\lyx@starred@newtheorem}{\lyx@reg@newtheorem}}
-		\theoremstyle{plain}
-		\newtheorem{thm}{\protect\theoremname}
-	EndPreamble
+#This is just a hacked version of the AMS proof environment
+Style Proof
+  Preamble
+    \ifx\proof\undefined\
+      \newenvironment{proof}[1][\proofname]{\par
+        \normalfont\topsep6\p@\@plus6\p@\relax
+        \trivlist
+        \itemindent\parindent
+        \item[\hskip\labelsep
+              \scshape
+          #1]\ignorespaces
+      }{%
+        \endtrivlist\@endpefalse
+      }
+      \providecommand{\proofname}{Proof}
+    \fi
+  EndPreamble
+# No LangPreamble or BabelPreamble, since babel knows \proofname already.
 End

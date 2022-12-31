@@ -7,13 +7,14 @@
 #as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). The numbering is reset
 #at each chapter start.
 #DescriptionEnd
-#Requires: theorems-bytype
-#Excludes: theorems-sec-bytype
+#Requires: theorems-bytype | theorems-ams-bytype
+#Excludes: theorems-std | theorems-ams | theorems-starred | theorems-sec | theorems-sec-bytype
 
 # Author: Paul Rubin <rubin@msu.edu> (hacked from Richard Kimberly Heck's various modules)
-# Edited sep '22 by Udi Fogiel <udifoglle@gmail.com>
 
 Format 99
+
+Input theorems-counters-bytype.inc
 
 Counter theorem
 	Within chapter
@@ -54,53 +55,143 @@ End
 
 Style Theorem
 	Preamble
-		\def\lyx@reverse@two#1#2{#2#1}
-		\def\lyx@plain{plain}
-		\def\lyx@definition{definition}
-		\def\lyx@remark{remark}
-		\newcommand\theoremstyle[1]{%
-			\def\lyx@style{#1}%
-			\ifx\lyx@style\lyx@plain
-				\def\lyx@headfont{\bfseries}%
-				\def\lyx@bodyfont{\itshape}%
-			\else
-				\ifx\lyx@style\lyx@definition
-					\def\lyx@headfont{\bfseries}%
-					\def\lyx@bodyfont{\upshape}%
-				\else
-					\ifx\lyx@style\lyx@remark
-						\def\lyx@headfont{\itshape}%
-						\def\lyx@bodyfont{\upshape}%
-					\fi
-				\fi
-			\fi
-		}
-		\def\@xthm#1#2{%
-			\@begintheorem{\normalfont\csname lyx@\@firstoftwo#2@headfont\endcsname \@secondoftwo#2}{\begingroup\upshape\csname the#1\endcsname\endgroup.}\normalfont\csname lyx@\@firstoftwo#2@bodyfont\endcsname\ignorespaces
-		}
-		\def\@ythm#1#2[#3]{%
-			\@opargbegintheorem{\normalfont{\csname lyx@\@firstoftwo#2@headfont\endcsname \@secondoftwo#2}}{\begingroup\csname lyx@\@firstoftwo#2@headfont\endcsname\upshape\csname the#1\endcsname\endgroup}{#3\lyx@reverse@two{\begingroup\normalfont\csname lyx@\@firstoftwo#2@headfont\endcsname.\endgroup}}\normalfont\csname lyx@\@firstoftwo#2@bodyfont\endcsname\ignorespaces
-		}
-		\def\lyx@othm#1[#2]#3{\@othm{#1}[#2]{{#1}{#3}}}
-		\def\lyx@nthm#1#2{\@ifnextchar[{\@xnthm{#1}{{#1}{#2}}}{\@ynthm{#1}{{#1}{#2}}}}
-		\renewcommand\newtheorem[1]{%
-			\expandafter\let\csname lyx@#1@headfont\expandafter\endcsname\lyx@headfont
-			\expandafter\let\csname lyx@#1@bodyfont\expandafter\endcsname\lyx@bodyfont
-			\@ifnextchar[{\lyx@othm{#1}}{\lyx@nthm{#1}}}
-		\newcommand\lyx@starred@newtheorem[2]{\newtheorem{#1}{#2}\expandafter\def\csname the#1\endcsname{\unskip}}
-		\newcommand\lyx@newtheorem{\@ifstar{\lyx@starred@newtheorem}{\lyx@reg@newtheorem}}
-		\theoremstyle{plain}
-		\ifcsname c@chapter\endcsname
-			\ifx\c@chapter\relax
-				\newcommand\lyx@reg@newtheorem[2]{\newtheorem{#1}{#2}}
-				\newtheorem{thm}{\protect\theoremname}
-			\else
-				\newcommand\lyx@reg@newtheorem[2]{\newtheorem{#1}{#2}[chapter]}
-				\newtheorem{thm}{\protect\theoremname}[chapter]
-			\fi
-		\else
-			\newcommand\lyx@reg@newtheorem[2]{\newtheorem{#1}{#2}}
-			\newtheorem{thm}{\protect\theoremname}
-		\fi
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{thm}{\protect\theoremname}
+	  \else
+	    \newtheorem{thm}{\protect\theoremname}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Corollary
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{cor}{\protect\corollaryname}
+	  \else
+	    \newtheorem{cor}{\protect\corollaryname}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Lemma
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{lem}{\protect\lemmaname}
+	  \else
+	    \newtheorem{lem}{\protect\lemmaname}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Proposition
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{prop}{\protect\propositionname}
+	  \else
+	    \newtheorem{prop}{\protect\propositionname}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Conjecture
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{conjecture}{\protect\conjecturename}
+	  \else
+	    \newtheorem{conjecture}{\protect\conjecturename}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Fact
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{fact}{\protect\factname}
+	  \else
+	    \newtheorem{fact}{\protect\factname}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Definition
+	Preamble
+	  \theoremstyle{definition}
+	  \ifx\thechapter\undefined
+	    \newtheorem{defn}{\protect\definitionname}
+	  \else
+	    \newtheorem{defn}{\protect\definitionname}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Example
+	Preamble
+	  \theoremstyle{definition}
+	  \ifx\thechapter\undefined
+	    \newtheorem{example}{\protect\examplename}
+	  \else
+	    \newtheorem{example}{\protect\examplename}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Problem
+	Preamble
+	  \theoremstyle{definition}
+	  \ifx\thechapter\undefined
+	    \newtheorem{problem}{\protect\problemname}
+	  \else
+	    \newtheorem{problem}{\protect\problemname}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Exercise
+	Preamble
+	  \theoremstyle{definition}
+	  \ifx\thechapter\undefined
+	    \newtheorem{xca}{\protect\exercisename}
+	  \else
+	    \newtheorem{xca}{\protect\exercisename}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Remark
+	Preamble
+	  \theoremstyle{remark}
+	  \ifx\thechapter\undefined
+	    \newtheorem{rem}{\protect\remarkname}
+	  \else
+	    \newtheorem{rem}{\protect\remarkname}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Claim
+	Preamble
+	  \theoremstyle{remark}
+	  \ifx\thechapter\undefined
+	    \newtheorem{claim}{\protect\claimname}
+	  \else
+	    \newtheorem{claim}{\protect\claimname}[chapter]
+	  \fi
 	EndPreamble
 End

@@ -9,7 +9,7 @@
 #The numbering's scope is the whole document. For chapter- and section-wide numbering,
 #use one of the 'within Sections'/'within Chapters' modules, respectively.
 #DescriptionEnd
-#Excludes: theorems-std | theorems-ams | theorems-bytype
+#Excludes: theorems-std | theorems-starred | theorems-ams | theorems-bytype
 
 # Original Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
@@ -17,25 +17,12 @@
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Kimberly Heck <rikiheck@lyx.org>
 # Hacked June '09 by Paul Rubin <rubin@msu.edu> to use separate counters
-# Edited sep '22 by Udi Fogiel <udifoglle@gmail.com>
 
 Format 99
 
-Input theorems-counters-bytype.inc
-Input theorems.inc
-Input theorems-labels.inc
+Requires	amsmath,amsthm
+
+Input theorems-order.inc
+Input theorems-ams-bytype.inc
+Input theorems-starred.inc
 Input theorems-proof.inc
-
-Style Theorem
-	Preamble
-		\newcommand\lyx@reg@newtheorem[2]{\newtheorem{#1}{#2}}
-		\newcommand\lyx@newtheorem{\@ifstar{\newtheorem*}{\lyx@reg@newtheorem}}
-		\theoremstyle{plain}
-		\newtheorem{thm}{\protect\theoremname}
-	EndPreamble
-	Requires              amsthm
-End
-
-Style Theorem*
-	Requires              amsthm
-End

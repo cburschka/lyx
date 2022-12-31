@@ -9,8 +9,7 @@
 #proposition 4, ...). The numbering restarts for each chapter: theorem 1.1,
 #theorem 2.1, ...
 #DescriptionEnd
-#Requires: theorems-ams-bytype
-#Excludes: theorems-ams-extended-bytype
+#Excludes: theorems-std | theorems-starred | theorems-ams | theorems-bytype
 
 # Original Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
@@ -19,27 +18,12 @@
 # Modularized Jan 08 by Richard Kimberly Heck <rikiheck@lyx.org>
 # Hacked June '09 by Paul Rubin <rubin@msu.edu> to use separate counters
 # Chapter dependence added Oct '16 by Andrew Parsloe <aparsloe@clear.net.nz>
-# Edited sep '22 by Udi Fogiel <udifoglle@gmail.com>
 
 Format 99
 
 Requires	amsmath,amsthm
 
-Style Theorem
-	Preamble
-		\newcommand\lyx@newtheorem{\@ifstar{\newtheorem*}{\lyx@reg@newtheorem}}
-		\theoremstyle{plain}
-		\ifcsname c@chapter\endcsname
-			\ifx\c@chapter\relax
-				\newcommand\lyx@reg@newtheorem[2]{\newtheorem{#1}{#2}}
-				\newtheorem{thm}{\protect\theoremname}
-			\else
-				\newcommand\lyx@reg@newtheorem[2]{\newtheorem{#1}{#2}[chapter]}
-				\newtheorem{thm}{\protect\theoremname}[chapter]
-			\fi
-		\else
-			\newcommand\lyx@reg@newtheorem[2]{\newtheorem{#1}{#2}}
-			\newtheorem{thm}{\protect\theoremname}
-		\fi
-	EndPreamble
-End
+Input theorems-order.inc
+Input theorems-ams-chap-bytype.inc
+Input theorems-starred.inc
+Input theorems-proof.inc

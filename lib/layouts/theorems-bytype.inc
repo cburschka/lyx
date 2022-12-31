@@ -3,6 +3,7 @@
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Kimberly Heck <rikiheck@lyx.org>
+# Hacked June '09 by Paul Rubin <rubin@msu.edu> to use separate counters
 
 # The environments defined are :
 # - Theorem
@@ -18,11 +19,10 @@
 # - Solution
 # - Remark
 # - Claim
+# - Proof
 # - Case (by inclusion)
 
 Format 99
-
-OutlinerName thm "Definitions & Theorems"
 
 Style Theorem
 	Category              Reasoning
@@ -31,12 +31,9 @@ Style Theorem
 	LatexName             thm
 	NextNoIndent          1
 	ResetArgs             1
-	AddToToc              thm
-	IsTocCaption          1
 	Argument 1
 		LabelString    "Additional Theorem Text"
 		Tooltip        "Additional text appended to the theorem header"
-		IsTocCaption      1
 	EndArgument
 	LabelSep              xx
 	ParIndent             MMM
@@ -59,8 +56,8 @@ Style Theorem
 	  Series              Bold
 	EndFont
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{thm}{\protect\theoremname}
+	  \theoremstyle{plain}
+	  \newtheorem{thm}{\protect\theoremname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\theoremname}{_(Theorem)}
@@ -78,12 +75,11 @@ End
 
 Style Corollary
 	CopyStyle             Theorem
-	DependsOn             Theorem
 	LatexName             cor
-	LabelString           "Corollary \thetheorem."
+	LabelString           "Corollary \thecorollary."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{cor}[thm]{\protect\corollaryname}
+	  \theoremstyle{plain}
+	  \newtheorem{cor}{\protect\corollaryname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\corollaryname}{_(Corollary)}
@@ -91,6 +87,7 @@ Style Corollary
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
 	EndBabelPreamble
+	LabelCounter          corollary
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='corollary'
 	DocBookTag            para
@@ -100,12 +97,11 @@ End
 
 Style Lemma
 	CopyStyle             Theorem
-	DependsOn             Theorem
 	LatexName             lem
-	LabelString           "Lemma \thetheorem."
+	LabelString           "Lemma \thelemma."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{lem}[thm]{\protect\lemmaname}
+	  \theoremstyle{plain}
+	  \newtheorem{lem}{\protect\lemmaname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\lemmaname}{_(Lemma)}
@@ -113,6 +109,7 @@ Style Lemma
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
 	EndBabelPreamble
+	LabelCounter          lemma
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='lemma'
 	DocBookTag            para
@@ -122,12 +119,11 @@ End
 
 Style Proposition
 	CopyStyle             Theorem
-	DependsOn             Theorem
 	LatexName             prop
-	LabelString           "Proposition \thetheorem."
+	LabelString           "Proposition \theproposition."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{prop}[thm]{\protect\propositionname}
+	  \theoremstyle{plain}
+	  \newtheorem{prop}{\protect\propositionname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\propositionname}{_(Proposition)}
@@ -135,6 +131,7 @@ Style Proposition
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
 	EndBabelPreamble
+	LabelCounter          proposition
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='proposition'
 	DocBookTag            para
@@ -144,12 +141,11 @@ End
 
 Style Conjecture
 	CopyStyle             Theorem
-	DependsOn             Theorem
 	LatexName             conjecture
-	LabelString           "Conjecture \thetheorem."
+	LabelString           "Conjecture \theconjecture."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{conjecture}[thm]{\protect\conjecturename}
+	  \theoremstyle{plain}
+	  \newtheorem{conjecture}{\protect\conjecturename}
 	EndPreamble
 	LangPreamble
 		\providecommand{\conjecturename}{_(Conjecture)}
@@ -157,6 +153,7 @@ Style Conjecture
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
 	EndBabelPreamble
+	LabelCounter          conjecture
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='conjecture'
 	DocBookTag            para
@@ -166,12 +163,11 @@ End
 
 Style Fact
 	CopyStyle             Theorem
-	DependsOn             Theorem
 	LatexName             fact
-	LabelString           "Fact \thetheorem."
+	LabelString           "Fact \thefact."
 	Preamble
-		\theoremstyle{plain}
-		\newtheorem{fact}[thm]{\protect\factname}
+	  \theoremstyle{plain}
+	  \newtheorem{fact}{\protect\factname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\factname}{_(Fact)}
@@ -179,6 +175,7 @@ Style Fact
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
 	EndBabelPreamble
+	LabelCounter          fact
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='fact'
 	DocBookTag            para
@@ -188,9 +185,8 @@ End
 
 Style Definition
 	CopyStyle             Theorem
-	DependsOn             Theorem
 	LatexName             defn
-	LabelString           "Definition \thetheorem."
+	LabelString           "Definition \thedefinition."
 	Font
 	  Shape               Up
 	EndFont
@@ -199,8 +195,8 @@ Style Definition
 	  Series              Bold
 	EndFont
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{defn}[thm]{\protect\definitionname}
+	  \theoremstyle{definition}
+	  \newtheorem{defn}{\protect\definitionname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\definitionname}{_(Definition)}
@@ -208,6 +204,7 @@ Style Definition
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
 	EndBabelPreamble
+	LabelCounter          definition  
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='definition'
 	DocBookTag            para
@@ -218,17 +215,19 @@ End
 Style Example
 	CopyStyle             Definition
 	LatexName             example
-	LabelString           "Example \thetheorem."
+	LabelString           "Example \theexample."
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{example}[thm]{\protect\examplename}
+	  \theoremstyle{definition}
+	  \newtheorem{example}{\protect\examplename}
 	EndPreamble
+	Requires              amsthm
 	LangPreamble
 		\providecommand{\examplename}{_(Example)}
 	EndLangPreamble
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}
 	EndBabelPreamble
+	LabelCounter          example
 	DocBookWrapperTag     informalexample
 	DocBookTag            para
 	DocBookAttr           ""
@@ -238,17 +237,19 @@ End
 Style Problem
 	CopyStyle             Definition
 	LatexName             problem
-	LabelString           "Problem \thetheorem."
+	LabelString           "Problem \theproblem."
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{problem}[thm]{\protect\problemname}
+	  \theoremstyle{definition}
+	  \newtheorem{problem}{\protect\problemname}
 	EndPreamble
+	Requires              amsthm
 	LangPreamble
 		\providecommand{\problemname}{_(Problem)}
 	EndLangPreamble
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
 	EndBabelPreamble
+	LabelCounter          problem
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='problem'
 	DocBookTag            para
@@ -259,17 +260,19 @@ End
 Style Exercise
 	CopyStyle             Definition
 	LatexName             xca
-	LabelString           "Exercise \thetheorem."
+	LabelString           "Exercise \theexercise."
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{xca}[thm]{\protect\exercisename}
+	  \theoremstyle{definition}
+	  \newtheorem{xca}{\protect\exercisename}
 	EndPreamble
+	Requires              amsthm
 	LangPreamble
 		\providecommand{\exercisename}{_(Exercise)}
 	EndLangPreamble
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
 	EndBabelPreamble
+	LabelCounter          exercise
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='exercise'
 	DocBookTag            para
@@ -280,17 +283,19 @@ End
 Style Solution
 	CopyStyle             Definition
 	LatexName             sol
-	LabelString           "Solution \thetheorem."
+	LabelString           "Solution \thesolution."
 	Preamble
-		\theoremstyle{definition}
-		\newtheorem{sol}[thm]{\protect\solutionname}
+	  \theoremstyle{definition}
+	  \newtheorem{sol}{\protect\solutionname}
 	EndPreamble
+	Requires              amsthm
 	LangPreamble
 		\providecommand{\solutionname}{_(Solution)}
 	EndLangPreamble
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
 	EndBabelPreamble
+	LabelCounter          solution
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='solution'
 	DocBookTag            para
@@ -300,9 +305,8 @@ End
 
 Style Remark
 	CopyStyle             Theorem
-	DependsOn             Theorem
 	LatexName             rem
-	LabelString           "Remark \thetheorem."
+	LabelString           "Remark \theremark."
 	Font
 	  Shape               Up
 	  Size                Normal
@@ -312,8 +316,8 @@ Style Remark
 	  Shape               Italic
 	EndFont
 	Preamble
-		\theoremstyle{remark}
-		\newtheorem{rem}[thm]{\protect\remarkname}
+	  \theoremstyle{remark}
+	  \newtheorem{rem}{\protect\remarkname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\remarkname}{_(Remark)}
@@ -321,6 +325,7 @@ Style Remark
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
 	EndBabelPreamble
+	LabelCounter          remark
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='remark'
 	DocBookTag            para
@@ -331,17 +336,19 @@ End
 Style Claim
 	CopyStyle             Remark
 	LatexName             claim
-	LabelString           "Claim \thetheorem."
+	LabelString           "Claim \theclaim."
 	Preamble
-		\theoremstyle{remark}
-		\newtheorem{claim}[thm]{\protect\claimname}
+	  \theoremstyle{remark}
+	  \newtheorem{claim}{\protect\claimname}
 	EndPreamble
+	Requires              amsthm
 	LangPreamble
 		\providecommand{\claimname}{_(Claim)}
 	EndLangPreamble
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
 	EndBabelPreamble
+	LabelCounter          claim
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='claim'
 	DocBookTag            para
