@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-04 19:23+0100\n"
+"POT-Creation-Date: 2023-01-01 18:33-0500\n"
 "PO-Revision-Date: 2019-10-29 20:30+0200\n"
 "Last-Translator: Guy Rutenberg <guyrutenberg@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -4221,8 +4221,8 @@ msgid ""
 "paragraphs are separated by a blank line."
 msgstr ""
 "אורך השורה המירבי בקבצי טקסט פשוטים, LaTeX או SGML. אם נקבע ל- 0 אז הפיסקאות "
-"תופענה בפלט בשורה אחת; אם אורך השורה גדול מ- 0 אז הפיסקאות יופרדו זו מזו ע"
-"\"י שורה ריקה."
+"תופענה בפלט בשורה אחת; אם אורך השורה גדול מ- 0 אז הפיסקאות יופרדו זו מזו "
+"ע\"י שורה ריקה."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:200
 msgid "&Date format:"
@@ -26786,7 +26786,7 @@ msgstr "מחלקת מסמך לא זמינה"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1093
 #: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "אזהרת LyX:"
@@ -26795,7 +26795,7 @@ msgstr "אזהרת LyX:"
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1094
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "תו שלא ניתן לקידוד"
@@ -27788,8 +27788,8 @@ msgstr ""
 #: src/CutAndPaste.cpp:852
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
+"`%3$s'."
 msgstr ""
 
 #: src/CutAndPaste.cpp:857
@@ -34441,12 +34441,12 @@ msgstr "לא יכול לשנות את מספר השורות ב- '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "לא יכול לשנות את מספר העמודות ב- '%1$s'"
 
-#: src/mathed/InsetMathMacro.cpp:1116
+#: src/mathed/InsetMathMacro.cpp:1118
 #, fuzzy
 msgid "Uncodable characters in math macro"
 msgstr "נתיב הקובץ מכיל תו שלא ניתן לקידוד "
 
-#: src/mathed/InsetMathMacro.cpp:1117
+#: src/mathed/InsetMathMacro.cpp:1119
 #, c-format
 msgid ""
 "The macro name '%1$s' contains a character\n"
@@ -34454,7 +34454,7 @@ msgid ""
 "Please fix this macro."
 msgstr ""
 
-#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
+#: src/mathed/InsetMathMacro.cpp:1271 src/mathed/InsetMathMacro.cpp:1277
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr "מאקרו: %1$s: "

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-04 19:23+0100\n"
+"POT-Creation-Date: 2023-01-01 18:33-0500\n"
 "PO-Revision-Date: 2012-11-03 01:01+0200\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: No team\n"
@@ -26819,7 +26819,7 @@ msgstr "Niedostępna klasa dokumentu"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1093
 #: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "Ostrzeżenie LyX:"
@@ -26828,7 +26828,7 @@ msgstr "Ostrzeżenie LyX:"
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1094
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "znak niekodowalny"
@@ -27807,14 +27807,14 @@ msgstr "Nie odnaleziono układu"
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
-"Elastyczna wstawka %1$s jest niezdefiniowana po przeładowaniu układu \"%2$s"
-"\"."
+"Elastyczna wstawka %1$s jest niezdefiniowana po przeładowaniu układu "
+"\"%2$s\"."
 
 #: src/CutAndPaste.cpp:852
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
+"`%3$s'."
 msgstr ""
 "Elastyczna wstawka %1$s jest niezdefiniowana ponieważ konwersja układu z "
 "„%2$s\" do „%3$s\"."
@@ -28913,8 +28913,8 @@ msgstr ""
 #: src/LyXRC.cpp:3534
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
-"Podaj polecenie paper dla przeglądarki DVI (pozostaw puste lub użyj \"-paper"
-"\")"
+"Podaj polecenie paper dla przeglądarki DVI (pozostaw puste lub użyj \"-"
+"paper\")"
 
 #: src/LyXVC.cpp:49
 #, fuzzy, c-format
@@ -34642,12 +34642,12 @@ msgstr "Nie można zmieniać ilości wierszy w '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Nie można zmianieć ilości kolumn w '%1$s'"
 
-#: src/mathed/InsetMathMacro.cpp:1116
+#: src/mathed/InsetMathMacro.cpp:1118
 #, fuzzy
 msgid "Uncodable characters in math macro"
 msgstr "Znak niekodowalny w ścieżce pliku"
 
-#: src/mathed/InsetMathMacro.cpp:1117
+#: src/mathed/InsetMathMacro.cpp:1119
 #, c-format
 msgid ""
 "The macro name '%1$s' contains a character\n"
@@ -34655,7 +34655,7 @@ msgid ""
 "Please fix this macro."
 msgstr ""
 
-#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
+#: src/mathed/InsetMathMacro.cpp:1271 src/mathed/InsetMathMacro.cpp:1277
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr "Makro:  %1$s: "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-16 09:42+0100\n"
+"POT-Creation-Date: 2023-01-01 18:33-0500\n"
 "PO-Revision-Date: 2022-12-16 08:50+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
@@ -25800,7 +25800,7 @@ msgstr "Nedostupná trieda dokumentu"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1093
 #: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "LyX varovanie: "
@@ -25809,7 +25809,7 @@ msgstr "LyX varovanie: "
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1094
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "Nekódovateľný znak"
@@ -26566,10 +26566,10 @@ msgid ""
 "can execute arbitrary commands on your system, including dangerous ones, if "
 "instructed to do so by a maliciously crafted LyX document.</p>"
 msgstr ""
-"<p>Žiadaná operácia požaduje konvertor z %2$s na %3$s:</p><blockquote><p><tt>"
-"%1$s</tt></p></blockquote><p>Tento externý program je schopný vykonávať "
-"ľubovoľné akcie, vrátane nebezpečné keď je napr. inštruovaný robiť to "
-"zlovoľne vyrobeným lyx dokumentom.</p> "
+"<p>Žiadaná operácia požaduje konvertor z %2$s na %3$s:</"
+"p><blockquote><p><tt>%1$s</tt></p></blockquote><p>Tento externý program je "
+"schopný vykonávať ľubovoľné akcie, vrátane nebezpečné keď je napr. "
+"inštruovaný robiť to zlovoľne vyrobeným lyx dokumentom.</p> "
 
 #: src/Converter.cpp:347
 msgid "An external converter is disabled for security reasons"
@@ -26815,11 +26815,11 @@ msgstr "Flexibilná vložka %1$s nie je definovaná po načítaní schémy `%2$s
 #: src/CutAndPaste.cpp:852
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
+"`%3$s'."
 msgstr ""
-"Flexibilná vložka %1$s nie je definovaná kvôli konverzii z schémy `%2$s' na `"
-"%3$s'."
+"Flexibilná vložka %1$s nie je definovaná kvôli konverzii z schémy `%2$s' na "
+"`%3$s'."
 
 #: src/CutAndPaste.cpp:857
 msgid "Undefined flex inset"
@@ -33587,7 +33587,7 @@ msgstr ""
 "ktoré neexistujú v aktuálnom kódovaní (%2$s).\n"
 "Opravte toto makro."
 
-#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
+#: src/mathed/InsetMathMacro.cpp:1271 src/mathed/InsetMathMacro.cpp:1277
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Makro: %1$s"
@@ -36382,11 +36382,11 @@ msgstr "Neznámy používateľ"
 #~ msgid ""
 #~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
 #~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
-#~ "%[[, %pages%]]}."
+#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}"
+#~ "{%pages%[[, %pages%]]}."
 #~ msgstr ""
-#~ "{%autor%[[%autor%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%titul%\"{%žurnál"
-#~ "%[[, {!<i>!}%žurnál%{!</i>!}]][[{%vydavateľ%[[, %vydavateľ%]]"
+#~ "{%autor%[[%autor%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%titul%"
+#~ "\"{%žurnál%[[, {!<i>!}%žurnál%{!</i>!}]][[{%vydavateľ%[[, %vydavateľ%]]"
 #~ "[[{%inštitúcia%[[, %inštitúcia%]]}]]}]]}{%rok%[[ (%rok%)]]}{%strany%[[, "
 #~ "%strany%]]}."
 
@@ -36995,21 +36995,21 @@ msgstr "Neznámy používateľ"
 #~ "Could not insert word `%1$s' because it could not be converted to "
 #~ "encoding `%2$s'."
 #~ msgstr ""
-#~ "Nedá sa vložiť slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `"
-#~ "%2$s'."
+#~ "Nedá sa vložiť slovo `%1$s', lebo ho nešlo skonvertovať do kódovania "
+#~ "`%2$s'."
 
 #~ msgid ""
 #~ "Could not accept word `%1$s' because it could not be converted to "
 #~ "encoding `%2$s'."
 #~ msgstr ""
-#~ "Nedá sa akceptovať slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `"
-#~ "%2$s'."
+#~ "Nedá sa akceptovať slovo `%1$s', lebo ho nešlo skonvertovať do kódovania "
+#~ "`%2$s'."
 
 #~ msgid ""
 #~ "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 #~ msgstr ""
-#~ "Špecifikujte alternatívny súbor osobného slovníka. Napr. \".ispell_english"
-#~ "\"."
+#~ "Špecifikujte alternatívny súbor osobného slovníka. Napr. \"."
+#~ "ispell_english\"."
 
 #~ msgid "What command runs the spellchecker?"
 #~ msgstr "Ktorý program spúšťa kontrolu pravopisu?"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-04 19:23+0100\n"
+"POT-Creation-Date: 2023-01-01 18:33-0500\n"
 "PO-Revision-Date: 2018-02-19 22:07+0200\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -25632,7 +25632,7 @@ msgstr "Η κλάση εγγράφου δεν είναι διαθέσιμη"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1093
 #: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "Προειδοποίηση  LyX: "
@@ -25641,7 +25641,7 @@ msgstr "Προειδοποίηση  LyX: "
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1094
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "μη κωδικοποιήσιμος χαρακτήρας"
@@ -26598,8 +26598,8 @@ msgstr ""
 #: src/CutAndPaste.cpp:852
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
+"`%3$s'."
 msgstr ""
 "Το ένθεμα Flex %1$s δεν είναι ορισμένο λόγω της μετατροπής από '%2$s' σε "
 "'%3$s'."
@@ -27174,8 +27174,8 @@ msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
-"Να θεωρηθούν λέξεις ζευγάρια, όπως \"diskdrive\" στη θέση του \"disk drive"
-"\", ως νόμιμες;"
+"Να θεωρηθούν λέξεις ζευγάρια, όπως \"diskdrive\" στη θέση του \"disk "
+"drive\", ως νόμιμες;"
 
 #: src/LyXRC.cpp:3155
 msgid ""
@@ -27639,8 +27639,8 @@ msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
-"Αυτό ξεκινά τον lyxserver. Τα pipes λαμβάνουν επιπρόσθετες καταλήξεις \".in"
-"\" και \".out\". Μόνο για προχωρημένους χρήστες."
+"Αυτό ξεκινά τον lyxserver. Τα pipes λαμβάνουν επιπρόσθετες καταλήξεις \"."
+"in\" και \".out\". Μόνο για προχωρημένους χρήστες."
 
 #: src/LyXRC.cpp:3483
 msgid "De-select if you don't want the startup banner."
@@ -33224,12 +33224,12 @@ msgstr "Δεν είναι δυνατή η αλλαγή αριθμού γραμμ
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Δεν είναι δυνατή η αλλαγή αριθμού στηλών στο '%1$s'"
 
-#: src/mathed/InsetMathMacro.cpp:1116
+#: src/mathed/InsetMathMacro.cpp:1118
 #, fuzzy
 msgid "Uncodable characters in math macro"
 msgstr "Μη κωδικοποιήσιμος χαρακτήρας στο μονοπάτι αρχείου"
 
-#: src/mathed/InsetMathMacro.cpp:1117
+#: src/mathed/InsetMathMacro.cpp:1119
 #, c-format
 msgid ""
 "The macro name '%1$s' contains a character\n"
@@ -33237,7 +33237,7 @@ msgid ""
 "Please fix this macro."
 msgstr ""
 
-#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
+#: src/mathed/InsetMathMacro.cpp:1271 src/mathed/InsetMathMacro.cpp:1277
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Μακροεντολή: %1$s"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-04 19:23+0100\n"
+"POT-Creation-Date: 2023-01-01 18:33-0500\n"
 "PO-Revision-Date: 2014-01-24 19:33+0100\n"
 "Last-Translator: Ingar Pareliussen <>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -26642,7 +26642,7 @@ msgstr "Dokumentklassa er ikkje tilgjengeleg"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1093
 #: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "LyX åtvaring: "
@@ -26651,7 +26651,7 @@ msgstr "LyX åtvaring: "
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1094
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "Umogeleg teikn"
@@ -27631,8 +27631,8 @@ msgstr ""
 #: src/CutAndPaste.cpp:852
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
+"`%3$s'."
 msgstr ""
 "Fleksibeltinnskot %1$s er ikkje definert på grunn av konverteringa stilen "
 "til %2$s til %3$s."
@@ -28151,8 +28151,8 @@ msgstr ""
 "                  Der kva er \"all\", \"main\" eller \"none\",\n"
 "                  \"all\" skriv over alle filer er overskreve ved eksport, "
 "med \"main\" blir berre                   hovuddokumentet overskriven og "
-"\"none\" blir ingen filer blir overskriven. Alt anna blir oppfatta som \"all"
-"\", men er ikkje konsumert.\n"
+"\"none\" blir ingen filer blir overskriven. Alt anna blir oppfatta som "
+"\"all\", men er ikkje konsumert.\n"
 "\t-n [--no-remote]\n"
 "                   opnar dokument som nye instansar\n"
 "\t-r [--remote]+n                   opnar dokument i ein open instans\n"
@@ -28402,8 +28402,8 @@ msgid ""
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 "Gi vala for makeindex (sjå man makeindex) eller vel ein anna indeksprogram. "
-"Dvs dersom du brukar  xindy/make-rule vil val vere \"makeindex.sh -m $$lang"
-"\"."
+"Dvs dersom du brukar  xindy/make-rule vil val vere \"makeindex.sh -m $"
+"$lang\"."
 
 #: src/LyXRC.cpp:3288
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
@@ -34417,12 +34417,12 @@ msgstr "Kan ikkje endre talet på radar i '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Kan ikkje endre talet på kolonner i '%1$s'"
 
-#: src/mathed/InsetMathMacro.cpp:1116
+#: src/mathed/InsetMathMacro.cpp:1118
 #, fuzzy
 msgid "Uncodable characters in math macro"
 msgstr "Umogeleg spesialteikn i stigen"
 
-#: src/mathed/InsetMathMacro.cpp:1117
+#: src/mathed/InsetMathMacro.cpp:1119
 #, c-format
 msgid ""
 "The macro name '%1$s' contains a character\n"
@@ -34430,7 +34430,7 @@ msgid ""
 "Please fix this macro."
 msgstr ""
 
-#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
+#: src/mathed/InsetMathMacro.cpp:1271 src/mathed/InsetMathMacro.cpp:1277
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr "Makro: %1$s: "
@@ -36510,13 +36510,13 @@ msgstr "Ukjend brukar"
 #~ msgid ""
 #~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
 #~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
-#~ "%[[, %pages%]]}."
+#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}"
+#~ "{%pages%[[, %pages%]]}."
 #~ msgstr ""
 #~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
 #~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
-#~ "%[[, %pages%]]}."
+#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}"
+#~ "{%pages%[[, %pages%]]}."
 
 #~ msgid "Use the XeTeX processing engine"
 #~ msgstr "Bruk XeTeX motor"

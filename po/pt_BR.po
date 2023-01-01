@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR 2.3.7\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-04 19:23+0100\n"
+"POT-Creation-Date: 2023-01-01 18:33-0500\n"
 "PO-Revision-Date: 2022-12-04 21:47-0300\n"
 "Last-Translator: Georger Araujo <georger_br@no.yahoo.spam.com.br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
@@ -25905,7 +25905,7 @@ msgstr "Classe de documento não está disponível"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1093
 #: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "Aviso do LyX: "
@@ -25914,7 +25914,7 @@ msgstr "Aviso do LyX: "
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1094
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "caractere não-codificável"
@@ -26924,8 +26924,8 @@ msgstr "Flex inset %1$s está indefinido após recarregar o layout `%2$s'."
 #: src/CutAndPaste.cpp:852
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
+"`%3$s'."
 msgstr ""
 "Flex inset %1$s está indefinido por causa da conversão do layout de `%2$s' "
 "para `%3$s'."
@@ -27981,8 +27981,8 @@ msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
-"Inicia o lyxserver. Os pipes recebem uma extensão adicional \".in\" e \".out"
-"\". Somente para usuários avançados."
+"Inicia o lyxserver. Os pipes recebem uma extensão adicional \".in\" e \"."
+"out\". Somente para usuários avançados."
 
 #: src/LyXRC.cpp:3483
 msgid "De-select if you don't want the startup banner."
@@ -33744,11 +33744,11 @@ msgstr "Não é possível alterar número de linhas em '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Não é possível alterar número de colunas em '%1$s'"
 
-#: src/mathed/InsetMathMacro.cpp:1116
+#: src/mathed/InsetMathMacro.cpp:1118
 msgid "Uncodable characters in math macro"
 msgstr "Caracteres não-codificáveis na macro de matemática"
 
-#: src/mathed/InsetMathMacro.cpp:1117
+#: src/mathed/InsetMathMacro.cpp:1119
 #, c-format
 msgid ""
 "The macro name '%1$s' contains a character\n"
@@ -33759,7 +33759,7 @@ msgstr ""
 "que não é codificável na codificação atual (%2$s).\n"
 "Por favor retifique essa macro."
 
-#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
+#: src/mathed/InsetMathMacro.cpp:1271 src/mathed/InsetMathMacro.cpp:1277
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Macro: %1$s"
@@ -34637,8 +34637,8 @@ msgstr "Usuário desconhecido"
 #~ "sensitive option is checked)"
 #~ msgstr ""
 #~ "Ordenar etiquetas em ordem alfabética (sem diferenciar maiúsculas de "
-#~ "minúsculas, exceto quando a opção \"Diferenciar maiúsculas de minúsculas"
-#~ "\" estiver marcada)"
+#~ "minúsculas, exceto quando a opção \"Diferenciar maiúsculas de "
+#~ "minúsculas\" estiver marcada)"
 
 #~ msgid "&Sort"
 #~ msgstr "&Ordenar"
@@ -35032,8 +35032,8 @@ msgstr "Usuário desconhecido"
 
 #~ msgid "Extension of printer program output file. Usually \".ps\"."
 #~ msgstr ""
-#~ "Extensão do arquivo de saída do programa de impressão. Normalmente \".ps"
-#~ "\"."
+#~ "Extensão do arquivo de saída do programa de impressão. Normalmente \"."
+#~ "ps\"."
 
 #~ msgid "The option to print only odd pages."
 #~ msgstr "A opção para imprimir apenas páginas ímpares."
