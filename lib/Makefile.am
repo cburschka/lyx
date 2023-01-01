@@ -376,6 +376,7 @@ dist_articlechessexamples_DATA = \
 bookexamplesdir = $(pkgdatadir)/examples/Books
 dist_bookexamples_DATA = \
 	examples/Books/American_Mathematical_Society_%28AMS%29.lyx \
+	examples/Books/KOMA-Script_Book.lyx \
 	examples/Books/Recipe_Book.lyx \
 	examples/Books/Tufte_Book.lyx
 

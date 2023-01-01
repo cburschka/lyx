@@ -1,0 +1,2409 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 610
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+
+\end_preamble
+\options captions=tableheading,headings=small,numbers=noenddot,BCOR=7.5mm,DIV=12,intoc,index=totoc
+\use_default_options true
+\maintain_unincluded_children no
+\language british
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "citecolor=black,linkcolor=black,urlcolor=black"
+\papersize a5
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frontmatter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Extratitle
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\backslash
+textbf{KOMA-Script Book example}
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+half-title
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The Extratitle and Frontispiece paragraph styles come with no default formatting
+; so you have to use \SpecialChar TeX
+ code.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frontispiece
+Series editors and books in the series
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+frontispiece
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Normally, a book in a series is preceded by a page listing the other books
+ in the series and the series editors.
+ The Frontispiece paragraph style appears on the back of the half-title;
+ so you must have an Extratitle paragraph style before a Frontispiece paragraph
+ style.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subject
+Series title
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+series title
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If the book is part of a series, add an Extratitle and a Frontispiece paragraph
+ style before the title page so that the Frontispiece can hold a list of
+ the other books in the series and the series editors.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+KOMA-Script Book example
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+title
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+Subtitle
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+subtitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Author
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+author
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Publishers
+Publisher
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+publisher
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Uppertitleback
+
+\size small
+Publisher’s name
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+publisher!name
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Publisher’s address
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+publisher!address
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Publisher’s website
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+publisher!website
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+© Copyright
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+copyright
+\end_layout
+
+\end_inset
+
+ notice 
+\noun on
+or
+\noun default
+ 
+\begin_inset Graphics
+	filename koma-book-80x15.png
+	scale 50
+
+\end_inset
+
+ Creative Commons
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Creative Commons
+\end_layout
+
+\end_inset
+
+ licence
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+If you use a CC logo here, make sure it is the correct one for the licence
+ you have chosen.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The 
+\emph on
+author
+\emph default
+ has asserted her/his right under the Copyright, Designs and Patents Act
+ 1988 to be identified as the author of this book.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+This wording is applicable to the UK; check the correct wording for the
+ jurisdiction within which you intend to publish.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This publication is copyright.
+ Subject to statutory exception and to the provisions of relevant collective
+ licensing agreements, no reproduction of any part may take place without
+ the written permission of the author.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\noun on
+or
+\noun default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This publication is licensed under the <specified> Creative Commons licence.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+Set out the key features of the licence; see 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://creativecommons.org/about/cclicenses/
+\end_layout
+
+\end_inset
+
+ if you are unsure about using a Creative Commons licence.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+First published 2023
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+Add the book’s publication history, if any.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Lowertitleback
+\noindent
+
+\size small
+Typeset in Latin Modern using KOMA-Script and \SpecialChar LyX
+ for \SpecialChar LaTeX
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Printed and bound by
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+Insert the printer’s name and address and contact details.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+British Library Cataloguing in Publication Data
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+Under the UK Legal Deposit Libraries Act 2003 you must deposit one copy
+ of your book with the Legal Deposit Office, The British Library, Boston
+ Spa, Wetherby, West Yorkshire LS23 7BY and, if it is sufficiently memorable,
+ any of five other libraries in the British Isles may require you to send
+ them a free copy within a year of publication.
+ For further information, see 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.bl.uk/legal-deposit
+\end_layout
+
+\end_inset
+
+.
+ Check the requirements for other jurisdictions within which you intend
+ to publish.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Data available 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+If you have the data available, insert it here instead.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ISBN-13
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+ISBN
+\end_layout
+
+\end_inset
+
+: 978-n-nnnnnnn-n-n
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+
+\size small
+Contact 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://nielsenbook.co.uk/isbn-agency/
+\end_layout
+
+\end_inset
+
+ about purchasing a UK ISBN.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The publisher has no responsibility for the persistence or accuracy of URIs
+ for external or third party websites referred to in this book and does
+ not guarantee that any content on such websites is, or will remain, accurate
+ or appropriate.
+\end_layout
+
+\begin_layout Dedication
+Dedicated to \SpecialChar LyX
+ users everywhere
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+dedication
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Removing this dedication will remove the entire page.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+You can adjust the depth of the Table of Contents in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Numbering and TOC
+\family default
+; it currently shows Parts, Chapters and Sections but not Subsections.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Remove either or both of the above as required.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+List of contributors
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+list of contributors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If the book is a collection of chapters written by different authors, their
+ affiliations, previous publications or short biographies appear immediately
+ after the Table of Contents and any lists of figures or tables.
+\end_layout
+
+\begin_layout Standard
+Note that:
+\end_layout
+
+\begin_layout Itemize
+as this example is for a printed book, the Table of Contents, any lists
+ of figures or tables and this and all subsequent chapters will start on
+ the right hand page
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+right hand page
+\end_layout
+
+\end_inset
+
+; you can turn this off by turning off ‘Two sided document
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+two sided document
+\end_layout
+
+\end_inset
+
+’ in 
+\family sans
+Documents\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Page Layout
+\family default
+ but you will lose the ‘Frontispiece’ and ‘Titleback’ paragraph styles as
+ there will no longer be a ‘back’ to the half-title
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+half-title
+\end_layout
+
+\end_inset
+
+ and title pages
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+title page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+a book always has preliminary pages or front matter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+front matter
+\end_layout
+
+\end_inset
+
+ in which Chapter headings are unnumbered and page numbers appear in Roman;
+ even though the Chapter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Chapter
+\end_layout
+
+\end_inset
+
+ heading in \SpecialChar LyX
+ is numbered, it will appear unnumbered
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+numbering
+\end_layout
+
+\end_inset
+
+ in the PDF
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+PDF
+\end_layout
+
+\end_inset
+
+ because it is part of the front matter
+\end_layout
+
+\begin_layout Itemize
+the main matter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+main matter
+\end_layout
+
+\end_inset
+
+ begins with the first page of Chapter 1; Chapter headings in the main matter
+ will be incorrectly numbered in \SpecialChar LyX
+ but correctly numbered in the PDF 
+\end_layout
+
+\begin_layout Itemize
+never use the Chapter*
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Chapter*
+\end_layout
+
+\end_inset
+
+ paragraph style within a book because these chapter headings will not appear
+ in the Table of Contents
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Table of Contents
+\end_layout
+
+\end_inset
+
+.
+ The \SpecialChar LaTeX
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+ code
+\end_layout
+
+\end_inset
+
+ commands 
+\family typewriter
+
+\backslash
+frontmatter
+\family default
+, 
+\family typewriter
+
+\backslash
+mainmatter
+\family default
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+main matter
+\end_layout
+
+\end_inset
+
+ and 
+\family typewriter
+
+\backslash
+backmatter
+\family default
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+back matter
+\end_layout
+
+\end_inset
+
+ ensure that all the Chap\SpecialChar softhyphen
+ter headings appear correctly numbered
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+numbering
+\end_layout
+
+\end_inset
+
+ or unnumbered, as appropriate, in the Table of Contents and throughout
+ the book.
+\end_layout
+
+\begin_layout Chapter
+Foreword
+\end_layout
+
+\begin_layout Standard
+A foreword
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+foreword
+\end_layout
+
+\end_inset
+
+ is always written by someone who has not had anything to do with the preparatio
+n of the book.
+ 
+\end_layout
+
+\begin_layout Standard
+NB 
+\lang french
+Avertissement montre le sens du mot 
+\lang british
+Foreword
+\lang french
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang ngerman
+NB Geleitwort hat dem Sinn des Wortes 
+\lang british
+Foreword
+\lang french
+.
+\end_layout
+
+\begin_layout Chapter
+Series preface
+\end_layout
+
+\begin_layout Standard
+Alternatively or additionally to a foreword
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+foreword
+\end_layout
+
+\end_inset
+
+, a series editor
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+series editor
+\end_layout
+
+\end_inset
+
+ may write a series preface
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+series preface
+\end_layout
+
+\end_inset
+
+ setting the book in the context of the series as a whole.
+ If the book is part of a series, use the Extratitle
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+half-title
+\end_layout
+
+\end_inset
+
+ and Frontispiece
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+frontispiece
+\end_layout
+
+\end_inset
+
+ paragraph styles before the Title page in order to provide a list of the
+ other books in the series and the series editors.
+\end_layout
+
+\begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Preface"
+
+\end_inset
+
+Preface (de: Vorwort)
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Preface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A preface
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+preface
+\end_layout
+
+\end_inset
+
+ allows the author
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+author
+\end_layout
+
+\end_inset
+
+ to introduce the book and thank those who have supported its preparation
+ without contributing directly to it.
+ If there is a long list of people and organisations who have supported
+ its preparation, consider using a separate Acknowledgements
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+acknowledgements
+\end_layout
+
+\end_inset
+
+ chapter (page
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "chap:Acknowledgements"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+NB 
+\lang french
+Avant-propos montre le sens du mot
+\lang british
+ Preface.
+\end_layout
+
+\begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Introduction"
+
+\end_inset
+
+Introduction
+\end_layout
+
+\begin_layout Standard
+An introduction
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+introduction
+\end_layout
+
+\end_inset
+
+ to the book which is not part of the argument of the book can appear here;
+ for example, the author
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+author
+\end_layout
+
+\end_inset
+
+ may wish to describe the context of the book’s argument without revealing
+ the main argument of the book.
+ An introduction which is part of the argument of the book should appear
+ as the first chapter in the main matter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+main matter
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Though this example draws on the book publishing standards for British English
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+British English
+\end_layout
+
+\end_inset
+
+ as set out in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "butchercopyediting"
+literal "false"
+
+\end_inset
+
+, these are very close to those for US English
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+US English
+\end_layout
+
+\end_inset
+
+ in the 
+\emph on
+Manual of Style
+\emph default
+ produced by the 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "universitychicago17"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The main differences in British English are typographical or involve different
+ spelling conventions, such as:
+\end_layout
+
+\begin_layout Itemize
+the use of single quotation marks (‘ ’) rather than double quotation marks
+ (“ ”) for the outer quotation marks;
+\end_layout
+
+\begin_layout Itemize
+the spelling of certain active verbs and their associated nouns and adjectives
+ using ‘is’ rather than ‘iz;’
+\end_layout
+
+\begin_layout Itemize
+using double consonants after a short vowel, as in ‘travelling’ rather than
+ ‘traveling.’
+\end_layout
+
+\begin_layout Chapter
+
+\size small
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Acknowledgements"
+
+\end_inset
+
+
+\size default
+Acknowledgements (fr: Reconnaissances; de: Dank)
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Acknowledgements
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you wish to acknowledge
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+acknowledgements
+\end_layout
+
+\end_inset
+
+ a long list of people and organisations who have supported the preparation
+ of the book without actually contributing directly to it, you can make
+ this a separate chapter before the rest of the preliminary pages.
+ A short list normally goes at the end of the Preface (page
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "chap:Preface"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Chapter
+Notes
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+notes about the text
+\end_layout
+
+\end_inset
+
+ about the text/
+\begin_inset Newline newline
+\end_inset
+
+Conversion tables
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+conversion tables
+\end_layout
+
+\end_inset
+
+/
+\begin_inset Newline newline
+\end_inset
+
+Chronology
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+chronology
+\end_layout
+
+\end_inset
+
+/
+\begin_inset Newline newline
+\end_inset
+
+List of abbreviations
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+list of abbreviations
+\end_layout
+
+\end_inset
+
+/
+\begin_inset Newline newline
+\end_inset
+
+Maps
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+maps
+\end_layout
+
+\end_inset
+
+/
+\begin_inset Newline newline
+\end_inset
+
+Genealogical tables
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+genealogical tables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where you have material which applies to the whole book and not to a particular
+ chapter, it should appear here.
+ Give each of the above that you use a separate Chapter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Chapter
+\end_layout
+
+\end_inset
+
+ paragraph style and delete the ones which you do not use.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mainmatter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(to the argument of the book)
+\end_layout
+
+\end_inset
+
+ (fr: Préface; de: Einleitung)
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You don’t have to make Chapter 1 the Introduction
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+introduction
+\end_layout
+
+\end_inset
+
+ but it is normal if you are setting out a particular argument in the book
+ (see the comments about an Introduction in the front matter on page
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "chap:Introduction"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Note that:
+\end_layout
+
+\begin_layout Itemize
+this example contains examples of most things you are likely to need in
+ a book; 
+\end_layout
+
+\begin_layout Itemize
+once you have entered more than two pages of text in a chapter, you will
+ realise that the chapter titles appear as running headers
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+running headers
+\end_layout
+
+\end_inset
+
+ on the left hand page and the section titles on the right hand page; if
+ you don’t like this style, don’t use sections or use them intermittently,
+ you may find it worthwhile to set a different Page style
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Page style
+\end_layout
+
+\end_inset
+
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Page Layout
+\family default
+ and add the module 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Page Layout\SpecialChar menuseparator
+Custom Header/
+\begin_inset Newline linebreak
+\end_inset
+
+Footer Text
+\family default
+.
+ The 
+\family typewriter
+fancy
+\family default
+ style loads the 
+\family typewriter
+fancyhdr
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+fancyhdr
+\end_layout
+
+\end_inset
+
+
+\family default
+ package; see 
+\family sans
+Help\SpecialChar menuseparator
+Additional Features\SpecialChar menuseparator
+Supplemental Tools\SpecialChar menuseparator
+Fancy Headers and Footers
+\family default
+.
+\end_layout
+
+\begin_layout Chapter
+Some notes on the KOMA-Script book document style
+\end_layout
+
+\begin_layout Standard
+The KOMA-Script
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+ book document style offers the widest range of features for producing a
+ book.
+ In particular, it enables you to set a binding correction to allow for
+ the area of the page which is ‘absorbed’ into the binding of the book and
+ to set the margins proportionately as has been done in this example.
+ This means that, whatever the size of the printed page, the margins will
+ retain the same proportions.
+\end_layout
+
+\begin_layout Standard
+Also, with KOMA-Script you don’t have to use numbered
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+numbering
+\end_layout
+
+\end_inset
+
+ chapters in the main matter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+main matter
+\end_layout
+
+\end_inset
+
+; you can use the Addchap
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Addchap
+\end_layout
+
+\end_inset
+
+ paragraph style instead which, unlike the Chapter*
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Chapter*
+\end_layout
+
+\end_inset
+
+ paragraph style, will appear in the Table of Contents
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Table of Contents
+\end_layout
+
+\end_inset
+
+.
+ But you need to use the Chapter paragraph style if you intend to use figures
+ or tables in the book as their numbering relies on the Chapter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Chapter
+\end_layout
+
+\end_inset
+
+ paragraph style numbering.
+\end_layout
+
+\begin_layout Standard
+This example is for an A5 book and so includes 
+\family typewriter
+headings
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Headings
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Newline linebreak
+\end_inset
+
+small
+\family default
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options
+\family default
+; if you want to produce a book to a different size, you should consult
+ the KOMA-Script documentation (
+\family typewriter
+scrguien.pdf
+\family default
+; 
+\begin_inset Newline linebreak
+\end_inset
+
+de:
+\family typewriter
+scrguide.pdf
+\family default
+).
+ Most other things are covered in the \SpecialChar LyX
+ Help manuals.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The settings in this example are intended for producing a printed book;
+ most printers will accept a document in this format.
+ If you want to print the book
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+printing
+\end_layout
+
+\end_inset
+
+ out yourself and it is not too long, you can use 
+\family sans
+pdfjam
+\family default
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+pdfjam
+\end_layout
+
+\end_inset
+
+ as in this example:
+\end_layout
+
+\begin_layout LyX-Code
+pdfjam Pellon_Lane.pdf 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textquotesingle 
+\end_layout
+
+\end_inset
+
+28,1,2,27,26,3,
+\begin_inset Newline newline
+\end_inset
+
+4,25,24,5,6,23,22,7,8,21,20,9,10,19,
+\begin_inset Newline newline
+\end_inset
+
+18,11,12,17,16,13,14,15
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textquotesingle 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+--landscape --nup 2x1
+\end_layout
+
+\begin_layout Standard
+which will generate an A4 PDF
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+PDF
+\end_layout
+
+\end_inset
+
+ with the pages ready to print.
+ For this to work, the number of pages must be a multiple of 4 and you must
+ enter the page numbers in the correct order!
+\end_layout
+
+\begin_layout Chapter
+Some notes on the \SpecialChar LaTeX
+ code
+\end_layout
+
+\begin_layout Standard
+The KOMA-Script
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+ book document style provides almost every\SpecialChar softhyphen
+thing you need to produce a book;
+ however, there are one or two things which \SpecialChar LyX
+ does not yet support.
+ So this example includes \SpecialChar LaTeX
+ code
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+ code
+\end_layout
+
+\end_inset
+
+ to:
+\end_layout
+
+\begin_layout Itemize
+specify the start of the front matter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+front matter
+\end_layout
+
+\end_inset
+
+, the main matter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+main matter
+\end_layout
+
+\end_inset
+
+ and the back matter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+back matter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+format the text on the half-title
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+half-title
+\end_layout
+
+\end_inset
+
+ page at the start of the document.
+\end_layout
+
+\begin_layout Standard
+If you are adding something other than a bibliography
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+bibliography
+\end_layout
+
+\end_inset
+
+ or index
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+index
+\end_layout
+
+\end_inset
+
+ after the main text and any appendices, you should insert the \SpecialChar LaTeX
+ code 
+\family typewriter
+
+\backslash
+backmatter
+\family default
+ as in this example.
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+Appendices
+\end_layout
+
+\begin_layout Standard
+Appendices
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+appendix
+\end_layout
+
+\end_inset
+
+ are, like the preceding chapters in the main matter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+main matter
+\end_layout
+
+\end_inset
+
+, numbered
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+numbering
+\end_layout
+
+\end_inset
+
+ but the numbering style changes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+backmatter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Unnumbered chapters at the end of the book
+\end_layout
+
+\begin_layout Standard
+It is very unlikely that you will have unnumbered
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+numbering
+\end_layout
+
+\end_inset
+
+ chapters at the end of a book unless you are writing certain types of thesis
+ but this shows you how to do it if you need to.
+ If you leave out 
+\family typewriter
+
+\backslash
+backmatter
+\family default
+, you will find that the bibliography
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+bibliography
+\end_layout
+
+\end_inset
+
+ and index
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+index
+\end_layout
+
+\end_inset
+
+ are unnumbered; so you only need to mark the start of the back matter
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+back matter
+\end_layout
+
+\end_inset
+
+ if you are inserting a chapter of text as opposed to any of the standard
+ components of the back matter.
+\end_layout
+
+\begin_layout Standard
+As with the front matter, \SpecialChar LyX
+ incorrectly numbers this chap\SpecialChar softhyphen
+ter but it appears
+ unnumbered in the PDF
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+PDF
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+Insert\SpecialChar menuseparator
+Formatting\SpecialChar menuseparator
+Clear Double Page
+\family default
+ to ensure that the numbering in the Table of Contents is accurate; otherwise,
+ the Bibliography is numbered as starting on the this page even though it
+ appears on the correct page in the PDF.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "koma-book"
+options "bibtotoc,chicago"
+encoding "default"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "idx"
+name "Index"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
