@@ -5715,7 +5715,13 @@ Skip
 
 \begin_layout Subsection
 
-\change_inserted 564990737 1670924924
+\change_inserted 564990737 1672743555
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Polish-M.W.collection"
+
+\end_inset
+
 Polish M.
 \begin_inset space \thinspace{}
 \end_inset
@@ -9971,16 +9977,138 @@ name "sec:foiltex"
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 564990737 1672743383
+
+\lang american
+Original by 
+\noun on
+Allan Rae
+\noun default
+; updated by the \SpecialChar LyX
+ Team
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1672743383
+
+\lang american
+Introduction
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672743396
+
+\lang american
+The document class 
+\family sans
+presentation
+\begin_inset space \thinspace{}
+\end_inset
+
+(Foil\SpecialChar TeX
+)
+\family default
+ uses the 
+\family typewriter
+foils.cls
+\family default
+ document class to make slides for overhead projectors.
+ There are two document classes that can do this: the 
+\family sans
+presentations
+\begin_inset space \thinspace{}
+\end_inset
+
+(slides)
+\family default
+ document class (section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:slitex"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and the 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ slides class.
+ As of 2023 the former has continued to be maintained whereas 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ has not been maintained since 2008.
+ This section documents the latter.
+ If your machine doesn’t have the 
+\family sans
+presentation
+\begin_inset space \thinspace{}
+\end_inset
+
+(Foil\SpecialChar TeX
+)
+\family default
+ document class installed, you’ll probably have to use the 
+\family sans
+presentations
+\begin_inset space \thinspace{}
+\end_inset
+
+(slides)
+\family default
+ document class.
+ If you want to install the 
+\family typewriter
+foils.cls
+\family default
+ document class, it is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "https://www.ctan.org/pkg/foiltex"
+literal "false"
+
+\end_inset
+
+.
+ You should also read the 
+\emph on
+Installing New Document Classes
+\emph default
+ chapter of the 
+\emph on
+Customization
+\emph default
+ manual.
+\change_deleted 564990737 1672743436
+
+\lang english
 by 
 \noun on
 Allan Rae
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Standard
+
+\change_deleted 564990737 1672743383
 Introduction
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743383
 This section describes how to use \SpecialChar LyX
  to make slides for overhead projectors.
  There are two document classes that can do this: the default slides class
@@ -9994,11 +10122,15 @@ Foil\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743383
 I'm going to say this again, nice and clear, so that there's no misunderstanding
 :
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743383
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -10007,6 +10139,8 @@ I'm going to say this again, nice and clear, so that there's no misunderstanding
 
 \begin_layout Standard
 \align center
+
+\change_deleted 564990737 1672743383
 
 \size large
 This section documents the class 
@@ -10027,6 +10161,8 @@ only.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743383
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -10034,6 +10170,8 @@ only.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743383
 If you're looking for the documentation for 
 \begin_inset Quotes eld
 \end_inset
@@ -10076,6 +10214,8 @@ foils.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743383
 The 
 \family sans
 foils
@@ -10091,6 +10231,8 @@ foils.cls
  \SpecialChar LaTeX
  class file which is now an integral part of \SpecialChar LaTeX2e
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -11605,6 +11747,83 @@ name "sec:slitex"
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 564990737 1672743492
+
+\lang american
+Original by 
+\noun on
+John Weiss
+\noun default
+; updated by the \SpecialChar LyX
+ Team
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 564990737 1672743492
+
+\lang american
+Introduction
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672743492
+
+\lang american
+This section describes how to use \SpecialChar LyX
+ to make slides for overhead projectors.
+ There are two document classes that can do this: the 
+\family typewriter
+presentations
+\begin_inset space \thinspace{}
+\end_inset
+
+(slides)
+\family default
+ document class and the 
+\family sans
+presentation
+\begin_inset space \thinspace{}
+\end_inset
+
+(Foil\SpecialChar TeX
+)
+\family default
+ document class.
+ This section documents the former.
+ If you’re looking for the documentation for 
+\family sans
+presentation
+\begin_inset space \thinspace{}
+\end_inset
+
+(Foil\SpecialChar TeX
+)
+\family default
+, check out section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Foiltex"
+
+\end_inset
+
+.
+ As of 2023 the former has continued to be maintained whereas 
+\family sans
+Foil\SpecialChar TeX
+
+\family default
+ has not been maintained since 2008.
+ 
+\change_deleted 564990737 1672743492
+
+\lang english
 by 
 \noun on
 John Weiss
@@ -11612,11 +11831,15 @@ John Weiss
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Standard
+
+\change_deleted 564990737 1672743492
 Introduction
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743492
 This section describes how to use \SpecialChar LyX
  to make slides for overhead projectors.
  There are two document classes that can do this: the default slides class
@@ -11630,11 +11853,15 @@ Foil\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743492
 I'm going to say this again, nice and clear, so that there's no misunderstanding
 :
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743492
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -11643,6 +11870,8 @@ I'm going to say this again, nice and clear, so that there's no misunderstanding
 
 \begin_layout Standard
 \align center
+
+\change_deleted 564990737 1672743492
 
 \size large
 This section documents the class 
@@ -11663,6 +11892,8 @@ only.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743492
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -11670,6 +11901,8 @@ only.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743492
 If you're looking for the documentation for 
 \begin_inset Quotes eld
 \end_inset
@@ -11732,6 +11965,8 @@ or so I've been told repeatedly by its advocates.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1672743492
 This class is the \SpecialChar LaTeX2e
  improvement of the old 
 \noun on
@@ -11765,6 +12000,8 @@ slides
 \family default
  can do which the others can't, such as generate overlays.
  Read on to learn more!
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -13738,7 +13975,7 @@ article
 
 \begin_layout Standard
 
-\change_inserted 564990737 1670439674
+\change_inserted 564990737 1672743528
 The remaining 
 \family sans
 report
@@ -13755,6 +13992,129 @@ reference "sec:Collections"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672743530
+
+\lang american
+For 
+\family sans
+report
+\begin_inset space \thinspace{}
+\end_inset
+
+(Japanese in vertical writing)
+\family default
+ and 
+\family sans
+report
+\begin_inset space \thinspace{}
+\end_inset
+
+(Japanese)
+\family default
+, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Japanese"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672743530
+
+\lang american
+For 
+\family sans
+report
+\begin_inset space \thinspace{}
+\end_inset
+
+(KOMA-Script)
+\family default
+, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:KOMA-Script"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672743530
+
+\lang american
+For 
+\family sans
+report
+\begin_inset space \thinspace{}
+\end_inset
+
+(with extra font sizes)
+\family default
+, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Extra-font-sizes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672743569
+
+\lang american
+For 
+\family sans
+report
+\begin_inset space \thinspace{}
+\end_inset
+
+(Polish version by M.
+\begin_inset space \thinspace{}
+\end_inset
+
+W.)
+\family default
+, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Polish-M.W.collection"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -28218,17 +28578,17 @@ Forward search works both with DVI and PDF output.
 
 e., which format is already there in the temporary directory) and chooses
  the appropriate configuration for the respective format.
+\change_deleted 564990737 1672743015
+
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Standard
 
-\change_deleted 564990737 1671097409
+\change_deleted 564990737 1672743015
 Special Document Classes
-\change_unchanged
-
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 A&A Paper
@@ -28242,7 +28602,7 @@ by
 Peter Sütterlin
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 Introduction
@@ -28343,7 +28703,7 @@ Dir/layouts/aapaper.layout
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 Getting started
@@ -28391,7 +28751,7 @@ default
  The whole layout is done by the macros, you shouldn't change anything.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 The header block
@@ -28593,7 +28953,7 @@ The appropriate command has to be entered in \SpecialChar LyX
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 The abstract
@@ -28614,7 +28974,7 @@ Keywords
  Refer to the example paper.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 Supported environments
@@ -28724,7 +29084,7 @@ Bibliography
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 Commands not supported by \SpecialChar LyX
@@ -28794,7 +29154,7 @@ Do not forget to mark them as \SpecialChar LaTeX
  code!
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 Figure and Table Floats
@@ -28958,7 +29318,7 @@ t
 Also, refer to the figures in the example paper.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 Referee layout
@@ -28987,7 +29347,7 @@ referee
  there.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669742044
 The example paper
@@ -29010,7 +29370,7 @@ Examples
  way of writing.
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 
 \change_deleted 564990737 1671097429
 Dinbrief
@@ -29031,7 +29391,7 @@ dinbrief
  for you to use as a starting point.
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 
 \change_deleted 564990737 1671097429
 Elsevier Journals
@@ -29049,7 +29409,7 @@ elsarticle.lyx
  It contains all infos you need.
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 
 \change_deleted 564990737 1669755802
 ijmpc and ijmpd
@@ -29063,7 +29423,7 @@ by
 Panayotis Papasotiriou
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669755802
 Overview
@@ -29134,7 +29494,7 @@ article
  without any problem.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669755802
 Writing a paper
@@ -29550,7 +29910,7 @@ ws-ijmpd.tex
 , included in the corresponding packages.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669755802
 Preparing a paper for submission
@@ -29622,7 +29982,7 @@ makeatother
 
 \begin_layout Standard
 
-\change_deleted 564990737 1669755802
+\change_deleted 564990737 1672743015
 The modified 
 \family typewriter
 .tex
@@ -29634,11 +29994,9 @@ The modified
 .dvi
 \family default
  document.
-\change_unchanged
-
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 
 \change_deleted 564990737 1669801478
 iopart
@@ -29652,7 +30010,7 @@ by
 Uwe Stöhr
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669801478
 Overview
@@ -29678,7 +30036,7 @@ ftp://ftp.iop.org/pub/journals/latex2e
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1669801478
 Writing a paper
@@ -29851,14 +30209,12 @@ Article
 
 \begin_layout Standard
 
-\change_deleted 564990737 1669801478
+\change_deleted 564990737 1672743015
 For more informations like hints for special table and formula formatting,
  look at the IOP author guidelines.
-\change_unchanged
-
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 
 \change_deleted 564990737 1670317155
 Kluwer
@@ -29872,7 +30228,7 @@ by
 Panayotis Papasotiriou
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1670317155
 Overview
@@ -29954,7 +30310,7 @@ Astrophysics and Space Science
  without any problem.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1670317155
 Writing a paper
@@ -29988,7 +30344,7 @@ kluwer.lyx
 ) with the correct information.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1670317155
 Preparing a paper for submission
@@ -30112,7 +30468,7 @@ xdvi
 , and check if everything is OK (it should, if you didn't make any mistake).
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1670317155
 \begin_inset Quotes eld
@@ -30306,7 +30662,7 @@ copy the example bibliography item included in the template and modify it
  as necessary to enter new bibliography items.
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 
 \change_deleted 564990737 1671097446
 Paper
@@ -30328,7 +30684,7 @@ article
  sans serif sections, headings, and more.
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 
 \change_deleted 564990737 1671097446
 Springer Journals (
@@ -30346,7 +30702,7 @@ by
 Martin Vermeer
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1671097446
 Description
@@ -30436,7 +30792,7 @@ texhash
  it should work.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1671097446
 New styles
@@ -30470,7 +30826,7 @@ _Title, Author_Running, Institute,
  See the Springer class file documentation for details.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1671097446
 Supported journals
@@ -30510,7 +30866,7 @@ svprobth.layout
 Add your own, it isn't so hard!
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1671097446
 Credits
@@ -30536,7 +30892,7 @@ ejour2
  layout file mechanism.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 
 \change_deleted 564990737 1671097446
 Bugs
@@ -36221,11 +36577,11 @@ Modules\SpecialChar menuseparator
 Sweave
 \family default
 .
-\change_unchanged
+\change_deleted 564990737 1672742969
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Standard
 
 \change_deleted 564990737 1671355343
 Special features
