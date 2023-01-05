@@ -1888,6 +1888,7 @@ void GuiDocument::slotApply()
 	if (wasclean && only_shellescape_changed)
 		buffer().markClean();
 	modulesChanged_ = false;
+	isValid();
 }
 
 
