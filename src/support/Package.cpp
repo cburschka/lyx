@@ -159,9 +159,9 @@ Package::Package(string const & command_line_arg0,
 
 int Package::reconfigureUserLyXDir(string const & option) const
 {
-	if (configure_command_.empty()) {
+	if (configure_command_.empty() || !os::hasPython()) {
 		FileName const configure_script(addName(system_support().absFileName(), "configure.py"));
-		configure_command_ = os::python() + ' ' +
+		configure_command_ = os::python(true) + ' ' +
 			quoteName(configure_script.toFilesystemEncoding()) +
 			with_version_suffix() + " --binary-dir=" +
 			quoteName(FileName(binary_dir().absFileName()).toFilesystemEncoding());

@@ -581,10 +581,11 @@ void LyX::execCommands()
 {
 	// The advantage of doing this here is that the event loop
 	// is already started. So any need for interaction will be
-	// aknowledged.
+	// acknowledged.
 
 	// if reconfiguration is needed.
-	if (LayoutFileList::get().empty()) {
+	const bool noLayouts = LayoutFileList::get().empty();
+	if (noLayouts && os::hasPython()) {
 		switch (Alert::prompt(
 			_("No textclass is found"),
 			_("LyX will only have minimal functionality because no textclasses "
@@ -593,7 +594,8 @@ void LyX::execCommands()
 			0, 2,
 			_("&Reconfigure"),
 			_("&Without LaTeX"),
-			_("&Continue")))
+			_("&Continue"),
+			_("&Exit LyX")))
 		{
 		case 0:
 			// regular reconfigure
@@ -604,6 +606,24 @@ void LyX::execCommands()
 			lyx::dispatch(FuncRequest(LFUN_RECONFIGURE,
 				" --without-latex-config"));
 			break;
+		case 3:
+			lyx::dispatch(FuncRequest(LFUN_LYX_QUIT, ""));
+			return;
+		default:
+			break;
+		}
+	} else if (noLayouts) {
+		switch (Alert::prompt(
+			_("No python is found"),
+			_("LyX will only have minimal functionality because no python interpreter "
+				"has been found. Consider download and install of an python interpreter."),
+			0, 1,
+			_("&Continue"),
+			_("&Exit LyX")))
+		{
+		case 1:
+			lyx::dispatch(FuncRequest(LFUN_LYX_QUIT, ""));
+			return;
 		default:
 			break;
 		}
