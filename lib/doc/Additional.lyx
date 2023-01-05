@@ -17225,8 +17225,16 @@ status collapsed
 \change_inserted 564990737 1672138150
 
 label=
+\change_deleted 274215730 1672889016
+
 \backslash
-bf{
+bf
+\change_inserted 274215730 1672889016
+
+\backslash
+bfseries
+\change_inserted 564990737 1672138150
+{
 \backslash
 arabic{enumiii}}
 \end_layout
@@ -17317,8 +17325,16 @@ arabic{enumii}
 \end_inset
 
 label=
+\change_deleted 274215730 1672889037
+
 \backslash
-bf{
+bf
+\change_inserted 274215730 1672889037
+
+\backslash
+bfseries
+\change_inserted 564990737 1672138150
+{
 \backslash
 arabic{enumiii}}
 \begin_inset Newline newline
@@ -17341,10 +17357,18 @@ where the command
 emph{}
 \family default
  makes the label emphasized and 
+\change_deleted 274215730 1672889045
+
 \family sans
 
 \backslash
 bf{}
+\change_inserted 274215730 1672889046
+
+\backslash
+bfseries{}
+\change_inserted 564990737 1672138150
+
 \family default
  makes it bold.
 \end_layout
