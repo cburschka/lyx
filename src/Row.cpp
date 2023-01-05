@@ -328,7 +328,7 @@ ostream & operator<<(ostream & os, Row::Elements const & elts)
 
 ostream & operator<<(ostream & os, Row const & row)
 {
-	os << " pos: " << row.pos_ << " end: " << row.end_
+	os << " pit: " << row.pit_ << " pos: " << row.pos_ << " end: " << row.end_
 	   << " left_margin: " << row.left_margin
 	   << " width: " << row.dim_.wid
 	   << " right_margin: " << row.right_margin
@@ -337,7 +337,8 @@ ostream & operator<<(ostream & os, Row const & row)
 	   << " separator: " << row.separator
 	   << " label_hfill: " << row.label_hfill
 	   << " end_boundary: " << row.end_boundary()
-	   << " flushed: " << row.flushed() << "\n";
+	   << " flushed: " << row.flushed_
+	   << " rtl=" << row.rtl_ << "\n";
 	// We cannot use the operator above, unfortunately
 	double x = row.left_margin;
 	for (Row::Element const & e : row.elements_) {
