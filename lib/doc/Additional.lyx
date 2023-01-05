@@ -2801,7 +2801,6 @@ Document classes
 \begin_layout Standard
 
 \change_inserted 564990737 1672345272
-
 As explained in the 
 \emph on
 User's Guide
@@ -2872,7 +2871,6 @@ Collections
 \begin_layout Subsection
 
 \change_inserted 564990737 1672345298
-
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:AMS-LaTeX-(American-Mathematical"
@@ -2886,7 +2884,6 @@ AMS-\SpecialChar LaTeX
 \begin_layout Standard
 
 \change_inserted 564990737 1672345298
-
 The \SpecialChar LyX
  supported document classes 
 \family sans
@@ -2928,7 +2925,6 @@ Richard Heck
 \change_deleted 564990737 1672345297
 
 \noun default
-\lang english
 AMS \SpecialChar LaTeX
 
 \end_layout
@@ -3002,7 +2998,6 @@ There are two basic AMS \SpecialChar LaTeX
 amsart:
  The standard AMS article format
 \change_inserted 564990737 1672345333
-
 ;
  see 
 \family sans
@@ -3013,7 +3008,6 @@ American Mathematical Society (AMS)
 \change_unchanged
 
 \family default
-\lang english
 .
 \end_layout
 
@@ -3022,7 +3016,6 @@ amsbook:
  the standard AMS book (really,
  monograph) format
 \change_inserted 564990737 1672345366
-
 ;
  see 
 \family sans
@@ -3033,7 +3026,6 @@ American Mathematical Society (AMS)
 \change_unchanged
 
 \family default
-\lang english
 .
 \change_inserted 564990737 1672345369
 
@@ -3053,7 +3045,6 @@ amsproc
 \begin_layout Standard
 
 \change_inserted 564990737 1672345383
-
 \SpecialChar LyX
  only supports the first two natively;
  see the 
@@ -3100,7 +3091,6 @@ AMS Theorems
 \change_unchanged
 
 \family default
-\lang english
  module,
  which is loaded by default when you select one of the AMS classes.
  (It can also be used with other classes and can be removed,
@@ -3118,14 +3108,12 @@ Theorems (AMS-Extended)
 
 
 \change_inserted 564990737 1672345436
-
  
 \family sans
 AMS Theorems (Extended)
 \change_unchanged
 
 \family default
-\lang english
  module,
  which must be loaded manually.
 \end_layout
@@ -3153,7 +3141,6 @@ Standard Theorems (Numbered by Section)
 \change_unchanged
 
 \family default
-\lang english
  or,
  if you are using 
 \begin_inset Flex Code
@@ -3186,7 +3173,6 @@ Standard Theorems (Numbered by Chapter)
 \change_unchanged
 
 \family default
-\lang english
 .
  These will number the results as 
 \begin_inset Formula $n.m$
@@ -3221,7 +3207,6 @@ Standard Theorems (Unnumbered)
 \change_unchanged
 
 \family default
-\lang english
  provides that option.
 \end_layout
 
@@ -3251,7 +3236,6 @@ AMS Theorems
 \change_unchanged
 
 \family default
-\lang english
  module,
  and the others mentioned,
  with other classes,
@@ -3458,7 +3442,6 @@ Standard Theorems
 \change_unchanged
 
 \family default
-\lang english
  and 
 \change_deleted 564990737 1672345580
 
@@ -3479,7 +3462,6 @@ AMS Theorems
 \change_unchanged
 
 \family default
-\lang english
  modules,
  in the latter case in both starred (unnumbered) and unstarred (numbered) versions.
  These same environments are provided only in the starred versions by the 
@@ -3502,7 +3484,6 @@ Standard Theorems
 \change_unchanged
 
 \family default
-\lang english
  module:
 \end_layout
 
@@ -3620,7 +3601,6 @@ Theorems (AMS-Extended)
 \family sans
 AMS Theorems (Extended
 \family default
-\lang english
 )
 \change_unchanged
 :
@@ -3679,21 +3659,18 @@ Used in a way similar to Proposition,
 \begin_layout Assumption*
 
 \change_inserted 564990737 1672345721
-
 Assumption
 \end_layout
 
 \begin_layout Question*
 
 \change_inserted 564990737 1672345721
-
 Question
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672345721
-
 There are ten more Maths modules available including several offering options ordered on 
 \family sans
 (Numbered by Type \SpecialChar ldots
@@ -3714,7 +3691,6 @@ In addition,
 \begin_layout Subsection
 
 \change_inserted 564990737 1671383236
-
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Extra-font-sizes"
@@ -3727,7 +3703,6 @@ Extra font sizes
 \begin_layout Standard
 
 \change_inserted 564990737 1671383236
-
 The “Extra font sizes” collection provides the document classes 
 \family sans
 article
@@ -3813,14 +3788,12 @@ Fonts
 \begin_layout Subsection
 
 \change_inserted 564990737 1671383236
-
 Hebrew
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671383236
-
 The document classes 
 \family sans
 article
@@ -3854,7 +3827,6 @@ letter.cls
 \begin_layout Subsection
 
 \change_inserted 564990737 1671383236
-
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Japanese"
@@ -3867,7 +3839,6 @@ Japanese
 \begin_layout Standard
 
 \change_inserted 564990737 1671383236
-
 The document classes 
 \family sans
 article
@@ -3944,7 +3915,6 @@ report
 \begin_layout Subsection
 
 \change_inserted 564990737 1672429136
-
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:KOMA-Script"
@@ -3957,7 +3927,6 @@ KOMA-Script
 \begin_layout Standard
 
 \change_inserted 564990737 1672429136
-
 Original by 
 \noun on
 Bernd Rellermeyer
@@ -3970,8 +3939,6 @@ Jürgen Spitzmüller
  and the \SpecialChar LyX
  Team
 \change_deleted 564990737 1672429136
-
-\lang english
 Koma-Script
 \end_layout
 
@@ -3994,7 +3961,6 @@ Overview
 \begin_layout Standard
 
 \change_inserted 564990737 1672429162
-
 The KOMA-Script collection of document classes is a development of the Script classes created by Frank Neukam in the early 1990s;
  it was formally launched with the addition of a letter class in 1994.
  Since then,
@@ -4088,11 +4054,8 @@ letter.cls
 \change_deleted 564990737 1672429262
 Standard character size is
 \change_inserted 564990737 1672429263
-
 The base character sizes when you select a KOMA-Script class are
 \change_unchanged
-
-\lang english
  11pt in 
 \emph on
 article (koma-script)
@@ -4213,7 +4176,6 @@ Settings
 .
  
 \change_inserted 564990737 1672429310
-
 The layout of a KOMA-Script page follows one of two traditional typesetting conventions based on dividing the page into strips or drawing a circle.
  The default is to imagine that a page is divided horizontally and vertically into strips and allocate strips to the margins leaving the unused strips for the text area.
  You can change the sizes of the margins by changing the factor by which the page is divided into strips;
@@ -4225,7 +4187,6 @@ The layout of a KOMA-Script page follows one of two traditional typesetting conv
 \begin_layout Standard
 
 \change_inserted 564990737 1672429310
-
 Whatever the factor,
  two strips are allocated to the outer and bottom margins of a two-sided document and one strip to the inner and top margins,
  leaving a text area occupying around half the page.
@@ -4238,7 +4199,6 @@ Whatever the factor,
 \begin_layout Standard
 
 \change_inserted 564990737 1672429310
-
 The main means in the Koma-Script document classes to design the type area are the options 
 \family sans
 BCOR
@@ -4262,7 +4222,6 @@ Custom
 \begin_layout Standard
 
 \change_inserted 564990737 1672429310
-
 In this document,
  the binding correction is 7.5mm which is added in the form 
 \family typewriter
@@ -4316,7 +4275,6 @@ DIV=calc
 \begin_layout Standard
 
 \change_inserted 564990737 1672429310
-
 To use the circle method of calculating the page layout,
  use 
 \family typewriter
@@ -4365,8 +4323,6 @@ article (KOMA-Script),
  report (KOMA-Script),
  and book (KOMA-Script)
 \change_deleted 564990737 1672429367
-
-\lang english
 article (koma-script),
  report (koma-script),
  and book (koma-script)
@@ -4880,7 +4836,6 @@ dirty
 \begin_layout Standard
 
 \change_inserted 564990737 1672429680
-
 KOMA-Script offers a wide range of 
 \family sans
 Cus
@@ -4987,7 +4942,6 @@ noenddot
 \begin_layout Standard
 
 \change_inserted 564990737 1672429680
-
 and the math options:
 \end_layout
 
@@ -5019,7 +4973,6 @@ fleqn
 \begin_layout Standard
 
 \change_inserted 564990737 1672429680
-
 It also provides commands to affect the output of the document independently of the standard \SpecialChar LaTeX
  commands and packages;
  for example,
@@ -5041,7 +4994,6 @@ bfseries}
 \begin_layout Standard
 
 \change_inserted 564990737 1672429680
-
 to 
 \family sans
 \bar under
@@ -5070,7 +5022,6 @@ Preamble
 \begin_layout Standard
 
 \change_inserted 564990737 1672429680
-
 If you are writing a book,
  it is normal to have the preliminary pages numbered in Roman numerals and the Chapters in this part unnumbered.
  If you use the Chapter* environment,
@@ -5093,7 +5044,6 @@ frontmatter
 \begin_layout Standard
 
 \change_inserted 564990737 1672429680
-
 at the very start of the book (not in the \SpecialChar LaTeX
  Preamble) and
 \end_layout
@@ -5111,7 +5061,6 @@ mainmatter
 \begin_layout Standard
 
 \change_inserted 564990737 1672429680
-
 before the first chapter of the body of the text.
  You may also want to have some unnumbered Chapter environments at the end of the book after the Appendices,
  if any.
@@ -5121,7 +5070,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672429680
-
 Appendices are normally “numbered” with letters.
 \end_layout
 
@@ -5146,7 +5094,6 @@ backmatter
 \begin_layout Standard
 
 \change_inserted 564990737 1672429682
-
 before the first of these headings and use the Chapter environment.
  These commands will have no effect on the numbering in \SpecialChar LyX
 ,
@@ -6028,7 +5975,6 @@ The new letter class:
  letter (koma-script v.2)
 \change_inserted 564990737 1672429774
 
-
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:The-new-letter"
@@ -6230,9 +6176,7 @@ m
 \end_inset
 
 Template\SpecialChar menuseparator
-Letters
-\lang english
-\SpecialChar menuseparator
+Letters\SpecialChar menuseparator
 KOMA-Script Letter (V.2)
 \change_unchanged
 
@@ -6522,14 +6466,12 @@ withmarginpar reserve place on page for margins.
 \begin_layout Subsection
 
 \change_inserted 564990737 1672652245
-
 Tufte Collection
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672652245
-
 The document classes 
 \family sans
 book
@@ -6599,14 +6541,12 @@ nolink "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1670794716
-
 A&A Paper
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 Original by 
 \noun on
 Peter Sütterlin
@@ -6619,14 +6559,12 @@ Peter Sütterlin
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1670794716
-
 Introduction
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 This section describes how \SpecialChar LyX
  can be used to write articles for submission to the scientific journal 
 \emph on
@@ -6667,7 +6605,6 @@ https://www.aanda.org/for-authors/latex-issues/texnical-background-information
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 A manual comes together with the package and should be consulted before installing this document class as described in the 
 \emph on
 Installing New Document Classe
@@ -6683,14 +6620,12 @@ Customization
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1670794716
-
 Please note that the publisher of the journal was changed from Springer to EDP Sciences starting January 1,
  2001.
  That change also involved some slight changes to the style files,
@@ -6714,14 +6649,12 @@ Dir/layouts/aapaper.layout
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1670794716
-
 Getting started
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671617129
-
 It is recommended you start from the template in the menu 
 \family sans
 \bar under
@@ -6740,9 +6673,7 @@ m
 \begin_inset space ~
 \end_inset
 
-Template
-\lang english
-\SpecialChar menuseparator
+Template\SpecialChar menuseparator
 Articles\SpecialChar menuseparator
 Astronomy & Astrophysics
 \family default
@@ -6754,7 +6685,6 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \change_inserted 564990737 1670794716
-
 Select 
 \family sans
 article (A&A)
@@ -6783,7 +6713,6 @@ Class
 \begin_layout Itemize
 
 \change_inserted 564990737 1670794716
-
 Don't change the 
 \family sans
 Headings
@@ -6817,14 +6746,12 @@ Default
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1670794716
-
 The header block
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 First thing to enter is the header information.
  It consists of five entries,
  of which one is optional.
@@ -6894,7 +6821,6 @@ Received:
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 Although the order of the single header entries doesn't matter it is advised to keep the above sequence,
  just to get the best optics and meets the layout of the real document.
 \end_layout
@@ -6902,7 +6828,6 @@ Although the order of the single header entries doesn't matter it is advised to 
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 If you want to place footnotes in the header block,
  e.
 \begin_inset space \thinspace{}
@@ -6939,7 +6864,6 @@ thanks{}
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 In addition to these topics,
  the macros use three additional \SpecialChar LaTeX
  commands that have no counterpart in \SpecialChar LyX
@@ -6992,7 +6916,6 @@ email{address}
 \begin_layout Standard
 
 \change_inserted 564990737 1671642374
-
 In all cases,
  the appropriate command has to be entered as \SpecialChar TeX
  code in \SpecialChar LyX
@@ -7012,14 +6935,12 @@ Astronomy & Astrophysics
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1670794716
-
 The abstract
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 The abstract should immediately follow the header block and must contain five tokens:
  
 \family typewriter
@@ -7083,7 +7004,6 @@ conclusions heading
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 (NB.
  This structure not shown in 
 \emph on
@@ -7095,14 +7015,12 @@ aa_sample.lyx.
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1670794716
-
 Supported environments
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 The A&A paper layout supports the following environments for structuring your text:
 \end_layout
 
@@ -7206,7 +7124,6 @@ Bibliography
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1670794716
-
 Commands not supported by \SpecialChar LyX
 
 \end_layout
@@ -7214,7 +7131,6 @@ Commands not supported by \SpecialChar LyX
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 Some commands are not yet supported by the 
 \family sans
 paper (A&A)
@@ -7279,7 +7195,6 @@ object{}
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 If you want to use any of these commands,
  you have to enter them yourself.
  
@@ -7305,14 +7220,12 @@ Code
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1670794716
-
 Figure and Table Floats
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 \SpecialChar LyX
  provides support for the necessary float environments 
 \family sans
@@ -7357,7 +7270,6 @@ Settings.
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 There is only one special thing:
  the figures with a caption beside the figure.
  To create such a figure,
@@ -7367,7 +7279,6 @@ There is only one special thing:
 \begin_layout Enumerate
 
 \change_inserted 564990737 1670794716
-
 Create a wide figure float:
  
 \family sans
@@ -7422,14 +7333,12 @@ float
 \begin_layout Enumerate
 
 \change_inserted 564990737 1670794716
-
 Enter your caption text.
 \end_layout
 
 \begin_layout Enumerate
 
 \change_inserted 564990737 1670794716
-
 Press 
 \family sans
 Return
@@ -7440,14 +7349,12 @@ Return
 \begin_layout Enumerate
 
 \change_inserted 564990737 1670794716
-
 Insert your figure
 \end_layout
 
 \begin_layout Enumerate
 
 \change_inserted 564990737 1670794716
-
 Position the cursor after the figure and insert a horizontal fill by using the menu:
  
 \family sans
@@ -7491,7 +7398,6 @@ pacing
 \begin_layout Enumerate
 
 \change_inserted 564990737 1670794716
-
 Switch to \SpecialChar LaTeX
  mode:
  
@@ -7508,7 +7414,6 @@ t
 \begin_layout Enumerate
 
 \change_inserted 564990737 1670794716
-
 Enter 
 \family typewriter
 
@@ -7523,7 +7428,6 @@ Do not close the brace!
 \begin_layout Enumerate
 
 \change_inserted 564990737 1670794716
-
 Position the cursor behind the caption text,
  switch to \SpecialChar LaTeX
  mode and insert the closing brace:
@@ -7545,7 +7449,6 @@ t
 \begin_layout Standard
 
 \change_inserted 564990737 1671642458
-
 Also,
  refer to the figures in the file in 
 \family sans
@@ -7560,14 +7463,12 @@ Astronomy & Astrophysics
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1670794716
-
 Referee layout
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1670794716
-
 For submission,
  the paper has to be formatted in a special double-spacing layout.
  For this purpose,
@@ -7611,14 +7512,12 @@ Class
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1670794716
-
 The example paper
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671642520
-
 The example in 
 \family sans
 File\SpecialChar menuseparator
@@ -8579,7 +8478,6 @@ American Astronomical Society
 \change_unchanged
 
 \family default
-\lang english
  
 \change_inserted 564990737 1671642621
 for 
@@ -8858,14 +8756,12 @@ Your mileage may vary.
 \begin_layout Subsection
 
 \change_inserted 564990737 1671442131
-
 Chess
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671642768
-
 The document class 
 \family sans
 article
@@ -8886,20 +8782,16 @@ lyxskak.sty
  See 
 \family sans
 File\SpecialChar menuseparator
-Open Example
-\lang english
-\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
 Articles\SpecialChar menuseparator
 Chess
 \family default
  where you will find 
 \family sans
-\lang english
 Game 1
 \family default
  and 
 \family sans
-\lang english
 Game 2
 \family default
 .
@@ -8908,14 +8800,12 @@ Game 2
 \begin_layout Subsection
 
 \change_inserted 564990737 1671042028
-
 Elsevier
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671617396
-
 The document class 
 \family sans
 article
@@ -8989,9 +8879,7 @@ m
 \begin_inset space ~
 \end_inset
 
-Template
-\lang english
-\SpecialChar menuseparator
+Template\SpecialChar menuseparator
 Articles\SpecialChar menuseparator
 Elsevier
 \family default
@@ -9013,14 +8901,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671042046
-
 Paper
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671042046
-
 The document class 
 \family sans
 article
@@ -9419,14 +9305,12 @@ Address
 \begin_layout Subsection
 
 \change_inserted 564990737 1671042072
-
 Springer Journals
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671042072
-
 All the 
 \family sans
 svj*
@@ -9959,14 +9843,12 @@ Poemtitle*:
 \begin_layout Subsection
 
 \change_inserted 564990737 1671442175
-
 Recipe Book
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671442175
-
 The document class 
 \family typewriter
 RecipeBook.cls
@@ -9985,7 +9867,6 @@ book
 \begin_layout Description
 
 \change_inserted 564990737 1671442175
-
 Recipe a numbered section environment at the 
 \family typewriter
 Subsubsection
@@ -9996,7 +9877,6 @@ Subsubsection
 \begin_layout Description
 
 \change_inserted 564990737 1671442175
-
 Ingredients a 
 \family typewriter
 Description
@@ -10026,7 +9906,6 @@ Recipe Book
 \begin_layout Standard
 
 \change_inserted 564990737 1671442175
-
 It is designed for typesetting one or two recipes per page,
  with dimensions of 5.5
 \begin_inset Quotes qrd
@@ -10046,7 +9925,6 @@ It is designed for typesetting one or two recipes per page,
 \begin_layout Standard
 
 \change_inserted 564990737 1671442175
-
 The half-letter pages can be printed two per page using your printer driver,
  or bound together using 
 \family typewriter
@@ -10072,14 +9950,12 @@ Curricula vitarum
 \begin_layout Subsection
 
 \change_inserted 564990737 1671442208
-
 Europass
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671642942
-
 The document class 
 \family sans
 curriculum
@@ -10121,14 +9997,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671442208
-
 European
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671642984
-
 The document class 
 \family sans
 curriculum
@@ -10170,14 +10044,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671442208
-
 Modern
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671643003
-
 The document class 
 \family sans
 curriculum
@@ -10219,14 +10091,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671442208
-
 Simple
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671643024
-
 The document class 
 \family sans
 curriculum
@@ -10275,7 +10145,6 @@ Letters
 \begin_layout Standard
 
 \change_inserted 564990737 1672652455
-
 See also the 
 \family typewriter
 letter
@@ -10322,14 +10191,12 @@ nolink "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671041970
-
 Din-Brief
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671617528
-
 The document class 
 \family sans
 Din-Brief
@@ -10381,14 +10248,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1672652499
-
 frletter
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672652499
-
 The document class 
 \family sans
 French letter
@@ -10434,14 +10299,12 @@ French letter
 \begin_layout Subsection
 
 \change_inserted 564990737 1672652499
-
 G-Brief
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672652499
-
 The document class 
 \family sans
 G-Brief (V.
@@ -10497,14 +10360,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671458835
-
 letter
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671617591
-
 The document class 
 \family sans
 letter
@@ -10542,14 +10403,12 @@ Letter (Standard Class)
 \begin_layout Subsection
 
 \change_inserted 564990737 1672652527
-
 lettre
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672652527
-
 The document class 
 \family sans
 French letter
@@ -10612,14 +10471,12 @@ Presentations
 \begin_layout Subsection
 
 \change_inserted 564990737 1671458922
-
 Beamer
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671617655
-
 The document class 
 \family sans
 presentation
@@ -10687,7 +10544,6 @@ name "sec:foiltex"
 \begin_layout Standard
 
 \change_inserted 564990737 1672743383
-
 Original by 
 \noun on
 Allan Rae
@@ -10700,14 +10556,12 @@ Allan Rae
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1672743383
-
 Introduction
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672743396
-
 The document class 
 \family sans
 presentation
@@ -10803,8 +10657,6 @@ Customization
 \emph default
  manual.
 \change_deleted 564990737 1672743436
-
-\lang english
 by 
 \noun on
 Allan Rae
@@ -11685,9 +11537,7 @@ examples
 
 \family sans
 File\SpecialChar menuseparator
-Open Example
-\lang english
-\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
 Presentations\SpecialChar menuseparator
 Foils
 \change_unchanged
@@ -12341,14 +12191,12 @@ foils
 \begin_layout Subsection
 
 \change_inserted 564990737 1671459032
-
 Powerdot
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671643165
-
 The document class 
 \family sans
 presentation
@@ -12385,7 +12233,6 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671459032
-
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Seminar"
@@ -12400,7 +12247,6 @@ Seminar
 \begin_layout Standard
 
 \change_inserted 564990737 1671643194
-
 The document class 
 \family sans
 presentations
@@ -12453,7 +12299,6 @@ name "sec:slitex"
 \begin_layout Standard
 
 \change_inserted 564990737 1672743492
-
 Original by 
 \noun on
 John Weiss
@@ -12466,14 +12311,12 @@ John Weiss
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1672743492
-
 Introduction
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672743492
-
 This section describes how to use \SpecialChar LyX
  to make slides for overhead projectors.
  There are two document classes that can do this:
@@ -12527,8 +12370,6 @@ Foil\SpecialChar TeX
  has not been maintained since 2008.
  
 \change_deleted 564990737 1672743492
-
-\lang english
 by 
 \noun on
 John Weiss
@@ -14842,7 +14683,6 @@ nolink "false"
 \begin_layout Standard
 
 \change_inserted 564990737 1672743530
-
 For 
 \family sans
 report
@@ -14878,7 +14718,6 @@ nolink "false"
 \begin_layout Standard
 
 \change_inserted 564990737 1672743530
-
 For 
 \family sans
 report
@@ -14906,7 +14745,6 @@ nolink "false"
 \begin_layout Standard
 
 \change_inserted 564990737 1672743530
-
 For 
 \family sans
 report
@@ -14934,7 +14772,6 @@ nolink "false"
 \begin_layout Standard
 
 \change_inserted 564990737 1672743569
-
 For 
 \family sans
 report
@@ -15568,14 +15405,12 @@ Modules
 \begin_layout Section
 
 \change_inserted 564990737 1671716212
-
 Academic Field Specifics
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1671716212
-
 Chemistry:
  Hazard and Precautionary Statements 
 \end_layout
@@ -15583,7 +15418,6 @@ Chemistry:
 \begin_layout Standard
 
 \change_inserted 564990737 1671716212
-
 This module provides two insets to typeset numbers and phrases of chemical hazard and precautionary statements.
  For a description see 
 \family sans
@@ -15613,7 +15447,6 @@ Chemistry:
 \begin_layout Standard
 
 \change_inserted 564990737 1671716212
-
 This module provides two insets,
  
 \family sans
@@ -15642,14 +15475,12 @@ Insets
 \begin_layout Subsection
 
 \change_inserted 564990737 1671716212
-
 Linguistics
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671716212
-
 This module uses the 
 \family sans
 covington.sty
@@ -15683,7 +15514,6 @@ inguistics
 \family sans
 File\SpecialChar menuseparator
 Open Example\SpecialChar menuseparator
-
 Modules\SpecialChar menuseparator
 Linguistics
 \family default
@@ -15693,21 +15523,18 @@ Linguistics
 \begin_layout Section
 
 \change_inserted 564990737 1671788778
-
 Accessibility
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1671788778
-
 Braille
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671788778
-
 This module supports the Braille writing system.
  It requires the \SpecialChar LaTeX
  package 
@@ -15760,21 +15587,18 @@ Braille
 \begin_layout Section
 
 \change_inserted 564990737 1671788778
-
 Annotation & Revision
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1671788778
-
 FiXme Notes
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671788778
-
 This module provides “FiXme” (marginal) annotations for document revision purposes.
  A list of annotations can be produced by using the “List of FIXMEs” paragraph style.
  The annotations are customizable via the LaTeX preamble.
@@ -15794,14 +15618,12 @@ literal "false"
 \begin_layout Paragraph
 
 \change_inserted 564990737 1671788778
-
 Note:
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671788778
-
 by default,
  the notes are only displayed in “draft” mode (if the option “draft” has been inserted in 
 \family sans
@@ -15833,14 +15655,12 @@ Settings\SpecialChar menuseparator
 \begin_layout Subsection
 
 \change_inserted 564990737 1671788778
-
 PDF Comments
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671788778
-
 This module provides various kinds of annotations for PDF output.
  See 
 \family sans
@@ -15865,7 +15685,6 @@ PDF Form
 \begin_layout Standard
 
 \change_inserted 564990737 1671788778
-
 This module provides fields and buttons for PDF forms.
  See the 
 \begin_inset CommandInset href
@@ -15900,7 +15719,6 @@ Ruby (Furigana)
 \begin_layout Standard
 
 \change_inserted 564990737 1671788778
-
 This module defines an inset to typeset reading aids (ruby,
  furigana) to Chinese characters.
  It uses the “okumakro,” “luatexja-ruby” or “ruby” package (depending on the TeX engine) or a fallback definition.
@@ -15918,7 +15736,6 @@ TODO notes
 \begin_layout Standard
 
 \change_inserted 564990737 1671788778
-
 This module provides custom insets to insert TODO items in your document.
  In order to generate a “List of TODOs,” the module provides a paragraph style.
  Inserting “final” in 
@@ -15945,21 +15762,18 @@ literal "false"
 \begin_layout Section
 
 \change_inserted 564990737 1671829045
-
 Bibliography 
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1671829045
-
 APA Style with NatBib
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 This module adds support for using natbib together with apacite (the bibliography style need not be apacite —
  it could be apacite,
  apacitex,
@@ -15969,21 +15783,18 @@ This module adds support for using natbib together with apacite (the bibliograph
 \begin_layout Section
 
 \change_inserted 564990737 1671829045
-
 Boxes
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1671829045
-
 Fancy Colored Boxes
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 This module adds ten custom insets that support colored boxes via the tcolorbox package.
  See 
 \family sans
@@ -16015,14 +15826,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671829045
-
 Graphic boxes
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 This provides the custom insets 
 \family sans
 Reflectbox
@@ -16057,14 +15866,12 @@ Reflectbox
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Flex Reflectbox
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 Great Western Railway
 \change_unchanged
 
@@ -16078,7 +15885,6 @@ Great Western Railway
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 (You will need to use Ctrl-R to see any of these examples.)
 \end_layout
 
@@ -16118,21 +15924,18 @@ Height
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Flex Resizebox
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 48mm
 \change_unchanged
 
@@ -16147,7 +15950,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 !
 \change_unchanged
 
@@ -16211,21 +16013,18 @@ c
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Flex Rotatebox
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 =c
 \change_unchanged
 
@@ -16240,7 +16039,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 30
 \change_unchanged
 
@@ -16261,28 +16059,24 @@ Great Western Railway
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 You can combine boxes as in:
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Flex Rotatebox
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 =c
 \change_unchanged
 
@@ -16297,7 +16091,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 -15
 \change_unchanged
 
@@ -16312,14 +16105,12 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 48mm
 \change_unchanged
 
@@ -16334,7 +16125,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 !
 \change_unchanged
 
@@ -16349,7 +16139,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 Great Western Railway
 \change_unchanged
 
@@ -16400,14 +16189,12 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 2
 \change_unchanged
 
@@ -16422,7 +16209,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 1.5
 \change_unchanged
 
@@ -16445,28 +16231,24 @@ Great Western Railway
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 A negative horizontal value reverses the text and a negative vertical value inverts it so that you get 
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Flex Scalebox
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 -1
 \change_unchanged
 
@@ -16481,7 +16263,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 1
 \change_unchanged
 
@@ -16503,14 +16284,12 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 1
 \change_unchanged
 
@@ -16525,7 +16304,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1671829045
-
 -1
 \change_unchanged
 
@@ -16546,14 +16324,12 @@ Great Western Railway
 \begin_layout Subsection
 
 \change_inserted 564990737 1671884699
-
 Section Boxes
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671884699
-
 This module defines Boxes with section header.
  It is mainly intended for the SciPoster Document class.
  
@@ -16562,14 +16338,12 @@ This module defines Boxes with section header.
 \begin_layout Subsection
 
 \change_inserted 564990737 1671884699
-
 Variable-width Minipages
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671884699
-
 This module adds a 
 \family sans
 Minipage (Var.
@@ -16636,21 +16410,18 @@ Variable-width Minipages
 \begin_layout Section
 
 \change_inserted 564990737 1671884699
-
 Fixes & Hacks
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1671884699
-
 Fix Computer Modern Fonts
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671884699
-
 This module uses the 
 \family sans
 fix-cm
@@ -16672,7 +16443,6 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671884699
-
 \SpecialChar LaTeX
  Kernel Fixes (Obsolete)
 \end_layout
@@ -16680,7 +16450,6 @@ literal "false"
 \begin_layout Standard
 
 \change_inserted 564990737 1671884699
-
 This module loads the \SpecialChar LaTeX
  package 
 \family sans
@@ -16700,14 +16469,12 @@ fixltx2e
 \begin_layout Paragraph
 
 \change_inserted 564990737 1671884699
-
 Note:
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671884699
-
 recent \SpecialChar LaTeX
  kernels (as of 2015/01/01) include the functionality of 
 \family sans
@@ -16726,14 +16493,12 @@ fixltx2e
 \begin_layout Subsection
 
 \change_inserted 564990737 1671884699
-
 Minimalistic Insets
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671884699
-
 This module redefines several insets (Index,
  Branch,
  URL) as being Minimalistic.
@@ -16742,14 +16507,12 @@ This module redefines several insets (Index,
 \begin_layout Subsection
 
 \change_inserted 564990737 1671884699
-
 Title and Preamble Hacks
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671884699
-
 This module provides two new paragraph styles:
  
 \end_layout
@@ -16799,21 +16562,18 @@ maketitle
 \begin_layout Section
 
 \change_inserted 564990737 1672081439
-
 Floats & captions
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Algorithm2e Float
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module uses the 
 \family sans
 algorithm2e
@@ -16835,14 +16595,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Bilingual Captions AKA Multilingual Captions
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module provides the paragraph style 
 \family sans
 Caption
@@ -16876,14 +16634,12 @@ Multilingual Captions
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Number Figures by Section
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module resets the figure number at section start and prepends the section number to the figure number,
  as in “Figure 2.1.” (By default book and report document classes number by Chapter and article document classes have a single sequence.) 
 \end_layout
@@ -16891,14 +16647,12 @@ This module resets the figure number at section start and prepends the section n
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Number Tables by Section
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module resets the table number at section start and prepends the section number to the table number,
  as in “Table 2.1.” (By default book and report document classes number by Chapter and article document classes have a single sequence.) 
 \end_layout
@@ -16906,21 +16660,18 @@ This module resets the table number at section start and prepends the section nu
 \begin_layout Section
 
 \change_inserted 564990737 1672081439
-
 Foot- and Endnotes
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Endnotes (Basic)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module adds an endnote inset,
  in addition to footnotes.
  This uses the 
@@ -16956,14 +16707,12 @@ Footnotes
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Endnotes (Extended)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module adds an endnote inset,
  in addition to footnotes.
  This uses the 
@@ -17003,14 +16752,12 @@ Footnotes
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Footnotes as Endnotes (Basic)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module sets all footnotes as endnotes.
  This uses the 
 \family sans
@@ -17039,14 +16786,12 @@ Footnotes
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Footnotes as Endnotes (Extended)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module sets all footnotes as endnotes.
  This uses the 
 \family sans
@@ -17079,7 +16824,6 @@ Footnotes
 \begin_layout Section
 
 \change_inserted 564990737 1672081439
-
 Leisure,
  Sports and Music
 \end_layout
@@ -17087,14 +16831,12 @@ Leisure,
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Chess Board
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module provides support for the 
 \family sans
 chessboard
@@ -17130,14 +16872,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1672081439
-
 Lilypond Music Notation
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672081439
-
 This module provides an inset via 
 \family sans
 \bar under
@@ -17177,14 +16917,12 @@ Rnw
 \begin_layout Section
 
 \change_inserted 564990737 1672138150
-
 List enhancements
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1672138150
-
 Customizable Lists
 \begin_inset CommandInset label
 LatexCommand label
@@ -17198,7 +16936,6 @@ name "subsec:Customizable-Lists"
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 This module uses the
 \family sans
  enumitem
@@ -17209,7 +16946,6 @@ This module uses the
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1672138150
-
 Custom Enumerate Lists
 \end_layout
 
@@ -17217,7 +16953,6 @@ Custom Enumerate Lists
 \noindent
 
 \change_inserted 564990737 1672138150
-
 The default numbering of numbered lists can be changed by adding an optional argument (menu 
 \family sans
 \bar under
@@ -17247,7 +16982,6 @@ roman{enumi}
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 in \SpecialChar TeX
  Code (shortcut 
 \begin_inset Info
@@ -17296,7 +17030,6 @@ enumiv
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 The command 
 \family sans
 
@@ -17352,7 +17085,6 @@ alph
 \noindent
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Note Greyedout
 status collapsed
 
@@ -17380,21 +17112,18 @@ items with Latin letters,
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 Here is a list with custom numbering:
 \end_layout
 
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status collapsed
 
@@ -17431,14 +17160,12 @@ Level 1
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status collapsed
 
@@ -17468,7 +17195,6 @@ Level 2
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 Level 2
 \begin_inset Separator latexpar
 \end_inset
@@ -17480,14 +17206,12 @@ Level 2
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status collapsed
 
@@ -17522,14 +17246,12 @@ Level 3
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status collapsed
 
@@ -17562,7 +17284,6 @@ Level 4
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 For this list these commands were used:
 \end_layout
 
@@ -17608,7 +17329,6 @@ roman{enumiv})}
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 where the command 
 \family sans
 
@@ -17627,7 +17347,6 @@ bf{}
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Note Greyedout
 status collapsed
 
@@ -17651,7 +17370,6 @@ Note:
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status open
 
@@ -17678,14 +17396,12 @@ arabic{enumi}}
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1672138150
-
 Numbered Paragraphs in Reports
 \end_layout
 
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138213
-
 Official reports often include numbered paragraphs;
  you can achieve this with a variation on the approach outlined in the footnote
 \begin_inset space ~
@@ -17717,7 +17433,6 @@ enum
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 These numbered paragraphs were generated by inserting the \SpecialChar TeX
  Code
 \begin_inset Separator latexpar
@@ -17746,7 +17461,6 @@ arabic{enumi}}
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 before the start of the section;
  
 \family sans
@@ -17762,7 +17476,6 @@ thesection
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 I have ignored the subsection heading in this example because,
  with paragraphs numbered in this way,
  subsections are less likely to be used.
@@ -17771,14 +17484,12 @@ I have ignored the subsection heading in this example because,
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1672138150
-
 Resumed Enumeration
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status open
 
@@ -17803,21 +17514,18 @@ arabic{enumi}}
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 Enumerations can be resumed after intermediate paragraphs:
 \end_layout
 
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status collapsed
 
@@ -17846,7 +17554,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 goes back to default numbering
 \end_layout
 
@@ -17858,28 +17565,24 @@ goes back to default numbering
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 second
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 regular text
 \end_layout
 
 \begin_layout Enumerate-Resume
 
 \change_inserted 564990737 1672138150
-
 resumed
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 To resume an enumeration,
  use the style 
 \family sans
@@ -17895,7 +17598,6 @@ Enumerate-Resume
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Note Greyedout
 status collapsed
 
@@ -17920,7 +17622,6 @@ Note:
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 Perhaps you might want to resume the list with a different number from the next one.
  Or you want to start a new enumeration with a defined number.
  This is possible by adding an optional argument to the first list item of a normal enumeration.
@@ -17939,7 +17640,6 @@ start=number
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 where 
 \family sans
 number
@@ -17951,35 +17651,30 @@ number
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 first item
 \end_layout
 
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 second item
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 Enumeration starting at a given value:
 \end_layout
 
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status collapsed
 
@@ -18005,7 +17700,6 @@ This enumeration starts at 4
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1672138150
-
 List Spacing
 \begin_inset Index idx
 range none
@@ -18015,7 +17709,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 Lists !
  Spacing
 \change_unchanged
@@ -18030,7 +17723,6 @@ Lists !
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 In some cases you might want less or more vertical space between the items of a list.
  For example if the default space is too much in your opinion in this case:
 \end_layout
@@ -18038,21 +17730,18 @@ In some cases you might want less or more vertical space between the items of a 
 \begin_layout Itemize
 
 \change_inserted 564990737 1672138150
-
 A bullet list
 \end_layout
 
 \begin_layout Itemize
 
 \change_inserted 564990737 1672138150
-
 with standard spacing 
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 You can decrease the space by adding an optional argument to the first item of the list.
  Add there the command 
 \family sans
@@ -18064,14 +17753,12 @@ nolistsep
 \begin_layout Itemize
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status collapsed
 
@@ -18097,21 +17784,18 @@ A bullet list
 \begin_layout Itemize
 
 \change_inserted 564990737 1672138150
-
 without additional
 \end_layout
 
 \begin_layout Itemize
 
 \change_inserted 564990737 1672138150
-
 vertical space
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 To add space you can use several other commands provided by the 
 \family sans
 enumitem
@@ -18125,7 +17809,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \SpecialChar LaTeX
 -packages !
  enumitem
@@ -18151,7 +17834,6 @@ literal "false"
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 There are also many commands available to change the horizontal spacing and indentation.
  Here is an example where the indentation was changed to that of the paragraphs in the document and the label separation was set to 2
 \begin_inset space \thinspace{}
@@ -18163,14 +17845,12 @@ cm so that the number is in the page margin:
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status collapsed
 
@@ -18199,14 +17879,12 @@ An enumeration
 \begin_layout Enumerate
 
 \change_inserted 564990737 1672138150
-
 with negative indentation
 \end_layout
 
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1672138150
-
 Further Customization
 \begin_inset Index idx
 range none
@@ -18216,7 +17894,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 Lists !
  Customization
 \change_unchanged
@@ -18231,7 +17908,6 @@ Lists !
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 You can also change the style of description lists.
  The command
 \end_layout
@@ -18247,7 +17923,6 @@ font=definition
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 changes the description label font,
  the command
 \end_layout
@@ -18266,14 +17941,12 @@ n
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 sets the list style.
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 An example where the command
 \end_layout
 
@@ -18291,14 +17964,12 @@ itshape,
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 is used:
 \end_layout
 
 \begin_layout Description
 
 \change_inserted 564990737 1672138150
-
 Ionizing
 \begin_inset space ~
 \end_inset
@@ -18311,7 +17982,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \begin_inset ERT
 status collapsed
 
@@ -18343,7 +18013,6 @@ Ionizing radiation consists of particles or electromagnetic waves that are energ
 \begin_layout Description
 
 \change_inserted 564990737 1672138150
-
 Reference
 \begin_inset space ~
 \end_inset
@@ -18360,7 +18029,6 @@ counting:
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 There are many more commands and features provided by the 
 \family sans
 enumitem
@@ -18374,7 +18042,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672138150
-
 \SpecialChar LaTeX
 -packages !
  enumitem
@@ -18408,7 +18075,6 @@ Paragraph Lists
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
-
 This module uses the package 
 \family sans
 paralist
@@ -18449,21 +18115,18 @@ literal "false"
 \begin_layout Section
 
 \change_inserted 564990737 1672161542
-
 Literate Programming 
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1672161542
-
 Noweb
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672161542
-
 This module allows the use of Noweb as a literate programming tool.
  The files and the documentation for Noweb can be obtained from 
 \begin_inset CommandInset href
@@ -18517,14 +18180,12 @@ Noweb2\SpecialChar LyX
 \begin_layout Subsection
 
 \change_inserted 564990737 1672161542
-
 Rnw (knitr)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672161542
-
 This module uses the 
 \family typewriter
 knitr
@@ -18541,7 +18202,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672161542
-
 knitr
 \change_unchanged
 
@@ -18557,7 +18217,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672161542
-
 install.packages(“knitr”)
 \change_unchanged
 
@@ -18572,14 +18231,12 @@ install.packages(“knitr”)
 \begin_layout Paragraph
 
 \change_inserted 564990737 1672161542
-
 Note 
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672161542
-
 it depends on R >= 2.14.1.
  For more info see 
 \begin_inset Flex URL
@@ -18603,7 +18260,6 @@ http://yihui.name/knitr
 \begin_layout Standard
 
 \change_inserted 564990737 1672161542
-
 The package 
 \family sans
 includernw
@@ -18654,14 +18310,12 @@ nolink "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1672161542
-
 Sweave
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672161542
-
 This module allows the use of the statistical language S/R as a literate programming tool.
  It requires the 
 \family sans
@@ -18732,21 +18386,18 @@ nolink "false"
 \begin_layout Section
 
 \change_inserted 564990737 1672224959
-
 Maths
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 AMS Theorems
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This modules defines theorem environments and the proof environment using the extended AMS machinery.
  Both numbered and unnumbered types are provided.
  By default,
@@ -18771,14 +18422,12 @@ Standard Theorems (Unnumbered)
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 AMS Theorems (Extended)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines some additional theorem environments for use with the 
 \family sans
 AMS Theorems
@@ -18801,7 +18450,6 @@ AMS Theorems
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 AMS Theorems (Extended,
  Numbered by Type within Chapters)
 \end_layout
@@ -18809,7 +18457,6 @@ AMS Theorems (Extended,
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines some additional theorem environments for use with the 
 \family sans
 AMS Theorems (Numbered by Type within Chapters)
@@ -18849,7 +18496,6 @@ AMS Theorems (Extended)
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 AMS Theorems (Extended,
  Numbered by Type)
 \end_layout
@@ -18857,7 +18503,6 @@ AMS Theorems (Extended,
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines some additional theorem environments for use with the 
 \family sans
 AMS Theorems (Numbered by Type)
@@ -18897,14 +18542,12 @@ AMS Theorems (Extended)
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 AMS Theorems (Numbered by Type within Chapters) 
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines theorem environments and the proof environment using the extended AMS machinery.
  Both numbered and unnumbered types are provided.
  Unlike the 
@@ -18955,14 +18598,12 @@ Standard Theorems
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 AMS Theorems (Numbered by Type)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines theorem environments and the proof environment using the extended AMS machinery.
  Both numbered and unnumbered types are provided.
  Unlike the 
@@ -19013,14 +18654,12 @@ Standard Theorems
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Number Equations by Section
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module resets the equation number at section start and prepends the section number to the equation number,
  as in “(2.1).” 
 \end_layout
@@ -19028,14 +18667,12 @@ This module resets the equation number at section start and prepends the section
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Standard Theorems
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines some theorem environments for use with non-AMS classes.
  By default,
  the theorems are numbered consecutively throughout the document.
@@ -19060,14 +18697,12 @@ AMS Theorems
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Standard Theorems (Nameable)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module facilitates the use of named theorems.
  The name of the theorem goes into the “Additional Theorem Text” argument.
  
@@ -19076,14 +18711,12 @@ This module facilitates the use of named theorems.
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Standard Theorems (Numbered by Chapter)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module numbers theorems and the like by chapter (i.e.,
  the counter is reset at each chapter start).
  Use this module only with document classes that provide a chapter environment.
@@ -19106,14 +18739,12 @@ Standard Theorems
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Standard Theorems (Numbered by Section)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module numbers theorems and the like by section (i.e.,
  the counter is reset at each section start).
  One of the modules 
@@ -19135,14 +18766,12 @@ Standard Theorems
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Standard Theorems (Numbered by Type within Chapters) 
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines some theorem environments for use with non-AMS classes.
  Unlike the
 \family sans
@@ -19207,14 +18836,12 @@ Standard Theorems (Numbered by Type within Sections)
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Standard Theorems (Numbered by Type within Sections) 
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines some theorem environments for use with non-AMS classes.
  Unlike the
 \family sans
@@ -19279,14 +18906,12 @@ Standard Theorems (Numbered by Type within Chapters)
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Standard Theorems (Numbered by Type)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines some theorem environments for use with non-AMS classes.
  Unlike the 
 \family sans
@@ -19340,14 +18965,12 @@ Standard Theorems (Unnumbered)
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Standard Theorems (Unnumbered)
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module defines only unnumbered theorem environments and the proof environment,
  using the extended AMS machinery.
  It cannot be used if either of the modules
@@ -19364,14 +18987,12 @@ This module defines only unnumbered theorem environments and the proof environme
 \begin_layout Subsection
 
 \change_inserted 564990737 1672224959
-
 Subequations
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672224959
-
 This module provides a straightforward way to segregate subequations in LyX.
  See 
 \family sans
@@ -19386,21 +19007,18 @@ Subnumbering
 \begin_layout Section
 
 \change_inserted 564990737 1672236008
-
 Page Layout
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1672236008
-
 Custom Header/Footer Text
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 This module requires the 
 \family sans
 Page
@@ -19493,14 +19111,12 @@ Right Footer
 \begin_layout Subsubsection
 
 \change_inserted 564990737 1672236008
-
 Fancy Headers and Footers
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 The default page layout is rather plain;
  for an 
 \begin_inset Flex Code
@@ -19509,7 +19125,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672236008
-
 article
 \change_unchanged
 
@@ -19640,7 +19255,6 @@ John Q.
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 You will now see your name in the upper left.
  If a field has a default entry that you would like to get rid of (often the page number appears in the central footer) simply include a command with a blank argument,
  e.
@@ -19663,7 +19277,6 @@ cfoot{}
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 There is,
  however,
  an easier way to make simple changes.
@@ -19689,7 +19302,6 @@ Custom Header/Footer Text
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 Let's get really fancy:
  lets put the section number with the word 
 \begin_inset Quotes eld
@@ -19725,7 +19337,6 @@ Page 4) in the upper right,
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 \begin_inset VSpace defskip
 \end_inset
 
@@ -19821,7 +19432,6 @@ today
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 \begin_inset VSpace defskip
 \end_inset
 
@@ -19831,7 +19441,6 @@ today
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 Make sure you enter the commands 
 \family sans
 
@@ -19884,7 +19493,6 @@ today
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 The thicknesses of the horizontal rules drawn beneath the header and above the footer can also be modified.
  If you don't want one of the rules,
  set its thickness to 0.
@@ -19925,7 +19533,6 @@ footrulewidth}{0.4pt}
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 You can switch the header/footer settings on and off for individual pages using \SpecialChar TeX
  Code commands like 
 \family sans
@@ -19959,7 +19566,6 @@ thispagestyle{fancy}
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 If you want a header or footer to be on the outer side of a two sided document,
  you need to use something like:
 \end_layout
@@ -20021,14 +19627,12 @@ thepage}
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 The first command clears all existing footers avoiding any conflicts with your new command.
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 You can enter any of these commands,
  the simpler ones in any of your new environments,
  the more complex ones as \SpecialChar TeX
@@ -20039,7 +19643,6 @@ You can enter any of these commands,
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 As a final example,
  it is possible to include an image in the header or footer.
  Suppose you want to put a company logo in the upper left hand corner.
@@ -20064,7 +19667,6 @@ includegraphics{logo.eps}}}
 \noindent
 
 \change_inserted 564990737 1672236008
-
 (you may need to preface this with 
 \family sans
 
@@ -20077,7 +19679,6 @@ usepackage{graphics}
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 For more information on fancy headers,
  you can get the 
 \begin_inset Flex Code
@@ -20086,7 +19687,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672236008
-
 fancyhdr
 \change_unchanged
 
@@ -20110,14 +19710,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1672236008
-
 Landscape Document Parts
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 This module outputs parts of the document in landscape mode using 
 \family sans
 Insert\SpecialChar menuseparator
@@ -20136,7 +19734,6 @@ Landscape (Floating)
 \begin_layout Subsection
 
 \change_inserted 564990737 1672236008
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Multiple-Columns"
@@ -20149,7 +19746,6 @@ Multiple Columns
 \begin_layout Standard
 
 \change_inserted 564990737 1672236008
-
 This module uses the 
 \family sans
 multicol
@@ -20163,7 +19759,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672236008
-
 \SpecialChar LaTeX
 -packages !
  multicol
@@ -20211,8 +19806,6 @@ olumn document
  option.
  For all other cases use this module.
 \change_deleted 564990737 1672236008
-
-\lang english
 Multiple Text Columns
 \end_layout
 
@@ -20311,7 +19904,6 @@ Settings
 \change_unchanged
 
 \family default
-\lang english
 .
 \end_layout
 
@@ -21897,7 +21489,6 @@ Custom paragraph shapes
 \family default
 .
 \change_inserted 564990737 1672311802
-
 This module uses the 
 \family sans
 shapepar
@@ -22948,14 +22539,12 @@ shapepar
 \begin_layout Subsection
 
 \change_inserted 564990737 1672311925
-
 Hanging Paragraphs
 \end_layout
 
 \begin_layout Hanging
 
 \change_inserted 564990737 1672311925
-
 This module adds the 
 \family sans
 Hanging
@@ -22970,7 +22559,6 @@ Hanging
 \begin_layout Subsection
 
 \change_inserted 564990737 1672311925
-
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Initials"
@@ -22983,14 +22571,12 @@ Initials (Drop Caps)
 \begin_layout Initial
 
 \change_inserted 564990737 1672311925
-
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672311925
-
 T
 \change_unchanged
 
@@ -23005,7 +22591,6 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672311925
-
 his
 \change_unchanged
 
@@ -23058,7 +22643,6 @@ Options
 \begin_layout Standard
 
 \change_inserted 564990737 1672311925
-
 To customize the appearance of the style,
  see 
 \family sans
@@ -23073,21 +22657,18 @@ Initials
 \begin_layout Section
 
 \change_inserted 564990737 1672312011
-
 Text Markup
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1672312011
-
 Hyphenatable Text Markup
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672312011
-
 This package defines text styles to highlight,
  space-out,
  strike-through,
@@ -23117,14 +22698,12 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1672312011
-
 Logical Markup
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672312011
-
 This module defines some character styles for logical markup:
  
 \noun on
@@ -23175,7 +22754,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672312011
-
 strong
 \change_unchanged
 
@@ -23191,7 +22769,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 564990737 1672312011
-
 code
 \change_unchanged
 
@@ -35460,13 +35037,10 @@ vcs-time
 \begin_layout Standard
 You can obtain this info via InsetInfo (
 \change_inserted 5863208 1564400022
-
 Insert\SpecialChar menuseparator
 Field\SpecialChar menuseparator
 Version Control Revision
 \change_deleted 5863208 1564399852
-
-\lang english
 e.g.
  
 \begin_inset Flex Code
@@ -37367,7 +36941,6 @@ Noweb Listerrors
 \change_unchanged
 
 \family default
-\lang english
  which implement 
 \change_deleted 564990737 1672161729
 two 
@@ -37398,7 +36971,6 @@ Noweb2\SpecialChar LyX
 
 \family default
 \emph on
-\lang english
 .
 
 \emph default
@@ -37859,8 +37431,6 @@ Knitr
 \family default
  and
 \change_unchanged
-
-\lang english
  
 \change_deleted 564990737 1671643409
 the 
@@ -37878,7 +37448,6 @@ Rnw (knitr)
 \change_unchanged
 
 \family default
-\lang english
  and in 
 \change_deleted 564990737 1671643461
 the Sweave manual (menu 
@@ -37896,7 +37465,6 @@ Sweave
 \change_deleted 564990737 1672161921
 
 \family default
-\lang english
 .
 
 \change_inserted 564990737 1672161917
