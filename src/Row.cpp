@@ -144,8 +144,12 @@ bool Row::Element::splitAt(int const width, int next_width, bool force,
 	FontMetrics::Breaks breaks = fm.breakString(str, width, next_width,
                                                 isRTL(), wrap_any | force);
 
-	// if breaking did not really work, give up
-	if (!force && breaks.front().nspc_wid > width) {
+	/** if breaking did not really work, give up
+	 * case 1: we do not force break and the first element is longer than the limit;
+	 * case 2: the first break occurs at the front of the string
+	 */
+	if ((!force && breaks.front().nspc_wid > width)
+	    || (breaks.size() > 1 && breaks.front().len == 0)) {
 		if (dim.wid == 0)
 			dim.wid = fm.width(str);
 		return false;
@@ -156,12 +160,6 @@ bool Row::Element::splitAt(int const width, int next_width, bool force,
 	bool first = true;
 	docstring::size_type i = 0;
 	for (FontMetrics::Break const & brk : breaks) {
-		/* For some reason breakString can decide to break before the
-		 * first character (normally we use a 0-width nbsp to prevent
-		 * that). Skip leading empty elements, they are never wanted.
-		 */
-		if (first && brk.len == 0 && breaks.size() > 1)
-			continue;
 		Element e(STRING, pos + i, font, change);
 		e.str = str.substr(i, brk.len);
 		e.endpos = e.pos + brk.len;
