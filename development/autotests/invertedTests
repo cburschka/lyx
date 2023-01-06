@@ -148,22 +148,6 @@ export/examples/ko/Welcome_lyx2[23]
 # https://www.mail-archive.com/search?l=mid&q=20200915233446.atwbyulny5gsbtyi%40tallinn
 export/examples/ru/Presentations/Beamer_lyx(16|20)
 
-# The following is the diff that prevents convergence:
-#
-#   \begin_inset Newpage cleardoublepage
-#   \end_inset
-#
-#
-#   \end_layout
-#
-#   \begin_layout Standard
-#
-# If convert_bibtex_clearpage(document) in lyx_2_0.py is commented out, then
-# the test passes.
-# Since this is an old export (and additionally the issue is an old export routine)
-# it is not critical.
-export/examples/Books/KOMA-Script_Book_lyx16
-
 
 # ==============================================================
 Sublabel: ert
