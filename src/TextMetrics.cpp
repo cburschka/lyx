@@ -1131,7 +1131,9 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		rb.push_back(elt);
 		rb.finalizeLast();
 		if (rb.width() > width) {
-			LATTEST(tail.empty());
+			// Keep the tail for later; this ought to be rare, but play safe.
+			if (!tail.empty())
+				fcit.put(tail);
 			// if the row is too large, try to cut at last separator.
 			tail = rb.shortenIfNeeded(width, next_width);
 		}
