@@ -1983,7 +1983,7 @@ chapters = ("amsbook", "book", "docbook-book", "elsart", "extbook", "extreport",
     "svmult", "tbook", "treport", "tufte-book")
 
 def convert_bibtex_clearpage(document):
-  " insert a clear(double)page bibliographystyle if bibtotoc option is used "
+  " insert a clear(double)page before bibliographystyle if bibtotoc option is used "
 
   if document.textclass not in chapters:
     return
@@ -2046,6 +2046,86 @@ def convert_bibtex_clearpage(document):
         '\\end_layout', '']
     document.body[lay:lay] = subst
     j = k + len(subst)
+
+
+def revert_bibtex_clearpage(document):
+  " remove clear(double)page before bibliographystyle if bibtotoc option is used "
+
+  if document.textclass not in chapters:
+    return
+
+  i = find_token(document.header, '\\papersides', 0)
+  sides = 0
+  if i == -1:
+    document.warning("Malformed LyX document: Can't find papersides definition.")
+    document.warning("Assuming single sided.")
+    sides = 1
+  else:
+    val = get_value(document.header, "\\papersides", i)
+    try:
+      sides = int(val)
+    except:
+      pass
+    if sides != 1 and sides != 2:
+      document.warning("Invalid papersides value: " + val)
+      document.warning("Assuming single sided.")
+      sides = 1
+
+  j = 0
+  while True:
+    j = find_token(document.body, "\\begin_inset CommandInset bibtex", j)
+    if j == -1:
+      return
+
+    k = find_end_of_inset(document.body, j)
+    if k == -1:
+      document.warning("Can't find end of Bibliography inset at line " + str(j))
+      j += 1
+      continue
+
+    # only act if there is the option "bibtotoc"
+    val = get_value(document.body, 'options', j, k)
+    if not val:
+      document.warning("Can't find options for bibliography inset at line " + str(j))
+      j = k
+      continue
+
+    if val.find("bibtotoc") == -1:
+      j = k
+      continue
+
+    # we had inserted \\clear[double]page right before the paragraph that
+    # this bibliography thing is in. Remove this. The older format has the
+    # respective command hardcoded.
+    lay = find_token_backwards(document.body, "\\begin_layout", j)
+    if lay == -1:
+      document.warning("Can't find layout containing bibliography inset at line " + str(j))
+      j = k
+      continue
+    # Find the layout before this.
+    lay = find_token_backwards(document.body, "\\begin_layout", lay-1)
+    if lay == -1:
+      document.warning("Can't find layout before bibliography inset at line " + str(j))
+      j = k
+      continue
+
+    if sides == 1:
+      cmd = "clearpage"
+    else:
+      cmd = "cleardoublepage"
+
+    if document.body[lay] != "\\begin_layout Standard" or document.body[lay+1] != "\\begin_inset Newpage " + cmd:
+        j = k
+        continue
+    layend = find_end_of_layout(document.body, lay)
+    if layend == -1:
+      document.warning("Can't find end of layout containg newpage inset at line " + str(layend))
+      j += 1
+      continue
+
+    del document.body[lay:layend+1]
+    j = lay
+
 
 
 def check_passthru(document):
@@ -2540,7 +2620,7 @@ revert =  [[412, [revert_html_css_as_file]],
            [404, []],
            [403, [revert_refstyle]],
            [402, [revert_flexnames]],
-           [401, []],
+           [401, [revert_bibtex_clearpage]],
            [400, [revert_diagram]],
            [399, [revert_rule]],
            [398, [revert_mathdots]],
