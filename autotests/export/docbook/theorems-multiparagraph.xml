@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0-beta2
+  See https://www.lyx.org/ for more information -->
+<article xml:lang="it_IT" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>Test</title>
+<figure role='theorem'>
+<title>Teorema 1.</title>
+<para>For electrons in a perfect crystal</para>
+<para>there is a basis of wave functions with the following two properties:</para>
+</figure>
+<figure role='theorem'>
+<title>Teorema 2.</title>
+<para>1) each of these wave functions is an energy eigenstate;</para>
+<para>2) each of these wave functions is a Bloch state, meaning that this wave function <inlineequation>
+<alt role='tex'>\psi</alt>
+<m:math display="inline">
+ 
+<m:mrow><m:mi>&#x3C8;</m:mi>
+</m:mrow>
+</m:math>
+</inlineequation> can be written in the form <inlineequation>
+<alt role='tex'>\psi(r)=u(\boldsymbol{r})e^{i\boldsymbol{k}\cdot\boldsymbol{r}}</alt>
+<m:math display="inline">
+ 
+<m:mrow>
+ <m:mrow><m:mi>&#x3C8;</m:mi>
+  <m:mrow>
+   <m:mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</m:mo>
+   <m:mi>r</m:mi>
+   <m:mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</m:mo>
+  </m:mrow>
+  <m:mo>=</m:mo>
+  <m:mi>u</m:mi>
+  <m:mrow>
+   <m:mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</m:mo>
+   <m:mstyle mathvariant='bold'>
+   <m:mi>r</m:mi></m:mstyle>
+   <m:mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</m:mo>
+  </m:mrow>
+  <m:msup>
+   <m:mi>e</m:mi>
+   <m:mrow>
+    <m:mi>i</m:mi>
+    <m:mstyle mathvariant='bold'>
+    <m:mi>k</m:mi></m:mstyle><m:mo>&#x22C5;</m:mo>
+    <m:mstyle mathvariant='bold'>
+    <m:mi>r</m:mi></m:mstyle>
+   </m:mrow>
+  </m:msup>
+ </m:mrow>
+</m:mrow>
+</m:math>
+</inlineequation> where <inlineequation>
+<alt role='tex'>u</alt>
+<m:math display="inline">
+ 
+<m:mrow>
+ <m:mi>u</m:mi>
+</m:mrow>
+</m:math>
+</inlineequation> has the same periodicity as the atomic structure of the crystal: <inlineequation>
+<alt role='tex'>u_{\boldsymbol{k}}(\boldsymbol{r})=u_{\boldsymbol{k}}(\boldsymbol{r}+\boldsymbol{n}\cdot\boldsymbol{a})</alt>
+<m:math display="inline">
+ 
+<m:mrow>
+ <m:mrow>
+  <m:msub>
+   <m:mi>u</m:mi>
+   <m:mstyle mathvariant='bold'>
+   <m:mi>k</m:mi></m:mstyle>
+  </m:msub>
+  <m:mrow>
+   <m:mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</m:mo>
+   <m:mstyle mathvariant='bold'>
+   <m:mi>r</m:mi></m:mstyle>
+   <m:mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</m:mo>
+  </m:mrow>
+  <m:mo>=</m:mo>
+  <m:msub>
+   <m:mi>u</m:mi>
+   <m:mstyle mathvariant='bold'>
+   <m:mi>k</m:mi></m:mstyle>
+  </m:msub>
+  <m:mrow>
+   <m:mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</m:mo>
+   <m:mrow>
+    <m:mstyle mathvariant='bold'>
+    <m:mi>r</m:mi></m:mstyle>
+    <m:mo>+</m:mo>
+    <m:mstyle mathvariant='bold'>
+    <m:mi>n</m:mi></m:mstyle><m:mo>&#x22C5;</m:mo>
+    <m:mstyle mathvariant='bold'>
+    <m:mi>a</m:mi></m:mstyle>
+   </m:mrow>
+   <m:mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</m:mo>
+  </m:mrow>
+ </m:mrow>
+</m:mrow>
+</m:math>
+</inlineequation>.</para>
+</figure>
+</article>

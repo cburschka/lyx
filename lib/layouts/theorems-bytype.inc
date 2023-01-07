@@ -70,6 +70,7 @@ Style Theorem
 	DocBookWrapperAttr    role='theorem'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -92,6 +93,7 @@ Style Corollary
 	DocBookWrapperAttr    role='corollary'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -114,6 +116,7 @@ Style Lemma
 	DocBookWrapperAttr    role='lemma'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -136,6 +139,7 @@ Style Proposition
 	DocBookWrapperAttr    role='proposition'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -158,6 +162,7 @@ Style Conjecture
 	DocBookWrapperAttr    role='conjecture'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -180,6 +185,7 @@ Style Fact
 	DocBookWrapperAttr    role='fact'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -209,6 +215,7 @@ Style Definition
 	DocBookWrapperAttr    role='definition'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -254,6 +261,7 @@ Style Problem
 	DocBookWrapperAttr    role='problem'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -277,6 +285,7 @@ Style Exercise
 	DocBookWrapperAttr    role='exercise'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -300,6 +309,7 @@ Style Solution
 	DocBookWrapperAttr    role='solution'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -330,6 +340,7 @@ Style Remark
 	DocBookWrapperAttr    role='remark'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -353,6 +364,7 @@ Style Claim
 	DocBookWrapperAttr    role='claim'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 Input theorems-case.inc

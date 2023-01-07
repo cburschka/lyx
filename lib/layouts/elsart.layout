@@ -337,6 +337,7 @@ Style Theorem
 	DocBookWrapperAttr    role='theorem'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -370,6 +371,7 @@ Style Proof
 	DocBookWrapperAttr    role='proof'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -381,6 +383,7 @@ Style Lemma
 	DocBookWrapperAttr    role='lemma'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -392,6 +395,7 @@ Style Corollary
 	DocBookWrapperAttr    role='corollary'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -403,6 +407,7 @@ Style Proposition
 	DocBookWrapperAttr    role='proposition'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -414,6 +419,7 @@ Style Criterion
 	DocBookWrapperAttr    role='criterion'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -425,6 +431,7 @@ Style Algorithm
 	DocBookWrapperAttr    role='algorithm'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -443,6 +450,7 @@ Style Definition
 	DocBookWrapperAttr    role='definition'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
@@ -454,6 +462,7 @@ Style Conjecture
 	DocBookWrapperAttr    role='conjecture'
 	DocBookTag            para
 	DocBookGenerateTitle  true
+	DocBookWrapperMergeWithPrevious  true
 End
 
 
