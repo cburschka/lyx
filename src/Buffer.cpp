@@ -2255,7 +2255,6 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 		   << "<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"" << from_ascii(htmlCode) << "\">\n"
 		   << "<head>\n"
 		   << "<meta name=\"GENERATOR\" content=\"" << PACKAGE_STRING << "\" />\n"
-		   << "<meta charset=\"UTF-8\" />\n"
 		   // FIXME Presumably need to set this right
 		   << "<meta http-equiv=\"content-type\" content=\"text/html;charset=UTF-8\" />\n";
 
