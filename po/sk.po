@@ -3,13 +3,13 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2022.
+# Kornel Benko <kornel@lyx.org>, 2009-2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-26 11:28+0100\n"
-"PO-Revision-Date: 2022-12-26 10:31+0000\n"
+"POT-Creation-Date: 2023-01-07 13:27+0100\n"
+"PO-Revision-Date: 2023-01-07 12:36+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -29632,6 +29632,18 @@ msgstr "V&ytvoriť adresár"
 msgid "&Exit LyX"
 msgstr "&Ukončiť LyX"
 
+#: src/LyX.cpp:617
+msgid "No python is found"
+msgstr "Nenájdený program python"
+
+#: src/LyX.cpp:618
+msgid ""
+"LyX will only have minimal functionality because no python interpreter has "
+"been found. Consider download and install of an python interpreter."
+msgstr ""
+"LyX bude len minimálne fungovať lebo sa nenašiel interpreter python. Uvážte "
+"stiahnuť a inštalovať nejaký python interpreter."
+
 #: src/LyX.cpp:1097
 msgid "No user LyX directory. Exiting."
 msgstr "Žiadny užívateľský adresár LyX-u. Koniec."
@@ -35936,14 +35948,14 @@ msgstr "e-mail"
 msgid "file"
 msgstr "súbor"
 
-#: src/insets/InsetHyperlink.cpp:284
+#: src/insets/InsetHyperlink.cpp:283
 msgid "other[[Hyperlink Type]]"
-msgstr "iný"
+msgstr "iný typ"
 
-#: src/insets/InsetHyperlink.cpp:275
+#: src/insets/InsetHyperlink.cpp:284
 #, c-format
 msgid "Hyperlink (%1$s) to %2$s"
-msgstr "Hyperlinka (%1$s) na %2$s"
+msgstr "Hyperlinka (%1$s) na cieľ %2$s"
 
 #: src/insets/InsetInclude.cpp:402
 msgid "MISSING:"
