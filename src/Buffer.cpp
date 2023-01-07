@@ -2316,7 +2316,7 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 			// we are here if the CSS is supposed to be written to the header
 			// or if we failed to write it to an external file.
 			if (!written) {
-				os << "<style type='text/css'>\n"
+				os << "<style>\n"
 					 << dstyles
 					 << "\n</style>\n";
 			}
