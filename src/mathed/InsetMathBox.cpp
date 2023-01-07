@@ -403,7 +403,7 @@ void InsetMathBoxed::htmlize(HtmlStream & ms) const
 {
 	ms << MTag("span", "class='boxed'")
 	   << cell(0)
-		 << ETag("span");
+	   << ETag("span");
 }
 
 
