@@ -36,7 +36,7 @@ InsetLayout Marginal
 			background-color: #F0F0F0;
 			float:right;
 			font-size: small;
-			font-weight: medium;
+			font-weight: normal;
 			font-family: serif;
 			font-variant: normal;
 			font-style: normal;
@@ -73,7 +73,7 @@ InsetLayout Foot
 		div.foot {
 			display: inline;
 			font-size: small;
-			font-weight: medium;
+			font-weight: normal;
 			font-family: serif;
 			font-variant: normal;
 			font-style: normal;
@@ -110,7 +110,7 @@ InsetLayout Foot:InTitle
 		span.foot_intitle {
 			display: inline;
 			font-size: small;
-			font-weight: medium;
+			font-weight: normal;
 			font-family: serif;
 			font-variant: normal;
 			font-style: normal;
