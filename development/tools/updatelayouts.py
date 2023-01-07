@@ -29,7 +29,8 @@ def main(argv):
         os.chdir(directory)
         for i in os.listdir("."):
             (base, ext) = os.path.splitext(i)
-            if ext == ".old":
+            # Skip files like lib/layouts/TODO.txt
+            if ext in [ ".old", ".txt" ]:
                 continue
             args = ["layout2layout", i + ".old", i]
             shutil.copy(args[2], args[1])
