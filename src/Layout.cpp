@@ -1703,56 +1703,56 @@ void Layout::write(ostream & os) const
 		   << to_utf8(rtrim(htmlpreamble_, "\n"))
 		   << "\n\tEndPreamble\n";
 	os << "\tHTMLTitle " << htmltitle_ << "\n";
-	if(!docbooktag_.empty())
+	if (!docbooktag_.empty())
 		os << "\tDocBookTag " << docbooktag_ << '\n';
-	if(!docbookattr_.empty())
+	if (!docbookattr_.empty())
 		os << "\tDocBookAttr \"" << docbookattr_ << "\"\n";
-	if(!docbooktagtype_.empty())
+	if (!docbooktagtype_.empty())
 		os << "\tDocBookTagType " << docbooktagtype_ << '\n';
-	if(!docbookinnertag_.empty())
+	if (!docbookinnertag_.empty())
 		os << "\tDocBookInnerTag " << docbookinnertag_ << '\n';
-	if(!docbookinnerattr_.empty())
+	if (!docbookinnerattr_.empty())
 		os << "\tDocBookInnerAttr \"" << docbookinnerattr_ << "\"\n";
-	if(!docbookinnertagtype_.empty())
+	if (!docbookinnertagtype_.empty())
 		os << "\tDocBookInnerTagType " << docbookinnertagtype_ << '\n';
-	if(!docbookininfo_.empty())
+	if (!docbookininfo_.empty())
 		os << "\tDocBookInInfo " << docbookininfo_ << '\n';
 	os << "\tDocBookAbstract " << docbookabstract_ << '\n';
-	if(!docbookwrappertag_.empty())
+	if (!docbookwrappertag_.empty())
 		os << "\tDocBookWrapperTag " << docbookwrappertag_ << '\n';
-	if(!docbookwrapperattr_.empty())
+	if (!docbookwrapperattr_.empty())
 		os << "\tDocBookWrapperAttr " << docbookwrapperattr_ << '\n';
-	if(!docbookwrappertagtype_.empty())
+	if (!docbookwrappertagtype_.empty())
 		os << "\tDocBookWrapperTagType " << docbookwrappertagtype_ << '\n';
 	os << "\tDocBookSection " << docbooksection_ << '\n';
-	if(!docbooksectiontag_.empty())
+	if (!docbooksectiontag_.empty())
 		os << "\tDocBookSectionTag " << docbooksectiontag_ << '\n';
-	if(!docbookitemtag_.empty())
+	if (!docbookitemtag_.empty())
 		os << "\tDocBookItemTag " << docbookitemtag_ << '\n';
-	if(!docbookitemattr_.empty())
+	if (!docbookitemattr_.empty())
 		os << "\tDocBookItemAttr " << docbookitemattr_ << '\n';
-	if(!docbookitemtagtype_.empty())
+	if (!docbookitemtagtype_.empty())
 		os << "\tDocBookItemTagType " << docbookitemtagtype_ << '\n';
-	if(!docbookitemwrappertag_.empty())
+	if (!docbookitemwrappertag_.empty())
 		os << "\tDocBookItemWrapperTag " << docbookitemwrappertag_ << '\n';
-	if(!docbookitemwrapperattr_.empty())
+	if (!docbookitemwrapperattr_.empty())
 		os << "\tDocBookItemWrapperAttr " << docbookitemwrapperattr_ << '\n';
-	if(!docbookitemwrappertagtype_.empty())
+	if (!docbookitemwrappertagtype_.empty())
 		os << "\tDocBookItemWrapperTagType " << docbookitemwrappertagtype_ << '\n';
 	os << "\tDocBookWrapperMergeWithPrevious " << docbookwrappermergewithprevious_ << '\n';
-	if(!docbookitemlabeltag_.empty())
+	if (!docbookitemlabeltag_.empty())
 		os << "\tDocBookItemLabelTag " << docbookitemlabeltag_ << '\n';
-	if(!docbookitemlabelattr_.empty())
+	if (!docbookitemlabelattr_.empty())
 		os << "\tDocBookItemLabelAttr " << docbookitemlabelattr_ << '\n';
-	if(!docbookitemlabeltagtype_.empty())
+	if (!docbookitemlabeltagtype_.empty())
 		os << "\tDocBookItemLabelTagType " << docbookitemlabeltagtype_ << '\n';
-	if(!docbookiteminnertag_.empty())
+	if (!docbookiteminnertag_.empty())
 		os << "\tDocBookItemInnerTag " << docbookiteminnertag_ << '\n';
-	if(!docbookiteminnerattr_.empty())
+	if (!docbookiteminnerattr_.empty())
 		os << "\tDocBookItemInnerAttr " << docbookiteminnerattr_ << '\n';
-	if(!docbookiteminnertagtype_.empty())
+	if (!docbookiteminnertagtype_.empty())
 		os << "\tDocBookItemInnerTagType " << docbookiteminnertagtype_ << '\n';
-	if(!docbookforceabstracttag_.empty())
+	if (!docbookforceabstracttag_.empty())
 		os << "\tDocBookForceAbstractTag " << docbookforceabstracttag_ << '\n';
     os << "\tDocBookNoFontInside " << docbooknofontinside_ << "\n"
 	      "\tSpellcheck " << spellcheck << "\n"
