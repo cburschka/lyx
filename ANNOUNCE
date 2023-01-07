@@ -16,6 +16,13 @@ more reliable and more stable. Since it has been quite a long time (for
 unsurprising reasons) since the last update, this one contains more fixes
 than usual. We have fixed a number of crashes.
 
+One important note: Recent versions of Mac OSX do not include a working 
+version of Python. LyX needs this for proper functionality. See 
+"https://wiki.lyx.org/Mac/Mac#toc2 for information on how to install 
+Python, if you need to do so. The most obvious sympton is that, on 
+startup, LyX reports that it will have 'minimal functionality'. Another
+symptom is that images or previews do not display properly.
+
 If you think you have found a bug in LyX 2.3.6, please open a bug report at
 https://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
 really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel 

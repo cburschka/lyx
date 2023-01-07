@@ -15,10 +15,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Support \bigtimes from the mathtools package (bug 11223).
-
-- Support 0x019b via tipa (bug 12426).
-
 
 * MISCELLANEOUS
 
@@ -30,38 +26,11 @@ What's new
 
 * USER INTERFACE
 
-- If the bibliography processor requested by a document is not available, do not
-  silently fall back to default. Rather than that, warn the user, keep the requested
-  processor and only fall back to an alternative at processing stage.
-
-- Backspace at the very start of a cell part of eqnarray or align environments
-  does not move the cursor out of the whole equation anymore and is now
-  equivalent to hitting the left arrow key (bug 11678).
-
-- Other than directly inserted, now references can also be pasted as insets
-  into an equation, instead of simply as text (bug 11539).
-
-- Add support for High DPI screens in Windows and Linux (bug 12060).
-
-- Add Qt platform name in About dialog.
-
-- Add new pref variable \draw_strategy to fix some cases where display
-  is blinking (bug 12119).
-
-
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Update the H-P-Statments example document.
-
 
 * BUILD/INSTALLATION
-
-- Add support for macOS 11.x SDKs for macOS builds.
-
-- Improved LyX version extraction from configure.ac for macOS builds.
-
-- Support for different compiler and linker flags for macOS builds.
 
 
 ** Bug fixes:
@@ -69,102 +38,10 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix Open Document (tex4ht) output converter.
-
-- Fix output of bibliography environment to make backref work
-  (bug 12041).
-
-- Fix tables in title.
-
-- Fix issue causing the coalesce of an empty description list item and an
-  immediately following nested itemize environment when loading documents
-  created with version 2.1 or earlier (bug 12148).
-
-- Fix export of the optional argument of \sqrt when it contains other
-  commands with optional arguments (bug 3294).
-
-- Fix loading subscript package with only LaTeX < 2005/12/01 (bug 12387).
-
-- Fix modernCV.lyx for Texlive 2021 (bug 12311).
-
-- Fix validating a macro definitions (bug 12524).
-
-- Fix crashing due to uncodable character in math macro name (bug 11855).
-
 
 
 * USER INTERFACE
 
-- Re-enable input of non-LyX files (e.g., tex, pgf) (bug 12056).
-
-- Fix problem with display of menus on Gnome Wayland (bug 11746).
-
-- Improve error message for VCS file registration when RCS package
-  is not installed.
-
-- Make bibliographies work with grandchildren (bug 12033).
-
-- Do not close spellchecker after "Replace All" action (bug 11310).
-
-- Fix width of collapsible insets with sublabels (bug 12046).
-
-- Fix Hebrew characters overflow in insets (bug 12030).
-
-- Fix unwanted scrolling of window when using "copy". (bug 11225).
-
-- Disable direct insertion of multiple spaces in mathed text (bug 1311).
-
-- Fix crash in tabular when an empty paragraph is removed
-  automatically (bug 12117).
-
-- Fix crash in tabular when resetting font (bug 12566).
-
-- Fix crash when using Hebrew (bug 12464).
-
-- On screen, show upper case greek letters in \mathbf as bold (bug 3751).
-
-- Fix coloring of text-mode material in math equations (bug 11007).
-
-- Fix crash with undo when the document has errors (bug 12163).
-
-- Fix Thesaurus usage with large text selection (#10528).
-
-- Fix wrap-around of spellchecker (#10383).
-
-- Avoid pointless 'undefined flex inset' errors when changing document
-  settings (bug 12163).
-
-- Fix display of emphasize in slanted text (bug 12175).
-
-- Fix copy of multi-cells in table (bug 12196).
-
-- Fix some wrongly initialized internal buffers (bug 12246).
-
-- Fix reverse search on Mac (bug 12063).
-
-- Fix misaligned math frame decoration (bug 11491).
-
-- Fix painting of nested environment overlaping with inset (bug 12243).
-
-- Fix outline filter search for "\" symbol (bug 12359).
-
-- Fix inset cornes painting on HiDPI screens (bug 12336).
-
-- Fix instant preview foreground color in Beamer documents (bug 12563).
-
-- Properly update font info at cursor position after toggling
-  (bug 12450).
-
-- Fix broken modifier handling for Qt-5.12 on Mac (bug 12247).
-
-- Limit zoom value to 1000% to avoid crashes (bug 12452).
-
-- Limit graphics scaling in LyX to 1--1000% to avoid crashes (12353).
-
-- Fix potential crash with 32bit ucs4 codepoints (bug 12519).
-
-- Catch warnings from packages that contain a hyphen in their name
-  in the Log dialog.
 
 
 * INTERNALS
@@ -175,14 +52,10 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Polish and French User Interface localizations.
-
-- Updated French Customization.lyx, UserGuide.lyx and Additional.lyx.
-
 
 * LYX2LYX
 
-
+- Fixed a bug in reversion to 1.6.
 
 
 * TEX2LYX
@@ -201,26 +74,3 @@ What's new
 
 
 * BUILD/INSTALLATION
-
-- compilation with configure now defaults to Qt5, use --disable-qt5 to compile with Qt4.
-
-- Remove use of deprecated Qt methods.
-
-- Update in-tree hunspell library to 1.7.0.
-
-- The WM class of LyX for X Window environment is now the package name, typically
-  "lyx" or "lyx[suffix]" (bug 11930).
-
-- Fix warnings with recent compilers (gcc 11, clang+++ >= 10) and compilation with gcc 12.
-
-- Fix warnings with autoconf 2.71.
-
-- Fix framework name case error for QtDBus on Mac (bug 12305)
-
-- Fix directory permission of .app bundle on Mac (bug 12150)
-
-- Fix configuration bug on Windows which prevented LyX from 
-  installing (bug 12369).
-
-- With autoconf, fix the "distcheck" make target.
-:
