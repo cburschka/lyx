@@ -2917,7 +2917,11 @@ David Johnson
 \noun default
  and updated by 
 \noun on
-Richard Heck
+Richard 
+\change_inserted -712698321 1673082716
+Kimberly 
+\change_inserted 564990737 1672345298
+Heck
 \noun default
  and the \SpecialChar LyX
  Team
@@ -2990,7 +2994,13 @@ ftp://ftp.ams.org/pub/tex/amslatex/
 \end_layout
 
 \begin_layout Standard
-There are two basic AMS \SpecialChar LaTeX
+There are 
+\change_deleted -712698321 1673083001
+two
+\change_inserted -712698321 1673083002
+three
+\change_unchanged
+ basic AMS \SpecialChar LaTeX
  layouts:
  
 \end_layout
@@ -3035,11 +3045,7 @@ American Mathematical Society (AMS)
 \begin_layout Itemize
 
 \change_inserted 564990737 1672345383
-
-\family sans
-amsproc
-\family default
-:
+amsproc:
  the standard AMS proceedings format.
 \end_layout
 
@@ -3245,7 +3251,13 @@ AMS Theorems
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1673083855
 article
+\change_inserted -712698321 1673083855
+Article (Standard Class)
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3256,7 +3268,13 @@ article
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1673083858
 report
+\change_inserted -712698321 1673083862
+Report (Standard Class)
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3267,7 +3285,13 @@ report
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1673083819
 book (KOMA-script)
+\change_inserted -712698321 1673083822
+KOMA-Script Book
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3464,7 +3488,23 @@ AMS Theorems
 
 \family default
  modules,
- in the latter case in both starred (unnumbered) and unstarred (numbered) versions.
+ in the latter case in both 
+\change_deleted -712698321 1673084072
+starred (
+\change_unchanged
+unnumbered
+\change_deleted -712698321 1673084073
+)
+\change_unchanged
+ and 
+\change_deleted -712698321 1673084075
+unstarred (
+\change_unchanged
+numbered
+\change_deleted -712698321 1673084077
+)
+\change_unchanged
+ versions.
  These same environments are provided only in the starred versions by the 
 \change_deleted 564990737 1672345596
 
@@ -3482,6 +3522,8 @@ Theorems (Starred)
 
 \family sans
 Standard Theorems
+\change_inserted -712698321 1673084060
+ (Unnumbered)
 \change_unchanged
 
 \family default
@@ -3841,74 +3883,156 @@ Japanese
 
 \change_inserted 564990737 1671383236
 The document classes 
+\change_inserted -712698321 1673089024
+
 \family sans
-article
+Japanese 
+\change_deleted -712698321 1673089025
+a
+\change_inserted -712698321 1673089025
+A
+\change_inserted 564990737 1671383236
+rticle
 \begin_inset space \thinspace{}
 \end_inset
 
-(Japanese JS Class)
+(
+\change_deleted -712698321 1673089027
+Japanese 
+\change_inserted 564990737 1671383236
+JS Class)
 \family default
 ,
 
 \family sans
- article
+ 
+\change_deleted -712698321 1673089041
+article
+\change_inserted -712698321 1673089041
+Japanese Article
+\change_inserted 564990737 1671383236
+
 \begin_inset space \thinspace{}
 \end_inset
 
-(Japanese Standard Class Vertical Writing)
+(
+\change_deleted -712698321 1673089044
+Japanese 
+\change_inserted 564990737 1671383236
+Standard Class Vertical Writing)
 \family default
 ,
  
+\change_deleted -712698321 1673089041
+
 \family sans
 article
 \begin_inset space \thinspace{}
 \end_inset
 
 (Japanese Standard Class)
+\change_inserted -712698321 1673088992
+Japanese Article (Standard Class)
+\change_inserted 564990737 1671383236
+
 \family default
 ,
  
+\change_inserted -712698321 1673089053
+
 \family sans
-book
+Japanese 
+\change_deleted -712698321 1673089053
+b
+\change_inserted -712698321 1673089064
+B
+\change_inserted 564990737 1671383236
+ook
 \begin_inset space \thinspace{}
 \end_inset
 
-(Japanese JS Class)
+(
+\change_deleted -712698321 1673089067
+Japanese 
+\change_inserted 564990737 1671383236
+JS Class)
 \family default
 ,
 
 \family sans
- book
+ 
+\change_inserted -712698321 1673089073
+Japanese B
+\change_deleted -712698321 1673089270
+b
+\change_inserted 564990737 1671383236
+ook
 \begin_inset space \thinspace{}
 \end_inset
 
-(Japanese Standard Class Vertical Writing)
+(
+\change_deleted -712698321 1673089077
+Japanese 
+\change_inserted 564990737 1671383236
+Standard Class Vertical Writing)
 \family default
 ,
  
+\change_deleted -712698321 1673089083
+
 \family sans
-book
+b
+\change_inserted -712698321 1673089083
+Japanese B
+\change_inserted 564990737 1671383236
+ook
 \begin_inset space \thinspace{}
 \end_inset
 
-(Japanese Standard Class)
+(
+\change_deleted -712698321 1673089087
+Japanese 
+\change_inserted 564990737 1671383236
+Standard Class)
 \family default
 ,
  
+\change_inserted -712698321 1673089094
+
 \family sans
-report
+Japanese 
+\change_deleted -712698321 1673089094
+r
+\change_inserted -712698321 1673089094
+R
+\change_inserted 564990737 1671383236
+eport
 \begin_inset space \thinspace{}
 \end_inset
 
-(Japanese Vertical Writing)
+(
+\change_deleted -712698321 1673089097
+Japanese 
+\change_inserted 564990737 1671383236
+Vertical Writing)
 \family default
  and 
+\change_deleted -712698321 1673089104
+
 \family sans
-report
+r
+\change_inserted -712698321 1673089104
+Japanese R
+\change_inserted 564990737 1671383236
+eport
 \begin_inset space \thinspace{}
 \end_inset
 
-(Japanese Standard Class)
+(
+\change_deleted -712698321 1673089107
+Japanese 
+\change_inserted 564990737 1671383236
+Standard Class)
 \family default
  provide document classes for the Japanese language.
 \end_layout
@@ -3975,31 +4099,61 @@ The KOMA-Script collection of document classes is a development of the Script cl
 \begin_layout Standard
 The \SpecialChar LyX
  document classes 
+\change_deleted -712698321 1673089779
+
 \emph on
 article (koma-script)
+\change_inserted -712698321 1673089784
+KOMA-Script Article
+\change_unchanged
+
 \emph default
 ,
  
+\change_deleted -712698321 1673089790
+
 \emph on
 report (koma-script)
+\change_inserted -712698321 1673089794
+KOMA-Script Report
+\change_unchanged
+
 \emph default
 ,
  
+\change_deleted -712698321 1673089790
+
 \emph on
 book
 \emph default
  
 \emph on
 (koma-script)
+\change_inserted -712698321 1673089771
+KOMA-Script Book
+\change_unchanged
+
 \emph default
 ,
  and 
+\change_inserted -712698321 1673089799
+
 \emph on
-letter
+KOMA-Script 
+\change_deleted -712698321 1673089802
+l
+\change_inserted -712698321 1673089802
+L
+\change_unchanged
+etter
+\change_deleted -712698321 1673089811
+
 \emph default
  
 \emph on
 (koma-script)
+\change_unchanged
+
 \emph default
  correspond to the \SpecialChar LaTeX
  document classes 
@@ -4058,18 +4212,34 @@ Standard character size is
 The base character sizes when you select a KOMA-Script class are
 \change_unchanged
  11pt in 
+\change_deleted -712698321 1673089877
+
 \emph on
 article (koma-script)
+\change_inserted -712698321 1673089877
+KOMA-Script Article
+\change_unchanged
+
 \emph default
 ,
  
+\change_deleted -712698321 1673089886
+
 \emph on
 report (koma-script)
+\change_inserted -712698321 1673089886
+KOMA-Script Report
+\change_unchanged
+
 \emph default
 ,
  and 
+\change_deleted -712698321 1673089893
+
 \emph on
 book (koma-script)
+\change_inserted -712698321 1673089893
+KOMA-Script Book
 \change_deleted 564990737 1672429267
 
 \emph default
@@ -4077,8 +4247,14 @@ book (koma-script)
 
 \change_unchanged
  and 12pt in 
+\change_deleted -712698321 1673089903
+
 \emph on
 letter (koma-script)
+\change_inserted -712698321 1673089903
+KOMA-Script Letter
+\change_unchanged
+
 \emph default
 .
 \end_layout
@@ -4087,8 +4263,14 @@ letter (koma-script)
 Headings,
  labels of the description environment,
  and a number of elements of the 
+\change_deleted -712698321 1673089925
+
 \emph on
 letter (koma-script)
+\change_inserted -712698321 1673089925
+KOMA-Script Letter
+\change_unchanged
+
 \emph default
  document class are set in a bold sans serif font.
 \begin_inset Foot
@@ -4319,11 +4501,39 @@ name "subsec:article-(KOMA-Script),-report"
 \end_inset
 
 
+\change_deleted -712698321 1673090826
+
 \series default
-article (KOMA-Script),
- report (KOMA-Script),
- and book (KOMA-Script)
+article (KOMA-Script)
+\change_inserted -712698321 1673090826
+
+\emph on
+KOMA-Script Article
+\change_inserted 564990737 1672429358
+
+\emph default
+,
+ 
+\change_deleted -712698321 1673090830
+report (KOMA-Script)
+\change_inserted -712698321 1673090840
+
+\emph on
+KOMA-Script Report
+\change_inserted 564990737 1672429358
+
+\emph default
+,
+ and 
+\change_deleted -712698321 1673090835
+book (KOMA-Script)
+\change_inserted -712698321 1673090844
+
+\emph on
+KOMA-Script Book
 \change_deleted 564990737 1672429367
+
+\emph default
 article (koma-script),
  report (koma-script),
  and book (koma-script)
@@ -4333,22 +4543,40 @@ article (koma-script),
 
 \begin_layout Standard
 The document classes 
+\change_deleted -712698321 1673090858
+
 \emph on
 article (koma-script)
+\change_inserted -712698321 1673090858
+KOMA-Script Article
+\change_unchanged
+
 \emph default
 ,
  
+\change_deleted -712698321 1673090862
+
 \emph on
 report (koma-script)
+\change_inserted -712698321 1673090869
+KOMA-Script Report
+\change_unchanged
+
 \emph default
 ,
  and 
+\change_deleted -712698321 1673090866
+
 \emph on
 book
 \emph default
  
 \emph on
 (koma-script)
+\change_inserted -712698321 1673090874
+KOMA-Script Book
+\change_unchanged
+
 \emph default
  are implemented in the layout files 
 \family typewriter
@@ -5063,7 +5291,20 @@ mainmatter
 
 \change_inserted 564990737 1672429680
 before the first chapter of the body of the text.
- You may also want to have some unnumbered Chapter environments at the end of the book after the Appendices,
+ 
+\change_inserted -712698321 1673092640
+Alternatively,
+ you might also use 
+\family sans
+Chapter* (TOC)
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672429680
+You may also want to have some unnumbered Chapter environments at the end of the book after the Appendices,
  if any.
 \begin_inset Foot
 status open
@@ -5983,7 +6224,26 @@ name "subsec:The-new-letter"
 \end_inset
 
 The new letter class:
- letter (KOMA-Script v.2)
+ 
+\change_inserted -712698321 1673092709
+KOMA-Script 
+\change_deleted -712698321 1673092710
+l
+\change_inserted -712698321 1673092710
+L
+\change_inserted 564990737 1672429774
+etter (
+\change_deleted -712698321 1673092713
+KOMA-Script v
+\change_inserted -712698321 1673092714
+V
+\change_inserted 564990737 1672429774
+.
+
+\change_inserted -712698321 1673092715
+ 
+\change_inserted 564990737 1672429774
+2)
 \change_unchanged
 
 \end_layout
