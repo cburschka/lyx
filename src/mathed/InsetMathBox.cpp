@@ -64,9 +64,9 @@ void InsetMathBox::mathmlize(MathMLStream & ms) const
 	// Probably will have to involve deferring them, which
 	// means returning something from this routine.
 	SetMode textmode(ms, true);
-	ms << MTag("mstyle", "class='mathbox'")
+	ms << MTag("mtext", "class='mathbox'")
 	   << cell(0)
-	   << ETag("mstyle");
+	   << ETag("mtext");
 }
 
 
@@ -105,7 +105,7 @@ void InsetMathBox::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
-		features.addCSSSnippet("mstyle.mathbox { font-style: normal; }");
+		features.addCSSSnippet("mtext.mathbox { font-style: normal; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet("span.mathbox { font-style: normal; }");
 
@@ -166,9 +166,9 @@ void InsetMathFBox::normalize(NormalStream & os) const
 void InsetMathFBox::mathmlize(MathMLStream & ms) const
 {
 	SetMode textmode(ms, true);
-	ms << MTag("mstyle", "class='fbox'")
+	ms << MTag("mtext", "class='fbox'")
 	   << cell(0)
-	   << ETag("mstyle");
+	   << ETag("mtext");
 }
 
 
@@ -194,7 +194,7 @@ void InsetMathFBox::validate(LaTeXFeatures & features) const
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
 		features.addCSSSnippet(
-			"mstyle.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }");
+			"mtext.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet(
 			"span.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }");
@@ -312,9 +312,9 @@ void InsetMathMakebox::mathmlize(MathMLStream & ms) const
 	// FIXME We could do something with the other arguments.
 	std::string const cssclass = framebox_ ? "framebox" : "makebox";
 	SetMode textmode(ms, true);
-	ms << MTag("mstyle", "class='" + cssclass + "'")
+	ms << MTag("mtext", "class='" + cssclass + "'")
 	   << cell(2)
-	   << ETag("mstyle");
+	   << ETag("mtext");
 }
 
 
@@ -335,7 +335,7 @@ void InsetMathMakebox::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
-		features.addCSSSnippet("mstyle.framebox { border: 1px solid black; }");
+		features.addCSSSnippet("mtext.framebox { border: 1px solid black; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet("span.framebox { border: 1px solid black; }");
 	InsetMathNest::validate(features);
@@ -393,9 +393,9 @@ void InsetMathBoxed::infoize(odocstream & os) const
 
 void InsetMathBoxed::mathmlize(MathMLStream & ms) const
 {
-	ms << MTag("mstyle", "class='boxed'")
+	ms << MTag("mtext", "class='boxed'")
 	   << cell(0)
-	   << ETag("mstyle");
+	   << ETag("mtext");
 }
 
 
@@ -415,7 +415,7 @@ void InsetMathBoxed::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
-		features.addCSSSnippet("mstyle.boxed { border: 1px solid black; }");
+		features.addCSSSnippet("mtext.boxed { border: 1px solid black; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet("span.boxed { border: 1px solid black; }");
 
