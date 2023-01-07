@@ -2172,8 +2172,14 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 			mathmlNamespace = + " xmlns:" + mathmlPrefix + "=\"http://www.w3.org/1998/Math/MathML\"";
 		}
 
+		// XML-compatible language code: in lib/languages, language codes are
+		// given as dictionary file names; HTML5 expects to follow BCP47. This
+		// function implements a simple heuristic that does the conversion.
+		std::string htmlCode = params().language->code();
+		std::replace(htmlCode.begin(), htmlCode.end(), '_', '-');
+
 		// Directly output the root tag, based on the current type of document.
-		string attributes = "xml:lang=\"" + params().language->code() + '"'
+		string attributes = "xml:lang=\"" + htmlCode + '"'
 						    + " xmlns=\"http://docbook.org/ns/docbook\""
 						    + " xmlns:xlink=\"http://www.w3.org/1999/xlink\""
 						    + mathmlNamespace
@@ -2239,8 +2245,14 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 	  output == FullSource || output == OnlyBody || output == IncludedFile;
 
 	if (output_preamble) {
+		// HTML5-compatible language code: in lib/languages, language codes are
+		// given as dictionary file names; HTML5 expects to follow BCP47. This
+		// function implements a simple heuristic that does the conversion.
+		std::string htmlCode = params().language->code();
+		std::replace(htmlCode.begin(), htmlCode.end(), '_', '-');
+
 		os << "<!DOCTYPE html>\n"
-		   << "<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"" << from_ascii(params().language->code()) << "\">\n"
+		   << "<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"" << from_ascii(htmlCode) << "\">\n"
 		   << "<head>\n"
 		   << "<meta name=\"GENERATOR\" content=\"" << PACKAGE_STRING << "\" />\n"
 		   << "<meta charset=\"UTF-8\" />\n"
