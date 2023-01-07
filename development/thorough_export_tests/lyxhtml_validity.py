@@ -23,10 +23,13 @@ import html5validator
 
 if len(sys.argv) != 2:
     print('Expecting one argument, the path to the LyX binary to test')
+    sys.exit(-1)
 if not os.path.exists(sys.argv[1]):
     print('The given path does not point to an existing file')
+    sys.exit(-1)
 if not os.access(sys.argv[1], os.X_OK):
     print('The given path does not point to an executable file')
+    sys.exit(-1)
 
 
 PATH_SCRIPT = os.path.dirname(os.path.realpath(__file__))
