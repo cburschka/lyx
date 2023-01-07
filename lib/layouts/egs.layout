@@ -13,7 +13,7 @@ Format 99
 Columns                 2
 Sides                   1
 PageStyle               Plain
-Provides natbib          1
+Provides natbib         1
 
 
 Style Standard
@@ -50,6 +50,7 @@ Style Section
 	  Series              Bold
 	EndFont
 	TocLevel 1
+    HTMLTag               h2
 End
 
 
@@ -70,6 +71,7 @@ Style Subsection
 	  Shape               Up
 	EndFont
 	TocLevel 2
+    HTMLTag               h3
 End
 
 

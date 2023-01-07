@@ -291,6 +291,7 @@ Style Part
     Color          Latex
   EndFont
   TocLevel         -1
+  HTMLTag          h2
 End
 
 Style Section
@@ -335,6 +336,7 @@ Style Section
   EndFont
   LabelStringAppendix "\Alph{section}"
   TocLevel         1
+  HTMLTag          h3
 End
 
 Style Section*
@@ -354,6 +356,7 @@ Style Section*
   EndArgument
   LaTeXParam       *
   HTMLInToc        0
+  HTMLTag          h3
 End
 
 Style Subsection
@@ -398,6 +401,7 @@ Style Subsection
   EndFont
   LabelStringAppendix "\arabic{section}.\arabic{subsection}"
   TocLevel         2
+  HTMLTag          h4
 End
 
 Style Subsection*

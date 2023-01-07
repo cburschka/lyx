@@ -104,6 +104,8 @@ Style Chapter
 	  Series		Bold
 	  Size			Huge
 	EndFont
+    # h1 is used for the document title.
+    HTMLTag               h2
 	DocBookTag            title
 	DocBookSectionTag     chapter
 End
@@ -135,6 +137,7 @@ Style Section
 	  Series		Bold
 	  Size			Larger
 	EndFont
+    HTMLTag               h3
 	DocBookTag            title
 	DocBookSectionTag     section
 End
