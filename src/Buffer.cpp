@@ -2256,7 +2256,7 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 		   << "<head>\n"
 		   << "<meta name=\"GENERATOR\" content=\"" << PACKAGE_STRING << "\" />\n"
 		   // FIXME Presumably need to set this right
-		   << "<meta http-equiv=\"content-type\" content=\"text/html;charset=UTF-8\" />\n";
+		   << "<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\" />\n";
 
 		docstring const & doctitle = features.htmlTitle();
 		os << "<title>"
