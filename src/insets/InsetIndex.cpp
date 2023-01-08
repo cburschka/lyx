@@ -1658,6 +1658,14 @@ std::string generateCssClassAtDepth(unsigned depth) {
 struct IndexNode {
 	std::vector<IndexEntry> entries;
 	std::vector<IndexNode*> children;
+
+	~IndexNode() {
+		for (IndexNode * child : children) {
+			if (!child)
+				continue;
+			delete child;
+		}
+	}
 };
 
 docstring termAtLevel(const IndexNode* node, unsigned depth)
@@ -1901,6 +1909,7 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 	for (const IndexNode* node : index_root->children) {
 		outputIndexPage(xs, node);
 	}
+	delete index_root;
 
 	xs << xml::EndTag("ul");
 	xs << xml::CR();
