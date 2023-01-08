@@ -6588,21 +6588,39 @@ Tomasz Luczak
 \begin_layout Standard
 The \SpecialChar LyX
  document classes 
+\change_deleted -712698321 1673094342
+
 \emph on
 article (mwart)
+\change_inserted -712698321 1673094343
+Polish Article (MW Bundle)
+\change_unchanged
+
 \emph default
 ,
  
+\change_deleted -712698321 1673094349
+
 \emph on
 report (mwrep)
+\change_inserted -712698321 1673094356
+Polish Report (MW Bundle)
+\change_unchanged
+
 \emph default
  and 
+\change_deleted -712698321 1673094352
+
 \emph on
 book
 \emph default
  
 \emph on
 (mwbk)
+\change_inserted -712698321 1673094359
+Polish Book (MW Bundle)
+\change_unchanged
+
 \emph default
  correspond to the \SpecialChar LaTeX
  document classes 
@@ -6734,20 +6752,32 @@ Tufte Collection
 
 \change_inserted 564990737 1672652245
 The document classes 
+\change_deleted -712698321 1673094404
+
 \family sans
 book
 \begin_inset space \thinspace{}
 \end_inset
 
 (Tufte)
+\change_inserted -712698321 1673094404
+Tufte Book
+\change_inserted 564990737 1672652245
+
 \family default
  and 
+\change_deleted -712698321 1673094408
+
 \family sans
 handout
 \begin_inset space \thinspace{}
 \end_inset
 
 (Tufte)
+\change_inserted -712698321 1673094411
+Tufte Handout
+\change_inserted 564990737 1672652245
+
 \family default
  use the 
 \family typewriter
@@ -6801,8 +6831,12 @@ nolink "false"
 
 \begin_layout Subsection
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673095198
 A&A Paper
+\change_inserted -712698321 1673095198
+Astronomy & Astrophysics
+\change_inserted 564990737 1670794716
+
 \end_layout
 
 \begin_layout Standard
@@ -6829,7 +6863,13 @@ Introduction
 This section describes how \SpecialChar LyX
  can be used to write articles for submission to the scientific journal 
 \emph on
-Astronomy and Astrophysics
+Astronomy 
+\change_deleted -712698321 1673095254
+and
+\change_inserted -712698321 1673095254
+&
+\change_inserted 564990737 1670794716
+ Astrophysics
 \emph default
  (
 \begin_inset CommandInset href
@@ -6947,8 +6987,14 @@ Astronomy & Astrophysics
 
 \change_inserted 564990737 1670794716
 Select 
+\change_deleted -712698321 1673095619
+
 \family sans
 article (A&A)
+\change_inserted -712698321 1673095619
+Astronomy & Astrophysics
+\change_inserted 564990737 1670794716
+
 \family default
  in the 
 \family sans
@@ -7014,7 +7060,13 @@ The header block
 
 \change_inserted 564990737 1670794716
 First thing to enter is the header information.
- It consists of five entries,
+ It consists of 
+\change_deleted -712698321 1673167006
+five
+\change_inserted -712698321 1673167007
+seven
+\change_inserted 564990737 1670794716
+ entries,
  of which one is optional.
  They are
 \end_layout
@@ -7054,13 +7106,42 @@ Author
 
 \begin_layout Itemize
 
+\change_deleted -712698321 1673167065
+
+\family sans
+Institute
+\change_inserted -712698321 1673167065
+Address
 \change_inserted 564990737 1670794716
 
-\family typewriter
-Institute
 \family default
 :
  [required]
+\change_inserted -712698321 1673167087
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1673168577
+
+\family sans
+Offprints
+\family default
+ [optional].
+ Determines to whom correspondence and reprints are to be sent.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1673168590
+
+\family sans
+Mail
+\family default
+ [optional] Snail mail address for contacts.
+\change_inserted 564990737 1670794716
+
 \end_layout
 
 \begin_layout Itemize
@@ -7081,6 +7162,17 @@ Received:
 
 \begin_layout Standard
 
+\change_inserted -712698321 1673168612
+There is no need to issue the 
+\family typewriter
+
+\backslash
+maketitle
+\family default
+ command,
+ this is done automatically by \SpecialChar LyX
+ when the header is finished.
+ 
 \change_inserted 564990737 1670794716
 Although the order of the single header entries doesn't matter it is advised to keep the above sequence,
  just to get the best optics and meets the layout of the real document.
@@ -7120,6 +7212,51 @@ ootnote.
 thanks{}
 \family default
  in that case.
+\change_inserted -712698321 1673168649
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1673168649
+Under 
+\family sans
+Edit\SpecialChar menuseparator
+Text Style
+\family default
+,
+ you'll find two insets which are relevant for the titling:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1673168649
+
+\family sans
+Institute
+\family typewriter
+ 
+\family default
+to mark corresponding author\SpecialChar breakableslash
+institute pairs.
+ The institutes are numbered sequentially as they appear in the 
+\family sans
+Address
+\family default
+ field,
+ so you have to put a marker to each author.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1673168649
+
+\family sans
+Email
+\family default
+ to supply an email address for fast contact.
+\change_inserted 564990737 1670794716
+
 \end_layout
 
 \begin_layout Standard
@@ -7146,7 +7283,7 @@ and
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168671
 
 \family typewriter
 
@@ -7164,7 +7301,7 @@ Institute
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168671
 
 \family typewriter
 
@@ -7172,13 +7309,19 @@ Institute
 email{address}
 \family default
  to supply an email address for fast contact.
+\change_inserted 564990737 1670794716
+
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671642374
+\change_deleted -712698321 1673168684
 In all cases,
- the appropriate command has to be entered as \SpecialChar TeX
+ t
+\change_inserted -712698321 1673168684
+T
+\change_inserted 564990737 1671642374
+he appropriate command has to be entered as \SpecialChar TeX
  code in \SpecialChar LyX
 .
  See the examples in the template and in 
@@ -7201,7 +7344,19 @@ The abstract
 
 \begin_layout Standard
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673168754
+The abstract should immediately follow the header block.
+ With version 5 the abstract environment was changed to a command,
+ and there is now a restriction to only one paragraph.
+ In addition,
+ it should contain an entry with the keywords.
+ This is done via the paragraph style 
+\family sans
+Keywords
+\family default
+.
+ Refer to the example paper.
+\change_deleted -712698321 1673168754
 The abstract should immediately follow the header block and must contain five tokens:
  
 \family typewriter
@@ -7214,7 +7369,7 @@ abstract{}{}{}{}{}
 
 \begin_layout Enumerate
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168754
 
 \family typewriter
 context heading
@@ -7224,7 +7379,7 @@ context heading
 
 \begin_layout Enumerate
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168754
 
 \family typewriter
 aims heading
@@ -7234,7 +7389,7 @@ aims heading
 
 \begin_layout Enumerate
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168754
 
 \family typewriter
 methods heading
@@ -7244,7 +7399,7 @@ methods heading
 
 \begin_layout Enumerate
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168754
 
 \family typewriter
 results heading
@@ -7254,7 +7409,7 @@ results heading
 
 \begin_layout Enumerate
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168754
 
 \family typewriter
 conclusions heading
@@ -7264,13 +7419,15 @@ conclusions heading
 
 \begin_layout Standard
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168754
 (NB.
  This structure not shown in 
 \emph on
 aa_sample.lyx.
 \emph default
 )
+\change_inserted 564990737 1670794716
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -7285,9 +7442,17 @@ Supported environments
 The A&A paper layout supports the following environments for structuring your text:
 \end_layout
 
+\begin_layout Standard
+
+\change_inserted -712698321 1673169058
+
+\family sans
+\begin_inset Flex Multiple Columns
+status open
+
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Standard
@@ -7295,7 +7460,7 @@ Standard
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Section
@@ -7303,7 +7468,7 @@ Section
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Subsection
@@ -7311,7 +7476,7 @@ Subsection
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Subsubsection
@@ -7319,7 +7484,7 @@ Subsubsection
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Itemize
@@ -7327,7 +7492,7 @@ Itemize
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Enumerate
@@ -7335,7 +7500,7 @@ Enumerate
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Description
@@ -7343,7 +7508,7 @@ Description
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Caption
@@ -7351,7 +7516,7 @@ Caption
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Abstract
@@ -7359,7 +7524,7 @@ Abstract
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Acknowledgment
@@ -7367,7 +7532,7 @@ Acknowledgment
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169058
 
 \family sans
 Bibliography
@@ -7375,10 +7540,107 @@ Bibliography
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673169078
+LaTeX
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -712698321 1673169058
+Standard
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Section
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Subsection
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Subsubsection
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Itemize
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Enumerate
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Description
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Caption
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Abstract
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Acknowledgment
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
+
+\family sans
+Bibliography
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673169058
 
 \family sans
 \SpecialChar LaTeX
+
+\change_inserted 564990737 1670794716
 
 \end_layout
 
@@ -7393,8 +7655,14 @@ Commands not supported by \SpecialChar LyX
 
 \change_inserted 564990737 1670794716
 Some commands are not yet supported by the 
+\change_deleted -712698321 1673169117
+
 \family sans
 paper (A&A)
+\change_inserted -712698321 1673169117
+Astronomy & Astrophysics
+\change_inserted 564990737 1670794716
+
 \family default
  layout for \SpecialChar LyX
 .
@@ -7415,9 +7683,33 @@ and
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_inserted -712698321 1673168793
 
 \family typewriter
+
+\backslash
+authorrunning
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1673168793
+
+\family typewriter
+
+\backslash
+object{}
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1673168793
+
+\family typewriter
+
+\backslash
+titlerunning{}
+\change_deleted -712698321 1673168793
 
 \backslash
 email
@@ -7425,7 +7717,7 @@ email
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168793
 
 \family typewriter
 
@@ -7435,7 +7727,7 @@ inst{}
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168793
 
 \family typewriter
 
@@ -7445,12 +7737,14 @@ keywords{}
 
 \begin_layout Itemize
 
-\change_inserted 564990737 1670794716
+\change_deleted -712698321 1673168793
 
 \family typewriter
 
 \backslash
 object{}
+\change_inserted 564990737 1670794716
+
 \end_layout
 
 \begin_layout Standard
@@ -7458,9 +7752,7 @@ object{}
 \change_inserted 564990737 1670794716
 If you want to use any of these commands,
  you have to enter them yourself.
- 
-\family typewriter
-Do not forget to use
+ Do not forget to use
 \family sans
  
 \bar under
@@ -7474,7 +7766,6 @@ nsert\SpecialChar menuseparator
 
 Code
 \family default
-\series bold
 !
 \end_layout
 
@@ -7525,7 +7816,21 @@ aragraph
 \begin_inset space ~
 \end_inset
 
-Settings.
+Settings
+\change_inserted -712698321 1673169201
+
+\family default
+ (
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+)
+\change_inserted 564990737 1670794716
+
+\family sans
+.
 \end_layout
 
 \begin_layout Standard
@@ -7653,7 +7958,13 @@ S
 \bar default
 pacing
 \family default
- pull-down menu.
+ 
+\change_deleted -712698321 1673169720
+pull-down
+\change_inserted -712698321 1673169724
+context
+\change_inserted 564990737 1670794716
+ menu.
 \end_layout
 
 \begin_layout Enumerate
@@ -8809,7 +9120,21 @@ Reconfigure
 \begin_layout Enumerate
 Open a regular new file,
  not from a template.
- Does AAS\SpecialChar TeX
+ Does 
+\change_deleted -712698321 1673170671
+AAS\SpecialChar TeX
+
+\change_inserted -712698321 1673170671
+
+\family sans
+American Astronomical Society (AASTeX V.
+\begin_inset space \thinspace{}
+\end_inset
+
+6)
+\change_unchanged
+
+\family default
  appear in the class list in 
 \family sans
 Document\SpecialChar menuseparator
@@ -8873,7 +9198,17 @@ References
 
 \begin_layout Standard
 A couple of things:
- 1) I have noticed some funny spacing in the reference entries in the text.
+ 
+\change_inserted -712698321 1673170733
+
+\end_layout
+
+\begin_layout Enumerate
+
+\change_deleted -712698321 1673170736
+1) 
+\change_unchanged
+I have noticed some funny spacing in the reference entries in the text.
  When you enter the bibliography item data,
  make sure their is 
 \emph on
@@ -8902,7 +9237,15 @@ Ressler(1992)
 Ressler (1992)
 \family default
 .
- 2) Entering the references at all is not obvious.
+ 
+\change_deleted -712698321 1673170741
+2) 
+\change_inserted -712698321 1673170741
+
+\end_layout
+
+\begin_layout Enumerate
+Entering the references at all is not obvious.
  The easiest thing is to start typing your first reference at the end of the document,
  then mark it as type 
 \family sans
@@ -9024,20 +9367,44 @@ Chess
 
 \change_inserted 564990737 1671642768
 The document class 
+\change_deleted -712698321 1673171415
+
 \family sans
 article
 \begin_inset space \thinspace{}
 \end_inset
 
-(Chess)
+(
+\change_inserted 564990737 1671642768
+Chess
+\change_deleted -712698321 1673171417
+)
+\change_inserted 564990737 1671642768
+
 \family default
  uses the 
+\change_deleted -712698321 1673171421
+
 \family typewriter
 article.cls
 \family default
- document class together with the style 
+ 
+\change_inserted -712698321 1673171424
+standard article 
+\change_inserted 564990737 1671642768
+document class together with the 
+\change_deleted -712698321 1673171428
+style
+\change_inserted -712698321 1673171429
+package
+\change_inserted 564990737 1671642768
+ 
 \family sans
-lyxskak.sty
+lyxskak
+\change_deleted -712698321 1673171431
+.sty
+\change_inserted 564990737 1671642768
+
 \family default
  to facilitate the description of chess games.
  See 
@@ -9068,18 +9435,45 @@ Elsevier
 
 \change_inserted 564990737 1671617396
 The document class 
+\change_deleted -712698321 1673171640
+
 \family sans
 article
 \begin_inset space \thinspace{}
 \end_inset
 
-(Elsevier)
+(
+\change_inserted 564990737 1671617396
+Elsevier
+\change_deleted -712698321 1673171643
+)
+\change_inserted 564990737 1671617396
+
 \family default
- provides the 
+ provides 
+\change_inserted -712698321 1673171717
+support for 
+\change_inserted 564990737 1671617396
+the 
 \family typewriter
-elsarticle.cls
+elsarticle
+\change_deleted -712698321 1673171720
+.cls
+\change_inserted 564990737 1671617396
+
 \family default
- document class.
+ 
+\change_deleted -712698321 1673171728
+document
+\change_inserted -712698321 1673171728
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1671617396
+ class
+\change_inserted -712698321 1673171744
+ for journals in the Elsevier publishing house
+\change_inserted 564990737 1671617396
+.
  This provides the following additional environments:
  
 \family sans
@@ -9122,7 +9516,15 @@ Email
 Keywords
 \family default
 .
- A template is available in the menu 
+ 
+\change_inserted -712698321 1673172045
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671617396
+A template is available in the menu 
 \family sans
 \bar under
 F
@@ -9169,16 +9571,32 @@ Paper
 
 \change_inserted 564990737 1671042046
 The document class 
+\change_deleted -712698321 1673172423
+
 \family sans
 article
 \begin_inset space \thinspace{}
 \end_inset
 
-(paper)
+(paper
+\change_inserted -712698321 1673172423
+Paper (Standard Class)
+\change_deleted -712698321 1673172423
+)
+\change_inserted 564990737 1671042046
+
 \family default
  provides an alternative to the 
+\change_deleted -712698321 1673172092
+
 \family typewriter
 article.cls
+\change_inserted -712698321 1673172435
+
+\family sans
+Article (Standard Class)
+\change_inserted 564990737 1671042046
+
 \family default
  document class.
  It provides similar functionality,
@@ -9209,11 +9627,21 @@ Amir Karger
 \noindent
 The 
 \family sans
-Revtex
+Rev
+\change_deleted -712698321 1673172482
+tex
 \begin_inset space ~
 \end_inset
 
 4
+\change_inserted -712698321 1673172487
+TeX (V.
+\begin_inset space \thinspace{}
+\end_inset
+
+4)
+\change_unchanged
+
 \family default
  textclass works with the American Physical Sociey's Rev\SpecialChar TeX
  4.0 (the 
@@ -9228,7 +9656,13 @@ Revtex
 \SpecialChar LyX
  has a 
 \family sans
-Revtex
+R
+\change_deleted -712698321 1673172511
+evtex
+\change_inserted -712698321 1673172517
+EVTeX (obsolete)
+\change_unchanged
+
 \family default
  textclass,
  which works with Rev\SpecialChar TeX
@@ -9247,6 +9681,8 @@ Revtex
 ,
  \SpecialChar LyX
  with the 
+\change_deleted -712698321 1673172538
+
 \family sans
 Rev\SpecialChar TeX
 
@@ -9254,6 +9690,18 @@ Rev\SpecialChar TeX
 \end_inset
 
 4
+\change_inserted -712698321 1673172538
+Revtex
+\begin_inset space ~
+\end_inset
+
+4TeX (V.
+\begin_inset space \thinspace{}
+\end_inset
+
+4)
+\change_unchanged
+
 \family default
  textclass should also be pretty easy to use.
 \end_layout
@@ -9326,7 +9774,19 @@ Revtex
 4
 \family default
  template,
- found in the templates directory.
+ found in 
+\change_deleted -712698321 1673172641
+the templates directory
+\change_inserted -712698321 1673172687
+
+\family sans
+File\SpecialChar menuseparator
+New From Templates\SpecialChar menuseparator
+Articles
+\change_unchanged
+
+\family default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -9576,7 +10036,13 @@ All the
 \family sans
 svj*
 \family default
- classes were replaced in 2013 with a completely new 
+ classes were replaced 
+\change_deleted -712698321 1673176131
+in 2013 
+\change_inserted 564990737 1671042072
+with a completely new 
+\change_deleted -712698321 1673175919
+
 \family sans
 sr-vorl.cls
 \family default
@@ -9597,6 +10063,34 @@ literal "false"
 \end_inset
 
 .
+
+\change_inserted -712698321 1673176125
+ class,
+ 
+\family sans
+sn-jnl.cls
+\family default
+.
+ Please find information at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1673176047
+
+https://www.springernature.com/gp/authors/campaigns/latex-author-support
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ Native \SpecialChar LyX
+ support is not available yet.
+\change_inserted 564990737 1671042072
+
 \end_layout
 
 \begin_layout Section
@@ -10200,6 +10694,8 @@ Recipes.pdf
 Recipes.pdf
 \family default
  is the compiled version of your recipes.
+\change_inserted -712698321 1673175424
+
 \end_layout
 
 \begin_layout Section
