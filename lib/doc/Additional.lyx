@@ -10605,16 +10605,36 @@ Recipe Book
 
 \change_inserted 564990737 1671442175
 The document class 
+\family sans
+Recipe
+\change_inserted -712698321 1673182264
+ 
+\change_inserted 564990737 1671442175
+Book
+\change_deleted -712698321 1673182266
+
 \family typewriter
-RecipeBook.cls
+.cls
+\change_inserted 564990737 1671442175
+
 \family default
  uses the 
+\change_deleted -712698321 1673182282
+
 \family sans
 book
 \begin_inset space \thinspace{}
 \end_inset
 
-(KOMA-Script)
+(
+\change_inserted 564990737 1671442175
+KOMA-Script
+\change_inserted -712698321 1673182287
+ Book
+\change_deleted -712698321 1673182290
+)
+\change_inserted 564990737 1671442175
+
 \family default
  document class but adds two environments:
 \end_layout
@@ -10660,19 +10680,64 @@ Recipe Book
 
 \begin_layout Standard
 
+\change_deleted -712698321 1673186391
+It
+\change_inserted -712698321 1673186393
+The class
 \change_inserted 564990737 1671442175
-It is designed for typesetting one or two recipes per page,
+ is designed for typesetting one or two recipes per page,
  with dimensions of 5.5
 \begin_inset Quotes qrd
 \end_inset
 
- x 8.5
+
+\change_deleted -712698321 1673185652
+ 
+\change_inserted -712698321 1673185654
+
+\begin_inset Formula $\times$
+\end_inset
+
+
+\change_deleted -712698321 1673185660
+x 
+\change_inserted 564990737 1671442175
+8.5
 \begin_inset Quotes qrd
 \end_inset
 
+
+\change_inserted -712698321 1673186720
+ (ideally on US letter paper,
+ but A4 will work as well if the output is slightly downscaled)
+\change_inserted 564990737 1671442175
 .
- The hyperlinked table of contents (ToC) and page numbers make browsing recipes convenient,
- and the pages can be joined together or printed 2 per page to normal letterpaper easily.
+ The hyperlinked table of contents (ToC) and page numbers make browsing recipes convenient
+\change_inserted -712698321 1673186486
+.
+\change_deleted -712698321 1673186487
+,
+
+\change_inserted 564990737 1671442175
+ 
+\change_deleted -712698321 1673186488
+and t
+\change_inserted -712698321 1673186489
+T
+\change_inserted 564990737 1671442175
+he pages can be joined together or printed 2 per page to 
+\change_deleted -712698321 1673186516
+normal
+\change_inserted 564990737 1671442175
+ 
+\change_inserted -712698321 1673186529
+US 
+\change_inserted 564990737 1671442175
+letter
+\change_inserted -712698321 1673186520
+ or A4 
+\change_inserted 564990737 1671442175
+paper easily.
  The size was chosen to work in half-page 3-ring binder cover sheets,
  because un-laminated paper just doesn't last in the kitchen.
 \end_layout
@@ -10682,6 +10747,14 @@ It is designed for typesetting one or two recipes per page,
 \change_inserted 564990737 1671442175
 The half-letter pages can be printed two per page using your printer driver,
  or bound together using 
+\change_inserted -712698321 1673186305
+
+\end_layout
+
+\begin_layout Quote
+
+\change_inserted 564990737 1671442175
+
 \family typewriter
 pdfjam --nup 2x1 --papersize '{11in,8.5in}'
 \family default
@@ -10689,7 +10762,15 @@ pdfjam --nup 2x1 --papersize '{11in,8.5in}'
 \family typewriter
 Recipes.pdf
 \family default
- where 
+ 
+\change_inserted -712698321 1673186310
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1671442175
+where 
 \family typewriter
 Recipes.pdf
 \family default
@@ -10701,19 +10782,31 @@ Recipes.pdf
 \begin_layout Section
 
 \change_inserted 564990737 1671442207
-Curricula vitarum
+Curricula vita
+\change_deleted -712698321 1673186818
+rum
+\change_inserted -712698321 1673186818
+e
+\change_inserted 564990737 1671442207
+
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1671442208
 Europass
+\change_inserted -712698321 1673187876
+ (2013)
+\change_inserted 564990737 1671442208
+
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671642942
 The document class 
+\change_deleted -712698321 1673187623
+
 \family sans
 curriculum
 \begin_inset space \space{}
@@ -10723,7 +10816,15 @@ vitae
 \begin_inset space \thinspace{}
 \end_inset
 
-(Europass)
+(
+\change_inserted 564990737 1671642942
+Europass
+\change_inserted -712698321 1673187655
+ (2013)
+\change_deleted -712698321 1673187624
+)
+\change_inserted 564990737 1671642942
+
 \family default
  provides the 
 \family typewriter
@@ -10736,7 +10837,11 @@ europasscv.cls
 File\SpecialChar menuseparator
 Open Example\SpecialChar menuseparator
 Curricula Vitae\SpecialChar menuseparator
-Europass CV (2013)
+Europass 
+\change_deleted -712698321 1673187728
+CV 
+\change_inserted 564990737 1671642942
+(2013)
 \family default
  offers guidance on its use.
  Its documentation is available from 
@@ -10754,13 +10859,21 @@ literal "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671442208
-European
+Europe
+\change_deleted -712698321 1673187829
+an
+\change_inserted -712698321 1673187829
+ CV
+\change_inserted 564990737 1671442208
+
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671642984
 The document class 
+\change_deleted -712698321 1673187820
+
 \family sans
 curriculum
 \begin_inset space \space{}
@@ -10770,7 +10883,15 @@ vitae
 \begin_inset space \thinspace{}
 \end_inset
 
-(Europe)
+(
+\change_inserted 564990737 1671642984
+Europe
+\change_inserted -712698321 1673187823
+ CV
+\change_deleted -712698321 1673187824
+)
+\change_inserted 564990737 1671642984
+
 \family default
  provides the 
 \family typewriter
@@ -10802,12 +10923,18 @@ literal "false"
 
 \change_inserted 564990737 1671442208
 Modern
+\change_inserted -712698321 1673187869
+ CV
+\change_inserted 564990737 1671442208
+
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671643003
 The document class 
+\change_deleted -712698321 1673187880
+
 \family sans
 curriculum
 \begin_inset space \space{}
@@ -10817,7 +10944,17 @@ vitae
 \begin_inset space \thinspace{}
 \end_inset
 
-(modern)
+(m
+\change_inserted -712698321 1673187880
+M
+\change_inserted 564990737 1671643003
+odern
+\change_inserted -712698321 1673187884
+ CV
+\change_deleted -712698321 1673187884
+)
+\change_inserted 564990737 1671643003
+
 \family default
  provides the 
 \family typewriter
@@ -10849,12 +10986,18 @@ literal "false"
 
 \change_inserted 564990737 1671442208
 Simple
+\change_inserted -712698321 1673187900
+ CV
+\change_inserted 564990737 1671442208
+
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671643024
 The document class 
+\change_deleted -712698321 1673187895
+
 \family sans
 curriculum
 \begin_inset space \space{}
@@ -10864,7 +11007,17 @@ vitae
 \begin_inset space \thinspace{}
 \end_inset
 
-(simple)
+(s
+\change_inserted -712698321 1673187895
+S
+\change_inserted 564990737 1671643024
+imple
+\change_inserted -712698321 1673187897
+ CV
+\change_deleted -712698321 1673187898
+)
+\change_inserted 564990737 1671643024
+
 \family default
  provides the 
 \family typewriter
