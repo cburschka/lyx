@@ -1858,7 +1858,7 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 	const docstring & indexType = params().getParamOr("type", from_ascii("idx"));
 	for (const TocItem& item : *toc) {
 		const auto* inset = static_cast<const InsetIndex*>(&(item.dit().inset()));
-		if (item.isOutput() && inset->params().index == indexType)
+		if (item.isOutput() && inset && inset->params().index == indexType)
 			entries.emplace_back(IndexEntry{inset, &op});
 	}
 
