@@ -1432,19 +1432,6 @@ public:
 			parseAsLegacy();
 	}
 
-	/// When parsing this entry, some errors may be found; they are reported as a single string.
-	// It is up to the caller to send this string to LYXERR and the output file, as needed.
-	const docstring & output_error() const
-	{
-		return output_error_;
-	}
-
-	void output_error(XMLStream xs) const
-	{
-		LYXERR0(output_error());
-		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + output_error() + from_utf8(" -->\n"));
-	}
-
 
 private:
 	bool isModern()
