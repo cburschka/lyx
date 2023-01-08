@@ -26,6 +26,7 @@
 #       -DTOP_SRC_DIR=${TOP_SRC_DIR} \
 #       -DIgnoreErrorMessage=(ON/OFF) \
 #       -DPERL_EXECUTABLE=${PERL_EXECUTABLE} \
+#       -DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE} \
 #       -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE} \
 #       -DJAVA_EXECUTABLE=${JAVA_EXECUTABLE} \
 #       -DENCODING=xxx \
@@ -57,6 +58,7 @@ get_filename_component(updir_ "${LYX_ROOT}" DIRECTORY)
 get_filename_component(updir2_ "${LYX_ROOT}" NAME)
 set(file "${updir2_}/${file}")
 set(LYX_ROOT "${updir_}")
+set(NO_FAILES 0)
 
 if(format MATCHES "dvi|pdf")
   message(STATUS "LYX_TESTS_USERDIR = ${LYX_TESTS_USERDIR}")
@@ -72,6 +74,7 @@ if(format MATCHES "dvi|pdf")
     RESULT_VARIABLE _err)
   string(COMPARE EQUAL  ${_err} 0 _erg)
   if(NOT _erg)
+    set(NO_FAILES 1)
     message(FATAL_ERROR "Export failed while converting")
   endif()
   # We only need "_${ENCODING}" for unicode tests (because multiple encodings
@@ -86,8 +89,9 @@ else()
     RESULT_VARIABLE _err)
   string(COMPARE EQUAL  ${_err} 0 _erg)
   if(NOT _erg)
+    set(NO_FAILES 1)
     message(FATAL_ERROR "Export failed while converting")
-    endif()
+  endif()
   if(extension MATCHES "\\.lyx$")
     # Font-type not relevant for lyx16/lyx2[0123] exports
     set(result_file_base "${TempDir}/${file}")
@@ -114,10 +118,94 @@ endfunction()
 
 macro(Summary _err _msg)
   if (${_err})
+    MATH(EXPR NO_FAILES "${NO_FAILES}+1")
     list(APPEND _TestResultMessage "Error: ${_msg}")
   else()
     list(APPEND _TestResultMessage "OK: ${_msg}")
   endif()
+endmacro()
+
+macro(check_xhtml_validate xhtml_file)
+  message(STATUS "Calling ${LYX_PYTHON_EXECUTABLE} \"${TOP_SRC_DIR}/development/autotests/simplehtml_validity.py\" \"${TempDir}/${xhtml_file}\"")
+  set(_outputfile "${TempDir}/${xhtml_file}.validate_out")
+  execute_process(
+    COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/simplehtml_validity.py" "${TempDir}/${xhtml_file}"
+    WORKING_DIRECTORY "${TempDir}"
+    OUTPUT_VARIABLE xmlout
+    ERROR_VARIABLE xmlerr
+    RESULT_VARIABLE _err)
+  file(WRITE "${_outputfile}" ${xmlout})
+  if (_err)
+    Summary(_err "${_err} validating \"${_outputfile}\"")
+    MATH(EXPR NO_FAILES "${NO_FAILES}+1")
+  endif()
+  if (NOT "${xmlout}" STREQUAL "")
+    message(STATUS "${xmlout}")
+    set(_err -1)
+    Summary(_err "Non empty output \"${_outputfile}\" with \"symplehtml_validity.py\"")
+  endif()
+endmacro()
+
+macro(check_xhtml_xmllint xhtml_file)
+  set(xmllint_params --loaddtd --noout)
+  string(REPLACE ";" " " xmllint_params2 " ${xmllint_params}")
+  message(STATUS "Calling: " ${XMLLINT_EXECUTABLE} ${xmllint_params2} " \"${TempDir}/${xhtml_file}\"")
+  set(_outputfile "${TempDir}/${xhtml_file}.sax_out")
+  execute_process(
+    COMMAND ${XMLLINT_EXECUTABLE} ${xmllint_params} "${xhtml_file}"
+    WORKING_DIRECTORY "${TempDir}"
+    OUTPUT_VARIABLE xmlout
+    ERROR_VARIABLE xmlerr
+    RESULT_VARIABLE _err)
+  file(WRITE "${_outputfile}" ${xmlout})
+  Summary(_err "Checking \"${TempDir}/${xhtml_file}\" with ${XMLLINT_EXECUTABLE}")
+  if (NOT _err)
+    # check if parser output contains error messages
+    message(STATUS "Check the output: ${PERL_EXECUTABLE} ${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl")
+    execute_process(
+      COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl" "${_outputfile}"
+      WORKING_DIRECTORY "${TempDir}"
+      OUTPUT_VARIABLE xmlout
+      RESULT_VARIABLE _err)
+    Summary(_err "Parse messages of ${XMLLINT_EXECUTABLE} for errors")
+  else()
+    message(STATUS "Errors from xmllint: ${xmlerr}")
+  endif()
+  if (NOT _err)
+    if (NOT "${xmlout}" STREQUAL "")
+      message(STATUS "${xmlout}")
+      set(_err -1)
+      Summary(_err "Non empty output \"${_outputfile}\" of \"${XMLLINT_EXECUTABLE}\"")
+    endif()
+  endif()
+endmacro()
+
+macro(check_xhtml_xmlparser xhtml_file)
+  message(STATUS "Calling ${PERL_EXECUTABLE} \"${TOP_SRC_DIR}/development/autotests/xmlParser.pl\" \"${xhtml_file}\"")
+  execute_process(
+    COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/xmlParser.pl" "${result_file_name}"
+    WORKING_DIRECTORY "${TempDir}"
+    OUTPUT_VARIABLE parserout
+    ERROR_VARIABLE parsererr
+    RESULT_VARIABLE _err
+  )
+  if (_err)
+    message(STATUS "${parsererr}")
+  endif()
+  Summary(_err "Checking \"${TempDir}/${xhtml_file}\" with xmlParser.pl")
+endmacro()
+
+macro(check_xhtml_jing xhtml_file)
+  message(STATUS "Calling: ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\" \"https://docbook.org/xml/5.2b09/rng/docbook.rng\" \"${TempDir}/${xhtml_file}\"")
+  set(_outputfile "${TempDir}/${xhtml_file}.jing_out")
+  execute_process(
+    COMMAND ${JAVA_EXECUTABLE} -jar "${TOP_SRC_DIR}/development/tools/jing.jar" "https://docbook.org/xml/5.2b09/rng/docbook.rng" "${xhtml_file}"
+    WORKING_DIRECTORY "${TempDir}"
+    OUTPUT_VARIABLE jingout
+    RESULT_VARIABLE _err)
+  file(WRITE "${_outputfile}" ${jingout})
+  message(STATUS "_err = ${_err}, jingout = ${jingout}")
+  Summary(_err "Checking for empty output \"${_outputfile}\" of ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\"")
 endmacro()
 
 set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
@@ -234,69 +322,21 @@ else()
     else()
       message(STATUS "Expected result file \"${TempDir}/${result_file_name}\" exists")
       if (extension MATCHES "^x(ht)?ml$")
-        if (format MATCHES "xhtml")
-          set(xmllint_params --loaddtd --noout)
-          set(executable_ ${XMLLINT_EXECUTABLE})
-        else()
-          set(xmllint_params)
-          set(executable_ ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/filterXml4Sax.pl")
+        if (NOT format MATCHES "xhtml")
           # Check with perl xml-parser
           # needs XML::Parser module
-          message(STATUS "Calling ${PERL_EXECUTABLE} \"${TOP_SRC_DIR}/development/autotests/xmlParser.pl\" \"${result_file_name}\"")
-          execute_process(
-            COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/xmlParser.pl" "${result_file_name}"
-	    WORKING_DIRECTORY "${TempDir}"
-            OUTPUT_VARIABLE parserout
-            ERROR_VARIABLE parsererr
-            RESULT_VARIABLE _err
-          )
-          if (_err)
-            message(STATUS "${parsererr}")
+          check_xhtml_xmlparser(${result_file_name})
+        endif()
+        if (JAVA_EXECUTABLE)
+          if (format MATCHES "docbook5")
+            # check with jing
+            check_xhtml_jing(${result_file_name})
+          else()
+            #check_xhtml_validate(${result_file_name})
           endif()
-          Summary(_err "Checking \"${TempDir}/${result_file_name}\" with xmlParser.pl")
         endif()
         if (XMLLINT_EXECUTABLE)
-          string(REPLACE ";" " " xmllint_params2 " ${xmllint_params}")
-          message(STATUS "Calling: " ${executable_} ${xmllint_params2} " ${WORKDIR}/${result_file_name}")
-          # check the created xhtml file
-          execute_process(
-            COMMAND ${executable_} ${xmllint_params}  "${result_file_name}"
-	    WORKING_DIRECTORY "${TempDir}"
-            OUTPUT_VARIABLE xmlout
-            ERROR_VARIABLE xmlerr
-            RESULT_VARIABLE _err)
-          file(WRITE "${TempDir}/${result_file_name}.sax_out" ${xmlout})
-          Summary(_err "Checking \"${TempDir}/${result_file_name}\" with ${XMLLINT_EXECUTABLE}")
-          if (NOT _err)
-            # check if parser output contains error messages
-            message(STATUS "Check the output: ${PERL_EXECUTABLE} ${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl")
-            execute_process(
-              COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl" "${result_file_name}.sax_out"
-	      WORKING_DIRECTORY "${TempDir}"
-              OUTPUT_VARIABLE xmlout
-              RESULT_VARIABLE _err)
-            Summary(_err "Parse messages of ${XMLLINT_EXECUTABLE} for errors")
-          else()
-            message(STATUS "Errors from xmllint: ${xmlerr}")
-          endif()
-          if (NOT _err)
-            if (NOT "${xmlout}" STREQUAL "")
-              message(STATUS "${xmlout}")
-              set(_err -1)
-              Summary(_err "Non empty output of \"${XMLLINT_EXECUTABLE}\"")
-            endif()
-          endif()
-        endif()
-        if (NOT _err AND format MATCHES "docbook5" AND JAVA_EXECUTABLE)
-          # check with jing
-          message(STATUS "Calling: ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\" https://docbook.org/xml/5.2b09/rng/docbook.rng \"${WORKDIR}/${result_file_name}\"")
-          execute_process(
-            COMMAND ${JAVA_EXECUTABLE} -jar "${TOP_SRC_DIR}/development/tools/jing.jar" "https://docbook.org/xml/5.2b09/rng/docbook.rng" "${result_file_name}"
-	    WORKING_DIRECTORY "${TempDir}"
-            OUTPUT_VARIABLE jingout
-            RESULT_VARIABLE _err)
-          message(STATUS "_err = ${_err}, jingout = ${jingout}")
-          Summary(_err "Checking for empty output of ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\"")
+          check_xhtml_xmllint(${result_file_name})
         endif()
       endif()
     endif()
@@ -304,9 +344,9 @@ else()
 endif()
 
 if(inverted)
-  string(COMPARE EQUAL  ${_err} 0 _erg)
+  string(COMPARE EQUAL  ${NO_FAILES} 0 _erg)
 else()
-  string(COMPARE NOTEQUAL  ${_err} 0 _erg)
+  string(COMPARE NOTEQUAL  ${NO_FAILES} 0 _erg)
 endif()
 
 if ($ENV{LYX_DEBUG_LATEX})

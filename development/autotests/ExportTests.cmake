@@ -362,6 +362,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates lib/ta
           -Dinverted=${inverted}
           -DTOP_SRC_DIR=${TOP_SRC_DIR}
           -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
+          -DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE}
           -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
         setmarkedtestlabel(${TestName} ${mytestlabel})
       endif()
@@ -460,11 +461,11 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates lib/ta
           endif()
           string(REGEX REPLACE "[\\(\\)]" "_" TestName "${TestName1}")
           maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
-	  if (format MATCHES "docbook5")
-	    set(f_extension "xml")
-	  else()
-	    set(f_extension ${format})
-	  endif()
+          if (format MATCHES "docbook5")
+            set(f_extension "xml")
+          else()
+            set(f_extension ${format})
+          endif()
           if(TestName)
             add_test(NAME ${TestName}
               WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
@@ -483,6 +484,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates lib/ta
               -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE}
               -DJAVA_EXECUTABLE=${jingjava}
               -DENCODING=${_enc2}
+              -DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE}
               -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
             setmarkedtestlabel(${TestName} ${mytestlabel}) # check for suspended pdf/dvi exports
           endif()
