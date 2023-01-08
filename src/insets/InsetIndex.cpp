@@ -1855,7 +1855,8 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 
 	// Collect the index entries in a form we can use them.
 	vector<IndexEntry> entries;
-	const docstring & indexType = params().getParamOr("type", from_ascii("idx"));
+	const docstring defaultIndexType = from_ascii("idx");
+	const docstring & indexType = params().getParamOr("type", defaultIndexType);
 	for (const TocItem& item : *toc) {
 		const auto* inset = static_cast<const InsetIndex*>(&(item.dit().inset()));
 		if (item.isOutput() && inset && inset->params().index == indexType)
