@@ -195,7 +195,7 @@ macro(check_xhtml_xmlparser xhtml_file)
   Summary(_err "Checking \"${TempDir}/${xhtml_file}\" with xmlParser.pl")
 endmacro()
 
-macro(check_xhtml_jing xhtml_file)
+macro(check_docbook_jing xhtml_file)
   message(STATUS "Calling: ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\" \"https://docbook.org/xml/5.2b09/rng/docbook.rng\" \"${TempDir}/${xhtml_file}\"")
   set(_outputfile "${TempDir}/${xhtml_file}.jing_out")
   execute_process(
@@ -329,8 +329,7 @@ else()
         endif()
         if (JAVA_EXECUTABLE)
           if (format MATCHES "docbook5")
-            # check with jing
-            check_xhtml_jing(${result_file_name})
+            check_docbook_jing(${result_file_name})
           else()
             #check_xhtml_validate(${result_file_name})
           endif()
