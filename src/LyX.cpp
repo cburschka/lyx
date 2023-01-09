@@ -616,7 +616,8 @@ void LyX::execCommands()
 		switch (Alert::prompt(
 			_("No python is found"),
 			_("LyX will only have minimal functionality because no python interpreter "
-				"has been found. Consider download and install of an python interpreter."),
+			  "has been found. Consider installing python with your software manager "
+			  "or from the python.org website."),
 			0, 1,
 			_("&Continue"),
 			_("&Exit LyX")))
