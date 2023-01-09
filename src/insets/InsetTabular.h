@@ -945,9 +945,13 @@ private:
 		DOCBOOK = false
 	};
 
-	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
-	std::string getHAlignAsXmlAttribute(idx_type cell, XmlOutputFormat output_format) const;
-	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
+	/// Transforms the vertical alignment of the given cell as prebaked CSS (for HTML tables in HTML output).
+	std::string getHAlignAsXmlAttribute(idx_type cell) const;
+	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for CALS or HTML tables in DocBook).
+	std::string getHAlignAsCssAttribute(idx_type cell) const;
+	/// Transforms the vertical alignment of the given cell as prebaked CSS (for HTML tables in HTML output).
+	std::string getVAlignAsCssAttribute(idx_type cell) const;
+	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for CALS or HTML tables in DocBook).
 	std::string getVAlignAsXmlAttribute(idx_type cell) const;
 
 	/// Helpers for XML tables (XHTML or DocBook).

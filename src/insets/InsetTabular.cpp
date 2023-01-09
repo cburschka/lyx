@@ -3628,30 +3628,62 @@ std::string Tabular::getVAlignAsXmlAttribute(idx_type cell) const
 }
 
 
-std::string Tabular::getHAlignAsXmlAttribute(idx_type cell, const XmlOutputFormat output_format) const
+std::string Tabular::getVAlignAsCssAttribute(idx_type cell) const
+{
+	switch (getVAlignment(cell)) {
+	case LYX_VALIGN_TOP:
+		return "vertical-align: top";
+	case LYX_VALIGN_BOTTOM:
+		return "vertical-align: bottom";
+	case LYX_VALIGN_MIDDLE:
+		return "vertical-align: middle";
+	default:
+		// This case only silences a compiler warning, as all the cases are covered above.
+		return "";
+	}
+}
+
+
+std::string Tabular::getHAlignAsXmlAttribute(idx_type cell) const
 {
 	switch (getAlignment(cell)) {
 	case LYX_ALIGN_LEFT:
 		return "align='left'";
 	case LYX_ALIGN_RIGHT:
 		return "align='right'";
-
+	case LYX_ALIGN_BLOCK:
+		return "align='justify'";
+	case LYX_ALIGN_DECIMAL: {
+		Language const *lang = buffer().paragraphs().front().getParLanguage(buffer().params());
+		return "align='char' char='" + to_utf8(lang->decimalSeparator()) + "'";
+	}
 	default:
-		// HTML only supports left, right, and center.
-		if (output_format == XmlOutputFormat::XHTML)
-			return "align='center'";
-
-		// DocBook also has justify and decimal.
-		if (getAlignment(cell) == LYX_ALIGN_BLOCK) {
-			return "align='justify'";
-		} else if (getAlignment(cell) == LYX_ALIGN_DECIMAL) {
-			Language const *tlang = buffer().paragraphs().front().getParLanguage(buffer().params());
-			return "align='char' char='" + to_utf8(tlang->decimalSeparator()) + "'";
-		} else {
-			return "align='center'";
-		}
+		return "align='center'";
 	}
 }
+
+
+std::string Tabular::getHAlignAsCssAttribute(idx_type cell) const
+{
+	switch (getAlignment(cell)) {
+	case LYX_ALIGN_LEFT:
+		return "text-align: left";
+	case LYX_ALIGN_RIGHT:
+		return "text-align: right";
+	case LYX_ALIGN_BLOCK:
+		return "text-align: justify";
+	case LYX_ALIGN_DECIMAL: {
+		// In theory, character-level alignment is supported for CSS4, but it's
+		// experimental.
+		// https://www.w3.org/TR/css-text-4/#character-alignment
+		Language const *lang = buffer().paragraphs().front().getParLanguage(buffer().params());
+		return "text-align: '" + to_utf8(lang->decimalSeparator()) + "'";
+	}
+	default:
+		return "text-align: center";
+	}
+}
+
 
 Tabular::XmlRowWiseBorders Tabular::computeXmlBorders(row_type row) const
 {
@@ -3755,25 +3787,24 @@ docstring Tabular::xmlRow(XMLStream & xs, const row_type row, OutputParams const
 		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
 			continue;
 
-		stringstream attr;
-
-		if (is_xhtml_table) {
-			const std::vector<std::string> styles = computeCssStylePerCell(row, c, cell);
-			attr << "style='" ;
-	        for (auto it = styles.begin(); it != styles.end(); ++it) {
-				attr << *it;
-				if (it != styles.end() - 1)
-					attr << "; ";
-	        }
-			attr << "' ";
-		}
+		stringstream attr; // Tag-level attributes, both for HTML and CALS.
+		stringstream style; // Tag-level CSS, only for HTML tables output in HTML.
 
 		if (is_cals_table) {
 			if (!cals_row_has_rowsep && bottomLine(cell))
 				attr << "rowsep='1' ";
 		}
 
-		attr << getHAlignAsXmlAttribute(cell, output_format) << " " << getVAlignAsXmlAttribute(cell);
+		if (output_format == XmlOutputFormat::XHTML) {
+			// In HTML5, prefer to use CSS instead of attributes for alignment
+			// (align and valign).
+			style << getHAlignAsCssAttribute(cell) << " "
+			      << getVAlignAsCssAttribute(cell);
+		} else {
+			// In DocBook, both for HTML and CALS tables, stick to attributes.
+			attr << getHAlignAsXmlAttribute(cell) << " "
+			     << getVAlignAsXmlAttribute(cell);
+		}
 
 		if (is_xhtml_table) {
 			if (isMultiColumn(cell))
@@ -3789,8 +3820,24 @@ docstring Tabular::xmlRow(XMLStream & xs, const row_type row, OutputParams const
 				attr << " colname='c" << (c + 1) << "'"; // CALS column numbering starts at 1.
 		}
 
+		// Final step: prepend the CSS style.
+		std::string attr_str = attr.str();
+		if (is_xhtml_table) {
+			const std::vector<std::string> styles = computeCssStylePerCell(row, c, cell);
+
+			std::string attr_str_prefix = "style='" ;
+			for (auto it = styles.begin(); it != styles.end(); ++it) {
+				attr << *it;
+				if (it != styles.end() - 1)
+					attr_str_prefix += "; ";
+			}
+			attr_str_prefix += "' ";
+
+			attr_str.insert(0, attr_str_prefix);
+		}
+
 		// Render the cell as either XHTML or DocBook.
-		xs << xml::StartTag(cell_tag, attr.str(), true);
+		xs << xml::StartTag(cell_tag, attr_str, true);
 		if (output_format == XmlOutputFormat::XHTML) {
 			ret += cellInset(cell)->xhtml(xs, runparams);
 		} else if (output_format == XmlOutputFormat::DOCBOOK) {
