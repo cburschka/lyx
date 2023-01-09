@@ -74,8 +74,6 @@ void splitAndWrapInMText(MathMLStream & ms, MathData const & cell,
 		inset_contents = ostmp.str();
 	}
 
-	std::cout << '"' << to_ascii(inset_contents) << '"' << std::endl;
-
 	// No tags are allowed within <m:mtext>: split the string if there are tags.
 	std::vector<docstring> parts;
 	while (true) {
