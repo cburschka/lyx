@@ -11515,18 +11515,35 @@ Beamer
 
 \change_inserted 564990737 1671617655
 The document class 
+\change_deleted -712698321 1673255475
+
 \family sans
 presentation
 \begin_inset space \thinspace{}
 \end_inset
 
-(beamer)
+(b
+\change_inserted -712698321 1673255475
+B
+\change_inserted 564990737 1671617655
+eamer
+\change_deleted -712698321 1673255477
+)
+\change_inserted 564990737 1671617655
+
 \family default
  uses the 
 \family typewriter
 beamer.cls
 \family default
- document class for creating presentations.
+ 
+\change_deleted -712698321 1673255496
+document
+\change_inserted -712698321 1673255496
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1671617655
+ class for creating presentations.
  The file in the menu 
 \family sans
 \bar under
@@ -11549,7 +11566,17 @@ Template\SpecialChar menuseparator
 Presentations\SpecialChar menuseparator
 Beamer
 \family default
- offers guidance on its use.
+ 
+\change_inserted -712698321 1673257500
+or 
+\family sans
+Help\SpecialChar menuseparator
+Specific Manuals\SpecialChar menuseparator
+Beamer Presentations
+\family default
+ 
+\change_inserted 564990737 1671617655
+offers guidance on its use.
  The documentation is available from 
 \begin_inset CommandInset href
 LatexCommand href
@@ -11563,12 +11590,20 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -712698321 1673255766
 Foils [aka 
+\change_unchanged
+
 \family sans
 Foil\SpecialChar TeX
 
+\change_deleted -712698321 1673255767
+
 \family default
 ]
+\change_unchanged
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:foiltex"
@@ -11600,13 +11635,21 @@ Introduction
 
 \change_inserted 564990737 1672743396
 The document class 
+\change_deleted -712698321 1673255761
+
 \family sans
 presentation
 \begin_inset space \thinspace{}
 \end_inset
 
-(Foil\SpecialChar TeX
+(
+\change_inserted 564990737 1672743396
+Foil\SpecialChar TeX
+
+\change_deleted -712698321 1673255763
 )
+\change_inserted 564990737 1672743396
+
 \family default
  uses the 
 \family typewriter
@@ -11615,12 +11658,22 @@ foils.cls
  document class to make slides for overhead projectors.
  There are two document classes that can do this:
  the 
+\change_deleted -712698321 1673256124
+
 \family sans
 presentations
 \begin_inset space \thinspace{}
 \end_inset
 
-(slides)
+(s
+\change_inserted -712698321 1673256124
+S
+\change_inserted 564990737 1672743396
+lides
+\change_deleted -712698321 1673256130
+)
+\change_inserted 564990737 1672743396
+
 \family default
  document class (section
 \begin_inset space ~
@@ -11651,22 +11704,40 @@ Foil\SpecialChar TeX
  has not been maintained since 2008.
  This section documents the latter.
  If your machine doesn’t have the 
+\change_deleted -712698321 1673256264
+
 \family sans
 presentation
 \begin_inset space \thinspace{}
 \end_inset
 
-(Foil\SpecialChar TeX
+(
+\change_inserted 564990737 1672743396
+Foil\SpecialChar TeX
+
+\change_deleted -712698321 1673256265
 )
+\change_inserted 564990737 1672743396
+
 \family default
  document class installed,
  you’ll probably have to use the 
+\change_deleted -712698321 1673256271
+
 \family sans
 presentations
 \begin_inset space \thinspace{}
 \end_inset
 
-(slides)
+(s
+\change_inserted -712698321 1673256271
+S
+\change_inserted 564990737 1672743396
+lides
+\change_deleted -712698321 1673256273
+)
+\change_inserted 564990737 1672743396
+
 \family default
  document class.
  If you want to install the 
@@ -12171,8 +12242,15 @@ Supported Environments
 
 \begin_layout Standard
 Most of the environments commonly supported in other classes are also supported by the 
+\change_deleted -712698321 1673256683
+
 \family sans
 foils
+\change_inserted -712698321 1673256683
+Foil\SpecialChar TeX
+
+\change_unchanged
+
 \family default
  class.
  There are several additional environments provided by 
@@ -12247,7 +12325,15 @@ Quotation
 \begin_layout Itemize
 
 \family sans
-TitleAuthor
+Title
+\change_inserted -712698321 1673256734
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Author
 \end_layout
 
 \begin_layout Itemize
@@ -12608,9 +12694,18 @@ Abstract
 \family default
  environments,
  
+\change_deleted -712698321 1673256940
+
 \family sans
 foils
+\change_inserted -712698321 1673256940
+
+\lang ngerman
+FoilTeX
+\change_unchanged
+
 \family default
+\lang english
  creates the title on a page of its own.
  If you leave out the 
 \family sans
@@ -13219,9 +13314,18 @@ textwidth
 fancyheadings
 \family default
  package and the 
+\change_deleted -712698321 1673257120
+
 \family sans
 foils
+\change_inserted -712698321 1673257120
+
+\lang ngerman
+FoilTeX
+\change_unchanged
+
 \family default
+\lang english
  class.
 \end_layout
 
@@ -13235,18 +13339,35 @@ Powerdot
 
 \change_inserted 564990737 1671643165
 The document class 
+\change_deleted -712698321 1673257152
+
 \family sans
 presentation
 \begin_inset space \thinspace{}
 \end_inset
 
-(powerdot)
+(p
+\change_inserted -712698321 1673257152
+P
+\change_inserted 564990737 1671643165
+owerdot
+\change_deleted -712698321 1673257154
+)
+\change_inserted 564990737 1671643165
+
 \family default
  uses the 
 \family typewriter
 powerdot.cls
 \family default
- document class for creating presentations.
+ 
+\change_deleted -712698321 1673257280
+document
+\change_inserted -712698321 1673257280
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1671643165
+ class for creating presentations.
  
 \family sans
 File\SpecialChar menuseparator
@@ -13285,12 +13406,22 @@ Seminar
 
 \change_inserted 564990737 1671643194
 The document class 
+\change_deleted -712698321 1673257295
+
 \family sans
 presentations
 \begin_inset space \thinspace{}
 \end_inset
 
-(seminar)
+(s
+\change_inserted -712698321 1673257295
+S
+\change_inserted 564990737 1671643194
+eminar
+\change_deleted -712698321 1673257296
+)
+\change_inserted 564990737 1671643194
+
 \family default
  uses the 
 \family typewriter
@@ -13358,38 +13489,83 @@ This section describes how to use \SpecialChar LyX
  to make slides for overhead projectors.
  There are two document classes that can do this:
  the 
+\change_deleted -712698321 1673257697
+
 \family typewriter
 presentations
 \begin_inset space \thinspace{}
 \end_inset
 
-(slides)
+(s
+\change_inserted -712698321 1673257697
+
+\family sans
+S
+\change_inserted 564990737 1672743492
+lides
+\change_deleted -712698321 1673257698
+
+\family typewriter
+)
+\change_inserted 564990737 1672743492
+
 \family default
  document class and the 
+\change_deleted -712698321 1673257705
+
 \family sans
 presentation
 \begin_inset space \thinspace{}
 \end_inset
 
-(Foil\SpecialChar TeX
+(
+\change_inserted 564990737 1672743492
+Foil\SpecialChar TeX
+
+\change_deleted -712698321 1673257707
 )
+\change_inserted 564990737 1672743492
+
 \family default
  document class.
  This section documents the former.
  If you’re looking for the documentation for 
+\change_deleted -712698321 1673257759
+
 \family sans
 presentation
 \begin_inset space \thinspace{}
 \end_inset
 
-(Foil\SpecialChar TeX
+(
+\change_inserted 564990737 1672743492
+Foil\SpecialChar TeX
+
+\change_deleted -712698321 1673257760
 )
+\change_inserted 564990737 1672743492
+
 \family default
 ,
  check out section
 \begin_inset space ~
 \end_inset
 
+
+\change_inserted -712698321 1673257749
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:foiltex"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\change_deleted -712698321 1673257749
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -13398,8 +13574,20 @@ nolink "false"
 
 \end_inset
 
+
+\change_inserted 564990737 1672743492
 .
- As of 2023 the former has continued to be maintained whereas 
+ As of 2023 
+\change_deleted -712698321 1673257899
+the former
+\change_inserted -712698321 1673257899
+
+\family sans
+Slides
+\change_inserted 564990737 1672743492
+
+\family default
+ has continued to be maintained whereas 
 \family sans
 Foil\SpecialChar TeX
 
@@ -13615,8 +13803,18 @@ Obviously,
 \end_inset
 
 
+\change_deleted -712698321 1673257922
+
 \family sans
-slides (default)
+s
+\change_inserted -712698321 1673257922
+S
+\change_unchanged
+lides
+\change_deleted -712698321 1673257925
+ (default)
+\change_unchanged
+
 \family default
 
 \begin_inset Quotes erd
@@ -13638,8 +13836,14 @@ Sides and Columns
 \family default
 .
  They're not supported by the 
+\change_deleted -712698321 1673257960
+
 \family sans
-slides
+s
+\change_inserted -712698321 1673257960
+S
+\change_unchanged
+lides
 \family default
  class,
  anyways.
@@ -13694,8 +13898,14 @@ empty
 \end_deeper
 \begin_layout Itemize
 The 
+\change_deleted -712698321 1673257971
+
 \family sans
-slides
+s
+\change_inserted -712698321 1673257971
+S
+\change_unchanged
+lides
 \family default
  class has an extra option:
  
@@ -13805,8 +14015,14 @@ Supported Environments
 
 \begin_layout Standard
 The first thing you'll notice when you start up a new 
+\change_deleted -712698321 1673258063
+
 \family sans
-slides
+s
+\change_inserted -712698321 1673258063
+S
+\change_unchanged
+lides
 \family default
  document is the font size and type:
  it's the equivalent of the size 
@@ -13853,13 +14069,29 @@ The next thing that becomes obvious is the changes to the paragraph environment 
  Most of the paragraph environments you're used to seeing are missing.
  There are also five new ones.
  That's because the 
+\change_deleted -712698321 1673258093
+
 \family sans
-slides
+s
+\change_inserted -712698321 1673258093
+S
+\change_unchanged
+lides
 \family default
  class itself only supports certain paragraph environments:
 \end_layout
 
+\begin_layout Standard
+
+\change_inserted -712698321 1673258082
+
+\family sans
+\begin_inset Flex Multiple Columns
+status open
+
 \begin_layout Itemize
+
+\change_inserted -712698321 1673258082
 
 \family sans
 Standard
@@ -13867,11 +14099,15 @@ Standard
 
 \begin_layout Itemize
 
+\change_inserted -712698321 1673258082
+
 \family sans
 Itemize
 \end_layout
 
 \begin_layout Itemize
+
+\change_inserted -712698321 1673258082
 
 \family sans
 Enumerate
@@ -13879,11 +14115,15 @@ Enumerate
 
 \begin_layout Itemize
 
+\change_inserted -712698321 1673258082
+
 \family sans
 Description
 \end_layout
 
 \begin_layout Itemize
+
+\change_inserted -712698321 1673258082
 
 \family sans
 List
@@ -13891,11 +14131,15 @@ List
 
 \begin_layout Itemize
 
+\change_inserted -712698321 1673258082
+
 \family sans
 Quotation
 \end_layout
 
 \begin_layout Itemize
+
+\change_inserted -712698321 1673258082
 
 \family sans
 Quote
@@ -13903,11 +14147,15 @@ Quote
 
 \begin_layout Itemize
 
+\change_inserted -712698321 1673258082
+
 \family sans
 Verse
 \end_layout
 
 \begin_layout Itemize
+
+\change_inserted -712698321 1673258082
 
 \family sans
 Caption
@@ -13915,17 +14163,109 @@ Caption
 
 \begin_layout Itemize
 
+\change_inserted -712698321 1673258082
+
 \family sans
 \SpecialChar LyX
 -Code
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -712698321 1673258082
+Standard
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258082
+
+\family sans
+Itemize
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258082
+
+\family sans
+Enumerate
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258082
+
+\family sans
+Description
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258082
+
+\family sans
+List
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258082
+
+\family sans
+Quotation
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258082
+
+\family sans
+Quote
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258082
+
+\family sans
+Verse
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258082
+
+\family sans
+Caption
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258082
+
+\family sans
+\SpecialChar LyX
+-Code
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 All of the other standard environments,
  including the section-heading environments,
  aren't used in the 
+\change_deleted -712698321 1673258102
+
 \family sans
-slides
+s
+\change_inserted -712698321 1673258102
+S
+\change_unchanged
+lides
 \family default
  class.
 \end_layout
@@ -13935,7 +14275,17 @@ On the other hand,
  you'll notice the following new environments:
 \end_layout
 
+\begin_layout Standard
+
+\change_inserted -712698321 1673258111
+
+\family sans
+\begin_inset Flex Multiple Columns
+status open
+
 \begin_layout Itemize
+
+\change_inserted -712698321 1673258111
 
 \family sans
 Slide
@@ -13943,11 +14293,15 @@ Slide
 
 \begin_layout Itemize
 
+\change_inserted -712698321 1673258111
+
 \family sans
 Overlay
 \end_layout
 
 \begin_layout Itemize
+
+\change_inserted -712698321 1673258111
 
 \family sans
 Note
@@ -13955,14 +14309,72 @@ Note
 
 \begin_layout Itemize
 
+\change_inserted -712698321 1673258111
+
 \family sans
 InvisibleText
 \end_layout
 
 \begin_layout Itemize
 
+\change_inserted -712698321 1673258119
+
 \family sans
 VisibleText
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1673258133
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\change_deleted -712698321 1673258111
+Slide
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258111
+
+\family sans
+Overlay
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258111
+
+\family sans
+Note
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258111
+
+\family sans
+InvisibleText
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1673258111
+
+\family sans
+VisibleText
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -14166,6 +14578,8 @@ Return
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1673258321
 If,
  on the other hand,
  you don't want to enter any descriptive text,
@@ -14181,6 +14595,8 @@ If,
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1673258321
 Start entering the text that will 
 \emph on
 follow
@@ -14213,11 +14629,15 @@ VisibleText
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1673258321
 Now move to the beginning of that paragraph.
  
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1673258321
 Next,
  hit 
 \family sans
@@ -14228,6 +14648,8 @@ Return
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1673258321
 Finally,
  change this new,
  empty paragraph to a 
@@ -14258,10 +14680,14 @@ VisibleText
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1673258321
 Some future version of \SpecialChar LyX
  will,
  hopefully,
  resolve this quirkiness\SpecialChar ldots
+
+\change_unchanged
 
 \end_layout
 
@@ -14293,8 +14719,14 @@ If you're expecting this section to teach you how to actually make a presentatio
  you'll be sorely disappointed.
  Naturally,
  I'll describe all of the ways the 
+\change_deleted -712698321 1673258368
+
 \family sans
-slides
+s
+\change_inserted -712698321 1673258368
+S
+\change_unchanged
+lides
 \family default
  class can assist you in preparing the materials for a presentation.
  Filling in the contents,
@@ -14329,9 +14761,19 @@ nolink "false"
 ] tells \SpecialChar LyX
  to begin a new slide [duh].
  The label for this environment/
+\change_inserted -712698321 1673258390
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\change_deleted -712698321 1673258391
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_unchanged
 pseudo-command
 \begin_inset Quotes erd
 \end_inset
@@ -15608,11 +16050,23 @@ Sli\SpecialChar TeX
  It's here if you want it or need it.
  There exist other \SpecialChar LaTeX2e
  classes for creating presentations,
- such as the 
+ such 
+\change_deleted -712698321 1673258708
+as the 
+\change_unchanged
+
 \family sans
 Foils
 \family default
- class [see section
+ 
+\change_deleted -712698321 1673258709
+class 
+\change_inserted -712698321 1673258699
+(
+\change_deleted -712698321 1673258700
+[
+\change_unchanged
+see section
 \begin_inset space ~
 \end_inset
 
@@ -15624,7 +16078,15 @@ nolink "false"
 
 \end_inset
 
-] or the 
+
+\change_deleted -712698321 1673258703
+]
+\change_inserted -712698321 1673258705
+)
+\change_unchanged
+ or 
+\change_deleted -712698321 1673258714
+the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -15650,8 +16112,36 @@ Perhaps you can take on the task\SpecialChar ldots
 
 \end_inset
 
- I know nothing about these other classes.
- Try them out to see what sort of alternative they provide.
+
+\change_inserted -712698321 1673258738
+
+\family sans
+Seminar
+\family default
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Seminar"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+
+\change_unchanged
+ 
+\change_deleted -712698321 1673258749
+I know nothing about these other classes.
+ 
+\change_unchanged
+Try them out to see what sort of alternative they provide.
 \end_layout
 
 \begin_layout Section
