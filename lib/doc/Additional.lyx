@@ -10685,31 +10685,18 @@ It
 \change_inserted -712698321 1673186393
 The class
 \change_inserted 564990737 1671442175
- is designed for typesetting one or two recipes per page,
+ is designed for typesetting one or two recipes per page
+\change_deleted -712698321 1673199172
+,
  with dimensions of 5.5
 \begin_inset Quotes qrd
 \end_inset
 
-
-\change_deleted -712698321 1673185652
- 
-\change_inserted -712698321 1673185654
-
-\begin_inset Formula $\times$
-\end_inset
-
-
-\change_deleted -712698321 1673185660
-x 
-\change_inserted 564990737 1671442175
-8.5
+ x 8.5
 \begin_inset Quotes qrd
 \end_inset
 
 
-\change_inserted -712698321 1673186720
- (ideally on US letter paper,
- but A4 will work as well if the output is slightly downscaled)
 \change_inserted 564990737 1671442175
 .
  The hyperlinked table of contents (ToC) and page numbers make browsing recipes convenient
@@ -10720,41 +10707,17 @@ x
 
 \change_inserted 564990737 1671442175
  
-\change_deleted -712698321 1673186488
-and t
-\change_inserted -712698321 1673186489
-T
-\change_inserted 564990737 1671442175
-he pages can be joined together or printed 2 per page to 
-\change_deleted -712698321 1673186516
-normal
-\change_inserted 564990737 1671442175
- 
-\change_inserted -712698321 1673186529
-US 
-\change_inserted 564990737 1671442175
-letter
-\change_inserted -712698321 1673186520
- or A4 
-\change_inserted 564990737 1671442175
-paper easily.
+\change_deleted -712698321 1673199346
+and the pages can be joined together or printed 2 per page to normal letterpaper easily.
  The size was chosen to work in half-page 3-ring binder cover sheets,
  because un-laminated paper just doesn't last in the kitchen.
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671442175
+\change_deleted -712698321 1673199346
 The half-letter pages can be printed two per page using your printer driver,
  or bound together using 
-\change_inserted -712698321 1673186305
-
-\end_layout
-
-\begin_layout Quote
-
-\change_inserted 564990737 1671442175
-
 \family typewriter
 pdfjam --nup 2x1 --papersize '{11in,8.5in}'
 \family default
@@ -10762,15 +10725,7 @@ pdfjam --nup 2x1 --papersize '{11in,8.5in}'
 \family typewriter
 Recipes.pdf
 \family default
- 
-\change_inserted -712698321 1673186310
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 564990737 1671442175
-where 
+ where 
 \family typewriter
 Recipes.pdf
 \family default
@@ -11056,12 +11011,21 @@ Letters
 
 \change_inserted 564990737 1672652455
 See also the 
+\change_deleted -712698321 1673245882
+
 \family typewriter
 letter
 \begin_inset space \space{}
 \end_inset
 
 (KOMA-Script v.2)
+\change_inserted -712698321 1673245882
+
+\family sans
+KOMA-Script Letter (V.
+ 2)
+\change_inserted 564990737 1672652455
+
 \family default
  (section
 \begin_inset space ~
@@ -11076,12 +11040,20 @@ nolink "false"
 \end_inset
 
 ) and 
+\change_deleted -712698321 1673245908
+
 \family typewriter
 letter
 \begin_inset space \space{}
 \end_inset
 
 (with extra font sizes)
+\change_inserted -712698321 1673245908
+
+\family sans
+Letter (Standard Class with Extra Font Sizes)
+\change_inserted 564990737 1672652455
+
 \family default
  (section
 \begin_inset space ~
@@ -11101,7 +11073,13 @@ nolink "false"
 \begin_layout Subsection
 
 \change_inserted 564990737 1671041970
-Din-Brief
+D
+\change_deleted -712698321 1673246109
+in
+\change_inserted -712698321 1673246110
+IN
+\change_inserted 564990737 1671041970
+-Brief
 \end_layout
 
 \begin_layout Standard
@@ -11109,17 +11087,47 @@ Din-Brief
 \change_inserted 564990737 1671617528
 The document class 
 \family sans
-Din-Brief
+D
+\change_deleted -712698321 1673246116
+in
+\change_inserted -712698321 1673246116
+IN
+\change_inserted 564990737 1671617528
+-Brief
 \family default
- provides the 
+ provides 
+\change_inserted -712698321 1673246192
+support for 
+\change_inserted 564990737 1671617528
+the 
 \family typewriter
 dinbrief.cls
 \family default
- document class for writing letters according to the 
+ 
+\change_deleted -712698321 1673246242
+document
+\change_inserted -712698321 1673246242
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1671617528
+ class for writing letters according to the
+\change_inserted -712698321 1673246140
+ standards of the German Standards Institute (
+\change_deleted -712698321 1673246141
+ 
+\change_inserted 564990737 1671617528
+
 \emph on
 Deutsches Institut für Normung
+\change_inserted -712698321 1673246324
+,
+ DIN)
+\change_deleted -712698321 1673246131
+
 \emph default
- conventions.
+ conventions
+\change_inserted 564990737 1671617528
+.
  The file in the menu 
 \family sans
 \bar under
@@ -11157,8 +11165,16 @@ literal "false"
 
 \begin_layout Subsection
 
-\change_inserted 564990737 1672652499
+\change_deleted -712698321 1673246778
 frletter
+\change_inserted -712698321 1673246778
+French letter
+\begin_inset space \space{}
+\end_inset
+
+(frletter)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -11172,11 +11188,22 @@ French letter
 
 (frletter)
 \family default
- provides the 
+ provides 
+\change_inserted -712698321 1673246198
+support for 
+\change_inserted 564990737 1672652499
+the 
 \family typewriter
 frletter.cls
 \family default
- document class for writing letters according to French conventions.
+ 
+\change_deleted -712698321 1673246247
+document
+\change_inserted -712698321 1673246247
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1672652499
+ class for writing letters according to French conventions.
  The file in the menu 
 \family sans
 \bar under
@@ -11204,12 +11231,93 @@ French letter
 (frletter)
 \family default
  offers guidance on its use.
+\change_inserted -712698321 1673246876
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1673246876
+French letter
+\begin_inset space \space{}
+\end_inset
+
+(lettre)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1673246917
+The document class 
+\family sans
+French letter
+\begin_inset space \space{}
+\end_inset
+
+(lettre)
+\family default
+ provides support for 
+\family typewriter
+lettre.cls
+\family default
+,
+ another \SpecialChar LaTeX
+ class for writing letters,
+ but also faxes and envelopes,
+ in French.
+ The file in the menu 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar menuseparator
+New
+\begin_inset space ~
+\end_inset
+
+fro
+\bar under
+m
+\bar default
+
+\begin_inset space ~
+\end_inset
+
+Template\SpecialChar menuseparator
+Letters\SpecialChar menuseparator
+French letter
+\begin_inset space \space{}
+\end_inset
+
+(lettre)
+\family default
+ offers guidance on its use.
+ The documentation is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://mirrors.ctan.org/macros/latex/contrib/lettre/lettre.pdf"
+literal "false"
+
+\end_inset
+
+.
+\change_inserted 564990737 1672652499
+
 \end_layout
 
 \begin_layout Subsection
 
 \change_inserted 564990737 1672652499
 G-Brief
+\change_inserted -712698321 1673246804
+ (V.
+\begin_inset space \thinspace{}
+\end_inset
+
+2)
+\change_inserted 564990737 1672652499
+
 \end_layout
 
 \begin_layout Standard
@@ -11223,11 +11331,26 @@ G-Brief (V.
 
 2)
 \family default
- provides the newer 
+ provides 
+\change_inserted -712698321 1673246202
+support for 
+\change_inserted 564990737 1672652499
+the 
+\change_deleted -712698321 1673246498
+newer 
+\change_inserted 564990737 1672652499
+
 \family typewriter
 g-brief2.cls
 \family default
- document class for writing letters in German.
+ 
+\change_deleted -712698321 1673246249
+document
+\change_inserted -712698321 1673246249
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1672652499
+ class for writing letters in German.
  The file in the menu 
 \family sans
 \bar under
@@ -11269,13 +11392,13 @@ literal "false"
 
 \begin_layout Subsection
 
-\change_inserted 564990737 1671458835
+\change_deleted -712698321 1673246462
 letter
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671617591
+\change_deleted -712698321 1673246462
 The document class 
 \family sans
 letter
@@ -11308,17 +11431,19 @@ Letters\SpecialChar menuseparator
 Letter (Standard Class)
 \family default
  offers guidance on its use.
+\change_inserted 564990737 1671617591
+
 \end_layout
 
 \begin_layout Subsection
 
-\change_inserted 564990737 1672652527
+\change_deleted -712698321 1673246872
 lettre
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 564990737 1672652527
+\change_deleted -712698321 1673246872
 The document class 
 \family sans
 French letter
@@ -11370,6 +11495,8 @@ literal "false"
 \end_inset
 
 .
+\change_inserted 564990737 1672652527
+
 \end_layout
 
 \begin_layout Section
