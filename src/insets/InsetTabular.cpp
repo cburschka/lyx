@@ -3798,7 +3798,7 @@ docstring Tabular::xmlRow(XMLStream & xs, const row_type row, OutputParams const
 		if (output_format == XmlOutputFormat::XHTML) {
 			// In HTML5, prefer to use CSS instead of attributes for alignment
 			// (align and valign).
-			style << getHAlignAsCssAttribute(cell) << " "
+			style << getHAlignAsCssAttribute(cell) << "; "
 			      << getVAlignAsCssAttribute(cell);
 		} else {
 			// In DocBook, both for HTML and CALS tables, stick to attributes.
@@ -3825,9 +3825,11 @@ docstring Tabular::xmlRow(XMLStream & xs, const row_type row, OutputParams const
 		if (is_xhtml_table) {
 			const std::vector<std::string> styles = computeCssStylePerCell(row, c, cell);
 
-			std::string attr_str_prefix = "style='" ;
+			std::string attr_str_prefix = "style='" + style.str();
+			if (!styles.empty())
+				attr_str_prefix += "; ";
 			for (auto it = styles.begin(); it != styles.end(); ++it) {
-				attr << *it;
+				attr_str_prefix += *it;
 				if (it != styles.end() - 1)
 					attr_str_prefix += "; ";
 			}
