@@ -113,7 +113,7 @@ void splitAndWrapInMText(MathMLStream & ms, MathData const & cell,
 	// Finally, output the complete inset: escape the test in <m:mtext>, leave
 	// the other tags untouched.
 	ms << MTag("mrow", attributes);
-	for (int i = 0; i < parts.size(); i += 2) {
+	for (std::size_t i = 0; i < parts.size(); i += 2) {
 		ms << MTag("mtext")
 		   << parts[i]
 		   << ETag("mtext");
