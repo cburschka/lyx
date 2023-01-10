@@ -3677,7 +3677,7 @@ std::string Tabular::getHAlignAsCssAttribute(idx_type cell) const
 		// experimental.
 		// https://www.w3.org/TR/css-text-4/#character-alignment
 		Language const *lang = buffer().paragraphs().front().getParLanguage(buffer().params());
-		return "text-align: '" + to_utf8(lang->decimalSeparator()) + "'";
+		return "text-align: \"" + to_utf8(lang->decimalSeparator()) + "\"";
 	}
 	default:
 		return "text-align: center";
