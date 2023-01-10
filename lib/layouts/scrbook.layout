@@ -18,6 +18,7 @@ NoStyle Abstract
 Style Chapter
 	LabelString	"\thechapter"
 	TocLevel 0
+	HTMLTag               h2
 	DocBookTag            title
 	DocBookTagType        paragraph
 	DocBookSectionTag     chapter
@@ -36,8 +37,9 @@ Style Bibliography
 	TopSep		4
 	LabelString	"Bibliography"
 	LabelFont
-	  Series	Bold
-	  Size		Largest
+	  Series	    Bold
+	  Size		    Largest
 	EndFont
 	TocLevel        0
+	HTMLTag         h2
 End
