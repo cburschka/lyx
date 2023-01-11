@@ -33,7 +33,6 @@ validator = html5validator.Validator(format='text')
 error_count = validator.validate(xhtml_list)
 
 if error_count == 0:
-    print('> Found no validation error!')
     sys.exit(0)
 else:
     print('> Found a validation error!')
