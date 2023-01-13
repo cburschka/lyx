@@ -14,7 +14,7 @@
 # Where we will do our work
 BASE="/cvs/lyx/lyx-release";
 # Where our git repository lives
-SRCDIR="/cvs/lyx/lyx-stable";
+SRCDIR="/cvs/lyx/lyx-devel";
 # editor 
 if [ -z "$EDITOR" ]; then EDITOR=vi; fi
 
