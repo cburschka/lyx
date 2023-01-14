@@ -118,6 +118,7 @@ SOURCEFILES = \
 	GuiSendto.cpp \
 	GuiSetBorder.cpp \
 	GuiShowFile.cpp \
+	GuiSourceEdit.cpp \
 	GuiSpellchecker.cpp \
 	GuiSymbols.cpp \
 	GuiTabular.cpp \
@@ -232,6 +233,7 @@ MOCHEADER = \
 	GuiSendto.h \
 	GuiSetBorder.h \
 	GuiShowFile.h \
+	GuiSourceEdit.h \
 	GuiSpellchecker.h \
 	GuiSymbols.h \
 	GuiTabularCreate.h \

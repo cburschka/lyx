@@ -479,7 +479,7 @@ PreambleModule::PreambleModule(QWidget * parent)
 	// @ is letter in the LyX user preamble
 	(void) new LaTeXHighlighter(preambleTE->document(), true);
 	preambleTE->setFont(guiApp->typewriterSystemFont());
-	preambleTE->setWordWrapMode(QTextOption::NoWrap);
+	preambleTE->setCommentMarker("%");
 	setFocusProxy(preambleTE);
 	// Install event filter on find line edit to capture return/enter key
 	findLE->installEventFilter(this);
@@ -489,15 +489,6 @@ PreambleModule::PreambleModule(QWidget * parent)
 	connect(editPB, SIGNAL(clicked()), this, SLOT(editExternal()));
 	connect(findLE, SIGNAL(returnPressed()), this, SLOT(findText()));
 	checkFindButton();
-	int const tabStop = 4;
-	QFontMetrics metrics(preambleTE->currentFont());
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-	// horizontalAdvance() is available starting in 5.11.0
-	// setTabStopDistance() is available starting in 5.10.0
-	preambleTE->setTabStopDistance(tabStop * metrics.horizontalAdvance(' '));
-#else
-	preambleTE->setTabStopWidth(tabStop * metrics.width(' '));
-#endif
 }
 
 
@@ -627,20 +618,10 @@ LocalLayout::LocalLayout(QWidget * parent)
 	: UiWidget<Ui::LocalLayoutUi>(parent), current_id_(nullptr), validated_(false)
 {
 	locallayoutTE->setFont(guiApp->typewriterSystemFont());
-	locallayoutTE->setWordWrapMode(QTextOption::NoWrap);
 	connect(locallayoutTE, SIGNAL(textChanged()), this, SLOT(textChanged()));
 	connect(validatePB, SIGNAL(clicked()), this, SLOT(validatePressed()));
 	connect(convertPB, SIGNAL(clicked()), this, SLOT(convertPressed()));
 	connect(editPB, SIGNAL(clicked()), this, SLOT(editExternal()));
-	int const tabStop = 4;
-	QFontMetrics metrics(locallayoutTE->currentFont());
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-	// horizontalAdvance() is available starting in 5.11.0
-	// setTabStopDistance() is available starting in 5.10.0
-	locallayoutTE->setTabStopDistance(tabStop * metrics.horizontalAdvance(' '));
-#else
-	locallayoutTE->setTabStopWidth(tabStop * metrics.width(' '));
-#endif
 }
 
 
