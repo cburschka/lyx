@@ -185,6 +185,8 @@
 \newwrite{\layouts} \immediate\openout \layouts = textclass.lst.tmp
 \newwrite{\vars} \immediate\openout \vars = chkconfig.vars
 \newwrite{\packages} \immediate\openout \packages = packages.lst.tmp
+% Version of the packages list
+\immediate\write\packages{!!fileformat 2}
 
 \immediate\write\layouts{%
 # This file declares layouts and their associated definition files.^^J%

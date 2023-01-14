@@ -23,6 +23,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/Package.h"
 
 
 using namespace std;
@@ -51,6 +52,7 @@ void LaTeXPackages::getAvailable()
 	packages_.clear();
 
 	bool finished = false;
+	string lstformat = "1";
 	// Parse config-file
 	while (lex.isOK() && !finished) {
 		switch (lex.lex()) {
@@ -62,9 +64,19 @@ void LaTeXPackages::getAvailable()
 			// Parse optional version info
 			lex.eatLine();
 			string const v = trim(lex.getString());
+			if (p == "!!fileformat") {
+				lstformat = v;
+				continue;
+			}
 			packages_.insert(make_pair(p, v));
 		}
 		}
+	}
+	// Check if the pkglist has current format.
+	// Reconfigure and re-parse if not.
+	if (lstformat != "2") {
+		package().reconfigureUserLyXDir("");
+		getAvailable();
 	}
 }
 
