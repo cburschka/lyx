@@ -16158,7 +16158,11 @@ report
 
 \begin_layout Standard
 
-\change_inserted 564990737 1670439661
+\change_inserted -712698321 1673689969
+Report classes are sort of a hybrid between book and article classes:
+ like book classes,
+ they
+\change_deleted -712698321 1673689899
 The document class 
 \family sans
 report
@@ -16173,26 +16177,87 @@ report.cls
 book
 \family default
  document class,
- this provides parts,
- chapters and sections but does not provide the paragraph styles needed for a book;
- like the 
+ this
+\change_inserted 564990737 1670439661
+ provide
+\change_deleted -712698321 1673689904
+s
+\change_inserted 564990737 1670439661
+ parts,
+ chapters and sections but does not provide 
+\change_deleted -712698321 1673690062
+the paragraph styles needed for a book
+\change_inserted -712698321 1673690073
+frontmatter,
+ mainmatter,
+ and backmatter
+\change_inserted 564990737 1670439661
+;
+ like 
+\change_deleted -712698321 1673690088
+the 
 \family sans
 article
 \family default
- document class,
- it provides the abstract paragraph style.
+ document
+\change_inserted -712698321 1673690083
+article
+\change_inserted 564990737 1670439661
+ class
+\change_inserted -712698321 1673690085
+es
+\change_inserted 564990737 1670439661
+,
+ 
+\change_deleted -712698321 1673690094
+it
+\change_inserted -712698321 1673690094
+they
+\change_inserted 564990737 1670439661
+ provide
+\change_deleted -712698321 1673690097
+s
+\change_inserted 564990737 1670439661
+ 
+\change_deleted -712698321 1673690101
+the 
+\change_inserted 564990737 1670439661
+abstract paragraph style
+\change_inserted -712698321 1673690514
+s and are one-sided by default.
+ 
+\change_deleted -712698321 1673690134
+.
  In two-sided mode,
- it does not start a new chapter on the right hand page.
+ it does
+\change_inserted -712698321 1673690520
+Also,
+ they do
+\change_inserted 564990737 1670439661
+ not start a new chapter on the right hand page
+\change_inserted -712698321 1673690150
+ (even in two-side mode)
+\change_inserted 564990737 1670439661
+.
 \end_layout
 
 \begin_layout Standard
 
+\change_deleted -712698321 1673690173
+The remaining
+\change_inserted -712698321 1673690287
+All externally maintained
 \change_inserted 564990737 1672743528
-The remaining 
+ 
 \family sans
 report
 \family default
- document classes are described in the Collections (section
+ document classes 
+\change_inserted -712698321 1673690678
+that are officially supported by \SpecialChar LyX
+ 
+\change_inserted 564990737 1672743528
+are described in the Collections (section
 \begin_inset space ~
 \end_inset
 
@@ -16204,27 +16269,45 @@ nolink "false"
 
 \end_inset
 
-).
+)
+\change_inserted -712698321 1673690301
+:
+\change_deleted -712698321 1673690300
+.
+\change_inserted 564990737 1672743528
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \change_inserted 564990737 1672743530
 For 
+\change_deleted -712698321 1673690794
+
 \family sans
 report
 \begin_inset space \thinspace{}
 \end_inset
 
 (Japanese in vertical writing)
+\change_inserted -712698321 1673690794
+Japanese Report (Vertical Writing)
+\change_inserted 564990737 1672743530
+
 \family default
  and 
+\change_deleted -712698321 1673690762
+
 \family sans
 report
 \begin_inset space \thinspace{}
 \end_inset
 
 (Japanese)
+\change_inserted -712698321 1673690762
+Japanese Report (Standard Class)
+\change_inserted 564990737 1672743530
+
 \family default
 ,
  see section
@@ -16242,16 +16325,22 @@ nolink "false"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \change_inserted 564990737 1672743530
 For 
+\change_deleted -712698321 1673690718
+
 \family sans
 report
 \begin_inset space \thinspace{}
 \end_inset
 
 (KOMA-Script)
+\change_inserted -712698321 1673690718
+KOMA-Script Report
+\change_inserted 564990737 1672743530
+
 \family default
 ,
  see section
@@ -16269,16 +16358,22 @@ nolink "false"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \change_inserted 564990737 1672743530
 For 
+\change_deleted -712698321 1673690815
+
 \family sans
 report
 \begin_inset space \thinspace{}
 \end_inset
 
 (with extra font sizes)
+\change_inserted -712698321 1673690815
+Report (Standard Class with Extra Font Sizes)
+\change_inserted 564990737 1672743530
+
 \family default
 ,
  see section
@@ -16296,10 +16391,12 @@ nolink "false"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \change_inserted 564990737 1672743569
 For 
+\change_deleted -712698321 1673690833
+
 \family sans
 report
 \begin_inset space \thinspace{}
@@ -16310,6 +16407,10 @@ report
 \end_inset
 
 W.)
+\change_inserted -712698321 1673690833
+Polish Report (MW Bundle)
+\change_inserted 564990737 1672743569
+
 \family default
 ,
  see section
@@ -16333,7 +16434,28 @@ nolink "false"
 \begin_layout Section
 
 \change_inserted 564990737 1670439674
-Scripts (drama)
+Scripts
+\change_deleted -712698321 1673691106
+ (drama)
+\change_inserted -712698321 1673691108
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1673691276
+In the 
+\family sans
+Scripts
+\family default
+ category,
+ we assemble document classes that help to write drama or movie scripts.
+ The category is also open for other scripts,
+ such as lecture scripts,
+ for which no classes are officially supported yet by \SpecialChar LyX
+ though.
+\change_inserted 564990737 1670439674
+
 \end_layout
 
 \begin_layout Subsection
@@ -16351,8 +16473,31 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Broadway is for writing plays.
- The format is more decorative than Hollywood,
+
+\family sans
+Broadway
+\family default
+ is for writing plays.
+ The format is more decorative than 
+\family sans
+Hollywood
+\change_inserted -712698321 1673691568
+
+\family default
+ (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Hollywood"
+
+\end_inset
+
+)
+\change_unchanged
+,
  and much less standardized.
  This format should be suitable for workshops.
 \end_layout
@@ -16362,7 +16507,26 @@ Special problems
 \end_layout
 
 \begin_layout Standard
-The same as in Hollywood.
+The same as in 
+\family sans
+Hollywood
+\change_inserted -712698321 1673691609
+
+\family default
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Special-problems-Hollywood"
+
+\end_inset
+
+)
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -16396,7 +16560,11 @@ Environments
 
 \begin_layout Standard
 The following environments are available.
- You can use broadway.bind to get the bind keys shown at the right.
+ You can use 
+\family typewriter
+broadway.bind
+\family default
+ to get the bind keys shown at the right.
 \end_layout
 
 \begin_layout Itemize
@@ -16610,6 +16778,16 @@ Hello there.
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted -712698321 1673691551
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Hollywood"
+
+\end_inset
+
+
+\change_unchanged
 Hollywood (Hollywood spec scripts)
 \end_layout
 
@@ -16640,11 +16818,31 @@ rite of passage.
 \end_layout
 
 \begin_layout Subsubsection
+
+\change_inserted -712698321 1673691597
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Special-problems-Hollywood"
+
+\end_inset
+
+
+\change_unchanged
 Special problems
 \end_layout
 
 \begin_layout Standard
-Speakers' lines should NEVER break in mid-sentence.
+Speakers' lines should 
+\change_deleted -712698321 1673691805
+
+\emph on
+NEVER
+\change_inserted -712698321 1673691805
+never
+\change_unchanged
+
+\emph default
+ break in mid-sentence.
  If a speaker's lines continue over a page break,
  repeat the 
 \family sans
@@ -16685,7 +16883,11 @@ Environments
 
 \begin_layout Standard
 The following environments are available.
- You can use hollywood.bind to get the bind keys shown at the right.
+ You can use 
+\family typewriter
+hollywood.bind
+\family default
+ to get the bind keys shown at the right.
 \end_layout
 
 \begin_layout Itemize
