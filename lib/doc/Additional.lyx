@@ -17147,7 +17147,11 @@ Chemistry:
 \begin_layout Standard
 
 \change_inserted 564990737 1671716212
-This module provides two insets to typeset numbers and phrases of chemical hazard and precautionary statements.
+This module provides two insets 
+\change_inserted -712698321 1673779038
+and a paragraph style 
+\change_inserted 564990737 1671716212
+to typeset numbers and phrases of chemical hazard and precautionary statements.
  For a description see 
 \family sans
 File\SpecialChar menuseparator
@@ -17210,14 +17214,24 @@ Linguistics
 \begin_layout Standard
 
 \change_inserted 564990737 1671716212
-This module uses the 
+This module 
+\change_deleted -712698321 1673779847
+uses the 
 \family sans
 covington.sty
 \family default
- package to add environments useful for linguistics (numbered examples,
+ package to add
+\change_inserted -712698321 1673779869
+provides specific
+\change_inserted 564990737 1671716212
+ environments useful for linguistics (numbered examples,
  glosses,
  semantic markup,
- tableau floats).
+ 
+\change_inserted -712698321 1673779891
+OT 
+\change_inserted 564990737 1671716212
+tableau floats).
  You can obtain information about this module in 
 \family sans
 \bar under
@@ -17264,7 +17278,13 @@ Braille
 \begin_layout Standard
 
 \change_inserted 564990737 1671788778
-This module supports the Braille writing system.
+This module supports the Braille 
+\change_deleted -712698321 1673779995
+writing system
+\change_inserted -712698321 1673779996
+script
+\change_inserted 564990737 1671788778
+.
  It requires the \SpecialChar LaTeX
  package 
 \family typewriter
@@ -17281,8 +17301,12 @@ literal "false"
 \end_inset
 
 .
- You do not have to reconfigure your system after installing it.
- See 
+ 
+\change_deleted -712698321 1673780105
+You do not have to reconfigure your system after installing it.
+ 
+\change_inserted 564990737 1671788778
+See 
 \family sans
 \bar under
 H
@@ -17331,7 +17355,17 @@ FiXme Notes
 This module provides “FiXme” (marginal) annotations for document revision purposes.
  A list of annotations can be produced by using the “List of FIXMEs” paragraph style.
  The annotations are customizable via the LaTeX preamble.
- See the FiXme documentation which can be obtained from 
+ See the 
+\change_inserted -712698321 1673780478
+
+\family typewriter
+fix
+\change_deleted -712698321 1673780479
+FiX
+\change_inserted 564990737 1671788778
+me
+\family default
+ documentation which can be obtained from 
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
@@ -17395,7 +17429,11 @@ This module provides various kinds of annotations for PDF output.
 \family sans
 Help\SpecialChar menuseparator
 Specific Manuals\SpecialChar menuseparator
-PDF comments and File\SpecialChar menuseparator
+PDF comments 
+\family default
+and
+\family sans
+ File\SpecialChar menuseparator
 Open Example\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
 PDF Comments
@@ -17429,7 +17467,11 @@ literal "false"
 \family sans
 Help\SpecialChar menuseparator
 Specific Manuals\SpecialChar menuseparator
-PDF forms and File\SpecialChar menuseparator
+PDF forms 
+\family default
+and
+\family sans
+ File\SpecialChar menuseparator
 Open Example\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
 PDF Form
@@ -17450,7 +17492,43 @@ Ruby (Furigana)
 \change_inserted 564990737 1671788778
 This module defines an inset to typeset reading aids (ruby,
  furigana) to Chinese characters.
- It uses the “okumakro,” “luatexja-ruby” or “ruby” package (depending on the TeX engine) or a fallback definition.
+ It uses the 
+\change_deleted -712698321 1673781076
+“
+\change_inserted 564990737 1671788778
+
+\family typewriter
+okumakro
+\family default
+,
+\change_deleted -712698321 1673781078
+”
+\change_inserted 564990737 1671788778
+ 
+\change_deleted -712698321 1673781079
+“
+\change_inserted 564990737 1671788778
+
+\family typewriter
+luatexja-ruby
+\change_deleted -712698321 1673781080
+
+\family default
+”
+\change_inserted 564990737 1671788778
+ or 
+\change_deleted -712698321 1673781082
+“
+\change_inserted 564990737 1671788778
+
+\family typewriter
+ruby
+\change_deleted -712698321 1673781083
+
+\family default
+”
+\change_inserted 564990737 1671788778
+ package (depending on the TeX engine) or a fallback definition.
  
 \end_layout
 
@@ -17467,7 +17545,19 @@ TODO notes
 \change_inserted 564990737 1671788778
 This module provides custom insets to insert TODO items in your document.
  In order to generate a “List of TODOs,” the module provides a paragraph style.
- Inserting “final” in 
+ Inserting 
+\change_deleted -712698321 1673781223
+“
+\change_inserted 564990737 1671788778
+
+\family typewriter
+final
+\change_deleted -712698321 1673781224
+
+\family default
+”
+\change_inserted 564990737 1671788778
+ in 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -17497,15 +17587,33 @@ Bibliography
 \begin_layout Subsection
 
 \change_inserted 564990737 1671829045
-APA Style with NatBib
+APA Style with Nat
+\change_deleted -712698321 1673781454
+B
+\change_inserted -712698321 1673781454
+b
+\change_inserted 564990737 1671829045
+ib
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-This module adds support for using natbib together with apacite (the bibliography style need not be apacite —
- it could be apacite,
- apacitex,
+This module adds support for using natbib together with apacite (the bibliography style need not be 
+\family typewriter
+apacite
+\family default
+ —
+ it could be 
+\family typewriter
+apacite
+\family default
+,
+ 
+\family typewriter
+apacitex
+\family default
+,
  or any bibliography that works with both the natbib and apacite packages.) 
 \end_layout
 
@@ -17524,7 +17632,11 @@ Fancy Colored Boxes
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-This module adds ten custom insets that support colored boxes via the tcolorbox package.
+This module adds ten custom insets that support colored boxes via the 
+\family typewriter
+tcolorbox
+\family default
+ package.
  See 
 \family sans
 Help\SpecialChar menuseparator
@@ -17539,7 +17651,11 @@ Open Example\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
 Fancy Color Boxes
 \family default
- the 
+ 
+\change_inserted -712698321 1673854244
+and 
+\change_inserted 564990737 1671829045
+the 
 \begin_inset CommandInset href
 LatexCommand href
 name "tcolorbox documentation"
@@ -17703,7 +17819,13 @@ Great Western Railway
 \family sans
 Rotatebox
 \family default
- allows you to rotate text around the reference point of the box.
+ allows you to rotate 
+\change_deleted -712698321 1673856297
+text
+\change_inserted -712698321 1673856302
+its contents
+\change_inserted 564990737 1671829045
+ around the reference point of the box.
  If you wish to rotate the box around a different origin,
  place the cursor inside the box and select Insert\SpecialChar menuseparator
 Origin;
@@ -17903,7 +18025,13 @@ Great Western Railway
 \family sans
 Scalebox
 \family default
- scales text;
+ scales 
+\change_deleted -712698321 1673856306
+text
+\change_inserted -712698321 1673856308
+its contents
+\change_inserted 564990737 1671829045
+;
  select Insert\SpecialChar menuseparator
 V-Factor to add a vertical factor.
  If the vertical factor is omitted,
@@ -17964,7 +18092,25 @@ Great Western Railway
 \begin_layout Standard
 
 \change_inserted 564990737 1671829045
-A negative horizontal value reverses the text and a negative vertical value inverts it so that you get 
+A negative horizontal value reverses the text 
+\change_inserted -712698321 1673856686
+on the horizontal axis,
+ 
+\change_deleted -712698321 1673856688
+and 
+\change_inserted 564990737 1671829045
+a negative vertical value 
+\change_deleted -712698321 1673856694
+inverts
+\change_inserted -712698321 1673856702
+ on the vertical axis,
+
+\change_inserted 564990737 1671829045
+ 
+\change_deleted -712698321 1673856704
+it 
+\change_inserted 564990737 1671829045
+so that you get 
 \end_layout
 
 \begin_layout Standard
@@ -18091,12 +18237,12 @@ Insert\SpecialChar menuseparator
 Custom Inset
 \family default
  using the 
-\family sans
+\family typewriter
 varwidth
 \family default
  LaTeX package.
  The 
-\family sans
+\family typewriter
 varwidth
 \family default
  package provides a variable-width minipage,
@@ -18220,7 +18366,11 @@ fixltx2e
 \family default
  module is obsolete with newer \SpecialChar LaTeX
  distributions.
+
+\change_deleted -712698321 1673857809
  
+\change_inserted 564990737 1671884699
+
 \end_layout
 
 \begin_layout Subsection
@@ -18281,7 +18431,11 @@ maketitle
  is issued.
  This is useful for making branches and notes in title-related material.
  (However,
- if you put these in a Standard layout,
+ if you put these in a 
+\family sans
+Standard
+\family default
+ layout,
  this signals to LyX to output 
 \family typewriter
 
@@ -18342,17 +18496,32 @@ Caption
 
 setup
 \family default
- with which to typeset multilingual captions.
+ with which to typeset 
+\change_deleted -712698321 1673859156
+mult
+\change_inserted -712698321 1673859156
+b
+\change_inserted 564990737 1672081439
+ilingual captions.
  Within this paragraph style 
 \family sans
 Insert\SpecialChar menuseparator
 Language
 \family default
- allows you to enter the desired language using one of the babel names.
+ allows you to enter the desired 
+\change_inserted -712698321 1673859387
+second 
+\change_inserted 564990737 1672081439
+language using one of the babel names.
  See 
 \family sans
 File\SpecialChar menuseparator
 Open Example\SpecialChar menuseparator
+
+\change_inserted -712698321 1673859558
+Modules\SpecialChar menuseparator
+
+\change_inserted 564990737 1672081439
 Multilingual Captions
 \family default
  and 
@@ -18412,7 +18581,14 @@ This module adds an endnote inset,
 endnotes
 \family default
  package,
- which has some limitations but works with older LaTeX distributions as well.
+ which has some limitations but works with older 
+\change_deleted -712698321 1673861636
+LaTeX
+\change_inserted -712698321 1673861636
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1672081439
+ distributions as well.
  Use 
 \family sans
 Insert\SpecialChar menuseparator
@@ -18429,11 +18605,26 @@ Endnotes
  See also 
 \family sans
 Help\SpecialChar menuseparator
-Embedded\SpecialChar menuseparator
- Objects\SpecialChar menuseparator
+Embedded
+\change_deleted -712698321 1673861792
+\SpecialChar menuseparator
+
+\change_inserted 564990737 1672081439
+ Objects
+\change_deleted -712698321 1673861963
+\SpecialChar menuseparator
 Notes\SpecialChar menuseparator
 Footnotes
+\change_inserted -712698321 1673861963
+
 \family default
+,
+ section 
+\emph on
+4.2 Footnotes
+\change_inserted 564990737 1672081439
+
+\emph default
 .
 \end_layout
 
@@ -18457,7 +18648,21 @@ enotez
 endnotes
 \family default
  package,
- but requires a fairly modern LaTeX distribution (with LaTeX3).
+ but requires a fairly modern 
+\change_deleted -712698321 1673861643
+LaTeX
+\change_inserted -712698321 1673861643
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1672081439
+ distribution (with 
+\change_deleted -712698321 1673861645
+LaTeX
+\change_inserted -712698321 1673861645
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1672081439
+3).
  Use 
 \family sans
 Insert\SpecialChar menuseparator
@@ -18474,10 +18679,29 @@ Endnotes
  See also 
 \family sans
 Help\SpecialChar menuseparator
-Embedded\SpecialChar menuseparator
- Objects\SpecialChar menuseparator
+Embedded
+\change_deleted -712698321 1673861798
+\SpecialChar menuseparator
+
+\change_inserted 564990737 1672081439
+ Objects
+\change_inserted -712698321 1673861924
+
+\family default
+,
+ section 
+\emph on
+4.2 Footnotes
+\emph default
+.
+\change_deleted -712698321 1673861927
+
+\family sans
+\SpecialChar menuseparator
 Notes\SpecialChar menuseparator
 Footnotes
+\change_inserted 564990737 1672081439
+
 \family default
 .
 \end_layout
@@ -18497,7 +18721,14 @@ This module sets all footnotes as endnotes.
 endnotes
 \family default
  package,
- which has some limitations but works with older LaTeX distributions as well.
+ which has some limitations but works with older 
+\change_deleted -712698321 1673861650
+LaTeX
+\change_inserted -712698321 1673861650
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1672081439
+ distributions as well.
  Use 
 \family sans
 Insert\SpecialChar menuseparator
@@ -18508,11 +18739,26 @@ Endnotes
  See also 
 \family sans
 Help\SpecialChar menuseparator
-Embedded\SpecialChar menuseparator
- Objects\SpecialChar menuseparator
+Embedded
+\change_deleted -712698321 1673861805
+\SpecialChar menuseparator
+
+\change_inserted 564990737 1672081439
+ Objects
+\change_deleted -712698321 1673861947
+\SpecialChar menuseparator
 Notes\SpecialChar menuseparator
 Footnotes
+\change_inserted -712698321 1673861947
+
 \family default
+,
+ section 
+\emph on
+4.2 Footnotes
+\change_inserted 564990737 1672081439
+
+\emph default
 .
 \end_layout
 
@@ -18535,7 +18781,21 @@ enotez
 endnotes
 \family default
  package,
- but requires a fairly modern LaTeX distribution (with LaTeX3).
+ but requires a fairly modern 
+\change_deleted -712698321 1673861654
+LaTeX
+\change_inserted -712698321 1673861654
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1672081439
+ distribution (with 
+\change_deleted -712698321 1673861656
+LaTeX
+\change_inserted -712698321 1673861656
+\SpecialChar LaTeX
+
+\change_inserted 564990737 1672081439
+3).
  Use 
 \family sans
 Insert\SpecialChar menuseparator
@@ -18546,12 +18806,29 @@ Endnotes
  See also 
 \family sans
 Help\SpecialChar menuseparator
-Embedded\SpecialChar menuseparator
- Objects\SpecialChar menuseparator
+Embedded
+\change_deleted -712698321 1673861808
+\SpecialChar menuseparator
+
+\change_inserted 564990737 1672081439
+ Objects
+\change_deleted -712698321 1673861955
+\SpecialChar menuseparator
 Notes\SpecialChar menuseparator
 Footnotes
+\change_inserted -712698321 1673861989
+
 \family default
+,
+ section 
+\emph on
+4.2 Footnotes
+\emph default
 .
+\change_deleted -712698321 1673861956
+.
+\change_inserted 564990737 1672081439
+
 \end_layout
 
 \begin_layout Section
@@ -18642,7 +18919,11 @@ Rnw
 \begin_inset space \thinspace{}
 \end_inset
 
-(knitr) or Sweave
+(knitr) 
+\family default
+or
+\family sans
+ Sweave
 \family default
  have been loaded.
 \end_layout
@@ -18819,7 +19100,7 @@ alph
 
 \change_inserted 564990737 1672138150
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -19346,17 +19627,21 @@ To resume an enumeration,
 Enumerate-Resume
 \family default
 .
+
+\change_deleted -712698321 1673882803
  Its numbering appears in blue within \SpecialChar LyX
  to indicate that it is a resumed list and that the numbering will not be correct in \SpecialChar LyX
 ,
  but in the output.
+\change_inserted 564990737 1672138150
+
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672138150
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
