@@ -9837,12 +9837,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9855,6 +9857,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9878,6 +9881,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -57180,6 +57184,22 @@ nolink "false"
 ).
  This applies to newly created documents only.
  The compression status of existing documents is not changed when saving.
+\change_inserted 5863208 1673903118
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1673903357
+Apart from that LyX autosaves document in regular intervals.
+ It is used to restore unsaved changes in the document if the program crashes.
+ The temporary file name is 
+\family typewriter
+#<filename>.lyx#
+\family default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
