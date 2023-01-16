@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-01-16 08:34+0100\n"
-"PO-Revision-Date: 2023-01-16 09:19+0100\n"
+"POT-Creation-Date: 2023-01-16 16:59+0100\n"
+"PO-Revision-Date: 2023-01-16 17:00+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -483,7 +483,7 @@ msgstr "L&okalen hinzufügen..."
 #: lib/layouts/chessboard.module:139 lib/layouts/fixme.module:68
 #: lib/layouts/fixme.module:103 lib/layouts/fixme.module:146
 #: lib/layouts/fixme.module:188 lib/layouts/initials.module:35
-#: lib/layouts/lilypond.module:37 lib/layouts/litinsets.inc:46
+#: lib/layouts/lilypond.module:38 lib/layouts/litinsets.inc:46
 #: lib/layouts/litinsets.inc:47 lib/layouts/todonotes.module:79
 #: lib/layouts/todonotes.module:91 lib/layouts/todonotes.module:108
 msgid "Options"
@@ -6940,7 +6940,7 @@ msgstr "Abbildungsanmerkungen"
 #: lib/layouts/powerdot.layout:121 lib/layouts/powerdot.layout:434
 #: lib/layouts/powerdot.layout:456 lib/layouts/powerdot.layout:478
 #: lib/layouts/powerdot.layout:498 lib/layouts/revtex.layout:24
-#: lib/layouts/revtex4.layout:49 lib/layouts/rsphrase.module:44
+#: lib/layouts/revtex4.layout:49 lib/layouts/rsphrase.module:43
 #: lib/layouts/scrclass.inc:26 lib/layouts/scrclass.inc:374
 #: lib/layouts/scrlettr.layout:10 lib/layouts/scrlttr2.layout:20
 #: lib/layouts/siamltex.layout:38 lib/layouts/sigplanconf.layout:42
@@ -10719,12 +10719,12 @@ msgstr "Zweisprachige Legenden"
 
 #: lib/layouts/bicaption.module:7
 msgid ""
-"Provides two styles to typeset bilingual captions. For a description see the "
-"file MultilingualCaptions.lyx in LyX's examples folder."
+"Provides two styles to typeset bilingual captions. For a description see "
+"Help > Specific Manuals > Multilingual Captions."
 msgstr ""
 "Stellt zwei Stile zur Verfügung, mit denen zweisprachige Legenden gesetzt "
-"werden können. Die Verwendung ist in der Datei MultilingualCaptions.lyx "
-"dokumentiert, die Sie im Ordner \"examples\" finden."
+"werden können. Die Verwendung ist in unter Hilfe > Spezielle Handbücher > "
+"Mehrsprachige Legenden dokumentiert."
 
 #: lib/layouts/bicaption.module:11
 msgid "Caption setup"
@@ -10787,11 +10787,11 @@ msgstr "Barrierefreiheit"
 
 #: lib/layouts/braille.module:7
 msgid ""
-"Defines an environment to typeset Braille. For more details see Braille.lyx "
-"in examples."
+"Defines an environment to typeset Braille. For more details see Help > "
+"Specific Manuals > Braille."
 msgstr ""
 "Definiert eine Umgebung, um Braille zu schreiben. Mehr Details dazu sind in "
-"der Beispieldatei Braille.lyx zu finden."
+"Hilfe > Spezielle Handbücher > Braille zu finden."
 
 #: lib/layouts/braille.module:23
 msgid "Braille (default)"
@@ -11055,11 +11055,12 @@ msgstr "Freizeit, Sport und Musik"
 
 #: lib/layouts/chessboard.module:7
 msgid ""
-"Support for the chessboard package to print chess games See chessboard-"
-"article.lyx example file."
+"Support for the chessboard package to print chess games See File > Open "
+"Example > Articles > Chess where you will find Game 1 and Game 2."
 msgstr ""
 "Unterstützung für das Paket chessboard, mit dem man Schachpartien drucken "
-"kann. Bitte beachten Sie das Beispieldokument chessboard-article.lyx."
+"kann. Beispiele finden Sie unter Datei > Beispiel öffnen > Artikel > Schach, "
+"wo Sie Spiel 1 und Spiel 2 finden."
 
 #: lib/layouts/chessboard.module:16
 msgid "NewChessGame"
@@ -13725,12 +13726,12 @@ msgstr "Fachspezifisches"
 #: lib/layouts/hpstatement.module:8
 msgid ""
 "Provides two insets to typeset numbers and phrases of chemical hazard and "
-"precautionary statements. For a description see the file H-P-statements.lyx "
-"in LyX's examples folder."
+"precautionary statements. For a description see Help > Specific Manuals > "
+"Hazard and Precautionary Statements."
 msgstr ""
 "Stellt zwei Einfügungen und eine Umgebung für Nummern und Aussagen von H- "
-"und P-Sätzen zur Verfügung. Die Verwendung ist in der Datei H-P-statements."
-"lyx dokumentiert, die Sie im Ordner \"examples\" finden."
+"und P-Sätzen zur Verfügung. Die Verwendung ist in Hilfe > Spezielle "
+"Handbücher > H- und P-Sätze dokumentiert."
 
 #: lib/layouts/hpstatement.module:12 lib/layouts/hpstatement.module:17
 msgid "H-P number"
@@ -14404,25 +14405,26 @@ msgstr "P.S.:"
 msgid "LilyPond Music Notation"
 msgstr "LilyPond-Musiknotation"
 
-#: lib/layouts/lilypond.module:7
+#: lib/layouts/lilypond.module:8
 msgid ""
 "This module adds an inset to enter LilyPond code directly into LyX. It will "
-"be processed in the output. See the lilypond.lyx example file."
+"be processed in the output. For details, see Help > Specific Manuals > "
+"LilyPond."
 msgstr ""
 "Dieses Modul stellt eine Umgebung bereit, mit der man LilyPond-Code direkt "
 "in LyX eingeben kann. Der Code wird bei der Ausgabe umgewandelt. Beispiele "
-"zeigt die lilypond.lyx-Beispieldatei."
+"zeigt Hilfe > Spezielle Handbücher > LilyPond."
 
-#: lib/layouts/lilypond.module:14 lib/layouts/lilypond.module:15
+#: lib/layouts/lilypond.module:15 lib/layouts/lilypond.module:16
 #: lib/xtemplates/lilypond.xtemplate:14
 msgid "LilyPond"
 msgstr "LilyPond"
 
-#: lib/layouts/lilypond.module:38
+#: lib/layouts/lilypond.module:39
 msgid "LilyPond Options"
 msgstr "LilyPond-Optionen"
 
-#: lib/layouts/lilypond.module:39
+#: lib/layouts/lilypond.module:40
 msgid ""
 "A comma-separated option list (see the LilyPond documentation for available "
 "options)."
@@ -14438,12 +14440,13 @@ msgstr "Linguistik"
 #: lib/layouts/linguistics.module:8
 msgid ""
 "Defines some special environments useful for linguistics (numbered examples, "
-"glosses, semantic markup, tableau floats). See linguistics.lyx file in "
-"examples."
+"glosses, semantic markup, tableau floats). See Help > Specific Manuals > "
+"Linguistics."
 msgstr ""
 "Definiert spezielle Umgebungen, die für LinguistInnen nützlich sind "
 "(nummerierte Beispiele, Glossen, semantische Auszeichnungen, Gleitumgebungen "
-"für OT-Tableaus)."
+"für OT-Tableaus). Die Verwendung ist in Hilfe > Spezielle Handbücher > "
+"Linguistik dokumentiert."
 
 #: lib/layouts/linguistics.module:20
 msgid "(\\arabic{example})"
@@ -15655,12 +15658,12 @@ msgstr "PDF-Kommentare"
 #: lib/layouts/pdfcomment.module:8
 msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
-"the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
-"and the package documentation for details."
+"the pdfcomment package. Please consult Help > Specific Manuals > PDF "
+"comments and the package documentation for details."
 msgstr ""
 "Stellt verschiedene Formen von Annotationen für die PDF-Ausgabe bereit. Das "
 "Modul verwendet das Paket 'pdfcomments'. Bitte konsultieren Sie dessen "
-"Anleitung sowie die Beispieldatei 'PDF-comment.lyx' für Details."
+"Anleitung sowie Hilfe > Spezielle Handbücher > PDF-Kommentare für Details."
 
 #: lib/layouts/pdfcomment.module:20
 msgid "Define Avatar"
@@ -15862,12 +15865,13 @@ msgstr "PDF-Formular"
 #: lib/layouts/pdfform.module:8
 msgid ""
 "Provides fields and buttons for PDF forms. The module uses the LaTeX package "
-"hyperref. Please consult the LyX example file PDF-form.lyx and the "
+"hyperref. Please consult Help > Specific Manuals > PDF forms and the "
 "documentation of hyperref for details."
 msgstr ""
 "Stellt Felder und Schaltflächen zur Erzeugung von PDF-Formularen bereit. Das "
 "Modul verwendet das Paket 'hyperref'. Bitte konsultieren Sie dessen "
-"Anleitung sowie die LyX-Beispieldatei 'PDF-form.lyx' für weitere Hinweise."
+"Anleitung sowie Hilfe > Spezielle Handbücher > PDF-Formulare für weitere "
+"Hinweise."
 
 #: lib/layouts/pdfform.module:16 lib/layouts/pdfform.module:27
 msgid "Begin PDF Form"
@@ -16329,39 +16333,37 @@ msgstr "PACS-Nummer:"
 msgid "Chemistry: Risk and Safety Statements"
 msgstr "Chemie: R- und S-Sätze"
 
-#: lib/layouts/rsphrase.module:8
+#: lib/layouts/rsphrase.module:7
 msgid ""
 "Provides two insets and one environment to typeset numbers and phrases of "
-"chemical risk and safety statements. For a description see the file R-S-"
-"statements.lyx in LyX's examples folder."
+"chemical risk and safety statements."
 msgstr ""
 "Stellt zwei Einfügungen und eine Umgebung für Nummern und Aussagen von R- "
-"und S-Sätzen zur Verfügung. Die Verwendung ist in der Datei R-S-statements."
-"lyx dokumentiert, die Sie im Ordner \"examples\" finden."
+"und S-Sätzen zur Verfügung."
 
-#: lib/layouts/rsphrase.module:12 lib/layouts/rsphrase.module:17
+#: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
 msgid "R-S number"
 msgstr "R-S-Nummer"
 
-#: lib/layouts/rsphrase.module:34 lib/layouts/rsphrase.module:37
+#: lib/layouts/rsphrase.module:33 lib/layouts/rsphrase.module:36
 msgid "R-S phrase"
 msgstr "R-S-Satz"
 
-#: lib/layouts/rsphrase.module:40
+#: lib/layouts/rsphrase.module:39
 msgid "Safety phrase"
 msgstr "Sicherheitssatz"
 
-#: lib/layouts/rsphrase.module:47
+#: lib/layouts/rsphrase.module:46
 msgid "Phrase Text"
 msgstr "Satztext"
 
-#: lib/layouts/rsphrase.module:48
+#: lib/layouts/rsphrase.module:47
 msgid "Argument for statements that requires to specify additional information"
 msgstr ""
 "Argument für einen Satz, bei dem zusätzliche Informationen spezifiziert "
 "werden müssen"
 
-#: lib/layouts/rsphrase.module:61
+#: lib/layouts/rsphrase.module:60
 msgid "S phrase:"
 msgstr "S-Satz:"
 
@@ -17577,11 +17579,12 @@ msgstr "Sweave"
 #: lib/layouts/sweave.module:7
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
-"via the Sweave() function. For more info see the LyX example file sweave.lyx."
+"via the Sweave() function. For more info see Help > Specific Manuals > "
+"Sweave."
 msgstr ""
 "Erlaubt die Verwendung der statistischen Sprache S/R als literarischem "
 "Programmierwerkzeug mit Hilfe der Funktion Sweave(). Für weitere "
-"Informationen siehe die mitgelieferte Beispieldatei sweave.lyx."
+"Informationen siehe Hilfe > Spezielle Handbücher > Sweave."
 
 #: lib/layouts/sweave.module:77 lib/layouts/sweave.module:78
 msgid "Sweave Input File"
@@ -18584,16 +18587,16 @@ msgid ""
 "varwidth package provides a variable-width minipage, whose resulting width "
 "is the width of its contents (if this does not exceed the specified maximum "
 "width).  The inset has two optional arguments: vertical adjustment (c|t|b) "
-"and maximum width (defaults to \\linewidth).  See example in varwidth-floats-"
-"side-by-side.lyx."
+"and maximum width (defaults to \\linewidth).  For an example, see File > "
+"Open Example > Modules > Variable-width Minipages."
 msgstr ""
 "Diese Modul stellt eine Einfügung 'Minipage (var. Breite)' zur Verfügung, "
 "die das LaTeX-Paket varwidth verwendet. Dieses Paket bietet eine Minipage, "
 "deren Breite sich dynamisch dem Inhalt anpasst (bis hin zu einer "
 "festlegbaren Maximalbreite). Die Einfügung hat zwei optionale Argumente: "
 "Vertikale Ausrichtung (c [zentriert], t [oben] oder b [unten]) und maximale "
-"Breite (\\linewidth in der Voreinstellung). Eine Anwendung finden Sie im "
-"Beispieldokument varwidth-floats-side-by-side.lyx."
+"Breite (\\linewidth in der Voreinstellung). Eine Anwendung finden Sie unter "
+"Datei > Beispiel öffnen > Module > Breitenvariable Minipages."
 
 #: lib/layouts/varwidth.module:20
 msgid "Minipage (Var. Width)"
@@ -34995,9 +34998,8 @@ msgid "Document not loaded."
 msgstr "Dokument nicht geladen."
 
 #: src/frontends/qt/GuiView.cpp:2809
-#, fuzzy
 msgid "Select documents to open"
-msgstr "Wählen Sie das zu öffnende Dokument"
+msgstr "Wählen Sie die zu öffnenden Dokumente"
 
 #: src/frontends/qt/GuiView.cpp:2815
 msgid "LyX Document Backups (*.lyx~)"
