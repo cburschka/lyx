@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-01-09 09:44+0100\n"
-"PO-Revision-Date: 2023-01-09 10:41+0000\n"
+"POT-Creation-Date: 2023-01-18 10:21+0100\n"
+"PO-Revision-Date: 2023-01-18 10:00+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -10507,11 +10507,11 @@ msgstr "Dvoj-jazykové popisy"
 
 #: lib/layouts/bicaption.module:7
 msgid ""
-"Provides two styles to typeset bilingual captions. For a description see the "
-"file MultilingualCaptions.lyx in LyX's examples folder."
+"Provides two styles to typeset bilingual captions. For a description see "
+"Help > Specific Manuals > Multilingual Captions."
 msgstr ""
 "Poskytuje dva štýly na sádzanie dvoj-jazykových popisov. Pre vysvetlenie "
-"pozrite súbor MultilingualCaptions.lyx v adresári príkladov."
+"pozrite Pomocník->Špecifické manuály->Viac jazykové popisy."
 
 #: lib/layouts/bicaption.module:11
 msgid "Caption setup"
@@ -10574,11 +10574,11 @@ msgstr "Prístupnosť"
 
 #: lib/layouts/braille.module:7
 msgid ""
-"Defines an environment to typeset Braille. For more details see Braille.lyx "
-"in examples."
+"Defines an environment to typeset Braille. For more details see Help > "
+"Specific Manuals > Braille."
 msgstr ""
 "Definuje prostredie pre sadu Brailleho slepeckého písma. Detaily si obzri v "
-"súbore Braille.lyx v príkladoch."
+"Pomocník->Špecifické manuály->Braille."
 
 #: lib/layouts/braille.module:23
 msgid "Braille (default)"
@@ -10842,11 +10842,11 @@ msgstr "Zábava, šport a hudba"
 
 #: lib/layouts/chessboard.module:7
 msgid ""
-"Support for the chessboard package to print chess games See chessboard-"
-"article.lyx example file."
+"Support for the chessboard package to print chess games See File > Open "
+"Example > Articles > Chess where you will find Game 1 and Game 2."
 msgstr ""
-"Podpora balíka chessboard na tlač šachových hier. Viďte príkladný súbor "
-"chessboard-article.lyx."
+"Podpora balíka chessboard na tlač šachových hier. Viďte Súbor->Otvoriť "
+"príklad...->Články->Šach kde nájdete 'Hra 1' a 'Hra 2'."
 
 #: lib/layouts/chessboard.module:16
 msgid "NewChessGame"
@@ -13505,12 +13505,12 @@ msgstr "Odborové špecifikácie"
 #: lib/layouts/hpstatement.module:8
 msgid ""
 "Provides two insets to typeset numbers and phrases of chemical hazard and "
-"precautionary statements. For a description see the file H-P-statements.lyx "
-"in LyX's examples folder."
+"precautionary statements. For a description see Help > Specific Manuals > "
+"Hazard and Precautionary Statements."
 msgstr ""
 "Poskytuje dve vložky na sádzanie čísiel a zvratov pre chemické rizikové a "
-"bezpečnostné inštrukcie. Pre vysvetlenie pozrite súbor H-P-statements.lyx v "
-"adresári príkladov."
+"bezpečnostné inštrukcie. Pre vysvetlenie pozrite Pomocník->Špecifické "
+"manuály->Rizikové a Bezpečnostné Inštrukcie."
 
 #: lib/layouts/hpstatement.module:12 lib/layouts/hpstatement.module:17
 msgid "H-P number"
@@ -14181,13 +14181,15 @@ msgstr "P.S.:"
 msgid "LilyPond Music Notation"
 msgstr "LilyPond hudobné notácie"
 
-#: lib/layouts/lilypond.module:7
+#: lib/layouts/lilypond.module:8
 msgid ""
 "This module adds an inset to enter LilyPond code directly into LyX. It will "
-"be processed in the output. See the lilypond.lyx example file."
+"be processed in the output. For details, see Help > Specific Manuals > "
+"LilyPond."
 msgstr ""
 "Tento modul pridáva vložku na priamy vklad kódu LilyPond do LyXu. Bude "
-"spracovaný vo výstupe. Pozrite si príkladný súbor lilypond.lyx."
+"spracovaný vo výstupe. Pre detaily pozrite Pomocník->Špecifické manuály-"
+">LilyPond."
 
 #: lib/layouts/lilypond.module:14 lib/layouts/lilypond.module:15
 #: lib/xtemplates/lilypond.xtemplate:14
@@ -14214,12 +14216,12 @@ msgstr "Lingvistika"
 #: lib/layouts/linguistics.module:8
 msgid ""
 "Defines some special environments useful for linguistics (numbered examples, "
-"glosses, semantic markup, tableau floats). See linguistics.lyx file in "
-"examples."
+"glosses, semantic markup, tableau floats). See Help > Specific Manuals > "
+"Linguistics."
 msgstr ""
 "Definuje špeciálne prostredie užitočné pre lingvistiku (číslované príklady, "
-"glosy, sémantické štýly znakov (markup), plávajúce tabuľky). Pozrite na "
-"súbor linguistics.lyx v príkladoch."
+"glosy, sémantické štýly znakov (markup), plávajúce tabuľky). Pozrite "
+"Pomocník->špecifické manuály->Lingvistika."
 
 #: lib/layouts/linguistics.module:20
 msgid "(\\arabic{example})"
@@ -15429,12 +15431,12 @@ msgstr "PDF-komentáre"
 #: lib/layouts/pdfcomment.module:8
 msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
-"the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
-"and the package documentation for details."
+"the pdfcomment package. Please consult Help > Specific Manuals > PDF "
+"comments and the package documentation for details."
 msgstr ""
 "Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
-"pdfcomment. Pre detaily si pozrite aj príkladný LyX-súbor\n"
-"PDF-comment.lyx a dokumentáciu balíka."
+"pdfcomment. Pre detaily si pozrite Pomocník->špecifické manuály->PDF "
+"komentáre a dokumentáciu balíka."
 
 #: lib/layouts/pdfcomment.module:20
 msgid "Define Avatar"
@@ -15636,12 +15638,12 @@ msgstr "PDF Form"
 #: lib/layouts/pdfform.module:8
 msgid ""
 "Provides fields and buttons for PDF forms. The module uses the LaTeX package "
-"hyperref. Please consult the LyX example file PDF-form.lyx and the "
+"hyperref. Please consult Help > Specific Manuals > PDF forms and the "
 "documentation of hyperref for details."
 msgstr ""
 "Poskytuje plochy a tlačidlá pre PDF forms. Tento modul používa balík "
-"hyperref. Pre detaily si pozrite aj príkladný LyX-súbor\n"
-"PDF-form.lyx a dokumentáciu balíka hyperref."
+"hyperref. Pre detaily si pozrite Pomocník->špecifické manuály->PDF forms a "
+"dokumentáciu balíka hyperref."
 
 #: lib/layouts/pdfform.module:16 lib/layouts/pdfform.module:27
 msgid "Begin PDF Form"
@@ -16100,15 +16102,13 @@ msgstr "PACS-číslo:"
 msgid "Chemistry: Risk and Safety Statements"
 msgstr "Chémia: Rizikové a poistné uzávierky"
 
-#: lib/layouts/rsphrase.module:8
+#: lib/layouts/rsphrase.module:7
 msgid ""
 "Provides two insets and one environment to typeset numbers and phrases of "
-"chemical risk and safety statements. For a description see the file R-S-"
-"statements.lyx in LyX's examples folder."
+"chemical risk and safety statements."
 msgstr ""
 "Poskytuje dve vložky a jedno prostredie na sádzanie čísiel a zvratov pre "
-"poistné a rizikové uzávierky v chémii. Pre vysvetlenie pozrite súbor R-S-"
-"statements.lyx v adresári príkladov."
+"poistné a rizikové uzávierky v Rizikové a Bezpečnostné Inštrukcie."
 
 #: lib/layouts/rsphrase.module:12 lib/layouts/rsphrase.module:17
 msgid "R-S number"
@@ -16141,8 +16141,8 @@ msgstr "Ruby (Furigana)"
 #: lib/layouts/ruby.module:8
 msgid ""
 "Defines an inset to typeset reading aids (ruby, furigana) to Chinese "
-"characters. Uses the okumakro, luatexja-ruby, or ruby package (depending on "
-"the TeX engine) or a fallback definition."
+"characters. Uses the 'okumakro', 'luatexja-ruby', or 'ruby' package "
+"(depending on the TeX engine) or a fallback definition."
 msgstr ""
 "Definuje vložku na vklad čínskych/japonských písmen. Vkladá pomôcky na "
 "čítanie (ruby, furigana). Použije okumakro, luatexja-ruby, alebo balík ruby "
@@ -17326,11 +17326,12 @@ msgstr "Sweave"
 #: lib/layouts/sweave.module:7
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
-"via the Sweave() function. For more info see the LyX example file sweave.lyx."
+"via the Sweave() function. For more info see Help > Specific Manuals > "
+"Sweave."
 msgstr ""
 "Umožňuje použiť štatistický jazyk S/R ako nástroj pre dokumentačné "
 "programovanie cez funkciu z balíka Sweave(). Pre viac informácie pozrite "
-"príkladný súbor sweave.lyx."
+"Pomocník->Špecifické manuály->Sweave."
 
 #: lib/layouts/sweave.module:77 lib/layouts/sweave.module:78
 msgid "Sweave Input File"
@@ -18327,15 +18328,15 @@ msgid ""
 "varwidth package provides a variable-width minipage, whose resulting width "
 "is the width of its contents (if this does not exceed the specified maximum "
 "width).  The inset has two optional arguments: vertical adjustment (c|t|b) "
-"and maximum width (defaults to \\linewidth).  See example in varwidth-floats-"
-"side-by-side.lyx."
+"and maximum width (defaults to \\linewidth).  For an example, see File > "
+"Open Example > Modules > Variable-width Minipages."
 msgstr ""
 "Pridá vložku 'Minipage (Var. šírka)' použijúc LaTeX balík varwidth. Balík "
 "varwidth poskytuje minipage s variabilnou šírkou, rezultuje v šírke jej "
 "obsahu (kým to nepresahuje stanovenú maximálnu šírku).  Vložka má dva "
 "voliteľné argumenty: vertikálna úprava (c [stred],t [hore],b [dole]) a "
-"maximálna šírka (štandardne \\linewidth). Viďte príklad v varwidth-floats-"
-"side-by-side.lyx."
+"maximálna šírka (štandardne \\linewidth). Viďte príklad v Súbor->Otvoriť "
+"príklad...->Moduly->Variabilná šírka pre minipage."
 
 #: lib/layouts/varwidth.module:20
 msgid "Minipage (Var. Width)"
@@ -34540,9 +34541,9 @@ msgstr "Stupeň lupy nesmie byť vyšší ako %1$d%."
 msgid "Document not loaded."
 msgstr "Dokument nie je nahraný."
 
-#: src/frontends/qt/GuiView.cpp:2485
-msgid "Select document to open"
-msgstr "Vyberte dokument pre otvorenie"
+#: src/frontends/qt/GuiView.cpp:2809
+msgid "Select documents to open"
+msgstr "Vyberte dokumenty pre otvorenie"
 
 #: src/frontends/qt/GuiView.cpp:2615
 msgid "LyX Document Backups (*.lyx~)"
