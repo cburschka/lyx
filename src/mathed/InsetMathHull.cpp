@@ -2648,6 +2648,7 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 				xs << xml::CR();
 			xs << xml::EndTag("math") << xml::CR();
 		}
+		// In case of failure, generate an image.
 	} else if (mathtype == BufferParams::HTML) {
 		odocstringstream os;
 		HtmlStream ms(os);
@@ -2662,6 +2663,7 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 			   << os.str()
 			   << xml::EndTag(tag);
 		}
+		// In case of failure, generate an image.
 	}
 
 	// what we actually want is this:
@@ -2676,7 +2678,7 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 	//
 	// so this is for Images.
 	if (!success && mathtype != BufferParams::LaTeX) {
-		graphics::PreviewImage const * pimage = 0;
+		graphics::PreviewImage const * pimage = nullptr;
 		if (!op.dryrun) {
 			loadPreview(docit_);
 			pimage = preview_->getPreviewImage(buffer());
