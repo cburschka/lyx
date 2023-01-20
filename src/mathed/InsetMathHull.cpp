@@ -2632,15 +2632,21 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 			success = true;
 		} catch (MathExportException const &) {}
 		if (success) {
+			string const name_space_declaration = "xmlns='http://www.w3.org/1998/Math/MathML'";
 			if (getType() == hullSimple)
-				xs << xml::StartTag("math",
-							"xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
-			else
-				xs << xml::StartTag("math",
-				      "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
+			    xs << xml::StartTag("math", name_space_declaration, true);
+			else {
+	            if (!xs.isLastTagCR())
+	                 xs << xml::CR();
+	            xs << xml::StartTag("math", name_space_declaration + " display='block'", true);
+		    }
+
 			xs << XMLStream::ESCAPE_NONE
-				 << os.str()
-				 << xml::EndTag("math");
+			   << os.str();
+
+			if (!xs.isLastTagCR())
+				xs << xml::CR();
+			xs << xml::EndTag("math") << xml::CR();
 		}
 	} else if (mathtype == BufferParams::HTML) {
 		odocstringstream os;
