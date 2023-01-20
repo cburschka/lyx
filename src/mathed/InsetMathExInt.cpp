@@ -153,11 +153,11 @@ void InsetMathExInt::mathmlize(MathMLStream & ms) const
 		ms << ETag("msup");
 	ms << cell(0)
 	   << "<" << from_ascii(ms.namespacedTag("mo")) << "> "
-	   << " &InvisibleTimes; "
+	   << " &#8290; "
        << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
 	   << MTag("mrow")
 	   << "<" << from_ascii(ms.namespacedTag("mo")) << "> "
-	   << " &DifferentialD; "
+	   << " &#8518; "
 	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
 	   << cell(1)
 	   << ETag("mrow");
