@@ -258,8 +258,6 @@ void InsetMathChar::mathmlize(MathMLStream & ms) const
 	char const * type =
 		(isAlphaASCII(char_) || Encodings::isMathAlpha(char_))
 			? "mi" : "mo";
-	// we don't use MTag and ETag because we do not want the spacing before the end tag.
-	docstring tag = from_ascii(ms.namespacedTag(type));
 	ms << MTagInline(type)
 	   << char_type(char_)
 	   << ETagInline(type);
