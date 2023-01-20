@@ -1306,9 +1306,7 @@ void InsetMathMacro::mathmlize(MathMLStream & ms) const
 		docstring const xmlname = d->macro_->xmlname();
 		if (!xmlname.empty()) {
 			char const * type = d->macro_->MathMLtype();
-			ms << "<" << from_ascii(ms.namespacedTag(type)) << ">"
-			   << xmlname
-			   << "</" << from_ascii(ms.namespacedTag(type)) << ">";
+			ms << MTagInline(type) << xmlname << ETagInline(type);
 			return;
 		}
 	}

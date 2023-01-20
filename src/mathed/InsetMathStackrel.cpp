@@ -144,13 +144,13 @@ void InsetMathStackrel::normalize(NormalStream & os) const
 void InsetMathStackrel::mathmlize(MathMLStream & ms) const
 {
 	if (nargs() > 2)
-		ms << "<" << from_ascii(ms.namespacedTag("munderover")) << ">"
+		ms << MTag("munderover")
 		   << cell(0) << cell(2) << cell(1)
-		   << "</" << from_ascii(ms.namespacedTag("munderover")) << ">";
+		   << ETag("munderover");
 	else
-		ms << "<" << from_ascii(ms.namespacedTag("mover")) << " accent='false'>"
+		ms << MTag("mover", "accent='false'>")
 		   << cell(0) << cell(1)
-		   << "</" << from_ascii(ms.namespacedTag("mover")) << ">";
+		   << ETag("mover");
 }
 
 

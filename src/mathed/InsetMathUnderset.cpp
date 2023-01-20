@@ -94,18 +94,18 @@ void InsetMathUnderset::normalize(NormalStream & os) const
 
 void InsetMathUnderset::mathmlize(MathMLStream & ms) const
 {
-	ms << "<" << from_ascii(ms.namespacedTag("munder")) << " accent='false'>"
+	ms << MTag("munder", "accent='false'")
 	   << cell(0) << cell(1)
-	   << "</" << from_ascii(ms.namespacedTag("munder")) << ">";
+	   << ETag("munder");
 }
 
 
 void InsetMathUnderset::htmlize(HtmlStream & os) const
 {
 	os << MTag("span", "class='underset'")
-		 << MTag("span") << cell(1) << ETag("span")
-		 << MTag("span", "class='bottom'") << cell(0) << ETag("span")
-		 << ETag("span");
+	   << MTag("span") << cell(1) << ETag("span")
+	   << MTag("span", "class='bottom'") << cell(0) << ETag("span")
+	   << ETag("span");
 }
 
 

@@ -94,9 +94,10 @@ void InsetMathMatrix::mathematica(MathematicaStream & os) const
 
 void InsetMathMatrix::mathmlize(MathMLStream & ms) const
 {
-	ms << "<" << from_ascii(ms.namespacedTag("mo")) << " form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
+	// lspace='3/18em', but fractions are not allowed.
+	ms << MTagInline("mo", "form='prefix' fence='true' stretchy='true' symmetric='true' lspace='0.1666em'")
 	   << convertDelimToXMLEscape(left_)
-	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << ETagInline("mo")
 	   << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
 		ms << MTag("mtr");
@@ -113,9 +114,9 @@ void InsetMathMatrix::mathmlize(MathMLStream & ms) const
 		ms << ETag("mtr");
 	}
 	ms << ETag("mtable")
-	   << "<" << from_ascii(ms.namespacedTag("mo")) << " form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
+	   << MTagInline("mo", "form='postfix' fence='true' stretchy='true' symmetric='true' lspace='0.1666em'")
 	   << convertDelimToXMLEscape(right_)
-	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">";
+	   << ETagInline("mo");
 }
 
 

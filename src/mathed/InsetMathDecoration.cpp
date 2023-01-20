@@ -246,9 +246,9 @@ void InsetMathDecoration::mathmlize(MathMLStream & ms) const
 	std::string decoration = cur->second.entity;
 	ms << MTag(outag)
 	   << cell(0)
-	   << "<" << from_ascii(ms.namespacedTag("mo")) << " stretchy=\"true\">"
+	   << MTagInline("mo", "stretchy='true'")
 	   << from_ascii(decoration)
-	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << ETagInline("mo")
 	   << ETag(outag);
 }
 

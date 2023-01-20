@@ -394,25 +394,25 @@ void InsetMathSideset::mathmlize(MathMLStream & ms) const
 		ms << MTag("mmultiscripts");
 
 		if (nuc().empty())
-			ms << "<" << from_ascii(ms.namespacedTag("mrow")) << " />";
+			ms << CTag("mrow");
 		else
 			ms << MTag("mrow") << nuc() << ETag("mrow");
 
 		if (br().empty() || !scriptr_)
-			ms << "<" << from_ascii(ms.namespacedTag("none")) << " />";
+			ms << CTag("none");
 		else
 			ms << MTag("mrow") << br() << ETag("mrow");
 		if (tr().empty() || !scriptr_)
-			ms << "<" << from_ascii(ms.namespacedTag("none")) << " />";
+			ms << CTag("none");
 		else
 			ms << MTag("mrow") << tr() << ETag("mrow");
 
 		if (bl().empty() || !scriptl_)
-			ms << "<" << from_ascii(ms.namespacedTag("none")) << " />";
+			ms << CTag("none");
 		else
 			ms << MTag("mrow") << bl() << ETag("mrow");
 		if (tl().empty() || !scriptl_)
-			ms << "<" << from_ascii(ms.namespacedTag("none")) << " />";
+			ms << CTag("none");
 		else
 			ms << MTag("mrow") << tl() << ETag("mrow");
 

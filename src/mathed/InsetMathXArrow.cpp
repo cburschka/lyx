@@ -119,10 +119,10 @@ docstring map_latex_to(docstring latex)
 void InsetMathXArrow::mathmlize(MathMLStream & ms) const
 {
 	docstring arrow = map_latex_to(name_);
-	ms << "<" << from_ascii(ms.namespacedTag("munderover")) << " accent='false' accentunder='false'>"
+	ms << MTag("munderover", "accent='false' accentunder='false'")
 	   << MTagInline("mo") << arrow << ETagInline("mo")
 	   << cell(1) << cell(0)
-	   << "</" << from_ascii(ms.namespacedTag("munderover"))<< ">";
+	   << ETag("munderover");
 }
 
 

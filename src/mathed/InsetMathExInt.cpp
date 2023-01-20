@@ -152,13 +152,9 @@ void InsetMathExInt::mathmlize(MathMLStream & ms) const
 	else if (upper)
 		ms << ETag("msup");
 	ms << cell(0)
-	   << "<" << from_ascii(ms.namespacedTag("mo")) << "> "
-	   << " &#8290; "
-       << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << MTagInline("mo") << "&#8290;" << ETagInline("mo") // &InvisibleTimes;
 	   << MTag("mrow")
-	   << "<" << from_ascii(ms.namespacedTag("mo")) << "> "
-	   << " &#8518; "
-	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << MTagInline("mo") << "&#8518;" << ETagInline("mo") // &DifferentialD;
 	   << cell(1)
 	   << ETag("mrow");
 }

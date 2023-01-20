@@ -160,14 +160,13 @@ void InsetMathSymbol::mathmlize(MathMLStream & ms) const
 {
 	// FIXME We may need to do more interesting things
 	// with MathMLtype.
-	docstring tag = from_ascii(ms.namespacedTag(sym_->MathMLtype()));
-	ms << '<' << tag << ">";
+	ms << MTagInline(sym_->MathMLtype());
 	if (sym_->xmlname == "x")
 		// unknown so far
 		ms << name();
 	else
 		ms << sym_->xmlname;
-	ms << "</" << tag << '>';
+	ms << ETagInline(sym_->MathMLtype());
 }
 
 

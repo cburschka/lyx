@@ -105,9 +105,9 @@ void InsetMathOverset::normalize(NormalStream & os) const
 
 void InsetMathOverset::mathmlize(MathMLStream & ms) const
 {
-	ms << "<" << from_ascii(ms.namespacedTag("mover")) << " accent='false'>"
+	ms << MTag("mover", "accent='false'")
 	   << cell(0) << cell(1)
-	   << "</" << from_ascii(ms.namespacedTag("mover")) << ">";
+	   << ETag("mover");
 }
 
 
