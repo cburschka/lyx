@@ -506,8 +506,8 @@ void InsetMathFrac::mathmlize(MathMLStream & ms) const
 	switch (kind_) {
 	case ATOP:
 		ms << MTag("mfrac", "linethickness='0'")
-		   << MTag("mrow") << cell(0) << ETag("mrow")
-		   << MTag("mrow") << cell(1) << ETag("mrow")
+		   << cell(0)
+		   << cell(1)
 		   << ETag("mfrac");
 		break;
 
