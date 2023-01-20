@@ -9946,12 +9946,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9964,6 +9966,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9996,6 +9999,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -35279,6 +35283,13 @@ Ordre des entrées
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Ordre-des-entrées"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35947,7 +35958,7 @@ Ensuite,
 \family default
 .
  Cette action explorera tout le document (uniquement le document isolé,
- pas le document maître ou les sous-documents) et insérera une copie de cet index après chaque occurrence du mot précédant l'insert.
+ pas le doument maître ou les sous-documents) et insérera une copie de cet index après chaque occurrence du mot précédant l'insert.
  Notez que la casse n'a pas d'importance,
  mais que les seuls mots entiers sous la même forme grammaticale sont concernés (ainsi si 
 \emph on
@@ -36015,12 +36026,12 @@ xindy
  \SpecialChar LyX
  l'utilise implicitement
 \lang english
- (the 
+ (la variante 
 \family sans
 texindy
 \family default
- variant of it,
- for that matter)
+,
+ pour autant que ça importe)
 \lang french
 ,
  sinon il utilise le programme 
@@ -36045,57 +36056,62 @@ makeindex
 \begin_layout Itemize
 
 \family sans
-\lang english
 Makeindex
 \family default
- is very old,
- no longer under development and has many pitfalls,
- notably that it was developed with only the English language in mind.
- So it fails to sort anything other than a monolingual English text correctly (we have shown above,
- section
+ est très vieux,
+ n'est plus maintenu et présente beaucoup d'écueils,
+ en particulier parce qu'il a tété développé dans la perspective de la seule langue anglaise.
+ De ce fait il échoue à trier correctement autre chose qu'un texte purement anglophone.
+ (nous avons décrit ci-dessus section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Index-Entry-Order"
+reference "subsec:Ordre-des-entrées"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
 ,
- how to manually fix this sorting,
- but this is very tedious work).
+ comment corriger ce problème manuellement,
+ mais c'est une tâche très fastidieuse).
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-The alternative program,
+L’alternative habituelle,
  
 \family sans
 xindy
 \family default
 ,
- is a newer and much more mighty alternative.
- It can sort most languages correctly,
- and it is also much more customizable in the output.
- However,
- also 
-\family sans
-xindy
-\family default
- is no longer actively maintained,
- and it has bugs that are most likely not being addressed anytime soon.
- Also,
+ est nouvelle et beaucoup plus puissante.
  
 \family sans
 xindy
 \family default
- is not always available out of the box and quite a challenge to install on some systems (particularly Windows).
- But if you have it available,
- it is almost always a better option than 
+ peut trier la plupart des langues correctement,
+ et son résultat est beaucoup plus paramétrable.
+ Cependant,
+ 
+\family sans
+xindy
+\family default
+ n'est plus maintenu activement,
+ et présente des bogues qui ont peu de chance d’être résolues prochainement..
+ De plus,
+ 
+\family sans
+xindy
+\family default
+ n'est pas toujours disponible en paquetage et son installation peut être un défi sur certains systèmes.
+ (en particulier Windows).
+ Mais s'il est disponible pour vous,
+ c'est toujours un meilleur choix que 
 \family sans
 makeindex
 \family default
@@ -36103,28 +36119,26 @@ makeindex
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-The third option,
+La troisième option,
  
 \family sans
 xindex
 \family default
 ,
- is a quite new and actively developed index processor.
- It is included in modern \SpecialChar TeX
- distributions such as \SpecialChar TeX
-Live and Mik\SpecialChar TeX
+ est assez nouvelle et c'est un processeur d'index en développement actif.
+ Il est inclus dans les distributions \SpecialChar TeX
+ modernes comme \SpecialChar TeX
+Live et Mik\SpecialChar TeX
 ,
- is pretty much customizable and supports many languages.
- The program is still in development,
- so not everything might work equally well than in the older processors.
- But the program is definitely worth a try,
- particularly if 
+ il est très paramétrable et il comprend beaucoup de langues.
+ Le programme est toujours en développement,
+ donc tout ne fonctionnera pas forcément bien comparé aux processeurs plus anciens.
+ Mais ce programme mérite certainement un essai,
+ surtout si 
 \family sans
 xindy
 \family default
- does not work or not satisfy your needs.
+ ne fonctionne pas ou ne satisfait pas vos besoins.
 \end_layout
 
 \begin_layout Standard
