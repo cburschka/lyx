@@ -2532,33 +2532,37 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 {
 	bool const havetable = haveNumbers() || nrows() > 1 || ncols() > 1;
 
-    if (havetable) {
-        if (getType() == hullSimple) {
-	        ms << MTag("mtable");
-        } else if (getType() >= hullAlign && getType() <= hullXXAlignAt) {
-            string alignment;
-            for (col_type col = 0; col < ncols(); ++col) {
-                alignment += (col % 2) ? "left " : "right ";
-            }
-            ms << MTag("mtable", "displaystyle='true' columnalign='" + alignment + "'");
-	    } else {
-	        ms << MTag("mtable", "displaystyle='true'");
+	// Simplest case: single row, single column, no numbering.
+	if (!havetable) {
+		ms << cell(index(0, 0));
+		return;
+	}
+
+	// More complex case: wrap elements in a table.
+    if (getType() == hullSimple) {
+        ms << MTag("mtable");
+    } else if (getType() >= hullAlign && getType() <= hullXXAlignAt) {
+		// hullAlign, hullAlignAt, hullXAlignAt, hullXXAlignAt
+        string alignment;
+        for (col_type col = 0; col < ncols(); ++col) {
+            alignment += (col % 2) ? "left " : "right ";
         }
+        ms << MTag("mtable", "displaystyle='true' columnalign='" + alignment + "'");
+    } else {
+        ms << MTag("mtable", "displaystyle='true'");
     }
 
-	char const * const celltag = havetable ? "mtd" : "mrow";
-	// FIXME There does not seem to be wide support at the moment
-	// for mlabeledtr, so we have to use just mtr for now.
-	// char const * const rowtag = haveNumbers() ? "mlabeledtr" : "mtr";
-	char const * const rowtag = "mtr";
 	for (row_type row = 0; row < nrows(); ++row) {
-		if (havetable)
-			ms << MTag(rowtag);
+		// No Wed browser supports mlabeledtr in 2023, even though it has been introduced in
+		// MathML 2 (2003). Moreover, it is not supported in MathML 4 Core.
+		ms << MTag("mtr");
+
 		for (col_type col = 0; col < ncols(); ++col) {
-			ms << MTag(celltag)
+			ms << MTag("mtd")
 			   << cell(index(row, col))
-			   << ETag(celltag);
+			   << ETag("mtd");
 		}
+
 		// fleqn?
 		if (haveNumbers()) {
 			ms << MTag("mtd");
@@ -2567,11 +2571,11 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 				ms << MTagInline("mtext") << '(' << num << ')' << ETagInline("mtext");
 		    ms << ETag("mtd");
 		}
-		if (havetable)
-			ms << ETag(rowtag);
+
+		ms << ETag("mtr");
 	}
-	if (havetable)
-		ms << ETag("mtable");
+
+	ms << ETag("mtable");
 }
 
 
