@@ -148,7 +148,7 @@ namespace {
 } // namespace
 
 
-static InsetLabel * dummy_pointer = 0;
+static InsetLabel * dummy_pointer = nullptr;
 
 InsetMathHull::InsetMathHull(Buffer * buf)
 	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, NONUMBER),
@@ -703,7 +703,7 @@ static docstring latexString(InsetMathHull const & inset)
 	// \newcommand{\xxx}{\text{$\phi$}}) gets processed twice. The
 	// first time as a whole, and the second time only the inner math.
 	// In this last case inset.buffer() would be invalid.
-	static Encoding const * encoding = 0;
+	static Encoding const * encoding = nullptr;
 	if (inset.isBufferValid())
 		encoding = &(inset.buffer().params().encoding());
 	otexrowstream ots(ls);
@@ -1356,7 +1356,7 @@ void InsetMathHull::glueall(HullType type)
 	MathData ar;
 	for (idx_type i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
-	InsetLabel * label = 0;
+	InsetLabel * label = nullptr;
 	if (type == hullEquation) {
 		// preserve first non-empty label
 		for (row_type row = 0; row < nrows(); ++row) {
@@ -2741,7 +2741,7 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 void InsetMathHull::toString(odocstream & os) const
 {
 	odocstringstream ods;
-	plaintext(ods, OutputParams(0));
+	plaintext(ods, OutputParams(nullptr));
 	os << ods.str();
 }
 
@@ -2749,7 +2749,7 @@ void InsetMathHull::toString(odocstream & os) const
 void InsetMathHull::forOutliner(docstring & os, size_t const, bool const) const
 {
 	odocstringstream ods;
-	OutputParams op(0);
+	OutputParams op(nullptr);
 	op.for_toc = true;
 	// FIXME: this results in spilling TeX into the LyXHTML output since the
 	// outliner is used to generate the LyXHTML list of figures/etc.
