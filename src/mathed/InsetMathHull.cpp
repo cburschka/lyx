@@ -2582,7 +2582,7 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 void InsetMathHull::mathAsLatex(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os, false);
-	bool havenumbers = haveNumbers();
+	bool const havenumbers = haveNumbers();
 	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
 
 	if (!havetable) {
@@ -2603,7 +2603,7 @@ void InsetMathHull::mathAsLatex(TeXMathStream & os) const
 			docstring const & num = numbers_[row];
 			if (!num.empty())
 				os << '(' << num << ')';
-		  os << "</td>";
+		    os << "</td>";
 		}
 		os << "</tr>";
 	}
