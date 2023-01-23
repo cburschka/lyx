@@ -373,6 +373,9 @@ Q_SIGNALS:
 	/// signal that something's changed in the Widget.
 	void changed();
 
+protected:
+	bool eventFilter(QObject * sender, QEvent * event);
+
 private:
 	void closeEvent(QCloseEvent *) override;
 	void on_preambleTE_textChanged() { changed(); }

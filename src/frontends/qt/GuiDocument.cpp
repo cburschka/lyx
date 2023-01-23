@@ -481,6 +481,8 @@ PreambleModule::PreambleModule(QWidget * parent)
 	preambleTE->setFont(guiApp->typewriterSystemFont());
 	preambleTE->setWordWrapMode(QTextOption::NoWrap);
 	setFocusProxy(preambleTE);
+	// Install event filter on find line edit to capture return/enter key
+	findLE->installEventFilter(this);
 	connect(preambleTE, SIGNAL(textChanged()), this, SIGNAL(changed()));
 	connect(findLE, SIGNAL(textEdited(const QString &)), this, SLOT(checkFindButton()));
 	connect(findButtonPB, SIGNAL(clicked()), this, SLOT(findText()));
@@ -497,6 +499,23 @@ PreambleModule::PreambleModule(QWidget * parent)
 	preambleTE->setTabStopWidth(tabStop * metrics.width(' '));
 #endif
 }
+
+
+bool PreambleModule::eventFilter(QObject * sender, QEvent * event)
+{
+	if (sender == findLE) {
+		if (event->type()==QEvent::KeyPress) {
+	        QKeyEvent * key = static_cast<QKeyEvent *>(event);
+	        if ( (key->key()==Qt::Key_Enter) || (key->key()==Qt::Key_Return) ) {
+	            findText();
+				// Return true to filter out the event
+				return true;
+	        }
+	    }
+	}
+	return QWidget::eventFilter(sender, event);
+}
+
 
 
 void PreambleModule::checkFindButton()
