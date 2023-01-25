@@ -40,6 +40,7 @@ LatexType             command
 LatexName             menuitem
 Font
 Family              Sans
+Series              Bold
 EndFont
 Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
@@ -55,6 +56,34 @@ End
 #\renewcommand{\code}[1]{{\sffamily #1}}
 #EndPreamble
 #End
+InsetLayout Flex:圏点
+  LyxType       charstyle
+  LatexType     command
+  LatexName     kenten
+  HTMLTag       kenten
+  HTMLAttr      ""
+  HTMLInnerTag  kt
+  HTMLInnerAttr ""
+  BgColor       none
+  LabelString   "圏点"
+  Decoration    Conglomerate
+  Preamble
+    \usepackage{pxrubrica}
+  EndPreamble
+  Argument  post:1
+    LabelString  "Kenten option"
+    MenuString  "圏点オプション"
+    Tooltip    "Emphasize Chinese characters."
+    Decoration  Conglomerate
+    Font
+      Size    tiny
+    EndFont
+    LabelFont
+      Size    tiny
+    EndFont
+    Mandatory  0
+  EndArgument
+End
 \end_local_layout
 \language japanese
 \language_package default
@@ -79,6 +108,8 @@ End
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -197,7 +228,7 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-第2.3.x版
+第2.4.x版
 \end_layout
 
 \begin_layout Standard
@@ -235,27 +266,7 @@ status open
 この取扱説明書は，
 \SpecialChar LyX
 に備わっている高度設定機能を取り扱います．ここでは，
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-や画面プレビューオプション，
+ショートカットや画面プレビューオプション，
 プリンタオプション，
 \SpecialChar LyX
 サーバ経由での\SpecialChar LyX
@@ -414,7 +425,7 @@ UserDir
 にある各ファイルは，
 \SpecialChar LyX
 が自動設定を行ったときに生成されます．これらのファイルは，
-内部調査中に推測された様々な既定値が置かれています．これらは，
+環境構成中に自動的に検出された様々な既定値が置かれています．これらは，
 随時上書きされてしまうので，
 一般的には修正しないことが望まれます．
 \end_layout
@@ -561,8 +572,6 @@ LaTeXConfig.lyx.in
 \end_layout
 
 \begin_layout Standard
-以下の各ディレクトリは，
-
 \begin_inset Flex Code
 status collapsed
 
@@ -572,7 +581,8 @@ LyXDir
 
 \end_inset
 
-と
+に含まれる以下の各ディレクトリは，
+
 \begin_inset Flex Code
 status collapsed
 
@@ -582,7 +592,7 @@ UserDir
 
 \end_inset
 
-に重複して存在します．特定のファイルが両方の場所にある場合には，
+にも重複して存在することがあります．特定のファイルが両方の場所にある場合には，
 
 \begin_inset Flex Code
 status collapsed
@@ -620,17 +630,25 @@ status collapsed
 
 \end_inset
 
-のファイルが置かれています．
+のファイルが置かれています．サブディレクトリ
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-$LANG_xxx.bind
+bind/xx
 \end_layout
 
 \end_inset
 
-という名称の割当ファイルの各国語版がある場合には，
+（
+\begin_inset Quotes eld
+\end_inset
+
+xx
+\begin_inset Quotes erd
+\end_inset
+
+はISO言語コード）に割当ファイルの各国語版がある場合には，
 そちらが用いられます．
 \end_layout
 
@@ -1541,33 +1559,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-捷径
-\end_layout
-
-\end_inset
-
-フィールドは，
-メニュー中で
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
 ショートカット
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-を提供するのに使用されます（たとえば，
+フィールドは，
+メニュー中でショートカットを提供するのに使用されます（たとえば，
 
 \begin_inset Flex MenuItem
 status collapsed
@@ -2455,7 +2453,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-latex
+latex=flavor
 \end_layout
 
 \end_inset
@@ -2464,7 +2462,42 @@ latex
 の一種を実行することを示します．これによって，
 \SpecialChar LyX
 の\SpecialChar LaTeX
-エラーログに記録を残せるようになります．
+エラーログに記録を残せるようになります．オプションの
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+flavor
+\end_layout
+
+\end_inset
+
+値は実行する\SpecialChar LaTeX
+の形を指定します（　
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+latex,
+ pdflatex,
+ platex,
+ xetex,
+ luatex
+\end_layout
+
+\end_inset
+
+）．値が指定されなければ
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+latex
+\end_layout
+
+\end_inset
+
+が用いられます．
 \end_layout
 
 \begin_layout Labeling
@@ -2473,7 +2506,7 @@ latex
 status collapsed
 
 \begin_layout Plain Layout
-needaux
+needaux=flavor
 \end_layout
 
 \end_inset
@@ -2489,7 +2522,52 @@ status collapsed
 
 \end_inset
 
-ファイルが必要であることを示します．
+ファイルが必要であることを示します．オプションの
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+flavor
+\end_layout
+
+\end_inset
+
+値は
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+.aux
+\end_layout
+
+\end_inset
+
+ファイルを生成するのに実行する\SpecialChar LaTeX
+の形を指定します（　
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+latex,
+ pdflatex,
+ platex,
+ xetex,
+ luatex
+\end_layout
+
+\end_inset
+
+）．値が指定されなければ
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+latex
+\end_layout
+
+\end_inset
+
+が用いられます．
 \end_layout
 
 \begin_layout Labeling
@@ -2544,7 +2622,7 @@ xml
 \end_layout
 
 \begin_layout Standard
-以下の3つのフラグは 
+以下の4つのフラグは 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -2563,6 +2641,29 @@ value
 \end_inset
 
 形式の引数をとります（したがって厳密にはフラグとは呼べません）．
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+hyperref-driver
+\end_layout
+
+\end_inset
+
+ この変換子が
+\family sans
+hyperref
+\family default
+パッケージとともに読み込む必要のあるドライバ名．一部のPDF機能を利用するには正しいドライバを読み込む必要があります．詳細については，
+
+\family sans
+hyperref
+\family default
+の取扱説明書を参照してください．
 \end_layout
 
 \begin_layout Labeling
@@ -2676,9 +2777,10 @@ $$b
 \end_layout
 
 \begin_layout Standard
-最後の3つは，
 \SpecialChar LyX
-とともに導入される変換子には，
+とともに導入されている変換子の一部には適切なhyperref-driverが設定されています．しかしながら最後の3つは，
+\SpecialChar LyX
+に前もって導入されている変換子には，
 現在いずれも使用されておりません．
 \end_layout
 
@@ -2951,27 +3053,7 @@ locale(5)
 割り当てられたスペースに収めるには大きすぎるかもしれません．これは表示上の問題に過ぎず，
 他の障害は引き起こしません．また，
 翻訳によっては，
-すべての
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-が定義されていないことに気づかれるでしょう．捷径のために空いている文字が十分ないことが時々あるのです．単に翻訳者がまだ捷径を定義していないこともあるでしょう．もちろん，
+すべてのショートカットが定義されていないことに気づかれるでしょう．ショートカットのために空いている文字が十分ないことが時々あるのです．単に翻訳者がまだショートカットを定義していないこともあるでしょう．もちろん，
 私たちの各国語対応チーム—
 あなたも参加したいと思われるかもしれません
 \begin_inset Foot
@@ -3212,27 +3294,7 @@ https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html#PO-Mode
 \end_inset
 
 メニューラベルやウィジェットラベルのうちには，
-翻訳しなくてはならない
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-がある場合があります．これらのキーは「|」の後に記されており，
+翻訳しなくてはならないショートカットがある場合があります．これらのキーは「|」の後に記されており，
 当該言語の単語やフレーズに対応して翻訳しなくてはなりません．さらに，
 新しい
 \begin_inset Flex Code
@@ -5491,7 +5553,7 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-文書クラス・レイアウト・ひな型の新規導入
+文書クラス・レイアウト・ひな型の作成と新規導入
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:新規文書を導入"
@@ -6619,9 +6681,7 @@ status collapsed
 新しくクラスファイルをサポートすることは，
 もう少し難しくなります．この節では，
 前者について述べることとし，
-後者については次節に譲ります．当然のことながら，
-新しくDocBook DTDをサポートしたい場合にも，
-同様の所見が当てはまります．
+後者については次節に譲ります．
 \end_layout
 
 \begin_layout Standard
@@ -7825,31 +7885,7 @@ foo.sty
 
 \end_inset
 
-パッケージを使用することを示しています．最後に，
-DocBookコード向けのクラスを宣言することもできることを見ます．典型的な宣言は以下のようになります．
-\end_layout
-
-\begin_layout LyX-Code
-
-\size small
-#% Do not delete the line below;
- configure depends on this 
-\end_layout
-
-\begin_layout LyX-Code
-
-\size small
-# 
-\backslash
-DeclareDocBookClass[article]{SGML (DocBook article)}
-\end_layout
-
-\begin_layout LyX-Code
-
-\size small
-#  
-\backslash
-DeclareCategory{Articles}
+パッケージを使用することを示しています．
 \end_layout
 
 \begin_layout Standard
@@ -8048,11 +8084,23 @@ status collapsed
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule[endnotes.sty]{Endnotes} 
+DeclareLyXModule[endnotes.sty]{Endnotes}
+\end_layout
+
+\begin_layout LyX-Code
+#
+\backslash
+DeclareCategory{Foot- and Endnotes}
 \end_layout
 
 \begin_layout Standard
-波括弧内に入っている必須引数はモジュール名で，
+波括弧内に入っている
+\family typewriter
+
+\backslash
+DeclareLyXModule
+\family default
+の必須引数はモジュール名で，
 これは
 \begin_inset Flex MenuItem
 status collapsed
@@ -8101,11 +8149,20 @@ status collapsed
 
 形式への変換鎖が存在するときのみ，
 このモジュールを使用できることを宣言するものです．
+\family typewriter
+
+\backslash
+DeclareLyXModule
+\family default
+宣言は，
+厳密には必須ではありませんが，
+モジュールを見つけやすくするために書いておくべきです．既存のモジュールカテゴリを見て，
+適切ならばそのどれかを使用してください．
 \end_layout
 
 \begin_layout Standard
-それから，
-以下のようなモジュール宣言を行います
+モジュール宣言とカテゴリ宣言の後には，
+以下のような行を続けます
 \begin_inset Foot
 status collapsed
 
@@ -8469,6 +8526,40 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+AddToCiteEngine <エンジン>
+\end_layout
+
+\end_inset
+
+ 引用参考文献の表示能力を拡張します．詳細については、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:引用エンジンの説明"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照してください．「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+」で閉じる必要があります．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 AddToHTMLPreamble
 \end_layout
 
@@ -8539,6 +8630,63 @@ EndPreamble
 status collapsed
 
 \begin_layout Plain Layout
+BibInToc
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] この文書クラスが書誌情報を目次に入れるとき，
+このオプションの値を
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+（もしくは
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+true
+\end_layout
+
+\end_inset
+
+）にしてください．これによって，
+書誌情報が２回目次に現れるのを防ぐことができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 CiteEngine <エンジン>
 \end_layout
 
@@ -8577,7 +8725,19 @@ nolink "false"
 
 \end_inset
 
-節参照）．
+節参照）．これをレイアウトファイルやモジュールに追加した場合，
+引用エンジンの定義は，
+すべて上書きされることに注意してください．
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AddToCiteEngine
+\end_layout
+
+\end_inset
+
+も参照してください．
 \end_layout
 
 \begin_layout Description
@@ -8620,7 +8780,8 @@ nolink "false"
 
 \end_inset
 
-節参照）．
+節参照）．レイアウトやモジュールにCiteFormatが指定されると，
+引用エンジンの定義は上書きされます．
 \end_layout
 
 \begin_layout Description
@@ -8911,6 +9072,80 @@ status collapsed
 です．もしこれを指定しなければ，
 最初に定義される様式がこれに割り当てられるようにはなっていますが，
 このディレクティブを使用することが推奨されます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookRoot
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 文書をDocBookのこのクラスで出力する際に使用する（文書の最上位の）ルート要素．既定値は「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+」です．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookForceAbstract
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ブール値
+\end_layout
+
+\end_inset
+
+] 「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+true
+\end_layout
+
+\end_inset
+
+」ならばルート要素は常に
+\family typewriter
+<abstract>
+\family default
+タグを持つことになります．既定値は「
+\family typewriter
+false
+\family default
+」です．
 \end_layout
 
 \begin_layout Description
@@ -9230,6 +9465,95 @@ stdclass.inc
 status collapsed
 
 \begin_layout Plain Layout
+InputGlobal
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<ファイル名>
+\end_layout
+
+\end_inset
+
+] は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Input
+\end_layout
+
+\end_inset
+
+コマンドの派生ですが，
+ユーザーディレクトリのファイルは探しません．これによって，
+ユーザーディレクトリ中に
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+name.layout
+\end_layout
+
+\end_inset
+
+または
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+name.inc
+\end_layout
+
+\end_inset
+
+というファイルを作成して，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InputGlobal name
+\end_layout
+
+\end_inset
+
+あるいは
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InputGlobal name.inc
+\end_layout
+
+\end_inset
+
+と指定し（ファイル名同順），
+同名のグローバルファイルを読み込むことができます（
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Input
+\end_layout
+
+\end_inset
+
+ではファイルを再帰的に読み込んでしまいます）．このようにすることで，
+グローバルファイル全体をコピーすることなく，
+修正できるようになります．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InsetLayout
 \end_layout
 
@@ -9347,6 +9671,40 @@ nolink "false"
 \end_inset
 
 節参照）．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ModifyInsetLayout
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<型>
+\end_layout
+
+\end_inset
+
+] は差込枠のレイアウトを修正します．レイアウトが存在しない場合には，
+このセクションは無視されます．「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+」で閉じる必要があります．
 \end_layout
 
 \begin_layout Description
@@ -9537,16 +9895,6 @@ OutputType
 status collapsed
 
 \begin_layout Plain Layout
-docbook
-\end_layout
-
-\end_inset
-
-」・「
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 lat
 \emph on
 ex
@@ -9554,7 +9902,7 @@ ex
 
 \end_inset
 
-」のいずれかにリセットされます．
+」にリセットされます．
 \end_layout
 
 \begin_layout Description
@@ -9577,17 +9925,6 @@ status collapsed
 lat
 \emph default
 ex
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-docbook
 \end_layout
 
 \end_inset
@@ -9704,6 +10041,64 @@ PassOptionsToPackage{natbib}{square}
 status collapsed
 
 \begin_layout Plain Layout
+PageSize
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+custom
+\emph default
+,
+ letter,
+ legal,
+ executive,
+ a0,
+ a1,
+ a2,
+ a3,
+ a4,
+ a5,
+ a6,
+ b0,
+ b1,
+ b2,
+ b3,
+ b4,
+ b5,
+ b6,
+ c0,
+ c1,
+ c2,
+ c3,
+ c4,
+ c5,
+ c6,
+ b0j,
+ b1j,
+ b2j,
+ b3j,
+ b4j,
+ b5j,
+ b6j
+\end_layout
+
+\end_inset
+
+] 既定のページサイズです．これは一部の変換子に使われます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 PageStyle
 \end_layout
 
@@ -9808,6 +10203,41 @@ status collapsed
 
 \begin_layout Plain Layout
 EndPreamble
+\end_layout
+
+\end_inset
+
+」で閉じる必要があります．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ProvideInsetLayout
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<型>
+\end_layout
+
+\end_inset
+
+] 差込枠のレイアウトが存在しない場合に，
+それを定義します．レイアウトが存在する場合には，
+このセクションは無視されます．「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
 \end_layout
 
 \end_inset
@@ -10211,6 +10641,117 @@ nolink "false"
 status collapsed
 
 \begin_layout Plain Layout
+TableStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<名称>
+\end_layout
+
+\end_inset
+
+] は，
+表を挿入する際に用いられる既定の表様式を定義します．下記の様式が利用可能です．
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Formal_with_Footline
+\end_layout
+
+\end_inset
+
+：
+フォーマル様式（「ブックタブ」様式）．すなわち，
+水平罫線のみで最上部と最下部が太く，
+ときに第一行と最終行は表本体とは細い内部罫線で区切られます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Formal_without_Footline
+\end_layout
+
+\end_inset
+
+：
+上記と同様ですが，
+最終行は本体から内部罫線で区切られることはありません．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Simple_Grid
+\end_layout
+
+\end_inset
+
+：
+シンプルな表罫線．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Grid_with_Head
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Simple_Grid
+\end_layout
+
+\end_inset
+
+と同様ですが，
+ヘッダ行は２本目の罫線が余分に引かれます．これは\SpecialChar LyX
+の既定様式でもあります．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+No_Borders
+\end_layout
+
+\end_inset
+
+：
+罫線のない表です．
+\end_layout
+
+\end_deeper
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 TitleLatexName
 \end_layout
 
@@ -10226,7 +10767,7 @@ status collapsed
 
 \end_inset
 
-] 
+] コマンド名あるいは環境名．
 \begin_inset Flex Code
 status collapsed
 
@@ -10236,17 +10777,7 @@ TitleLatexType
 
 \end_inset
 
-で使用すべきコマンド名あるいは環境名．The name of the command or environment to be used with 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-TitleLatexType
-\end_layout
-
-\end_inset
-
-.
+とともに使用します．
 \end_layout
 
 \begin_layout Description
@@ -10455,7 +10986,7 @@ status collapsed
 
 \end_inset
 
-」で区切ります．
+」で区切ります．任意の数値が使用できます．
 \end_layout
 
 \begin_layout Description
@@ -10463,22 +10994,153 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Header
+FontSizeFormat
 \end_layout
 
 \end_inset
 
- XMLベースの出力クラスで，
-DTD行を設定するのに使用されます．例：
-PUBLIC 
-\begin_inset Quotes eld
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
 \end_inset
 
--//OASIS//DTD DocBook V4.2//EN
-\begin_inset Quotes erd
+] フォント寸法オプションのフォーマット．既定値：
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$spt
+\end_layout
+
 \end_inset
 
+，
+ここで
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
+$$s
+\end_layout
+
+\end_inset
+
+はフォント寸法のプレイスホルダです．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PageSize
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列="letter|\SpecialChar allowbreak
+legal|\SpecialChar allowbreak
+executive|\SpecialChar allowbreak
+a0|\SpecialChar allowbreak
+a1|\SpecialChar allowbreak
+a2|\SpecialChar allowbreak
+a3|\SpecialChar allowbreak
+a4|\SpecialChar allowbreak
+a5|\SpecialChar allowbreak
+a6|\SpecialChar allowbreak
+b0|\SpecialChar allowbreak
+b1|\SpecialChar allowbreak
+b2|\SpecialChar allowbreak
+b3|\SpecialChar allowbreak
+b4|\SpecialChar allowbreak
+b5|\SpecialChar allowbreak
+b6|\SpecialChar allowbreak
+c0|\SpecialChar allowbreak
+c1|\SpecialChar allowbreak
+c2|\SpecialChar allowbreak
+c3|\SpecialChar allowbreak
+c4|\SpecialChar allowbreak
+c5|\SpecialChar allowbreak
+c6|\SpecialChar allowbreak
+b0j|\SpecialChar allowbreak
+b1j|\SpecialChar allowbreak
+b2j|\SpecialChar allowbreak
+b3j|\SpecialChar allowbreak
+b4j|\SpecialChar allowbreak
+b5j|\SpecialChar allowbreak
+b6j"
+\end_layout
+
+\end_inset
+
+] 使用できるページ寸法を「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+|
+\end_layout
+
+\end_inset
+
+」で区切ったのリスト．現在，
+表記の寸法のみサポートされています．他の寸法は，
+クラスオプション設定で入力することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PageSizeFormat
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] ページ寸法オプションの書式．既定値：
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$spaper
+\end_layout
+
+\end_inset
+
+．ここで
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$s
+\end_layout
+
+\end_inset
+
+はページ寸法のプレイスホルダです．
 \end_layout
 
 \begin_layout Description
@@ -10726,13 +11388,7 @@ status collapsed
 
 \end_inset
 
-] 現在の様式に関連付けられたコマンドまたは環境の引数番号<整数>を定義します．これは，
-節見出しのようなものに便利で，
-また\SpecialChar LaTeX
-でのみ意味を持ちます．コマンドまたは環境の引数は全て–段落の内容自身に関連付けられた必須引数を除き，
-必須・非必須を問わず–，
-別の場所で定義され，
-引数番号はその順序を表します．定義は
+] 現在の様式に関連付けられたコマンドまたは環境の引数番号<整数>を定義します．定義は「
 \begin_inset Flex Code
 status collapsed
 
@@ -10742,907 +11398,51 @@ EndArgument
 
 \end_inset
 
-で閉じなくてはなりません．非必須引数が2つあるコマンドの場合は，
-以下のようになります．
-\end_layout
-
-\begin_deeper
-\begin_layout Quote
-
-\family typewriter
-Argument 1
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-...
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-EndArgument
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-Argument 2
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-...
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-EndArgument
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Argument
-\end_layout
-
-\end_inset
-
-定義内部では，
-以下の指定をすることができます．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelString
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[文字列]
-\end_layout
-
-\end_inset
-
- この引数を挿入するメニューと引数差込枠ボタンに表示される文字列です(別に
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-MenuString
-\end_layout
-
-\end_inset
-
-を指定した場合を除く)．メニューには，
-後ろに「|」で区切った文字を置くことでアクセラレーターを定義することができます(例:
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Short Title|S
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-)．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-MenuString
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[文字列]
-\end_layout
-
-\end_inset
-
- メニュー単独用の文字列．後ろに「|」で区切った文字を置くことでアクセラレーターを定義することができます(例:
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Short Title|S
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-)．この指定は必須ではありません．指定しない場合には，
-代わりに
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelString
-\end_layout
-
-\end_inset
-
-がメニューに用いられます．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Tooltip
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[文字列]
-\end_layout
-
-\end_inset
-
- 引数差込枠にマウスをかざしたときに現れるツールチップに表示される長めの説明文．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Mandatory
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-0
-\end_layout
-
-\end_inset
-
-,
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-] これが必須の引数なのか(1)非必須の引数なのか(0)を宣言します．必須引数は，
-与えられなければ空の出力を行いますが，
-非必須引数の場合はそもそも出力されません．既定では，
-必須引数は
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-{...}
-\end_layout
-
-\end_inset
-
-で区切られ，
-非必須引数は
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[...]
-\end_layout
-
-\end_inset
-
-で区切られます．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Requires
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[整数=0]
-\end_layout
-
-\end_inset
-
- この引数が出力されるとき，
-必要となる別の引数を(番号によって)指定します．例えば，
-\SpecialChar LaTeX
-コマンドでは，
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-command[][引数]{文字列}
-\end_layout
-
-\end_inset
-
-のように，
-前に(少なくとも空の)別の非必須引数を要求する非必須引数があります．これは，
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Argument 2
-\end_layout
-
-\end_inset
-
-中に
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Requires 1
-\end_layout
-
-\end_inset
-
-ステートメントを置くことで実現できます．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LeftDelim
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[文字列]
-\end_layout
-
-\end_inset
-
- (
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-や
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-ではない)ユーザー定義の左区切りを定義します．出力中の改行は
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<br/>
-\end_layout
-
-\end_inset
-
-で指示できます．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-RightDelim
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[文字列]
-\end_layout
-
-\end_inset
-
- (
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-や
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-ではない)ユーザー定義の右区切りを定義します．出力中の改行は
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<br/>
-\end_layout
-
-\end_inset
-
-で指示できます．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-DefaultArg
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[文字列]
-\end_layout
-
-\end_inset
-
- ユーザー指定引数が与えられなかったとき，
-すなわち引数差込枠が挿入されなかったときに限り，
-挿入される引数を定義します(空の引数差込枠が挿入されてもDefaultArgは無効になることに注意してください)．引数が複数のときはコンマで区切る必要があります．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-PresetArg
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[文字列]
-\end_layout
-
-\end_inset
-
- どのような場合にも(単独もしくはユーザー定義引数とともに)挿入される引数を定義します．引数が複数のときはコンマで区切る必要があります．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Font
-\end_layout
-
-\end_inset
-
- 引数の内容に用いられるフォント．
+」で閉じる必要があります．詳細については第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:フォント指定"
+reference "subsec:引数"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
-参照．
+節をご覧ください．
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelFont
-\end_layout
-
-\end_inset
-
- ラベルに用いられるフォント．
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:フォント指定"
-nolink "false"
-
-\end_inset
-
-参照．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Decoration
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-Classic
-\emph default
-,
- Minimalistic,
- Conglomerate
-\end_layout
-
-\end_inset
-
-] 差込枠の枠とボタンに用いられる装飾様式．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-AutoInsert
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[整数=0]
-\end_layout
-
-\end_inset
-
- これが
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-に設定されると，
-各様式が選択されたときに，
-この引数が自動的に挿入されます．現在のところ，
-様式・レイアウト毎に1変数のみ自動挿入することができます．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-InsertCotext
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[整数=0]
-\end_layout
-
-\end_inset
-
- これが
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-に設定されると，
-この引数は，
-副文(選択した文ないしは段落全体)のコピーを内容にとって挿入されます．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-PassThru
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-inherited
-\emph default
-,
- true,
- false
-\end_layout
-
-\end_inset
-
-] この引数の内容が，
-\SpecialChar LaTeX
-が要求する特別な書き換えを行うことなく，
-原文のまま出力されるべきかどうかを指定します．既定値では，
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-PassThru
-\end_layout
-
-\end_inset
-
-の状態は，
-引数が属する差込枠または段落レイアウトに継承されます．trueまたはfalseは，
-この引数のみの状態を変更します．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-PassThruChars
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-文字列
-\end_layout
-
-\end_inset
-
-]
-\family typewriter
- 
-\family default
-\SpecialChar LaTeX
-が要求する特別な翻訳は抜きにして，
-生の形で出力されるべき各文字を定義します．PassThruとは違って，
-引数用に，
-これは明示的に定義されなくてはなりません．つまり，
-引数は，
-親差込枠や親レイアウトからPassThruCharsを継承しません．
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-IsTocCaption
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-0
-\end_layout
-
-\end_inset
-
-,
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-] これを1に設定すると，
-引数は，
-その内容を対応する一覧表の項目に出力します．AddToTocを参照．
-\end_layout
-
-\begin_layout Standard
-既定では，
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LatexType
-\end_layout
-
-\end_inset
-
-が
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Command
-\end_layout
-
-\end_inset
-
-のとき，
-各レイアウトで\SpecialChar LyX
-作業領域に入力した文字列は，
-コマンドの最後の(必須)引数になります．しかしながら，
-前置句
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-post:
-\end_layout
-
-\end_inset
-
-を付けた文字列は，
-この作業領域引数の後に出力されます．後置引数の番号は1から振られ直されますので，
-作業領域引数の後の最初の引数は
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-post:1
-\end_layout
-
-\end_inset
-
-となります．後置引数は，
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Command
-\end_layout
-
-\end_inset
-
-以外の
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LatexType
-\end_layout
-
-\end_inset
-
-では無視されます．
-\end_layout
-
-\begin_layout Standard
-(
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-item[foo]
-\end_layout
-
-\end_inset
-
-のような)箇条書き
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
-の引数は，
-前置句
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-item:
-\end_layout
-
-\end_inset
-
-の後に番号を付けます(例:
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Argument item:1
-\end_layout
-
-\end_inset
-
-)．
-\end_layout
-
-\end_deeper
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AutoNests
 \end_layout
 
 \end_inset
 
- Includes a comma-separated list of layouts that should be nested in and after the current layout.
- Only makes sense for nestable layouts (such as environments).
- Must be ended by 
-\begin_inset Quotes eld
-\end_inset
-
-
+ 現在のレイアウト中もしくは後にネストすべきレイアウトのコンマ区切りリストを入れます．（環境など）ネスト可能なレイアウトでのみ意味を持ちます．「
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndAutoNests
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- See also 
+」で閉じる必要があります．
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsAutoNestedBy
 \end_layout
 
 \end_inset
 
-.
+もご参照ください．
 \end_layout
 
 \begin_layout Description
@@ -12149,11 +11949,39 @@ FreeSpacing
 
 \end_inset
 
-を有効にすることが認められています．\SpecialChar LyX
-は，
-\SpecialChar LaTeX
-モード以外では2つめ以降の空白には，
-保護された空白を使用することに注意してください．
+を有効にすることが認められています．
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Passthru 1
+\end_layout
+
+\end_inset
+
+が指定されていなければ，
+\SpecialChar LyX
+は2つめ以降の空白には非改行空白を生成します．
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+FreeSpacing
+\end_layout
+
+\end_inset
+
+は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+KeepEmpty
+\end_layout
+
+\end_inset
+
+を意味することに注意してください．
 \end_layout
 
 \begin_layout Description
@@ -12349,55 +12177,36 @@ TitleLatexName
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsAutoNestedBy
 \end_layout
 
 \end_inset
 
- Includes a comma-separated list of layouts after which this one should be nested.
- Only makes sense with regard to nestable layouts (such as environments).
- Must be ended by 
-\begin_inset Quotes eld
-\end_inset
-
-
+ このレイアウトがネストされるべき親レイアウトのコンマ区切りリストを入れます．（環境など）ネスト可能なレイアウトでのみ意味を持ちます．「
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-EndIsAutoNestedBy
+EndAutoNestedBy
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- See also 
+」で閉じる必要があります．
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AutoNests
 \end_layout
 
 \end_inset
 
-.
+もご参照ください．
 \end_layout
 
 \begin_layout Description
@@ -13068,7 +12877,7 @@ Manual
 
  は，
 ラベルが最初の単語（最初の本当の空白まで）であることを示します．ラベルに2単語以上使用したいときは，
-保護された空白を使用してください．
+非改行空白を使用してください．
 \end_layout
 
 \begin_layout Description
@@ -13209,16 +13018,11 @@ Enumerate
 \end_inset
 
  は，
-通常の連番ラベルを生成します．
-\lang english
-The number type needs to be set in the 
+通常の連番ラベルを生成します．数値型を
 \family sans
 Counter
 \family default
-,
- see 
-\lang japanese
-
+で設定する必要があります．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:カウンタ"
@@ -13226,7 +13030,7 @@ nolink "false"
 
 \end_inset
 
-．
+節を参照してください．
 \end_layout
 
 \begin_layout Description
@@ -13240,23 +13044,19 @@ Itemize
 \end_inset
 
  は，
-各階層でさまざまなブリットを生成します．
-\lang english
-The bullet types displayed can be set via 
+各階層でさまざまなブリットを生成します．表示されるブリット型は
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bullets
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+ブリット
 \end_layout
 
 \end_inset
 
-.
+で設定できます．
 \end_layout
 
 \begin_layout Description
@@ -13269,8 +13069,7 @@ Bibliography
 
 \end_inset
 
- は，
-
+ は
 \begin_inset Flex Code
 status collapsed
 
@@ -14043,10 +13842,158 @@ protect
 \end_inset
 
 されるべきかでは
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 ありません
-\emph default
+\end_layout
+
+\end_inset
+
 ）．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NeedCProtect
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] これは必要ならば，
+このレイアウトを含むマクロを
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+（cf.
+ 
+\family sans
+cprotect
+\family default
+パッケージ）を用いて保護するようにし，
+マクロ中でverbatimを使えるようにします．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NeedMBoxProtect
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] この様式中の（
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cite
+\end_layout
+
+\end_inset
+
+や
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+ref
+\end_layout
+
+\end_inset
+
+のような）特定のコマンドが
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mbox
+\end_layout
+
+\end_inset
+
+中で保護されるか否か．これは，
+中身を複雑な方法で解析する
+\family sans
+ulem
+\family default
+や
+\family sans
+soul
+\family default
+コマンドに頼る様式でとくに必要になります．
 \end_layout
 
 \begin_layout Description
@@ -15054,7 +15001,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-StepMasterCounter
+StepParentCounter
 \end_layout
 
 \end_inset
@@ -16447,6 +16394,40 @@ RefPrefix
 status collapsed
 
 \begin_layout Plain Layout
+Requires
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 段落様式におけるのと同様です．第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:段落様式"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Style
 \end_layout
 
@@ -16652,7 +16633,7 @@ name "subsec:任意設定差込枠"
 \end_layout
 
 \begin_layout Standard
-自由差込枠には次の3種類があります．
+自由差込枠には次の2種類があります．
 \end_layout
 
 \begin_layout Itemize
@@ -16720,20 +16701,6 @@ endnote
 \end_inset
 
 モジュール中で定義されています．
-\end_layout
-
-\begin_layout Itemize
-XML要素（
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Element
-\end_layout
-
-\end_inset
-
-）．DocBookクラスで使用するものです．
 \end_layout
 
 \begin_layout Standard
@@ -17278,7 +17245,10 @@ EndArgument
 で閉じなくてはなりません．詳細は第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:段落様式"
+reference "subsec:引数"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
@@ -17612,6 +17582,45 @@ end{LatexName}
 \end_inset
 
 タグの後の空白(改行文字を含む)を無視するものと仮定します．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EditExternal
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 差込枠の内容を外部で編集できるか否か（文書の出力形式に定義されている編集ソフトウェアを使用）．
 \end_layout
 
 \begin_layout Description
@@ -18575,16 +18584,6 @@ custom
 status collapsed
 
 \begin_layout Plain Layout
-element
-\end_layout
-
-\end_inset
-
-・
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 end
 \end_layout
 
@@ -18625,10 +18624,7 @@ MultiPar
 
 \end_inset
 
-が偽に設定されます
-\lang english
- and 
-\lang japanese
+が偽に，
 
 \begin_inset Flex Code
 status collapsed
@@ -18639,11 +18635,17 @@ ForcePlain
 
 \end_inset
 
+が真に設定されます．
+\begin_inset Flex Code
+status collapsed
 
-\lang english
- to true
-\lang japanese
-．文字様式差込枠で
+\begin_layout Plain Layout
+charstyle
+\end_layout
+
+\end_inset
+
+差込枠で
 \begin_inset Flex Code
 status collapsed
 
@@ -18653,12 +18655,8 @@ MultiPar
 
 \end_inset
 
-を真にしたい時には
-\lang english
-,
- or 
-\lang japanese
-
+を真，
+あるいは
 \begin_inset Flex Code
 status collapsed
 
@@ -18668,11 +18666,7 @@ ForcePlain
 
 \end_inset
 
-
-\lang english
- to false
-\lang japanese
-，
+を偽に設定したい場合は，
 
 \begin_inset Flex Code
 status collapsed
@@ -18684,11 +18678,52 @@ LyxType
 \end_inset
 
 を設定した
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 後に
-\emph default
-設定すれば，
-真に設定することができます．
+\end_layout
+
+\end_inset
+
+設定します．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MenuString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ メニュー用の文字列．この文字列に特定の文字を「|」で区切って追加することでアクセラレーターを定義することができます（例：
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+My Inset|M
+\end_layout
+
+\end_inset
+
+）．この指定は必須ではありません．指定がない場合には，
+型宣言で指定された差込枠名が，
+代わりにメニューに用いられます．
 \end_layout
 
 \begin_layout Description
@@ -18829,6 +18864,185 @@ protect
 status collapsed
 
 \begin_layout Plain Layout
+NeedCProtect
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] これは必要ならば，
+このレイアウトを含むマクロを
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+（cf.
+ 
+\family sans
+cprotect
+\family default
+パッケージ）を用いて保護するようにし，
+マクロ中でverbatimを使えるようにします．既定値は偽です．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NeedMBoxProtect
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] この様式中の（
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cite
+\end_layout
+
+\end_inset
+
+や
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+ref
+\end_layout
+
+\end_inset
+
+のような）特定のコマンドが
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mbox
+\end_layout
+
+\end_inset
+
+中で保護されるか否か．これは，
+中身を複雑な方法で解析する
+\family sans
+ulem
+\family default
+や
+\family sans
+soul
+\family default
+コマンドに頼る様式でとくに必要になります．既定値は偽です．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NewlineCmd
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ 改行に使用するコマンドを（
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+以外に）定義するオプションです．初期値のバックスラッシュは指定できません．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 NoInsetLayout
 \end_layout
 
@@ -18910,6 +19124,59 @@ InsetLayout
 
 の改名を，
 後方互換性を維持しながら行うために用いられます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ParbreakIgnored
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+に設定すると，
+段落の改行は出力では無視されます．これは，
+内容が\SpecialChar LyX
+作業領域内でのみ改行可能で，
+出力に影響を与えない差込枠において有用です．
 \end_layout
 
 \begin_layout Description
@@ -19183,20 +19450,96 @@ status collapsed
 
 \end_inset
 
-] この差込枠が周囲の環境と同じフォントを用いるか，
-独自のフォントを用いるか．既定値は真，
-すなわち独自のフォントを用います．
-\begin_inset Note Note
-status open
+] 
+\begin_inset Flex Code
+status collapsed
 
 \begin_layout Plain Layout
-This is outdated:
- The default changed from 1 to 0
+
+\emph on
+1
 \end_layout
 
 \end_inset
 
+ならば，
+差込枠がフォント変更指定の中にあるとき，
+各差込枠の内部で再度フォント変更指定が為されます（たとえば
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
+
+\backslash
+textbf{周りの文字列
+\backslash
+myinset{中身}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+ではなく
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textbf{周りの文字列
+\backslash
+myinset{
+\backslash
+textbf{中身}}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+）．（脚註のような）内部的にフォント設定をリセットするコマンドで意味を持ちます．これを誤って設定してしまうと，
+望まない結果を生むことがあります（例：
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+emph{周りの文字列
+\backslash
+myinset{
+\backslash
+emph{中身t}}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+では
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+emph
+\end_layout
+
+\end_inset
+
+がトグルですので，
+中身がアップライト体になります）．既定値は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+：
+フォント変更は差込枠内部で繰り返されません．
 \end_layout
 
 \begin_layout Description
@@ -19269,6 +19612,1073 @@ status collapsed
 \end_inset
 
 ] この差込枠の内容をスペルチェックするか否か．既定値は真です．
+\end_layout
+
+\begin_layout Subsection
+引数
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:引数"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+段落様式と差込枠レイアウトは，
+内容本体に加えて引数を取ることができます．これは，
+節見出しのようなものに便利で，
+また\SpecialChar LaTeX
+でのみ意味を持ちます．コマンドまたは環境の引数は全て–段落の内容自身に関連付けられた必須引数を除き，
+必須・非必須を問わず–，
+別の場所で定義され，
+引数番号はその順序を表します．定義は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndArgument
+\end_layout
+
+\end_inset
+
+で閉じなくてはなりません．非必須引数が2つあるコマンドの場合は，
+以下のようになります．
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+Argument 1
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+...
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+EndArgument
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+Argument 2
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+...
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+EndArgument
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument
+\end_layout
+
+\end_inset
+
+定義内部では，
+以下の指定をすることができます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ この引数を挿入するメニューと引数差込枠ボタンに表示される文字列です(別に
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MenuString
+\end_layout
+
+\end_inset
+
+を指定した場合を除く)．メニューには，
+後ろに「|」で区切った文字を置くことでアクセラレーターを定義することができます(例:
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Short Title|S
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+)．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MenuString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ メニュー単独用の文字列．後ろに「|」で区切った文字を置くことでアクセラレーターを定義することができます(例:
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Short Title|S
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+)．この指定は必須ではありません．指定しない場合には，
+代わりに
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
+がメニューに用いられます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Tooltip
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ 引数差込枠にマウスをかざしたときに現れるツールチップに表示される長めの説明文．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] これが必須の引数なのか(1)非必須の引数なのか(0)を宣言します．必須引数は，
+与えられなければ空の出力を行いますが，
+非必須引数の場合はそもそも出力されません．既定では，
+必須引数は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+{...}
+\end_layout
+
+\end_inset
+
+で区切られ，
+非必須引数は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[...]
+\end_layout
+
+\end_inset
+
+で区切られます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NewlineCmd
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ 改行に使用するコマンドを（
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+以外に）定義するオプションです．初期値のバックスラッシュは指定できません．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Requires
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[整数=0]
+\end_layout
+
+\end_inset
+
+ この引数が出力されるとき，
+必要となる別の引数を(番号によって)指定します．例えば，
+\SpecialChar LaTeX
+コマンドでは，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+command[][引数]{文字列}
+\end_layout
+
+\end_inset
+
+のように，
+前に(少なくとも空の)別の非必須引数を要求する非必須引数があります．これは，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument 2
+\end_layout
+
+\end_inset
+
+中に
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Requires 1
+\end_layout
+
+\end_inset
+
+ステートメントを置くことで実現できます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LeftDelim
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+や
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+ではない)ユーザー定義の左区切りを定義します．出力中の改行は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
+
+\end_inset
+
+で指示できます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+RightDelim
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+や
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+ではない)ユーザー定義の右区切りを定義します．出力中の改行は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
+
+\end_inset
+
+で指示できます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DefaultArg
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ ユーザー指定引数が与えられなかったとき，
+すなわち引数差込枠が挿入されなかったときに限り，
+挿入される引数を定義します(空の引数差込枠が挿入されてもDefaultArgは無効になることに注意してください)．引数が複数のときはコンマで区切る必要があります．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PresetArg
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[文字列]
+\end_layout
+
+\end_inset
+
+ どのような場合にも(単独もしくはユーザー定義引数とともに)挿入される引数を定義します．引数が複数のときはコンマで区切る必要があります．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Font
+\end_layout
+
+\end_inset
+
+ 引数の内容に用いられるフォント．
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:フォント指定"
+nolink "false"
+
+\end_inset
+
+参照．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+FreeSpacing
+\end_layout
+
+\end_inset
+
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+
+\emph default
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 段落様式と同様．第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:段落様式"
+nolink "false"
+
+\end_inset
+
+節参照．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelFont
+\end_layout
+
+\end_inset
+
+ ラベルに用いられるフォント．
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:フォント指定"
+nolink "false"
+
+\end_inset
+
+参照．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Decoration
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+Classic
+\emph default
+,
+ Minimalistic,
+ Conglomerate
+\end_layout
+
+\end_inset
+
+] 差込枠の枠とボタンに用いられる装飾様式．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AutoInsert
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[整数=0]
+\end_layout
+
+\end_inset
+
+ これが
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+に設定されると，
+各様式が選択されたときに，
+この引数が自動的に挿入されます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InsertOnNewline
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[整数=0]
+\end_layout
+
+\end_inset
+
+ これが
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+に設定されると，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AutoInsert
+\end_layout
+
+\end_inset
+
+時にこの変数は新規行に挿入されます（自由差込枠でのみ使用可能）．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InsertCotext
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[整数=0]
+\end_layout
+
+\end_inset
+
+ これが
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+に設定されると，
+この引数は，
+副文(選択した文ないしは段落全体)のコピーを内容にとって挿入されます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PassThru
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+inherited
+\emph default
+,
+ true,
+ false
+\end_layout
+
+\end_inset
+
+] この引数の内容が，
+\SpecialChar LaTeX
+が要求する特別な書き換えを行うことなく，
+原文のまま出力されるべきかどうかを指定します．既定値では，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PassThru
+\end_layout
+
+\end_inset
+
+の状態は，
+引数が属する差込枠または段落レイアウトに継承されます．trueまたはfalseは，
+この引数のみの状態を変更します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+\SpecialChar LaTeX
+が要求する特別な翻訳は抜きにして，
+生の形で出力されるべき各文字を定義します．PassThruとは違って，
+引数用に，
+これは明示的に定義されなくてはなりません．つまり，
+引数は，
+親差込枠や親レイアウトからPassThruCharsを継承しません．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+IsTocCaption
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] これを1に設定すると，
+引数は，
+その内容を対応する一覧表の項目に出力します．AddToTocを参照．
+\end_layout
+
+\begin_layout Standard
+既定では，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType
+\end_layout
+
+\end_inset
+
+が
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+
+のとき，
+各レイアウトで\SpecialChar LyX
+作業領域に入力した文字列は，
+コマンドの最後の(必須)引数になります．しかしながら，
+前置句
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+post:
+\end_layout
+
+\end_inset
+
+を付けた文字列は，
+この作業領域引数の後に出力されます．後置引数の番号は1から振られ直されますので，
+作業領域引数の後の最初の引数は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+post:1
+\end_layout
+
+\end_inset
+
+となります．後置引数は，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+
+以外の
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType
+\end_layout
+
+\end_inset
+
+では無視されます．
+\end_layout
+
+\begin_layout Standard
+(
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item[foo]
+\end_layout
+
+\end_inset
+
+のような)箇条書き
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+の引数は，
+前置句
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+item:
+\end_layout
+
+\end_inset
+
+の後に番号を付けます(例:
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument item:1
+\end_layout
+
+\end_inset
+
+)．
+\end_layout
+
+\begin_layout Standard
+最後に，
+前置句
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+listpreamble:
+\end_layout
+
+\end_inset
+
+を用いる特別な引数型があります．これは本当は引数ではありませんが，
+引数インタフェースを用います（したがって前置句後には数値が続きます．例：
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument listpreamble:1
+\end_layout
+
+\end_inset
+
+）．名前が示すように，
+
+\family sans
+Itemize
+\family default
+・
+\family sans
+Enumerate
+\family default
+・
+\family sans
+Description
+\family default
+・
+\family sans
+Bibliography
+\family default
+のようなリストが対象です．その中身はリスト開始時，
+最初の
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+の前に独立した行として（\SpecialChar LyX
+からは他の方法ではアクセス不能な場所です）出力されます．このようにして，
+ユーザーは各リストに（長さ等の）再定義を入れることができます．既定では，
+これらの引数は区切り文字を持ちません．
 \end_layout
 
 \begin_layout Subsection
@@ -19392,12 +20802,22 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-LabelString [文字列=""]
+LabelString
 \end_layout
 
 \end_inset
 
- 定義されていると，
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+=""] 定義されていると，
 ここで指定した文字列がカウンタの表示の仕方を定義します．この値を指定すると，
 
 \begin_inset Flex Code
@@ -19685,6 +21105,41 @@ LabelString
 status collapsed
 
 \begin_layout Plain Layout
+LaTeXName
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] \SpecialChar LaTeX
+で使用されるカウンタ名（たとえば\SpecialChar LyX
+では「theorem」というカウンタがありますが，
+\SpecialChar LaTeX
+には「thm」と出力されます）．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 PrettyFormat
 \end_layout
 
@@ -19832,223 +21287,24 @@ Color
 status collapsed
 
 \begin_layout Plain Layout
-
-\emph on
-none
+文字列
 \end_layout
 
 \end_inset
 
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-black
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-white
-\end_layout
+] 有効な引数については，
+付録
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:色名"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-red
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-green
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-blue
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-cyan
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-magenta
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-yellow
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-brown
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-darkgray
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-gray
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lightgray
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lime
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-orange
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-olive
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-pink
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-purple
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-teal
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-violet
-\end_layout
-
-\end_inset
-
-]
+をご覧ください．
 \end_layout
 
 \begin_layout Description
@@ -20996,6 +22252,22 @@ Biblatex
 Biblatex
 \family default
 の取扱説明書をご覧ください．
+\end_layout
+
+\begin_layout Standard
+引用エンジンに引用コマンドを追加したい場合（たとえばクラスによって提供される特定のコマンドを追加するなど）には，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AddToCiteEngine <engine type> \SpecialChar ldots
+ End
+\end_layout
+
+\end_inset
+
+を使うことができます．まだ存在しない引用コマンドのみ追加することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -21956,41 +23228,32 @@ status collapsed
 
 のように，
 これをキーとして扱って，
-定義の中に入れることもできます．
-\lang english
-Note that there are two different translation paths:
- All definitions starting with 
+定義の中に入れることもできます．以下の２つの翻訳パスがあることに注意してください．上記の例のように
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 B_
 \end_layout
 
 \end_inset
 
-,
- such as in the example above,
- will be translated to the currently active buffer language (so the translation will match the generated document).
- All definitions starting with underscore only will be translated to the GUI language.
- This is the proper translation for strings that only occur in the dialogs or on buttons,
- such as this one:
+で始まる定義は，
+すべて現在アクティブなバッファ言語に翻訳されます（したがって翻訳は生成された文書に一致します）．アンダースコアだけから始まる定義は，
+すべてGUI言語に翻訳されます．これは
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
-_addtobib Add to bibliography only.
+_addtobib Add to bibliography only
 \end_layout
 
 \begin_layout Standard
-これらのうちいくつかは
-\lang english
-translatable strings
-\lang japanese
-，
+のように，
+ダイアログやボタンにのみ現れる文字列に適した翻訳です．
+\end_layout
+
+\begin_layout Standard
+これらの翻訳可能な文字列のうちいくつかは，
 
 \begin_inset Flex Code
 status collapsed
@@ -22590,6 +23853,33 @@ chapterのように小文字で記述します．
 status collapsed
 
 \begin_layout Plain Layout
+HTMLClass
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+]　この段落に使用するCSSクラス．段落が連番もしくは記号の箇条書きであるならば，
+既定値は「lyxenum」または「lyxitem」および階層の深さにより「i」「ii」「iii」「iv」となることに注意してください．これはここで書き換えることができます．しかしながら，
+その場合後置句は付け加えられません．すなわち，
+CSSクラスは，
+つねにここで宣言されたものの通りとなります．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLForceCSS
 \end_layout
 
@@ -22644,6 +23934,34 @@ status collapsed
 \end_inset
 
 です．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLForceCSS
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\emph default
+,1
+\end_layout
+
+\end_inset
+
+]　この段落（通常節やその類い）をTOCに入れるか否か．既定値は真となっているので，
+たとえば星付きの節については偽に設定しなくてはなりません．
 \end_layout
 
 \begin_layout Description
@@ -23271,7 +24589,8 @@ status collapsed
 差込枠の\SpecialChar LyX
 名であり，
 小文字で記述します．アルファベットや数字以外の文字は，
-アンダースコアに置き換えられます．
+アンダースコアに置き換えられます．例：
+footnote．
 \end_layout
 
 \begin_layout Description
@@ -23950,6 +25269,1868 @@ getSizeCSS()
 \end_inset
 
 関数をご覧ください．
+\end_layout
+
+\begin_layout Section
+DocBook出力のタグ
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:DocBook出力のタグ"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LaTeX
+やXHTMLと同様に，
+\SpecialChar LyX
+のDocBook出力の書式もレイアウト情報によって制御されています．一般的に\SpecialChar LyX
+は賢明な既定値を提供していますが，
+DocBookは厳密にセマンティックであり，
+フォーマッティングを許さないため，
+スタイリングの多くは変換の途中で失われてしまいます．可能な場合には，
+\SpecialChar LyX
+からの情報は
+\family typewriter
+role
+\family default
+属性に渡されます．
+\end_layout
+
+\begin_layout Standard
+多くの場合，
+設定した環境や特別差込枠等々について，
+納得のいくDocBook出力を得るために，
+何かしなくてはならないということはまったくありません．しかしながら，
+いくつかの場合において必要となることがあるため，
+\SpecialChar LyX
+は多くのレイアウトタグを提供し，
+生成されるDocBookを調整できるようにしています．
+\end_layout
+
+\begin_layout Standard
+ラベルはDocBookでは冗長であるため，
+めったに出力されることはありません．この情報はタグ自身によって伝達され，
+（DocBookファイルを処理した後の）最終文書にラベルが現れるかどうかは，
+スタイルシートによって制御されます．しかしながら，
+定義リストのように，
+ラベルが冗長な内容ではないことが時々あり，
+この場合には，
+定義される用語がラベルとなります．
+\end_layout
+
+\begin_layout Subsection
+段落様式
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:DocBook段落様式"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+段落に対して\SpecialChar LyX
+が出力するDocBookの類いは，
+通常の段落を取り扱っているのか，
+コマンドなのか環境なのかによって変化し，
+それ自体も対応する
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+Type
+\end_layout
+
+\end_inset
+
+タグの内容によって決定されます．
+\end_layout
+
+\begin_layout Standard
+コマンドや通常の段落については，
+DocBook出力は下記の形を取ります：
+
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+段落の中身
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+箇条書きの類い出ない環境については，
+生成されるDocBookは下記の形を取ります：
+
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag>第１段落</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag>第２段落</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+箇条書きについては，
+DocBook出力は下記の形を取ります：
+
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag attr>第１項目</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag attr>第２項目</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+各段落型に対する特定のタグやロール出力は，
+これから説明するレイアウトタグによって制御することができます．まさにDocBookの性質そのものによって，
+妥当な既定値というものはまったく存在せず，
+値はつねに注意深く選ばなくてはならないと言うことに注意してください．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] メインタグに出力される属性情報を，
+上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+attr
+\end_layout
+
+\end_inset
+
+」の位置に指定します．この情報は，
+DocBookファイルの後処理に使用することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] この差込枠に使用するタグ．上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+」の位置に出力します．既定値はフロート名で，
+DocBookには一般的なタグはないので，
+つねに変更する必要があります．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+] このタグの新規行ポリシー．詳細は第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:新規行ポリシー"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照のこと．
+\end_layout
+
+\begin_layout Subsection
+新規行ポリシー
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:新規行ポリシー"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+すべてのタグに関して，
+（
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBook*TagType
+\end_layout
+
+\end_inset
+
+属性で指定される）新規行の出力ポリシーに下記の３つの選択肢があります．
+\end_layout
+
+\begin_layout Itemize
+「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+」：
+開始タグと終了タグは独立した行に置きます（つまり開始タグと終了タグの前後にラインフィードします）．典型的な要素はフロートです．たとえば，
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+前の内容
+\end_layout
+
+\begin_layout LyX-Code
+<blocktag>
+\end_layout
+
+\begin_layout LyX-Code
+ ブロックの内容
+\end_layout
+
+\begin_layout LyX-Code
+</blocktab>
+\end_layout
+
+\begin_layout LyX-Code
+後の内容
+\end_layout
+
+\begin_layout Standard
+のようになります．
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+」：
+開始タグと終了タグは同じ新規行に置きます（開始タグの前と終了タグの後にラインフィードが出力されます）．典型的な要素は段落と箇条書き項目です．たとえば，
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+前の内容
+\end_layout
+
+\begin_layout LyX-Code
+<paratag>段落の内容</paratag>
+\end_layout
+
+\begin_layout LyX-Code
+後の内容
+\end_layout
+
+\begin_layout Standard
+のようになります．
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+」：
+開始タグと終了タグは内容と同じ行に置かれます．ラインフィードは出力されません．典型的な要素はフォントです．たとえば，
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+前の内容<inlinetag>段落の内容</inlinetag>後の内容
+\end_layout
+
+\begin_layout Standard
+のようになります．
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+既定値はつねに「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+」です．
+\end_layout
+
+\begin_layout Subsection
+InsetLayout DocBook
+\end_layout
+
+\begin_layout Standard
+差込枠のDocBook出力もレイアウトファイルの情報によって制御されます．
+\end_layout
+
+\begin_layout Standard
+差込枠に対して\SpecialChar LyX
+が出力するDocBookは次のような形を取ります．
+\end_layout
+
+\begin_layout LyX-Code
+<wrappertag wrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+  <tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+    <innertag innerattr>
+\end_layout
+
+\begin_layout LyX-Code
+      差込枠の内容
+\end_layout
+
+\begin_layout LyX-Code
+    </innertag>
+\end_layout
+
+\begin_layout LyX-Code
+  </tag>
+\end_layout
+
+\begin_layout LyX-Code
+</wrappertag>
+\end_layout
+
+\begin_layout Standard
+項目立てをする差込枠については，
+以下のようになります．
+\end_layout
+
+\begin_layout LyX-Code
+<wrappertag wrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+  <tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+    <innertag innerattr>
+\end_layout
+
+\begin_layout LyX-Code
+      <itemwrappertag itemwrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemlabeltag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          第１項目のラベル
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+            第１項目の内容 item.
+\end_layout
+
+\begin_layout LyX-Code
+          </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+      </itemwrappertag>
+\end_layout
+
+\begin_layout LyX-Code
+      <itemwrappertag itemwrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemlabeltag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          第２項目のラベル
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+            第２項目の内容
+\end_layout
+
+\begin_layout LyX-Code
+          </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+      </itemwrappertag>
+\end_layout
+
+\begin_layout LyX-Code
+      ...
+\end_layout
+
+\begin_layout LyX-Code
+    </innertag>
+\end_layout
+
+\begin_layout LyX-Code
+  </tag>
+\end_layout
+
+\begin_layout LyX-Code
+</wrappertag>
+\end_layout
+
+\begin_layout Standard
+差込枠が複数の段落を許容する場合—
+—
+つまり
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
+が真である場合—
+—
+には，
+差込枠の中身自身は，
+段落に使用される様式（標準，
+引用等）にしたがって整形された段落として出力されます．内側のタグは必須ではなく，
+既定では表示されません．
+\end_layout
+
+\begin_layout Standard
+各差込枠に出力される特定のタグと属性は，
+下記のようなレイアウトタグによって制御されます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] メインタグに出力される属性情報を，
+上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+attr
+\end_layout
+
+\end_inset
+
+」の位置に指定します．この情報は，
+DocBookファイルの後処理に使用することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInInfo
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+never,
+ always,
+ maybe
+\end_layout
+
+\end_inset
+
+] このタグを親レイアウトの最初にある
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+タグの中に入れるかどうかを指定します．
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+never
+\end_layout
+
+\end_inset
+
+は，
+このタグを
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+の中に決して入れないことを示します（これは既定値であり通常の内容に対応します）．
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+always
+\end_layout
+
+\end_inset
+
+は，
+このタグを
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+の中につねに入れることを示します（これは通常のメタデータに対応します）．親に
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+タグがない場合には生成
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
+されます
+\end_layout
+
+\end_inset
+
+．
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+maybe
+\end_layout
+
+\end_inset
+
+は，
+このタグを
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+の中に入れるかもしれないことを示します（これは表題の場合にのみ該当します）．親に
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+タグがない場合には生成されることは
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
+ありません
+\end_layout
+
+\end_inset
+
+．対応するタグは，
+内容として直接出力されます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 項目タグに出力される属性情報を，
+上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemattr
+\end_layout
+
+\end_inset
+
+」の位置に指定します．この情報は，
+DocBookファイルの後処理に使用することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemInnerAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 項目内部タグに出力される属性情報を，
+上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+iteminnerattr
+\end_layout
+
+\end_inset
+
+」の位置に指定します．この情報は，
+DocBookファイルの後処理に使用することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemInnerTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 差込枠内部の項目内部タグに使用するタグ．上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+iteminnertag
+\end_layout
+
+\end_inset
+
+」の位置に出力します．既定値は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+で，
+項目内部タグがないことを示します．すなわち，
+各項目立て要素について，
+項目内部タグなしに中身が直接出力されます．このパラメーターは，
+箇条書きのように，
+項目立てレイアウトが使われているときのみ意味を持ちます．最もあり得る値は「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+para
+\end_layout
+
+\end_inset
+
+」です．
+\begin_inset Newline newline
+\end_inset
+
+箇条書き項目が新規行を使って分割される場合，
+項目内部タグは，
+新規行で分割される段落の各部分に対して個別に出力されます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemInnerTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+] このタグの新規行ポリシー．詳細は第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:新規行ポリシー"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照のこと．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemLabelAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 項目ラベルタグに出力される属性情報を，
+上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemlabelattr
+\end_layout
+
+\end_inset
+
+」の位置に指定します．この情報は，
+DocBookファイルの後処理に使用することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemLabelTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 差込枠内部の項目ラベルタグに使用するタグ．上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemlabeltag
+\end_layout
+
+\end_inset
+
+」の位置に出力します．このパラメーターは，
+定義リストのように，
+ラベルの概念を伴う項目立てレイアウトが使われているときのみ意味を持ちます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemLabelTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+] このタグの新規行ポリシー．詳細は第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:新規行ポリシー"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照のこと．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 差込枠内部の項目タグに使用するタグ．上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemtag
+\end_layout
+
+\end_inset
+
+」の位置に出力します．既定値は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+で，
+項目タグがないことを示します．このパラメーターは，
+箇条書きのように，
+項目立てレイアウトが使われているときのみ意味を持ちます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+] このタグの新規行ポリシー．詳細は第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:新規行ポリシー"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照のこと．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemWrapperAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 項目ラッパータグに出力される属性情報を，
+上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemwrapperattr
+\end_layout
+
+\end_inset
+
+」の位置に指定します．この情報は，
+DocBookファイルの後処理に使用することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemWrapperTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 差込枠内部の項目ラッパータグに使用するタグ．上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemwrappertag
+\end_layout
+
+\end_inset
+
+」の位置に出力します．既定値は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+で，
+項目ラッパータグがないことを示します．すなわち，
+各項目立て要素について，
+項目ラッパータグなしにタグと中身が直接出力されます．このパラメーターは，
+箇条書きのように，
+項目立てレイアウトが使われているときのみ意味を持ちます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemWrapperTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+] このタグの新規行ポリシー．詳細は第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:新規行ポリシー"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照のこと．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInnerAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 内部タグに出力される属性情報を，
+上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+innerattr
+\end_layout
+
+\end_inset
+
+」の位置に指定します．この情報は，
+DocBookファイルの後処理に使用することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInnerTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 差込枠内部の内部タグに使用するタグ．上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+innertag
+\end_layout
+
+\end_inset
+
+」の位置に出力します．既定値は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+で，
+内部タグがないことを示します．すなわち，
+内部タグなしに中身が直接出力されます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInnerTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+] このタグの新規行ポリシー．詳細は第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:新規行ポリシー"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照のこと．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookSectionTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] このタイプのセクションに対応するタグを指定します．このパラメーターは，
+セクショニング要素（部・章・節等）にのみ意味を持ちます．既定値は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+section
+\end_layout
+
+\end_inset
+
+で，
+DocBookがセクショニングに他のものを使うときのみ上書きされます（典型的にはbookの部や章）．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] この差込枠に使用するタグ．上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+」の位置に出力します．既定値はフロート名で，
+DocBookには一般的なタグはないので，
+つねに変更する必要があります．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+] このタグの新規行ポリシー．詳細は第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:新規行ポリシー"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照のこと．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 外部ラッパータグに出力される属性情報を，
+上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+wrapperattr
+\end_layout
+
+\end_inset
+
+」の位置に指定します．この情報は，
+DocBookファイルの後処理に使用することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 差込枠の周りのラッパータグに使用するタグ．上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+wrappertag
+\end_layout
+
+\end_inset
+
+」の位置に出力します．既定値は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+で，
+ラッパータグがないことを示します．すなわち，
+ラッパータグなしにタグと中身が直接出力されます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+] このタグの新規行ポリシー．詳細は第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:新規行ポリシー"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節を参照のこと．
+\end_layout
+
+\begin_layout Subsection
+Float DocBook
+\end_layout
+
+\begin_layout Standard
+フロートのDocBook出力もレイアウトファイルの情報によって制御されます．出力は以下の形を取ります．
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+ DocBookとしてのフロートの内容
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+キャプションは，
+存在するならば別の差込枠となり，
+表題とともに出力されます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] メインタグに出力される属性情報を，
+上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+attr
+\end_layout
+
+\end_inset
+
+」の位置に指定します．この情報は，
+DocBookファイルの後処理に使用することができます．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] このフロートに使用するタグ．上記の例の「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+」の位置に出力します．既定値はフロート名で，
+DocBookには一般的なタグはないので，
+つねに変更する必要があります．
+\end_layout
+
+\begin_layout Subsection
+書誌情報の組版
+\end_layout
+
+\begin_layout Standard
+読み込んだ書誌情報は整形することができません．すなわち，
+フィールドはすべて，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+bibentry
+\end_layout
+
+\end_inset
+
+タグを使用して（BibTeXファイルと同等な）データベース型のDocBook形式でつねに出力されます．
+\end_layout
+
+\begin_layout Standard
+書誌情報項目が，
+\SpecialChar LyX
+文書に書誌情報項目として手動で挿入されると，
+ユーザーはその整形を担当します．すなわち，
+ユーザーが書いたことを解析することは為されず，
+文字列は（
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+bibliomixed
+\end_layout
+
+\end_inset
+
+タグを用いて）直接に使用されます．
 \end_layout
 
 \begin_layout Chapter
@@ -26721,16 +29902,14 @@ name "chap:色名"
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Color functions
+色関数
 \end_layout
 
 \begin_layout Standard
+以下は，
+色そのものではありませんが，
+色定義に作用します：
 
-\lang english
-The following are no real colors,
- but rather act on color definitions:
 \end_layout
 
 \begin_layout Description
@@ -26750,15 +29929,14 @@ none
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Static colors
+静的色名
 \end_layout
 
 \begin_layout Standard
+これらは固定された色名で変更することはできません．これらの色は，
+（ダークテーマ等）一部の色テーマでうまく動作しないので，
+レイアウト定義の中では用いないでください：
 
-\lang english
-These are fixed colors that cannot me customized:
 \end_layout
 
 \begin_layout Description
@@ -26838,28 +30016,18 @@ yellow
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Dynamic colors
+動的色名
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-These are the colors allocated to specific elements in
-\lang japanese
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-ツール\SpecialChar menuseparator
-設定
-\end_layout
-
+これらは
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
-:
+の特定要素に割り当てられる色です：
+
 \end_layout
 
 \begin_layout Description
@@ -26980,9 +30148,7 @@ footlabel 脚註ラベル色
 \end_layout
 
 \begin_layout Description
-foreground 
-\lang english
-Foreground color
+foreground 前景色
 \end_layout
 
 \begin_layout Description
@@ -27123,9 +30289,7 @@ regexpframe 正規表現枠の色
 \end_layout
 
 \begin_layout Description
-scroll 
-\lang english
-Color that indicates when a row can be scrolled
+scroll 行をスクロールすることができることを示す色
 \end_layout
 
 \begin_layout Description
@@ -27150,6 +30314,18 @@ tabularline 罫線色
 
 \begin_layout Description
 tabularonoffline 罫線色
+\end_layout
+
+\begin_layout Description
+textlabel1 レイアウトと特殊差込枠ラベルの色1
+\end_layout
+
+\begin_layout Description
+textlabel2 レイアウトと特殊差込枠ラベルの色2
+\end_layout
+
+\begin_layout Description
+textlabel3 レイアウトと特殊差込枠ラベルの色3
 \end_layout
 
 \begin_layout Description
