@@ -374,7 +374,7 @@ Q_SIGNALS:
 	void changed();
 
 protected:
-	bool eventFilter(QObject * sender, QEvent * event);
+	bool eventFilter(QObject * sender, QEvent * event) override;
 
 private:
 	void closeEvent(QCloseEvent *) override;
