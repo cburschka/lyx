@@ -30,6 +30,36 @@
 ruby
 \end_modules
 \maintain_unincluded_children no
+\begin_local_layout
+InsetLayout Flex:圏点
+  LyxType       charstyle
+  LatexType     command
+  LatexName     kenten
+  HTMLTag       kenten
+  HTMLAttr      ""
+  HTMLInnerTag  kt
+  HTMLInnerAttr ""
+  BgColor       none
+  LabelString   "圏点"
+  Decoration    Conglomerate
+  Preamble
+    \usepackage{pxrubrica}
+  EndPreamble
+  Argument  post:1
+    LabelString  "Kenten option"
+    MenuString  "圏点オプション"
+    Tooltip    "Emphasize Chinese characters."
+    Decoration  Conglomerate
+    Font
+      Size    tiny
+    EndFont
+    LabelFont
+      Size    tiny
+    EndFont
+    Mandatory  0
+  EndArgument
+End
+\end_local_layout
 \language japanese
 \language_package auto
 \inputencoding utf8
@@ -53,6 +83,8 @@ ruby
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -613,42 +645,26 @@ status collapsed
 \SpecialChar LyX
 の根底に流れる基本的な考え方は，
 「
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 何をしたいか
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\end_layout
+
+\end_inset
+
 を指定するのであって，
 それを
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 どのように実現するか
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\end_layout
+
+\end_inset
+
 ではない」ということです．「
 \family default
 \series default
@@ -2303,7 +2319,15 @@ literal "false"
 
 
 \family default
-宛てにメールを送ることで連絡をとることができます．また，
+宛てにメールを送ることで連絡をとることができます．
+\end_layout
+
+\begin_layout Subsection
+どこに助けを求めるか
+\end_layout
+
+\begin_layout Standard
+また，
 もし取扱説明書にははっきりと答えられていない疑問があり，
 すぐに助けが必要な場合には，
 活発なユーザー向けメーリングリスト
@@ -2319,7 +2343,30 @@ literal "false"
 
 
 \family default
-があります．
+があります．投稿するのに登録する必要はありませんが，
+登録を望まれる場合，
+詳しい情報は
+\begin_inset CommandInset href
+LatexCommand href
+name "the LyX website"
+target "https://www.lyx.org/MailingLists"
+literal "false"
+
+\end_inset
+
+をご覧ください．また，
+\SpecialChar LyX
+には
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/"
+literal "false"
+
+\end_inset
+
+があり，
+\SpecialChar LyX
+にいろいろなことをさせるのにどうすれば良いのかという質問に対する答えが多く載っています．
 \end_layout
 
 \begin_layout Subsection
@@ -2363,8 +2410,10 @@ literal "false"
 目次を開くには灰色の箱をクリックするか，
 
 \family sans
+\series bold
 移動
 \family default
+\series default
 メニューをクリックすると，
 中身が自動的に表示されます．
 \end_layout
@@ -2392,9 +2441,11 @@ literal "false"
 そのうち最初のものには「sec:貢献」という名前が付いています．その箱を右クリックするか，
 開いたダイアログの中の
 \family sans
+\series bold
 ラベルに移動
 \family default
-いうボタンをクリックすると，
+\series default
+というボタンをクリックすると，
 参照されている節に飛ぶことができます．移動する前の場所に戻るのも，
 同じように簡単です．
 \family sans
@@ -2477,36 +2528,7 @@ literal "false"
 \bar default
 \noun default
 \color inherit
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-鍵
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
 キー
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \family roman
 \series medium
 \shape up
@@ -2554,7 +2576,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-鍵を参照する場合には次のように短縮して表示します．
+キーを参照する場合には次のように短縮して表示します．
 \end_layout
 
 \begin_layout Itemize
@@ -2580,7 +2602,7 @@ Ctrl-
 \color inherit
 コントロール-
 \family default
-鍵を表します．
+キーを表します．
 \end_layout
 
 \begin_layout Itemize
@@ -2606,7 +2628,7 @@ Shift-
 \color inherit
 シフト-
 \family default
-鍵を表します．
+キーを表します．
 \end_layout
 
 \begin_layout Itemize
@@ -2640,7 +2662,7 @@ Meta
 \family sans
 -
 \family default
-鍵を表します．
+キーを表します．
 \end_layout
 
 \begin_layout Itemize
@@ -2675,7 +2697,7 @@ F12
 \bar no
 \noun off
 \color none
-」はファンクション鍵です．
+」はファンクションキーです．
 \end_layout
 
 \begin_layout Itemize
@@ -2690,7 +2712,7 @@ Esc
 \bar no
 \noun off
 \color none
-」はエスケープ鍵です．
+」はエスケープキーです．
 \end_layout
 
 \begin_layout Itemize
@@ -2900,7 +2922,7 @@ PC
 \noun off
 \color none
 キーボードの場合，
-矢印鍵の上にある6つの鍵です．キーボードによっては
+矢印キーの上にある6つのキーです．キーボードによっては
 \family default
 \series default
 \shape default
@@ -2988,6 +3010,7 @@ Next
 \begin_layout Itemize
 
 \family sans
+\series bold
 リターン
 \family roman
 \series medium
@@ -2999,7 +3022,7 @@ Next
 \color none
 と
 \family sans
-\series default
+\series bold
 \shape default
 \size default
 \emph default
@@ -3015,9 +3038,9 @@ Next
 \bar no
 \noun off
 \color none
-は同じ鍵を指します．
+は同じキーを指します．
 \family sans
-\series default
+\series bold
 \shape default
 \size default
 \emph default
@@ -3033,7 +3056,7 @@ Next
 \bar no
 \noun off
 \color none
-鍵を
+キーを
 \family default
 \series default
 \shape default
@@ -3071,11 +3094,11 @@ Next
 \noun off
 \color none
 」と表示しているものもあり，
-はたまた両方の鍵を持つキーボードもあります．\SpecialChar LyX
-はそれらをすべて同じ鍵として扱うので，
+はたまた両方のキーを持つキーボードもあります．\SpecialChar LyX
+はそれらをすべて同じキーとして扱うので，
 われわれも
 \family sans
-\series default
+\series bold
 \shape default
 \size default
 \emph default
@@ -3084,8 +3107,10 @@ Next
 \color inherit
 リターン
 \family default
+\series default
 と
 \family sans
+\series bold
 エンター
 \family roman
 \series medium
@@ -3109,29 +3134,27 @@ Next
 \noun off
 \color none
 現在設定されている
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
 の一覧は，
 
 \family sans
-\series default
+\series bold
 \shape default
 \size default
 \emph default
@@ -3149,14 +3172,14 @@ status collapsed
 \color none
 メニューの中の
 \family sans
-\series default
+\series bold
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
 \color inherit
-捷径
+ショートカット
 \family roman
 \series medium
 \shape up
@@ -3724,7 +3747,7 @@ em)
 以下の一覧は，
 
 \family sans
-\series default
+\series bold
 \shape default
 \size default
 \emph default
@@ -3777,11 +3800,11 @@ em)
 \series default
 \shape default
 \size default
-\emph on
+\emph default
 \bar default
 \noun default
 \color inherit
-入門篇
+『入門篇
 \family roman
 \series medium
 \shape up
@@ -3790,7 +3813,7 @@ em)
 \bar no
 \noun off
 \color none
-の「\SpecialChar LaTeX
+』の「\SpecialChar LaTeX
 ユーザーのための\SpecialChar LyX
 」の節から読み始めてください（他の節も読んだっていいんですよ）．
 \end_layout
@@ -3807,34 +3830,26 @@ em)
 \color none
  中心となる取扱説明書です．この文書で\SpecialChar LyX
 の機能と基本的な操作の
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 ほとんど
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\end_layout
+
+\end_inset
+
 を説明しています．この取扱説明書は，
 
 \family default
 \series default
 \shape default
 \size default
-\emph on
+\emph default
 \bar default
 \noun default
 \color inherit
-入門篇
+『入門篇
 \family roman
 \series medium
 \shape up
@@ -3843,31 +3858,21 @@ em)
 \bar no
 \noun off
 \color none
-をすでに読んでいることを前提にして書かれています．
+』をすでに読んでいることを前提にして書かれています．
 \end_layout
 
 \begin_layout Description
-埋込オブジェクト篇 
-\emph on
-ユーザーの手引き
-\emph default
-の拡張です．表・図・フロート・ 注釈・プログラムリスト・ボックスなどの使い方を詳細に述べています．これには，
+埋込オブジェクト篇 『ユーザーの手引き』の拡張です．表・図・フロート・ 注釈・プログラムリスト・ボックスなどの使い方を詳細に述べています．これには，
 \SpecialChar LaTeX
 熟練者向けのテクニックもたくさん含まれています．
 \end_layout
 
 \begin_layout Description
-数式篇 
-\emph on
-ユーザーの手引き
-\emph default
-の拡張です．あらゆる数式の組版の仕方を詳述しています．
+数式篇 『ユーザーの手引き』の拡張です．あらゆる数式の組版の仕方を詳述しています．
 \end_layout
 
 \begin_layout Description
-その他の機能篇 
-\emph on
-ユーザーの手引き
+高度な機能篇 『ユーザーの手引き
 \family roman
 \series medium
 \shape up
@@ -3876,7 +3881,7 @@ em)
 \bar no
 \noun off
 \color none
-の拡張です．生の\SpecialChar LaTeX
+』の拡張です．生の\SpecialChar LaTeX
 コマンド・その他のレイアウト・特殊な編集機能などの使い方を述べています．
 \end_layout
 
@@ -3903,36 +3908,7 @@ em)
 \bar default
 \noun default
 \color inherit
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-鍵
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
 キー
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \family roman
 \series medium
 \shape up
@@ -3949,46 +3925,8 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-捷径 現在定義されている\SpecialChar LyX
-の
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-を表にしています．
+ショートカット 現在定義されている\SpecialChar LyX
+のショートカットを表にしています．
 \end_layout
 
 \begin_layout Description
@@ -4027,11 +3965,11 @@ status collapsed
 \series default
 \shape default
 \size default
-\emph on
+\emph default
 \bar default
 \noun default
 \color inherit
-ユーザーの手引き
+『ユーザーの手引き』
 \family roman
 \series medium
 \shape up
@@ -4043,23 +3981,15 @@ status collapsed
 は，
 \SpecialChar LyX
 の導入とカスタマイズについて
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 一定の
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\end_layout
+
+\end_inset
+
 情報を含んではいますが，
 
 \family default
@@ -4070,9 +4000,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-さらに詳しい情報については
-\emph on
-カスタマイズ篇
+さらに詳しい情報については『カスタマイズ篇
 \family roman
 \series medium
 \shape up
@@ -4081,7 +4009,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-を参照するように読者に指示しています．
+』を参照するように読者に指示しています．
 \end_layout
 
 \begin_layout Standard
@@ -4419,11 +4347,11 @@ target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
 \series default
 \shape default
 \size default
-\emph on
+\emph default
 \bar default
 \noun default
 \color inherit
-ユーザーの手引き
+『ユーザーの手引き』と『入門篇』を
 \family roman
 \series medium
 \shape up
@@ -4432,25 +4360,7 @@ target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
 \bar no
 \noun off
 \color none
-と
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
-入門篇
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-を読んで下さい．
+読んで下さい．
 \begin_inset Newline newline
 \end_inset
 
@@ -4460,29 +4370,11 @@ target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
 \series default
 \shape default
 \size default
-\emph on
+\emph default
 \bar default
 \noun default
 \color inherit
-入門篇
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-と
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
-ユーザーの手引き
+『入門篇』と『ユーザーの手引き』
 \family roman
 \series medium
 \shape up
