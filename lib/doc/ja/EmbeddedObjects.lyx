@@ -162,8 +162,7 @@
  {\setboolean{diagbox}{false}}
 
 \usepackage{t1enc}
-\renewcommand{\seename}{→}
-
+\renewcommand{\see}[2]{→\,#1\,の項\,参照}{}
 \usepackage{subfig}
 \DeclareCaptionOption{large}[]{\def\captionfont{\large}}
 \DeclareCaptionOption{Large}[]{\def\captionfont{\Large}}
@@ -198,11 +197,13 @@ ruby
 \font_tt_scale 100 100
 \use_microtype false
 \use_dash_ligatures false
-\graphics default
+\graphics dvipdfmx
 \default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -331,7 +332,7 @@ Uwe Stöhr
 
 
 \family sans
-第2.3.x版
+第2.4.x版
 \end_layout
 
 \begin_layout Standard
@@ -413,7 +414,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ず@図
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+す
+\end_layout
+
+\end_inset
+
+図
 \end_layout
 
 \end_inset
@@ -425,24 +435,21 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-がぞう@画像
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro sortkey
+status open
 
 \begin_layout Plain Layout
-
-|see{
+かそう
 \end_layout
 
 \end_inset
 
-図
-\begin_inset ERT
-status collapsed
+画像
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-}
+図
 \end_layout
 
 \end_inset
@@ -463,8 +470,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ず@図 !
- がぞうだいあろぐ@画像ダイアログ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+す
+\end_layout
+
+\end_inset
+
+図
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かそうたいあろく
+\end_layout
+
+\end_inset
+
+画像ダイアログ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -495,9 +529,15 @@ arg   "dialog-show-new-inset graphics"
 をクリックするか，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 画像
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用して下さい．すると，
 ダイアログが現れるので，
 読み込むファイルを選択して下さい．出力中での画像は，
@@ -537,9 +577,37 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ず@図 !
- のかいてん@—
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+す
+\end_layout
+
+\end_inset
+
+図
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+のかいてん
+\end_layout
+
+\end_inset
+
+—
+—
 の回転
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -558,9 +626,37 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ず@図 !
- のしんしゅく@—
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+す
+\end_layout
+
+\end_inset
+
+図
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+のしんしゆく
+\end_layout
+
+\end_inset
+
+—
+—
 の伸縮
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -574,17 +670,21 @@ status collapsed
 変形してしまう可能性があります．画像が変形するのを防ぐには，
 
 \family sans
+\series bold
 縦横比を維持する
 \family default
+\series default
 オプションを指定して下さい．すると画像は，
 幅と高さが指定した寸法を越えないように伸縮されます．
 \begin_inset Newline newline
 \end_inset
 
-画像を右クリックすると現れるコンテクストメニューで
+画像を右クリックすると現れる文脈依存メニューで
 \family sans
+\series bold
 外部で編集
 \family default
+\series default
 という項目を選ぶことによって，
 画像を指定したプログラムで開くことができます．このプログラムは，
 \SpecialChar LyX
@@ -602,13 +702,17 @@ status collapsed
 画像座標の設定をすることができます．座標は，
 
 \family sans
+\series bold
 ファイルから取得
 \family default
+\series default
 ボタンを押すことによって，
 自動的に計算することもできます．
 \family sans
+\series bold
 境界枠で切り抜く
 \family default
+\series default
 オプションは，
 指定された座標内の画像領域のみ印字します．通常は，
 画像座標を気にする必要はないので，
@@ -633,8 +737,11 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 下書きモード
 \family default
+\series default
 オプションを指定すると，
 画像は出力には現れず，
 画像と同じ大きさの枠だけが表示されます．
@@ -643,8 +750,11 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 画像グループ
 \family default
+\series default
 のセクションでは，
 画像設定グループを定義したり，
 既存のものに所属させたりすることができます．
@@ -654,8 +764,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ず@図 !
- せっていぐるーぷ@設定グループ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+す
+\end_layout
+
+\end_inset
+
+図
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+せつていくるふ
+\end_layout
+
+\end_inset
+
+設定グループ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -667,7 +804,7 @@ status collapsed
 たとえば，
 たくさんの画像の寸法を変更したいときにも，
 一つ一つの寸法を手動で変更せずに済むのです．既存のグループに帰属させるには，
-画像のコンテクストメニューを使用して，
+画像の文脈依存メニューを使用して，
 望むグループ名をチェックすることで行うこともできます．
 \end_layout
 
@@ -707,6 +844,8 @@ nolink "false"
 \begin_inset Graphics
 	filename ../clipart/2D-intensity-plot.pdf
 	scaleBeforeRotation
+	BoundingBox 0bp 1bp 178bp 138bp
+	clip
 	rotateOrigin center
 
 \end_inset
@@ -754,8 +893,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- ず@図
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+す
+\end_layout
+
+\end_inset
+
+図
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -767,8 +933,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ず@図 !
- ふろーと@フロート
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+す
+\end_layout
+
+\end_inset
+
+図
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -802,10 +995,21 @@ arg   "float-insert figure"
 \family default
 か
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 挿入\SpecialChar menuseparator
 フロート\SpecialChar menuseparator
 図
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを用いると，
 「図 #」（#は実際には数字です）というラベルのキャプションを持ったフロートが挿入されます．画像は，
 図
@@ -934,8 +1138,36 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-さんしょう@参照 !
- ずへの@図への —
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さんしよう
+\end_layout
+
+\end_inset
+
+参照
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すへの
+\end_layout
+
+\end_inset
+
+図への—
+—
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -963,9 +1195,15 @@ nolink "false"
 まず，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 ラベル
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューかツールバーボタン
 \family sans
 
@@ -980,9 +1218,15 @@ arg   "label-insert"
 キャプションにラベルを挿入してください．その後，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 相互参照
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューかツールバーボタン
 \family sans
 
@@ -1198,7 +1442,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-がぞうけいしき@画像形式
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かそうけいしき
+\end_layout
+
+\end_inset
+
+画像形式
 \end_layout
 
 \end_inset
@@ -1210,8 +1463,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ず@図 !
- がぞうけいしき@画像形式
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+す
+\end_layout
+
+\end_inset
+
+図
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かそうけいしき
+\end_layout
+
+\end_inset
+
+画像形式
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1276,23 +1556,11 @@ status collapsed
 
 \begin_layout Plain Layout
 GIF
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-|see{
-\end_layout
-
-\end_inset
-
-画像書式
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+画像形式
 \end_layout
 
 \end_inset
@@ -1315,23 +1583,11 @@ status collapsed
 
 \begin_layout Plain Layout
 PNG
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-|see{
-\end_layout
-
-\end_inset
-
-画像書式
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+画像画像形式
 \end_layout
 
 \end_inset
@@ -1358,23 +1614,11 @@ status collapsed
 
 \begin_layout Plain Layout
 JPG
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-|see{
-\end_layout
-
-\end_inset
-
-画像書式
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+画像形式
 \end_layout
 
 \end_inset
@@ -1410,23 +1654,11 @@ status collapsed
 
 \begin_layout Plain Layout
 SVG
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-|see{
-\end_layout
-
-\end_inset
-
-画像書式
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+画像形式
 \end_layout
 
 \end_inset
@@ -1449,23 +1681,11 @@ status collapsed
 
 \begin_layout Plain Layout
 EPS
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-|see{
-\end_layout
-
-\end_inset
-
-画像書式
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+画像形式
 \end_layout
 
 \end_inset
@@ -1505,23 +1725,11 @@ status collapsed
 
 \begin_layout Plain Layout
 SVG
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-|see{
-\end_layout
-
-\end_inset
-
-画像書式
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+画像形式
 \end_layout
 
 \end_inset
@@ -1575,7 +1783,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
 \end_layout
 
 \end_inset
@@ -1591,8 +1808,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- はじめに
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+はじめに
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1638,7 +1873,7 @@ arg   "tabular-insert"
 ，
 
 \family sans
-\series default
+\series bold
 \shape default
 \size default
 \emph default
@@ -1648,6 +1883,11 @@ arg   "tabular-insert"
 挿入\SpecialChar menuseparator
 表
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを選択します．ツールバーボタンを押すと，
 グラフィカルな選択ができます．マウスを動かして，
 生成する表の行数・列数を設定し，
@@ -1839,8 +2079,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- だいあろぐ@ダイアログ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たいあろく
+\end_layout
+
+\end_inset
+
+ダイアログ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2016,7 +2283,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 DVIビューアのすべてが回転を表示できるわけではありません．
 \end_layout
@@ -2218,8 +2485,10 @@ nolink "false"
 
 様式オプションとして
 \family sans
+\series bold
 フォーマル様式
 \family default
+\series default
 を使用すると，
 第
 \begin_inset CommandInset ref
@@ -2281,8 +2550,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- つーるばー@ツールバー
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+つるは
+\end_layout
+
+\end_inset
+
+ツールバー
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2679,7 +2975,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 出力では，
 行の最初のセルの垂直揃えが，
@@ -2699,8 +2995,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- へんしゅうめにゅー@編集メニュー
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+へんしゆうめにゆ
+\end_layout
+
+\end_inset
+
+編集メニュー
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2737,8 +3060,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- ひょう@表
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2750,8 +3100,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- ふろーと@フロート
+ひよう@表!ふろと@フロート
 \end_layout
 
 \end_inset
@@ -2975,13 +3324,16 @@ c & d
 表フロートは，
 
 \family sans
-挿入
-\shape up
-\SpecialChar menuseparator
+\series bold
+挿入\SpecialChar menuseparator
 フロート\SpecialChar menuseparator
 表
 \family default
-\shape default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューかツールバーボタン
 \family sans
 
@@ -3041,10 +3393,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- caption
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3101,8 +3470,37 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-さんしょう@参照 !
- ひょうへの@表への
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さんしよう
+\end_layout
+
+\end_inset
+
+参照
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようへの
+\end_layout
+
+\end_inset
+
+表への—
+—
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3112,9 +3510,15 @@ status collapsed
 ラベルを参照することによって相互参照することができます．そのためには，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 ラベル
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューかツールバーボタンの
 \family sans
 
@@ -3127,8 +3531,18 @@ arg   "label-insert"
 \family default
 を用いて，
 キャプションにラベルを挿入して下さい．然る後に，
+
+\family sans
+\series bold
 挿入\SpecialChar menuseparator
-相互参照メニューかツールバーボタンの
+相互参照
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューかツールバーボタンの
 \family sans
 
 \begin_inset Info
@@ -3170,7 +3584,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
 \end_layout
 
 \end_inset
@@ -3182,8 +3605,36 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- たへえしひよう@多頁—
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁—
+—
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -5517,8 +5968,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表 !
- きやくちゆう@脚註
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやくちゆう
+\end_layout
+
+\end_inset
+
+脚註
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5549,8 +6027,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表 !
- たてよこぞろえ@縦横揃え
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たてよこそろえ
+\end_layout
+
+\end_inset
+
+縦横揃え
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5969,8 +6474,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表 !
- きやふしよん@キャプション
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやふしよん
+\end_layout
+
+\end_inset
+
+キャプション
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5999,26 +6531,36 @@ nolink "false"
 節に述べられているように，
 ある行で多頁表オプションの
 \family sans
+\series bold
 キャプション
 \family default
+\series default
 を使用すれば，
 フロートのキャプション環境を多頁表でも使用することができます．キャプションは，
 
 \family sans
+\series bold
 冒頭ヘッダ
 \family default
+\series default
 ・
 \family sans
+\series bold
 ヘッダ
 \family default
+\series default
 ・
 \family sans
+\series bold
 フッタ
 \family default
+\series default
 ・
 \family sans
+\series bold
 末尾フッタ
 \family default
+\series default
 のいずれかに入れなくてはなりません．それぞれのヘッダ・フッタに入れることができる行は，
 ひとつだけです．
 \end_layout
@@ -6355,7 +6897,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註1】
+［註1］
 \series default
 表番号は，
 多頁表にキャプションを付けなかったとしても，
@@ -6422,17 +6964,22 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註2】
+［註2］
 \series default
 相互参照をリンクするために，
 
 \family sans
+\series bold
 文書設定
 \family default
+\series default
 ダイアログの
 \family sans
-PDF特性
+PDF
+\series bold
+特性
 \family default
+\series default
 で
 \series bold
 hyperref
@@ -6444,10 +6991,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- hyperref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6470,8 +7034,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表 !
- さんしよう@参照
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さんしよう
+\end_layout
+
+\end_inset
+
+参照
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6824,10 +7415,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- caption
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6851,8 +7459,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表 !
- きやふしよんのはは@キャプションの幅
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやふしよんのはは
+\end_layout
+
+\end_inset
+
+キャプションの幅
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7593,7 +8228,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 この文書のように\SpecialChar LaTeX
 パッケージの
@@ -7607,10 +8242,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- caption
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7669,8 +8321,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表 !
- へえしことにことなるきやふしよん@ページごとに異なるキャプション
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+へえしことにことなるきやふしよん
+\end_layout
+
+\end_inset
+
+ページごとに異なるキャプション
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9612,8 +10291,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表 !
- けいさん@計算
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+けいさん
+\end_layout
+
+\end_inset
+
+計算
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9653,8 +10359,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表 !
- ふろおと@フロート
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろおと
+\end_layout
+
+\end_inset
+
+フロート
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9682,8 +10415,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たへえしひよう@多頁表 !
- きようせいかいへえし@強制改頁
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たへえしひよう
+\end_layout
+
+\end_inset
+
+多頁表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きようせいかいへえし
+\end_layout
+
+\end_inset
+
+強制改頁
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11136,7 +11896,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうせるないのふくすうぎょう@表セル内の複数行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようせるないのふくすうきよう
+\end_layout
+
+\end_inset
+
+表セル内の複数行
 \end_layout
 
 \end_inset
@@ -11148,8 +11917,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- かいぎょう@改行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいきよう
+\end_layout
+
+\end_inset
+
+改行
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11319,8 +12115,14 @@ nolink "false"
 最初のセルを右クリックして現れるメニューから，
 
 \family sans
+\series bold
 設定
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを選択します．すると表ダイアログが現れるので，
 セル幅を2.5
 \begin_inset space \thinspace{}
@@ -11334,27 +12136,7 @@ cm幅とし，
 
 cmよりも短いため，
 一行しか表示されません．そこで二行とも表示するために，
-両端揃え改行（
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+両端揃え改行（ショートカット
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert linebreak"
@@ -11391,7 +12173,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【訳註】
+［訳註］
 \series default
 p\SpecialChar LaTeX
 を使用している場合，
@@ -11664,7 +12446,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-れんけつれつ@連結列
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+れんけつれつ
+\end_layout
+
+\end_inset
+
+連結列
 \end_layout
 
 \end_inset
@@ -11676,8 +12467,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- れんけつれつ@連結列
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+れんけつれつ
+\end_layout
+
+\end_inset
+
+連結列
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11705,10 +12523,16 @@ arg   "tabular-feature multicolumn"
 を押すか，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 表\SpecialChar menuseparator
 連結列
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用するか，
 あるいは選択したセルを右クリックして現れるメニューから
 \family sans
@@ -11871,8 +12695,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-れんけつれつ@連結列 !
- けいさん@計算
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+れんけつれつ
+\end_layout
+
+\end_inset
+
+連結列
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+けいさん
+\end_layout
+
+\end_inset
+
+計算
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12337,10 +13188,8 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- calc
+LaTeXはつけし@\SpecialChar LaTeX
+パッケージ!calc
 \end_layout
 
 \end_inset
@@ -12393,7 +13242,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 バグのせいで，
 \SpecialChar LyX
@@ -12473,7 +13322,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-れんけつぎょう@連結行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+れんけつきよう
+\end_layout
+
+\end_inset
+
+連結行
 \end_layout
 
 \end_inset
@@ -12485,8 +13343,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- れんけつぎょう@連結行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+れんけつきよう
+\end_layout
+
+\end_inset
+
+連結行
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12508,19 +13393,34 @@ arg   "tabular-feature multirow"
 
 \family default
 を押すか，
-メニュー
+
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 表\SpecialChar menuseparator
 連結行
 \family default
-を選ぶか，
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューを選ぶか，
 選択したセルを右クリックして，
-コンテクストメニューから
+文脈依存メニューから
 \family sans
-\SpecialChar menuseparator
+\series bold
+
+\begin_inset space \thinspace{}
+\end_inset
+
 連結行
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を選んでください．
 \end_layout
 
@@ -12634,8 +13534,10 @@ arg   "tabular-feature multirow"
 連結列の幅は，
 列全体の幅と揃えを設定することによって設定することができます．
 \family sans
+\series bold
 垂直オフセット
 \family default
+\series default
 は，
 正または負の値を与えると，
 連結列の内容を上下にシフトします．
@@ -12868,27 +13770,7 @@ raggedright}
 
 \begin_layout Standard
 連結行で新しい行に移るには，
-強制改行(
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+強制改行(ショートカット
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -13006,10 +13888,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- diagbox
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+diagbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14232,10 +15131,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- calc
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14832,8 +15748,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- ふぉーまるけいしき@フォーマル様式
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふおまるけいしき
+\end_layout
+
+\end_inset
+
+フォーマル様式
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14846,18 +15789,38 @@ status collapsed
 よく表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:ブックタブ表の例"
+reference "tab:フォーマル表の例"
 nolink "false"
 
 \end_inset
 
-のように組版されます．この種の表は，
-「
-\emph on
+のように組版されます．この種の表は「フォーマル様式」と呼ばれます．表をフォーマル様式にするには，
+表作成ダイアログで「フォーマル」表様式を選択するか，
+表の設定ダイアログの
+\family sans
+\series bold
+罫線
+\family default
+\series default
+タブで
+\family sans
+\series bold
 フォーマル様式
-\emph default
-」と呼ばれます．表をフォーマル様式にするには，
-表の設定ダイアログの罫線タブでフォーマル様式オプションを有効にして下さい．
+\family default
+\series default
+オプションを有効にして下さい（加えて，
+
+\family sans
+\series bold
+既定フォーマル様式を使う
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+オプションを有効にすると，
+罫線は実用的な既定設定になります）．
 \end_layout
 
 \begin_layout Standard
@@ -14874,11 +15837,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:ブックタブ表の例"
+name "tab:フォーマル表の例"
 
 \end_inset
 
-ブックタブ表の例
+フォーマル表の例
 \end_layout
 
 \end_inset
@@ -14909,7 +15872,7 @@ name "tab:ブックタブ表の例"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Medipix
+チップ
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -14922,7 +15885,7 @@ Medipix
 \begin_inset Text
 
 \begin_layout Plain Layout
-Medipix
+チップ
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -14946,31 +15909,6 @@ Medipix
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-cmidrule(r){2-2}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-cmidrule(l){3-4}
-\end_layout
-
-\end_inset
-
 検知器の厚み [
 \begin_inset Formula $\mu m$
 \end_inset
@@ -14980,7 +15918,7 @@ cmidrule(l){3-4}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" bottomlinertrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14989,7 +15927,7 @@ cmidrule(l){3-4}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" bottomlineltrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15018,7 +15956,7 @@ cmidrule(l){3-4}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" toplinertrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15027,7 +15965,7 @@ cmidrule(l){3-4}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" toplineltrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15134,18 +16072,6 @@ cmidrule(l){3-4}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-cmidrule[2pt](l{10pt}){1-1}
-\end_layout
-
-\end_inset
-
 LSF空間分解能
 \end_layout
 
@@ -15372,17 +16298,31 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-全列にまたがらない罫線は，
-連結列セルに罫線を指定することで作成することができます．\SpecialChar LyX
-は，
-内部的に
-\series bold
+表
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:フォーマル表の例"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
-\backslash
-cmidrule
-\series default
-コマンドを使用して，
-このような罫線を引きます．このコマンドの完全な書式は
+\end_inset
+
+のように，
+フォーマル表では，
+列をグループ化するのに切り詰めた罫線をよく使います．これは，
+表ダイアログの罫線ウィジェットで設定することができます．フォーマル表の場合，
+上下の罫線には，
+右と左に小さく分割された部分罫線が表示されます．ここをクリックすると，
+対応する罫線を切り詰めることができます．
+\end_layout
+
+\begin_layout Standard
+切り詰める罫線の長さや罫線の太さを調整したい場合には，
+\SpecialChar TeX
+コードに頼らなくてはなりません．これらを行うコマンドは，
+以下の通りです（これは切り詰められた真ん中の罫線にも使えます）．
 \end_layout
 
 \begin_layout Standard
@@ -15391,32 +16331,6 @@ cmidrule
 
 \backslash
 cmidrule[幅](刈込){開始列-終了列}
-\end_layout
-
-\begin_layout Standard
-です．
-\series bold
-
-\backslash
-cmidrule
-\series default
-のオプションは，
-現在のところ\SpecialChar LyX
-がサポートしていないので，
-オプションを使用するためには，
-\SpecialChar TeX
-コードを使わなくてはなりません．
-\series bold
-
-\backslash
-cmidrule
-\series default
-は，
-行の第一列の中に，
-最初に\SpecialChar TeX
-コードでこのコマンドを入れることによって，
-手動で指定することができます．この罫線は，
-出力では現在行の上に引かれることになります．
 \end_layout
 
 \begin_layout Standard
@@ -15452,23 +16366,7 @@ ptだけ刈り込まれます．刈込幅を指定しないと，
 \begin_inset space \thinspace{}
 \end_inset
 
-emだけ刈り込まれます．
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-表
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:ブックタブ表の例"
-nolink "false"
-
-\end_inset
-
-は，
-
+emだけ刈り込まれます（これはダイアログから刈り込みを行ったときの設定です）．
 \end_layout
 
 \begin_layout Standard
@@ -15476,33 +16374,22 @@ nolink "false"
 \series bold
 
 \backslash
-cmidrule(r){2-2}
-\backslash
-cmidrule(l){3-4}
-\end_layout
-
-\begin_layout Standard
-というコマンドを第二行の初めに使用し，
-
-\end_layout
-
-\begin_layout Standard
-
+cmidrule
+\series default
+の「幅」オプションと「刈込幅」パラメーターは，
+現在のところ\SpecialChar LyX
+がサポートしていません．これらが必要ならば，
+行の第一列の最初のセル要素として，
+これらの設定を行う
 \series bold
 
 \backslash
-cmidrule[2pt](l{10pt}){1-1}
-\end_layout
-
-\begin_layout Standard
-を第六行に使用して作成されています．
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
+cmidrule
+\series default
+を\SpecialChar TeX
+コードで入れる必要があります．すると，
+この罫線は，
+出力では現在行の上に引かれることになります．
 \end_layout
 
 \begin_layout Standard
@@ -15510,18 +16397,20 @@ cmidrule[2pt](l{10pt}){1-1}
 表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:特殊なブックタブ表"
+reference "tab:特殊なフォーマル表"
 nolink "false"
 
 \end_inset
 
-のような重なり合った
+で例示されているような重なり合った
 \series bold
 
 \backslash
 cmidrule
 \series default
-が欲しいことがあるかもしれません．これは，
+が欲しいことがあるかもしれません．ただし，
+これは良くない様式と見做されているので，
+本当に必要なときのみ使用してください．これは，
 \SpecialChar TeX
 コードで
 \end_layout
@@ -15538,7 +16427,7 @@ morecmidrules
 コマンドを使用することによって実現することができます．表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:特殊なブックタブ表"
+reference "tab:特殊なフォーマル表"
 nolink "false"
 
 \end_inset
@@ -15550,10 +16439,6 @@ nolink "false"
 
 \series bold
 
-\backslash
-cmidrule(r){2-2}
-\backslash
-cmidrule(l){3-4}
 \backslash
 morecmidrules
 \backslash
@@ -15569,8 +16454,6 @@ cmidrule{2-4}
 
 \series bold
 
-\backslash
-midrule
 \backslash
 morecmidrules
 \backslash
@@ -15624,10 +16507,8 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- booktabs
+LaTeXはつけし@\SpecialChar LaTeX
+パッケージ!booktabs
 \end_layout
 
 \end_inset
@@ -15649,11 +16530,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:特殊なブックタブ表"
+name "tab:特殊なフォーマル表"
 
 \end_inset
 
-特殊なブックタブ表
+特殊な（汚い）フォーマル表
 \end_layout
 
 \end_inset
@@ -15680,11 +16561,11 @@ name "tab:特殊なブックタブ表"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" bottomlinertrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Medipix
+チップ
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15693,11 +16574,11 @@ Medipix
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomlineltrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Medipix
+チップ
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15721,32 +16602,6 @@ Medipix
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-cmidrule(r){2-2}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-cmidrule(l){3-4}
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
@@ -15790,7 +16645,7 @@ cmidrule{2-4}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" toplineltrim="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15799,7 +16654,7 @@ cmidrule{2-4}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15955,7 +16810,7 @@ status collapsed
 
 
 \backslash
-cmidrule{3-4}
+cmidrule[2pt](l{7pt}){3-4}
 \end_layout
 
 \end_inset
@@ -16092,8 +16947,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- そろえ@揃え
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+そろえ
+\end_layout
+
+\end_inset
+
+揃え
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16888,7 +17770,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 表の行の中身の周囲の本文行への揃えは，
 つねに同じ値をとるわけではありません．この揃え方に必要な
@@ -16922,8 +17804,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- いろつき@色付き
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+いろつき
+\end_layout
+
+\end_inset
+
+色付き
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16939,8 +17848,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのいろ@表の色 !
- せるぶ@セル部
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのいろ
+\end_layout
+
+\end_inset
+
+表の色
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+せるふ
+\end_layout
+
+\end_inset
+
+セル部
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16952,8 +17888,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-いろつき@色付き !
- ひょうせるぶ@表セル部
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+いろつき
+\end_layout
+
+\end_inset
+
+色付き
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようせるふ
+\end_layout
+
+\end_inset
+
+表セル部
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17156,10 +18119,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- colortbl
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+colortbl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17471,9 +18451,20 @@ cellcolor{色彩名}
 \SpecialChar LyX
 のメニュー
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 編集\SpecialChar menuseparator
 文字様式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を使用します．セルに\SpecialChar TeX
 コードが入っている場合には，
 文章部分だけ選択してください．さもないと色付け指定された\SpecialChar TeX
@@ -17488,7 +18479,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 DVIビューアーのすべてが自己定義の色を表示できるわけではありません．
 \end_layout
@@ -17568,9 +18559,15 @@ cellcolor{Maroon}
 マルーンに色づけされています．この後，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 文字様式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使って，
 各文字に色付けをすることができます．
 \end_layout
@@ -17829,8 +18826,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのいろ@表の色 !
- ぎょうぜんたい@行全体
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのいろ
+\end_layout
+
+\end_inset
+
+表の色
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きようせんたい
+\end_layout
+
+\end_inset
+
+行全体
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17842,8 +18866,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-いろつき@色付き !
- ひょうのぎょう@表の行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+いろつき
+\end_layout
+
+\end_inset
+
+色付き
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのきよう
+\end_layout
+
+\end_inset
+
+表の行
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17877,10 +18928,22 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- xcolor
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+xcolor
 \begin_inset ERT
 status collapsed
 
@@ -17889,6 +18952,11 @@ status collapsed
 
 \backslash
 vspace{4mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17914,10 +18982,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- colortbl
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+colortbl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18505,8 +19590,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのいろ@表の色 !
- けいせんぶ@罫線部
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのいろ
+\end_layout
+
+\end_inset
+
+表の色
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+けいせんふ
+\end_layout
+
+\end_inset
+
+罫線部
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18518,8 +19630,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-いろつき@色付き !
- ひょうけいせんぶ@表罫線部
+いろつき@色付き!ひょうけいせんぶ@表罫線部
 \end_layout
 
 \end_inset
@@ -19974,7 +21085,7 @@ name "tab:別色縦罫線表"
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20001,7 +21112,7 @@ arrayrulecolor{red}%
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20073,7 +21184,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20105,7 +21216,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20602,8 +21713,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- せるのかいてん@セルの回転
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+せるのかいてん
+\end_layout
+
+\end_inset
+
+セルの回転
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20615,8 +21753,36 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かいてん@回転 !
- そざいの@素材の—
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいてん
+\end_layout
+
+\end_inset
+
+回転
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+そさいの
+\end_layout
+
+\end_inset
+
+素材の—
+—
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -20632,7 +21798,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 すべてのDVIビューアが回転表示できるわけではありません．
 \end_layout
@@ -20767,30 +21933,10 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 回転セル中では，
-改行(
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+改行(ショートカット
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -20838,51 +21984,44 @@ nolink "false"
 \end_inset
 
 °回転させると，
-ボックス幅はセルの高さになります．
-\lang english
-To avoid to estimate a suitable box width one can use a minipage with a variable width.
- Such a box is inserted by loading the module 
+ボックス幅はセルの高さになります．適切なボックス幅を見積もる手間を避けるには，
+可変幅を持つミニページを使うことができます．このようなボックスは，
+文書設定で
 \family sans
-Variable-width
-\begin_inset space ~
-\end_inset
-
-Minipages
+\series bold
+可変幅ミニページ
 \family default
- in the document settings.
- Then one can use the menu 
+\series default
+モジュールを読み込むことで，
+挿入することができるようになります．こうすると，
+
 \family sans
-Insert\SpecialChar menuseparator
-Custom
-\begin_inset space ~
-\end_inset
-
-Insets\SpecialChar menuseparator
-Minipage
-\begin_inset space ~
-\end_inset
-
-
+\series bold
+挿入\SpecialChar menuseparator
+特別差込枠\SpecialChar menuseparator
+ミニページ
+\series default
+(
+\series bold
+可変幅
+\series default
+)
 \family default
-(Var.
-\begin_inset space ~
+
+\begin_inset space \thinspace{}
 \end_inset
 
-Width)
-\lang japanese
-．表
+メニューが使用できるようになります．表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:表多行回転"
+reference "tab:複数行回転表"
 nolink "false"
 
 \end_inset
 
-は
-\lang english
-is an example for a rotated multiline cell where a variable width minipage is used
-\lang japanese
-．
+は，
+可変幅ミニページを使用し，
+回転させた複数行セルの例です．
 \end_layout
 
 \begin_layout Standard
@@ -20899,11 +22038,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:表多行回転"
+name "tab:複数行回転表"
 
 \end_inset
 
-多行セルを回転させた表
+複数行セルを回転させた表
 \end_layout
 
 \end_inset
@@ -21119,10 +22258,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- calc
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21332,7 +22488,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのちょうせい@表の調整
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのちようせい
+\end_layout
+
+\end_inset
+
+表の調整
 \end_layout
 
 \end_inset
@@ -21344,8 +22509,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 !
- ちょうせい@調整
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひよう
+\end_layout
+
+\end_inset
+
+表
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ちようせい
+\end_layout
+
+\end_inset
+
+調整
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21368,8 +22560,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのちょうせい@表の調整 !
- ぎょうのよはくどり@行の余白取り
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのちようせい
+\end_layout
+
+\end_inset
+
+表の調整
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きようのよはくとり
+\end_layout
+
+\end_inset
+
+行の余白取り
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22083,8 +23302,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのちょうせい@表の調整 !
- とくしゅなせるぞろえ@特殊なセル揃え
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのちようせい
+\end_layout
+
+\end_inset
+
+表の調整
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+とくしゆなせるそろえ
+\end_layout
+
+\end_inset
+
+特殊なセル揃え
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22754,8 +24000,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのちょうせい@表の調整 !
- せるとれつのしょしき@セルと列の書式
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのちようせい
+\end_layout
+
+\end_inset
+
+表の調整
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+せるとれつのしよしき
+\end_layout
+
+\end_inset
+
+セルと列の書式
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23232,8 +24505,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのちょうせい@表の調整 !
- けいせんはば@罫線幅
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのちようせい
+\end_layout
+
+\end_inset
+
+表の調整
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+けいせんはは
+\end_layout
+
+\end_inset
+
+罫線幅
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23957,8 +25257,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのちょうせい@表の調整 !
- てんけい@点罫
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのちようせい
+\end_layout
+
+\end_inset
+
+表の調整
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+てんけい
+\end_layout
+
+\end_inset
+
+点罫
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -24334,10 +25661,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- arydshln
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+arydshln
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25300,7 +26644,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 1つのセル中に複数のコマンドがある場合，
 
@@ -25349,7 +26693,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 \SpecialChar LaTeX
 パッケージ
@@ -25369,10 +26713,8 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- colortbl
+LaTeXはつけし@\SpecialChar LaTeX
+パッケージ!colortbl
 \end_layout
 
 \end_inset
@@ -25474,7 +26816,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
 \end_layout
 
 \end_inset
@@ -25497,8 +26848,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- はじめに
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はしめに
+\end_layout
+
+\end_inset
+
+はじめに
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25513,12 +26891,16 @@ status collapsed
 1頁ないし2頁，
 前後にただよう（フロート）ことができます．
 \family sans
+\series bold
 脚註
 \family default
+\series default
 や
 \family sans
+\series bold
 傍註
 \family default
+\series default
 も，
 当該ページに註が多すぎる場合には次頁にただよって行きますので，
 フロートの一種です．
@@ -25546,9 +26928,15 @@ nolink "false"
 フロートを挿入するには，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 フロート
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニュー(
 \begin_inset Info
 type  "icon"
@@ -25636,12 +27024,16 @@ nolink "false"
 節で各々説明されている図フロートと表フロート以外に，
 
 \family sans
-アルゴリズム型
 \series bold
-と
+アルゴリズム型
+\family default
 \series default
+と
+\family sans
+\series bold
 折返し型
 \family default
+\series default
 のフロート型があります．後者は，
 第
 \begin_inset CommandInset ref
@@ -25662,8 +27054,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- あるごりずむ@アルゴリズム
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+あるこりすむ
+\end_layout
+
+\end_inset
+
+アルゴリズム
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25723,13 +27142,16 @@ end loop
 このフロート型は，
 
 \family sans
-挿入
-\shape up
-\SpecialChar menuseparator
+\series bold
+挿入\SpecialChar menuseparator
 フロート\SpecialChar menuseparator
 アルゴリズム
 \family default
-\shape default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使うと挿入することができます．これは，
 プログラムコードやアルゴリズムの記述に用いられ，
 第
@@ -25740,18 +27162,17 @@ nolink "false"
 
 \end_inset
 
-章で説明されているプログラムコードリストの代わりとみなすことができます．
-\emph on
-\SpecialChar LyX
-ユーザーの手引き
-\emph default
-に述べられているように，
+章で説明されているプログラムコードリストの代わりとみなすことができます．『\SpecialChar LyX
+ユーザーの手引き』に述べられているように，
 アルゴリズム向けの環境としては，
 
 \family sans
 \SpecialChar LyX
+
+\series bold
 コード
 \family default
+\series default
 があります． アルゴリズム
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25805,10 +27226,16 @@ algorithm
 のメニューに表示されている言語と同じであるならば，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 一覧/目次\SpecialChar menuseparator
 アルゴリズム一覧
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用します．それ以外の場合には，
 代わりに
 \end_layout
@@ -25825,8 +27252,10 @@ listof{algorithm}{付けたい名称}
 というコマンドを\SpecialChar TeX
 コードとして用います．ここで
 \family sans
+\series bold
 付けたい名称
 \family default
+\series default
 とは，
 「
 \emph on
@@ -25878,8 +27307,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- れんばん@連番
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+れんはん
+\end_layout
+
+\end_inset
+
+連番
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25959,8 +27415,10 @@ numberwithin
 コマンドを使用可能にするためには，
 文書設定の
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 タブで，
 
 \family sans
@@ -25968,8 +27426,11 @@ AMS
 \begin_inset space ~
 \end_inset
 
-math数式パッケージを使用する
+math
+\series bold
+数式パッケージを使用する
 \family default
+\series default
 を使用します．
 \end_layout
 
@@ -26001,8 +27462,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- さんしょう@参照
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さんしよう
+\end_layout
+
+\end_inset
+
+参照
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26014,8 +27502,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-さんしょう@参照 !
- ふろーとにたいする@フロートに対する
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さんしよう
+\end_layout
+
+\end_inset
+
+参照
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろとにたいする
+\end_layout
+
+\end_inset
+
+フロートに対する
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26027,9 +27542,15 @@ status collapsed
 フロートを参照するには，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 ラベル
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューかツールバーボタンを使用して，
 フロートのキャプションにラベルを挿入してください．
 \begin_inset Graphics
@@ -26054,9 +27575,15 @@ fig:
 ラベルは，
 参照のための名称兼位置標として用いられます．
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 相互参照
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューかツールバーボタン
 \family sans
 
@@ -26084,7 +27611,7 @@ arg   "dialog-show-new-inset ref"
 
 \begin_layout Standard
 相互参照名と数字の間に改行が入るのを防ぐために，
-両者の間の空白には保護された空白を用いた方が良いでしょう．もし相互参照が存在しないラベルを参照している場合には，
+両者の間の空白には非改行空白を用いた方が良いでしょう．もし相互参照が存在しないラベルを参照している場合には，
 出力では，
 参照の代わりに二つの疑問符が表示されることになります．
 \end_layout
@@ -26100,8 +27627,10 @@ arg   "dialog-show-new-inset ref"
 \begin_layout Standard
 相互参照ウィンドウの
 \family sans
+\series bold
 ラベルへ移動
 \family default
+\series default
 ボタンは，
 参照されているラベルの前にカーソルを移動します．すると，
 ボタンの文字が
@@ -26127,8 +27656,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-さんしょう@参照 !
- しょしき@書式
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さんしよう
+\end_layout
+
+\end_inset
+
+参照
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しよしき
+\end_layout
+
+\end_inset
+
+書式
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26249,7 +27805,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 この機能は，
 \SpecialChar LaTeX
@@ -26268,10 +27824,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ!
- prettyref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26283,10 +27856,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- refstyle
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26300,16 +27890,32 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-メニュー
+
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 文書クラス
 \family default
-でオプション
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューでオプション
 \family sans
-相互参照に(prettyrefではなく)refstyleを使用
+\series bold
+相互参照に
+\series default
+(prettyref
+\series bold
+ではなく
+\series default
+)refstyle
+\series bold
+を使用
 \family default
+\series default
 を設定すると，
 この機能で使用する\SpecialChar LaTeX
 パッケージを選択することができます．書式は，
@@ -26362,12 +27968,16 @@ literal "true"
 
 
 \family sans
+\series bold
 複数形
 \family default
+\series default
 と
 \family sans
+\series bold
 大文字化
 \family default
+\series default
 のオプションは，
 \SpecialChar LaTeX
 パッケージ
@@ -26387,8 +27997,10 @@ s
 を付けるものであり，
 
 \family sans
+\series bold
 大文字化
 \family default
+\series default
 は「Image」のように単語を大文字にするものですので，
 日本語文書には有用ではありません．
 \end_layout
@@ -26433,8 +28045,10 @@ nolink "false"
 ラベルを\SpecialChar TeX
 コード中でしようできるようになります．
 \family sans
+\series bold
 接頭辞なし
 \family default
+\series default
 オプションを使えば，
 ラベル名の接頭辞を
 \begin_inset CommandInset ref
@@ -26476,8 +28090,10 @@ on this page
 が自動的に計算します．参照の種類は，
 相互参照ボックスをクリックすると現れる相互参照ウィンドウ中の
 \family sans
+\series bold
 書式
 \family default
+\series default
 フィールドで選ぶことができます．
 \end_layout
 
@@ -26488,7 +28104,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 \SpecialChar LaTeX
 パッケージ
@@ -26502,37 +28118,34 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ!
- prettyref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 は，
 \SpecialChar LyX
-の取り得るラベル
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+の取り得るラベルショートカット
 \begin_inset Foot
 status collapsed
 
@@ -26547,27 +28160,7 @@ fig:
 \end_inset
 
 は図キャプションを表す\SpecialChar LyX
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-です．
+ショートカットです．
 \end_layout
 
 \end_inset
@@ -26585,10 +28178,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- refstyle
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26609,8 +28219,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-さんしょう@参照 !
- じどうめいめい@自動命名
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さんしよう
+\end_layout
+
+\end_inset
+
+参照
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しとうめいめい
+\end_layout
+
+\end_inset
+
+自動命名
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26621,12 +28258,17 @@ status collapsed
 \begin_layout Standard
 
 \family sans
+\series bold
 文書設定
 \family default
+\series default
 ダイアログの
 \family sans
-PDF特性
+PDF
+\series bold
+特性
 \family default
+\series default
 で有効にされた
 \series bold
 hyperref
@@ -26638,10 +28280,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- hyperref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26779,7 +28438,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 参照の自動命名は，
 相互参照を
@@ -26805,11 +28464,7 @@ nolink "false"
 
 \begin_layout Standard
 \SpecialChar LyX
-の取扱説明書『
-\emph on
-数式篇
-\emph default
-』では，
+の取扱説明書『数式篇』では，
 参照名の自動命名が使用されています．
 \end_layout
 
@@ -26828,8 +28483,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-さんしょう@参照 !
- さんしょういち@参照位置
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さんしよう
+\end_layout
+
+\end_inset
+
+参照
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さんしよういち
+\end_layout
+
+\end_inset
+
+参照位置
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26858,10 +28540,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- hyperref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26883,10 +28582,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- hyperref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26902,10 +28618,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- hyperref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26945,7 +28678,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】hypcap
+［註］hypcap
 \series default
 は内部図への参照には効力がありません．
 \end_layout
@@ -26956,10 +28689,10 @@ status open
 \end_layout
 
 \begin_layout Section
-フロートの配置
+フロートの設定
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:フロートの配置"
+name "sec:フロートの設定"
 
 \end_inset
 
@@ -26970,13 +28703,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- はいち@配置
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+せつてい
+\end_layout
+
+\end_inset
+
+設定
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+におけるフロート設定は，
+２箇所で行うことができます．
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar ldots
+\SpecialChar menuseparator
+フロートの設定
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+では，
+フロートのローカルな設定を変えない限り．文書中の全フロートの既定値として用いられるオプション（ページ上の配置および内容の揃え）を設定することができます．
 \end_layout
 
 \begin_layout Standard
@@ -26989,23 +28769,49 @@ status collapsed
 \bar no
 \noun off
 \color none
-フロートボックスを右クリックすると，
+もう一つの方法は，
+フロートボックスを右クリックして，
+
+\family sans
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+設定\SpecialChar ldots
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+をクリックする方法です．すると，
 ダイアログが開いて，
-ここで\SpecialChar LaTeX
-がフロートを配置するのに使う配置オプションを変更できるようになります．
-\begin_inset Newline newline
-\end_inset
-
-
+対象となるフロートの大域的な配置や揃えその他の選択ができます．
 \family sans
-\series default
+\series bold
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
 \color inherit
-段をまたぐ
+文書\SpecialChar menuseparator
+設定\SpecialChar ldots
+\SpecialChar menuseparator
+フロートの設定
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -27014,23 +28820,27 @@ status collapsed
 \bar no
 \noun off
 \color none
-オプションは，
-二段組文書でのみ有効です．これを選択すると，
-フロートは段の中のみに収められないで，
-ページの両段にまたがって広がります．
-\begin_inset Newline newline
-\end_inset
-
-
+とローカルな
 \family sans
-\series default
+\series bold
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
 \color inherit
-横倒しに回転
+
+\begin_inset space \thinspace{}
+\end_inset
+
+フロートの設定
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -27039,8 +28849,170 @@ status collapsed
 \bar no
 \noun off
 \color none
-オプションは，
-フロートを回転するのに用います．第
+両方について，
+これらのオプションを説明していきます．
+\end_layout
+
+\begin_layout Subsection
+フロートの配置
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:フロートの配置"
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+配置
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はいち
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar ldots
+\SpecialChar menuseparator
+フロートの設定
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+（すべてのフロート対象）とローカルな
+\family sans
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset space \thinspace{}
+\end_inset
+
+フロートの設定
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+（特定のフロート対象）の両方において，
+フロートをページ上に配置するのに\SpecialChar LaTeX
+が用いる配置アルゴリズムを修正することができます．これは
+\family sans
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+配置の設定
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+で行います．既定では，
+これは
+\family sans
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset space \thinspace{}
+\end_inset
+
+文書\SpecialChar menuseparator
+設定\SpecialChar ldots
+\SpecialChar menuseparator
+フロートの設定
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset space \thinspace{}
+\end_inset
+
+では
+\family sans
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+文書クラスの既定値
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+になっており（つまり文書クラスの既定配置アルゴリズムが使用されます），
+
 \family default
 \series default
 \shape default
@@ -27049,47 +29021,31 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:回転フロート"
-nolink "false"
-
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-節をご参照ください．
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-フロートダイアログでは，
-
+ローカルの
 \family sans
-\series default
+\series bold
+フロートの設定
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ダイアログでは文書の既定値になっています（すなわち
+\family sans
+\series bold
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
 \color inherit
-既定の配置を使う
+文書\SpecialChar menuseparator
+設定\SpecialChar ldots
+\SpecialChar menuseparator
+フロートの設定
 \family roman
 \series medium
 \shape up
@@ -27098,8 +29054,13 @@ nolink "false"
 \bar no
 \noun off
 \color none
-オプションを無効にしたときには，
-特定のフロートの配置を設定するのに以下のオプションの一つ以上を設定することができます．
+の設定—
+—
+既定では文書クラスの既定値—
+—
+が使用されます）．これを変更したい場合には，
+配置の設定を詳細設定にしてください．これによって，
+下記から１つ以上選択できるようになります．
 \end_layout
 
 \begin_layout Description
@@ -27114,6 +29075,11 @@ nolink "false"
 \noun off
 \color none
 フロートを挿入位置に配置することを試みます
+\end_layout
+
+\begin_layout Description
+なんとしても現在位置に：
+ フロートの配置を挿入した位置に強制します
 \end_layout
 
 \begin_layout Description
@@ -27170,13 +29136,17 @@ nolink "false"
 \SpecialChar LaTeX
 はまず
 \family sans
+\series bold
 可能ならば現在位置に
 \family default
+\series default
 を試み，
 次に
 \family sans
+\series bold
 ページの上部
 \family default
+\series default
 ，
 その後他のオプションを試みます．既定値を使わないときには，
 \SpecialChar LaTeX
@@ -27246,8 +29216,11 @@ floatpagefraction
 
 \family sans
 \SpecialChar LaTeX
+
+\series bold
 の規則を無視する
 \family default
+\series default
 オプションを追加することによって，
 これらを無視することができます．
 \begin_inset Newline newline
@@ -27282,8 +29255,10 @@ bottomfraction}{0.5}
 しかもかならず配置させたい場合があるかもしれません．このような場合には，
 
 \family sans
+\series bold
 何としても現在位置に置く
 \family default
+\series default
 オプションを使用します．このオプションはできる限り使わないようにし，
 使う場合でも印刷する直前にまで文書が仕上がってから，
 使用するようにしてください．なぜならば，
@@ -27371,10 +29346,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- endfloat
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+endfloat
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27435,7 +29427,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】endfloat
+［註］endfloat
 \series default
 は，
 ヒント文の自動翻訳を行わないので，
@@ -27463,7 +29455,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 現在のところ，
 
@@ -27503,6 +29495,199 @@ literal "true"
 をご覧ください．
 \end_layout
 
+\begin_layout Subsection
+フロートの中身の揃え
+\end_layout
+
+\begin_layout Standard
+このオプションリストでは，
+フロート（あるいは
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+から呼び出したのであれば，
+すべてのフロートの既定値）の中身をどう揃えるかを定義します．
+\family sans
+\series bold
+文書クラスの既定値
+\family default
+\series default
+では，
+そのクラスの揃え，
+すなわち\SpecialChar LaTeX
+の既定の揃えが使用されます．
+\family sans
+\series bold
+文書の既定値
+\family default
+\series default
+（
+\family sans
+\series bold
+フロートの設定
+\family default
+\series default
+ダイアログでのみ表示され，
+
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+では表示されません）は，
+
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+フロートの設定
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+で指定した設定が使われます．他の３つの選択肢，
+
+\family sans
+\series bold
+左揃え
+\family default
+\series default
+・
+\family sans
+\series bold
+中央揃え
+\family default
+\series default
+・
+\family sans
+\series bold
+右揃え
+\family default
+\series default
+は自明でしょう．
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+フロートの設定
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+でこれらが選択されれば，
+文書中のすべてのフロートがこの設定を持ちます（すると，
+たとえばすべてのフロートを中央揃えにするのは極めて簡単です）．
+\end_layout
+
+\begin_layout Subsection
+他のフロートオプション
+\end_layout
+
+\begin_layout Standard
+これらの２つのオプションは，
+
+\family sans
+\series bold
+フロートの設定
+\family default
+\series default
+ダイアログでのみ表示され，
+
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+では表示されません．
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+段をまたぐ
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+オプションは，
+二段組文書でのみ有効です．これを選択すると，
+フロートは段の中のみに収められないで，
+ページの両段にまたがって広がります．
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+横倒しに回転
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+オプションは，
+フロートを回転するのに用います．第
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:回転フロート"
+nolink "false"
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+節をご参照ください．
+\end_layout
+
 \begin_layout Section
 回転フロート
 \begin_inset CommandInset label
@@ -27518,8 +29703,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- かいてん@回転
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいてん
+\end_layout
+
+\end_inset
+
+回転
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27579,7 +29791,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 すべてのDVIビューアが回転フロートを表示できるわけではありません．
 \end_layout
@@ -27692,8 +29904,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- じゅうぞくふろーと@従属フロート
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しゆうそくふろと
+\end_layout
+
+\end_inset
+
+従属フロート
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28190,8 +30429,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- よこならび@横並び
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+よこならひ
+\end_layout
+
+\end_inset
+
+横並び
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28295,6 +30561,8 @@ status open
 	filename ../clipart/2D-intensity-plot.pdf
 	width 100col%
 	scaleBeforeRotation
+	BoundingBox 0bp 1bp 178bp 138bp
+	clip
 
 \end_inset
 
@@ -28412,8 +30680,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きゃぷしょん@キャプション !
- しょしきせってい@書式設定
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやふしよん
+\end_layout
+
+\end_inset
+
+キャプション
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しよしきせつてい
+\end_layout
+
+\end_inset
+
+書式設定
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28425,8 +30720,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- きゃぷしょんのしょしきせってい@キャプションの書式設定
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやふしよんのしよしきせつてい
+\end_layout
+
+\end_inset
+
+キャプションの書式設定
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28444,13 +30766,17 @@ name "sec:キャプションの書式設定"
 \begin_layout Standard
 
 \family sans
+\series bold
 キャプション
 \family default
+\series default
 環境は，
 
 \family sans
+\series bold
 フロート
 \family default
+\series default
 の既定の段落環境です．キャプションは，
 \SpecialChar LyX
 画面上では，
@@ -28498,10 +30824,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- caption
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28608,12 +30951,12 @@ captionsetup[table]{labelfont={bf,sf}}
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 オプションのうち，
 
@@ -28623,19 +30966,36 @@ tableposition=top
 は，
 文書クラスに
 \series bold
-KOMA-script
+KOMA-Script
 \series default
 
 \begin_inset Index idx
 range none
 pageformat default
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
+\SpecialChar LaTeX
+パッケージ
+\begin_inset IndexMacro subentry
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- KOMA-script
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28702,7 +31062,7 @@ thefigure
 \series bold
 ~
 \series default
-」は保護された空白を入れます．
+」は非改行空白を入れます．
 \end_layout
 
 \begin_layout Standard
@@ -28720,29 +31080,46 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- KOMA-script
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 文書クラス（
 \family sans
-article (KOMA-script)
+KOMA-Script Article
 \family default
 ・
 \family sans
-book (KOMA-script)
+KOMA-Script Book
 \family default
 ・
 \family sans
-letter (KOMA-script)
+KOMA-Script Letter
 \family default
 ・
 \family sans
-report (KOMA-script)
+KOMA-Script Report
 \family default
 ）を使用している場合には，
 
@@ -28782,12 +31159,12 @@ setkomafont
 についての詳細は，
 
 \series bold
-KOMA-script
+KOMA-Script
 \series default
 の取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
-key "KOMA-script"
+key "KOMA-Script"
 literal "true"
 
 \end_inset
@@ -28838,6 +31215,7 @@ status open
 \begin_inset Graphics
 	filename ../clipart/2D-intensity-plot.pdf
 	scaleBeforeRotation
+	BoundingBox 0bp 1bp 178bp 138bp
 
 \end_inset
 
@@ -28995,8 +31373,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きゃぷしょん@キャプション !
- はいち@配置
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやふしよん
+\end_layout
+
+\end_inset
+
+キャプション
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はいち
+\end_layout
+
+\end_inset
+
+配置
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29008,8 +31413,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- きゃぷしょんのはいち@キャプションの配置
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやふしよんのはいち
+\end_layout
+
+\end_inset
+
+キャプションの配置
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29102,7 +31534,7 @@ nolink "false"
 
 ．
 \series bold
-KOMA-script
+KOMA-Script
 \series default
 
 \begin_inset Index idx
@@ -29111,34 +31543,47 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- KOMA-script
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 文書クラス（
 \family sans
-article (KOMA-script)
+KOMA-Script Article
 \family default
 ・
 \family sans
-book (KOMA-script)
+KOMA-Script Book
 \family default
 ・
 \family sans
-letter (KOMA-script)
+KOMA-Script Letter
 \family default
 ・
 \family sans
-report (KOMA-script)
+KOMA-Script Report
 \family default
-
-\begin_inset space \thinspace{}
-\end_inset
-
 ）をお使いの場合には，
 
 \series bold
@@ -29521,10 +31966,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- sidecap
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+sidecap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30111,7 +32573,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 キャプションを横につけたフロートでは，
 フロート配置オプションの
@@ -30159,7 +32621,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 第
 \begin_inset CommandInset ref
@@ -30181,10 +32643,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- hypcap
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hypcap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30206,7 +32685,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【訳註】
+［訳註］
 \series default
 \SpecialChar LaTeX
 パッケージ
@@ -30220,10 +32699,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- sidecap
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+sidecap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30233,11 +32729,7 @@ p\SpecialChar LaTeX
 と互換性がなく，
 特に文書全体の見出しのフォントが適切に表示できなくなってしまうため，
 本日本語訳では当該パッケージを使用していません．その使用例については，
-取扱説明書『
-\emph on
-埋め込み機能篇
-\emph default
-』(つまりこの文書)の\SpecialChar LyX
+取扱説明書『埋め込み機能篇』(つまりこの文書)の\SpecialChar LyX
 文書本体を見るか，
 出力結果を見たい場合には英語版を出力するようにしてください．
 \end_layout
@@ -31010,8 +33502,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- ふろーといちらん@フロート一覧
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろといちらん
+\end_layout
+
+\end_inset
+
+フロート一覧
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31025,9 +33544,15 @@ status collapsed
 すべてのフロート型に一覧があります．これらは，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 一覧/目次
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで挿入することができます．
 \end_layout
 
@@ -31056,10 +33581,37 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ちゅうしゃく@註釈 !
- \SpecialChar LyX
-のーと@\SpecialChar LyX
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ちゆうしやく
+\end_layout
+
+\end_inset
+
+註釈
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LyX
+のと
+\end_layout
+
+\end_inset
+
+\SpecialChar LyX
 ノート
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31082,9 +33634,15 @@ arg   "note-insert"
 か，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 註釈
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで挿入することができます．註釈には，
 以下の三つの型があります．
 \end_layout
@@ -31128,13 +33686,28 @@ status open
 コメント この註釈も出力には現れませんが，
 
 \family sans
+\series bold
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
+
+\series default
 LaTeX
 \begin_inset space ~
 \end_inset
 
-(pdflatex) / (平文)
+(pdflatex)
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+(
+\series bold
+平文
+\series default
+)
 \family default
  メニューを使って文書を\SpecialChar LaTeX
 にエクスポートする際には，
@@ -31312,8 +33885,11 @@ arg   "note-insert"
 
 \family sans
 \SpecialChar LyX
+
+\series bold
 註釈
 \family default
+\series default
 が挿入されます．註釈ボックスを右クリックすれば，
 五つの註釈型を切り替えることができます．既存の平文を註釈に変えるには，
 平文を選択して，
@@ -31329,10 +33905,16 @@ arg   "note-insert"
 淡色註釈の文字色は，
 
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 色
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで変更することができます．
 \end_layout
 
@@ -31351,8 +33933,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ちゅうしゃく@註釈 !
- きゃくちゅう@脚註
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ちゆうしやく
+\end_layout
+
+\end_inset
+
+註釈
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやくちゆう
+\end_layout
+
+\end_inset
+
+脚註
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31364,7 +33973,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きゃくちゅう@脚註
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやくちゆう
+\end_layout
+
+\end_inset
+
+脚註
 \end_layout
 
 \end_inset
@@ -31387,9 +34005,15 @@ arg   "footnote-insert"
 か，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 脚註
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使って挿入することができます．すると，
 脚註文を挿入したとこ
 \begin_inset Graphics
@@ -31538,18 +34162,14 @@ nolink "false"
 \backslash
 footnotemark{}
 \series default
-コマンドを入れてください．脚註の本文は．表の後で\SpecialChar TeX
+コマンドを入れてください．脚註の本文は．ミニページの後で\SpecialChar TeX
 コード
 \series bold
 
 \backslash
 footnotetext
 \series default
-コマンドの引数として入力します
-\lang english
-minipage
-\lang japanese
-．
+コマンドの引数として入力します．
 \begin_inset Newline newline
 \end_inset
 
@@ -31802,8 +34422,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きゃくちゅう@脚註 !
- ふばん@付番
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやくちゆう
+\end_layout
+
+\end_inset
+
+脚註
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふはん
+\end_layout
+
+\end_inset
+
+付番
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31924,7 +34571,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 この付番方法には1文字しか使えないので，
 ラテン文字を使うと26個の脚註しか番号を振ることができません．
@@ -31943,7 +34590,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 記号を使うと9個の脚註しか番号を振ることができません．
 \end_layout
@@ -32018,16 +34665,21 @@ numberwithin
 コマンドを使用できるようにするためには，
 文書設定の
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 タブで
 \family sans
 AMS
 \begin_inset space ~
 \end_inset
 
-mathパッケージを使う
+math
+\series bold
+パッケージを使う
 \family default
+\series default
 オプションを有効にしてください．
 \end_layout
 
@@ -32052,12 +34704,7 @@ numberwithin{footnote}{chapter}
 status open
 
 \begin_layout Plain Layout
-
-\series bold
-これは，
-
-\series default
-「章番号.脚註番号」スキームで番号を振られた脚註です．
+これは「章番号.脚註番号」スキームで番号を振られた脚註です．
 \end_layout
 
 \end_inset
@@ -32091,7 +34738,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \backslash
 numberwithin
 \series default
@@ -32140,8 +34787,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きゃくちゅう@脚註 !
- はいち@配置
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きやくちゆう
+\end_layout
+
+\end_inset
+
+脚註
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はいち
+\end_layout
+
+\end_inset
+
+配置
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32233,10 +34907,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- ftnright
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+ftnright
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32404,7 +35095,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こちゆう@後註
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こちゆう
+\end_layout
+
+\end_inset
+
+後註
 \end_layout
 
 \end_inset
@@ -32412,10 +35112,16 @@ status collapsed
 」と呼ばれるものです．文書中で脚註の代わりに後註を使用するには，
 
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 モジュール
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで
 \family sans
 脚註から後註へ
@@ -32625,10 +35331,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- footmisc
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+footmisc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32666,10 +35389,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- KOMA-Script
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32679,7 +35419,7 @@ status collapsed
 クラス固有のコマンドで調節することができます(
 \begin_inset CommandInset citation
 LatexCommand cite
-key "KOMA-script"
+key "KOMA-Script"
 literal "true"
 
 \end_inset
@@ -32695,8 +35435,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ちゅうしゃく@註釈 !
- ぼうちゅう@傍註
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ちゆうしやく
+\end_layout
+
+\end_inset
+
+註釈
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほうちゆう
+\end_layout
+
+\end_inset
+
+傍註
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32710,9 +35477,20 @@ status collapsed
 傍註註釈は，
 脚註のような外見と挙動を示します．これは
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 挿入\SpecialChar menuseparator
 傍註
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューかツールバーボタン
 \family sans
 
@@ -32812,7 +35590,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 内側余白には充分な空白がないことがよくあり，
 出力で傍註が正しく表示されないことがあります．
@@ -32858,7 +35636,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \backslash
 reversemarginpar
 \series default
@@ -32930,7 +35708,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 通常，
 傍註は表やフロート，
@@ -32995,10 +35773,8 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- marginnote
+LaTeXはつけし@\SpecialChar LaTeX
+パッケージ!marginnote
 \end_layout
 
 \end_inset
@@ -33541,8 +36317,36 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- はじめに
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+はじめに
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はしめに
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33628,26 +36432,40 @@ arg   "box-insert Frameless"
 
 のように
 \family sans
-ボックス（minipage環境）
+ボックス（minipage
+\series bold
+環境
+\series default
+）
 \family default
 というラベルのついた灰色の箱形が挿入されます．ボックス型は，
 この箱形を右クリックすると出てくるメニューで指定することができます．
 \family sans
+\series bold
 設定
 \family default
+\series default
 メニューを選択すると現れるボックスダイアログでは，
 
 \family sans
-parboxコマンド
+parbox
+\series bold
+コマンド
 \family default
+\series default
 と
 \family sans
-minipage環境
+minipage
+\series bold
+環境
 \family default
+\series default
 の二つの
 \family sans
+\series bold
 内部ボックス
 \family default
+\series default
 型を選択することができます．
 \family sans
 minipage
@@ -33702,17 +36520,21 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 ボックスは，
 
 \family sans
+\series bold
 箇条書き（記号）
 \family default
+\series default
 環境や
 \family sans
+\series bold
 箇条書き（記述）
 \family default
+\series default
 環境の単独要素とすべきではありません．
 \end_layout
 
@@ -33728,22 +36550,28 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 理由は不明ですが，
 枠付きボックスを使用している場合には，
 
 \family sans
+\series bold
 内部ボックス
 \family default
+\series default
 型は
 \family sans
+\series bold
 なし
 \family default
+\series default
 にしか設定することができません．
 \family sans
+\series bold
 内部ボックス
 \family default
+\series default
 型や枠のないボックスについては，
 第
 \begin_inset CommandInset ref
@@ -33776,8 +36604,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- ぼっくすだいあろぐ@ボックスダイアログ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくすたいあろく
+\end_layout
+
+\end_inset
+
+ボックスダイアログ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33793,8 +36648,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- すんぽう@寸法
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すんほう
+\end_layout
+
+\end_inset
+
+寸法
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33979,8 +36861,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- もじそろえ@文字揃え
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+もしそろえ
+\end_layout
+
+\end_inset
+
+文字揃え
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34094,7 +37003,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 同一行に二つのボックスがあり，
 一方だけに影付きなどが設定されている場合には，
@@ -34369,8 +37278,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- そうしょく@装飾
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+そうしよく
+\end_layout
+
+\end_inset
+
+装飾
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34625,10 +37561,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- fancybox
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+fancybox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34685,8 +37638,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- しょうさいなせってい@詳細な設定
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しようさいなせつてい
+\end_layout
+
+\end_inset
+
+詳細な設定
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34734,7 +37714,10 @@ cornersize{数値}
 というコマンドは，
 直径を
 \family sans
+\series bold
 数値
+\series default
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -34750,8 +37733,11 @@ cornersize{数値}
 \begin_inset space \thinspace{}
 \end_inset
 
+
+\series bold
 (ボックスの幅と高さの小さい方)
 \family default
+\series default
 に設定します．既定値は
 \series bold
 
@@ -34856,11 +37842,17 @@ definecolor{shadebox}
 コマンドで局所的に変更することもできますし，
 
 \family sans
+\series bold
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 色\SpecialChar menuseparator
 影付きボックス
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューからグローバルに変更することもできます．
 \series bold
 
@@ -35010,8 +38002,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- みにぺーじ@ミニページ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+みにへし
+\end_layout
+
+\end_inset
+
+ミニページ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35195,7 +38214,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 ミニページ内にフロートや傍註を使用することはできませんが，
 ミニページを表・フロート・他のボックス内で使用することはできます．
@@ -35217,22 +38236,19 @@ status open
 \SpecialChar LyX
 は，
 
-\emph on
+\family sans
+\series bold
 可変幅ミニページ
-\emph default
+\family default
+\series default
 モジュールを経由して，
-内容の幅によって自動的に幅が調整されるミニページを一部サポートしています．ファイル
-\family typewriter
-examples/varwidth-floats-side-by-side.lyx
-\family default
+内容の幅によって自動的に幅が調整されるミニページを一部サポートしています．\SpecialChar LyX
+例示ファイル
+\emph on
+varwidth-floats-side-by-side
+\emph default
 では，
-2つのフロートを並べて配置するのに可変幅ミニページを使用する例を取り扱っています．これには，
-
-\family typewriter
-Varwidth
-\family default
- \SpecialChar LaTeX
-パッケージが必要です．
+2つのフロートを並べて配置するのに可変幅ミニページを使用する例を取り扱っています．
 \end_layout
 
 \begin_layout Section
@@ -35247,12 +38263,44 @@ name "sec:Parboxes"
 \begin_inset Index idx
 range none
 pageformat default
-status collapsed
+status open
 
 \begin_layout Plain Layout
-ほっくす@ボックス !
- たんらく@段落—
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たんらく
+\end_layout
+
+\end_inset
+
+段落—
+—
+
+\begin_inset space \thinspace{}
+\end_inset
+
 (parbox)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35317,8 +38365,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- もじよう@文字用
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+もしよう
+\end_layout
+
+\end_inset
+
+文字用
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35341,8 +38416,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- はいふねーしょんのかいひ@ハイフネーションの回避
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はいふねしよんのかいひ
+\end_layout
+
+\end_inset
+
+ハイフネーションの回避
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35380,8 +38482,10 @@ veryverylongword
 単語をボックスの中に入れて，
 
 \family sans
+\series bold
 内部ボックス
 \family default
+\series default
 を
 \family sans
 makebox
@@ -35473,6 +38577,12 @@ veryverylongword
 こうすることでこの単語は右余白に突き出てしまいます．これを回避するには，
 以下のように
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -35485,27 +38595,12 @@ veryverylongword
 \family sans
 整形なし改行
 \family default
-メニュー（
-\begin_inset Flex Ruby
-status collapsed
+\series default
 
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
+メニュー（ショートカット
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -35569,8 +38664,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- すいちょくぞろえのしかた@垂直揃えの仕方
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すいちよくそろえのしかた
+\end_layout
+
+\end_inset
+
+垂直揃えの仕方
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35582,8 +38704,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- Raiseboxes
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Raiseboxes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35889,8 +39029,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- いろつき@色付き
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+いろつき
+\end_layout
+
+\end_inset
+
+色付き
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36154,7 +39321,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 DVIビューアによっては，
 回転伸縮したものの表示ができないものがあります．
@@ -36172,7 +39339,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 フロートは回転伸縮したボックスの中に入れることはできません．
 \end_layout
@@ -36184,55 +39351,83 @@ status open
 
 \begin_layout Subsection
 ボックスの回転
+\end_layout
+
+\begin_layout Standard
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- かいてんした@回転した
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+す
 \end_layout
 
 \end_inset
 
-
-\begin_inset Index idx
-range none
-pageformat default
-status collapsed
+図
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
-かいてん@回転 !
- そざいの@素材の—
+\begin_inset IndexMacro sortkey
+status open
 
+\begin_layout Plain Layout
+のかいてん
 \end_layout
 
 \end_inset
 
-
-\begin_inset Index idx
-range none
-pageformat default
-status collapsed
-
-\begin_layout Plain Layout
-ず@図 !
- のかいてん@—
+—
+—
 の回転
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのちょうせい@表の調整 !
- かいてん@回転
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいてんした
+\end_layout
+
+\end_inset
+
+回転した—
+—
+
 \end_layout
 
 \end_inset
@@ -36240,30 +39435,127 @@ status collapsed
 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいてん
+\end_layout
+
+\end_inset
+
+回転
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+そさいの
+\end_layout
+
+\end_inset
+
+素材の—
+—
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのちようせい
+\end_layout
+
+\end_inset
+
+表の調整
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいてん
+\end_layout
+
+\end_inset
+
+回転
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 ものを回転するならば，
 
 \family sans
+\series bold
 回転ボックス
 \family default
+\series default
 に入れることができます．このボックスは，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 拡張差込枠\SpecialChar menuseparator
 回転ボックス
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で挿入することができます．
 \end_layout
 
 \begin_layout Standard
 回転の原点は，
-原点差込枠(メニュー「
+原点差込枠(
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 原点
 \family default
-」)に
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニュー)に
 \series bold
 origin=位置
 \series default
@@ -36309,8 +39601,10 @@ l
 下の例では，
 
 \family sans
+\series bold
 原点
 \family default
+\series default
 差込枠に
 \series bold
 origin=c
@@ -36318,8 +39612,10 @@ origin=c
 ，
 
 \family sans
+\series bold
 回転
 \family default
+\series default
 差込枠に
 \series bold
 60
@@ -36582,7 +39878,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \family sans
 \series default
 角度
@@ -36601,14 +39897,45 @@ status open
 
 \begin_layout Subsection
 ボックスの伸縮
+\end_layout
+
+\begin_layout Standard
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- しんしゅくさせた@伸縮させた—
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しんしゆくさせた
+\end_layout
+
+\end_inset
+
+伸縮させた—
+—
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -36621,8 +39948,36 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-しんしゅく@伸縮 !
- そざいの@素材の—
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しんしゆく
+\end_layout
+
+\end_inset
+
+伸縮
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+そさいの
+\end_layout
+
+\end_inset
+
+素材の—
+—
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -36635,22 +39990,72 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ず@図 !
- のしんしゅく@—
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+す
+\end_layout
+
+\end_inset
+
+図
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+のしんしゆく
+\end_layout
+
+\end_inset
+
+—
+—
 の伸縮
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひょうのちょうせい@表の調整 !
- しんしゅく@伸縮
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ひようのちようせい
+\end_layout
+
+\end_inset
+
+表の調整
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しんしゆく
+\end_layout
+
+\end_inset
+
+伸縮
 \end_layout
 
 \end_inset
@@ -36658,47 +40063,70 @@ status collapsed
 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 ものを伸縮するならば，
 
 \family sans
+\series bold
 伸縮ボックス
 \family default
+\series default
 に入れることができます．このボックスは，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 拡張差込枠\SpecialChar menuseparator
 伸縮ボックス
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で挿入することができます．
 \end_layout
 
 \begin_layout Standard
 
 \family sans
+\series bold
 伸縮ボックス
 \family default
+\series default
 には，
 必須差込枠「
 \family sans
+\series bold
 水平因子
 \family default
+\series default
 」と，
 非必須差込枠「
 \family sans
+\series bold
 垂直因子
 \family default
-」(「
+\series default
+」(
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 垂直因子
 \family default
-」メニューで挿入可)がありますので，
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューで挿入可)がありますので，
 そこに水平因子と垂直因子を入力してください．
 \family sans
+\series bold
 垂直因子
 \family default
+\series default
 を使わない場合には，
 水平因子が垂直因子としても使われます．
 \end_layout
@@ -36709,8 +40137,10 @@ status collapsed
 文を2倍の大きさにしたい場合，
 
 \family sans
+\series bold
 水平因子
 \family default
+\series default
 差込枠に
 \series bold
 2
@@ -36741,8 +40171,10 @@ status open
 \begin_layout Standard
 
 \family sans
+\series bold
 水平因子
 \family default
+\series default
 を
 \series bold
 2
@@ -36750,8 +40182,10 @@ status open
 ，
 
 \family sans
+\series bold
 垂直因子
 \family default
+\series default
 を
 \series bold
 1
@@ -36795,8 +40229,10 @@ status open
 ボックスの内容は鏡像になります．鏡文字を作りたい場合には，
 
 \family sans
+\series bold
 水平因子
 \family default
+\series default
 を
 \series bold
 -1
@@ -36804,8 +40240,10 @@ status open
 ，
 
 \family sans
+\series bold
 垂直因子
 \family default
+\series default
 を
 \series bold
 1
@@ -36846,8 +40284,10 @@ status open
 \begin_layout Standard
 
 \family sans
+\series bold
 水平因子
 \family default
+\series default
 を
 \series bold
 1
@@ -36855,8 +40295,10 @@ status open
 ，
 
 \family sans
+\series bold
 垂直因子
 \family default
+\series default
 を
 \series bold
 -1
@@ -36898,23 +40340,35 @@ status open
 \begin_layout Standard
 
 \family sans
+\series bold
 反転ボックス
 \family default
-(「
+\series default
+(
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 拡張差込枠\SpecialChar menuseparator
 反転ボックス
 \family default
-」メニュー)は，
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニュー)は，
 
 \family sans
+\series bold
 伸縮ボックス
 \family default
+\series default
 で
 \family sans
+\series bold
 水平因子
 \family default
+\series default
 を
 \series bold
 -1
@@ -36922,8 +40376,10 @@ status open
 ，
 
 \family sans
+\series bold
 垂直因子
 \family default
+\series default
 を
 \series bold
 1
@@ -36938,7 +40394,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \family sans
 \series default
 水平因子
@@ -36962,34 +40418,54 @@ status open
 中身を決まった幅と高さに伸縮したい場合には，
 
 \family sans
+\series bold
 寸法変更ボックス
 \family default
-(「
+\series default
+(
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 拡張差込枠\SpecialChar menuseparator
 寸法変更ボックス
 \family default
-」メニュー)を使うことができます．
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニュー)を使うことができます．
 \family sans
+\series bold
 寸法変更ボックス
 \family default
+\series default
 には，
 必須差込枠「
 \family sans
+\series bold
 幅
 \family default
+\series default
 」と，
 非必須差込枠「
 \family sans
+\series bold
 高さ
 \family default
-」(「
+\series default
+」(
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 高さ
 \family default
-」メニューで挿入可)がありますので，
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューで挿入可)がありますので，
 そこに幅と高さを単位付きの値で入力してください．
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -37005,8 +40481,10 @@ nolink "false"
 があると，
 ボックス内容のアスペクト比が保たれるように寸法が設定されます．
 \family sans
+\series bold
 高さ
 \family default
+\series default
 差込枠を使わない場合には，
 高さには内部的に感嘆符が使用されます．
 \end_layout
@@ -37018,8 +40496,10 @@ nolink "false"
 \series default
 を
 \family sans
+\series bold
 幅
 \family default
+\series default
 に，
 
 \series bold
@@ -37027,8 +40507,10 @@ nolink "false"
 \series default
 を
 \family sans
+\series bold
 高さ
 \family default
+\series default
 に使用するとこうなります：
 
 \begin_inset Flex Resizebox
@@ -37069,8 +40551,10 @@ status open
 \series default
 を
 \family sans
+\series bold
 幅
 \family default
+\series default
 に，
 
 \series bold
@@ -37078,12 +40562,16 @@ status open
 \series default
 を
 \family sans
+\series bold
 高さ
 \family default
+\series default
 に使用すると(あるいは
 \family sans
+\series bold
 高さ
 \family default
+\series default
 なし)こうなります：
 
 \begin_inset Flex Resizebox
@@ -37124,11 +40612,11 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \family sans
-\series default
 幅
 \family default
+\series default
 差込枠が空であったり，
 無効な単位が入っていたりした場合，
 文書を閲覧したり書き出したりする際に，
@@ -37151,17 +40639,23 @@ status open
 \begin_layout Standard
 ボックスは好きな順序で組み合わせることができます．
 \family sans
+\series bold
 回転ボックス
 \family default
+\series default
 の中に
 \family sans
+\series bold
 寸法変更ボックス
 \family default
+\series default
 が入り，
 さらにその中に
 \family sans
+\series bold
 反転ボックス
 \family default
+\series default
 が入っている例です：
 
 \end_layout
@@ -37415,7 +40909,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ほんぶんまわりこみ@本文回り込み
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほんふんまわりこみ
+\end_layout
+
+\end_inset
+
+本文回り込み
 \end_layout
 
 \end_inset
@@ -37438,8 +40941,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- おりかえしふろーと@折返しフロート
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+おりかえしふろと
+\end_layout
+
+\end_inset
+
+折返しフロート
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37451,8 +40981,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ほんぶんまわりこみ@本文回り込み !
- おりかえしふろーと@折返しフロート
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほんふんまわりこみ
+\end_layout
+
+\end_inset
+
+本文回り込み
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+おりかえしふろと
+\end_layout
+
+\end_inset
+
+折返しフロート
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37473,6 +41030,8 @@ status open
 	filename ../clipart/2D-intensity-plot.pdf
 	width 40col%
 	scaleBeforeRotation
+	BoundingBox 0bp 1bp 178bp 138bp
+	clip
 	rotateOrigin center
 
 \end_inset
@@ -37515,10 +41074,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- wrapfig
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+wrapfig
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37526,14 +41102,22 @@ status collapsed
 を導入済みであれば，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 フロート\SpecialChar menuseparator
-折返し図フロート
+折返し図
 \family default
+\series default
 ・
 \family sans
-折返し表フロート
+\series bold
+折返し表
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで挿入することができます
 \begin_inset Foot
 status collapsed
@@ -37602,7 +41186,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 折返しフロートは壊れやすいことがあります！
 例えば，
@@ -37668,8 +41252,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ほんぶんまわりこみ@本文回り込み !
- こていおぶじぇくと@固定オブジェクト
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほんふんまわりこみ
+\end_layout
+
+\end_inset
+
+本文回り込み
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こていおふしえくと
+\end_layout
+
+\end_inset
+
+固定オブジェクト
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38350,10 +41961,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- picinpar
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+picinpar
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38413,6 +42041,8 @@ begin{window}[2,c,{
 	lyxscale 60
 	width 40col%
 	scaleBeforeRotation
+	BoundingBox 0bp 1bp 178bp 138bp
+	clip
 	rotateOrigin center
 
 \end_inset
@@ -38669,7 +42299,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かしらもじ@頭文字
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かしらもし
+\end_layout
+
+\end_inset
+
+頭文字
 \end_layout
 
 \end_inset
@@ -38681,8 +42320,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ほんぶんまわりこみ@本文回り込み !
- かしらもじ@頭文字
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほんふんまわりこみ
+\end_layout
+
+\end_inset
+
+本文回り込み
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かしらもし
+\end_layout
+
+\end_inset
+
+頭文字
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38700,10 +42366,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- lettrine
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+lettrine
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38711,40 +42394,58 @@ status collapsed
 が導入済みでなくてはならず，
 文書中で
 \family sans
+\series bold
 頭文字
 \family default
+\series default
 モジュールを使用する必要があります(
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 モジュール
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニュー)．頭文字を挿入するには，
 
 \family sans
+\series bold
 頭文字
 \family default
+\series default
 様式を使用してください．この様式には，
 1つの必須引数と2つの非必須引数があります．引数は，
 
 \family sans
+\series bold
 挿入
 \family default
+\series default
 メニューから挿入できます．必須引数
 \family sans
+\series bold
 頭文字
 \family default
+\series default
 には，
 頭文字にする文字を入れ，
 引数
 \family sans
+\series bold
 頭文字の残り
 \family default
+\series default
 には，
 頭文字の単語若しくは文字列の残りが入ります．引数
 \family sans
+\series bold
 オプション
 \family default
+\series default
 には，
 頭文字を修正するパラメータが入ります．使うことができるパラメータについての詳細は，
 
@@ -39092,7 +42793,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-がいぶぶんしょこうせいようそ@外部文書構成要素
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいふふんしよこうせいようそ
+\end_layout
+
+\end_inset
+
+外部文書構成要素
 \end_layout
 
 \end_inset
@@ -39145,8 +42855,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-がいぶぶんしょこうせいようそ@外部文書構成要素 !
- がいぶそざい@外部素材
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいふふんしよこうせいようそ
+\end_layout
+
+\end_inset
+
+外部文書構成要素
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいふそさい
+\end_layout
+
+\end_inset
+
+外部素材
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39164,9 +42901,20 @@ status collapsed
 文書に挿入することができるのと同様の働きをします．\SpecialChar LyX
 設定の
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 操作性\SpecialChar menuseparator
 表示
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で自動プレビューを有効にすると，
 外部素材のDia形式とXfig形式は，
 直接\SpecialChar LyX
@@ -39177,6 +42925,7 @@ status collapsed
 外部素材は，
 
 \family sans
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -39189,15 +42938,24 @@ status collapsed
 \family sans
 外部素材
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで開くことのできる
 \family sans
+\series bold
 外部素材
 \family default
+\series default
 ダイアログから挿入することができます．目下，
 以下のファイル形式（
 \family sans
+\series bold
 ひな型
 \family default
+\series default
 ）が使用できます．
 \end_layout
 
@@ -39220,7 +42978,7 @@ literal "false"
 \end_layout
 
 \begin_layout Description
-Dia このひな型は，
+Diaダイアグラム このひな型は，
 
 \series bold
 
@@ -39238,73 +42996,14 @@ literal "false"
 \end_layout
 
 \begin_layout Description
-Gnumeric表計算表 このひな型では，
-
+Inkscape図 このひな型は，
+スケーラブル・ベクトル・グラフィックス(SVG)から派生した特定のスケーラブル・イメージをサポートしており，
+画像に含まれるテキストを\SpecialChar LaTeX
+で（したがって現文書のフォントで）組んだバージョンに置き換えることができます．これは，
+与えられたSVGファイルから特殊なPDFやEPSおよび\SpecialChar LaTeX
+ファイルを生成することができる，
+プログラム
 \series bold
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Gnumeric"
-target "https://ja.wikipedia.org/wiki/Gnumeric"
-literal "false"
-
-\end_inset
-
-
-\series default
-・
-\begin_inset CommandInset href
-LatexCommand href
-name "OpenDocument"
-target "https://ja.wikipedia.org/wiki/OpenDocument"
-literal "false"
-
-\end_inset
-
-・
-\begin_inset CommandInset href
-LatexCommand href
-name "Microsoft Office XML"
-target "https://en.wikipedia.org/wiki/Microsoft_Office_XML_formats"
-literal "false"
-
-\end_inset
-
-・
-\begin_inset CommandInset href
-LatexCommand href
-name "Office Open XML"
-target "https://ja.wikipedia.org/wiki/Office_Open_XML"
-literal "false"
-
-\end_inset
-
-形式の表計算表を挿入することができます．この機能を使用するには，
-\SpecialChar LyX
-の初期設定中に
-\family typewriter
-ssconvert
-\family default
-プログラムが検出される必要があります．このプログラムはGnumericの一部ですので，
-Gnumeric以外の形式の表を読み込む場合には，
-Gnumericが導入済みである必要があります．用例と制約については，
-\SpecialChar LyX
-用例ファイル
-\emph on
-spreadsheet.lyx
-\emph default
-をご覧ください．
-\end_layout
-
-\begin_layout Description
-Inkscape
-\lang english
- This template supports specific scalable images derived from scalable vector graphics (SVG),
- in which the contained text is replaced by a version typeset by \SpecialChar LaTeX
- (and hence in the current document font).
- It relies on a feature of the program 
-\series bold
-\lang japanese
 
 \begin_inset CommandInset href
 LatexCommand href
@@ -39316,142 +43015,77 @@ literal "false"
 
 
 \series default
-\lang english
- which creates a special PDF or EPS and \SpecialChar LaTeX
- file from a given SVG file (in 
+の機能を使用しています（
 \noun on
 Inkscape
 \noun default
- itself,
- the feature is available via the option 
+自身では，
+描画をPDFやEPSで保存する際，
+オプション
 \family sans
-Omit text in PDF and create LaTeX file
+PDF
+\series bold
+のテキストを除外して
+\series default
+LaTeX
+\series bold
+ファイルを生成
 \family default
- when saving a drawing as PDF or EPS).
- The benefit of such files is a uniform text style throughout the whole document.
+\series default
+を用いてこの機能を使用することができます）．このようなファイルの利点は，
+全文書を通じて統一されたテキスト様式を持たせることができることです．
 \begin_inset Newline newline
 \end_inset
 
-The external template reads SVG files and uses a converter program to generate the respective PDF\SpecialChar breakableslash
-EPS and \SpecialChar LaTeX
- files (via
-\noun on
- 
-\noun default
-Inkscape
-\noun on
-)
-\noun default
- on the fly,
- so you don't have to export those files yourself.
- If you prefer the latter and want use given 
+この外部ひな型は，
+SVGファイルを読み込み，
+変換プログラムを使用して（Inkscape経由で）PDF/EPSファイルと\SpecialChar LaTeX
+ファイルを同時並行で生成しますので，
+これらのファイルを書き出す必要がありません．そうではなく，
+
 \family typewriter
 *.pdf
 \family default
- and 
+と
 \family typewriter
 *.pdf_tex
 \family default
- or 
+ もしくは
 \family typewriter
 *.eps
 \family default
- and 
+と
 \family typewriter
 *.eps_tex
 \family default
- files instead,
- simply input the respective 
-\family typewriter
-*.pdf_tex
-\family default
- or 
-\family typewriter
-*.eps_tex
-\family default
- file via the 
+を書き出して使用したい場合には，
+このひな型を使用せず，
+
 \family sans
-Child Documents
+\series bold
+子文書
 \family default
- dialog (see sec.
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+\series default
+ダイアログ（第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:子文書"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
-
-\lang english
-) rather than using this template.
-\begin_inset Newline newline
-\end_inset
-
-You can use \SpecialChar TeX
- code commands such as 
-\series bold
-
-\backslash
-Large
-\series default
-,
- 
-\series bold
-
-\backslash
-small
-\series default
-,
- etc.
-\begin_inset space \space{}
-\end_inset
-
-in the text of the SVG.
- The size of the font will be taken from the settings of the \SpecialChar LyX
- document.
- Please refer to 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Inkscape"
-literal "false"
-
-\end_inset
-
- for more information and examples.
-\end_layout
-
-\begin_layout Description
-この外部ひな型は，
-\SpecialChar LaTeX
-で書かれたテキストを含むベクトルグラフィック画像(SVG)をサポートします．ただし，
-
-\noun on
-Inkscape
-\noun default
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Inkscape"
-literal "false"
-
-\end_inset
-
-プログラムで図をPDFとして保存する際に，
-
-\family sans
-Omit text in PDF and create LaTeX file
+節参照）から
+\family typewriter
+*.pdf_tex
 \family default
-オプションを指定することが前提です．これによって，
-\SpecialChar LaTeX
-がテキストを組版できる形で，
-SVG画像をインクルードすることができます．このようなSVGを使う利点として，
-文書全体で文字様式を統一することができることが挙げられます．
+ または
+\family typewriter
+*.eps_tex
+\family default
+を入力してください．
 \begin_inset Newline newline
 \end_inset
 
@@ -39480,27 +43114,6 @@ literal "false"
 \end_inset
 
 を参照してください．
-\begin_inset Newline newline
-\end_inset
-
-このように画像テキストは，
-周囲のフォント設定を考慮に入れますが，
-\SpecialChar LyX
-中のプレビューではそうならないことに注意してください．外部差込枠をプレビュー差込枠の中に入れると（
-\family sans
-挿入\SpecialChar menuseparator
-プレビュー
-\family default
-メニュー），
-より良い結果が得られます．
-\begin_inset Newline newline
-\end_inset
-
-このひな型は，
-Xfigサポートと非常に似た動作をします．\SpecialChar LyX
-は画像中のテキストを独立した\SpecialChar TeX
-ファイルに抜き出し，
-残りをPDFファイルに生成します．
 \end_layout
 
 \begin_layout Description
@@ -39535,9 +43148,16 @@ PDF文書を使用中の文書に挿入することができます．PDFの一�
 
 \family sans
 \SpecialChar LaTeX
-と\SpecialChar LyX
+
+\series bold
+と
+\series default
+\SpecialChar LyX
+
+\series bold
 オプション
 \family default
+\series default
 タブ中の
 \family sans
 オプション
@@ -39647,10 +43267,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- pdfpages
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+pdfpages
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39666,8 +43303,10 @@ Beamer
 プレゼンテーションで使用するには，
 まず
 \family sans
+\series bold
 フレーム終了
 \family default
+\series default
 環境を挿入して，
 続く段落で\SpecialChar TeX
 コードボックスを挿入し，
@@ -39685,8 +43324,10 @@ Beamerプレゼンテーションに復帰することができます．PDFペ�
 ひな型を含む段落には，
 
 \family sans
+\series bold
 既定
 \family default
+\series default
 配置を用いるようにしてください．
 \begin_inset Newline newline
 \end_inset
@@ -39699,6 +43340,8 @@ Beamerプレゼンテーションに復帰することができます．PDFペ�
 
 \begin_inset Graphics
 	filename ../clipart/Abstract.pdf
+	BoundingBox 0bp 0.01bp 275bp 134.01bp
+	clip
 	rotateAngle -5
 	rotateOrigin leftBottom
 
@@ -39715,7 +43358,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【訳註】
+［訳註］
 \series default
 \SpecialChar LaTeX
 パッケージ
@@ -39773,8 +43416,10 @@ PDFページ
 \begin_layout Description
 ラスター画像 これはビットマップ画像に使用します．
 \family sans
+\series bold
 外部素材
 \family default
+\series default
 ダイアログを使って入れる画像は，
 第
 \begin_inset CommandInset ref
@@ -39786,8 +43431,10 @@ nolink "false"
 
 節にあるように
 \family sans
+\series bold
 画像
 \family default
+\series default
 ダイアログを使って挿入される画像と同じように取り扱うことができます．右記は，
 ラスター画像を挿入した例です．
 \begin_inset External
@@ -39800,11 +43447,72 @@ nolink "false"
 \end_layout
 
 \begin_layout Description
+表計算表 このひな型では，
+
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Gnumeric"
+target "https://ja.wikipedia.org/wiki/Gnumeric"
+literal "false"
+
+\end_inset
+
+
+\series default
+・
+\begin_inset CommandInset href
+LatexCommand href
+name "OpenDocument"
+target "https://ja.wikipedia.org/wiki/OpenDocument"
+literal "false"
+
+\end_inset
+
+・
+\begin_inset CommandInset href
+LatexCommand href
+name "Microsoft Office XML"
+target "https://en.wikipedia.org/wiki/Microsoft_Office_XML_formats"
+literal "false"
+
+\end_inset
+
+・
+\begin_inset CommandInset href
+LatexCommand href
+name "Office Open XML"
+target "https://ja.wikipedia.org/wiki/Office_Open_XML"
+literal "false"
+
+\end_inset
+
+形式の表計算表を挿入することができます．この機能を使用するには，
+\SpecialChar LyX
+の初期設定中に
+\family typewriter
+ssconvert
+\family default
+プログラムが検出される必要があります．このプログラムはGnumericの一部ですので，
+Gnumeric以外の形式の表を読み込む場合には，
+Gnumericが導入済みである必要があります．用例と制約については，
+\SpecialChar LyX
+用例ファイル
+\emph on
+spreadsheet.lyx
+\emph default
+をご覧ください．
+\end_layout
+
+\begin_layout Description
 ベクトル画像 これは，
-ベクトル画像に使用することができます． 
+ベクトル画像に使用することができます．
 \family sans
+\series bold
 外部素材
 \family default
+\series default
 ダイアログを使って入れる画像は，
 第
 \begin_inset CommandInset ref
@@ -39816,8 +43524,10 @@ nolink "false"
 
 節にあるように
 \family sans
+\series bold
 画像
 \family default
+\series default
 ダイアログを使って挿入される画像と同じように取り扱うことができます．右記は，
 ベクトル画像を挿入した例です．
 \begin_inset External
@@ -39912,8 +43622,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-がいぶぶんしょこうせいようそ@外部文書構成要素 !
- こぶんしょ@子文書
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かいふふんしよこうせいようそ
+\end_layout
+
+\end_inset
+
+外部文書構成要素
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こふんしょ
+\end_layout
+
+\end_inset
+
+子文書
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39925,8 +43662,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふぁいる@ファイル !
- いんくるーど@インクルード
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふあいる
+\end_layout
+
+\end_inset
+
+ファイル
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+いんくると
+\end_layout
+
+\end_inset
+
+インクルード
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39950,6 +43714,12 @@ status collapsed
 親文書を開くことなく子文書で作業できるようにするには，
 子文書の
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 文書
 \family default
 \SpecialChar menuseparator
@@ -39962,6 +43732,11 @@ status collapsed
 \family sans
 文書クラス
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで親文書を指定してください．すると，
 子文書を編集する際には，
 \SpecialChar LyX
@@ -39982,6 +43757,7 @@ status collapsed
 のようなボックスとして表示されます．子文書を親文書に取り込むには，
 
 \family sans
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -39994,6 +43770,11 @@ status collapsed
 \family sans
 子文書
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用します．するとダイアログが現れ，
 以下のように4つの取り込み方法を選択することができます．
 \end_layout
@@ -40004,8 +43785,10 @@ status collapsed
 文書は，
 内包することができます．
 \family sans
+\series bold
 子文書
 \family default
+\series default
 ダイアログの
 \family sans
 編集
@@ -40025,7 +43808,10 @@ status collapsed
 以下は，
 
 \family sans
-内包(include)
+\series bold
+内包
+\series default
+(include)
 \family default
 を使用して挿入した子文書です． 
 \begin_inset CommandInset include
@@ -40070,7 +43856,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 \SpecialChar LyX
 または\SpecialChar LaTeX
@@ -40101,29 +43887,46 @@ status open
 \begin_layout Itemize
 入力ファイルは，
 \SpecialChar LyX
-設定の操作性
+設定の
 \family sans
-\SpecialChar menuseparator
+\series bold
+操作性\SpecialChar menuseparator
 表示
 \family default
+\series default
 の下にある
 \family sans
+\series bold
 画像を表示
 \family default
+\series default
 を有効にすると，
 \SpecialChar LyX
 中でプレビューすることができます．
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar LaTeX
-コマンドの
-\series bold
 
-\backslash
-includeonly
+\family sans
+\series bold
+文書
+\family default
+\SpecialChar menuseparator
+
+\family sans
+設定
+\family default
+\SpecialChar menuseparator
+
+\family sans
+子文書
+\family default
 \series default
-は使用することができません．
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューから入力ファイルを除外することはできません．
 \end_layout
 
 \end_deeper
@@ -40131,7 +43934,10 @@ includeonly
 右は，
 
 \family sans
-入力(input)
+\series bold
+入力
+\series default
+(input)
 \family default
 を使って挿入した子文書です． 
 \begin_inset CommandInset include
@@ -40150,8 +43956,10 @@ literal "true"
 ファイルはそのソースコードの通りに表示され，
 テキスト中に用いられているコマンドは実行されません．
 \family sans
+\series bold
 出力の空白に印付けをする
 \family default
+\series default
 オプションを有効にすると，
 ソースコード中のすべての空白文字に「
 \begin_inset ERT
@@ -40168,10 +43976,16 @@ textvisiblespace
 
 」文字を表示させることができます．
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 ファイル\SpecialChar menuseparator
 平文
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使う方法との違いは，
 こちらは文書の内容が\SpecialChar LyX
 中に表示されないことです．
@@ -40194,8 +44008,10 @@ literal "true"
 以下は，
 
 \family sans
+\series bold
 出力の空白に印付けをする
 \family default
+\series default
 オプションを指定して，
 原文儘として挿入された子文書です． 
 \begin_inset CommandInset include
@@ -40222,7 +44038,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 上記の例でわかるように，
 
@@ -40245,7 +44061,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【訳註】
+［訳註］
 \series default
 原文儘で日本語のファイルを読み込むときは，
 子文書のエンコーディングを文書エンコーディングに合わせてください．さもないと出力が文字化けします．
@@ -40276,7 +44092,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 同一文書中に，
 同じ文書を異なる方法で二度取り込むと，
@@ -40296,32 +44112,89 @@ status open
 子文書の一部を出力から排除することができます．これは，
 
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 子文書
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューから行うことができます．そこの一覧中の各子文書の
 \family sans
+\series bold
 出力に含める
 \family default
+\series default
 列をダブルクリックすることによって，
 その子文書を排除したり取り込んだりすることができます(これは「入力」ではなく「内包」で埋めこまれた文書に対してのみ機能することにご注意ください)．
+\end_layout
+
+\begin_layout Standard
+文書全体のカウンタ及び参照のセクションでは，
+ページ番号や参照，
+節カウンタ等をどう取り扱うか，
+設定することができます．
+\end_layout
+
+\begin_layout Itemize
+オプション
 \family sans
-カウンタと引用を維持
+\series bold
+厳密に管理
 \family default
-オプションを有効にすると，
+\series default
+では，
 \SpecialChar LyX
 は，
 すべてのページ番号と参照等が，
-文書全体を処理した時と同じように正しくなるようにします．これは，
+文書全体を出力した時と同じように正しくなるようにします．これは，
 選択した部分文書が，
 文書全体のコンテクストの中で表現されるのと全く同じようにしておきたい時に便利です．しかしながら，
 この機能を実現するには，
 \SpecialChar LyX
-はバックグラウンドで文書全体を処理しなくてはなりません．したがって，
-コンパイルの時間を節約し，
+はバックグラウンドで文書全体を処理しなくてはならず，
+長い時間がかかります．
+\end_layout
+
+\begin_layout Itemize
+オプション
+\family sans
+\series bold
+管理しない
+\family default
+\series default
+では，
+\SpecialChar LyX
+は親文書と内包された文書のみコンパイルします．したがって，
+カウンタは完全な文書とは異なり，
+除外された子文書への参照は解決されません．もしコンパイルの時間を節約し，
 カウンタや参照が必ずしも正しくなくてもいい場合には，
-このチェックボックスは外しておいてください．
+このオプションが最速ですので，
+これを選択してください．
+\end_layout
+
+\begin_layout Itemize
+オプション
+\family sans
+\series bold
+ほぼ管理
+\family default
+\series default
+はいわば上記２つの中間です．これが選択されると，
+\SpecialChar LyX
+は最初の出力では全文書をコンパイルし，
+カウンタと参照を正しく設定します．その後の出力では，
+外部子文書に変更が加えられた場合のみ，
+全文書をコンパイルします．内包されたファイルを編集する限りは，
+このアプローチは，
+カウンタと参照をほぼ正しく保ちつつ，
+２番目の選択肢と同じ速度を持ちます．これがほぼ正しいとしかいえないのは，
+内包文書の大きさが変われば，
+明らかに除外された文書のページ割りも変わるはずですが，
+この方法ではその変化までは追跡できないからです．
 \end_layout
 
 \begin_layout Standard
@@ -40368,7 +44241,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-りすと@リスト
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+りすと
+\end_layout
+
+\end_inset
+
+リスト
 \end_layout
 
 \end_inset
@@ -40380,7 +44262,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぷろぐらむこーど@プログラムコード
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろくらむこと
+\end_layout
+
+\end_inset
+
+プログラムコード
 \end_layout
 
 \end_inset
@@ -40392,8 +44283,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート !
- りすと@リスト
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふろと
+\end_layout
+
+\end_inset
+
+フロート
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+りすと
+\end_layout
+
+\end_inset
+
+リスト
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40405,6 +44323,7 @@ status collapsed
 プログラムコードを取り込んで組版するには，
 
 \family sans
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -40412,6 +44331,11 @@ status collapsed
 \family sans
 プログラムリスト
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用して挿入されるプログラムリスト差込枠を使用することができます．ここで使用される\SpecialChar LaTeX
 パッケージ
 \series bold
@@ -40424,10 +44348,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- listings
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+listings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40443,10 +44384,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- minted
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+minted
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40468,7 +44426,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 \SpecialChar LyX
 は，
@@ -40639,7 +44597,7 @@ PDF
 
 \begin_layout Standard
 プログラムリスト差込枠を右クリックすると，
-コンテクストメニューが開き，
+文脈依存メニューが開き，
 リスト書式を設定することができます．
 \end_layout
 
@@ -40648,8 +44606,10 @@ PDF
 出力におけるプログラムリストは，
 新しい段落として始まります．配置オプションで
 \family sans
+\series bold
 行内リスト
 \family default
+\series default
 を指定すると，
 リストは
 \begin_inset listings
@@ -40670,15 +44630,17 @@ int a=5;
 
 
 \family sans
+\series bold
 フロート
 \family default
+\series default
 オプションは，
 プログラムリストフロートを生成するものですが，
 ここで，
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:フロートの配置"
+reference "sec:フロートの設定"
 nolink "false"
 
 \end_inset
@@ -40714,14 +44676,17 @@ h
 また参照もできるので，
 この場合には
 \family sans
+\series bold
 フロート
 \family default
+\series default
 オプションを使用しなければ大丈夫です．
 \end_layout
 
 \begin_layout Standard
 
 \family sans
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -40729,6 +44694,11 @@ h
 \family sans
 キャプション
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使えば，
 行中でないプログラムリストには，
 キャプションを付けることができます．プログラムリストは，
@@ -40744,10 +44714,16 @@ nolink "false"
 のように参照することができます．キャプションのついたプログラムリストの全一覧を，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 一覧/目次\SpecialChar menuseparator
 プログラムリスト一覧
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で作成することができます．一覧の項目には，
 プログラムリストのキャプションとプログラムリスト番号が入ります．
 \end_layout
@@ -40804,7 +44780,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】listings
+［註］listings
 \series default
 パッケージは，
 既定ではプログラムリストの前にキャプションを置きます．
@@ -40902,7 +44878,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 タイプライタフォントを使用している際にキーワードがボールド体にならない場合には，
 おそらくお使いの
@@ -40951,7 +44927,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【訳註】
+［訳註］
 \series default
 プログラムリスト差込枠中では，
 日本語のエンコーディングを表示できないため，
@@ -40966,8 +44942,10 @@ status open
 \begin_layout Standard
 プログラムリストダイアログの
 \family sans
+\series bold
 行番号
 \family default
+\series default
 のセクションでは，
 行番号の様式を指定することができます．
 \family sans
@@ -40983,8 +44961,10 @@ status open
 さらに行の範囲を指定することもでき，
 この場合にはこれらの行のみが出力に表示されます．
 \family sans
+\series bold
 拡張文字コード表を使う
 \family default
+\series default
 オプションは，
 
 \series bold
@@ -41002,7 +44982,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【訳註】
+［訳註］
 \series default
 これは，
 p\SpecialChar LaTeX
@@ -41088,8 +45068,10 @@ pass
 プログラムリスト中でタビュレータを使う場合は，
 タビュレータが確保する文字の数を
 \family sans
+\series bold
 タビュレータの大きさ
 \family default
+\series default
 フィールドで指定することができます．
 \end_layout
 
@@ -41100,7 +45082,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】listings
+［註］listings
 \series default
 パッケージにはバグがあり，
 前にプログラムリストがある毎に，
@@ -41125,6 +45107,7 @@ status open
 ファイルの各行をプログラムリストとして印字することも可能です．そのためには，
 
 \family sans
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -41137,10 +45120,17 @@ status open
 \family sans
 子文書
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用して
 \family sans
+\series bold
 プログラムリスト
 \family default
+\series default
 型を選択してください
 \begin_inset Foot
 status collapsed
@@ -41174,6 +45164,12 @@ nolink "false"
 子文書ダイアログの対応するフィールドにラベル文を書き込んでください．すると，
 このラベルは
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -41181,6 +45177,11 @@ nolink "false"
 \family sans
 相互参照
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使って参照できるようになります．
 \end_layout
 
@@ -41327,6 +45328,7 @@ frac{1}{x^{2}}$
 大域的なプログラムリストの設定は，
 
 \family sans
+\series bold
 文書
 \family default
 \SpecialChar menuseparator
@@ -41339,11 +45341,18 @@ frac{1}{x^{2}}$
 \family sans
 リスト
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログで設定することができます．ここで利用できるオプションの一覧を得るには，
 
 \family sans
+\series bold
 プログラムリスト設定
 \family default
+\series default
 フィールドで疑問符「?」を打鍵してください．
 \end_layout
 
@@ -41385,7 +45394,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-たんい@単位
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たんい
+\end_layout
+
+\end_inset
+
+単位
 \end_layout
 
 \end_inset
@@ -41899,66 +45917,6 @@ pt)
 \begin_inset Text
 
 \begin_layout Plain Layout
-画像の縮尺%
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-元の画像幅の%
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-本文幅%
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-テキスト幅の%
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 列幅%
 \end_layout
 
@@ -41990,7 +45948,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-ページ幅%
+行幅％
 \end_layout
 
 \end_inset
@@ -41999,7 +45957,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-用紙幅の%
+連続する本文２行のベースライン間の高さの%
 \end_layout
 
 \end_inset
@@ -42010,7 +45968,7 @@ columnwidth
 \begin_layout Plain Layout
 
 \backslash
-paperwidth
+baselineskip
 \end_layout
 
 \end_inset
@@ -42052,37 +46010,6 @@ linewidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-本文高%
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-テキスト高さの%
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-textheight
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 ページ高%
 \end_layout
 
@@ -42110,11 +46037,102 @@ paperheight
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ページ幅%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+用紙幅の%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+paperwidth
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+画像の縮尺%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+元の画像幅の%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+本文高%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+テキスト高さの%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+textheight
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-行幅％
+本文幅%
 \end_layout
 
 \end_inset
@@ -42123,9 +46141,7 @@ paperheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-% of height between baselines of two subsequent text lines
+テキスト幅の%
 \end_layout
 
 \end_inset
@@ -42136,7 +46152,7 @@ paperheight
 \begin_layout Plain Layout
 
 \backslash
-baselineskip
+textwidth
 \end_layout
 
 \end_inset
@@ -42173,8 +46189,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふぁいるしょしき@ファイル書式 !
- DVI
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふあいるしよしき
+\end_layout
+
+\end_inset
+
+ファイル書式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+DVI
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42187,23 +46221,11 @@ status collapsed
 
 \begin_layout Plain Layout
 DVI
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-|see{
-\end_layout
-
-\end_inset
-
 ファイル書式
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -42235,7 +46257,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 DVIファイルには画像は含まれていません．画像はリンクされているだけです．
 \end_layout
@@ -42260,6 +46282,7 @@ PDFを使用することをお勧めします．
 使用中の文書は，
 
 \family sans
+\series bold
 ファイル
 \family default
 \SpecialChar menuseparator
@@ -42272,11 +46295,18 @@ PDFを使用することをお勧めします．
 \family sans
 DVI
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用して，
 DVIに書き出すことができます．
 \family sans
+\series bold
 表示
 \family default
+\series default
 メニューから，
 文書をDVIとして表示させることもできます．
 \end_layout
@@ -42289,8 +46319,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふぁいるしょしき@ファイル書式 !
- PostScript
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふあいるしよしき
+\end_layout
+
+\end_inset
+
+ファイル書式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+PostScript
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42400,6 +46448,7 @@ PostScriptは，
 文書は，
 
 \family sans
+\series bold
 ファイル
 \family default
 \SpecialChar menuseparator
@@ -42410,8 +46459,13 @@ PostScriptは，
 \SpecialChar menuseparator
 
 \family sans
+\series default
 Postscript
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用して，
 PostScriptに書き出すことができます．使用中の文書は，
 
@@ -42429,8 +46483,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふぁいるしょしき@ファイル書式 !
- PDF
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふあいるしよしき
+\end_layout
+
+\end_inset
+
+ファイル書式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+PDF
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42499,6 +46571,7 @@ PostScriptの節で説明したように，
 使用中の文書は，
 
 \family sans
+\series bold
 ファイル
 \family default
 \SpecialChar menuseparator
@@ -42506,6 +46579,11 @@ PostScriptの節で説明したように，
 \family sans
 書き出し
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用して，
 以下の3つの方法のうちいずれかでPDFに書き出すことができます．
 \end_layout
@@ -42584,8 +46662,10 @@ dvipdfm
 使用中の文書をPDFとして表示するには，
 
 \family sans
+\series bold
 表示
 \family default
+\series default
 メニューかツールバーボタン（これは
 \family sans
 PDF
@@ -46322,10 +50402,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- arydshln
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+arydshln
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46363,10 +50460,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- booktabs
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+booktabs
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46404,10 +50518,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- caption
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46445,10 +50576,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- diagbox
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+diagbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46486,10 +50634,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- endfloat
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+endfloat
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46527,10 +50692,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- footmisc
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+footmisc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46568,10 +50750,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- hyperref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46609,10 +50808,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- hyperref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46624,7 +50840,7 @@ status collapsed
 \labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "KOMA-script"
+key "KOMA-Script"
 literal "true"
 
 \end_inset
@@ -46635,7 +50851,7 @@ literal "true"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "KOMA-script"
+name "KOMA-Script"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/doc/scrguien.pdf"
 literal "false"
 
@@ -46650,10 +50866,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- KOMA-script
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46700,10 +50933,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- lettrine
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+lettrine
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46741,10 +50991,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- listings
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+listings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46782,10 +51049,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- minted
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+minted
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46823,10 +51107,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- marginnote
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+marginnote
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46864,10 +51165,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- pdfpages
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+pdfpages
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46905,10 +51223,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ!
- prettyref
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46946,10 +51281,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- PSTricks
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+PSTricks
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46987,10 +51339,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- refstyle
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47028,10 +51397,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+LaTeXはつけし
+\end_layout
+
+\end_inset
+
 \SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ !
- sidecap
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+sidecap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
