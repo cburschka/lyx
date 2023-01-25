@@ -139,7 +139,7 @@
 % make pdf bookmark sane with Japanese
 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
 
-\renewcommand{\seename}{→}
+\renewcommand{\see}[2]{→\,#1\,参照}{}
 % Added by lyx2lyx
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
@@ -151,6 +151,36 @@ subequations
 ruby
 \end_modules
 \maintain_unincluded_children no
+\begin_local_layout
+InsetLayout Flex:圏点
+  LyxType       charstyle
+  LatexType     command
+  LatexName     kenten
+  HTMLTag       kenten
+  HTMLAttr      ""
+  HTMLInnerTag  kt
+  HTMLInnerAttr ""
+  BgColor       none
+  LabelString   "圏点"
+  Decoration    Conglomerate
+  Preamble
+    \usepackage{pxrubrica}
+  EndPreamble
+  Argument  post:1
+    LabelString  "Kenten option"
+    MenuString  "圏点オプション"
+    Tooltip    "Emphasize Chinese characters."
+    Decoration  Conglomerate
+    Font
+      Size    tiny
+    EndFont
+    LabelFont
+      Size    tiny
+    EndFont
+    Mandatory  0
+  EndArgument
+End
+\end_local_layout
 \language japanese
 \language_package default
 \inputencoding utf8
@@ -227,8 +257,8 @@ ruby
 \bottommargin 3.5cm
 \secnumdepth 4
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip halfline
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -305,7 +335,7 @@ Uwe Stöhr
 
 
 \family sans
-第2.3.x版
+第2.4.x版
 \end_layout
 
 \begin_layout Standard
@@ -384,13 +414,6 @@ https://wiki.lyx.org/LyX/Manuals#Math
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 はじめに
 \end_layout
@@ -415,13 +438,21 @@ https://wiki.lyx.org/LyX/Manuals#Math
 数式要素の多くは，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 数式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューか
 \family sans
+\series bold
 数式ツールバー
 \family default
+\series default
 からアクセスすることが可能です．しかし，
 たくさんの数式を書かなくてはならない人はみな，
 数式ツールバーを使うよりもコマンドを使った方がずっと速いことに気付くことになるのです．したがって，
@@ -433,16 +464,29 @@ https://wiki.lyx.org/LyX/Manuals#Math
 \begin_layout Standard
 とくに断らなければ，
 コマンドは数式内からのみ利用可能です．この文書で説明されているすべてのコマンドを利用できるようにするためには，
-文書設定(
+
+\series bold
+文書設定
+\series default
+(
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 数式オプション
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニュー)で
 \family sans
-AMS mathパッケージを使う
+AMS math
+\series bold
+パッケージを使う
 \family default
+\series default
 オプションを有効にしなくてはなりません
 \begin_inset Foot
 status collapsed
@@ -493,7 +537,7 @@ AmS
 
 -mathコマンド
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 すべての
@@ -545,34 +589,41 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき @ 数式 !
- ぎょうない @ 行内
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+ぎょうない
+\end_layout
+
+\end_inset
+
+行内
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 を作成するには，
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
 ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Info
 type  "shortcuts"
 arg   "math-mode"
@@ -596,8 +647,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき @ 数式 !
- べつぎょうだてようしき @ 別行立て様式
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+べつぎょうだてようしき
+\end_layout
+
+\end_inset
+
+別行立て様式
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -609,26 +687,39 @@ type  "shortcuts"
 arg   "math-display"
 \end_inset
 
-のうちいずれかの捷径を使用して下さい．
+のうちいずれかのショートカットを使用して下さい．
 \end_layout
 
 \begin_layout Standard
 別行立て様式の数式を行内数式に変更するには，
-カーソルを数式内に合わせて
+カーソルを数式内に合わせてショートカット
 \begin_inset Info
 type  "shortcuts"
-arg   "math-mode"
+arg   "math-mutate simple"
 \end_inset
 
-のいずれかの捷径か，
+か，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 数式の表記を変更
 \family default
-メニューを使用して下さい．同じ方法が，
-行内数式を別行立て数式に変更するのにも使用できます．
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューを使用して下さい．同様に，
+行内数式を別行立て数式に変更するには，
+ショートカット
+\begin_inset Info
+type  "shortcuts"
+arg   "math-mutate equation"
+\end_inset
+
+を使用してください．
 \end_layout
 
 \begin_layout Standard
@@ -646,11 +737,44 @@ status collapsed
 \begin_layout Plain Layout
 
 \size normal
-こまんど@コマンド !
- D !
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+
+\size normal
+こまんど
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\size normal
+D
+\end_layout
+
+\end_inset
+
  
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\size normal
+
 \backslash
 displaystyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -670,29 +794,67 @@ displaystyle
 \begin_layout Standard
 
 \family sans
+\series bold
 数式ツールバー
 \family default
-は，
+\series default
+の表示・非表示は，
 
 \family sans
+\series bold
 表示\SpecialChar menuseparator
-ツールバー
+ツールバー\SpecialChar menuseparator
+数式
 \family default
-メニューで表示することができます．そのメニューで「数式」をクリックすると，
-ツールバーが下部に永続的に表示されます．この状態は，
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューで制御することができます．
+\family sans
+\series bold
+入
+\family default
+\series default
+・
+\family sans
+\series bold
+切
+\family default
+\series default
+・
+\family sans
+\series bold
+自動
+\family default
+\series default
+の3つの選択肢があり，
 
 \family sans
-ツールバー
+\series bold
+入
 \family default
-メニューの中ではチェック印で表されます．この状態から，
+\series default
+を選択すると，
+画面下部に永続的にツールバーが表示されます．
+\family sans
+\series bold
+切
+\family default
+\series default
+を選択すると，
+ツールバーが表示されなくなり，
 
 \family sans
-ツールバー
+\series bold
+自動
 \family default
-メニューの「数式」をもう一度クリックすると，
-数式ツールバーは，
-カーソルが数式内部にあるときのみ表示されるようになります．この状態は，
-メニュー項目が「数式」から「数式(自動)」に変わることで表されます．
+\series default
+を選択すると，
+ツールバーはカーソルが数式内部にあるとき，
+自動で表示されるようになります．ツールバーの現在の状態は，
+選択されているメニュー項目の横のチェック印で表されます．
 \end_layout
 
 \begin_layout Standard
@@ -704,7 +866,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-T exもーど@\SpecialChar TeX
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+Texもと
+\end_layout
+
+\end_inset
+
+\SpecialChar TeX
 モード
 \end_layout
 
@@ -720,10 +891,16 @@ arg   "ert-insert"
 を押すか，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
-TeXコード
+
+\series default
+TeX
+\series bold
+コード
 \family default
-(捷径：
+\series default
+(ショートカット：
 
 \begin_inset Info
 type  "shortcut"
@@ -732,25 +909,6 @@ arg   "ert-insert"
 
 )メニューを使うことで，
 起動できます．
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LyX
-には，
-出力においては上付き文字と下付き文字とで表示される三つの「固有名詞」，
-\SpecialChar TeX
-・\SpecialChar LaTeX
-・\SpecialChar LyX
-があります．これらの名称が，
-固有名詞として認識されるのを防ぐために，
-ここでは\SpecialChar TeX
-括弧が挿入されています．
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -762,7 +920,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-L atexぷりあんぶる@\SpecialChar LaTeX
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+Latexふりあんふる
+\end_layout
+
+\end_inset
+
+\SpecialChar LaTeX
 プリアンブル
 \end_layout
 
@@ -771,10 +938,20 @@ L atexぷりあんぶる@\SpecialChar LaTeX
 を変更するには，
 
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-LaTeXプリアンブル
+
+\series default
+LaTeX
+\series bold
+プリアンブル
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用してください．
 \end_layout
 
@@ -783,14 +960,24 @@ LaTeXプリアンブル
 多行数式を続けて編集するには，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューと
 \family sans
 編集\SpecialChar menuseparator
 行と列
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使うか，
 表ツールバーを使用することができます．メニューから行や列を交換するように指定されたときには，
 カーソルのある列や行は，
@@ -836,8 +1023,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-てきすと @ テキスト !
- すうしきちゅうの @ 数式中の
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+てきすと
+\end_layout
+
+\end_inset
+
+テキスト
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+すうしきちゆうの
+\end_layout
+
+\end_inset
+
+数式中の
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -849,13 +1063,22 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしきてきすと @ 数式テキスト
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+すうしきてきすと
+\end_layout
+
+\end_inset
+
+数式テキスト
 \end_layout
 
 \end_inset
 
 が使用されます．このモードには，
-捷径
+ショートカット
 \begin_inset Info
 type  "shortcut"
 arg   "math-mode"
@@ -875,11 +1098,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど @ コマンド !
- T !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんど
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 text
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -930,7 +1180,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-T exかっこ@\SpecialChar TeX
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+Texかつこ
+\end_layout
+
+\end_inset
+
+\SpecialChar TeX
 括弧
 \end_layout
 
@@ -971,45 +1230,43 @@ T exかっこ@\SpecialChar TeX
 \emph default
 入力されなくてはなりません．この空白は出力中には現れません．空白を出力中に表示したいときには，
 空白の後に，
-通常テキストモードの保護された空白が来なくてはなりません．
+通常テキストモードの非改行空白が来なくてはなりません．
 \end_layout
 
 \begin_layout Standard
-保護された空白は，
+非改行空白は，
 
 \begin_inset Info
 type  "shortcuts"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
- 
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-鍵
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-キー
-\end_layout
-
+ キーもしくは
+\begin_inset space \thinspace{}
 \end_inset
 
 
-\end_layout
+\family sans
+\series bold
+挿入\SpecialChar menuseparator
+整形\SpecialChar menuseparator
+標準の非改行空白
+\family default
+\series default
 
+\begin_inset space \thinspace{}
 \end_inset
 
+のメニュー選択，
+または
+\family sans
+Ctrl+Space
+\family default
 で入力できます．
 \end_layout
 
 \begin_layout Subsection*
-\begin_inset Newpage newpage
-\end_inset
-
-文法の説明
+この説明書で用いられている文法の説明
 \end_layout
 
 \begin_layout Itemize
@@ -1018,7 +1275,7 @@ status collapsed
 \end_inset
 
  は，
-空白文字を入力することを表します．
+空白文字をユーザーが入力することを表します．
 \end_layout
 
 \begin_layout Itemize
@@ -1026,27 +1283,32 @@ status collapsed
 \end_inset
 
 のような矢印は，
-キーボードから対応する矢印
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-鍵
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-キー
-\end_layout
-
+キーボードから対応する矢印キーを押すことを表します．
+\begin_inset Formula $\to$
 \end_inset
 
-
-\end_layout
-
+や
+\begin_inset Formula $\downarrow$
 \end_inset
 
-を押すことを表します．
+の代わりに
+\family sans
+Tab
+\family default
+キー，
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+や
+\begin_inset Formula $\uparrow$
+\end_inset
+
+の代わりに
+\family sans
+Shift+Tab
+\family default
+キーが使えることがあります．
 \end_layout
 
 \begin_layout Subsection*
@@ -1424,13 +1686,6 @@ em)
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 基礎的な関数
 \end_layout
@@ -1443,7 +1698,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-しすう@指数
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+しすう
+\end_layout
+
+\end_inset
+
+指数
 \end_layout
 
 \end_inset
@@ -1455,70 +1719,73 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-そえじ@添字
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
+\begin_inset IndexMacro sortkey
 status collapsed
 
 \begin_layout Plain Layout
-うえつきもじ@上付き文字
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-|see{
-\end_layout
-
-\end_inset
-
-指数
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status collapsed
-
-\begin_layout Plain Layout
-したつきもじ@下付き文字
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-|see{
+そえし
 \end_layout
 
 \end_inset
 
 添字
-\begin_inset ERT
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status collapsed
 
-}
+\begin_layout Plain Layout
+うえつきもし
+\end_layout
+
+\end_inset
+
+上付き文字
+\begin_inset IndexMacro see
+status open
+
+\begin_layout Plain Layout
+指数
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+したつきもし
+\end_layout
+
+\end_inset
+
+下付き文字
+\begin_inset IndexMacro see
+status open
+
+\begin_layout Plain Layout
+添字
 \end_layout
 
 \end_inset
@@ -1666,7 +1933,7 @@ A
 母音字の後でキャレットを押すと，
 指数にならずにアクセントをつけることになってしまいます
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 使用しているキーボード設定によっては，
@@ -1699,7 +1966,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぶんすう@分数
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+ふんすう
+\end_layout
+
+\end_inset
+
+分数
 \end_layout
 
 \end_inset
@@ -1722,11 +1998,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- F !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 frac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1763,11 +2066,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- D !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 dfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1787,11 +2117,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- T !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 tfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1977,10 +2334,6 @@ frac
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\begin_inset Newpage newpage
-\end_inset
-
 入れ子の分数を作るには，
 コマンド
 \series bold
@@ -1995,11 +2348,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- C !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 cfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2156,7 +2536,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \backslash
 cfracleft
 \series default
@@ -2229,11 +2609,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- N !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 nicefrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2257,11 +2664,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- U !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 unitfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2292,7 +2726,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 実は，
 
@@ -2357,7 +2791,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こんごう@根号
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こんこう
+\end_layout
+
+\end_inset
+
+根号
 \end_layout
 
 \end_inset
@@ -2369,24 +2812,21 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-るーと@ルート
-\begin_inset ERT
+\begin_inset IndexMacro sortkey
 status collapsed
 
 \begin_layout Plain Layout
-
-|see{
+ると
 \end_layout
 
 \end_inset
 
-根号
-\begin_inset ERT
-status collapsed
+ルート
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-}
+根号
 \end_layout
 
 \end_inset
@@ -2414,11 +2854,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 sqrt
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2444,11 +2911,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 root
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2600,11 +3094,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- L !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 leftroot
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2622,11 +3143,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- U !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 uproot
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2710,7 +3258,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-にこうけいすう@二項係数
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+にこうけいすう
+\end_layout
+
+\end_inset
+
+二項係数
 \end_layout
 
 \end_inset
@@ -2733,11 +3290,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- B !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 binom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2767,15 +3351,39 @@ binom
 
 \backslash
 dbinom
+\series default
+
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- D !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 dbinom
 \end_layout
@@ -2783,7 +3391,10 @@ dbinom
 \end_inset
 
 
-\series default
+\end_layout
+
+\end_inset
+
 および
 \series bold
 
@@ -2797,11 +3408,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- T !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 tbinom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2821,11 +3459,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- B !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 brace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2843,11 +3508,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- B !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 brack
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3062,7 +3754,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ばあいわけ@場合分け
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+はあいわけ
+\end_layout
+
+\end_inset
+
+場合分け
 \end_layout
 
 \end_inset
@@ -3123,11 +3824,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- C !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 cases
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3210,27 +3938,7 @@ arg   "math-insert \\cases"
 \end_inset
 
 を使用した後では，
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
 ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -3256,10 +3964,20 @@ cases
 は，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
-Cases環境
+
+\series default
+Cases
+\series bold
+環境
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで挿入することもできます．
 \end_layout
 
@@ -3271,7 +3989,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひてい@否定
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+ひてい
+\end_layout
+
+\end_inset
+
+否定
 \end_layout
 
 \end_inset
@@ -3293,11 +4020,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- N !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 not
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3456,7 +4210,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-うめくさ@埋め草
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+うめくさ
+\end_layout
+
+\end_inset
+
+埋め草
 \end_layout
 
 \end_inset
@@ -3468,37 +4231,30 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かがくきごう@化学記号 !
- どういたい@同位体
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
+\begin_inset IndexMacro sortkey
 status collapsed
 
 \begin_layout Plain Layout
-どういたい@同位体
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-|see{
+かかくきこう
 \end_layout
 
 \end_inset
 
 化学記号
-\begin_inset ERT
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
 status collapsed
 
 \begin_layout Plain Layout
+とういたい
+\end_layout
 
-}
+\end_inset
+
+同位体
 \end_layout
 
 \end_inset
@@ -3515,24 +4271,52 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-あいそとーぷ@アイソトープ
-\begin_inset ERT
+\begin_inset IndexMacro sortkey
 status collapsed
 
 \begin_layout Plain Layout
-
-|see{
+とういたい
 \end_layout
 
 \end_inset
 
 同位体
-\begin_inset ERT
+\begin_inset IndexMacro see
+status open
+
+\begin_layout Plain Layout
+化学記号
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status collapsed
 
-}
+\begin_layout Plain Layout
+あいそとふ
+\end_layout
+
+\end_inset
+
+アイソトープ
+\begin_inset IndexMacro see
+status open
+
+\begin_layout Plain Layout
+同位体
 \end_layout
 
 \end_inset
@@ -3648,9 +4432,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- P !
- 
+こまんと@コマンド!P!
 \backslash
 phantom
 \end_layout
@@ -3749,6 +4531,12 @@ phantom
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\backslash
+mathrm
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 F
 \end_layout
 
@@ -3787,6 +4575,12 @@ phantom
 \end_inset
 
 9
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+mathrm
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -3873,11 +4667,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- V !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 vphantom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3905,11 +4726,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- H !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hphantom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4004,10 +4852,21 @@ nolink "false"
 埋め草は，
 メニュー
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 挿入\SpecialChar menuseparator
 整形\SpecialChar menuseparator
 埋め草
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を使えば，
 以下のように本文中でも使用することができます．
 \end_layout
@@ -4038,7 +4897,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-よこせん@横線
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+よこせん
+\end_layout
+
+\end_inset
+
+横線
 \end_layout
 
 \end_inset
@@ -4050,8 +4918,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- かせん@下線
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かせん
+\end_layout
+
+\end_inset
+
+下線
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4138,11 +5033,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- O !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4183,11 +5105,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- U !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 underline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4278,11 +5227,7 @@ underline
 \backslash
 underline
 \series default
-を二回使います．
-\end_layout
-
-\begin_layout Standard
-文字の上下6本の線まで引くことができます．
+を二回（あるいは好きなだけ）使います．
 \end_layout
 
 \begin_layout Standard
@@ -4303,11 +5248,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status collapsed
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 rule
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4375,13 +5347,19 @@ rule{2cm}{1pt}
 
 \backslash
 ruleは，
-メニュー
+
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 整形\SpecialChar menuseparator
 水平線
 \family default
-を使っても，
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューを使っても，
 本文に挿入することができます．
 \end_layout
 
@@ -4413,7 +5391,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-しょうりゃくふごう@省略符号
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しょうりやくふこう
+\end_layout
+
+\end_inset
+
+省略符号
 \end_layout
 
 \end_inset
@@ -4453,11 +5440,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- L !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 ldots
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4477,11 +5491,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- C !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 cdots
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4499,11 +5540,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- D !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 dots
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4789,9 +5857,15 @@ A_{n1} & \cdots & A_{nm}
 \begin_layout Standard
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 省略符号
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで挿入される省略符号は
 \series bold
 
@@ -4814,20 +5888,28 @@ iddots
 を使うには，
 文書設定の
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 にある
 \family sans
-mathdotsパッケージを(自動的に)使う
+mathdots
+\series bold
+パッケージを(自動的に)使う
 \family default
+\series default
 オプションのうちいずれかを有効にしなくてはなりません．
 \begin_inset Newline newline
 \end_inset
 
 
 \family sans
-mathdotsパッケージを使う
+mathdots
+\series bold
+パッケージを使う
 \family default
+\series default
 オプションを使用すると，
 文書中のフォント様式や寸法が既定値でないときのあらゆるドットの表示が改善されます．
 \end_layout
@@ -4851,16 +5933,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- H !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hdotsfor
 \end_layout
 
 \end_inset
 
-コマンドで作ることができます．
+
+\end_layout
+
+\end_inset
+
+コマンドで作ることができます（これが動作するためには，
+
+\family sans
+\series bold
+数式オプション
+\family default
+\series default
+で
+\family sans
+mathtools
+\family default
+が
+\family sans
+\series bold
+常に読み込み
+\family default
+\series default
+されている必要があります）．
 \end_layout
 
 \begin_layout Standard
@@ -4926,11 +6052,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- D !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 dotfill
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4998,11 +6151,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- H !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hrulefill
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5038,7 +6218,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぎょうれつ@行列
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きようれつ
+\end_layout
+
+\end_inset
+
+行列
 \end_layout
 
 \end_inset
@@ -5056,12 +6245,23 @@ arg   "dialog-show mathmatrix"
 
 か
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 行列
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで挿入することができます．すると，
-行列の行数・列数・配置方法・装飾を尋ねられます．ここで垂直配置は，
+行列の行数・列数・配置方法・外観を尋ねられます．ここで垂直配置は，
 行内数式内の行列でのみ意味を持ちます．
 \end_layout
 
@@ -5197,9 +6397,20 @@ arg   "tabular-feature delete-row"
 
 などや
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 編集\SpecialChar menuseparator
 行と列
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使用することができます．また，
 行は
 \begin_inset Info
@@ -5220,10 +6431,40 @@ arg   "newline-insert newline"
 \begin_layout Standard
 
 \family sans
-装飾
+\series bold
+外観
 \family default
-は，
-行列の前後に選択した様式の括弧を加えます．他にも括弧は，
+\series default
+では，
+行列の前後に選択した様式の括弧を加えたり，
+
+\begin_inset Formula $\bigl(\begin{smallmatrix}0 & \textrm{-}\mathrm{i}\\
+\mathrm{i} & 0
+\end{smallmatrix}\bigr)$
+\end_inset
+
+のような行内行列に適した
+\family sans
+small
+\family default
+様式を選択することができます．ここでは，
+
+\series bold
+
+\backslash
+bigl(
+\series default
+と
+\series bold
+
+\backslash
+bigr)
+\series default
+コマンドを使って手動で括弧を付け加えています．
+\end_layout
+
+\begin_layout Standard
+他にも括弧は，
 
 \series bold
 
@@ -5237,16 +6478,43 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- L !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 left
 \end_layout
 
 \end_inset
 
-コマンドや
+
+\end_layout
+
+\end_inset
+
+コマンドと
 \series bold
 
 \backslash
@@ -5259,48 +6527,58 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 right
 \end_layout
 
 \end_inset
 
-コマンドで作成することもできます(
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
 \end_inset
 
-：
+コマンドで作成することもできます(ショートカット：
 
 \family sans
 Alt+M
 \begin_inset space ~
 \end_inset
 
+
+\series bold
 括弧
 \family default
+\series default
 )．第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:自動の括弧丈"
+reference "subsec:自動の括弧高"
 nolink "false"
 
 \end_inset
@@ -5646,11 +6924,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arraycolsep
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5673,11 +6978,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arraystretch
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5693,17 +7025,46 @@ arraystretch
 renewcommand{
 \backslash
 arraystretch}{伸長因子}
+\series default
+
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 renewcommand
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5738,7 +7099,7 @@ arraystretch
 \end_layout
 
 \begin_layout Standard
-本文行中に行列を入れるには，
+小さな行内行列は，
 
 \series bold
 
@@ -5752,28 +7113,55 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 smallmatrix
 \end_layout
 
 \end_inset
 
-コマンドを使います．これを挿入すると，
+
+\end_layout
+
+\end_inset
+
+コマンドを使っても作ることができます．これを挿入すると，
 二つの点線に囲まれた青枠が現れます．この枠のなかに行列を入れることができます．
 \end_layout
 
 \begin_layout Standard
-これは，
-本文行中の行列
+これ
 \begin_inset Formula $\left(\begin{smallmatrix}A & B\\
 C & D
 \end{smallmatrix}\right)$
 \end_inset
 
-です．
+は，
+周囲に自動の括弧をつけた行内行列です．
 \end_layout
 
 \begin_layout Section
@@ -5784,7 +7172,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かっこ@括弧
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かつこ
+\end_layout
+
+\end_inset
+
+括弧
 \end_layout
 
 \end_inset
@@ -5796,7 +7193,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-くぶんきごう@区分記号
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+くふんきこう
+\end_layout
+
+\end_inset
+
+区分記号
 \end_layout
 
 \end_inset
@@ -5812,13 +7218,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かっこ@括弧 !
- すいちょく@垂直
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かつこ
+\end_layout
+
+\end_inset
+
+括弧
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すいちよく
+\end_layout
+
+\end_inset
+
+垂直
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -6295,7 +7728,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 \SpecialChar TeX
 モードでは，
@@ -6317,11 +7750,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド!
- T !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 textbackslash
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6365,7 +7825,7 @@ rangle
 手動の括弧高
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:手動の括弧丈"
+name "subsec:手動の括弧高"
 
 \end_inset
 
@@ -6376,8 +7836,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かっこたけ@括弧高 !
- しゅどう@手動
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かつこたか
+\end_layout
+
+\end_inset
+
+括弧高
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しゆとう
+\end_layout
+
+\end_inset
+
+手動
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6401,11 +7888,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- B !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 big
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6612,11 +8126,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- B !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 bigm
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6627,9 +8168,13 @@ bigm
 
 \backslash
 bigl
-\series default
--
-\series bold
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Formula $-$
+\end_inset
+
 
 \backslash
 bigr
@@ -6641,13 +8186,61 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- B !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-bigl - 
+bigl-
 \backslash
 bigr
+\end_layout
+
+\end_inset
+
+
+\backslash
+bigl
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Formula $-$
+\end_inset
+
+
+\backslash
+bigr
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6860,7 +8453,7 @@ bigr(
 自動の括弧高
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:自動の括弧丈"
+name "subsec:自動の括弧高"
 
 \end_inset
 
@@ -6871,8 +8464,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かっこたけ@括弧高 !
- じどう@自動
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かつこたか
+\end_layout
+
+\end_inset
+
+括弧高
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しとう
+\end_layout
+
+\end_inset
+
+自動
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6895,11 +8515,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- L !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 left
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6917,11 +8564,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 right
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7036,27 +8710,7 @@ left
 right
 \series default
 の代わりに，
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
 ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \family sans
 Alt+M
 \begin_inset space ~
@@ -7175,11 +8829,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- M !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 middle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7191,7 +8872,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-【訳註】
+［訳註］
 \series default
 p\SpecialChar LaTeX
 では，
@@ -7259,13 +8940,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かっこ@括弧 !
- すいへい@水平
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かつこ
+\end_layout
+
+\end_inset
+
+括弧
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すいへい
+\end_layout
+
+\end_inset
+
+水平
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -7327,11 +9035,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- O !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overbrace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7376,9 +9111,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- U !
- 
+こまんと@コマンド!U!
 \backslash
 underbrace
 \end_layout
@@ -7506,8 +9239,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- mathtools
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7565,11 +9316,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- O !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overbracket
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7610,13 +9388,42 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- U !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\size normal
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 under
 \size normal
 bracket
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8025,11 +9832,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- J !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+J
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 jot
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8069,7 +9903,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-やじるし@矢印
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+やしるし
+\end_layout
+
+\end_inset
+
+矢印
 \end_layout
 
 \end_inset
@@ -8097,8 +9940,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-やじるし@矢印 !
- すいへい@水平
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+やしるし
+\end_layout
+
+\end_inset
+
+矢印
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すいへい
+\end_layout
+
+\end_inset
+
+水平
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8864,8 +10734,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-やじるし@矢印 !
- らべるつき@ラベル付き
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+やしるし
+\end_layout
+
+\end_inset
+
+矢印
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+らへるつき
+\end_layout
+
+\end_inset
+
+ラベル付き
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8884,11 +10781,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- X !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 xleftarrow
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8906,19 +10830,33 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- X !
- 
-\backslash
-xrightarrow
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
 
-
 \backslash
-vspace{4mm}
+xrightarrow
 \end_layout
 
 \end_inset
@@ -9052,8 +10990,10 @@ F(a)
 \begin_layout Standard
 文書設定の
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 で，
 
 \series bold
@@ -9066,8 +11006,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- mathtools
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9078,13 +11036,6 @@ status collapsed
 \family default
 オプションを設定すると，
 以下のようなラベル付き矢印が利用可能になります．
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -9541,8 +11492,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-やじるし@矢印 !
- たいかく@対角
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+やしるし
+\end_layout
+
+\end_inset
+
+矢印
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たいかく
+\end_layout
+
+\end_inset
+
+対角
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9554,8 +11532,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-やじるし@矢印 !
- すいちょく@垂直
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+やしるし
+\end_layout
+
+\end_inset
+
+矢印
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すいちよく
+\end_layout
+
+\end_inset
+
+垂直
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9896,7 +11901,7 @@ nwarrow
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:手動の括弧丈"
+reference "subsec:手動の括弧高"
 nolink "false"
 
 \end_inset
@@ -9904,7 +11909,7 @@ nolink "false"
 節および第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:自動の括弧丈"
+reference "subsec:自動の括弧高"
 nolink "false"
 
 \end_inset
@@ -9928,7 +11933,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-あくせんと@アクセント
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+あくせんと
+\end_layout
+
+\end_inset
+
+アクセント
 \end_layout
 
 \end_inset
@@ -10042,8 +12056,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-あくせんと@アクセント !
- いちもじにつける@一文字に付ける
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+あくせんと
+\end_layout
+
+\end_inset
+
+アクセント
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+いちもしにつける
+\end_layout
+
+\end_inset
+
+一文字に付ける
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10215,7 +12256,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-べくとる@ベクトル
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+へくとる
+\end_layout
+
+\end_inset
+
+ベクトル
 \end_layout
 
 \end_inset
@@ -10545,7 +12595,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-うむらうと@ウムラウト
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+うむらうと
+\end_layout
+
+\end_inset
+
+ウムラウト
 \end_layout
 
 \end_inset
@@ -10714,8 +12773,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- upgreek
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+upgreek
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10878,13 +12955,6 @@ fi
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 複数の文字に付けるアクセント
 \begin_inset Index idx
@@ -10893,8 +12963,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-あくせんと@アクセント !
- ふくすうのもじにつける@複数の文字に付ける
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+あくせんと
+\end_layout
+
+\end_inset
+
+アクセント
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふくすうのもしにつける
+\end_layout
+
+\end_inset
+
+複数の文字に付ける
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11254,11 +13351,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- O !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11276,11 +13400,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- U !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 underset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11324,16 +13475,43 @@ name "subsec:空白"
 \begin_inset Index idx
 range none
 pageformat default
-status collapsed
+status open
 
 \begin_layout Plain Layout
-くうはく@空白 !
- すいへい@水平
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+くうはく
+\end_layout
+
+\end_inset
+
+空白
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+よこほうこうの
+\end_layout
+
+\end_inset
+
+横方向の
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -11357,15 +13535,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-くうはく@空白 !
- すいへい@水平
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+くうはく
+\end_layout
+
+\end_inset
+
+空白
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+よこほうこうの
+\end_layout
+
+\end_inset
+
+横方向の
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- ていぎずみ@定義済み
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ていきすみ
+\end_layout
+
+\end_inset
+
+定義済み
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11376,31 +13599,11 @@ status collapsed
 \begin_layout Standard
 数式に水平方向の空白を挿入することが，
 必要になることがあります．これは，
-保護された空白(
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-：
+非改行空白(ショートカット：
 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
 )を挿入することで実現できます．「
@@ -11458,7 +13661,7 @@ Space
 \begin_inset Text
 
 \begin_layout Plain Layout
-保護された空白を挿入したのち，
+非改行空白を挿入したのち，
 
 \family sans
 Space
@@ -11677,7 +13880,7 @@ qquad
 \begin_inset Text
 
 \begin_layout Plain Layout
-保護された空白を挿入したのち，
+非改行空白を挿入したのち，
 
 \family sans
 Space
@@ -11965,7 +14168,7 @@ negthickspace
 \begin_inset Text
 
 \begin_layout Plain Layout
-保護された空白を挿入したのち，
+非改行空白を挿入したのち，
 
 \family sans
 Space
@@ -12243,29 +14446,19 @@ B
 値と単位のあいだに通常の空白ではなく，
 最小の空白を入れる必要があるために，
 それに適した空白が必要です．本文中の単位には，
+
+\family sans
+\series bold
 挿入\SpecialChar menuseparator
 整形\SpecialChar menuseparator
-小空白メニュー(
-\begin_inset Flex Ruby
-status collapsed
+小空白
+\family default
+\series default
 
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-：
+メニュー(ショートカット：
 
 \begin_inset Info
 type  "shortcut"
@@ -12431,15 +14624,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-くうはく@空白 !
- すいへい@水平
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+くうはく
+\end_layout
+
+\end_inset
+
+空白
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+よこほうこうの
+\end_layout
+
+\end_inset
+
+横方向の
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- かへんちょう@可変長
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かへんちよう
+\end_layout
+
+\end_inset
+
+可変長
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12462,11 +14700,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- H !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hspace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12538,11 +14803,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- H !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hfill
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12758,10 +15050,16 @@ nolink "false"
 可変長空白は，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 整形\SpecialChar menuseparator
 水平方向の空白
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで挿入することができます．
 \end_layout
 
@@ -12800,8 +15098,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-くうはく@空白 !
- ぎょうないすうしきまわり@行内数式周り
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+くうはく
+\end_layout
+
+\end_inset
+
+空白
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きようないすうしきまわり
+\end_layout
+
+\end_inset
+
+行内数式周り
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12822,11 +15147,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- M !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 mathsurround
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12845,11 +15197,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 setlength
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12968,7 +15347,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
 \end_layout
 
 \end_inset
@@ -12980,24 +15368,21 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-わく@枠
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro sortkey
+status open
 
 \begin_layout Plain Layout
-
-|see{
+わく
 \end_layout
 
 \end_inset
 
-ボックス
-\begin_inset ERT
-status collapsed
+枠
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-}
+ボックス
 \end_layout
 
 \end_inset
@@ -13012,15 +15397,7 @@ status collapsed
 
 \begin_layout Standard
 本文中のボックスについては，
-取扱説明書
-\family typewriter
-埋め込みオブジェクト篇
-\family default
-の
-\family typewriter
-ボックス
-\family default
-の章に述べられています．
+取扱説明書『埋め込みオブジェクト篇』の「ボックス」の章に述べられています．
 \end_layout
 
 \begin_layout Subsection
@@ -13038,13 +15415,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- わくつき@枠付き
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+わくつき
+\end_layout
+
+\end_inset
+
+枠付き
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -13067,11 +15471,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- F !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 fbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13089,11 +15520,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- B !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 boxed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13169,11 +15627,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- F !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 framebox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13616,13 +16101,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- わくなし@枠なし
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+わくなし
+\end_layout
+
+\end_inset
+
+枠なし
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -13646,15 +16158,42 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- M !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 mbox
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
 ・
 \series bold
 
@@ -13668,11 +16207,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- M !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 makebox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13690,11 +16256,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 raisebox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13746,7 +16339,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 下の最後の
 \series bold
@@ -13966,13 +16559,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- いろつき@色付き
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+いろつき
+\end_layout
+
+\end_inset
+
+色付き
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -14059,8 +16679,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- color
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+color
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14086,11 +16724,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- C !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 colorbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14355,8 +17020,10 @@ colorbox
 数式全体を選択し，
 
 \family sans
+\series bold
 文字様式
 \family default
+\series default
 ダイアログで欲しい色を選択します．このダイアログは，
 ツールバーボタン
 \begin_inset Info
@@ -14366,10 +17033,21 @@ arg   "dialog-show character"
 
 か
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 編集\SpecialChar menuseparator
 文字様式\SpecialChar menuseparator
 任意設定
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで開くことができます．すると，
 数式番号も数式と同じ色になります．数式番号が数式の文字とは別の色になるようにするには，
 数式内部で色を変えなくてはなりません．
@@ -14449,11 +17127,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- F !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 fcolorbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14619,11 +17324,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- D !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 definecolor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14742,8 +17474,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-てきすと@テキスト !
- いろつき@色付き
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+てきすと
+\end_layout
+
+\end_inset
+
+テキスト
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+いろつき
+\end_layout
+
+\end_inset
+
+色付き
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14792,11 +17551,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- T !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 textcolor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14826,8 +17612,30 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス !
- だんらく@段落
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほつくす
+\end_layout
+
+\end_inset
+
+ボックス
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たんらく
+\end_layout
+
+\end_inset
+
+段落
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -14841,14 +17649,25 @@ status collapsed
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 いくつかの行や段落を含む，
 いわゆる段落ボックス(parbox)は，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 ボックス
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューかツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -14967,11 +17786,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- P !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 parbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15010,11 +17856,7 @@ t
 (top)は，
 これを最初の行に合わせます．位置を指定しない時には，
 ボックスは事実上中央揃えになります．用例については，
-取扱説明書埋込オブジェクト篇の
-\emph on
-ボックス
-\emph default
-の節をご参照下さい．
+取扱説明書『埋込オブジェクト篇』の「ボックス」の節をご参照下さい．
 \end_layout
 
 \begin_layout Standard
@@ -15040,15 +17882,39 @@ fboxrule}{
 
 \backslash
 linewidth
+\series default
+
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- L !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 linewidth
 \end_layout
@@ -15056,7 +17922,10 @@ linewidth
 \end_inset
 
 
-\series default
+\end_layout
+
+\end_inset
+
 は，
 使用中の文書に設定されている行幅です．枠は，
 parboxの外側にあるので，
@@ -15089,8 +17958,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- calc
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15421,7 +18308,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-えんざんし@演算子
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+えんさんし
+\end_layout
+
+\end_inset
+
+演算子
 \end_layout
 
 \end_inset
@@ -15444,8 +18340,30 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-えんざんし@演算子 !
- だい@大
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+えんさんし
+\end_layout
+
+\end_inset
+
+演算子
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たい
+\end_layout
+
+\end_inset
+
+大
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15457,13 +18375,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index idx
-range none
-pageformat default
-status collapsed
-
-\begin_layout Plain Layout
-わ@和
 \end_layout
 
 \end_inset
@@ -15475,7 +18386,37 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-せきぶんきごう@積分記号
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+わ
+\end_layout
+
+\end_inset
+
+和
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+せきふんきこう
+\end_layout
+
+\end_inset
+
+積分記号
 \end_layout
 
 \end_inset
@@ -15487,12 +18428,17 @@ status collapsed
 ここに挙げた積分演算子をすべて使えるようにするには，
 文書設定の
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 の面にある
 \family sans
-esintパッケージを自動的に使う
+esint
+\series bold
+パッケージを自動的に使う
 \family default
+\series default
 オプションを有効にしなくてはなりません．
 \end_layout
 
@@ -15540,11 +18486,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- I !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+I
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 int
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15843,11 +18816,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 sum
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15884,11 +18884,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- P !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 prod
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16192,27 +19219,7 @@ d
 d
 \emph default
 を選択して，
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
 ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Info
 type  "shortcut"
 arg   "font-roman"
@@ -16524,8 +19531,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-えんざんし@演算子 !
- はんい@範囲
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+えんさんし
+\end_layout
+
+\end_inset
+
+演算子
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はんい
+\end_layout
+
+\end_inset
+
+範囲
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16623,37 +19657,23 @@ A(x)
 カーソルを当該演算子の直後において，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 範囲の表記を変更
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで
 \family sans
 \series bold
 行内形式
 \family default
 \series default
-(
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-：
+(ショートカット：
 
 \begin_inset Info
 type  "shortcut"
@@ -16743,11 +19763,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 subarray
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16765,11 +19812,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 substack
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16859,13 +19933,26 @@ k
 各行の揃え方は，
 
 \family sans
+\series bold
 表ツールバー
 \family default
+\series default
 か
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 編集\SpecialChar menuseparator
 行と列
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで変更することができますが，
 右揃えにするには，
 行頭に
@@ -16928,11 +20015,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 smashoperator
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16940,8 +20054,10 @@ smashoperator
 を使うことができます．これを有効化するには，
 文書設定の
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 で，
 
 \series bold
@@ -16954,16 +20070,36 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- mathtools
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 の
 \family sans
+\series bold
 常に読み込み
 \family default
+\series default
 オプションを指定してください．
 \series bold
 
@@ -16980,13 +20116,9 @@ smashoperator
 
 \lang japanese
 ptに設定します．
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
-
-\lang japanese
 これを
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -17047,7 +20179,17 @@ smashoperator
 \series bold
 [r]
 \series default
-と書き込みます．下記は，
+と書き込みます．ここで，
+
+\series bold
+l
+\series default
+は演算子の左側，
+
+\series bold
+r
+\series default
+は右側を表します．下記は，
 
 \series bold
 
@@ -17089,8 +20231,10 @@ Y\smashoperator{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[l]{\sum_
 組版を改善するには，
 文書設定の
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 で，
 
 \series bold
@@ -17103,8 +20247,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- mathtools
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17128,11 +20290,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 adjustlimits
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17173,8 +20362,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-えんざんし@演算子 !
- しゅうしょく@修飾
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+えんさんし
+\end_layout
+
+\end_inset
+
+演算子
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しゆうしよく
+\end_layout
+
+\end_inset
+
+修飾
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17196,11 +20412,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- O !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17218,11 +20461,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- U !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 underset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17243,11 +20513,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 sideset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17371,7 +20668,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \backslash
 sideset
 \series default
@@ -17452,13 +20749,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-えんざんし@演算子 !
- にこう@二項
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+えんさんし
+\end_layout
+
+\end_inset
+
+演算子
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+にこう
+\end_layout
+
+\end_inset
+
+二項
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -18557,13 +21881,21 @@ nabla
 \begin_layout Standard
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 特殊文字
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューの
 \family sans
+\series bold
 メニュー区切り
 \family default
+\series default
 で入力される文字は，
 
 \series bold
@@ -18589,13 +21921,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-えんざんし@演算子 !
- じこていぎ@自己定義
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+えんさんし
+\end_layout
+
+\end_inset
+
+演算子
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しこていき
+\end_layout
+
+\end_inset
+
+自己定義
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -18619,13 +21978,49 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- D !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-dbinom@
+dbinom
+\end_layout
+
+\end_inset
+
+
 \backslash
 DeclareMathOperator
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18739,11 +22134,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- M !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 mathop
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18761,11 +22183,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- M !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 mathbin
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18879,7 +22328,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-しょたい@書体
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しよたい
+\end_layout
+
+\end_inset
+
+書体
 \end_layout
 
 \end_inset
@@ -18891,24 +22349,21 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ふぉんと@フォント
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
-
-|see{
+ふおんと
 \end_layout
 
 \end_inset
 
-書体
-\begin_inset ERT
-status collapsed
+フォント
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-}
+書体
 \end_layout
 
 \end_inset
@@ -18936,8 +22391,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-しょたい@書体 !
- ようしき@様式
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しよたい
+\end_layout
+
+\end_inset
+
+書体
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ようしき
+\end_layout
+
+\end_inset
+
+様式
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18981,9 +22463,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Shortcut
+ショートカット
 \end_layout
 
 \end_inset
@@ -19247,9 +22727,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Shortcut
+ショートカット
 \end_layout
 
 \end_inset
@@ -19494,7 +22972,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \backslash
 mathbb
 \series default
@@ -19578,10 +23056,16 @@ literal "false"
 書体様式コマンドの代わりに，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数学\SpecialChar menuseparator
 文字様式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログや，
 
 \begin_inset Info
@@ -19607,8 +23091,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- ぼーるどたい@ボールド体
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほるとたい
+\end_layout
+
+\end_inset
+
+ボールド体
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19677,11 +23188,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- B !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 boldmath
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19700,11 +23238,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- U !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 unboldmath
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19757,8 +23322,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- いろつき@色付き
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+いろつき
+\end_layout
+
+\end_inset
+
+色付き
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19806,11 +23398,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- T !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 textcolor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19907,8 +23526,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-しょたい@書体 !
- すんぽう@寸法
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しよたい
+\end_layout
+
+\end_inset
+
+書体
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すんほう
+\end_layout
+
+\end_inset
+
+寸法
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20102,11 +23748,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- D !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 displaystyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20377,7 +24050,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぎりしゃもじ@ギリシャ文字
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きりしやもし
+\end_layout
+
+\end_inset
+
+ギリシャ文字
 \end_layout
 
 \end_inset
@@ -20407,8 +24089,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぎりしゃもじ@ギリシャ文字 !
- こもじ@小文字
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きりしやもし
+\end_layout
+
+\end_inset
+
+ギリシャ文字
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こもし
+\end_layout
+
+\end_inset
+
+小文字
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21326,8 +25035,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぎりしゃもじ@ギリシャ文字 !
- おおもじ@大文字
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きりしやもし
+\end_layout
+
+\end_inset
+
+ギリシャ文字
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+おおもし
+\end_layout
+
+\end_inset
+
+大文字
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21735,8 +25471,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- was
+はつけし@パッケージ!was
 \begin_inset ERT
 status collapsed
 
@@ -21766,8 +25501,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- fixmath
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+fixmath
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21798,8 +25551,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぎりしゃもじ@ギリシャ文字 !
- ぼーるどたい@ボールド体
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きりしやもし
+\end_layout
+
+\end_inset
+
+ギリシャ文字
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほるとたい
+\end_layout
+
+\end_inset
+
+ボールド体
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21824,11 +25604,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- B !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 boldsymbol
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22008,7 +25815,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きごう@記号
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きこう
+\end_layout
+
+\end_inset
+
+記号
 \end_layout
 
 \end_inset
@@ -22048,8 +25864,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きごう@記号 !
- すうがく@数学
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きこう
+\end_layout
+
+\end_inset
+
+記号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうかく
+\end_layout
+
+\end_inset
+
+数学
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22888,8 +26731,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きごう@記号 !
- そのた@その他
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きこう
+\end_layout
+
+\end_inset
+
+記号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+そのた
+\end_layout
+
+\end_inset
+
+その他
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23698,8 +27568,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きごう@記号 !
- ゆーろつうかきごう@ユーロ通貨記号
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きこう
+\end_layout
+
+\end_inset
+
+記号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ゆろつうかきこう
+\end_layout
+
+\end_inset
+
+ユーロ通貨記号
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23711,7 +27608,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-E@
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -23746,8 +27652,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- eurosym
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+eurosym
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23780,11 +27704,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- E !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 euro
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23825,11 +27776,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- O !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 officialeuro
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -24048,15 +28026,7 @@ status collapsed
 cmidrule
 \series default
 は表罫線のためだけに用いられています．詳細については，
-取扱説明書
-\emph on
-埋込オブジェクト篇
-\emph default
-の
-\family sans
-フォーマル形式の表
-\family default
-の節をご覧下さい．
+取扱説明書埋込『オブジェクト篇』の「フォーマル形式の表」の節をご覧下さい．
 \end_layout
 
 \end_inset
@@ -24137,7 +28107,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かんけいし@関係子
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かんけいし
+\end_layout
+
+\end_inset
+
+関係子
 \end_layout
 
 \end_inset
@@ -24149,24 +28128,21 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ひかくし@比較子
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro sortkey
+status open
 
 \begin_layout Plain Layout
-
-|see{
+ひかくし
 \end_layout
 
 \end_inset
 
-関係子
-\begin_inset ERT
-status collapsed
+比較子
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-}
+関係子
 \end_layout
 
 \end_inset
@@ -25550,11 +29526,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 stackrel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25668,8 +29671,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かんすう@関数 !
- ていぎずみ@定義済み
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かんすう
+\end_layout
+
+\end_inset
+
+関数
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ていきすみ
+\end_layout
+
+\end_inset
+
+定義済み
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26267,8 +30297,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かんすう@関数 !
- じこていぎ@自己定義
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かんすう
+\end_layout
+
+\end_inset
+
+関数
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しこていき
+\end_layout
+
+\end_inset
+
+自己定義
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26336,13 +30393,49 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- D !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-dbinom@
+dbinom
+\end_layout
+
+\end_inset
+
+
 \backslash
 DeclareMathOperator
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26498,7 +30591,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きょくげん@極限
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きよくけん
+\end_layout
+
+\end_inset
+
+極限
 \end_layout
 
 \end_inset
@@ -26521,11 +30623,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- L !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 lim
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26801,8 +30930,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かんすう@関数 !
- じょうよ@剰余
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かんすう
+\end_layout
+
+\end_inset
+
+関数
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しようよ
+\end_layout
+
+\end_inset
+
+剰余
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26814,25 +30970,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かんすう@関数 !
- もじゅらす@モジュラス
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro sortkey
+status open
 
 \begin_layout Plain Layout
-
-|see{
+かんすう
 \end_layout
 
 \end_inset
 
-剰余
-\begin_inset ERT
-status collapsed
+関数
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
 
-}
+\begin_layout Plain Layout
+もしゆらす
+\end_layout
+
+\end_inset
+
+モジュラス
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro see
+status open
+
+\begin_layout Plain Layout
+剰余
 \end_layout
 
 \end_inset
@@ -26895,7 +31066,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-とくしゅもじ@特殊文字
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+とくしゆもし
+\end_layout
+
+\end_inset
+
+特殊文字
 \end_layout
 
 \end_inset
@@ -27523,8 +31703,41 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-あくせんと@アクセント !
- ぶんしょうちゅうの@文章中の
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+あくせんと
+\end_layout
+
+\end_inset
+
+アクセント
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふんしようちゆうの
+\end_layout
+
+\end_inset
+
+文章中の
+\begin_inset space \thinspace{}
+\end_inset
+
+—
+—
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27947,7 +32160,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ちるだ@チルダ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ちるた
+\end_layout
+
+\end_inset
+
+チルダ
 \end_layout
 
 \end_inset
@@ -28298,11 +32520,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- T !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 textcircled
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28496,7 +32745,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こしきすうじ@古式数字
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こしきすうし
+\end_layout
+
+\end_inset
+
+古式数字
 \end_layout
 
 \end_inset
@@ -28519,11 +32777,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- O !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 oldstylenums
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28572,8 +32857,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- ようしき@様式
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ようしき
+\end_layout
+
+\end_inset
+
+様式
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28593,6 +32905,12 @@ status collapsed
 \begin_layout Description
 行頭下げ これは
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 文書\SpecialChar menuseparator
 設定
 \family default
@@ -28600,6 +32918,11 @@ status collapsed
 \family sans
 数式オプション
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で設定することができます．
 \end_layout
 
@@ -28608,7 +32931,7 @@ status collapsed
 \series bold
 数式を字下げ
 \series default
-を指定すると下げ幅を指定することができます．既定値は使用している文書苦楽に依存して変わります．
+を指定すると下げ幅を指定することができます．既定値は使用している文書クラスに依存して変わります．
 \end_layout
 
 \end_deeper
@@ -28617,13 +32940,21 @@ status collapsed
 以下の二つの連番様式があり，
 
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューの
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 で設定することができます．
 \end_layout
 
@@ -28673,13 +33004,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -28718,8 +33076,11 @@ eqnarray環境
 が作り出されるか，
 あるいは文書設定で
 \family sans
-AMS mathパッケージを使う
+AMS math
+\series bold
+パッケージを使う
 \family default
+\series default
 オプションが選択されている場合には，
 第
 \begin_inset CommandInset ref
@@ -28740,9 +33101,15 @@ align環境
 他にも，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 数式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで作ることのできる多行数式環境があります．これらの環境は，
 以下の各節で説明します．
 \end_layout
@@ -28772,9 +33139,15 @@ arg   "tabular-feature delete-row"
 を使うか，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 行と列
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使うことができます．
 \end_layout
 
@@ -28793,15 +33166,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- ぎょうかん@行間
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きようかん
+\end_layout
+
+\end_inset
+
+行間
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28861,7 +33279,7 @@ literal "false"
 というコマンドを入れます．すると，
 次のようになります．
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -28928,11 +33346,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- J !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+J
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 jot
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29017,8 +33462,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- calc
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29095,15 +33558,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- れつかん@列間
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+れつかん
+\end_layout
+
+\end_inset
+
+列間
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29134,11 +33642,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arraycolsep
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29266,8 +33801,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- ながい@長い
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+なかい
+\end_layout
+
+\end_inset
+
+長い
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29337,11 +33899,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- H !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hspace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29368,11 +33957,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- L !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 lefteqn
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29462,27 +34078,7 @@ literal "false"
 \end_inset
 
 ．カーソルを行頭に合わせて，
-矢印
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-鍵
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-キー
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-で移動するしかありません．
+矢印キーで移動するしかありません．
 \end_layout
 
 \end_inset
@@ -29526,8 +34122,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぶんすう@分数 !
- たぎょうにわたる@多行にわたる
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふんすう
+\end_layout
+
+\end_inset
+
+分数
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきようにわたる
+\end_layout
+
+\end_inset
+
+多行にわたる
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29552,11 +34175,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 splitfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29564,8 +34214,10 @@ splitfrac
 を使うことができます．これを有効化するには，
 文書設定の
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 で，
 
 \series bold
@@ -29578,8 +34230,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- mathtools
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29655,8 +34325,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かっこ@括弧 !
- たぎょうすうしきよう@多行数式用
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かつこ
+\end_layout
+
+\end_inset
+
+括弧
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきようすうしきよう
+\end_layout
+
+\end_inset
+
+多行数式用
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29698,11 +34395,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 right
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29733,7 +34457,7 @@ right
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:自動の括弧丈"
+reference "subsec:自動の括弧高"
 nolink "false"
 
 \end_inset
@@ -29752,11 +34476,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- L !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 left
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29816,11 +34567,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- V !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 vphantom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29863,15 +34641,27 @@ align環境には列があり，
 align環境は，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 数式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューから作ることができます．
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 数式の表記を変更
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使えば，
 既存の数式をalign環境に変更することができます．
 \end_layout
@@ -29893,9 +34683,15 @@ arg   "tabular-feature delete-column"
 を使うか，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 行と列
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使います．
 \end_layout
 
@@ -29914,15 +34710,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- alignかんきょう@align環境
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+alignかんきよう
+\end_layout
+
+\end_inset
+
+align環境
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29941,10 +34782,20 @@ arg   "newline-insert newline"
 を押すか，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
-AMS align環境
+
+\series default
+AMS align
+\series bold
+環境
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで作ることができます．
 \end_layout
 
@@ -30038,15 +34889,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- alignatかんきょう@alignat環境
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+alignatかんきよう
+\end_layout
+
+\end_inset
+
+alignat環境
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30105,15 +35001,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- flalignかんきょう@flalign環境
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+flalignかんきよう
+\end_layout
+
+\end_inset
+
+flalign環境
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30188,15 +35129,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- eqnarrayかんきょう@eqnarray環境
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+eqnarrayかんきよう
+\end_layout
+
+\end_inset
+
+eqnarray環境
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30230,15 +35216,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- gatherかんきょう@gather環境
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+gatherかんきよう
+\end_layout
+
+\end_inset
+
+gather環境
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30275,15 +35306,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- multlineかんきょう@multpline環境
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+multlineかんきよう
+\end_layout
+
+\end_inset
+
+multpline環境
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30357,11 +35433,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 shoveright
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30375,11 +35478,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 shoveleft
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30420,11 +35550,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- M !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 multlinegap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30522,15 +35679,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- たぎょう@多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- すうしきのいちぶ@数式の一部
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきのいちふ
+\end_layout
+
+\end_inset
+
+数式の一部
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30559,9 +35761,15 @@ split
 のうちのいずれかの環境を使用します．これらは，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 数式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューか，
 本節で解説している各コマンドを使用して挿入することができます．
 \end_layout
@@ -30602,11 +35810,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 aligned
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30672,15 +35907,42 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 alignedat
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
 ・
 \series bold
 
@@ -30694,11 +35956,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- G !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+G
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 gathered
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30716,11 +36005,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 split
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30745,8 +36061,41 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-てきすと @ テキスト !
- すうしきちゅうの @ 数式中の
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+てきすと
+\end_layout
+
+\end_inset
+
+テキスト
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきちゅうの
+\end_layout
+
+\end_inset
+
+数式中の
+\begin_inset space \thinspace{}
+\end_inset
+
+—
+—
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30758,15 +36107,60 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき @ 数式 !
- たぎょう @ 多行
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たきよう
+\end_layout
+
+\end_inset
+
+多行
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
- !
- てきすと @ テキスト
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+てきすと
+\end_layout
+
+\end_inset
+
+テキスト
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30790,11 +36184,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- I !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+I
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 intertext
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30851,11 +36272,13 @@ intertext
 \series default
 は，
 文と数式行の間に，
-常に縦空白を生み出します．この空白を抑制するには，
+常に縦方向の空白を生み出します．この空白を抑制するには，
 文書設定の
 \family sans
+\series bold
 数式オプション
 \family default
+\series default
 で
 \series bold
 mathtools
@@ -30867,8 +36290,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- mathtools
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30898,11 +36339,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- S !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 shortintertext
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30927,7 +36395,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしきばんごう@数式番号
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきはんこう
+\end_layout
+
+\end_inset
+
+数式番号
 \end_layout
 
 \end_inset
@@ -30939,25 +36416,31 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- ばんごう@番号
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro sortkey
+status open
 
 \begin_layout Plain Layout
-
-|see{
+すうしき
 \end_layout
 
 \end_inset
 
-数式番号
-\begin_inset ERT
-status collapsed
+数式
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
+ばんこう@番号
+\end_layout
 
-}
+\end_inset
+
+
+\begin_inset IndexMacro see
+status open
+
+\begin_layout Plain Layout
+数式番号
 \end_layout
 
 \end_inset
@@ -30978,31 +36461,17 @@ status collapsed
 付番数式は，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 付番数式
 \family default
-メニュー(
-\begin_inset Flex Ruby
-status collapsed
+\series default
 
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-：
+メニュー(ショートカット：
 
 \family sans
 Ctrl+Alt
@@ -31014,11 +36483,17 @@ N
 )で作ることができます．既存の数式に番号を振るには，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 数式全体を付番
 \family default
-メニュー(捷径：
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニュー(ショートカット：
 
 \begin_inset Info
 type  "shortcut"
@@ -31027,8 +36502,7 @@ arg   "math-number-toggle"
 
 )を使います．\SpecialChar LyX
 中において数式番号は，
-数式の後に括弧に囲まれた「#」で表されます．「#」は，
-実際の出力では数式番号に置き換えられます．
+数式の後に括弧に囲まれた「#」で表されます．
 \end_layout
 
 \begin_layout Standard
@@ -31036,11 +36510,17 @@ arg   "math-number-toggle"
 すべての行に番号が振られます．ただし，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 この行を付番
 \family default
-メニュー(捷径：
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニュー(ショートカット：
 
 \begin_inset Info
 type  "shortcut"
@@ -31072,8 +36552,32 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-そうごさんしょう@相互参照 !
- すうしきへの@数式への
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+そうこさんしよう
+\end_layout
+
+\end_inset
+
+相互参照
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+すうしきへの@数式への
+\begin_inset space \thinspace{}
+\end_inset
+
+—
+—
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31086,9 +36590,15 @@ status collapsed
 すべて相互参照することができます．ラベルは，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 ラベル
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューか，
 ツールバーボタンの
 \begin_inset Info
@@ -31109,9 +36619,15 @@ eq:と
 大きな文書の中でラベルを見つけるのを容易にします．ラベルを変更するには，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 ラベル
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューをもういちど使って下さい．
 \end_layout
 
@@ -31126,9 +36642,15 @@ eq:と
 相互参照は，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 相互参照
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューかツールバーボタンの
 \begin_inset Info
 type  "icon"
@@ -31260,8 +36782,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしきばんごう@数式番号 !
- さいもくばんごう@細目番号
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきばんこう
+\end_layout
+
+\end_inset
+
+数式番号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+さいもくはんこう
+\end_layout
+
+\end_inset
+
+細目番号
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31270,40 +36819,48 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+数式は，
+数式群の一部として細目番号を振ることができます．この機能を有効にするには，
 
-\lang english
-Formulas can be numbered as subequations.
- To activate this feature,
- add the module 
 \family sans
-Subequations
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+モジュール
 \family default
- to the document in the menu 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Modules
-\family default
-.
- To insert subequations use the menu 
-\family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Subequations
-\family default
-.
-\end_layout
+\series default
 
-\begin_layout Standard
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-The equations to be subnumbered are put into the 
+メニューで，
+
 \family sans
-Subequations
+\series bold
+数式群
 \family default
- inset
-\lang japanese
-．たとえば，
+\series default
+モジュールを文書に追加してください．数式群を挿入するには，
+
+\family sans
+\series bold
+挿入\SpecialChar menuseparator
+特別差込枠\SpecialChar menuseparator
+数式群
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューを使用してください．細目番号が振られる数式は，
+
+\family sans
+\series bold
+数式群
+\family default
+\series default
+差込枠の中に入れられます．たとえば，
 
 \begin_inset Formula 
 \begin{equation}
@@ -31346,19 +36903,20 @@ C=A+B\label{eq:c}
 
 \begin_layout Standard
 
-\lang english
-Every formula in the 
 \family sans
-Subequations
+\series bold
+数式群
 \family default
- inset will be subnumbered with 
-\lang japanese
-a・b・c\SpecialChar ldots
-のように細目番号が振られます．
+\series default
+差込枠中の数式には，
+出力中において，
+すべてa・b・c\SpecialChar ldots
+のような細目番号が振られます．複数行(multiline)数式では，
+すべての行に細目番号が振られます．
 \end_layout
 
 \begin_layout Standard
-細目番号への参照は，
+数式群の参照は，
 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -31375,16 +36933,15 @@ nolink "false"
 
 \end_inset
 
-．
-\lang english
-If you want to reference the subequations collectively,
- insert a label as first thing in the 
+のように，
+通常の数式と同じように動作します．数式群そのものを参照したい場合には，
+ラベルを
 \family sans
-Subequations
+\series bold
+数式群
 \family default
- inset
-\lang japanese
-．数式
+\series default
+差込枠の最初に挿入してください．数式
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:以下は"
@@ -31396,24 +36953,23 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
+数式群を挿入すると，
+縦方向の空白が数式の前に追加されます．これを取り除くには，
 
-\lang english
-By inserting subequations vertical space is added before it
-\lang japanese
-．これを戻すために，
--5
+\begin_inset Formula $-5$
+\end_inset
+
+
 \begin_inset space \thinspace{}
 \end_inset
 
-mm
-\lang english
-vertical space right before the 
+mmの縦方向空白を
 \family sans
-Subequations
+\series bold
+数式群
 \family default
- inset
-\lang japanese
-．数式様式として
+\series default
+差込枠の直前に挿入してください．数式様式として
 \series bold
 行頭下げ
 \begin_inset Foot
@@ -31436,8 +36992,12 @@ nolink "false"
 
 
 \series default
-を用いているときには，
-これを-7
+を用いている場合は，
+これを
+\begin_inset Formula $-7$
+\end_inset
+
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -31445,15 +37005,16 @@ mm空白にしてください．
 \end_layout
 
 \begin_layout Standard
+ラテン小文字ではない細目番号を付けるには，
+下記のようなコマンドを\SpecialChar TeX
+コードとして，
 
-\lang english
-To get another subnumber instead of small Latin letters,
- insert this command as \SpecialChar TeX
- code before the equations in the 
 \family sans
-Subequations
+\series bold
+数式群
 \family default
- inset:
+\series default
+差込枠の前に挿入してください．
 \end_layout
 
 \begin_layout Standard
@@ -31471,13 +37032,21 @@ roman{equation}}
 \end_layout
 
 \begin_layout Standard
-ここで，
+ここでは，
+
+\series bold
 
 \backslash
-theparentequationは親番号を生成し，
+theparentequation
+\series default
+が親番号を生成し，
+
+\series bold
 
 \backslash
-roman{equation}は細目番号として小文字ローマ数字を生成します．番号付けの調整について，
+roman{equation}
+\series default
+が細目番号として小文字ローマ数字を生成します．番号付けの調整について，
 詳しくは第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -31555,8 +37124,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしきばんごう@数式番号 !
- もじをつかった@文字を使った
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきはんこう
+\end_layout
+
+\end_inset
+
+数式番号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+もしをつかつた
+\end_layout
+
+\end_inset
+
+文字を使った
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31568,8 +37164,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしきばんごう@数式番号 !
- ろーますうじをつかった@ローマ数字を使った
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきはんこう
+\end_layout
+
+\end_inset
+
+数式番号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ろますうしをつかつた
+\end_layout
+
+\end_inset
+
+ローマ数字を使った
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31611,11 +37234,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 renewcommand
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31696,11 +37346,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 roman
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31744,13 +37421,49 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- R !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-roman@
+roman
+\end_layout
+
+\end_inset
+
+
 \backslash
 Roman
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31770,11 +37483,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 alph
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31794,13 +37534,49 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-alph@
+alph
+\end_layout
+
+\end_inset
+
+
 \backslash
 Alph
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31815,17 +37591,13 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 ラテン文字を使うと，
 一つの文書の中で，
 最大26個の数式しか番号を振ることができません．
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -31952,17 +37724,46 @@ renewcommand{
 theequation}{
 \backslash
 arabic{equation}}
+\series default
+
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arabic
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32034,8 +37835,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしきばんごう@数式番号 !
- じこていぎ@自己定義
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきはんこう
+\end_layout
+
+\end_inset
+
+数式番号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しこていき
+\end_layout
+
+\end_inset
+
+自己定義
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32050,14 +37878,12 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
-\lang english
-If the document language is a right-to-left language such as Arabic,
- you must add this to the to the \SpecialChar LaTeX
--preamble to be able to use the commands described in this section:
-\lang japanese
-
+文書言語がアラビア語のように右から左書きの言語のときは，
+本節で述べられているコマンドを使用可能とするためには，
+\SpecialChar LaTeX
+プリアンブルに下記を書き加えなくてはなりません．
 \begin_inset Newline newline
 \end_inset
 
@@ -32107,8 +37933,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしきばんごう@数式番号 !
- じこていぎくぎり@自己定義区切り
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきはんこう
+\end_layout
+
+\end_inset
+
+数式番号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しこていきくきり
+\end_layout
+
+\end_inset
+
+自己定義区切り
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32211,11 +38064,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- T !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 tag
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32289,12 +38169,39 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- 
-\backslash
-@記号 !
- 
-\backslash
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+@
+\end_layout
+
+\end_inset
+
 
 \begin_inset ERT
 status collapsed
@@ -32307,6 +38214,18 @@ status collapsed
 \end_inset
 
 @
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+
 \begin_inset ERT
 status collapsed
 
@@ -32317,7 +38236,12 @@ status collapsed
 
 \end_inset
 
-addtoreset
+@addtoreset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32460,8 +38384,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- carlisle
+はつけし@パッケージ!carlisle
 \end_layout
 
 \end_inset
@@ -32480,8 +38403,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- remreset
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+remreset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32503,12 +38444,39 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- 
-\backslash
-@記号 !
- 
-\backslash
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+@
+\end_layout
+
+\end_inset
+
 
 \begin_inset ERT
 status collapsed
@@ -32521,6 +38489,18 @@ status collapsed
 \end_inset
 
 @
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+
 \begin_inset ERT
 status collapsed
 
@@ -32531,7 +38511,12 @@ status collapsed
 
 \end_inset
 
-removefromreset
+@removefromreset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32586,11 +38571,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- N !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 numberwithin
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32692,11 +38704,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- A !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arabic
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32806,8 +38845,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かがくきごう@化学記号 !
- きごう@記号
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かかくきこう
+\end_layout
+
+\end_inset
+
+化学記号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きこう
+\end_layout
+
+\end_inset
+
+記号
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32819,7 +38885,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かがくしき@化学式
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かかくしき
+\end_layout
+
+\end_inset
+
+化学式
 \end_layout
 
 \end_inset
@@ -32831,8 +38906,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-きごう@記号 !
- かがく@化学
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きこう
+\end_layout
+
+\end_inset
+
+記号
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かかく
+\end_layout
+
+\end_inset
+
+化学
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32873,27 +38975,7 @@ status collapsed
 \begin_layout Standard
 この化学式は，
 直接数式として作成することができます．記号がイタリック体として表示されることを防ぐには，
-全体を選択してから
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+全体を選択してからショートカット
 \begin_inset Info
 type  "shortcut"
 arg   "font-roman"
@@ -32936,8 +39018,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- mhchem
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mhchem
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32955,11 +39055,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- C !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 ce
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33305,7 +39432,7 @@ C
 \begin_inset space \textvisiblespace{}
 \end_inset
 
-->[
+説明書『[
 \backslash
 alpha][
 \backslash
@@ -33345,7 +39472,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 \SpecialChar LyX
 では，
@@ -33504,11 +39631,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- C !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 cf
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33562,8 +39716,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ずかい@図解 !
- amscd
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すかい
+\end_layout
+
+\end_inset
+
+図解
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+amscd
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33595,15 +39767,39 @@ F@<<<E@<<<D
 
 \backslash
 CD
+\series default
+
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- C !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 CD
 \end_layout
@@ -33611,7 +39807,10 @@ CD
 \end_inset
 
 
-\series default
+\end_layout
+
+\end_inset
+
 コマンドを挿入します．二つの点線に囲まれた青枠が現れるので，
 ここにコマンドを入れていきます．
 \begin_inset Info
@@ -33843,8 +40042,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ずかい@図解 !
- xymatrix
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すかい
+\end_layout
+
+\end_inset
+
+図解
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+xymatrix
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33885,15 +40102,17 @@ xymatricesは，
 対角矢印や曲がった矢印など多様なサポートをしています．作ることのできる可換図と装飾は，
 
 \family sans
+\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
-XY-pic説明書
+XY-pic
 \family default
-メニューにある
-\emph on
-XY-pic説明書
-\emph default
-で詳しく網羅しています．
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニューにある「XY-pic」説明書で詳しく網羅しています．
 \end_layout
 
 \begin_layout Subsection
@@ -33906,8 +40125,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ずかい@図解 !
- ファインマン
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すかい
+\end_layout
+
+\end_inset
+
+図解
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+ファインマン
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33944,16 +40181,18 @@ nolink "false"
 \begin_layout Standard
 \SpecialChar LyX
 でのファインマン図の作り方は，
-メニュー
+
 \family sans
+\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書
 \family default
-内の『
-\emph on
-ファインマン図
-\emph default
-』にあります．
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+メニュー内の『ファインマン図』にあります．
 \end_layout
 
 \begin_layout Section
@@ -33964,7 +40203,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-じこていぎこまんど@自己定義コマンド
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しこていきこまんと
+\end_layout
+
+\end_inset
+
+自己定義コマンド
 \end_layout
 
 \end_inset
@@ -33977,7 +40225,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-【註】自己定義コマンド名及びマクロ名には，
+［註］自己定義コマンド名及びマクロ名には，
 ラテン文字しか使用することができません．
 \end_layout
 
@@ -34003,10 +40251,28 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-じこていぎこまんど@自己定義コマンド !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しこていきこまんと
+\end_layout
+
+\end_inset
+
+自己定義コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 newcommand
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34018,11 +40284,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- N !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 newcommand
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34092,7 +40385,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 新コマンド名が，
 使用中の文書や呼び出している\SpecialChar LaTeX
@@ -34572,8 +40865,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-じこていぎこまんど@自己定義コマンド !
- すうしきまくろ@数式マクロ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しこていきこまんと
+\end_layout
+
+\end_inset
+
+自己定義コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきまくろ
+\end_layout
+
+\end_inset
+
+数式マクロ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34585,7 +40905,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-まくろ@マクロ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+まくろ
+\end_layout
+
+\end_inset
+
+マクロ
 \end_layout
 
 \end_inset
@@ -34742,10 +41071,16 @@ newcommand
 数式マクロは，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューか，
 ツールバーボタンの
 \begin_inset Info
@@ -34882,9 +41217,20 @@ qG:
 マクロの中にカーソルを置いて，
 
 \family sans
+\series bold
 表示\SpecialChar menuseparator
-数式マクロを展開(畳む)
+数式マクロを展開
+\series default
+(
+\series bold
+畳む
+\series default
+)
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使うことで，
 マクロ毎に変えることができます．
 \end_layout
@@ -34956,11 +41302,17 @@ qG
 は，
 
 \family sans
+\series bold
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 編集\SpecialChar menuseparator
 制御
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで，
 マクロを編集するのに複数の様式を用意しています．あなたに最も合った様式を見つけるには，
 様式を選択してから，
@@ -35021,27 +41373,7 @@ xleftarrow[#2]{#1}}
 \series default
 というコマンドを書き入れ，
 この全体を選択して，
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
 ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \family sans
 Ctrl+M
 \family default
@@ -35108,8 +41440,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-まくろ@マクロ !
- つーるばー@ツールバー
+まくろ@マクロ!つーるばー@ツールバー
 \end_layout
 
 \end_inset
@@ -35164,6 +41495,7 @@ arg   "math-macro-remove-param"
 \begin_layout Plain Layout
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ定義\SpecialChar menuseparator
@@ -35194,6 +41526,7 @@ arg   "math-macro-add-param"
 \begin_layout Plain Layout
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ定義\SpecialChar menuseparator
@@ -35224,6 +41557,7 @@ arg   "math-macro-make-optional"
 \begin_layout Plain Layout
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ定義\SpecialChar menuseparator
@@ -35273,6 +41607,7 @@ arg   "math-macro-make-nonoptional"
 \begin_layout Plain Layout
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ定義\SpecialChar menuseparator
@@ -35322,6 +41657,7 @@ arg   "math-macro-remove-optional-param"
 \begin_layout Plain Layout
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ定義\SpecialChar menuseparator
@@ -35352,6 +41688,7 @@ arg   "math-macro-add-optional-param"
 \begin_layout Plain Layout
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ定義\SpecialChar menuseparator
@@ -35382,6 +41719,7 @@ arg   "math-macro-remove-greedy-param"
 \begin_layout Plain Layout
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ定義\SpecialChar menuseparator
@@ -35431,6 +41769,7 @@ arg   "math-macro-append-greedy-param"
 \begin_layout Plain Layout
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ定義\SpecialChar menuseparator
@@ -35480,6 +41819,7 @@ arg   "math-macro-add-greedy-optional-param"
 \begin_layout Plain Layout
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ定義\SpecialChar menuseparator
@@ -35554,10 +41894,16 @@ Octave
 数式表現を書いた後，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 コンピュータ代数システムを使用
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで，
 コンピュータに導入済みのプログラムを選択します．その後，
 計算結果が，
@@ -35609,7 +41955,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+［註］
 \series default
 単純な「(」「)」文字ではなく，
 適切な区切り差込枠
@@ -35657,75 +42003,31 @@ status open
 \end_layout
 
 \begin_layout Subsection
-捷径
+ショートカット
 \end_layout
 
 \begin_layout Standard
 現在のところ，
-代数プログラムを呼び出すための
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-はありません．しかし，
-捷径を
+代数プログラムを呼び出すためのショートカットはありません．しかし，
+ショートカットを
 \family sans
 math-extern
 \family default
  \SpecialChar LyX
-関数にバインドすることは容易です(取扱説明書『
-\family sans
-\emph on
-\SpecialChar LyX
-関数篇
-\family default
-\emph default
-』参照)．例えば，
+関数にバインドすることは容易です(取扱説明書『\SpecialChar LyX
+関数篇』参照)．例えば，
 数式エディタ中で
 \family sans
+\series bold
 リターン
 \family default
-
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-鍵
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-キー
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-をバインドさせることもできます．それを
+\series default
+キーをバインドさせることもできます．それを
 \family typewriter
 Maxima
 \family default
 にバインドするには，
-下記の捷径定義コマンドを使用します．
+下記のショートカット定義コマンドを使用します．
 \end_layout
 
 \begin_layout Standard
@@ -35742,7 +42044,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ほい@補遺
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ほい
+\end_layout
+
+\end_inset
+
+補遺
 \end_layout
 
 \end_inset
@@ -35758,8 +42069,41 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かず@数 !
- ふの@負の
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+かす
+\end_layout
+
+\end_inset
+
+数
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふの
+\end_layout
+
+\end_inset
+
+負の
+\begin_inset space \thinspace{}
+\end_inset
+
+—
+—
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35878,7 +42222,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こんま@コンマ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こんま
+\end_layout
+
+\end_inset
+
+コンマ
 \end_layout
 
 \end_inset
@@ -35890,24 +42243,21 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-かんま@カンマ
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro sortkey
+status open
 
 \begin_layout Plain Layout
-
-|see{
+かんま
 \end_layout
 
 \end_inset
 
-コンマ
-\begin_inset ERT
-status collapsed
+カンマ
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-}
+コンマ
 \end_layout
 
 \end_inset
@@ -35932,27 +42282,7 @@ status collapsed
 \begin_layout Standard
 これを回避するためには，
 コンマを選択して，
-数式テキストに変更して下さい(
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-：
+数式テキストに変更して下さい(¯ショートカット：
 
 \begin_inset Info
 type  "shortcut"
@@ -36005,8 +42335,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- was
+はつけし@パッケージ!was
 \begin_inset ERT
 status collapsed
 
@@ -36036,8 +42365,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- icomma
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+icomma
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36060,13 +42407,40 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-べくとる@ベクトル !
- ぶつり@物理
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+へくとる
+\end_layout
+
+\end_inset
+
+ベクトル
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふつり
+\end_layout
+
+\end_inset
+
+物理
 \begin_inset space \thinspace{}
 \end_inset
 
 —
 —
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -36103,8 +42477,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- braket
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+braket
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36362,7 +42754,7 @@ Braket
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:自動の括弧丈"
+reference "subsec:自動の括弧高"
 nolink "false"
 
 \end_inset
@@ -36392,8 +42784,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぶんすう@分数 !
- じこていぎの@自己定義の
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふんすう
+\end_layout
+
+\end_inset
+
+分数
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しこていきの
+\end_layout
+
+\end_inset
+
+自己定義の
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36416,11 +42835,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- G !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+G
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 genfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36712,8 +43158,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- しょうきょ@消去
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+しようきよ
+\end_layout
+
+\end_inset
+
+消去
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37106,8 +43579,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- cancel
+はつけし@パッケージ!cancel
 \end_layout
 
 \end_inset
@@ -37188,8 +43660,41 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- せつみだしちゅうの@節見出し中の
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+せつみたしちゆうの
+\end_layout
+
+\end_inset
+
+節見出し中の
+\begin_inset space \thinspace{}
+\end_inset
+
+—
+—
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37222,8 +43727,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- hyperref
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37244,9 +43767,15 @@ PDFのしおりが，
 これらの問題は，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 短縮タイトル
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使って，
 問題となる節見出しの最後に短縮タイトルを入れることで解決することができます．短縮タイトルは，
 目次が美しく整形されるように，
@@ -37277,11 +43806,38 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド !
- T !
- 
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+こまんと
+\end_layout
+
+\end_inset
+
+コマンド
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 texorpdfstring
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37433,8 +43989,41 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- ただんくみぶんちゅうの@多段組文中の
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+たたんくみふんちゆうの
+\end_layout
+
+\end_inset
+
+多段組文中の
+\begin_inset space \thinspace{}
+\end_inset
+
+—
+—
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37473,8 +44062,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- multicol
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multicol
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37506,22 +44113,38 @@ status open
 ここで，
 
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューの
 \family sans
+\series bold
 本文レイアウト
 \family default
+\series default
 で，
 
 \family sans
+\series bold
 二段組文書
 \family default
-の設定を
-\emph on
-有効にしてはならない
-\emph default
+\series default
+の設定を有効に
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
+してはならない
+\end_layout
+
+\end_inset
+
 ことに注意してください．
 \end_layout
 
@@ -37744,8 +44367,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 !
- へんすうのせつめいつき@変数の説明付き
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしき
+\end_layout
+
+\end_inset
+
+数式
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+へんすうのせつめいつき
+\end_layout
+
+\end_inset
+
+変数の説明付き
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37942,8 +44592,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぎりしゃもじ@ギリシャ文字 !
- あっぷらいとたい@アップライト体
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+きりしやもし
+\end_layout
+
+\end_inset
+
+ギリシャ文字
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+あつふらいとたい
+\end_layout
+
+\end_inset
+
+アップライト体
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37984,8 +44661,7 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- was
+はつけし@パッケージ!was
 \begin_inset ERT
 status collapsed
 
@@ -38016,8 +44692,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- upgreek
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+upgreek
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38173,8 +44867,35 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-てきすと @ テキスト !
- すうしきちゅうの @ 数式中の
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+てきすと
+\end_layout
+
+\end_inset
+
+テキスト
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+すうしきちゆうの
+\end_layout
+
+\end_inset
+
+数式中の
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38247,32 +44968,18 @@ i}
 \begin_layout Standard
 文字エンコーディング(
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 言語
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニュー)は，
-キーボード上の
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-鍵
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-キー
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-が押されたときにどの文字が表示されるかを指定します．「·」文字に対応する鍵が押されると，
+キーボード上のキーが押されたときにどの文字が表示されるかを指定します．「·」文字に対応するキーが押されると，
 内部的には
 \series bold
 
@@ -38325,7 +45032,7 @@ latin9.def
 status collapsed
 
 \begin_layout Plain Layout
-【訳註】p\SpecialChar LaTeX
+［訳註］p\SpecialChar LaTeX
 では，
 これらの定義は必要ないので，
 コメントアウトして無効にしてあります．
@@ -38364,7 +45071,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-L atexこめんと@\SpecialChar LaTeX
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+Latexこめんと
+\end_layout
+
+\end_inset
+
+\SpecialChar LaTeX
 コメント
 \end_layout
 
@@ -38379,18 +45095,16 @@ L atexこめんと@\SpecialChar LaTeX
 ソースコードでのみ見ることのできるコメントを，
 
 \family sans
-挿入
-\lang english
-\SpecialChar menuseparator
-
-\lang japanese
-註釈
-\lang english
-\SpecialChar menuseparator
-
-\lang japanese
+\series bold
+挿入\SpecialChar menuseparator
+註釈\SpecialChar menuseparator
 コメント
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューで挿入することができます．これと同じことは，
 数式中ではできませんが，
 
@@ -38463,7 +45177,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-くみばんじょうのじょげん@組版上の助言
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+くみはんしようのしよけん
+\end_layout
+
+\end_inset
+
+組版上の助言
 \end_layout
 
 \end_inset
@@ -38650,10 +45373,16 @@ times
 コマンドか，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 特殊文字\SpecialChar menuseparator
 記号
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューから入れることができます．
 \end_layout
 
@@ -38720,9 +45449,8 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@コマンド!
- M !
- 
+こまんと@コマンド!
+ M!
 \backslash
 mathscr
 \end_layout
@@ -38730,24 +45458,27 @@ mathscr
 \end_inset
 
 か
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 特殊文字\SpecialChar menuseparator
 記号\SpecialChar menuseparator
 文字様記号
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューの
 \begin_inset Formula $\mathscr{F}$
 \end_inset
 
 で入れることができます．
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -38758,7 +45489,16 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-どうぎご@同義語
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+とうきこ
+\end_layout
+
+\end_inset
+
+同義語
 \end_layout
 
 \end_inset
@@ -39367,13 +46107,6 @@ Vert
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
@@ -39414,7 +46147,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "説明"
-target "https://www.tug.org/~hvoss/PDF/mathmode.pdf"
+target "http://mirrors.ctan.org/obsolete/info/math/voss/mathmode/Mathmode.pdf"
 literal "false"
 
 \end_inset
@@ -39448,7 +46181,7 @@ AmS
 \begin_inset CommandInset href
 LatexCommand href
 name "説明"
-target "https://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/amsldoc.pdf"
+target "http://tug.ctan.org/info/amslatex/english/amsldoc.pdf"
 literal "false"
 
 \end_inset
@@ -39469,7 +46202,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "全覧"
-target "https://ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
+target "http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"
 literal "false"
 
 \end_inset
@@ -39497,8 +46230,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- cancel
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39535,8 +46286,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- hyperref
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39573,8 +46342,26 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-ぱっけーじ@パッケージ !
- mhchem
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+はつけし
+\end_layout
+
+\end_inset
+
+パッケージ
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mhchem
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
