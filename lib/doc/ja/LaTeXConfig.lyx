@@ -231,8 +231,8 @@ Almost European (AE)
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "ae"
@@ -249,7 +249,7 @@ fonts/ae/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 AE
@@ -270,8 +270,8 @@ Bera
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "bera"
@@ -288,7 +288,7 @@ fonts/bera
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  beraフォントは，
 Bitstream Veraのクローンであり，
 Bera Serif（slab-serifのローマン体），
@@ -366,12 +366,69 @@ Standard
 \end_layout
 
 \begin_layout Subsection
+cantarell
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "cantarell"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family sans
+fonts/cantarell
+\end_layout
+
+\begin_layout Description
+備考:
+ Cantarellは現代的で読みやすいサンセリフ体で，
+GNOMEプロジェクトのユーザーインタフェースに用いられています．
+\end_layout
+
+\begin_layout Subsection
+Chivo
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "Chivo"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family sans
+fonts/Chivo
+\end_layout
+
+\begin_layout Description
+備考:
+ ChivoはHéctor Gatti & [Omnibus-Type](http://www.omnibus-type.com/fonts/chivo.php) TeamがOpen Font License [(OFL)](http://scripts.sil.org/OFL),
+ version 1.1の下で提供している14フォントのセットです．フォントの著作権はcopyright (c) 2011-2019,
+ Omnibus-Typeです．
+\end_layout
+
+\begin_layout Subsection
 CM bright
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "cmbright"
@@ -388,10 +445,45 @@ fonts/cmbright
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  CM brightは，
 すばらしいサンセリフ数式フォントも同時に提供する，
 サンセリフフォントです．
+\end_layout
+
+\begin_layout Subsection
+Cochineal
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "cochineal"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family sans
+fonts/cochineal
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+cochineal
+\family default
+パッケージは
+\emph on
+Crimson
+\emph default
+セリフフォントのサポートを提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -399,8 +491,8 @@ Concrete
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "ccfonts"
@@ -417,7 +509,7 @@ macros/latex/contrib/ccfonts/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 ccfonts
@@ -431,12 +523,125 @@ Concrete Mathematics
 \end_layout
 
 \begin_layout Subsection
+CrimsonPro
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "CrimsonPro"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family sans
+fonts/crimsonpro
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+CrimsonPro
+\family default
+パッケージは，
+Crimson (Cochineal)をよりよくデザインし直した
+\emph on
+CrimsonPro
+\emph default
+セリフフォントのサポートを提供します．
+\end_layout
+
+\begin_layout Subsection
+Doublestroke
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "dsfont"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+fonts/doublestroke
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+doublestroke
+\family default
+は，
+自然数(
+\begin_inset Formula $\mathds{N}$
+\end_inset
+
+)や数全体(
+\begin_inset Formula $\mathds{Z}$
+\end_inset
+
+)，
+有理数(
+\begin_inset Formula $\mathds{Q}$
+\end_inset
+
+)，
+実数(
+\begin_inset Formula $\mathds{R}$
+\end_inset
+
+)，
+複素数(
+\begin_inset Formula $\mathds{C}$
+\end_inset
+
+)の数学記号を（
+\lang english
+ 
+\family typewriter
+\lang japanese
+
+\backslash
+mathds
+\family default
+を通じて）組版するのに便利な，
+Computer Modern Romanに基づいたフォントを提供します．すべてのローマ大文字の他「
+\begin_inset Formula $\mathds{1}$
+\end_inset
+
+」「
+\begin_inset Formula $\mathds{h}$
+\end_inset
+
+」「
+\begin_inset Formula $\mathds{k}$
+\end_inset
+
+」もカバーします．
+\end_layout
+
+\begin_layout Subsection
 ECフォント
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "ec"
@@ -453,7 +658,7 @@ fonts/ec
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  \SpecialChar LaTeX
 では
 \family sans
@@ -490,8 +695,8 @@ Eco
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "eco"
@@ -508,7 +713,7 @@ fonts/eco/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 eco
@@ -563,7 +768,7 @@ feyn
 \end_layout
 
 \begin_layout Description
-検出：
+検出:
  
 \begin_inset Info
 type  "package"
@@ -581,7 +786,7 @@ fonts/feyn/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 feyn
@@ -589,8 +794,10 @@ feyn
 パッケージは，
 数式中で
 \family sans
+\series bold
 ファインマン
 \family default
+\series default
 図を使う際（\SpecialChar LaTeX
 コマンド
 \series bold
@@ -599,6 +806,78 @@ feyn
 Diagram
 \series default
 ）に使用されます．
+\end_layout
+
+\begin_layout Subsection
+FiraMono
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "FiraMono"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family sans
+fonts/fira/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+FiraMono
+\family default
+パッケージは，
+モノスペースの
+\emph on
+FiraMono
+\emph default
+フォントのサポートを提供します．
+\end_layout
+
+\begin_layout Subsection
+FiraSans
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "FiraSans"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family sans
+fonts/fira/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+FiraSans
+\family default
+パッケージは，
+
+\emph on
+FiraSans
+\emph default
+フォント族のサポートを提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -645,8 +924,8 @@ fourier-GUTenberg
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "fourier"
@@ -663,7 +942,7 @@ fonts/fourier-GUT
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 fourier
@@ -692,8 +971,8 @@ Latin Modern
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "lmodern"
@@ -710,7 +989,7 @@ fonts/lm/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 Latin Modern
@@ -732,8 +1011,8 @@ LuxiMono
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "luximono"
@@ -750,7 +1029,7 @@ fonts/LuxiMono/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 luximono
@@ -846,6 +1125,87 @@ libertineフォントパッケージに同梱して提供されています．
 \end_layout
 
 \begin_layout Subsection
+Libertinus
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "libertinus"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+fonts/libertinus/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+libertinus
+\family default
+パッケージは，
+
+\emph on
+Libertine
+\emph default
+および
+\emph on
+Biolinum
+\emph default
+ フォント族の派生であり，
+追加的にドーム機能を提供する
+\emph on
+Libertinus
+\emph default
+フォント族のサポートを提供します．
+\end_layout
+
+\begin_layout Subsection
+LibertinusT1Math
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "libertinust1math"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+fonts/libertinust1math/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+libertinust1math
+\family default
+パッケージは，
+
+\emph on
+Libertinus Math
+\emph default
+ォントのサポートを提供します．
+\end_layout
+
+\begin_layout Subsection
 Mathdesign
 \end_layout
 
@@ -879,10 +1239,21 @@ mathdesign
 \SpecialChar LyX
 の
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 フォント
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で選択すると，
 
 \family sans
@@ -958,11 +1329,17 @@ arg   "mdput"
 各フォントの非数式デザイン版を選択するか，
 
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 フォント\SpecialChar menuseparator
 数式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で
 \emph on
 クラス既定値
@@ -1005,6 +1382,36 @@ Minion Pro
 \emph default
 フォントのサポートを提供します．フォント自体はパッケージの一部ではなく，
 別に導入しなくてはなりません(詳細はMinionProパッケージ説明書をお読みください)．
+\end_layout
+
+\begin_layout Subsection
+Noto
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "noto"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family sans
+fonts/noto
+\end_layout
+
+\begin_layout Description
+備考:
+ notoフォントは，
+Unicode標準でエンコードされているすべての文字をカバーするようにデザインされました．したがって，
+たとえばキリル文字とグルジア文字のように，
+文字を混ぜて書かれた文書には選択肢となります．
 \end_layout
 
 \begin_layout Subsection
@@ -1086,8 +1493,8 @@ PSNFSS
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "psnfss"
@@ -1104,7 +1511,7 @@ macros/latex/required/psnfss/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
 
 \family sans
  psnfss
@@ -1146,8 +1553,8 @@ Avant Garde
 ).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1170,8 +1577,8 @@ Bookman
 ).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1194,8 +1601,8 @@ Zapf Chancery
 ).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1218,8 +1625,8 @@ Charter
 ).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1290,8 +1697,8 @@ Palatino
 サポート).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1319,8 +1726,8 @@ mathpazo
 の使用を推奨).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1348,8 +1755,8 @@ mathptmx
 の使用を推奨).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1372,8 +1779,8 @@ Times
 サポート).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1396,8 +1803,8 @@ New Century Gothic
 ).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1511,8 +1918,8 @@ mathdesign
 の使用を推奨).
  
 \series bold
-検出：
-
+検出:
+ 
 \series default
  
 \begin_inset Info
@@ -1531,11 +1938,17 @@ arg   "utopia"
 各フォントの非数式デザイン版を選択するか，
 
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 フォント\SpecialChar menuseparator
 数式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で
 \emph on
 クラス既定値
@@ -1875,8 +2288,8 @@ tipa/tipx
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "tipa"
@@ -1893,7 +2306,7 @@ fonts/tipa/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 tipa
@@ -1906,18 +2319,35 @@ tipx
 『国際音声字母(IPA)』で定義されている発音記号を植字するのに必要な包括的なサポートとフォントを提供します．これらの記号は，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 特殊文字\SpecialChar menuseparator
 発音記号
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 あるいは\SpecialChar LyX
 の数式エディタ，
 または
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 挿入\SpecialChar menuseparator
 特殊文字\SpecialChar menuseparator
 記号
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログから入力することができます．
 \end_layout
 
@@ -2083,8 +2513,8 @@ article
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "article"
@@ -2099,7 +2529,7 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  標準文書クラス
 \family sans
 article
@@ -2114,8 +2544,8 @@ report
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "report"
@@ -2130,7 +2560,7 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  標準文書クラス
 \family sans
 report
@@ -2149,8 +2579,8 @@ book
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "book"
@@ -2165,7 +2595,7 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  標準文書クラス
 \family sans
 book
@@ -2180,8 +2610,8 @@ letter
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "letter"
@@ -2196,7 +2626,7 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  標準文書クラス
 \family sans
 letter
@@ -2210,8 +2640,8 @@ slides
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "slides"
@@ -2226,7 +2656,7 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  標準文書クラス
 \family sans
 slides
@@ -2254,8 +2684,8 @@ amsart
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "amsart"
@@ -2272,7 +2702,7 @@ macros/latex/required/amslatex/classes/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 amsart
@@ -2335,8 +2765,8 @@ aa
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "aa"
@@ -2359,7 +2789,7 @@ ftp.edpsciences.org
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 aa
@@ -2377,8 +2807,8 @@ aastex
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "aastex"
@@ -2401,10 +2831,39 @@ orgのディレクトリ
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
+ 廃版に伴いaastex6に移行しました．
+\end_layout
+
+\begin_layout Subsection
+aastex6
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "aastex"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+/macros/latex/contrib/aastex
+\family default
+ 
+\end_layout
+
+\begin_layout Description
+備考:
  文書クラス
 \family sans
-aastex
+aastex6
 \family default
 は，
 アメリカの学術誌『
@@ -2421,7 +2880,48 @@ Astronomical Journal
 \emph on
 Publications of the Astronomical Society of the Pacific
 \emph default
-（太平洋天文学会誌）』へ投稿する論文を執筆するのに使用することができます．
+（太平洋天文学会誌）』へ投稿する論文を執筆するのに使用することができます．パッケージと解説文書もアメリカ天文学会
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://journals.aas.org/authors/aastex/aastex.html
+\end_layout
+
+\end_inset
+
+より利用可能です．
+\end_layout
+
+\begin_layout Subsection
+acmart
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "acmart"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+/macros/latex/contrib/acmart
+\family default
+ 
+\end_layout
+
+\begin_layout Description
+備考:
+ このパッケージは，
+Association for Computing Machineryでの出版物を組版するためのクラスを提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -2429,8 +2929,8 @@ Publications of the Astronomical Society of the Pacific
 \end_layout
 
 \begin_layout Description
-検出：
-
+検出:
+ 
 \begin_inset Info
 type  "textclass"
 arg   "AEA"
@@ -2461,7 +2961,7 @@ http://www.aeaweb.org/templates/latex_templates.zip
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 AEA
@@ -2530,8 +3030,8 @@ AEA.lyx
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "jgrga"
@@ -2555,7 +3055,7 @@ macros/latex/contrib/aguplus
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 jgrga
@@ -2603,8 +3103,8 @@ beamer
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "beamer"
@@ -2621,7 +3121,7 @@ macros/latex/contrib/beamer
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  プレゼンテーションとスライドを作成するための\SpecialChar LaTeX
 クラス．
 \end_layout
@@ -2668,8 +3168,8 @@ broadway
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "broadway"
@@ -2689,7 +3189,7 @@ tex/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 broadway
@@ -2702,58 +3202,12 @@ broadway
 \end_layout
 
 \begin_layout Subsection
-cl2emult
-\end_layout
-
-\begin_layout Description
-検出：
- 
-\begin_inset Info
-type  "textclass"
-arg   "cl2emult"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN：
- 該当なし
-\end_layout
-
-\begin_layout Description
-FTP:
- 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-備考：
- 文書クラス
-\family sans
-cl2emult
-\family default
-は，
-Springer社の書籍を共著で執筆するためのものです．
-\end_layout
-
-\begin_layout Subsection
 dinbrief
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "dinbrief"
@@ -2770,7 +3224,7 @@ macros/latex/contrib/dinbrief/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 dinbrief
@@ -2784,8 +3238,8 @@ docbook
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "docbook"
@@ -2816,7 +3270,7 @@ http://sgmltools-lite.sourceforge.net/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 docbook
@@ -2839,8 +3293,8 @@ dtk
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "dtk"
@@ -2857,7 +3311,7 @@ usergrps/dante/dtk/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 dtk
@@ -2889,8 +3343,8 @@ egs（欧州地球物理学会の各学術誌）
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "egs"
@@ -2905,22 +3359,34 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 egs
 \family default
 は，
-欧州地球物理学科李への論文を執筆するのに使用することができます．
+欧州地球物理学会（European Geophysical Society）への論文を執筆するのに使用することができます．欧州地球物理学会は2001年に欧州地球科学連合（European Geosciences Union）となりました．
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+したがって，
+このクラスは廃版となり，
+
+\family sans
+copernicus
+\family default
+クラスに引き継がれました．このレイアウトとひな型はまだ書かれていません．
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
-elsart
+elsarticle
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "elsart"
@@ -2933,18 +3399,29 @@ arg   "elsart"
 CTAN：
  
 \family typewriter
-macros/latex/contrib/elsevier/
+macros/latex/contrib/elsarticle/
 \end_layout
 
 \begin_layout Description
 WWW:
  
 \family typewriter
-http://authors.elsevier.com/
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.elsevier.com/authors/author-schemas/latex-instructions
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  このパッケージは，
 Elsevier Science発行の各学術誌への論文を作成するために作られたものです．
 \end_layout
@@ -2954,8 +3431,8 @@ entcs
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "entcs"
@@ -2986,7 +3463,7 @@ http://www.entcs.org/generic.zip
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 entcs
@@ -3001,8 +3478,8 @@ europecv
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "europecv"
@@ -3019,7 +3496,7 @@ macros/latex/contrib/europecv
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 europecv
@@ -3079,8 +3556,8 @@ extsizes
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \family sans
 extarticle
 \family default
@@ -3138,7 +3615,7 @@ macros/latex/contrib/extsizes/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  これらの文書クラスは，
 対応する標準クラス（
 \family sans
@@ -3166,8 +3643,8 @@ foils
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "foils"
@@ -3184,7 +3661,7 @@ macros/latex/contrib/foiltex/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 foils
@@ -3219,8 +3696,8 @@ g-brief-en
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "g-brief-en"
@@ -3237,7 +3714,7 @@ macros/latex/contrib/g-brief/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 g-brief-en
@@ -3251,8 +3728,8 @@ g-brief-de
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "g-brief-de"
@@ -3269,7 +3746,7 @@ macros/latex/contrib/g-brief/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 g-brief-de
@@ -3288,8 +3765,8 @@ g-brief2
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "g-brief2"
@@ -3306,7 +3783,7 @@ macros/latex/contrib/g-brief/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 g-brief2
@@ -3331,8 +3808,8 @@ hollywood
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "hollywood"
@@ -3352,7 +3829,7 @@ tex/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 hollywood
@@ -3368,8 +3845,8 @@ IEEEtran
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "IEEEtran"
@@ -3386,7 +3863,7 @@ macros/latex/contrib/IEEEtran/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 IEEEtran
@@ -3443,8 +3920,8 @@ ijmpc
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "ijmpc"
@@ -3475,7 +3952,7 @@ http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 ijmpc
@@ -3489,8 +3966,8 @@ ijmpd
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "ijmpd"
@@ -3521,7 +3998,7 @@ http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 ijmpd
@@ -3535,8 +4012,8 @@ iopart
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "iopart"
@@ -3567,7 +4044,7 @@ ftp://ftp.iop.org/pub/journals/latex2e
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 iopart
@@ -3581,8 +4058,8 @@ iopart
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \family sans
 jreport
 \family default
@@ -3652,7 +4129,7 @@ install/language/japanese/ptex.tds.zip
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  これらの文書クラスは，
 \SpecialChar LaTeX
 の基本文書クラス
@@ -3676,7 +4153,7 @@ book
 \end_layout
 
 \begin_layout Description
-検出：
+検出:
  
 \family sans
 jsarticle
@@ -3711,7 +4188,7 @@ macros/latex/contrib/jsclasses/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  これらの文書クラスは，
 日本語を植字するのにより見栄えの良い，
 \SpecialChar LaTeX
@@ -3737,6 +4214,71 @@ report
 jsbook
 \family default
 クラスに「report」オプションを与えることで得ることができます．
+\end_layout
+
+\begin_layout Subsection
+日本語新標準クラス（拡張）
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\family sans
+bxjsarticle
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "bxjsarticle"
+\end_inset
+
+,
+ 
+\family sans
+bxjsreport
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "bxjsreport"
+\end_inset
+
+,
+ 
+\family sans
+bxjsbook
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "bxjsbook"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN：
+ 
+\family typewriter
+language/japanese/BX/bxjscls/
+\end_layout
+
+\begin_layout Description
+備考:
+ このパッケージは，
+日本語新標準クラスの拡張版を提供します．オリジナル版はp\SpecialChar LaTeX
+とup\SpecialChar LaTeX
+のみをサポートしていましたが，
+拡張版は，
+日本語の組版能力を提供する適切なパッケージを使用することによって，
+pdf\SpecialChar LaTeX
+とXe\SpecialChar LaTeX
+およびLua\SpecialChar LaTeX
+もサポートします．
 \end_layout
 
 \begin_layout Subsection
@@ -3790,8 +4332,8 @@ kluwer
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "kluwer"
@@ -3822,7 +4364,7 @@ http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 kluwer
@@ -3867,8 +4409,8 @@ name "subsec:Koma-Script"
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \family sans
 scrartcl
 \family default
@@ -3914,7 +4456,7 @@ macros/latex/contrib/koma-script/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  これらの文書クラスは，
 \SpecialChar LaTeX
 の基本文書クラス
@@ -3938,8 +4480,8 @@ KOMA-Script letter
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \family sans
 scrlettr
 \family default
@@ -3973,7 +4515,7 @@ macros/latex/contrib/koma-script/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  これらのletterクラスは，
 Koma-Scriptクラスに同梱されているものです（
 \begin_inset CommandInset ref
@@ -4003,8 +4545,8 @@ latex8
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "latex8"
@@ -4019,7 +4561,7 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  クラス
 \family sans
 latex8
@@ -4042,8 +4584,8 @@ linuxdoc
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "linuxdoc"
@@ -4058,7 +4600,7 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 linuxdoc
@@ -4087,8 +4629,8 @@ llncs
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "llncs"
@@ -4103,7 +4645,7 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 llncs
@@ -4139,12 +4681,57 @@ ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e
 
 \end_deeper
 \begin_layout Subsection
+maa-monthly
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "maa-monthly"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Web:
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.maa.org/press/periodicals/american-mathematical-monthly
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+maa-monthly
+\family default
+クラスは，
+『
+\emph on
+American Mathematical Monthly
+\emph default
+』への投稿に用いられます．
+\end_layout
+
+\begin_layout Subsection
 memoir
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "memoir"
@@ -4161,7 +4748,7 @@ macros/latex/contrib/memoir/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 memoir
@@ -4177,8 +4764,8 @@ moderncv
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "moderncv"
@@ -4195,7 +4782,7 @@ macros/latex/contrib/moderncv
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 moderncv
@@ -4214,8 +4801,8 @@ mwcls (mwart,
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "mwart"
@@ -4232,7 +4819,7 @@ macros/latex/contrib/mwcls/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  これらの文書クラスは，
 \SpecialChar LaTeX
 の基本文書クラス
@@ -4256,8 +4843,8 @@ paper
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "paper"
@@ -4274,7 +4861,7 @@ macros/latex/contrib/paper/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 paper
@@ -4294,8 +4881,8 @@ powerdot
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "powerdot"
@@ -4312,7 +4899,7 @@ macros/latex/contrib/powerdot
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  プレゼンテーションやスライドを作成するための\SpecialChar LaTeX
 クラスです．
 \end_layout
@@ -4354,8 +4941,8 @@ SPIE
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "spie"
@@ -4386,7 +4973,7 @@ http://public.lanl.gov/kmh/spie/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 spie.cls
@@ -4413,8 +5000,8 @@ REV\SpecialChar TeX
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "revtex"
@@ -4431,7 +5018,7 @@ macros/latex209/contrib/revtex/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  REV\SpecialChar TeX
  3クラスを用いるこのクラスは，
 
@@ -4463,8 +5050,8 @@ REV\SpecialChar TeX
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "revtex4"
@@ -4481,7 +5068,7 @@ macros/latex/contrib/revtex/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  REV\SpecialChar TeX
  4は，
 アメリカ物理学会（APS）（『Physical Review A〜E』・『Reviews in Modern Physics』・『Physical Review Special Topics—
@@ -4507,8 +5094,8 @@ SIAML\SpecialChar TeX
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "siamltex"
@@ -4525,7 +5112,7 @@ macros/latex/contrib/siam/siamltex.tar
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  アメリカ応用数理学会（ペンシルバニア州フィラデルフィア，
 SIAM）は，
 この\SpecialChar LaTeX
@@ -4538,8 +5125,8 @@ simplecv
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "simplecv"
@@ -4556,7 +5143,7 @@ macros/latex/contrib/simplecv
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 simplecv
@@ -4589,8 +5176,8 @@ Springer社発行の学術誌一般
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "svglobal"
@@ -4623,7 +5210,7 @@ http://www.springeronline.com
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 Svglobal
@@ -4668,8 +5255,8 @@ Springer社発行『Journal of Geodesy』誌
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "svjog"
@@ -4702,7 +5289,7 @@ http://www.springeronline.com
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 svjog
@@ -4726,8 +5313,8 @@ Springer社発行『Probability Theory and Related Fields』誌
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "svprobth"
@@ -4760,7 +5347,7 @@ http://www.springeronline.com
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 svprobth
@@ -4783,8 +5370,8 @@ Springer社刊モノグラフ
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "svmono"
@@ -4817,7 +5404,7 @@ http://www.springeronline.com
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 svmono
@@ -4832,8 +5419,8 @@ Springer社刊編著書籍
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "svmult"
@@ -4866,7 +5453,7 @@ http://www.springeronline.com
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 svmult
@@ -4881,8 +5468,8 @@ TUGboat
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "textclass"
 arg   "ltugboat"
@@ -4899,7 +5486,7 @@ plain/contrib/tugboat.tar
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  文書クラス
 \family sans
 ltugboat
@@ -4945,7 +5532,7 @@ CTAN：
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 isprs
@@ -5021,8 +5608,8 @@ array
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "array"
@@ -5039,7 +5626,7 @@ macros/latex/required/tools/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 array
@@ -5054,8 +5641,8 @@ babel
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "babel"
@@ -5072,7 +5659,7 @@ macros/latex/required/babel/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 babel
@@ -5102,28 +5689,23 @@ babel
 
 \begin_deeper
 \begin_layout Standard
-お使いの\SpecialChar LaTeX
-装備には，
-以下の言語のハイフネーションパターンが入っています：
+第3.15版（2017/11/03）現在，
 
+\family sans
+babel
+\family default
+は基本ソフトから（Xe\SpecialChar TeX
+やLua\SpecialChar TeX
+を使って）OpenTypeやTrueType，
+PostScriptフォントを選択するコマンドも提供しています．この版(もしくはそれより新しいもの)が導入済みであれば（あなたのシステムでは
 \begin_inset Info
 type  "package"
-arg   "languages"
+arg   "babel 20171103"
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-もしご利用になる言語がこのリストにない場合には，
-それが入るように\SpecialChar LaTeX
-の装備を再設定しなくてはなりません．te\SpecialChar TeX
-の場合には，
-
-\family typewriter
-texconfig
-\family default
-を実行することになります．
+），
+\SpecialChar LyX
+はfontspecコマンドよりもこれを用います．
 \end_layout
 
 \end_deeper
@@ -5219,8 +5801,8 @@ booktabs
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "booktabs"
@@ -5237,7 +5819,7 @@ macros/latex/contrib/booktabs/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 booktabs
@@ -5252,8 +5834,8 @@ calc
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "calc"
@@ -5270,7 +5852,7 @@ macros/latex/required/tools/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 calc
@@ -5285,8 +5867,8 @@ color
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "color"
@@ -5303,7 +5885,7 @@ macros/latex/required/graphics/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 color
@@ -5326,8 +5908,8 @@ float
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "float"
@@ -5344,7 +5926,7 @@ macros/latex/contrib/float/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 float
@@ -5356,12 +5938,47 @@ float
 \end_layout
 
 \begin_layout Subsection
+footnote
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "footnote"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/footnote/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+footnote
+\family default
+パッケージは，
+記述箇条書き項目やフローとしない表，
+長尺表のヘッダやフッタの中で，
+\SpecialChar LyX
+が脚註を付けるのに必要とされます． 
+\end_layout
+
+\begin_layout Subsection
 graphicx
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "graphicx"
@@ -5378,7 +5995,7 @@ macros/latex/required/graphics/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 graphicx
@@ -5426,8 +6043,8 @@ hhline
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "hhline"
@@ -5444,7 +6061,7 @@ macros/latex/required/tools/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 hhline
@@ -5459,8 +6076,8 @@ hyperref
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "hyperref"
@@ -5477,7 +6094,7 @@ macros/latex/contrib/hyperref/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 hyperref
@@ -5494,8 +6111,8 @@ longtable
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "longtable"
@@ -5512,7 +6129,7 @@ macros/latex/required/tools/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 longtable
@@ -5522,8 +6139,103 @@ longtable
 が複数ページにわたる表を正しく出力することができるようになるために必要です．
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsection
+parskip
+\end_layout
 
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "parskip"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/parskip/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+parskip
+\family default
+パッケージは，
+\SpecialChar LyX
+が段落を縦方向の空白で区切るときに必要とされます．
+\end_layout
+
+\begin_layout Subsection
+tablefootnote
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "tablefootnote"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/tablefootnote/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+tablefootnote
+\family default
+パッケージは，
+\SpecialChar LyX
+がフロート表の中で脚註を出力するのに必要とされます．
+\end_layout
+
+\begin_layout Subsection
+tabularx
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "tabularx"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+tabularx
+\family default
+パッケージは，
+\SpecialChar LyX
+が1ページに収まる表で可変幅列を出力するのに必要とされます．
 \end_layout
 
 \begin_layout Subsection
@@ -5531,8 +6243,8 @@ textcomp
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "textcomp"
@@ -5549,7 +6261,7 @@ macros/latex/unpacked/textcomp.sty
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 textcomp
@@ -5567,8 +6279,8 @@ varioref
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "varioref"
@@ -5585,13 +6297,78 @@ macros/latex/required/tools/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 varioref
 \family default
 パッケージは，
 参照先ラベルのページ情報を伴った参照を生成するのに必要なコマンドを導入します．
+\end_layout
+
+\begin_layout Subsection
+varwidth
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "varwidth"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/varwidth/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+varwidth
+\family default
+パッケージは，
+標準表の列において行や段落を改行するのに必要とされます．
+\end_layout
+
+\begin_layout Subsection
+xltabular
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "xltabular"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/xltabular/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+xltabular
+\family default
+パッケージは，
+\SpecialChar LyX
+が長尺表で可変幅列を出力するのに必要とされます．
 \end_layout
 
 \begin_layout Section
@@ -5619,8 +6396,8 @@ geometry
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "geometry"
@@ -5637,7 +6414,7 @@ macros/latex/contrib/geometry/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 geometry
@@ -5897,6 +6674,48 @@ natbib
 \end_layout
 
 \begin_layout Subsection
+biblatex
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "biblatex"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/biblatex/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+biblatex
+\family default
+パッケージは，
+使用できる書誌情報様式のほとんどに対して，
+\SpecialChar LyX
+が柔軟なインタフェースを生成するのに必要とされます（代わりに
+\family sans
+natbib
+\family default
+や
+\family sans
+jurabib
+\family default
+を使うこともできます）．
+\end_layout
+
+\begin_layout Subsection
 bibtopic
 \end_layout
 
@@ -5927,6 +6746,39 @@ bibtopic
 パッケージは，
 Bib\SpecialChar TeX
 が生成する書誌情報を節分けするのに使用されます．
+\end_layout
+
+\begin_layout Subsection
+chapterbib
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "chapterbib"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/chapterbib/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+chapterbib
+\family default
+は，
+Bib\SpecialChar TeX
+を使って複数の書誌情報を章ごとに生成するのに使用されます．
 \end_layout
 
 \begin_layout Subsection
@@ -6082,6 +6934,41 @@ ibidemなどをサポートします．少なくとも第0.6版以降のjurabib�
 \end_layout
 
 \begin_layout Subsection
+lscape
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "lscape"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+
+\series medium
+ 
+\family typewriter
+\series default
+macros/latex/contrib/graphics/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+lscape
+\family default
+パッケージは、DVI/PS出力において，
+特定の内容（とくに長尺表）を横倒しにするのに用いられます．
+\end_layout
+
+\begin_layout Subsection
 mslapa
 \end_layout
 
@@ -6209,39 +7096,6 @@ jurabib
 \end_layout
 
 \begin_layout Subsection
-endnotes
-\end_layout
-
-\begin_layout Description
-検出:
- 
-\begin_inset Info
-type  "package"
-arg   "endnotes"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN:
- 
-\family typewriter
-macros/latex/contrib/misc/endnotes.sty
-\end_layout
-
-\begin_layout Description
-備考:
- 
-\family sans
-endnotes
-\family default
-パッケージは，
-脚注を節の後ろに配置するのに，
-いくつかのモジュールが使用します（それゆえendnotesと呼ばれます）．
-\end_layout
-
-\begin_layout Subsection
 点字モジュール
 \end_layout
 
@@ -6278,6 +7132,141 @@ braille
 \end_layout
 
 \begin_layout Subsection
+後註(基本)モジュール
+\end_layout
+
+\begin_layout Subsubsection
+endnotes
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "endnotes"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/endnotes/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+endnotes
+\family default
+パッケージは，
+脚注を節の後ろに配置するのに（それゆえendnotesと呼ばれます），
+
+\emph on
+後註(基本)
+\emph default
+モジュールと
+\emph on
+脚註を後註に(基本)
+\emph default
+モジュールが使用します．
+\family sans
+enotex
+\family default
+ [cf.
+ 後註(拡張)モジュール]よりも制約がありますが，
+伝統があります．
+\end_layout
+
+\begin_layout Subsection
+後註(拡張)モジュール
+\end_layout
+
+\begin_layout Subsubsection
+enotez
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "enotez"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/enotez/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+enotez
+\family default
+パッケージは，
+
+\emph on
+後註(拡張)
+\emph default
+モジュールと
+\emph on
+脚註を後註に(拡張)
+\emph default
+モジュールが後註を生成するのに使用します．（
+\emph on
+基本
+\emph default
+後註モジュールが使用する）
+\family sans
+endnotes
+\family default
+にはいくつかの欠点があったことから，
+
+\family sans
+enotez
+\family default
+は\SpecialChar LaTeX2e
+用に後註を新しく実装したものです．
+\family sans
+endnotes
+\family default
+と異なり，
+
+\family sans
+enotez
+\family default
+はネストされた後註や，
+ハイパーリンクやバックリンク（
+\family sans
+hyperref
+\family default
+），
+後註の置かれた節や章によって自動的に分割された後註リストをサポートします．複数の言語がサポートされており，
+
+\family sans
+endnotes
+\family default
+パッケージよりも出力の調整が容易です．しかしながら，
+
+\family sans
+enotez
+\family default
+はかなり新しい\SpecialChar LaTeX
+ディストリビューションを必要とします．
+\end_layout
+
+\begin_layout Subsection
 FIXMEモジュール
 \end_layout
 
@@ -6310,6 +7299,30 @@ macros/latex/contrib/fixme/
 fixme
 \family default
  バッケージは文書に「FIXME」注釈を挿入するのに用いられます．
+\end_layout
+
+\begin_layout Subsection
+脚註を後註に(基本)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+後註(基本)
+\emph default
+モジュールを参照．
+\end_layout
+
+\begin_layout Subsection
+脚註を後註に(拡張)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+後註(拡張)
+\emph default
+モジュールを参照．
 \end_layout
 
 \begin_layout Subsection
@@ -6357,8 +7370,8 @@ lettrine
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "lettrine"
@@ -6375,7 +7388,7 @@ macros/latex/contrib/lettrine/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 lettrine
@@ -6394,6 +7407,42 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
+Landscape module
+\end_layout
+
+\begin_layout Subsubsection
+afterpage
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "afterpage"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+afterpage
+\family default
+パッケージは，
+内容を次のページ区切り後に移動するためのコマンドを提供します（横倒しフロートに用いられます）．
+\end_layout
+
+\begin_layout Subsection
 言語学モジュール
 \end_layout
 
@@ -6402,8 +7451,8 @@ covington
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "covington"
@@ -6420,7 +7469,7 @@ macros/latex/contrib/covington/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 covington
@@ -6435,8 +7484,8 @@ csquotes
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "csquotes"
@@ -6453,7 +7502,7 @@ macros/latex/contrib/csquotes/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 csquotes
@@ -6464,12 +7513,48 @@ csquotes
 \end_layout
 
 \begin_layout Subsubsection
+drs
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "drs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/drs/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+drs
+\family default
+パッケージは，
+
+\emph on
+Discourse Representation Structures
+\emph default
+用のコマンドを提供します．
+\end_layout
+
+\begin_layout Subsubsection
 enumitem
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "enumitem"
@@ -6486,7 +7571,7 @@ macros/latex/contrib/enumitem/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 enumitem
@@ -6527,6 +7612,45 @@ forest
 \family default
 パッケージは，
 言語構造ツリーの生成を提供します．
+\end_layout
+
+\begin_layout Subsubsection
+pict2e
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "package"
+arg   "pict2e"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/
+\family default
+pict2e
+\family typewriter
+/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+pict2e
+\family default
+パッケージは
+\emph on
+Duplex Condition DRS
+\emph default
+esに使われます．
 \end_layout
 
 \begin_layout Subsection
@@ -6647,42 +7771,6 @@ pdfcomment
 \family default
  パッケージは，
 pdflatex経由でPDFに注釈を挿入するのに用いられます．
-\end_layout
-
-\begin_layout Subsection
-リスクと安全性に関する表示用モジュール
-\end_layout
-
-\begin_layout Subsubsection
-rsphrase
-\end_layout
-
-\begin_layout Description
-検出:
- 
-\begin_inset Info
-type  "package"
-arg   "rsphrase"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN:
- 
-\family typewriter
-macros/latex/contrib/mhchem/
-\end_layout
-
-\begin_layout Description
-備考:
- 
-\family sans
-rsphrase
-\family default
-パッケージは，
-化学物質の公式なリスクと安全性に関する表示を挿入するのに用いられます．
 \end_layout
 
 \begin_layout Subsection
@@ -6848,8 +7936,8 @@ arabi
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "arabi"
@@ -6866,7 +7954,7 @@ language/arabic/arabi/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 arabi
@@ -6917,8 +8005,8 @@ japanese
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "japanese"
@@ -6935,7 +8023,7 @@ language/japanese/japanese
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 babel japanese
@@ -6958,8 +8046,8 @@ lithuanian
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "lithuanian"
@@ -6976,7 +8064,7 @@ language/lithuanian/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 lithuanian
@@ -6992,8 +8080,8 @@ mongolian-babel
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "mongolian"
@@ -7010,7 +8098,7 @@ language/mongolian/babel/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 mongolian-babel
@@ -7026,8 +8114,8 @@ polyglossia
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "polyglossia"
@@ -7044,7 +8132,7 @@ macros/xetex/latex/polyglossia/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 polyglossia
@@ -7080,8 +8168,8 @@ turkmen
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "turkmen"
@@ -7098,7 +8186,7 @@ language/turkmen/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 turkmen
@@ -7121,8 +8209,8 @@ accents
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "accents"
@@ -7139,7 +8227,7 @@ macros/latex/contrib/bezos/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 accents
@@ -7154,8 +8242,8 @@ algorithm
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "algorithm"
@@ -7172,7 +8260,7 @@ macros/latex/contrib/algorithms/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 algorithm
@@ -7189,8 +8277,8 @@ algorithm2e
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "algorithm2e"
@@ -7207,7 +8295,7 @@ macros/latex/contrib/algorithm2e/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 algorithm2e
@@ -7222,10 +8310,16 @@ algorithm
 パッケージの代わりに用いたい場合には，
 
 \family sans
+\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 モジュール
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で「Algorithm2e」モジュールを選択してください．
 \end_layout
 
@@ -7234,8 +8328,8 @@ breakurl
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "breakurl"
@@ -7252,7 +8346,7 @@ macros/latex/contrib/breakurl/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 breakurl
@@ -7320,12 +8414,44 @@ cancelto
 \end_layout
 
 \begin_layout Subsection
-CJKutf8
+cprotect
 \end_layout
 
 \begin_layout Description
-検出：
+検出:
  
+\begin_inset Info
+type  "package"
+arg   "cprotect"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/cprotect/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+cprotect
+\family default
+パッケージは，
+マクロでverbatimの内容を入れることができるようにするのに用いられます．
+\end_layout
+
+\begin_layout Subsection
+CJK
+\end_layout
+
+\begin_layout Description
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "CJKutf8"
@@ -7342,60 +8468,13 @@ language/chinese/CJK/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
-\family sans
-CJKutf8
-\family default
-パッケージ（
 \family sans
 CJK
 \family default
-バンドルの一部）は，
-\SpecialChar LaTeX
-本体とCJKのUTF-8サポートとを統合します．これは，
-CJKとUTF-8エンコーディングおよびhyperrefとを同時に使ったときに正しい出力を得るために必要です．
-\end_layout
-
-\begin_layout Subsection
-dvipost
-\end_layout
-
-\begin_layout Description
-検出：
- 
-\begin_inset Info
-type  "package"
-arg   "dvipost"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-URL:
- 
-\family typewriter
-http://freshmeat.net/projects/dvipost/
-\end_layout
-
-\begin_layout Description
-備考：
- 
-\family sans
-dvipost
-\family default
-は\SpecialChar LaTeX
-や\SpecialChar TeX
-が生成したDVIファイルの後処理器です．\SpecialChar LyX
-が，
-変更追尾記号のDVI出力あるいはPostscript出力を生成するのに必要です．
-\family sans
-dvipost
-\family default
-が正しく動作するためには，
-te\SpecialChar TeX
-第2版以降が必要です．
+バンドルは，
+様々なアジア文字を（Unicodeを含む）多くのエンコーディングで同時にサポートします．
 \end_layout
 
 \begin_layout Subsection
@@ -7403,8 +8482,8 @@ esint
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "esint"
@@ -7421,7 +8500,7 @@ macros/latex/contrib/esint/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 esint
@@ -7450,8 +8529,8 @@ fancybox
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "fancybox"
@@ -7468,7 +8547,7 @@ macros/latex/contrib/fancybox/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 fancybox
@@ -7487,8 +8566,8 @@ fancyhdr
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "fancyhdr"
@@ -7505,7 +8584,7 @@ macros/latex/contrib/fancyhdr/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 fancyhdr
@@ -7561,8 +8640,8 @@ fixltx2e
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "fixltx2e"
@@ -7579,7 +8658,7 @@ macros/latex/unpacked/fixltx2e.sty
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 fixltx2e
@@ -7631,8 +8710,8 @@ hyphenat
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "hyphenat"
@@ -7649,7 +8728,7 @@ macros/latex/contrib/hyphenat/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 hyphenat
@@ -7708,8 +8787,8 @@ listings
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "listings"
@@ -7726,7 +8805,7 @@ macros/latex/contrib/listings/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 listings
@@ -7744,8 +8823,8 @@ luainputenc
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "luainputenc"
@@ -7762,7 +8841,7 @@ macros/luatex/latex/luainputenc/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 luainputenc
@@ -7780,8 +8859,8 @@ mathrsfs
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "mathrsfs"
@@ -7798,7 +8877,7 @@ macros/latex/contrib/jknappen/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 mathrsfs
@@ -7814,8 +8893,8 @@ mathdots
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "mathdots"
@@ -7832,7 +8911,7 @@ macros/generic/mathdots/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 mathdots
@@ -7892,8 +8971,8 @@ mhchem
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "mhchem"
@@ -7910,7 +8989,7 @@ macros/latex/contrib/mhchem/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 mhchem
@@ -7926,8 +9005,8 @@ multirow
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "multirow"
@@ -7944,7 +9023,7 @@ macros/latex/contrib/multirow/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 multirow
@@ -7993,8 +9072,8 @@ nomencl
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "nomencl"
@@ -8011,7 +9090,7 @@ macros/latex/contrib/nomencl/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 nomencl
@@ -8054,10 +9133,16 @@ pdfpages
 が，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 ファイル\SpecialChar menuseparator
 外部マテリアル
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で複数ページのPDFファイルをインクルードするのに使用します．
 \end_layout
 
@@ -8066,8 +9151,8 @@ prettyref
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "prettyref"
@@ -8084,7 +9169,7 @@ macros/latex/contrib/prettyref
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family typewriter
 prettyref
@@ -8105,8 +9190,8 @@ preview
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "preview"
@@ -8123,7 +9208,7 @@ macros/latex/contrib/preview
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family typewriter
 preview
@@ -8134,15 +9219,23 @@ preview
 出力の一部をプレビューするのに必要です．特に，
 
 \family sans
+\series bold
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 操作性\SpecialChar menuseparator
 図
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で「
 \family sans
+\series bold
 自動プレビュー
 \family default
+\series default
 」を有効にしているときに数式表示で使われます．
 \end_layout
 
@@ -8151,8 +9244,8 @@ rotating
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "rotating"
@@ -8169,7 +9262,7 @@ macros/latex/contrib/rotating
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 rotating
@@ -8253,8 +9346,8 @@ splitidx
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "splitidx"
@@ -8271,7 +9364,7 @@ macros/latex/contrib/splitindex/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 splitidx
@@ -8361,8 +9454,8 @@ subfig
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "subfig"
@@ -8379,7 +9472,7 @@ macros/latex/contrib/subfig
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 subfig
@@ -8396,8 +9489,8 @@ subscript
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "subscript"
@@ -8414,7 +9507,7 @@ macros/latex/contrib/fragments/subscript.sty
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 subscript
@@ -8436,8 +9529,8 @@ setspace
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "setspace"
@@ -8454,7 +9547,7 @@ macros/latex/contrib/setspace/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 setspace
@@ -8469,8 +9562,8 @@ ulem
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "ulem"
@@ -8487,7 +9580,7 @@ macros/latex/contrib/misc/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 ulem
@@ -8579,8 +9672,8 @@ url
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "url"
@@ -8597,7 +9690,7 @@ macros/latex/contrib/misc/url.sty
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 url
@@ -8612,8 +9705,8 @@ wasysym
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "wasysym"
@@ -8630,7 +9723,7 @@ macros/latex/contrib/wasysym/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 wasysym
@@ -8645,8 +9738,8 @@ wrapfig
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "wrapfig"
@@ -8663,7 +9756,7 @@ macros/latex/contrib/wrapfig/
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 wrapfig
@@ -8671,9 +9764,15 @@ wrapfig
 パッケージは，
 折返しフロートが挿入（
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 フロート
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニュー）された時に，
 \SpecialChar LyX
 が使用します．このパッケージによって，
@@ -8720,8 +9819,8 @@ xcolor
 \end_layout
 
 \begin_layout Description
-検出：
- 
+検出:
+  
 \begin_inset Info
 type  "package"
 arg   "xcolor"
@@ -8738,7 +9837,7 @@ macros/latex/contrib/xcolor
 \end_layout
 
 \begin_layout Description
-備考：
+備考:
  
 \family sans
 xcolor
