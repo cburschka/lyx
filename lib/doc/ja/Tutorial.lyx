@@ -10,6 +10,36 @@
 ruby
 \end_modules
 \maintain_unincluded_children no
+\begin_local_layout
+InsetLayout Flex:圏点
+  LyxType       charstyle
+  LatexType     command
+  LatexName     kenten
+  HTMLTag       kenten
+  HTMLAttr      ""
+  HTMLInnerTag  kt
+  HTMLInnerAttr ""
+  BgColor       none
+  LabelString   "圏点"
+  Decoration    Conglomerate
+  Preamble
+    \usepackage{pxrubrica}
+  EndPreamble
+  Argument  post:1
+    LabelString  "Kenten option"
+    MenuString  "圏点オプション"
+    Tooltip    "Emphasize Chinese characters."
+    Decoration  Conglomerate
+    Font
+      Size    tiny
+    EndFont
+    LabelFont
+      Size    tiny
+    EndFont
+    Mandatory  0
+  EndArgument
+End
+\end_local_layout
 \language japanese
 \language_package auto
 \inputencoding utf8
@@ -33,6 +63,8 @@ ruby
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -221,37 +253,17 @@ https://wiki.lyx.org/\SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-この節をはじめる前に少し注意することがあります．
-\emph on
-入門篇
-\emph default
-は，
-説明書の
-\emph on
-はじめの一歩
-\emph default
-にまとめられている表記法を使用します．この説明書を先に手に取ってしまった方は，
-この
-\emph on
-入門篇
-\emph default
-を進める前に，
-まず
-\emph on
-はじめの一歩
-\emph default
-を読んでください．
+この節をはじめる前に少し注意することがあります．『入門篇』は，
+説明書の『はじめの一歩』にまとめられている表記法を使用します．この説明書を先に手に取ってしまった方は，
+この『入門篇』を進める前に，
+まず『はじめの一歩』を読んでください．
 \end_layout
 
 \begin_layout Standard
 さて，
 どのフォントを使った表記が何を意味するか，
 すでにご存知のはずですから，
-この
-\emph on
-入門篇
-\emph default
-が何を目的としているか，
+この『入門篇』が何を目的としているか，
 少しお話ししておくことにしましょう．
 \end_layout
 
@@ -260,11 +272,7 @@ https://wiki.lyx.org/\SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-この
-\emph on
-入門篇
-\emph default
-は，
+この『入門篇』は，
 例と練習問題から成っています．この文書を効果的に使うためには，
 筆者が入力してみるようにお伝えするものすべてを実際に入力し，
 また，
@@ -279,17 +287,9 @@ https://wiki.lyx.org/\SpecialChar LyX
 \SpecialChar LyX
 の発想のほとんどは\SpecialChar LaTeX
 の発想の変形にほかならないので，
-
-\emph on
-入門篇
-\emph default
-は多少なりとも早く読むことができるでしょう．しかしながら，
+『入門篇』は多少なりとも早く読むことができるでしょう．しかしながら，
 知っておきたい\SpecialChar LyX
-ならではの機能もあります．仮に
-\emph on
-入門篇
-\emph default
-の他の部分を読む気がないとしても，
+ならではの機能もあります．仮に『入門篇』の他の部分を読む気がないとしても，
 \SpecialChar LaTeX
 の熟練ユーザーのために書かれた第
 \begin_inset CommandInset ref
@@ -315,11 +315,7 @@ nolink "false"
 \begin_deeper
 \begin_layout Standard
 これが欲しいならば，
-
-\emph on
-ユーザーの手引き
-\emph default
-を見てください．
+『ユーザーの手引き』を見てください．
 \end_layout
 
 \end_deeper
@@ -334,11 +330,7 @@ nolink "false"
 の中で\SpecialChar LaTeX
 を使ってできる，
 素敵なトリックに関心があるなら，
-埋め込み説明書の
-\emph on
-オブジェクト篇
-\emph default
-を見ると良いでしょう．
+埋め込み説明書の『オブジェクト篇』を見ると良いでしょう．
 \end_layout
 
 \end_deeper
@@ -365,25 +357,26 @@ nolink "false"
 \begin_layout Standard
 入門篇ではお伝えしきれない情報がありますので，
 まず
-\emph on
-最初
-\emph default
-に他のヘルプファイルがどこにあるか確認しておいてください．これは簡単にできます．\SpecialChar LyX
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
+最初に
+\end_layout
+
+\end_inset
+
+他のヘルプファイルがどこにあるか確認しておいてください．これは簡単にできます．\SpecialChar LyX
 をスタートして
 \family sans
 ，
+
+\series bold
 ヘルプ
 \family default
+\series default
 メニューを開き，
-
-\emph on
-ユーザーの手引き
-\emph default
-を選んでください．同じように
-\emph on
-入門篇
-\emph default
-も読み込んでおきたいと思われるかもしれません（これをあなたがすでに\SpecialChar LyX
+『ユーザーの手引き』を選んでください．同じように『入門篇』も読み込んでおきたいと思われるかもしれません（これをあなたがすでに\SpecialChar LyX
 の中で読んでいるのでなければ）．このようにしておけば，
 自分でファイルを書いてるときも，
 これらの説明書を読むことができます
@@ -424,13 +417,17 @@ Windowsでも，
 最後ですが，
 \SpecialChar LyX
 の技量をお試しにいただくために
-\family typewriter
-example_raw.lyx
-\family default
+\emph on
+用例ファイル(原本)
+\emph default
 という名前のファイルを作りました．このファイルは，
 \SpecialChar LyX
 のすばらしい機能をまったく知らない人によって書かれたものと想定してください．あなたが新しい機能を学んだら，
-このファイルのそれにあたる部分を直してみてください．このファイルには，
+
+\emph on
+用例ファイル(原本)
+\emph default
+のそれにあたる部分を直してみてください．このファイルには，
 どのように直したら良いか，
 「ちっちゃな」ヒントも含まれています
 \begin_inset Foot
@@ -446,9 +443,9 @@ status collapsed
 ．もしカンニングしたかったり，
 自分がやったものの答え合わせをしたいならば，
 
-\family typewriter
-example_lyxified.lyx
-\family default
+\emph on
+用例ファイル(LyX化済み)
+\emph default
 というファイルがあります．これは内容は同じですが，
 師範級の\SpecialChar LyX
 ユーザーによって書かれ，
@@ -457,15 +454,19 @@ example_lyxified.lyx
 
 \begin_layout Standard
 用例ファイルは，
-\SpecialChar LyX
-がインストールされたフォルダの
-\family typewriter
-examples/ja
+
+\family sans
+\series bold
+ファイル\SpecialChar menuseparator
+用例を開く\SpecialChar ldots
+
 \family default
-ディレクトリに入っています．あなたが作業する文書を作るために，
+\series default
+の「一般」セクションに入っています．あなたが作業する文書を作るために，
 元となる文書を開き，
 
 \family sans
+\series bold
 ファイル
 \family default
 \SpecialChar menuseparator
@@ -473,6 +474,11 @@ examples/ja
 \family sans
 名前をつけて保存
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を選択して，
 自分のディレクトリに複製を作って下さい．そしてこのファイルの一部を直すごとに，
 これらの変更がPDF出力にどのような影響を与えるか，
@@ -482,17 +488,17 @@ examples/ja
 \begin_layout Standard
 ところで，
 
-\family typewriter
-example
+\family sans
+\series bold
+ファイル\SpecialChar menuseparator
+用例を開く\SpecialChar ldots
+
 \family default
-ディレクトリには，
+\series default
+には，
 他の用例ファイルもたくさんあります．それらのファイルは，
 色々な面白いことを\SpecialChar LyX
-でどうすればいいのかを見せてくれます．この
-\emph on
-入門篇
-\emph default
-を終ってからか，
+でどうすればいいのかを見せてくれます．この『入門篇』を終ってからか，
 何か素敵なことを\SpecialChar LyX
 でどうすればいいか思いつかないときに見てみて下さい．
 \end_layout
@@ -506,6 +512,7 @@ example
 \begin_layout Itemize
 
 \family sans
+\series bold
 ファイル
 \family default
 \SpecialChar menuseparator
@@ -513,6 +520,11 @@ example
 \family sans
 新規
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 として新しいファイルを開けてください
 \end_layout
 
@@ -529,6 +541,7 @@ example
 \begin_layout Itemize
 
 \family sans
+\series bold
 ファイル
 \family default
 \SpecialChar menuseparator
@@ -536,12 +549,18 @@ example
 \family sans
 名前をつけて保存
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 として保存してください
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
+\series bold
 文書
 \family default
 \SpecialChar menuseparator
@@ -549,6 +568,11 @@ example
 \family sans
 表示
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を選ぶか，
 ツールバーで
 \begin_inset Info
@@ -568,6 +592,7 @@ PDFビューアを開いて，
 \begin_layout Itemize
 
 \family sans
+\series bold
 ファイル
 \family default
 \SpecialChar menuseparator
@@ -575,6 +600,11 @@ PDFビューアを開いて，
 \family sans
 書き出し
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を選んで
 \family sans
 ，
@@ -662,6 +692,7 @@ arg   "buffer-view"
 現在の編集セッションを開始してから行ったすべてのことを，
 
 \family sans
+\series bold
 編集
 \family default
 \SpecialChar menuseparator
@@ -669,6 +700,11 @@ arg   "buffer-view"
 \family sans
 元に戻す
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を繰り返し選ぶ（あるいはツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -678,6 +714,7 @@ arg   "undo"
 を繰り返し押す）ことで復元することができるのです．元に戻しすぎてしまったときには，
 
 \family sans
+\series bold
 編集
 \family default
 \SpecialChar menuseparator
@@ -685,6 +722,7 @@ arg   "undo"
 \family sans
 やり直す
 \family default
+\series default
 （あるいはツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -705,6 +743,7 @@ arg   "redo"
 切り取り/貼り付け/コピー 切り取り・コピー・貼り付けには，
 
 \family sans
+\series bold
 編集
 \family default
 \SpecialChar menuseparator
@@ -712,6 +751,7 @@ arg   "redo"
 \family sans
 切り取り
 \family default
+\series default
 （あるいはツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -721,6 +761,7 @@ arg   "cut"
 ），
 
 \family sans
+\series bold
 編集
 \family default
 \SpecialChar menuseparator
@@ -728,6 +769,7 @@ arg   "cut"
 \family sans
 コピー
 \family default
+\series default
 （あるいはツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -737,6 +779,12 @@ arg   "copy"
 ），
 または
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 編集
 \family default
 \SpecialChar menuseparator
@@ -744,6 +792,7 @@ arg   "copy"
 \family sans
 貼り付け
 \family default
+\series default
 （あるいはツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -762,6 +811,7 @@ arg   "paste"
 検索/置換 検索をするには，
 
 \family sans
+\series bold
 編集
 \family default
 \SpecialChar menuseparator
@@ -769,6 +819,7 @@ arg   "paste"
 \family sans
 検索／置換
 \family default
+\series default
 （あるいはツールバー
 \begin_inset Info
 type  "icon"
@@ -782,8 +833,10 @@ arg   "dialog-show findreplace"
 ボタンを押すと検索し，
 
 \family sans
+\series bold
 置換
 \family default
+\series default
 を押すと見つかった言葉を置換します
 \begin_inset Foot
 status collapsed
@@ -836,10 +889,21 @@ arg   "font-noun"
 人の名前に用いられます)，
 あるいは
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 編集\SpecialChar menuseparator
 文字様式\SpecialChar menuseparator
 任意設定
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログ(ツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -854,12 +918,16 @@ arg   "dialog-show character"
 ツールバー 良く使う機能，
 例えば
 \family sans
+\series bold
 貼り付け
 \family default
+\series default
 や
 \family sans
+\series bold
 印刷
 \family default
+\series default
 などは，
 メニューの下のツールバーにまとめてあります．
 \end_layout
@@ -914,37 +982,51 @@ Return
 は文法的には段落を分けることを意味しますし，
 
 \family sans
+\series bold
 スペース
 \family default
+\series default
 は文法的には単語を分けることを意味しますから，
 文法的には，
 それらを続けて複数入れる理由がありません．
 \family sans
+\series bold
 タブ
 \family default
+\series default
 は文法的な意味をまったく持っていませんので，
 \SpecialChar LyX
 は
 \family sans
+\series bold
 タブ
 \family default
+\series default
 はサポートしません．\SpecialChar LyX
 を使うことによって，
 文書の
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 内容
-\emph default
+\end_layout
+
+\end_inset
+
 の心配をする時間を増やすことができ，
 
-\emph on
-体裁
-\emph default
-の心配をする時間を減らすことができます．WYSIWYMの概念に関する情報については，
+\begin_inset Flex 圏点
+status open
 
-\emph on
-はじめの一歩
-\emph default
-を参照してください．
+\begin_layout Plain Layout
+体裁
+\end_layout
+
+\end_inset
+
+の心配をする時間を減らすことができます．WYSIWYMの概念に関する情報については，
+『はじめの一歩』を参照してください．
 \end_layout
 
 \begin_layout Standard
@@ -956,18 +1038,26 @@ Return
 あなたの意図するところを
 \emph on
 ，
-正確
+
 \emph default
-には組版することはできないかもしれません．
-\emph on
-ユーザーの手引
-\emph default
-には，
+
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
+正確には
+\end_layout
+
+\end_inset
+
+組版することはできないかもしれません．『ユーザーの手引き』には，
 微調整のためのすべての情報が書いてあります．そこには例えば，
 
 \family sans
+\series bold
 水平フィル
 \family default
+\series default
 や縦方向の空白—
 複数の空白や空行を使うよりもずっと強力で多機能です—
 をはじめ，
@@ -1024,8 +1114,10 @@ environment
 \begin_layout Standard
 
 \family sans
+\series bold
 環境
 \family default
+\series default
 選択ボックスは，
 ツールバーの左端にあり，
 
@@ -1055,8 +1147,10 @@ environment
 と入力してください，
 そして
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスから
 \family sans
 節
@@ -1077,18 +1171,25 @@ status collapsed
 
 ．
 \family sans
-節*
+\series bold
+節
+\series default
+*
 \family default
 ではなく
 \family sans
+\series bold
 節
 \family default
+\series default
 を選んでいることを確認してください．この2つの違いは後で説明します．\SpecialChar LyX
 が「1」という節番号を入れ，
 節見出しとして大きなフォントで画面上に組版します．Returnキーを押してみてください．
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスの表示は「節」から「標準」へ戻ります．節タイトルは，
 ほとんどの環境がそうですが，
 Returnキーを押すとその環境が終わったものと仮定します．文章の導入部を次のように入力してみましょう:
@@ -1103,8 +1204,10 @@ Returnキーを押すとその環境が終わったものと仮定します．�
 \begin_layout Standard
 Returnキーを押してまた
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスから
 \family sans
 節
@@ -1131,8 +1234,10 @@ Returnキーを押してまた
 Returnキーを押し，
 
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスから
 \family sans
 節
@@ -1154,8 +1259,10 @@ Returnキーを押し，
 \begin_layout Standard
 Returnキーを押して
 \family sans
+\series bold
 標準
 \family default
+\series default
 環境に戻り，
 次の5行を入力してください．
 \end_layout
@@ -1184,8 +1291,11 @@ Returnキーを押して
 2行目をクリックして
 \family sans
 ，
+
+\series bold
 環境
 \family default
+\series default
 ボックスから
 \family sans
 小節
@@ -1210,35 +1320,46 @@ Returnキーを押して
 これ以下の階層の節割りには
 \family sans
 ，
+
+\series bold
 小々節
 \family default
+\series default
 ，
 
 \family sans
+\series bold
 段落
 \family default
+\series default
 ，
 
 \family sans
+\series bold
 小段落
 \family default
+\series default
 等があります．ご自分でこれらを試してみてください．既定では，
 段落と小段落の見出しには番号が振られず，
 小段落は字下げされることに気付かれることでしょう．詳細の説明とこの設定の変更の仕方については
 \emph on
 ，
-ユーザーの手引き
+
 \emph default
-をご参照ください．実は，
+『ユーザーの手引き』をご参照ください．実は，
 
 \family sans
+\series bold
 章
 \family default
+\series default
 見出しが，
 
 \family sans
+\series bold
 節
 \family default
+\series default
 より上の，
 最上位の階層の節割りになっていますが，
 これはあるタイプ（文書クラス）の\SpecialChar LyX
@@ -1257,22 +1378,31 @@ nolink "false"
 最後になりましたが，
 番号の振られていない節や小節が欲しい場合もあるでしょう．そのための環境もあります．既存の節見出しの一つを
 \family sans
-節*
+\series bold
+節
+\series default
+*
 \family default
 環境（
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスの下の方までスクロールしないと見つからないかもしれません）に変えると，
 通常の節見出しで用いられるのと同じフォント寸法を用いるものの，
 番号が振られなくなります．
 \family sans
+\series bold
 小節
 \family default
+\series default
 や
 \family sans
+\series bold
 小々節
 \family default
+\series default
 にも，
 対応した「星付き」環境があります．既存の節や小節を星付き環境に変更してみて，
 特に，
@@ -1284,11 +1414,11 @@ nolink "false"
 \series bold
 練習問題
 \series default
-:
- 
-\family typewriter
-example_raw.lyx
-\family default
+：
+
+\emph on
+用例ファイル(原本)
+\emph default
 の，
 節見出しと小節見出しを正しく直してください．
 \end_layout
@@ -1303,8 +1433,10 @@ example_raw.lyx
 箇条書きを組版するための環境をいくつか持っています．この各箇条書き環境を使えば，
 概要を書くのに100万回も
 \family sans
+\series bold
 タブ
 \family default
+\series default
 を打つことから開放され，
 箇条書きの中に項目を追加しても連番を振り直さずに済むようになります．文書の種類が異なれば，
 論理的に異なった箇条書き環境が必要とされます．
@@ -1314,8 +1446,10 @@ example_raw.lyx
 スライドの発表では，
 各要点を説明するのに
 \family sans
+\series bold
 箇条書き（記号）
 \family default
+\series default
 環境のブリット付き一覧が使用されるでしょう．
 \end_layout
 
@@ -1323,8 +1457,11 @@ example_raw.lyx
 要約では
 \family sans
 ，
+
+\series bold
 箇条書き（連番）
 \family default
+\series default
 環境の連番（あるいはアルファベット）の振られた一覧が使用されるでしょう．
 \end_layout
 
@@ -1332,21 +1469,27 @@ example_raw.lyx
 ソフトウエア・パッケージ群の取扱説明書では，
 各項目がボールド体の単語で始まる
 \family sans
+\series bold
 箇条書き（記述）
 \family default
+\series default
 環境が使用されるかもしれません．
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
+\series bold
 箇条書き（一覧）
 \family default
+\series default
 環境は，
 
 \family sans
+\series bold
 箇条書き（記述）
 \family default
+\series default
 環境から派生したものです．
 \end_layout
 
@@ -1370,12 +1513,16 @@ Return
 \family default
 を押して下さい．それから
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスから
 \family sans
+\series bold
 箇条書き（記号）
 \family default
+\series default
 を選びます(
 \begin_inset Info
 type  "icon"
@@ -1411,9 +1558,15 @@ Return
 箇条書きの次項目を入力するものと仮定します．つまり，
 上のように理由を入力すると，
 三つの項目の箇条書きになるはずです．もし一つの箇条書き
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 項目
-\emph default
+\end_layout
+
+\end_inset
+
 が二つ以上の段落を持つようにしたいときには，
 
 \family sans
@@ -1421,13 +1574,17 @@ Ctrl-Return
 \family default
 を入力して得られる
 \family sans
-保護された改行
+\series bold
+整形なし改行
 \family default
+\series default
 を使うのが一つの方法です．箇条書きから抜けたいときには，
 
 \family sans
+\series bold
 標準
 \family default
+\series default
 環境を再選択することが必要です（あるいはキー割当て
 \begin_inset Info
 type  "shortcut"
@@ -1467,12 +1624,16 @@ status collapsed
 ，
 
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスから
 \family sans
+\series bold
 箇条書き（連番）
 \family default
+\series default
 を選択してください(
 \begin_inset Info
 type  "icon"
@@ -1490,12 +1651,16 @@ arg   "layout-toggle Enumerate"
 他の2つの箇条書き環境，
 
 \family sans
+\series bold
 箇条書き（記述）
 \family default
+\series default
 と
 \family sans
+\series bold
 箇条書き（一覧）
 \family default
+\series default
 の出力がどのようなものになるかを見るために，
 この箇条書きが選択された状態のまま，
 これらの環境に変更してみるとよろしいでしょう(
@@ -1520,8 +1685,10 @@ Return
 を入力するまで）がその用語の定義として表示されるような形で構成されます．用語は，
 ボールド体で組版される（
 \family sans
+\series bold
 箇条書き（記述）
 \family default
+\series default
 ）か，
 「タブ」
 \begin_inset Foot
@@ -1545,13 +1712,17 @@ status collapsed
 
 によって段落の残りから切り離されて表示（
 \family sans
+\series bold
 箇条書き（一覧）
 \family default
+\series default
 ）されます．用語定義に2つ以上の単語を指定したい場合には，
 それらの単語を
 \family sans
-保護された空白
+\series bold
+非改行空白
 \family default
+\series default
 で区切るようにしてください．
 \end_layout
 
@@ -1560,11 +1731,11 @@ status collapsed
 \series bold
 練習問題
 \series default
-:
- 
-\family typewriter
-example_raw.lyx
-\family default
+：
+
+\emph on
+用例ファイル(原本)
+\emph default
 にある箇条書きを組版してみてください．
 \end_layout
 
@@ -1575,9 +1746,9 @@ example_raw.lyx
 入れ子の用例については
 \emph on
 ，
-ユーザーの手引き
+
 \emph default
- をご参照ください．
+『ユーザーの手引き』 をご参照ください．
 \end_layout
 
 \begin_layout Subsection
@@ -1589,29 +1760,32 @@ example_raw.lyx
 引用を周囲の本文から切り離して行うための環境が2つあります．一つは，
 短い引用のための
 \family sans
+\series bold
 引用（字下げなし）
 \family default
+\series default
 であり，
 もう一つは，
 長い引用のための
 \family sans
+\series bold
 引用（字下げあり）
 \family default
+\series default
 です．コンピュータのコード（
 \family sans
 \SpecialChar LyX
+
+\series bold
 コード
 \family default
+\series default
 環境
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-この
-\emph on
-入門篇
-\emph default
-でも長い入力例のために使われています
+この『入門篇』でも長い入力例のために使われています
 \end_layout
 
 \end_inset
@@ -1626,8 +1800,10 @@ status collapsed
 コードの字下げを可能にするために，
 複数の空白を使うことが許された環境です．
 \family sans
+\series bold
 詩句
 \family default
+\series default
 環境を使えば，
 詩を書くことさえできます．この環境では
 \family sans
@@ -1640,11 +1816,7 @@ Ctrl-Return
 \family default
 で連の中の行を分けます．利用可能な\SpecialChar LyX
 環境すべてについてのより完全な説明については，
-
-\emph on
-ユーザーの手引き
-\emph default
-をご参照ください．
+『ユーザーの手引き』をご参照ください．
 \end_layout
 
 \begin_layout Standard
@@ -1654,22 +1826,29 @@ Ctrl-Return
 \series default
 ：
 
-\family typewriter
-example_raw.lyx
-\family default
+\emph on
+用例ファイル(原本)
+\emph default
 で
 \family sans
+\series bold
 引用（字下げなし）
 \family default
+\series default
 ・
 \family sans
 \SpecialChar LyX
+
+\series bold
 コード
 \family default
+\series default
 ・
 \family sans
+\series bold
 詩句
 \family default
+\series default
 を正しく組版してください．
 \end_layout
 
@@ -1732,11 +1911,7 @@ status collapsed
 
 \emph default
 は，
-このような文書間の大局的な違いを取り扱うためのものです．例えばこの
-\emph on
-入門篇
-\emph default
-は，
+このような文書間の大局的な違いを取り扱うためのものです．例えばこの『入門篇』は，
 
 \family sans
 Book
@@ -1768,6 +1943,7 @@ status collapsed
 
 ．それを（
 \family sans
+\series bold
 文書
 \family default
 \SpecialChar menuseparator
@@ -1775,6 +1951,11 @@ status collapsed
 \family sans
 設定
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログを使って）他の文書クラスへ変更してみて，
 文書の組版がどう変わるかを確認してみましょう．文書クラスを
 \family sans
@@ -1783,20 +1964,27 @@ Book
 文書クラスへと変更して，
 
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスを見てみても，
 利用できる環境がほとんど同じであることがわかるはずです．ただし，
 新しく
 \family sans
-章（Chapter）
+\series bold
+章
+\series default
+（Chapter）
 \family default
 環境が使えるようになっています．このように，
 ある文書クラスでどの環境が使えるか不確かな場合は，
 
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスを開いてみればよいのです．
 \end_layout
 
@@ -1823,15 +2011,7 @@ Article
 \begin_layout Standard
 以下の表は，
 いくつかの文書クラスのひじょうに簡単な要約です．さらに多くの詳細については，
-取扱説明書『
-\emph on
-高度な機能篇
-\emph default
-』の「
-\emph on
-特別な文書クラス
-\emph default
-」の節をご参照ください．
+取扱説明書『高度な機能篇』の「特別な文書クラス」の節をご参照ください．
 \end_layout
 
 \begin_layout Standard
@@ -1998,6 +2178,7 @@ letter
 新規ファイルを開いたのち，
 
 \family sans
+\series bold
 文書
 \family default
 \SpecialChar menuseparator
@@ -2005,6 +2186,7 @@ letter
 \family sans
 設定
 \family default
+\series default
 ダイアログで
 \family sans
 Letter
@@ -2017,9 +2199,15 @@ Letter
 サイン等を入れなくてはならなくなることでしょう．このため，
 \SpecialChar LyX
 には書簡の手本となる書簡用
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 ひな型
-\emph default
+\end_layout
+
+\end_inset
+
 が備わっています．ひな型を使えば，
 書簡を書くたびに書簡の対応部分を自分向けに変更するだけでいいのです．
 \end_layout
@@ -2027,14 +2215,22 @@ Letter
 \begin_layout Standard
 
 \family sans
+\series bold
 ファイル\SpecialChar menuseparator
-新規(ひな型使用)
+新規
+\series default
+(
+\series bold
+ひな型使用
+\series default
+)
 \family default
+\SpecialChar ldots
 を選択して，
 新規ファイルを開いてください．ひな型として
-\family typewriter
-letter.lyx
-\family default
+\emph on
+Letter (標準クラス)
+\emph default
 を選択します．保存後印刷して，
 各環境がどのように組版されるかを確認してください．
 \end_layout
@@ -2042,8 +2238,10 @@ letter.lyx
 \begin_layout Standard
 
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスを見ると，
 
 \family sans
@@ -2053,20 +2251,26 @@ letter.lyx
 他のほとんどの文書クラスにはない環境があるのが分かります．一方，
 
 \family sans
+\series bold
 引用（字下げなし）
 \family default
+\series default
 や
 \family sans
+\series bold
 箇条書き（記述）
 \family default
+\series default
 などの環境は，
 よく見かけるものです．各環境がどのような機能を果たすかを理解するために，
 しばらくのあいだ，
 いろいろといじってみてください．例えば，
 
 \family sans
+\series bold
 署名
 \family default
+\series default
 環境では，
 実際の署名の前に「署名：
 」という単語が赤字で表示されることに気が付かれることでしょう．この単語は，
@@ -2075,15 +2279,19 @@ letter.lyx
 署名行がどこにあるかをお知らせするだけのものです．さらに，
 
 \family sans
+\series bold
 署名
 \family default
+\series default
 行は，
 ファイル内のどこにあってもかまわないことに注意してください．\SpecialChar LyX
 はWYSIWYMですから，
 
 \family sans
+\series bold
 署名
 \family default
+\series default
 環境はどこでも好きなところに置くことができても，
 \SpecialChar LyX
 は，
@@ -2116,8 +2324,10 @@ status collapsed
 ほとんどの環境は中に本文がない状態では存在できないためです．消えてしまった環境を戻すには，
 
 \family sans
+\series bold
 環境
 \family default
+\series default
 ボックスからもう一度その環境を選択し直してください．
 \end_layout
 
@@ -2174,23 +2384,31 @@ Letter文書クラスではタイトルは使えないので，
 ．一行目にタイトルを入力して，
 その行を
 \family sans
+\series bold
 タイトル
 \family default
+\series default
 環境に変更してください．次の行には，
 ご自分の名前を入れ，
 その行を
 \family sans
+\series bold
 著者
 \family default
+\series default
 環境に変更します．その次の行には
 \family sans
+\series bold
 日付
 \family default
+\series default
 環境として日付を入れてください．次に，
 
 \family sans
+\series bold
 概要
 \family default
+\series default
 環境で，
 文書の要約を一二段落入力します．その後，
 印刷時にタイトルがどのように表現されるか，
@@ -2206,15 +2424,14 @@ Book
 
 \begin_layout Standard
 
+\series bold
+練習問題：
+
+\series default
 \emph on
-練習問題
+用例ファイル(原本)
 \emph default
-:
- 
-\family typewriter
-example_raw.
-\family default
-lyxのタイトル・日付・著者名を正しくしてください．
+のタイトル・日付・著者名を正しくしてください．
 \end_layout
 
 \begin_layout Section
@@ -2228,15 +2445,11 @@ status collapsed
 
 \begin_layout Plain Layout
 フロートについては，
-
+『ユーザーの手引き』および
 \emph on
-ユーザーの手引き
+埋込
 \emph default
-および
-\emph on
-埋込オブジェクト篇
-\emph default
-の各説明書で説明されています．
+『オブジェクト篇』の各説明書で説明されています．
 \end_layout
 
 \end_inset
@@ -2340,42 +2553,32 @@ sec:この文書について」と書かれた参照マーカーが現れます�
 「Section」という単語と参照のあいだには，
 空白ではなく
 \family sans
-保護された空白
+\series bold
+非改行空白
 \family default
+\series default
 を入れなければなりません）．この方法の代わりに，
 ラベルを右クリックして，
 現れるコンテクスト・メニューにある
 \family sans
+\series bold
 参照としてコピー
 \family default
+\series default
 を使う方法もあります．こうすることによって，
 このラベルへの相互参照はクリップボードに移されるので，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 貼り付け
 \family default
-メニュー（
-\begin_inset Flex Ruby
-status collapsed
+\series default
 
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
+メニュー（ショートカット
 \begin_inset Info
 type  "shortcut"
 arg   "paste"
@@ -2395,13 +2598,17 @@ arg   "paste"
 ハイパーリンクとして機能します．参照をクリックすると，
 
 \family sans
+\series bold
 相互参照
 \family default
+\series default
 ダイアログが開きますので，
 そこで
 \family sans
+\series bold
 ラベルに移動
 \family default
+\series default
 をクリックすれば，
 参照しているラベルにカーソルを移動することができるのです．
 \end_layout
@@ -2438,12 +2645,14 @@ arg   "paste"
 もっと大きな文書でも相互参照がちゃんとページを取得するかどうかを確認したいならば
 \emph on
 ，
-ユーザーの手引き
+
 \emph default
-から何ページかクリップボードに
+『ユーザーの手引き』から何ページかクリップボードに
 \family sans
+\series bold
 コピー
 \family default
+\series default
 して，
 現在の文書に取ってきた文章を
 \family sans
@@ -2477,14 +2686,14 @@ nolink "false"
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
+\series default
+：
+
+\emph on
+用例ファイル(原本)
 \emph default
-:
- 
-\family typewriter
-example_raw.lyx
-\family default
 の参照を正しく直してください．
 \end_layout
 
@@ -2502,6 +2711,11 @@ arg   "footnote-insert"
 
 ボタンか
 \family sans
+\series bold
+
+\begin_inset space \thinspace{}
+\end_inset
+
 挿入
 \family default
 \SpecialChar menuseparator
@@ -2509,6 +2723,11 @@ arg   "footnote-insert"
 \family sans
 脚注
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを使えば，
 加えることができます．現在の文中にある\SpecialChar LyX
 という単語のどれでもいいですから，
@@ -2551,8 +2770,10 @@ status collapsed
 ，
 
 \family sans
+\series bold
 コピー
 \family default
+\series default
 と
 \family sans
 貼り付け
@@ -2572,6 +2793,7 @@ arg   "footnote-insert"
 傍注は，
 
 \family sans
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -2579,6 +2801,11 @@ arg   "footnote-insert"
 \family sans
 傍注
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を選ぶか，
 ツールバーの
 \begin_inset Info
@@ -2613,14 +2840,14 @@ arg   "marginalnote-insert"
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
+\series default
+：
+
+\emph on
+用例ファイル(原本)
 \emph default
-:
- 
-\family typewriter
-example_raw.lyx
-\family default
 の脚注を直してください．
 \end_layout
 
@@ -2648,8 +2875,10 @@ name "sec:参考文献"
 \begin_layout Standard
 文章の最後に行って
 \family sans
+\series bold
 書誌情報
 \family default
+\series default
 環境に変えてください．すると入力する段落のそれぞれが，
 書誌情報の項目になります．一つめの文献として「
 \family typewriter
@@ -2665,7 +2894,10 @@ name "sec:参考文献"
 は各文献の前に四角に囲まれた番号を自動的につけます．四角に囲まれた文献番号をクリックすると，
 
 \family sans
-書誌情報の設定
+\series bold
+書誌情報
+\series default
+の設定
 \family default
 ダイアログボックスが現れます．「キー」とは，
 \SpecialChar LyX
@@ -2679,6 +2911,7 @@ name "sec:参考文献"
 文章中のどこかを選んで，
 文献を参照してみましょう．
 \family sans
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -2686,6 +2919,7 @@ name "sec:参考文献"
 \family sans
 文献引用
 \family default
+\series default
 を選ぶか，
 ツールバーボタン
 \begin_inset Info
@@ -2696,8 +2930,10 @@ arg   "dialog-show-new-inset citation"
 を押してください．すると，
 
 \family sans
+\series bold
 文献引用
 \family default
+\series default
 ダイアログボックスが現れます．ダイアログの右パネルには，
 すべての文献項目が表示され，
 参照したい文献を選ぶことができるようになっているはずです．「lyxtutorial」を選択して（今のところ，
@@ -2726,12 +2962,16 @@ OK
 \begin_layout Standard
 
 \family sans
+\series bold
 文献引用
 \family default
+\series default
 ダイアログの
 \family sans
+\series bold
 後置文字列
 \family default
+\series default
 フィールドは，
 参照番号のあとに入れる（例えば，
 参考文献の何ページか，
@@ -2739,34 +2979,35 @@ OK
 Smithが95年に書いた論文を参照するのに[Smith95]と表記するものもあります）には，
 
 \family sans
-書誌情報の設定
+\series bold
+書誌情報
+\series default
+の設定
 \family default
 ダイアログの
 \family sans
+\series bold
 ラベル
 \family default
+\series default
 フィールドを使ってください．詳しい説明は
 \emph on
 ，
 
 \emph default
-いつもどおり
-\emph on
-ユーザーの手引き
-\emph default
-を見てください．
+いつもどおり『ユーザーの手引き』を見てください．
 \end_layout
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
+\series default
+：
+
+\emph on
+用例ファイル(原本)
 \emph default
-:
- 
-\family typewriter
-example_raw.lyx
-\family default
 の書誌情報とそれの参照を直してください．
 \end_layout
 
@@ -2780,18 +3021,28 @@ example_raw.lyx
 簡単に目次を入れることができます．文書のタイトルの後ろ，
 最初の節見出しの前でReturnキーを押して
 \family sans
+\series bold
+
+\begin_inset space \thinspace{}
+\end_inset
+
 挿入
 \family default
 \SpecialChar menuseparator
 
 \family sans
-一覧/目次
+一覧/目次/参照
 \family default
 \SpecialChar menuseparator
 
 \family sans
 目次
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を選んでください．「目次」と書いたボタンが文書のはじめに現れるでしょう．
 \end_layout
 
@@ -2809,9 +3060,11 @@ PDFファイルを更新したときに，
 目次ボタンをクリックするか，
 
 \family sans
+\series bold
 表示\SpecialChar menuseparator
 文書構造
 \family default
+\series default
 かツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -2823,8 +3076,10 @@ arg   "dialog-toggle toc"
 文書に目次挿入枠が入っていなくても有効です．これは，
 文書の各部を行ったり来たりするのにたいへん便利なツールです．
 \family sans
+\series bold
 文書構造
 \family default
+\series default
 ウインドウの（小）節見出しをクリックすると，
 その行が選択されて，
 （\SpecialChar LyX
@@ -2833,8 +3088,10 @@ arg   "dialog-toggle toc"
 常にこのウィンドウを開いておく方が便利だと思うようになるかもしれません．一方，
 
 \family sans
+\series bold
 移動
 \family default
+\series default
 メニューにも目次が自動的に表示されるので，
 こちらからも同様の機能を使うことができます．
 \end_layout
@@ -2846,14 +3103,14 @@ arg   "dialog-toggle toc"
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
+\series default
+：
+
+\emph on
+用例ファイル(原本)
 \emph default
-:
- 
-\family typewriter
-example_raw.lyx
-\family default
 の目次を直してください．
 \end_layout
 
@@ -2917,10 +3174,16 @@ arg   "math-mode"
 を押すか，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 行内数式
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューを選んでください．何も選択しなかった場合には，
 \SpecialChar LyX
 は空の数式を表す小さな青い箱を挿入します．そこにもう一度E=mc^2と入力してください．数式は青色で表示され，
@@ -2995,6 +3258,12 @@ Backspace
 文字を選択するには，
 矢印キーやマウスを使ってください．数式モードでも
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series bold
 編集
 \family default
 \SpecialChar menuseparator
@@ -3002,6 +3271,11 @@ Backspace
 \family sans
 元に戻す
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 は機能しますし，
 切り取りや貼り付けもできます．一つだけ気をつけなければならないのは，
 カーソルが，
@@ -3049,9 +3323,11 @@ Backspace
 \begin_layout Standard
 指数（exponent）は
 \family sans
-数式ツールバー
+\series bold
+数式
 \family default
-（以下で説明します）から挿入することもできますが，
+\series default
+ツールバー（以下で説明します）から挿入することもできますが，
 実は単にキャレットキー「^」を押した方が簡単です．すると\SpecialChar LyX
 が，
 青い四角を新しく上付き文字の位置に表示して，
@@ -3074,12 +3350,16 @@ Esc
 \end_layout
 
 \begin_layout Standard
-練習問題：
 
-\family typewriter
-example_raw.lyx
-\family default
- のequation 1を数式モードにして下さい．
+\series bold
+練習問題
+\series default
+：
+
+\emph on
+用例ファイル(原本)
+\emph default
+のequation 1を数式モードにして下さい．
 \end_layout
 
 \begin_layout Section
@@ -3089,9 +3369,11 @@ example_raw.lyx
 \begin_layout Standard
 
 \family sans
-数式ツールバー
+\series bold
+数式
 \family default
-は，
+\series default
+ツールバーは，
 数学記号を入れたり複雑な数式操作をするのに便利です．これらの操作のほとんどは，
 キーボードや，
 
@@ -3107,53 +3389,37 @@ example_raw.lyx
 メニューからも実行することができます．しかしながら，
 ここでは
 \family sans
-数式ツールバー
+\series bold
+数式
 \family default
-に何があるかをお教えするために，
+\series default
+ツールバーに何があるかをお教えするために，
 
 \family sans
-数式ツールバー
+\series bold
+数式
 \family default
-の使い方の説明にとどめることにしましょう．
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-とコマンドは，
-説明書の
-\emph on
-数式篇
-\emph default
-で調べることができます．
+\series default
+ツールバーの使い方の説明にとどめることにしましょう．ショートカットとコマンドは，
+説明書の『数式篇』で調べることができます．
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-数式ツールバー
+\series bold
+数式
 \family default
-は，
+\series default
+ツールバーは，
 カーソルが数式内にある時に表示されますが，
 
 \family sans
+\series bold
 表示\SpecialChar menuseparator
 ツールバー
 \family default
+\series default
 メニューで手動で有効にすることもできます(
 \begin_inset Info
 type  "icon"
@@ -3164,12 +3430,16 @@ arg   "toolbar-toggle math"
 ツールバーは底面にずっとされるようになります．この状態にあることは，
 
 \family sans
+\series bold
 ツールバー
 \family default
+\series default
 メニューにチェックマークが表示されるのでわかります．この状態にある
 \family sans
+\series bold
 ツールバー
 \family default
+\series default
 メニューの「数式」をもう一度クリックすると，
 数式ツールバーは，
 カーソルが数式モード中にあるときだけ表示されるようになります．この状態にあることは，
@@ -3184,8 +3454,10 @@ arg   "toolbar-toggle math"
 \begin_layout Standard
 
 \family sans
+\series bold
 数式ツールバー
 \family default
+\series default
 を使うと，
 様々な記号を数式内で使うことができます．たとえば，
 演算子や矢印，
@@ -3245,8 +3517,10 @@ arg   "math-insert \\hat"
 縦棒等の区切り記号も同様に動作しますが，
 やや複雑です．
 \family sans
+\series bold
 区切り記号
 \family default
+\series default
 ボタン
 \begin_inset Info
 type  "icon"
@@ -3256,8 +3530,11 @@ arg   "dialog-show mathdelimiter"
 を押すと
 \family sans
 ，
+
+\series bold
 区切り記号
 \family default
+\series default
 ダイアログが開きます．現在選択している区切り記号はボックスの中に表示されます．既定では括弧の対になってますが，
 中括弧の対や，
 中括弧と括弧，
@@ -3275,8 +3552,10 @@ arg   "dialog-show mathdelimiter"
 もし面倒くさければ，
 
 \family sans
+\series bold
 区切り記号
 \family default
+\series default
 ダイアログを使わずに数式モードで直接括弧を入力することもできます．しかしながら，
 このようにして入力した括弧は，
 普通の文字と同じ大きさなので，
@@ -3295,9 +3574,11 @@ arg   "math-delim ( )"
 既存の数式の一部に後から付けることもできます．変更したい数式部分を選択して，
 
 \family sans
-数式ツールバー
+\series bold
+数式
 \family default
-の中から使いたいボタンを押します．この方法を，
+\series default
+ツールバーの中から使いたいボタンを押します．この方法を，
 ニュートンの第2法則を，
 スカラー形からベクトル形へ書き換える（
 \begin_inset Formula $f=ma$
@@ -3320,9 +3601,11 @@ arg   "math-delim ( )"
 分数を作るには，
 
 \family sans
-数式ツールバー
+\series bold
+数式
 \family default
-の分数ボタン
+\series default
+ツールバーの分数ボタン
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac-square"
@@ -3342,14 +3625,14 @@ arg   "math-insert \\frac-square"
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
-\emph default
+\series default
 ：
 
-\family typewriter
-example_raw.lyx
-\family default
+\emph on
+用例ファイル(原本)
+\emph default
 のequation 2を数式モードに変更してください．
 \end_layout
 
@@ -3393,9 +3676,11 @@ example_raw.lyx
 \begin_layout Standard
 
 \family sans
-数式ツールバー
+\series bold
+数式
 \family default
-ボタン
+\series default
+ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
@@ -3433,14 +3718,14 @@ Backspace
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
-\emph default
+\series default
 ：
 
-\family typewriter
-example_raw.lyx
-\family default
+\emph on
+用例ファイル(原本)
+\emph default
 のequation 3を数式モードにして下さい．
 \end_layout
 
@@ -3451,9 +3736,11 @@ example_raw.lyx
 \begin_layout Standard
 
 \family sans
-数式ツールバー
+\series bold
+数式
 \family default
-から行列ボタン
+\series default
+ツールバーから行列ボタン
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
@@ -3487,9 +3774,11 @@ OK
 行数や列数を変更する必要が生じた場合は，
 
 \family sans
+\series bold
 編集\SpecialChar menuseparator
 行と列
 \family default
+\series default
 メニューか
 \begin_inset Info
 type  "icon"
@@ -3521,9 +3810,9 @@ arg   "tabular-feature delete-column"
 列の間のスペースや行列全体の垂直方向の位置の調整については
 \emph on
 ，
-ユーザーの手引き
+
 \emph default
-を見て下さい．行列は数式用のものです．もし普通のテキストが入った表を作りたい場合は，
+『ユーザーの手引き』を見て下さい．行列は数式用のものです．もし普通のテキストが入った表を作りたい場合は，
 行列に普通のテキストを書くよりも\SpecialChar LyX
 の優秀な表機能を使って下さい．
 \end_layout
@@ -3535,11 +3824,7 @@ arg   "tabular-feature delete-column"
 \begin_layout Standard
 ここまではテキストと同じ行に数式を入れる方法について説明して来ました．行内表示と呼ばれるものです．これは短い，
 簡単な数式の場合はいいのですが，
-長い数式を書く場合やテキストから独立させたい場合には別行立てモードで書く必要があります．また数式にラベルや式番号（
-\emph on
-ユーザーの手引き
-\emph default
-を見て下さい）をつけたい場合や複数行にまたがる数式を書きたい場合も，
+長い数式を書く場合やテキストから独立させたい場合には別行立てモードで書く必要があります．また数式にラベルや式番号（『ユーザーの手引き』を見て下さい）をつけたい場合や複数行にまたがる数式を書きたい場合も，
 別行立てモードにする必要があります．
 \end_layout
 
@@ -3547,8 +3832,10 @@ arg   "tabular-feature delete-column"
 数式の中で，
 
 \family sans
+\series bold
 数式ツールバー
 \family default
+\series default
 の
 \family sans
 別行立て
@@ -3616,9 +3903,9 @@ Returnキーを押さないで下さい．Returnキーを押すと，
 \series default
 ：
 
-\family typewriter
-example_raw.lyx
-\family default
+\emph on
+用例ファイル(原本)
+\emph default
 の数式を別行立てモードにしてどのように組版されるか見て下さい．
 \end_layout
 
@@ -3638,8 +3925,11 @@ status collapsed
 \family sans
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
-Cases環境
+Cases
+\series bold
+環境
 \family default
+\series default
 を試してみてください．
 \end_layout
 
@@ -3673,11 +3963,7 @@ f(x)=\left\{ \begin{array}{cc}
 
 \emph default
 以下のようなことを実現するコツを知るには，
-
-\emph on
-ユーザーの手引き
-\emph default
-を参照してください．
+『ユーザーの手引き』を参照してください．
 \end_layout
 
 \begin_layout Itemize
@@ -3706,11 +3992,7 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Itemize
-この
-\emph on
-入門篇
-\emph default
-で触れることのできなかったその他多くのこと．
+この『入門篇』で触れることのできなかったその他多くのこと．
 \end_layout
 
 \begin_layout Chapter
@@ -3726,15 +4008,11 @@ f(x)=\left\{ \begin{array}{cc}
 ここまでで，
 \SpecialChar LyX
 で使えるすべてのコマンドを見たわけではありません．またすべてを見ることを意図したわけでもありません．いつもどおり，
-詳しくは
+詳しくは『ユーザーの手引き』か
 \emph on
-ユーザーの手引き
+埋込
 \emph default
-か
-\emph on
-埋込オブジェクト篇
-\emph default
-の説明書を見て下さい．ここでは，
+『オブジェクト篇』の説明書を見て下さい．ここでは，
 \SpecialChar LyX
 で可能な主要機能の一部について少しだけ触れておきます．
 \end_layout
@@ -3745,9 +4023,11 @@ f(x)=\left\{ \begin{array}{cc}
 表のWYSIWYMサポートをしています．表を作るには，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 表
 \family default
+\series default
 （あるいはツールバー
 \begin_inset Info
 type  "icon"
@@ -3780,9 +4060,11 @@ arg   "toolbar-toggle table"
 文書中に任意の形式の図を取り込むことができます（ご想像の通り，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
 図
 \family default
+\series default
 （またはツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -3805,12 +4087,19 @@ arg   "dialog-show-new-inset graphics"
 さまざまな方法で設定できます．大半の設定は，
 
 \family sans
+\series bold
 ツール\SpecialChar menuseparator
 設定
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で行います．これに関する詳細は，
 
 \family sans
+\series bold
 ヘルプ
 \family default
 \SpecialChar menuseparator
@@ -3818,6 +4107,11 @@ arg   "dialog-show-new-inset graphics"
 \family sans
 カスタマイズ篇
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を参照してください．
 \end_layout
 
@@ -3838,6 +4132,7 @@ arg   "dialog-show-new-inset graphics"
 のメニューは，
 キー割り当て機能を持っています．
 \family sans
+\series bold
 ファイル
 \family default
 \SpecialChar menuseparator
@@ -3845,6 +4140,11 @@ arg   "dialog-show-new-inset graphics"
 \family sans
 開く
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 をマウスで選ぶ代わりに，
 キーボードから
 \family sans
@@ -3864,6 +4164,7 @@ arg   "file-open"
 ）を使うことができます．キー割り当ても設定が可能です．これに関する詳細は，
 
 \family sans
+\series bold
 ヘルプ
 \family default
 \SpecialChar menuseparator
@@ -3871,6 +4172,11 @@ arg   "file-open"
 \family sans
 カスタマイズ篇
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を見て下さい．
 \end_layout
 
@@ -3938,20 +4244,16 @@ name "sec:latexusers"
 \begin_layout Standard
 これは入門篇なので，
 新規の\SpecialChar LyX
-ユーザーが最も興味を持ちそうなことのみを取り上げることにします．
-\emph on
-入門篇
-\emph default
-が長くなりすぎないように，
+ユーザーが最も興味を持ちそうなことのみを取り上げることにします．『入門篇』が長くなりすぎないように，
 ここでは最小限の情報だけを載せることにします．取扱説明書の
 \emph on
 高度な機能篇
 \emph default
 と
 \emph on
-埋込オブジェクト篇
+埋込
 \emph default
-に，
+『オブジェクト篇』に，
 \SpecialChar LyX
 と\SpecialChar LaTeX
 の違いに関する多くの情報と，
@@ -3974,8 +4276,11 @@ name "sec:latexusers"
 \family sans
 挿入\SpecialChar menuseparator
 \SpecialChar TeX
+
+\series bold
 コード
 \family default
+\series default
 （またはツールバーボタン
 \begin_inset Info
 type  "icon"
@@ -4032,8 +4337,10 @@ Space
 それほど複雑でないほとんどすべての数式マクロに対して機能します．この方法は，
 
 \family sans
+\series bold
 数式ツールバー
 \family default
+\series default
 を使うよりも速いので，
 特にベテランの\SpecialChar LaTeX
 ユーザーには重宝するでしょう．
@@ -4108,8 +4415,15 @@ name "sec:tex2lyx"
 \SpecialChar LyX
 から
 \family sans
+\series bold
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ファイル\SpecialChar menuseparator
 読み込み\SpecialChar menuseparator
+
+\series default
 \SpecialChar LaTeX
 
 \begin_inset space ~
@@ -4196,8 +4510,10 @@ tex2lyx
 対応する\SpecialChar LyX
 
 \family sans
+\series bold
 レイアウトファイル
 \family default
+\series default
 がなくてはなりません．レイアウトファイルがない場合には，
 変換を実行することができなかったという旨のエラーが発生します．\SpecialChar LaTeX
 ファイルの文書クラスに対応したレイアウトがない限り，
@@ -4211,11 +4527,7 @@ tex2lyx
 \SpecialChar LyX
 が理解できる形に変換する方法がわからないのです．レイアウトファイルについての詳細と，
 その作成の仕方については，
-取扱説明書『
-\emph on
-カスタマイズ篇
-\emph default
-』の第5章に説明があります．
+取扱説明書『カスタマイズ篇』の第5章に説明があります．
 \end_layout
 
 \begin_layout Subsection
@@ -4231,8 +4543,11 @@ tex2lyx
 \SpecialChar LyX
 を持っていない共同研究者や共同執筆者に文書を読ませたい場合です．
 \family sans
+\series bold
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
+
+\series default
 \SpecialChar LaTeX
 
 \begin_inset space ~
@@ -4263,6 +4578,7 @@ whatever.tex
 \begin_layout Standard
 
 \family sans
+\series bold
 文書
 \family default
 \SpecialChar menuseparator
@@ -4270,13 +4586,20 @@ whatever.tex
 \family sans
 設定
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログは，
 文書全体にわたるオプションを扱っています．文書クラス・既定のフォント寸法・用紙寸法はここで変更してください．文書クラスオプションならびに\SpecialChar LaTeX
 パッケージのオプションは，
 
 \family sans
+\series bold
 追加オプション
 \family default
+\series default
 エリアへ入れて下さい．
 \end_layout
 
@@ -4297,6 +4620,7 @@ name "sec:preamble"
 それは\SpecialChar LyX
 文書でも使えます．
 \family sans
+\series bold
 文書
 \family default
 \SpecialChar menuseparator
@@ -4307,8 +4631,13 @@ name "sec:preamble"
 \SpecialChar menuseparator
 
 \family sans
+\series default
 \SpecialChar LaTeX
-プリアンブル\SpecialChar ldots
+
+\series bold
+プリアンブル
+\series default
+\SpecialChar ldots
 
 \family default
 を選択して，
@@ -4324,29 +4653,42 @@ Bib\SpecialChar TeX
 \begin_layout Standard
 \SpecialChar LyX
 はBib\SpecialChar TeX
-をサポートしています．Bib\SpecialChar TeX
-とは，
+およびBiblatexをサポートしています．これらは，
 複数の文書で使うための書誌情報データベースをつくるものです．Bib\SpecialChar TeX
 ファイルを文書に挿入するには，
 
 \family sans
+\series bold
 挿入\SpecialChar menuseparator
-一覧/目次\SpecialChar menuseparator
-Bib\SpecialChar TeX
+一覧/目次/参照\SpecialChar menuseparator
+
+\series default
+Bib(la)\SpecialChar TeX
+
+\series bold
 書誌情報
 \family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を選択してください．
 \family sans
+\series bold
 データベース
 \family default
-フィールドにBib\SpecialChar TeX
-ファイルを読み込み，
+\series default
+ウィジェットで読み込むBib\SpecialChar TeX
+ファイルを選択し，
 
 \family sans
-形式
+\series bold
+様式
 \family default
-フィールドにBib\SpecialChar TeX
-スタイルファイルを読み込んでください．
+\series default
+フィールドでBib\SpecialChar TeX
+様式ファイルを選択してください．
 \end_layout
 
 \begin_layout Standard
@@ -4355,6 +4697,7 @@ Bib\SpecialChar TeX
 任意の文献を，
 
 \family sans
+\series bold
 挿入
 \family default
 \SpecialChar menuseparator
@@ -4362,6 +4705,7 @@ Bib\SpecialChar TeX
 \family sans
 文献引用
 \family default
+\series default
 （第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4373,8 +4717,10 @@ nolink "false"
 節参照）を使って参照することができるようになります．また，
 
 \family sans
+\series bold
 文献引用
 \family default
+\series default
 ダイアログ内のボックスに，
 使用中のBib\SpecialChar TeX
 ファイルにある全文献一覧が表示されます．
@@ -4395,8 +4741,11 @@ nolink "false"
 は
 \family sans
 \SpecialChar LaTeX
+
+\series bold
 エラー
 \family default
+\series default
 ダイアログを表示します．このダイアログ中の各エラーをクリックすると，
 \SpecialChar LyX
 文書中のエラーが発生した場所へ移動し，
