@@ -87,6 +87,7 @@
 \author -1174727462 "Kornel Benko" Kornel.Benko@berlin.de
 \author -712698321 "Jürgen Spitzmüller"
 \author 5863344 "Enrico Forestieri"
+\author 545138413 "Koji Yokota" yokota6@gmail.com
 \end_header
 
 \begin_body
@@ -4391,6 +4392,81 @@ report
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 545138413 1674624942
+Japanese new standard classes (extended)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 545138413 1674624947
+Found:
+ 
+\family sans
+bxjsarticle
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "bxjsarticle"
+\end_inset
+
+,
+ 
+\family sans
+bxjsreport
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "bxjsreport"
+\end_inset
+
+,
+ 
+\family sans
+bxjsbook
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "bxjsbook"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 545138413 1674624964
+CTAN:
+ 
+\family typewriter
+language/japanese/BX/bxjscls/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 545138413 1674625253
+Notes:
+ This package provides an extended version of Japanese new standard classes.
+ While the original version supports only p\SpecialChar LaTeX
+ and up\SpecialChar LaTeX
+,
+ the extended version also supports pdf\SpecialChar LaTeX
+,
+ Xe\SpecialChar LaTeX
+ and Lua\SpecialChar LaTeX
+,
+ with the aid of suitable packages that provide capability of Japanese typesetting.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
 jss
 \end_layout
 
@@ -6479,7 +6555,7 @@ varioref
  introduces some commands to generate references with an information about the page of the referred label.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 varwidth
 \end_layout
 
