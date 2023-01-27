@@ -991,7 +991,8 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 				// Avoid recursion on a recursive macro definition
 				docstring const & def = data->definition();
 				int pos = tokenPos(def, '\\', name());
-				char_type c = def.at(pos + name().size());
+				char_type c = pos + name().size() < def.size()
+					      ? def.at(pos + name().size()) : 0;
 				if (pos < 0 || (name().size() > 1 &&
 						((c >= 'a' && c <= 'z') ||
 						 (c >= 'A' && c <= 'Z')))) {
