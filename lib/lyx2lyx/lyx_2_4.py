@@ -4504,9 +4504,15 @@ def revert_index_macros(document):
                                 # construct the latex sequence
                                 icont = xicont + put_cmd_in_ert("@") + xxicont[1:]
                 if len(subentry) > 0:
-                    subentry2 = icont[1:]
+                    if (icont[0] == "\\begin_layout Plain Layout"):
+                        subentry2 = icont[1:]
+                    else:
+                    	subentry2 = icont
                 else:
-                    subentry = icont[1:]
+                    if (icont[0] == "\\begin_layout Plain Layout"):
+                        subentry = icont[1:]
+                    else:
+                    	subentry = icont
             elif imacro == "sortkey":
                 sortkey = icont
             # Everything stored. Delete subinset.
