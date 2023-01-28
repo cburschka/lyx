@@ -746,17 +746,32 @@ does
 .
  Try the following sometime:
  select 
+\change_deleted -712698321 1674917358
+
+\family sans
+
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
+
+\noun off
 Export\SpecialChar menuseparator
 LaTeX
 \end_layout
 
 \end_inset
 
+
+\change_inserted -712698321 1674917358
+Export\SpecialChar menuseparator
+LaTeX
+\change_unchanged
+
+\family default
  from the 
+\change_deleted -712698321 1674917366
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -766,7 +781,17 @@ File
 
 \end_inset
 
+
+\change_inserted -712698321 1674917366
+
+\family sans
+File
+\change_unchanged
+
+\family default
  menu (or 
+\change_deleted -712698321 1674917371
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -781,6 +806,19 @@ Pane
 
 \end_inset
 
+
+\change_inserted -712698321 1674917371
+
+\family sans
+View\SpecialChar menuseparator
+Source
+\begin_inset space ~
+\end_inset
+
+Pane
+\change_unchanged
+
+\family default
 ),
  then look at the preamble of the resulting 
 \begin_inset Flex Code
@@ -806,6 +844,8 @@ There are several commands that automatically invoke \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1674917379
 \begin_inset Flex Noun
 status collapsed
 
@@ -817,9 +857,18 @@ View
 \end_inset
 
 
+\change_inserted -712698321 1674917379
+
+\family sans
+Document\SpecialChar menuseparator
+View
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1674917381
 \begin_inset Flex Noun
 status collapsed
 
@@ -830,6 +879,13 @@ Update
 
 \end_inset
 
+
+\change_inserted -712698321 1674917381
+
+\family sans
+Document\SpecialChar menuseparator
+Update
+\change_unchanged
 
 \end_layout
 
@@ -917,6 +973,8 @@ If there are any errors,
 \begin_layout Standard
 If you have run \SpecialChar LaTeX
  using 
+\change_deleted -712698321 1674917394
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -927,10 +985,21 @@ DVI
 
 \end_inset
 
+
+\change_inserted -712698321 1674917394
+
+\family sans
+View\SpecialChar menuseparator
+DVI
+\change_unchanged
+
+\family default
 ,
  \SpecialChar LyX
  then runs a DVI viewer to display the DVI-file.
  If you have used 
+\change_deleted -712698321 1674917400
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -941,6 +1010,15 @@ PostScript
 
 \end_inset
 
+
+\change_inserted -712698321 1674917400
+
+\family sans
+View\SpecialChar menuseparator
+PostScript
+\change_unchanged
+
+\family default
 ,
  \SpecialChar LyX
  performs further steps:
@@ -993,6 +1071,8 @@ Translating \SpecialChar LaTeX
 You can import a \SpecialChar LaTeX
  file into \SpecialChar LyX
  by using the 
+\change_deleted -712698321 1674917408
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -1004,6 +1084,16 @@ LaTeX
 
 \end_inset
 
+
+\change_inserted -712698321 1674917408
+
+\family sans
+File\SpecialChar menuseparator
+Import\SpecialChar menuseparator
+LaTeX
+\change_unchanged
+
+\family default
  command in \SpecialChar LyX
 .
  This will call a program named 
@@ -1138,6 +1228,8 @@ status collapsed
 
  box,
  which you can insert into your document with 
+\change_deleted -712698321 1674917417
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -1152,6 +1244,15 @@ TeX
 
 \end_inset
 
+
+\change_inserted -712698321 1674917417
+
+\family sans
+Insert\SpecialChar menuseparator
+TeX Code
+\change_unchanged
+
+\family default
  or the keyboard shortcut 
 \begin_inset Info
 type  "shortcut"
@@ -1386,6 +1487,8 @@ In addition to using \SpecialChar TeX
  code,
  you can also create a separate file containing some complex \SpecialChar LaTeX
  structure and then use 
+\change_deleted -712698321 1674917427
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -1400,7 +1503,20 @@ Document
 
 \end_inset
 
- to include your file (you should select the type 
+
+\change_inserted -712698321 1674917427
+
+\family sans
+Insert\SpecialChar menuseparator
+Child
+\begin_inset space ~
+\end_inset
+
+Document
+\change_unchanged
+ 
+\family default
+to include your file (you should select the type 
 \begin_inset Flex Code
 status collapsed
 
@@ -1695,6 +1811,8 @@ Preamble
 \end_inset
 
  in the 
+\change_deleted -712698321 1674917437
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -1705,6 +1823,15 @@ Settings
 
 \end_inset
 
+
+\change_inserted -712698321 1674917437
+
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\change_unchanged
+
+\family default
  dialog.
  \SpecialChar LyX
  adds anything in the 
@@ -2183,6 +2310,8 @@ Well,
 \begin_layout Standard
 Some folks also like to look at the log file directly:
  It is available from 
+\change_deleted -712698321 1674917444
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -2197,6 +2326,19 @@ Log
 
 \end_inset
 
+
+\change_inserted -712698321 1674917444
+
+\family sans
+Document\SpecialChar menuseparator
+LaTeX
+\begin_inset space ~
+\end_inset
+
+Log
+\change_unchanged
+
+\family default
 .
  There are some fairly common error messages and warnings.
  We'll cover those here.
@@ -2381,6 +2523,8 @@ status collapsed
 
 \begin_layout Plain Layout
 You can also enable the `draft' option in 
+\change_deleted -712698321 1674917458
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -2391,6 +2535,15 @@ Settings
 
 \end_inset
 
+
+\change_inserted -712698321 1674917458
+
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\change_unchanged
+
+\family default
 ,
  and then \SpecialChar LaTeX
  will draw a black box in the margin of lines that are overfull.
@@ -2508,6 +2661,8 @@ usepackage{}
  then one of the packages \SpecialChar LyX
  tried to load is missing.
  Use 
+\change_deleted -712698321 1674917468
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -2519,10 +2674,21 @@ Help\SpecialChar menuseparator
 
 \end_inset
 
+
+\change_inserted -712698321 1674917478
+
+\family sans
+Help\SpecialChar menuseparator
+LaTeX Configuration
+\change_unchanged
+
+\family default
  to get a list of packages that \SpecialChar LyX
  knows about.
  This file is updated whenever you reconfigure \SpecialChar LyX
  (using 
+\change_deleted -712698321 1674917484
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -2533,6 +2699,15 @@ Reconfigure
 
 \end_inset
 
+
+\change_inserted -712698321 1674917484
+
+\family sans
+Tools\SpecialChar menuseparator
+Reconfigure
+\change_unchanged
+
+\family default
 ) and tells you which packages have been detected and what they do.
 \begin_inset Newline newline
 \end_inset
@@ -19441,10 +19616,31 @@ Numbered Paragraphs in Reports
 
 \change_inserted 564990737 1672138213
 Official reports often include numbered paragraphs;
- you can achieve this with a variation on the approach outlined in the footnote
+ you can achieve this with a variation on the approach outlined in 
+\change_deleted -712698321 1674916429
+the
+\change_inserted 564990737 1672138213
+ 
+\change_deleted -712698321 1674916431
+footnote
+\change_inserted -712698321 1674916432
+section
+\change_inserted 564990737 1672138213
+
 \begin_inset space ~
 \end_inset
 
+
+\change_inserted -712698321 1674916425
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:How-to-use"
+
+\end_inset
+
+
+\change_deleted -712698321 1674916426
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -19456,6 +19652,8 @@ nolink "false"
 
 \end_inset
 
+
+\change_inserted 564990737 1672138213
 .
  Replace 
 \family sans
@@ -20157,7 +20355,11 @@ literal "false"
 \begin_layout Section
 
 \change_inserted 564990737 1672161542
-Literate Programming 
+Literate Programming
+\change_deleted -712698321 1673885680
+ 
+\change_inserted 564990737 1672161542
+
 \end_layout
 
 \begin_layout Subsection
@@ -20276,7 +20478,7 @@ install.packages(“knitr”)
 Note 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \change_inserted 564990737 1672161542
 it depends on R >= 2.14.1.
@@ -20296,10 +20498,14 @@ http://yihui.name/knitr
 \end_inset
 
 .
+
+\change_deleted -712698321 1673886383
  
+\change_inserted 564990737 1672161542
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \change_inserted 564990737 1672161542
 The package 
@@ -20307,7 +20513,15 @@ The package
 includernw
 \family default
  also has to be installed.
- It cannot be used if the modules 
+ 
+\change_inserted -712698321 1673886396
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 564990737 1672161542
+It cannot be used if the modules 
 \family sans
 LilyPond
 \begin_inset space ~
@@ -20320,7 +20534,17 @@ Book
 Sweave
 \family default
  are loaded.
- See 
+
+\change_deleted -712698321 1673886383
+ 
+\change_inserted -712698321 1673886376
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672161542
+See 
 \family sans
 Help\SpecialChar menuseparator
 Specific Manuals\SpecialChar menuseparator
@@ -20475,18 +20699,76 @@ This module defines some additional theorem environments for use with the
 AMS Theorems
 \family default
  package (which must be loaded).
- It includes Criterion,
- Algorithm,
- Axiom,
- Condition,
- Note,
- Notation,
- Summary,
- Acknowledgement,
- Conclusion,
- Fact,
- Assumption,
- Case and Question in both numbered and unnumbered forms.
+ It includes 
+\family sans
+Criterion
+\family default
+,
+ 
+\family sans
+Algorithm
+\family default
+,
+ 
+\family sans
+Axiom
+\family default
+,
+ 
+\family sans
+Condition
+\family default
+,
+ 
+\family sans
+Note
+\family default
+,
+ 
+\family sans
+Notation
+\family default
+,
+ 
+\family sans
+Summary
+\family default
+,
+ 
+\change_deleted -712698321 1674897978
+
+\family sans
+Acknowledgement
+\change_inserted -712698321 1674897978
+Acknowledgment
+\change_inserted 564990737 1672224959
+
+\family default
+,
+ 
+\family sans
+Conclusion
+\family default
+,
+ 
+\family sans
+Fact
+\family default
+,
+ 
+\family sans
+Assumption
+\family default
+,
+ 
+\family sans
+Case
+\family default
+ and 
+\family sans
+Question
+\family default
+ in both numbered and unnumbered forms.
 \end_layout
 
 \begin_layout Subsection
@@ -20503,36 +20785,223 @@ This module defines some additional theorem environments for use with the
 \family sans
 AMS Theorems (Numbered by Type within Chapters)
 \family default
- package (which must be loaded).
- It includes Criterion,
- Algorithm,
- Axiom,
- Condition,
- Note,
- Notation,
- Summary,
- Acknowledgement,
- Conclusion,
- Assumption and Case in both numbered and unnumbered forms.
- Unlike the 
+ 
+\change_deleted -712698321 1674898102
+package
+\change_inserted -712698321 1674898103
+module
+\change_inserted 564990737 1672224959
+ (which must be loaded).
+ It includes 
+\family sans
+Criterion
+\family default
+,
+ 
+\family sans
+Algorithm
+\family default
+,
+ 
+\family sans
+Axiom
+\family default
+,
+ 
+\family sans
+Condition
+\family default
+,
+ 
+\family sans
+Note
+\family default
+,
+ 
+\family sans
+Notation
+\family default
+,
+ 
+\family sans
+Summary
+\family default
+,
+ 
+\family sans
+Acknowledg
+\change_deleted -712698321 1674898178
+e
+\change_inserted 564990737 1672224959
+ment
+\family default
+,
+ 
+\family sans
+Conclusion
+\family default
+,
+ 
+\family sans
+Assumption
+\family default
+ and 
+\family sans
+Case
+\family default
+ in both numbered and unnumbered forms.
+ 
+\change_inserted -712698321 1674898226
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+Unlike the 
 \family sans
 AMS Theorems (Extended)
 \family default
  module,
  the different theorem types provided here each have a separate counter,
  restarted with each new chapter (e.g.,
- criterion 1.1,
- criterion 1.2,
- axiom 1.1,
- assumption 1.1,
- criterion 2.1,
- criterion 2.2,
- axiom 2.1\SpecialChar ldots
+ 
+\change_deleted -712698321 1674898319
+
+\emph on
+c
+\change_inserted -712698321 1674898319
+C
+\change_inserted 564990737 1672224959
+riterion 1.1
+\emph default
 ,
- as opposed to criterion 1,
- criterion 2,
- axiom 3,
- assumption 4...).
+ 
+\change_deleted -712698321 1674898320
+
+\emph on
+c
+\change_inserted -712698321 1674898321
+C
+\change_inserted 564990737 1672224959
+riterion 1.2
+\emph default
+,
+ 
+\change_deleted -712698321 1674898322
+
+\emph on
+a
+\change_inserted -712698321 1674898322
+A
+\change_inserted 564990737 1672224959
+xiom 1.1
+\emph default
+,
+ 
+\change_deleted -712698321 1674898325
+
+\emph on
+a
+\change_inserted -712698321 1674898325
+A
+\change_inserted 564990737 1672224959
+ssumption 1.1
+\emph default
+,
+ 
+\change_deleted -712698321 1674898327
+
+\emph on
+c
+\change_inserted -712698321 1674898327
+C
+\change_inserted 564990737 1672224959
+riterion 2.1
+\emph default
+,
+ 
+\change_deleted -712698321 1674898329
+
+\emph on
+c
+\change_inserted -712698321 1674898329
+C
+\change_inserted 564990737 1672224959
+riterion 2.2
+\emph default
+,
+
+\emph on
+ 
+\change_deleted -712698321 1674898339
+a
+\change_inserted -712698321 1674898339
+A
+\change_inserted 564990737 1672224959
+xiom 2.1
+\change_inserted -712698321 1674898336
+
+\emph default
+,
+ 
+\change_inserted 564990737 1672224959
+\SpecialChar ldots
+,
+ as opposed to 
+\change_deleted -712698321 1674898342
+c
+\change_inserted -712698321 1674898342
+
+\emph on
+C
+\change_inserted 564990737 1672224959
+riterion 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674898344
+c
+\change_inserted -712698321 1674898344
+
+\emph on
+C
+\change_inserted 564990737 1672224959
+riterion 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674898346
+a
+\change_inserted -712698321 1674898347
+
+\emph on
+A
+\change_inserted 564990737 1672224959
+xiom 3
+\emph default
+,
+ 
+\change_deleted -712698321 1674898348
+a
+\change_inserted -712698321 1674898348
+
+\emph on
+A
+\change_inserted 564990737 1672224959
+ssumption 4
+\change_inserted -712698321 1674898350
+
+\emph default
+,
+ 
+\change_deleted -712698321 1674898352
+...
+\change_inserted -712698321 1674898353
+\SpecialChar ldots
+
+\change_inserted 564990737 1672224959
+).
 \end_layout
 
 \begin_layout Subsection
@@ -20550,33 +21019,179 @@ This module defines some additional theorem environments for use with the
 AMS Theorems (Numbered by Type)
 \family default
  package (which must be loaded).
- It includes Criterion,
- Algorithm,
- Axiom,
- Condition,
- Note,
- Notation,
- Summary,
- Acknowledgement,
- Conclusion,
- Assumption and Case in both numbered and unnumbered forms.
- Unlike the 
+ It includes 
+\family sans
+Criterion
+\family default
+,
+ 
+\family sans
+Algorithm
+\family default
+,
+ 
+\family sans
+Axiom
+\family default
+,
+ 
+\family sans
+Condition
+\family default
+,
+ 
+\family sans
+Note
+\family default
+,
+ 
+\family sans
+Notation
+\family default
+,
+ 
+\family sans
+Summary
+\family default
+,
+ 
+\family sans
+Acknowledg
+\change_deleted -712698321 1674898457
+e
+\change_inserted 564990737 1672224959
+ment
+\family default
+,
+ 
+\family sans
+Conclusion
+\family default
+,
+ 
+\family sans
+Assumption
+\family default
+ and 
+\family sans
+Case
+\family default
+ in both numbered and unnumbered forms.
+ 
+\change_inserted -712698321 1674898455
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+Unlike the 
 \family sans
 AMS Theorems (Extended)
 \family default
  module,
  the different theorem types provided here each have a separate counter (e.g.,
- criterion 1,
- criterion 2,
- axiom 1,
- assumption 1,
- criterion 3,
+ 
+\change_deleted -712698321 1674898821
+c
+\change_inserted -712698321 1674898821
+
+\emph on
+C
+\change_inserted 564990737 1672224959
+riterion 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674898823
+c
+\change_inserted -712698321 1674898823
+
+\emph on
+C
+\change_inserted 564990737 1672224959
+riterion 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674898825
+a
+\change_inserted -712698321 1674898825
+
+\emph on
+A
+\change_inserted 564990737 1672224959
+xiom 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674898827
+a
+\change_inserted -712698321 1674898827
+
+\emph on
+A
+\change_inserted 564990737 1672224959
+ssumption 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674898830
+c
+\change_inserted -712698321 1674898830
+
+\emph on
+C
+\change_inserted 564990737 1672224959
+riterion 3
+\emph default
+,
  \SpecialChar ldots
 ,
- as opposed to criterion 1,
- criterion 2,
- axiom 3,
- assumption 4,
+ as opposed to 
+\change_deleted -712698321 1674898832
+c
+\change_inserted -712698321 1674898832
+
+\emph on
+C
+\change_inserted 564990737 1672224959
+riterion 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674898834
+c
+\change_inserted -712698321 1674898834
+
+\emph on
+C
+\change_inserted 564990737 1672224959
+riterion 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674898836
+a
+\change_inserted -712698321 1674898836
+
+\emph on
+A
+\change_inserted 564990737 1672224959
+xiom 3
+\emph default
+,
+ 
+\change_deleted -712698321 1674898838
+a
+\change_inserted -712698321 1674898838
+
+\emph on
+A
+\change_inserted 564990737 1672224959
+ssumption 4
+\emph default
+,
  \SpecialChar ldots
 ).
 \end_layout
@@ -20592,31 +21207,167 @@ AMS Theorems (Numbered by Type within Chapters)
 \change_inserted 564990737 1672224959
 This module defines theorem environments and the proof environment using the extended AMS machinery.
  Both numbered and unnumbered types are provided.
- Unlike the 
+ 
+\change_inserted -712698321 1674901718
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+Unlike the 
 \family sans
 AMS Theorems
 \family default
  module,
  the different theorem types provided here each have a separate counter (e.g.,
- theorem 1.1,
- theorem 1.2,
- lemma 1.1,
- proposition 1.1,
- theorem 1.3,
- lemma 1.2,
+ 
+\change_deleted -712698321 1674901843
+t
+\change_inserted -712698321 1674901843
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1.1
+\emph default
+,
+ 
+\change_deleted -712698321 1674901845
+t
+\change_inserted -712698321 1674901845
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1.2
+\emph default
+,
+ 
+\change_deleted -712698321 1674901847
+
+\emph on
+l
+\change_inserted -712698321 1674901847
+L
+\change_inserted 564990737 1672224959
+emma 1.1
+\emph default
+,
+ 
+\change_inserted -712698321 1674901849
+
+\emph on
+P
+\change_deleted -712698321 1674901849
+p
+\change_inserted 564990737 1672224959
+roposition 1.1
+\emph default
+,
+ 
+\change_inserted -712698321 1674901852
+
+\emph on
+T
+\change_deleted -712698321 1674901852
+t
+\change_inserted 564990737 1672224959
+heorem 1.3
+\emph default
+,
+ 
+\change_inserted -712698321 1674901854
+
+\emph on
+L
+\change_deleted -712698321 1674901854
+l
+\change_inserted 564990737 1672224959
+emma 1.2
+\emph default
+,
  \SpecialChar ldots
 ,
- as opposed to theorem 1,
- theorem 2,
- lemma 3,
- proposition 4,
+ as opposed to 
+\change_deleted -712698321 1674901859
+t
+\change_inserted -712698321 1674901859
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674901861
+t
+\change_inserted -712698321 1674901861
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674901863
+l
+\change_inserted -712698321 1674901863
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 3
+\emph default
+,
+ 
+\change_deleted -712698321 1674901868
+p
+\change_inserted -712698321 1674901868
+
+\emph on
+P
+\change_inserted 564990737 1672224959
+roposition 4
+\emph default
+,
  \SpecialChar ldots
 ).
  The numbering restarts for each chapter:
- theorem 1.1,
- theorem 2.1,
+ 
+\change_deleted -712698321 1674901871
+t
+\change_inserted -712698321 1674901871
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1.1
+\emph default
+,
+ 
+\change_deleted -712698321 1674901873
+t
+\change_inserted -712698321 1674901873
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2.1
+\emph default
+,
  \SpecialChar ldots
- It cannot be used if the modules 
+ 
+\change_inserted -712698321 1674901725
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+It cannot be used if the modules 
 \family sans
 AMS Theorems
 \family default
@@ -20654,25 +21405,133 @@ AMS Theorems
 \family default
  module,
  the different theorem types provided here each have a separate counter (e.g.,
- theorem 1,
- theorem 2,
- lemma 1,
- proposition 1,
- theorem 3,
- lemma 2,
+ 
+\change_deleted -712698321 1674902051
+t
+\change_inserted -712698321 1674902051
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674902053
+t
+\change_inserted -712698321 1674902053
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674902055
+l
+\change_inserted -712698321 1674902055
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 1
+\emph default
+,
+ 
+\change_inserted -712698321 1674902058
+
+\emph on
+P
+\change_deleted -712698321 1674902058
+p
+\change_inserted 564990737 1672224959
+roposition 1
+\emph default
+,
+ 
+\change_inserted -712698321 1674902061
+
+\emph on
+T
+\change_deleted -712698321 1674902060
+t
+\change_inserted 564990737 1672224959
+heorem 3
+\emph default
+,
+ 
+\change_deleted -712698321 1674902063
+l
+\change_inserted -712698321 1674902063
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 2
+\emph default
+,
  \SpecialChar ldots
 ,
- as opposed to theorem 1,
- theorem 2,
- lemma 3,
- proposition 4,
+ as opposed to 
+\change_deleted -712698321 1674902066
+t
+\change_inserted -712698321 1674902067
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674902069
+t
+\change_inserted -712698321 1674902069
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674902071
+l
+\change_inserted -712698321 1674902071
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 3
+\emph default
+,
+ 
+\change_deleted -712698321 1674902075
+p
+\change_inserted -712698321 1674902075
+
+\emph on
+P
+\change_inserted 564990737 1672224959
+roposition 4
+\emph default
+,
  \SpecialChar ldots
 ).
  The numbering’s scope is the whole document.
  For chapter- and section-wide numbering,
  use one of the ‘within Sections’/‘within Chapters’ modules,
  respectively.
- It cannot be used if the modules 
+ 
+\change_inserted -712698321 1674902047
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+It cannot be used if the modules 
 \family sans
 AMS Theorems
 \family default
@@ -20703,7 +21562,19 @@ Number Equations by Section
 
 \change_inserted 564990737 1672224959
 This module resets the equation number at section start and prepends the section number to the equation number,
- as in “(2.1).” 
+ as in 
+\change_deleted -712698321 1674902160
+“
+\change_inserted 564990737 1672224959
+
+\emph on
+(2.1)
+\emph default
+.
+\change_deleted -712698321 1674902162
+”
+\change_inserted 564990737 1672224959
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -20724,7 +21595,15 @@ Standard Theorems (Numbered by \SpecialChar ldots
 )
 \family default
  modules.
- It cannot be used if the modules 
+ 
+\change_inserted -712698321 1674902414
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+It cannot be used if the modules 
 \family sans
 AMS Theorems
 \family default
@@ -20746,7 +21625,24 @@ Standard Theorems (Nameable)
 
 \change_inserted 564990737 1672224959
 This module facilitates the use of named theorems.
- The name of the theorem goes into the “Additional Theorem Text” argument.
+ The name of the theorem 
+\change_deleted -712698321 1674902805
+goes into the
+\change_inserted -712698321 1674902825
+can be inserted via 
+\family sans
+Insert\SpecialChar menuseparator
+
+\change_deleted -712698321 1674902827
+ “
+\change_inserted 564990737 1672224959
+Additional Theorem Text
+\change_deleted -712698321 1674902831
+
+\family default
+” argument
+\change_inserted 564990737 1672224959
+.
  
 \end_layout
 
@@ -20762,7 +21658,15 @@ Standard Theorems (Numbered by Chapter)
 This module numbers theorems and the like by chapter (i.e.,
  the counter is reset at each chapter start).
  Use this module only with document classes that provide a chapter environment.
- One of the modules 
+ 
+\change_inserted -712698321 1674903079
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+One of the modules 
 \family sans
 AMS Theorems
 \family default
@@ -20771,7 +21675,15 @@ AMS Theorems
 Standard Theorems
 \family default
  must be loaded.
- It cannot be used if the module
+ 
+\change_inserted -712698321 1674903082
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+It cannot be used if the module
 \family sans
  Standard Theorems (Numbered by Section)
 \family default
@@ -20825,22 +21737,130 @@ Standard Theorems
 \family default
  modules,
  the different theorem types provided here each have a separate counter (e.g.,
- theorem 1,
- theorem 2,
- lemma 1,
- proposition 1,
- theorem 3,
- lemma 2,
+ 
+\change_deleted -712698321 1674903338
+t
+\change_inserted -712698321 1674903338
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674903340
+t
+\change_inserted -712698321 1674903340
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674903343
+l
+\change_inserted -712698321 1674903343
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674903346
+p
+\change_inserted -712698321 1674903346
+
+\emph on
+P
+\change_inserted 564990737 1672224959
+roposition 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674903348
+t
+\change_inserted -712698321 1674903348
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 3
+\emph default
+,
+ 
+\change_deleted -712698321 1674903351
+l
+\change_inserted -712698321 1674903351
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 2
+\emph default
+,
  \SpecialChar ldots
 ,
- as opposed to theorem 1,
- theorem 2,
- lemma 3,
- proposition 4,
+ as opposed to 
+\change_deleted -712698321 1674903354
+t
+\change_inserted -712698321 1674903354
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674903356
+t
+\change_inserted -712698321 1674903356
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674903359
+l
+\change_inserted -712698321 1674903359
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 3
+\emph default
+,
+ 
+\change_deleted -712698321 1674903361
+p
+\change_inserted -712698321 1674903361
+
+\emph on
+P
+\change_inserted 564990737 1672224959
+roposition 4
+\emph default
+,
  \SpecialChar ldots
 ).
  The numbering is reset at each chapter start.
- One of the modules 
+ 
+\change_inserted -712698321 1674902715
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+One of the modules 
 \family sans
 AMS Theorems (Numbered by Type)
 \family default
@@ -20849,7 +21869,15 @@ AMS Theorems (Numbered by Type)
 Standard Theorems (Numbered by Type)
 \family default
  must be loaded.
- It cannot be used if any of the modules
+ 
+\change_inserted -712698321 1674902717
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+It cannot be used if any of the modules
 \family sans
  AMS Theorems
 \family default
@@ -20895,22 +21923,130 @@ Standard Theorems
 \family default
  modules,
  the different theorem types provided here each have a separate counter (e.g.,
- theorem 1,
- theorem 2,
- lemma 1,
- proposition 1,
- theorem 3,
- lemma 2,
+ 
+\change_deleted -712698321 1674902520
+t
+\change_inserted -712698321 1674902520
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674902522
+t
+\change_inserted -712698321 1674902522
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674902527
+l
+\change_inserted -712698321 1674902527
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 1
+\emph default
+,
+ 
+\change_inserted -712698321 1674902529
+
+\emph on
+P
+\change_deleted -712698321 1674902529
+p
+\change_inserted 564990737 1672224959
+roposition 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674902532
+t
+\change_inserted -712698321 1674902532
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 3
+\emph default
+,
+ 
+\change_inserted -712698321 1674902535
+
+\emph on
+L
+\change_deleted -712698321 1674902534
+l
+\change_inserted 564990737 1672224959
+emma 2
+\emph default
+,
  \SpecialChar ldots
 ,
- as opposed to theorem 1,
- theorem 2,
- lemma 3,
- proposition 4,
+ as opposed to 
+\change_deleted -712698321 1674902538
+t
+\change_inserted -712698321 1674902538
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674902540
+t
+\change_inserted -712698321 1674902540
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674902543
+l
+\change_inserted -712698321 1674902543
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 3
+\emph default
+,
+ 
+\change_inserted -712698321 1674902545
+
+\emph on
+P
+\change_deleted -712698321 1674902545
+p
+\change_inserted 564990737 1672224959
+roposition 4
+\emph default
+,
  \SpecialChar ldots
 ).
  The numbering is reset at each section start.
- One of the modules 
+ 
+\change_inserted -712698321 1674902574
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+One of the modules 
 \family sans
 AMS Theorems (Numbered by Type)
 \family default
@@ -20919,7 +22055,15 @@ AMS Theorems (Numbered by Type)
 Standard Theorems (Numbered by Type)
 \family default
  must be loaded.
- It cannot be used if any of the modules
+ 
+\change_inserted -712698321 1674902609
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+It cannot be used if any of the modules
 \family sans
  AMS Theorems
 \family default
@@ -20965,25 +22109,133 @@ Standard Theorems
 \family default
  modules,
  the different theorem types provided here each have a separate counter (e.g.,
- theorem 1,
- theorem 2,
- lemma 1,
- proposition 1,
- theorem 3,
- lemma 2,
+ 
+\change_deleted -712698321 1674903220
+t
+\change_inserted -712698321 1674903220
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674903221
+t
+\change_inserted -712698321 1674903221
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674903225
+l
+\change_inserted -712698321 1674903226
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 1
+\emph default
+,
+ 
+\change_inserted -712698321 1674903228
+
+\emph on
+P
+\change_deleted -712698321 1674903228
+p
+\change_inserted 564990737 1672224959
+roposition 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674903231
+t
+\change_inserted -712698321 1674903232
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 3
+\emph default
+,
+ 
+\change_inserted -712698321 1674903261
+
+\emph on
+L
+\change_deleted -712698321 1674903233
+l
+\change_inserted 564990737 1672224959
+emma 2
+\emph default
+,
  \SpecialChar ldots
 ,
- as opposed to theorem 1,
- theorem 2,
- lemma 3,
- proposition 4,
+ as opposed to 
+\change_deleted -712698321 1674903237
+t
+\change_inserted -712698321 1674903237
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 1
+\emph default
+,
+ 
+\change_deleted -712698321 1674903240
+t
+\change_inserted -712698321 1674903240
+
+\emph on
+T
+\change_inserted 564990737 1672224959
+heorem 2
+\emph default
+,
+ 
+\change_deleted -712698321 1674903242
+l
+\change_inserted -712698321 1674903242
+
+\emph on
+L
+\change_inserted 564990737 1672224959
+emma 3
+\emph default
+,
+ 
+\change_deleted -712698321 1674903246
+p
+\change_inserted -712698321 1674903246
+
+\emph on
+P
+\change_inserted 564990737 1672224959
+roposition 4
+\emph default
+,
  \SpecialChar ldots
 ).
  The numbering’s scope is the whole document.
  For chapter- and section-wide numbering,
  use one of the “within Chapters”/“within Sections” modules,
  respectively.
- It cannot be used if any of the modules
+ 
+\change_inserted -712698321 1674903280
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672224959
+It cannot be used if any of the modules
 \family sans
  AMS Theorems
 \family default
@@ -21160,7 +22412,9 @@ Fancy Headers and Footers
 
 \change_inserted 564990737 1672236008
 The default page layout is rather plain;
- for an 
+ for an
+\change_deleted -712698321 1674910295
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -21174,11 +22428,43 @@ article
 
 \end_inset
 
- document class,
+
+\change_inserted 564990737 1672236008
+ 
+\change_inserted -712698321 1674910328
+
+\family sans
+Article (Standard Class)
+\family default
+ 
+\change_inserted 564990737 1672236008
+document class,
  all you get is a centered page number at the bottom of the page.
- This document uses KOMA-script’s book class;
+ This document uses
+\change_inserted -712698321 1674910381
+ the
+\change_inserted 564990737 1672236008
+ 
+\change_deleted -712698321 1674910376
+KOMA-script’s book
+\change_inserted -712698321 1674910376
+
+\family sans
+KOMA-Script Book
+\change_inserted 564990737 1672236008
+
+\family default
+ class;
  so it appears to be a bit fancier.
- Once the 
+ 
+\change_inserted -712698321 1674910455
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672236008
+Once the 
 \family sans
 Page
 \begin_inset space ~
@@ -21243,28 +22529,28 @@ right
  The footer is also divided into these three fields.
  The \SpecialChar LaTeX
  commands to set these fields in the simplest manner are 
-\family sans
+\family typewriter
 
 \backslash
 lhead
 \family default
 ,
  
-\family sans
+\family typewriter
 
 \backslash
 chead
 \family default
 ,
  
-\family sans
+\family typewriter
 
 \backslash
 rhead
 \family default
 ,
  
-\family sans
+\family typewriter
 
 \backslash
 lfoot
@@ -21276,22 +22562,13 @@ lfoot
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \change_inserted 564990737 1672236008
 
-\family sans
-
 \backslash
-lhead
-\family default
-\series bold
-{
-\series default
-John Q.
- DocWriter
-\series bold
-}
+lhead{John Q.
+ DocWriter}
 \end_layout
 
 \begin_layout Standard
@@ -21306,11 +22583,9 @@ You will now see your name in the upper left.
 g.:
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \change_inserted 564990737 1672236008
-
-\family sans
 
 \backslash
 cfoot{}
@@ -21378,93 +22653,99 @@ Page 4) in the upper right,
 
 \begin_layout Standard
 
-\change_inserted 564990737 1672236008
+\change_deleted -712698321 1674910975
 \begin_inset VSpace defskip
 \end_inset
 
 
+\change_inserted 564990737 1672236008
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \change_inserted 564990737 1672236008
 
-\color green
+\family sans
 Left
 \begin_inset space ~
 \end_inset
 
 header:
 
+\family default
 \series bold
-\color inherit
  
+\family roman
 \series default
 Section
 \family typewriter
  
-\family sans
+\family default
 
 \backslash
 thesection
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \change_inserted 564990737 1672236008
 
-\color green
+\family sans
 Center header:
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \change_inserted 564990737 1672236008
 
-\color green
+\family sans
 Right header:
 
-\color inherit
- Page
+\family default
+ 
+\family roman
+Page
 \family typewriter
  
-\family sans
+\family default
 
 \backslash
 thepage
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \change_inserted 564990737 1672236008
 
-\color green
+\family sans
 Left footer:
 
-\color inherit
- John Q.
+\family default
+ 
+\family roman
+John Q.
  DocWriter
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \change_inserted 564990737 1672236008
 
-\color green
+\family sans
 Center footer:
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \change_inserted 564990737 1672236008
 
-\color green
+\family sans
 Right footer:
 
+\family default
 \series bold
-\color inherit
  
-\family sans
 \series default
 
 \backslash
@@ -21473,10 +22754,12 @@ today
 
 \begin_layout Standard
 
-\change_inserted 564990737 1672236008
+\change_deleted -712698321 1674910976
 \begin_inset VSpace defskip
 \end_inset
 
+
+\change_inserted 564990737 1672236008
 
 \end_layout
 
@@ -21484,20 +22767,20 @@ today
 
 \change_inserted 564990737 1672236008
 Make sure you enter the commands 
-\family sans
+\family typewriter
 
 \backslash
 thesection
 \family default
 ,
  
-\family sans
+\family typewriter
 
 \backslash
 thepage
 \family default
  and 
-\family sans
+\family typewriter
 
 \backslash
 today
@@ -21509,14 +22792,14 @@ today
 
 \series default
  The commands 
-\family sans
+\family typewriter
 
 \backslash
 thesection
 \family default
- and 
-\family sans
-
+ and
+\family typewriter
+ 
 \backslash
 thepage
 \family default
@@ -21524,7 +22807,7 @@ thepage
 ’s section and page counters,
  and so print out the current section and page numbers.
  
-\family sans
+\family typewriter
 
 \backslash
 today
@@ -21548,7 +22831,7 @@ The thicknesses of the horizontal rules drawn beneath the header and above the f
 
 \change_inserted 564990737 1672236008
 
-\family sans
+\family typewriter
 
 \backslash
 renewcommand{
@@ -21562,7 +22845,7 @@ headrulewidth}{0.4pt}
 
 \change_inserted 564990737 1672236008
 
-\family sans
+\family typewriter
 
 \backslash
 renewcommand{
@@ -21577,21 +22860,21 @@ footrulewidth}{0.4pt}
 \change_inserted 564990737 1672236008
 You can switch the header/footer settings on and off for individual pages using \SpecialChar TeX
  Code commands like 
-\family sans
+\family typewriter
 
 \backslash
 thispagestyle{empty}
 \family default
 ,
  
-\family sans
+\family typewriter
 
 \backslash
 thispagestyle{plain}
 \family default
 ,
  and 
-\family sans
+\family typewriter
 
 \backslash
 thispagestyle{fancy}
@@ -21612,9 +22895,9 @@ If you want a header or footer to be on the outer side of a two sided document,
  you need to use something like:
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
-\change_inserted 564990737 1672236008
+\change_deleted -712698321 1674911361
 
 \family sans
 \begin_inset Flex Strong
@@ -21636,11 +22919,19 @@ fancyfoot{}
 \end_inset
 
 
+\change_inserted -712698321 1674911361
+
+\family default
+
+\backslash
+fancyfoot{}
+\change_unchanged
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
-\change_inserted 564990737 1672236008
+\change_deleted -712698321 1674911364
 
 \family sans
 \begin_inset Flex Strong
@@ -21663,6 +22954,16 @@ thepage}
 
 \end_inset
 
+
+\change_inserted -712698321 1674911364
+
+\family default
+
+\backslash
+fancyfoot[LE,RO]{
+\backslash
+thepage}
+\change_unchanged
 
 \end_layout
 
@@ -21689,33 +22990,55 @@ As a final example,
  it is possible to include an image in the header or footer.
  Suppose you want to put a company logo in the upper left hand corner.
  You might try something like
-\end_layout
-
-\begin_layout Standard
-
+\change_inserted -712698321 1674911745
+ this in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+LaTeX Preamble
+\family default
+:
 \change_inserted 564990737 1672236008
 
-\family sans
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 564990737 1672236008
 
 \backslash
 lhead{
 \backslash
 resizebox{1in}{!}{
 \backslash
-includegraphics{logo.eps}}}
+includegraphics{logo.
+\change_deleted -712698321 1674911807
+eps
+\change_inserted -712698321 1674911807
+png
+\change_inserted 564990737 1672236008
+}}}
 \end_layout
 
 \begin_layout Standard
 \noindent
 
+\change_deleted -712698321 1674911836
+(y
+\change_inserted -712698321 1674911837
+Y
 \change_inserted 564990737 1672236008
-(you may need to preface this with 
-\family sans
+ou may need to preface this with 
+\family typewriter
 
 \backslash
 usepackage{graphics}
 \family default
- if you don't include graphics elsewhere in your document).
+ if you don't include graphics elsewhere in your document
+\change_deleted -712698321 1674911839
+)
+\change_inserted 564990737 1672236008
+.
 \end_layout
 
 \begin_layout Standard
@@ -21954,10 +23277,20 @@ Basics
 \end_layout
 
 \begin_layout Standard
-If you want to have 2
+If you want to have 
+\change_deleted -712698321 1674912320
+2
+\change_inserted -712698321 1674912321
+two
+\change_deleted -712698321 1674912322
+
 \begin_inset space ~
 \end_inset
 
+
+\change_inserted -712698321 1674912322
+ 
+\change_unchanged
 columns in your text,
  insert a multicolumn inset via the menu 
 \family sans
@@ -22001,7 +23334,9 @@ The Adventure of the Empty House
 \begin_inset Newline newline
 \end_inset
 
-by Sir Arthur Conan Doyle
+by 
+\noun on
+Sir Arthur Conan Doyle
 \end_layout
 
 \begin_layout Plain Layout
@@ -22438,10 +23773,16 @@ A minute examination of the circumstances served only to make the case more comp
 \end_layout
 
 \begin_layout Standard
-If there is less vertical space than 6
+If there is less vertical space than 
+\change_deleted -712698321 1674913194
+6
 \begin_inset space ~
 \end_inset
 
+
+\change_inserted -712698321 1674913195
+six 
+\change_unchanged
 text lines is left on the page at the beginning of the multiple columns,
  a page break will be inserted before the multiple columns.
  Depending on the number of lines of the preface text,
@@ -23547,10 +24888,21 @@ Predefined shapes
 
 \begin_layout Standard
 
+\change_inserted -712698321 1674913874
+
 \series bold
-shapepar
+The 
+\change_unchanged
+
+\family sans
 \series default
- provides the following shapes:
+shapepar
+\family default
+ 
+\change_inserted -712698321 1674913877
+package 
+\change_unchanged
+provides the following shapes:
 \end_layout
 
 \begin_layout Standard
@@ -24186,9 +25538,17 @@ CDlabel
 .
  It cannot be scaled because it must fit the size of a CD/DVD.
  Therefore the amount of text that fits into the shape is limited.
+\change_deleted -712698321 1674914001
+
 \begin_inset Newline newline
 \end_inset
 
+
+\change_inserted -712698321 1674914001
+
+\end_layout
+
+\begin_layout Standard
 The 
 \family sans
 drop
@@ -24215,9 +25575,13 @@ Arithmetic overflow
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674914021
 \begin_inset VSpace bigskip
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -24238,9 +25602,13 @@ arg   "specialchar-insert hyphenation"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674914022
 \begin_inset VSpace bigskip
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -24526,9 +25894,13 @@ Jpgfdraw
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674914114
 \begin_inset VSpace bigskip
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -24706,12 +26078,22 @@ Text Markup
 
 \change_inserted 564990737 1672312011
 Hyphenatable Text Markup
+\change_inserted -712698321 1674915075
+ (Soul)
+\change_inserted 564990737 1672312011
+
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 564990737 1672312011
-This package defines text styles to highlight,
+This 
+\change_deleted -712698321 1674915086
+package
+\change_inserted -712698321 1674915087
+modul
+\change_inserted 564990737 1672312011
+ defines text styles to highlight,
  space-out,
  strike-through,
  underline and capitalize/small-cap text by means of the 
@@ -24719,7 +26101,15 @@ This package defines text styles to highlight,
 soul
 \family default
  package.
- As opposed to the markup provided by the Text Properties dialog,
+ 
+\change_inserted -712698321 1674915141
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 564990737 1672312011
+As opposed to the markup provided by the Text Properties dialog,
  words marked-up with 
 \family sans
 soul
@@ -25014,6 +26404,8 @@ biblatex
 The handling of these packages in \SpecialChar LyX
  is basically the same.
  Go to 
+\change_deleted -712698321 1674917685
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25024,7 +26416,18 @@ Settings
 
 \end_inset
 
+
+\change_inserted -712698321 1674917685
+
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\change_unchanged
+
+\family default
  and select under 
+\change_deleted -712698321 1674917692
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25034,7 +26437,17 @@ Bibliography
 
 \end_inset
 
+
+\change_inserted -712698321 1674917692
+
+\family sans
+Bibliography
+\change_unchanged
+
+\family default
  the 
+\change_deleted -712698321 1674917696
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25044,7 +26457,17 @@ Style Format
 
 \end_inset
 
+
+\change_inserted -712698321 1674917696
+
+\family sans
+Style Format
+\change_unchanged
+
+\family default
  
+\change_deleted -712698321 1674917703
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25054,8 +26477,18 @@ Basic (BibTeX)
 
 \end_inset
 
+
+\change_inserted -712698321 1674917703
+
+\family sans
+Basic (BibTeX)
+\change_unchanged
+
+\family default
 ,
  
+\change_deleted -712698321 1674917708
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25065,8 +26498,18 @@ Biblatex
 
 \end_inset
 
+
+\change_inserted -712698321 1674917708
+
+\family sans
+Biblatex
+\change_unchanged
+
+\family default
 ,
  
+\change_deleted -712698321 1674917712
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25076,8 +26519,18 @@ Biblatex (Natbib mode)
 
 \end_inset
 
+
+\change_inserted -712698321 1674917712
+
+\family sans
+Biblatex (Natbib mode)
+\change_unchanged
+
+\family default
 ,
  
+\change_deleted -712698321 1674917718
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25087,7 +26540,17 @@ Natbib (BibTeX)
 
 \end_inset
 
+
+\change_inserted -712698321 1674917718
+
+\family sans
+Natbib (BibTeX)
+\change_unchanged
+
+\family default
  or 
+\change_deleted -712698321 1674917724
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25097,6 +26560,14 @@ Jurabib (BibTeX)
 
 \end_inset
 
+
+\change_inserted -712698321 1674917724
+
+\family sans
+Jurabib (BibTeX)
+\change_unchanged
+
+\family default
  (see sec.
 \begin_inset space ~
 \end_inset
@@ -25290,6 +26761,8 @@ scientific.bib
 
 \begin_layout Standard
 Go to 
+\change_deleted -712698321 1674917736
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25300,7 +26773,18 @@ Settings
 
 \end_inset
 
+
+\change_inserted -712698321 1674917736
+
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\change_unchanged
+
+\family default
  and check under 
+\change_deleted -712698321 1674917752
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25310,16 +26794,36 @@ Bibliography
 
 \end_inset
 
+
+\change_inserted -712698321 1674917752
+
+\family sans
+Bibliography
+\change_unchanged
+
+\family default
  the option 
+\change_deleted -712698321 1674917741
+
+\family sans
+
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
+
+\family sans
 Subdivided bibliography
 \end_layout
 
 \end_inset
 
+
+\change_inserted -712698321 1674917741
+Subdivided bibliography
+\change_unchanged
+
+\family default
 .
  Now you can insert multiple Bib\SpecialChar TeX
  bibliographies,
@@ -25589,6 +27093,8 @@ a bibliography for each part,
 .
  In order to enable it,
  go to 
+\change_deleted -712698321 1674917759
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -25600,6 +27106,16 @@ Bibliography
 
 \end_inset
 
+
+\change_inserted -712698321 1674917759
+
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography
+\change_unchanged
+
+\family default
  and select the relevant unit (e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -26069,6 +27585,8 @@ How it looks
 
 \begin_layout Standard
 Open the dialog by selecting the 
+\change_deleted -712698321 1674916009
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -26079,6 +27597,15 @@ Settings
 
 \end_inset
 
+
+\change_inserted -712698321 1674916009
+
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\change_unchanged
+
+\family default
  menu item and then select the 
 \begin_inset Flex Noun
 status collapsed
@@ -26096,14 +27623,40 @@ Bullets
 The dialog provides you with a table of bullet shapes.
  A column of buttons on the left of the table provides access to the six different panels of bullet shapes.
  The row of buttons across the top is used to select which bullet depth you are changing.
+\change_inserted -712698321 1674916033
 
-\change_deleted 244031559 1603875981
- A text entry under the table shows the currently selected bullet shape's \SpecialChar LaTeX
- equivalent and this can be edited if desired.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1674916177
+If you select 
+\family sans
+Custom bullet
+\family default
+,
+ 
+\change_deleted -712698321 1674916065
+ A
+\change_inserted -712698321 1674916067
+a
+\change_unchanged
+ text entry under the table 
+\change_inserted -712698321 1674916074
+will be activated 
+\change_deleted -712698321 1674916096
+shows the currently selected
+\change_inserted -712698321 1674916101
+in which you can enter a
+\change_unchanged
+ bullet shape's \SpecialChar LaTeX
+ equivalent
+\change_deleted -712698321 1674916109
+ and this can be edited if desired
+\change_unchanged
+.
  If you do modify the text you will also need to specify any needed packages in the \SpecialChar LaTeX
  preamble.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -26412,6 +27965,16 @@ status collapsed
 \end_layout
 
 \begin_layout Section
+
+\change_inserted -712698321 1674916414
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:How-to-use"
+
+\end_inset
+
+
+\change_unchanged
 How to use it
 \end_layout
 
@@ -26424,12 +27987,14 @@ Select which bullet depth you want to change then select the bullet shape and si
 
 \begin_layout Standard
 You can reset a bullet shape to the default simply by clicking your right mouse button on the appropriate bullet depth button.
+\change_deleted -712698321 1674916288
+
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 564990737 1672138075
+\change_deleted -712698321 1674916287
 \begin_inset CommandInset label
 LatexCommand label
 name "fn:If-you-really"
@@ -26663,6 +28228,278 @@ savelabelitemi}
 \end_inset
 
 
+\change_inserted -712698321 1674916331
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fn:If-you-really"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1674916288
+If you 
+\emph on
+really
+\emph default
+ want to have multiple sets of paragraphs with different sets of bullets in each,
+ then you're going to have to get your hands dirty with \SpecialChar TeX
+ code.
+ The bullet selection dialog can help though because it provides you with the \SpecialChar LaTeX
+ code for a wide range of bullet shapes.
+ To make your own custom paragraphs you have the following options:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1674916288
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1674916288
+
+
+\backslash
+let
+\backslash
+savelabelitemi=
+\backslash
+labelitemi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1674916288
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1674916288
+
+
+\backslash
+renewcommand
+\backslash
+labelitemi[0]{
+\backslash
+small
+\backslash
+(
+\backslash
+sharp
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1674916288
+Use the \SpecialChar LaTeX
+ command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1674916288
+
+\backslash
+renewcommand
+\end_layout
+
+\end_inset
+
+ to specify a new bullet shape for a given depth.
+ You'll also need to save the current bullet shape so you can restore it again afterwards.
+ In this itemized list the following \SpecialChar LaTeX
+ code was used to change the bullet used for the first depth.
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1674916288
+
+\backslash
+let
+\backslash
+savelabelitemi=
+\backslash
+labelitemi 
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1674916288
+
+\backslash
+renewcommand
+\backslash
+labelitemi[0]{
+\backslash
+small
+\backslash
+(
+\backslash
+sharp
+\backslash
+)}
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\change_inserted -712698321 1674916288
+Note that the itemize depth is specified in Roman numerals as part of the 
+\family typewriter
+
+\backslash
+labelitem
+\family default
+ command.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1674916288
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1674916288
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1674916288
+
+
+\backslash
+(
+\backslash
+star
+\backslash
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Specify each individual entry by starting each item with the bullet shape enclosed in a 
+\begin_inset Quotes eld
+\end_inset
+
+Custom Item
+\begin_inset Quotes erd
+\end_inset
+
+ inset (available at 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Item
+\family default
+) and set as 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1674916288
+\SpecialChar TeX
+ Code
+\end_layout
+
+\end_inset
+
+.
+ For example,
+ this item was started with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1674916288
+
+\backslash
+(
+\backslash
+star
+\backslash
+)
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1674916288
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1674916288
+
+
+\backslash
+renewcommand
+\backslash
+labelitemi[0]{
+\backslash
+savelabelitemi}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1674916288
+You'll also need to revert the labelitem back to its previous setting for the global bullet shape settings to remain in effect.
+ The way used here was:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1674916288
+
+\backslash
+renewcommand
+\backslash
+labelitemi[0]{
+\backslash
+savelabelitemi}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Chapter
@@ -26754,6 +28591,8 @@ end{document}
 \begin_layout Standard
 \SpecialChar LyX
  allows you to include files quite easily with 
+\change_deleted -712698321 1674917774
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -26768,6 +28607,19 @@ Document
 
 \end_inset
 
+
+\change_inserted -712698321 1674917774
+
+\family sans
+Insert\SpecialChar menuseparator
+Child
+\begin_inset space ~
+\end_inset
+
+Document
+\change_unchanged
+
+\family default
 .
  When you click on this selection a small box is inserted into the file at the current cursor location.
  Clicking on the box raises a dialog which allows you to select the file to be included,
@@ -27246,6 +29098,8 @@ zip
 's configuration process will set the script up to export a `\SpecialChar LyX
  Archive',
  and this format will then be available under 
+\change_deleted -712698321 1674917789
+
 \begin_inset Flex Code
 status collapsed
 
@@ -27256,6 +29110,15 @@ Export
 
 \end_inset
 
+
+\change_inserted -712698321 1674917789
+
+\family sans
+File\SpecialChar menuseparator
+Export
+\change_unchanged
+
+\family default
 .
 \end_layout
 
@@ -27307,7 +29170,13 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
+
+\change_deleted -712698321 1674918890
 \SpecialChar menuseparator
+
+\change_inserted -712698321 1674918890
+->
+\change_unchanged
 \SpecialChar LyX
  Archive
 \end_layout
@@ -27315,6 +29184,8 @@ status collapsed
 \end_inset
 
  converter in 
+\change_deleted -712698321 1674917814
+
 \begin_inset Flex Code
 status collapsed
 
@@ -27327,16 +29198,31 @@ Converters
 
 \end_inset
 
+
+\change_inserted -712698321 1674917814
+
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+Converters
+\change_unchanged
+
+\family default
 .
  (Make sure you add the switch after the script name,
  not before it.)
 \end_layout
 
 \begin_layout Section
+
+\change_deleted -712698321 1674910251
 Fancy Headers and Footers
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 The default page layout is rather plain;
  for an 
 \begin_inset Flex Code
@@ -27373,6 +29259,8 @@ User Guide
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 For more information on fancy headers,
  see the 
 \begin_inset Flex Code
@@ -27400,6 +29288,8 @@ https://www.ctan.org/tex-archive/help/Catalogue/entries/fancyhdr.html
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 The page header is divided into three fields,
  not surprisingly labeled 
 \begin_inset Quotes eld
@@ -27490,6 +29380,8 @@ lfoot
 
 \begin_layout Standard
 
+\change_deleted -712698321 1674910251
+
 \family typewriter
 
 \backslash
@@ -27498,6 +29390,8 @@ lhead{John Q.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 You will now see your name in the upper left.
  If a field has a default entry that you would like to get rid of (often the page number appears in the central footer) simply include a command with a blank argument,
  e.
@@ -27509,6 +29403,8 @@ g.:
 
 \begin_layout Standard
 
+\change_deleted -712698321 1674910251
+
 \family typewriter
 
 \backslash
@@ -27516,6 +29412,8 @@ cfoot{}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 Let's get really fancy:
  lets put the section number with the word 
 \begin_inset Quotes eld
@@ -27550,6 +29448,8 @@ Page 4) in the upper right,
 
 \begin_layout Standard
 
+\change_deleted -712698321 1674910251
+
 \family typewriter
 
 \backslash
@@ -27560,6 +29460,8 @@ thesection}
 
 \begin_layout Standard
 
+\change_deleted -712698321 1674910251
+
 \family typewriter
 
 \backslash
@@ -27567,6 +29469,8 @@ chead{}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 
 \family typewriter
 
@@ -27578,6 +29482,8 @@ thepage}
 
 \begin_layout Standard
 
+\change_deleted -712698321 1674910251
+
 \family typewriter
 
 \backslash
@@ -27587,6 +29493,8 @@ lfoot{John Q.
 
 \begin_layout Standard
 
+\change_deleted -712698321 1674910251
+
 \family typewriter
 
 \backslash
@@ -27594,6 +29502,8 @@ cfoot{}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 
 \family typewriter
 
@@ -27604,6 +29514,8 @@ today}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 The commands 
 \begin_inset Flex Code
 status collapsed
@@ -27647,6 +29559,8 @@ today
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 The thicknesses of the horizontal rules drawn beneath the header and above the footer can also be modified.
  If you don't want one of the rules,
  set its thickness to 0.
@@ -27688,6 +29602,8 @@ footrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 You can switch the header/footer settings on and off for individual pages using commands like 
 \begin_inset Flex Code
 status collapsed
@@ -27735,6 +29651,8 @@ thispagestyle{fancy}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 As a final example,
  it is possible to include an image in the header or footer.
  Suppose you want to put a company logo in the upper lefthand corner.
@@ -27742,6 +29660,8 @@ As a final example,
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1674910251
 
 \family typewriter
 
@@ -27755,6 +29675,8 @@ includegraphics{logo.eps}}}
 
 \begin_layout Standard
 \noindent
+
+\change_deleted -712698321 1674910251
 (you may need to preface this with 
 \begin_inset Flex Code
 status collapsed
@@ -27768,6 +29690,8 @@ usepackage{graphics}
 \end_inset
 
  if you don't include graphics elsewhere in your document).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Chapter
@@ -28350,6 +30274,8 @@ Math Images Scaling
 \end_inset
 
  parameter under 
+\change_deleted -712698321 1674917822
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -28361,6 +30287,16 @@ Formats
 
 \end_inset
 
+
+\change_inserted -712698321 1674917822
+
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Formats
+\change_unchanged
+
+\family default
 .
 \begin_inset Foot
 status collapsed
@@ -28445,6 +30381,8 @@ class='math'
 
 \begin_layout Standard
 One of these output methods must be selected under 
+\change_deleted -712698321 1674917830
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -28456,6 +30394,16 @@ Formats
 
 \end_inset
 
+
+\change_inserted -712698321 1674917830
+
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Formats
+\change_unchanged
+
+\family default
 .
  By default,
  \SpecialChar LyX
@@ -29069,6 +31017,8 @@ lyxpipe.out
 
 .
  The stem of the pipe names can be defined in the 
+\change_deleted -712698321 1674917840
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -29079,6 +31029,15 @@ Preferences
 
 \end_inset
 
+
+\change_inserted -712698321 1674917840
+
+\family sans
+Tools\SpecialChar menuseparator
+Preferences
+\change_unchanged
+
+\family default
  dialog,
  for example 
 \begin_inset Flex Code
@@ -29698,6 +31657,8 @@ arg   "buffer-toggle-output-sync"
 Synchronize with Output
 \family default
  in 
+\change_deleted -712698321 1674917848
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -29709,6 +31670,16 @@ Formats
 
 \end_inset
 
+
+\change_inserted -712698321 1674917848
+
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Formats
+\change_unchanged
+
+\family default
 .
  In such a case \SpecialChar LyX
  will automatically insert the necessary Sync\SpecialChar TeX
@@ -29729,6 +31700,8 @@ View/Update
 \begin_layout Standard
 If you need a different setting,
  you can select or input a custom macro from the drop down box just below 
+\change_deleted -712698321 1674917855
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -29741,6 +31714,17 @@ Synchronize with Output
 
 \end_inset
 
+
+\change_inserted -712698321 1674917855
+
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Output\SpecialChar menuseparator
+Synchronize with Output
+\change_unchanged
+
+\family default
 .
 \end_layout
 
@@ -29905,6 +31889,8 @@ TeX
 \end_inset
 
  converter in 
+\change_deleted -712698321 1674917875
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -29916,6 +31902,16 @@ Converters
 
 \end_inset
 
+
+\change_inserted -712698321 1674917875
+
+\family sans
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+Converters
+\change_unchanged
+
+\family default
  to 
 \begin_inset Flex Code
 status collapsed
@@ -30121,6 +32117,8 @@ TeX
 \end_inset
 
  converter in 
+\change_deleted -712698321 1674917887
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30132,7 +32130,17 @@ Converters
 
 \end_inset
 
- to 
+
+\change_inserted -712698321 1674917887
+
+\family sans
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+Converters
+\change_unchanged
+ 
+\family default
+to 
 \begin_inset Flex Code
 status collapsed
 
@@ -30256,6 +32264,8 @@ However,
  if for whatever reason you want to use the named pipe instead of the socket for communicating with \SpecialChar LyX
 ,
  simply change the DVI viewer in 
+\change_deleted -712698321 1674917897
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30267,6 +32277,16 @@ File formats
 
 \end_inset
 
+
+\change_inserted -712698321 1674917897
+
+\family sans
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+File formats
+\change_unchanged
+
+\family default
  to
 \begin_inset Foot
 status collapsed
@@ -30345,6 +32365,8 @@ status collapsed
 \end_inset
 
  is the LyXServer pipe path specified in 
+\change_deleted -712698321 1674917907
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30355,6 +32377,15 @@ Paths
 
 \end_inset
 
+
+\change_inserted -712698321 1674917907
+
+\family sans
+Preferences\SpecialChar menuseparator
+Paths
+\change_unchanged
+
+\family default
 .
 \begin_inset Foot
 status collapsed
@@ -30444,6 +32475,8 @@ open -a Skim.app $$i
 \end_inset
 
  to the viewer setting in 
+\change_deleted -712698321 1674917916
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30456,8 +32489,21 @@ PDF (pdflatex)
 
 \end_inset
 
+
+\change_inserted -712698321 1674917916
+
+\family sans
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+File formats\SpecialChar menuseparator
+PDF (pdflatex)
+\change_unchanged
+
+\family default
 ,
  and then in 
+\change_deleted -712698321 1674917924
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30469,7 +32515,19 @@ Sync
 
 \end_inset
 
+
+\change_inserted -712698321 1674917924
+
+\family sans
+Skim\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Sync
+\change_unchanged
+
+\family default
  choose 
+\change_deleted -712698321 1674917931
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30479,6 +32537,14 @@ custom
 
 \end_inset
 
+
+\change_inserted -712698321 1674917931
+
+\family sans
+custom
+\change_unchanged
+
+\family default
  preset and enter command 
 \begin_inset Flex Noun
 status collapsed
@@ -30521,6 +32587,8 @@ Okular (KDE)
 
 \begin_layout Standard
 Go to 
+\change_deleted -712698321 1674917941
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30532,6 +32600,16 @@ Editor
 
 \end_inset
 
+
+\change_inserted -712698321 1674917941
+
+\family sans
+Settings\SpecialChar menuseparator
+Configure Okular\SpecialChar menuseparator
+Editor
+\change_unchanged
+
+\family default
  and select LyX
 \begin_inset Quotes erd
 \end_inset
@@ -30580,6 +32658,8 @@ Qpdfview (Unix)
 Qpdfview supports Sync\SpecialChar TeX
  since version 0.3.5.
  Go to 
+\change_deleted -712698321 1674917949
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30591,6 +32671,16 @@ Behavior
 
 \end_inset
 
+
+\change_inserted -712698321 1674917949
+
+\family sans
+Edit\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Behavior
+\change_unchanged
+
+\family default
 ,
  click on the input field of the 
 \begin_inset Quotes eld
@@ -30626,6 +32716,8 @@ YAP (Windows)
 \begin_layout Standard
 Launch yap,
  choose its 
+\change_deleted -712698321 1674917958
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30636,6 +32728,15 @@ Options
 
 \end_inset
 
+
+\change_inserted -712698321 1674917958
+
+\family sans
+View\SpecialChar menuseparator
+Options
+\change_unchanged
+
+\family default
  menu and select the 
 \begin_inset Quotes eld
 \end_inset
@@ -30818,6 +32919,8 @@ SumatraPDF -inverse-search "lyxeditor.bat "%f" %l"
 \end_inset
 
  in the viewer setting in 
+\change_deleted -712698321 1674917965
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30830,6 +32933,17 @@ PDF (pdflatex)
 
 \end_inset
 
+
+\change_inserted -712698321 1674917965
+
+\family sans
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+File formats\SpecialChar menuseparator
+PDF (pdflatex)
+\change_unchanged
+
+\family default
 ,
  where 
 \begin_inset Flex Code
@@ -30859,6 +32973,8 @@ First of all,
  make sure that yap is your default DVI viewer in the Windows environment,
  then launch it,
  choose its 
+\change_deleted -712698321 1674917973
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -30869,6 +32985,15 @@ Options
 
 \end_inset
 
+
+\change_inserted -712698321 1674917973
+
+\family sans
+View\SpecialChar menuseparator
+Options
+\change_unchanged
+
+\family default
  menu and select the 
 \begin_inset Quotes eld
 \end_inset
@@ -31000,6 +33125,8 @@ SumatraPDF -inverse-search "lyxeditor -g %f %l"
 \end_inset
 
  in the viewer setting in 
+\change_deleted -712698321 1674917986
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -31012,6 +33139,17 @@ PDF (pdflatex)
 
 \end_inset
 
+
+\change_inserted -712698321 1674917986
+
+\family sans
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+File formats\SpecialChar menuseparator
+PDF (pdflatex)
+\change_unchanged
+
+\family default
 .
  If SumatraPDF.exe is not in your command PATH,
  use its full posix path.
@@ -31077,6 +33215,8 @@ opposite
  you can put the cursor anywhere in your \SpecialChar LyX
  document,
  and hit 
+\change_deleted -712698321 1674917994
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -31087,16 +33227,37 @@ Forward search
 
 \end_inset
 
+
+\change_inserted -712698321 1674917994
+
+\family sans
+Navigate\SpecialChar menuseparator
+Forward search
+\change_unchanged
+
+\family default
  (or select 
+\change_deleted -712698321 1674918002
+
+\family sans
+
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
+
+\family sans
 Forward search
 \end_layout
 
 \end_inset
 
+
+\change_inserted -712698321 1674918002
+Forward search
+\change_unchanged
+
+\family default
  in the context menu via right mouse click),
  and then the viewer will jump to that position as well.
  This implies,
@@ -31123,6 +33284,8 @@ nolink "false"
 Additionally,
  you need to configure \SpecialChar LyX
  for using your viewers in 
+\change_deleted -712698321 1674918011
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -31135,6 +33298,17 @@ General
 
 \end_inset
 
+
+\change_inserted -712698321 1674918011
+
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Output\SpecialChar menuseparator
+General
+\change_unchanged
+
+\family default
 .
  We provide a range of tested configurations for some viewers,
  which you can select from the drop down list.
@@ -31224,6 +33398,8 @@ okular --unique
 \end_inset
 
  in 
+\change_deleted -712698321 1674918020
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -31240,6 +33416,19 @@ Formats
 
 \end_inset
 
+
+\change_inserted -712698321 1674918020
+
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\change_unchanged
 
 \end_layout
 
@@ -34234,6 +36423,8 @@ Chk\SpecialChar TeX
 
 \family default
  invocation command line in 
+\change_deleted -712698321 1674918035
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -34247,6 +36438,18 @@ CheckTeX command
 
 \end_inset
 
+
+\change_inserted -712698321 1674918035
+
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Output\SpecialChar menuseparator
+LaTeX\SpecialChar menuseparator
+CheckTeX command
+\change_unchanged
+
+\family default
 ,
  or the global 
 \family sans
@@ -37079,10 +39282,14 @@ vcs-time
 \begin_layout Standard
 You can obtain this info via InsetInfo (
 \change_inserted 5863208 1564400022
+
+\family sans
 Insert\SpecialChar menuseparator
 Field\SpecialChar menuseparator
 Version Control Revision
 \change_deleted 5863208 1564399852
+
+\family default
 e.g.
  
 \begin_inset Flex Code
@@ -38983,7 +41190,18 @@ Noweb Listerrors
 \change_unchanged
 
 \family default
- which implement 
+ 
+\change_inserted -712698321 1674917096
+or in 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Noweb2LyX
+\family default
+ 
+\change_unchanged
+which implement 
 \change_deleted 564990737 1672161729
 two 
 \change_unchanged
@@ -38995,12 +41213,14 @@ listerrors
 \begin_inset Quotes erd
 \end_inset
 
- program for some illustrations of how all of these pieces go together or in 
+ program for some illustrations of how all of these pieces go together 
+\change_deleted -712698321 1674917093
+or in 
 \change_deleted 564990737 1672161756
 
 \emph on
 LIBDIR/examples/noweb2lyx.lyx
-\change_inserted 564990737 1672161756
+\change_deleted -712698321 1674917093
 
 \family sans
 \emph default
@@ -39554,6 +41774,21 @@ Embedded
 Objects
 \emph default
  manual.
+\change_inserted -712698321 1674917293
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1674917303
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "idx"
+name "Index"
+
+\end_inset
+
+
 \change_unchanged
 
 \end_layout
