@@ -3583,7 +3583,7 @@ def convert_totalheight(document):
             else:
                 special = ""
 
-        rx = re.compile(r'(\s*height\s*)(\d+)(\S+)$')
+        rx = re.compile(r'(\s*height\s*)(\d+\.?\d*)(\S+)$')
         kk = find_re(document.body, rx, i, j)
         if kk != -1:
             m = rx.match(document.body[kk])
