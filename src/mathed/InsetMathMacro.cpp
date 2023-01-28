@@ -917,8 +917,17 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 		MathData ar(const_cast<Buffer *>(&buffer()));
 		MacroData const * data = buffer().getMacro(name());
 		if (data) {
-			asArray(data->definition(), ar);
-			ar.validate(features);
+			// Avoid recursion on a recursive macro definition
+			docstring const & def = data->definition();
+			int pos = tokenPos(def, '\\', name());
+			char_type c = pos + name().size() < def.size()
+					? def.at(pos + name().size()) : 0;
+			if (pos < 0 || (name().size() > 1 &&
+					((c >= 'a' && c <= 'z') ||
+					 (c >= 'A' && c <= 'Z')))) {
+				asArray(def, ar);
+				ar.validate(features);
+			}
 		}
 	}
 	InsetMathNest::validate(features);
