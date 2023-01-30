@@ -49,7 +49,7 @@ public:
 	void addItemSort(QString const & item, QString const & guiname,
 			 QString const & category, QString const & tooltip,
 			 bool sorted, bool sortedByCat, bool sortCats,
-			 bool available);
+			 bool available, bool nocategories = false);
 	///
 	QString getData(int row) const;
 	///

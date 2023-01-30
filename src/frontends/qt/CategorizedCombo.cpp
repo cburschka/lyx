@@ -476,13 +476,13 @@ bool CategorizedCombo::set(QString const & item)
 void CategorizedCombo::addItemSort(QString const & item, QString const & guiname,
 				   QString const & category, QString const & tooltip,
 				   bool sorted, bool sortedByCat, bool sortCats,
-				   bool available)
+				   bool available, bool nocategories)
 {
 	QString titem = available ? guiname
 				  : toqstr(bformat(_("Unavailable: %1$s"),
 						   qstring_to_ucs4(guiname)));
 	bool const uncategorized = category.isEmpty();
-	QString qcat = uncategorized ? qt_("Uncategorized") : category;
+	QString qcat = (uncategorized && !nocategories) ? qt_("Uncategorized") : category;
 
 	QList<QStandardItem *> row;
 	QStandardItem * gui = new QStandardItem(titem);
