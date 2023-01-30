@@ -66,7 +66,7 @@ export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
 # Package clashes when Japanese documents are compiled with non-TeX fonts,
 #
 export/doc/ja/(Additional|LaTeXConfig|Math|UserGuide).*_systemF
-export/doc/ja/(Formula-numbering|Customization|EmbeddedObjects|Intro)_pdf4_systemF
+export/doc/ja/(Formula-numbering|EmbeddedObjects)_pdf4_systemF
 
 # Test for command \pdfsave fails:
 # ! Package xypdf Error: pdfTeX version 1.40.0 or higher is needed for the xypdf
