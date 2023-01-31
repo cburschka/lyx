@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-01-31 05:51+0100\n"
-"PO-Revision-Date: 2023-01-18 10:00+0000\n"
+"POT-Creation-Date: 2023-01-31 11:36+0100\n"
+"PO-Revision-Date: 2023-01-31 10:51+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3745,9 +3745,8 @@ msgid "Verti&cal Phantom"
 msgstr "&Vertikálny fantóm"
 
 #: src/frontends/qt/ui/PreambleUi.ui:35
-#, fuzzy
 msgid "Find in preamble"
-msgstr "Bib preambula"
+msgstr "Nájsť v preambule"
 
 #: src/frontends/qt/ui/PreambleUi.ui:42
 msgid "&Find"
@@ -15176,15 +15175,14 @@ msgid "Multiple Columns"
 msgstr "Viac stĺpcové"
 
 #: lib/layouts/multicol.module:8
-#, fuzzy
 msgid ""
 "Adds a custom inset whose content is set with multiple columns (2 by "
 "default). See the Additional manual, section Modules > Page Layout > "
 "Multiple Columns, for a detailed description."
 msgstr ""
 "Pridáva vlastnú vložku, ktorej obsah je postavený z viacerých stĺpcov (2 .sú "
-"prednastavené). Pozrite prídavný manuál, sekcia 'Viac stĺpcový text', pre "
-"detailné vysvetlenie viac-stĺpcového prostredia."
+"štandardné). Pozrite prídavný manuál, sekcia Modules > Page Layout > "
+"Multiple Columns, pre detailné vysvetlenie."
 
 #: lib/layouts/multicol.module:20
 msgid "Number of Columns"
@@ -16544,7 +16542,6 @@ msgid "Custom Paragraph Shapes"
 msgstr "Vlastné tvary odstavca"
 
 #: lib/layouts/shapepar.module:8
-#, fuzzy
 msgid ""
 "Provides several paragraph shapes as well as commands to define custom "
 "shapes. For a description see LyX's Additional features manual, section "
@@ -16552,7 +16549,7 @@ msgid ""
 msgstr ""
 "Poskytuje niekoľko tvarov odstavca ako aj príkazy na definovanie vlastných "
 "tvarov. Pre vysvetlenie pozrite LyXov manuál 'Prídavné vlastnosti', sekcia "
-"'Nie štandardné tvary odstavca'."
+"Modules > Paragraph Styles > Custom Paragraph Shapes."
 
 #: lib/layouts/shapepar.module:27
 msgid "CD label"
@@ -17569,7 +17566,6 @@ msgid "AMS Theorems (Extended, Numbered by Type)"
 msgstr "AMS teorémy (rozšírenie, číslované podľa typu)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -17812,7 +17808,6 @@ msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
 msgstr "AMS teorémy (Rozšírenie, číslované podľa typu vnútri kapitol)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -17837,7 +17832,6 @@ msgid "AMS Theorems (Extended)"
 msgstr "AMS teorémy (rozšírenie)"
 
 #: lib/layouts/theorems-ams-extended.module:10
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -17878,7 +17872,6 @@ msgid "Summary \\thetheorem."
 msgstr "Súhrn \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:319
-#, fuzzy
 msgid "Acknowledgment \\thetheorem."
 msgstr "Poďakovanie \\thetheorem."
 
@@ -32573,7 +32566,7 @@ msgstr " (nie je inštalovaný)"
 #: src/frontends/qt/GuiDocument.cpp:2740 src/frontends/qt/GuiDocument.cpp:2772
 #: src/frontends/qt/GuiDocument.cpp:2783 src/frontends/qt/GuiDocument.cpp:2794
 msgid "Default font (as set by class)"
-msgstr ""
+msgstr "Štandardný font (ako určený triedou)"
 
 #: src/frontends/qt/GuiDocument.cpp:2742
 msgid "Non-TeX Fonts Default"
@@ -32759,12 +32752,12 @@ msgstr "[Niet preddefinovaných volieb]"
 #: src/frontends/qt/GuiDocument.cpp:4405 src/frontends/qt/GuiDocument.cpp:4416
 #: src/frontends/qt/GuiDocument.cpp:4427
 msgid "Uninstalled used fonts"
-msgstr ""
+msgstr "Niektoré použité fonty nie sú inštalované"
 
 #: src/frontends/qt/GuiDocument.cpp:4406 src/frontends/qt/GuiDocument.cpp:4417
 #: src/frontends/qt/GuiDocument.cpp:4428
 msgid "This font is not installed and won't be used in output"
-msgstr ""
+msgstr "Tento font nie je inštalovaný a ani nebude použitý vo výstupe"
 
 #: src/frontends/qt/GuiDocument.cpp:4598
 msgid "C&ustomize Hyperref Options"
