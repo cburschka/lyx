@@ -8,11 +8,12 @@
 
 Translation ar
 	"Acknowledgement" "الاعتراف"
+	"Acknowledgment" "الاعتراف"
 	"Algorithm" "الخوارزم"
 	"Assumption" "فرضية"
 	"Axiom" "مُسلّمة"
 	"Case" "حالة"
-	"Chart" "رسم بياني"
+	"Chart" "جدول بياني"
 	"Claim" "متطلب"
 	"Conclusion" "استنتاج"
 	"Condition" "شرط"
@@ -23,17 +24,17 @@ Translation ar
 	"Example" "مثال"
 	"Exercise" "تمرين"
 	"Fact" "حقيقة"
-	"Graph[[mathematical]]" "شكل بياني"
+	"Graph[[mathematical]]" "رسم بياني"
 	"Lemma" "قضية مساعدة"
 	"List of Algorithms" "قائمة الخوارزميات"
-	"List of Charts" "قائمة الرسوم البيانية"
-	"List of Graphs[[mathematical]]" "قائمة الأشكال البيانية"
+	"List of Charts" "قائمة الجداول البيانية"
+	"List of Graphs[[mathematical]]" "قائمة الرسوم البيانية"
 	"List of Listings" "قائمة القوائم"
 	"List of Schemes" "قائمة المخططات"
 	"List of Tableaux" "قائمة الجداول"
 	"Listing" "عمل قوائم"
 	"Listings[[List of Listings]]" "القوائم"
-	"Nomenclature[[output]]" "المصطلحات"
+	"Nomenclature[[output]]" "المصطلح"
 	"Notation" "تدوين"
 	"Note" "ملاحظة"
 	"Notes[[Endnotes]]" "Notes"
@@ -54,6 +55,7 @@ End
 
 Translation bg
 	"Acknowledgement" "Благодарности"
+	"Acknowledgment" "Благодарности"
 	"Algorithm" "Aлгоритъм"
 	"Assumption" "Допускане"
 	"Axiom" "Аксиома"
@@ -145,6 +147,7 @@ End
 
 Translation cs
 	"Acknowledgement" "Poděkování"
+	"Acknowledgment" "Poděkování"
 	"Algorithm" "Algoritmus"
 	"Assumption" "Předpoklad"
 	"Axiom" "Axiom"
@@ -189,53 +192,9 @@ Translation cs
 	"see equation[[nomencl]]" "viz rovnice"
 End
 
-Translation da
-	"Acknowledgement" "Anerkendelse"
-	"Algorithm" "Algoritme"
-	"Assumption" "Antagelse"
-	"Axiom" "Aksiom"
-	"Case" "Tilfælde"
-	"Chart" "Diagram"
-	"Claim" "Påstand"
-	"Conclusion" "Konklusion"
-	"Condition" "Betingelse"
-	"Conjecture" "Formodning"
-	"Corollary" "Korollar"
-	"Criterion" "Kriterium"
-	"Definition" "Definition"
-	"Example" "Eksempel"
-	"Exercise" "Øvelse"
-	"Fact" "Faktum"
-	"Graph[[mathematical]]" "Graf"
-	"Lemma" "Lemma"
-	"List of Algorithms" "Algoritmeliste"
-	"List of Charts" "Diagramliste"
-	"List of Graphs[[mathematical]]" "Grafliste"
-	"List of Listings" "Listings"
-	"List of Schemes" "Schemaliste"
-	"List of Tableaux" "Tableauliste"
-	"Listing" "Listing"
-	"Listings[[List of Listings]]" "Listings"
-	"Nomenclature[[output]]" "Symbolliste"
-	"Notation" "Notation"
-	"Note" "Note"
-	"Problem" "Problem"
-	"Proof" "Bevis"
-	"Property" "Property"
-	"Proposition" "Forslag"
-	"Question" "Spørgsmål"
-	"Remark" "Bemærkning"
-	"Scheme" "Schema"
-	"Solution" "Løsning"
-	"Summary" "Resumé"
-	"Tableau" "Tableau"
-	"Theorem" "Sætning"
-	"page[[nomencl]]" "side"
-	"see equation[[nomencl]]" "se ligning"
-End
-
 Translation de
 	"Acknowledgement" "Danksagung"
+	"Acknowledgment" "Würdigung"
 	"Algorithm" "Algorithmus"
 	"Assumption" "Annahme"
 	"Axiom" "Axiom"
@@ -280,12 +239,9 @@ Translation de
 	"see equation[[nomencl]]" "siehe Gleichung"
 End
 
-Translation de_alt
-	"Conclusion" "Schlußfolgerung"
-End
-
 Translation el
 	"Acknowledgement" "Μνεία"
+	"Acknowledgment" "Μνεία"
 	"Algorithm" "Αλγόριθμος"
 	"Assumption" "Υπόθεση"
 	"Axiom" "Αξίωμα"
@@ -332,6 +288,7 @@ End
 
 Translation en
 	"Acknowledgement" "Acknowledgement"
+	"Acknowledgment" "Acknowledgment"
 	"Algorithm" "Algorithm"
 	"Assumption" "Assumption"
 	"Axiom" "Axiom"
@@ -376,8 +333,13 @@ Translation en
 	"see equation[[nomencl]]" "see equation"
 End
 
+Translation en_GB
+	"Acknowledgment" "Acknowledgement"
+End
+
 Translation es
 	"Acknowledgement" "Agradecimientos"
+	"Acknowledgment" "Agradecimientos"
 	"Algorithm" "Algoritmo"
 	"Assumption" "Suposición"
 	"Axiom" "Axioma"
@@ -424,6 +386,7 @@ End
 
 Translation eu
 	"Acknowledgement" "Aitorpena"
+	"Acknowledgment" "Aitorpena"
 	"Algorithm" "Algoritmoa"
 	"Assumption" "Hipotesia"
 	"Axiom" "Axioma"
@@ -470,6 +433,7 @@ End
 
 Translation fi
 	"Acknowledgement" "Kiitos"
+	"Acknowledgment" "Kiitos"
 	"Algorithm" "Algoritmi"
 	"Assumption" "Oletus"
 	"Axiom" "Aksiooma"
@@ -516,6 +480,7 @@ End
 
 Translation fr
 	"Acknowledgement" "Remerciements"
+	"Acknowledgment" "Remerciements"
 	"Algorithm" "Algorithme"
 	"Assumption" "Hypothèse"
 	"Axiom" "Axiome"
@@ -544,7 +509,7 @@ Translation fr
 	"Nomenclature[[output]]" "Liste des symboles"
 	"Notation" "Notation"
 	"Note" "Note"
-	"Notes[[Endnotes]]" "Notes"
+	"Notes[[Endnotes]]" "Notes en fin de document"
 	"Problem" "Problème"
 	"Proof" "Preuve"
 	"Property" "Propriété"
@@ -560,53 +525,9 @@ Translation fr
 	"see equation[[nomencl]]" "voir équation"
 End
 
-Translation gl
-	"Acknowledgement" "Agradecimento"
-	"Algorithm" "Algoritmo"
-	"Assumption" "Suposición"
-	"Axiom" "Axioma"
-	"Case" "Caso"
-	"Chart" "Chart"
-	"Claim" "Afirmación"
-	"Conclusion" "Conclusión"
-	"Condition" "Condición"
-	"Conjecture" "Conxetura"
-	"Corollary" "Corolário"
-	"Criterion" "Critério"
-	"Definition" "Definición"
-	"Example" "Exemplo"
-	"Exercise" "Exercício"
-	"Fact" "Facto"
-	"Graph[[mathematical]]" "Graph"
-	"Lemma" "Lema"
-	"List of Algorithms" "Lista de algoritmos"
-	"List of Charts" "List of Charts"
-	"List of Graphs[[mathematical]]" "List of Graphs"
-	"List of Listings" "Listings"
-	"List of Schemes" "List of Schemes"
-	"List of Tableaux" "List of Tableaux"
-	"Listing" "Lista"
-	"Listings[[List of Listings]]" "Listings"
-	"Nomenclature[[output]]" "Nomenclature"
-	"Notation" "Notación"
-	"Note" "Nota"
-	"Problem" "Problema"
-	"Proof" "Demostración"
-	"Property" "Propriedade"
-	"Proposition" "Proposición"
-	"Question" "Pergunta"
-	"Remark" "Observación"
-	"Scheme" "Scheme"
-	"Solution" "Solución"
-	"Summary" "Resumo"
-	"Tableau" "Tableau"
-	"Theorem" "Teorema"
-	"page[[nomencl]]" "page"
-	"see equation[[nomencl]]" "see equation"
-End
-
 Translation he
 	"Acknowledgement" "הכרת תודה"
+	"Acknowledgment" "הכרת תודה"
 	"Algorithm" "אלגוריתם"
 	"Assumption" "הנחה"
 	"Axiom" "אקסיומה"
@@ -627,7 +548,7 @@ Translation he
 	"List of Algorithms" "רשימת אלגוריתמים"
 	"List of Charts" "רשימת תרשימים"
 	"List of Graphs[[mathematical]]" "רשימת גרפים"
-	"List of Listings" "Listings"
+	"List of Listings" "List of Listings"
 	"List of Schemes" "רשימת סכמות"
 	"List of Tableaux" "List of Tableaux"
 	"Listing" "רישום קוד"
@@ -651,14 +572,9 @@ Translation he
 	"see equation[[nomencl]]" "see equation"
 End
 
-Translation hr
-	"Nomenclature[[output]]" "Popis simbola"
-	"page[[nomencl]]" "stranica"
-	"see equation[[nomencl]]" "vidi jednadžbu"
-End
-
 Translation hu
 	"Acknowledgement" "Köszönetnyilvánítás"
+	"Acknowledgment" "Köszönetnyilvánítás"
 	"Algorithm" "Algoritmus"
 	"Assumption" "Feltevés"
 	"Axiom" "Axióma"
@@ -705,6 +621,7 @@ End
 
 Translation ia
 	"Acknowledgement" "Recognoscentia"
+	"Acknowledgment" "Recognoscentia"
 	"Algorithm" "Algorithmo"
 	"Assumption" "Assumption"
 	"Axiom" "Axioma"
@@ -751,6 +668,7 @@ End
 
 Translation id
 	"Acknowledgement" "Penghargaan"
+	"Acknowledgment" "Penghargaan"
 	"Algorithm" "Algoritma"
 	"Assumption" "Asumsi"
 	"Axiom" "Aksioma"
@@ -797,6 +715,7 @@ End
 
 Translation it
 	"Acknowledgement" "Riconoscimento"
+	"Acknowledgment" "Riconoscimento"
 	"Algorithm" "Algoritmo"
 	"Assumption" "Assunzione"
 	"Axiom" "Assioma"
@@ -843,6 +762,7 @@ End
 
 Translation ja
 	"Acknowledgement" "謝辞"
+	"Acknowledgment" "謝辞"
 	"Algorithm" "アルゴリズム"
 	"Assumption" "仮定"
 	"Axiom" "公理"
@@ -871,7 +791,7 @@ Translation ja
 	"Nomenclature[[output]]" "用語集"
 	"Notation" "記法"
 	"Note" "註釈"
-	"Notes[[Endnotes]]" "Notes"
+	"Notes[[Endnotes]]" "註釈"
 	"Problem" "問題"
 	"Proof" "証明"
 	"Property" "性質"
@@ -883,57 +803,13 @@ Translation ja
 	"Summary" "要約"
 	"Tableau" "絵画"
 	"Theorem" "定理"
-	"page[[nomencl]]" "page"
-	"see equation[[nomencl]]" "see equation"
-End
-
-Translation ko
-	"Acknowledgement" "Acknowledgement"
-	"Algorithm" "알고리듬"
-	"Assumption" "Assumption"
-	"Axiom" "Axiom"
-	"Case" "Case"
-	"Chart" "차트"
-	"Claim" "Claim"
-	"Conclusion" "Conclusion"
-	"Condition" "Condition"
-	"Conjecture" "Conjecture"
-	"Corollary" "Corollary"
-	"Criterion" "Criterion"
-	"Definition" "Definition"
-	"Example" "Example"
-	"Exercise" "Exercise"
-	"Fact" "Fact"
-	"Graph[[mathematical]]" "그래프"
-	"Lemma" "Lemma"
-	"List of Algorithms" "알고리듬 목록"
-	"List of Charts" "차트 목록"
-	"List of Graphs[[mathematical]]" "그래프 목록"
-	"List of Listings" "Listings"
-	"List of Schemes" "List of Schemes"
-	"List of Tableaux" "List of Tableaux"
-	"Listing" "Listing"
-	"Listings[[List of Listings]]" "Listings"
-	"Nomenclature[[output]]" "Nomenclature"
-	"Notation" "Notation"
-	"Note" "노우트(Note)"
-	"Problem" "Problem"
-	"Proof" "Proof"
-	"Property" "Property"
-	"Proposition" "Proposition"
-	"Question" "Question"
-	"Remark" "Remark"
-	"Scheme" "Scheme"
-	"Solution" "Solution"
-	"Summary" "Summary"
-	"Tableau" "Tableau"
-	"Theorem" "Theorem"
-	"page[[nomencl]]" "page"
-	"see equation[[nomencl]]" "see equation"
+	"page[[nomencl]]" "頁"
+	"see equation[[nomencl]]" "請参照数式"
 End
 
 Translation nb
 	"Acknowledgement" "Takk til"
+	"Acknowledgment" "Takk til"
 	"Algorithm" "Algoritme"
 	"Assumption" "Antagelse"
 	"Axiom" "Aksiom"
@@ -980,6 +856,7 @@ End
 
 Translation nl
 	"Acknowledgement" "Dankbetuiging"
+	"Acknowledgment" "Dankbetuiging"
 	"Algorithm" "Algoritme"
 	"Assumption" "Aanname"
 	"Axiom" "Axioma"
@@ -1026,6 +903,7 @@ End
 
 Translation nn
 	"Acknowledgement" "Takk til"
+	"Acknowledgment" "Takk"
 	"Algorithm" "Algoritme"
 	"Assumption" "Asumpsjon"
 	"Axiom" "Aksiom"
@@ -1072,6 +950,7 @@ End
 
 Translation pl
 	"Acknowledgement" "Podziękowanie"
+	"Acknowledgment" "Podziękowanie"
 	"Algorithm" "Algorytm"
 	"Assumption" "Założenie"
 	"Axiom" "Aksjomat"
@@ -1118,6 +997,7 @@ End
 
 Translation pt_BR
 	"Acknowledgement" "Agradecimento"
+	"Acknowledgment" "Agradecimento"
 	"Algorithm" "Algoritmo"
 	"Assumption" "Suposição"
 	"Axiom" "Axioma"
@@ -1146,7 +1026,7 @@ Translation pt_BR
 	"Nomenclature[[output]]" "Nomenclatura"
 	"Notation" "Notação"
 	"Note" "Nota"
-	"Notes[[Endnotes]]" "Notes"
+	"Notes[[Endnotes]]" "Notas"
 	"Problem" "Problema"
 	"Proof" "Prova"
 	"Property" "Propriedade"
@@ -1164,6 +1044,7 @@ End
 
 Translation pt_PT
 	"Acknowledgement" "Agradecimento"
+	"Acknowledgment" "Agradecimento"
 	"Algorithm" "Algoritmo"
 	"Assumption" "Suposição"
 	"Axiom" "Axioma"
@@ -1208,53 +1089,9 @@ Translation pt_PT
 	"see equation[[nomencl]]" "veja equação"
 End
 
-Translation ro
-	"Acknowledgement" "Mulțumiri"
-	"Algorithm" "Algoritm"
-	"Assumption" "Ipoteză"
-	"Axiom" "Axiomă"
-	"Case" "Caz"
-	"Chart" "Diagramă"
-	"Claim" "Afirmație"
-	"Conclusion" "Concluzie"
-	"Condition" "Condiție"
-	"Conjecture" "Presupunere"
-	"Corollary" "Corolar"
-	"Criterion" "Criteriu"
-	"Definition" "Definiție"
-	"Example" "Exemplu"
-	"Exercise" "Exercițiu"
-	"Fact" "Fapt"
-	"Graph[[mathematical]]" "Grafic"
-	"Lemma" "Lemă"
-	"List of Algorithms" "Listă de Algoritmi"
-	"List of Charts" "Listă de Diagrame"
-	"List of Graphs[[mathematical]]" "Listă de Grafice"
-	"List of Listings" "Listings"
-	"List of Schemes" "Listă de Scheme"
-	"List of Tableaux" "Listă de Tabele"
-	"Listing" "Listare"
-	"Listings[[List of Listings]]" "Listings"
-	"Nomenclature[[output]]" "Nomenclature"
-	"Notation" "Notație"
-	"Note" "Notă"
-	"Problem" "Problemă"
-	"Proof" "Demonstrație"
-	"Property" "Proprietate"
-	"Proposition" "Propoziție"
-	"Question" "Întrebare"
-	"Remark" "Remarcă"
-	"Scheme" "Schemă"
-	"Solution" "Soluție"
-	"Summary" "Rezumat"
-	"Tableau" "Tabel"
-	"Theorem" "Teoremă"
-	"page[[nomencl]]" "page"
-	"see equation[[nomencl]]" "see equation"
-End
-
 Translation ru
 	"Acknowledgement" "Подтверждение"
+	"Acknowledgment" "Подтверждение"
 	"Algorithm" "Алгоритм"
 	"Assumption" "Допущение"
 	"Axiom" "Аксиома"
@@ -1277,7 +1114,7 @@ Translation ru
 	"List of Graphs[[mathematical]]" "Список графиков"
 	"List of Listings" "Список листингов"
 	"List of Schemes" "Список схем"
-	"List of Tableaux" "Список таблиц"
+	"List of Tableaux" "Список таблиц (лингв.)"
 	"Listing" "Листинг"
 	"Listings[[List of Listings]]" "Листинги"
 	"Nomenclature[[output]]" "Список обозначений"
@@ -1293,7 +1130,7 @@ Translation ru
 	"Scheme" "Схема"
 	"Solution" "Решение"
 	"Summary" "Резюме"
-	"Tableau" "Таблица"
+	"Tableau" "Таблица (лингв.)"
 	"Theorem" "Теорема"
 	"page[[nomencl]]" "стр."
 	"see equation[[nomencl]]" "см."
@@ -1301,6 +1138,7 @@ End
 
 Translation sk
 	"Acknowledgement" "Poďakovania"
+	"Acknowledgment" "Poďakovania"
 	"Algorithm" "Algoritmus"
 	"Assumption" "Predpoklad"
 	"Axiom" "Axióma"
@@ -1345,98 +1183,9 @@ Translation sk
 	"see equation[[nomencl]]" "porovnaj s rovnicou"
 End
 
-Translation sl
-	"Acknowledgement" "Priznanje"
-	"Algorithm" "Algoritem"
-	"Assumption" "Assumption"
-	"Axiom" "Aksiom"
-	"Case" "Primer"
-	"Chart" "Chart"
-	"Claim" "Trditev"
-	"Conclusion" "Sklep"
-	"Condition" "Pogoj"
-	"Conjecture" "Domneva"
-	"Corollary" "Korolar"
-	"Criterion" "Kriterij"
-	"Definition" "Definicija"
-	"Example" "Zgled"
-	"Exercise" "Vaja"
-	"Fact" "Dejstvo"
-	"Graph[[mathematical]]" "Graph"
-	"Lemma" "Lema"
-	"List of Algorithms" "List of Algorithms"
-	"List of Charts" "List of Charts"
-	"List of Graphs[[mathematical]]" "List of Graphs"
-	"List of Listings" "Listings"
-	"List of Schemes" "List of Schemes"
-	"List of Tableaux" "List of Tableaux"
-	"Listing" "Listing"
-	"Listings[[List of Listings]]" "Listings"
-	"Nomenclature[[output]]" "Nomenclature"
-	"Notation" "Zapis"
-	"Note" "Opomba"
-	"Problem" "Problem"
-	"Proof" "Dokaz"
-	"Property" "Lastnost"
-	"Proposition" "Podmena"
-	"Question" "Vprašanje"
-	"Remark" "Pripomba"
-	"Scheme" "Scheme"
-	"Solution" "Rešitev"
-	"Summary" "Povzetek"
-	"Tableau" "Tableau"
-	"Theorem" "Izrek"
-	"page[[nomencl]]" "page"
-	"see equation[[nomencl]]" "see equation"
-End
-
-Translation sr
-	"Acknowledgement" "Zahvalnost"
-	"Algorithm" "Algoritam"
-	"Assumption" "Pretpostavka"
-	"Axiom" "Aksiom"
-	"Case" "Slučaj"
-	"Chart" "Dijagram"
-	"Claim" "Tvrdnja"
-	"Conclusion" "Zaključak"
-	"Condition" "Uslov"
-	"Conjecture" "Pretpostavka"
-	"Corollary" "Posledica"
-	"Criterion" "Kriterijum"
-	"Definition" "Definicija"
-	"Example" "Primer"
-	"Exercise" "Vežba"
-	"Fact" "Činjenica"
-	"Graph[[mathematical]]" "Grafikon"
-	"Lemma" "Lemma"
-	"List of Algorithms" "Spisak Algoritama"
-	"List of Charts" "Spisak Dijagrama"
-	"List of Graphs[[mathematical]]" "Spisak Grafikona"
-	"List of Listings" "Listings"
-	"List of Schemes" "Spisak Šema"
-	"List of Tableaux" "Spisak Tabela "
-	"Listing" "Listing"
-	"Listings[[List of Listings]]" "Listings"
-	"Nomenclature[[output]]" "Nomenclature"
-	"Notation" "Zabeleška"
-	"Note" "Napomena"
-	"Problem" "Problem"
-	"Proof" "Dokaz"
-	"Property" "Osobina"
-	"Proposition" "Predlog"
-	"Question" "Pitanje"
-	"Remark" "Napomena"
-	"Scheme" "Šema"
-	"Solution" "Rešenje"
-	"Summary" "Rezime"
-	"Tableau" "Tabela"
-	"Theorem" "Teorema"
-	"page[[nomencl]]" "page"
-	"see equation[[nomencl]]" "see equation"
-End
-
 Translation sv
 	"Acknowledgement" "Tacksägelse"
+	"Acknowledgment" "Tacksägelse"
 	"Algorithm" "Algoritm"
 	"Assumption" "Antagande"
 	"Axiom" "Axiom"
@@ -1483,6 +1232,7 @@ End
 
 Translation tr
 	"Acknowledgement" "Teşekkür"
+	"Acknowledgment" "Teşekkür"
 	"Algorithm" "Algoritma"
 	"Assumption" "Varsayım"
 	"Axiom" "Aksiyom"
@@ -1529,6 +1279,7 @@ End
 
 Translation uk
 	"Acknowledgement" "Подяка"
+	"Acknowledgment" "Подяки"
 	"Algorithm" "Алгоритм"
 	"Assumption" "Припущення"
 	"Axiom" "Аксіома"
@@ -1557,7 +1308,7 @@ Translation uk
 	"Nomenclature[[output]]" "Позначення"
 	"Notation" "Позначення"
 	"Note" "Зауваження"
-	"Notes[[Endnotes]]" "Notes"
+	"Notes[[Endnotes]]" "Нотатки"
 	"Problem" "Задача"
 	"Proof" "Доведення"
 	"Property" "Властивість"
@@ -1575,6 +1326,7 @@ End
 
 Translation zh_CN
 	"Acknowledgement" "致谢"
+	"Acknowledgment" "致谢"
 	"Algorithm" "算法"
 	"Assumption" "假设"
 	"Axiom" "公理"
@@ -1621,6 +1373,7 @@ End
 
 Translation zh_TW
 	"Acknowledgement" "致謝"
+	"Acknowledgment" "Acknowledgments 致謝"
 	"Algorithm" "演算法"
 	"Assumption" "假設"
 	"Axiom" "公理"
