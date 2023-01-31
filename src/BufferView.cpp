@@ -1064,6 +1064,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 
 	tm.redoParagraph(bot_pit);
 	int const offset = coordOffset(dit).y_;
+	pit_type const old_pit = d->anchor_pit_;
 	d->anchor_pit_ = bot_pit;
 
 	CursorSlice const & cs = dit.innerTextSlice();
@@ -1076,7 +1077,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 	d->anchor_ypos_ = - offset + row_dim.ascent();
 	if (how == SCROLL_CENTER)
 		d->anchor_ypos_ += height_/2 - row_dim.height() / 2;
-	return d->anchor_ypos_ != old_ypos;
+	return d->anchor_ypos_ != old_ypos || d->anchor_pit_ != old_pit;
 }
 
 
