@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-01-31 05:51+0100\n"
-"PO-Revision-Date: 2023-01-16 11:46+0100\n"
+"POT-Creation-Date: 2023-01-31 11:35+0100\n"
+"PO-Revision-Date: 2023-01-31 17:16+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1528,8 +1528,8 @@ msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
 msgstr ""
-"Force les capitales dans les noms  (\"Del Piero\", net non pas \"del "
-"Piero\"), si le style de citation sélectionné le permet."
+"Force les capitales dans les noms  (\"Del Piero\", net non pas \"del Piero"
+"\"), si le style de citation sélectionné le permet."
 
 #: src/frontends/qt/ui/CitationUi.ui:401
 msgid "Force upcas&ing"
@@ -2021,8 +2021,8 @@ msgstr "Rechercher &>"
 #: src/frontends/qt/FindAndReplace.cpp:715
 msgid "Replace and find next occurrence (Enter, backwards: Shift+Enter)"
 msgstr ""
-"Remplacer et rechercher l'occurrence suivante (Entrée, vers l'arrière : "
-"Maj+Entrée)"
+"Remplacer et rechercher l'occurrence suivante (Entrée, vers l'arrière : Maj"
+"+Entrée)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:224
 #: src/frontends/qt/FindAndReplace.cpp:714
@@ -4153,9 +4153,8 @@ msgid "Verti&cal Phantom"
 msgstr "Fantôme &vertical"
 
 #: src/frontends/qt/ui/PreambleUi.ui:35
-#, fuzzy
 msgid "Find in preamble"
-msgstr "Préambule biblio"
+msgstr "Rechercher dans le préambule"
 
 #: src/frontends/qt/ui/PreambleUi.ui:42
 msgid "&Find"
@@ -10987,13 +10986,12 @@ msgid "Bilingual Captions"
 msgstr "Légendes bilingues"
 
 #: lib/layouts/bicaption.module:7
-#, fuzzy
 msgid ""
 "Provides two styles to typeset bilingual captions. For a description see "
 "Help > Specific Manuals > Multilingual Captions."
 msgstr ""
 "Procure deux styles de légendes bilingues. Pour les détails, voir le fichier "
-"MultilingualCaptions.lyx dans le répertoire « examples » de LyX."
+"Aide > Manuels spécifiques >  Légendes multilingues"
 
 #: lib/layouts/bicaption.module:11
 msgid "Caption setup"
@@ -11054,13 +11052,12 @@ msgid "Accessibility"
 msgstr "Accessibilité"
 
 #: lib/layouts/braille.module:7
-#, fuzzy
 msgid ""
 "Defines an environment to typeset Braille. For more details see Help > "
 "Specific Manuals > Braille."
 msgstr ""
-"Définit un environnement pour saisir le Braille. Pour les détails, voir "
-"Braille.lyx dans les exemples."
+"Définit un environnement pour saisir le Braille. Pour les détails, voir  "
+"Aide > Manuels spécifiques >  Braille"
 
 #: lib/layouts/braille.module:23
 msgid "Braille (default)"
@@ -11325,13 +11322,13 @@ msgid "Leisure, Sports & Music"
 msgstr "Loisirs, sports et musique"
 
 #: lib/layouts/chessboard.module:7
-#, fuzzy
 msgid ""
 "Support for the chessboard package to print chess games See File > Open "
 "Example > Articles > Chess where you will find Game 1 and Game 2."
 msgstr ""
-"Auxiliaire du paquetage chessboard pour l'impression des échiquiers. Voir le "
-"fichier d'exemple chessboard-article.lyx."
+"Auxiliaire du paquetage chessboard pour l'impression des échiquiers. Voir "
+"Fichier > Ouvrir un exemple > Articles > Échiquier où vous trouverez Partie "
+"1 et Partie 2."
 
 #: lib/layouts/chessboard.module:16
 msgid "NewChessGame"
@@ -14005,7 +14002,6 @@ msgid "Academic Field Specifics"
 msgstr "Particularités d'un domaine académique"
 
 #: lib/layouts/hpstatement.module:8
-#, fuzzy
 msgid ""
 "Provides two insets to typeset numbers and phrases of chemical hazard and "
 "precautionary statements. For a description see Help > Specific Manuals > "
@@ -14013,8 +14009,8 @@ msgid ""
 msgstr ""
 "Procure deux inserts pour saisir les numéros et les énoncés des mentions de "
 "danger et de conseils de prudence pour la chimie. Pour une description "
-"détaillée, voir le fichier H-P-statements.lyx dans le répertoire des "
-"exemples de LyX."
+"détaillée, voir  Aide > Manuels spécifiques >  Mentions de danger et "
+"conseils de prudence."
 
 #: lib/layouts/hpstatement.module:12 lib/layouts/hpstatement.module:17
 msgid "H-P number"
@@ -14686,15 +14682,14 @@ msgid "LilyPond Music Notation"
 msgstr "Notation du format musical LilyPond"
 
 #: lib/layouts/lilypond.module:8
-#, fuzzy
 msgid ""
 "This module adds an inset to enter LilyPond code directly into LyX. It will "
 "be processed in the output. For details, see Help > Specific Manuals > "
 "LilyPond."
 msgstr ""
 "Ce module ajoute un insert pour la saisie directe du code LilyPond dans LyX. "
-"Ce code sera traité dans le résultat imprimable. Voir le fichier d'exemple "
-"lilypond.lyx."
+"Ce code sera traité dans le résultat imprimable. Voir  Aide > Manuels "
+"spécifiques >  LilyPond."
 
 #: lib/layouts/lilypond.module:15 lib/layouts/lilypond.module:16
 #: lib/xtemplates/lilypond.xtemplate:14
@@ -14719,15 +14714,14 @@ msgid "Linguistics"
 msgstr "Linguistique"
 
 #: lib/layouts/linguistics.module:8
-#, fuzzy
 msgid ""
 "Defines some special environments useful for linguistics (numbered examples, "
 "glosses, semantic markup, tableau floats). See Help > Specific Manuals > "
 "Linguistics."
 msgstr ""
 "Définir certains environnements spéciaux utiles pour la linguistique "
-"(exemples numérotés, gloses, balisage sémantique, tableaux flottants). Voir "
-"le fichier linguistics.lyx dans les exemples."
+"(exemples numérotés, gloses, balisage sémantique, tableaux flottants). Voir  "
+"Aide > Manuels spécifiques >  Linguistique."
 
 #: lib/layouts/linguistics.module:20
 msgid "(\\arabic{example})"
@@ -15711,15 +15705,15 @@ msgid "Multiple Columns"
 msgstr "Multi-colonnes"
 
 #: lib/layouts/multicol.module:8
-#, fuzzy
 msgid ""
 "Adds a custom inset whose content is set with multiple columns (2 by "
 "default). See the Additional manual, section Modules > Page Layout > "
 "Multiple Columns, for a detailed description."
 msgstr ""
 "Ajoute un insert paramétrable dont le contenu est réglé par des colonnes "
-"multiples (implicitement 2). Voir le manuel des Options avancées, section « "
-"Multi-colonnes » pour une description détaillée des colonnes multiples."
+"multiples (implicitement 2). Voir le manuel des Options avancées, section "
+"Modules > Disposition des pages > Colonnes multiples pour une description "
+"détaillée."
 
 #: lib/layouts/multicol.module:20
 msgid "Number of Columns"
@@ -15944,15 +15938,14 @@ msgid "PDF Comments"
 msgstr "Commentaires PDF"
 
 #: lib/layouts/pdfcomment.module:8
-#, fuzzy
 msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
 "the pdfcomment package. Please consult Help > Specific Manuals > PDF "
 "comments and the package documentation for details."
 msgstr ""
 "Fournit des annotations variées pour le résultat PDF. Le module utilise le "
-"paquetage pdfcomment. Veuillez consulter le fichier d'exemple LyX PDF-"
-"comment.lyx et la documentation du paquetage pour les détails."
+"paquetage pdfcomment. Veuillez consulter le  Aide > Manuels spécifiques >  "
+"Commentaires PDF et la documentation du paquetage pour les détails."
 
 #: lib/layouts/pdfcomment.module:20
 msgid "Define Avatar"
@@ -16155,15 +16148,14 @@ msgid "PDF Form"
 msgstr "Formulaire PDF"
 
 #: lib/layouts/pdfform.module:8
-#, fuzzy
 msgid ""
 "Provides fields and buttons for PDF forms. The module uses the LaTeX package "
 "hyperref. Please consult Help > Specific Manuals > PDF forms and the "
 "documentation of hyperref for details."
 msgstr ""
 "Fournit des champs et des boutons variés pour les formulaires PDF. Le module "
-"utilise le paquetage hyperref. Veuillez consulter le fichier d'exemple LyX "
-"PDF-form.lyx et la documentation du paquetage pour les détails."
+"utilise le paquetage hyperref. Veuillez consulter Aide > Manuels spécifiques "
+">  Formulaires PDF et la documentation hyperref pour les détails."
 
 #: lib/layouts/pdfform.module:16 lib/layouts/pdfform.module:27
 msgid "Begin PDF Form"
@@ -16626,14 +16618,12 @@ msgid "Chemistry: Risk and Safety Statements"
 msgstr "Chimie : énoncés de Risque et Sécurité"
 
 #: lib/layouts/rsphrase.module:7
-#, fuzzy
 msgid ""
 "Provides two insets and one environment to typeset numbers and phrases of "
 "chemical risk and safety statements."
 msgstr ""
 "Procure deux inserts et un environnement pour saisir les numéros et les "
-"énoncés des phrases de risque chimique. Pour une description détaillée, voir "
-"le fichier R-S-statements.lyx dans le répertoire des exemples de LyX."
+"énoncés des phrases de risque et précautions en chimie."
 
 #: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
 msgid "R-S number"
@@ -17095,7 +17085,6 @@ msgid "Custom Paragraph Shapes"
 msgstr "Formes de paragraphe paramétrables"
 
 #: lib/layouts/shapepar.module:8
-#, fuzzy
 msgid ""
 "Provides several paragraph shapes as well as commands to define custom "
 "shapes. For a description see LyX's Additional features manual, section "
@@ -17103,7 +17092,7 @@ msgid ""
 msgstr ""
 "Fournit plusieurs formes de paragraphe ainsi que des commandes pour définir "
 "des formes personnalisées. Pour une description, voir le manuel des Options "
-"avancées, section « Formes de paragraphe non standard »."
+"avancées, section Modules > Styles de paragraphe > Formes personnalisées."
 
 #: lib/layouts/shapepar.module:27
 msgid "CD label"
@@ -17873,15 +17862,14 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:7
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see Help > Specific Manuals > "
 "Sweave."
 msgstr ""
 "Autoriser l'utilisation du langage statistique S/R pour la programmation "
-"littéraire via la fonction Sweave(). Voir le fichier sweave.lyx dans les "
-"exemples."
+"littéraire via la fonction Sweave(). Pour plus d'information voir Aide > "
+"Manuels spécifiques > Sweave."
 
 #: lib/layouts/sweave.module:77 lib/layouts/sweave.module:78
 msgid "Sweave Input File"
@@ -18128,7 +18116,6 @@ msgid "AMS Theorems (Extended, Numbered by Type)"
 msgstr "Théorèmes AMS (étendu, numérotation par type)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -18140,7 +18127,7 @@ msgid ""
 msgstr ""
 "Définir certains environnements  additionnels de théorèmes pour l'usage des "
 "paquetages de théorèmes AMS. Inclut Critère, Algorithme, Axiome, Condition, "
-"Note, Notation, Résumé, Remerciements, Conclusion, Hypothèse et Cas, "
+"Note, Notation, Résumé, Constatation, Conclusion, Hypothèse et Cas, "
 "numérotés ou non numérotés. Au contraire du module AMS étendu ordinaire, les "
 "différents types de théorème disponibles ont un compteur séparé (e.g. "
 "critère 1, critère 2, axiome 1, hypothèse 1, critère 3, ..., et non pas "
@@ -18371,7 +18358,6 @@ msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
 msgstr "Théorèmes AMS (étendu, numérotation par type dans les chapitres)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -18384,7 +18370,7 @@ msgid ""
 msgstr ""
 "Définir certains environnements  additionnels de théorèmes pour l'usage des "
 "paquetages de théorèmes AMS. Inclut Critère, Algorithme, Axiome, Condition, "
-"Note, Notation, Résumé, Remerciements, Conclusion, Hypothèse et Cas, "
+"Note, Notation, Résumé, Constatation, Conclusion, Hypothèse et Cas, "
 "numérotés ou non numérotés. Au contraire du module AMS étendu ordinaire, les "
 "différents types de théorème disponibles ont un compteur séparé (e.g. "
 "critère 1, critère 2, axiome 1, hypothèse 1, critère 3, ..., et non pas "
@@ -18395,7 +18381,6 @@ msgid "AMS Theorems (Extended)"
 msgstr "Théorèmes AMS (étendu)"
 
 #: lib/layouts/theorems-ams-extended.module:10
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -18404,7 +18389,7 @@ msgid ""
 msgstr ""
 "Définir certains environnements  additionnels de théorèmes pour l'usage des "
 "paquetages de théorèmes AMS. Inclut Critère, Algorithme, Axiome, Condition, "
-"Note, Notation, Résumé, Remerciements, Conclusion, Fait, Hypothèse, Cas et "
+"Note, Notation, Résumé, Constatation, Conclusion, Fait, Hypothèse, Cas et "
 "Question, numérotés ou non numérotés."
 
 #: lib/layouts/theorems-ams-extended.module:40
@@ -18436,9 +18421,8 @@ msgid "Summary \\thetheorem."
 msgstr "Résumé \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:319
-#, fuzzy
 msgid "Acknowledgment \\thetheorem."
-msgstr "Remerciements \\thetheorem."
+msgstr "Constatation \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:369
 msgid "Conclusion \\thetheorem."
@@ -18917,7 +18901,6 @@ msgid "Variable-width Minipages"
 msgstr "Minipages à largeur variable"
 
 #: lib/layouts/varwidth.module:14
-#, fuzzy
 msgid ""
 "Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. The "
 "varwidth package provides a variable-width minipage, whose resulting width "
@@ -18931,7 +18914,7 @@ msgstr ""
 "dont la largeur est celle de son contenu (s'il n'excède pas la largeur "
 "maximum spécifiée). L'insert a deux arguments optionnels : ajustement "
 "vertical (c|t|b) et largeur maximum (implicitement \\linewidth). Voir "
-"l'exemple varwidth-floats-side-by-side.lyx."
+"Fichier > Ouvrir un exemple > Modules > Minipages à largeur variable."
 
 #: lib/layouts/varwidth.module:20
 msgid "Minipage (Var. Width)"
@@ -22184,7 +22167,7 @@ msgstr "Formulaires PDF|o"
 
 #: lib/ui/stdmenus.inc:675
 msgid "Hazard and Precautionary Statements|H"
-msgstr "Mentions de danger et conseils de prudence|u"
+msgstr "Chimie : mentions de danger et conseils de prudence|u"
 
 #: lib/ui/stdmenus.inc:676 lib/configure.py:775
 msgid "Sweave|S"
@@ -27577,12 +27560,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "Archive LyX (tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 1"
-msgstr "Partie 1"
-
-#: lib/examples/Articles:0
 msgid "Game 2"
 msgstr "Partie 2"
+
+#: lib/examples/Articles:0
+msgid "Game 1"
+msgstr "Partie 1"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -27602,16 +27585,20 @@ msgid "External Material"
 msgstr "Objet externe"
 
 #: lib/examples/Articles:0
-msgid "Feynman Diagrams"
-msgstr "Diagrammes de Feynman"
+msgid "XY-Figure"
+msgstr "Figure XY"
 
 #: lib/examples/Articles:0
-msgid "Instant Preview"
-msgstr "Aperçu sur le vif"
+msgid "XY-Pic"
+msgstr "XY-Pic"
 
 #: lib/examples/Articles:0
 msgid "Itemize Bullets"
 msgstr "Liste à puces"
+
+#: lib/examples/Articles:0
+msgid "Feynman Diagrams"
+msgstr "Diagrammes de Feynman"
 
 #: lib/examples/Articles:0
 msgid "Minted File Listing"
@@ -27622,12 +27609,8 @@ msgid "Minted Listings"
 msgstr "Listings minted"
 
 #: lib/examples/Articles:0
-msgid "XY-Figure"
-msgstr "Figure XY"
-
-#: lib/examples/Articles:0
-msgid "XY-Pic"
-msgstr "XY-Pic"
+msgid "Instant Preview"
+msgstr "Aperçu sur le vif"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
@@ -27650,32 +27633,28 @@ msgid "Localization Test"
 msgstr "Test de localisation"
 
 #: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "Mentions de danger et conseils de prudence"
+msgid "Noweb Listerrors"
+msgstr "Liste d'erreurs Noweb"
 
 #: lib/examples/Articles:0
 msgid "LilyPond Book"
 msgstr "Livre LilyPond"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Captions"
-msgstr "Légendes multilingues"
-
-#: lib/examples/Articles:0
 msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr "Liste d'erreurs Noweb"
+msgid "Hazard and Precautionary Statements"
+msgstr "Chimie : mentions de danger et conseils de prudence"
+
+#: lib/examples/Articles:0
+msgid "Multilingual Captions"
+msgstr "Légendes multilingues"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1806
 msgid "Modules"
 msgstr "Modules"
-
-#: lib/examples/Articles:0
-msgid "Beamer (Complex)"
-msgstr "Beamer (complexe)"
 
 #: lib/examples/Articles:0
 msgid "Foils"
@@ -27686,24 +27665,24 @@ msgid "Foils Landslide"
 msgstr "Foils paysage"
 
 #: lib/examples/Articles:0
-msgid "Welcome"
-msgstr "Bienvenue"
+msgid "Beamer (Complex)"
+msgstr "Beamer (complexe)"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Typesetting with CJKutf8"
-msgstr "Saisie multilingue (CJKutf8)"
+msgid "Welcome"
+msgstr "Bienvenue"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Typesetting with platex"
 msgstr "Saisie multilingue (platex)"
 
 #: lib/examples/Articles:0
-msgid "Hebrew Article (KOMA-Script)"
-msgstr "Article hébreu (KOMA-Script)"
+msgid "Multilingual Typesetting with CJKutf8"
+msgstr "Saisie multilingue (CJKutf8)"
 
 #: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
+msgid "Hebrew Article (KOMA-Script)"
+msgstr "Article hébreu (KOMA-Script)"
 
 #: lib/examples/Articles:0
 msgid "IEEE Transactions Journal"
@@ -27714,60 +27693,12 @@ msgid "Mathematical Monthly"
 msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
+
+#: lib/examples/Articles:0
 msgid "Springers Global Journal Template (V. 3)"
 msgstr "Modèle revue Springer Global (V. 3)"
-
-#: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Fichier principal"
-
-#: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01 Dédicace"
-
-#: lib/examples/Articles:0
-msgid "02 Foreword"
-msgstr "02 Préambule"
-
-#: lib/examples/Articles:0
-msgid "03 Preface"
-msgstr "03 Préface"
-
-#: lib/examples/Articles:0
-msgid "04 Acknowledgements"
-msgstr "04 Remerciements"
-
-#: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste des collaborateurs"
-
-#: lib/examples/Articles:0
-msgid "06 Acronym"
-msgstr "06 Acronyme"
-
-#: lib/examples/Articles:0
-msgid "07 Part"
-msgstr "07 Partie"
-
-#: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Auteur"
-
-#: lib/examples/Articles:0
-msgid "09 Appendix"
-msgstr "09 Annexe"
-
-#: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossaire"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Références"
-
-#: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Acronyme"
 
 #: lib/examples/Articles:0
 msgid "06 Part"
@@ -27782,24 +27713,72 @@ msgid "08 Appendix"
 msgstr "08 Annexe"
 
 #: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09 Glossaire"
+msgid "05 Acronym"
+msgstr "05 Acronyme"
+
+#: lib/examples/Articles:0
+msgid "04 Acknowledgements"
+msgstr "04 Remerciements"
+
+#: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Fichier principal"
+
+#: lib/examples/Articles:0
+msgid "11 References"
+msgstr "11 Références"
+
+#: lib/examples/Articles:0
+msgid "03 Preface"
+msgstr "03 Préface"
 
 #: lib/examples/Articles:0
 msgid "10 Solutions"
 msgstr "10 Solutions"
 
 #: lib/examples/Articles:0
-msgid "Colored"
-msgstr "En couleurs"
+msgid "09 Glossary"
+msgstr "09 Glossaire"
+
+#: lib/examples/Articles:0
+msgid "02 Foreword"
+msgstr "02 Préambule"
+
+#: lib/examples/Articles:0
+msgid "01 Dedication"
+msgstr "01 Dédicace"
+
+#: lib/examples/Articles:0
+msgid "05 Contributor List"
+msgstr "05 Liste des collaborateurs"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Auteur"
+
+#: lib/examples/Articles:0
+msgid "06 Acronym"
+msgstr "06 Acronyme"
+
+#: lib/examples/Articles:0
+msgid "09 Appendix"
+msgstr "09 Annexe"
+
+#: lib/examples/Articles:0
+msgid "07 Part"
+msgstr "07 Partie"
+
+#: lib/examples/Articles:0
+msgid "10 Glossary"
+msgstr "10 Glossaire"
 
 #: lib/examples/Articles:0
 msgid "Simple"
 msgstr "Simple"
 
 #: lib/examples/Articles:0
-msgid "Chapter 1"
-msgstr "Chapitre 1"
+msgid "Colored"
+msgstr "En couleurs"
 
 #: lib/examples/Articles:0
 msgid "Chapter 2"
@@ -27808,6 +27787,10 @@ msgstr "Chapitre 2"
 #: lib/examples/Articles:0
 msgid "Main File"
 msgstr "Fichier principal"
+
+#: lib/examples/Articles:0
+msgid "Chapter 1"
+msgstr "Chapitre 1"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
@@ -29825,8 +29808,8 @@ msgstr ""
 #: src/CutAndPaste.cpp:886
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
-"`%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
+"%3$s'."
 msgstr ""
 "L'insert flexible %1$s n'est pas défini du fait de la conversion du format « "
 "%2$s » vers « %3$s »."
@@ -32593,8 +32576,8 @@ msgstr "Texte suivant la référence (e.g., pages)"
 #: src/frontends/qt/GuiCitation.cpp:310
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr ""
-"Force les capitales dans les noms  (\"Del Piero\", net non pas \"del "
-"Piero\")."
+"Force les capitales dans les noms  (\"Del Piero\", net non pas \"del Piero"
+"\")."
 
 #: src/frontends/qt/GuiCitation.cpp:345
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -33251,7 +33234,7 @@ msgstr " (pas installé)"
 #: src/frontends/qt/GuiDocument.cpp:2740 src/frontends/qt/GuiDocument.cpp:2772
 #: src/frontends/qt/GuiDocument.cpp:2783 src/frontends/qt/GuiDocument.cpp:2794
 msgid "Default font (as set by class)"
-msgstr ""
+msgstr "Police implicite (fixée par la classe)"
 
 #: src/frontends/qt/GuiDocument.cpp:2742
 msgid "Non-TeX Fonts Default"
@@ -33438,12 +33421,14 @@ msgstr "[Aucune option prédéfinie]"
 #: src/frontends/qt/GuiDocument.cpp:4405 src/frontends/qt/GuiDocument.cpp:4416
 #: src/frontends/qt/GuiDocument.cpp:4427
 msgid "Uninstalled used fonts"
-msgstr ""
+msgstr "Polices utilisées non installées"
 
 #: src/frontends/qt/GuiDocument.cpp:4406 src/frontends/qt/GuiDocument.cpp:4417
 #: src/frontends/qt/GuiDocument.cpp:4428
 msgid "This font is not installed and won't be used in output"
 msgstr ""
+"Cette police n'est pas installée et ne pourra pas être utilisée dans la "
+"sortie imprimable"
 
 #: src/frontends/qt/GuiDocument.cpp:4598
 msgid "C&ustomize Hyperref Options"
