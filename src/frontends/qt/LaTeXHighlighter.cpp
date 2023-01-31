@@ -123,14 +123,6 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		setFormat(index, length, keywordFormat);
 		index = exprKeyword.indexIn(text, index + length);
 	}
-	// White space
-	QRegExp exprWhiteSpace("\\s");
-	index = exprWhiteSpace.indexIn(text);
-	while (index >= 0) {
-		int length = exprWhiteSpace.matchedLength();
-		setFormat(index, length, commentFormat);
-		index = exprWhiteSpace.indexIn(text, index + length);
-	}
 	// %comment
 	// Treat a line as a comment starting at a percent sign
 	// * that is the first character in a line
@@ -243,16 +235,6 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		int length = match.capturedLength(0);
 		setFormat(index, length, keywordFormat);
 		match = exprKeyword.match(text, index + length);
-		index = match.capturedStart(0);
-	}
-	// White space
-	QRegularExpression exprWhiteSpace("\\s");
-	match = exprWhiteSpace.match(text);
-	index = match.capturedStart(0);
-	while (index >= 0) {
-		int length = match.capturedLength(0);
-		setFormat(index, length, commentFormat);
-		match = exprWhiteSpace.match(text, index + length);
 		index = match.capturedStart(0);
 	}
 	// %comment
