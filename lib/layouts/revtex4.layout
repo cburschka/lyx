@@ -278,7 +278,7 @@ Style Abstract
 End
 
 
-Style Acknowledgments
+Style Acknowledgments[[credits]]
 	Category              BackMatter
 	LatexType             Environment
 	LatexName             acknowledgments
@@ -288,7 +288,7 @@ Style Acknowledgments
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Centered
-	LabelString           "Acknowledgments"
+	LabelString           "Acknowledgments[[credits]]"
 	LabelBottomSep        0.5
 	LabelFont
 	  Series              Bold
@@ -297,6 +297,10 @@ Style Acknowledgments
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
 	DocBookSection        true
+End
+
+Style Acknowledgments
+	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 

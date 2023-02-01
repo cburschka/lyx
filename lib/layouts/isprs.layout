@@ -218,7 +218,7 @@ Style Subsubsection*
 End
 
 # Acknowledgement(s) style definitions
-Style Acknowledgements
+Style Acknowledgments[[credits]]
   Category              BackMatter
   Margin                Static
   LatexType             Command
@@ -244,4 +244,8 @@ Style Acknowledgements
     Series    		Bold
     Size		Normal
   EndFont
+End
+
+Style Acknowledgements
+	ObsoletedBy    Acknowledgments[[credits]]
 End

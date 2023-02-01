@@ -281,13 +281,13 @@ Style "Preprint number"
 End
 
 
-Style Acknowledgments
+Style Acknowledgments[[credits]]
 	CopyStyle	Abstract
 	LatexName	acknowledgments
 	Category	BackMatter
 	InTitle		0
 	LabelType	Above
-	LabelString	"Acknowledgments"
+	LabelString	"Acknowledgments[[credits]]"
 	Font
 	  Size		Normal
 	EndFont
@@ -299,6 +299,10 @@ Style Acknowledgments
 	DocBookWrapperTag     acknowledgements
 	DocBookSection        true
 	DocBookAbstract       false
+End
+
+Style Acknowledgments
+	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 

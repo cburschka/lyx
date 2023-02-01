@@ -592,7 +592,7 @@ Style Abstract
 End
 
 
-Style Acknowledgements
+Style Acknowledgments[[credits]]
 	Category              BackMatter
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -607,7 +607,7 @@ Style Acknowledgements
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           "Acknowledgements."
+	LabelString           "Acknowledgments[[credits]]."
 	Font
 	  Size                Small
 	EndFont
@@ -617,8 +617,12 @@ Style Acknowledgements
 	EndFont
 End
 
+Style Acknowledgements
+	ObsoletedBy    Acknowledgments[[credits]]
+End
 
-Style Acknowledgement
+
+Style Acknowledgement[[credits]]
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             acknowledgement
@@ -632,7 +636,7 @@ Style Acknowledgement
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           "Acknowledgement."
+	LabelString           "Acknowledgement[[credits]]."
 	Font
 	  Size                Small
 	EndFont
@@ -640,6 +644,10 @@ Style Acknowledgement
 	  Shape               Italic
 	  Size                Small
 	EndFont
+End
+
+Style Acknowledgement
+	ObsoletedBy    Acknowledgment[[credits]]
 End
 
 

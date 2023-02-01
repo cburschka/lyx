@@ -332,11 +332,6 @@ Style AuthorNote
 End
 
 
-Style Acknowledgments
-	ObsoletedBy           AuthorNote
-End
-
-
 Style Journal
 	Category              Preamble
 	LatexName             journal

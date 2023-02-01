@@ -13,13 +13,13 @@ Input theorems-ams-extended-bytype.module
 Provides amsthm 1
 
 NoStyle		Part
-NoCounter		part
+NoCounter	part
 NoStyle		Chapter
-NoCounter		chapter
+NoCounter	chapter
 NoStyle		Paragraph
-NoCounter		paragraph
+NoCounter	paragraph
 NoStyle		Subparagraph
-NoCounter		subparagraph
+NoCounter	subparagraph
 NoStyle		Part*
 NoStyle		Chapter*
 NoStyle		Section*
@@ -32,7 +32,7 @@ NoStyle		LyX-Code
 NoStyle		Verse
 NoStyle		Address
 NoStyle		Right_Address
-NoStyle		Acknowledgment*
+NoStyle		Acknowledgment*[[theorem]]
 NoStyle		Algorithm*
 NoStyle		Assumption*
 NoStyle		Axiom*
@@ -126,9 +126,9 @@ Style Abstract
 	InTitle		1
 End
 
-Style Acknowledgment
+Style Acknowledgment[[theorem]]
 	Category	FrontMatter
-	LabelString	"Acknowledgment."
+	LabelString	"Acknowledgment[[theorem]]."
 	Preamble
 	EndPreamble
 	DocBookTag         para

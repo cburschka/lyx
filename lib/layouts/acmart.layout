@@ -654,11 +654,11 @@ InsetLayout Flex:Anonymous_Suppression
   LabelString "Non anonymous only"
 End
 
-Style Acknowledgments
+Style Acknowledgments[[credits]]
   Category  BackMatter
   LatexName acks
   LatexType   Environment
-  LabelString "Acknowledgments"
+  LabelString "Acknowledgments[[credits]]"
   LabelType Above
   TopSep                1.3
   LabelBottomSep        0.7
@@ -670,6 +670,10 @@ Style Acknowledgments
   DocBookTag            para
   DocBookWrapperTag     acknowledgements
   DocBookSection        true
+End
+
+Style Acknowledgements
+  ObsoletedBy    Acknowledgments[[credits]]
 End
 
 InsetLayout Flex:Grant_Sponsor

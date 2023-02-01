@@ -82,7 +82,7 @@ ModifyStyle Summary
 	RefPrefix sum
 End
 
-ModifyStyle Acknowledgement
+ModifyStyle Acknowledgment[[theorem]]
 	RefPrefix ack
 End
 

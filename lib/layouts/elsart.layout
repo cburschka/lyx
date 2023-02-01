@@ -299,7 +299,7 @@ End
 # - Note
 # - Claim
 # - Summary
-# - Acknowledgement
+# - Acknowledgment
 # - Case
 
 Counter theorem
@@ -546,13 +546,13 @@ End
 
 # This is not taken from the AMS defs, so as to match the output of the
 # style file.
-Style Acknowledgement
+Style Acknowledgment[[theorem]]
 	Margin                Static
 	LatexType             environment
 	LatexName             ack
 	LabelType             Above
 	LabelBottomsep        1
-	LabelString           "Acknowledgements"
+	LabelString           "Acknowledgment[[theorem]]"
 	parsep                0.3
 	LabelFont
 	  Size                large
@@ -560,6 +560,10 @@ Style Acknowledgement
 	EndFont
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
+End
+
+Style Acknowledgement
+	ObsoletedBy    Acknowledgment[[theorem]]
 End
 
 Input theorems-refprefix.inc

@@ -351,7 +351,7 @@ Style Keywords
 End
 
 
-Style Acknowledgements
+Style Acknowledgments[[credits]]
 	Category        BackMatter
 	Margin		Dynamic
 	LatexType	Command
@@ -362,7 +362,7 @@ Style Acknowledgements
 	BottomSep	0.8
 	Align		Left
 	LabelType	Static
-	LabelString	"[Acknowledgements]"
+	LabelString	"[Acknowledgments][[credits]]"
 	KeepEmpty	1
 	Font
 	  Family	Roman
@@ -371,6 +371,11 @@ Style Acknowledgements
 	EndFont
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
+End
+
+
+Style Acknowledgement
+	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 

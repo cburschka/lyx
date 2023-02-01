@@ -250,15 +250,19 @@ Style Synopsis
   DocBookAttr       role='synopsis'
 End
 
-Style Acknowledgements
+Style Acknowledgments[[credits]]
   CopyStyle			"Short Author"
   LatexName			ack
   InTitle			0
-  LabelString			"Acknowledgements:"
+  LabelString			"Acknowledgments[[credits]]:"
   Category			BackMatter
   TopSep			0.7
-  DocBookTag            para
-  DocBookWrapperTag     acknowledgements
+  DocBookTag            	para
+  DocBookWrapperTag     	acknowledgements
+End
+
+Style Acknowledgements
+  ObsoletedBy    		Acknowledgments[[credits]]
 End
 
 Style References

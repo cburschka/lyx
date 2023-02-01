@@ -232,16 +232,20 @@ Style Abstract
 End
 
 
-Style Acknowledgments
+Style Acknowledgments[[credits]]
 	CopyStyle	Abstract
 	LatexType	Command
 	LatexName	acks
 	Category	BackMatter
 	LabelBottomsep	0
 	LabelType	Above
-	LabelString	"Acknowledgments"
+	LabelString	"Acknowledgments[[credits]]"
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
 	DocBookSection        true
+End
+
+Style Acknowledgments
+	ObsoletedBy    Acknowledgments[[credits]]
 End
 

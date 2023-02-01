@@ -79,7 +79,7 @@ Style Offprint
 End
 
 
-Style Acknowledgement
+Style Acknowledgments[[credits]]
 	Margin                Static
 	LatexType             Environment
 	LatexName             acknowledgements
@@ -90,7 +90,7 @@ Style Acknowledgement
 	ParSep                0
 	Align                 Block
 	LabelType             Above
-	LabelString           "Acknowledgements"
+	LabelString           "Acknowledgments[[credits]]"
 	LabelSep              M
 	Font
 	  Size                Small
@@ -101,6 +101,11 @@ Style Acknowledgement
 	EndFont
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
+End
+
+
+Style Acknowledgement
+	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 

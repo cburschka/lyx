@@ -3,7 +3,7 @@
 #DescriptionBegin
 #Defines some additional theorem environments for use with the
 #AMS theorems packages. Includes Criterion, Algorithm, Axiom,
-#Condition, Note, Notation, Summary, Acknowledgment, Conclusion,
+#Condition, Note, Notation, Summary, Acknowledgment[[theorem]], Conclusion,
 #Assumption, and Case, in both numbered and non-numbered forms.
 #Contrary to the plain AMS-Extended module, the different theorem
 #types provided here each have a separate counter, restarted with each
@@ -389,10 +389,10 @@ Style Summary*
 End
 
 
-Style Acknowledgment
+Style Acknowledgment[[theorem]]
 	CopyStyle             Remark
 	LatexName             acknowledgement
-	LabelString           "Acknowledgment \theacknowledgement."
+	LabelString           "Acknowledgment[[theorem]] \theacknowledgement."
 	Preamble
 	  \theoremstyle{remark}
           \ifx\thechapter\undefined
@@ -402,10 +402,10 @@ Style Acknowledgment
           \fi
 	EndPreamble
 	LangPreamble
-	  \providecommand{\acknowledgementname}{_(Acknowledgment)}
+	  \providecommand{\acknowledgementname}{_(Acknowledgment[[theorem]])}
 	EndLangPreamble
 	BabelPreamble
-	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgment)}}
+	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgment[[theorem]])}}
 	EndBabelPreamble
 	LabelCounter          acknowledgement
 	DocBookTag            para
@@ -415,23 +415,23 @@ End
 
 
 Style Acknowledgement
-	ObsoletedBy          Acknowledgment
+	ObsoletedBy          Acknowledgment[[theorem]]
 End
 
 
-Style Acknowledgment*
+Style Acknowledgment*[[theorem]]
 	CopyStyle             Remark*
 	LatexName             acknowledgement*
-	LabelString           "Acknowledgment."
+	LabelString           "Acknowledgment[[theorem]]."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem*{acknowledgement*}{\protect\acknowledgementname}
 	EndPreamble
 	LangPreamble
-	  \providecommand{\acknowledgementname}{_(Acknowledgment)}
+	  \providecommand{\acknowledgementname}{_(Acknowledgment[[theorem]])}
 	EndLangPreamble
 	BabelPreamble
-	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgment)}}
+	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgment[[theorem]])}}
 	EndBabelPreamble
 	DocBookTag            para
 	DocBookAttr           role='acknowledgement'
@@ -440,7 +440,7 @@ End
 
 
 Style Acknowledgement*
-	ObsoletedBy          Acknowledgment*
+	ObsoletedBy          Acknowledgment*[[theorem]]
 End
 
 

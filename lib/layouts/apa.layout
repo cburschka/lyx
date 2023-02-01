@@ -240,7 +240,7 @@ Style Copyright
 End
 
 
-Style Acknowledgements
+Style Acknowledgments[[credits]]
 	Category              BackMatter
 	LatexName             acknowledgements
 	LatexType             Command
@@ -253,7 +253,7 @@ Style Acknowledgements
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	Labeltype             Static
-	LabelString           "Acknowledgements:"
+	LabelString           "Acknowledgments[[credits]]:"
 	Labelsep              M
 	LabelFont
 	  Series              Bold
@@ -266,7 +266,11 @@ End
 
 
 Style Acknowledgments
-	ObsoletedBy           Acknowledgements
+	ObsoletedBy           Acknowledgments[[credits]]
+End
+
+Style Acknowledgements
+	ObsoletedBy           Acknowledgments[[credits]]
 End
 
 

@@ -141,13 +141,13 @@ Style Affiliation
   DocBookWrapperMergeWithPrevious  true
 End
 
-Style Acknowledgments
+Style Acknowledgments[[credits]]
   Category       BackMatter
   Argument 1
-    LabelString  "Title of acknowledgment"
+    LabelString  "Title of acknowledgment[[credits]]"
     Mandatory    1
   EndArgument
-  LabelString    "Acknowledgments"
+  LabelString    "Acknowledgments[[credits]]"
   LabelType      Static
   LabelSep       " "
   LabelFont
@@ -160,6 +160,10 @@ Style Acknowledgments
   DocBookTag            para
   DocBookWrapperTag     acknowledgements
   DocBookSection        true
+End
+
+Style Acknowledgments
+	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 InsetLayout Flex:URL

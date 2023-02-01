@@ -421,13 +421,17 @@ Style Disclaimer
 	DocBookAttr     role='disclaimer'
 End
 
-Style Acknowledgements
+Style Acknowledgments[[credits]]
 	CopyStyle       Statements2
 	LatexName       acknowledgements
-	LabelString     "Acknowledgements."
+	LabelString     "Acknowledgments[[credits]]."
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
 	DocBookSection        true
+End
+
+Style Acknowledgements
+	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 Style Bibliography

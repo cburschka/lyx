@@ -258,13 +258,13 @@ End
 
 ########### Back matter #############
 
-Style Acknowledgments
+Style Acknowledgments[[credits]]
 	CopyStyle		Standard
 	Category		BackMatter
 	LatexType		Environment
 	LatexName		acknowledgments
 	LabelType		Centered
-	LabelString		"acknowledgments"
+	LabelString		"acknowledgments[[credits]]"
 	LabelBottomSep	0.5
 	LabelFont
 	  Series		Bold
@@ -275,6 +275,10 @@ Style Acknowledgments
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
 	DocBookSection        true
+End
+
+Style Acknowledgments
+	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 

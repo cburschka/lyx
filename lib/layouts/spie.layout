@@ -97,13 +97,17 @@ Style Abstract
 End
 
 
-Style Acknowledgments
+Style Acknowledgments[[credits]]
 	CopyStyle             Abstract
 #  NextNoIndent          1
 #  LatexType             Command
 	LatexName             acknowledgments
-	LabelString           "ACKNOWLEDGMENTS"
+	LabelString           "ACKNOWLEDGMENTS[[credits]]"
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
 	DocBookSection        true
+End
+
+Style Acknowledgments
+	ObsoletedBy    Acknowledgments[[credits]]
 End

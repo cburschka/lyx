@@ -622,7 +622,7 @@ Style Preface
 	DocBookSectionTag      preface
 End
 
-Style Acknowledgement
+Style Acknowledgment[[credits]]
 	Category	BackMatter
 	Margin		First_Dynamic
 	LatexType	Environment
@@ -637,7 +637,7 @@ Style Acknowledgement
 	Align		Block
 	AlignPossible	Block, Left
 	LabelType	Static
-	LabelString	"Acknowledgements"
+	LabelString	"Acknowledgments[[credits]]"
 	Font
 	  Size		Small
 	EndFont
@@ -650,9 +650,17 @@ Style Acknowledgement
 	DocBookWrapperTag  acknowledgements
 End
 
-Style Acknowledgements
-	CopyStyle	Acknowledgement
+Style Acknowledgments[[credits]]
+	CopyStyle	Acknowledgment[[credits]]
 	LatexName	acknowledgements
+End
+
+Style Acknowledgement
+	ObsoletedBy    Acknowledgment[[credits]]
+End
+
+Style Acknowledgements
+	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 Style Bibliography
