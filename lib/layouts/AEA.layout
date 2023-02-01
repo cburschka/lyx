@@ -32,7 +32,7 @@ NoStyle		LyX-Code
 NoStyle		Verse
 NoStyle		Address
 NoStyle		Right_Address
-NoStyle		Acknowledgement*
+NoStyle		Acknowledgment*
 NoStyle		Algorithm*
 NoStyle		Assumption*
 NoStyle		Axiom*
@@ -126,9 +126,9 @@ Style Abstract
 	InTitle		1
 End
 
-Style Acknowledgement
+Style Acknowledgment
 	Category	FrontMatter
-	LabelString	"Acknowledgement."
+	LabelString	"Acknowledgment."
 	Preamble
 	EndPreamble
 	DocBookTag         para
