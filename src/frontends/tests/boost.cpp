@@ -10,9 +10,10 @@
 
 #include <config.h>
 
-#include <cstdlib>
-#include <iostream>
 #include <boost/assert.hpp>
+
+#include <cstdlib>
+#include <exception>
 
 using namespace std;
 
@@ -21,7 +22,6 @@ namespace boost {
 #ifndef BOOST_NO_EXCEPTIONS
 void throw_exception(exception const & /*e*/)
 {
-	cerr<<"ASSERTION VIOLATED IN biblio test";
 	BOOST_ASSERT(false);
 }
 #endif
@@ -29,6 +29,13 @@ void throw_exception(exception const & /*e*/)
 
 void assertion_failed(char const * /*expr*/, char const * /*function*/,
 		      char const * /*file*/, long /*line*/)
+{
+	::abort();
+}
+
+
+void assertion_failed_msg(char const * /*expr*/, char const * /*msg*/,
+						  char const * /*function*/, char const * /*file*/, long /*line*/)
 {
 	::abort();
 }
