@@ -1,13 +1,13 @@
 # Czech translation of LyX
-# Copyright (C) 2022 LyX Developers
-# Pavel Sanda <sanda@lyx.org>, 2006-2022.
+# Copyright (C) 2023 LyX Developers
+# Pavel Sanda <sanda@lyx.org>, 2006-2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Lyx 2.3\n"
+"Project-Id-Version: Lyx 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2023-02-03 22:04+0100\n"
-"PO-Revision-Date: 2022-11-15 01:09-0800\n"
+"PO-Revision-Date: 2023-02-03 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "Language: cs\n"
@@ -20,29 +20,26 @@ msgid "Version"
 msgstr "Verze"
 
 #: src/frontends/qt/ui/AboutUi.ui:150
-#, fuzzy
 msgid "Library directory"
-msgstr "Adresář s knihovnami: "
+msgstr "Adresář s knihovnami"
 
 #: src/frontends/qt/ui/AboutUi.ui:162
 msgid "Open library directory in file browser"
-msgstr ""
+msgstr "Otevřít adresář s knihovnami v průzkumníku souborů"
 
 #: src/frontends/qt/ui/AboutUi.ui:165
 msgid "[[do]]&Open"
-msgstr ""
+msgstr "&Otevřít"
 
 #: src/frontends/qt/ui/AboutUi.ui:200
-#, fuzzy
 msgid "User directory"
-msgstr "Uživatelský adresář: "
+msgstr "Uživatelský adresář"
 
 #: src/frontends/qt/ui/AboutUi.ui:231
 msgid "Open user directory in file browser"
-msgstr ""
+msgstr "Otevřít uživatelský adresář v průzkumníku souborů"
 
 #: src/frontends/qt/ui/AboutUi.ui:234
-#, fuzzy
 msgid "[[do]]O&pen"
 msgstr "O&tevřít"
 
@@ -68,9 +65,8 @@ msgid "Copy version information to clipboard"
 msgstr ""
 
 #: src/frontends/qt/ui/AboutUi.ui:386
-#, fuzzy
 msgid "Copy &Version Info"
-msgstr "Vložit informaci o verzi"
+msgstr "Kopírovat informaci o verzi"
 
 #: src/frontends/qt/ui/BibitemUi.ui:26 src/frontends/qt/ui/BibitemUi.ui:45
 msgid "The bibliography key"
@@ -92,18 +88,16 @@ msgid "&Label:"
 msgstr "Z&načka:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:83
-#, fuzzy
 msgid "&Year:"
-msgstr "Year: "
+msgstr "&Rok:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:96
 msgid "The year with \"Author (Year)\" citations (without parentheses)."
-msgstr ""
+msgstr "Rok s citacemi \"Autor (Rok)\" (bez závorek)"
 
 #: src/frontends/qt/ui/BibitemUi.ui:105 src/frontends/qt/GuiBibitem.cpp:64
-#, fuzzy
 msgid "A&ll Author Names:"
-msgstr "Author Names"
+msgstr "&Jména všech autorů:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:115
 msgid ""
@@ -111,6 +105,7 @@ msgid ""
 "full list for author-year citation, you can put the full list here and the "
 "abbreviated list above."
 msgstr ""
+"Chcete-li použít zkrácený seznam autorů ('et al.') a též úplný seznam citací autor-rok, vložte plný seznam zde a zkrácený seznam výše."
 
 #: src/frontends/qt/ui/BibitemUi.ui:122 src/frontends/qt/GuiBibitem.cpp:93
 msgid ""
@@ -268,48 +263,40 @@ msgid ""
 msgstr "Definice voleb typu --min-crossrefs (viz dokumentace BibTeXu)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:23
-#, fuzzy
 msgid "BibTeX database(s) to use"
-msgstr "BibTeX-ová databáze k použití"
+msgstr "BibTeX-ové databáze k použití"
 
 #: src/frontends/qt/ui/BibtexUi.ui:26
-#, fuzzy
 msgid "&Databases"
-msgstr "Databáze:"
+msgstr "&Databáze"
 
 #: src/frontends/qt/ui/BibtexUi.ui:37
-#, fuzzy
 msgid "Found b&y LaTeX:"
-msgstr "&Databáze nalezená LaTeX-em:"
+msgstr "Nalezená &LaTeX-em:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:65
-#, fuzzy
 msgid "Add the selected BibTeX database from the list on the left"
-msgstr "Přesuň vybranou databázi v seznamu nahoru"
+msgstr "Přidat vybranou BibTeX databázi ze seznamu nalevo"
 
 #: src/frontends/qt/ui/BibtexUi.ui:68
-#, fuzzy
 msgid "&Add Selected[[bib]]"
 msgstr "&Přidat Vybrané"
 
 #: src/frontends/qt/ui/BibtexUi.ui:75
-#, fuzzy
 msgid "Add a BibTeX database from your local directory"
-msgstr "Přidej soubor s BibTeX-ovou databází"
+msgstr "Přidej soubor s BibTeX-ovou databází z lokálního adresáře"
 
 #: src/frontends/qt/ui/BibtexUi.ui:78
-#, fuzzy
 msgid "Add &Local..."
-msgstr "&Lokální rozvržení..."
+msgstr "Přidat l&okální..."
 
 #: src/frontends/qt/ui/BibtexUi.ui:91
-#, fuzzy
 msgid "Inherit bibliography databases from the master document"
-msgstr "Přidat bibliografii do obsahu"
+msgstr "Přidat bibliografickou databázi z hlavního dokumentu"
 
 #: src/frontends/qt/ui/BibtexUi.ui:94
 msgid "&Inherit from Master"
-msgstr ""
+msgstr "&Převzít z hlavního"
 
 #: src/frontends/qt/ui/BibtexUi.ui:101
 msgid "Remove the selected database"
@@ -320,9 +307,8 @@ msgid "&Delete"
 msgstr "&Smazat"
 
 #: src/frontends/qt/ui/BibtexUi.ui:117
-#, fuzzy
 msgid "Move the selected database up (Ctrl-Up)"
-msgstr "Přesun označené citace nahoru (Ctrl+nahoru)"
+msgstr "Přesuň označenou databázi nahoru (Ctrl+nahoru)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:120 src/frontends/qt/ui/CitationUi.ui:191
 #: src/frontends/qt/ui/ModulesUi.ui:140
@@ -330,9 +316,8 @@ msgid "&Up"
 msgstr "&Nahoru"
 
 #: src/frontends/qt/ui/BibtexUi.ui:140
-#, fuzzy
 msgid "Move the selected database down (Ctrl-Down)"
-msgstr "Přesun označené citace dolů (Ctrl+dolů)"
+msgstr "Přesuň označenou databázi dolů (Ctrl+dolů)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:143 src/frontends/qt/ui/CitationUi.ui:214
 #: src/frontends/qt/ui/ModulesUi.ui:147
@@ -340,17 +325,14 @@ msgid "Do&wn"
 msgstr "&Dolů"
 
 #: src/frontends/qt/ui/BibtexUi.ui:170
-#, fuzzy
 msgid "Edit selected database externally"
-msgstr "Editovat databázi(e) externě...|x"
+msgstr "Editovat vybranou databázi externě"
 
 #: src/frontends/qt/ui/BibtexUi.ui:173
-#, fuzzy
 msgid "&Edit..."
-msgstr "&Editace"
+msgstr "&Editovat..."
 
 #: src/frontends/qt/ui/BibtexUi.ui:201
-#, fuzzy
 msgid "Sele&cted:"
 msgstr "&Vybrané:"
 
@@ -361,15 +343,15 @@ msgid "&Filter:"
 msgstr "&Filtr:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:248 src/frontends/qt/GuiBibtex.cpp:326
-#, fuzzy
 msgid "E&ncoding:"
-msgstr "Kódování"
+msgstr "&Kódování:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:258 src/frontends/qt/GuiBibtex.cpp:327
 msgid ""
 "If your bibliography databases use a different encoding than the LyX "
 "document, specify it here"
 msgstr ""
+"Mají-li bibliografické databáze kódování odlišné od dokumentu, specifikujte zde"
 
 #: src/frontends/qt/ui/BibtexUi.ui:270
 msgid "The BibTeX style"
@@ -384,13 +366,12 @@ msgid "Choose a style file"
 msgstr "Vybrat soubor se stylem"
 
 #: src/frontends/qt/ui/BibtexUi.ui:298
-#, fuzzy
 msgid "Select a style file from your local directory"
-msgstr "Vybrat pomocný adresář"
+msgstr "Vybrat soubor stylu z lokálního adresáře"
 
 #: src/frontends/qt/ui/BibtexUi.ui:301
 msgid "Add L&ocal..."
-msgstr ""
+msgstr "Př&idat lokální..."
 
 #: src/frontends/qt/ui/BibtexUi.ui:314 lib/layouts/beamer.layout:533
 #: lib/layouts/beamer.layout:562 lib/layouts/beamer.layout:573
@@ -437,9 +418,8 @@ msgid "Add bibliography to &TOC"
 msgstr "Přidat bibliografii k O&bsahu"
 
 #: src/frontends/qt/ui/BibtexUi.ui:393
-#, fuzzy
 msgid "Custo&m:"
-msgstr "Vlastní"
+msgstr "Vla&stní:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:403
 msgid ""
