@@ -166,7 +166,7 @@ Style Mail
 End
 
 
-Style Acknowledgments[[credits]]
+Style Acknowledgments
 	Margin		First_Dynamic
 	LatexType	Environment
 	LatexName	acknowledgements
@@ -178,7 +178,7 @@ Style Acknowledgments[[credits]]
 	ParSep		0
 	Align		Block
 	LabelType	Static
-	LabelString	"Acknowledgements[[credits]]."
+	LabelString	"Acknowledgments."
 	LabelSep	M
 	Font
 	  Size		Small
@@ -190,11 +190,6 @@ Style Acknowledgments[[credits]]
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
 	DocBookSection        true
-End
-
-
-Style Acknowledgement
-	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 

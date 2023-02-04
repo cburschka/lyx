@@ -280,14 +280,14 @@ End
 # insert Abtract and Bibliography style
 Input stdstruct.inc
 
-Style Acknowledgments[[credits]]
+Style Acknowledgments
 	CopyStyle		Abstract
 	LatexName		acknowledgement
 	Category		BackMatter
 	InTitle			0
 	BottomSep		0.7
 	LabelType		Above
-	LabelString		"Acknowledgments[[credits]]"
+	LabelString		"Acknowledgments"
 	Font
 	  Size			Normal
 	EndFont
@@ -299,12 +299,8 @@ Style Acknowledgments[[credits]]
 	DocBookWrapperTag     acknowledgements
 End
 
-Style Acknowledgement
-	ObsoletedBy    Acknowledgments[[credits]]
-End
-
 Style SupplementalInfo
-	CopyStyle		Acknowledgments[[credits]]
+	CopyStyle		Acknowledgments
 	LatexName		suppinfo
 	LabelString		"Supporting Information Available"
 	DocBookTag            para
@@ -313,7 +309,7 @@ Style SupplementalInfo
 End
 
 Style TOC_entry
-	CopyStyle		Acknowledgments[[credits]]
+	CopyStyle		Acknowledgments
 	LatexName		tocentry
 	ParSep			0.3
 	LabelString		"Graphical TOC Entry"

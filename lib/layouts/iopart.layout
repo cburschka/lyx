@@ -293,7 +293,7 @@ Style submitto
 End
 
 
-Style Acknowledgments[[credits]]
+Style Acknowledgments
 	Margin		Dynamic
 	LatexType	Command
 	LatexName	ack{}
@@ -307,7 +307,7 @@ Style Acknowledgments[[credits]]
 	BottomSep	0.4
 	Align		Block
 	LabelType	Static
-	LabelString	"Acknowledgments[[credits]]"
+	LabelString	"Acknowledgments"
 	Font
 	  Series	Bold
 	  Size		Normal
@@ -315,10 +315,6 @@ Style Acknowledgments[[credits]]
 	# TODO: For IOP, this is rather a title than a paragraph style. But it's not in the TOC, so not much can be done.
 	DocBookTag  para
 	DocBookAttr role='acknowledgments'
-End
-
-Style Acknowledgments
-	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 

@@ -190,7 +190,7 @@ Style Notation
 End
 
 
-Style Acknowledgments[[credits]]
+Style Acknowledgments
 	Margin		Dynamic
 	LatexType	Environment
 	LatexName	acknowledgments
@@ -202,7 +202,7 @@ Style Acknowledgments[[credits]]
 	BottomSep	0.4
 	Align		Block
 	LabelType	Static
-	LabelString	"Acknowledgments[[credits]]."
+	LabelString	"Acknowledgments."
 	Font
 	  Size		Small
 	EndFont
@@ -213,11 +213,6 @@ Style Acknowledgments[[credits]]
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
 	DocBookSection        true
-End
-
-
-Style Acknowledgments
-	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 

@@ -4709,7 +4709,95 @@ def revert_hyper_other(document):
             document.body[i:j+1] = ecmd
         i += 1
 
-                   
+
+ack_layouts_new = {
+    "aa" : "Acknowledgments",
+    "aapaper" : "Acknowledgments",
+    "aastex" : "Acknowledgments",
+    "aastex62" : "Acknowledgments",
+    "achemso" : "Acknowledgments",
+    "acmart" : "Acknowledgments",
+    "apa" : "Acknowledgments",
+    "copernicus" : "Acknowledgments",
+    "egs" : "Acknowledgments",# + Acknowledgment
+    "elsart" : "Acknowledgment",
+    "isprs" : "Acknowledgments",
+    "iucr" : "Acknowledgments",
+    "kluwer" : "Acknowledgments",
+    "svglobal3" : "Acknowledgments",
+    "svglobal" : "Acknowledgment",
+    "svjog" : "Acknowledgment",
+    "svmono" : "Acknowledgment",
+    "svmult" : "Acknowledgment",
+    "svprobth" : "Acknowledgment",
+}
+
+ack_layouts_old = {
+    "aa" : "Acknowledgement",
+    "aapaper" : "Acknowledgement",
+    "aastex" : "Acknowledgement",
+    "aastex62" : "Acknowledgement",
+    "achemso" : "Acknowledgement",
+    "acmart" : "Acknowledgements",
+    "apa" : "Acknowledgements",
+    "copernicus" : "Acknowledgements",
+    "egs" : "Acknowledgements",# + Acknowledgement
+    "elsart" : "Acknowledegment",
+    "isprs" : "Acknowledgements",
+    "kluwer" : "Acknowledgements",
+    "svglobal3" : "Acknowledgements",
+    "svglobal" : "Acknowledgement",
+    "svjog" : "Acknowledgement",
+    "svmono" : "Acknowledgement",
+    "svmult" : "Acknowledgement",
+    "svprobth" : "Acknowledgement",
+}
+
+
+def convert_acknowledgment(document):
+    " Fix spelling of acknowledgment styles "
+
+    if document.textclass not in list(ack_layouts_old.keys()):
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_layout ' + ack_layouts_old[document.textclass], i)
+        if i == -1:
+            break
+        document.body[i] = "\\begin_layout " + ack_layouts_new[document.textclass]
+    if document.textclass != "egs":
+        return
+    # egs has two styles
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_layout Acknowledgement', i)
+        if i == -1:
+            break
+        document.body[i] = "\\begin_layout Acknowledgment"
+
+
+def revert_acknowledgment(document):
+    " Restore old spelling of acknowledgment styles "
+
+    if document.textclass not in list(ack_layouts_new.keys()):
+        return
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_layout ' + ack_layouts_new[document.textclass], i)
+        if i == -1:
+            break
+        document.body[i] = "\\begin_layout " + ack_layouts_old[document.textclass]
+    if document.textclass != "egs":
+        return
+    # egs has two styles
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_layout Acknowledgment', i)
+        if i == -1:
+            break
+        document.body[i] = "\\begin_layout Acknowledgement"
+
 ##
 # Conversion hub
 #
@@ -4785,10 +4873,12 @@ convert = [
            [611, []],
            [612, [convert_starred_refs]],
            [613, []],
-           [614, [convert_hyper_other]]
+           [614, [convert_hyper_other]],
+           [615, [convert_acknowledgment]]
           ]
 
-revert =  [[613, [revert_hyper_other]],
+revert =  [[614, [revert_acknowledgment]],
+           [613, [revert_hyper_other]],
            [612, [revert_familydefault]],
            [611, [revert_starred_refs]],
            [610, []],

@@ -299,20 +299,16 @@ InsetLayout "Flex:Thanks"
 End
 
 
-Style Acknowledgments[[credits]]
+Style Acknowledgments
 	CopyStyle		Abstract
 	LatexName		acks
 	Category		BackMatter
 	InTitle			0
 	LabelBottomsep		0
 	LabelType		Above
-	LabelString		"Acknowledgments[[credits]]"
+	LabelString		"Acknowledgments"
 	DocBookTag              para
 	DocBookWrapperTag       acknowledgements
 	DocBookSection          true
-End
-
-Style Acknowledgments
-	ObsoletedBy    Acknowledgments[[credits]]
 End
 

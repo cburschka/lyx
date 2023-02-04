@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 614 // rkh: Add 'other' option to hyperlink
-#define LYX_FORMAT_TEX2LYX 614
+#define LYX_FORMAT_LYX 615 // spitz: acknowledgement > acknowledgment
+#define LYX_FORMAT_TEX2LYX 615
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

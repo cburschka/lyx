@@ -338,7 +338,7 @@ Style Keywords
 End
 
 
-Style Acknowledgments[[credits]]
+Style Acknowledgments
 	Category              BackMatter
 	Margin                Static
 	LatexType             Environment
@@ -350,7 +350,7 @@ Style Acknowledgments[[credits]]
 	ParSep                0
 	Align                 Block
 	LabelType             Centered
-	LabelString           "Acknowledgments[[credits]]"
+	LabelString           "Acknowledgments"
 	LabelBottomSep        0.5
 	LabelFont
 	  Series              Bold
@@ -358,11 +358,6 @@ Style Acknowledgments[[credits]]
 	EndFont
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
-End
-
-
-Style Acknowledgements
-	ObsoletedBy    Acknowledgments[[credits]]
 End
 
 
