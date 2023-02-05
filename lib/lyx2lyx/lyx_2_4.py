@@ -4744,6 +4744,7 @@ ack_layouts_old = {
     "egs" : "Acknowledgements",# + Acknowledgement
     "elsart" : "Acknowledegment",
     "isprs" : "Acknowledgements",
+    "iucr" : "Acknowledgements",
     "kluwer" : "Acknowledgements",
     "svglobal3" : "Acknowledgements",
     "svglobal" : "Acknowledgement",
