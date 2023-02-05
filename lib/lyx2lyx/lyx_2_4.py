@@ -4717,6 +4717,7 @@ ack_layouts_new = {
     "aastex62" : "Acknowledgments",
     "achemso" : "Acknowledgments",
     "acmart" : "Acknowledgments",
+    "AEA" : "Acknowledgments",
     "apa" : "Acknowledgments",
     "copernicus" : "Acknowledgments",
     "egs" : "Acknowledgments",# + Acknowledgment
@@ -4739,6 +4740,7 @@ ack_layouts_old = {
     "aastex62" : "Acknowledgement",
     "achemso" : "Acknowledgement",
     "acmart" : "Acknowledgements",
+    "AEA" : "Acknowledgement",
     "apa" : "Acknowledgements",
     "copernicus" : "Acknowledgements",
     "egs" : "Acknowledgements",# + Acknowledgement
@@ -4798,6 +4800,174 @@ def revert_acknowledgment(document):
         if i == -1:
             break
         document.body[i] = "\\begin_layout Acknowledgement"
+
+
+ack_theorem_def = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires theorems-ams-extended module to be loaded',
+    r'Style Acknowledgement',
+    r'  CopyStyle             Remark',
+    r'  LatexName             acknowledgement',
+    r'  LabelString           "Acknowledgement \thetheorem."',
+    r'  Preamble',
+    r'    \theoremstyle{remark}',
+    r'    \newtheorem{acknowledgement}[thm]{\protect\acknowledgementname}',
+    r'  EndPreamble',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ackStar_theorem_def = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires a theorems-ams-extended-* module to be loaded',
+    r'Style Acknowledgement*',
+    r'  CopyStyle             Remark*',
+    r'  LatexName             acknowledgement*',
+    r'  LabelString           "Acknowledgement."',
+    r'  Preamble',
+    r'    \theoremstyle{remark}',
+    r'    \newtheorem*{acknowledgement*}{\protect\acknowledgementname}',
+    r'  EndPreamble',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ack_bytype_theorem_def = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires theorems-ams-extended-bytype module to be loaded',
+    r'Counter acknowledgement',
+    r'  GuiName Acknowledgment',
+    r'End',
+    r'Style Acknowledgement',
+    r'  CopyStyle             Remark',
+    r'  LatexName             acknowledgement',
+    r'  LabelString           "Acknowledgement \theacknowledgement."',
+    r'  Preamble',
+    r'    \theoremstyle{remark}',
+    r'    \newtheorem{acknowledgement}{\protect\acknowledgementname}',
+    r'  EndPreamble',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ack_chap_bytype_theorem_def = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires theorems-ams-extended-chap-bytype module to be loaded',
+    r'Counter acknowledgement',
+    r'  GuiName Acknowledgment',
+    r'  Within chapter',
+    r'End',
+    r'Style Acknowledgement',
+    r'  CopyStyle             Remark',
+    r'  LatexName             acknowledgement',
+    r'  LabelString           "Acknowledgement \theacknowledgement."',
+    r'  Preamble',
+    r'    \theoremstyle{remark}',
+    r'    \ifx\thechapter\undefined',
+    r'      \newtheorem{acknowledgement}{\protect\acknowledgementname}',
+    r'    \else',
+    r'      \newtheorem{acknowledgement}{\protect\acknowledgementname}[chapter]',
+    r'    \fi',
+    r'  EndPreamble',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+def convert_ack_theorems(document):
+    """Put removed acknowledgement theorems to local layout"""
+
+    haveAck = False
+    haveStarAck = False
+    if "theorems-ams-extended-bytype" in document.get_module_list():
+        i = 0
+        while True:
+            if haveAck and haveStarAck:
+                break
+            i = find_token(document.body, '\\begin_layout Acknowledgement', i)
+            if i == -1:
+                break
+            if document.body[i] == "\\begin_layout Acknowledgement*" and not haveStarAck:
+                document.append_local_layout(ackStar_theorem_def)
+                haveStarAck = True
+            elif not haveAck:
+                document.append_local_layout(ack_bytype_theorem_def)
+                haveAck = True
+            i += 1
+    elif "theorems-ams-extended-chap-bytype" in document.get_module_list():
+        i = 0
+        while True:
+            if haveAck and haveStarAck:
+                break
+            i = find_token(document.body, '\\begin_layout Acknowledgement', i)
+            if i == -1:
+                break
+            if document.body[i] == "\\begin_layout Acknowledgement*" and not haveStarAck:
+                document.append_local_layout(ackStar_theorem_def)
+                haveStarAck = True
+            elif not haveAck:
+                document.append_local_layout(ack_chap_bytype_theorem_def)
+                haveAck = True
+            i += 1
+    elif "theorems-ams-extended" in document.get_module_list():
+        i = 0
+        while True:
+            if haveAck and haveStarAck:
+                break
+            i = find_token(document.body, '\\begin_layout Acknowledgement', i)
+            if i == -1:
+                break
+            if document.body[i] == "\\begin_layout Acknowledgement*" and not haveStarAck:
+                document.append_local_layout(ackStar_theorem_def)
+                haveStarAck = True
+            elif not haveAck:
+                document.append_local_layout(ack_theorem_def)
+                haveAck = True
+            i += 1
+
+
+def revert_ack_theorems(document):
+    """Remove acknowledgement theorems from local layout"""
+    if "theorems-ams-extended-bytype" in document.get_module_list():
+        document.del_local_layout(ackStar_theorem_def)
+        document.del_local_layout(ack_bytype_theorem_def)
+    elif "theorems-ams-extended-chap-bytype" in document.get_module_list():
+        document.del_local_layout(ackStar_theorem_def)
+        document.del_local_layout(ack_chap_bytype_theorem_def)
+    elif "theorems-ams-extended" in document.get_module_list():
+        document.del_local_layout(ackStar_theorem_def)
+        document.del_local_layout(ack_theorem_def)
 
 ##
 # Conversion hub
@@ -4875,10 +5045,10 @@ convert = [
            [612, [convert_starred_refs]],
            [613, []],
            [614, [convert_hyper_other]],
-           [615, [convert_acknowledgment]]
+           [615, [convert_acknowledgment,convert_ack_theorems]]
           ]
 
-revert =  [[614, [revert_acknowledgment]],
+revert =  [[614, [revert_ack_theorems,revert_acknowledgment]],
            [613, [revert_hyper_other]],
            [612, [revert_familydefault]],
            [611, [revert_starred_refs]],

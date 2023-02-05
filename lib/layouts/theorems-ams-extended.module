@@ -3,7 +3,7 @@
 #DescriptionBegin
 #Defines some additional theorem environments for use with the
 #AMS theorems packages. Includes Criterion, Algorithm, Axiom,
-#Condition, Note, Notation, Summary, Acknowledgment[[theorem]], Conclusion,
+#Condition, Note, Notation, Summary, Conclusion,
 #Fact, Assumption, Case, and Question, in both numbered and non-numbered
 #forms.
 #DescriptionEnd
@@ -27,7 +27,6 @@ Requires	amsmath
 # - Note
 # - Notation
 # - Summary
-# - Acknowledgment (with LaTeX name acknowledgement for compatib.)
 # - Conclusion
 # - Fact
 # - Assumption
@@ -310,56 +309,6 @@ Style Summary*
 	DocBookTag            para
 	DocBookAttr           role='summary'
 	DocBookItemTag        ""
-End
-
-
-Style Acknowledgment[[theorem]]
-	CopyStyle             Remark
-	LatexName             acknowledgement
-	LabelString           "Acknowledgment[[theorem]] \thetheorem."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{acknowledgement}[thm]{\protect\acknowledgementname}
-	EndPreamble
-	LangPreamble
-	  \providecommand{\acknowledgementname}{_(Acknowledgment[[theorem]])}
-	EndLangPreamble
-	BabelPreamble
-	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgment[[theorem]])}}
-	EndBabelPreamble
-	DocBookTag            para
-	DocBookAttr           role='acknowledgement'
-	DocBookItemTag        ""
-End
-
-
-Style Acknowledgement
-	ObsoletedBy          Acknowledgment[[theorem]]
-End
-
-
-Style Acknowledgment*[[theorem]]
-	CopyStyle             Remark*
-	LatexName             acknowledgement*
-	LabelString           "Acknowledgment[[theorem]]."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem*{acknowledgement*}{\protect\acknowledgementname}
-	EndPreamble
-	LangPreamble
-	  \providecommand{\acknowledgementname}{_(Acknowledgment[[theorem]])}
-	EndLangPreamble
-	BabelPreamble
-	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgment[[theorem]])}}
-	EndBabelPreamble
-	DocBookTag            para
-	DocBookAttr           role='acknowledgement'
-	DocBookItemTag        ""
-End
-
-
-Style Acknowledgement*
-	ObsoletedBy          Acknowledgment*[[theorem]]
 End
 
 

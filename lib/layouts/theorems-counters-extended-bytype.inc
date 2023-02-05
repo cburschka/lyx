@@ -24,9 +24,6 @@ End
 Counter summary
 	GuiName Summary
 End
-Counter acknowledgement
-	GuiName Acknowledgement[[theorem]]
-End
 Counter conclusion
 	GuiName Conclusion
 End

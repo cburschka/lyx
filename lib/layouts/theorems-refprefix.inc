@@ -82,10 +82,6 @@ ModifyStyle Summary
 	RefPrefix sum
 End
 
-ModifyStyle Acknowledgment[[theorem]]
-	RefPrefix ack
-End
-
 ModifyStyle Conclusion
 	RefPrefix conc
 End
@@ -93,7 +89,6 @@ End
 ModifyStyle Assumption
 	RefPrefix assu
 End
-
 
 ModifyStyle Question
 	RefPrefix que

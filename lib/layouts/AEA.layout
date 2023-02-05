@@ -32,8 +32,6 @@ NoStyle		LyX-Code
 NoStyle		Verse
 NoStyle		Address
 NoStyle		Right_Address
-NoStyle		Acknowledgement*
-NoStyle		Acknowledgment*[[theorem]]
 NoStyle		Algorithm*
 NoStyle		Assumption*
 NoStyle		Axiom*
@@ -74,7 +72,7 @@ Style Publication_Month
 	DocBookAttr           role='month'
 	DocBookTagType        paragraph
 	DocBookInInfo         maybe
-    DocBookNoFontInside   true
+    	DocBookNoFontInside   true
 End
 
 Style Publication_Year
@@ -85,7 +83,7 @@ Style Publication_Year
 	DocBookAttr           role='year'
 	DocBookTagType        paragraph
 	DocBookInInfo         maybe
-    DocBookNoFontInside   true
+    	DocBookNoFontInside   true
 End
 
 Style Publication_Volume
@@ -127,11 +125,15 @@ Style Abstract
 	InTitle		1
 End
 
-Style Acknowledgment[[theorem]]
+Style Acknowledgments
 	Category	FrontMatter
-	LabelString	"Acknowledgment[[theorem]]."
-	Preamble
-	EndPreamble
+	LatexType	Environment
+	Align		Left
+	Margin		Dynamic
+	LabelType	Static
+	LabelSep	M
+	LabelString	"Acknowledgments."
+	LatexName	acknowledgement
 	DocBookTag         para
 	DocBookAttr        ""
 	DocBookWrapperTag  acknowledgements
