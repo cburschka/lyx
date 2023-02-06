@@ -62,7 +62,7 @@ msgstr "Poznámky k vydání"
 
 #: src/frontends/qt/ui/AboutUi.ui:383
 msgid "Copy version information to clipboard"
-msgstr ""
+msgstr "Zkopírovat informaci o verzi do schránky"
 
 #: src/frontends/qt/ui/AboutUi.ui:386
 msgid "Copy &Version Info"
@@ -1312,34 +1312,31 @@ msgid "Changes mar&kup:"
 msgstr "Značky změn"
 
 #: src/frontends/qt/ui/CounterUi.ui:22
-#, fuzzy
 msgid "C&ounter:"
-msgstr "K&onvertor:"
+msgstr "Čí&slování:"
 
 #: src/frontends/qt/ui/CounterUi.ui:38
-#, fuzzy
 msgid "Select counter to modify"
-msgstr "Vybrat dokument k otevření"
+msgstr "Vybrat čítač k nastavení"
 
 #: src/frontends/qt/ui/CounterUi.ui:45
-#, fuzzy
 msgid "&Action:"
-msgstr "Action"
+msgstr "Úk&on:"
 
 #: src/frontends/qt/ui/CounterUi.ui:63
 msgid "Select the action to perform on selected counter"
-msgstr ""
+msgstr "Vybrat akci pro zvolený čítač"
 
 #: src/frontends/qt/ui/CounterUi.ui:79
 msgid ""
 "If checked, modification affects the counter only in the LyX workarea, not "
 "in the output"
 msgstr ""
+"Při zaškrtnutí budou modifikace číslování změněny pouze v editačním okně, nikoliv ve výstupu"
 
 #: src/frontends/qt/ui/CounterUi.ui:85
-#, fuzzy
 msgid "&Workarea only"
-msgstr "Události na pracovní ploše"
+msgstr "Po&uze v editačním okně"
 
 #: src/frontends/qt/ui/DelimiterUi.ui:122 src/frontends/qt/GuiDelimiter.cpp:376
 msgid "TeX Code: "
@@ -3114,9 +3111,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt/ui/MasterChildUi.ui:58
-#, fuzzy
 msgid "Global Counters && References"
-msgstr "všechny necitované reference"
+msgstr "Globální číslování a reference"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:64
 msgid ""
@@ -17079,7 +17075,6 @@ msgid "Authorinfo:"
 msgstr "Authorinfo:"
 
 #: lib/layouts/spie.layout:105
-#, fuzzy
 msgid "ACKNOWLEDGMENTS[[credits]]"
 msgstr "ACKNOWLEDGMENTS"
 
@@ -17749,9 +17744,8 @@ msgid "Exercise \\theexercise."
 msgstr "Cvičení \\theexercise."
 
 #: lib/layouts/theorems-ams-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Numbered by Type)"
-msgstr "Teorémy (čísla dle typu)"
+msgstr "AMS Teorémy (čísla dle typu)"
 
 #: lib/layouts/theorems-ams-bytype.module:12
 msgid ""
@@ -17773,9 +17767,8 @@ msgstr ""
 "rámci kapitol nebo sekcí použijte patřičné moduly."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Numbered by Type within Chapters)"
-msgstr "Teorémy (čísla dle typu v kapitolách)"
+msgstr "AMS Teorémy (čísla dle typu v kapitolách)"
 
 #: lib/layouts/theorems-ams-chap-bytype.module:12
 msgid ""
@@ -17796,9 +17789,8 @@ msgstr ""
 "kapitolu: theorem 1.1, theorem 2.1, ..."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended, Numbered by Type)"
-msgstr "Teorémy (rozšíření AMS, čísla dle typu)"
+msgstr "AMS Teorémy (rozšířené, čísla dle typu)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
 #, fuzzy
@@ -17935,16 +17927,14 @@ msgstr "Souhrn."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:328
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:395
-#, fuzzy
 msgid "Acknowledgment[[theorem]] \\theacknowledgement."
 msgstr "Poděkování \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:351
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:422
 #: lib/layouts/theorems-ams-extended.module:341
-#, fuzzy
 msgid "Acknowledgment*[[theorem]]"
-msgstr "Poděkování \\thetheorem."
+msgstr "Poděkování*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:371
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:442
@@ -18018,9 +18008,8 @@ msgid "Question."
 msgstr "Otázka."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
-msgstr "Teorémy (rozšíření AMS, čísla dle typu uvnitř kapitolách)"
+msgstr "AMS Teorémy (rozšířené, čísla dle typu uvnitř kapitolách)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
 #, fuzzy
@@ -18043,9 +18032,8 @@ msgstr ""
 "od criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 
 #: lib/layouts/theorems-ams-extended.module:2
-#, fuzzy
 msgid "AMS Theorems (Extended)"
-msgstr "Teorémy (rozšíření AMS)"
+msgstr "AMS Teorémy (rozšířené)"
 
 #: lib/layouts/theorems-ams-extended.module:10
 #, fuzzy
@@ -18235,9 +18223,8 @@ msgstr ""
 "prostředí kapitol."
 
 #: lib/layouts/theorems-counters-extended-bytype.inc:28
-#, fuzzy
 msgid "Acknowledgement[[theorem]]"
-msgstr "Poděkování \\thetheorem."
+msgstr "Poděkování"
 
 #: lib/layouts/theorems-named.module:3
 msgid "Standard Theorems (Nameable)"
@@ -20817,9 +20804,8 @@ msgid "Open Recent|t"
 msgstr "Otevřít poslední|l"
 
 #: lib/ui/stdmenus.inc:49
-#, fuzzy
 msgid "Open Example...|p"
-msgstr "Otevřít cíl...|O"
+msgstr "Otevřít příklad...|p"
 
 #: lib/ui/stdmenus.inc:51
 msgid "Close|C"
@@ -20838,9 +20824,8 @@ msgid "Save As...|A"
 msgstr "Uložit jako|j"
 
 #: lib/ui/stdmenus.inc:55
-#, fuzzy
 msgid "Save As Template..."
-msgstr "Nový ze šablony...|b"
+msgstr "Uložit jako šablonu..."
 
 #: lib/ui/stdmenus.inc:56
 msgid "Save All|l"
@@ -20960,7 +20945,7 @@ msgstr "Najít & Zaměnit (pokročilé)...|i"
 
 #: lib/ui/stdmenus.inc:126
 msgid "Manage Counter Values..."
-msgstr ""
+msgstr "Správa číslování..."
 
 #: lib/ui/stdmenus.inc:130
 msgid "Table|T"
@@ -21176,9 +21161,8 @@ msgid "Change Formula Type|F"
 msgstr "Změnit typ vzorce|v"
 
 #: lib/ui/stdmenus.inc:249
-#, fuzzy
 msgid "Text Properties|T"
-msgstr "Vlasnosti fontu"
+msgstr "Styl textu|t"
 
 #: lib/ui/stdmenus.inc:251
 msgid "Use Computer Algebra System|S"
@@ -32508,9 +32492,8 @@ msgid "Compare different revisions"
 msgstr "Porovnat rozdílné revize"
 
 #: src/frontends/qt/GuiCounter.h:38
-#, fuzzy
 msgid "Counters"
-msgstr "Country"
+msgstr "Číslování"
 
 #: src/frontends/qt/GuiDelimiter.cpp:63
 msgid "big[[delimiter size]]"
@@ -36280,25 +36263,23 @@ msgstr ""
 
 #: src/insets/InsetCounter.cpp:62
 msgid "Set counter to ..."
-msgstr ""
+msgstr "Nastavit čítač na..."
 
 #: src/insets/InsetCounter.cpp:63
 msgid "Increase counter by ..."
-msgstr ""
+msgstr "Zvýšit čítač o..."
 
 #: src/insets/InsetCounter.cpp:64
-#, fuzzy
 msgid "Reset counter to 0"
-msgstr "ResetButton"
+msgstr "Vynulovat čítač"
 
 #: src/insets/InsetCounter.cpp:65
-#, fuzzy
 msgid "Save current counter value"
-msgstr "Aktuální dokukment byl uzavřen."
+msgstr "Uložit aktuální hodnotu čítače"
 
 #: src/insets/InsetCounter.cpp:66
 msgid "Restore saved counter value"
-msgstr ""
+msgstr "Obnovit uloženou hodnotu čítače"
 
 #: src/insets/InsetCounter.cpp:142
 #, fuzzy
@@ -36326,54 +36307,54 @@ msgid "Arabic Numeral"
 msgstr "Základní numerický"
 
 #: src/insets/InsetCounter.cpp:224
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Set %1$s"
-msgstr "Font: %1$s"
+msgstr "Čítač: nastavení %1$s"
 
 #: src/insets/InsetCounter.cpp:225
 #, c-format
 msgid "Set value of counter %1$s to %2$s"
-msgstr ""
+msgstr "Čítač %1$s nastaven na %2$s"
 
 #: src/insets/InsetCounter.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Add to %1$s"
-msgstr "Nepodařilo se vložit dokument %1$s"
+msgstr "Čítač: Přičíst k %1$s"
 
 #: src/insets/InsetCounter.cpp:230
 #, c-format
 msgid "Add %1$s to value of counter %2$s"
-msgstr ""
+msgstr "Přičíst %1$s k hodnotě čítače %2$s"
 
 #: src/insets/InsetCounter.cpp:233
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Reset %1$s"
-msgstr "Font: %1$s"
+msgstr "Čítač: vynulování %1$s"
 
 #: src/insets/InsetCounter.cpp:234
 #, c-format
 msgid "Reset value of counter %1$s"
-msgstr ""
+msgstr "Vynulování hodnoty čítače %1$s"
 
 #: src/insets/InsetCounter.cpp:237
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Save %1$s"
-msgstr "Font: %1$s"
+msgstr "Čítač: uložení %1$s"
 
 #: src/insets/InsetCounter.cpp:238
-#, fuzzy, c-format
+#, c-format
 msgid "Save value of counter %1$s"
-msgstr "Bez obsahu|B"
+msgstr "Uložení hodnoty čítače %1$s"
 
 #: src/insets/InsetCounter.cpp:241
-#, fuzzy, c-format
+#, c-format
 msgid "Counter: Restore %1$s"
-msgstr "Dokument exportován jako %1$s"
+msgstr "Čítač: obnovení %1$s"
 
 #: src/insets/InsetCounter.cpp:242
-#, fuzzy, c-format
+#, c-format
 msgid "Restore value of counter %1$s"
-msgstr "Bez obsahu|B"
+msgstr "Obnovení hodnoty čítače %1$s"
 
 #: src/insets/InsetExternal.cpp:404
 #, c-format
