@@ -363,7 +363,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2023-01-31 11:35+0100\n"
-"PO-Revision-Date: 2023-01-31 17:16+0100\n"
+"PO-Revision-Date: 2023-02-07 11:32+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -2850,7 +2850,7 @@ msgid ""
 "used with \"See\" and \"See also\" references."
 msgstr ""
 "Personnaliser le format du numéro de page ici. Notez que ce format ne "
-"s'applique pas aux références du type « Voir » et « Voir aussi »"
+"s'applique pas aux références du type « Voir » et « Voir aussi »."
 
 #: src/frontends/qt/ui/IndexUi.ui:105
 msgid "Enter custom command here (without leading backslash)."
@@ -4638,7 +4638,7 @@ msgid ""
 "width is used."
 msgstr ""
 "Configurer le largeur du curseur de texte. Si la valeur vaut « Auto », le "
-"zoom automatique fixe la largeur du curseur. "
+"zoom automatique fixe la largeur du curseur."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:180
 #: lib/citeengines/biblatex-natbib.citeengine:148
@@ -10991,7 +10991,7 @@ msgid ""
 "Help > Specific Manuals > Multilingual Captions."
 msgstr ""
 "Procure deux styles de légendes bilingues. Pour les détails, voir le fichier "
-"Aide > Manuels spécifiques >  Légendes multilingues"
+"Aide > Manuels spécifiques >  Légendes multilingues."
 
 #: lib/layouts/bicaption.module:11
 msgid "Caption setup"
@@ -11057,7 +11057,7 @@ msgid ""
 "Specific Manuals > Braille."
 msgstr ""
 "Définit un environnement pour saisir le Braille. Pour les détails, voir  "
-"Aide > Manuels spécifiques >  Braille"
+"Aide > Manuels spécifiques >  Braille."
 
 #: lib/layouts/braille.module:23
 msgid "Braille (default)"
@@ -30072,7 +30072,7 @@ msgid ""
 "View > Messages Pane!"
 msgstr ""
 "Le processeur d'index ne s'est pas exécuté correctement. Veuillez vérifier "
-"via Affichage > Panneau des messages."
+"via Affichage > Panneau des messages !"
 
 #: src/LaTeX.cpp:599
 msgid "Running Nomenclature Processor."
@@ -35321,7 +35321,7 @@ msgid ""
 "%1$s\n"
 "does not exist. Create empty file?"
 msgstr ""
-" Le fichier\n"
+"Le fichier\n"
 "%1$s\n"
 "n'existe pas. Créer un fichier vide ?"
 
@@ -36432,7 +36432,7 @@ msgstr ""
 
 #: src/insets/InsetCaption.cpp:416
 msgid "Orphaned caption:"
-msgstr "Légende oprpheline"
+msgstr "Légende orpheline :"
 
 #: src/insets/InsetCaption.cpp:432
 #, c-format
@@ -38348,7 +38348,7 @@ msgstr "Définition d'un clavier personnalisé"
 
 #: src/support/debug.cpp:50
 msgid "Output source file generation/processing"
-msgstr "Génération/traitement du fichier source exporté."
+msgstr "Génération/traitement du fichier source exporté"
 
 #: src/support/debug.cpp:51
 msgid "Output source file generation/processing (alias to 'outfile')"
