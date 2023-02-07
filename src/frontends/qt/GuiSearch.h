@@ -57,6 +57,7 @@ private Q_SLOTS:
 	void wholeWordsActTriggered();
 	void searchSelActTriggered();
 	void immediateActTriggered();
+	void immediateClicked();
 	void wrapActTriggered();
 Q_SIGNALS:
 	void needTitleBarUpdate() const;

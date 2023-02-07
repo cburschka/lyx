@@ -79,6 +79,7 @@ GuiSearchWidget::GuiSearchWidget(QWidget * parent, GuiView & view)
 	connect(replacePB, SIGNAL(clicked()), this, SLOT(replaceClicked()));
 	connect(replacePrevPB, SIGNAL(clicked()), this, SLOT(replacePrevClicked()));
 	connect(replaceallPB, SIGNAL(clicked()), this, SLOT(replaceallClicked()));
+	connect(instantSearchCB, SIGNAL(clicked()), this, SLOT(immediateClicked()));
 	connect(findCO, SIGNAL(editTextChanged(QString)),
 		this, SLOT(findChanged()));
 	if(qApp->clipboard()->supportsFindBuffer()) {
@@ -196,6 +197,7 @@ void GuiSearchWidget::minimizeClicked(bool const toggle)
 		act_casesense_->setChecked(caseCB->isChecked());
 		act_immediate_->setChecked(instantSearchCB->isChecked());
 		act_selection_->setChecked(selectionCB->isChecked());
+		act_selection_->setEnabled(!instantSearchCB->isChecked());
 		act_wholewords_->setChecked(wordsCB->isChecked());
 		act_wrap_->setChecked(wrapCB->isChecked());
 		blockSignals(false);
@@ -368,8 +370,26 @@ void GuiSearchWidget::searchSelActTriggered()
 
 void GuiSearchWidget::immediateActTriggered()
 {
-	instantSearchCB->setChecked(act_immediate_->isChecked());
+	bool const immediate = act_immediate_->isChecked();
+	instantSearchCB->setChecked(immediate);
+	// FIXME: make these two work together eventually.
+	selectionCB->setEnabled(!immediate);
+	act_selection_->setEnabled(!immediate);
+	if (immediate) {
+		selectionCB->setChecked(false);
+		act_selection_->setChecked(false);
+	}
 	handleIndicators();
+}
+
+
+void GuiSearchWidget::immediateClicked()
+{
+	// FIXME: make these two work together eventually.
+	bool const immediate = instantSearchCB->isChecked();
+	selectionCB->setEnabled(!immediate);
+	if (immediate)
+		selectionCB->setChecked(false);
 }
 
 
@@ -525,11 +545,13 @@ void GuiSearchWidget::restoreSession(QString const & session_key)
 	act_casesense_->setChecked(settings.value(session_key + "/casesensitive", false).toBool());
 	wordsCB->setChecked(settings.value(session_key + "/words", false).toBool());
 	act_wholewords_->setChecked(settings.value(session_key + "/words", false).toBool());
-	instantSearchCB->setChecked(settings.value(session_key + "/instant", false).toBool());
-	act_immediate_->setChecked(settings.value(session_key + "/instant", false).toBool());
+	bool const immediate = settings.value(session_key + "/instant", false).toBool();
+	instantSearchCB->setChecked(immediate);
+	act_immediate_->setChecked(immediate);
 	wrapCB->setChecked(settings.value(session_key + "/wrap", true).toBool());
 	act_wrap_->setChecked(settings.value(session_key + "/wrap", true).toBool());
-	selectionCB->setChecked(settings.value(session_key + "/selection", false).toBool());
+	selectionCB->setChecked(settings.value(session_key + "/selection", false).toBool() && !immediate);
+	selectionCB->setEnabled(!immediate);
 	act_selection_->setChecked(settings.value(session_key + "/selection", false).toBool());
 	minimized_ = settings.value(session_key + "/minimized", false).toBool();
 	// initialize hidings
