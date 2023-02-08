@@ -4056,11 +4056,108 @@ name "subsec:Japanese"
 \end_inset
 
 Japanese
+\change_inserted -712698321 1675848645
+ (Standard Classes)
+\change_inserted 564990737 1671383236
+
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 564990737 1671383236
+\change_inserted -712698321 1675848905
+\SpecialChar LyX
+ included a collection of several bundles that aim to facilitate typesetting Japanese documents.
+ The bundles have been developed at different times,
+ they thus support different typesetting engines and features.
+ This collection is the oldest one.
+ It adjusts the \SpecialChar LaTeX
+ standard classes to requirements of Japanese typesetting,
+ for horizontal and vertical writing.
+ The collection includes 
+\family sans
+Japanese Article (Standard Class)
+\family default
+,
+ 
+\family sans
+Japanese Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standard Class Vertical Writing)
+\family default
+,
+ 
+\family sans
+Japanese Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standard Class)
+\family default
+,
+ 
+\family sans
+Japanese Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standard Class Vertical Writing)
+\family default
+,
+ 
+\family sans
+Japanese Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(Japanese Standard Class)
+\family default
+,
+ and
+\family sans
+ Japanese Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standard Class Vertical Writing).
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1675848929
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Japanese-JS"
+
+\end_inset
+
+Japanese (JS Bundle)
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1675849034
+This collection includes improved versions of the classes included in 
+\family sans
+Japanese (Standard Classes)
+\family default
+ (see
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Japanese"
+
+\end_inset
+
+).
+ It includes 
+\change_deleted -712698321 1675849038
 The document classes 
 \change_inserted -712698321 1673089024
 
@@ -4079,46 +4176,42 @@ rticle
 \change_deleted -712698321 1673089027
 Japanese 
 \change_inserted 564990737 1671383236
-JS Class)
+JS 
+\change_deleted -712698321 1675848222
+Class
+\change_inserted -712698321 1675848223
+Bundle
+\change_inserted 564990737 1671383236
+)
+\change_deleted -712698321 1675849103
+
 \family default
 ,
+
+\change_inserted 564990737 1671383236
 
 \family sans
  
-\change_deleted -712698321 1673089041
+\change_deleted -712698321 1675849055
 article
-\change_inserted -712698321 1673089041
-Japanese Article
-\change_inserted 564990737 1671383236
-
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\change_deleted -712698321 1673089044
-Japanese 
-\change_inserted 564990737 1671383236
-Standard Class Vertical Writing)
+(Japanese Standard Class Vertical Writing)
 \family default
 ,
  
-\change_deleted -712698321 1673089041
-
 \family sans
 article
 \begin_inset space \thinspace{}
 \end_inset
 
 (Japanese Standard Class)
-\change_inserted -712698321 1673088992
-Japanese Article (Standard Class)
-\change_inserted 564990737 1671383236
-
 \family default
 ,
  
-\change_inserted -712698321 1673089053
-
+\change_inserted -712698321 1675849107
+and 
 \family sans
 Japanese 
 \change_deleted -712698321 1673089053
@@ -4134,86 +4227,277 @@ ook
 \change_deleted -712698321 1673089067
 Japanese 
 \change_inserted 564990737 1671383236
-JS Class)
+JS 
+\change_deleted -712698321 1675849059
+Class
+\change_inserted -712698321 1675849059
+Bundle
+\change_inserted 564990737 1671383236
+)
+\change_deleted -712698321 1675849095
+
 \family default
 ,
 
 \family sans
- 
-\change_inserted -712698321 1673089073
-Japanese B
-\change_deleted -712698321 1673089270
-b
-\change_inserted 564990737 1671383236
-ook
+ book
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\change_deleted -712698321 1673089077
-Japanese 
-\change_inserted 564990737 1671383236
-Standard Class Vertical Writing)
+(Japanese Standard Class Vertical Writing)
 \family default
 ,
  
-\change_deleted -712698321 1673089083
-
 \family sans
-b
-\change_inserted -712698321 1673089083
-Japanese B
-\change_inserted 564990737 1671383236
-ook
+book
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\change_deleted -712698321 1673089087
-Japanese 
-\change_inserted 564990737 1671383236
-Standard Class)
+(Japanese Standard Class)
 \family default
 ,
  
-\change_inserted -712698321 1673089094
-
 \family sans
-Japanese 
-\change_deleted -712698321 1673089094
-r
-\change_inserted -712698321 1673089094
-R
-\change_inserted 564990737 1671383236
-eport
+report
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\change_deleted -712698321 1673089097
-Japanese 
-\change_inserted 564990737 1671383236
-Vertical Writing)
+(Japanese Vertical Writing)
 \family default
  and 
-\change_deleted -712698321 1673089104
-
 \family sans
-r
-\change_inserted -712698321 1673089104
-Japanese R
-\change_inserted 564990737 1671383236
-eport
+report
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\change_deleted -712698321 1673089107
-Japanese 
-\change_inserted 564990737 1671383236
-Standard Class)
+(Japanese Standard Class)
 \family default
- provide document classes for the Japanese language.
+ provide document classes for the Japanese language
+\change_inserted 564990737 1671383236
+.
+
+\change_inserted -712698321 1675849238
+ A report class can be obtained by using 
+\family sans
+Japanese Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(JS Bundle)
+\family default
+ with option 
+\family sans
+report
+\family default
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options\SpecialChar menuseparator
+Custom
+\family default
+.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1675848572
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Japanese-BX"
+
+\end_inset
+
+Japanese (BX Bundle)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1675851891
+This bundle contains the document classes 
+\family sans
+Japanese Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(BX Bundle)
+\family default
+,
+
+\family sans
+ Japanese Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(BX Bundle)
+\family default
+,
+ and 
+\family sans
+Japanese Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(BX Bundle)
+\family default
+ which provide alternative document classes for Japanese documents.
+ Furthermore,
+ a class 
+\family sans
+Japanese Slides (BX Bundle)
+\family default
+ for presentation slides,
+ is included.
+ As opposed to the classes of the 
+\family sans
+Standard Classes
+\family default
+ and 
+\family sans
+JS 
+\family default
+bundles (sec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Japanese"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Japanese-JS"
+
+\end_inset
+
+),
+ which support only p\SpecialChar LaTeX
+ and up\SpecialChar LaTeX
+,
+ the classes of this bundle also support pdf\SpecialChar LaTeX
+,
+ Xe\SpecialChar LaTeX
+ and Lua\SpecialChar LaTeX
+,
+ with the aid of suitable packages that provide capability of Japanese typesetting.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1675850366
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Japanese-JLReq"
+
+\end_inset
+
+Japanese (JLReq Class)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1675850768
+This bundle draws on the 
+\family sans
+jlreq
+\family default
+ class which faithfully traces the standard of 
+\emph on
+Requirements for Japanese Text Layout
+\emph default
+ set by the World Wide Web Consortium (W3C,
+ see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1675850769
+
+https://www.w3.org/TR/jlreq/?lang=en
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
+ It can be used with Lua\SpecialChar LaTeX
+ as well as p\SpecialChar LaTeX
+ and up\SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1675850585
+LyX provides layouts for 
+\family sans
+Japanese Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReq Class)
+\family default
+,
+
+\family sans
+ Japanese Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReq Class)
+\family default
+,
+ and 
+\family sans
+Japanese Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReq Class)
+\family default
+ which are all derived from the 
+\family sans
+jlreq
+\family default
+ \SpecialChar LaTeX
+ class via specific class options.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1675850701
+An example article document is available at 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Articles\SpecialChar menuseparator
+Japanese Article (JLReq Class)
+\family default
+.
+ English documentation is available at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1675850350
+
+http://mirrors.ctan.org/macros/jptex/latex/jlreq/jlreq.pdf
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\change_inserted 564990737 1671383236
+
 \end_layout
 
 \begin_layout Subsection
@@ -16469,8 +16753,9 @@ report
 \end_inset
 
 (Japanese in vertical writing)
-\change_inserted -712698321 1673690794
-Japanese Report (Vertical Writing)
+\change_inserted -712698321 1675851188
+Japanese Report (Standard Class,
+ vertical Writing)
 \change_inserted 564990737 1672743530
 
 \family default

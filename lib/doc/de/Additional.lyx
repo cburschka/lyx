@@ -3122,7 +3122,153 @@ name "subsec:Japanisch"
 
 \end_inset
 
-Japanisch
+Japanisch (Standardklassen)
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ enthält mehrere Sammlungen,
+ die dazu dienen,
+ japanische Dokumente zu setzen.
+ Diese Sammlungen wurden zu verschiedenen Zeiten entwickelt,
+ entsprechend unterstützen sie unterschiedliche Ausgabewege und Features.
+ Diese Sammlung ist die älteste.
+ Sie passt die Standardklassen von \SpecialChar LaTeX
+ an,
+ sodass japanische Dokumente in horizontaler oder vertikaler Schreibrichtung gesetzt werden können.
+ Die Sammlung enthält die Klassen 
+\family sans
+Japanischer Aufsatz
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse)
+\family default
+,
+ 
+\family sans
+Japanischer Aufsatz (Standardklasse,
+ vertikale Schreibrichtung)
+\family default
+,
+ 
+\family sans
+Japanisches Buch
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse)
+\family default
+,
+ 
+\family sans
+Japanisches Buch
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse,
+ vertikale Schreibrichtung)
+\family default
+,
+ 
+\family sans
+Japanischer Bericht
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse)
+\family default
+ und 
+\family sans
+Japanischer Bericht
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse,
+ vertikale Schreibrichtung).
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Japanisch-JS"
+
+\end_inset
+
+Japanisch (JS-Sammlung)
+\end_layout
+
+\begin_layout Standard
+Diese Sammlung bietet verbesserte Versionen der Klassen,
+ die in 
+\family sans
+Japanisch (Standardklassen)
+\family default
+ enthalten sind (s.
+\begin_inset space ~
+\end_inset
+
+Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Japanisch"
+
+\end_inset
+
+).
+ Sie enthält die Klassen 
+\family sans
+Japanischer Aufsatz
+\begin_inset space \thinspace{}
+\end_inset
+
+(JS-Sammlung)
+\family default
+ und 
+\family sans
+Japanisches Buch
+\begin_inset space \thinspace{}
+\end_inset
+
+(JS-Sammlung)
+\family default
+.
+ Eine Berichtsklasse kann mithilfe von 
+\family sans
+Japanisches Buch
+\begin_inset space \thinspace{}
+\end_inset
+
+(JS-Sammlung)
+\family default
+ erzeugt werden,
+ indem die Option 
+\family sans
+report
+\family default
+ in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
+Dokumentklasse\SpecialChar menuseparator
+Klassenoptionen
+\family default
+ eingegeben wird.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Japanisch-BX"
+
+\end_inset
+
+Japanisch (BX-Sammlung)
 \end_layout
 
 \begin_layout Standard
@@ -3132,31 +3278,7 @@ Japanischer Aufsatz
 \begin_inset space \thinspace{}
 \end_inset
 
-(JS-Klasse)
-\family default
-,
-
-\family sans
- Japanischer Aufsatz
-\begin_inset space \thinspace{}
-\end_inset
-
-(Standardklasse,
- vertikale Schreibrichtung)
-\family default
-,
- 
-\family sans
-Japanischer Aufsatz (Standardklasse)
-\family default
-,
- 
-\family sans
-Japanisches Buch
-\begin_inset space \thinspace{}
-\end_inset
-
-(JS-Klasse)
+(BX-Sammlung)
 \family default
 ,
 
@@ -3165,26 +3287,7 @@ Japanisches Buch
 \begin_inset space \thinspace{}
 \end_inset
 
-(Standardklasse,
- vertikale Schreibrichtung)
-\family default
-,
- 
-\family sans
-Japanisches Buch
-\begin_inset space \thinspace{}
-\end_inset
-
-(Standardklasse)
-\family default
-,
- 
-\family sans
-Japanischer Bericht
-\begin_inset space \thinspace{}
-\end_inset
-
-(Vertikale Schreibrichtung)
+(BX-Sammlung)
 \family default
  und 
 \family sans
@@ -3192,9 +3295,142 @@ Japanischer Bericht
 \begin_inset space \thinspace{}
 \end_inset
 
-(Standardklasse)
+(BX-Sammlung)
 \family default
- sind spezifisch für japanische Dokumente geeignet.
+ bieten alternative Versionen für japanische Dokumente an.
+ Außerdem ist eine Klasse 
+\family sans
+Japanische Folien (BX-Sammlung)
+\family default
+ für Overheadfolien enthalten.
+ Im Gegensatz zu den Standardklassen und der JS-Sammlung (Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Japanisch"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Japanisch-JS"
+
+\end_inset
+
+),
+ die nur p\SpecialChar LaTeX
+ und up\SpecialChar LaTeX
+ unterstützen,
+ können die Klassen dieser Sammlung auch mit pdf\SpecialChar LaTeX
+,
+ Xe\SpecialChar LaTeX
+ und Lua\SpecialChar LaTeX
+ verwendet werden.
+ Hierzu werden Pakete zur Unterstützung japanischer Textausgabe herangezogen.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Japanisch-JLReq"
+
+\end_inset
+
+Japanisch (JLReq-Klasse)
+\end_layout
+
+\begin_layout Standard
+Diese Sammlung baut auf die \SpecialChar LaTeX
+-Klasse 
+\family sans
+jlreq
+\family default
+,
+ die sich an den Vorgaben des W3C-Konsortiums 
+\emph on
+\lang english
+Requirements for Japanese Text Layout
+\emph default
+\lang ngerman
+ orientiert (W3C,
+ siehe 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.w3.org/TR/jlreq/?lang=en
+\end_layout
+
+\end_inset
+
+).
+ Sie kann sowohl mit Lua\SpecialChar LaTeX
+ als auch mit p\SpecialChar LaTeX
+ und up\SpecialChar LaTeX
+ verwendet werden.
+\end_layout
+
+\begin_layout Standard
+LyX bietet die Dokumentklassen 
+\family sans
+Japanischer Aufsatz
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReq-Klasse)
+\family default
+,
+
+\family sans
+ Japanisches Buch
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReq-Klasse)
+\family default
+ und 
+\family sans
+Japanischer Bericht
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReq-Klasse)
+\family default
+,
+ welche alle von der \SpecialChar LaTeX
+-Klasse 
+\family sans
+jlreq
+\family default
+ über bestimmte Klassenoptionen abgeleitet sind.
+\end_layout
+
+\begin_layout Standard
+Eine Beispieldatei (für einen Aufsatz) finden Sie unter 
+\family sans
+Datei\SpecialChar menuseparator
+Beispiel öffnen\SpecialChar menuseparator
+Aufsätze/Artikel\SpecialChar menuseparator
+Japanischer Aufsatz (JLReq-Klasse)
+\family default
+.
+ Eine englische Anleitung ist unter 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/jptex/latex/jlreq/jlreq.pdf
+\end_layout
+
+\end_inset
+
+ verfügbar.
 \end_layout
 
 \begin_layout Subsection
@@ -11646,7 +11882,7 @@ Japanischer Bericht (vertikale Schreibrichtung)
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Japanisch"
+reference "subsec:Japanisch-JS"
 plural "false"
 caps "false"
 noprefix "false"

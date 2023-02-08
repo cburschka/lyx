@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -4318,6 +4318,10 @@ t-
 
 \begin_layout Subsection
 Japanese new standard classes
+\change_inserted -712698321 1675846937
+ (JS Bundle)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -4394,7 +4398,13 @@ report
 \begin_layout Subsection
 
 \change_inserted 545138413 1674624942
-Japanese new standard classes (extended)
+Japanese new standard classes (
+\change_deleted -712698321 1675846861
+extended
+\change_inserted -712698321 1675846862
+BX bundle
+\change_inserted 545138413 1674624942
+)
 \end_layout
 
 \begin_layout Description
@@ -4462,7 +4472,88 @@ Notes:
  and Lua\SpecialChar LaTeX
 ,
  with the aid of suitable packages that provide capability of Japanese typesetting.
+\change_inserted -712698321 1675847177
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1675847557
+Japanese new standard classes (JLReq class)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1675847177
+Found:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "jlreq"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1675847323
+CTAN:
+ 
+\family typewriter
+macros/jptex/latex/jlreq/
 \change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1675847462
+Notes:
+ The 
+\family sans
+jlreq
+\family default
+ class is a document class which faithfully traces the standard of 
+\emph on
+Requirements for Japanese Text Layout
+\emph default
+ set by the World Wide Web Consortium (W3C).
+ It can be used with Lua\SpecialChar LaTeX
+ as well as p\SpecialChar LaTeX
+ and up\SpecialChar LaTeX
+.
+ The default output of this document is via Lua\SpecialChar LaTeX
+.
+ The class includes equivalents of 
+\family sans
+article
+\family default
+,
+ 
+\family sans
+report
+\family default
+ and 
+\family sans
+book
+\family default
+ classes as a subset which is specified as a class option.
+ English documentation is available at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1675847462
+
+http://mirrors.ctan.org/macros/jptex/latex/jlreq/jlreq.pdf
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
