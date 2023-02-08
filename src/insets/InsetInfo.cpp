@@ -467,7 +467,7 @@ string InsetInfoParams::infoType() const
 
 
 InsetInfo::InsetInfo(Buffer * buf, string const & info)
-	: InsetCollapsible(buf), initialized_(false), dirty_(true)
+	: InsetCollapsible(buf), initialized_(false)
 {
 	params_.type = InsetInfoParams::UNKNOWN_INFO;
 	params_.force_ltr = false;
@@ -779,18 +779,14 @@ void InsetInfo::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	const_cast<InsetInfo *>(this)->build();
 	InsetCollapsible::metrics(mi, dim);
-	dirty_ = false;
 }
 
 
 void InsetInfo::draw(PainterInfo & pi, int x, int y) const
 {
-	if (dirty_)
-		return;
 	Changer chg = changeVar(lyxrc.mark_foreign_language, false);
 	InsetCollapsible::draw(pi, x, y);
 }
-
 
 void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 
@@ -1239,8 +1235,6 @@ void InsetInfo::build()
 	}
 	}
 
-	// indicate that metrics are not usable anymore
-	dirty_ = true;
 	// Just to do something with that string
 	LYXERR(Debug::INFO, "info inset text: " << gui);
 }

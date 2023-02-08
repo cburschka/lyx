@@ -236,8 +236,6 @@ private:
 	void build();
 	///
 	bool initialized_;
-	/// true when metrics Row object should not be used
-	mutable bool dirty_;
 	///
 	InsetInfoParams params_;
 	///
