@@ -1241,9 +1241,10 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	// bug #10989). The second test triggers when in the middle of a
 	// dispatch operation.
 	if (view().busy() || d->buffer_view_->buffer().undo().activeUndoGroup()) {
-		// Since macOS has turned the screen black at this point, our
-		// backing store has to be copied to screen (this is a no-op
-		// except on macOS).
+		// Since the screen may have turned black at this point, our
+		// backing store has to be copied to screen. This is a no-op
+		// except when our drawing strategy is "backingstore" (macOS,
+		// Wayland, or set in prefs).
 		d->updateScreen(ev->rect());
 		// Ignore this paint event, but request a new one for later.
 		viewport()->update(ev->rect());
