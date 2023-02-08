@@ -235,6 +235,10 @@ dist_jaexamples_DATA = \
 	examples/ja/Multilingual_Typesetting_with_platex.lyx \
 	examples/ja/Welcome.lyx
 
+jaarticleexamplesdir = $(pkgdatadir)/examples/ja/Articles
+dist_jaarticleexamples_DATA = \
+	examples/ja/Articles/Japanese_Article_%28JLReq_Class%29.lyx
+
 jainsetexamplesdir = $(pkgdatadir)/examples/ja/Graphics_and_Insets
 dist_jainsetexamples_DATA = \
 	examples/ja/Graphics_and_Insets/Feynman_Diagrams.lyx \
@@ -2549,6 +2553,10 @@ dist_layouts_DATA =\
 	layouts/jasatex.layout \
 	layouts/jbook.layout \
 	layouts/jgrga.layout \
+	layouts/jlreq-article.layout \
+	layouts/jlreq-book.layout \
+	layouts/jlreq-common.inc \
+	layouts/jlreq-report.layout \
 	layouts/jreport.layout \
 	layouts/jsarticle.layout \
 	layouts/jsbook.layout \
@@ -3202,6 +3210,7 @@ exampleandtemplate_files = \
 			   $(dist_itexamples_DATA) \
 			   $(dist_itinsetexamples_DATA) \
 			   $(dist_jaexamples_DATA) \
+			   $(dist_jaarticleexamples_DATA) \
 			   $(dist_jainsetexamples_DATA) \
 			   $(dist_jamoduleexamples_DATA) \
 			   $(dist_japresentationexamples_DATA) \

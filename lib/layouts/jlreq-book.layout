@@ -1,0 +1,22 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[jlreq,l3keys2e.sty,lmodern.sty,everyhook.sty,luatexja.sty,luatexja-adjust.sty]{Japanese Book (JLReq Class)}
+#  \DeclareCategory{Books}
+# Japanese JLReq book textclass definition file.
+# Author : Koji Yokota (yokota6@gmail.com)
+#
+# This class internally loads following packages:
+# Any time:		l3keys2e, lmodern
+# With non-LuaLaTeX:	everyhook
+# With LuaLaTeX:	luatexja, luatexja-adjust
+
+Format 99
+
+# Input general definitions
+Input book.layout
+
+# Input common settings for jlreq layouts
+Input jlreq-common.inc
+
+ClassOptions
+	Other	book
+End

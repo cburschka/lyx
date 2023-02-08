@@ -1,0 +1,3378 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 614
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass jlreq-article
+\options tate, b5paper, sidenote_length=30mm
+\use_default_options true
+\maintain_unincluded_children no
+\begin_local_layout
+Format 57
+InsetLayout Flex:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+Series              Bold
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+ResetsFont true
+End
+
+InsetLayout Flex:CommandItem
+CopyStyle           Flex:MenuItem
+LabelString         command
+LatexName           commanditem
+Font
+Family              Typewriter
+EndFont
+ResetArgs           1
+Preamble
+\newcommand*{\commanditem}[1]{\texttt{#1}}
+EndPreamble
+End
+\end_local_layout
+\language japanese
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf5
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style cjk
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The jlreq class is a document class which faithfully traces the standard of 
+\emph on
+Requirements for Japanese Text Layout
+\emph default
+ set by the World Wide Web Consortium (W3C).
+ It can be used with LuaTeX as well as pLaTeX and upLaTeX.
+ The default output of this document is via LuaTeX.
+ The class includes equivalents of article,
+ report and book classes as a subset which is specified as a class option.
+ English documentation is available at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/jptex/latex/jlreq/jlreq.pdf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+This document is typeset in the traditional vertical writing form to exemplify the salient features of the class.
+ However,
+ it can be used for horizontal writing as well.
+\end_layout
+
+\begin_layout Plain Layout
+Since this example file is not of much use in other languages than Japanese,
+ it is delivered only in Japanese.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+JLReq文書クラス
+\begin_inset VSpace -15mm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract over Columns
+二段組文書で通常の
+\family sans
+ 
+\begin_inset Info
+type  "l7n"
+arg   "Abstract"
+\end_inset
+
+
+\family default
+ 環境を使用すると，
+概要は一段中に収まる形で表示されます． 二段組み文書で，
+概要を二段にまたがって表示するには，
+この例のように
+\family sans
+
+\begin_inset Info
+type  "l7n"
+arg   "Abstract over Columns"
+\end_inset
+
+
+\family default
+環境を指定してください（この文書は一段組になっていますので，
+この文書についてはどちらを使っても同じ結果になります）． この
+\family sans
+
+\begin_inset Info
+type  "l7n"
+arg   "Abstract over Columns"
+\end_inset
+
+
+\family default
+環境
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+縦書き文書で概要を使うことはあまりないかもしれません．この文書は縦書きのみで使用可能な機能を例示するために，
+縦書きの設定にしてあります．
+\end_layout
+
+\end_inset
+
+の中身は，
+LyXの制限にしたがってLaTeXコマンドとしてプリアンブルに渡されますので，
+一定の制約を受けます．とくに改段落は 
+\family typewriter
+
+\backslash
+par
+\family default
+ コマンドをTeXコードで渡す必要があります．このように
+\begin_inset Formula $\longrightarrow$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par{}
+\end_layout
+
+\end_inset
+
+また，
+プリアンブル中に宣言される変数等は
+\family sans
+，
+
+\begin_inset Info
+type  "l7n"
+arg   "Abstract over Columns"
+\end_inset
+
+
+\family default
+環境中では使用できないものがあります．使用できるかどうかは，
+プリアンブル中の宣言順序に依存します．宣言順序はLyXで指定することはできません（天に祈ってください）．なお，
+下記の側註は
+\family typewriter
+sidenote_type=symbol
+\family default
+が宣言される前にあるので，
+側註タイプが記号ではなく番号になっています．この後に出てくる本文中では，
+宣言後ですので，
+記号になっていることに注意してください．
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par{}
+\end_layout
+
+\end_inset
+
+プリアンブルの他の設定に依存する
+\family sans
+
+\begin_inset Info
+type  "l7n"
+arg   "Abstract over Columns"
+\end_inset
+
+
+\family default
+環境が必要で，
+さらにその挙動を正確にコントロールする必要があれば，
+
+\family sans
+
+\begin_inset Info
+type  "l7n"
+arg   "Abstract over Columns"
+\end_inset
+
+
+\family default
+環境を使わず，
+プリアンブル中に直接コードを書いてください．
+\end_layout
+
+\begin_layout Section*
+文書設定
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+まずは足場作りから
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+JLReq文書クラスには，
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Japanese Article (JLReq Class)"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Japanese Book (JLReq Class)"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Japanese Report (JLReq Class)"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+の三つのクラスがあり，
+どれを選ぶかによって，
+article,
+ book,
+ reportクラス相当の出力を選択することができます．文書内の各種設定は，
+オプションの種類によって
+\end_layout
+
+\begin_layout Itemize
+クラスオプションで渡すか（
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+文書クラス\SpecialChar menuseparator
+クラスオプション\SpecialChar menuseparator
+詳細設定
+\end_layout
+
+\end_inset
+
+にコンマ区切りで指定）
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "JLReq Setup"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+環境を使って渡すか
+\end_layout
+
+\begin_layout Standard
+のいずれかで行います．標準的なオプションと文書レイアウト全体（基本版面）の設定は前者の方法，
+その他は後者の方法で行います（詳しくは付録参照）．
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Sidenote
+status open
+
+\begin_layout Plain Layout
+左記の段落
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LyX
+ソース中においては，
+この段落の次に
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "JLReq Setup"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+環境の設定段落がありますが，
+出力中には表示されません．
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+では，
+jlreq文書クラスのグローバルな設定を行っています．この段落の内容は，
+\SpecialChar LaTeX
+ソース中において，
+プリアンブルに
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+jlreqsetup{...}
+\end_layout
+
+\end_inset
+
+の形で渡されます．これは文書中のどこにおかれても構いませんし，
+複数回文書中に登場しても構いません．下記の設定は，
+側註が連番ではなく，
+記号でマークされるように指定します．これによって，
+側註差込枠の挙動が変わります（引数を取るようになります）．この指定をしない場合には，
+側註差込枠は引数を取りません．また，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "JLReq Setup"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+環境を使わずに，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+jlreqsetup{...}
+\end_layout
+
+\end_inset
+
+を使って，
+プリアンブル（
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+LaTeXプリアンブル
+\end_layout
+
+\end_inset
+
+）に直接書いても同じです．
+\end_layout
+
+\begin_layout JLReq Setup
+
+sidenote_type=symbol
+\end_layout
+
+\begin_layout Section*
+jlreq文書に特有な特別差込枠
+\end_layout
+
+\begin_layout Standard
+XHTMLでは，
+左記の四つの註釈はいずれも同じ出力となります．
+\end_layout
+
+\begin_layout Description
+後註 後註とは，
+文書の章割りの最後
+\begin_inset Flex Endnote
+status open
+
+\begin_layout Plain Layout
+ここが本節の最後です．後註はここに出力されます．
+\end_layout
+
+\end_inset
+
+に出力される註釈のことです．この文書では，
+後註の内容はこの節の最後に表示されます．
+\end_layout
+
+\begin_layout Description
+側註 側註は
+\begin_inset Flex Sidenote
+status open
+
+\begin_layout Plain Layout
+余白
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+側註はこの余白部分に出力されます．なお，
+側註はクラスオプションで
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+sidenote_length=xx
+\end_layout
+
+\end_inset
+
+を正の値に指定しなくては動作しません．
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+部分に出力する註釈です．グローバルに定義されている傍註と同じ
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+marginpar
+\end_layout
+
+\end_inset
+
+を使用していますが，
+文書クラスの体裁に合わせてある，
+こちらの側註の方を使ってください．縦書き文書のときには脚註として機能します．
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+【注意】 側註型が
+\family typewriter
+symbol
+\family default
+に指定されている文書（この文書がそうです）では，
+側註を使ってXHTMLに出力（
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+文書\SpecialChar menuseparator
+表示(他の形式)\SpecialChar menuseparator
+LyXHTML
+\end_layout
+
+\end_inset
+
+)）しないでください．現在の\SpecialChar LyX
+では，
+引数を取る差込枠をXHTMLへ出力させるための対応が十分ではないため，
+\SpecialChar LaTeX
+コマンド
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+sidenote{...}{...}
+\end_layout
+
+\end_inset
+
+をうまく処理できません．このため，
+
+\begin_inset Flex Sidenote
+status open
+
+\begin_layout Plain Layout
+意味の通らない文章
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+どうなるかを試してみたければ，
+この文書をXHTMLに出力してウェブブラウザで表示してみてください．
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ができあがります．
+\end_layout
+
+\end_deeper
+\begin_layout Description
+脚註 脚註は横書き文書では用紙下部に出力されますが，
+縦書き文書ではページの一番左側に出力されます
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+縦書き文書での「脚註」の出力位置はここです．
+\end_layout
+
+\end_inset
+
+．
+\end_layout
+
+\begin_layout Description
+割註 割註とは，
+本文中に小文字で註釈を，
+かっこで括った複数行で入れるものです．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Warichu"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+特別差込枠を使用した場合には，
+割註の長さは自動的に計算されます
+\begin_inset Flex Warichu
+status open
+
+\begin_layout Plain Layout
+自動的に計算されるとはこういうことです．ここでは長さは特段指定していません．
+\end_layout
+
+\end_inset
+
+．一方，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Warichu*"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+を使用すると，
+区切りを手動で指定することができます．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Warichu*"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+の中身は，
+\SpecialChar LaTeX
+の表の書き方に準拠して書きます
+\begin_inset Flex Warichu*
+status open
+
+\begin_layout Plain Layout
+
+つまりはこういうことです．& 横方向の区切りはアンパサンド 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+縦方向の区切りは & 二重バックスラッシュです．
+\end_layout
+
+\end_inset
+
+．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Warichu*"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+には，
+差込枠の中身がそのまま\SpecialChar LaTeX
+に渡されるので，
+特殊文字は必要に応じてエスケープしてください．また，
+XHTML出力では
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Warichu*"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+の内容は解析されません．
+\end_layout
+
+\begin_layout Description
+縦中横 縦中横とは，
+縦書きの中に
+\begin_inset Flex Tatechuyoko
+status open
+
+\begin_layout Plain Layout
+このように
+\end_layout
+
+\end_inset
+
+横書きを入れることです．
+\begin_inset Flex Tatechuyoko
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LyX
+
+\end_layout
+
+\end_inset
+
+のように短い英文を入れるのにいいかもしれません．特別差込枠
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Tatechuyoko"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+は\SpecialChar LaTeX
+コマンド
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+tatechuyoko*
+\end_layout
+
+\end_inset
+
+を使用します．\SpecialChar LaTeX
+コマンド
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+tatechuyoko
+\end_layout
+
+\end_inset
+
+は，
+本レイアウトでは実装されていません．XHTMLでは設定は反映されません．
+\end_layout
+
+\begin_layout Description
+字取り これが「
+\begin_inset Flex Jidori
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+字取り
+\end_layout
+
+\end_inset
+
+」の例です．2cmの長さに文字を当てはめています．XHTMLでは設定は反映されません．
+\end_layout
+
+\begin_layout Description
+空き組 空き組は，
+「
+\begin_inset Flex Akigumi
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2mm
+\end_layout
+
+\end_inset
+
+このようにして
+\end_layout
+
+\end_inset
+
+」入れます．ここでは，
+文字間に2mmの空きが入っています．これはLua\SpecialChar LaTeX
+でしか動作しません．また，
+XHTMLでは設定は反映されません．
+\end_layout
+
+\begin_layout Section*
+この行は節見出しです
+\end_layout
+
+\begin_layout Standard
+前節中に入れた後註は，
+右の見出しの前に出力されます．
+\end_layout
+
+\begin_layout Section*
+\start_of_appendix
+付録　文書設定関連のオプション
+\end_layout
+
+\begin_layout Standard
+文書の設定に関するオプションの一覧です．jlreqの付属文書からの抜粋です．
+\end_layout
+
+\begin_layout Subsection*
+クラスオプションで渡すオプション
+\end_layout
+
+\begin_layout Standard
+ここに列挙されたオプションは，
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+文書クラス\SpecialChar menuseparator
+クラスオプション\SpecialChar menuseparator
+詳細設定
+\end_layout
+
+\end_inset
+
+にコンマ区切りで記入して指定します．
+\end_layout
+
+\begin_layout Subsubsection*
+標準的オプション
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+oneside
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+twoside
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+onecolumn
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+twocolumn
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+titlepage
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+notitlepage
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+draft
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+final
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+landscape
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+openright
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+openany
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+leqno
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+fleqn
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+disablejfam
+\end_layout
+
+\end_inset
+
+：
+和文フォントを数式用に登録しません．
+\end_layout
+
+\begin_layout Subsubsection*
+基本版面に関するもの
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+paper=[<紙サイズ名>/{<寸法>,<寸法>}]
+\end_layout
+
+\end_inset
+
+：
+紙サイズです．紙サイズ名は
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+a0paper
+\end_layout
+
+\end_inset
+
+から
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+a10paper
+\end_layout
+
+\end_inset
+
+，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+b0paper
+\end_layout
+
+\end_inset
+
+から
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+b10paper
+\end_layout
+
+\end_inset
+
+，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+c2paper
+\end_layout
+
+\end_inset
+
+から
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+c8paper
+\end_layout
+
+\end_inset
+
+を指定できます．B列はISO B列です．JIS B列を指定する場合は，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+b0j
+\end_layout
+
+\end_inset
+
+から
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+b10j
+\end_layout
+
+\end_inset
+
+の対応するものを指定してください．また，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+letterpaper
+\end_layout
+
+\end_inset
+
+，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+legalpaper
+\end_layout
+
+\end_inset
+
+，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+executivepaper
+\end_layout
+
+\end_inset
+
+が指定できます．さらに，
+{<横>,<縦>}と直接寸法を指定することもできます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+fontsize=<寸法;Q,H>
+\end_layout
+
+\end_inset
+
+：
+欧文フォントサイズ．デフォルトは
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+10pt
+\end_layout
+
+\end_inset
+
+．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+jafontsize=<寸法;Q,H>
+\end_layout
+
+\end_inset
+
+：
+和文フォントサイズ．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+jafontscale=<実数値>
+\end_layout
+
+\end_inset
+
+：
+欧文フォントと和文フォントの比（和文 / 欧文）．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+fontsize
+\end_layout
+
+\end_inset
+
+と
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+jafontsize
+\end_layout
+
+\end_inset
+
+が両方指定されている場合は無視される．デフォルトは1．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+line_length=<寸法;zw,zh>
+\end_layout
+
+\end_inset
+
+：
+一行の長さ．デフォルトは字送り方向の紙幅の0.75倍．実際の値は一文字の長さの整数倍になるように補正されます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+number_of_lines=<自然数値>
+\end_layout
+
+\end_inset
+
+：
+一ページの行数．デフォルトは行送り方向の紙幅の0.75倍になるような値．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+gutter=<寸法;zw,zh>
+\end_layout
+
+\end_inset
+
+：
+のどの余白の大きさ．
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+tate
+\end_layout
+
+\end_inset
+
+無指定時は奇数ページ左，
+偶数ページ右の余白
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+tate
+\end_layout
+
+\end_inset
+
+指定時は奇数ページ右，
+偶数ページ左の余白
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+twoside
+\end_layout
+
+\end_inset
+
+が指定されていない時は，
+常に奇数ページ扱いで余白が設定される
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+fore-edge=<寸法;zw,zh>
+\end_layout
+
+\end_inset
+
+：
+小口（のどでない方）の余白の大きさ．「日本語組版処理の要件」にある方法で余白を指定する限り使われることはありませんが，
+便利なこともあるので実装されています．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+head_space=<寸法;zw,zh>
+\end_layout
+
+\end_inset
+
+：
+天の空き量．デフォルトは中央寄せになるような値．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+foot_space=<寸法;zw,zh>
+\end_layout
+
+\end_inset
+
+：
+地の空き量．デフォルトは中央寄せになるような値．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+baselineskip=<寸法;Q,H,zw,zh>
+\end_layout
+
+\end_inset
+
+：
+行送り．デフォルトは
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+jafontsize
+\end_layout
+
+\end_inset
+
+の1.7倍．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+linegap=<寸法;Q,H,zw,zh>
+\end_layout
+
+\end_inset
+
+：
+行間．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+headfoot_sidemargin=<寸法;zw,zh>
+\end_layout
+
+\end_inset
+
+：
+柱やノンブルの左右の空き．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+column_gap=<寸法;zw,zh>
+\end_layout
+
+\end_inset
+
+：
+段間（
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+twocolumn
+\end_layout
+
+\end_inset
+
+指定時のみ）．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+sidenote_length=<寸法;zw,zh>
+\end_layout
+
+\end_inset
+
+：
+傍註の幅を指定します．
+\end_layout
+
+\begin_layout Subsubsection*
+組み方に関するもの
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+open_bracket_pos=[zenkaku_tentsuki/zenkakunibu_nibu/nibu_tentsuki]
+\end_layout
+
+\end_inset
+
+：
+始め括弧が行頭に来た際の配置方法を指定します．それぞれ段落開始全角折り返し行頭天付き（デフォルト），
+段落開始全角二分折り返し行頭二分，
+段落開始二分折り返し行頭天付きを意味します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+hanging_punctuation
+\end_layout
+
+\end_inset
+
+：
+ぶら下げ組をします．
+\end_layout
+
+\begin_layout Subsubsection*
+逆ノンブルに関するもの
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+use_reverse_pagination
+\end_layout
+
+\end_inset
+
+：
+逆ノンブルの機能を利用可能にします．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+jlreqreversepage
+\end_layout
+
+\end_inset
+
+という「読み取り専用のカウンタ」が定義されます．（本物のカウンタではありません．）
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+arabic
+\end_layout
+
+\end_inset
+
+などの命令や
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+value
+\end_layout
+
+\end_inset
+
+が適用可能です．また
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+thejlreqreversepage
+\end_layout
+
+\end_inset
+
+が
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+arabic{jlreqreversepage}
+\end_layout
+
+\end_inset
+
+として定義されます．
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "JLREQ Setup"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+環境で設定するオプション
+\end_layout
+
+\begin_layout Standard
+ここに列挙されたオプションは，
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "JLReq Setup"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+環境に直に書き込んで指定します．複数の指定を同一行に書き込む場合には，
+カンマで区切ります．
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "JLReq Setup"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+環境では，
+書き込んだ内容がそのまま\SpecialChar LaTeX
+に渡されるので，
+\SpecialChar LaTeX
+において特別な意味を持つ文字を使用する際にはエスケープしてください．
+\end_layout
+
+\begin_layout Subsubsection*
+註に関するもの
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+reference_mark=[inline/interlinear]
+\end_layout
+
+\end_inset
+
+：
+合印の配置方法を指定します．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+にすると該当項目の後ろの行中に配置します．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+interlinear
+\end_layout
+
+\end_inset
+
+を指定すると該当項目の上（横組）または右（縦組）に配置します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+footnote_second_indent=<寸法>
+\end_layout
+
+\end_inset
+
+：
+脚註（横書き時）または傍註（縦書き時）の二行目以降の字下げ量を指定します．一行目からの相対字下げ量です．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+sidenote_type=[number/symbol]
+\end_layout
+
+\end_inset
+
+：
+傍註と本文との対応の方法を指定します．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+number
+\end_layout
+
+\end_inset
+
+が規定で，
+註の位置に通し番号が入り，
+それにより対応が示されます．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+symbol
+\end_layout
+
+\end_inset
+
+とすると，
+註の位置に特定の記号が入り，
+また註がついている単語が強調されます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+sidenote_symbol=<コード>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+sidenote_type=symbol
+\end_layout
+
+\end_inset
+
+の時に，
+註の位置に入る記号．デフォルト＊
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+sidenote_keyword_font=<フォント設定コード>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+sidenote_type=symbol
+\end_layout
+
+\end_inset
+
+の時に，
+註のついている単語のフォント指定．デフォルトは無し（強調しない）
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+endnote_second_indent=<寸法>
+\end_layout
+
+\end_inset
+
+：
+後柱の二行目以降の字下げ量を指定します．一行目からの相対字下げ量です．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+endnote_position=[headings/paragraph/{_<見出し名1>,_<見出し名2>,...}]
+\end_layout
+
+\end_inset
+
+：
+後註の出力場所を指定します．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+headings
+\end_layout
+
+\end_inset
+
+は各見出しの直前（デフォルト），
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+は改段落の際に出力します．また，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+endnote_position={_chapter,_section}
+\end_layout
+
+\end_inset
+
+とすると，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+chapter
+\end_layout
+
+\end_inset
+
+と
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+section
+\end_layout
+
+\end_inset
+
+の直前に出力します．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+<_見出し名>
+\end_layout
+
+\end_inset
+
+を指定するためには，
+対象の見出しが本クラスファイルの機能を使って作られていなければいけません．
+\end_layout
+
+\begin_layout Subsubsection*
+キャプションに関するもの
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+caption_font=<フォント設定コード>
+\end_layout
+
+\end_inset
+
+：
+キャプション自身のフォントを指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+caption_label_font=<フォント設定コード>
+\end_layout
+
+\end_inset
+
+：
+キャプションのラベルのフォントを指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+caption_after_label_space=<寸法>
+\end_layout
+
+\end_inset
+
+：
+ラベルとキャプションの間の空きを指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+caption_label_format=<コード>
+\end_layout
+
+\end_inset
+
+：
+ラベルの書式を指定します．
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+caption_label_format={#1：
+}
+\end_layout
+
+\end_inset
+
+のようにします．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+#1
+\end_layout
+
+\end_inset
+
+が「図1」のような番号に置換されます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+caption_align=[left/right/center/bottom/top]
+\end_layout
+
+\end_inset
+
+：
+キャプションの場所を指定します．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+{center,*left}
+\end_layout
+
+\end_inset
+
+のようにすると，
+通常は中央配置だがキャプションが大きいときには左に配置されます．
+\end_layout
+
+\begin_layout Subsubsection*
+引用に関するもの
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+quote_indent=<寸法>
+\end_layout
+
+\end_inset
+
+：
+字下げを指定します．デフォルトは
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+2
+\backslash
+zw
+\end_layout
+
+\end_inset
+
+です．一行の長さが文字サイズの整数倍になるように調整されます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+quote_end_indent=<寸法>
+\end_layout
+
+\end_inset
+
+：
+字上げを指定します．デフォルトは
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+0
+\backslash
+zw
+\end_layout
+
+\end_inset
+
+です．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+quote_beforeafter_space=<寸法>
+\end_layout
+
+\end_inset
+
+：
+前後の空きを指定します．
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+quote_beforeafter_space=1
+\backslash
+baselineskip
+\end_layout
+
+\end_inset
+
+とすると一行あきます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+quote_fontsize=[normalsize/small/footnotesize/scriptsize/tiny]
+\end_layout
+
+\end_inset
+
+：
+フォントサイズを指定します．
+\end_layout
+
+\begin_layout Subsubsection*
+箇条書きに関するもの
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+itemization_beforeafter_space=<寸法>
+\end_layout
+
+\end_inset
+
+：
+箇条書きの前後の空きを指定します．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+itemization_beforeafter_space={i=<寸法>}
+\end_layout
+
+\end_inset
+
+とするとトップレベルのみに設定を行います．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+itemization_beforeafter_space={0pt,i=10pt,ii=5pt}
+\end_layout
+
+\end_inset
+
+とすれば，
+レベル一の箇条書きに
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+10pt
+\end_layout
+
+\end_inset
+
+を，
+レベル二のそれに
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+5pt
+\end_layout
+
+\end_inset
+
+を，
+それ以外には
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+0pt
+\end_layout
+
+\end_inset
+
+を設定します．レベルは上記のように小文字ローマ数字で指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+itemization_itemsep=<寸法>
+\end_layout
+
+\end_inset
+
+：
+項目同士の空きを指定します．
+\end_layout
+
+\begin_layout Subsubsection*
+定理環境に関するもの
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theorem_beforeafter_space=<寸法>
+\end_layout
+
+\end_inset
+
+：
+定理環境の前後の空きを指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theorem_label_font=<フォント設定コード>
+\end_layout
+
+\end_inset
+
+：
+定理環境のラベル部分のフォントを設定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theorem_font=<フォント設定コード>
+\end_layout
+
+\end_inset
+
+：
+定理環境本体のフォントを設定します．
+\end_layout
+
+\begin_layout Subsubsection*
+前付け／本文部分／後付け／付録に関するもの
+\end_layout
+
+\begin_layout Standard
+以下の各オプションは，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_
+\end_layout
+
+\end_inset
+
+部分を
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+mainmatter_
+\end_layout
+
+\end_inset
+
+／
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+backmatter_
+\end_layout
+
+\end_inset
+
+／
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+appendix_
+\end_layout
+
+\end_inset
+
+に変えることによって，
+本文部分／後付け／付録に関する設定に変えることができます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_pagebreak=[cleardoublepage/clearpage/]
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frontmatter
+\end_layout
+
+\end_inset
+
+実行時の改ページを実行する命令名を指定します．空にすると何もしません．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_counter={<カウンタ名>={value=<値>,
+ the=<コード>,
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CommandItem
+status open
+
+\begin_layout Plain Layout
+restore=[true/false]},...}
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frontmatter
+\end_layout
+
+\end_inset
+
+時でのカウンタの操作を指定します．例えば
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+chapter={value=0,the={[
+\backslash
+arabic{chapter]}}
+\end_layout
+
+\end_inset
+
+とすると，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+chapter
+\end_layout
+
+\end_inset
+
+カウンタの値が0になり，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+thechapter
+\end_layout
+
+\end_inset
+
+が
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+[
+\backslash
+arabic{chapter}]
+\end_layout
+
+\end_inset
+
+となります．デフォルトでは
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mainmatter
+\end_layout
+
+\end_inset
+
+時に値と
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+the<カウンタ名>
+\end_layout
+
+\end_inset
+
+の定義を戻しますが，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+restore=false
+\end_layout
+
+\end_inset
+
+とするとこの動きが抑制されます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_heading={<見出し命令名>={<設定>},...}
+\end_layout
+
+\end_inset
+
+：
+見出し命令の動きを変更します．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+Delare***Heading
+\end_layout
+
+\end_inset
+
+で指定できる項目の他以下を受け付けます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+heading_type=[Tobira/Block/Runin/Cutin/Modify]
+\end_layout
+
+\end_inset
+
+：
+見出しの種類です．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+Modify
+\end_layout
+
+\end_inset
+
+が指定された場合は
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+ModifyHeading
+\end_layout
+
+\end_inset
+
+での変更となります．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+heading_level=<数値>
+\end_layout
+
+\end_inset
+
+：
+見出し命令のレベルを設定します．指定されなかった場合は，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frontmatter
+\end_layout
+
+\end_inset
+
+実行時の値が使われます．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+heading_type=Modify
+\end_layout
+
+\end_inset
+
+の時は無視されます．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+restore=[true/false]：
+true
+\end_layout
+
+\end_inset
+
+が指定されると，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mainmatter
+\end_layout
+
+\end_inset
+
+で元の定義を復帰します．デフォルトは
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+true
+\end_layout
+
+\end_inset
+
+です．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_pagestyle={<ページスタイル名>[,restore=[true/false]]}
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frontmatter
+\end_layout
+
+\end_inset
+
+実行時にここで指定されたページスタイルへと切り替えます．デフォルトでは
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mainmatter
+\end_layout
+
+\end_inset
+
+時にもとのページスタイルに戻しますが，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+restore=false
+\end_layout
+
+\end_inset
+
+を指定すると戻しません．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_pagination={<ページ番号指定>[,continuous,independent]}
+\end_layout
+
+\end_inset
+
+：
+ページ番号の出力形式を，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_pagination=roman
+\end_layout
+
+\end_inset
+
+のようにLaTeXの命令名で指定します．更に
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+continuous
+\end_layout
+
+\end_inset
+
+が指定されると通しノンブルとなります．
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+independent
+\end_layout
+
+\end_inset
+
+で別ノンブルです．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_precode=<コード>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frontmatter
+\end_layout
+
+\end_inset
+
+時に最初に実行されるコードです．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_postcode=<コード>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frontmatter
+\end_layout
+
+\end_inset
+
+時に最後に実行されるコードです．
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+frontmatter_
+\end_layout
+
+\end_inset
+
+を
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+mainmatter_
+\end_layout
+
+\end_inset
+
+や
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+backmatter_
+\end_layout
+
+\end_inset
+
+，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+appendix_
+\end_layout
+
+\end_inset
+
+へと変えた場合，
+以下のような違いがあります．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+restore=[true/false]
+\end_layout
+
+\end_inset
+
+は無効な設定です．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+mainmatter_pagination
+\end_layout
+
+\end_inset
+
+に
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+continuous
+\end_layout
+
+\end_inset
+
+と
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+independent
+\end_layout
+
+\end_inset
+
+は指定できません．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+appendix_pagebreak
+\end_layout
+
+\end_inset
+
+，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+appendix_pagestyle
+\end_layout
+
+\end_inset
+
+，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+appendix_pagination
+\end_layout
+
+\end_inset
+
+はありません．
+\end_layout
+
+\begin_layout Subsubsection*
+thebibliography環境
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography_heading=<コード>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography
+\end_layout
+
+\end_inset
+
+環境の見出しを出力する命令を指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography_after_label_space=<寸法>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography
+\end_layout
+
+\end_inset
+
+環境における各項目のラベル以降の空きを指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography_indent=<寸法>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography
+\end_layout
+
+\end_inset
+
+環境全体の字下げ量を指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography_mark=<コード>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography
+\end_layout
+
+\end_inset
+
+環境の見出しを柱に登録するためのコードを指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography_precode=<コード>
+\end_layout
+
+\end_inset
+
+，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography_postcode=<コード>
+\end_layout
+
+\end_inset
+
+：
+それぞれ，
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+thebibliography
+\end_layout
+
+\end_inset
+
+環境の前後に実行されるコードを指定します．
+\end_layout
+
+\begin_layout Subsubsection*
+theindex環境
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_heading=<コード>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex
+\end_layout
+
+\end_inset
+
+環境の見出しを出力する命令を指定します． 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_mark=<コード>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex
+\end_layout
+
+\end_inset
+
+環境の見出しを柱に登録するためのコードを指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_twocolumn=[true/false]
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex
+\end_layout
+
+\end_inset
+
+環境を二段組みで出力するかを指定します． 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_column_gap=<寸法>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_twocolumn=true
+\end_layout
+
+\end_inset
+
+の時の
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex
+\end_layout
+
+\end_inset
+
+環境内での段間を指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_column_rule_width=<寸法>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_twocolumn=true
+\end_layout
+
+\end_inset
+
+の時の
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex
+\end_layout
+
+\end_inset
+
+環境内での
+\backslash
+columnsepruleの値を指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_pagestyle=<ページスタイル名>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex
+\end_layout
+
+\end_inset
+
+環境でのページスタイルを指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_postcode=<コード>
+\end_layout
+
+\end_inset
+
+，
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex_precode=<コード>
+\end_layout
+
+\end_inset
+
+：
+それぞれ，
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+theindex
+\end_layout
+
+\end_inset
+
+環境の前後に実行されるコードを指定します．
+\end_layout
+
+\begin_layout Subsubsection*
+定理環境
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theorem_beforeafter_space=<寸法>
+\end_layout
+
+\end_inset
+
+：
+定理環境の前後の空きを指定します． 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theorem_label_font=<フォント設定コード>
+\end_layout
+
+\end_inset
+
+：
+定理環境のラベル部分のフォントを設定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theorem_font=<フォント設定コード>
+\end_layout
+
+\end_inset
+
+：
+定理環境本体のフォントを設定します． 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+theorem_indent=<寸法>
+\end_layout
+
+\end_inset
+
+：
+定理環境本体の字下げ量を指定します．
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+proof_label_font=<フォント設定コード>
+\end_layout
+
+\end_inset
+
+：
+
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+amsthm
+\end_layout
+
+\end_inset
+
+パッケージが読み込まれたときのみ有効な設定です．
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+amsthm
+\end_layout
+
+\end_inset
+
+パッケージが読み込まれると，
+新しい定理スタイル
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+jlreq
+\end_layout
+
+\end_inset
+
+が定義され，
+現在のスタイルが
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+jlreq
+\end_layout
+
+\end_inset
+
+へと変更されます．このとき，
+上記設定はこの
+\begin_inset Flex CommandItem
+status collapsed
+
+\begin_layout Plain Layout
+jlreq
+\end_layout
+
+\end_inset
+
+スタイルへの設定として機能します．
+\end_layout
+
+\end_body
+\end_document
