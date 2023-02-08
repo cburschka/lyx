@@ -244,7 +244,7 @@ InsetLayout Flex:Warichu*
 	PassThru			1
 	MultiPar			1
 	ParbreakIgnored		1
-	TextFont
+	Font
 		Family			Typewriter
 	EndFont
 	HTMLLabel			\arabic{footnote}
