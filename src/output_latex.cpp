@@ -1062,7 +1062,7 @@ void TeXOnePar(Buffer const & buf,
 				&& (pit == 0 || !priorpar->hasSameLayout(par)))
 			{
 				os << from_ascii(par.params().spacing().writeEnvirBegin(useSetSpace))
-				    << '\n';
+				   << '\n';
 			}
 
 			if (style.isCommand()) {
@@ -1338,21 +1338,22 @@ void TeXOnePar(Buffer const & buf,
 		// so avoid doubling it.
 		if (!next_layout.isCommand()) {
 			// Here we now try to avoid spurious empty lines by
-			// outputting a paragraph break only if: (case 1) the
-			// paragraph style allows parbreaks and no \begin, \end
-			// or \item tags are going to follow (i.e., if the next
-			// isn't the first or the current isn't the last
-			// paragraph of an environment or itemize) and the
-			// depth and alignment of the following paragraph is
-			// unchanged, or (case 2) the following is a
-			// non-environment paragraph whose depth is increased
-			// but whose alignment is unchanged, or (case 3) the
-			// paragraph is not an environment and the next one is a
-			// non-itemize-like env at lower depth, or (case 4) the
-			// paragraph is a command not followed by an environment
-			// and the alignment of the current and next paragraph
-			// is unchanged, or (case 5) the current alignment is
-			// changed and a standard paragraph follows.
+			// outputting a paragraph break only if: 
+			// (case 1) the paragraph style allows parbreaks and
+			// no \begin, \end or \item tags are going to follow
+			// (i.e., if the next isn't the first or the current
+			// isn't the last paragraph of an environment or itemize)
+			// and the depth and alignment of the following paragraph is
+			// unchanged, or 
+			// (case 2) the following is a non-environment paragraph
+			// whose depth is increased but whose alignment is unchanged, or
+			// (case 3) the paragraph is not an environment and the next one
+			// is a non-itemize-like env at lower depth, or
+			// (case 4) the paragraph is a command not followed by an
+			// environment and the alignment of the current and next
+			// paragraph is unchanged, or
+			// (case 5) the current alignment is changed and a
+			// standard paragraph follows.
 			DocumentClass const & tclass = bparams.documentClass();
 			if ((style == next_layout
 			     && !style.parbreak_is_newline
@@ -1361,7 +1362,8 @@ void TeXOnePar(Buffer const & buf,
 			     && style.latextype != LATEX_LIST_ENVIRONMENT
 			     && style.align == par.getAlign(bparams)
 			     && nextpar->getDepth() == par.getDepth()
-			     && nextpar->getAlign(bparams) == par.getAlign(bparams))
+			     && (nextpar->getAlign(bparams) == par.getAlign(bparams)
+			         || par.params().spacing() != nextpar->params().spacing()))
 			    || (!next_layout.isEnvironment()
 				&& nextpar->getDepth() > par.getDepth()
 				&& nextpar->getAlign(bparams) == next_layout.align)

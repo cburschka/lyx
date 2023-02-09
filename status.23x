@@ -38,6 +38,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix leaking of linespace settings between paragraphs if they have
+  different aligment (bug 12638).
 
 
 * USER INTERFACE
