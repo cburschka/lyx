@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-06 15:44+0100\n"
-"PO-Revision-Date: 2023-02-07 11:47+0000\n"
+"POT-Creation-Date: 2023-02-09 11:11+0100\n"
+"PO-Revision-Date: 2023-02-09 10:49+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -10657,20 +10657,20 @@ msgid "Right Address"
 msgstr "Adresa vpravo"
 
 #: lib/layouts/bxjsarticle.layout:3
-msgid "Japanese Article (BXJS Class)"
-msgstr "Japonský článok (Trieda BXJS)"
+msgid "Japanese Article (BX Bundle)"
+msgstr "Japonský článok (BX zväzok)"
 
 #: lib/layouts/bxjsbook.layout:3
-msgid "Japanese Book (BXJS Class)"
-msgstr "Japonská kniha (Trieda BXJS)"
+msgid "Japanese Book (BX Bundle)"
+msgstr "Japonská kniha (BX zväzok)"
 
 #: lib/layouts/bxjsreport.layout:3
-msgid "Japanese Report (BXJS Class)"
-msgstr "Japonský referát (Trieda BXJS)"
+msgid "Japanese Report (BX Bundle)"
+msgstr "Japonský referát (BX zväzok)"
 
 #: lib/layouts/bxjsslide.layout:3
-msgid "Japanese Slide (BXJS Class)"
-msgstr "Japonská fólia (Trieda BXJS)"
+msgid "Japanese Slides (BX Bundle)"
+msgstr "Japonská fólia (BX zväzok)"
 
 #: lib/layouts/chess.layout:3 lib/examples/Articles:0
 msgid "Chess"
@@ -13896,17 +13896,37 @@ msgstr "Japonská kniha (Štandardná trieda)"
 msgid "American Geophysical Union (AGUPLUS JGR)"
 msgstr "Americká Únia pre Geofyziku (AGUPLUS JGR)"
 
+#: lib/layouts/jlreq-article.layout:3 lib/examples/Articles:0
+msgid "Japanese Article (JLReq Class)"
+msgstr "Japonský článok (Trieda JLReq)"
+
+#: lib/layouts/jlreq-book.layout:3
+msgid "Japanese Book (JLReq Class)"
+msgstr "Japonská kniha (Trieda JLReq)"
+
+#: lib/layouts/jlreq-common.inc:13 lib/layouts/jlreq-common.inc:21
+#: lib/layouts/jlreq-common.inc:29 lib/layouts/jlreq-common.inc:37
+#: lib/layouts/jlreq-common.inc:45 lib/layouts/jlreq-common.inc:53
+#: lib/layouts/jlreq-common.inc:61 lib/layouts/jlreq-common.inc:69
+#: lib/layouts/jlreq-common.inc:77 lib/layouts/jlreq-common.inc:85
+msgid "Subtitle|u"
+msgstr "Podtitul|u"
+
+#: lib/layouts/jlreq-common.inc:14 lib/layouts/jlreq-common.inc:22
+msgid "Subtitle of the part"
+msgstr "Podtitul tejto časti"
+
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (Standard Class)"
 msgstr "Japonský referát (Štandardná trieda)"
 
 #: lib/layouts/jsarticle.layout:3
-msgid "Japanese Article (JS Class)"
-msgstr "Japonský článok (Trieda JS)"
+msgid "Japanese Article (JS Bundle)"
+msgstr "Japonský článok (JS zväzok)"
 
 #: lib/layouts/jsbook.layout:3
-msgid "Japanese Book (JS Class)"
-msgstr "Japonská kniha (Trieda JS)"
+msgid "Japanese Book (JS Bundle)"
+msgstr "Japonská kniha (JS zväzok)"
 
 #: lib/layouts/jss.layout:3 lib/examples/Articles:0
 msgid "Journal of Statistical Software (JSS) version 2"
@@ -14559,6 +14579,10 @@ msgstr "Lecture Notes in Comp. Science (LNCS)"
 msgid "Chapter"
 msgstr "Kapitola"
 
+#: lib/layouts/jlreq-common.inc:30 lib/layouts/jlreq-common.inc:38
+msgid "Subtitle of the chapter"
+msgstr "Podtitul tejto kapitoly"
+
 #: lib/layouts/llncs.layout:158
 msgid "Running LaTeX Title"
 msgstr "LaTeX titul stĺpca"
@@ -14744,6 +14768,26 @@ msgstr "Kapitola ako sa zobrazí v priebežných hlavičkách"
 #: lib/layouts/svcommon.inc:275
 msgid "Chapter*"
 msgstr "Kapitola*"
+
+#: lib/layouts/jlreq-common.inc:46 lib/layouts/jlreq-common.inc:54
+msgid "Subtitle of the section"
+msgstr "Podtitul tejto sekcie"
+
+#: lib/layouts/jlreq-common.inc:62 lib/layouts/jlreq-common.inc:70
+msgid "Subtitle of the subsection"
+msgstr "Podtitul tejto podsekcie"
+
+#: lib/layouts/jlreq-common.inc:78 lib/layouts/jlreq-common.inc:86
+msgid "Subtitle of the subsubsection"
+msgstr "Podtitul tejto podpodsekcie"
+
+#: lib/layouts/jlreq-common.inc:91
+msgid "Abstract over Columns"
+msgstr "Súhrn stĺpcov"
+
+#: lib/layouts/jlreq-common.inc:107 lib/layouts/jlreq-common.inc:113
+msgid "JLReq Setup"
+msgstr "JLReq-konfigurácia"
 
 #: lib/layouts/memoir.layout:103
 msgid "The section as it appears in the table of contents"
@@ -17323,12 +17367,12 @@ msgstr ""
 "pri 'Tabuľka 2.1'."
 
 #: lib/layouts/tarticle.layout:3
-msgid "Japanese Article (Standard Class: Vertical Writing)"
-msgstr "Japonský článok (Štandardná trieda: Vertikálne písanie)"
+msgid "Japanese Article (Standard Class, vertical Writing)"
+msgstr "Japonský článok (Štandardná trieda, vertikálne písanie)"
 
 #: lib/layouts/tbook.layout:3
-msgid "Japanese Book (Standard Class: Vertical Writing)"
-msgstr "Japonská kniha (Štandardná trieda: Vertikálne písanie)"
+msgid "Japanese Book (Standard Class, vertical Writing)"
+msgstr "Japonská kniha (Štandardná trieda, vertikálne písanie)"
 
 #: lib/layouts/tcolorbox.module:2 lib/examples/Articles:0
 msgid "Fancy Colored Boxes"
@@ -18197,8 +18241,8 @@ msgid "MissingFigure"
 msgstr "Chybiaci obrázok"
 
 #: lib/layouts/treport.layout:3
-msgid "Japanese Report (Vertical Writing)"
-msgstr "Japonský referát (Vertikálne písanie)"
+msgid "Japanese Report (Standard Class, vertical Writing)"
+msgstr "Japonský referát (Štandardná trieda, vertikálne písanie)"
 
 #: lib/layouts/tufte-book.layout:3 lib/examples/Articles:0
 msgid "Tufte Book"
@@ -18207,6 +18251,70 @@ msgstr "Tufte kniha"
 #: lib/layouts/tufte-book.layout:27 lib/layouts/tufte-book.layout:159
 msgid "Sidenote"
 msgstr "Poznámka na okraji (číslovaná)"
+
+#: lib/layouts/jlreq-common.inc:201
+msgid "Endnote contents"
+msgstr "Obsah koncovej poznámky"
+
+#: lib/layouts/jlreq-common.inc:202
+msgid ""
+"Contents of the sidenote. Only makes sense when "
+"\\jlreqsetup{sidenote_type=symbol} is specified in the preamble."
+msgstr ""
+"Obsah poznámky na okraji. Má len zmysel keď bude ' "
+"\\jlreqsetup{sidenote_type=symbol}' stanovené v preambule."
+
+#: lib/layouts/jlreq-common.inc:209 lib/layouts/jlreq-common.inc:212
+msgid "Warichu"
+msgstr "Warichu"
+
+#: lib/layouts/jlreq-common.inc:240 lib/layouts/jlreq-common.inc:243
+msgid "Warichu*"
+msgstr "Warichu*"
+
+#: lib/layouts/jlreq-common.inc:277 lib/layouts/jlreq-common.inc:281
+msgid "Tatechuyoko"
+msgstr "Tatechuyoko"
+
+#: lib/layouts/jlreq-common.inc:285 lib/layouts/jlreq-common.inc:288
+msgid "Jidori"
+msgstr "Jidori"
+
+#: lib/layouts/jlreq-common.inc:290
+msgid "Length"
+msgstr "Dĺžka"
+
+#: lib/layouts/jlreq-common.inc:291
+msgid "Jidori Length|L"
+msgstr "Jidori dĺžka|d"
+
+#: lib/layouts/jlreq-common.inc:292
+msgid "Length of Jidori. Contents is fit to this length."
+msgstr "Dĺžka tej jidori. Obsah bude prispôsobený dĺžke."
+
+#: lib/layouts/jlreq-common.inc:298 lib/layouts/jlreq-common.inc:301
+msgid "Akigumi"
+msgstr "Akigumi"
+
+#: lib/layouts/jlreq-common.inc:302
+msgid "Akigumi (LuaLaTeX)"
+msgstr "Akigumi (LuaLaTeX)"
+
+#: lib/layouts/jlreq-common.inc:304
+msgid "Char Space"
+msgstr "Priestor znakov"
+
+#: lib/layouts/jlreq-common.inc:305
+msgid "Char Space|D"
+msgstr "Priestor znakov|P"
+
+#: lib/layouts/jlreq-common.inc:306
+msgid "Distance between chars is set to this length."
+msgstr "Odstup medzi znakmi sa tu môže naztaviť."
+
+#: lib/layouts/jlreq-report.layout:3
+msgid "Japanese Report (JLReq Class)"
+msgstr "Japonský referát (JLReq trieda)"
 
 #: lib/layouts/tufte-book.layout:28 lib/layouts/tufte-book.layout:164
 msgid "sidenote"
@@ -41325,9 +41433,6 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Parametre výpisov zadávajte napravo. Na prehľad parametrov vložte znak "
 #~ "'?'."
-
-#~ msgid "Length"
-#~ msgstr "Dĺžka"
 
 #~ msgid "TeX Code Settings"
 #~ msgstr "TeX Kód nastavenia"
