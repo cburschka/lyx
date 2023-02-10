@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-08 11:30+0100\n"
-"PO-Revision-Date: 2023-02-08 11:41+0100\n"
+"POT-Creation-Date: 2023-02-10 12:30+0100\n"
+"PO-Revision-Date: 2023-02-10 12:32+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -4612,7 +4612,7 @@ msgstr "&Aktiv"
 msgid "Ctrl"
 msgstr "Strg-Taste"
 
-#: src/frontends/qt/ui/PrefInputUi.ui:249 src/insets/InsetInfo.cpp:898
+#: src/frontends/qt/ui/PrefInputUi.ui:249 src/insets/InsetInfo.cpp:894
 msgid "Shift"
 msgstr "Umschalttaste"
 
@@ -6658,7 +6658,8 @@ msgstr "American Economic Association (AEA)"
 #: lib/layouts/jasatex.layout:4 lib/layouts/jgrga.layout:4
 #: lib/layouts/jlreq-article.layout:4 lib/layouts/jsarticle.layout:4
 #: lib/layouts/jss.layout:4 lib/layouts/kluwer.layout:4
-#: lib/layouts/llncs.layout:4 lib/layouts/ltugboat.layout:4
+#: lib/layouts/llncs.layout:4 lib/layouts/ltjarticle.layout:4
+#: lib/layouts/ltjsarticle.layout:4 lib/layouts/ltugboat.layout:4
 #: lib/layouts/maa-monthly.layout:4 lib/layouts/mwart.layout:4
 #: lib/layouts/paper.layout:4 lib/layouts/revtex4-1.layout:4
 #: lib/layouts/revtex4-2.layout:4 lib/layouts/revtex4.layout:4
@@ -7984,6 +7985,7 @@ msgstr "The R Journal"
 #: lib/layouts/RJournal.layout:4 lib/layouts/bxjsreport.layout:4
 #: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
 #: lib/layouts/jlreq-report.layout:4 lib/layouts/jreport.layout:4
+#: lib/layouts/ltjreport.layout:4 lib/layouts/ltjsreport.layout:4
 #: lib/layouts/mwrep.layout:4 lib/layouts/report.layout:4
 #: lib/layouts/scrreprt.layout:4 lib/layouts/treport.layout:4
 msgid "Reports"
@@ -9625,7 +9627,8 @@ msgstr "Unterunterabschnitt*"
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4 lib/layouts/extbook.layout:4
 #: lib/layouts/jbook.layout:4 lib/layouts/jlreq-book.layout:4
-#: lib/layouts/jsbook.layout:4 lib/layouts/memoir.layout:4
+#: lib/layouts/jsbook.layout:4 lib/layouts/ltjbook.layout:4
+#: lib/layouts/ltjsbook.layout:4 lib/layouts/memoir.layout:4
 #: lib/layouts/mwbk.layout:4 lib/layouts/recipebook.layout:4
 #: lib/layouts/scrbook.layout:4 lib/layouts/svmono.layout:4
 #: lib/layouts/svmult.layout:4 lib/layouts/tbook.layout:4
@@ -15047,6 +15050,30 @@ msgstr "Stark"
 #: lib/layouts/logicalmkup.module:54
 msgid "strong"
 msgstr "stark"
+
+#: lib/layouts/ltjarticle.layout:3
+msgid "Japanese Article (Standard Class for LuaTeX)"
+msgstr "Japanischer Aufsatz (Standardklasse für LuaTeX)"
+
+#: lib/layouts/ltjbook.layout:3
+msgid "Japanese Book (Standard Class for LuaTeX)"
+msgstr "Japanisches Buch (Standardklasse für LuaTeX)"
+
+#: lib/layouts/ltjreport.layout:3
+msgid "Japanese Report (Standard Class for LuaTeX)"
+msgstr "Japanischer Bericht (Standardklasse für LuaTeX)"
+
+#: lib/layouts/ltjsarticle.layout:3
+msgid "Japanese Article (JS Bundle for LuaTeX)"
+msgstr "Japanischer Aufsatz (JS-Sammlung für LuaTeX)"
+
+#: lib/layouts/ltjsbook.layout:3
+msgid "Japanese Book (JS Bundle for LuaTeX)"
+msgstr "Japanisches Buch (JS-Sammlung für LuaTeX)"
+
+#: lib/layouts/ltjsreport.layout:3
+msgid "Japanese Report (JS Bundle for LuaTeX)"
+msgstr "Japanischer Bericht (BX-Sammlung für LuaTeX)"
 
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
@@ -35621,27 +35648,27 @@ msgstr "Quelltext-Vorschau"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1-Vorschau"
 
-#: src/frontends/qt/GuiWorkArea.cpp:1512
+#: src/frontends/qt/GuiWorkArea.cpp:1513
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2050
+#: src/frontends/qt/GuiWorkArea.cpp:2051
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2058
+#: src/frontends/qt/GuiWorkArea.cpp:2059
 msgid "%1 (modified externally)"
 msgstr "%1 (extern bearbeitet)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2081
+#: src/frontends/qt/GuiWorkArea.cpp:2082
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2087
+#: src/frontends/qt/GuiWorkArea.cpp:2088
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2126
+#: src/frontends/qt/GuiWorkArea.cpp:2127
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
@@ -36816,7 +36843,7 @@ msgstr "Dateipfad"
 msgid "Used text class"
 msgstr "Verwendete Textklasse"
 
-#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:1163
+#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:1159
 msgid "No version control!"
 msgstr "Keine Versionskontrolle!"
 
@@ -36964,96 +36991,96 @@ msgstr "Eine feste Zeitangabe"
 msgid "Missing \\end_inset at this point."
 msgstr "Fehlendes \\end_inset an dieser Stelle."
 
-#: src/insets/InsetInfo.cpp:830
+#: src/insets/InsetInfo.cpp:826
 msgid "Unknown Info!"
 msgstr "Unbekannte Info-Einfügung!"
 
-#: src/insets/InsetInfo.cpp:839 src/insets/InsetInfo.cpp:1038
+#: src/insets/InsetInfo.cpp:835 src/insets/InsetInfo.cpp:1034
 #, c-format
 msgid "Unknown action %1$s"
 msgstr "Aktion '%1$s' unbekannt"
 
-#: src/insets/InsetInfo.cpp:845 src/insets/InsetInfo.cpp:955
-#: src/insets/InsetInfo.cpp:964 src/insets/InsetInfo.cpp:972
+#: src/insets/InsetInfo.cpp:841 src/insets/InsetInfo.cpp:951
+#: src/insets/InsetInfo.cpp:960 src/insets/InsetInfo.cpp:968
 msgid "undefined"
 msgstr "undefiniert"
 
-#: src/insets/InsetInfo.cpp:868 src/insets/InsetInfo.cpp:918
+#: src/insets/InsetInfo.cpp:864 src/insets/InsetInfo.cpp:914
 msgid "Return[[Key]]"
 msgstr "Return"
 
-#: src/insets/InsetInfo.cpp:873
+#: src/insets/InsetInfo.cpp:869
 msgid "Tab[[Key]]"
 msgstr "Tab"
 
-#: src/insets/InsetInfo.cpp:878
+#: src/insets/InsetInfo.cpp:874
 msgid "PgUp"
 msgstr "Bild hoch"
 
-#: src/insets/InsetInfo.cpp:883
+#: src/insets/InsetInfo.cpp:879
 msgid "PgDown"
 msgstr "Bild runter"
 
-#: src/insets/InsetInfo.cpp:888
+#: src/insets/InsetInfo.cpp:884
 msgid "Backtab"
 msgstr "Rücktab"
 
-#: src/insets/InsetInfo.cpp:893
+#: src/insets/InsetInfo.cpp:889
 msgid "Tab"
 msgstr "Tab"
 
-#: src/insets/InsetInfo.cpp:903
+#: src/insets/InsetInfo.cpp:899
 msgid "CapsLock"
 msgstr "Feststelltaste"
 
-#: src/insets/InsetInfo.cpp:908
+#: src/insets/InsetInfo.cpp:904
 msgid "Control[[Key]]"
 msgstr "Control"
 
-#: src/insets/InsetInfo.cpp:913
+#: src/insets/InsetInfo.cpp:909
 msgid "Command[[Key]]"
 msgstr "Command"
 
-#: src/insets/InsetInfo.cpp:923
+#: src/insets/InsetInfo.cpp:919
 msgid "Option[[Key]]"
 msgstr "Option"
 
-#: src/insets/InsetInfo.cpp:928
+#: src/insets/InsetInfo.cpp:924
 msgid "Delete[[Key]]"
 msgstr "Rücktaste"
 
-#: src/insets/InsetInfo.cpp:933
+#: src/insets/InsetInfo.cpp:929
 msgid "Fn+Del"
 msgstr "Fn+Rücktaste"
 
-#: src/insets/InsetInfo.cpp:938
+#: src/insets/InsetInfo.cpp:934
 msgid "Esc"
 msgstr "Esc"
 
-#: src/insets/InsetInfo.cpp:982
+#: src/insets/InsetInfo.cpp:978
 msgid "not set"
 msgstr "nicht eingestellt"
 
-#: src/insets/InsetInfo.cpp:1006 src/insets/InsetInfo.cpp:1023
+#: src/insets/InsetInfo.cpp:1002 src/insets/InsetInfo.cpp:1019
 msgid "yes"
 msgstr "ja"
 
-#: src/insets/InsetInfo.cpp:1009 src/insets/InsetInfo.cpp:1026
+#: src/insets/InsetInfo.cpp:1005 src/insets/InsetInfo.cpp:1022
 msgid "no"
 msgstr "nein"
 
-#: src/insets/InsetInfo.cpp:1049
+#: src/insets/InsetInfo.cpp:1045
 #, c-format
 msgid "Can't determine menu entry for action %1$s in batch mode"
 msgstr ""
 "Der Menüeintrag für den Befehl %1$s kann im Batch-Mode nicht bestimmt werden"
 
-#: src/insets/InsetInfo.cpp:1057
+#: src/insets/InsetInfo.cpp:1053
 #, c-format
 msgid "No menu entry for action %1$s"
 msgstr "Kein Menüeintrag für die Aktion %1$s"
 
-#: src/insets/InsetInfo.cpp:1182
+#: src/insets/InsetInfo.cpp:1178
 #, c-format
 msgid "%1$s[[vcs data]] unknown"
 msgstr "%1$s unbekannt"
@@ -38013,11 +38040,11 @@ msgstr ""
 "Das angegebene Dokument %1$s\n"
 "konnte nicht geöffnet werden."
 
-#: src/output_latex.cpp:1662
+#: src/output_latex.cpp:1664
 msgid "Error in latexParagraphs"
 msgstr "Fehler in latexParagraphs"
 
-#: src/output_latex.cpp:1663
+#: src/output_latex.cpp:1665
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
