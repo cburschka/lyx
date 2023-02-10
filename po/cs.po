@@ -719,12 +719,11 @@ msgstr "&Nová:"
 
 #: src/frontends/qt/ui/BranchesUi.ui:169
 msgid "Reset branch color to default (standard background)"
-msgstr ""
+msgstr "Vynulovat barvu (standardní pozadí)"
 
 #: src/frontends/qt/ui/BranchesUi.ui:172
-#, fuzzy
 msgid "R&eset Color"
-msgstr "V&ynulovat"
+msgstr "V&ynulovat barvu"
 
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:25
 msgid "Add the selected branches to the list."
@@ -863,32 +862,28 @@ msgid "Huger"
 msgstr "Obrovité"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:20
-#, fuzzy
 msgid "If checked, additions and deletions will be tracked in the document"
-msgstr "Kontrolovat poznámky a komentáře pro pravopis"
+msgstr "Při zaškrtnutí budou zaznamenenávány editační změny v dokumentu"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:23
-#, fuzzy
 msgid "&Track changes"
-msgstr "Sledovat revize"
+msgstr "&Sledovat revize"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:30
 msgid "If checked, changes will be shown in the PDF/DVI/PS output"
-msgstr ""
+msgstr "Při zaškrtnutí budou změny zobrazeny ve výstupu PDF/DVI/PS"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:33
-#, fuzzy
 msgid "&Show changes in output"
-msgstr "Zobrazit změny ve výstupu"
+msgstr "&Zobrazit změny ve výstupu"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:40
 msgid "Use change bars in addition to change tracking markup"
-msgstr ""
+msgstr "Naznačit změny také pomocí proužků po stranách dokumentu"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:43
-#, fuzzy
 msgid "Use change &bars in output"
-msgstr "Zobrazit změny ve výstupu"
+msgstr "Zo&brazit postranní proužky ve výstupu"
 
 #: src/frontends/qt/ui/ChangesUi.ui:38
 msgid "Change:"
@@ -1243,23 +1238,20 @@ msgid "New:"
 msgstr "Nová:"
 
 #: src/frontends/qt/ui/CompareUi.ui:57
-#, fuzzy
 msgid "Select the document from which the settings should be taken"
-msgstr "Zvolit rejstřík ve kterém má být tato položka vypsána."
+msgstr "Zvolit dokument, ze kterého převzít nastavení"
 
 #: src/frontends/qt/ui/CompareUi.ui:60 src/frontends/qt/GuiDocument.cpp:808
 msgid "Document Settings"
 msgstr "Nastavení dokumentu"
 
 #: src/frontends/qt/ui/CompareUi.ui:69
-#, fuzzy
 msgid "O&ld document"
 msgstr "S&tarý dokument"
 
 #: src/frontends/qt/ui/CompareUi.ui:76
-#, fuzzy
 msgid "New docu&ment"
-msgstr "Nový dokument"
+msgstr "Nový do&kument"
 
 #: src/frontends/qt/ui/CompareUi.ui:101
 msgid ""
@@ -1268,31 +1260,28 @@ msgid ""
 msgstr "Zapne kontrolu revizí a zobrazí změny ve výstupním LaTeX-ovém souboru"
 
 #: src/frontends/qt/ui/CompareUi.ui:104
-#, fuzzy
 msgid "&Enable change tracking features in the output"
-msgstr "&Zapnout kontrolu revizí na výstupu"
+msgstr "&Zapnout kontrolu revizí ve výstupu"
 
 #: src/frontends/qt/ui/CompareUi.ui:129
-#, fuzzy
 msgid "Old documen&t:"
 msgstr "&Starý dokument:"
 
 #: src/frontends/qt/ui/CompareUi.ui:145
 msgid "Specify the original version of the document here (comparison source)"
-msgstr ""
+msgstr "Originální verze dokumentu (zdroj srovnání)"
 
 #: src/frontends/qt/ui/CompareUi.ui:155 src/frontends/qt/ui/PrefUi.ui:61
 msgid "Bro&wse..."
 msgstr "P&rocházet..."
 
 #: src/frontends/qt/ui/CompareUi.ui:165
-#, fuzzy
 msgid "&New document:"
 msgstr "&Nový dokument:"
 
 #: src/frontends/qt/ui/CompareUi.ui:181
 msgid "Specify the modified version of the document here (comparison target)"
-msgstr ""
+msgstr "Modifikovaná verze dokumentu (cíl srovnání)"
 
 #: src/frontends/qt/ui/CompareUi.ui:191 src/frontends/qt/ui/ExternalUi.ui:89
 #: src/frontends/qt/ui/GraphicsUi.ui:75 src/frontends/qt/ui/IncludeUi.ui:28
@@ -1304,12 +1293,11 @@ msgstr "P&rocházet..."
 #: src/frontends/qt/ui/CompareUi.ui:227 src/frontends/qt/ui/CompareUi.ui:240
 msgid ""
 "Changes in the workarea are allocated to the selected author or category"
-msgstr ""
+msgstr "Detekované změny budou přiřazeny vybranému autorovi"
 
 #: src/frontends/qt/ui/CompareUi.ui:230
-#, fuzzy
 msgid "Changes mar&kup:"
-msgstr "Značky změn"
+msgstr "Zn&ačky změn:"
 
 #: src/frontends/qt/ui/CounterUi.ui:22
 msgid "C&ounter:"
@@ -4039,11 +4027,11 @@ msgstr "&Velikost náhledu:"
 msgid ""
 "If this is checked, additions in change tracking are underlined in the "
 "workarea"
-msgstr ""
+msgstr "Při zaškrtnutí budou revizní změny v editačním okně podtrženy"
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:157
 msgid "&Underline change tracking additions"
-msgstr ""
+msgstr "Po&dtrhnout revizní změny"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:26
 msgid "Session Handling"
@@ -21685,9 +21673,8 @@ msgid "Insert New Branch...|I"
 msgstr "Vložit novou větev...|V"
 
 #: lib/ui/stdmenus.inc:570
-#, fuzzy
 msgid "Cancel Export|P"
-msgstr "&Zrušit export"
+msgstr "Zrušit export|x"
 
 #: lib/ui/stdmenus.inc:572
 msgid "Change Tracking|C"
@@ -21739,15 +21726,15 @@ msgstr "Přijmout všechny změny|P"
 
 #: lib/ui/stdmenus.inc:593
 msgid "Reject All Changes|e"
-msgstr "Odmítnout všechny změny|O"
+msgstr "Zamítnout všechny změny|Z"
 
 #: lib/ui/stdmenus.inc:594
 msgid "Accept All Changes (incl. Master/Children/Siblings)|p"
-msgstr ""
+msgstr "Přijmout všechny změny (i propojených d.)|j"
 
 #: lib/ui/stdmenus.inc:595
 msgid "Reject All Changes (incl. Master/Children/Siblings)|j"
-msgstr ""
+msgstr "Zamítnout všechny změny (i propojených d.)|n"
 
 #: lib/ui/stdmenus.inc:596
 msgid "Show Changes in Output|S"
@@ -32873,9 +32860,8 @@ msgstr ""
 "odpovídající třídu %1$s a všechny vyžadované balíčky (%2$s)."
 
 #: src/frontends/qt/GuiDocument.cpp:1708
-#, fuzzy
 msgid "All avail. modules"
-msgstr "Všechny dostupné citace"
+msgstr "Všechny dostupné moduly"
 
 #: src/frontends/qt/GuiDocument.cpp:1797 src/frontends/qt/GuiDocument.cpp:2050
 msgid "Input listings parameters below. Enter ? for a list of parameters."
@@ -32895,9 +32881,8 @@ msgid "Colors"
 msgstr "Barvy"
 
 #: src/frontends/qt/GuiDocument.cpp:1814
-#, fuzzy
 msgid "Change Tracking"
-msgstr "Změnit revize|Z"
+msgstr "Revizní změny"
 
 #: src/frontends/qt/GuiDocument.cpp:1815
 msgid "Numbering & TOC"
@@ -35673,7 +35658,7 @@ msgstr "Prohlížet (ostatní formáty)|h"
 
 #: src/frontends/qt/Menus.cpp:1119
 msgid "Update (Other Formats)|p"
-msgstr "Aktualizuj (ostatní formáty)|j"
+msgstr "Aktualizovat (ostatní formáty)|u"
 
 #: src/frontends/qt/Menus.cpp:1149
 #, c-format
