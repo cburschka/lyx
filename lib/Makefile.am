@@ -231,8 +231,6 @@ dist_itinsetexamples_DATA = \
 
 jaexamplesdir = $(pkgdatadir)/examples/ja
 dist_jaexamples_DATA = \
-	examples/ja/Multilingual_Typesetting_with_CJKutf8.lyx \
-	examples/ja/Multilingual_Typesetting_with_platex.lyx \
 	examples/ja/Welcome.lyx
 
 jaarticleexamplesdir = $(pkgdatadir)/examples/ja/Articles
@@ -244,6 +242,11 @@ dist_jainsetexamples_DATA = \
 	examples/ja/Graphics_and_Insets/Feynman_Diagrams.lyx \
 	examples/ja/Graphics_and_Insets/xyfigure.png \
 	examples/ja/Graphics_and_Insets/XY-Pic.lyx
+
+jalanguageexamplesdir = $(pkgdatadir)/examples/ja/Language_Support
+dist_jalanguageexamples_DATA = \
+	examples/ja/Language_Support/Multilingual_Typesetting_with_CJKutf8.lyx \
+	examples/ja/Language_Support/Multilingual_Typesetting_with_platex.lyx
 
 jamoduleexamplesdir = $(pkgdatadir)/examples/ja/Modules
 dist_jamoduleexamples_DATA = \
@@ -260,8 +263,11 @@ dist_japresentationexamples_DATA = \
 
 koexamplesdir = $(pkgdatadir)/examples/ko
 dist_koexamples_DATA = \
-	examples/ko/Welcome.lyx \
-	examples/ko/cjk-ko-doc.lyx
+	examples/ko/Welcome.lyx
+
+kolanguageexamplesdir = $(pkgdatadir)/examples/ko/Language_Support
+dist_kolanguageexamples_DATA = \
+	examples/ko/Language_Support/Writing_Korean_with_CJK-ko.lyx.lyx
 
 nbexamplesdir = $(pkgdatadir)/examples/nb
 dist_nbexamples_DATA = \
@@ -362,7 +368,6 @@ dist_examples_DATA = \
 	examples/biblioExample.bib \
 	examples/Example_%28LyXified%29.lyx \
 	examples/Example_%28raw%29.lyx \
-	examples/Localization_Test.lyx \
 	examples/Welcome.lyx
 
 articleexamplesdir = $(pkgdatadir)/examples/Articles
@@ -454,6 +459,10 @@ dist_insetexamples_DATA = \
 	examples/Graphics_and_Insets/XY-Figure.lyx \
 	examples/Graphics_and_Insets/xyfigure.png \
 	examples/Graphics_and_Insets/XY-Pic.lyx
+
+languageexamplesdir = $(pkgdatadir)/examples/Language_Support
+dist_languageexamples_DATA = \
+	examples/Language_Support/Localization_Test_%28for_Developers%29.lyx
 
 letterexamplesdir = $(pkgdatadir)/examples/Letters
 dist_letterexamples_DATA = \
@@ -3218,10 +3227,13 @@ exampleandtemplate_files = \
 			   $(dist_jaexamples_DATA) \
 			   $(dist_jaarticleexamples_DATA) \
 			   $(dist_jainsetexamples_DATA) \
+			   $(dist_jalanguageexamples_DATA) \
 			   $(dist_jamoduleexamples_DATA) \
 			   $(dist_japresentationexamples_DATA) \
 			   $(dist_japresentationtemplates_DATA) \
 			   $(dist_koexamples_DATA) \
+			   $(dist_kolanguageexamples_DATA) \
+			   $(dist_languageexamples_DATA) \
 			   $(dist_letterexamples_DATA) \
 			   $(dist_lettertemplates_DATA) \
 			   $(dist_moduleexamples_DATA) \
