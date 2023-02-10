@@ -359,8 +359,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-01-01 18:33-0500\n"
-"PO-Revision-Date: 2022-12-10 13:37+0100\n"
+"POT-Creation-Date: 2023-02-10 18:32+0100\n"
+"PO-Revision-Date: 2023-02-10 18:34+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1482,8 +1482,8 @@ msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
 msgstr ""
-"Force les capitales dans les noms  (\"Del Piero\", net non pas \"del "
-"Piero\"), si le style de citation sélectionné le permet."
+"Force les capitales dans les noms  (\"Del Piero\", net non pas \"del Piero"
+"\"), si le style de citation sélectionné le permet."
 
 #: src/frontends/qt4/ui/CitationUi.ui:398
 msgid "Force upcas&ing"
@@ -4242,7 +4242,7 @@ msgid ""
 msgstr ""
 "Ceci est le format implicite du résultat pour les documents LyX, sauf pour "
 "les classes DocBook, le documents utilisant des polices non-TeX et les "
-"documents en japonais."
+"documents en japonais"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:267
 msgid "The default output format for Japanese documents (using pLaTeX)"
@@ -5631,7 +5631,7 @@ msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Afficher le contenu du fichier sélectionné. Possible uniquement si le chemin "
-"est affiché."
+"est affiché"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:135
 msgid "&View"
@@ -17504,7 +17504,7 @@ msgstr "Anglais (Canada)"
 
 #: lib/languages:357
 msgid "French (Canada)"
-msgstr "Français (Canadien)"
+msgstr "Français (acadien)"
 
 #: lib/languages:367
 msgid "Catalan"
@@ -26329,7 +26329,7 @@ msgstr "Classe de document non disponible"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1093
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1102
 #: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "Avertissement LyX : "
@@ -26338,7 +26338,7 @@ msgstr "Avertissement LyX : "
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1094
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1103
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "caractère incodable"
@@ -27359,8 +27359,8 @@ msgstr ""
 #: src/CutAndPaste.cpp:852
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
-"`%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
+"%3$s'."
 msgstr ""
 "L'insert flexible %1$s n'est pas défini du fait de la conversion du format « "
 "%2$s » vers « %3$s »."
@@ -29950,8 +29950,8 @@ msgstr "Texte suivant la référence (e.g., pages)"
 #: src/frontends/qt4/GuiCitation.cpp:322
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr ""
-"Force les capitales dans les noms  (\"Del Piero\", net non pas \"del "
-"Piero\")."
+"Force les capitales dans les noms  (\"Del Piero\", net non pas \"del Piero"
+"\")."
 
 #: src/frontends/qt4/GuiCitation.cpp:357
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -34210,11 +34210,11 @@ msgstr "Impossible de changer le nombre de lignes dans '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Impossible de changer le nombre de colonnes dans '%1$s'"
 
-#: src/mathed/InsetMathMacro.cpp:1118
+#: src/mathed/InsetMathMacro.cpp:1127
 msgid "Uncodable characters in math macro"
 msgstr "Caractères incodables dans une macro mathématique"
 
-#: src/mathed/InsetMathMacro.cpp:1119
+#: src/mathed/InsetMathMacro.cpp:1128
 #, c-format
 msgid ""
 "The macro name '%1$s' contains a character\n"
@@ -34225,7 +34225,7 @@ msgstr ""
 "non encodable avec l'encodage courant  (%2$s).\n"
 "Veuillez corriger cette macro."
 
-#: src/mathed/InsetMathMacro.cpp:1271 src/mathed/InsetMathMacro.cpp:1277
+#: src/mathed/InsetMathMacro.cpp:1280 src/mathed/InsetMathMacro.cpp:1286
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Macro : %1$s"
@@ -34300,11 +34300,11 @@ msgstr ""
 "Impossible d'ouvrir le document\n"
 "%1$s."
 
-#: src/output_latex.cpp:1489
+#: src/output_latex.cpp:1491
 msgid "Error in latexParagraphs"
 msgstr "Erreur dans latexParagraphs"
 
-#: src/output_latex.cpp:1490
+#: src/output_latex.cpp:1492
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
