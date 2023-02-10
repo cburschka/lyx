@@ -1,0 +1,498 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 615
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Set a decicated font for Armenian script
+% (see section 4 "fonts" of the Polyglossia documentation):
+\newfontfamily{\armenianfont}[Mapping=tex-text]{DejaVu Serif}
+\newfontfamily{\armenianfontsf}{DejaVu Sans}
+\newfontfamily{\armenianfonttt}{DejaVu Sans Mono}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "DejaVu Serif"
+\font_sans "lmss" "DejaVu Sans"
+\font_typewriter "txtt" "DejaVu Sans Mono"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle true
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\branch missing-in-DejaVu
+\selected 0
+\filename_suffix 0
+\color background background
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Writing Armenian with \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Author
+by 
+\noun on
+Günter Milde
+\noun default
+ and the \SpecialChar LyX
+ Team
+\end_layout
+
+\begin_layout Section
+Preparing your document to write Armenian
+\end_layout
+
+\begin_layout Standard
+Armenian (language tag 
+\family typewriter
+hy
+\family default
+) is supported in \SpecialChar LyX
+ via 
+\emph on
+Polyglossia
+\emph default
+ and Xe\SpecialChar TeX
+ or Lua\SpecialChar TeX
+.
+ To write in Armenian,
+ prepare your document as follows:
+\end_layout
+
+\begin_layout Itemize
+Select a 
+\begin_inset Quotes eld
+\end_inset
+
+non-TeX font
+\begin_inset Quotes erd
+\end_inset
+
+ supporting the Armenian script,
+ e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\family sans
+DejaVu Serif
+\family default
+ (as in this document),
+ under Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Fonts.
+\end_layout
+
+\begin_layout Itemize
+Set an 
+\begin_inset Quotes els
+\end_inset
+
+Armenian
+\begin_inset Quotes ers
+\end_inset
+
+ script in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+LaTeX preamble
+\family default
+ as follows (adapt the font,
+ 
+\family typewriter
+DejaVu
+\family default
+ here,
+ to your needs):
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\size footnotesize
+
+\backslash
+newfontfamily{
+\backslash
+armenianfont}{DejaVu Serif}
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+
+\backslash
+newfontfamily{
+\backslash
+armenianfontsf}{DejaVu Sans}
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+
+\backslash
+newfontfamily{
+\backslash
+armenianfonttt}{DejaVu Sans Mono}
+\end_layout
+
+\begin_layout Standard
+See the \SpecialChar LaTeX
+ preamble of this document for an example.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Select 
+\family sans
+Armenian
+\family default
+ as the main language in in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Language
+\family default
+ if your document is mainly in Armenian or as an additional language via 
+\family sans
+Edit\SpecialChar menuseparator
+Text Properties\SpecialChar menuseparator
+Customize\SpecialChar menuseparator
+Language
+\family default
+ if your document contains parts in Armenian,
+ but is mainly in a different language (such as in this document).
+\end_layout
+
+\begin_layout Itemize
+In the latter case,
+ all Armenian text needs to be marked as Armenian via the 
+\family sans
+Text Properties
+\family default
+ dialog or 
+\family sans
+Edit\SpecialChar menuseparator
+Language\SpecialChar menuseparator
+Armenian
+\family default
+ if there is already Armenian text in your document.
+\end_layout
+
+\begin_layout Section
+Example
+\end_layout
+
+\begin_layout Standard
+This is taken from 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://hy.wikipedia.org/wiki/%D5%80%D5%A1%D5%B5%D5%A5%D6%80%D5%A5%D5%B6
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\lang armenian
+19-րդ դարի երկրորդ կեսին,
+ երբ լեզվաբանությունն ու լեզվագիտությունը նոր թափով էին առաջ ընթանում,
+ գերմանացի լեզվաբան Հայնրիխ Հյուբշմանը 1875 թվականին հրատարակված «Հայերենի դիրքը հնդեվրոպական լեզուների շարքում» հոդվածում ապացուցում է,
+ որ հայերենը հնդեվրոպական լեզուների մեջ ինքնուրույն լեզվաճյուղ է,
+ իսկ պարսկերենի և հնագույն այլ լեզուների հետ ունեցած ընդհանրությունները (հիմնականում բառապաշարային) ոչ թե ծագմամբ են պայմանավորված,
+ այլ հետագա շրջանի փոխառություններ են։ Մինչ այսօր այս տեսակետը համարվում է ճիշտ,
+ և հայերենը շարունակում է իր ուրույն տեղը զբաղեցնել այդ լեզվաընտանիքում։
+\end_layout
+
+\begin_layout Standard
+
+\lang armenian
+Հայերենի առաջին պատմահամեմատական մեթոդի հեղինակները՝ Հայնրիխ Պետերմանը և Ֆրիդրիխ Վինդիշմանը առաջ էին քաշում այն դրույթը,
+ ըստ որի հայերենը պատկանում է հնդիրանյան/արիական/ լեզվախմբին։ Դրան էին հանգեցրել շուրջ 1400 բառերի առկայությունը,
+ որոնք պարսկերենից փոխառություններ էին։ Սակայն այս տեսակետը հետագայում մերժվեց։
+\end_layout
+
+\begin_layout Section
+Script test
+\end_layout
+
+\begin_layout Standard
+Unicode Block 11:
+ Armenian —
+ serif:
+\end_layout
+
+\begin_layout Standard
+530 
+\lang armenian
+Ա Բ Գ Դ Ե Զ Է Ը Թ Ժ Ի Լ Խ Ծ Կ
+\end_layout
+
+\begin_layout Standard
+540 
+\lang armenian
+Հ Ձ Ղ Ճ Մ Յ Ն Շ Ո Չ Պ Ջ Ռ Ս Վ Տ
+\end_layout
+
+\begin_layout Standard
+550 
+\lang armenian
+Ր Ց Ւ Փ Ք Օ Ֆ ՙ ՚ ՛ ՜ ՝ ՞ ՟
+\end_layout
+
+\begin_layout Standard
+560 
+\lang armenian
+ա բ գ դ ե զ է ը թ ժ ի լ խ ծ կ
+\end_layout
+
+\begin_layout Standard
+570 
+\lang armenian
+հ ձ ղ ճ մ յ ն շ ո չ պ ջ ռ ս վ տ
+\end_layout
+
+\begin_layout Standard
+580 
+\lang armenian
+ր ց ւ փ ք օ ֆ և ։ ֊ 
+\begin_inset Branch missing-in-DejaVu
+inverted 0
+status collapsed
+
+\begin_layout Standard
+֍ ֎ ֏
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Unicode Block 11:
+ Armenian —
+ sans:
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+530 
+\lang armenian
+Ա Բ Գ Դ Ե Զ Է Ը Թ Ժ Ի Լ Խ Ծ Կ
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+540 
+\lang armenian
+Հ Ձ Ղ Ճ Մ Յ Ն Շ Ո Չ Պ Ջ Ռ Ս Վ Տ
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+550 
+\lang armenian
+Ր Ց Ւ Փ Ք Օ Ֆ ՙ ՚ ՛ ՜ ՝ ՞ ՟
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+560 
+\lang armenian
+ա բ գ դ ե զ է ը թ ժ ի լ խ ծ կ
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+570 
+\lang armenian
+հ ձ ղ ճ մ յ ն շ ո չ պ ջ ռ ս վ տ
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+580 
+\lang armenian
+ր ց ւ փ ք օ ֆ և ։ ֊ 
+\begin_inset Branch missing-in-DejaVu
+inverted 0
+status collapsed
+
+\begin_layout Standard
+֍ ֎ ֏
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Unicode Block 11:
+ Armenian —
+ monotype:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+530 
+\lang armenian
+Ա Բ Գ Դ Ե Զ Է Ը Թ Ժ Ի Լ Խ Ծ Կ
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+540 
+\lang armenian
+Հ Ձ Ղ Ճ Մ Յ Ն Շ Ո Չ Պ Ջ Ռ Ս Վ Տ
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+550 
+\lang armenian
+Ր Ց Ւ Փ Ք Օ Ֆ ՙ ՚ ՛ ՜ ՝ ՞ ՟
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+560 
+\lang armenian
+ա բ գ դ ե զ է ը թ ժ ի լ խ ծ կ
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+570 
+\lang armenian
+հ ձ ղ ճ մ յ ն շ ո չ պ ջ ռ ս վ տ
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+580 
+\lang armenian
+ր ց ւ փ ք օ ֆ և ։ ֊ 
+\begin_inset Branch missing-in-DejaVu
+inverted 0
+status collapsed
+
+\begin_layout Standard
+֍ ֎ ֏
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

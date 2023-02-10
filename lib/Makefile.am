@@ -217,6 +217,10 @@ dist_huexamples_DATA = \
 	examples/hu/Example_%28raw%29.lyx \
 	examples/hu/Welcome.lyx
 
+hylanguageexamplesdir = $(pkgdatadir)/examples/hy/Language_Support
+dist_hylanguageexamples_DATA = \
+	examples/hy/Language_Support/Writing_Armenian.lyx
+
 idexamplesdir = $(pkgdatadir)/examples/id
 dist_idexamples_DATA = \
 	examples/id/Welcome.lyx
@@ -3220,6 +3224,7 @@ exampleandtemplate_files = \
 			   $(dist_handoutexamples_DATA) \
 			   $(dist_heexamples_DATA) \
 			   $(dist_huexamples_DATA) \
+			   $(dist_hylanguageexamples_DATA) \
 			   $(dist_idexamples_DATA) \
 			   $(dist_insetexamples_DATA) \
 			   $(dist_itexamples_DATA) \
