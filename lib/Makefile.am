@@ -249,7 +249,7 @@ dist_jainsetexamples_DATA = \
 
 jalanguageexamplesdir = $(pkgdatadir)/examples/ja/Language_Support
 dist_jalanguageexamples_DATA = \
-	examples/ja/Language_Support/Mixing_Japanese_with_other_Languages_%28with_CJKutf8%29 \
+	examples/ja/Language_Support/Mixing_Japanese_with_other_Languages_%28with_CJKutf8%29.lyx \
 	examples/ja/Language_Support/Mixing_Japanese_with_other_Languages_%28with_platex%29.lyx
 
 jamoduleexamplesdir = $(pkgdatadir)/examples/ja/Modules
