@@ -111,9 +111,9 @@ par l'Équipe \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-Merci d'envoyer vos commentaires et corrections à la liste de diffusion
- de la documentation de \SpecialChar LyX
-, 
+Merci d'envoyer vos commentaires et corrections à la liste de diffusion de la documentation de \SpecialChar LyX
+,
+ 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -126,43 +126,50 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-Traduction en français par : P.-H.
+Traduction en français par :
+ P.-H.
  
 \noun on
 Boinnard
 \noun default
-, M.
+,
+ M.
  
 \noun on
 Boinnard
 \noun default
-, Jean-Marc
+,
+ Jean-Marc
 \noun on
  Lasgouttes
 \noun default
-, Denis
+,
+ Denis
 \noun on
  Valdenaire
 \noun default
-, Jean-Pierre
+,
+ Jean-Pierre
 \noun on
  Vidal,
+
 \noun default
  Adrien 
 \noun on
 Rebollo
 \noun default
-, Siegfried
+,
+ Siegfried
 \noun on
  Meunier-Guttin-Cluzel
 \noun default
-, Jean-Pierre 
+,
+ Jean-Pierre 
 \noun on
 Chrétien
 \noun default
 .
- Merci d'envoyer vos commentaires et corrections sur la traduction à la
- liste de diffusion de \SpecialChar LyX
+ Merci d'envoyer vos commentaires et corrections sur la traduction à la liste de diffusion de \SpecialChar LyX
  en français 
 \begin_inset CommandInset href
 LatexCommand href
@@ -186,41 +193,45 @@ Information sur l'état de la traduction:
 \end_layout
 
 \begin_layout Plain Layout
-Revue JPChrétien pour 1.6.10, mai 2005
+Revue JPChrétien pour 1.6.10,
+ mai 2005
 \end_layout
 
 \begin_layout Plain Layout
-(synchronisation avec l'interface, ajout d'un paragraphe section 3.2 mentionnant
- le modèle lettre.lyx)
+(synchronisation avec l'interface,
+ ajout d'un paragraphe section 3.2 mentionnant le modèle lettre.lyx)
 \end_layout
 
 \begin_layout Plain Layout
-Remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertio
-n/Navigation, JPC 31/10/2012
+Remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertion/Navigation,
+ JPC 31/10/2012
 \end_layout
 
 \begin_layout Plain Layout
-Revue suite à modifications de l'original avec relecture complète, JPC 28/02/201
-3
+Revue suite à modifications de l'original avec relecture complète,
+ JPC 28/02/2013
 \end_layout
 
 \begin_layout Plain Layout
-Modification section 1.2, référence à l'Intro, JPC 20/07/14
+Modification section 1.2,
+ référence à l'Intro,
+ JPC 20/07/14
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour section 5.4, JPC 28/01/16
+Mise à jour section 5.4,
+ JPC 28/01/16
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour générale pour 2.2, JPC 25/07/16 - Normalisation typo de l'insertion
- des notes de bas de page, corrections typographiques mineures et quelques
- ajouts traduits
+Mise à jour générale pour 2.2,
+ JPC 25/07/16 - Normalisation typo de l'insertion des notes de bas de page,
+ corrections typographiques mineures et quelques ajouts traduits
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour pour 2.4.0, JPC 23/04/2021 - Modification des référencements aux
- modèles et aux exemples
+Mise à jour pour 2.4.0,
+ JPC 23/04/2021 - Modification des référencements aux modèles et aux exemples
 \end_layout
 
 \end_inset
@@ -250,21 +261,21 @@ Bienvenue dans l'univers de \SpecialChar LyX
 Ce document est destiné à tous ceux qui n'ont jamais entendu parler de \SpecialChar LaTeX
 ,
  ou qui ne le connaissent pas bien.
- Surtout, pas de panique – vous ne devrez pas apprendre \SpecialChar LaTeX
+ Surtout,
+ pas de panique – vous ne devrez pas apprendre \SpecialChar LaTeX
  pour utiliser \SpecialChar LyX
 .
  C'est précisément le but de \SpecialChar LyX
-: fournir une interface quasi-WYSIWYG pour
- \SpecialChar LaTeX
+:
+ fournir une interface quasi-WYSIWYG pour \SpecialChar LaTeX
 .
- Néanmoins, vous aurez quelques connaissances à acquérir pour utiliser \SpecialChar LyX
-
+ Néanmoins,
+ vous aurez quelques connaissances à acquérir pour utiliser \SpecialChar LyX
  efficacement.
 \end_layout
 
 \begin_layout Standard
-Vous en arrivez peut-être à lire ce document après avoir tenté vainement
- de mettre deux espaces après un 
+Vous en arrivez peut-être à lire ce document après avoir tenté vainement de mettre deux espaces après un 
 \begin_inset Quotes cld
 \end_inset
 
@@ -273,24 +284,27 @@ Vous en arrivez peut-être à lire ce document après avoir tenté vainement
 \end_inset
 
  ou trois lignes vides entre deux paragraphes.
- Après quelques tentatives infructueuses, vous vous êtes rendu compte que
- c'est impossible.
- En effet, la plupart des petits tours de main que vous utilisez dans un
- traitement de texte classique ne s'adaptent tout simplement pas à \SpecialChar LyX
+ Après quelques tentatives infructueuses,
+ vous vous êtes rendu compte que c'est impossible.
+ En effet,
+ la plupart des petits tours de main que vous utilisez dans un traitement de texte classique ne s'adaptent tout simplement pas à \SpecialChar LyX
 .
- La plupart des traitements de texte que vous avez probablement utilisés
- auparavant vous obligent à gérer les espaces, les polices et autres détails
- techniques manuellement.
- Vous en arrivez alors non seulement à écrire, mais également à faire la
- mise en page de vos documents.
+ La plupart des traitements de texte que vous avez probablement utilisés auparavant vous obligent à gérer les espaces,
+ les polices et autres détails techniques manuellement.
+ Vous en arrivez alors non seulement à écrire,
+ mais également à faire la mise en page de vos documents.
  \SpecialChar LyX
-, au contraire, réalise la typographie pour vous, de manière cohérente,
- vous permettant de vous consacrer à ce qui est important, le contenu de
- votre document.
+,
+ au contraire,
+ réalise la typographie pour vous,
+ de manière cohérente,
+ vous permettant de vous consacrer à ce qui est important,
+ le contenu de votre document.
 \end_layout
 
 \begin_layout Standard
-Donc, restez avec nous pour en apprendre plus sur \SpecialChar LyX
+Donc,
+ restez avec nous pour en apprendre plus sur \SpecialChar LyX
 .
  La lecture de ce 
 \shape slanted
@@ -308,17 +322,20 @@ Le Manuel
 \begin_inset space ~
 \end_inset
 
-d'apprentissage : ce qu'il 
+d'apprentissage :
+ ce qu'il 
 \shape slanted
 est
 \shape default
-, ce qu'il 
+,
+ ce qu'il 
 \emph on
 n'est pas
 \end_layout
 
 \begin_layout Standard
-Une petite note avant de nous mettre en route dans cette section: le 
+Une petite note avant de nous mettre en route dans cette section:
+ le 
 \shape slanted
 Manuel
 \begin_inset space ~
@@ -336,10 +353,11 @@ e Manuel d'Introduction
 .
 
 \shape default
- Si vous avez commencé avec le présent manuel, il est temps de vous interrompre
- et de parcourir cette
+ Si vous avez commencé avec le présent manuel,
+ il est temps de vous interrompre et de parcourir cette
 \shape slanted
  Introduction,
+
 \shape default
  avant de poursuivre avec le 
 \shape slanted
@@ -353,8 +371,8 @@ d'apprentissage
 \end_layout
 
 \begin_layout Standard
-Maintenant que vous savez le sens accordé aux différentes polices, parlons
- un peu de l'objectif de ce 
+Maintenant que vous savez le sens accordé aux différentes polices,
+ parlons un peu de l'objectif de ce 
 \emph on
 Manuel
 \begin_inset space ~
@@ -375,16 +393,18 @@ d'apprentissage
 
 \begin_layout Standard
 Ce manuel est constitué d'exemples et d'exercices.
- Pour tirer le meilleur parti de ce document, au fur et à mesure de sa lecture,
+ Pour tirer le meilleur parti de ce document,
+ au fur et à mesure de sa lecture,
  il vous faudra saisir toutes les petites choses que nous vous proposons,
  essayer tous les exercices et vérifier que vous obtenez les bons résultats.
- Pour vous faciliter la tâche, vous préférerez peut-être sortir une impression
- de la version PDF de ce document.
+ Pour vous faciliter la tâche,
+ vous préférerez peut-être sortir une impression de la version PDF de ce document.
 \end_layout
 
 \begin_layout Standard
 Si \SpecialChar LaTeX
- vous est familier, vous pourrez lire le 
+ vous est familier,
+ vous pourrez lire le 
 \emph on
 Manuel
 \begin_inset space ~
@@ -392,9 +412,9 @@ Manuel
 
 d'apprentissage
 \emph default
- assez rapidement, car un certain nombre de notions de \SpecialChar LyX
- ne sont que des
- notions \SpecialChar LaTeX
+ assez rapidement,
+ car un certain nombre de notions de \SpecialChar LyX
+ ne sont que des notions \SpecialChar LaTeX
  déguisées.
  \SpecialChar LyX
  possède néanmoins des particularités
@@ -402,7 +422,9 @@ d'apprentissage
 status collapsed
 
 \begin_layout Plain Layout
-ou, d'un point de vue plus optimiste, des 
+ou,
+ d'un point de vue plus optimiste,
+ des 
 \begin_inset Quotes cld
 \end_inset
 
@@ -424,19 +446,21 @@ Manuel
 
 d'apprentissage
 \emph default
-, vous devriez quand même vous reporter à la Section
+,
+ vous devriez quand même vous reporter à la Section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-nolink "false"
 reference "sec:utilisateurs-latex"
+nolink "false"
 
 \end_inset
 
-, qui a été écrite spécialement pour les utilisateurs expérimentés de \SpecialChar LaTeX
+,
+ qui a été écrite spécialement pour les utilisateurs expérimentés de \SpecialChar LaTeX
 .
 \end_layout
 
@@ -483,10 +507,10 @@ Une description détaillée de \SpecialChar LaTeX
 \begin_deeper
 \begin_layout Standard
 Inutile.
- Si vous voulez apprendre quelques unes des astuces que vous pouvez mettre
- en œuvre avec \SpecialChar LaTeX
+ Si vous voulez apprendre quelques unes des astuces que vous pouvez mettre en œuvre avec \SpecialChar LaTeX
  dans \SpecialChar LyX
-, vous pouvez jeter un œil au manuel 
+,
+ vous pouvez jeter un œil au manuel 
 \emph on
 Objets
 \begin_inset space ~
@@ -499,7 +523,9 @@ Insérés
 
 \end_deeper
 \begin_layout Standard
-Et maintenant, il est temps de s'y mettre, et d'attaquer votre premier document\SpecialChar ldots
+Et maintenant,
+ il est temps de s'y mettre,
+ et d'attaquer votre premier document\SpecialChar ldots
 
 \end_layout
 
@@ -516,20 +542,25 @@ Votre premier document \SpecialChar LyX
 \begin_layout Standard
 Nous y voilà.
  Vous êtes prêts à écrire.
- Cependant, avant d'y aller, nous avons encore quelques détails à mentionner,
+ Cependant,
+ avant d'y aller,
+ nous avons encore quelques détails à mentionner,
  qui devraient rendre ce manuel plus instructif et plus utile.
  
 \end_layout
 
 \begin_layout Standard
-Comme il y a des tas de choses que nous ne pouvons pas expliquer en détail
- dans ce manuel, la 
+Comme il y a des tas de choses que nous ne pouvons pas expliquer en détail dans ce manuel,
+ la 
 \emph on
 première
 \emph default
- chose à faire, c'est de trouver les autres fichiers d'aide.
- C'est très simple: lancez \SpecialChar LyX
-, sélectionnez 
+ chose à faire,
+ c'est de trouver les autres fichiers d'aide.
+ C'est très simple:
+ lancez \SpecialChar LyX
+,
+ sélectionnez 
 \emph on
 Guide
 \begin_inset space ~
@@ -556,22 +587,21 @@ d'apprentissage
 \emph default
  (si vous n'êtes pas déjà en train de le lire dans \SpecialChar LyX
 ).
- De cette façon, vous pourrez les lire en même temps que vous tapez votre
- propre fichier
+ De cette façon,
+ vous pourrez les lire en même temps que vous tapez votre propre fichier
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Ce sont aussi de bons exemples pour l'emploi de nombreuses fonctions de
- \SpecialChar LyX
+Ce sont aussi de bons exemples pour l'emploi de nombreuses fonctions de \SpecialChar LyX
 .
 \end_layout
 
 \end_inset
 
 .
- Notez qu'une fois que vous avez ouvert plusieurs documents, vous pouvez
- basculer de l'un à l'autre dans le menu 
+ Notez qu'une fois que vous avez ouvert plusieurs documents,
+ vous pouvez basculer de l'un à l'autre dans le menu 
 \family sans
 Affichage
 \family default
@@ -588,28 +618,30 @@ Manuel
 
 d'apprentissage
 \emph default
-, nous supposons que vous disposez d'une version totalement fonctionnelle
- de \SpecialChar LyX
-, ainsi qu'une distribution \SpecialChar LaTeX
-, et une visionneuse PDF.
- Cela devrait être le cas pour la plupart des distributions Linux et BSD
- ainsi que sous Windows où c'est l'installateur \SpecialChar LyX
+,
+ nous supposons que vous disposez d'une version totalement fonctionnelle de \SpecialChar LyX
+,
+ ainsi qu'une distribution \SpecialChar LaTeX
+,
+ et une visionneuse PDF.
+ Cela devrait être le cas pour la plupart des distributions Linux et BSD ainsi que sous Windows où c'est l'installateur \SpecialChar LyX
  qui met tout en place.
 \end_layout
 
 \begin_layout Standard
-Enfin, pour que vous puissiez vous entraîner, nous avons écrit un fichier,
+Enfin,
+ pour que vous puissiez vous entraîner,
+ nous avons écrit un fichier,
  qui s'appelle 
 \emph on
 Exemple (brut)
 \emph default
 .
- Vous pouvez considérer qu'il a été écrit par quelqu'un qui ne connaît rien
- de toutes les fonctionnalités intéressantes de \SpecialChar LyX
+ Vous pouvez considérer qu'il a été écrit par quelqu'un qui ne connaît rien de toutes les fonctionnalités intéressantes de \SpecialChar LyX
 .
  Au fur et à mesure que vous enrichissez vos connaissances sur \SpecialChar LyX
-, nous vous
- suggérons de les mettre en pratique en corrigeant ce fichier.
+,
+ nous vous suggérons de les mettre en pratique en corrigeant ce fichier.
  Il contient également de 
 \begin_inset Quotes cld
 \end_inset
@@ -639,13 +671,13 @@ Notes
 \end_inset
 
  sur la façon de pratiquer ces corrections.
- Si vous voulez tricher ou vérifier ce que vous avez fait, vous pouvez consulter
- un autre fichier appelé 
+ Si vous voulez tricher ou vérifier ce que vous avez fait,
+ vous pouvez consulter un autre fichier appelé 
 \emph on
 Exemple (lixifié)
 \emph default
-, qui contient le même texte comme s'il avait été écrit et mis en forme
- par un maître de \SpecialChar LyX
+,
+ qui contient le même texte comme s'il avait été écrit et mis en forme par un maître de \SpecialChar LyX
 .
  
 \end_layout
@@ -670,7 +702,8 @@ Ouvrir l'exemple\SpecialChar ldots
 \emph on
  Exemple (brut)
 \emph default
-, et utilisez 
+,
+ et utilisez 
 \family sans
 Fichier\SpecialChar menuseparator
 Enregistrer
@@ -679,20 +712,22 @@ Enregistrer
 
 Sous
 \family default
- pour le copier dans votre propre répertoire, pour pouvoir travailler dessus.
- Jetez donc un œil sur la sortie PDF au fur et à mesure que vous effectuez
- les corrections, pour vous rendre compte de leur effet sur le rendu final.
+ pour le copier dans votre propre répertoire,
+ pour pouvoir travailler dessus.
+ Jetez donc un œil sur la sortie PDF au fur et à mesure que vous effectuez les corrections,
+ pour vous rendre compte de leur effet sur le rendu final.
 \end_layout
 
 \begin_layout Standard
-À ce sujet, le 
+À ce sujet,
+ le 
 \family sans
 Fichier\SpecialChar menuseparator
 Ouvrir l'exemple\SpecialChar ldots
  permet d'accéder à
 \family default
- bon nombre d'autres fichiers d'exemple, qui vous montrent comment réaliser
- quelques belles manipulations avec \SpecialChar LyX
+ bon nombre d'autres fichiers d'exemple,
+ qui vous montrent comment réaliser quelques belles manipulations avec \SpecialChar LyX
 .
  Jetez un œil sur ces fichiers après avoir lu le 
 \emph on
@@ -702,13 +737,16 @@ Manuel
 
 d'apprentissage
 \emph default
-, ou quand des manipulations complexes avec \SpecialChar LyX
+,
+ ou quand des manipulations complexes avec \SpecialChar LyX
  vous paraissent obscures.
  
 \end_layout
 
 \begin_layout Subsection
-Saisir, visionner, et exporter
+Saisir,
+ visionner,
+ et exporter
 \end_layout
 
 \begin_layout Standard
@@ -725,7 +763,8 @@ Nouveau
 \end_layout
 
 \begin_layout Itemize
-tapez une phrase du genre : 
+tapez une phrase du genre :
+ 
 \family typewriter
 C'est mon premier document \SpecialChar LyX
  !
@@ -760,8 +799,7 @@ arg   "buffer-view"
 
  de la barre d'outils\SpecialChar endofsentence
  \SpecialChar LyX
- lancera une visionneuse PDF qui affichera l'aspect
- de votre document une fois imprimé;
+ lancera une visionneuse PDF qui affichera l'aspect de votre document une fois imprimé;
 \end_layout
 
 \begin_layout Itemize
@@ -781,7 +819,8 @@ vers le format que vous voulez
 \end_layout
 
 \begin_layout Standard
-Magnifique ! Vous venez d'écrire votre premier document \SpecialChar LyX
+Magnifique !
+ Vous venez d'écrire votre premier document \SpecialChar LyX
 .
  Tout le reste est du détail
 \shape slanted
@@ -801,9 +840,9 @@ Une
 \end_inset
 
 astuce:
+
 \series default
- vous pouvez gagner du temps en laissant tourner la visionneuse PDF en tâche
- de fond.
+ vous pouvez gagner du temps en laissant tourner la visionneuse PDF en tâche de fond.
  Vous pourrez alors utiliser 
 \family sans
 Document\SpecialChar menuseparator
@@ -850,10 +889,12 @@ autre
 \end_inset
 
 astuce:
+
 \series default
- si vous bénéficiez d'un écran à haute résolution, les icônes des barres
- d'outils LyX sont plutôt petits; pour modifier leur taille, faites un clic
- droit dans une barre d'outils.
+ si vous bénéficiez d'un écran à haute résolution,
+ les icônes des barres d'outils LyX sont plutôt petits;
+ pour modifier leur taille,
+ faites un clic droit dans une barre d'outils.
 \end_layout
 
 \begin_layout Subsection
@@ -862,11 +903,9 @@ Opérations de base
 
 \begin_layout Standard
 \SpecialChar LyX
- permet bien sûr de faire la plupart des opérations habituelles des autres
- traitements de texte.
+ permet bien sûr de faire la plupart des opérations habituelles des autres traitements de texte.
  Il passera à la ligne et fera l'indentation des paragraphes automatiquement.
- Voici quelques brèves descriptions pour effectuer des tâches élémentaires
- :
+ Voici quelques brèves descriptions pour effectuer des tâches élémentaires :
 \end_layout
 
 \begin_layout Description
@@ -876,8 +915,8 @@ Annuler \SpecialChar LyX
 annuler
 \family default
  sur plusieurs niveaux.
- Ça signifie que vous pouvez annuler tout ce que vous avez fait depuis le
- début de votre session d'édition, en faisant 
+ Ça signifie que vous pouvez annuler tout ce que vous avez fait depuis le début de votre session d'édition,
+ en faisant 
 \family sans
 Édition\SpecialChar menuseparator
 Annuler
@@ -889,7 +928,8 @@ arg   "undo"
 \end_inset
 
  de la barre d'outils) de façon répétitive.
- Si vous annulez trop de fois, faites juste 
+ Si vous annulez trop de fois,
+ faites juste 
 \family sans
 Édition\SpecialChar menuseparator
 Refaire
@@ -906,8 +946,8 @@ arg   "redo"
 
 \begin_deeper
 \begin_layout Standard
-Actuellement, le nombre maximal d'opérations que l'on peut annuler est de
- 100.
+Actuellement,
+ le nombre maximal d'opérations que l'on peut annuler est de 100.
 \end_layout
 
 \end_deeper
@@ -923,7 +963,8 @@ type  "icon"
 arg   "cut"
 \end_inset
 
-), 
+),
+ 
 \family sans
 Édition\SpecialChar menuseparator
 Copier
@@ -934,7 +975,8 @@ type  "icon"
 arg   "copy"
 \end_inset
 
-), et 
+),
+ et 
 \family sans
 Édition\SpecialChar menuseparator
 Coller
@@ -945,7 +987,8 @@ type  "icon"
 arg   "paste"
 \end_inset
 
-) pour couper, copier et coller.
+) pour couper,
+ copier et coller.
  Ou bien avec le 
 \shape italic
 bouton du milieu
@@ -954,8 +997,8 @@ bouton du milieu
 \emph on
 de la souris
 \emph default
-, vous pouvez coller automatiquement un texte sélectionné (y compris des
- sélections dans d'autres programmes).
+,
+ vous pouvez coller automatiquement un texte sélectionné (y compris des sélections dans d'autres programmes).
 \end_layout
 
 \begin_layout Description
@@ -979,11 +1022,13 @@ arg   "dialog-show findreplace"
 \end_inset
 
 ) pour effectuer une recherche.
- Dans la fenêtre, lancez la recherche avec le bouton 
+ Dans la fenêtre,
+ lancez la recherche avec le bouton 
 \family sans
 Rechercher
 \family default
-, et cliquez sur 
+,
+ et cliquez sur 
 \family sans
 Remplacer
 \family default
@@ -992,21 +1037,22 @@ Remplacer
 status collapsed
 
 \begin_layout Plain Layout
-Quand vous avez terminé, vous pouvez, à votre guise, fermer la fenêtre ou
- la laisser ouverte.
+Quand vous avez terminé,
+ vous pouvez,
+ à votre guise,
+ fermer la fenêtre ou la laisser ouverte.
  La plupart des fenêtres de \SpecialChar LyX
  peuvent fonctionner de cette façon.
- Assurez-vous seulement que la bonne fenêtre soit active quand vous voulez
- saisir quelque chose dans la fenêtre principale ou dans une fenêtre de
- dialogue de \SpecialChar LyX
+ Assurez-vous seulement que la bonne fenêtre soit active quand vous voulez saisir quelque chose dans la fenêtre principale ou dans une fenêtre de dialogue de \SpecialChar LyX
 .
 \end_layout
 
 \end_inset
 
 .
- Si vous voulez, vous pouvez rendre la recherche sensible à la casse, ou
- ne rechercher que des mots complets.
+ Si vous voulez,
+ vous pouvez rendre la recherche sensible à la casse,
+ ou ne rechercher que des mots complets.
  Vous pouvez aussi rechercher en arrière dans le document.
 \end_layout
 
@@ -1027,8 +1073,8 @@ en évidence
 \noun on
 Style Nom propre
 \noun default
- (généralement en petites capitales, utilisées pour les noms de personnes)
- à partir des listes déroulantes du menu 
+ (généralement en petites capitales,
+ utilisées pour les noms de personnes) à partir des listes déroulantes du menu 
 \family sans
 Édition\SpecialChar menuseparator
 Style
@@ -1056,8 +1102,7 @@ Barre
 \begin_inset space ~
 \end_inset
 
-d'outils Les boutons qui se trouvent sur la barre d'outils (juste en dessous
- des menus) vous permettent d'effectuer les opérations les plus courantes,
+d'outils Les boutons qui se trouvent sur la barre d'outils (juste en dessous des menus) vous permettent d'effectuer les opérations les plus courantes,
  comme 
 \family sans
 Coller
@@ -1070,47 +1115,55 @@ Imprimer
 \end_layout
 
 \begin_layout Standard
-Bien sûr, vous n'en avez pas écrit assez pour vous être servi de toutes
- ces fonctions.
- Dans la suite, n'oubliez pas d'essayer d'annuler, de coller, etc.
+Bien sûr,
+ vous n'en avez pas écrit assez pour vous être servi de toutes ces fonctions.
+ Dans la suite,
+ n'oubliez pas d'essayer d'annuler,
+ de coller,
+ etc.
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM : les espaces avec \SpecialChar LyX
+WYSIWYM :
+ les espaces avec \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Standard
 La façon dont \SpecialChar LyX
- gère les espacements est une des choses les plus difficiles
- à admettre pour les nouveaux utilisateurs.
+ gère les espacements est une des choses les plus difficiles à admettre pour les nouveaux utilisateurs.
  Vous pourrez saisir 
 \family sans
 Entrée
 \family default
- autant de fois que vous voudrez, vous n'aurez jamais plus d'une ligne vide.
+ autant de fois que vous voudrez,
+ vous n'aurez jamais plus d'une ligne vide.
  Idem pour la barre d'
 \family sans
 Espace
 \family default
-, vous n'obtiendrez qu'une seule espace.
- Sur une ligne vide, \SpecialChar LyX
+,
+ vous n'obtiendrez qu'une seule espace.
+ Sur une ligne vide,
+ \SpecialChar LyX
  ne vous laissera même pas insérer une espace.
  La touche 
 \family sans
 Tab
 \family default
- ne déplacera pas le curseur une tabulation en avant ; en fait, 
+ ne déplacera pas le curseur une tabulation en avant ;
+ en fait,
+ 
 \emph on
 il n'y a pas
 \emph default
- de tabulations ! Il n'y a pas non plus de règle en haut de la page vous
- permettant de mettre en place les taquets, ou les marges.
+ de tabulations !
+ Il n'y a pas non plus de règle en haut de la page vous permettant de mettre en place les taquets,
+ ou les marges.
 \end_layout
 
 \begin_layout Standard
-Les traitements de texte sont en général basés sur le concept du WYSIWYG
- 
+Les traitements de texte sont en général basés sur le concept du WYSIWYG 
 \begin_inset Quotes cld
 \end_inset
 
@@ -1123,13 +1176,15 @@ What You See Is What You Get
 status collapsed
 
 \begin_layout Plain Layout
-NdT : Vous voyez ce que vous obtiendrez.
+NdT :
+ Vous voyez ce que vous obtiendrez.
 \end_layout
 
 \end_inset
 
 .
- De son côté, \SpecialChar LyX
+ De son côté,
+ \SpecialChar LyX
  se fonde sur le principe de 
 \begin_inset Quotes cld
 \end_inset
@@ -1147,20 +1202,24 @@ Mean
 status collapsed
 
 \begin_layout Plain Layout
-NdT : Vous voyez ce que vous voulez dire.
+NdT :
+ Vous voyez ce que vous voulez dire.
 \end_layout
 
 \end_inset
 
 .
- Vous tapez ce que vous voulez dire, et \SpecialChar LyX
- se chargera d'en faire la composition
- pour vous, avec un joli résultat.
- Sur le plan grammatical, un retour chariot (
+ Vous tapez ce que vous voulez dire,
+ et \SpecialChar LyX
+ se chargera d'en faire la composition pour vous,
+ avec un joli résultat.
+ Sur le plan grammatical,
+ un retour chariot (
 \family sans
 Entrée)
 \family default
- sépare des paragraphes, et l'espace (barre
+ sépare des paragraphes,
+ et l'espace (barre
 \begin_inset space ~
 \end_inset
 
@@ -1170,14 +1229,17 @@ Espace
 \family default
 ) sépare des mots.
  Il n'y a donc aucune raison d'en avoir plusieurs d'affilée.
- Les tabulations n'ont aucun sens grammatical, et donc \SpecialChar LyX
+ Les tabulations n'ont aucun sens grammatical,
+ et donc \SpecialChar LyX
  ne s'en sert pas.
  Avec \SpecialChar LyX
-, vous passerez plus de temps sur le 
+,
+ vous passerez plus de temps sur le 
 \emph on
 contenu
 \emph default
- de votre document, et moins sur sa 
+ de votre document,
+ et moins sur sa 
 \emph on
 forme.
 
@@ -1192,7 +1254,8 @@ Introduction
 \begin_layout Standard
 \SpecialChar LyX
  permet (par de nombreux moyens) de peaufiner la mise en page de votre document.
- Après tout, \SpecialChar LyX
+ Après tout,
+ \SpecialChar LyX
  peut ne pas faire la composition comme vous l'entendez.
  Vous trouverez dans le 
 \emph on
@@ -1207,18 +1270,19 @@ de
 l'Utilisateur
 \emph default
  toutes les informations nécessaires.
- Font partie de ces moyens les remplissages horizontaux et espacements verticaux
- – plus puissants et plus souples que des espaces ou caractères 
+ Font partie de ces moyens les remplissages horizontaux et espacements verticaux – plus puissants et plus souples que des espaces ou caractères 
 \family typewriter
 Entrée
 \family default
- multiples – ainsi que les méthodes pour modifier la taille de police, le
- style des caractères et l'alignement des paragraphes à la main.
- L'idée, cependant, est d'écrire le document en entier, en ne se consacrant
- qu'au contenu, et de ne se soucier de la présentation qu'une fois la frappe
- terminée.
- Avec les traitements de texte standard, vous serez distraits par la mise
- en page tout au long de l'écriture.
+ multiples – ainsi que les méthodes pour modifier la taille de police,
+ le style des caractères et l'alignement des paragraphes à la main.
+ L'idée,
+ cependant,
+ est d'écrire le document en entier,
+ en ne se consacrant qu'au contenu,
+ et de ne se soucier de la présentation qu'une fois la frappe terminée.
+ Avec les traitements de texte standard,
+ vous serez distraits par la mise en page tout au long de l'écriture.
 \end_layout
 
 \begin_layout Section
@@ -1226,19 +1290,20 @@ Environnements
 \end_layout
 
 \begin_layout Standard
-Les différentes portions d'un document ont chacune leur fonction; nous appelons
- ces portions des 
+Les différentes portions d'un document ont chacune leur fonction;
+ nous appelons ces portions des 
 \emph on
 environnements
 \emph default
 .
  La plus grande partie du document est du texte ordinaire.
- Les titres des sections (chapitres, sous-sections, etc.) annoncent au lecteur
- qu'un nouveau sujet ou un nouveau détail va être abordé.
+ Les titres des sections (chapitres,
+ sous-sections,
+ etc.) annoncent au lecteur qu'un nouveau sujet ou un nouveau détail va être abordé.
  Certains types de documents ont des environnements particuliers.
  Un article de journal contiendra un résumé et un titre.
- Une lettre n'aura ni l'un ni l'autre, mais plutôt un environnement qui
- contient l'adresse de l'auteur.
+ Une lettre n'aura ni l'un ni l'autre,
+ mais plutôt un environnement qui contient l'adresse de l'auteur.
 \end_layout
 
 \begin_layout Standard
@@ -1252,21 +1317,29 @@ What You See Is What You Mean
 
  de \SpecialChar LyX
 .
- Un environnement donné peut réclamer des propriétés bien définies, comme
- une police, une taille de police, une indentation, un interligne, ou autres.
- Ce problème est accentué par le fait qu'un même environnement peut avoir
- plusieurs variantes de mise en page : tel journal imprimera les titres
- de section en caractères gras, centrés, avec une police 18
+ Un environnement donné peut réclamer des propriétés bien définies,
+ comme une police,
+ une taille de police,
+ une indentation,
+ un interligne,
+ ou autres.
+ Ce problème est accentué par le fait qu'un même environnement peut avoir plusieurs variantes de mise en page :
+ tel journal imprimera les titres de section en caractères gras,
+ centrés,
+ avec une police 18
 \begin_inset space ~
 \end_inset
 
-points, tel autre prendra de l'italique, 15
+points,
+ tel autre prendra de l'italique,
+ 15
 \begin_inset space ~
 \end_inset
 
-points, justifié à gauche; des langues différentes peuvent avoir des conventions
- typographiques différentes; et les bibliographies admettent des présentations
- très variables.
+points,
+ justifié à gauche;
+ des langues différentes peuvent avoir des conventions typographiques différentes;
+ et les bibliographies admettent des présentations très variables.
  \SpecialChar LyX
  vous évite d'apprendre tous les types possibles de mise en page.
 \end_layout
@@ -1276,12 +1349,13 @@ Le menu déroulant de choix d'
 \family sans
 Environnement
 \family default
- (ou menu déroulant de choix des styles) est situé tout à fait à gauche
- de la barre d'outils (juste en dessous du menu 
+ (ou menu déroulant de choix des styles) est situé tout à fait à gauche de la barre d'outils (juste en dessous du menu 
 \family sans
 Fichier
 \family default
-), il ressemble à ceci : 
+),
+ il ressemble à ceci :
+ 
 \begin_inset Graphics
 	filename ../clipart/ToolbarEnvBox.png
 	scale 75
@@ -1290,8 +1364,8 @@ Fichier
 \end_inset
 
  et indique dans quel environnement vous écrivez actuellement.
- Quand vous étiez en train de saisir votre premier document, elle indiquait
- 
+ Quand vous étiez en train de saisir votre premier document,
+ elle indiquait 
 \begin_inset Quotes cld
 \end_inset
 
@@ -1299,9 +1373,9 @@ Standard
 \begin_inset Quotes crd
 \end_inset
 
-, qui est l'environnement implicite pour le texte.
- Vous pouvez maintenant en essayer d'autres dans votre document pour voir
- comment ils se comportent.
+,
+ qui est l'environnement implicite pour le texte.
+ Vous pouvez maintenant en essayer d'autres dans votre document pour voir comment ils se comportent.
 \end_layout
 
 \begin_layout Subsection
@@ -1314,7 +1388,8 @@ Sections et sous-sections
 Introduction
 \family default
  sur la première ligne de votre fichier \SpecialChar LyX
-, puis choisissez 
+,
+ puis choisissez 
 \family sans
 Section
 \family default
@@ -1328,11 +1403,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Il n'est pas nécessaire de sélectionner la ligne au préalable.
- Si rien n'est sélectionné, \SpecialChar LyX
- fera passer le paragraphe courant dans l'environnem
-ent que vous choisissez.
- D'un autre côté, vous pouvez faire basculer plusieurs paragraphes simultanément
- en les sélectionnant avant d'aller choisir votre nouvel environnement.
+ Si rien n'est sélectionné,
+ \SpecialChar LyX
+ fera passer le paragraphe courant dans l'environnement que vous choisissez.
+ D'un autre côté,
+ vous pouvez faire basculer plusieurs paragraphes simultanément en les sélectionnant avant d'aller choisir votre nouvel environnement.
 \end_layout
 
 \end_inset
@@ -1346,7 +1421,8 @@ Section
 \family sans
 Section*
 \family default
-, dont nous parlerons plus bas.
+,
+ dont nous parlerons plus bas.
  \SpecialChar LyX
  numérote la section en 
 \begin_inset Quotes cld
@@ -1383,13 +1459,15 @@ Standard
 \end_inset
 
 .
- Les en-têtes de section, comme la plupart des autres environnements, sont
- prévus pour s'interrompre lorsque vous frappez 
+ Les en-têtes de section,
+ comme la plupart des autres environnements,
+ sont prévus pour s'interrompre lorsque vous frappez 
 \family sans
 Entrée
 \family default
 .
- Écrivez le contenu de l'introduction : 
+ Écrivez le contenu de l'introduction :
+ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1407,7 +1485,8 @@ Tapez encore
 \family sans
 Entrée
 \family default
-, et sélectionnez à nouveau 
+,
+ et sélectionnez à nouveau 
 \family sans
 Section
 \family default
@@ -1426,9 +1505,9 @@ Section
 \family typewriter
 Autre sujet
 \family default
-, et vous pourrez constater que \SpecialChar LyX
- le met encore en forme comme un titre de
- section.
+,
+ et vous pourrez constater que \SpecialChar LyX
+ le met encore en forme comme un titre de section.
 \end_layout
 
 \begin_layout Standard
@@ -1442,11 +1521,13 @@ mon premier document \SpecialChar LyX
 \begin_inset Quotes crd
 \end_inset
 
-), tapez de nouveau 
+),
+ tapez de nouveau 
 \family sans
 Entrée
 \family default
-, et sélectionnez encore une fois 
+,
+ et sélectionnez encore une fois 
 \family sans
 Section
 \family default
@@ -1478,8 +1559,11 @@ Autre Sujet
 \begin_inset Quotes crd
 \end_inset
 
-, qui était le 2, a été automatiquement mis à jour et est devenu le 3 !
- Dans un esprit purement WYSIWYM, la seule chose que vous ayez à faire,
+,
+ qui était le 2,
+ a été automatiquement mis à jour et est devenu le 3 !
+ Dans un esprit purement WYSIWYM,
+ la seule chose que vous ayez à faire,
  c'est d'indiquer quelle partie du texte constitue un titre de section.
  
 \end_layout
@@ -1493,7 +1577,8 @@ Entrée
 \family sans
 Standard
 \family default
-, et saisissez les lignes suivantes :
+,
+ et saisissez les lignes suivantes :
 \end_layout
 
 \begin_layout LyX-Code
@@ -1531,14 +1616,16 @@ SousSection
 \begin_inset Quotes crd
 \end_inset
 
-, et utilise pour la typographie une police plus grosse que pour le texte
- ordinaire, mais plus petite que pour les titres de section.
+,
+ et utilise pour la typographie une police plus grosse que pour le texte ordinaire,
+ mais plus petite que pour les titres de section.
  Placez également la quatrième ligne en environnement 
 \family sans
 SousSection.
 
 \family default
- Comme vous pouviez vous en douter, \SpecialChar LyX
+ Comme vous pouviez vous en douter,
+ \SpecialChar LyX
  la numérote en 
 \begin_inset Quotes cld
 \end_inset
@@ -1552,11 +1639,13 @@ SousSection.
 \begin_inset space ~
 \end_inset
 
-2, la section
+2,
+ la section
 \begin_inset space ~
 \end_inset
 
-2 deviendra la 3, et les sous-sections deviendront les 
+2 deviendra la 3,
+ et les sous-sections deviendront les 
 \begin_inset Quotes cld
 \end_inset
 
@@ -1577,15 +1666,18 @@ SousSection.
 \end_layout
 
 \begin_layout Standard
-Les niveaux plus fins de découpage sont les suivants : 
+Les niveaux plus fins de découpage sont les suivants :
+ 
 \family sans
 SousSousSection
 \family default
-, 
+,
+ 
 \family sans
 Paragraphe
 \family default
-, et 
+,
+ et 
 \family sans
 SousParagraphe
 \family default
@@ -1599,8 +1691,9 @@ s et
 \family sans
 Sous-Paragraphe
 \family default
-s ne sont implicitement pas numérotés, et que les sous-paragraphes sont
- en retrait : voir le 
+s ne sont implicitement pas numérotés,
+ et que les sous-paragraphes sont en retrait :
+ voir le 
 \emph on
 Guide
 \begin_inset space ~
@@ -1617,12 +1710,13 @@ l'Utilisateur
 \family sans
 Chapitre
 \family default
-) est en fait le plus large niveau de découpage, supérieur aux sections
- (
+) est en fait le plus large niveau de découpage,
+ supérieur aux sections (
 \family sans
 Section
 \family default
-), mais n'est disponible que dans certaines classes de document \SpecialChar LyX
+),
+ mais n'est disponible que dans certaines classes de document \SpecialChar LyX
  (voir section
 \begin_inset space ~
 \end_inset
@@ -1630,8 +1724,8 @@ Section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-nolink "false"
 reference "sec:classes-de-documents"
+nolink "false"
 
 \end_inset
 
@@ -1640,21 +1734,22 @@ reference "sec:classes-de-documents"
 \end_layout
 
 \begin_layout Standard
-Pour finir, si vous souhaitez avoir des sections et sous-sections non numérotées
-, il y a aussi des environnements pour ça.
- Si vous faites passer l'un de vos en-têtes de section dans l'environnement
- 
+Pour finir,
+ si vous souhaitez avoir des sections et sous-sections non numérotées,
+ il y a aussi des environnements pour ça.
+ Si vous faites passer l'un de vos en-têtes de section dans l'environnement 
 \family sans
 Section*
 \family default
- (pour le trouver, vous devrez peut-être descendre dans le menu déroulant
- d'
+ (pour le trouver,
+ vous devrez peut-être descendre dans le menu déroulant d'
 \family sans
 Environnement
 \family default
-), \SpecialChar LyX
- utilisera une police identique à celle de la section ordinaire, mais
- ne la numérotera pas.
+),
+ \SpecialChar LyX
+ utilisera une police identique à celle de la section ordinaire,
+ mais ne la numérotera pas.
  
 \family sans
 SousSection
@@ -1672,8 +1767,7 @@ SousSousSection
 \end_inset
 
  correspondant.
- Testez sur quelques-unes de vos sections et sous-sections l'effet sur la
- numérotation des autres en-têtes du passage en style 
+ Testez sur quelques-unes de vos sections et sous-sections l'effet sur la numérotation des autres en-têtes du passage en style 
 \begin_inset Quotes cld
 \end_inset
 
@@ -1691,9 +1785,11 @@ SousSousSection
 \series bold
 Exercice
 \series default
-: Dans le fichier 
+:
+ Dans le fichier 
 \emph on
 Exemple (brut),
+
 \emph default
  corrigez les en-têtes des sections et sous-sections.
  
@@ -1705,29 +1801,31 @@ Listes et sous-listes
 
 \begin_layout Standard
 Plusieurs environnements sont disponibles dans \SpecialChar LyX
- pour la typographie des
- listes.
+ pour la typographie des listes.
  Ces différents environnements vous évitent d'avoir à saisir 
 \family sans
 Tab
 \family default
- des millions de fois pour faire un canevas, et d'avoir à modifier toute
- la numérotation de la liste lorsque vous lui ajoutez un élément.
- En toute logique, les différents types de documents peuvent nécessiter
- des environnements de liste différents :
+ des millions de fois pour faire un canevas,
+ et d'avoir à modifier toute la numérotation de la liste lorsque vous lui ajoutez un élément.
+ En toute logique,
+ les différents types de documents peuvent nécessiter des environnements de liste différents :
 \end_layout
 
 \begin_layout Itemize
-pour une présentation avec des transparents, on utilisera probablement l'environ
-nement 
+pour une présentation avec des transparents,
+ on utilisera probablement l'environnement 
 \family sans
 ListePuces
 \family default
-, avec ses listes à puces, pour décrire les différents sujets ;
+,
+ avec ses listes à puces,
+ pour décrire les différents sujets ;
 \end_layout
 
 \begin_layout Itemize
-pour un plan, les listes numérotées de l'environnement 
+pour un plan,
+ les listes numérotées de l'environnement 
 \family sans
 Énumération
 \family default
@@ -1735,11 +1833,13 @@ pour un plan, les listes numérotées de l'environnement
 \end_layout
 
 \begin_layout Itemize
-pour un document décrivant des paquetages logiciels, l'environnement 
+pour un document décrivant des paquetages logiciels,
+ l'environnement 
 \family sans
 Description
 \family default
-, dans lequel chaque élément commence par un mot en caractères gras ;
+,
+ dans lequel chaque élément commence par un mot en caractères gras ;
 \end_layout
 
 \begin_layout Itemize
@@ -1760,9 +1860,10 @@ Description
 
 \begin_layout Standard
 Dressons la liste des avantages de \SpecialChar LyX
- par rapport aux autres traitements de
- texte.
- Quelque part dans votre document, écrivez : 
+ par rapport aux autres traitements de texte.
+ Quelque part dans votre document,
+ écrivez :
+ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1780,7 +1881,8 @@ et tapez
 Entrée
 \family default
 .
- À présent, sélectionnez 
+ À présent,
+ sélectionnez 
 \family sans
 ListePuces
 \family default
@@ -1805,7 +1907,8 @@ puce
 \end_inset
 
  sur la ligne.
- Écrivez vos raisons : 
+ Écrivez vos raisons :
+ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1821,8 +1924,9 @@ C'est très facile de faire des listes !
 \end_layout
 
 \begin_layout Standard
-Les environnements de liste, à l'inverse des en-têtes, ne s'interrompent
- pas au premier 
+Les environnements de liste,
+ à l'inverse des en-têtes,
+ ne s'interrompent pas au premier 
 \family sans
 Entrée
 \family default
@@ -1830,12 +1934,13 @@ Entrée
  \SpecialChar LyX
  considère que vous voulez ajouter un nouvel élément à la liste.
  L'exemple ci-dessus donnera donc une liste à trois éléments.
- Pour avoir plusieurs paragraphes dans un même élément d'une liste, vous
- pouvez saisir 
+ Pour avoir plusieurs paragraphes dans un même élément d'une liste,
+ vous pouvez saisir 
 \family sans
 C-Entrée
 \family default
-, qui vous donne un 
+,
+ qui vous donne un 
 \family sans
 Passage
 \begin_inset space ~
@@ -1852,7 +1957,8 @@ la
 Ligne
 \family default
 .
- Pour sortir de la liste, vous devez sélectionner l'environnement 
+ Pour sortir de la liste,
+ vous devez sélectionner l'environnement 
 \family sans
 Standard
 \family default
@@ -1873,20 +1979,21 @@ arg   "layout Standard"
 Vous avez obtenu une magnifique liste.
  Vous pouvez faire tourner \SpecialChar LaTeX
  pour voir à quoi elle ressemblera une fois imprimée.
- Vous voulez numéroter vos raisons ? Et bien, sélectionnez juste la totalité
- de la liste
+ Vous voulez numéroter vos raisons ?
+ Et bien,
+ sélectionnez juste la totalité de la liste
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Vous ne pourrez pas sélectionner la première puce (ou le numéro d'un en-tête
- de section), sauf si vous sélectionnez aussi le paragraphe 
+Vous ne pourrez pas sélectionner la première puce (ou le numéro d'un en-tête de section),
+ sauf si vous sélectionnez aussi le paragraphe 
 \emph on
 précédant
 \emph default
- la liste, ce qui n'est probablement pas ce que vous voulez.
- C'est voulu parce que la puce ou le numéro dépendent des paramètres du
- document et de la position dans le texte.
+ la liste,
+ ce qui n'est probablement pas ce que vous voulez.
+ C'est voulu parce que la puce ou le numéro dépendent des paramètres du document et de la position dans le texte.
 \end_layout
 
 \end_inset
@@ -1910,14 +2017,17 @@ arg   "layout-toggle Enumerate"
 
 \lang french
 ).
- Et voilà ! Comme nous l'avons déjà dit, si vous ajoutez ou retirez un élément
- dans la liste, \SpecialChar LyX
+ Et voilà !
+ Comme nous l'avons déjà dit,
+ si vous ajoutez ou retirez un élément dans la liste,
+ \SpecialChar LyX
  corrigera la numérotation.
 \end_layout
 
 \begin_layout Standard
-Tant que la liste est sélectionnée, essayez donc les deux autres environnements
- de liste, 
+Tant que la liste est sélectionnée,
+ essayez donc les deux autres environnements de liste,
+ 
 \family sans
 Description
 \family default
@@ -1949,14 +2059,18 @@ type  "icon"
 arg   "layout-toggle List"
 \end_inset
 
-), pour voir à quoi ils ressemblent.
- Pour ces deux derniers, chaque élément de la liste comporte un terme, qui
- est le premier mot de l'élément, et sa définition, le reste du paragraphe
- (jusqu'au retour
+),
+ pour voir à quoi ils ressemblent.
+ Pour ces deux derniers,
+ chaque élément de la liste comporte un terme,
+ qui est le premier mot de l'élément,
+ et sa définition,
+ le reste du paragraphe (jusqu'au retour
 \begin_inset space ~
 \end_inset
 
-chariot : 
+chariot :
+ 
 \family sans
 Entrée
 \family default
@@ -1985,9 +2099,11 @@ tabulation
 status collapsed
 
 \begin_layout Plain Layout
-Mais une tabulation de typographe, dont la taille s'adaptera à la largeur
- du plus grand terme, non pas une pitoyable, rigide, inamovible tabulation
- de machine à écrire.
+Mais une tabulation de typographe,
+ dont la taille s'adaptera à la largeur du plus grand terme,
+ non pas une pitoyable,
+ rigide,
+ inamovible tabulation de machine à écrire.
 \end_layout
 
 \end_inset
@@ -2005,7 +2121,8 @@ terme
 \begin_inset Quotes crd
 \end_inset
 
- comprenne plusieurs mots, séparez-les par des 
+ comprenne plusieurs mots,
+ séparez-les par des 
 \family sans
 Espaces
 \begin_inset space ~
@@ -2022,17 +2139,16 @@ Insécables
 \series bold
 Exercice
 \series default
-: Typographier la liste dans 
+:
+ Typographier la liste dans 
 \emph on
 Exemple (brut).
 \end_layout
 
 \begin_layout Standard
-Vous pouvez imbriquer les listes les unes dans les autres de toutes les
- façons possibles.
+Vous pouvez imbriquer les listes les unes dans les autres de toutes les façons possibles.
  Un excellent exemple serait d'écrire un plan.
- Les listes numérotées et les listes à puce auront des schémas de numérotation
- et des puces différents pour les sous-listes.
+ Les listes numérotées et les listes à puce auront des schémas de numérotation et des puces différents pour les sous-listes.
  Voir le 
 \emph on
 Guide
@@ -2045,17 +2161,21 @@ de
 
 l'Utilisateur
 \emph default
- pour les détails des différents types de listes, ainsi que des exemples
- d'emboîtements.
+ pour les détails des différents types de listes,
+ ainsi que des exemples d'emboîtements.
  
 \end_layout
 
 \begin_layout Subsection
-Autres environnement : vers, citations, et autres
+Autres environnement :
+ vers,
+ citations,
+ et autres
 \end_layout
 
 \begin_layout Standard
-Deux environnements permettent de mettre en valeur les citations : 
+Deux environnements permettent de mettre en valeur les citations :
+ 
 \family sans
 Cite
 \family default
@@ -2068,7 +2188,8 @@ Citation
 \family typewriter
 à chasse fixe (typewriter)
 \family default
-, avec l'environnement 
+,
+ avec l'environnement 
 \family sans
 \SpecialChar LyX
 -Code
@@ -2091,17 +2212,19 @@ d'apprentissage
 
 \end_inset
 
- cet environnement est le seul qui permette d'entrer plusieurs espaces consécuti
-ves, pour pouvoir indenter le code.
+ cet environnement est le seul qui permette d'entrer plusieurs espaces consécutives,
+ pour pouvoir indenter le code.
  Vous pouvez écrire de la poésie avec l'environnement 
 \family sans
 Vers
 \family default
-, séparer les strophes avec la touche 
+,
+ séparer les strophes avec la touche 
 \family sans
 Entrée
 \family default
-, et séparer les vers au sein d'une même strophe avec 
+,
+ et séparer les vers au sein d'une même strophe avec 
 \family sans
 C-Entrée
 \family default
@@ -2118,8 +2241,7 @@ de
 
 l'Utilisateur
 \emph default
- pour une description complète de tous les environnements disponibles dans
- \SpecialChar LyX
+ pour une description complète de tous les environnements disponibles dans \SpecialChar LyX
 .
 \end_layout
 
@@ -2129,16 +2251,19 @@ l'Utilisateur
 \series bold
 Exercice
 \series default
-: Corrigez la typographie de la citation (
+:
+ Corrigez la typographie de la citation (
 \family sans
 Cite
 \family default
-), du programme (
+),
+ du programme (
 \family sans
 \SpecialChar LyX
 -Code
 \family default
-), et du poème (
+),
+ et du poème (
 \family sans
 Vers
 \family default
@@ -2156,22 +2281,28 @@ Exemple (brut).
 \end_layout
 
 \begin_layout Standard
-Avec un peu de chance, le chapitre précédent vous a permis de vous familiariser
- avec l'écriture dans \SpecialChar LyX
+Avec un peu de chance,
+ le chapitre précédent vous a permis de vous familiariser avec l'écriture dans \SpecialChar LyX
 .
- Il vous a présenté les opérations de base, ainsi que la puissance des environne
-ments.
- Cependant, les personnes qui s'intéressent à \SpecialChar LyX
- le font en général dans le
- but d'écrire de vrais documents : notices, articles, livres, manuels ou
- lettres.
+ Il vous a présenté les opérations de base,
+ ainsi que la puissance des environnements.
+ Cependant,
+ les personnes qui s'intéressent à \SpecialChar LyX
+ le font en général dans le but d'écrire de vrais documents :
+ notices,
+ articles,
+ livres,
+ manuels ou lettres.
  Ce chapitre est destiné à vous conduire de la simple frappe avec \SpecialChar LyX
-, vers
- l'élaboration de documents complets.
- Il vous présentera les classes de texte, qui vous permettront d'écrire
- des documents de types différents.
+,
+ vers l'élaboration de documents complets.
+ Il vous présentera les classes de texte,
+ qui vous permettront d'écrire des documents de types différents.
  Il décrira donc tous les plus qui font passer d'un simple texte à un document,
- comme les titres, notes de bas de page, références croisées, bibliographie,
+ comme les titres,
+ notes de bas de page,
+ références croisées,
+ bibliographie,
  et table des matières.
  
 \end_layout
@@ -2188,12 +2319,14 @@ name "sec:classes-de-documents"
 \end_layout
 
 \begin_layout Standard
-Qui dit documents de types différents, dit typographies différentes.
- Par exemple, un livre est imprimé en recto-verso, et les articles en recto
- seul.
- En plus, de nombreux documents contiennent des environnements spéciaux
- : les lettres ont des environnements – comme l'adresse de l'expéditeur
- et sa signature – qui n'ont aucun sens dans un livre ou un article.
+Qui dit documents de types différents,
+ dit typographies différentes.
+ Par exemple,
+ un livre est imprimé en recto-verso,
+ et les articles en recto seul.
+ En plus,
+ de nombreux documents contiennent des environnements spéciaux :
+ les lettres ont des environnements – comme l'adresse de l'expéditeur et sa signature – qui n'ont aucun sens dans un livre ou un article.
  Les 
 \emph on
 classes
@@ -2205,7 +2338,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Pour les utilisateurs \SpecialChar LaTeX
- : c'est l'équivalent des 
+ :
+ c'est l'équivalent des 
 \begin_inset Quotes cld
 \end_inset
 
@@ -2228,7 +2362,9 @@ Manuel
 
 d'apprentissage
 \emph default
-, par exemple, a été écrit en classe de document 
+,
+ par exemple,
+ a été écrit en classe de document 
 \begin_inset Quotes cld
 \end_inset
 
@@ -2241,10 +2377,10 @@ livre
 book
 \family default
 ).
- La notion de classe de document représente une autre partie majeure de
- la philosophie WYSIWYM; elles donnent à \SpecialChar LyX
- la typographie à utiliser pour
- le document, afin que vous ne soyez pas obligé de vous en charger.
+ La notion de classe de document représente une autre partie majeure de la philosophie WYSIWYM;
+ elles donnent à \SpecialChar LyX
+ la typographie à utiliser pour le document,
+ afin que vous ne soyez pas obligé de vous en charger.
  
 \end_layout
 
@@ -2274,19 +2410,22 @@ Paramètres
 \family sans
 book
 \family default
-), si vous regardez dans le menu déroulant d'
+),
+ si vous regardez dans le menu déroulant d'
 \family sans
 Environnement
 \family default
-, vous constaterez qu'en majorité, les mêmes environnements sont autorisés.
- Par contre, vous pouvez désormais utiliser l'environnement chapitre (
+,
+ vous constaterez qu'en majorité,
+ les mêmes environnements sont autorisés.
+ Par contre,
+ vous pouvez désormais utiliser l'environnement chapitre (
 \family sans
 Chapitre
 \family default
 ).
- En cas de doute quant à la disponibilité de tel ou tel environnement dans
- la classe de votre document, jetez juste un œil dans le menu déroulant
- d'
+ En cas de doute quant à la disponibilité de tel ou tel environnement dans la classe de votre document,
+ jetez juste un œil dans le menu déroulant d'
 \family sans
 Environnement
 \family default
@@ -2295,10 +2434,12 @@ Environnement
 \end_layout
 
 \begin_layout Standard
-La taille des polices, l'impression sur une ou deux colonnes, et les en-têtes
- de page différencient la typographie d'un journal de celle d'un autre.
- Comme l'on progresse dans l'ère de l'ordinateur, certains journaux acceptent
- maintenant des soumissions informatiques, en créant des 
+La taille des polices,
+ l'impression sur une ou deux colonnes,
+ et les en-têtes de page différencient la typographie d'un journal de celle d'un autre.
+ Comme l'on progresse dans l'ère de l'ordinateur,
+ certains journaux acceptent maintenant des soumissions informatiques,
+ en créant des 
 \begin_inset Quotes cld
 \end_inset
 
@@ -2307,13 +2448,11 @@ fichiers de style
 \end_inset
 
  \SpecialChar LaTeX
- qui permettent aux auteurs de soumettre des articles dont la typographie
- est déjà correcte.
+ qui permettent aux auteurs de soumettre des articles dont la typographie est déjà correcte.
  \SpecialChar LyX
  le permet également.
  \SpecialChar LyX
- supporte par exemple la typographie (et les environnements spéciaux) du
- journal de l'American Mathematics Society par le biais de la classe 
+ supporte par exemple la typographie (et les environnements spéciaux) du journal de l'American Mathematics Society par le biais de la classe 
 \family sans
 Article
 \begin_inset space ~
@@ -2383,7 +2522,8 @@ article
 \begin_inset Text
 
 \begin_layout Plain Layout
-recto seul, pas de chapitre
+recto seul,
+ pas de chapitre
 \end_layout
 
 \end_inset
@@ -2425,7 +2565,8 @@ report
 \begin_inset Text
 
 \begin_layout Plain Layout
-plus long que des articles, recto verso
+plus long que des articles,
+ recto verso
 \end_layout
 
 \end_inset
@@ -2492,7 +2633,8 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-de nombreux environnements supplémentaires pour les adresses, la signature\SpecialChar ldots
+de nombreux environnements supplémentaires pour les adresses,
+ la signature\SpecialChar ldots
 
 \end_layout
 
@@ -2507,7 +2649,8 @@ de nombreux environnements supplémentaires pour les adresses, la signature\Spec
 \end_layout
 
 \begin_layout Section
-Modèles : écrire une lettre
+Modèles :
+ écrire une lettre
 \end_layout
 
 \begin_layout Standard
@@ -2522,17 +2665,22 @@ Document\SpecialChar menuseparator
 Paramètres
 \family default
 .
- Même s'il s'agit de la méthode la plus évidente, elle semble donner du
- travail superflu.
- Pour chaque lettre professionnelle, vous ajouterez votre adresse, l'adresse
- du destinataire, le corps de la lettre, une signature, etc.
+ Même s'il s'agit de la méthode la plus évidente,
+ elle semble donner du travail superflu.
+ Pour chaque lettre professionnelle,
+ vous ajouterez votre adresse,
+ l'adresse du destinataire,
+ le corps de la lettre,
+ une signature,
+ etc.
  \SpecialChar LyX
  fournit donc un 
 \emph on
 modèle
 \emph default
- de lettre; dès que vous avez un modèle, il vous suffit de remplacer quelques
- éléments avec votre texte pour chaque nouvelle lettre.
+ de lettre;
+ dès que vous avez un modèle,
+ il vous suffit de remplacer quelques éléments avec votre texte pour chaque nouvelle lettre.
 \end_layout
 
 \begin_layout Standard
@@ -2555,8 +2703,7 @@ modèle
 Letter (classe standard)
 \emph default
  comme modèle.
- Sauvez et imprimez le fichier pour voir de quelle façon sont imprimés les
- différents environnements.
+ Sauvez et imprimez le fichier pour voir de quelle façon sont imprimés les différents environnements.
 \end_layout
 
 \begin_layout Standard
@@ -2564,7 +2711,9 @@ Dans le menu déroulant d'
 \family sans
 Environnement
 \family default
-, vous en découvrirez certains, comme 
+,
+ vous en découvrirez certains,
+ comme 
 \family sans
 Mon
 \begin_inset space ~
@@ -2572,8 +2721,10 @@ Mon
 
 Adresse
 \family default
-, qui n'existent pas dans d'autres classes de document.
- D'autres, comme 
+,
+ qui n'existent pas dans d'autres classes de document.
+ D'autres,
+ comme 
 \family sans
 Cite
 \family default
@@ -2582,18 +2733,17 @@ Cite
 Description
 \family default
  vous sont déjà familiers.
- Vous pouvez vous entraîner un moment pour vous rendre compte du comportement
- des nouveaux environnements
+ Vous pouvez vous entraîner un moment pour vous rendre compte du comportement des nouveaux environnements
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-NdT : il est intéressant de noter ici que les environnements ont parfois
- un rendu PDF assez différent du rendu à l'affichage, particulièrement lorsque
- \SpecialChar LyX
+NdT :
+ il est intéressant de noter ici que les environnements ont parfois un rendu PDF assez différent du rendu à l'affichage,
+ particulièrement lorsque \SpecialChar LyX
  et le document sont configurés pour travailler en Français.
- (ex : adresse de l'expéditeur affichée à droite mais comme il se doit imprimée
- à gauche \SpecialChar ldots
+ (ex :
+ adresse de l'expéditeur affichée à droite mais comme il se doit imprimée à gauche \SpecialChar ldots
 )
 \end_layout
 
@@ -2623,41 +2773,46 @@ Signature :
 \end_inset
 
  en rouge placé devant le contenu réel de la signature.
- Ce mot n'apparaîtra pas dans la lettre réelle, comme vous pouvez le constater
- quand vous visualisez ou exportez le fichier.
+ Ce mot n'apparaîtra pas dans la lettre réelle,
+ comme vous pouvez le constater quand vous visualisez ou exportez le fichier.
  Il est affiché uniquement pour vous indiquer où définir votre signature.
  Notez également que la position de la 
 \family sans
 Signature
 \family default
  dans le fichier d'origine n'a aucune importance.
- Encore une fois, \SpecialChar LyX
- est WYSIWYM ; vous pouvez mettre la 
+ Encore une fois,
+ \SpecialChar LyX
+ est WYSIWYM ;
+ vous pouvez mettre la 
 \family sans
 Signature
 \family default
- n'importe où dans le fichier, \SpecialChar LyX
- sait que pour l'impression, la signature
- devra être placée à la fin.
+ n'importe où dans le fichier,
+ \SpecialChar LyX
+ sait que pour l'impression,
+ la signature devra être placée à la fin.
  
 \end_layout
 
 \begin_layout Standard
 Un modèle est un fichier \SpecialChar LyX
  comme les autres.
- Vous pouvez donc remplir votre adresse et votre signature, et sauver le
- fichier obtenu comme nouveau modèle.
- À partir de là, vous pouvez reprendre ce fichier pour écrire de nouvelles
- lettres, et gagner du temps.
- Inutile de vous proposer un exercice à ce sujet ; faites donc une lettre
- pour quelqu'un
+ Vous pouvez donc remplir votre adresse et votre signature,
+ et sauver le fichier obtenu comme nouveau modèle.
+ À partir de là,
+ vous pouvez reprendre ce fichier pour écrire de nouvelles lettres,
+ et gagner du temps.
+ Inutile de vous proposer un exercice à ce sujet ;
+ faites donc une lettre pour quelqu'un
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Attention, lorsque vous écrivez une lettre à partir d'un modèle, si vous
- effacez tout le texte d'un environnement – par exemple, si vous effacez
- tout le champ 
+Attention,
+ lorsque vous écrivez une lettre à partir d'un modèle,
+ si vous effacez tout le texte d'un environnement – par exemple,
+ si vous effacez tout le champ 
 \family sans
 Mon
 \begin_inset space ~
@@ -2665,10 +2820,12 @@ Mon
 
 Adresse
 \family default
- pour écrire la vôtre – et que vous déplacez le curseur sans saisir aucun
- texte, l'environnement peut disparaître.
- En effet, la plupart des environnements ne peuvent exister sans texte.
- Dans ce cas, récupérez-le simplement à partir du menu déroulant d'
+ pour écrire la vôtre – et que vous déplacez le curseur sans saisir aucun texte,
+ l'environnement peut disparaître.
+ En effet,
+ la plupart des environnements ne peuvent exister sans texte.
+ Dans ce cas,
+ récupérez-le simplement à partir du menu déroulant d'
 \family sans
 Environnement
 \family default
@@ -2682,17 +2839,18 @@ Environnement
 \end_layout
 
 \begin_layout Standard
-Les modèles peuvent faire gagner beaucoup de temps, et nous vous conseil\SpecialChar softhyphen
-lons
- vivement de les utiliser autant que possible.
- De plus, ils peuvent aider une personne à apprendre comment utiliser des
- classes de document un peu exotiques.
- Et pour finir, ils peuvent être très utiles pour une personne qui configure
- \SpecialChar LyX
+Les modèles peuvent faire gagner beaucoup de temps,
+ et nous vous conseil\SpecialChar softhyphen
+lons vivement de les utiliser autant que possible.
+ De plus,
+ ils peuvent aider une personne à apprendre comment utiliser des classes de document un peu exotiques.
+ Et pour finir,
+ ils peuvent être très utiles pour une personne qui configure \SpecialChar LyX
  pour un ensemble de non informaticiens.
  Lorsqu'ils apprendront \SpecialChar LyX
-, le fait d'avoir un modèle de lettre personnalisé
- pour leur société leur facilitera beaucoup la tâche, par exemple.
+,
+ le fait d'avoir un modèle de lettre personnalisé pour leur société leur facilitera beaucoup la tâche,
+ par exemple.
 \end_layout
 
 \begin_layout Standard
@@ -2701,11 +2859,14 @@ Vous aurez certainement constaté que la classe
 letter
 \family default
  ne produit pas une typographie conforme à l'usage français.
- Depuis le version 1.6, la classe mieux adaptée 
+ Depuis le version 1.6,
+ la classe mieux adaptée 
 \family typewriter
 lettre.cls,
+
 \family default
- écrite par Denis Mégevand, est interfacée en \SpecialChar LyX
+ écrite par Denis Mégevand,
+ est interfacée en \SpecialChar LyX
  via le format 
 \family typewriter
 lettre.layout
@@ -2714,7 +2875,8 @@ lettre.layout
 \emph on
 Lettre en Français (lettre)
 \emph default
-, auquel vous pouvez accéder par 
+,
+ auquel vous pouvez accéder par 
 \family sans
 Fichier\SpecialChar menuseparator
 Nouveau
@@ -2728,7 +2890,8 @@ avec
 modèle
 \family default
 .
- Depuis le version 2.0, il existe également un modèle 
+ Depuis le version 2.0,
+ il existe également un modèle 
 \emph on
 Lettre en Français (frletter)
 \emph default
@@ -2736,7 +2899,8 @@ Lettre en Français (frletter)
 \family typewriter
 frletter.cls
 \family default
-, adaptée de 
+,
+ adaptée de 
 \family typewriter
 beletter.cls
 \family default
@@ -2755,8 +2919,9 @@ Titres des documents
 \SpecialChar LyX
  (comme \SpecialChar LaTeX
 ) considère le titre – qui peut contenir le vrai titre du document,
- l'auteur, la date, et même un résumé d'une publication – comme une partie
- séparée du document.
+ l'auteur,
+ la date,
+ et même un résumé d'une publication – comme une partie séparée du document.
 \end_layout
 
 \begin_layout Standard
@@ -2770,25 +2935,27 @@ Article
 status collapsed
 
 \begin_layout Plain Layout
-La classe Lettre ne permettant pas les titres, il ne faut pas l'utiliser
- pour la suite.
+La classe Lettre ne permettant pas les titres,
+ il ne faut pas l'utiliser pour la suite.
 \end_layout
 
 \end_inset
 
 .
- Tapez un titre sur la première ligne, et passez la ligne en environnement
- 
+ Tapez un titre sur la première ligne,
+ et passez la ligne en environnement 
 \family sans
 Titre
 \family default
 .
- Ligne suivante, tapez votre nom et passez-la en environnement 
+ Ligne suivante,
+ tapez votre nom et passez-la en environnement 
 \family sans
 Auteur
 \family default
 .
- Pour la suivante, la date et l'environnement 
+ Pour la suivante,
+ la date et l'environnement 
 \family sans
 Date
 \family default
@@ -2816,7 +2983,10 @@ Exercice
 
 
 \series default
-: Corrigez le titre, la date, et l'auteur dans le fichier
+:
+ Corrigez le titre,
+ la date,
+ et l'auteur dans le fichier
 \begin_inset Newline newline
 \end_inset
 
@@ -2832,8 +3002,10 @@ Exemple (brut)
 \end_layout
 
 \begin_layout Standard
-Une étiquette peut être placée dans une entête de section, un élément de
- liste, une formule mathématique, une note de bas de page et dans un flottant
+Une étiquette peut être placée dans une entête de section,
+ un élément de liste,
+ une formule mathématique,
+ une note de bas de page et dans un flottant
 \begin_inset Foot
 status collapsed
 
@@ -2852,18 +3024,17 @@ Objets insérés
 \end_inset
 
  de votre document.
- Ainsi fait, vous pouvez faire référence à cette élément dans d'autres parties
- de votre document, avec les références croisées.
- Vous pouvez faire référence au numéro de la section, ou à la page où la
- section apparaît.
- Ainsi qu'il le fait avec la numérotation des sections, \SpecialChar LyX
- se charge pour
- vous de numéroter les références croisées.
- Les étiquettes et références croisées automatiques font partie des avantages
- les plus sensibles de \SpecialChar LyX
+ Ainsi fait,
+ vous pouvez faire référence à cette élément dans d'autres parties de votre document,
+ avec les références croisées.
+ Vous pouvez faire référence au numéro de la section,
+ ou à la page où la section apparaît.
+ Ainsi qu'il le fait avec la numérotation des sections,
+ \SpecialChar LyX
+ se charge pour vous de numéroter les références croisées.
+ Les étiquettes et références croisées automatiques font partie des avantages les plus sensibles de \SpecialChar LyX
  (et \SpecialChar LaTeX
-) par rapport aux traitements de texte conventionnel
-s.
+) par rapport aux traitements de texte conventionnels.
  
 \end_layout
 
@@ -2872,7 +3043,8 @@ Votre première étiquette
 \end_layout
 
 \begin_layout Standard
-Allons à notre seconde section, dont le titre est 
+Allons à notre seconde section,
+ dont le titre est 
 \begin_inset Quotes cld
 \end_inset
 
@@ -2881,7 +3053,8 @@ Allons à notre seconde section, dont le titre est
 \end_inset
 
 .
- Cliquez en fin d'en-tête de cette section, et sélectionnez 
+ Cliquez en fin d'en-tête de cette section,
+ et sélectionnez 
 \family sans
 Insertion\SpecialChar menuseparator
 Étiquette
@@ -2893,28 +3066,29 @@ arg   "label-insert"
 \end_inset
 
  de la barre d'outils.
- Une fenêtre vous demande le nom de l'étiquette, et vous en suggère un.
+ Une fenêtre vous demande le nom de l'étiquette,
+ et vous en suggère un.
  Quand vous validez en cliquant sur 
 \family sans
 OK
 \family default
-, le nom de l'étiquette apparaît dans une boîte après l'en-tête de la section.
+,
+ le nom de l'étiquette apparaît dans une boîte après l'en-tête de la section.
 \end_layout
 
 \begin_layout Standard
-En tout état de cause, vous auriez pu placer l'étiquette n'importe où dans
- la section ; une étiquette fera référence à la dernière section ou sous-section
- dont l'en-tête est avant l'étiquette.
- Placer l'étiquette sur la même ligne que l'en-tête (ou sur la première
- ligne de texte) vous garantit d'avoir des références de page qui correspondent
- bien au début de la section.
+En tout état de cause,
+ vous auriez pu placer l'étiquette n'importe où dans la section ;
+ une étiquette fera référence à la dernière section ou sous-section dont l'en-tête est avant l'étiquette.
+ Placer l'étiquette sur la même ligne que l'en-tête (ou sur la première ligne de texte) vous garantit d'avoir des références de page qui correspondent bien au début de la section.
 \end_layout
 
 \begin_layout Standard
-Pour l'instant, vous n'avez encore rien fait – le fichier PDF n'aura pas
- changé, car les étiquettes n'apparaissent pas à l'impression.
- Maintenant que vous avez une étiquette, vous pouvez vous y référer avec
- les références croisées.
+Pour l'instant,
+ vous n'avez encore rien fait – le fichier PDF n'aura pas changé,
+ car les étiquettes n'apparaissent pas à l'impression.
+ Maintenant que vous avez une étiquette,
+ vous pouvez vous y référer avec les références croisées.
  C'est ce que nous allons faire maintenant.
 \end_layout
 
@@ -2932,11 +3106,13 @@ Placez le curseur à l'intérieur de la section
 \end_layout
 
 \begin_layout LyX-Code
-Pour en savoir plus à propos de ce document, 
+Pour en savoir plus à propos de ce document,
+ 
 \end_layout
 
 \begin_layout LyX-Code
-consultez la section, page.
+consultez la section,
+ page.
 \end_layout
 
 \begin_layout Standard
@@ -2982,7 +3158,9 @@ croisée
 \family default
  apparaît.
  Elle présente une liste d'étiquettes auxquelles vous pouvez faire référence.
- Pour l'instant, il ne devrait y en avoir qu'une : 
+ Pour l'instant,
+ il ne devrait y en avoir qu'une :
+ 
 \begin_inset Quotes cld
 \end_inset
 
@@ -2991,7 +3169,8 @@ sec:a-propos-document
 \end_inset
 
 .
- D'abord, sélectionnez le menu déroulant étiqueté 
+ D'abord,
+ sélectionnez le menu déroulant étiqueté 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3020,16 +3199,21 @@ sec:a-propos-document
 \family sans
 Appliquer
 \family default
-: un marquer de référence apparaît, qui contient 
+:
+ un marquer de référence apparaît,
+ qui contient 
 \begin_inset Quotes cld
 \end_inset
 
-Réf : sec:a-propos-document
+Réf :
+ sec:a-propos-document
 \begin_inset Quotes crd
 \end_inset
 
 .
- Attention, pour être tout à fait correct, il faut mettre une 
+ Attention,
+ pour être tout à fait correct,
+ il faut mettre une 
 \family sans
 Espace
 \begin_inset space ~
@@ -3055,15 +3239,12 @@ section
 \end_layout
 
 \begin_layout Standard
-Une autre façon de faire consiste à faire un clic droit sur une étiquette
- et à utiliser 
+Une autre façon de faire consiste à faire un clic droit sur une étiquette et à utiliser 
 \family sans
 Copier comme référence
 \family default
  dans le menu qui apparaît.
- La référence croisée à cette étiquette est copiée vers le presse-papier
- et peut ensuite être copiée à la position courante du curseur via le menu
- 
+ La référence croisée à cette étiquette est copiée vers le presse-papier et peut ensuite être copiée à la position courante du curseur via le menu 
 \family sans
 Édition\SpecialChar menuseparator
 Coller (
@@ -3080,8 +3261,8 @@ arg   "paste"
 \begin_layout Standard
 \SpecialChar LyX
  place les références dans une boîte juste après le curseur.
- Dans la version papier du document, chacun de ces marqueurs est remplacé
- par le numéro de section 
+ Dans la version papier du document,
+ chacun de ces marqueurs est remplacé par le numéro de section 
 \family sans
 .
 
@@ -3103,8 +3284,8 @@ Section
 \end_layout
 
 \begin_layout Standard
-Une référence croisée se comporte commodément comme un hyperlien dans le
- document que vous éditez ; cliquer dessus ouvre la fenêtre 
+Une référence croisée se comporte commodément comme un hyperlien dans le document que vous éditez ;
+ cliquer dessus ouvre la fenêtre 
 \family sans
 Référence
 \begin_inset space ~
@@ -3137,8 +3318,8 @@ En faire davantage avec les étiquettes
 
 \begin_layout Standard
 Nous disions que \SpecialChar LyX
- prenait en charge la numérotation des références croisées
- ; vous pouvez maintenant le vérifier.
+ prenait en charge la numérotation des références croisées ;
+ vous pouvez maintenant le vérifier.
  Ajoutez une nouvelle section avant la section
 \begin_inset space ~
 \end_inset
@@ -3150,7 +3331,8 @@ Nous disions que \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-NdT : en faisant 
+NdT :
+ en faisant 
 \family sans
 Document\SpecialChar menuseparator
 Mettre
@@ -3178,7 +3360,8 @@ PDF
 status collapsed
 
 \begin_layout Plain Layout
-NdT: en français dans le texte.
+NdT:
+ en français dans le texte.
 \end_layout
 
 \end_inset
@@ -3187,7 +3370,8 @@ NdT: en français dans le texte.
 \begin_inset space ~
 \end_inset
 
-3! Faites passer la section 
+3!
+ Faites passer la section 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3195,7 +3379,8 @@ NdT: en français dans le texte.
 \begin_inset Quotes crd
 \end_inset
 
- en sous-section, et la référence croisée fera référence à la sous-section
+ en sous-section,
+ et la référence croisée fera référence à la sous-section
 \begin_inset space ~
 \end_inset
 
@@ -3204,17 +3389,17 @@ NdT: en français dans le texte.
 \end_inset
 
 3.
- Naturellement, la référence à la page ne changera que lorsque vous aurez
- ajouté une page complète de texte avant l'étiquette.
+ Naturellement,
+ la référence à la page ne changera que lorsque vous aurez ajouté une page complète de texte avant l'étiquette.
  
 \end_layout
 
 \begin_layout Standard
-Pour vous exercer davantage avec les étiquettes, essayez donc d'en placer
- une à l'endroit où se situe votre première référence croisée, et faites
- référence à cette nouvelle étiquette ailleurs dans votre document.
- Lorsque vous devez gérer beaucoup de références croisées, il peut être
- plus confortable de conserver la fenêtre 
+Pour vous exercer davantage avec les étiquettes,
+ essayez donc d'en placer une à l'endroit où se situe votre première référence croisée,
+ et faites référence à cette nouvelle étiquette ailleurs dans votre document.
+ Lorsque vous devez gérer beaucoup de références croisées,
+ il peut être plus confortable de conserver la fenêtre 
 \family sans
 Référence
 \begin_inset space ~
@@ -3226,8 +3411,9 @@ croisée
 \end_layout
 
 \begin_layout Standard
-Si vous voulez vous assurer que les références croisées conservent des numéros
- de pages corrects, même avec de gros documents, vous pouvez 
+Si vous voulez vous assurer que les références croisées conservent des numéros de pages corrects,
+ même avec de gros documents,
+ vous pouvez 
 \family sans
 Copier
 \family default
@@ -3243,7 +3429,8 @@ de
 
 l'Utilisateur
 \emph default
- dans le presse-papier, et les 
+ dans le presse-papier,
+ et les 
 \family sans
 Coller
 \family default
@@ -3252,19 +3439,20 @@ Coller
 status collapsed
 
 \begin_layout Plain Layout
-Comme les environnements de chapitre ne sont pas autorisés dans les classes
- d'article, la copie de zones de texte contenant des titres de chapitre
- peut causer des erreurs.
- Si cela arrive, effacez juste les titres des chapitres.
- Pour en savoir plus, voir la section
+Comme les environnements de chapitre ne sont pas autorisés dans les classes d'article,
+ la copie de zones de texte contenant des titres de chapitre peut causer des erreurs.
+ Si cela arrive,
+ effacez juste les titres des chapitres.
+ Pour en savoir plus,
+ voir la section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-nolink "false"
 reference "sec:classes-de-documents"
+nolink "false"
 
 \end_inset
 
@@ -3283,7 +3471,8 @@ reference "sec:classes-de-documents"
 \series bold
 Exercice
 \series default
-: Corrigez les références à l'intérieur de 
+:
+ Corrigez les références à l'intérieur de 
 \emph on
 Exemple (brut)
 \emph default
@@ -3301,7 +3490,8 @@ type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-, dans la barre d'outils ou par menu 
+,
+ dans la barre d'outils ou par menu 
 \family sans
 Insertion\SpecialChar menuseparator
 Note
@@ -3339,8 +3529,7 @@ arg   "footnote-insert"
 \end_inset
 
 .
- Une boîte de note apparaît dans laquelle vous pouvez saisir le texte de
- la note.
+ Une boîte de note apparaît dans laquelle vous pouvez saisir le texte de la note.
  \SpecialChar LyX
  place le curseur au début de la boîte.
  Tapez 
@@ -3365,8 +3554,8 @@ bas
 \end_inset
 
 .
- La boîte de note se referme, laissant la place au bouton indiquant l'endroit
- où sera placé le marqueur de la note lors de l'impression.
+ La boîte de note se referme,
+ laissant la place au bouton indiquant l'endroit où sera placé le marqueur de la note lors de l'impression.
  Cela s'appelle 
 \begin_inset Quotes cld
 \end_inset
@@ -3376,8 +3565,7 @@ refermer
 \end_inset
 
  la note.
- Vous pouvez ré-ouvrir la note à tout moment – et la modifier si nécessaire
- – en cliquant de nouveau sur le bouton 
+ Vous pouvez ré-ouvrir la note à tout moment – et la modifier si nécessaire – en cliquant de nouveau sur le bouton 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3398,20 +3586,21 @@ Couper
 Coller
 \family default
  une note comme du texte ordinaire.
- Allez-y, essayez ! La seule chose à faire est de sélectionner le bouton
- de note
+ Allez-y,
+ essayez !
+ La seule chose à faire est de sélectionner le bouton de note
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Il est généralement plus facile de faire cette sélection avec le clavier.
- Vous pouvez ouvrir par erreur une note en essayant de la sélectionner avec
- la souris.
+ Vous pouvez ouvrir par erreur une note en essayant de la sélectionner avec la souris.
 \end_layout
 
 \end_inset
 
-, le 
+,
+ le 
 \family sans
 Couper
 \family default
@@ -3420,15 +3609,17 @@ Couper
 Coller
 \family default
 .
- De plus, vous pouvez faire basculer du texte ordinaire en note, en le sélection
-nant, puis en cliquant sur le bouton 
+ De plus,
+ vous pouvez faire basculer du texte ordinaire en note,
+ en le sélectionnant,
+ puis en cliquant sur le bouton 
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
- ; ou inversement transformer une note en texte en appuyant sur la touche
- 
+ ;
+ ou inversement transformer une note en texte en appuyant sur la touche 
 \family sans
 Retour
 \begin_inset space ~
@@ -3437,8 +3628,8 @@ Retour
 Arrière.
 
 \family default
- lorsque le curseur est au tout début de cette note, ou en en appuyant sur
- la touche 
+ lorsque le curseur est au tout début de cette note,
+ ou en en appuyant sur la touche 
 \family sans
 Suppr.
 
@@ -3453,7 +3644,8 @@ type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
- de la barre d'outils, ou par le menu 
+ de la barre d'outils,
+ ou par le menu 
 \family sans
 Insertion\SpecialChar menuseparator
 Note
@@ -3467,8 +3659,7 @@ en
 marge.
 
 \family default
- Les notes en marge diffèrent des notes de bas de page de la façon suivante
- :
+ Les notes en marge diffèrent des notes de bas de page de la façon suivante :
 \end_layout
 
 \begin_layout Itemize
@@ -3492,8 +3683,8 @@ bas
 \end_layout
 
 \begin_layout Itemize
-les notes sont placées en marge, plutôt qu'en bas de page (on s'en serait
- douté) ;
+les notes sont placées en marge,
+ plutôt qu'en bas de page (on s'en serait douté) ;
 \end_layout
 
 \begin_layout Itemize
@@ -3501,8 +3692,8 @@ les notes en marge ne sont pas numérotées.
 \end_layout
 
 \begin_layout Standard
-Faites basculer votre note de bas de page en texte, sélectionnez-le et transform
-ez-le à son tour en note en marge.
+Faites basculer votre note de bas de page en texte,
+ sélectionnez-le et transformez-le à son tour en note en marge.
  Faites tourner \SpecialChar LaTeX
  pour vous rendre compte de l'aspect d'une note en marge.
  
@@ -3514,7 +3705,8 @@ ez-le à son tour en note en marge.
 \series bold
 Exercice
 \series default
-: Corrigez la note de bas de page dans 
+:
+ Corrigez la note de bas de page dans 
 \emph on
 Exemple (brut)
 \emph default
@@ -3534,13 +3726,13 @@ name "sec:bibliographies"
 
 \begin_layout Standard
 Les bibliographies sont très similaires aux références croisées.
- La bibliographie, à la fin d'un document, contient la liste des ouvrages
- auxquels il est fait référence dans le corps du document.
- Comme pour les titres de sections, \SpecialChar LyX
+ La bibliographie,
+ à la fin d'un document,
+ contient la liste des ouvrages auxquels il est fait référence dans le corps du document.
+ Comme pour les titres de sections,
+ \SpecialChar LyX
  et \SpecialChar LaTeX
- vous facilitent le travail en gérant
- automatiquement la numérotation des éléments de la bibliographie et en
- changeant les citations quand le numéro de l'élément change.
+ vous facilitent le travail en gérant automatiquement la numérotation des éléments de la bibliographie et en changeant les citations quand le numéro de l'élément change.
  
 \end_layout
 
@@ -3550,11 +3742,13 @@ Allez à la fin du document et passez en environnement
 Bibliographie
 \family default
 .
- Dès lors, chaque nouveau paragraphe sera une nouvelle référence.
+ Dès lors,
+ chaque nouveau paragraphe sera une nouvelle référence.
  Tapez 
 \family typewriter
 Le Manuel d'apprentissage de \SpecialChar LyX
-, par 
+,
+ par 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3571,9 +3765,9 @@ Documentation de \SpecialChar LyX
 \family default
  comme première référence.
  Remarquez que \SpecialChar LyX
- ajoute automatiquement un numéro dans une boîte placée avant
- chaque référence.
- En cliquant sur cette boîte, vous ouvrez une fenêtre 
+ ajoute automatiquement un numéro dans une boîte placée avant chaque référence.
+ En cliquant sur cette boîte,
+ vous ouvrez une fenêtre 
 \family sans
 
 \begin_inset Quotes cld
@@ -3595,14 +3789,17 @@ bibliographique
 Clé
 \family default
  est utilisée pour citer cette référence dans le document \SpecialChar LyX
-, l'
+,
+ l'
 \family sans
 étiquette
 \family default
  apparaîtra dans la sortie imprimée.
- Implicitement, quand vous ne mettez pas d'étiquette, vous verrez le numéro
- de l'entrée bibliographique dans la sortie imprimée.
- Pour le mémoriser plus facilement, remplacez le contenu du champ 
+ Implicitement,
+ quand vous ne mettez pas d'étiquette,
+ vous verrez le numéro de l'entrée bibliographique dans la sortie imprimée.
+ Pour le mémoriser plus facilement,
+ remplacez le contenu du champ 
 \family sans
 Clé
 \family default
@@ -3631,7 +3828,8 @@ type  "icon"
 arg   "dialog-show-new-inset citation"
 \end_inset
 
- de la barre d'outils, vous faites apparaître une fenêtre 
+ de la barre d'outils,
+ vous faites apparaître une fenêtre 
 \family sans
 Citation
 \family default
@@ -3644,8 +3842,8 @@ Citations
 
 Disponibles
 \family default
-) énumère toutes les entrées de bibliographie, et ce champ vous permet de
- sélectionner les entrées que vous voulez citer.
+) énumère toutes les entrées de bibliographie,
+ et ce champ vous permet de sélectionner les entrées que vous voulez citer.
  Choisissez 
 \begin_inset Quotes cld
 \end_inset
@@ -3655,28 +3853,27 @@ tutoriel\SpecialChar LyX
 \begin_inset Quotes crd
 \end_inset
 
- (pour l'instant, c'est le seul élément de la bibliographie) et utilisez
- le bouton 
+ (pour l'instant,
+ c'est le seul élément de la bibliographie) et utilisez le bouton 
 \family sans
 Ajouter
 \family default
- pour l'insérer (vous pouvez mettre des citations multiples au même endroit
- en transférant ainsi plusieurs clés
+ pour l'insérer (vous pouvez mettre des citations multiples au même endroit en transférant ainsi plusieurs clés
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Si l'on utilise des noms d'étiquettes faciles à retenir, il est plus aisé
- de trouver une entrée particulière dans la liste des références.
+Si l'on utilise des noms d'étiquettes faciles à retenir,
+ il est plus aisé de trouver une entrée particulière dans la liste des références.
 \end_layout
 
 \end_inset
 
 ).
  Cliquez sur le bouton OK.
- Visualisez maintenant votre fichier en PDF, et vous pourrez constater que
- la citation apparaît entre crochets à l'impression, en référence à la bibliogra
-phie en fin de document.
+ Visualisez maintenant votre fichier en PDF,
+ et vous pourrez constater que la citation apparaît entre crochets à l'impression,
+ en référence à la bibliographie en fin de document.
 \end_layout
 
 \begin_layout Standard
@@ -3684,7 +3881,8 @@ Dans la fenêtre
 \family sans
 Citation
 \family default
-, le champ 
+,
+ le champ 
 \family sans
 Texte
 \begin_inset space ~
@@ -3692,10 +3890,10 @@ Texte
 
 après
 \family default
- permet d'introduire une précision (comme la référence à une page ou à un
- chapitre précis de l'ouvrage cité) après le numéro, à l'intérieur des crochets.
- Et si vous préférez avoir des citations sous forme d'étiquette plutôt que
- de numéro, vous pouvez pour cela remplir le champ 
+ permet d'introduire une précision (comme la référence à une page ou à un chapitre précis de l'ouvrage cité) après le numéro,
+ à l'intérieur des crochets.
+ Et si vous préférez avoir des citations sous forme d'étiquette plutôt que de numéro,
+ vous pouvez pour cela remplir le champ 
 \family sans
 Étiquette
 \family default
@@ -3725,7 +3923,8 @@ bibliographique
 
  pour une publication de M.
  Smith en 1995).
- Comme toujours, consultez le 
+ Comme toujours,
+ consultez le 
 \emph on
 Guide
 \begin_inset space ~
@@ -3745,6 +3944,7 @@ l'Utilisateur
 
 \series bold
 Exercice:
+
 \series default
  Corrigez la bibliographie et la citation dans
 \begin_inset Newline newline
@@ -3769,8 +3969,9 @@ Peut-être désirez-vous mettre une table des matières au début de votre docum
 \family sans
 Entrée
 \family default
- juste après le titre de votre document, et avant la première section, et
- faites 
+ juste après le titre de votre document,
+ et avant la première section,
+ et faites 
 \family sans
 Insertion\SpecialChar menuseparator
 Listes/Matières/Références\SpecialChar menuseparator
@@ -3807,21 +4008,23 @@ Matières
 
 \begin_layout Standard
 Ça peut paraître un peu léger.
- Cependant, en jetant un œil sur le rendu PDF, vous constaterez que la table
- des matières a bel et bien été générée, avec pour contenu les en-têtes
- des différentes sections et sous-sections de votre document.
- Encore une fois, en cas de réorganisation, ajout ou suppression de sections,
- ces changements seront automatiquement répercutés dans le rendu PDF dès
- que vous le mettez à jour.
+ Cependant,
+ en jetant un œil sur le rendu PDF,
+ vous constaterez que la table des matières a bel et bien été générée,
+ avec pour contenu les en-têtes des différentes sections et sous-sections de votre document.
+ Encore une fois,
+ en cas de réorganisation,
+ ajout ou suppression de sections,
+ ces changements seront automatiquement répercutés dans le rendu PDF dès que vous le mettez à jour.
  
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- n'affiche pas la table des matières dans la version du document qui est
- à l'écran, parce que vous ne pouvez de toutes façons pas l'éditer.
- En revanche, vous pouvez la consulter dans une fenêtre à part en cliquant
- sur le bouton 
+ n'affiche pas la table des matières dans la version du document qui est à l'écran,
+ parce que vous ne pouvez de toutes façons pas l'éditer.
+ En revanche,
+ vous pouvez la consulter dans une fenêtre à part en cliquant sur le bouton 
 \family sans
 Activer/(Dés)Activer
 \begin_inset space ~
@@ -3833,7 +4036,8 @@ le
 
 plan
 \family default
-, ou en faisant 
+,
+ ou en faisant 
 \family sans
 Affichage\SpecialChar menuseparator
 Plan
@@ -3845,16 +4049,11 @@ arg   "dialog-toggle toc"
 \end_inset
 
  de la barre d'outils.
- La méthode par menus fonctionne même si vous n'avez pas de table des matières
- dans votre document.
- C'est un outil très utile dont vous pouvez vous servir pour naviguer dans
- votre document.
- Un clic sur le titre d'une (sous-)section dans cette table mettra la ligne
- en évidence et déplacera l'affichage (dans la fenêtre d'édition de \SpecialChar LyX
-) à
- l'endroit correspondant dans le document.
- Vous pouvez aussi vous servir des flèches du clavier pour monter et descendre
- dans la table des matières.
+ La méthode par menus fonctionne même si vous n'avez pas de table des matières dans votre document.
+ C'est un outil très utile dont vous pouvez vous servir pour naviguer dans votre document.
+ Un clic sur le titre d'une (sous-)section dans cette table mettra la ligne en évidence et déplacera l'affichage (dans la fenêtre d'édition de \SpecialChar LyX
+) à l'endroit correspondant dans le document.
+ Vous pouvez aussi vous servir des flèches du clavier pour monter et descendre dans la table des matières.
  Vous trouverez peut-être plus commode de conserver la fenêtre 
 \family sans
 Plan
@@ -3864,12 +4063,13 @@ Plan
 \family sans
 Navigation
 \family default
-, dans lequel la table des matières apparaît automatiquement.
+,
+ dans lequel la table des matières apparaît automatiquement.
 \end_layout
 
 \begin_layout Standard
-Pour supprimer la table des matières de votre document, il vous suffit d'effacer
- le bouton comme s'il s'agissait d'un caractère ordinaire.
+Pour supprimer la table des matières de votre document,
+ il vous suffit d'effacer le bouton comme s'il s'agissait d'un caractère ordinaire.
  
 \end_layout
 
@@ -3879,7 +4079,8 @@ Pour supprimer la table des matières de votre document, il vous suffit d'efface
 \series bold
 Exercice
 \series default
-: Corrigez la table des matières du fichier 
+:
+ Corrigez la table des matières du fichier 
 \emph on
 Exemple (brut)
 \emph default
@@ -3892,21 +4093,23 @@ Utilisation du mode mathématique
 
 \begin_layout Standard
 \SpecialChar LaTeX
- est largement utilisé dans le milieu scientifique pour la qualité du rendu
- des équations, sans les contraintes imposées par les caractères de contrôle
- des autres traitements de texte et de leurs éditeurs d'équations.
+ est largement utilisé dans le milieu scientifique pour la qualité du rendu des équations,
+ sans les contraintes imposées par les caractères de contrôle des autres traitements de texte et de leurs éditeurs d'équations.
  Cependant beaucoup de gens déplorent qu'écrire une équation en \SpecialChar LaTeX
- s'apparente
- plus à de la programmation qu'à de l'écriture à proprement parler.
- Une chance, \SpecialChar LyX
+ s'apparente plus à de la programmation qu'à de l'écriture à proprement parler.
+ Une chance,
+ \SpecialChar LyX
  permet de traiter les équations de façon WYSIWYM.
  Si vous connaissez déjà \SpecialChar LaTeX
-, vous vous rendrez compte que toutes les commandes
- \SpecialChar LaTeX
- pour les mathématiques peuvent être saisies normalement, mais seront affichées
- de façon WYSIWYM.
- Si, à l'inverse, vous n'avez jamais écrit de \SpecialChar LaTeX
-, alors la 
+,
+ vous vous rendrez compte que toutes les commandes \SpecialChar LaTeX
+ pour les mathématiques peuvent être saisies normalement,
+ mais seront affichées de façon WYSIWYM.
+ Si,
+ à l'inverse,
+ vous n'avez jamais écrit de \SpecialChar LaTeX
+,
+ alors la 
 \family sans
 Palette
 \begin_inset space ~
@@ -3914,8 +4117,9 @@ Palette
 
 Mathématique
 \family default
- vous permettra d'obtenir, facilement et rapidement, des écrits mathématiques
- d'aspect professionnel
+ vous permettra d'obtenir,
+ facilement et rapidement,
+ des écrits mathématiques d'aspect professionnel
 \begin_inset Foot
 status collapsed
 
@@ -3941,11 +4145,15 @@ Mode Mathématique
 
 \begin_layout Standard
 Quelque part dans votre document \SpecialChar LyX
-, tapez ceci : 
+,
+ tapez ceci :
+ 
 \end_layout
 
 \begin_layout LyX-Code
-J'aime ce qu'a dit Einstein, E=mc^2, parce que 
+J'aime ce qu'a dit Einstein,
+ E=mc^2,
+ parce que 
 \end_layout
 
 \begin_layout LyX-Code
@@ -3954,9 +4162,11 @@ c'est d'une grande simplicité.
 \end_layout
 
 \begin_layout Standard
-Pour l'instant, l'équation n'a pas très belle allure, que ce soit dans \SpecialChar LyX
-
- ou dans la sortie finale ; aucun espace ne sépare le signe 
+Pour l'instant,
+ l'équation n'a pas très belle allure,
+ que ce soit dans \SpecialChar LyX
+ ou dans la sortie finale ;
+ aucun espace ne sépare le signe 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3964,7 +4174,8 @@ Pour l'instant, l'équation n'a pas très belle allure, que ce soit dans \Specia
 \begin_inset Quotes crd
 \end_inset
 
- des lettres qui l'entourent, et vous aimeriez avoir le 
+ des lettres qui l'entourent,
+ et vous aimeriez avoir le 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3973,18 +4184,17 @@ Pour l'instant, l'équation n'a pas très belle allure, que ce soit dans \Specia
 \end_inset
 
  en exposant.
- La cause de cette mauvaise composition est que nous n'avons pas signalé
- à \SpecialChar LyX
+ La cause de cette mauvaise composition est que nous n'avons pas signalé à \SpecialChar LyX
  que nous étions en train de saisir des expressions mathématiques.
  La composition a donc été réalisée comme pour du texte ordinaire.
  
 \end_layout
 
 \begin_layout Standard
-Au lieu de cela, nous allons créer une formule qui sera mise en page correctemen
-t.
- Pour créer une formule, cliquez juste sur le bouton de la barre d'outils
- 
+Au lieu de cela,
+ nous allons créer une formule qui sera mise en page correctement.
+ Pour créer une formule,
+ cliquez juste sur le bouton de la barre d'outils 
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
@@ -4006,31 +4216,33 @@ ligne
 \family default
 .
  \SpecialChar LyX
- ouvrira un petit carré bleu, qui est une formule vide.
- Maintenant vous pouvez soit insérer l'équation une nouvelle fois, soit
- sélectionner E=mc^2 et cliquer sur le bouton 
+ ouvrira un petit carré bleu,
+ qui est une formule vide.
+ Maintenant vous pouvez soit insérer l'équation une nouvelle fois,
+ soit sélectionner E=mc^2 et cliquer sur le bouton 
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
 \end_inset
 
  de la barre d'outils.
- L'expression apparaît en bleu, et le carré bleu disparaît dès que la formule
- n'est plus vide.
+ L'expression apparaît en bleu,
+ et le carré bleu disparaît dès que la formule n'est plus vide.
  Tapez 
 \family sans
 Esc
 \family default
  pour quitter la formule.
- Le rectangle mauve disparaît, laissant le curseur à droite de l'expression.
+ Le rectangle mauve disparaît,
+ laissant le curseur à droite de l'expression.
  Toute nouvelle saisie produit alors du texte ordinaire.
 \end_layout
 
 \begin_layout Standard
 Faites tourner \SpecialChar LaTeX
  et jetez un œil sur la sortie.
- Remarquez que l'expression a été joliment composée, avec des espaces entre
- les lettres et le signe 
+ Remarquez que l'expression a été joliment composée,
+ avec des espaces entre les lettres et le signe 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4038,7 +4250,8 @@ Faites tourner \SpecialChar LaTeX
 \begin_inset Quotes crd
 \end_inset
 
-, et avec le 
+,
+ et avec le 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4055,20 +4268,22 @@ Faites tourner \SpecialChar LaTeX
 \begin_layout Standard
 Cet éditeur mathématique est un autre exemple de la philosophie WYSIWYM.
  En \SpecialChar LaTeX
-, vous écrivez les expressions mathématiques avec du texte et des commandes
- comme 
+,
+ vous écrivez les expressions mathématiques avec du texte et des commandes comme 
 \family typewriter
 
 \backslash
 sqrt
 \family default
- ; c'est un peu frustrant, car vous ne savez pas à quoi ressemble une expression
- tant que vous n'avez pas fait tourner \SpecialChar LaTeX
- sur votre fichier, et devez passer
- du temps pour trouver par exemple, une parenthèse manquante.
+ ;
+ c'est un peu frustrant,
+ car vous ne savez pas à quoi ressemble une expression tant que vous n'avez pas fait tourner \SpecialChar LaTeX
+ sur votre fichier,
+ et devez passer du temps pour trouver par exemple,
+ une parenthèse manquante.
  \SpecialChar LyX
- ne cherche pas un rendu parfait de l'expression à l'écran (WYSIWYG), mais
- donne une très bonne idée du rendu final.
+ ne cherche pas un rendu parfait de l'expression à l'écran (WYSIWYG),
+ mais donne une très bonne idée du rendu final.
  C'est \SpecialChar LaTeX
  qui s'occupe ensuite de la mise en forme professionnelle.
 \end_layout
@@ -4078,7 +4293,8 @@ Se déplacer dans une équation
 \end_layout
 
 \begin_layout Standard
-Maintenant, changeons 
+Maintenant,
+ changeons 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
 
@@ -4088,8 +4304,7 @@ Maintenant, changeons
 
 .
  Amenez le curseur à l'intérieur de l'expression avec les flèches du clavier.
- Vous pouvez constater que le rectangle violet apparaît pour vous signaler
- que vous êtes à nouveau en mode mathématique.
+ Vous pouvez constater que le rectangle violet apparaît pour vous signaler que vous êtes à nouveau en mode mathématique.
  Déplacez le curseur grâce au touches 
 \family sans
 Gauche
@@ -4108,15 +4323,15 @@ Droite
 \end_inset
 
 .
- Une nouvelle fois, vous pouvez sortir de l'expression grâce aux flèches
- du clavier ou à la touche 
+ Une nouvelle fois,
+ vous pouvez sortir de l'expression grâce aux flèches du clavier ou à la touche 
 \family sans
 Esc.
 \end_layout
 
 \begin_layout Standard
-Excepté les touches particulières décrites ci-dessus, la saisie en mode
- mathématique est identique à celle du texte ordinaire.
+Excepté les touches particulières décrites ci-dessus,
+ la saisie en mode mathématique est identique à celle du texte ordinaire.
  Utilisez 
 \family sans
 Suppr
@@ -4130,8 +4345,7 @@ Retour
 Arrière
 \family default
 ) pour effacer.
- Sélectionnez des parties d'expression avec les flèches du clavier ou avec
- la souris.
+ Sélectionnez des parties d'expression avec les flèches du clavier ou avec la souris.
  
 \family sans
 Édition
@@ -4141,7 +4355,8 @@ Arrière
 \family sans
 Annuler
 \family default
- fonctionne en mode mathématique, ainsi que 
+ fonctionne en mode mathématique,
+ ainsi que 
 \family sans
 Couper
 \family default
@@ -4150,9 +4365,8 @@ Couper
 Coller
 \family default
 .
- Faites par contre attention à ceci : lorsque le curseur est immédiatement
- à droite ou à gauche de l'expression et que vous appuyez respectivement
- sur 
+ Faites par contre attention à ceci :
+ lorsque le curseur est immédiatement à droite ou à gauche de l'expression et que vous appuyez respectivement sur 
 \family typewriter
 Retour
 \begin_inset space ~
@@ -4164,8 +4378,10 @@ Arrière
 \family sans
 Suppr
 \family default
-, l'expression entière est effacée.
- Heureusement, 
+,
+ l'expression entière est effacée.
+ Heureusement,
+ 
 \family sans
 Édition
 \family default
@@ -4186,8 +4402,11 @@ Et si vous changiez
 \begin_inset Formula $E=mc^{2.5}+1$
 \end_inset
 
- ? À nouveau, vous pouvez utiliser la souris pour vous placer au bon endroit.
- Néanmoins, vous pouvez également utiliser les flèches du clavier.
+ ?
+ À nouveau,
+ vous pouvez utiliser la souris pour vous placer au bon endroit.
+ Néanmoins,
+ vous pouvez également utiliser les flèches du clavier.
  Si le curseur est juste entre le 
 \begin_inset Quotes cld
 \end_inset
@@ -4204,11 +4423,13 @@ c
 \begin_inset Quotes crd
 \end_inset
 
-, la touche 
+,
+ la touche 
 \family sans
 Haut
 \family default
- déplacera le curseur au niveau de l'exposant, toujours avant le 
+ déplacera le curseur au niveau de l'exposant,
+ toujours avant le 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4226,7 +4447,8 @@ Haut
 \end_inset
 
 .
- Maintenant, taper sur 
+ Maintenant,
+ taper sur 
 \family sans
 Bas
 \family default
@@ -4239,7 +4461,8 @@ Espace
 \family sans
 Bas
 \family default
- n'importe où dans l'exposant, le curseur se placera juste 
+ n'importe où dans l'exposant,
+ le curseur se placera juste 
 \emph on
 après
 \emph default
@@ -4263,8 +4486,8 @@ Un exposant peut être entré à partir de la
 \family sans
 Palette Mathématique
 \family default
- (voir plus bas), mais il est beaucoup plus simple d'utiliser la touche
- chapeau 
+ (voir plus bas),
+ mais il est beaucoup plus simple d'utiliser la touche chapeau 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4281,7 +4504,8 @@ Palette Mathématique
 status collapsed
 
 \begin_layout Plain Layout
-NdT: 
+NdT:
+ 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4290,7 +4514,8 @@ caret
 \end_inset
 
  en anglais.
- Avec un clavier français, on l'obtient avec 
+ Avec un clavier français,
+ on l'obtient avec 
 \family sans
 Alt
 \begin_inset space ~
@@ -4298,16 +4523,17 @@ Alt
 
 Gr-9
 \family default
-, et non avec la touche d'accent circonflexe.
+,
+ et non avec la touche d'accent circonflexe.
 \end_layout
 
 \end_inset
 
 .
  \SpecialChar LyX
- placera un autre rectangle bleu dans la partie supérieure, toutes les
- saisies qui suivront seront ainsi placées en exposant, et ce dans une police
- de plus petite taille.
+ placera un autre rectangle bleu dans la partie supérieure,
+ toutes les saisies qui suivront seront ainsi placées en exposant,
+ et ce dans une police de plus petite taille.
  Jusqu'à ce que vous tapiez 
 \family sans
 Espace
@@ -4316,8 +4542,7 @@ Espace
 \family sans
 Esc
 \family default
- pour sortir complètement de la formule) tout ce que vous saisirez sera
- au même niveau.
+ pour sortir complètement de la formule) tout ce que vous saisirez sera au même niveau.
 \end_layout
 
 \begin_layout Standard
@@ -4342,8 +4567,8 @@ _
 \end_inset
 
  déclenche ce mode.
- Les indices et exposants peuvent eux-mêmes être indicés et avoir des exposants
- comme ceci : 
+ Les indices et exposants peuvent eux-mêmes être indicés et avoir des exposants comme ceci :
+ 
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
 \end_inset
 
@@ -4356,7 +4581,8 @@ _
 \series bold
 Exercice
 \series default
-: Mettez l'équation n°1 du fichier 
+:
+ Mettez l'équation n°1 du fichier 
 \emph on
 Exemple (brut)
 \emph default
@@ -4380,10 +4606,8 @@ d'outils
 
 Math
 \family default
- est un moyen pratique pour écrire ou pour exécuter de nombreuses opérations
- compliquées d'édition mathématique.
- Plusieurs de ces opérations peuvent être exécutées depuis le clavier ou
- les menus 
+ est un moyen pratique pour écrire ou pour exécuter de nombreuses opérations compliquées d'édition mathématique.
+ Plusieurs de ces opérations peuvent être exécutées depuis le clavier ou les menus 
 \family sans
 Insertion\SpecialChar menuseparator
 Math
@@ -4398,8 +4622,10 @@ Math
 \family sans
 Barre d'outils Math
 \family default
-, juste assez pour que vous sachiez ce qu'on peut en tirer ; vous pourrez
- apprendre les raccourcis clavier plus tard, dans le manuel 
+,
+ juste assez pour que vous sachiez ce qu'on peut en tirer ;
+ vous pourrez apprendre les raccourcis clavier plus tard,
+ dans le manuel 
 \family sans
 Maths
 \family default
@@ -4411,8 +4637,7 @@ La
 \family sans
 Barre d'outils Maths
 \family default
- s'affiche quand le curseur se trouve dans une formule et elle peut être
- activée manuellement avec le menu 
+ s'affiche quand le curseur se trouve dans une formule et elle peut être activée manuellement avec le menu 
 \family sans
 Affichage\SpecialChar menuseparator
 Barres
@@ -4432,8 +4657,8 @@ type  "icon"
 arg   "toolbar-toggle math"
 \end_inset
 
-) sera affichée de façon permanente ; cet état est indiqué dans le menu
- 
+) sera affichée de façon permanente ;
+ cet état est indiqué dans le menu 
 \family sans
 Barres
 \begin_inset space ~
@@ -4442,7 +4667,9 @@ Barres
 d'outils
 \family default
  par une coche.
- Si, dans cet état, vous cliquez une nouvelle fois sur 
+ Si,
+ dans cet état,
+ vous cliquez une nouvelle fois sur 
 \family sans
 Math 
 \family default
@@ -4452,14 +4679,15 @@ dans le menu
 \begin_inset space ~
 \end_inset
 
-d'outils, 
+d'outils,
+ 
 \family default
 la 
 \family sans
 Barre d'outils Math 
 \family default
-ne sera plus affichée que quand le curseur se trouvera à l'intérieur d'une
- formule ; cet état est indiqué par le fait que l'entrée de menu 
+ne sera plus affichée que quand le curseur se trouvera à l'intérieur d'une formule ;
+ cet état est indiqué par le fait que l'entrée de menu 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4487,10 +4715,12 @@ La
 \family sans
 Barre d'outils Maths
 \family default
- vous permet d'obtenir une vaste gamme de symboles utiles en maths : des
- flèches, des relations, des opérateurs, et des sommes et intégrales.
- Notez que l'écriture en exposant et en indice vous permet de mettre les
- bornes inférieures et supérieures des sommes et des intégrales.
+ vous permet d'obtenir une vaste gamme de symboles utiles en maths :
+ des flèches,
+ des relations,
+ des opérateurs,
+ et des sommes et intégrales.
+ Notez que l'écriture en exposant et en indice vous permet de mettre les bornes inférieures et supérieures des sommes et des intégrales.
 \end_layout
 
 \begin_layout Standard
@@ -4498,21 +4728,27 @@ Barre d'outils Maths
 \end_layout
 
 \begin_layout Subsection
-Racines, décorations, et délimiteurs
+Racines,
+ décorations,
+ et délimiteurs
 \end_layout
 
 \begin_layout Standard
-Pour saisir une racine carrée, cliquez simplement sur le bouton 
+Pour saisir une racine carrée,
+ cliquez simplement sur le bouton 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\sqrt"
 \end_inset
 
 .
- La racine carrée apparaît, et le curseur va à un nouveau point d'insertion
- sous la racine carrée.
- Vous pouvez saisir des variables, des nombres, d'autres racines carrées,
- des fractions, tout ce que vous voulez.
+ La racine carrée apparaît,
+ et le curseur va à un nouveau point d'insertion sous la racine carrée.
+ Vous pouvez saisir des variables,
+ des nombres,
+ d'autres racines carrées,
+ des fractions,
+ tout ce que vous voulez.
  \SpecialChar LyX
  adaptera automatiquement la dimension de la racine carrée au besoin.
 \end_layout
@@ -4538,18 +4774,21 @@ arg   "math-insert \\hat"
 \end_inset
 
 .
- Cliquez sur une décoration, et \SpecialChar LyX
- affichera ce signe sur ou sous le point
- d'insertion.
+ Cliquez sur une décoration,
+ et \SpecialChar LyX
+ affichera ce signe sur ou sous le point d'insertion.
  Tapez alors ce que vous voulez dans le point d'insertion.
- Il y a deux ensembles de décorations : celles qui s'adaptent à la taille
- du texte que vous tapez, et celles de taille fixe, qui sont surtout appropriées
- pour un caractère isolé.
+ Il y a deux ensembles de décorations :
+ celles qui s'adaptent à la taille du texte que vous tapez,
+ et celles de taille fixe,
+ qui sont surtout appropriées pour un caractère isolé.
 \end_layout
 
 \begin_layout Standard
-Les délimiteurs tels que les parenthèses, les crochets, et les accolades
- s'obtiennent de la même façon, mais sont un peu plus compliqués.
+Les délimiteurs tels que les parenthèses,
+ les crochets,
+ et les accolades s'obtiennent de la même façon,
+ mais sont un peu plus compliqués.
  Cliquez sur le bouton 
 \family sans
 Délimiteurs
@@ -4560,15 +4799,17 @@ type  "icon"
 arg   "dialog-show mathdelimiter"
 \end_inset
 
-, pour ouvrir la fenêtre de dialogue 
+,
+ pour ouvrir la fenêtre de dialogue 
 \family sans
 Délimiteurs.
 
 \family default
  Votre sélection courante de délimiteurs est affichée dans une boîte.
- Implicitement c'est une paire de parenthèses, mais vous pouvez choisir
- une paire de crochets, une accolade et une parenthèse, ou encore choisir
- le carré vide pour avoir quelque chose comme 
+ Implicitement c'est une paire de parenthèses,
+ mais vous pouvez choisir une paire de crochets,
+ une accolade et une parenthèse,
+ ou encore choisir le carré vide pour avoir quelque chose comme 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4586,22 +4827,24 @@ Délimiteurs.
 \end_layout
 
 \begin_layout Standard
-Une fois que vous avez choisi vos délimiteurs, cliquez sur 
+Une fois que vous avez choisi vos délimiteurs,
+ cliquez sur 
 \family sans
 Insertion
 \family default
  pour les mettre dans votre expression .
- Si vous êtes paresseux, vous pouvez utiliser les parenthèses du clavier
- en mode Math, plutôt que d'ouvrir la fenêtre 
+ Si vous êtes paresseux,
+ vous pouvez utiliser les parenthèses du clavier en mode Math,
+ plutôt que d'ouvrir la fenêtre 
 \family sans
 Délimiteurs
 \family default
 .
- Seulement, ces parenthèses seront de la même taille que le texte courant,
- ce qui sera peu agréable à voir si vous avez une grande fraction ou une
- matrice entre les parenthèses.
- Dans ce cas, il vaut mieux utiliser un des trois boutons qui insèrent directeme
-nt par exemple 
+ Seulement,
+ ces parenthèses seront de la même taille que le texte courant,
+ ce qui sera peu agréable à voir si vous avez une grande fraction ou une matrice entre les parenthèses.
+ Dans ce cas,
+ il vaut mieux utiliser un des trois boutons qui insèrent directement par exemple 
 \begin_inset Info
 type  "icon"
 arg   "math-delim ( )"
@@ -4612,10 +4855,10 @@ arg   "math-delim ( )"
 \end_layout
 
 \begin_layout Standard
-Vous pouvez aussi mettre des délimiteurs, un signe de racine carrée ou un
- accent (une décoration) sur une portion de formule existante.
- Sélectionnez la partie de la formule que vous voulez inclure, et cliquez
- simplement sur le bouton adéquat de la 
+Vous pouvez aussi mettre des délimiteurs,
+ un signe de racine carrée ou un accent (une décoration) sur une portion de formule existante.
+ Sélectionnez la partie de la formule que vous voulez inclure,
+ et cliquez simplement sur le bouton adéquat de la 
 \family sans
 Barre d'outils math
 \family default
@@ -4633,8 +4876,8 @@ Newton
 \end_inset
 
 ).
- Lorsque vous aurez appris les matrices, c'est ainsi que vous les mettrez
- entre parenthèses ou entre crochets.
+ Lorsque vous aurez appris les matrices,
+ c'est ainsi que vous les mettrez entre parenthèses ou entre crochets.
 \end_layout
 
 \begin_layout Subsection
@@ -4645,7 +4888,8 @@ Fractions
 \begin_inset Formula $\frac{}{}$
 \end_inset
 
-Pour créer une fraction, cliquez sur le bouton 
+Pour créer une fraction,
+ cliquez sur le bouton 
 \family sans
 Fraction
 \family default
@@ -4664,10 +4908,10 @@ Barre d'outils Math
 \family default
 .
  \SpecialChar LyX
- écrit deux points d'insertion dans une fraction, l'un au numérateur et
- l'autre au dénominateur.
- Comme vous devez vous y attendre, vous pouvez utiliser les flèches du clavier
- ou la souris pour vous déplacer dans la fraction.
+ écrit deux points d'insertion dans une fraction,
+ l'un au numérateur et l'autre au dénominateur.
+ Comme vous devez vous y attendre,
+ vous pouvez utiliser les flèches du clavier ou la souris pour vous déplacer dans la fraction.
  Cliquez sur le carré du haut et tapez 
 \begin_inset Quotes cld
 \end_inset
@@ -4690,9 +4934,12 @@ Bas
 \end_inset
 
 .
- Vous avez écrit une fraction ! Bien entendu vous pouvez saisir autre chose
- dans chacune des deux boîtes : variables avec exposants, racines carrées,
- autres fractions, ou tout autre chose.
+ Vous avez écrit une fraction !
+ Bien entendu vous pouvez saisir autre chose dans chacune des deux boîtes :
+ variables avec exposants,
+ racines carrées,
+ autres fractions,
+ ou tout autre chose.
 \end_layout
 
 \begin_layout Labeling
@@ -4701,7 +4948,8 @@ Bas
 \series bold
 Exercice
 \series default
-: Mettez l'équation n° 2 de 
+:
+ Mettez l'équation n° 2 de 
 \emph on
 Exemple (brut)
 \emph default
@@ -4710,12 +4958,15 @@ Exemple (brut)
 
 \begin_layout Subsection
 Mode \SpecialChar TeX
- : lim, log, sin et autres
+ :
+ lim,
+ log,
+ sin et autres
 \end_layout
 
 \begin_layout Standard
-Comme les lettres en mode Math sont considérées comme des variables, si
- vous tapez 
+Comme les lettres en mode Math sont considérées comme des variables,
+ si vous tapez 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4728,17 +4979,19 @@ sin
 \begin_inset Formula $s$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $i$
 \end_inset
 
-, et 
+,
+ et 
 \begin_inset Formula $n$
 \end_inset
 
 .
- Les trois lettres seront inscrites en italique, alors que ce que vous vouliez
- réellement était le mot 
+ Les trois lettres seront inscrites en italique,
+ alors que ce que vous vouliez réellement était le mot 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4747,7 +5000,8 @@ sin
 \end_inset
 
  écrit en Romain.
- De plus, \SpecialChar LyX
+ De plus,
+ \SpecialChar LyX
  ne mettra pas d'espace entre le mot 
 \begin_inset Quotes cld
 \end_inset
@@ -4829,9 +5083,10 @@ sin
 \end_inset
 
  s'inscrit dans \SpecialChar LyX
- en noir, en police roman droite.
- Le mot est traité comme un symbole dans son ensemble, et si vous tapez
- 
+ en noir,
+ en police roman droite.
+ Le mot est traité comme un symbole dans son ensemble,
+ et si vous tapez 
 \family typewriter
 Retour
 \begin_inset space ~
@@ -4839,7 +5094,8 @@ Retour
 
 Arrière
 \family default
-, il sera supprimé tout entier.
+,
+ il sera supprimé tout entier.
  Tapez maintenant 
 \begin_inset Quotes cld
 \end_inset
@@ -4848,9 +5104,11 @@ x
 \begin_inset Quotes crd
 \end_inset
 
-, qui sera affiché en italiques bleus, comme vous vous y attendez dans une
- formule.
- Dans la sortie finale, l'expression sera parfaitement rendue.
+,
+ qui sera affiché en italiques bleus,
+ comme vous vous y attendez dans une formule.
+ Dans la sortie finale,
+ l'expression sera parfaitement rendue.
  Vous pouvez le tester.
 \end_layout
 
@@ -4859,10 +5117,12 @@ La liste de
 \family sans
 Fonctions
 \family default
- contient d'autres fonctions trigonométriques et leurs inverses, les fonctions
- hyperboliques, les logarithmes, les limites et quelques autres encore.
- Ces fonctions peuvent avoir des indices ou exposants, indispensables pour
- écrire 
+ contient d'autres fonctions trigonométriques et leurs inverses,
+ les fonctions hyperboliques,
+ les logarithmes,
+ les limites et quelques autres encore.
+ Ces fonctions peuvent avoir des indices ou exposants,
+ indispensables pour écrire 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4895,7 +5155,8 @@ Fonctions
 \series bold
 Exercice
 \series default
-: Mettez l'équation n° 3 de 
+:
+ Mettez l'équation n° 3 de 
 \emph on
 Exemple (brut)
 \emph default
@@ -4922,8 +5183,7 @@ arg   "dialog-show mathmatrix"
 Barre d'outils math
 \family default
 .
- La fenêtre de dialogue qui apparaît vous permet de définir les nombres
- de lignes et de colonnes que vous souhaitez avoir dans votre matrice.
+ La fenêtre de dialogue qui apparaît vous permet de définir les nombres de lignes et de colonnes que vous souhaitez avoir dans votre matrice.
  Choisissez 2 lignes et 3 colonnes puis faites 
 \family sans
 OK
@@ -4935,9 +5195,13 @@ OK
 \end_inset
 
 .
- Comme à l'accoutumée, vous pouvez insérer n'importe quelle expression (une
- racine, une autre matrice, etc.) dans chaque point d'insertion.
- Vous pouvez également, si vous le souhaitez, en laisser certains vides.
+ Comme à l'accoutumée,
+ vous pouvez insérer n'importe quelle expression (une racine,
+ une autre matrice,
+ etc.) dans chaque point d'insertion.
+ Vous pouvez également,
+ si vous le souhaitez,
+ en laisser certains vides.
 \end_layout
 
 \begin_layout Standard
@@ -4946,21 +5210,22 @@ OK
 Tab
 \family default
  permet de se déplacer horizontalement de colonne en colonne.
- Vous pouvez aussi vous servir des flèches pour vous déplacer - la flèche
- 
+ Vous pouvez aussi vous servir des flèches pour vous déplacer - la flèche 
 \family sans
 Droite
 \family default
- à la fin d'une case vous fera passer à la case suivante, et la flèche 
+ à la fin d'une case vous fera passer à la case suivante,
+ et la flèche 
 \family sans
 Bas
 \family default
- à la ligne de dessous, etc.
+ à la ligne de dessous,
+ etc.
 \end_layout
 
 \begin_layout Standard
-Si vous avez besoin de changer le nombre de lignes ou de colonnes, faites
- 
+Si vous avez besoin de changer le nombre de lignes ou de colonnes,
+ faites 
 \family sans
 Édition\SpecialChar menuseparator
 Lignes
@@ -4992,19 +5257,22 @@ type  "icon"
 arg   "tabular-feature append-row"
 \end_inset
 
-, 
+,
+ 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature delete-row"
 \end_inset
 
-, 
+,
+ 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature append-column"
 \end_inset
 
-, 
+,
+ 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature delete-column"
@@ -5033,10 +5301,10 @@ l'Utilisateur
 \emph default
  pour découvrir comment changer l'alignement horizontal de chaque colonne,
  et changer la position verticale de l'ensemble de la matrice.
- Notez que si vous souhaitez écrire une table contenant du texte, il est
- préférable de profiter du sensationnel maniement de tables qu'offre \SpecialChar LyX
-, plutôt
- que de tenter d'écrire du texte dans une matrice.
+ Notez que si vous souhaitez écrire une table contenant du texte,
+ il est préférable de profiter du sensationnel maniement de tables qu'offre \SpecialChar LyX
+,
+ plutôt que de tenter d'écrire du texte dans une matrice.
  
 \end_layout
 
@@ -5045,8 +5313,7 @@ Hors ligne
 \end_layout
 
 \begin_layout Standard
-Toutes les expressions écrites jusqu'à présent étaient insérées sur la ligne
- de texte qui les entourait.
+Toutes les expressions écrites jusqu'à présent étaient insérées sur la ligne de texte qui les entourait.
  Elles sont connues sous le nom d'expressions 
 \begin_inset Quotes cld
 \end_inset
@@ -5056,9 +5323,11 @@ en ligne
 \end_inset
 
 .
- Cela convient pour des expressions simples, de petite taille.
- Pour des expressions plus conséquentes, ou pour les faire ressortir du
- texte qui les accompagne, il faut les écrire 
+ Cela convient pour des expressions simples,
+ de petite taille.
+ Pour des expressions plus conséquentes,
+ ou pour les faire ressortir du texte qui les accompagne,
+ il faut les écrire 
 \begin_inset Quotes cld
 \end_inset
 
@@ -5067,8 +5336,8 @@ hors ligne
 \end_inset
 
 .
- De plus, la numérotation et la pose d'étiquettes n'est possible que sur
- les expressions hors ligne (voir le 
+ De plus,
+ la numérotation et la pose d'étiquettes n'est possible que sur les expressions hors ligne (voir le 
 \emph on
 Guide
 \begin_inset space ~
@@ -5085,7 +5354,8 @@ l'Utilisateur
 \end_layout
 
 \begin_layout Standard
-Dans une formule, cliquez sur le bouton 
+Dans une formule,
+ cliquez sur le bouton 
 \family sans
 Hors
 \begin_inset space ~
@@ -5112,7 +5382,8 @@ d'outils
 math.
  
 \family default
-Ceci centre la formule, et ajoute une ligne vide avant et après.
+Ceci centre la formule,
+ et ajoute une ligne vide avant et après.
  Saisissez une expression et lancez \SpecialChar LaTeX
  pour vous rendre compte du résultat.
  Le bouton 
@@ -5123,18 +5394,18 @@ Hors
 
 Ligne
 \family default
- est en fait une bascule ; vous pouvez l'utiliser pour faire basculer quelques-u
-nes de vos expressions du mode hors ligne au mode en ligne et vice versa.
+ est en fait une bascule ;
+ vous pouvez l'utiliser pour faire basculer quelques-unes de vos expressions du mode hors ligne au mode en ligne et vice versa.
  
 \end_layout
 
 \begin_layout Standard
-Le mode hors ligne diffère des formules ordinaires sur les points suivants
- :
+Le mode hors ligne diffère des formules ordinaires sur les points suivants :
 \end_layout
 
 \begin_layout Itemize
-implicitement, la taille de police est plus grande pour certains symboles,
+implicitement,
+ la taille de police est plus grande pour certains symboles,
  comme 
 \begin_inset Formula $\sum$
 \end_inset
@@ -5183,27 +5454,30 @@ le texte est centré.
 \end_layout
 
 \begin_layout Standard
-Donc, mis à part ces nuances, les expressions en mode hors ligne et en ligne
- sont très similaires.
+Donc,
+ mis à part ces nuances,
+ les expressions en mode hors ligne et en ligne sont très similaires.
  
 \end_layout
 
 \begin_layout Standard
-Une note finale sur la composition des formules hors ligne : faites attention
- à placer ou pas votre formule dans un nouveau paragraphe.
- Si elle se situe au milieu d'une phrase ou d'un paragraphe, ne tapez pas
- 
+Une note finale sur la composition des formules hors ligne :
+ faites attention à placer ou pas votre formule dans un nouveau paragraphe.
+ Si elle se situe au milieu d'une phrase ou d'un paragraphe,
+ ne tapez pas 
 \family sans
 Entrée
 \family default
 .
- Si vous le faites, le texte qui 
+ Si vous le faites,
+ le texte qui 
 \emph on
 suit
 \emph default
  la formule sera le début d'un nouveau paragraphe.
- Il sera donc éventuellement indenté, en fonction de vos paramètres de paragraph
-e, ce que vous ne souhaitez probablement pas.
+ Il sera donc éventuellement indenté,
+ en fonction de vos paramètres de paragraphe,
+ ce que vous ne souhaitez probablement pas.
  
 \end_layout
 
@@ -5213,11 +5487,13 @@ e, ce que vous ne souhaitez probablement pas.
 \series bold
 Exercice
 \series default
-: Mettez les différentes formules du fichier 
+:
+ Mettez les différentes formules du fichier 
 \emph on
 Exemple (brut)
 \emph default
- en mode hors ligne, et constatez les différences de typographie.
+ en mode hors ligne,
+ et constatez les différences de typographie.
 \end_layout
 
 \begin_layout Labeling
@@ -5226,13 +5502,15 @@ Exemple (brut)
 \series bold
 Exercice
 \series default
-: En utilisant les différents outils dont vous avez appris le maniement
- dans cette section, vous devriez pouvoir écrire une équation comme celle-ci
+:
+ En utilisant les différents outils dont vous avez appris le maniement dans cette section,
+ vous devriez pouvoir écrire une équation comme celle-ci
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Après avoir sué sur cet exercice, essayez 
+Après avoir sué sur cet exercice,
+ essayez 
 \family sans
 Insertion\SpecialChar menuseparator
 Math\SpecialChar menuseparator
@@ -5267,8 +5545,9 @@ En savoir plus sur l'écriture des maths
 \begin_layout Standard
 L'éditeur mathématique de \SpecialChar LyX
  peut en faire beaucoup plus.
- Pour le moment, vous êtes sensibilisé avec les bases, et nous vous renvoyons
- au 
+ Pour le moment,
+ vous êtes sensibilisé avec les bases,
+ et nous vous renvoyons au 
 \emph on
 Guide
 \begin_inset space ~
@@ -5292,19 +5571,20 @@ réaliser des équations multi-lignes ;
 \end_layout
 
 \begin_layout Itemize
-modifier la typographie, par exemple, écrire du texte en gras dans une expressio
-n ;
+modifier la typographie,
+ par exemple,
+ écrire du texte en gras dans une expression ;
 \end_layout
 
 \begin_layout Itemize
-régler finement la taille des polices et l'espacement au sein d'une expression
- (ne vous en préoccupez pas avant votre dernier brouillon !) ;
+régler finement la taille des polices et l'espacement au sein d'une expression (ne vous en préoccupez pas avant votre dernier brouillon !) ;
 \end_layout
 
 \begin_layout Itemize
-écrire des macros, qui sont d'une puissance redoutable.
- Vous les écrivez en tête du document, et pouvez les utiliser tout au long
- de votre document.
+écrire des macros,
+ qui sont d'une puissance redoutable.
+ Vous les écrivez en tête du document,
+ et pouvez les utiliser tout au long de votre document.
  
 \end_layout
 
@@ -5331,9 +5611,10 @@ Autres fonctionnalités majeures de \SpecialChar LyX
 
 \begin_layout Standard
 Nous n'avons pas parcouru toutes les fonctions de \SpecialChar LyX
-, et ce n'est pas ici
- notre objectif.
- Comme toujours, consultez le 
+,
+ et ce n'est pas ici notre objectif.
+ Comme toujours,
+ consultez le 
 \emph on
 Guide
 \begin_inset space ~
@@ -5355,8 +5636,7 @@ Insérés
 \emph default
  pour des informations supplémentaires.
  Nous allons juste présenter quelques choses importantes que \SpecialChar LyX
- peut faire
- :
+ peut faire :
 \end_layout
 
 \begin_layout Itemize
@@ -5378,7 +5658,9 @@ arg   "tabular-insert"
 status collapsed
 
 \begin_layout Plain Layout
-NdT : Dans la version anglaise, il y a une distinction entre 
+NdT :
+ Dans la version anglaise,
+ il y a une distinction entre 
 \begin_inset Quotes cld
 \end_inset
 
@@ -5386,7 +5668,9 @@ tabular
 \begin_inset Quotes crd
 \end_inset
 
-, le tableau lui-même, et 
+,
+ le tableau lui-même,
+ et 
 \begin_inset Quotes cld
 \end_inset
 
@@ -5394,9 +5678,14 @@ table
 \begin_inset Quotes crd
 \end_inset
 
-, qui comprend le tableau, la légende, etc.
- Cette distinction, qui provient de \SpecialChar LaTeX
-, n'a pas été reprise dans la traduction.
+,
+ qui comprend le tableau,
+ la légende,
+ etc.
+ Cette distinction,
+ qui provient de \SpecialChar LaTeX
+,
+ n'a pas été reprise dans la traduction.
 \end_layout
 
 \end_inset
@@ -5443,38 +5732,44 @@ arg   "toolbar-toggle table"
 
 \begin_layout Itemize
 \SpecialChar LyX
- permet également d'inclure des images dans n'importe quel format à l'intérieur
- d'un document (vous l'avez deviné : 
+ permet également d'inclure des images dans n'importe quel format à l'intérieur d'un document (vous l'avez deviné :
+ 
 \family sans
 Insertion\SpecialChar menuseparator
 Graphique
 \family default
-, ou bouton 
+,
+ ou bouton 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-; choisissez ensuite le nom du fichier, faites tourner la figure, redimensionnez
--la, etc.).
- Les tableaux et les figures peuvent avoir des titres, et \SpecialChar LyX
- générera automatiquem
-ent des listes de tableaux et/ou de figures;
+;
+ choisissez ensuite le nom du fichier,
+ faites tourner la figure,
+ redimensionnez-la,
+ etc.).
+ Les tableaux et les figures peuvent avoir des titres,
+ et \SpecialChar LyX
+ générera automatiquement des listes de tableaux et/ou de figures;
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
  est largement configurable.
- Tout, depuis l'aspect de la fenêtre \SpecialChar LyX
- jusqu'aux formats de sortie, est configura
-ble de multiples façons.
+ Tout,
+ depuis l'aspect de la fenêtre \SpecialChar LyX
+ jusqu'aux formats de sortie,
+ est configurable de multiples façons.
  La majeure partie de la configuration se fait dans la fenêtre 
 \family sans
 Outils\SpecialChar menuseparator
 Préférences
 \family default
 .
- Pour plus d'informations, consultez 
+ Pour plus d'informations,
+ consultez 
 \family sans
 Aide\SpecialChar menuseparator
 Personnalisation
@@ -5485,16 +5780,24 @@ Personnalisation
 \begin_layout Itemize
 \SpecialChar LyX
  est développé par une équipe de programmeurs répartie sur les cinq continents.
- De ce fait, \SpecialChar LyX
- supporte, bien mieux que beaucoup d'autres traitements de
- texte, les autres langues que l'anglais (comme le néerlandais, l'allemand,
- le français, le grec, le tchèque, le turc, \SpecialChar ldots
+ De ce fait,
+ \SpecialChar LyX
+ supporte,
+ bien mieux que beaucoup d'autres traitements de texte,
+ les autres langues que l'anglais (comme le néerlandais,
+ l'allemand,
+ le français,
+ le grec,
+ le tchèque,
+ le turc,
+ \SpecialChar ldots
 ).
  Il sait même gérer certaines langues qui s'écrivent de droite à gauche,
- comme l'arabe, le farsi et l'hébreu et aussi les langues asiatiques comme
- le chinois, le japonnais et le coréen.
- Vous pouvez écrire des documents dans des langues différentes, mais également
- configurer \SpecialChar LyX
+ comme l'arabe,
+ le farsi et l'hébreu et aussi les langues asiatiques comme le chinois,
+ le japonnais et le coréen.
+ Vous pouvez écrire des documents dans des langues différentes,
+ mais également configurer \SpecialChar LyX
  pour afficher les menus et les messages dans une autre langue;
 \end_layout
 
@@ -5518,26 +5821,28 @@ M-F
 \family sans
 O
 \family default
-, ou avec le raccourci qui est indiqué à côté de l'entrée de menu (
+,
+ ou avec le raccourci qui est indiqué à côté de l'entrée de menu (
 \begin_inset Info
 type  "shortcut"
 arg   "file-open"
 \end_inset
 
  implicitement).
- Ces associations de touches sont également configurables (et ces raccourcis
- existent même pour certains menus traduits de l'anglais
+ Ces associations de touches sont également configurables (et ces raccourcis existent même pour certains menus traduits de l'anglais
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-NdT : la version française étant autant à jour que possible sur ce point
+NdT :
+ la version française étant autant à jour que possible sur ce point
 \end_layout
 
 \end_inset
 
 ).
- Pour plus d'informations là-dessus, voyez 
+ Pour plus d'informations là-dessus,
+ voyez 
 \family sans
 Aide\SpecialChar menuseparator
 Personnalisation
@@ -5556,8 +5861,8 @@ Personnalisation
 
 \begin_inset CommandInset ref
 LatexCommand ref
-nolink "false"
 reference "sec:tex2lyx"
+nolink "false"
 
 \end_inset
 
@@ -5565,12 +5870,14 @@ reference "sec:tex2lyx"
 \end_layout
 
 \begin_layout Itemize
-vous avez accès à un correcteur orthographique, à un dictionnaire de synonymes
+vous avez accès à un correcteur orthographique,
+ à un dictionnaire de synonymes
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-NdT : Ce dernier est uniquement accessible en anglais pour le moment.
+NdT :
+ Ce dernier est uniquement accessible en anglais pour le moment.
 \end_layout
 
 \end_inset
@@ -5597,32 +5904,33 @@ name "sec:utilisateurs-latex"
 
 \begin_layout Standard
 Si vous ne connaissez rien à \SpecialChar LaTeX
-, inutile de lire cette section, sauf si vous
- voulez 
+,
+ inutile de lire cette section,
+ sauf si vous voulez 
 \emph on
 apprendre
 \emph default
  des choses sur \SpecialChar LaTeX
 .
  Mais certaines personnes qui commencent à utiliser \SpecialChar LyX
- sont déjà familières
- avec \SpecialChar LaTeX
+ sont déjà familières avec \SpecialChar LaTeX
 .
- Si vous êtes de ceux-là, vous vous demandez sûrement si \SpecialChar LyX
- permet réellement
- d'en faire autant que \SpecialChar LaTeX
+ Si vous êtes de ceux-là,
+ vous vous demandez sûrement si \SpecialChar LyX
+ permet réellement d'en faire autant que \SpecialChar LaTeX
 .
- En deux mots, \SpecialChar LyX
- peut quasiment tout faire, d'une manière ou d'une autre,
+ En deux mots,
+ \SpecialChar LyX
+ peut quasiment tout faire,
+ d'une manière ou d'une autre,
  et simplifie sensiblement l'écriture d'un document \SpecialChar LaTeX
 .
  
 \end_layout
 
 \begin_layout Standard
-Puisqu'il s'agit uniquement d'un manuel d'apprentissage, nous ne mentionnerons
- que les aspects qui ont le plus de chances d'intéresser les nouveaux venus
- dans \SpecialChar LyX
+Puisqu'il s'agit uniquement d'un manuel d'apprentissage,
+ nous ne mentionnerons que les aspects qui ont le plus de chances d'intéresser les nouveaux venus dans \SpecialChar LyX
 .
  Dans le but de conserver un 
 \emph on
@@ -5632,7 +5940,8 @@ Manuel
 
 d'apprentissage
 \emph default
- assez court, nous ne fournirons ici que le minimum d'information.
+ assez court,
+ nous ne fournirons ici que le minimum d'information.
  Le manuel 
 \emph on
 Options
@@ -5641,7 +5950,8 @@ Options
 
 avancées
 \emph default
-, et le manuel 
+,
+ et le manuel 
 \emph on
 Objets
 \begin_inset space ~
@@ -5651,8 +5961,8 @@ Insérés
 \emph default
  contiennent beaucoup d'informations sur les différences entre \SpecialChar LyX
  et \SpecialChar LaTeX
-, et
- sur la façon de porter certains tours de main de \SpecialChar LaTeX
+,
+ et sur la façon de porter certains tours de main de \SpecialChar LaTeX
  à \SpecialChar LyX
 .
  
@@ -5666,8 +5976,7 @@ Mode \SpecialChar TeX
 \begin_layout Standard
 Tout ce que vous entrez en mode \SpecialChar TeX
  est transmis tel quel à \SpecialChar LaTeX
- et apparaît en
- rouge à l'écran.
+ et apparaît en rouge à l'écran.
  Vous pouvez mettre des commandes \SpecialChar TeX
  dans \SpecialChar LyX
  en faisant 
@@ -5686,13 +5995,14 @@ arg   "ert-insert"
 \end_inset
 
  de la barre d'outils).
- Ça crée une boîte, et tout ce que vous y écrivez est transmis tel quel
- à \SpecialChar LaTeX
+ Ça crée une boîte,
+ et tout ce que vous y écrivez est transmis tel quel à \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
-Dans une formule mathématique, le mode \SpecialChar TeX
+Dans une formule mathématique,
+ le mode \SpecialChar TeX
  est géré de façon différente.
  Vous y passez en mode \SpecialChar TeX
  avec la contre-oblique 
@@ -5706,21 +6016,27 @@ Dans une formule mathématique, le mode \SpecialChar TeX
 \end_inset
 
 .
- Elle n'est pas affichée, mais tout ce que vous tapez par la suite apparaît
- en rouge.
+ Elle n'est pas affichée,
+ mais tout ce que vous tapez par la suite apparaît en rouge.
  Vous sortez du mode \SpecialChar TeX
  en tapant 
 \family sans
 Espace
 \family default
-, ou d'autres caractères non alphabétiques comme un chiffre, un souligné,
- un chapeau, ou une parenthèse.
+,
+ ou d'autres caractères non alphabétiques comme un chiffre,
+ un souligné,
+ un chapeau,
+ ou une parenthèse.
  Lorsque vous sortez du mode \SpecialChar TeX
-, si \SpecialChar LyX
+,
+ si \SpecialChar LyX
  reconnaît la commande \SpecialChar TeX
- que vous avez
- entrée, il la convertit en WYSIWYM.
- Ainsi, dans une formule, si vous tapez 
+ que vous avez entrée,
+ il la convertit en WYSIWYM.
+ Ainsi,
+ dans une formule,
+ si vous tapez 
 \begin_inset Quotes cld
 \end_inset
 
@@ -5738,7 +6054,8 @@ gamma
 \family sans
 Espace
 \family default
-, \SpecialChar LyX
+,
+ \SpecialChar LyX
  transformera le 
 \begin_inset Quotes cld
 \end_inset
@@ -5769,13 +6086,15 @@ Palette
 
 mathématique
 \family default
-, et sera particulièrement commode pour les utilisateurs \SpecialChar LaTeX
+,
+ et sera particulièrement commode pour les utilisateurs \SpecialChar LaTeX
  expérimentés.
  
 \end_layout
 
 \begin_layout Standard
-Un cas particulier : lorsque vous saisissez 
+Un cas particulier :
+ lorsque vous saisissez 
 \begin_inset Quotes cld
 \end_inset
 
@@ -5789,7 +6108,8 @@ Un cas particulier : lorsque vous saisissez
 \begin_inset Quotes crd
 \end_inset
 
- dans une formule, il affichera alors l'accolade ouvrante 
+ dans une formule,
+ il affichera alors l'accolade ouvrante 
 \emph on
 et
 \emph default
@@ -5799,8 +6119,8 @@ et
 \emph default
 et placera le curseur entre les accolades.
  Ceci rend plus facile la saisie des commandes que \SpecialChar LyX
- ne reconnaît pas, et
- qui ont des paramètres.
+ ne reconnaît pas,
+ et qui ont des paramètres.
  
 \end_layout
 
@@ -5808,18 +6128,21 @@ et placera le curseur entre les accolades.
 \SpecialChar LyX
  ne peut pas faire absolument tout ce qui est possible avec \SpecialChar LaTeX
 .
- Certaines fonctions exotiques ne sont pas supportées du tout, tandis que
- d'autres fonctionnent mais ne sont pas WYSIWYM.
+ Certaines fonctions exotiques ne sont pas supportées du tout,
+ tandis que d'autres fonctionnent mais ne sont pas WYSIWYM.
  Le mode \SpecialChar TeX
  donne aux utilisateurs accès à toute la flexibilité de \SpecialChar LaTeX
-, tout
- en profitant des commodités qu'apporte \SpecialChar LyX
-, comme l'interface WYSIWYM pour
- les maths, les tableaux, et l'édition.
+,
+ tout en profitant des commodités qu'apporte \SpecialChar LyX
+,
+ comme l'interface WYSIWYM pour les maths,
+ les tableaux,
+ et l'édition.
  \SpecialChar LyX
  ne pourra jamais supporter tous les paquetages \SpecialChar LaTeX
 .
- Cependant, en ajoutant 
+ Cependant,
+ en ajoutant 
 \family typewriter
 
 \backslash
@@ -5832,18 +6155,19 @@ usepackage{machin}
 
 \begin_inset CommandInset ref
 LatexCommand ref
-nolink "false"
 reference "sec:preambule-latex"
+nolink "false"
 
 \end_inset
 
-), vous pouvez utiliser n'importe quel paquetage – sans avoir de support
- WYSIWYM pour ses fonctions.
+),
+ vous pouvez utiliser n'importe quel paquetage – sans avoir de support WYSIWYM pour ses fonctions.
 \end_layout
 
 \begin_layout Subsection
 Importer des documents \SpecialChar LaTeX
- — 
+ —
+ 
 \family typewriter
 tex2lyx
 \family default
@@ -5880,11 +6204,13 @@ machin.lyx
 machin.tex
 \family default
  et ouvre ce nouveau fichier.
- Si la conversion ne fonctionne pas, vous pouvez essayer d'exécuter 
+ Si la conversion ne fonctionne pas,
+ vous pouvez essayer d'exécuter 
 \family typewriter
 tex2lyx
 \family default
- à la ligne de commande, avec des options plus élaborées.
+ à la ligne de commande,
+ avec des options plus élaborées.
  
 \end_layout
 
@@ -5894,15 +6220,17 @@ tex2lyx
 tex2lyx
 \family default
  convertira la majorité du \SpecialChar LaTeX
- conventionnel, mais pas tout.
+ conventionnel,
+ mais pas tout.
  Il laissera en mode \SpecialChar TeX
- ce qu'il ne comprend pas, et vous pourrez donc, après
- la conversion d'un fichier avec 
+ ce qu'il ne comprend pas,
+ et vous pourrez donc,
+ après la conversion d'un fichier avec 
 \family typewriter
 tex2lyx,
+
 \family default
- rechercher le texte en rouge et l'éditer à la main pour d'éventuelles correctio
-ns.
+ rechercher le texte en rouge et l'éditer à la main pour d'éventuelles corrections.
  
 \end_layout
 
@@ -5913,8 +6241,8 @@ tex2lyx
 \family default
  possède sa propre page de man.
  Consultez-la pour savoir quels sont les commandes et environnements \SpecialChar LaTeX
- qui
- ne sont pas supportés, les problèmes connus (avec la façon de les contourner),
+ qui ne sont pas supportés,
+ les problèmes connus (avec la façon de les contourner),
  et comment utiliser les différentes options.
 \end_layout
 
@@ -5932,27 +6260,26 @@ connue
 \end_inset
 
  de \SpecialChar LyX
-, c'est-à-dire pour laquelle il existe un fichier de format pour \SpecialChar LyX
- (
- fichier 
+,
+ c'est-à-dire pour laquelle il existe un fichier de format pour \SpecialChar LyX
+ ( fichier 
 \family typewriter
 .layout
 \family default
  ).
- S'il n'y a pas de fichier de format, vous aurez un message d'erreur disant
- que la conversion ne peut avoir lieu.
- Ce qui fait que, si vous n'avez pas de fichier de format pour la classe
- de votre document \SpecialChar LaTeX
-, 
+ S'il n'y a pas de fichier de format,
+ vous aurez un message d'erreur disant que la conversion ne peut avoir lieu.
+ Ce qui fait que,
+ si vous n'avez pas de fichier de format pour la classe de votre document \SpecialChar LaTeX
+,
+ 
 \family typewriter
 tex2lyx
 \family default
  ne saura tout simplement pas comment convertir les commandes \SpecialChar LaTeX
- en quelque
- chose que \SpecialChar LyX
+ en quelque chose que \SpecialChar LyX
  comprenne.
- Vous trouverez plus d'information sur les fichiers de format et la façon
- de les créer dans le chapitre 5 du manuel 
+ Vous trouverez plus d'information sur les fichiers de format et la façon de les créer dans le chapitre 5 du manuel 
 \emph on
 Personnalisation
 \emph default
@@ -5969,8 +6296,8 @@ Conversion de documents \SpecialChar LyX
 Vous voudrez peut-être convertir un document \SpecialChar LyX
  en fichier \SpecialChar LaTeX
 .
- Par exemple, un co-auteur ou une personne travaillant avec vous peut avoir
- à lire ce document tout en n'ayant pas \SpecialChar LyX
+ Par exemple,
+ un co-auteur ou une personne travaillant avec vous peut avoir à lire ce document tout en n'ayant pas \SpecialChar LyX
 .
  Faites 
 \family sans
@@ -6006,10 +6333,11 @@ Document\SpecialChar menuseparator
 Paramètres
 \family default
  prend en charge la plupart des options globales du document.
- C'est là qu'il faut modifier la classe du document, la taille de la police
- implicite, et la taille du papier.
- Les options supplémentaires de la classe, mais également celles qui doivent
- être transmises aux paquetages \SpecialChar LaTeX
+ C'est là qu'il faut modifier la classe du document,
+ la taille de la police implicite,
+ et la taille du papier.
+ Les options supplémentaires de la classe,
+ mais également celles qui doivent être transmises aux paquetages \SpecialChar LaTeX
  peuvent être saisies dans le champ 
 \family sans
 Options
@@ -6029,9 +6357,9 @@ name "sec:preambule-latex"
 \end_layout
 
 \begin_layout Standard
-Si vous avez des commandes spéciales à mettre dans le préambule d'un fichier
- \SpecialChar LaTeX
-, vous pouvez les utiliser également dans un document \SpecialChar LyX
+Si vous avez des commandes spéciales à mettre dans le préambule d'un fichier \SpecialChar LaTeX
+,
+ vous pouvez les utiliser également dans un document \SpecialChar LyX
 .
  
 \family sans
@@ -6043,8 +6371,8 @@ Préambule
 
 LaTeX
 \family default
- fait apparaître une fenêtre dans laquelle vous pouvez taper ces commandes
- (ou une simple zone de texte, cela dépend de l'interface utilisée).
+ fait apparaître une fenêtre dans laquelle vous pouvez taper ces commandes (ou une simple zone de texte,
+ cela dépend de l'interface utilisée).
  Tout ce qui y est saisi sera envoyé directement à \SpecialChar LaTeX
  (à l'image du mode \SpecialChar TeX
 ).
@@ -6059,9 +6387,8 @@ Bib\SpecialChar TeX
 \begin_layout Standard
 \SpecialChar LyX
  supporte Bib\SpecialChar TeX
- et Biblatex, qui vous permet de créer des bases de données
- de références bibliographiques et de les utiliser dans plusieurs documents
- différents.
+ et Biblatex,
+ qui vous permet de créer des bases de données de références bibliographiques et de les utiliser dans plusieurs documents différents.
  Faites 
 \family sans
 Insertion\SpecialChar menuseparator
@@ -6093,9 +6420,7 @@ Ne vous étonnez pas si l'ouverture de la fenêtre prend un peu de temps:
 .bst
 \family default
  présents dans votre distribution \SpecialChar LaTeX
- (et éventuellement dans vos répertoires
- personnels) pour construire dynamiquement les menus déroulants décrits
- ci-après.
+ (et éventuellement dans vos répertoires personnels) pour construire dynamiquement les menus déroulants décrits ci-après.
 \end_layout
 
 \end_inset
@@ -6113,9 +6438,10 @@ de
 
 données
 \family default
-, vous choisissez les fichier Bib\SpecialChar TeX
- que vous voulez charger, dans le champ
- 
+,
+ vous choisissez les fichier Bib\SpecialChar TeX
+ que vous voulez charger,
+ dans le champ 
 \family sans
 Style
 \family default
@@ -6124,8 +6450,9 @@ Style
 \end_layout
 
 \begin_layout Standard
-Après ça, vous pouvez citer n'importe quel ouvrage des bibliographies que
- vous avez choisies, avec 
+Après ça,
+ vous pouvez citer n'importe quel ouvrage des bibliographies que vous avez choisies,
+ avec 
 \family sans
 Insertion\SpecialChar menuseparator
 Citation
@@ -6137,8 +6464,8 @@ Citation
 
 \begin_inset CommandInset ref
 LatexCommand ref
-nolink "false"
 reference "sec:bibliographies"
+nolink "false"
 
 \end_inset
 
@@ -6162,7 +6489,8 @@ Erreurs !
 \end_layout
 
 \begin_layout Standard
-De temps en temps, lorsque vous 
+De temps en temps,
+ lorsque vous 
 \begin_inset Quotes cld
 \end_inset
 
@@ -6171,13 +6499,14 @@ ez
 \begin_inset Quotes crd
 \end_inset
 
- un document, il y a des erreurs, des choses que \SpecialChar LyX
+ un document,
+ il y a des erreurs,
+ des choses que \SpecialChar LyX
  et/ou \SpecialChar LaTeX
- ne comprennent
- pas.
- Quand ça arrive, \SpecialChar LyX
- vous présente les erreurs dans une boîte de dialogue
- (identifiée par 
+ ne comprennent pas.
+ Quand ça arrive,
+ \SpecialChar LyX
+ vous présente les erreurs dans une boîte de dialogue (identifiée par 
 \begin_inset Quotes cld
 \end_inset
 
@@ -6191,9 +6520,9 @@ Erreurs \SpecialChar LaTeX
 \end_inset
 
 ).
- En cliquant sur une erreur donnée, \SpecialChar LyX
- positionne le curseur à l'endroit de
- l'erreur et vous cite le message d'erreur \SpecialChar LaTeX
+ En cliquant sur une erreur donnée,
+ \SpecialChar LyX
+ positionne le curseur à l'endroit de l'erreur et vous cite le message d'erreur \SpecialChar LaTeX
 .
  
 \end_layout
@@ -6204,8 +6533,8 @@ Erreurs \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Standard
-Pour rédiger un document en français, il faut avant tout sélectionner l'un
- des paquetages français de \SpecialChar LaTeX
+Pour rédiger un document en français,
+ il faut avant tout sélectionner l'un des paquetages français de \SpecialChar LaTeX
  (
 \family sans
 Français
@@ -6216,9 +6545,9 @@ Français
 \begin_inset space ~
 \end_inset
 
-canadien
+
 \family default
-) dans la rubrique 
+(acadien)) dans la rubrique 
 \family sans
 Langue
 \family default
@@ -6228,29 +6557,33 @@ Document\SpecialChar menuseparator
 Paramètres
 \family default
 .
- Ce choix vous permet d'obtenir les règles de césure françaises, la gestion
- des espacements des ponctuations hautes, les traductions des étiquettes
- de champs prédéfinies (Chapitre pour Chapter, Auteur pour Author, etc.),
- ainsi que, pour les lettres, le placement adéquat des adresses d'expéditeur
- et de destinataire.
+ Ce choix vous permet d'obtenir les règles de césure françaises,
+ la gestion des espacements des ponctuations hautes,
+ les traductions des étiquettes de champs prédéfinies (Chapitre pour Chapter,
+ Auteur pour Author,
+ etc.),
+ ainsi que,
+ pour les lettres,
+ le placement adéquat des adresses d'expéditeur et de destinataire.
  C'est 
 \family sans
 babel
 \family default
- qui gère implicitement cette fonctionnalité, via le fichier de style 
+ qui gère implicitement cette fonctionnalité,
+ via le fichier de style 
 \family sans
-frenchb.ldf
+french.ldf
 \family default
- : si vous désirez en savoir plus sur les règles typographiques qu'il applique
- et sur les modifications que vous pouvez leur apporter via la commande
- \SpecialChar LaTeX
+ :
+ si vous désirez en savoir plus sur les règles typographiques qu'il applique et sur les modifications que vous pouvez leur apporter via la commande \SpecialChar LaTeX
  
 \series bold
 
 \backslash
-frenchbsetup
+frenchsetup
 \series default
- dans le préambule, voyez le manuel qui se trouve dans le fichier
+ dans le préambule,
+ voyez le manuel qui se trouve dans le fichier
 \family sans
 
 \begin_inset Newline newline
@@ -6262,40 +6595,18 @@ frenchbsetup
 \begin_inset Newline newline
 \end_inset
 
-de votre distribution
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Pour que la commande soit prise en compte le plus tard possible dans le
- préambule (pour éviter des conflits), il est recommandé de l’encapsuler
- dans une commande 
-\series bold
-
-\backslash
-AtBeginDocument{}
-\series default
-.
+de votre distribution,
+ ou ex exécutant la commande 
+\family sans
+texdoc frenchb.
 \end_layout
 
-\end_inset
-
-.
- Vous pouvez également visiter le site de l'auteur de ce fichier, 
-\begin_inset CommandInset href
-LatexCommand href
-name "Daniel Flipo"
-target "http://daniel.flipo.free.fr/frenchb"
-literal "false"
-
-\end_inset
-
-.
- Si vous cherchez des informations plus générales sur la typographie française,
+\begin_layout Standard
+Si vous cherchez des informations plus générales sur la typographie française,
  au-delà des fonctionnalités de \SpecialChar LaTeX
  et \SpecialChar LyX
-, voyez l'article de Wikipedia consacré
- aux 
+,
+ voyez l'article de Wikipedia consacré aux 
 \begin_inset CommandInset href
 LatexCommand href
 name "conventions typographiques"
@@ -6321,14 +6632,14 @@ oe{}
 
 \end_inset
 
-, c'est à dire 
+,
+ c'est à dire 
 \backslash
 oe{} en mode \SpecialChar TeX
-, ou bien en utilisant directement l'encodage implicite avec
- une touche ou une combinaison de touches qui appellent le bon code avec
- un clavier correctement configuré
+,
+ ou bien en utilisant directement l'encodage implicite avec une touche ou une combinaison de touches qui appellent le bon code avec un clavier correctement configuré
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Voyez la page 
@@ -6340,8 +6651,7 @@ literal "false"
 
 \end_inset
 
- de Wikipedia pour les encodages avec divers logiciels et systèmes d'exploitatio
-n.
+ de Wikipedia pour les encodages avec divers logiciels et systèmes d'exploitation.
  Par exemple avec Windows vous pouvez utiliser la touche 
 \family sans
 Alt
@@ -6352,8 +6662,8 @@ Alt-0156
 \family default
  donne œ).
  Il est aussi possible d'associer un raccourci clavier au code \SpecialChar TeX
-, voir la
- section 
+,
+ voir la section 
 \emph on
 Éditer les raccourcis
 \emph default
@@ -6361,11 +6671,13 @@ Alt-0156
 \emph on
 Manuel de l'utilisateur
 \emph default
-: voici par exemple un raccourci fonctionnel pour la ligature œ 
+:
+ voici par exemple un raccourci fonctionnel pour la ligature œ 
 \end_layout
 
 \begin_layout LyX-Code
-command-sequence ert-insert; self-insert 
+command-sequence ert-insert;
+ self-insert 
 \backslash
 
 \backslash
@@ -6392,13 +6704,15 @@ Le choix du format de papier se fait au travers de l'onglet
 \family sans
 Format papier
 \family default
-, via 
+,
+ via 
 \family sans
 Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
 Format de la page
 \family default
-: le choix 
+:
+ le choix 
 \family sans
 Implicite
 \family default
@@ -6413,7 +6727,10 @@ Les ponctuations hautes comme les quatre suivantes
 
 
 \family sans
-: ; ! ?
+:
+ ;
+ !
+ ?
 \family default
 
 \begin_inset Quotes crd
@@ -6422,9 +6739,9 @@ Les ponctuations hautes comme les quatre suivantes
  doivent être précédées d'une espace fine insécable.
  \SpecialChar LaTeX
  (et donc \SpecialChar LyX
-) met en place cet espacement que vous ayez saisi ou non une
- espace ordinaire à cet endroit.
- Par contre, il faut éviter l'emploi de l'
+) met en place cet espacement que vous ayez saisi ou non une espace ordinaire à cet endroit.
+ Par contre,
+ il faut éviter l'emploi de l'
 \family sans
 Espace
 \begin_inset space ~
@@ -6432,10 +6749,11 @@ Espace
 
 insécable
 \family default
-, qui produira en sortie un espacement trop grand.
- Le plus simple est de saisir ces ponctuations sans espacement comme en
- anglais, l'espace correcte apparaîtra dans la sortie imprimable., voyez
- le manuel de 
+,
+ qui produira en sortie un espacement trop grand.
+ Le plus simple est de saisir ces ponctuations sans espacement comme en anglais,
+ l'espace correcte apparaîtra dans la sortie imprimable.,
+ voyez le manuel de 
 \family sans
 frenchb.pdf
 \family default
@@ -6443,7 +6761,8 @@ frenchb.pdf
 \end_layout
 
 \begin_layout Standard
-Les guillemets français sont les suivants : 
+Les guillemets français sont les suivants :
+ 
 \family sans
 
 \begin_inset Quotes cld
@@ -6469,49 +6788,14 @@ Les guillemets français sont les suivants :
 \end_inset
 
 .
- Il faut auparavant les avoir configurés dans 
-\family sans
-Document\SpecialChar menuseparator
-Paramètres, 
-\family default
-rubrique
-\family sans
- Langue
-\family default
-: pour 
-\family sans
-Style
-\begin_inset space ~
-\end_inset
-
-des
-\begin_inset space ~
-\end_inset
-
-Guillemets
-\family default
- vous devez choisir 
-\family sans
-
-\begin_inset Quotes cld
-\end_inset
-
-texte
-\begin_inset Quotes crd
-\end_inset
-
-
-\family default
-.
+ Ils sont automatiquement appliqués lorsque la langue est francophone.
  \SpecialChar LyX
  prend en charge tout seul les espaces associées aux guillemets français,
  il n'est donc pas nécessaire d'ajouter une espace à l'intérieur des guillemets.
 \end_layout
 
 \begin_layout Standard
-Les points de suspension s'obtiennent quant à eux avec trois points ordinaires
- successifs et les tirets longs – comme ici – avec deux tirets juxtaposés
- (ou via 
+Les points de suspension s'obtiennent quant à eux avec trois points ordinaires successifs et les tirets longs – comme ici – avec deux tirets juxtaposés (ou via 
 \family sans
 Insertion\SpecialChar menuseparator
 Caractère
