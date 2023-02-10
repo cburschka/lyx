@@ -271,7 +271,7 @@ dist_koexamples_DATA = \
 
 kolanguageexamplesdir = $(pkgdatadir)/examples/ko/Language_Support
 dist_kolanguageexamples_DATA = \
-	examples/ko/Language_Support/Writing_Korean_with_CJK-ko.lyx.lyx
+	examples/ko/Language_Support/Writing_Korean_with_CJK-ko.lyx
 
 nbexamplesdir = $(pkgdatadir)/examples/nb
 dist_nbexamples_DATA = \
