@@ -217,10 +217,6 @@ dist_huexamples_DATA = \
 	examples/hu/Example_%28raw%29.lyx \
 	examples/hu/Welcome.lyx
 
-hylanguageexamplesdir = $(pkgdatadir)/examples/hy/Language_Support
-dist_hylanguageexamples_DATA = \
-	examples/hy/Language_Support/Writing_Armenian.lyx
-
 idexamplesdir = $(pkgdatadir)/examples/id
 dist_idexamples_DATA = \
 	examples/id/Welcome.lyx
@@ -246,11 +242,6 @@ dist_jainsetexamples_DATA = \
 	examples/ja/Graphics_and_Insets/Feynman_Diagrams.lyx \
 	examples/ja/Graphics_and_Insets/xyfigure.png \
 	examples/ja/Graphics_and_Insets/XY-Pic.lyx
-
-jalanguageexamplesdir = $(pkgdatadir)/examples/ja/Language_Support
-dist_jalanguageexamples_DATA = \
-	examples/ja/Language_Support/Mixing_Japanese_with_other_Languages_%28with_CJKutf8%29.lyx \
-	examples/ja/Language_Support/Mixing_Japanese_with_other_Languages_%28with_platex%29.lyx
 
 jamoduleexamplesdir = $(pkgdatadir)/examples/ja/Modules
 dist_jamoduleexamples_DATA = \
@@ -466,7 +457,10 @@ dist_insetexamples_DATA = \
 
 languageexamplesdir = $(pkgdatadir)/examples/Language_Support
 dist_languageexamples_DATA = \
-	examples/Language_Support/Localization_Test_%28for_Developers%29.lyx
+	examples/Language_Support/Localization_Test_%28for_Developers%29.lyx \
+	examples/Language_Support/Mixing_Japanese_with_other_Languages_%28with_CJKutf8%29.lyx \
+	examples/Language_Support/Mixing_Japanese_with_other_Languages_%28with_platex%29.lyx \
+	examples/Language_Support/Writing_Armenian.lyx
 
 letterexamplesdir = $(pkgdatadir)/examples/Letters
 dist_letterexamples_DATA = \
@@ -3224,7 +3218,6 @@ exampleandtemplate_files = \
 			   $(dist_handoutexamples_DATA) \
 			   $(dist_heexamples_DATA) \
 			   $(dist_huexamples_DATA) \
-			   $(dist_hylanguageexamples_DATA) \
 			   $(dist_idexamples_DATA) \
 			   $(dist_insetexamples_DATA) \
 			   $(dist_itexamples_DATA) \
@@ -3232,7 +3225,6 @@ exampleandtemplate_files = \
 			   $(dist_jaexamples_DATA) \
 			   $(dist_jaarticleexamples_DATA) \
 			   $(dist_jainsetexamples_DATA) \
-			   $(dist_jalanguageexamples_DATA) \
 			   $(dist_jamoduleexamples_DATA) \
 			   $(dist_japresentationexamples_DATA) \
 			   $(dist_japresentationtemplates_DATA) \

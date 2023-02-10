@@ -27,6 +27,10 @@ The language subdirectory expands to the same subfolders than the English versio
 and uses the same [English) filename (e.g., examples/Letters/myletter.lyx > 
 examples/fr/Letters/myletter.lyx).
 
+NOTE: The language subdirectory is for translations in the respective language. If you
+want to provide a document in English _about_ a specific language (e.g., about how to
+write a Turkish article), put it in the main directory in the "Language_Support" folder.
+
 
 NB: SPECIAL CHARACTERS IN FILE AND DIRECTORY NAMES:
 ===================================================
