@@ -2572,6 +2572,12 @@ dist_layouts_DATA =\
 	layouts/litinsets.inc \
 	layouts/llncs.layout \
 	layouts/logicalmkup.module \
+	layouts/ltjarticle.layout \
+	layouts/ltjbook.layout \
+	layouts/ltjreport.layout \
+	layouts/ltjsarticle.layout \
+	layouts/ltjsbook.layout \
+	layouts/ltjsreport.layout \
 	layouts/ltugboat.layout \
 	layouts/lyxmacros.inc \
 	layouts/maa-monthly.layout \

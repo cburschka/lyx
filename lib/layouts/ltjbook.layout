@@ -1,0 +1,13 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{Japanese Book (Standard Class for LuaTeX)}
+#  \DeclareCategory{Books}
+# Japanese book textclass definition file.
+# Author : Koji Yokota (yokota6@gmail.com)
+
+# This style provides japanese features 
+Format 99
+Provides japanese 1
+Provides luatexja 1
+
+# Input general definitions
+Input book.layout

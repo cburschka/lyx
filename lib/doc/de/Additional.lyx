@@ -3185,7 +3185,60 @@ Japanischer Bericht
 \end_inset
 
 (Standardklasse,
- vertikale Schreibrichtung).
+ vertikale Schreibrichtung)
+\family default
+.
+ All diese Klassen unterstützen nur 
+\begin_inset Quotes gld
+\end_inset
+
+klassische
+\begin_inset Quotes grd
+\end_inset
+
+ Ausgabewege,
+ die spezifisch für Japanisch angepasst wurden,
+ nämlich p\SpecialChar LaTeX
+ und up\SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Standard
+Zur Verwendung mit dem moderneren Lua\SpecialChar LaTeX
+ enthält die Sammlung aber spezifische Klassen,
+ nämlich 
+\family sans
+Japanischer Aufsatz
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse für LuaTeX)
+\family default
+,
+ 
+\family sans
+Japanisches Buch
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse für LuaTeX)
+\family default
+ und 
+\family sans
+Japanischer Bericht
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse für LuaTeX)
+\family default
+.
+ Sie stammen aus dem \SpecialChar LaTeX
+-Paket 
+\family sans
+luatexja
+\family default
+.
+ Diese Klassen unterstützen sowohl horizontale als auch vertikale Schreibrichtung.
 \end_layout
 
 \begin_layout Subsection
@@ -3259,6 +3312,57 @@ Dokumentklasse\SpecialChar menuseparator
 Klassenoptionen
 \family default
  eingegeben wird.
+ All diese Klassen unterstützen nur 
+\begin_inset Quotes gld
+\end_inset
+
+klassische
+\begin_inset Quotes grd
+\end_inset
+
+ Ausgabewege,
+ die spezifisch für Japanisch angepasst wurden,
+ nämlich p\SpecialChar LaTeX
+ und up\SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Standard
+Zur Verwendung mit dem moderneren Lua\SpecialChar LaTeX
+ enthält die Sammlung aber spezifische Klassen,
+ nämlich 
+\family sans
+Japanischer Aufsatz
+\begin_inset space \thinspace{}
+\end_inset
+
+(JS-Sammlung für LuaTeX)
+\family default
+,
+ 
+\family sans
+Japanisches Buch
+\begin_inset space \thinspace{}
+\end_inset
+
+(JS-Sammlung für LuaTeX)
+\family default
+ und 
+\family sans
+Japanischer Bericht
+\begin_inset space \thinspace{}
+\end_inset
+
+(JS-Sammlung für LuaTeX)
+\family default
+.
+ Sie stammen aus dem \SpecialChar LaTeX
+-Paket 
+\family sans
+luatexja
+\family default
+.
+ Diese Klassen unterstützen sowohl horizontale als auch vertikale Schreibrichtung.
 \end_layout
 
 \begin_layout Subsection
@@ -3322,10 +3426,16 @@ reference "subsec:Japanisch-JS"
 \end_inset
 
 ),
- die nur p\SpecialChar LaTeX
+ die von Haus aus nur p\SpecialChar LaTeX
  und up\SpecialChar LaTeX
- unterstützen,
- können die Klassen dieser Sammlung auch mit pdf\SpecialChar LaTeX
+ unterstützen (und Lua\SpecialChar LaTeX
+ nur über spezifische Klassen aus dem \SpecialChar LaTeX
+-Paket 
+\family sans
+luatexja
+\family default
+),
+ können die Klassen dieser Sammlung auch direkt mit pdf\SpecialChar LaTeX
 ,
  Xe\SpecialChar LaTeX
  und Lua\SpecialChar LaTeX

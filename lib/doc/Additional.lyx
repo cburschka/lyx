@@ -4064,7 +4064,7 @@ Japanese
 
 \begin_layout Standard
 
-\change_inserted -712698321 1675848905
+\change_inserted -712698321 1676025662
 \SpecialChar LyX
  included a collection of several bundles that aim to facilitate typesetting Japanese documents.
  The bundles have been developed at different times,
@@ -4120,7 +4120,56 @@ Japanese Report
 \begin_inset space \thinspace{}
 \end_inset
 
-(Standard Class Vertical Writing).
+(Standard Class Vertical Writing)
+\family default
+,
+ which all work with 
+\begin_inset Quotes eld
+\end_inset
+
+classic
+\begin_inset Quotes erd
+\end_inset
+
+ engines tailored for Japanese,
+ p\SpecialChar LaTeX
+ and up\SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676026113
+For the use with the more modern Lua\SpecialChar LaTeX
+ typesetting engine,
+ the collection also includes dedicated classes 
+\family sans
+Japanese Article (Standard Class for LuaTeX),
+ Japanese Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standard Class for LuaTeX)
+\family default
+,
+ and 
+\family sans
+Japanese Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(Japanese Standard Class for LuaTeX)
+\family default
+,
+ provided by the 
+\family sans
+luatexja
+\family default
+ \SpecialChar LaTeX
+ package.
+ These classes support both horizontal and vertical writing.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -4276,7 +4325,7 @@ report
 \change_inserted 564990737 1671383236
 .
 
-\change_inserted -712698321 1675849238
+\change_inserted -712698321 1676026196
  A report class can be obtained by using 
 \family sans
 Japanese Book
@@ -4298,6 +4347,51 @@ Class Options\SpecialChar menuseparator
 Custom
 \family default
 .
+ All these classes work with 
+\begin_inset Quotes eld
+\end_inset
+
+classic
+\begin_inset Quotes erd
+\end_inset
+
+ engines tailored for Japanese,
+ p\SpecialChar LaTeX
+ and up\SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676026178
+For the use with the more modern Lua\SpecialChar LaTeX
+ typesetting engine,
+ the collection also includes dedicated classes 
+\family sans
+Japanese Article (JS Bundle for LuaTeX),
+ Japanese Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(JS Bundle for LuaTeX)
+\family default
+,
+ and 
+\family sans
+Japanese Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(JS Bundle)
+\family default
+,
+ provided by the 
+\family sans
+luatexja
+\family default
+ \SpecialChar LaTeX
+ package.
+ These classes support both horizontal and vertical writing.
 \change_unchanged
 
 \end_layout
@@ -4316,7 +4410,7 @@ Japanese (BX Bundle)
 
 \begin_layout Standard
 
-\change_inserted -712698321 1675851891
+\change_inserted -712698321 1676026685
 This bundle contains the document classes 
 \family sans
 Japanese Article
@@ -4377,12 +4471,18 @@ reference "subsec:Japanese-JS"
 ),
  which support only p\SpecialChar LaTeX
  and up\SpecialChar LaTeX
-,
+ out of the box (and Lua\SpecialChar LaTeX
+ only through the extra classes added by the 
+\family sans
+luatexja
+\family default
+ \SpecialChar LaTeX
+ package),
  the classes of this bundle also support pdf\SpecialChar LaTeX
 ,
  Xe\SpecialChar LaTeX
  and Lua\SpecialChar LaTeX
-,
+ directly,
  with the aid of suitable packages that provide capability of Japanese typesetting.
 \end_layout
 

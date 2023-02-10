@@ -4393,6 +4393,110 @@ report
 \end_inset
 
 .
+\change_inserted -712698321 1676024955
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1676024955
+Japanese standard classes for LuaTeX
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1676024955
+Found:
+ 
+\family sans
+ltjarticle
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjarticle"
+\end_inset
+
+,
+ 
+\family sans
+ltjreport
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjreport"
+\end_inset
+
+,
+ 
+\family sans
+ltjbook
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjbook"
+\end_inset
+
+
+\family sans
+,
+ ltjsarticle
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjsarticle"
+\end_inset
+
+,
+ 
+\family sans
+ltjsreport
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjsreport"
+\end_inset
+
+,
+ 
+\family sans
+ltjsbook
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjsbook"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1676024955
+CTAN:
+ 
+\family typewriter
+macros/luatex/generic/luatexja/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1676024971
+Notes:
+ These document classes are LuaTeX version of the above original and new (JS bundle) Japanese standard classes.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
