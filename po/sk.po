@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-09 11:11+0100\n"
-"PO-Revision-Date: 2023-02-09 10:49+0000\n"
+"POT-Creation-Date: 2023-02-10 15:44+0100\n"
+"PO-Revision-Date: 2023-02-10 14:58+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -14704,6 +14704,30 @@ msgstr "Silný dôraz"
 msgid "strong"
 msgstr "silný dôraz"
 
+#: lib/layouts/ltjarticle.layout:3
+msgid "Japanese Article (Standard Class for LuaTeX)"
+msgstr "Japonský článok (Štandardná trieda pre LuaTeX)"
+
+#: lib/layouts/ltjbook.layout:3
+msgid "Japanese Book (Standard Class for LuaTeX)"
+msgstr "Japonská kniha (Štandardná trieda pre LuaTeX)"
+
+#: lib/layouts/ltjreport.layout:3
+msgid "Japanese Report (Standard Class for LuaTeX)"
+msgstr "Japonský referát (Štandardná trieda pre LuaTeX)"
+
+#: lib/layouts/ltjsarticle.layout:3
+msgid "Japanese Article (JS Bundle for LuaTeX)"
+msgstr "Japonský článok (JS zväzok pre LuaTeX)"
+
+#: lib/layouts/ltjsbook.layout:3
+msgid "Japanese Book (JS Bundle for LuaTeX)"
+msgstr "Japonská kniha (JS zväzok pre LuaTeX)"
+
+#: lib/layouts/ltjsreport.layout:3
+msgid "Japanese Report (JS Bundle for LuaTeX)"
+msgstr "Japonský referát (BX zväzok pre LuaTeX)"
+
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
 msgstr "TUGboat"
@@ -27105,6 +27129,14 @@ msgid "Graphics and Insets"
 msgstr "Grafiky a vložky"
 
 #: lib/examples/Articles:0
+msgid "Localization Test (for Developers)"
+msgstr "Test lokalizácie (pre vývojárov)"
+
+#: lib/examples/Articles:0
+msgid "Language Support"
+msgstr "Jazyková podpora"
+
+#: lib/examples/Articles:0
 msgid "Serial Letter 1"
 msgstr "Sekvenčný list 1"
 
@@ -27115,10 +27147,6 @@ msgstr "Sekvenčný list 2"
 #: lib/examples/Articles:0
 msgid "Serial Letter 3"
 msgstr "Sekvenčný list 3"
-
-#: lib/examples/Articles:0
-msgid "Localization Test"
-msgstr "Test lokalizácie"
 
 #: lib/examples/Articles:0
 msgid "Hazard and Precautionary Statements"
@@ -27161,12 +27189,20 @@ msgid "Welcome"
 msgstr "Vitajte"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Typesetting with CJKutf8"
-msgstr "Viac-jazykové popisy pomocou CJKutf8"
+msgid "Writing Armenian"
+msgstr "Písať Arménsky"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Typesetting with platex"
-msgstr "Viac-jazykové popisy pomocou platex"
+msgid "Mixing Japanese with other Languages (with platex)"
+msgstr "Miešať japončinu s druhými-jazykmi (pomocou platex)"
+
+#: lib/examples/Articles:0
+msgid "Mixing Japanese with other Languages (with CJKutf8)"
+msgstr "Miešať japončinu s druhými-jazykmi (pomocou CJKutf8)"
+
+#: lib/examples/Articles:0
+msgid "Writing Korean with CJK-ko"
+msgstr "Písať Kórejsky pomocou CJK-ko"
 
 #: lib/examples/Articles:0
 msgid "Hebrew Article (KOMA-Script)"
