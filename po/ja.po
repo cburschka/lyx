@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-japanese\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-01-31 05:51+0100\n"
-"PO-Revision-Date: 2023-01-25 22:04+0900\n"
+"POT-Creation-Date: 2023-02-11 00:48+0900\n"
+"PO-Revision-Date: 2023-02-11 09:54+0900\n"
 "Last-Translator: Koji Yokota <yokota6@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -58,7 +58,7 @@ msgid "Credits"
 msgstr "著作者"
 
 #: src/frontends/qt/ui/AboutUi.ui:288 lib/layouts/apa.layout:236
-#: lib/layouts/apax.inc:348
+#: lib/layouts/apax.inc:343
 msgid "Copyright"
 msgstr "著作権"
 
@@ -1612,7 +1612,7 @@ msgid "Restrict search to whole words only"
 msgstr "検索を単語一致のみに制限する"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:153
-#: src/frontends/qt/ui/SearchUi.ui:241 src/frontends/qt/GuiSearch.cpp:100
+#: src/frontends/qt/ui/SearchUi.ui:241 src/frontends/qt/GuiSearch.cpp:101
 msgid "Wh&ole words"
 msgstr "単語全体(&O)"
 
@@ -3397,7 +3397,7 @@ msgid "Images"
 msgstr "画像"
 
 #: src/frontends/qt/ui/OutputUi.ui:279 lib/layouts/aapaper.layout:63
-#: lib/layouts/egs.layout:722 lib/languages:146
+#: lib/layouts/egs.layout:720 lib/languages:146
 #: src/frontends/qt/GuiDocument.cpp:1645 src/frontends/qt/GuiErrorList.cpp:50
 #: src/frontends/qt/GuiLog.cpp:282 src/frontends/qt/GuiPrefs.cpp:641
 msgid "LaTeX"
@@ -5253,11 +5253,11 @@ msgstr "&< 検索"
 msgid "Replace all occurrences"
 msgstr "一致箇所を一括して置換"
 
-#: src/frontends/qt/ui/SearchUi.ui:100 src/frontends/qt/GuiSearch.cpp:204
+#: src/frontends/qt/ui/SearchUi.ui:100 src/frontends/qt/GuiSearch.cpp:206
 msgid "Hide replace and option widgets"
 msgstr "置換とオプションのウィジェットを非表示"
 
-#: src/frontends/qt/ui/SearchUi.ui:103 src/frontends/qt/GuiSearch.cpp:203
+#: src/frontends/qt/ui/SearchUi.ui:103 src/frontends/qt/GuiSearch.cpp:205
 msgid "&Minimize"
 msgstr "最小化(&M)"
 
@@ -5293,7 +5293,7 @@ msgstr "次を検索 (Enter)"
 msgid "Treat uppercase/lowercase writing as distinct"
 msgstr "大文字/小文字を別の文字として扱う"
 
-#: src/frontends/qt/ui/SearchUi.ui:231 src/frontends/qt/GuiSearch.cpp:98
+#: src/frontends/qt/ui/SearchUi.ui:231 src/frontends/qt/GuiSearch.cpp:99
 msgid "&Case sensitive[[search]]"
 msgstr "大文字と小文字を区別"
 
@@ -5305,7 +5305,7 @@ msgstr "単語全体の一致のみ"
 msgid "Limit search and replace to selection"
 msgstr "検索および置換を選択範囲に制限"
 
-#: src/frontends/qt/ui/SearchUi.ui:251 src/frontends/qt/GuiSearch.cpp:102
+#: src/frontends/qt/ui/SearchUi.ui:251 src/frontends/qt/GuiSearch.cpp:103
 msgid "Selection onl&y"
 msgstr "選択範囲のみ(&Y)"
 
@@ -5313,7 +5313,7 @@ msgstr "選択範囲のみ(&Y)"
 msgid "If this is checked, LyX will search forward immediately"
 msgstr "これがチェックされている場合，LyXはすぐに前方検索を始めます"
 
-#: src/frontends/qt/ui/SearchUi.ui:261 src/frontends/qt/GuiSearch.cpp:104
+#: src/frontends/qt/ui/SearchUi.ui:261 src/frontends/qt/GuiSearch.cpp:105
 msgid "Search as yo&u type"
 msgstr "打鍵同時検索(&U)"
 
@@ -5321,7 +5321,7 @@ msgstr "打鍵同時検索(&U)"
 msgid "If the end/start of the document is reached, automatically wrap around"
 msgstr "文末または文頭に達した場合，自動的に折り返します"
 
-#: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:106
+#: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:107
 msgid "&Wrap"
 msgstr "折返し検索(&W)"
 
@@ -5803,7 +5803,7 @@ msgstr "この行を末尾頁のフッタにする"
 msgid "Don't output the last footer"
 msgstr "末尾フッタを出力しない"
 
-#: src/frontends/qt/ui/TabularUi.ui:1508 lib/layouts/AEA.layout:339
+#: src/frontends/qt/ui/TabularUi.ui:1508 lib/layouts/AEA.layout:342
 msgid "Caption:"
 msgstr "キャプション："
 
@@ -6405,25 +6405,26 @@ msgstr "American Economic Association (AEA)"
 #: lib/layouts/iopart.layout:4 lib/layouts/isprs.layout:4
 #: lib/layouts/iucr.layout:4 lib/layouts/jarticle.layout:4
 #: lib/layouts/jasatex.layout:4 lib/layouts/jgrga.layout:4
-#: lib/layouts/jsarticle.layout:4 lib/layouts/jss.layout:4
-#: lib/layouts/kluwer.layout:4 lib/layouts/llncs.layout:4
-#: lib/layouts/ltugboat.layout:4 lib/layouts/maa-monthly.layout:4
-#: lib/layouts/mwart.layout:4 lib/layouts/paper.layout:4
-#: lib/layouts/revtex4-1.layout:4 lib/layouts/revtex4-2.layout:4
-#: lib/layouts/revtex4.layout:4 lib/layouts/scrartcl.layout:4
-#: lib/layouts/scrarticle-beamer.layout:4 lib/layouts/siamltex.layout:4
-#: lib/layouts/singlecol-new.layout:4 lib/layouts/spie.layout:4
-#: lib/layouts/svglobal3.layout:4 lib/layouts/svjog.layout:4
-#: lib/layouts/svprobth.layout:4 lib/layouts/tarticle.layout:4
-#: lib/examples/Articles:0
+#: lib/layouts/jlreq-article.layout:4 lib/layouts/jsarticle.layout:4
+#: lib/layouts/jss.layout:4 lib/layouts/kluwer.layout:4
+#: lib/layouts/llncs.layout:4 lib/layouts/ltjarticle.layout:4
+#: lib/layouts/ltjsarticle.layout:4 lib/layouts/ltugboat.layout:4
+#: lib/layouts/maa-monthly.layout:4 lib/layouts/mwart.layout:4
+#: lib/layouts/paper.layout:4 lib/layouts/revtex4-1.layout:4
+#: lib/layouts/revtex4-2.layout:4 lib/layouts/revtex4.layout:4
+#: lib/layouts/scrartcl.layout:4 lib/layouts/scrarticle-beamer.layout:4
+#: lib/layouts/siamltex.layout:4 lib/layouts/singlecol-new.layout:4
+#: lib/layouts/spie.layout:4 lib/layouts/svglobal3.layout:4
+#: lib/layouts/svjog.layout:4 lib/layouts/svprobth.layout:4
+#: lib/layouts/tarticle.layout:4 lib/examples/Articles:0
 msgid "Articles"
 msgstr "1. 論文"
 
-#: lib/layouts/AEA.layout:50 lib/layouts/apa.layout:109 lib/layouts/apax.inc:54
+#: lib/layouts/AEA.layout:49 lib/layouts/apa.layout:109 lib/layouts/apax.inc:54
 msgid "ShortTitle"
 msgstr "短縮形見出し"
 
-#: lib/layouts/AEA.layout:51 lib/layouts/AEA.layout:130
+#: lib/layouts/AEA.layout:50 lib/layouts/AEA.layout:129
 #: lib/layouts/IEEEtran-CompSoc.layout:21
 #: lib/layouts/IEEEtran-CompSoc.layout:68
 #: lib/layouts/IEEEtran-TransMag.layout:22
@@ -6463,7 +6464,7 @@ msgstr "短縮形見出し"
 #: lib/layouts/apax.inc:165 lib/layouts/apax.inc:192 lib/layouts/apax.inc:199
 #: lib/layouts/apax.inc:206 lib/layouts/apax.inc:213 lib/layouts/apax.inc:220
 #: lib/layouts/apax.inc:228 lib/layouts/apax.inc:250 lib/layouts/apax.inc:277
-#: lib/layouts/apax.inc:305 lib/layouts/apax.inc:604 lib/layouts/apax.inc:634
+#: lib/layouts/apax.inc:305 lib/layouts/apax.inc:599 lib/layouts/apax.inc:629
 #: lib/layouts/bicaption.module:14 lib/layouts/broadway.layout:193
 #: lib/layouts/broadway.layout:211 lib/layouts/cl2emult.layout:42
 #: lib/layouts/cl2emult.layout:64 lib/layouts/cl2emult.layout:82
@@ -6490,6 +6491,7 @@ msgstr "短縮形見出し"
 #: lib/layouts/jasatex.layout:65 lib/layouts/jasatex.layout:94
 #: lib/layouts/jasatex.layout:119 lib/layouts/jasatex.layout:185
 #: lib/layouts/jasatex.layout:209 lib/layouts/jasatex.layout:240
+#: lib/layouts/jlreq-common.inc:95 lib/layouts/jlreq-common.inc:111
 #: lib/layouts/jss.layout:55 lib/layouts/jss.layout:94
 #: lib/layouts/kluwer.layout:115 lib/layouts/kluwer.layout:180
 #: lib/layouts/latex8.layout:93 lib/layouts/llncs.layout:110
@@ -6513,49 +6515,49 @@ msgstr "短縮形見出し"
 #: lib/layouts/svcommon.inc:609 lib/layouts/svmult.layout:54
 #: lib/layouts/svmult.layout:109 lib/layouts/tufte-handout.layout:56
 msgid "FrontMatter"
-msgstr "文頭辞"
+msgstr "前付け"
 
-#: lib/layouts/AEA.layout:61
+#: lib/layouts/AEA.layout:60
 msgid "Publication Month"
 msgstr "掲載月"
 
-#: lib/layouts/AEA.layout:67
+#: lib/layouts/AEA.layout:66
 msgid "Publication Month:"
 msgstr "掲載月："
 
-#: lib/layouts/AEA.layout:79
+#: lib/layouts/AEA.layout:78
 msgid "Publication Year"
 msgstr "掲載年"
 
-#: lib/layouts/AEA.layout:82
+#: lib/layouts/AEA.layout:81
 msgid "Publication Year:"
 msgstr "掲載年："
 
-#: lib/layouts/AEA.layout:90
+#: lib/layouts/AEA.layout:89
 msgid "Publication Volume"
 msgstr "掲載巻"
 
-#: lib/layouts/AEA.layout:93
+#: lib/layouts/AEA.layout:92
 msgid "Publication Volume:"
 msgstr "掲載巻："
 
-#: lib/layouts/AEA.layout:99
+#: lib/layouts/AEA.layout:98
 msgid "Publication Issue"
 msgstr "掲載号"
 
-#: lib/layouts/AEA.layout:102
+#: lib/layouts/AEA.layout:101
 msgid "Publication Issue:"
 msgstr "掲載号："
 
-#: lib/layouts/AEA.layout:109
+#: lib/layouts/AEA.layout:108
 msgid "JEL"
 msgstr "JEL"
 
-#: lib/layouts/AEA.layout:112
+#: lib/layouts/AEA.layout:111
 msgid "JEL:"
 msgstr "JEL："
 
-#: lib/layouts/AEA.layout:115 lib/layouts/IEEEtran-CompSoc.layout:55
+#: lib/layouts/AEA.layout:114 lib/layouts/IEEEtran-CompSoc.layout:55
 #: lib/layouts/IEEEtran-TransMag.layout:33 lib/layouts/IEEEtran.layout:304
 #: lib/layouts/aa.layout:364 lib/layouts/aastex.layout:323
 #: lib/layouts/aastex62.layout:140 lib/layouts/achemso.layout:199
@@ -6578,7 +6580,7 @@ msgstr "JEL："
 msgid "Keywords"
 msgstr "キーワード"
 
-#: lib/layouts/AEA.layout:118 lib/layouts/aastex62.layout:141
+#: lib/layouts/AEA.layout:117 lib/layouts/aastex62.layout:141
 #: lib/layouts/achemso.layout:202 lib/layouts/acm-sigs.inc:56
 #: lib/layouts/acmsiggraph-0-92.layout:194 lib/layouts/acmsiggraph.layout:170
 #: lib/layouts/apax.inc:292 lib/layouts/ectaart.layout:159
@@ -6591,7 +6593,7 @@ msgstr "キーワード"
 msgid "Keywords:"
 msgstr "キーワード："
 
-#: lib/layouts/AEA.layout:125 lib/layouts/IEEEtran-CompSoc.layout:49
+#: lib/layouts/AEA.layout:124 lib/layouts/IEEEtran-CompSoc.layout:49
 #: lib/layouts/IEEEtran-TransMag.layout:27 lib/layouts/IEEEtran.layout:277
 #: lib/layouts/RJournal.layout:39 lib/layouts/aa.layout:329
 #: lib/layouts/aapaper.layout:102 lib/layouts/aapaper.layout:213
@@ -6610,46 +6612,58 @@ msgstr "キーワード："
 #: lib/layouts/ijmpc.layout:239 lib/layouts/ijmpd.layout:250
 #: lib/layouts/iopart.layout:198 lib/layouts/iopart.layout:215
 #: lib/layouts/isprs.layout:26 lib/layouts/jasatex.layout:205
-#: lib/layouts/jasatex.layout:222 lib/layouts/jss.layout:54
-#: lib/layouts/jss.layout:71 lib/layouts/kluwer.layout:295
-#: lib/layouts/latex8.layout:112 lib/layouts/llncs.layout:258
-#: lib/layouts/ltugboat.layout:188 lib/layouts/ltugboat.layout:202
-#: lib/layouts/maa-monthly.layout:34 lib/layouts/paper.layout:155
-#: lib/layouts/revtex.layout:141 lib/layouts/revtex4-x.inc:61
-#: lib/layouts/revtex4.layout:274 lib/layouts/scrclass.inc:309
-#: lib/layouts/siamltex.layout:269 lib/layouts/sigplanconf.layout:207
-#: lib/layouts/sigplanconf.layout:223 lib/layouts/spie.layout:85
-#: lib/layouts/stdstruct.inc:13 lib/layouts/stdstruct.inc:29
-#: lib/layouts/svcommon.inc:481 lib/layouts/svcommon.inc:487
-#: lib/layouts/svglobal.layout:158 lib/layouts/svjog.layout:156
-#: lib/layouts/svmono.layout:24 lib/layouts/svmult.layout:106
-#: lib/layouts/svmult.layout:110 lib/layouts/svprobth.layout:185
-#: lib/layouts/tufte-handout.layout:52 lib/layouts/tufte-handout.layout:67
-#: src/output_plaintext.cpp:145
+#: lib/layouts/jasatex.layout:222 lib/layouts/jlreq-common.inc:94
+#: lib/layouts/jss.layout:54 lib/layouts/jss.layout:71
+#: lib/layouts/kluwer.layout:295 lib/layouts/latex8.layout:112
+#: lib/layouts/llncs.layout:258 lib/layouts/ltugboat.layout:188
+#: lib/layouts/ltugboat.layout:202 lib/layouts/maa-monthly.layout:34
+#: lib/layouts/paper.layout:155 lib/layouts/revtex.layout:141
+#: lib/layouts/revtex4-x.inc:61 lib/layouts/revtex4.layout:274
+#: lib/layouts/scrclass.inc:309 lib/layouts/siamltex.layout:269
+#: lib/layouts/sigplanconf.layout:207 lib/layouts/sigplanconf.layout:223
+#: lib/layouts/spie.layout:85 lib/layouts/stdstruct.inc:13
+#: lib/layouts/stdstruct.inc:29 lib/layouts/svcommon.inc:481
+#: lib/layouts/svcommon.inc:487 lib/layouts/svglobal.layout:158
+#: lib/layouts/svjog.layout:156 lib/layouts/svmono.layout:24
+#: lib/layouts/svmult.layout:106 lib/layouts/svmult.layout:110
+#: lib/layouts/svprobth.layout:185 lib/layouts/tufte-handout.layout:52
+#: lib/layouts/tufte-handout.layout:67 src/output_plaintext.cpp:145
 msgid "Abstract"
 msgstr "概要"
 
-#: lib/layouts/AEA.layout:129 lib/layouts/aa.layout:169
-#: lib/layouts/aapaper.inc:82 lib/layouts/aapaper.layout:105
-#: lib/layouts/achemso.layout:283 lib/layouts/achemso.layout:290
-#: lib/layouts/egs.layout:621 lib/layouts/elsart.layout:549
-#: lib/layouts/svcommon.inc:625 lib/layouts/svmult.layout:158
-#: lib/layouts/theorems-ams-extended-bytype.module:346
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:417
-#: lib/layouts/theorems-ams-extended.module:336
-#: lib/layouts/theorems-counters-extended-bytype.inc:28
-msgid "Acknowledgement"
+#: lib/layouts/AEA.layout:128 lib/layouts/aa.layout:169
+#: lib/layouts/aapaper.inc:82 lib/layouts/aapaper.inc:93
+#: lib/layouts/aapaper.layout:105 lib/layouts/aastex.layout:354
+#: lib/layouts/aastex62.layout:225 lib/layouts/achemso.layout:283
+#: lib/layouts/achemso.layout:290 lib/layouts/acmart.layout:657
+#: lib/layouts/acmart.layout:661 lib/layouts/acmsiggraph-0-92.layout:346
+#: lib/layouts/acmsiggraph-0-92.layout:353 lib/layouts/acmsiggraph.layout:302
+#: lib/layouts/acmsiggraph.layout:309 lib/layouts/agutex.layout:193
+#: lib/layouts/apa.layout:243 lib/layouts/copernicus.layout:424
+#: lib/layouts/egs.layout:595 lib/layouts/iopart.layout:296
+#: lib/layouts/iopart.layout:310 lib/layouts/isprs.layout:221
+#: lib/layouts/iucr.layout:253 lib/layouts/jasatex.layout:284
+#: lib/layouts/jasatex.layout:290 lib/layouts/kluwer.layout:341
+#: lib/layouts/kluwer.layout:353 lib/layouts/maa-monthly.layout:144
+#: lib/layouts/maa-monthly.layout:150 lib/layouts/revtex4-x.inc:261
+#: lib/layouts/revtex4.layout:281 lib/layouts/revtex4.layout:291
+#: lib/layouts/sigplanconf.layout:235 lib/layouts/sigplanconf.layout:242
+#: lib/layouts/spie.layout:100 lib/layouts/svcommon.inc:640
+#: lib/layouts/svcommon.inc:653 lib/examples/Articles:0
+msgid "Acknowledgments"
 msgstr "謝辞"
 
-#: lib/layouts/AEA.layout:131 lib/layouts/egs.layout:635
-msgid "Acknowledgement."
+#: lib/layouts/AEA.layout:135 lib/layouts/aa.layout:181
+#: lib/layouts/agutex.layout:205 lib/layouts/copernicus.layout:427
+#: lib/layouts/egs.layout:610
+msgid "Acknowledgments."
 msgstr "謝辞."
 
-#: lib/layouts/AEA.layout:140
+#: lib/layouts/AEA.layout:143
 msgid "Figure Notes"
 msgstr "図註釈"
 
-#: lib/layouts/AEA.layout:144 lib/layouts/AEA.layout:335
+#: lib/layouts/AEA.layout:147 lib/layouts/AEA.layout:338
 #: lib/layouts/IEEEtran.layout:36 lib/layouts/aa.layout:37
 #: lib/layouts/aapaper.layout:36 lib/layouts/aastex.layout:63
 #: lib/layouts/achemso.layout:32 lib/layouts/acmart.layout:64
@@ -6691,32 +6705,32 @@ msgstr "図註釈"
 msgid "MainText"
 msgstr "本文"
 
-#: lib/layouts/AEA.layout:147
+#: lib/layouts/AEA.layout:150
 msgid "Figure Note"
 msgstr "図註釈"
 
-#: lib/layouts/AEA.layout:148 lib/layouts/AEA.layout:175
+#: lib/layouts/AEA.layout:151 lib/layouts/AEA.layout:178
 msgid "Text of a note in a figure"
 msgstr "図註釈の文章"
 
-#: lib/layouts/AEA.layout:156 lib/layouts/apax.inc:240
+#: lib/layouts/AEA.layout:159 lib/layouts/apax.inc:240
 #: lib/layouts/beamer.layout:1452 lib/layouts/powerdot.layout:228
 msgid "Note:"
 msgstr "註釈："
 
-#: lib/layouts/AEA.layout:169
+#: lib/layouts/AEA.layout:172
 msgid "Table Notes"
 msgstr "表註釈"
 
-#: lib/layouts/AEA.layout:173
+#: lib/layouts/AEA.layout:176
 msgid "Table Note"
 msgstr "表註釈"
 
-#: lib/layouts/AEA.layout:174
+#: lib/layouts/AEA.layout:177
 msgid "Text of a note in a table"
 msgstr "表註釈の文章"
 
-#: lib/layouts/AEA.layout:180 lib/layouts/IEEEtran.layout:49
+#: lib/layouts/AEA.layout:183 lib/layouts/IEEEtran.layout:49
 #: lib/layouts/acmart.layout:548 lib/layouts/acmart.layout:552
 #: lib/layouts/beamer.layout:1391 lib/layouts/elsart.layout:306
 #: lib/layouts/elsart.layout:310 lib/layouts/foils.layout:249
@@ -6749,51 +6763,51 @@ msgstr "表註釈の文章"
 msgid "Theorem"
 msgstr "定理"
 
-#: lib/layouts/AEA.layout:187 lib/layouts/algorithm2e.module:19
+#: lib/layouts/AEA.layout:190 lib/layouts/algorithm2e.module:19
 #: lib/layouts/algorithm2e.module:33 lib/layouts/elsart.layout:426
 #: lib/layouts/powerdot.layout:594 lib/layouts/powerdot.layout:642
 #: lib/layouts/revtex4-x.inc:311 lib/layouts/sciposter.layout:89
 #: lib/layouts/siamltex.layout:118 lib/layouts/stdfloats.inc:43
-#: lib/layouts/theorems-ams-extended-bytype.module:81
-#: lib/layouts/theorems-ams-extended-bytype.module:90
-#: lib/layouts/theorems-ams-extended-bytype.module:93
-#: lib/layouts/theorems-ams-extended-bytype.module:111
-#: lib/layouts/theorems-ams-extended-bytype.module:114
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:123
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:136
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:139
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:157
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:160
-#: lib/layouts/theorems-ams-extended.module:76
-#: lib/layouts/theorems-ams-extended.module:86
-#: lib/layouts/theorems-ams-extended.module:89
-#: lib/layouts/theorems-ams-extended.module:106
-#: lib/layouts/theorems-ams-extended.module:109
+#: lib/layouts/theorems-ams-extended-bytype.module:80
+#: lib/layouts/theorems-ams-extended-bytype.module:89
+#: lib/layouts/theorems-ams-extended-bytype.module:92
+#: lib/layouts/theorems-ams-extended-bytype.module:110
+#: lib/layouts/theorems-ams-extended-bytype.module:113
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:119
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:132
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:135
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:153
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:156
+#: lib/layouts/theorems-ams-extended.module:75
+#: lib/layouts/theorems-ams-extended.module:85
+#: lib/layouts/theorems-ams-extended.module:88
+#: lib/layouts/theorems-ams-extended.module:105
+#: lib/layouts/theorems-ams-extended.module:108
 #: lib/layouts/theorems-counters-extended-bytype.inc:8
 msgid "Algorithm"
 msgstr "アルゴリズム"
 
-#: lib/layouts/AEA.layout:194
-#: lib/layouts/theorems-ams-extended-bytype.module:122
-#: lib/layouts/theorems-ams-extended-bytype.module:131
-#: lib/layouts/theorems-ams-extended-bytype.module:134
-#: lib/layouts/theorems-ams-extended-bytype.module:152
-#: lib/layouts/theorems-ams-extended-bytype.module:155
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:168
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:181
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:184
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:202
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:205
-#: lib/layouts/theorems-ams-extended.module:117
-#: lib/layouts/theorems-ams-extended.module:127
-#: lib/layouts/theorems-ams-extended.module:130
-#: lib/layouts/theorems-ams-extended.module:147
-#: lib/layouts/theorems-ams-extended.module:150
+#: lib/layouts/AEA.layout:197
+#: lib/layouts/theorems-ams-extended-bytype.module:121
+#: lib/layouts/theorems-ams-extended-bytype.module:130
+#: lib/layouts/theorems-ams-extended-bytype.module:133
+#: lib/layouts/theorems-ams-extended-bytype.module:151
+#: lib/layouts/theorems-ams-extended-bytype.module:154
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:164
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:177
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:180
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:198
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:201
+#: lib/layouts/theorems-ams-extended.module:116
+#: lib/layouts/theorems-ams-extended.module:126
+#: lib/layouts/theorems-ams-extended.module:129
+#: lib/layouts/theorems-ams-extended.module:146
+#: lib/layouts/theorems-ams-extended.module:149
 #: lib/layouts/theorems-counters-extended-bytype.inc:12
 msgid "Axiom"
 msgstr "公理"
 
-#: lib/layouts/AEA.layout:201 lib/layouts/AEA.layout:350
+#: lib/layouts/AEA.layout:204 lib/layouts/AEA.layout:353
 #: lib/layouts/elsart.layout:46 lib/layouts/elsart.layout:535
 #: lib/layouts/llncs.layout:317 lib/layouts/svmono.layout:84
 #: lib/layouts/theorems-case.inc:31 lib/layouts/theorems-case.inc:84
@@ -6805,11 +6819,11 @@ msgstr "公理"
 msgid "Case"
 msgstr "ケース"
 
-#: lib/layouts/AEA.layout:205 lib/layouts/theorems-without-preamble.inc:450
+#: lib/layouts/AEA.layout:208 lib/layouts/theorems-without-preamble.inc:450
 msgid "Case \\thecase."
 msgstr "ケース \\thecase."
 
-#: lib/layouts/AEA.layout:211 lib/layouts/elsart.layout:512
+#: lib/layouts/AEA.layout:214 lib/layouts/elsart.layout:512
 #: lib/layouts/heb-article.layout:76 lib/layouts/ijmpc.layout:467
 #: lib/layouts/ijmpc.layout:470 lib/layouts/ijmpd.layout:496
 #: lib/layouts/ijmpd.layout:499 lib/layouts/llncs.layout:339
@@ -6836,47 +6850,47 @@ msgstr "ケース \\thecase."
 msgid "Claim"
 msgstr "主張"
 
-#: lib/layouts/AEA.layout:218
-#: lib/layouts/theorems-ams-extended-bytype.module:376
-#: lib/layouts/theorems-ams-extended-bytype.module:385
-#: lib/layouts/theorems-ams-extended-bytype.module:388
-#: lib/layouts/theorems-ams-extended-bytype.module:406
-#: lib/layouts/theorems-ams-extended-bytype.module:409
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:447
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:460
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:463
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:481
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:484
-#: lib/layouts/theorems-ams-extended.module:366
-#: lib/layouts/theorems-ams-extended.module:375
-#: lib/layouts/theorems-ams-extended.module:378
-#: lib/layouts/theorems-ams-extended.module:395
-#: lib/layouts/theorems-ams-extended.module:398
-#: lib/layouts/theorems-counters-extended-bytype.inc:31
+#: lib/layouts/AEA.layout:221
+#: lib/layouts/theorems-ams-extended-bytype.module:324
+#: lib/layouts/theorems-ams-extended-bytype.module:333
+#: lib/layouts/theorems-ams-extended-bytype.module:336
+#: lib/layouts/theorems-ams-extended-bytype.module:354
+#: lib/layouts/theorems-ams-extended-bytype.module:357
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:388
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:401
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:404
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:422
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:425
+#: lib/layouts/theorems-ams-extended.module:315
+#: lib/layouts/theorems-ams-extended.module:324
+#: lib/layouts/theorems-ams-extended.module:327
+#: lib/layouts/theorems-ams-extended.module:344
+#: lib/layouts/theorems-ams-extended.module:347
+#: lib/layouts/theorems-counters-extended-bytype.inc:28
 msgid "Conclusion"
 msgstr "結論"
 
-#: lib/layouts/AEA.layout:226
-#: lib/layouts/theorems-ams-extended-bytype.module:163
-#: lib/layouts/theorems-ams-extended-bytype.module:172
-#: lib/layouts/theorems-ams-extended-bytype.module:175
-#: lib/layouts/theorems-ams-extended-bytype.module:193
-#: lib/layouts/theorems-ams-extended-bytype.module:196
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:213
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:226
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:229
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:247
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:250
-#: lib/layouts/theorems-ams-extended.module:158
-#: lib/layouts/theorems-ams-extended.module:167
-#: lib/layouts/theorems-ams-extended.module:170
-#: lib/layouts/theorems-ams-extended.module:187
-#: lib/layouts/theorems-ams-extended.module:190
+#: lib/layouts/AEA.layout:229
+#: lib/layouts/theorems-ams-extended-bytype.module:162
+#: lib/layouts/theorems-ams-extended-bytype.module:171
+#: lib/layouts/theorems-ams-extended-bytype.module:174
+#: lib/layouts/theorems-ams-extended-bytype.module:192
+#: lib/layouts/theorems-ams-extended-bytype.module:195
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:209
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:222
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:225
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:243
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:246
+#: lib/layouts/theorems-ams-extended.module:157
+#: lib/layouts/theorems-ams-extended.module:166
+#: lib/layouts/theorems-ams-extended.module:169
+#: lib/layouts/theorems-ams-extended.module:186
+#: lib/layouts/theorems-ams-extended.module:189
 #: lib/layouts/theorems-counters-extended-bytype.inc:16
 msgid "Condition"
 msgstr "条件"
 
-#: lib/layouts/AEA.layout:234 lib/layouts/acmart.layout:608
+#: lib/layouts/AEA.layout:237 lib/layouts/acmart.layout:608
 #: lib/layouts/elsart.layout:457 lib/layouts/ijmpc.layout:482
 #: lib/layouts/ijmpd.layout:508 lib/layouts/ijmpd.layout:511
 #: lib/layouts/llncs.layout:346 lib/layouts/siamltex.layout:109
@@ -6902,7 +6916,7 @@ msgstr "条件"
 msgid "Conjecture"
 msgstr "予想"
 
-#: lib/layouts/AEA.layout:241 lib/layouts/acmart.layout:587
+#: lib/layouts/AEA.layout:244 lib/layouts/acmart.layout:587
 #: lib/layouts/beamer.layout:1307 lib/layouts/elsart.layout:390
 #: lib/layouts/foils.layout:282 lib/layouts/heb-article.layout:66
 #: lib/layouts/ijmpc.layout:446 lib/layouts/ijmpd.layout:461
@@ -6930,27 +6944,27 @@ msgstr "予想"
 msgid "Corollary"
 msgstr "系"
 
-#: lib/layouts/AEA.layout:248 lib/layouts/elsart.layout:414
-#: lib/layouts/theorems-ams-extended-bytype.module:41
-#: lib/layouts/theorems-ams-extended-bytype.module:50
-#: lib/layouts/theorems-ams-extended-bytype.module:53
-#: lib/layouts/theorems-ams-extended-bytype.module:70
-#: lib/layouts/theorems-ams-extended-bytype.module:73
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:78
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:91
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:94
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:112
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:115
-#: lib/layouts/theorems-ams-extended.module:36
-#: lib/layouts/theorems-ams-extended.module:46
-#: lib/layouts/theorems-ams-extended.module:49
-#: lib/layouts/theorems-ams-extended.module:65
-#: lib/layouts/theorems-ams-extended.module:68
+#: lib/layouts/AEA.layout:251 lib/layouts/elsart.layout:414
+#: lib/layouts/theorems-ams-extended-bytype.module:40
+#: lib/layouts/theorems-ams-extended-bytype.module:49
+#: lib/layouts/theorems-ams-extended-bytype.module:52
+#: lib/layouts/theorems-ams-extended-bytype.module:69
+#: lib/layouts/theorems-ams-extended-bytype.module:72
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:74
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:87
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:90
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:108
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:111
+#: lib/layouts/theorems-ams-extended.module:35
+#: lib/layouts/theorems-ams-extended.module:45
+#: lib/layouts/theorems-ams-extended.module:48
+#: lib/layouts/theorems-ams-extended.module:64
+#: lib/layouts/theorems-ams-extended.module:67
 #: lib/layouts/theorems-counters-extended-bytype.inc:5
 msgid "Criterion"
 msgstr "基準"
 
-#: lib/layouts/AEA.layout:256 lib/layouts/acmart.layout:615
+#: lib/layouts/AEA.layout:259 lib/layouts/acmart.layout:615
 #: lib/layouts/beamer.layout:1345 lib/layouts/elsart.layout:438
 #: lib/layouts/foils.layout:296 lib/layouts/heb-article.layout:86
 #: lib/layouts/llncs.layout:367 lib/layouts/siamltex.layout:128
@@ -6976,7 +6990,7 @@ msgstr "基準"
 msgid "Definition"
 msgstr "定義"
 
-#: lib/layouts/AEA.layout:263 lib/layouts/acmart.layout:629
+#: lib/layouts/AEA.layout:266 lib/layouts/acmart.layout:629
 #: lib/layouts/beamer.layout:1357 lib/layouts/elsart.layout:469
 #: lib/layouts/linguistics.module:18 lib/layouts/llncs.layout:374
 #: lib/layouts/svmono.layout:74 lib/layouts/theorems-ams-bytype.inc:228
@@ -7002,7 +7016,7 @@ msgstr "定義"
 msgid "Example"
 msgstr "例"
 
-#: lib/layouts/AEA.layout:270 lib/layouts/llncs.layout:381
+#: lib/layouts/AEA.layout:273 lib/layouts/llncs.layout:381
 #: lib/layouts/svmono.layout:79 lib/layouts/theorems-ams-bytype.inc:274
 #: lib/layouts/theorems-ams-bytype.inc:284
 #: lib/layouts/theorems-ams-bytype.inc:287
@@ -7027,7 +7041,7 @@ msgstr "例"
 msgid "Exercise"
 msgstr "演習"
 
-#: lib/layouts/AEA.layout:277 lib/layouts/acmart.layout:594
+#: lib/layouts/AEA.layout:280 lib/layouts/acmart.layout:594
 #: lib/layouts/beamer.layout:1379 lib/layouts/elsart.layout:378
 #: lib/layouts/foils.layout:275 lib/layouts/heb-article.layout:56
 #: lib/layouts/ijmpc.layout:450 lib/layouts/ijmpd.layout:469
@@ -7055,28 +7069,28 @@ msgstr "演習"
 msgid "Lemma"
 msgstr "補題"
 
-#: lib/layouts/AEA.layout:284 lib/layouts/agutex.layout:173
+#: lib/layouts/AEA.layout:287 lib/layouts/agutex.layout:173
 #: lib/layouts/agutex.layout:185
-#: lib/layouts/theorems-ams-extended-bytype.module:243
-#: lib/layouts/theorems-ams-extended-bytype.module:252
-#: lib/layouts/theorems-ams-extended-bytype.module:255
-#: lib/layouts/theorems-ams-extended-bytype.module:273
-#: lib/layouts/theorems-ams-extended-bytype.module:276
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:301
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:314
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:317
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:335
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:338
-#: lib/layouts/theorems-ams-extended.module:236
-#: lib/layouts/theorems-ams-extended.module:245
-#: lib/layouts/theorems-ams-extended.module:248
-#: lib/layouts/theorems-ams-extended.module:265
-#: lib/layouts/theorems-ams-extended.module:268
+#: lib/layouts/theorems-ams-extended-bytype.module:242
+#: lib/layouts/theorems-ams-extended-bytype.module:251
+#: lib/layouts/theorems-ams-extended-bytype.module:254
+#: lib/layouts/theorems-ams-extended-bytype.module:272
+#: lib/layouts/theorems-ams-extended-bytype.module:275
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:297
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:310
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:313
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:331
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:334
+#: lib/layouts/theorems-ams-extended.module:235
+#: lib/layouts/theorems-ams-extended.module:244
+#: lib/layouts/theorems-ams-extended.module:247
+#: lib/layouts/theorems-ams-extended.module:264
+#: lib/layouts/theorems-ams-extended.module:267
 #: lib/layouts/theorems-counters-extended-bytype.inc:22
 msgid "Notation"
 msgstr "記法"
 
-#: lib/layouts/AEA.layout:292 lib/layouts/elsart.layout:479
+#: lib/layouts/AEA.layout:295 lib/layouts/elsart.layout:479
 #: lib/layouts/llncs.layout:401 lib/layouts/theorems-ams-bytype.inc:250
 #: lib/layouts/theorems-ams-bytype.inc:260
 #: lib/layouts/theorems-ams-bytype.inc:263
@@ -7099,7 +7113,7 @@ msgstr "記法"
 msgid "Problem"
 msgstr "問題"
 
-#: lib/layouts/AEA.layout:300 lib/layouts/acmart.layout:601
+#: lib/layouts/AEA.layout:303 lib/layouts/acmart.layout:601
 #: lib/layouts/elsart.layout:402 lib/layouts/foils.layout:289
 #: lib/layouts/ijmpc.layout:454 lib/layouts/ijmpd.layout:477
 #: lib/layouts/ijmpd.layout:480 lib/layouts/llncs.layout:422
@@ -7126,7 +7140,7 @@ msgstr "問題"
 msgid "Proposition"
 msgstr "命題"
 
-#: lib/layouts/AEA.layout:307 lib/layouts/AEA.layout:353
+#: lib/layouts/AEA.layout:310 lib/layouts/AEA.layout:356
 #: lib/layouts/elsart.layout:490 lib/layouts/ijmpc.layout:438
 #: lib/layouts/ijmpd.layout:449 lib/layouts/ijmpd.layout:452
 #: lib/layouts/llncs.layout:435 lib/layouts/svmono.layout:39
@@ -7152,7 +7166,7 @@ msgstr "命題"
 msgid "Remark"
 msgstr "注意"
 
-#: lib/layouts/AEA.layout:309 lib/layouts/ijmpc.layout:439
+#: lib/layouts/AEA.layout:312 lib/layouts/ijmpc.layout:439
 #: lib/layouts/ijmpd.layout:453 lib/layouts/theorems-ams-bytype.inc:325
 #: lib/layouts/theorems-ams-chap-bytype.inc:411
 #: lib/layouts/theorems-bytype.inc:319
@@ -7160,7 +7174,7 @@ msgstr "注意"
 msgid "Remark \\theremark."
 msgstr "注意 \\theremark."
 
-#: lib/layouts/AEA.layout:315 lib/layouts/AEA.layout:359
+#: lib/layouts/AEA.layout:318 lib/layouts/AEA.layout:362
 #: lib/layouts/llncs.layout:442 lib/layouts/svglobal3.layout:120
 #: lib/layouts/theorems-ams-bytype.inc:298
 #: lib/layouts/theorems-ams-bytype.inc:308
@@ -7183,45 +7197,45 @@ msgstr "注意 \\theremark."
 msgid "Solution"
 msgstr "解"
 
-#: lib/layouts/AEA.layout:319 lib/layouts/theorems-ams-bytype.inc:301
+#: lib/layouts/AEA.layout:322 lib/layouts/theorems-ams-bytype.inc:301
 #: lib/layouts/theorems-ams-chap-bytype.inc:383
 #: lib/layouts/theorems-bytype.inc:295
 #: lib/layouts/theorems-without-preamble.inc:344
 msgid "Solution \\thesolution."
 msgstr "解 \\thesolusion."
 
-#: lib/layouts/AEA.layout:325 lib/layouts/AEA.layout:356
+#: lib/layouts/AEA.layout:328 lib/layouts/AEA.layout:359
 #: lib/layouts/elsart.layout:41 lib/layouts/elsart.layout:523
 #: lib/layouts/europasscv.layout:304 lib/layouts/europasscv.layout:345
 #: lib/layouts/europecv.layout:236 lib/layouts/fixme.module:151
 #: lib/layouts/fixme.module:193 lib/layouts/moderncv.layout:487
 #: lib/layouts/moderncv.layout:488 lib/layouts/moderncv.layout:512
 #: lib/layouts/moderncv.layout:513
-#: lib/layouts/theorems-ams-extended-bytype.module:284
-#: lib/layouts/theorems-ams-extended-bytype.module:293
-#: lib/layouts/theorems-ams-extended-bytype.module:296
-#: lib/layouts/theorems-ams-extended-bytype.module:314
-#: lib/layouts/theorems-ams-extended-bytype.module:317
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:346
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:360
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:363
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:381
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:384
-#: lib/layouts/theorems-ams-extended.module:276
-#: lib/layouts/theorems-ams-extended.module:285
-#: lib/layouts/theorems-ams-extended.module:288
-#: lib/layouts/theorems-ams-extended.module:305
-#: lib/layouts/theorems-ams-extended.module:308
+#: lib/layouts/theorems-ams-extended-bytype.module:283
+#: lib/layouts/theorems-ams-extended-bytype.module:292
+#: lib/layouts/theorems-ams-extended-bytype.module:295
+#: lib/layouts/theorems-ams-extended-bytype.module:313
+#: lib/layouts/theorems-ams-extended-bytype.module:316
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:342
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:356
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:359
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:377
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:380
+#: lib/layouts/theorems-ams-extended.module:275
+#: lib/layouts/theorems-ams-extended.module:284
+#: lib/layouts/theorems-ams-extended.module:287
+#: lib/layouts/theorems-ams-extended.module:304
+#: lib/layouts/theorems-ams-extended.module:307
 #: lib/layouts/theorems-counters-extended-bytype.inc:25 lib/examples/Articles:0
 msgid "Summary"
 msgstr "要約"
 
-#: lib/layouts/AEA.layout:333 src/frontends/qt/Menus.cpp:1801
+#: lib/layouts/AEA.layout:336 src/frontends/qt/Menus.cpp:1801
 #: src/frontends/qt/Menus.cpp:1816
 msgid "Caption"
 msgstr "キャプション"
 
-#: lib/layouts/AEA.layout:344 lib/layouts/IEEEtran.layout:448
+#: lib/layouts/AEA.layout:347 lib/layouts/IEEEtran.layout:448
 #: lib/layouts/beamer.layout:1385 lib/layouts/elsart.layout:345
 #: lib/layouts/foils.layout:310 lib/layouts/heb-article.layout:106
 #: lib/layouts/ijmpc.layout:403 lib/layouts/ijmpd.layout:409
@@ -7468,7 +7482,7 @@ msgstr "付録"
 #: lib/layouts/agutex.layout:223 lib/layouts/amsdefs.inc:266
 #: lib/layouts/apa.layout:244 lib/layouts/beamer.layout:1184
 #: lib/layouts/copernicus.layout:437 lib/layouts/egs.layout:596
-#: lib/layouts/egs.layout:647 lib/layouts/elsarticle.layout:333
+#: lib/layouts/egs.layout:645 lib/layouts/elsarticle.layout:333
 #: lib/layouts/europasscv.layout:540 lib/layouts/europecv.layout:381
 #: lib/layouts/ijmpc.layout:505 lib/layouts/ijmpc.layout:532
 #: lib/layouts/ijmpd.layout:529 lib/layouts/ijmpd.layout:556
@@ -7485,7 +7499,7 @@ msgstr "付録"
 #: lib/layouts/simplecv.layout:199 lib/layouts/stdstruct.inc:63
 #: lib/layouts/svcommon.inc:626 lib/layouts/svcommon.inc:662
 msgid "BackMatter"
-msgstr "文末辞"
+msgstr "後付け"
 
 #: lib/layouts/IEEEtran.layout:352
 msgid "Peer Review Title"
@@ -7525,7 +7539,7 @@ msgstr "附録の見出し短縮形"
 #: lib/layouts/amsdefs.inc:265 lib/layouts/beamer.layout:1183
 #: lib/layouts/book.layout:24 lib/layouts/book.layout:26
 #: lib/layouts/cl2emult.layout:115 lib/layouts/copernicus.layout:433
-#: lib/layouts/egs.layout:646 lib/layouts/elsarticle.layout:329
+#: lib/layouts/egs.layout:644 lib/layouts/elsarticle.layout:329
 #: lib/layouts/foils.layout:241 lib/layouts/ijmpc.layout:528
 #: lib/layouts/ijmpd.layout:552 lib/layouts/jasatex.layout:327
 #: lib/layouts/latex8.layout:130 lib/layouts/llncs.layout:280
@@ -7550,7 +7564,7 @@ msgstr "書誌情報"
 #: lib/layouts/aastex.layout:485 lib/layouts/agutex.layout:235
 #: lib/layouts/amsdefs.inc:281 lib/layouts/beamer.layout:1198
 #: lib/layouts/cl2emult.layout:130 lib/layouts/copernicus.layout:449
-#: lib/layouts/egs.layout:662 lib/layouts/elsarticle.layout:345
+#: lib/layouts/egs.layout:660 lib/layouts/elsarticle.layout:345
 #: lib/layouts/ijmpc.layout:544 lib/layouts/ijmpd.layout:568
 #: lib/layouts/iopart.layout:337 lib/layouts/iopart.layout:364
 #: lib/layouts/iucr.layout:264 lib/layouts/iucr.layout:271
@@ -7566,7 +7580,7 @@ msgstr "参考文献"
 #: lib/layouts/IEEEtran.layout:398 lib/layouts/aastex.layout:474
 #: lib/layouts/agutex.layout:244 lib/layouts/amsdefs.inc:293
 #: lib/layouts/beamer.layout:1207 lib/layouts/cl2emult.layout:139
-#: lib/layouts/copernicus.layout:457 lib/layouts/egs.layout:670
+#: lib/layouts/copernicus.layout:457 lib/layouts/egs.layout:668
 #: lib/layouts/elsarticle.layout:354 lib/layouts/ijmpc.layout:553
 #: lib/layouts/ijmpd.layout:577 lib/layouts/iopart.layout:346
 #: lib/layouts/jasatex.layout:352 lib/layouts/kluwer.layout:410
@@ -7580,7 +7594,7 @@ msgstr "書誌プリアンブル"
 #: lib/layouts/IEEEtran.layout:399 lib/layouts/aastex.layout:475
 #: lib/layouts/agutex.layout:245 lib/layouts/amsdefs.inc:294
 #: lib/layouts/beamer.layout:1208 lib/layouts/cl2emult.layout:140
-#: lib/layouts/copernicus.layout:458 lib/layouts/egs.layout:671
+#: lib/layouts/copernicus.layout:458 lib/layouts/egs.layout:669
 #: lib/layouts/elsarticle.layout:355 lib/layouts/ijmpc.layout:554
 #: lib/layouts/ijmpd.layout:578 lib/layouts/iopart.layout:347
 #: lib/layouts/jasatex.layout:353 lib/layouts/kluwer.layout:411
@@ -7594,7 +7608,7 @@ msgstr "書誌情報プリアンブル"
 #: lib/layouts/IEEEtran.layout:400 lib/layouts/aastex.layout:476
 #: lib/layouts/agutex.layout:246 lib/layouts/amsdefs.inc:295
 #: lib/layouts/beamer.layout:1209 lib/layouts/cl2emult.layout:141
-#: lib/layouts/copernicus.layout:459 lib/layouts/egs.layout:672
+#: lib/layouts/copernicus.layout:459 lib/layouts/egs.layout:670
 #: lib/layouts/elsarticle.layout:356 lib/layouts/ijmpc.layout:555
 #: lib/layouts/ijmpd.layout:579 lib/layouts/iopart.layout:348
 #: lib/layouts/jasatex.layout:354 lib/layouts/kluwer.layout:412
@@ -7718,9 +7732,10 @@ msgstr "R Journal"
 
 #: lib/layouts/RJournal.layout:4 lib/layouts/bxjsreport.layout:4
 #: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
-#: lib/layouts/jreport.layout:4 lib/layouts/mwrep.layout:4
-#: lib/layouts/report.layout:4 lib/layouts/scrreprt.layout:4
-#: lib/layouts/treport.layout:4
+#: lib/layouts/jlreq-report.layout:4 lib/layouts/jreport.layout:4
+#: lib/layouts/ltjreport.layout:4 lib/layouts/ltjsreport.layout:4
+#: lib/layouts/mwrep.layout:4 lib/layouts/report.layout:4
+#: lib/layouts/scrreprt.layout:4 lib/layouts/treport.layout:4
 msgid "Reports"
 msgstr "5. レポート"
 
@@ -7849,66 +7864,63 @@ msgstr "郵便"
 msgid "Correspondence to:"
 msgstr "連絡先："
 
-#: lib/layouts/aa.layout:181 lib/layouts/copernicus.layout:427
-#: lib/layouts/egs.layout:610
-msgid "Acknowledgements."
-msgstr "謝辞."
-
 #: lib/layouts/aa.layout:196 lib/layouts/aapaper.layout:66
 #: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:97
 #: lib/layouts/aguplus.inc:29 lib/layouts/amsart.layout:66
-#: lib/layouts/amsbook.layout:57 lib/layouts/apa.layout:339
-#: lib/layouts/apax.inc:438 lib/layouts/beamer.layout:297
+#: lib/layouts/amsbook.layout:57 lib/layouts/apa.layout:334
+#: lib/layouts/apax.inc:433 lib/layouts/beamer.layout:297
 #: lib/layouts/egs.layout:33 lib/layouts/europasscv.layout:264
 #: lib/layouts/europecv.layout:193 lib/layouts/isprs.layout:160
-#: lib/layouts/iucr.layout:47 lib/layouts/jss.layout:25
-#: lib/layouts/kluwer.layout:63 lib/layouts/latex8.layout:50
-#: lib/layouts/llncs.layout:49 lib/layouts/ltugboat.layout:48
-#: lib/layouts/memoir.layout:100 lib/layouts/moderncv.layout:321
-#: lib/layouts/numarticle.inc:8 lib/layouts/numreport.inc:14
-#: lib/layouts/numrevtex.inc:6 lib/layouts/paper.layout:67
-#: lib/layouts/powerdot.layout:242 lib/layouts/revtex.layout:40
-#: lib/layouts/revtex4-x.inc:30 lib/layouts/revtex4.layout:69
-#: lib/layouts/scrclass.inc:97 lib/layouts/siamltex.layout:392
-#: lib/layouts/simplecv.layout:32 lib/layouts/spie.layout:21
-#: lib/layouts/stdcounters.inc:20 lib/layouts/stdsections.inc:99
-#: lib/layouts/svcommon.inc:220 lib/layouts/tufte-book.layout:113
-#: lib/ui/stdtoolbars.inc:129 src/frontends/qt/GuiDocument.cpp:135
+#: lib/layouts/iucr.layout:47 lib/layouts/jlreq-common.inc:43
+#: lib/layouts/jss.layout:25 lib/layouts/kluwer.layout:63
+#: lib/layouts/latex8.layout:50 lib/layouts/llncs.layout:49
+#: lib/layouts/ltugboat.layout:48 lib/layouts/memoir.layout:100
+#: lib/layouts/moderncv.layout:321 lib/layouts/numarticle.inc:8
+#: lib/layouts/numreport.inc:14 lib/layouts/numrevtex.inc:6
+#: lib/layouts/paper.layout:67 lib/layouts/powerdot.layout:242
+#: lib/layouts/revtex.layout:40 lib/layouts/revtex4-x.inc:30
+#: lib/layouts/revtex4.layout:69 lib/layouts/scrclass.inc:97
+#: lib/layouts/siamltex.layout:392 lib/layouts/simplecv.layout:32
+#: lib/layouts/spie.layout:21 lib/layouts/stdcounters.inc:20
+#: lib/layouts/stdsections.inc:99 lib/layouts/svcommon.inc:220
+#: lib/layouts/tufte-book.layout:113 lib/ui/stdtoolbars.inc:129
+#: src/frontends/qt/GuiDocument.cpp:135
 msgid "Section"
 msgstr "節"
 
 #: lib/layouts/aa.layout:205 lib/layouts/aapaper.layout:70
 #: lib/layouts/aapaper.layout:149 lib/layouts/aastex.layout:110
 #: lib/layouts/aguplus.inc:44 lib/layouts/amsart.layout:107
-#: lib/layouts/amsbook.layout:67 lib/layouts/apa.layout:350
-#: lib/layouts/apax.inc:449 lib/layouts/beamer.layout:362
+#: lib/layouts/amsbook.layout:67 lib/layouts/apa.layout:345
+#: lib/layouts/apax.inc:444 lib/layouts/beamer.layout:362
 #: lib/layouts/egs.layout:57 lib/layouts/isprs.layout:172
-#: lib/layouts/iucr.layout:54 lib/layouts/jss.layout:30
-#: lib/layouts/kluwer.layout:72 lib/layouts/latex8.layout:59
-#: lib/layouts/llncs.layout:58 lib/layouts/ltugboat.layout:70
-#: lib/layouts/memoir.layout:116 lib/layouts/moderncv.layout:357
-#: lib/layouts/numrevtex.inc:15 lib/layouts/paper.layout:77
-#: lib/layouts/revtex.layout:52 lib/layouts/scrclass.inc:106
-#: lib/layouts/siamltex.layout:403 lib/layouts/simplecv.layout:64
-#: lib/layouts/stdcounters.inc:26 lib/layouts/stdsections.inc:136
-#: lib/layouts/svcommon.inc:229 lib/layouts/tufte-book.layout:145
+#: lib/layouts/iucr.layout:54 lib/layouts/jlreq-common.inc:59
+#: lib/layouts/jss.layout:30 lib/layouts/kluwer.layout:72
+#: lib/layouts/latex8.layout:59 lib/layouts/llncs.layout:58
+#: lib/layouts/ltugboat.layout:70 lib/layouts/memoir.layout:116
+#: lib/layouts/moderncv.layout:357 lib/layouts/numrevtex.inc:15
+#: lib/layouts/paper.layout:77 lib/layouts/revtex.layout:52
+#: lib/layouts/scrclass.inc:106 lib/layouts/siamltex.layout:403
+#: lib/layouts/simplecv.layout:64 lib/layouts/stdcounters.inc:26
+#: lib/layouts/stdsections.inc:136 lib/layouts/svcommon.inc:229
+#: lib/layouts/tufte-book.layout:145
 msgid "Subsection"
 msgstr "小節"
 
 #: lib/layouts/aa.layout:216 lib/layouts/aapaper.layout:74
 #: lib/layouts/aapaper.layout:161 lib/layouts/aastex.layout:123
 #: lib/layouts/amsart.layout:130 lib/layouts/amsbook.layout:76
-#: lib/layouts/apa.layout:360 lib/layouts/apax.inc:459
+#: lib/layouts/apa.layout:355 lib/layouts/apax.inc:454
 #: lib/layouts/beamer.layout:426 lib/layouts/isprs.layout:182
-#: lib/layouts/iucr.layout:63 lib/layouts/jss.layout:35
-#: lib/layouts/kluwer.layout:82 lib/layouts/llncs.layout:67
-#: lib/layouts/ltugboat.layout:92 lib/layouts/memoir.layout:132
-#: lib/layouts/numrevtex.inc:24 lib/layouts/paper.layout:87
-#: lib/layouts/recipebook.layout:103 lib/layouts/revtex.layout:61
-#: lib/layouts/revtex4-x.inc:39 lib/layouts/revtex4.layout:79
-#: lib/layouts/scrclass.inc:115 lib/layouts/siamltex.layout:412
-#: lib/layouts/stdcounters.inc:32 lib/layouts/stdsections.inc:152
-#: lib/layouts/svcommon.inc:238
+#: lib/layouts/iucr.layout:63 lib/layouts/jlreq-common.inc:75
+#: lib/layouts/jss.layout:35 lib/layouts/kluwer.layout:82
+#: lib/layouts/llncs.layout:67 lib/layouts/ltugboat.layout:92
+#: lib/layouts/memoir.layout:132 lib/layouts/numrevtex.inc:24
+#: lib/layouts/paper.layout:87 lib/layouts/recipebook.layout:103
+#: lib/layouts/revtex.layout:61 lib/layouts/revtex4-x.inc:39
+#: lib/layouts/revtex4.layout:79 lib/layouts/scrclass.inc:115
+#: lib/layouts/siamltex.layout:412 lib/layouts/stdcounters.inc:32
+#: lib/layouts/stdsections.inc:152 lib/layouts/svcommon.inc:238
 msgid "Subsubsection"
 msgstr "小々節"
 
@@ -8003,16 +8015,6 @@ msgstr "電子メール"
 msgid "email:"
 msgstr "電子メール："
 
-#: lib/layouts/aapaper.inc:93 lib/layouts/aastex.layout:354
-#: lib/layouts/aastex62.layout:225 lib/layouts/apa.layout:243
-#: lib/layouts/copernicus.layout:424 lib/layouts/egs.layout:595
-#: lib/layouts/elsart.layout:555 lib/layouts/isprs.layout:221
-#: lib/layouts/iucr.layout:253 lib/layouts/kluwer.layout:341
-#: lib/layouts/kluwer.layout:353 lib/layouts/svcommon.inc:640
-#: lib/layouts/svcommon.inc:653
-msgid "Acknowledgements"
-msgstr "謝辞(Acknowledgements)"
-
 #: lib/layouts/aapaper.inc:107 lib/layouts/aapaper.layout:96
 #: lib/ui/stdtoolbars.inc:153 src/frontends/qt/GuiThesaurus.cpp:48
 msgid "Thesaurus"
@@ -8037,15 +8039,15 @@ msgstr "Astronomy & Astrophysics (V. 4, 廃版)"
 msgid "Obsolete"
 msgstr "廃版"
 
-#: lib/layouts/aapaper.layout:50 lib/layouts/apa.layout:391
-#: lib/layouts/apax.inc:490 lib/layouts/beamer.layout:84
+#: lib/layouts/aapaper.layout:50 lib/layouts/apa.layout:386
+#: lib/layouts/apax.inc:485 lib/layouts/beamer.layout:84
 #: lib/layouts/egs.layout:211 lib/layouts/powerdot.layout:265
 #: lib/layouts/simplecv.layout:109 lib/layouts/stdlists.inc:13
 msgid "Itemize"
 msgstr "箇条書き(記号)"
 
-#: lib/layouts/aapaper.layout:53 lib/layouts/apa.layout:427
-#: lib/layouts/apax.inc:527 lib/layouts/beamer.layout:133
+#: lib/layouts/aapaper.layout:53 lib/layouts/apa.layout:422
+#: lib/layouts/apax.inc:522 lib/layouts/beamer.layout:133
 #: lib/layouts/egs.layout:168 lib/layouts/powerdot.layout:327
 #: lib/layouts/stdlists.inc:52
 msgid "Enumerate"
@@ -8061,9 +8063,9 @@ msgid "Description"
 msgstr "箇条書き(記述)"
 
 #: lib/layouts/aapaper.layout:59 lib/layouts/algorithm2e.module:34
-#: lib/layouts/apa.layout:392 lib/layouts/apa.layout:428
-#: lib/layouts/apa.layout:472 lib/layouts/apax.inc:491 lib/layouts/apax.inc:528
-#: lib/layouts/apax.inc:572 lib/layouts/beamer.layout:85
+#: lib/layouts/apa.layout:387 lib/layouts/apa.layout:423
+#: lib/layouts/apa.layout:467 lib/layouts/apax.inc:486 lib/layouts/apax.inc:523
+#: lib/layouts/apax.inc:567 lib/layouts/beamer.layout:85
 #: lib/layouts/beamer.layout:134 lib/layouts/beamer.layout:195
 #: lib/layouts/egs.layout:141 lib/layouts/egs.layout:169
 #: lib/layouts/egs.layout:212 lib/layouts/enumitem.module:88
@@ -8134,7 +8136,7 @@ msgid "Subject headings:"
 msgstr "主題ヘッダ："
 
 #: lib/layouts/aastex.layout:365
-msgid "[Acknowledgements]"
+msgid "[Acknowledgments]"
 msgstr "[謝辞]"
 
 #: lib/layouts/aastex.layout:377
@@ -8294,7 +8296,7 @@ msgid "Author:"
 msgstr "著者："
 
 #: lib/layouts/aastex62.layout:161 lib/layouts/acmart.layout:196
-#: lib/layouts/apax.inc:646 lib/layouts/apax.inc:673
+#: lib/layouts/apax.inc:641 lib/layouts/apax.inc:668
 msgid "ORCID"
 msgstr "ORCID"
 
@@ -8365,7 +8367,7 @@ msgid "American Chemical Society (ACS)"
 msgstr "American Chemical Society (ACS)"
 
 #: lib/layouts/achemso.layout:75 lib/layouts/amsdefs.inc:41
-#: lib/layouts/apa.layout:291 lib/layouts/apax.inc:390
+#: lib/layouts/apa.layout:286 lib/layouts/apax.inc:385
 #: lib/layouts/beamer.layout:268 lib/layouts/beamer.layout:324
 #: lib/layouts/beamer.layout:389 lib/layouts/beamer.layout:453
 #: lib/layouts/beamer.layout:1013 lib/layouts/europecv.layout:201
@@ -8541,8 +8543,8 @@ msgstr "謝辞："
 msgid "ACM Journal"
 msgstr "ACM Journal"
 
-#: lib/layouts/acmart.layout:109 lib/layouts/apax.inc:341
-#: lib/layouts/apax.inc:349 lib/layouts/apax.inc:358 lib/layouts/apax.inc:366
+#: lib/layouts/acmart.layout:109 lib/layouts/apax.inc:336
+#: lib/layouts/apax.inc:344 lib/layouts/apax.inc:353 lib/layouts/apax.inc:361
 msgid "Preamble"
 msgstr "序文"
 
@@ -8938,21 +8940,6 @@ msgstr "匿名の抑制"
 msgid "Non anonymous only"
 msgstr "匿名でないもののみ"
 
-#: lib/layouts/acmart.layout:657 lib/layouts/acmart.layout:661
-#: lib/layouts/acmsiggraph-0-92.layout:346
-#: lib/layouts/acmsiggraph-0-92.layout:353 lib/layouts/acmsiggraph.layout:302
-#: lib/layouts/acmsiggraph.layout:309 lib/layouts/agutex.layout:193
-#: lib/layouts/apa.layout:268 lib/layouts/apax.inc:335
-#: lib/layouts/iopart.layout:296 lib/layouts/iopart.layout:310
-#: lib/layouts/jasatex.layout:284 lib/layouts/jasatex.layout:290
-#: lib/layouts/maa-monthly.layout:144 lib/layouts/maa-monthly.layout:150
-#: lib/layouts/revtex4-x.inc:261 lib/layouts/revtex4.layout:281
-#: lib/layouts/revtex4.layout:291 lib/layouts/sigplanconf.layout:235
-#: lib/layouts/sigplanconf.layout:242 lib/layouts/spie.layout:100
-#: lib/examples/Articles:0
-msgid "Acknowledgments"
-msgstr "謝辞"
-
 #: lib/layouts/acmart.layout:675 lib/layouts/acmart.layout:679
 msgid "Grant Sponsor"
 msgstr "助成金スポンサー"
@@ -9166,22 +9153,23 @@ msgstr "American Geophysical Union (AGUPLUS Manuscript)"
 
 #: lib/layouts/aguplus.inc:37 lib/layouts/amsart.layout:77
 #: lib/layouts/amsbook.layout:86 lib/layouts/beamer.layout:342
-#: lib/layouts/egs.layout:684 lib/layouts/isprs.layout:192
-#: lib/layouts/spie.layout:32 lib/layouts/stdstarsections.inc:45
-#: lib/layouts/svcommon.inc:279
+#: lib/layouts/egs.layout:682 lib/layouts/isprs.layout:192
+#: lib/layouts/jlreq-common.inc:51 lib/layouts/spie.layout:32
+#: lib/layouts/stdstarsections.inc:45 lib/layouts/svcommon.inc:279
 msgid "Section*"
 msgstr "節*"
 
 #: lib/layouts/aguplus.inc:52 lib/layouts/amsart.layout:119
 #: lib/layouts/amsbook.layout:95 lib/layouts/beamer.layout:407
-#: lib/layouts/egs.layout:705 lib/layouts/isprs.layout:203
-#: lib/layouts/stdstarsections.inc:61 lib/layouts/svcommon.inc:287
+#: lib/layouts/egs.layout:703 lib/layouts/isprs.layout:203
+#: lib/layouts/jlreq-common.inc:67 lib/layouts/stdstarsections.inc:61
+#: lib/layouts/svcommon.inc:287
 msgid "Subsection*"
 msgstr "小節*"
 
 #: lib/layouts/aguplus.inc:59 lib/layouts/agutex.layout:165
-#: lib/layouts/amsbook.layout:133 lib/layouts/apa.layout:370
-#: lib/layouts/apax.inc:469 lib/layouts/egs.layout:78
+#: lib/layouts/amsbook.layout:133 lib/layouts/apa.layout:365
+#: lib/layouts/apax.inc:464 lib/layouts/egs.layout:78
 #: lib/layouts/kluwer.layout:92 lib/layouts/llncs.layout:76
 #: lib/layouts/ltugboat.layout:112 lib/layouts/memoir.layout:148
 #: lib/layouts/numrevtex.inc:33 lib/layouts/paper.layout:97
@@ -9326,10 +9314,6 @@ msgstr "著者所属機関の連番"
 msgid "Author affiliation:"
 msgstr "著者所属："
 
-#: lib/layouts/agutex.layout:205
-msgid "Acknowledgments."
-msgstr "謝辞."
-
 #: lib/layouts/algorithm2e.module:2
 msgid "Algorithm2e Float"
 msgstr "Algorithm2eフロート"
@@ -9380,7 +9364,8 @@ msgstr "連番なし"
 
 #: lib/layouts/amsart.layout:140 lib/layouts/amsbook.layout:103
 #: lib/layouts/beamer.layout:470 lib/layouts/isprs.layout:212
-#: lib/layouts/stdstarsections.inc:77 lib/layouts/svcommon.inc:295
+#: lib/layouts/jlreq-common.inc:83 lib/layouts/stdstarsections.inc:77
+#: lib/layouts/svcommon.inc:295
 msgid "Subsubsection*"
 msgstr "小々節*"
 
@@ -9388,12 +9373,13 @@ msgstr "小々節*"
 #: lib/layouts/bxjsbook.layout:4 lib/layouts/ctex-book.layout:4
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4 lib/layouts/extbook.layout:4
-#: lib/layouts/jbook.layout:4 lib/layouts/jsbook.layout:4
-#: lib/layouts/memoir.layout:4 lib/layouts/mwbk.layout:4
-#: lib/layouts/recipebook.layout:4 lib/layouts/scrbook.layout:4
-#: lib/layouts/svmono.layout:4 lib/layouts/svmult.layout:4
-#: lib/layouts/tbook.layout:4 lib/layouts/tufte-book.layout:4
-#: lib/examples/Articles:0
+#: lib/layouts/jbook.layout:4 lib/layouts/jlreq-book.layout:4
+#: lib/layouts/jsbook.layout:4 lib/layouts/ltjbook.layout:4
+#: lib/layouts/ltjsbook.layout:4 lib/layouts/memoir.layout:4
+#: lib/layouts/mwbk.layout:4 lib/layouts/recipebook.layout:4
+#: lib/layouts/scrbook.layout:4 lib/layouts/svmono.layout:4
+#: lib/layouts/svmult.layout:4 lib/layouts/tbook.layout:4
+#: lib/layouts/tufte-book.layout:4 lib/examples/Articles:0
 msgid "Books"
 msgstr "3. 書籍"
 
@@ -9401,9 +9387,9 @@ msgstr "3. 書籍"
 msgid "Chapter Exercises"
 msgstr "章問題"
 
-#: lib/layouts/amsbook.layout:166 lib/layouts/apa.layout:412
-#: lib/layouts/apa.layout:450 lib/layouts/apa.layout:492
-#: lib/layouts/apax.inc:512 lib/layouts/apax.inc:550 lib/layouts/apax.inc:592
+#: lib/layouts/amsbook.layout:166 lib/layouts/apa.layout:407
+#: lib/layouts/apa.layout:445 lib/layouts/apa.layout:487
+#: lib/layouts/apax.inc:507 lib/layouts/apax.inc:545 lib/layouts/apax.inc:587
 #: lib/layouts/beamer.layout:109 lib/layouts/beamer.layout:162
 #: lib/layouts/beamer.layout:211 lib/layouts/beamer.layout:803
 #: lib/layouts/egs.layout:156 lib/layouts/egs.layout:190
@@ -9420,9 +9406,9 @@ msgstr "章問題"
 msgid "List preamble"
 msgstr "リスト プリアンブル"
 
-#: lib/layouts/amsbook.layout:167 lib/layouts/apa.layout:413
-#: lib/layouts/apa.layout:451 lib/layouts/apa.layout:493
-#: lib/layouts/apax.inc:513 lib/layouts/apax.inc:551 lib/layouts/apax.inc:593
+#: lib/layouts/amsbook.layout:167 lib/layouts/apa.layout:408
+#: lib/layouts/apa.layout:446 lib/layouts/apa.layout:488
+#: lib/layouts/apax.inc:508 lib/layouts/apax.inc:546 lib/layouts/apax.inc:588
 #: lib/layouts/beamer.layout:110 lib/layouts/beamer.layout:163
 #: lib/layouts/beamer.layout:212 lib/layouts/beamer.layout:804
 #: lib/layouts/egs.layout:157 lib/layouts/egs.layout:191
@@ -9439,9 +9425,9 @@ msgstr "リスト プリアンブル"
 msgid "List Preamble"
 msgstr "リスト プリアンブル"
 
-#: lib/layouts/amsbook.layout:168 lib/layouts/apa.layout:414
-#: lib/layouts/apa.layout:452 lib/layouts/apa.layout:494
-#: lib/layouts/apax.inc:514 lib/layouts/apax.inc:552 lib/layouts/apax.inc:594
+#: lib/layouts/amsbook.layout:168 lib/layouts/apa.layout:409
+#: lib/layouts/apa.layout:447 lib/layouts/apa.layout:489
+#: lib/layouts/apax.inc:509 lib/layouts/apax.inc:547 lib/layouts/apax.inc:589
 #: lib/layouts/beamer.layout:111 lib/layouts/beamer.layout:164
 #: lib/layouts/beamer.layout:213 lib/layouts/beamer.layout:805
 #: lib/layouts/egs.layout:158 lib/layouts/egs.layout:192
@@ -9578,37 +9564,37 @@ msgid "FourAffiliations"
 msgstr "第四所属"
 
 #: lib/layouts/apa.layout:256 lib/layouts/iucr.layout:257
-msgid "Acknowledgements:"
+msgid "Acknowledgments:"
 msgstr "謝辞："
 
-#: lib/layouts/apa.layout:273 lib/layouts/apax.inc:372
+#: lib/layouts/apa.layout:268 lib/layouts/apax.inc:367
 msgid "ThickLine"
 msgstr "太線"
 
-#: lib/layouts/apa.layout:284 lib/layouts/apax.inc:383
+#: lib/layouts/apa.layout:279 lib/layouts/apax.inc:378
 msgid "Centered"
 msgstr "中央揃え"
 
-#: lib/layouts/apa.layout:285 lib/layouts/apax.inc:384
+#: lib/layouts/apa.layout:280 lib/layouts/apax.inc:379
 #: lib/layouts/stdinsets.inc:720 src/insets/InsetCaption.cpp:449
 msgid "standard"
 msgstr "標準"
 
-#: lib/layouts/apa.layout:292 lib/layouts/apax.inc:391
+#: lib/layouts/apa.layout:287 lib/layouts/apax.inc:386
 #: lib/layouts/scrclass.inc:331 lib/layouts/scrclass.inc:356
 #: lib/layouts/stdinsets.inc:727
 msgid "The caption as it appears in the list of figures/tables"
 msgstr "図表一覧に表示するキャプション"
 
-#: lib/layouts/apa.layout:307 lib/layouts/apax.inc:406
+#: lib/layouts/apa.layout:302 lib/layouts/apax.inc:401
 msgid "FitFigure"
 msgstr "寸法を調整した図"
 
-#: lib/layouts/apa.layout:313 lib/layouts/apax.inc:412
+#: lib/layouts/apa.layout:308 lib/layouts/apax.inc:407
 msgid "FitBitmap"
 msgstr "寸法を調整したビットマップ"
 
-#: lib/layouts/apa.layout:380 lib/layouts/apax.inc:479
+#: lib/layouts/apa.layout:375 lib/layouts/apax.inc:474
 #: lib/layouts/egs.layout:96 lib/layouts/kluwer.layout:102
 #: lib/layouts/llncs.layout:86 lib/layouts/memoir.layout:164
 #: lib/layouts/paper.layout:107 lib/layouts/scrclass.inc:133
@@ -9617,8 +9603,8 @@ msgstr "寸法を調整したビットマップ"
 msgid "Subparagraph"
 msgstr "小段落"
 
-#: lib/layouts/apa.layout:408 lib/layouts/apa.layout:446
-#: lib/layouts/apax.inc:508 lib/layouts/apax.inc:546
+#: lib/layouts/apa.layout:403 lib/layouts/apa.layout:441
+#: lib/layouts/apax.inc:503 lib/layouts/apax.inc:541
 #: lib/layouts/beamer.layout:97 lib/layouts/beamer.layout:150
 #: lib/layouts/egs.layout:186 lib/layouts/egs.layout:228
 #: lib/layouts/europasscv.layout:429 lib/layouts/powerdot.layout:300
@@ -9627,8 +9613,8 @@ msgstr "小段落"
 msgid "Custom Item|s"
 msgstr "ユーザ設定項目"
 
-#: lib/layouts/apa.layout:409 lib/layouts/apa.layout:447
-#: lib/layouts/apax.inc:509 lib/layouts/apax.inc:547
+#: lib/layouts/apa.layout:404 lib/layouts/apa.layout:442
+#: lib/layouts/apax.inc:504 lib/layouts/apax.inc:542
 #: lib/layouts/beamer.layout:98 lib/layouts/beamer.layout:151
 #: lib/layouts/egs.layout:187 lib/layouts/egs.layout:229
 #: lib/layouts/europasscv.layout:430 lib/layouts/powerdot.layout:301
@@ -9637,12 +9623,12 @@ msgstr "ユーザ設定項目"
 msgid "A customized item string"
 msgstr "ユーザ設定項目の文字列"
 
-#: lib/layouts/apa.layout:471 lib/layouts/apax.inc:571
+#: lib/layouts/apa.layout:466 lib/layouts/apax.inc:566
 msgid "Seriate"
 msgstr "行内列挙(Seriate)"
 
-#: lib/layouts/apa.layout:488 lib/layouts/apa.layout:489
-#: lib/layouts/apax.inc:588 lib/layouts/apax.inc:589
+#: lib/layouts/apa.layout:483 lib/layouts/apa.layout:484
+#: lib/layouts/apax.inc:583 lib/layouts/apax.inc:584
 #: lib/layouts/stdcounters.inc:57
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
@@ -9681,24 +9667,25 @@ msgstr "第六所属"
 
 #: lib/layouts/apax.inc:227 lib/layouts/beamer.layout:1670
 #: lib/layouts/elsart.layout:501 lib/layouts/fixme.module:108
-#: lib/layouts/iopart.layout:106 lib/layouts/llncs.layout:394
-#: lib/layouts/powerdot.layout:215 lib/layouts/slides.layout:170
-#: lib/layouts/stdinsets.inc:161 lib/layouts/svmono.layout:94
-#: lib/layouts/theorems-ams-extended-bytype.module:204
-#: lib/layouts/theorems-ams-extended-bytype.module:213
-#: lib/layouts/theorems-ams-extended-bytype.module:216
-#: lib/layouts/theorems-ams-extended-bytype.module:233
-#: lib/layouts/theorems-ams-extended-bytype.module:236
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:258
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:271
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:274
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:291
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:294
-#: lib/layouts/theorems-ams-extended.module:198
-#: lib/layouts/theorems-ams-extended.module:207
-#: lib/layouts/theorems-ams-extended.module:210
-#: lib/layouts/theorems-ams-extended.module:226
-#: lib/layouts/theorems-ams-extended.module:229
+#: lib/layouts/iopart.layout:106 lib/layouts/jlreq-common.inc:200
+#: lib/layouts/llncs.layout:394 lib/layouts/powerdot.layout:215
+#: lib/layouts/slides.layout:170 lib/layouts/stdinsets.inc:161
+#: lib/layouts/svmono.layout:94
+#: lib/layouts/theorems-ams-extended-bytype.module:203
+#: lib/layouts/theorems-ams-extended-bytype.module:212
+#: lib/layouts/theorems-ams-extended-bytype.module:215
+#: lib/layouts/theorems-ams-extended-bytype.module:232
+#: lib/layouts/theorems-ams-extended-bytype.module:235
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:254
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:267
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:270
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:287
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:290
+#: lib/layouts/theorems-ams-extended.module:197
+#: lib/layouts/theorems-ams-extended.module:206
+#: lib/layouts/theorems-ams-extended.module:209
+#: lib/layouts/theorems-ams-extended.module:225
+#: lib/layouts/theorems-ams-extended.module:228
 #: lib/layouts/theorems-counters-extended-bytype.inc:19
 #: lib/layouts/theorems-without-preamble.inc:513
 #: lib/layouts/theorems-without-preamble.inc:515
@@ -9711,39 +9698,39 @@ msgstr "註釈"
 msgid "Author Note:"
 msgstr "著者註釈："
 
-#: lib/layouts/apax.inc:340 lib/layouts/egs.layout:424
+#: lib/layouts/apax.inc:335 lib/layouts/egs.layout:424
 msgid "Journal"
 msgstr "ジャーナル"
 
-#: lib/layouts/apax.inc:357
+#: lib/layouts/apax.inc:352
 msgid "CopNum"
 msgstr "CopNum"
 
-#: lib/layouts/apax.inc:365
+#: lib/layouts/apax.inc:360
 msgid "Volume"
 msgstr "巻"
 
-#: lib/layouts/apax.inc:506
+#: lib/layouts/apax.inc:501
 msgid "*"
 msgstr "*"
 
-#: lib/layouts/apax.inc:603
+#: lib/layouts/apax.inc:598
 msgid "Course"
 msgstr "Course"
 
-#: lib/layouts/apax.inc:619
+#: lib/layouts/apax.inc:614
 msgid "Course: "
 msgstr "Course："
 
-#: lib/layouts/apax.inc:633 lib/layouts/apax.inc:660
+#: lib/layouts/apax.inc:628 lib/layouts/apax.inc:655
 msgid "addORCIDlink"
 msgstr "addORCIDlink"
 
-#: lib/layouts/apax.inc:637 lib/layouts/apax.inc:661
+#: lib/layouts/apax.inc:632 lib/layouts/apax.inc:656
 msgid "ORCID-link: "
 msgstr "ORCID-link："
 
-#: lib/layouts/apax.inc:645 lib/layouts/apax.inc:667
+#: lib/layouts/apax.inc:640 lib/layouts/apax.inc:662
 msgid "Author-name"
 msgstr "著者名"
 
@@ -9760,18 +9747,18 @@ msgid "Article (Standard Class)"
 msgstr "Article (標準クラス)"
 
 #: lib/layouts/article.layout:21 lib/layouts/beamer.layout:254
-#: lib/layouts/beamer.layout:283 lib/layouts/memoir.layout:66
-#: lib/layouts/mwart.layout:25 lib/layouts/paper.layout:55
-#: lib/layouts/scrartcl.layout:22 lib/layouts/scrclass.inc:77
-#: lib/layouts/stdcounters.inc:9 lib/layouts/stdsections.inc:12
-#: lib/layouts/svcommon.inc:112 lib/layouts/svmult.layout:113
-#: lib/layouts/tufte-handout.layout:23
+#: lib/layouts/beamer.layout:283 lib/layouts/jlreq-common.inc:11
+#: lib/layouts/memoir.layout:66 lib/layouts/mwart.layout:25
+#: lib/layouts/paper.layout:55 lib/layouts/scrartcl.layout:22
+#: lib/layouts/scrclass.inc:77 lib/layouts/stdcounters.inc:9
+#: lib/layouts/stdsections.inc:12 lib/layouts/svcommon.inc:112
+#: lib/layouts/svmult.layout:113 lib/layouts/tufte-handout.layout:23
 msgid "Part"
 msgstr "部"
 
-#: lib/layouts/article.layout:38 lib/layouts/mwart.layout:35
-#: lib/layouts/scrartcl.layout:34 lib/layouts/stdstarsections.inc:13
-#: lib/layouts/svcommon.inc:270
+#: lib/layouts/article.layout:38 lib/layouts/jlreq-common.inc:19
+#: lib/layouts/mwart.layout:35 lib/layouts/scrartcl.layout:34
+#: lib/layouts/stdstarsections.inc:13 lib/layouts/svcommon.inc:270
 msgid "Part*"
 msgstr "部*"
 
@@ -10346,7 +10333,7 @@ msgstr "補題."
 msgid "Theorem."
 msgstr "定理."
 
-#: lib/layouts/beamer.layout:1402 lib/layouts/egs.layout:740
+#: lib/layouts/beamer.layout:1402 lib/layouts/egs.layout:738
 #: lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "LyXコード"
@@ -10643,20 +10630,20 @@ msgid "Right Address"
 msgstr "右寄せ住所"
 
 #: lib/layouts/bxjsarticle.layout:3
-msgid "Japanese Article (BXJS Class)"
-msgstr "日本語Article (BXJSクラス)"
+msgid "Japanese Article (BX Bundle)"
+msgstr "日本語Article (BXシリーズ)"
 
 #: lib/layouts/bxjsbook.layout:3
-msgid "Japanese Book (BXJS Class)"
-msgstr "日本語Book (BXJSクラス)"
+msgid "Japanese Book (BX Bundle)"
+msgstr "日本語Book (BXシリーズ)"
 
 #: lib/layouts/bxjsreport.layout:3
-msgid "Japanese Report (BXJS Class)"
-msgstr "日本語Report (BXJSクラス)"
+msgid "Japanese Report (BX Bundle)"
+msgstr "日本語Report (BXシリーズ)"
 
 #: lib/layouts/bxjsslide.layout:3
-msgid "Japanese Slide (BXJS Class)"
-msgstr "日本語Slide (BXJSクラス)"
+msgid "Japanese Slides (BX Bundle)"
+msgstr "日本語Slide (BXシリーズ)"
 
 #: lib/layouts/chess.layout:3 lib/examples/Articles:0
 msgid "Chess"
@@ -10867,7 +10854,7 @@ msgstr "Copernicus Publications用原稿準備"
 
 #: lib/layouts/copernicus.layout:45
 msgid "InFrontmatter"
-msgstr "文頭辞項目"
+msgstr "前付け項目"
 
 #: lib/layouts/copernicus.layout:68
 msgid "Insert the affiliation number"
@@ -11730,6 +11717,16 @@ msgstr "オフセット"
 msgid "reprint_reqs_to:"
 msgstr "リプリント版請求先："
 
+#: lib/layouts/egs.layout:620 lib/layouts/elsart.layout:549
+#: lib/layouts/elsart.layout:555 lib/layouts/svcommon.inc:625
+#: lib/layouts/svmult.layout:158
+msgid "Acknowledgment"
+msgstr "謝辞"
+
+#: lib/layouts/egs.layout:634
+msgid "Acknowledgment."
+msgstr "謝辞."
+
 #: lib/layouts/elsart.layout:3
 msgid "Elsevier (Obsolete Version)"
 msgstr "Elsevier (廃版)"
@@ -11956,6 +11953,7 @@ msgstr "後註 ##"
 
 #: lib/layouts/endnotes.module:19 lib/layouts/enotez.module:19
 #: lib/layouts/foottoend.module:16 lib/layouts/foottoenotez.module:17
+#: lib/layouts/jlreq-common.inc:129 lib/layouts/jlreq-common.inc:135
 #: lib/layouts/memoir.layout:311
 msgid "Endnote"
 msgstr "後註"
@@ -13542,22 +13540,22 @@ msgstr "命題 \\theproposition."
 #: lib/layouts/ijmpc.layout:458 lib/layouts/ijmpd.layout:485
 #: lib/layouts/ijmpd.layout:488 lib/layouts/llncs.layout:428
 #: lib/layouts/svmono.layout:69
-#: lib/layouts/theorems-ams-extended-bytype.module:457
-#: lib/layouts/theorems-ams-extended-bytype.module:467
-#: lib/layouts/theorems-ams-extended-bytype.module:470
-#: lib/layouts/theorems-ams-extended-bytype.module:487
-#: lib/layouts/theorems-ams-extended-bytype.module:490
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:536
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:550
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:553
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:570
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:573
-#: lib/layouts/theorems-ams-extended.module:446
-#: lib/layouts/theorems-ams-extended.module:456
-#: lib/layouts/theorems-ams-extended.module:459
-#: lib/layouts/theorems-ams-extended.module:475
-#: lib/layouts/theorems-ams-extended.module:478
-#: lib/layouts/theorems-counters-extended-bytype.inc:37
+#: lib/layouts/theorems-ams-extended-bytype.module:405
+#: lib/layouts/theorems-ams-extended-bytype.module:415
+#: lib/layouts/theorems-ams-extended-bytype.module:418
+#: lib/layouts/theorems-ams-extended-bytype.module:435
+#: lib/layouts/theorems-ams-extended-bytype.module:438
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:477
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:491
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:494
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:511
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:514
+#: lib/layouts/theorems-ams-extended.module:395
+#: lib/layouts/theorems-ams-extended.module:405
+#: lib/layouts/theorems-ams-extended.module:408
+#: lib/layouts/theorems-ams-extended.module:424
+#: lib/layouts/theorems-ams-extended.module:427
+#: lib/layouts/theorems-counters-extended-bytype.inc:34
 #: lib/layouts/theorems-without-preamble.inc:490
 #: lib/layouts/theorems-without-preamble.inc:492
 #: lib/layouts/theorems-without-preamble.inc:499
@@ -13566,8 +13564,8 @@ msgid "Question"
 msgstr "問"
 
 #: lib/layouts/ijmpc.layout:459 lib/layouts/ijmpd.layout:489
-#: lib/layouts/theorems-ams-extended-bytype.module:461
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:540
+#: lib/layouts/theorems-ams-extended-bytype.module:409
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:481
 #: lib/layouts/theorems-without-preamble.inc:496
 msgid "Question \\thequestion."
 msgstr "問\\thequestion."
@@ -13865,17 +13863,144 @@ msgstr "日本語Book (標準クラス)"
 msgid "American Geophysical Union (AGUPLUS JGR)"
 msgstr "American Geophysical Union (AGUPLUS JGR)"
 
+#: lib/layouts/jlreq-article.layout:3 lib/examples/Articles:0
+msgid "Japanese Article (JLReq Class)"
+msgstr "日本語Article (JLReqクラス)"
+
+#: lib/layouts/jlreq-book.layout:3
+msgid "Japanese Book (JLReq Class)"
+msgstr "日本語Book (JLReqクラス)"
+
+#: lib/layouts/jlreq-common.inc:13 lib/layouts/jlreq-common.inc:21
+#: lib/layouts/jlreq-common.inc:29 lib/layouts/jlreq-common.inc:37
+#: lib/layouts/jlreq-common.inc:45 lib/layouts/jlreq-common.inc:53
+#: lib/layouts/jlreq-common.inc:61 lib/layouts/jlreq-common.inc:69
+#: lib/layouts/jlreq-common.inc:77 lib/layouts/jlreq-common.inc:85
+msgid "Subtitle|u"
+msgstr "副題(U)|U"
+
+#: lib/layouts/jlreq-common.inc:14 lib/layouts/jlreq-common.inc:22
+msgid "Subtitle of the part"
+msgstr "部の副題"
+
+#: lib/layouts/jlreq-common.inc:27 lib/layouts/llncs.layout:42
+#: lib/layouts/memoir.layout:75 lib/layouts/numreport.inc:7
+#: lib/layouts/recipebook.layout:43 lib/layouts/scrbook.layout:18
+#: lib/layouts/scrclass.inc:84 lib/layouts/stdcounters.inc:15
+#: lib/layouts/stdsections.inc:56 lib/layouts/svcommon.inc:166
+#: lib/layouts/svmult.layout:121 lib/layouts/tufte-book.layout:81
+msgid "Chapter"
+msgstr "章"
+
+#: lib/layouts/jlreq-common.inc:30 lib/layouts/jlreq-common.inc:38
+msgid "Subtitle of the chapter"
+msgstr "章の副題"
+
+#: lib/layouts/jlreq-common.inc:35 lib/layouts/memoir.layout:91
+#: lib/layouts/stdstarsections.inc:29 lib/layouts/svcommon.inc:275
+msgid "Chapter*"
+msgstr "章*"
+
+#: lib/layouts/jlreq-common.inc:46 lib/layouts/jlreq-common.inc:54
+msgid "Subtitle of the section"
+msgstr "節の副題"
+
+#: lib/layouts/jlreq-common.inc:62 lib/layouts/jlreq-common.inc:70
+msgid "Subtitle of the subsection"
+msgstr "小節の副題"
+
+#: lib/layouts/jlreq-common.inc:78 lib/layouts/jlreq-common.inc:86
+msgid "Subtitle of the subsubsection"
+msgstr "小々節の副題"
+
+#: lib/layouts/jlreq-common.inc:91
+msgid "Abstract over Columns"
+msgstr "概要 (段跨ぎ)"
+
+#: lib/layouts/jlreq-common.inc:107 lib/layouts/jlreq-common.inc:113
+msgid "JLReq Setup"
+msgstr "JLReq設定"
+
+#: lib/layouts/jlreq-common.inc:170 lib/layouts/jlreq-common.inc:173
+#: lib/layouts/tufte-book.layout:27 lib/layouts/tufte-book.layout:159
+msgid "Sidenote"
+msgstr "側註"
+
+#: lib/layouts/jlreq-common.inc:201
+msgid "Endnote contents"
+msgstr "後註の内容"
+
+#: lib/layouts/jlreq-common.inc:202
+msgid ""
+"Contents of the sidenote. Only makes sense when "
+"\\jlreqsetup{sidenote_type=symbol} is specified in the preamble."
+msgstr ""
+"側註の内容．プリアンブルで\\jlreqsetup{sidenote_type=symbol}が指定されている"
+"ときのみ意味を持ちます．"
+
+#: lib/layouts/jlreq-common.inc:209 lib/layouts/jlreq-common.inc:212
+msgid "Warichu"
+msgstr "割註"
+
+#: lib/layouts/jlreq-common.inc:240 lib/layouts/jlreq-common.inc:243
+msgid "Warichu*"
+msgstr "割註*"
+
+#: lib/layouts/jlreq-common.inc:277 lib/layouts/jlreq-common.inc:281
+msgid "Tatechuyoko"
+msgstr "縦中横"
+
+#: lib/layouts/jlreq-common.inc:285 lib/layouts/jlreq-common.inc:288
+msgid "Jidori"
+msgstr "字取り"
+
+#: lib/layouts/jlreq-common.inc:290
+msgid "Length"
+msgstr "長さ"
+
+#: lib/layouts/jlreq-common.inc:291
+msgid "Jidori Length|L"
+msgstr "字取り長さ"
+
+#: lib/layouts/jlreq-common.inc:292
+msgid "Length of Jidori. Contents is fit to this length."
+msgstr "字取りの長さ．内容物をこの長さに収めます．"
+
+#: lib/layouts/jlreq-common.inc:298 lib/layouts/jlreq-common.inc:301
+msgid "Akigumi"
+msgstr "空き組"
+
+#: lib/layouts/jlreq-common.inc:302
+msgid "Akigumi (LuaLaTeX)"
+msgstr "空き組 (LuaTeX)"
+
+#: lib/layouts/jlreq-common.inc:304
+msgid "Char Space"
+msgstr "字間"
+
+#: lib/layouts/jlreq-common.inc:305
+msgid "Char Space|D"
+msgstr "字間(D)"
+
+#: lib/layouts/jlreq-common.inc:306
+msgid "Distance between chars is set to this length."
+msgstr "文字の間の距離がこの長さに設定されます．"
+
+#: lib/layouts/jlreq-report.layout:3
+msgid "Japanese Report (JLReq Class)"
+msgstr "日本語Report (JLReqクラス)"
+
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (Standard Class)"
 msgstr "日本語Report (標準クラス)"
 
 #: lib/layouts/jsarticle.layout:3
-msgid "Japanese Article (JS Class)"
-msgstr "日本語Article (JSクラス)"
+msgid "Japanese Article (JS Bundle)"
+msgstr "日本語Article (JSシリーズ)"
 
 #: lib/layouts/jsbook.layout:3
-msgid "Japanese Book (JS Class)"
-msgstr "日本語Book (JSクラス)"
+msgid "Japanese Book (JS Bundle)"
+msgstr "日本語Book (JSシリーズ)"
 
 #: lib/layouts/jss.layout:3 lib/examples/Articles:0
 msgid "Journal of Statistical Software (JSS) version 2"
@@ -14516,15 +14641,6 @@ msgstr "コード組(chunk)"
 msgid "Lecture Notes in Comp. Science (LNCS)"
 msgstr "Lecture Notes in Comp. Science (LNCS)"
 
-#: lib/layouts/llncs.layout:42 lib/layouts/memoir.layout:75
-#: lib/layouts/numreport.inc:7 lib/layouts/recipebook.layout:43
-#: lib/layouts/scrbook.layout:18 lib/layouts/scrclass.inc:84
-#: lib/layouts/stdcounters.inc:15 lib/layouts/stdsections.inc:56
-#: lib/layouts/svcommon.inc:166 lib/layouts/svmult.layout:121
-#: lib/layouts/tufte-book.layout:81
-msgid "Chapter"
-msgstr "章"
-
 #: lib/layouts/llncs.layout:158
 msgid "Running LaTeX Title"
 msgstr "ヘッダ用LaTeX表題"
@@ -14646,6 +14762,30 @@ msgstr "ストロング"
 msgid "strong"
 msgstr "ストロング"
 
+#: lib/layouts/ltjarticle.layout:3
+msgid "Japanese Article (Standard Class for LuaTeX)"
+msgstr "日本語Article (LuaTeX用標準クラス)"
+
+#: lib/layouts/ltjbook.layout:3
+msgid "Japanese Book (Standard Class for LuaTeX)"
+msgstr "日本語Book (LuaTeX用標準クラス)"
+
+#: lib/layouts/ltjreport.layout:3
+msgid "Japanese Report (Standard Class for LuaTeX)"
+msgstr "日本語Report (LuaTeX用標準クラス)"
+
+#: lib/layouts/ltjsarticle.layout:3
+msgid "Japanese Article (JS Bundle for LuaTeX)"
+msgstr "日本語Article (LuaTeX用JSシリーズ)"
+
+#: lib/layouts/ltjsbook.layout:3
+msgid "Japanese Book (JS Bundle for LuaTeX)"
+msgstr "日本語Book (LuaTeX用JSシリーズ)"
+
+#: lib/layouts/ltjsreport.layout:3
+msgid "Japanese Report (JS Bundle for LuaTeX)"
+msgstr "日本語Report (LuaTeX用JSシリーズ)"
+
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
 msgstr "TUGboat"
@@ -14705,11 +14845,6 @@ msgstr "表題短縮形(ヘッダ)"
 #: lib/layouts/memoir.layout:83
 msgid "The chapter as it appears in the running headers"
 msgstr "ランニングヘッダに表示する章"
-
-#: lib/layouts/memoir.layout:91 lib/layouts/stdstarsections.inc:29
-#: lib/layouts/svcommon.inc:275
-msgid "Chapter*"
-msgstr "章*"
 
 #: lib/layouts/memoir.layout:103
 msgid "The section as it appears in the table of contents"
@@ -15120,14 +15255,14 @@ msgid "Multiple Columns"
 msgstr "多段組"
 
 #: lib/layouts/multicol.module:8
-#, fuzzy
 msgid ""
 "Adds a custom inset whose content is set with multiple columns (2 by "
 "default). See the Additional manual, section Modules > Page Layout > "
 "Multiple Columns, for a detailed description."
 msgstr ""
 "内容が多段組(既定では二段)となる特別差込枠を追加します．多段組についての詳細"
-"は，取扱説明書『高度な機能篇』の「多段組」の節をご覧ください．"
+"は，取扱説明書『高度な機能篇』の「モジュール」→「ページレイアウト」→「多段"
+"組」の節をご覧ください．"
 
 #: lib/layouts/multicol.module:20
 msgid "Number of Columns"
@@ -16486,14 +16621,14 @@ msgid "Custom Paragraph Shapes"
 msgstr "任意の段落形"
 
 #: lib/layouts/shapepar.module:8
-#, fuzzy
 msgid ""
 "Provides several paragraph shapes as well as commands to define custom "
 "shapes. For a description see LyX's Additional features manual, section "
 "Modules > Paragraph Styles > Custom Paragraph Shapes."
 msgstr ""
 "いくつかの段落形を提供すると共に，任意の形を定義するコマンドも提供します．LyX"
-"取扱説明書『高度な機能篇』の「標準的でない形の段落」の節を参照してください．"
+"取扱説明書『高度な機能篇』の「モジュール」→「段落様式」→「任意段落形」の節を"
+"参照してください．"
 
 #: lib/layouts/shapepar.module:27
 msgid "CD label"
@@ -16593,9 +16728,9 @@ msgid "Conjecture*"
 msgstr "予想*"
 
 #: lib/layouts/siamltex.layout:124
-#: lib/layouts/theorems-ams-extended-bytype.module:102
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:148
-#: lib/layouts/theorems-ams-extended.module:97
+#: lib/layouts/theorems-ams-extended-bytype.module:101
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:144
+#: lib/layouts/theorems-ams-extended.module:96
 msgid "Algorithm*"
 msgstr "アルゴリズム*"
 
@@ -17006,11 +17141,11 @@ msgstr ""
 
 #: lib/layouts/svcommon.inc:72
 msgid "Front Matter"
-msgstr "文頭辞"
+msgstr "前付け"
 
 #: lib/layouts/svcommon.inc:88
 msgid "--- Front Matter ---"
-msgstr "─── 文頭辞 ───"
+msgstr "─── 前付け ───"
 
 #: lib/layouts/svcommon.inc:98
 msgid "Main Matter"
@@ -17022,11 +17157,11 @@ msgstr "─── 本体 ───"
 
 #: lib/layouts/svcommon.inc:105
 msgid "Back Matter"
-msgstr "文末辞"
+msgstr "後付け"
 
 #: lib/layouts/svcommon.inc:109
 msgid "--- Back Matter ---"
-msgstr "─── 文末辞 ───"
+msgstr "─── 後付け ───"
 
 #: lib/layouts/svcommon.inc:125 lib/layouts/svmult.layout:117
 msgid "PartBacktext"
@@ -17286,11 +17421,11 @@ msgstr ""
 "ます．"
 
 #: lib/layouts/tarticle.layout:3
-msgid "Japanese Article (Standard Class: Vertical Writing)"
+msgid "Japanese Article (Standard Class, vertical Writing)"
 msgstr "日本語Article (標準クラス：縦書き)"
 
 #: lib/layouts/tbook.layout:3
-msgid "Japanese Book (Standard Class: Vertical Writing)"
+msgid "Japanese Book (Standard Class, vertical Writing)"
 msgstr "日本語Book (標準クラス：縦書き)"
 
 #: lib/layouts/tcolorbox.module:2 lib/examples/Articles:0
@@ -17509,239 +17644,197 @@ msgid "AMS Theorems (Extended, Numbered by Type)"
 msgstr "AMS定理(拡張・種類別連番)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgment, Conclusion, Assumption, and Case, in both numbered "
-"and non-numbered forms. Contrary to the plain AMS-Extended module, the "
-"different theorem types provided here each have a separate counter (e.g., "
-"criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
-"opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
+"Summary, Conclusion, Assumption, and Case, in both numbered and non-numbered "
+"forms. Contrary to the plain AMS-Extended module, the different theorem "
+"types provided here each have a separate counter (e.g., criterion 1, "
+"criterion 2, axiom 1, assumption 1, criterion 3, ..., as opposed to "
+"criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
 "AMS定理パッケージを使う定理環境をいくつか追加定義します．中には，基準・アルゴ"
-"リズム・公理・条件・註釈・記法・要約・謝辞・結論・事実・仮定・場合が，連番あ"
-"りと連番なしの両方の形で含まれています．素の拡張AMSモジュールとは異なり，この"
-"モジュールでは定理の種類毎に別々のカウンタを有します(例：基準1→基準2→公理3→仮"
-"定4→…ではなく，基準1→基準2→公理1→仮定1→基準3→…となります)．"
+"リズム・公理・条件・註釈・記法・要約・結論・仮定・場合が，連番ありと連番なし"
+"の両方の形で含まれています．素の拡張AMSモジュールとは異なり，このモジュールで"
+"は定理の種類毎に別々のカウンタを有します(例：基準1→基準2→公理3→仮定4→…ではな"
+"く，基準1→基準2→公理1→仮定1→基準3→…となります)．"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:44
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:81
+#: lib/layouts/theorems-ams-extended-bytype.module:43
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:77
 msgid "Criterion \\thecriterion."
 msgstr "基準 \\thecriterion."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:61
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:103
-#: lib/layouts/theorems-ams-extended.module:56
+#: lib/layouts/theorems-ams-extended-bytype.module:60
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:99
+#: lib/layouts/theorems-ams-extended.module:55
 msgid "Criterion*"
 msgstr "基準*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:64
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:106
-#: lib/layouts/theorems-ams-extended.module:59
+#: lib/layouts/theorems-ams-extended-bytype.module:63
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:102
+#: lib/layouts/theorems-ams-extended.module:58
 msgid "Criterion."
 msgstr "基準."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:84
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:126
+#: lib/layouts/theorems-ams-extended-bytype.module:83
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:122
 msgid "Algorithm \\thealgorithm."
 msgstr "アルゴリズム \\thealgorithm."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:105
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:151
-#: lib/layouts/theorems-ams-extended.module:100
+#: lib/layouts/theorems-ams-extended-bytype.module:104
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:147
+#: lib/layouts/theorems-ams-extended.module:99
 msgid "Algorithm."
 msgstr "アルゴリズム."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:125
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:171
+#: lib/layouts/theorems-ams-extended-bytype.module:124
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:167
 msgid "Axiom \\theaxiom."
 msgstr "公理 \\theaxiom."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:143
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:193
-#: lib/layouts/theorems-ams-extended.module:138
+#: lib/layouts/theorems-ams-extended-bytype.module:142
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:189
+#: lib/layouts/theorems-ams-extended.module:137
 msgid "Axiom*"
 msgstr "公理*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:146
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:196
-#: lib/layouts/theorems-ams-extended.module:141
+#: lib/layouts/theorems-ams-extended-bytype.module:145
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:192
+#: lib/layouts/theorems-ams-extended.module:140
 msgid "Axiom."
 msgstr "公理."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:166
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:216
+#: lib/layouts/theorems-ams-extended-bytype.module:165
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:212
 msgid "Condition \\thecondition."
 msgstr "条件 \\thecondition."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:184
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:238
-#: lib/layouts/theorems-ams-extended.module:178
+#: lib/layouts/theorems-ams-extended-bytype.module:183
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:234
+#: lib/layouts/theorems-ams-extended.module:177
 msgid "Condition*"
 msgstr "条件*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:187
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:241
-#: lib/layouts/theorems-ams-extended.module:181
+#: lib/layouts/theorems-ams-extended-bytype.module:186
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:237
+#: lib/layouts/theorems-ams-extended.module:180
 msgid "Condition."
 msgstr "条件."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:207
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:261
+#: lib/layouts/theorems-ams-extended-bytype.module:206
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:257
 #: lib/layouts/theorems-without-preamble.inc:519
 msgid "Note \\thenote."
 msgstr "註釈 \\thenote."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:224
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:282
-#: lib/layouts/theorems-ams-extended.module:217
+#: lib/layouts/theorems-ams-extended-bytype.module:223
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:278
+#: lib/layouts/theorems-ams-extended.module:216
 msgid "Note*"
 msgstr "註釈*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:227
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:285
-#: lib/layouts/theorems-ams-extended.module:220
+#: lib/layouts/theorems-ams-extended-bytype.module:226
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:281
+#: lib/layouts/theorems-ams-extended.module:219
 msgid "Note."
 msgstr "註釈."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:246
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:304
+#: lib/layouts/theorems-ams-extended-bytype.module:245
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:300
 msgid "Notation \\thenotation."
 msgstr "記法 \\thenotation."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:264
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:326
-#: lib/layouts/theorems-ams-extended.module:256
+#: lib/layouts/theorems-ams-extended-bytype.module:263
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:322
+#: lib/layouts/theorems-ams-extended.module:255
 msgid "Notation*"
 msgstr "記法*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:267
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:329
-#: lib/layouts/theorems-ams-extended.module:259
+#: lib/layouts/theorems-ams-extended-bytype.module:266
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:325
+#: lib/layouts/theorems-ams-extended.module:258
 msgid "Notation."
 msgstr "記法."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:287
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:349
+#: lib/layouts/theorems-ams-extended-bytype.module:286
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:345
 msgid "Summary \\thesummary."
 msgstr "要約 \\thesummary."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:305
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:372
-#: lib/layouts/theorems-ams-extended.module:296
+#: lib/layouts/theorems-ams-extended-bytype.module:304
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:368
+#: lib/layouts/theorems-ams-extended.module:295
 msgid "Summary*"
 msgstr "要約*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:308
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:375
-#: lib/layouts/theorems-ams-extended.module:299
+#: lib/layouts/theorems-ams-extended-bytype.module:307
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:371
+#: lib/layouts/theorems-ams-extended.module:298
 msgid "Summary."
 msgstr "要約."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:325
-#: lib/layouts/theorems-ams-extended-bytype.module:334
-#: lib/layouts/theorems-ams-extended-bytype.module:337
-#: lib/layouts/theorems-ams-extended-bytype.module:360
-#: lib/layouts/theorems-ams-extended-bytype.module:363
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:392
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:405
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:408
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:431
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:434
-#: lib/layouts/theorems-ams-extended.module:316
-#: lib/layouts/theorems-ams-extended.module:325
-#: lib/layouts/theorems-ams-extended.module:328
-#: lib/layouts/theorems-ams-extended.module:350
-#: lib/layouts/theorems-ams-extended.module:353
-msgid "Acknowledgment"
-msgstr "謝辞"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:328
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:395
-msgid "Acknowledgment \\theacknowledgement."
-msgstr "謝辞 \\theacknowledgement."
-
-#: lib/layouts/theorems-ams-extended-bytype.module:351
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:422
-#: lib/layouts/theorems-ams-extended.module:341
-msgid "Acknowledgment*"
-msgstr "謝辞*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:354
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:425
-#: lib/layouts/theorems-ams-extended.module:344
-msgid "Acknowledgment."
-msgstr "謝辞."
-
-#: lib/layouts/theorems-ams-extended-bytype.module:371
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:442
-#: lib/layouts/theorems-ams-extended.module:361
-msgid "Acknowledgement*"
-msgstr "謝辞*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:379
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:450
+#: lib/layouts/theorems-ams-extended-bytype.module:327
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:391
 msgid "Conclusion \\theconclusion."
 msgstr "結論 \\theconclusion."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:397
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:472
-#: lib/layouts/theorems-ams-extended.module:386
+#: lib/layouts/theorems-ams-extended-bytype.module:345
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:413
+#: lib/layouts/theorems-ams-extended.module:335
 msgid "Conclusion*"
 msgstr "結論*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:400
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:475
-#: lib/layouts/theorems-ams-extended.module:389
+#: lib/layouts/theorems-ams-extended-bytype.module:348
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:416
+#: lib/layouts/theorems-ams-extended.module:338
 msgid "Conclusion."
 msgstr "結論."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:417
-#: lib/layouts/theorems-ams-extended-bytype.module:426
-#: lib/layouts/theorems-ams-extended-bytype.module:429
-#: lib/layouts/theorems-ams-extended-bytype.module:447
-#: lib/layouts/theorems-ams-extended-bytype.module:450
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:492
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:505
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:508
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:526
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:529
-#: lib/layouts/theorems-ams-extended.module:406
-#: lib/layouts/theorems-ams-extended.module:416
-#: lib/layouts/theorems-ams-extended.module:419
-#: lib/layouts/theorems-ams-extended.module:436
-#: lib/layouts/theorems-ams-extended.module:439
-#: lib/layouts/theorems-counters-extended-bytype.inc:34
+#: lib/layouts/theorems-ams-extended-bytype.module:365
+#: lib/layouts/theorems-ams-extended-bytype.module:374
+#: lib/layouts/theorems-ams-extended-bytype.module:377
+#: lib/layouts/theorems-ams-extended-bytype.module:395
+#: lib/layouts/theorems-ams-extended-bytype.module:398
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:433
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:446
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:449
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:467
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:470
+#: lib/layouts/theorems-ams-extended.module:355
+#: lib/layouts/theorems-ams-extended.module:365
+#: lib/layouts/theorems-ams-extended.module:368
+#: lib/layouts/theorems-ams-extended.module:385
+#: lib/layouts/theorems-ams-extended.module:388
+#: lib/layouts/theorems-counters-extended-bytype.inc:31
 msgid "Assumption"
 msgstr "仮定"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:420
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:495
+#: lib/layouts/theorems-ams-extended-bytype.module:368
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:436
 msgid "Assumption \\theassumption."
 msgstr "仮定 \\theassumption."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:438
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:517
-#: lib/layouts/theorems-ams-extended.module:427
+#: lib/layouts/theorems-ams-extended-bytype.module:386
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:458
+#: lib/layouts/theorems-ams-extended.module:376
 msgid "Assumption*"
 msgstr "仮定*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:441
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:520
-#: lib/layouts/theorems-ams-extended.module:430
+#: lib/layouts/theorems-ams-extended-bytype.module:389
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:461
+#: lib/layouts/theorems-ams-extended.module:379
 msgid "Assumption."
 msgstr "仮定."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:478
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:561
-#: lib/layouts/theorems-ams-extended.module:466
+#: lib/layouts/theorems-ams-extended-bytype.module:426
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:502
+#: lib/layouts/theorems-ams-extended.module:415
 msgid "Question*"
 msgstr "問*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:481
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:564
-#: lib/layouts/theorems-ams-extended.module:469
+#: lib/layouts/theorems-ams-extended-bytype.module:429
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:505
+#: lib/layouts/theorems-ams-extended.module:418
 msgid "Question."
 msgstr "問."
 
@@ -17750,82 +17843,75 @@ msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
 msgstr "AMS定理(拡張・章毎に種類別連番)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgment, Conclusion, Assumption, and Case, in both numbered "
-"and non-numbered forms. Contrary to the plain AMS-Extended module, the "
-"different theorem types provided here each have a separate counter, "
-"restarted with each new chapter (e.g., criterion 1.1, criterion 1.2, axiom "
-"1.1, assumption 1.1, #criterion 2.1, criterion 2.2, axiom 2.1..., as opposed "
-"to criterion 1, criterion 2, axiom 3, assumption 4...)"
+"Summary, Conclusion, Assumption, and Case, in both numbered and non-numbered "
+"forms. Contrary to the plain AMS-Extended module, the different theorem "
+"types provided here each have a separate counter, restarted with each new "
+"chapter (e.g., criterion 1.1, criterion 1.2, axiom 1.1, assumption 1.1, "
+"#criterion 2.1, criterion 2.2, axiom 2.1..., as opposed to criterion 1, "
+"criterion 2, axiom 3, assumption 4...)"
 msgstr ""
 "AMS定理パッケージを使う定理環境をいくつか追加定義します．中には，基準・アルゴ"
-"リズム・公理・条件・註釈・記法・要約・謝辞・結論・仮定・場合が，連番ありと連"
-"番なしの両方の形で含まれています．素の拡張AMSモジュールとは異なり，このモ"
-"ジュールでは定理の種類毎に別々のカウンタを有し，章毎にリセットされます(例：基"
-"準1→基準2→公理3→仮定4→…ではなく，基準1.1→基準1.2→公理1.1→仮定1.1→#基準2.1→基"
-"準2.2→公理2.1→…となります)．"
+"リズム・公理・条件・註釈・記法・要約・結論・仮定・場合が，連番ありと連番なし"
+"の両方の形で含まれています．素の拡張AMSモジュールとは異なり，このモジュールで"
+"は定理の種類毎に別々のカウンタを有し，章毎にリセットされます(例：基準1→基準2→"
+"公理3→仮定4→…ではなく，基準1.1→基準1.2→公理1.1→仮定1.1→#基準2.1→基準2.2→公理"
+"2.1→…となります)．"
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "AMS Theorems (Extended)"
 msgstr "AMS定理(拡張)"
 
 #: lib/layouts/theorems-ams-extended.module:10
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgment, Conclusion, Fact, Assumption, Case, and Question, "
-"in both numbered and non-numbered forms."
+"Summary, Conclusion, Fact, Assumption, Case, and Question, in both numbered "
+"and non-numbered forms."
 msgstr ""
 "AMS定理パッケージを使う定理環境をいくつか追加定義します．中には，基準・アルゴ"
-"リズム・公理・条件・註釈・記法・要約・謝辞・結論・事実・仮定・場合・問題が，"
-"連番ありと連番なしの両方の形で含まれています．"
+"リズム・公理・条件・註釈・記法・要約・結論・事実・仮定・場合・問題が，連番あ"
+"りと連番なしの両方の形で含まれています．"
 
-#: lib/layouts/theorems-ams-extended.module:40
+#: lib/layouts/theorems-ams-extended.module:39
 msgid "Criterion \\thetheorem."
 msgstr "基準 \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:80
+#: lib/layouts/theorems-ams-extended.module:79
 msgid "Algorithm \\thetheorem."
 msgstr "アルゴリズム \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:121
+#: lib/layouts/theorems-ams-extended.module:120
 msgid "Axiom \\thetheorem."
 msgstr "公理 \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:161
+#: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition \\thetheorem."
 msgstr "条件 \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:201
+#: lib/layouts/theorems-ams-extended.module:200
 msgid "Note \\thetheorem."
 msgstr "註釈 \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:239
+#: lib/layouts/theorems-ams-extended.module:238
 msgid "Notation \\thetheorem."
 msgstr "記法 \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:279
+#: lib/layouts/theorems-ams-extended.module:278
 msgid "Summary \\thetheorem."
 msgstr "要約 \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:319
-#, fuzzy
-msgid "Acknowledgment \\thetheorem."
-msgstr "謝辞 \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:369
+#: lib/layouts/theorems-ams-extended.module:318
 msgid "Conclusion \\thetheorem."
 msgstr "結論 \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:410
+#: lib/layouts/theorems-ams-extended.module:359
 msgid "Assumption \\thetheorem."
 msgstr "仮定 \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:450
+#: lib/layouts/theorems-ams-extended.module:399
 msgid "Question \\thetheorem."
 msgstr "問 \\thetheorem."
 
@@ -18197,16 +18283,12 @@ msgid "MissingFigure"
 msgstr "ここに図を挿入"
 
 #: lib/layouts/treport.layout:3
-msgid "Japanese Report (Vertical Writing)"
-msgstr "日本語Report (縦書き)"
+msgid "Japanese Report (Standard Class, vertical Writing)"
+msgstr "日本語Report (標準クラス：縦書き)"
 
 #: lib/layouts/tufte-book.layout:3 lib/examples/Articles:0
 msgid "Tufte Book"
 msgstr "Tufte Book"
-
-#: lib/layouts/tufte-book.layout:27 lib/layouts/tufte-book.layout:159
-msgid "Sidenote"
-msgstr "側註"
 
 #: lib/layouts/tufte-book.layout:28 lib/layouts/tufte-book.layout:164
 msgid "sidenote"
@@ -19503,7 +19585,7 @@ msgid "Cut"
 msgstr "切り取り"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:109
-#: lib/ui/stdtoolbars.inc:90 src/BufferView.cpp:2383
+#: lib/ui/stdtoolbars.inc:90 src/BufferView.cpp:2384
 msgid "Copy"
 msgstr "コピー"
 
@@ -21355,7 +21437,7 @@ msgstr "全変更を承認(含む親/子/兄弟文書)(P)|P"
 
 #: lib/ui/stdmenus.inc:595
 msgid "Reject All Changes (incl. Master/Children/Siblings)|j"
-msgstr "全変更を却下(含親・子・兄弟文書)(J)|J"
+msgstr "全変更を却下(含む親/子/兄弟文書)(J)|J"
 
 #: lib/ui/stdmenus.inc:596
 msgid "Show Changes in Output|S"
@@ -21565,11 +21647,11 @@ msgstr "スペルチェック"
 msgid "Spellcheck continuously"
 msgstr "連続スペルチェック"
 
-#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:1472
+#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:1473
 msgid "Undo"
 msgstr "元に戻す"
 
-#: lib/ui/stdtoolbars.inc:88 src/BufferView.cpp:1493
+#: lib/ui/stdtoolbars.inc:88 src/BufferView.cpp:1494
 msgid "Redo"
 msgstr "やり直す"
 
@@ -26923,12 +27005,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX書庫(tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 1"
-msgstr "ゲーム１"
-
-#: lib/examples/Articles:0
 msgid "Game 2"
 msgstr "ゲーム２"
+
+#: lib/examples/Articles:0
+msgid "Game 1"
+msgstr "ゲーム１"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -26948,6 +27030,10 @@ msgid "External Material"
 msgstr "外部素材"
 
 #: lib/examples/Articles:0
+msgid "Itemize Bullets"
+msgstr "箇条書きのブリット"
+
+#: lib/examples/Articles:0
 msgid "Feynman Diagrams"
 msgstr "ファインマン図"
 
@@ -26956,16 +27042,12 @@ msgid "Instant Preview"
 msgstr "自動プレビュー"
 
 #: lib/examples/Articles:0
-msgid "Itemize Bullets"
-msgstr "箇条書きのブリット"
+msgid "Minted Listings"
+msgstr "Mintedプログラムリスト"
 
 #: lib/examples/Articles:0
 msgid "Minted File Listing"
 msgstr "Mintedプログラムリストファイル"
-
-#: lib/examples/Articles:0
-msgid "Minted Listings"
-msgstr "Mintedプログラムリスト"
 
 #: lib/examples/Articles:0
 msgid "XY-Figure"
@@ -26980,8 +27062,12 @@ msgid "Graphics and Insets"
 msgstr "グラフィックと差込枠"
 
 #: lib/examples/Articles:0
-msgid "Serial Letter 1"
-msgstr "定期郵便１"
+msgid "Localization Test (for Developers)"
+msgstr "翻訳テスト(開発者向け)"
+
+#: lib/examples/Articles:0
+msgid "Language Support"
+msgstr "言語サポート"
 
 #: lib/examples/Articles:0
 msgid "Serial Letter 2"
@@ -26992,64 +27078,64 @@ msgid "Serial Letter 3"
 msgstr "定期郵便３"
 
 #: lib/examples/Articles:0
-msgid "Localization Test"
-msgstr "翻訳テスト"
-
-#: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "危険有害性情報・注意書き"
+msgid "Serial Letter 1"
+msgstr "定期郵便１"
 
 #: lib/examples/Articles:0
 msgid "LilyPond Book"
 msgstr "LilyPond Book"
 
 #: lib/examples/Articles:0
+msgid "Noweb Listerrors"
+msgstr "Noweb Listerrors"
+
+#: lib/examples/Articles:0
 msgid "Multilingual Captions"
 msgstr "多言語キャプション"
 
 #: lib/examples/Articles:0
-msgid "Noweb2LyX"
-msgstr "Noweb2LyX"
+msgid "Hazard and Precautionary Statements"
+msgstr "危険有害性情報・注意書き"
 
 #: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr "Noweb Listerrors"
+msgid "Noweb2LyX"
+msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1806
 msgid "Modules"
 msgstr "モジュール"
 
 #: lib/examples/Articles:0
-msgid "Beamer (Complex)"
-msgstr "Beamer(複雑)"
+msgid "Foils Landslide"
+msgstr "Foils横スライド"
 
 #: lib/examples/Articles:0
 msgid "Foils"
 msgstr "Foils"
 
 #: lib/examples/Articles:0
-msgid "Foils Landslide"
-msgstr "Foils横スライド"
+msgid "Beamer (Complex)"
+msgstr "Beamer(複雑)"
 
 #: lib/examples/Articles:0
 msgid "Welcome"
 msgstr "ようこそ"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Typesetting with CJKutf8"
-msgstr "CJKutf8を使用した多言語組版"
+msgid "Writing Armenian"
+msgstr "アルメニア語の執筆"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Typesetting with platex"
-msgstr "platexを使用した多言語組版"
+msgid "Mixing Japanese with other Languages (with platex)"
+msgstr "日本語と他言語の混成(platexを使用)"
 
 #: lib/examples/Articles:0
-msgid "Hebrew Article (KOMA-Script)"
-msgstr "ヘブライ語Article (KOMA-Script)"
+msgid "Mixing Japanese with other Languages (with CJKutf8)"
+msgstr "日本語と他言語の混成(CJKutf8を使用)"
 
 #: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
+msgid "Writing Korean with CJK-ko"
+msgstr "韓国語の執筆(CJK-koを使用)"
 
 #: lib/examples/Articles:0
 msgid "IEEE Transactions Journal"
@@ -27064,32 +27150,68 @@ msgid "Springers Global Journal Template (V. 3)"
 msgstr "Springer国際誌ひな型(V. 3)"
 
 #: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00主幹ファイル"
+msgid "Hebrew Article (KOMA-Script)"
+msgstr "ヘブライ語Article (KOMA-Script)"
 
 #: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01献呈"
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
 msgid "02 Foreword"
 msgstr "02巻頭言"
 
 #: lib/examples/Articles:0
+msgid "01 Dedication"
+msgstr "01献呈"
+
+#: lib/examples/Articles:0
+msgid "06 Part"
+msgstr "06部"
+
+#: lib/examples/Articles:0
 msgid "03 Preface"
 msgstr "03序文"
+
+#: lib/examples/Articles:0
+msgid "07 Chapter"
+msgstr "07章"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10解"
+
+#: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05頭字語"
+
+#: lib/examples/Articles:0
+msgid "11 References"
+msgstr "11書誌情報"
 
 #: lib/examples/Articles:0
 msgid "04 Acknowledgements"
 msgstr "04謝辞"
 
 #: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05寄稿者一覧"
+msgid "09 Glossary"
+msgstr "09用語集"
+
+#: lib/examples/Articles:0
+msgid "08 Appendix"
+msgstr "08付録"
+
+#: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00主幹ファイル"
 
 #: lib/examples/Articles:0
 msgid "06 Acronym"
 msgstr "06頭字語"
+
+#: lib/examples/Articles:0
+msgid "05 Contributor List"
+msgstr "05寄稿者一覧"
 
 #: lib/examples/Articles:0
 msgid "07 Part"
@@ -27106,34 +27228,6 @@ msgstr "09付録"
 #: lib/examples/Articles:0
 msgid "10 Glossary"
 msgstr "10用語集"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11書誌情報"
-
-#: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05頭字語"
-
-#: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06部"
-
-#: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07章"
-
-#: lib/examples/Articles:0
-msgid "08 Appendix"
-msgstr "08付録"
-
-#: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09用語集"
-
-#: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10解"
 
 #: lib/examples/Articles:0
 msgid "Colored"
@@ -28077,9 +28171,9 @@ msgid ""
 msgstr ""
 "レイアウトファイル：\n"
 "%1$s\n"
-"を読み込むことができませんでした．既定レイアウトの\n"
-"既定テキストクラスを使用します．LyXは，正しい出力を\n"
-"行うことができないでしょう．"
+"を読み込むことができませんでした．既定レイアウト\n"
+"の既定テキストクラスを使用します．LyXは，正し\n"
+"い出力を行うことができないでしょう．"
 
 #: src/BufferParams.cpp:2657
 msgid "Document class not found"
@@ -28096,11 +28190,11 @@ msgid ""
 msgstr ""
 "エラーのせいでレイアウトファイル\n"
 "%1$s\n"
-"を読み込むことができませんでした．既定レイアウトの\n"
-"既定テキストクラスを使用します．LyXは，正しい出力を\n"
-"行わないでしょう．"
+"を読み込むことができませんでした．既定レイアウト\n"
+"の既定テキストクラスを使用します．LyXは，正しい\n"
+"出力を行わないでしょう．"
 
-#: src/BufferParams.cpp:2670 src/BufferView.cpp:1424 src/BufferView.cpp:1456
+#: src/BufferParams.cpp:2670 src/BufferView.cpp:1425 src/BufferView.cpp:1457
 msgid "Could not load class"
 msgstr "クラスを読み込むことができませんでした"
 
@@ -28154,130 +28248,130 @@ msgstr "差込枠はもうありません"
 msgid "Save bookmark"
 msgstr "しおりを保存"
 
-#: src/BufferView.cpp:1136
+#: src/BufferView.cpp:1137
 msgid "Document is read-only"
 msgstr "文書が読込専用です"
 
-#: src/BufferView.cpp:1138
+#: src/BufferView.cpp:1139
 msgid "Document has been modified externally"
 msgstr "文書が外部から修正されています"
 
-#: src/BufferView.cpp:1147
+#: src/BufferView.cpp:1148
 msgid "This portion of the document is deleted."
 msgstr "文書のこの部分は削除されました．"
 
-#: src/BufferView.cpp:1190 src/BufferView.cpp:2368
+#: src/BufferView.cpp:1191 src/BufferView.cpp:2369
 #: src/frontends/qt/GuiView.cpp:4460 src/frontends/qt/GuiView.cpp:4548
 msgid "Absolute filename expected."
 msgstr "ファイルの絶対パスを入れなくてはなりません．"
 
-#: src/BufferView.cpp:1422 src/BufferView.cpp:1454
+#: src/BufferView.cpp:1423 src/BufferView.cpp:1455
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "文書クラス「%1$s」を読み込むことができませんでした．"
 
-#: src/BufferView.cpp:1480
+#: src/BufferView.cpp:1481
 msgid "No further undo information"
 msgstr "これ以上元に戻すことはできません"
 
-#: src/BufferView.cpp:1501
+#: src/BufferView.cpp:1502
 msgid "No further redo information"
 msgstr "これ以上やり直すことはできません"
 
-#: src/BufferView.cpp:1693 src/BufferView.cpp:1708 src/BufferView.cpp:1741
+#: src/BufferView.cpp:1694 src/BufferView.cpp:1709 src/BufferView.cpp:1742
 msgid "Search string not found!"
 msgstr "検索文字列が見つかりませんでした！"
 
-#: src/BufferView.cpp:1834
+#: src/BufferView.cpp:1835
 msgid "Mark off"
 msgstr "マーク切"
 
-#: src/BufferView.cpp:1840
+#: src/BufferView.cpp:1841
 msgid "Mark on"
 msgstr "マーク入"
 
-#: src/BufferView.cpp:1847
+#: src/BufferView.cpp:1848
 msgid "Mark removed"
 msgstr "マーク削除"
 
-#: src/BufferView.cpp:1850
+#: src/BufferView.cpp:1851
 msgid "Mark set"
 msgstr "マーク設定"
 
-#: src/BufferView.cpp:1960
+#: src/BufferView.cpp:1961
 msgid "Statistics for the selection:"
 msgstr "選択範囲の統計："
 
-#: src/BufferView.cpp:1962
+#: src/BufferView.cpp:1963
 msgid "Statistics for the document:"
 msgstr "文書の統計："
 
-#: src/BufferView.cpp:1965
+#: src/BufferView.cpp:1966
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d語"
 
-#: src/BufferView.cpp:1967
+#: src/BufferView.cpp:1968
 msgid "One word"
 msgstr "1語"
 
-#: src/BufferView.cpp:1970
+#: src/BufferView.cpp:1971
 #, c-format
 msgid "%1$d characters"
 msgstr "%1$d字"
 
-#: src/BufferView.cpp:1972
+#: src/BufferView.cpp:1973
 msgid "One character"
 msgstr "1字"
 
-#: src/BufferView.cpp:1975
+#: src/BufferView.cpp:1976
 #, c-format
 msgid "%1$d characters (no blanks)"
 msgstr "%1$d字(空白なし)"
 
-#: src/BufferView.cpp:1977
+#: src/BufferView.cpp:1978
 msgid "One character (no blanks)"
 msgstr "1字(空白なし)"
 
-#: src/BufferView.cpp:1979
+#: src/BufferView.cpp:1980
 msgid "Statistics"
 msgstr "統計"
 
-#: src/BufferView.cpp:2204
+#: src/BufferView.cpp:2205
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "動作数が%1$dよりも大きいため，「inset-forall」は中断されました"
 
-#: src/BufferView.cpp:2206
+#: src/BufferView.cpp:2207
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "%2$d個の差込枠に「%1$s」を適用しました"
 
-#: src/BufferView.cpp:2214
+#: src/BufferView.cpp:2215
 msgid "Branch name"
 msgstr "派生枝名"
 
-#: src/BufferView.cpp:2221 src/frontends/qt/GuiBranches.cpp:225
+#: src/BufferView.cpp:2222 src/frontends/qt/GuiBranches.cpp:225
 msgid "Branch already exists"
 msgstr "派生枝がすでに存在します"
 
-#: src/BufferView.cpp:3179
+#: src/BufferView.cpp:3180
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "文書「%1$s」を挿入しています..."
 
-#: src/BufferView.cpp:3195
+#: src/BufferView.cpp:3196
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文書「%1$s」が挿入されました．"
 
-#: src/BufferView.cpp:3197
+#: src/BufferView.cpp:3198
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "文書「%1$s」を挿入することができませんでした"
 
-#: src/BufferView.cpp:3692
+#: src/BufferView.cpp:3693
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -28288,11 +28382,11 @@ msgstr ""
 "%1$s\n"
 "を読むことができませんでした"
 
-#: src/BufferView.cpp:3694
+#: src/BufferView.cpp:3695
 msgid "Could not read file"
 msgstr "ファイルを読むことができませんでした"
 
-#: src/BufferView.cpp:3701
+#: src/BufferView.cpp:3702
 #, c-format
 msgid ""
 "%1$s\n"
@@ -28301,17 +28395,17 @@ msgstr ""
 "%1$s\n"
 "は読み込み不能です．"
 
-#: src/BufferView.cpp:3702 src/frontends/qt/qt_helpers.cpp:312
+#: src/BufferView.cpp:3703 src/frontends/qt/qt_helpers.cpp:312
 #: src/frontends/qt/qt_helpers.cpp:315 src/frontends/qt/qt_helpers.cpp:321
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "ファイルを開くことができませんでした"
 
-#: src/BufferView.cpp:3709
+#: src/BufferView.cpp:3710
 msgid "Reading not UTF-8 encoded file"
 msgstr "UTF-8でエンコードされていないファイルを読んでいます"
 
-#: src/BufferView.cpp:3710
+#: src/BufferView.cpp:3711
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -32501,7 +32595,7 @@ msgstr "(未インストール)"
 #: src/frontends/qt/GuiDocument.cpp:2740 src/frontends/qt/GuiDocument.cpp:2772
 #: src/frontends/qt/GuiDocument.cpp:2783 src/frontends/qt/GuiDocument.cpp:2794
 msgid "Default font (as set by class)"
-msgstr ""
+msgstr "(クラスで設定された)既定フォント"
 
 #: src/frontends/qt/GuiDocument.cpp:2742
 msgid "Non-TeX Fonts Default"
@@ -32687,12 +32781,12 @@ msgstr "[事前定義されたオプションがありません]"
 #: src/frontends/qt/GuiDocument.cpp:4405 src/frontends/qt/GuiDocument.cpp:4416
 #: src/frontends/qt/GuiDocument.cpp:4427
 msgid "Uninstalled used fonts"
-msgstr ""
+msgstr "使用されているが導入済みでないフォント"
 
 #: src/frontends/qt/GuiDocument.cpp:4406 src/frontends/qt/GuiDocument.cpp:4417
 #: src/frontends/qt/GuiDocument.cpp:4428
 msgid "This font is not installed and won't be used in output"
-msgstr ""
+msgstr "このフォントは導入されていないので，出力では使用されません"
 
 #: src/frontends/qt/GuiDocument.cpp:4598
 msgid "C&ustomize Hyperref Options"
@@ -33895,43 +33989,43 @@ msgstr "元のカーソル位置に戻る"
 msgid "<No prefix>"
 msgstr "<接頭辞なし>"
 
-#: src/frontends/qt/GuiSearch.cpp:192
+#: src/frontends/qt/GuiSearch.cpp:193
 msgid "Ex&pand"
 msgstr "展開(&P)"
 
-#: src/frontends/qt/GuiSearch.cpp:193
+#: src/frontends/qt/GuiSearch.cpp:194
 msgid "Show replace and option widgets"
 msgstr "置換・オプションウィジェットを表示"
 
-#: src/frontends/qt/GuiSearch.cpp:250
+#: src/frontends/qt/GuiSearch.cpp:252
 msgid "Active options:"
 msgstr "有効なオプション:"
 
-#: src/frontends/qt/GuiSearch.cpp:253
+#: src/frontends/qt/GuiSearch.cpp:255
 msgid "Case sensitive search"
 msgstr "大小文字分別検索"
 
-#: src/frontends/qt/GuiSearch.cpp:267
+#: src/frontends/qt/GuiSearch.cpp:269
 msgid "Whole words only"
 msgstr "単語全体のみ"
 
-#: src/frontends/qt/GuiSearch.cpp:280
+#: src/frontends/qt/GuiSearch.cpp:282
 msgid "Search only in selection"
 msgstr "選択範囲限定検索"
 
-#: src/frontends/qt/GuiSearch.cpp:293
+#: src/frontends/qt/GuiSearch.cpp:295
 msgid "Search as you type"
 msgstr "打鍵同時検索"
 
-#: src/frontends/qt/GuiSearch.cpp:306
+#: src/frontends/qt/GuiSearch.cpp:308
 msgid "Wrap search"
 msgstr "折返し検索"
 
-#: src/frontends/qt/GuiSearch.cpp:322
+#: src/frontends/qt/GuiSearch.cpp:324
 msgid "Click here to change search options"
 msgstr "検索オプションを変更するときは ここをクリックしてください"
 
-#: src/frontends/qt/GuiSearch.cpp:541
+#: src/frontends/qt/GuiSearch.cpp:563
 msgid "Search and Replace"
 msgstr "検索および置換"
 
@@ -35054,27 +35148,27 @@ msgstr "コードプレビュー"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1プレビュー"
 
-#: src/frontends/qt/GuiWorkArea.cpp:1512
+#: src/frontends/qt/GuiWorkArea.cpp:1513
 msgid "Close File"
 msgstr "ファイルを閉じる"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2050
+#: src/frontends/qt/GuiWorkArea.cpp:2051
 msgid "%1 (read only)"
 msgstr "%1 (読み込み専用)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2058
+#: src/frontends/qt/GuiWorkArea.cpp:2059
 msgid "%1 (modified externally)"
 msgstr "%1 (外部から変更)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2081
+#: src/frontends/qt/GuiWorkArea.cpp:2082
 msgid "Hide tab"
 msgstr "タブを非表示にする"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2087
+#: src/frontends/qt/GuiWorkArea.cpp:2088
 msgid "Close tab"
 msgstr "タブを閉じる"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2126
+#: src/frontends/qt/GuiWorkArea.cpp:2127
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>ディスク上のファイル %1 は変更されています．</b>"
 
@@ -37416,11 +37510,11 @@ msgstr ""
 "指定された文書%1$s\n"
 "を開くことができませんでした．"
 
-#: src/output_latex.cpp:1662
+#: src/output_latex.cpp:1664
 msgid "Error in latexParagraphs"
 msgstr "latexParagraphsでのエラー"
 
-#: src/output_latex.cpp:1663
+#: src/output_latex.cpp:1665
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
@@ -37816,6 +37910,30 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知のユーザー"
+
+#~ msgid "Acknowledgement"
+#~ msgstr "謝辞"
+
+#~ msgid "Acknowledgement."
+#~ msgstr "謝辞."
+
+#~ msgid "Acknowledgements."
+#~ msgstr "謝辞."
+
+#~ msgid "Acknowledgements"
+#~ msgstr "謝辞(Acknowledgements)"
+
+#~ msgid "Acknowledgement \\theacknowledgement."
+#~ msgstr "謝辞 \\theacknowledgement."
+
+#~ msgid "Acknowledgement*"
+#~ msgstr "謝辞*"
+
+#~ msgid "Acknowledgement \\thetheorem."
+#~ msgstr "謝辞 \\thetheorem."
+
+#~ msgid "Japanese Report (Vertical Writing)"
+#~ msgstr "日本語Report (縦書き)"
 
 #~ msgid "Default..."
 #~ msgstr "既定値..."
