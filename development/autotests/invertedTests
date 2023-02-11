@@ -316,6 +316,10 @@ export/templates/Articles/Hebrew_Article_.*(dvi|pdf|pdf2|pdf3)
 # https://github.com/gsilano/EuropeCV/pull/33
 export/examples/(|es/)Curricula_Vitae/Europe_CV_(pdf.*|dvi|lyx22|lyx23)
 
+# Armenian currently only works with XeTeX and LuaTeX and system fonts
+export/examples/Language_Support/Writing_Armenian_(dvi|dvi3_texF|pdf|pdf2|pdf3|pdf5_texF)
+
+
 # ================================================
 Sublabel: externalissues
 # Export fails due to non-LaTeX external tool,
