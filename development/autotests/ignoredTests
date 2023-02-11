@@ -127,11 +127,12 @@ export/export/latex/languages/ja[-_].*_(pdf2|texF)
 # For a discussion of alternatives for Japanese with LaTeX , see also
 # https://tex.stackexchange.com/questions/320021/xelatex-using-japanese-ldf-for-babel-causes-invalid-characters-errors
 #
+export/examples/Language_Support/Mixing_Japanese_with_other_Languages_%28with_platex%29_pdf2
 # Exceptions: 
 # The "!" means: "Protect these tests from being matched by future patterns in this file".
 # Export by plain- and pdflatex engines works with language "japanese-cjk", e.g.
-!export/examples/ja/Multilingual_Typesetting_with_CJK_(dvi|pdf[23]?)
-!export/examples/ja/Multilingual_Typesetting_with_CJK_.*systemF
+!export/examples/Language_Support/Mixing_Japanese_with_other_Languages_.*(dvi|pdf[23]?)
+export/examples/Language_Support/Mixing_Japanese_with_other_Languages_.*systemF
 # the rest:
 export/.*/ja/.*_(pdf2|texF)
 
@@ -151,7 +152,7 @@ export/export/latex/CJK/zh_CN-toc.*_dvi3_systemF
 
 # CJK fails (sometimes) with Xe/LuaTeX and 8-bit fonts:
 #####
-export/examples/ja/Multilingual_Typesetting_.*CJK.(dvi3|pdf5)_texF
+export/examples/Language_Support/Mixing_Japanese_with_other_Languages_.*(dvi3|pdf5)_texF
 export/.*/(ko|zh_CN)/.*(dvi3|pdf[45])_texF
 export/export/latex/CJK/zh_CN-toc_*.(dvi3|pdf[45])_texF
 export/export/latex/CJK/en-de-el-ru-ko_utf8_.*_texF
