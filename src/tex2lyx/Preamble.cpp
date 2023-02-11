@@ -2687,7 +2687,15 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			vector<string> opts = split_options(p.getArg('[', ']'));
 			// FIXME This does not work for classes that have a
 			//       different name in LyX than in LaTeX
-			string const tclass = p.getArg('{', '}');
+			string tclass = p.getArg('{', '}');
+			if (contains(tclass, '/')) {
+				// It's considered bad practice, but it is still
+				// sometimes done (and possible) to enter the documentclass
+				// as a path, e.g. \documentclass{subdir/class} (#12284)
+				// we strip the name in this case.
+				string dummy;
+				tclass = rsplit(tclass, dummy, '/');
+			}
 			p.skip_spaces();
 			// Only set text class if a class hasn't been forced
 			// (this was set above)
