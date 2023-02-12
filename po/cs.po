@@ -1006,13 +1006,12 @@ msgid "Language"
 msgstr "Jazyk"
 
 #: src/frontends/qt/ui/CharacterUi.ui:290
-#, fuzzy
 msgid "If this is selected, the marked text will not be spellchecked"
-msgstr "Prostřední tlačítko myši bude vkládat obsah výběru"
+msgstr "Při zaškrtnutí nebude pro vybraný text zapnuta kontrolova pravopisu"
 
 #: src/frontends/qt/ui/CharacterUi.ui:293
 msgid "E&xclude from Spellchecking"
-msgstr ""
+msgstr "Vyjmou&t z kontroly pravopisu"
 
 #: src/frontends/qt/ui/CharacterUi.ui:303
 msgid "Semantic Markup"
@@ -20052,9 +20051,8 @@ msgid "Vertical Phantom|V"
 msgstr "Vertikální fantóm|V"
 
 #: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:455
-#, fuzzy
 msgid "Normal Space|e"
-msgstr "Horizontální mezera"
+msgstr "Normální mezera"
 
 #: lib/ui/stdcontext.inc:266
 msgid "Non-Breaking Normal Space|o"
@@ -20268,9 +20266,8 @@ msgid "Page Break|a"
 msgstr "Tvrdý konec stránky|e"
 
 #: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:471
-#, fuzzy
 msgid "No Page Break|g"
-msgstr "Tvrdý konec stránky|e"
+msgstr "Bez zalomení stránky|B"
 
 #: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:472
 msgid "Clear Page|C"
@@ -20356,14 +20353,12 @@ msgid "Reject Change|j"
 msgstr "Odmítnout změnu|m"
 
 #: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:124
-#, fuzzy
 msgid "Text Properties|x"
-msgstr "Vlasnosti fontu"
+msgstr "Vlasnosti textu|x"
 
 #: lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:125
-#, fuzzy
 msgid "Custom Text Styles|S"
-msgstr "Styl textu|t"
+msgstr "Vlastní styl textu|t"
 
 #: lib/ui/stdcontext.inc:403 lib/ui/stdmenus.inc:123
 msgid "Paragraph Settings...|P"
@@ -21054,17 +21049,14 @@ msgid "Selection, Join Lines|i"
 msgstr "Výběr, spojit řádky|o"
 
 #: lib/ui/stdmenus.inc:186
-#, fuzzy
 msgid "Customize...|C"
 msgstr "Vlastní...|V"
 
 #: lib/ui/stdmenus.inc:187
-#, fuzzy
 msgid "Apply Last Settings|A"
 msgstr "Použít poslední Styl textu|y"
 
 #: lib/ui/stdmenus.inc:189
-#, fuzzy
 msgid "Capitalize|p"
 msgstr "První velké|k"
 
@@ -21150,7 +21142,7 @@ msgstr "Změnit typ vzorce|v"
 
 #: lib/ui/stdmenus.inc:249
 msgid "Text Properties|T"
-msgstr "Styl textu|t"
+msgstr "Vlastnosti textu|x"
 
 #: lib/ui/stdmenus.inc:251
 msgid "Use Computer Algebra System|S"
@@ -21285,7 +21277,6 @@ msgid "Maple, Evalf|v"
 msgstr "Maple, evalf (plovoucí čárka)|e"
 
 #: lib/ui/stdmenus.inc:339
-#, fuzzy
 msgid "Outline Pane|O"
 msgstr "Osnova|s"
 
@@ -21294,12 +21285,10 @@ msgid "Code Preview Pane|P"
 msgstr "Zdrojový text výstupu|x"
 
 #: lib/ui/stdmenus.inc:341
-#, fuzzy
 msgid "Messages Pane|M"
 msgstr "Ladící výpisy|L"
 
 #: lib/ui/stdmenus.inc:342
-#, fuzzy
 msgid "Toolbars|T"
 msgstr "Panely nástrojů|n"
 
@@ -21312,12 +21301,10 @@ msgid "Fold Math Macro|d"
 msgstr "Zabalit matematické makro|b"
 
 #: lib/ui/stdmenus.inc:347
-#, fuzzy
 msgid "Split View Into Left and Right Half|L"
 msgstr "Vertikální rozdělení|V"
 
 #: lib/ui/stdmenus.inc:348
-#, fuzzy
 msgid "Split View Into Upper and Lower Half|U"
 msgstr "Horizontální rozdělení|t"
 
@@ -21326,12 +21313,10 @@ msgid "Close Current View|w"
 msgstr "Uzavřít skupinu panelů|U"
 
 #: lib/ui/stdmenus.inc:350
-#, fuzzy
 msgid "Fullscreen|F"
 msgstr "Celoobrazovkový mód|C"
 
 #: lib/ui/stdmenus.inc:352
-#, fuzzy
 msgid "Open All Insets|I"
 msgstr "Otevři všechny vložky|O"
 
@@ -21352,13 +21337,12 @@ msgid "Formatting|o"
 msgstr "Formátování|F"
 
 #: lib/ui/stdmenus.inc:379
-#, fuzzy
 msgid "Field|i"
-msgstr "TextField"
+msgstr "Informační pole"
 
 #: lib/ui/stdmenus.inc:380
 msgid "List/Contents/References|/"
-msgstr ""
+msgstr "Seznamy/Obsah/Reference|/"
 
 #: lib/ui/stdmenus.inc:381
 msgid "Float|a"
@@ -21373,7 +21357,6 @@ msgid "Branch|B"
 msgstr "Větev|V"
 
 #: lib/ui/stdmenus.inc:384
-#, fuzzy
 msgid "Custom Inset"
 msgstr "Vlastní vložky"
 
@@ -21566,12 +21549,11 @@ msgstr "Dolní index|D"
 
 #: lib/ui/stdmenus.inc:456
 msgid "Non-breaking Normal Space|p"
-msgstr ""
+msgstr "Nelámaná normální mezera|r"
 
 #: lib/ui/stdmenus.inc:457
-#, fuzzy
 msgid "Non-breaking Thin Space|T"
-msgstr "Záporná úzká mezera|k"
+msgstr "Nelámaná úzká mezera|z"
 
 #: lib/ui/stdmenus.inc:458
 msgid "Horizontal Space...|o"
@@ -35602,33 +35584,28 @@ msgid "Add to personal dictionary|n"
 msgstr "Přidat k vlastnímu slovníku|d"
 
 #: src/frontends/qt/Menus.cpp:872
-#, fuzzy
 msgid "Ignore this occurrence|g"
-msgstr "Ignorovat toto slovo"
+msgstr "Ignorovat tento výskyt|e"
 
 #: src/frontends/qt/Menus.cpp:874
-#, fuzzy
 msgid "Ignore all for this session|I"
 msgstr "Ignorovat toto slovo po celý běh"
 
 #: src/frontends/qt/Menus.cpp:876
-#, fuzzy
 msgid "Ignore all in this document|d"
-msgstr "Povolit &vždy pro tento dokument"
+msgstr "Ignorovat vždy pro tento dokument|I"
 
 #: src/frontends/qt/Menus.cpp:884
 msgid "Remove from personal dictionary|r"
-msgstr "Smazat vlastní slovník|S"
+msgstr "Smazat z vlastního slovník|v"
 
 #: src/frontends/qt/Menus.cpp:891
-#, fuzzy
 msgid "Remove from document dictionary|r"
-msgstr "Smazat vlastní slovník|S"
+msgstr "Smazat ze slovníku dokumnetu|d"
 
 #: src/frontends/qt/Menus.cpp:921
-#, fuzzy
 msgid "Switch Language...|L"
-msgstr "Jazyk|k"
+msgstr "Přepnout jazyk|k"
 
 #: src/frontends/qt/Menus.cpp:935
 msgid "Language|L"
@@ -35643,14 +35620,12 @@ msgid "Hidden|H"
 msgstr "Skryté|S"
 
 #: src/frontends/qt/Menus.cpp:1012
-#, fuzzy
 msgid "(No Documents Open)"
 msgstr "(Žádné otevřené dokumenty)"
 
 #: src/frontends/qt/Menus.cpp:1078
-#, fuzzy
 msgid "(No Bookmarks Saved Yet)"
-msgstr "<Žádné uložené záložky>"
+msgstr "(Žádné uložené záložky)"
 
 #: src/frontends/qt/Menus.cpp:1118
 msgid "View (Other Formats)|F"
