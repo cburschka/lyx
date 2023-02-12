@@ -449,7 +449,7 @@ void CategorizedCombo::setIconSize(QSize size)
 }
 
 
-bool CategorizedCombo::set(QString const & item)
+bool CategorizedCombo::set(QString const & item, bool const report_missing)
 {
 	d->resetFilter();
 
@@ -464,7 +464,8 @@ bool CategorizedCombo::set(QString const & item)
 
 	QList<QStandardItem *> r = d->model_->findItems(item, Qt::MatchExactly, 1);
 	if (r.empty()) {
-		LYXERR0("Trying to select non existent layout type " << item);
+		if (report_missing)
+			LYXERR0("Trying to select non existent layout type " << item);
 		return false;
 	}
 

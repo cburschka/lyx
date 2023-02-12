@@ -2474,9 +2474,12 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 	outputModule->defaultFormatCO->setCurrentIndex(index);
 
 	// try to restore fonts which were selected two toggles ago
-	fontModule->fontsRomanCO->set(fontModule->font_roman);
-	fontModule->fontsSansCO->set(fontModule->font_sans);
-	fontModule->fontsTypewriterCO->set(fontModule->font_typewriter);
+	if (!fontModule->font_roman.isEmpty())
+		fontModule->fontsRomanCO->set(fontModule->font_roman);
+	if (!fontModule->font_sans.isEmpty())
+		fontModule->fontsSansCO->set(fontModule->font_sans);
+	if (!fontModule->font_typewriter.isEmpty())
+		fontModule->fontsTypewriterCO->set(fontModule->font_typewriter);
 	index = fontModule->fontsMathCO->findData(fontModule->font_math);
 	if (index != -1)
 		fontModule->fontsMathCO->setCurrentIndex(index);
@@ -4399,7 +4402,7 @@ void GuiDocument::paramsToDialog()
 			bp_.fontsize);
 
 	QString font = toqstr(bp_.fontsRoman());
-	bool foundfont = fontModule->fontsRomanCO->set(font);
+	bool foundfont = fontModule->fontsRomanCO->set(font, false);
 	if (!foundfont) {
 		fontModule->fontsRomanCO->addItemSort(font, font + qt_(" (not installed)"),
 						      qt_("Uninstalled used fonts"),
@@ -4410,7 +4413,7 @@ void GuiDocument::paramsToDialog()
 	fontModule->font_roman = toqstr(bp_.fonts_roman[!bp_.useNonTeXFonts]);
 
 	font = toqstr(bp_.fontsSans());
-	foundfont = fontModule->fontsSansCO->set(font);
+	foundfont = fontModule->fontsSansCO->set(font, false);
 	if (!foundfont ) {
 		fontModule->fontsSansCO->addItemSort(font, font + qt_(" (not installed)"),
 						     qt_("Uninstalled used fonts"),
@@ -4421,7 +4424,7 @@ void GuiDocument::paramsToDialog()
 	fontModule->font_sans = toqstr(bp_.fonts_sans[!bp_.useNonTeXFonts]);
 
 	font = toqstr(bp_.fontsTypewriter());
-	foundfont = fontModule->fontsTypewriterCO->set(font);
+	foundfont = fontModule->fontsTypewriterCO->set(font, false);
 	if (!foundfont) {
 		fontModule->fontsTypewriterCO->addItemSort(font, font + qt_(" (not installed)"),
 							   qt_("Uninstalled used fonts"),

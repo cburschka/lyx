@@ -38,7 +38,7 @@ public:
 	~CategorizedCombo();
 
 	/// select an item in the combobox. Returns false if item does not exist
-	bool set(QString const & cc);
+	bool set(QString const & cc, bool const report_missing = true);
 	/// Reset the combobox.
 	void reset();
 	/// Reset the combobox filter.
