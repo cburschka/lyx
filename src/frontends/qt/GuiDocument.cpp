@@ -4414,7 +4414,7 @@ void GuiDocument::paramsToDialog()
 
 	font = toqstr(bp_.fontsSans());
 	foundfont = fontModule->fontsSansCO->set(font, false);
-	if (!foundfont ) {
+	if (!foundfont) {
 		fontModule->fontsSansCO->addItemSort(font, font + qt_(" (not installed)"),
 						     qt_("Uninstalled used fonts"),
 						     qt_("This font is not installed and won't be used in output"),
