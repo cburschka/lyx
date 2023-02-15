@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -33794,6 +33794,19 @@ Typewriter
 .
  To be able to format the URL text,
  use hyperlinks as explained in the next subsection.
+
+\change_inserted 5863208 1676462413
+ By default longer URLs will not break at the of the line;
+ if 
+\series bold
+
+\backslash
+usepackage{xurl}
+\series default
+ is put in the preamble then the URL can be broken at every character.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
