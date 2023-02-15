@@ -2779,7 +2779,7 @@ void PrefDocHandling::updateRC(LyXRC const & rc)
 		docstring const tip = bformat(_("If this is checked, a backup of the document is created "
 						"in the backup directory (%1$s). "
 						"The backup file has the full original path and name as file name "
-						"and the suffix '.lyx~' (e.g., mydir!filename.lyx~). "
+						"and the suffix \'.lyx~\' (e.g., mydir!filename.lyx~). "
 						"Note that these files are hidden by default by some file managers."),
 					      FileName(rc.backupdir_path).absoluteFilePath());
 		backupCB->setToolTip(toqstr(tip));
