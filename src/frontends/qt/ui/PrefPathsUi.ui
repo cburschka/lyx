@@ -1,45 +1,46 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PrefPathsUi</class>
- <widget class="QWidget" name="PrefPathsUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="PrefPathsUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>347</width>
-    <height>311</height>
+    <height>467</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="margin" stdset="0">
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="12" column="0" colspan="3" >
+   <item row="12" column="0" colspan="3">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Relative and absolute paths are allowed. Relative paths will be expanded with respect to the working directory (WD). For all paths except the "TEXINPUTS prefix" the WD is the directory from which you start LyX, and thus could change for each LyX session. For the "TEXINPUTS prefix" path the WD is the directory containing the document. The path "." (without quotes) is a common example of a relative path and refers to the WD.</string>
+      <string>Relative and absolute paths are allowed. Relative paths will be expanded with respect to the working directory (WD). For all paths except the &quot;TEXINPUTS prefix&quot; the WD is the directory from which you start LyX, and thus could change for each LyX session. For the &quot;TEXINPUTS prefix&quot; path the WD is the directory containing the document. The path &quot;.&quot; (without quotes) is a common example of a relative path and refers to the WD.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="10" column="0" >
-    <widget class="QLabel" name="pathPrefixLA" >
-     <property name="text" >
+   <item row="10" column="0">
+    <widget class="QLabel" name="pathPrefixLA">
+     <property name="text">
       <string>&amp;PATH prefix:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>pathPrefixED</cstring>
      </property>
     </widget>
    </item>
-   <item row="10" column="1" colspan="2" >
+   <item row="10" column="1" colspan="2">
     <widget class="QLineEdit" name="pathPrefixED">
      <property name="toolTip">
       <string>Specify those directories which should be prepended to the PATH environment variable. Use the OS native format.</string>
@@ -63,186 +64,190 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="2" >
-    <widget class="QPushButton" name="thesaurusDirPB" >
-     <property name="text" >
+   <item row="6" column="2">
+    <widget class="QPushButton" name="thesaurusDirPB">
+     <property name="text">
       <string>Browse...</string>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="6" column="0" >
-    <widget class="QLabel" name="thesaurusDirLA" >
-     <property name="text" >
+   <item row="6" column="0">
+    <widget class="QLabel" name="thesaurusDirLA">
+     <property name="text">
       <string>T&amp;hesaurus dictionaries:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>thesaurusDirED</cstring>
      </property>
     </widget>
    </item>
-   <item row="6" column="1" >
-    <widget class="QLineEdit" name="thesaurusDirED" />
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="thesaurusDirED"/>
    </item>
-   <item row="5" column="2" >
-    <widget class="QPushButton" name="tempDirPB" >
-     <property name="text" >
+   <item row="5" column="2">
+    <widget class="QPushButton" name="tempDirPB">
+     <property name="text">
       <string>Browse...</string>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="5" column="1" >
-    <widget class="QLineEdit" name="tempDirED" />
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="tempDirED"/>
    </item>
-   <item row="5" column="0" >
-    <widget class="QLabel" name="tempDirLA" >
-     <property name="text" >
+   <item row="5" column="0">
+    <widget class="QLabel" name="tempDirLA">
+     <property name="text">
       <string>&amp;Temporary directory:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>tempDirED</cstring>
      </property>
     </widget>
    </item>
-   <item row="4" column="2" >
-    <widget class="QPushButton" name="lyxserverDirPB" >
-     <property name="text" >
+   <item row="4" column="2">
+    <widget class="QPushButton" name="lyxserverDirPB">
+     <property name="text">
       <string>Browse...</string>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="4" column="1" >
-    <widget class="QLineEdit" name="lyxserverDirED" />
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="lyxserverDirED"/>
    </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="lyxserverDirLA" >
-     <property name="text" >
+   <item row="4" column="0">
+    <widget class="QLabel" name="lyxserverDirLA">
+     <property name="text">
       <string>Ly&amp;XServer pipe:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>lyxserverDirED</cstring>
      </property>
     </widget>
    </item>
-   <item row="3" column="2" >
-    <widget class="QPushButton" name="backupDirPB" >
-     <property name="text" >
+   <item row="3" column="2">
+    <widget class="QPushButton" name="backupDirPB">
+     <property name="text">
       <string>Browse...</string>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="3" column="1" >
-    <widget class="QLineEdit" name="backupDirED" />
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="backupDirED">
+     <property name="toolTip">
+      <string>If a path is specified here, all backups of LyX files will be stored there. If no path is given, backups will be stored alongside the original document. This requires 'Backup original documents when saving' in Look &amp; Feel &gt; Document Handling to be checked.</string>
+     </property>
+    </widget>
    </item>
-   <item row="3" column="0" >
-    <widget class="QLabel" name="backupDirLA" >
-     <property name="text" >
+   <item row="3" column="0">
+    <widget class="QLabel" name="backupDirLA">
+     <property name="text">
       <string>&amp;Backup directory:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>backupDirED</cstring>
      </property>
     </widget>
    </item>
-   <item row="2" column="2" >
-    <widget class="QPushButton" name="exampleDirPB" >
-     <property name="text" >
+   <item row="2" column="2">
+    <widget class="QPushButton" name="exampleDirPB">
+     <property name="text">
       <string>Browse...</string>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" >
-    <widget class="QLineEdit" name="exampleDirED" />
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="exampleDirED"/>
    </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="exampleDirLA" >
-     <property name="text" >
+   <item row="2" column="0">
+    <widget class="QLabel" name="exampleDirLA">
+     <property name="text">
       <string>&amp;Example files:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>exampleDirED</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="2" >
-    <widget class="QPushButton" name="templateDirPB" >
-     <property name="text" >
+   <item row="1" column="2">
+    <widget class="QPushButton" name="templateDirPB">
+     <property name="text">
       <string>Browse...</string>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QLineEdit" name="templateDirED" />
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="templateDirED"/>
    </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="templateDirLA" >
-     <property name="text" >
+   <item row="1" column="0">
+    <widget class="QLabel" name="templateDirLA">
+     <property name="text">
       <string>&amp;Document templates:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>templateDirED</cstring>
      </property>
     </widget>
    </item>
-   <item row="0" column="2" >
-    <widget class="QPushButton" name="workingDirPB" >
-     <property name="text" >
+   <item row="0" column="2">
+    <widget class="QPushButton" name="workingDirPB">
+     <property name="text">
       <string>Browse...</string>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="workingDirED" />
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="workingDirED"/>
    </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="workingDirLA" >
-     <property name="text" >
+   <item row="0" column="0">
+    <widget class="QLabel" name="workingDirLA">
+     <property name="text">
       <string>&amp;Working directory:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>workingDirED</cstring>
      </property>
     </widget>
    </item>
-   <item row="8" column="0" >
-    <widget class="QLabel" name="hunspellDirLA" >
-     <property name="text" >
+   <item row="8" column="0">
+    <widget class="QLabel" name="hunspellDirLA">
+     <property name="text">
       <string>H&amp;unspell dictionaries:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>hunspellDirED</cstring>
      </property>
     </widget>
    </item>
-   <item row="8" column="1" >
-    <widget class="QLineEdit" name="hunspellDirED" />
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="hunspellDirED"/>
    </item>
-   <item row="8" column="2" >
-    <widget class="QPushButton" name="hunspellDirPB" >
-     <property name="text" >
+   <item row="8" column="2">
+    <widget class="QPushButton" name="hunspellDirPB">
+     <property name="text">
       <string>Browse...</string>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
@@ -270,7 +275,7 @@
   <tabstop>texinputsPrefixED</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

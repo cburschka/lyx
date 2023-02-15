@@ -2769,6 +2769,21 @@ void PrefDocHandling::updateRC(LyXRC const & rc)
 		closeLastViewCO->setCurrentIndex(1);
 	else if (rc.close_buffer_with_last_view == "ask")
 		closeLastViewCO->setCurrentIndex(2);
+	if (rc.backupdir_path.empty())
+		backupCB->setToolTip(qt_("If this is checked, a backup of the document is created "
+					 "in the current working directory. "
+					 "The backup file has the same name but the suffix '.lyx~'. "
+					 "Note that these files are hidden by default by some file managers. "
+					 "A dedicated backup directory can be set in the 'Paths' section."));
+	else {
+		docstring const tip = bformat(_("If this is checked, a backup of the document is created "
+						"in the backup directory (%1$s). "
+						"The backup file has the full original path and name as file name "
+						"and the suffix '.lyx~' (e.g., mydir!filename.lyx~). "
+						"Note that these files are hidden by default by some file managers."),
+					      FileName(rc.backupdir_path).absoluteFilePath());
+		backupCB->setToolTip(toqstr(tip));
+	}
 }
 
 
