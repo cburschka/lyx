@@ -168,7 +168,7 @@ msgstr "Vrátit nastavení do základního stavu"
 
 #: src/frontends/qt/ui/BiblioUi.ui:183 src/frontends/qt/ui/ColorUi.ui:253
 msgid "Rese&t"
-msgstr "V&ynulovat"
+msgstr "Vyn&ulovat"
 
 #: src/frontends/qt/ui/BiblioUi.ui:201
 msgid "Bibliography Style"
@@ -935,9 +935,12 @@ msgid "Fa&mily:"
 msgstr "&Rodina:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:62 src/frontends/qt/ui/CharacterUi.ui:81
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:447
 msgid "Font series"
 msgstr "Tloušťka kresby písma"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:447
+msgid "Font series[[FindReplaceAdv]]"
+msgstr "Duktus"
 
 #: src/frontends/qt/ui/CharacterUi.ui:65
 msgid "&Series:"
@@ -1179,9 +1182,8 @@ msgid "Main text:"
 msgstr "Hlavní text:"
 
 #: src/frontends/qt/ui/ColorUi.ui:110
-#, fuzzy
 msgid "C&hange..."
-msgstr "&Změnit..."
+msgstr "Změni&t..."
 
 #: src/frontends/qt/ui/ColorUi.ui:123 src/frontends/qt/ui/ColorUi.ui:145
 #: src/frontends/qt/ui/ColorUi.ui:250 src/frontends/qt/ui/ColorUi.ui:311
@@ -1201,26 +1203,22 @@ msgid "Page:"
 msgstr "Stránka:"
 
 #: src/frontends/qt/ui/ColorUi.ui:298
-#, fuzzy
 msgid "Ch&ange..."
-msgstr "&Změnit..."
+msgstr "Z&měnit..."
 
 #: src/frontends/qt/ui/ColorUi.ui:314
-#, fuzzy
 msgid "Re&set"
-msgstr "Znov&unačíst"
+msgstr "&Vynulovat"
 
 #: src/frontends/qt/ui/ColorUi.ui:336
-#, fuzzy
 msgid "Chan&ge..."
-msgstr "&Změnit..."
+msgstr "Změ&nit..."
 
 #: src/frontends/qt/ui/CompareHistoryUi.ui:23
 msgid "Compare Revisions"
 msgstr "Porovnat revize"
 
 #: src/frontends/qt/ui/CompareHistoryUi.ui:34
-#, fuzzy
 msgid "Revisions ba&ck"
 msgstr "&Revizí nazpět"
 
@@ -1356,9 +1354,8 @@ msgid "Use Class Defaults"
 msgstr "Použít standardní nastavení třídy"
 
 #: src/frontends/qt/ui/DocumentUi.ui:109
-#, fuzzy
 msgid "Save settings as defaults for new documents"
-msgstr "Ulož jako standardní nastavení Lyx-ového dokumentu"
+msgstr "Ulož jako standardní nastavení pro nové dokumenty"
 
 #: src/frontends/qt/ui/DocumentUi.ui:112
 msgid "Save as Document Defaults"
@@ -1381,9 +1378,8 @@ msgid "Show ERT contents"
 msgstr "Zobrazit obsah ERT"
 
 #: src/frontends/qt/ui/ERTUi.ui:72
-#, fuzzy
 msgid "[[is]]O&pen"
-msgstr "O&tevřít"
+msgstr "&Rozbalit"
 
 #: src/frontends/qt/ui/ErrorListUi.ui:38
 msgid ""
@@ -1465,9 +1461,8 @@ msgid "O&ption:"
 msgstr "&Volba:"
 
 #: src/frontends/qt/ui/ExternalUi.ui:224
-#, fuzzy
 msgid "For&mat:"
-msgstr "&Formát:"
+msgstr "For&mát:"
 
 #: src/frontends/qt/ui/ExternalUi.ui:240
 msgid ""
@@ -1550,7 +1545,6 @@ msgid "Clip to &bounding box"
 msgstr "&Seříznout k ohraničujícímu rámečku"
 
 #: src/frontends/qt/ui/ExternalUi.ui:587 src/frontends/qt/ui/GraphicsUi.ui:390
-#, fuzzy
 msgid "Left botto&m:"
 msgstr "&Levý dolní:"
 
@@ -1580,12 +1574,11 @@ msgstr "TabWidget"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:21
 msgid "Sear&ch"
-msgstr "&Vyhledat"
+msgstr "Vy&hledávat"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
-#, fuzzy
 msgid "Search fo&r:"
-msgstr "Chyba vyhledávání"
+msgstr "V&yhledat:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:92
 msgid "Replace &with:"
@@ -1605,7 +1598,6 @@ msgstr "Hledat pouze celá slova"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:153
 #: src/frontends/qt/ui/SearchUi.ui:241 src/frontends/qt/GuiSearch.cpp:100
-#, fuzzy
 msgid "Wh&ole words"
 msgstr "&Celá slova"
 
@@ -1619,27 +1611,23 @@ msgstr "Velikost pís&men"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:205
 #: src/frontends/qt/FindAndReplace.cpp:713
-#, fuzzy
 msgid "Find next occurrence (Enter, backwards: Shift+Enter)"
-msgstr "Nalézt další výskyt [Enter]"
+msgstr "Nalézt další výskyt (Enter, nazpět: Shift+Enter)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:208
 #: src/frontends/qt/ui/SearchUi.ui:190 src/frontends/qt/FindAndReplace.cpp:712
-#, fuzzy
 msgid "Find &>"
-msgstr "&Najít:"
+msgstr "Najít &>"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:221
 #: src/frontends/qt/FindAndReplace.cpp:715
-#, fuzzy
 msgid "Replace and find next occurrence (Enter, backwards: Shift+Enter)"
-msgstr "Nahradit a přejít na další výskyt [Enter]"
+msgstr "Nahradit a přejít na další výskyt (Enter, nazpět: Shift+Enter)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:224
 #: src/frontends/qt/FindAndReplace.cpp:714
-#, fuzzy
 msgid "Rep&lace >"
-msgstr "Nah&raď"
+msgstr "Nah&raď >"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:234
 msgid "Replace all occurrences at once"
@@ -1651,9 +1639,8 @@ msgid "Replace &All"
 msgstr "Nahraď &vše"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:264
-#, fuzzy
 msgid "Settin&gs"
-msgstr "Nastavení"
+msgstr "&Nastavení"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:279
 msgid "The scope to which the search horizon is restricted"
@@ -1692,7 +1679,6 @@ msgid "&All manuals"
 msgstr "Všechny &manuály"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:373
-#, fuzzy
 msgid "E&xpand macros"
 msgstr "Rozvinout &makra"
 
@@ -1701,7 +1687,6 @@ msgid "Restrict search to math environments only"
 msgstr "Hledat pouze v prostředí matematických vzorců"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:383
-#, fuzzy
 msgid "Search onl&y in maths"
 msgstr "&Hledat pouze ve vzorcích"
 
@@ -1717,56 +1702,50 @@ msgstr "Zachovat velikost &prvního"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:413
 msgid "Do not search in content that is not output (e.g., notes)"
-msgstr ""
+msgstr "Neprohledávat v částech, které se neexportují do výstupu (např. poznámky)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:416
 msgid "Ignore &non-output content"
-msgstr ""
+msgstr "Ignorovat neexportovaný obsah"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:425
 msgid ""
 "If the search string is formatted in a non-default way, only find strings "
 "formatted like the search string in the checked respects"
 msgstr ""
+"Je-li hledaný řetězec nestandardně formátován, vyhledat pouze řetězce u kterých se shoduje se zaškrtnutým formátováním"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:428
 msgid "Adhe&re to search string formatting of"
-msgstr ""
+msgstr "U hledaného dodržovat &formátování pro"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:440
-#, fuzzy
 msgid "Strike-through"
-msgstr "Př&eškrtnutí:"
+msgstr "Přeškrtnutí"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:461
-#, fuzzy
 msgid "Emph/noun"
-msgstr "Zvýrazněný"
+msgstr "Zvýraznění/jméno"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:468
-#, fuzzy
 msgid "Dese&lect all"
-msgstr "Vybrat vše"
+msgstr "Odznači&t vše"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:489
-#, fuzzy
 msgid "Sectioning markup"
-msgstr "Sectioning"
+msgstr "Značky sekcí"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:496
-#, fuzzy
 msgid "Deletion (change)"
-msgstr " (změněno)"
+msgstr "Výmaz (změna)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:503
-#, fuzzy
 msgid "Underlining"
-msgstr "&Podtržení:"
+msgstr "Podtržení"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:517
-#, fuzzy
 msgid "&Select all"
-msgstr "Vybrat vše"
+msgstr "Vy&brat vše"
 
 # TODO
 #: src/frontends/qt/ui/FloatPlacementUi.ui:14
@@ -2945,14 +2924,13 @@ msgid "Errors reported in terminal."
 msgstr "Chyby vypsány na terminál."
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:74 src/frontends/qt/ui/PreambleUi.ui:49
-msgid "Editor for Latex (plain) format will be used"
-msgstr ""
+msgid "Editor for LaTeX (plain) format will be used"
+msgstr "Bude použit editor pro formát LaTeX"
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:77 src/frontends/qt/ui/PreambleUi.ui:52
 #: src/frontends/qt/GuiDocument.cpp:596 src/frontends/qt/GuiDocument.cpp:775
-#, fuzzy
 msgid "&Edit Externally"
-msgstr "Edituj externě...|x"
+msgstr "&Edituj externě"
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:84
 msgid "Convert"
@@ -2984,7 +2962,7 @@ msgstr "&Najít:"
 
 #: src/frontends/qt/ui/LogUi.ui:111
 msgid "Hit Enter or click 'Find Next' to search"
-msgstr ""
+msgstr "Pro hledání zmáčkněte Enter nebo klikněte na 'Najdi další'"
 
 #: src/frontends/qt/ui/LogUi.ui:118
 msgid "Find &Next"
@@ -3860,7 +3838,7 @@ msgstr "I&ndikátor kurzoru"
 #: src/frontends/qt/ui/PrefCompletionUi.ui:119
 #: src/frontends/qt/GuiPrefs.cpp:322
 msgid "General[[settings]]"
-msgstr ""
+msgstr "Obecné"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:142
 msgid ""
@@ -20294,23 +20272,20 @@ msgid "Paragraph Break|B"
 msgstr "Zalomení odstavce|Z"
 
 #: lib/ui/stdcontext.inc:373
-#, fuzzy
 msgid "Edit Externally..."
-msgstr "Edituj externě...|x"
+msgstr "Edituj externě...|E"
 
 #: lib/ui/stdcontext.inc:374
-#, fuzzy
 msgid "End Editing Externally..."
-msgstr "Konec externí editace...|t"
+msgstr "Konec externí editace...|e"
 
 #: lib/ui/stdcontext.inc:381
-#, fuzzy
 msgid "Split Inset|t"
-msgstr "Otevři všechny vložky|O"
+msgstr "Rozdělit vložku|v"
 
 #: lib/ui/stdcontext.inc:383
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Skok zpět na uloženou záložku|k"
+msgstr "Skok zpět na uloženou záložku|S"
 
 #: lib/ui/stdcontext.inc:384 lib/ui/stdmenus.inc:608
 msgid "Forward Search|F"
@@ -20687,7 +20662,7 @@ msgstr "Vybrat sekce|e"
 
 #: lib/ui/stdcontext.inc:724
 msgid "Wrap by Preview|y"
-msgstr "Obalit náhledem (preview)|O"
+msgstr "Obalit náhledem (preview)|b"
 
 #: lib/ui/stdcontext.inc:733
 msgid "Open Target...|O"
