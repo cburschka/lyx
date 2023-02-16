@@ -100,7 +100,7 @@
         <item>
          <widget class="QCheckBox" name="autoSaveCB">
           <property name="toolTip">
-           <string>If this is checked, LyX saves a temporary copy of changed documents in the given interval. As opposed to the backup above, this snapshot will be removed when changes are being saved. If the application crashes with unsaved changes, the document can be restored to the latest snapshot.</string>
+           <string>If this is checked, LyX saves a temporary copy of changed documents in the given interval (as #filename.lyx# in the given directory). As opposed to the backup above, this snapshot will be removed when changes are being saved. If the application crashes with unsaved changes and the restoration from the emergency file fails, this snapshot can be at rescue.</string>
           </property>
           <property name="text">
            <string>Make a&amp;uto-save snapshots every</string>
