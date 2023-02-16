@@ -23,7 +23,7 @@ End
 InsetLayout Flex:Rensuji*
 	CopyStyle			Flex:Rensuji
 	LatexName			rensuji*
-	MenuString			"Rensuji with No Skip Adjustment|n"
+	MenuString			"Rensuji with no Skip Adjustment|n"
 	LabelString			"Rensuji (no skip adj.)"
 End
 
