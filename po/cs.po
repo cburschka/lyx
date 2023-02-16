@@ -1577,7 +1577,7 @@ msgstr "Vy&hledávat"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
 msgid "Search fo&r:"
-msgstr "V&yhledat:"
+msgstr "Vy&hledat:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:92
 msgid "Replace &with:"
@@ -1635,7 +1635,7 @@ msgstr "Nahradit všechny výskyty najednou"
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:237
 #: src/frontends/qt/ui/SearchUi.ui:68
 msgid "Replace &All"
-msgstr "Nahraď &vše"
+msgstr "Nahraď vš&e"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:264
 msgid "Settin&gs"
@@ -1759,31 +1759,26 @@ msgid "Form"
 msgstr "Form"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:22
-#, fuzzy
 msgid "Float T&ype:"
-msgstr "Typ plovoucího objektu:"
+msgstr "&Typ plovoucího objektu:"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:70
-#, fuzzy
 msgid "Alignment of Contents"
-msgstr "Obsah"
+msgstr "Zarovnání uvnitř"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:94
-#, fuzzy
 msgid ""
 "Use the document's default alignment for floats, as specified in Document "
 "Settings."
-msgstr "Použít standardní zarovnání pro tento odstavec, ať už je jakékoliv."
+msgstr "Použít standardní zarovnání pro plovoucí objekty z nastavení dokumentu."
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:97
-#, fuzzy
 msgid "D&ocument Default"
-msgstr "Uložit jako standardní nastavení dokumentu"
+msgstr "Z n&astavení dokumentu"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:104
-#, fuzzy
 msgid "Left-align float contents"
-msgstr "Zadejte řetězec pro filtrování obsahu"
+msgstr "Zarovnání obsahu nalevo"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:107
 #: src/frontends/qt/ui/ParagraphUi.ui:117
@@ -1791,9 +1786,8 @@ msgid "&Left"
 msgstr "Na&levo"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:114
-#, fuzzy
 msgid "Center float contents"
-msgstr "Zadejte řetězec pro filtrování obsahu"
+msgstr "Zarovná obsahu doprostřed"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:117
 #: src/frontends/qt/ui/ParagraphUi.ui:124 src/frontends/qt/ui/TabularUi.ui:1560
@@ -1802,24 +1796,21 @@ msgstr "Na &střed"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:124
 msgid "Right-align float contents"
-msgstr ""
+msgstr "Zarovnání obsahu napravo"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:127
 msgid "&Right"
 msgstr "Na&pravo"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:134
-#, fuzzy
 msgid "Use the class' default alignment for floats, whatever it is."
-msgstr "Použít standardní zarovnání pro tento odstavec, ať už je jakékoliv."
+msgstr "Použít standardní zarovnání pro plovoucí objekty ze třídy dokumentu."
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:137
-#, fuzzy
 msgid "Class &Default"
-msgstr "Standardní nastavení třídy"
+msgstr "Z třídy dok&umentu"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:147
-#, fuzzy
 msgid "Further Options"
 msgstr "Další možnosti"
 
@@ -1828,19 +1819,16 @@ msgid "&Span columns"
 msgstr "&Překlenout sloupce"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:163
-#, fuzzy
 msgid "Rotate side&ways"
 msgstr "Z&rotuj na bok"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:173
-#, fuzzy
 msgid "Position on Page"
-msgstr "Position"
+msgstr "Poloha na stránce"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:184
-#, fuzzy
 msgid "Place&ment Settings:"
-msgstr "Nastavení dokumentu"
+msgstr "Nastavení polo&hy"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:199
 msgid "&Top of page"
@@ -5281,104 +5269,88 @@ msgid "No Hyperlink"
 msgstr "Odkaz: "
 
 #: src/frontends/qt/ui/SearchUi.ui:52
-#, fuzzy
 msgid "Find previous occurrence (Shift+Enter)"
-msgstr "Nalézt další výskyt [Enter]"
+msgstr "Nalézt předchozí výskyt (Shift+Enter)"
 
 #: src/frontends/qt/ui/SearchUi.ui:55 src/frontends/qt/FindAndReplace.cpp:707
-#, fuzzy
 msgid "&< Find"
-msgstr "&Najít"
+msgstr "&< Najít"
 
 #: src/frontends/qt/ui/SearchUi.ui:65
-#, fuzzy
 msgid "Replace all occurrences"
 msgstr "Nahradit všechny výskyty najednou"
 
 #: src/frontends/qt/ui/SearchUi.ui:100 src/frontends/qt/GuiSearch.cpp:206
 msgid "Hide replace and option widgets"
-msgstr ""
+msgstr "Skrýt další možnosti a zmenšit panel"
 
 #: src/frontends/qt/ui/SearchUi.ui:103 src/frontends/qt/GuiSearch.cpp:205
-#, fuzzy
 msgid "&Minimize"
-msgstr "Minisekce"
+msgstr "Zmenš&it"
 
 #: src/frontends/qt/ui/SearchUi.ui:110
-#, fuzzy
 msgid "Rep&lace with:"
-msgstr "N&ahradit čím:"
+msgstr "Nahradit čí&m:"
 
 #: src/frontends/qt/ui/SearchUi.ui:120
-#, fuzzy
 msgid "&Search:"
-msgstr "&Vyhledat"
+msgstr "Vyh&ledat:"
 
 #: src/frontends/qt/ui/SearchUi.ui:155
-#, fuzzy
 msgid "Replace and find next occurrence"
-msgstr "Nahradit a přejít na další výskyt [Enter]"
+msgstr "Nahradit a přejít na další výskyt"
 
 #: src/frontends/qt/ui/SearchUi.ui:161
-#, fuzzy
 msgid "&Replace >"
-msgstr "Nah&raď"
+msgstr "Nahr&aď >"
 
 #: src/frontends/qt/ui/SearchUi.ui:171
-#, fuzzy
 msgid "Replace and find previous occurrence"
-msgstr "Nahradit a přejít na další výskyt [Enter]"
+msgstr "Nahradit a přejít na předchozí výskyt"
 
 #: src/frontends/qt/ui/SearchUi.ui:174
-#, fuzzy
 msgid "< Re&place"
-msgstr "Nah&raď"
+msgstr "< Na&hraď"
 
 #: src/frontends/qt/ui/SearchUi.ui:184
-#, fuzzy
 msgid "Find next occurrence (Enter)"
-msgstr "Nalézt další výskyt [Enter]"
+msgstr "Nalézt další výskyt (Enter)"
 
 #: src/frontends/qt/ui/SearchUi.ui:228
 msgid "Treat uppercase/lowercase writing as distinct"
-msgstr ""
+msgstr "Zohlednit velikost písmen při vyhledávání"
 
 #: src/frontends/qt/ui/SearchUi.ui:231 src/frontends/qt/GuiSearch.cpp:99
-#, fuzzy
 msgid "&Case sensitive[[search]]"
-msgstr "Velikost pís&men"
+msgstr "Veliko&st písmen"
 
 #: src/frontends/qt/ui/SearchUi.ui:238
-#, fuzzy
 msgid "Match whole words only"
-msgstr "&Hledat pouze celá slova"
+msgstr "Hledat pouze celá slova"
 
 #: src/frontends/qt/ui/SearchUi.ui:248
 msgid "Limit search and replace to selection"
-msgstr ""
+msgstr "Vyhledávat pouze ve výběru textu"
 
 #: src/frontends/qt/ui/SearchUi.ui:251 src/frontends/qt/GuiSearch.cpp:103
-#, fuzzy
 msgid "Selection onl&y"
-msgstr "&Výběr:"
+msgstr "Vý&běr"
 
 #: src/frontends/qt/ui/SearchUi.ui:258
 msgid "If this is checked, LyX will search forward immediately"
-msgstr ""
+msgstr "Vyhledávat okamžitě při psaní hledaného řetězce"
 
 #: src/frontends/qt/ui/SearchUi.ui:261 src/frontends/qt/GuiSearch.cpp:105
-#, fuzzy
 msgid "Search as yo&u type"
-msgstr "&Vyhledávat při zadávání"
+msgstr "Vyhledávat &při zadávání"
 
 #: src/frontends/qt/ui/SearchUi.ui:268
 msgid "If the end/start of the document is reached, automatically wrap around"
-msgstr ""
+msgstr "Pokud se narazí na začátek/konec dokumentu, hledání automaticky začne od druhého konce"
 
 #: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:107
-#, fuzzy
 msgid "&Wrap"
-msgstr "Obtékání"
+msgstr "Obté&kání"
 
 #: src/frontends/qt/ui/SendtoUi.ui:50
 msgid "Process the converted file with this command ($$FName = file name)"
@@ -31646,9 +31618,8 @@ msgid "Find previous occurrence (Shift+Enter, forwards: Enter)"
 msgstr ""
 
 #: src/frontends/qt/FindAndReplace.cpp:709
-#, fuzzy
 msgid "< Rep&lace"
-msgstr "Nah&raď"
+msgstr "< Nah&raď"
 
 #: src/frontends/qt/FindAndReplace.cpp:710
 #, fuzzy
@@ -31662,9 +31633,8 @@ msgid "Class Default"
 msgstr "Standardní nastavení třídy"
 
 #: src/frontends/qt/FloatPlacement.cpp:184
-#, fuzzy
 msgid "Document Default"
-msgstr "Uložit jako standardní nastavení dokumentu"
+msgstr "Nastavení dokumentu"
 
 #: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1820
 msgid "Float Settings"
@@ -32346,7 +32316,7 @@ msgstr "Velikost &písmen"
 
 #: src/frontends/qt/GuiCitation.cpp:112
 msgid "Search as you &type"
-msgstr "&Vyhledávat při zadávání"
+msgstr "Vyhledávat při &zadávání"
 
 #: src/frontends/qt/GuiCitation.cpp:167
 msgid ""
@@ -34448,49 +34418,41 @@ msgstr "<Bez prefixu>"
 
 #: src/frontends/qt/GuiSearch.cpp:193
 msgid "Ex&pand"
-msgstr ""
+msgstr "Rozšíř&it"
 
 #: src/frontends/qt/GuiSearch.cpp:194
 msgid "Show replace and option widgets"
-msgstr ""
+msgstr "Zobrazit nahrazení a další možnosti"
 
 #: src/frontends/qt/GuiSearch.cpp:252
-#, fuzzy
 msgid "Active options:"
-msgstr "   volby: "
+msgstr "Aktivní volby:"
 
 #: src/frontends/qt/GuiSearch.cpp:255
-#, fuzzy
 msgid "Case sensitive search"
-msgstr "Velikost pís&men"
+msgstr "Zohlednit velikost písmen při vyhledávání"
 
 #: src/frontends/qt/GuiSearch.cpp:269
-#, fuzzy
 msgid "Whole words only"
-msgstr "&Celá slova"
+msgstr "Hledat pouze celá slova"
 
 #: src/frontends/qt/GuiSearch.cpp:282
-#, fuzzy
 msgid "Search only in selection"
-msgstr "&Hledat pouze ve vzorcích"
+msgstr "Hledat pouze ve vybraném textu"
 
 #: src/frontends/qt/GuiSearch.cpp:295
-#, fuzzy
 msgid "Search as you type"
-msgstr "&Vyhledávat při zadávání"
+msgstr "Vyhledávat při zadávání"
 
 #: src/frontends/qt/GuiSearch.cpp:308
-#, fuzzy
 msgid "Wrap search"
-msgstr "Vyhledávat od začátku/konce?"
+msgstr "Vyhledávat dál přes začátek/konec"
 
 #: src/frontends/qt/GuiSearch.cpp:324
-#, fuzzy
 msgid "Click here to change search options"
-msgstr "Klikněte pro změnu barvy"
+msgstr "Klikněte pro změnu nastavení vyhledávání"
 
 #: src/frontends/qt/GuiSearch.cpp:563
-#, fuzzy
 msgid "Search and Replace"
 msgstr "Najít a zaměnit"
 
@@ -35651,9 +35613,8 @@ msgid "Click to detach"
 msgstr "Klikněte pro odpojení"
 
 #: src/frontends/qt/InsetParamsDialog.cpp:88
-#, fuzzy
 msgid "Ne&w Inset"
-msgstr "Novou vložku"
+msgstr "Novou &vložku"
 
 #: src/frontends/qt/LayoutBox.cpp:345
 #, c-format
