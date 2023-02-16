@@ -1307,15 +1307,15 @@ def checkConverterEntries():
             version_number = match.groups()[0]
             version = version_number.split('.')
             if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 11):
-                addToRC(r'''\converter lilypond   eps        "lilypond -dbackend=eps -dsafe --ps $$i"	""
-\converter lilypond   png        "lilypond -dbackend=eps -dsafe --png $$i"	""''')
-                addToRC(r'\converter lilypond   pdf6       "lilypond -dbackend=eps -dsafe --pdf $$i"	""')
+                addToRC(r'''\converter lilypond   eps        "lilypond -dbackend=eps --ps $$i"	"needauth"
+\converter lilypond   png        "lilypond -dbackend=eps --png $$i"	"needauth"''')
+                addToRC(r'\converter lilypond   pdf6       "lilypond -dbackend=eps --pdf $$i"	"needauth"')
                 logger.info('+  found LilyPond version %s.' % version_number)
             elif int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 6):
-                addToRC(r'''\converter lilypond   eps        "lilypond -b eps --ps --safe $$i"	""
+                addToRC(r'''\converter lilypond   eps        "lilypond -b eps --ps $$i"	"needauth"
 \converter lilypond   png        "lilypond -b eps --png $$i"	""''')
                 if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 9):
-                    addToRC(r'\converter lilypond   pdf6       "lilypond -b eps --pdf --safe $$i"	""')
+                    addToRC(r'\converter lilypond   pdf6       "lilypond -b eps --pdf $$i"	"needauth"')
                 logger.info('+  found LilyPond version %s.' % version_number)
             else:
                 logger.info('+  found LilyPond, but version %s is too old.' % version_number)
@@ -1345,12 +1345,12 @@ def checkConverterEntries():
                     #       clicks View PDF after having done a View DVI. To circumvent
                     #       this, use different output folders for eps and pdf outputs.
                     cmd = cmd.replace('"', r'\"')
-                    addToRC(r'\converter lilypond-book latex     "' + cmd + ' --safe --lily-output-dir=ly-eps $$i"                                ""')
-                    addToRC(r'\converter lilypond-book pdflatex  "' + cmd + ' --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
-                    addToRC(r'\converter lilypond-book-ja platex "' + cmd + ' --safe --pdf --latex-program=platex --lily-output-dir=ly-pdf $$i" ""')
-                    addToRC(r'\converter lilypond-book xetex     "' + cmd + ' --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$i"  ""')
-                    addToRC(r'\converter lilypond-book luatex    "' + cmd + ' --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$i" ""')
-                    addToRC(r'\converter lilypond-book dviluatex "' + cmd + ' --safe --latex-program=dvilualatex --lily-output-dir=ly-eps $$i" ""')
+                    addToRC(r'\converter lilypond-book latex     "' + cmd + ' --lily-output-dir=ly-eps $$i"                                "needauth"')
+                    addToRC(r'\converter lilypond-book pdflatex  "' + cmd + ' --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" "needauth"')
+                    addToRC(r'\converter lilypond-book-ja platex "' + cmd + ' --pdf --latex-program=platex --lily-output-dir=ly-pdf $$i" "needauth"')
+                    addToRC(r'\converter lilypond-book xetex     "' + cmd + ' --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$i"  "needauth"')
+                    addToRC(r'\converter lilypond-book luatex    "' + cmd + ' --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$i" "needauth"')
+                    addToRC(r'\converter lilypond-book dviluatex "' + cmd + ' --latex-program=dvilualatex --lily-output-dir=ly-eps $$i" "needauth"')
 
                     # Also create the entry to apply LilyPond on DocBook files. However,
                     # command must be passed as argument, and it might already have
