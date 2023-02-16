@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-15 11:28+0100\n"
-"PO-Revision-Date: 2023-02-15 11:37+0100\n"
+"POT-Creation-Date: 2023-02-16 11:04+0100\n"
+"PO-Revision-Date: 2023-02-16 11:11+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -600,7 +600,7 @@ msgid "Height value"
 msgstr "Höhe"
 
 #: src/frontends/qt/ui/BoxUi.ui:139 src/frontends/qt/ui/MathMatrixUi.ui:23
-#: src/frontends/qt/ui/ParagraphUi.ui:86
+#: src/frontends/qt/ui/ParagraphUi.ui:86 lib/layouts/japanese-vertical.inc:18
 msgid "Alignment"
 msgstr "Ausrichtung"
 
@@ -1037,7 +1037,7 @@ msgid "Font Properties"
 msgstr "Schrifteigenschaften"
 
 #: src/frontends/qt/ui/CharacterUi.ui:36 src/frontends/qt/ui/CharacterUi.ui:55
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:475
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:488
 msgid "Font family"
 msgstr "Schriftfamilie"
 
@@ -1046,7 +1046,6 @@ msgid "Fa&mily:"
 msgstr "&Familie:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:62 src/frontends/qt/ui/CharacterUi.ui:81
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:447
 msgid "Font series"
 msgstr "Strichstärke"
 
@@ -1055,7 +1054,7 @@ msgid "&Series:"
 msgstr "S&trichstärke:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:88 src/frontends/qt/ui/CharacterUi.ui:107
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:510
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:523
 msgid "Font shape"
 msgstr "Schriftschnitt"
 
@@ -1065,13 +1064,13 @@ msgstr "Sch&nitt:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:114
 #: src/frontends/qt/ui/CharacterUi.ui:133
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:524
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:537
 msgid "Font size"
 msgstr "Schriftgrad"
 
 #: src/frontends/qt/ui/CharacterUi.ui:159
 #: src/frontends/qt/ui/CharacterUi.ui:178
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:454
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:467
 msgid "Font color"
 msgstr "Schriftfarbe"
 
@@ -1106,7 +1105,7 @@ msgid "&Language:"
 msgstr "S&prache:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:281
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:482
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:495
 #: src/frontends/qt/ui/ListingsUi.ui:334 lib/layouts/bicaption.module:16
 #: lib/layouts/europasscv.layout:441 lib/layouts/europasscv.layout:476
 #: lib/layouts/europasscv.layout:483 lib/layouts/europecv.layout:322
@@ -1843,7 +1842,7 @@ msgstr ""
 msgid "Ignore &non-output content"
 msgstr "&Nicht ausgegebene Inhalte ignorieren"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:425
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:438
 msgid ""
 "If the search string is formatted in a non-default way, only find strings "
 "formatted like the search string in the checked respects"
@@ -1852,35 +1851,39 @@ msgstr ""
 "und Weise formatiert ist, dann werden nur Zeichenketten gefunden, die in den "
 "Aspekten, die hier ausgewählt sind, wie der Sucheintrag formatiert sind."
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:428
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:441
 msgid "Adhe&re to search string formatting of"
 msgstr "Sucheintrags&formatierung beachten bzgl."
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:440
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:453
 msgid "Strike-through"
 msgstr "Durchstreichung"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:461
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:460
+msgid "Font series[[FindReplaceAdv]]"
+msgstr "Strichstärke"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:474
 msgid "Emph/noun"
 msgstr "Hervorh./Eigenname"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:468
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:481
 msgid "Dese&lect all"
 msgstr "Alles deakti&vieren"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:489
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:502
 msgid "Sectioning markup"
 msgstr "Überschriftenformat"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:496
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:509
 msgid "Deletion (change)"
 msgstr "Löschung (Änderungen)"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:503
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:516
 msgid "Underlining"
 msgstr "Unterstreichung"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:517
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:530
 msgid "&Select all"
 msgstr "Alles ausw&ählen"
 
@@ -3059,7 +3062,7 @@ msgid "Errors reported in terminal."
 msgstr "Eventuelle Formatfehler."
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:74 src/frontends/qt/ui/PreambleUi.ui:49
-msgid "Editor for Latex (plain) format will be used"
+msgid "Editor for LaTeX (plain) format will be used"
 msgstr ""
 "Das Bearbeitungsprogramm für das Dateiformat 'LaTeX (normal)' wird "
 "verwendet. "
@@ -6672,15 +6675,16 @@ msgstr "American Economic Association (AEA)"
 #: lib/layouts/jlreq-article.layout:4 lib/layouts/jsarticle.layout:4
 #: lib/layouts/jss.layout:4 lib/layouts/kluwer.layout:4
 #: lib/layouts/llncs.layout:4 lib/layouts/ltjarticle.layout:4
-#: lib/layouts/ltjsarticle.layout:4 lib/layouts/ltugboat.layout:4
-#: lib/layouts/maa-monthly.layout:4 lib/layouts/mwart.layout:4
-#: lib/layouts/paper.layout:4 lib/layouts/revtex4-1.layout:4
-#: lib/layouts/revtex4-2.layout:4 lib/layouts/revtex4.layout:4
-#: lib/layouts/scrartcl.layout:4 lib/layouts/scrarticle-beamer.layout:4
-#: lib/layouts/siamltex.layout:4 lib/layouts/singlecol-new.layout:4
-#: lib/layouts/spie.layout:4 lib/layouts/svglobal3.layout:4
-#: lib/layouts/svjog.layout:4 lib/layouts/svprobth.layout:4
-#: lib/layouts/tarticle.layout:4 lib/examples/Articles:0
+#: lib/layouts/ltjsarticle.layout:4 lib/layouts/ltjtarticle.layout:4
+#: lib/layouts/ltugboat.layout:4 lib/layouts/maa-monthly.layout:4
+#: lib/layouts/mwart.layout:4 lib/layouts/paper.layout:4
+#: lib/layouts/revtex4-1.layout:4 lib/layouts/revtex4-2.layout:4
+#: lib/layouts/revtex4.layout:4 lib/layouts/scrartcl.layout:4
+#: lib/layouts/scrarticle-beamer.layout:4 lib/layouts/siamltex.layout:4
+#: lib/layouts/singlecol-new.layout:4 lib/layouts/spie.layout:4
+#: lib/layouts/svglobal3.layout:4 lib/layouts/svjog.layout:4
+#: lib/layouts/svprobth.layout:4 lib/layouts/tarticle.layout:4
+#: lib/examples/Articles:0
 msgid "Articles"
 msgstr "Artikel/Aufsätze"
 
@@ -7999,8 +8003,9 @@ msgstr "The R Journal"
 #: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
 #: lib/layouts/jlreq-report.layout:4 lib/layouts/jreport.layout:4
 #: lib/layouts/ltjreport.layout:4 lib/layouts/ltjsreport.layout:4
-#: lib/layouts/mwrep.layout:4 lib/layouts/report.layout:4
-#: lib/layouts/scrreprt.layout:4 lib/layouts/treport.layout:4
+#: lib/layouts/ltjtreport.layout:4 lib/layouts/mwrep.layout:4
+#: lib/layouts/report.layout:4 lib/layouts/scrreprt.layout:4
+#: lib/layouts/treport.layout:4 lib/examples/Articles:0
 msgid "Reports"
 msgstr "Berichte"
 
@@ -9641,11 +9646,12 @@ msgstr "Unterunterabschnitt*"
 #: lib/layouts/docbook-section.layout:4 lib/layouts/extbook.layout:4
 #: lib/layouts/jbook.layout:4 lib/layouts/jlreq-book.layout:4
 #: lib/layouts/jsbook.layout:4 lib/layouts/ltjbook.layout:4
-#: lib/layouts/ltjsbook.layout:4 lib/layouts/memoir.layout:4
-#: lib/layouts/mwbk.layout:4 lib/layouts/recipebook.layout:4
-#: lib/layouts/scrbook.layout:4 lib/layouts/svmono.layout:4
-#: lib/layouts/svmult.layout:4 lib/layouts/tbook.layout:4
-#: lib/layouts/tufte-book.layout:4 lib/examples/Articles:0
+#: lib/layouts/ltjsbook.layout:4 lib/layouts/ltjtbook.layout:4
+#: lib/layouts/memoir.layout:4 lib/layouts/mwbk.layout:4
+#: lib/layouts/recipebook.layout:4 lib/layouts/scrbook.layout:4
+#: lib/layouts/svmono.layout:4 lib/layouts/svmult.layout:4
+#: lib/layouts/tbook.layout:4 lib/layouts/tufte-book.layout:4
+#: lib/examples/Articles:0
 msgid "Books"
 msgstr "Bücher"
 
@@ -14120,6 +14126,52 @@ msgstr "NDB-Referenz:"
 msgid "Synopsis"
 msgstr "Synopse"
 
+#: lib/layouts/japanese-vertical.inc:9 lib/layouts/japanese-vertical.inc:14
+msgid "Rensuji"
+msgstr "Rensuji"
+
+#: lib/layouts/japanese-vertical.inc:13
+msgid "Rensuji|R"
+msgstr "Rensuji|R"
+
+#: lib/layouts/japanese-vertical.inc:17
+msgid "Pos"
+msgstr "Pos"
+
+#: lib/layouts/japanese-vertical.inc:19
+msgid "Insert 'c' for centering, 'r' for flushright and 'l' for flushleft"
+msgstr ""
+"Geben Sie hier 'c' für zentriert, 'r' für rechts- und 'l' für "
+"linksausgerichtet ein"
+
+#: lib/layouts/japanese-vertical.inc:23
+msgid "Rensuji*"
+msgstr "Rensuji*"
+
+#: lib/layouts/japanese-vertical.inc:26
+msgid "Rensuji with no Skip Adjustment|n"
+msgstr "Rensuji ohne Abstandsanpassung|n"
+
+#: lib/layouts/japanese-vertical.inc:27
+msgid "Rensuji (no skip adj.)"
+msgstr "Rensuji (keine Anp.)"
+
+#: lib/layouts/japanese-vertical.inc:30
+msgid "Bou"
+msgstr "Bou"
+
+#: lib/layouts/japanese-vertical.inc:33 lib/layouts/japanese-vertical.inc:34
+msgid "Bouten"
+msgstr "Bouten"
+
+#: lib/layouts/japanese-vertical.inc:37
+msgid "Kasen"
+msgstr "Kasen"
+
+#: lib/layouts/japanese-vertical.inc:40 lib/layouts/japanese-vertical.inc:41
+msgid "Bousen"
+msgstr "Bousen"
+
 #: lib/layouts/jarticle.layout:3
 msgid "Japanese Article (Standard Class)"
 msgstr "Japanischer Aufsatz (Standardklasse)"
@@ -15064,29 +15116,44 @@ msgstr "Stark"
 msgid "strong"
 msgstr "stark"
 
-#: lib/layouts/ltjarticle.layout:3
+#: lib/layouts/ltjarticle.layout:3 lib/examples/Articles:0
 msgid "Japanese Article (Standard Class for LuaTeX)"
 msgstr "Japanischer Aufsatz (Standardklasse für LuaTeX)"
 
-#: lib/layouts/ltjbook.layout:3
+#: lib/layouts/ltjbook.layout:3 lib/examples/Articles:0
 msgid "Japanese Book (Standard Class for LuaTeX)"
 msgstr "Japanisches Buch (Standardklasse für LuaTeX)"
 
-#: lib/layouts/ltjreport.layout:3
+#: lib/layouts/ltjreport.layout:3 lib/examples/Articles:0
 msgid "Japanese Report (Standard Class for LuaTeX)"
 msgstr "Japanischer Bericht (Standardklasse für LuaTeX)"
 
-#: lib/layouts/ltjsarticle.layout:3
+#: lib/layouts/ltjsarticle.layout:3 lib/examples/Articles:0
 msgid "Japanese Article (JS Bundle for LuaTeX)"
 msgstr "Japanischer Aufsatz (JS-Sammlung für LuaTeX)"
 
-#: lib/layouts/ltjsbook.layout:3
+#: lib/layouts/ltjsbook.layout:3 lib/examples/Articles:0
 msgid "Japanese Book (JS Bundle for LuaTeX)"
 msgstr "Japanisches Buch (JS-Sammlung für LuaTeX)"
 
-#: lib/layouts/ltjsreport.layout:3
+#: lib/layouts/ltjsreport.layout:3 lib/examples/Articles:0
 msgid "Japanese Report (JS Bundle for LuaTeX)"
 msgstr "Japanischer Bericht (JS-Sammlung für LuaTeX)"
+
+#: lib/layouts/ltjtarticle.layout:3
+msgid "Japanese Article (Standard Class for LuaTeX, vertical Writing)"
+msgstr ""
+"Japanischer Aufsatz (Standardklasse für LuaTeX, vertikale Schreibrichtung)"
+
+#: lib/layouts/ltjtbook.layout:3
+msgid "Japanese Book (Standard Class for LuaTeX, vertical Writing)"
+msgstr ""
+"Japanisches Buch (Standardklasse für LuaTeX, vertikale Schreibrichtung)"
+
+#: lib/layouts/ltjtreport.layout:3
+msgid "Japanese Report (Standard Class for LuaTeX, vertical Writing)"
+msgstr ""
+"Japanisches Buch (Standardklasse für LuaTeX, vertikale Schreibrichtung)"
 
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
@@ -27605,6 +27672,21 @@ msgstr "Doktorarbeit"
 msgid "Theses"
 msgstr "Qualifikationsschriften"
 
+#: lib/examples/Articles:0
+msgid "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr ""
+"Japanischer Aufsatz (Standardklasse für LuaTeX%2C vertikale Schreibrichtung)"
+
+#: lib/examples/Articles:0
+msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr ""
+"Japanisches Buch (Standardklasse für LuaTeX%2C vertikale Schreibrichtung)"
+
+#: lib/examples/Articles:0
+msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr ""
+"Japanisches Buch (Standardklasse für LuaTeX%2C vertikale Schreibrichtung)"
+
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Formal with Footline"
 msgstr "Formal mit Fußzeile"
@@ -34366,12 +34448,12 @@ msgstr ""
 msgid ""
 "If this is checked, a backup of the document is created in the backup "
 "directory (%1$s). The backup file has the full original path and name as "
-"file name and the suffix '.lyx~' (e.g., mydir!filename.lyx~). Note that "
+"file name and the suffix '.lyx~' (e.g., !mydir!filename.lyx~). Note that "
 "these files are hidden by default by some file managers."
 msgstr ""
 "Wenn dies ausgewählt ist, wird im Sicherungsverzeichnis (%1$s) eine "
 "Sicherungskopie des Dokuments gespeichert. Diese hat als Dateinamen den "
-"vollen urprünglichen Dateipfad und Namen sowie das Suffix '.lyx~' (bspw. "
+"vollen ursprünglichen Dateipfad und Namen sowie das Suffix '.lyx~' (bspw. !"
 "meinVerzeichnis!Dateiname.lyx~). Beachten Sie, dass diese Dateien von "
 "manchen Dateimanagern per Voreinstellung nicht angezeigt werden."
 
