@@ -6,6 +6,7 @@
 # - tbook
 # - treport
 
+Format 99
 InsetLayout Flex:Rensuji
 	LyxType				custom
 	LatexType			Command
@@ -18,6 +19,7 @@ InsetLayout Flex:Rensuji
 		MenuString		"Alignment"
 		Tooltip			"Insert 'c' for centering, 'r' for flushright and 'l' for flushleft"
 	EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Rensuji*
