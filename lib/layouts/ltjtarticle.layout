@@ -1,0 +1,15 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{Japanese Article (Standard Class for LuaTeX, vertical Writing)}
+#  \DeclareCategory{Articles}
+# Japanese article textclass definition file.
+# Author : Koji Yokota (yokota6@gmail.com)
+
+# This style provides japanese features
+Format 99
+Provides japanese 1
+Provides luatexja 1
+Provides plext 1
+
+# Input general definitions
+Input article.layout
+Input japanese-vertical.inc

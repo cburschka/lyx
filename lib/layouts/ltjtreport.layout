@@ -1,15 +1,15 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[treport,plext.sty]{Japanese Report (Standard Class, vertical Writing)}
+#  \DeclareLaTeXClass{Japanese Report (Standard Class for LuaTeX, vertical Writing)}
 #  \DeclareCategory{Reports}
-# Definition file of Japanese report textclass for vertical writing.
-# Author : Koji Yokota (yokota@res.otaru-uc.ac.jp)
+# Japanese new article textclass definition file for LuaTeX.
+# Author : Koji Yokota (yokota6@gmail.com)
 
 # This style provides japanese features 
 Format 99
 Provides japanese 1
+Provides luatexja 1
 Provides plext 1
 
 # Input general definitions
 Input report.layout
 Input japanese-vertical.inc
-

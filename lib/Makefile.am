@@ -2556,6 +2556,7 @@ dist_layouts_DATA =\
 	layouts/iopart.layout \
 	layouts/isprs.layout \
 	layouts/iucr.layout \
+	layouts/japanese-vertical.inc \
 	layouts/jarticle.layout \
 	layouts/jasatex.layout \
 	layouts/jbook.layout \
@@ -2585,6 +2586,9 @@ dist_layouts_DATA =\
 	layouts/ltjsarticle.layout \
 	layouts/ltjsbook.layout \
 	layouts/ltjsreport.layout \
+	layouts/ltjtarticle.layout \
+	layouts/ltjtbook.layout \
+	layouts/ltjtreport.layout \
 	layouts/ltugboat.layout \
 	layouts/lyxmacros.inc \
 	layouts/maa-monthly.layout \
@@ -2801,9 +2805,28 @@ frpresentationtemplatesdir = $(pkgdatadir)/templates/fr/Presentations
 dist_frpresentationtemplates_DATA = \
 	templates/fr/Presentations/Beamer.lyx
 
+jaarticletemplatesdir = $(pkgdatadir)/templates/ja/Articles
+dist_jaarticletemplates_DATA = \
+	templates/ja/Articles/Japanese_Article_%28JS_Bundle_for_LuaTeX%29.lyx \
+	templates/ja/Articles/Japanese_Article_%28Standard_Class_for_LuaTeX%29.lyx \
+	templates/ja/Articles/Japanese_Article_%28Standard_Class_for_LuaTeX%2C_vertical_Writing%29.lyx
+
+
+jabooktemplatesdir = $(pkgdatadir)/templates/ja/Books
+dist_jabooktemplates_DATA = \
+	templates/ja/Books/Japanese_Book_%28JS_Bundle_for_LuaTeX%29.lyx \
+	templates/ja/Books/Japanese_Book_%28Standard_Class_for_LuaTeX%29.lyx \
+	templates/ja/Books/Japanese_Book_%28Standard_Class_for_LuaTeX%2C_vertical_Writing%29.lyx
+
 japresentationtemplatesdir = $(pkgdatadir)/templates/ja/Presentations
 dist_japresentationtemplates_DATA = \
 	templates/ja/Presentations/Beamer.lyx
+
+jareporttemplatesdir = $(pkgdatadir)/templates/ja/Reports
+dist_jareporttemplates_DATA = \
+	templates/ja/Reports/Japanese_Report_%28JS_Bundle_for_LuaTeX%29.lyx \
+	templates/ja/Reports/Japanese_Report_%28Standard_Class_for_LuaTeX%29.lyx \
+	templates/ja/Reports/Japanese_Report_%28Standard_Class_for_LuaTeX%2C_vertical_Writing%29.lyx
 
 lettertemplatesdir = $(pkgdatadir)/templates/Letters
 dist_lettertemplates_DATA = \
@@ -3227,6 +3250,9 @@ exampleandtemplate_files = \
 			   $(dist_jainsetexamples_DATA) \
 			   $(dist_jamoduleexamples_DATA) \
 			   $(dist_japresentationexamples_DATA) \
+			   $(dist_jaarticletemplates_DATA) \
+			   $(dist_jabooktemplates_DATA) \
+			   $(dist_jareporttemplates_DATA) \
 			   $(dist_japresentationtemplates_DATA) \
 			   $(dist_koexamples_DATA) \
 			   $(dist_kolanguageexamples_DATA) \

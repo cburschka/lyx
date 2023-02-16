@@ -139,6 +139,7 @@ initials
 \author 5863208 "ab"
 \author 244031559 "Yuriy"
 \author 274215730 "scott"
+\author 545138413 "Koji Yokota" yokota6@gmail.com
 \author 564990737 "John Lyx"
 \author 630872221 "Jean-Pierre Chrétien" jeanpierre.chretien@free.fr
 \author 1075283030 "Thibaut"
@@ -4075,7 +4076,17 @@ Japanese
  for horizontal and vertical writing.
  The collection includes 
 \family sans
-Japanese Article (Standard Class)
+Japanese Article
+\change_deleted 545138413 1676132735
+ 
+\change_inserted 545138413 1676132735
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\change_inserted -712698321 1676533466
+(Standard Class)
 \family default
 ,
  
@@ -4084,7 +4095,8 @@ Japanese Article
 \begin_inset space \thinspace{}
 \end_inset
 
-(Standard Class Vertical Writing)
+(Standard Class,
+ vertical Writing)
 \family default
 ,
  
@@ -4102,7 +4114,8 @@ Japanese Book
 \begin_inset space \thinspace{}
 \end_inset
 
-(Standard Class Vertical Writing)
+(Standard Class,
+ vertical Writing)
 \family default
 ,
  
@@ -4120,7 +4133,8 @@ Japanese Report
 \begin_inset space \thinspace{}
 \end_inset
 
-(Standard Class Vertical Writing)
+(Standard Class,
+ vertical Writing)
 \family default
 ,
  which all work with 
@@ -4144,7 +4158,23 @@ For the use with the more modern Lua\SpecialChar LaTeX
  typesetting engine,
  the collection also includes dedicated classes 
 \family sans
-Japanese Article (Standard Class for LuaTeX),
+Japanese Article
+\change_deleted 545138413 1676132664
+ 
+\change_inserted 545138413 1676132730
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\change_inserted -712698321 1676533517
+(Standard Class for LuaTeX),
+ Japanese Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standard Class for LuaTeX,
+ vertical Writing),
  Japanese Book
 \begin_inset space \thinspace{}
 \end_inset
@@ -4152,7 +4182,21 @@ Japanese Article (Standard Class for LuaTeX),
 (Standard Class for LuaTeX)
 \family default
 ,
- and 
+ 
+\family sans
+Japanese Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standard Class for LuaTeX,
+ vertical Writing)
+\family default
+,
+ 
+\change_deleted 545138413 1676132664
+and 
+\change_inserted -712698321 1676533501
+
 \family sans
 Japanese Report
 \begin_inset space \thinspace{}
@@ -4161,13 +4205,81 @@ Japanese Report
 (Japanese Standard Class for LuaTeX)
 \family default
 ,
- provided by the 
+ 
+\change_deleted -712698321 1676533511
+
+\family sans
+Japanese Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standard Class for LuaTeX,
+ Vertical Writing),
+ Japanese Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standard Class for LuaTeX,
+ Vertical Writing)
+\family default
+,
+ 
+\change_inserted 545138413 1676132454
+and 
+\family sans
+Japanese Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(Japanese Standard Class for LuaTeX,
+ 
+\change_deleted -712698321 1676533483
+V
+\change_inserted -712698321 1676533501
+v
+\change_inserted 545138413 1676132454
+ertical Writing)
+\family default
+,
+ 
+\change_inserted -712698321 1676533501
+provided by the 
 \family sans
 luatexja
 \family default
  \SpecialChar LaTeX
  package.
+
+\change_deleted 545138413 1676132664
  These classes support both horizontal and vertical writing.
+\change_inserted -712698321 1676534105
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676534227
+Templates for the Lua\SpecialChar LaTeX
+ classes can be found in 
+\family sans
+File\SpecialChar menuseparator
+New From Template
+\family default
+ in the respective category (
+\family sans
+Articles
+\family default
+,
+ 
+\family sans
+Books
+\family default
+,
+ or 
+\family sans
+Reports
+\family default
+).
 \change_unchanged
 
 \end_layout
@@ -4391,7 +4503,37 @@ luatexja
 \family default
  \SpecialChar LaTeX
  package.
+
+\change_deleted 545138413 1676132499
  These classes support both horizontal and vertical writing.
+\change_inserted -712698321 1676534250
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676534251
+Templates for the Lua\SpecialChar LaTeX
+ classes can be found in 
+\family sans
+File\SpecialChar menuseparator
+New From Template
+\family default
+ in the respective category (
+\family sans
+Articles
+\family default
+,
+ 
+\family sans
+Books
+\family default
+,
+ or 
+\family sans
+Reports
+\family default
+).
 \change_unchanged
 
 \end_layout

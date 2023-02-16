@@ -3217,7 +3217,36 @@ Japanischer Aufsatz
 ,
  
 \family sans
-Japanisches Buch
+Japanischer Aufsatz
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse für LuaTeX,
+ vertikale Schreibrichtung)
+\family default
+,
+
+\family sans
+ Japanisches Buch
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse für LuaTeX)
+\family default
+,
+
+\family sans
+ Japanisches Buch
+\begin_inset space \thinspace{}
+\end_inset
+
+(Standardklasse für LuaTeX,
+ vertikale Schreibrichtung),
+
+\family default
+ 
+\family sans
+Japanischer Bericht
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -3229,7 +3258,8 @@ Japanischer Bericht
 \begin_inset space \thinspace{}
 \end_inset
 
-(Standardklasse für LuaTeX)
+(Standardklasse für LuaTeX,
+ vertikale Schreibrichtung)
 \family default
 .
  Sie stammen aus dem \SpecialChar LaTeX
@@ -3238,7 +3268,29 @@ Japanischer Bericht
 luatexja
 \family default
 .
- Diese Klassen unterstützen sowohl horizontale als auch vertikale Schreibrichtung.
+\end_layout
+
+\begin_layout Standard
+Vorlagen für die Lua\SpecialChar LaTeX
+-Klassen finden Sie unter 
+\family sans
+Datei\SpecialChar menuseparator
+Neu von Vorlage
+\family default
+ in der entsprechenden Kategorie (
+\family sans
+Aufsätze/Artikel
+\family default
+,
+ 
+\family sans
+Bücher
+\family default
+ oder 
+\family sans
+Berichte
+\family default
+).
 \end_layout
 
 \begin_layout Subsection
@@ -3362,7 +3414,29 @@ Japanischer Bericht
 luatexja
 \family default
 .
- Diese Klassen unterstützen sowohl horizontale als auch vertikale Schreibrichtung.
+\end_layout
+
+\begin_layout Standard
+Vorlagen für die Lua\SpecialChar LaTeX
+-Klassen finden Sie unter 
+\family sans
+Datei\SpecialChar menuseparator
+Neu von Vorlage
+\family default
+ in der entsprechenden Kategorie (
+\family sans
+Aufsätze/Artikel
+\family default
+,
+ 
+\family sans
+Bücher
+\family default
+ oder 
+\family sans
+Berichte
+\family default
+).
 \end_layout
 
 \begin_layout Subsection
