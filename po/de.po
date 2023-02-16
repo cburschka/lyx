@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-16 11:04+0100\n"
-"PO-Revision-Date: 2023-02-16 11:11+0100\n"
+"POT-Creation-Date: 2023-02-16 15:18+0100\n"
+"PO-Revision-Date: 2023-02-16 15:24+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -4215,14 +4215,30 @@ msgid "Backup &original documents when saving"
 msgstr "Sichere &Originaldokumente beim Speichern"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:103
-msgid "&Backup documents, every"
-msgstr "Sicherun&g der Dokumente alle"
+msgid ""
+"If this is checked, LyX saves a temporary copy of changed documents in the "
+"given interval (as #filename.lyx# in the given directory). As opposed to the "
+"backup above, this snapshot will be removed when changes are being saved. If "
+"the application crashes with unsaved changes and the restoration from the "
+"emergency file fails, this snapshot can be at rescue."
+msgstr ""
+"Wenn dies ausgewählt ist, speichert LyX im angegebenen Intervall eine "
+"temporäre Kopie aller Dokumente mit Änderungen (als #Dateiname.lyx# im "
+"jeweiligen Ordner). Im Gegensatz zur Sicherungskopie oben werden diese "
+"Schnappschüsse entfernt, sobald die Änderungen gespeichert werden. Sollte "
+"das Programm mit ungesicherten Änderungen abstürzen und die "
+"Wiederherstellung scheitern, können Sie notfalls auf diesen Schnappschuss "
+"zurückgreifen."
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:120
-msgid "&minutes"
-msgstr "&Minuten"
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:106
+msgid "Make a&uto-save snapshots every[[ N minutes]]"
+msgstr "M&ache alle"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:145
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:123
+msgid "[[Make auto-save snapshots every N ]]&minutes"
+msgstr "&Minuten automatische Schnappschüsse"
+
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:148
 msgid ""
 "If this is checked, new documents will be saved in a compressed binary-"
 "format by default. Existing documents will still be saved in their current "
@@ -4233,11 +4249,11 @@ msgstr ""
 "weiterhin in der bislang verwendeten Form (komprimiert oder unkomprimiert) "
 "gespeichert."
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:148
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:151
 msgid "&Save new documents compressed by default"
 msgstr "Neue Dokumente &komprimiert speichern"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:155
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:158
 msgid ""
 "If this is checked, the document directory path will be saved in the "
 "document. This allows moving the document elsewhere and still finding the "
@@ -4247,19 +4263,19 @@ msgstr ""
 "gespeichert. Dadurch können eingebettete Dateien auch gefunden werden, "
 "nachdem das Dokument verschoben wurde."
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:158
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:161
 msgid "Save the &document directory path"
 msgstr "&Dokumentverzeichnis speichern"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:168
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:171
 msgid "Windows && Work Area"
 msgstr "Fenster und Arbeitsbereich"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:177
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:180
 msgid "Open documents in &tabs"
 msgstr "Dokumente in &Registerkarten öffnen"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:184
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:187
 msgid ""
 "Whether to open documents in an already running instance of LyX. (Set the "
 "LyXServer pipe path and restart LyX to enable this feature)"
@@ -4268,33 +4284,33 @@ msgstr ""
 "nutzen zu können, müssen Sie einen Pfad zur LyX-Server-Weiterleitung "
 "definieren und LyX neu starten.)"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:187
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:190
 msgid "Use s&ingle instance"
 msgstr "Ein&zelinstanz verwenden"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:194
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:197
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr ""
 "Zeige den \"Schließen\"-Knopf nicht auf jedem Unterfenster an, sondern "
 "rechts in der Unterfenster-Leiste."
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:197
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:200
 msgid "Displa&y single close-tab button"
 msgstr "&Globalen Knopf zum Schließen von Registerkarten anzeigen"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:206
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:209
 msgid "Closing last &view:"
 msgstr "Beim Schließen der letzten &Ansicht:"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:217
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:220
 msgid "Closes document"
 msgstr "Dokument schließen"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:222
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:225
 msgid "Hides document"
 msgstr "Dokument verbergen"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:227
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:230
 msgid "Ask the user"
 msgstr "Nachfragen"
 
@@ -38579,6 +38595,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "&Backup documents, every"
+#~ msgstr "Sicherun&g der Dokumente alle"
+
+#~ msgid "&minutes"
+#~ msgstr "&Minuten"
 
 #~ msgid "Japanese Report (Vertical Writing)"
 #~ msgstr "Japanischer Bericht (vertikale Schreibrichtung)"
