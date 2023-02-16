@@ -33773,7 +33773,7 @@ Here is an example URL:
 's homepage:
  
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -33786,24 +33786,194 @@ https://www.lyx.org
 \end_layout
 
 \begin_layout Standard
-You cannot change the style of the link text,
+
+\change_deleted -712698321 1676535921
+You cannot change the style of the link text
+\change_inserted -712698321 1676535924
+By default
+\change_unchanged
+,
  the URL text will always be in the style 
 \family typewriter
 Typewriter
 \family default
 .
- To be able to format the URL text,
+ 
+\change_inserted -712698321 1676535967
+You can globally change the formatting by putting to 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+LaTeX Preamble
+\family default
+:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1676536088
+
+\backslash
+urlstyle{<xx>}
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676536347
+where 
+\family typewriter
+<xx>
+\family default
+ is either 
+\family typewriter
+rm
+\family default
+ (Roman),
+ 
+\family typewriter
+sf
+\family default
+ (Sans Serif),
+ 
+\family typewriter
+tt
+\family default
+ (Typewriter),
+ or 
+\family typewriter
+same
+\family default
+ (use whatever the current text font is).
+ To have italicized URLs,
+ use this instead:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1676536274
+
+\backslash
+def
+\backslash
+UrlFont{
+\backslash
+rmfamily
+\backslash
+itshape}
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1676536203
+To be able to format the URL text,
  use hyperlinks as explained in the next subsection.
+ By default longer 
+\change_inserted -712698321 1676535961
+
+\end_layout
+
+\begin_layout Standard
 
 \change_inserted 5863208 1676462413
- By default longer URLs will not break at the of the line;
- if 
-\series bold
+URLs will 
+\change_deleted -712698321 1676534694
+not 
+\change_inserted 5863208 1676462413
+break 
+\change_inserted -712698321 1676535379
+between lines at certain characters,
+ namely:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1676535384
+.
+ @ 
+\backslash
+ / !
+ _ | ;
+ > ] % ) ,
+ ?
+ & ' + = #
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676535411
+It does not break at a hyphen (
+\family typewriter
+-
+\family default
+) by default,
+ but you can change that by adding 
+\family sans
+hyphens
+\family default
+ to 
+\change_deleted -712698321 1676535339
+at the of the line
+\change_inserted -712698321 1676535862
+
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options\SpecialChar menuseparator
+Custom
+\family default
+.
+\change_deleted -712698321 1676535861
+;
+
+\change_inserted 5863208 1676462413
+ 
+\change_deleted -712698321 1676535863
+i
+\change_inserted -712698321 1676535864
+I
+\change_inserted 5863208 1676462413
+f 
+\change_inserted -712698321 1676535842
+this still does not break URLs suitably to you,
+ a last resort is to put
+\family typewriter
+ 
+\change_inserted 5863208 1676462413
 
 \backslash
 usepackage{xurl}
-\series default
- is put in the preamble then the URL can be broken at every character.
+\change_deleted -712698321 1676535846
+
+\family default
+ is put 
+\change_inserted -712698321 1676536760
+ to 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+LaTeX Preamble
+\family default
+;
+ 
+\change_deleted -712698321 1676535894
+in the preamble then the
+\change_inserted -712698321 1676535897
+this will cause
+\change_inserted 5863208 1676462413
+ URL
+\change_inserted -712698321 1676535899
+s
+\change_inserted 5863208 1676462413
+ 
+\change_deleted -712698321 1676535445
+can
+\change_inserted -712698321 1676535903
+to
+\change_inserted 5863208 1676462413
+ be broken at every character.
+
+\change_deleted -712698321 1676536383
  
 \change_unchanged
 

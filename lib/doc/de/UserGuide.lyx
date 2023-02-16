@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8951,10 +8951,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8967,6 +8969,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8992,6 +8995,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -30516,7 +30520,7 @@ URL
 -Homepage:
  
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -30585,9 +30589,119 @@ Wichtiger Hinweis
 \end_layout
 
 \begin_layout Standard
-Der Text eines URLs wird immer im Schreibmaschinenstil gedruckt.
+Der Text eines URLs wird per Voreinstellung immer im 
+\family typewriter
+Schreibmaschinenstil
+\family default
+ gedruckt.
  Um den Text zu formatieren,
  müssen Sie einen Hyperlink benutzen.
+ Sie können den Stil global ändern,
+ indem Sie in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+LaTeX-Vorspann
+\family default
+ folgendes einfügen:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+urlstyle{<xx>}
+\end_layout
+
+\begin_layout Standard
+wobei 
+\family typewriter
+<xx>
+\family default
+ entweder 
+\family typewriter
+rm
+\family default
+ (Serifenschrift),
+ 
+\family typewriter
+sf
+\family default
+ (serifenlose Schrift),
+ 
+\family typewriter
+tt
+\family default
+ (Schreibmaschine) oder 
+\family typewriter
+same
+\family default
+ (verwende die aktuellen Schrifteinstellungen) ist.
+ Für kursive URLs verwenden Sie stattdessen dies:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+def
+\backslash
+UrlFont{
+\backslash
+rmfamily
+\backslash
+itshape}
+\end_layout
+
+\begin_layout Standard
+URLs werden am Zeilenende nur nach bestimmten Zeichen umbrochen,
+ nämlich:
+\end_layout
+
+\begin_layout LyX-Code
+.
+ @ 
+\backslash
+ / !
+ _ | ;
+ > ] % ) ,
+ ?
+ & ' + = #
+\end_layout
+
+\begin_layout Standard
+Ein Zeilenumbruch nach Bindestrich (
+\family typewriter
+-
+\family default
+) findet per Voreinstellung nicht statt,
+ aber Sie können dies erzwingen,
+ indem Sie 
+\family sans
+hyphens
+\family default
+ in
+\family sans
+ Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
+Dokumentklasse\SpecialChar menuseparator
+Klassenoptionen
+\family default
+ eingeben.
+ Wenn Ihre URLs danach immer noch nicht gut genug umbrochen werden,
+ können Sie als letzten Ausweg
+\family typewriter
+ 
+\backslash
+usepackage{xurl}
+\family default
+ in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+LaTeX-Vorspann
+\family default
+ einfügen;
+ dann werden URLs nach jedem beliebigen Zeichen umbrochen.
 \end_layout
 
 \begin_layout Subsection
