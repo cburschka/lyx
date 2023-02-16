@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-10 15:44+0100\n"
-"PO-Revision-Date: 2023-02-10 14:58+0000\n"
+"POT-Creation-Date: 2023-02-16 09:39+0100\n"
+"PO-Revision-Date: 2023-02-16 09:33+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -517,6 +517,38 @@ msgstr "Hodnota výšky"
 #: src/frontends/qt/ui/ParagraphUi.ui:86
 msgid "Alignment"
 msgstr "Zarovnanie"
+
+#: lib/layouts/japanese-vertical.inc:19
+msgid "Insert 'c' for centering, 'r' for flushright and 'l' for flushleft"
+msgstr "Vložte 'c' pre 'Na stred', 'r' pre 'doprava' a 'l' pre 'doľava'"
+
+#: lib/layouts/japanese-vertical.inc:23
+msgid "Rensuji*"
+msgstr "Rensuji*"
+
+#: lib/layouts/japanese-vertical.inc:26
+msgid "Rensuji with No Skip Adjustment|n"
+msgstr "Rensuji s upravením 'No Skip'"
+
+#: lib/layouts/japanese-vertical.inc:27
+msgid "Rensuji (no skip adj.)"
+msgstr "Rensuji (no skip upr.)"
+
+#: lib/layouts/japanese-vertical.inc:30
+msgid "Bou"
+msgstr "Bou"
+
+#: lib/layouts/japanese-vertical.inc:33 lib/layouts/japanese-vertical.inc:34
+msgid "Bouten"
+msgstr "Bouten"
+
+#: lib/layouts/japanese-vertical.inc:37
+msgid "Kasen"
+msgstr "Kasen"
+
+#: lib/layouts/japanese-vertical.inc:40 lib/layouts/japanese-vertical.inc:41
+msgid "Bousen"
+msgstr "Bousen"
 
 #: src/frontends/qt/ui/BoxUi.ui:148 src/frontends/qt/ui/BoxUi.ui:261
 msgid "Horizontal alignment of the content inside the box"
@@ -1748,6 +1780,10 @@ msgstr "D&ržať hľadaný reťazec s vlastnosťou pre"
 msgid "Strike-through"
 msgstr "preškrtanie"
 
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:460
+msgid "Font series[[FindReplaceAdv]]"
+msgstr "Hrúbka písma"
+
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:461
 msgid "Emph/noun"
 msgstr "dôraz/meno"
@@ -2932,7 +2968,7 @@ msgid "Errors reported in terminal."
 msgstr "Chyby vypísané na terminál."
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:74 src/frontends/qt/ui/PreambleUi.ui:49
-msgid "Editor for Latex (plain) format will be used"
+msgid "Editor for LaTeX (plain) format will be used"
 msgstr "Použí sa editor pre formát LaTeX (prostý)"
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:77 src/frontends/qt/ui/PreambleUi.ui:52
@@ -4863,6 +4899,18 @@ msgstr "Po&mocný adresár:"
 #: src/frontends/qt/ui/PrefPathsUi.ui:128
 msgid "Ly&XServer pipe:"
 msgstr "Dátovod pre Ly&XServer (pipe):"
+
+#: src/frontends/qt/ui/PrefPathsUi.ui:149
+msgid ""
+"If a path is specified here, all backups of LyX files will be stored there. "
+"If no path is given, backups will be stored alongside the original document. "
+"This requires 'Backup original documents when saving' in Look & Feel > "
+"Document Handling to be checked."
+msgstr ""
+"Cesta ktorá je tu nastavená bude použitá pre všetky zálohy súborov lyxu. Keď "
+"je to tu prázdne, zálohy budú ukladané vedľa originálneho dokumentu. Toto "
+"vyžaduje zaškrtnutie 'Zálohovať pôvodné dokumenty pri uložení' v Vzhľad-"
+">Ovládanie dokumentu."
 
 #: src/frontends/qt/ui/PrefPathsUi.ui:151
 msgid "&Backup directory:"
@@ -13852,6 +13900,18 @@ msgstr "NDB referencia:"
 msgid "Synopsis"
 msgstr "Prehľad"
 
+#: lib/layouts/japanese-vertical.inc:9 lib/layouts/japanese-vertical.inc:14
+msgid "Rensuji"
+msgstr "Rensuji"
+
+#: lib/layouts/japanese-vertical.inc:13
+msgid "Rensuji|R"
+msgstr "Rensuji|R"
+
+#: lib/layouts/japanese-vertical.inc:17
+msgid "Pos"
+msgstr "Poz"
+
 #: lib/layouts/jarticle.layout:3
 msgid "Japanese Article (Standard Class)"
 msgstr "Japonský článok (Štandardná trieda)"
@@ -14727,6 +14787,18 @@ msgstr "Japonská kniha (JS zväzok pre LuaTeX)"
 #: lib/layouts/ltjsreport.layout:3
 msgid "Japanese Report (JS Bundle for LuaTeX)"
 msgstr "Japonský referát (BX zväzok pre LuaTeX)"
+
+#: lib/layouts/ltjtarticle.layout:3
+msgid "Japanese Article (Standard Class for LuaTeX, vertical Writing)"
+msgstr "Japonský článok (Štandardná trieda pre LuaTeX, vertikálne písanie)"
+
+#: lib/layouts/ltjtbook.layout:3
+msgid "Japanese Book (Standard Class for LuaTeX, vertical Writing)"
+msgstr "Japonská kniha (Štandardná trieda pre LuaTeX, vertikálne písanie)"
+
+#: lib/layouts/ltjtreport.layout:3
+msgid "Japanese Report (Standard Class for LuaTeX, vertical Writing)"
+msgstr "Japonský referát (Štandardná trieda pre LuaTeX, vertikálne písanie)"
 
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
@@ -27324,6 +27396,18 @@ msgstr "Doktorská práca"
 msgid "Theses"
 msgstr "Tézy"
 
+#: lib/examples/Articles:0
+msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr "Japonská kniha (Štandardná trieda pre LuaTeX%2C, vertikálne písanie)"
+
+#: lib/examples/Articles:0
+msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr "Japonský referát (Štandardná trieda pre LuaTeX%2C, vertikálne písanie)"
+
+#: lib/examples/Articles:0
+msgid "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr "Japonský článok (Štandardná trieda pre LuaTeX%2C, vertikálne písanie)"
+
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Formal with Footline"
 msgstr "Formálne so spodným riadkom"
@@ -33885,6 +33969,31 @@ msgstr "Oxygen"
 #: src/frontends/qt/GuiPrefs.cpp:2682
 msgid "Document Handling"
 msgstr "Ovládanie dokumentu"
+
+#: src/frontends/qt/GuiPrefs.cpp:2773
+msgid ""
+"If this is checked, a backup of the document is created in the current "
+"working directory. The backup file has the same name but the suffix '.lyx~'. "
+"Note that these files are hidden by default by some file managers. A "
+"dedicated backup directory can be set in the 'Paths' section."
+msgstr ""
+"Keď zaškrtnuté, záloha tohto dokumentu bude vytvorená v aktuálnom pracovnom "
+"adresáre. Záložný súbor má príponu '.lyx~'. Niektorí správci súborov to "
+"štandardne ale neukazuje.Miesto pre záložný adresár môžte nastaviť v sekcii "
+"pre 'Cesty'."
+
+#: src/frontends/qt/GuiPrefs.cpp:2779
+#, c-format
+msgid ""
+"If this is checked, a backup of the document is created in the backup "
+"directory (%1$s). The backup file has the full original path and name as "
+"file name and the suffix '.lyx~' (e.g., !mydir!filename.lyx~). Note that "
+"these files are hidden by default by some file managers."
+msgstr ""
+"Keď zaškrtnuté, záloha tohto dokumentu bude vytvorená v aktuálnom pracovnom "
+"adresáre  (%1$s). Záložný súbor má originálne meno s príponu '.lyx~' (čiže !"
+"môjadresár!menosúboru.lyx~). Niektorí správci súborov to štandardne ale "
+"neukazuje."
 
 #: src/frontends/qt/GuiPrefs.cpp:2789
 msgid "Control"
