@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2016,7 +2016,20 @@ Zusatz-Flag
 \labelwidthstring 00.00.0000
 
 \family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
 latex
+\family default
+=flavor
+\end_layout
+
+\end_inset
+
+
 \family default
  teilt \SpecialChar LyX
  mit,
@@ -2025,13 +2038,94 @@ latex
  Dies macht die \SpecialChar LaTeX
 -Fehlermeldungen von \SpecialChar LyX
  verfügbar.
+ Der optionale Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+flavor
+\end_layout
+
+\end_inset
+
+ legt fest,
+ welche Variante von \SpecialChar LaTeX
+ (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+latex,
+ pdflatex,
+ platex,
+ xetex,
+ luatex
+\end_layout
+
+\end_inset
+
+) verwendet wird.
+ Wenn kein Wert angegeben wird,
+ wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+latex
+\end_layout
+
+\end_inset
+
+ verwendet.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+needauth
+\end_layout
+
+\end_inset
+
+ Dieser Konverter wird als nicht sicher angesehen und benötigt eine Autorisierung durch die Benutzer:innen.
+ Je nach Einstellung in 
+\family sans
+Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Datei-Handhabung\SpecialChar menuseparator
+Konverter
+\family default
+ werden Benutzer:innen (a.) gefragt,
+ ob sie dem aktuellen Dokument temporär,
+ permanent oder gar nicht vertrauen,
+ (b.) darüber informiert,
+ dass eine Konvertierung aus Sicherheitsgründen nicht möglich ist oder (c.) nicht informiert,
+ da sie eine grundsätzliche Vertrauenserklärung abgegeben haben.
+ Verwenden Sie diesen Flag für Konverters,
+ die arbiträre Programme ausführen könnten.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
 needaux
+\family default
+=flavor
+\end_layout
+
+\end_inset
+
+
 \family default
  teilt \SpecialChar LyX
  mit,
@@ -2041,6 +2135,45 @@ needaux
 .aux
 \family default
 ) zur Konvertierung benötigt.
+ Der optionale Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+flavor
+\end_layout
+
+\end_inset
+
+ legt fest,
+ welche Variante von \SpecialChar LaTeX
+ (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+latex,
+ pdflatex,
+ platex,
+ xetex,
+ luatex
+\end_layout
+
+\end_inset
+
+) verwendet wird.
+ Wenn kein Wert angegeben wird,
+ wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+latex
+\end_layout
+
+\end_inset
+
+ verwendet.
 \end_layout
 
 \begin_layout Labeling
@@ -2085,7 +2218,18 @@ input@path
 \labelwidthstring 00.00.0000
 
 \family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
 xml
+\end_layout
+
+\end_inset
+
+
 \family default
  teilt \SpecialChar LyX
  mit,

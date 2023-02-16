@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2834,6 +2834,40 @@ latex
  is used.
 \change_unchanged
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -712698321 1676553236
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1676552303
+needauth
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ This converter is considered non-safe and needs authorization by the user.
+ Depending on the settings in 
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+Converters
+\family default
+,
+ users will (a.) be asked whether they trust the current document temporarily,
+ permanently,
+ or not,
+ (b.) be informed that conversion is not possible due to security concerns,
+ or (c.) not be informed as they gave permanent consent.
+ Set this flag for converters that might execute arbitrary programs.
 \end_layout
 
 \begin_layout Labeling
@@ -14706,6 +14740,8 @@ status collapsed
 
 \change_inserted 1075283030 1672014789
 title
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -14741,6 +14777,8 @@ status collapsed
 
 \change_inserted 1075283030 1672014801
 figure
+\change_unchanged
+
 \end_layout
 
 \end_inset
