@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-10 11:13+0100\n"
-"PO-Revision-Date: 2023-02-10 11:15+0100\n"
+"POT-Creation-Date: 2023-02-17 17:57+0100\n"
+"PO-Revision-Date: 2023-02-17 18:16+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1995,7 +1995,7 @@ msgid "Restrict search to whole words only"
 msgstr "Restreindre la recherche aux mots complets seulement"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:153
-#: src/frontends/qt/ui/SearchUi.ui:241 src/frontends/qt/GuiSearch.cpp:100
+#: src/frontends/qt/ui/SearchUi.ui:241 src/frontends/qt/GuiSearch.cpp:101
 msgid "Wh&ole words"
 msgstr "Mots com&plets"
 
@@ -4881,7 +4881,7 @@ msgstr "Ac&tiver"
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: src/frontends/qt/ui/PrefInputUi.ui:249 src/insets/InsetInfo.cpp:898
+#: src/frontends/qt/ui/PrefInputUi.ui:249 src/insets/InsetInfo.cpp:894
 msgid "Shift"
 msgstr "Maj"
 
@@ -5760,11 +5760,11 @@ msgstr "&< Rechercher"
 msgid "Replace all occurrences"
 msgstr "Remplacer toutes les occurrences"
 
-#: src/frontends/qt/ui/SearchUi.ui:100 src/frontends/qt/GuiSearch.cpp:204
+#: src/frontends/qt/ui/SearchUi.ui:100 src/frontends/qt/GuiSearch.cpp:206
 msgid "Hide replace and option widgets"
 msgstr "Cacher les vignettes Remplacer et Options"
 
-#: src/frontends/qt/ui/SearchUi.ui:103 src/frontends/qt/GuiSearch.cpp:203
+#: src/frontends/qt/ui/SearchUi.ui:103 src/frontends/qt/GuiSearch.cpp:205
 msgid "&Minimize"
 msgstr "&Minimiser"
 
@@ -5800,7 +5800,7 @@ msgstr "Rechercher l'occurrence suivante (Entrée)"
 msgid "Treat uppercase/lowercase writing as distinct"
 msgstr "Distinguer majuscules/minuscules"
 
-#: src/frontends/qt/ui/SearchUi.ui:231 src/frontends/qt/GuiSearch.cpp:98
+#: src/frontends/qt/ui/SearchUi.ui:231 src/frontends/qt/GuiSearch.cpp:99
 msgid "&Case sensitive[[search]]"
 msgstr "Selon la &casse"
 
@@ -5812,7 +5812,7 @@ msgstr "Mots complets seulement"
 msgid "Limit search and replace to selection"
 msgstr "Limiter rechercher/remplacer à la sélection"
 
-#: src/frontends/qt/ui/SearchUi.ui:251 src/frontends/qt/GuiSearch.cpp:102
+#: src/frontends/qt/ui/SearchUi.ui:251 src/frontends/qt/GuiSearch.cpp:103
 msgid "Selection onl&y"
 msgstr "Sélection &uniquement"
 
@@ -5820,7 +5820,7 @@ msgstr "Sélection &uniquement"
 msgid "If this is checked, LyX will search forward immediately"
 msgstr "Si la case est cochée, LyX cherchera vers l'avant immédiatement"
 
-#: src/frontends/qt/ui/SearchUi.ui:261 src/frontends/qt/GuiSearch.cpp:104
+#: src/frontends/qt/ui/SearchUi.ui:261 src/frontends/qt/GuiSearch.cpp:105
 msgid "Search as yo&u type"
 msgstr "Chercher pendant la &saisie"
 
@@ -5830,7 +5830,7 @@ msgstr ""
 "Continuer automatiquement la recherche si le début ou la fin du document est "
 "atteint"
 
-#: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:106
+#: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:107
 msgid "&Wrap"
 msgstr "&Récursion"
 
@@ -6930,17 +6930,17 @@ msgstr "American Economic Association (AEA)"
 #: lib/layouts/iopart.layout:4 lib/layouts/isprs.layout:4
 #: lib/layouts/iucr.layout:4 lib/layouts/jarticle.layout:4
 #: lib/layouts/jasatex.layout:4 lib/layouts/jgrga.layout:4
-#: lib/layouts/jsarticle.layout:4 lib/layouts/jss.layout:4
-#: lib/layouts/kluwer.layout:4 lib/layouts/llncs.layout:4
-#: lib/layouts/ltugboat.layout:4 lib/layouts/maa-monthly.layout:4
-#: lib/layouts/mwart.layout:4 lib/layouts/paper.layout:4
-#: lib/layouts/revtex4-1.layout:4 lib/layouts/revtex4-2.layout:4
-#: lib/layouts/revtex4.layout:4 lib/layouts/scrartcl.layout:4
-#: lib/layouts/scrarticle-beamer.layout:4 lib/layouts/siamltex.layout:4
-#: lib/layouts/singlecol-new.layout:4 lib/layouts/spie.layout:4
-#: lib/layouts/svglobal3.layout:4 lib/layouts/svjog.layout:4
-#: lib/layouts/svprobth.layout:4 lib/layouts/tarticle.layout:4
-#: lib/examples/Articles:0
+#: lib/layouts/jlreq-article.layout:4 lib/layouts/jsarticle.layout:4
+#: lib/layouts/jss.layout:4 lib/layouts/kluwer.layout:4
+#: lib/layouts/llncs.layout:4 lib/layouts/ltugboat.layout:4
+#: lib/layouts/maa-monthly.layout:4 lib/layouts/mwart.layout:4
+#: lib/layouts/paper.layout:4 lib/layouts/revtex4-1.layout:4
+#: lib/layouts/revtex4-2.layout:4 lib/layouts/revtex4.layout:4
+#: lib/layouts/scrartcl.layout:4 lib/layouts/scrarticle-beamer.layout:4
+#: lib/layouts/siamltex.layout:4 lib/layouts/singlecol-new.layout:4
+#: lib/layouts/spie.layout:4 lib/layouts/svglobal3.layout:4
+#: lib/layouts/svjog.layout:4 lib/layouts/svprobth.layout:4
+#: lib/layouts/tarticle.layout:4 lib/examples/Articles:0
 msgid "Articles"
 msgstr "Articles"
 
@@ -7015,6 +7015,7 @@ msgstr "TitreCourt"
 #: lib/layouts/jasatex.layout:65 lib/layouts/jasatex.layout:94
 #: lib/layouts/jasatex.layout:119 lib/layouts/jasatex.layout:185
 #: lib/layouts/jasatex.layout:209 lib/layouts/jasatex.layout:240
+#: lib/layouts/jlreq-common.inc:95 lib/layouts/jlreq-common.inc:111
 #: lib/layouts/jss.layout:55 lib/layouts/jss.layout:94
 #: lib/layouts/kluwer.layout:115 lib/layouts/kluwer.layout:180
 #: lib/layouts/latex8.layout:93 lib/layouts/llncs.layout:110
@@ -7135,22 +7136,22 @@ msgstr "Mots-clés :"
 #: lib/layouts/ijmpc.layout:239 lib/layouts/ijmpd.layout:250
 #: lib/layouts/iopart.layout:198 lib/layouts/iopart.layout:215
 #: lib/layouts/isprs.layout:26 lib/layouts/jasatex.layout:205
-#: lib/layouts/jasatex.layout:222 lib/layouts/jss.layout:54
-#: lib/layouts/jss.layout:71 lib/layouts/kluwer.layout:295
-#: lib/layouts/latex8.layout:112 lib/layouts/llncs.layout:258
-#: lib/layouts/ltugboat.layout:188 lib/layouts/ltugboat.layout:202
-#: lib/layouts/maa-monthly.layout:34 lib/layouts/paper.layout:155
-#: lib/layouts/revtex.layout:141 lib/layouts/revtex4-x.inc:61
-#: lib/layouts/revtex4.layout:274 lib/layouts/scrclass.inc:309
-#: lib/layouts/siamltex.layout:269 lib/layouts/sigplanconf.layout:207
-#: lib/layouts/sigplanconf.layout:223 lib/layouts/spie.layout:85
-#: lib/layouts/stdstruct.inc:13 lib/layouts/stdstruct.inc:29
-#: lib/layouts/svcommon.inc:481 lib/layouts/svcommon.inc:487
-#: lib/layouts/svglobal.layout:158 lib/layouts/svjog.layout:156
-#: lib/layouts/svmono.layout:24 lib/layouts/svmult.layout:106
-#: lib/layouts/svmult.layout:110 lib/layouts/svprobth.layout:185
-#: lib/layouts/tufte-handout.layout:52 lib/layouts/tufte-handout.layout:67
-#: src/output_plaintext.cpp:145
+#: lib/layouts/jasatex.layout:222 lib/layouts/jlreq-common.inc:94
+#: lib/layouts/jss.layout:54 lib/layouts/jss.layout:71
+#: lib/layouts/kluwer.layout:295 lib/layouts/latex8.layout:112
+#: lib/layouts/llncs.layout:258 lib/layouts/ltugboat.layout:188
+#: lib/layouts/ltugboat.layout:202 lib/layouts/maa-monthly.layout:34
+#: lib/layouts/paper.layout:155 lib/layouts/revtex.layout:141
+#: lib/layouts/revtex4-x.inc:61 lib/layouts/revtex4.layout:274
+#: lib/layouts/scrclass.inc:309 lib/layouts/siamltex.layout:269
+#: lib/layouts/sigplanconf.layout:207 lib/layouts/sigplanconf.layout:223
+#: lib/layouts/spie.layout:85 lib/layouts/stdstruct.inc:13
+#: lib/layouts/stdstruct.inc:29 lib/layouts/svcommon.inc:481
+#: lib/layouts/svcommon.inc:487 lib/layouts/svglobal.layout:158
+#: lib/layouts/svjog.layout:156 lib/layouts/svmono.layout:24
+#: lib/layouts/svmult.layout:106 lib/layouts/svmult.layout:110
+#: lib/layouts/svprobth.layout:185 lib/layouts/tufte-handout.layout:52
+#: lib/layouts/tufte-handout.layout:67 src/output_plaintext.cpp:145
 msgid "Abstract"
 msgstr "Résumé"
 
@@ -8258,9 +8259,9 @@ msgstr "R Journal"
 
 #: lib/layouts/RJournal.layout:4 lib/layouts/bxjsreport.layout:4
 #: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
-#: lib/layouts/jreport.layout:4 lib/layouts/mwrep.layout:4
-#: lib/layouts/report.layout:4 lib/layouts/scrreprt.layout:4
-#: lib/layouts/treport.layout:4
+#: lib/layouts/jlreq-report.layout:4 lib/layouts/jreport.layout:4
+#: lib/layouts/mwrep.layout:4 lib/layouts/report.layout:4
+#: lib/layouts/scrreprt.layout:4 lib/layouts/treport.layout:4
 msgid "Reports"
 msgstr "Reports"
 
@@ -8396,19 +8397,20 @@ msgstr "Correspondance pour :"
 #: lib/layouts/apax.inc:433 lib/layouts/beamer.layout:297
 #: lib/layouts/egs.layout:33 lib/layouts/europasscv.layout:264
 #: lib/layouts/europecv.layout:193 lib/layouts/isprs.layout:160
-#: lib/layouts/iucr.layout:47 lib/layouts/jss.layout:25
-#: lib/layouts/kluwer.layout:63 lib/layouts/latex8.layout:50
-#: lib/layouts/llncs.layout:49 lib/layouts/ltugboat.layout:48
-#: lib/layouts/memoir.layout:100 lib/layouts/moderncv.layout:321
-#: lib/layouts/numarticle.inc:8 lib/layouts/numreport.inc:14
-#: lib/layouts/numrevtex.inc:6 lib/layouts/paper.layout:67
-#: lib/layouts/powerdot.layout:242 lib/layouts/revtex.layout:40
-#: lib/layouts/revtex4-x.inc:30 lib/layouts/revtex4.layout:69
-#: lib/layouts/scrclass.inc:97 lib/layouts/siamltex.layout:392
-#: lib/layouts/simplecv.layout:32 lib/layouts/spie.layout:21
-#: lib/layouts/stdcounters.inc:20 lib/layouts/stdsections.inc:99
-#: lib/layouts/svcommon.inc:220 lib/layouts/tufte-book.layout:113
-#: lib/ui/stdtoolbars.inc:129 src/frontends/qt/GuiDocument.cpp:135
+#: lib/layouts/iucr.layout:47 lib/layouts/jlreq-common.inc:43
+#: lib/layouts/jss.layout:25 lib/layouts/kluwer.layout:63
+#: lib/layouts/latex8.layout:50 lib/layouts/llncs.layout:49
+#: lib/layouts/ltugboat.layout:48 lib/layouts/memoir.layout:100
+#: lib/layouts/moderncv.layout:321 lib/layouts/numarticle.inc:8
+#: lib/layouts/numreport.inc:14 lib/layouts/numrevtex.inc:6
+#: lib/layouts/paper.layout:67 lib/layouts/powerdot.layout:242
+#: lib/layouts/revtex.layout:40 lib/layouts/revtex4-x.inc:30
+#: lib/layouts/revtex4.layout:69 lib/layouts/scrclass.inc:97
+#: lib/layouts/siamltex.layout:392 lib/layouts/simplecv.layout:32
+#: lib/layouts/spie.layout:21 lib/layouts/stdcounters.inc:20
+#: lib/layouts/stdsections.inc:99 lib/layouts/svcommon.inc:220
+#: lib/layouts/tufte-book.layout:113 lib/ui/stdtoolbars.inc:129
+#: src/frontends/qt/GuiDocument.cpp:135
 msgid "Section"
 msgstr "Section"
 
@@ -8418,15 +8420,16 @@ msgstr "Section"
 #: lib/layouts/amsbook.layout:67 lib/layouts/apa.layout:345
 #: lib/layouts/apax.inc:444 lib/layouts/beamer.layout:362
 #: lib/layouts/egs.layout:57 lib/layouts/isprs.layout:172
-#: lib/layouts/iucr.layout:54 lib/layouts/jss.layout:30
-#: lib/layouts/kluwer.layout:72 lib/layouts/latex8.layout:59
-#: lib/layouts/llncs.layout:58 lib/layouts/ltugboat.layout:70
-#: lib/layouts/memoir.layout:116 lib/layouts/moderncv.layout:357
-#: lib/layouts/numrevtex.inc:15 lib/layouts/paper.layout:77
-#: lib/layouts/revtex.layout:52 lib/layouts/scrclass.inc:106
-#: lib/layouts/siamltex.layout:403 lib/layouts/simplecv.layout:64
-#: lib/layouts/stdcounters.inc:26 lib/layouts/stdsections.inc:136
-#: lib/layouts/svcommon.inc:229 lib/layouts/tufte-book.layout:145
+#: lib/layouts/iucr.layout:54 lib/layouts/jlreq-common.inc:59
+#: lib/layouts/jss.layout:30 lib/layouts/kluwer.layout:72
+#: lib/layouts/latex8.layout:59 lib/layouts/llncs.layout:58
+#: lib/layouts/ltugboat.layout:70 lib/layouts/memoir.layout:116
+#: lib/layouts/moderncv.layout:357 lib/layouts/numrevtex.inc:15
+#: lib/layouts/paper.layout:77 lib/layouts/revtex.layout:52
+#: lib/layouts/scrclass.inc:106 lib/layouts/siamltex.layout:403
+#: lib/layouts/simplecv.layout:64 lib/layouts/stdcounters.inc:26
+#: lib/layouts/stdsections.inc:136 lib/layouts/svcommon.inc:229
+#: lib/layouts/tufte-book.layout:145
 msgid "Subsection"
 msgstr "SousSection"
 
@@ -8435,15 +8438,15 @@ msgstr "SousSection"
 #: lib/layouts/amsart.layout:130 lib/layouts/amsbook.layout:76
 #: lib/layouts/apa.layout:355 lib/layouts/apax.inc:454
 #: lib/layouts/beamer.layout:426 lib/layouts/isprs.layout:182
-#: lib/layouts/iucr.layout:63 lib/layouts/jss.layout:35
-#: lib/layouts/kluwer.layout:82 lib/layouts/llncs.layout:67
-#: lib/layouts/ltugboat.layout:92 lib/layouts/memoir.layout:132
-#: lib/layouts/numrevtex.inc:24 lib/layouts/paper.layout:87
-#: lib/layouts/recipebook.layout:103 lib/layouts/revtex.layout:61
-#: lib/layouts/revtex4-x.inc:39 lib/layouts/revtex4.layout:79
-#: lib/layouts/scrclass.inc:115 lib/layouts/siamltex.layout:412
-#: lib/layouts/stdcounters.inc:32 lib/layouts/stdsections.inc:152
-#: lib/layouts/svcommon.inc:238
+#: lib/layouts/iucr.layout:63 lib/layouts/jlreq-common.inc:75
+#: lib/layouts/jss.layout:35 lib/layouts/kluwer.layout:82
+#: lib/layouts/llncs.layout:67 lib/layouts/ltugboat.layout:92
+#: lib/layouts/memoir.layout:132 lib/layouts/numrevtex.inc:24
+#: lib/layouts/paper.layout:87 lib/layouts/recipebook.layout:103
+#: lib/layouts/revtex.layout:61 lib/layouts/revtex4-x.inc:39
+#: lib/layouts/revtex4.layout:79 lib/layouts/scrclass.inc:115
+#: lib/layouts/siamltex.layout:412 lib/layouts/stdcounters.inc:32
+#: lib/layouts/stdsections.inc:152 lib/layouts/svcommon.inc:238
 msgid "Subsubsection"
 msgstr "SousSousSection"
 
@@ -9677,15 +9680,16 @@ msgstr "American Geophysical Union (AGUPLUS Manuscript)"
 #: lib/layouts/aguplus.inc:37 lib/layouts/amsart.layout:77
 #: lib/layouts/amsbook.layout:86 lib/layouts/beamer.layout:342
 #: lib/layouts/egs.layout:682 lib/layouts/isprs.layout:192
-#: lib/layouts/spie.layout:32 lib/layouts/stdstarsections.inc:45
-#: lib/layouts/svcommon.inc:279
+#: lib/layouts/jlreq-common.inc:51 lib/layouts/spie.layout:32
+#: lib/layouts/stdstarsections.inc:45 lib/layouts/svcommon.inc:279
 msgid "Section*"
 msgstr "Section*"
 
 #: lib/layouts/aguplus.inc:52 lib/layouts/amsart.layout:119
 #: lib/layouts/amsbook.layout:95 lib/layouts/beamer.layout:407
 #: lib/layouts/egs.layout:703 lib/layouts/isprs.layout:203
-#: lib/layouts/stdstarsections.inc:61 lib/layouts/svcommon.inc:287
+#: lib/layouts/jlreq-common.inc:67 lib/layouts/stdstarsections.inc:61
+#: lib/layouts/svcommon.inc:287
 msgid "Subsection*"
 msgstr "SousSection*"
 
@@ -9886,7 +9890,8 @@ msgstr "NonNuméroté"
 
 #: lib/layouts/amsart.layout:140 lib/layouts/amsbook.layout:103
 #: lib/layouts/beamer.layout:470 lib/layouts/isprs.layout:212
-#: lib/layouts/stdstarsections.inc:77 lib/layouts/svcommon.inc:295
+#: lib/layouts/jlreq-common.inc:83 lib/layouts/stdstarsections.inc:77
+#: lib/layouts/svcommon.inc:295
 msgid "Subsubsection*"
 msgstr "SousSousSection*"
 
@@ -9894,12 +9899,12 @@ msgstr "SousSousSection*"
 #: lib/layouts/bxjsbook.layout:4 lib/layouts/ctex-book.layout:4
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4 lib/layouts/extbook.layout:4
-#: lib/layouts/jbook.layout:4 lib/layouts/jsbook.layout:4
-#: lib/layouts/memoir.layout:4 lib/layouts/mwbk.layout:4
-#: lib/layouts/recipebook.layout:4 lib/layouts/scrbook.layout:4
-#: lib/layouts/svmono.layout:4 lib/layouts/svmult.layout:4
-#: lib/layouts/tbook.layout:4 lib/layouts/tufte-book.layout:4
-#: lib/examples/Articles:0
+#: lib/layouts/jbook.layout:4 lib/layouts/jlreq-book.layout:4
+#: lib/layouts/jsbook.layout:4 lib/layouts/memoir.layout:4
+#: lib/layouts/mwbk.layout:4 lib/layouts/recipebook.layout:4
+#: lib/layouts/scrbook.layout:4 lib/layouts/svmono.layout:4
+#: lib/layouts/svmult.layout:4 lib/layouts/tbook.layout:4
+#: lib/layouts/tufte-book.layout:4 lib/examples/Articles:0
 msgid "Books"
 msgstr "Livres"
 
@@ -10187,9 +10192,10 @@ msgstr "SixAffiliations"
 
 #: lib/layouts/apax.inc:227 lib/layouts/beamer.layout:1670
 #: lib/layouts/elsart.layout:501 lib/layouts/fixme.module:108
-#: lib/layouts/iopart.layout:106 lib/layouts/llncs.layout:394
-#: lib/layouts/powerdot.layout:215 lib/layouts/slides.layout:170
-#: lib/layouts/stdinsets.inc:161 lib/layouts/svmono.layout:94
+#: lib/layouts/iopart.layout:106 lib/layouts/jlreq-common.inc:200
+#: lib/layouts/llncs.layout:394 lib/layouts/powerdot.layout:215
+#: lib/layouts/slides.layout:170 lib/layouts/stdinsets.inc:161
+#: lib/layouts/svmono.layout:94
 #: lib/layouts/theorems-ams-extended-bytype.module:203
 #: lib/layouts/theorems-ams-extended-bytype.module:212
 #: lib/layouts/theorems-ams-extended-bytype.module:215
@@ -10266,18 +10272,18 @@ msgid "Article (Standard Class)"
 msgstr "Article (classe standard)"
 
 #: lib/layouts/article.layout:21 lib/layouts/beamer.layout:254
-#: lib/layouts/beamer.layout:283 lib/layouts/memoir.layout:66
-#: lib/layouts/mwart.layout:25 lib/layouts/paper.layout:55
-#: lib/layouts/scrartcl.layout:22 lib/layouts/scrclass.inc:77
-#: lib/layouts/stdcounters.inc:9 lib/layouts/stdsections.inc:12
-#: lib/layouts/svcommon.inc:112 lib/layouts/svmult.layout:113
-#: lib/layouts/tufte-handout.layout:23
+#: lib/layouts/beamer.layout:283 lib/layouts/jlreq-common.inc:11
+#: lib/layouts/memoir.layout:66 lib/layouts/mwart.layout:25
+#: lib/layouts/paper.layout:55 lib/layouts/scrartcl.layout:22
+#: lib/layouts/scrclass.inc:77 lib/layouts/stdcounters.inc:9
+#: lib/layouts/stdsections.inc:12 lib/layouts/svcommon.inc:112
+#: lib/layouts/svmult.layout:113 lib/layouts/tufte-handout.layout:23
 msgid "Part"
 msgstr "Partie"
 
-#: lib/layouts/article.layout:38 lib/layouts/mwart.layout:35
-#: lib/layouts/scrartcl.layout:34 lib/layouts/stdstarsections.inc:13
-#: lib/layouts/svcommon.inc:270
+#: lib/layouts/article.layout:38 lib/layouts/jlreq-common.inc:19
+#: lib/layouts/mwart.layout:35 lib/layouts/scrartcl.layout:34
+#: lib/layouts/stdstarsections.inc:13 lib/layouts/svcommon.inc:270
 msgid "Part*"
 msgstr "Partie*"
 
@@ -11167,20 +11173,20 @@ msgid "Right Address"
 msgstr "Adresse_À_Droite"
 
 #: lib/layouts/bxjsarticle.layout:3
-msgid "Japanese Article (BXJS Class)"
-msgstr "Article japonais (classe BXJS)"
+msgid "Japanese Article (BX Bundle)"
+msgstr "Article japonais (paquet BX)"
 
 #: lib/layouts/bxjsbook.layout:3
-msgid "Japanese Book (BXJS Class)"
-msgstr "Livre japonnais (classe BXJS)"
+msgid "Japanese Book (BX Bundle)"
+msgstr "Livre japonais (paquet BX)"
 
 #: lib/layouts/bxjsreport.layout:3
-msgid "Japanese Report (BXJS Class)"
-msgstr "Report japonais (classe BXJS"
+msgid "Japanese Report (BX Bundle)"
+msgstr "Rapport japonais (paquet BX)"
 
 #: lib/layouts/bxjsslide.layout:3
-msgid "Japanese Slide (BXJS Class)"
-msgstr "Transparent japonais (classe BXJS)"
+msgid "Japanese Slides (BX Bundle)"
+msgstr "Transparents japonais (paquet BX)"
 
 #: lib/layouts/chess.layout:3 lib/examples/Articles:0
 msgid "Chess"
@@ -12501,6 +12507,7 @@ msgstr "N° notes en fin de document"
 
 #: lib/layouts/endnotes.module:19 lib/layouts/enotez.module:19
 #: lib/layouts/foottoend.module:16 lib/layouts/foottoenotez.module:17
+#: lib/layouts/jlreq-common.inc:129 lib/layouts/jlreq-common.inc:135
 #: lib/layouts/memoir.layout:311
 msgid "Endnote"
 msgstr "Notes en fin de document"
@@ -14428,17 +14435,144 @@ msgstr "Livre japonais (classe standard)"
 msgid "American Geophysical Union (AGUPLUS JGR)"
 msgstr "American Geophysical Union (AGUPLUS JGR)"
 
+#: lib/layouts/jlreq-article.layout:3 lib/examples/Articles:0
+msgid "Japanese Article (JLReq Class)"
+msgstr "Article japonais (classe JLReq)"
+
+#: lib/layouts/jlreq-book.layout:3
+msgid "Japanese Book (JLReq Class)"
+msgstr "Livre japonnais (classe JLReq)"
+
+#: lib/layouts/jlreq-common.inc:13 lib/layouts/jlreq-common.inc:21
+#: lib/layouts/jlreq-common.inc:29 lib/layouts/jlreq-common.inc:37
+#: lib/layouts/jlreq-common.inc:45 lib/layouts/jlreq-common.inc:53
+#: lib/layouts/jlreq-common.inc:61 lib/layouts/jlreq-common.inc:69
+#: lib/layouts/jlreq-common.inc:77 lib/layouts/jlreq-common.inc:85
+msgid "Subtitle|u"
+msgstr "SousTitre|u"
+
+#: lib/layouts/jlreq-common.inc:14 lib/layouts/jlreq-common.inc:22
+msgid "Subtitle of the part"
+msgstr "Sous-titre de la partie"
+
+#: lib/layouts/jlreq-common.inc:27 lib/layouts/llncs.layout:42
+#: lib/layouts/memoir.layout:75 lib/layouts/numreport.inc:7
+#: lib/layouts/recipebook.layout:43 lib/layouts/scrbook.layout:18
+#: lib/layouts/scrclass.inc:84 lib/layouts/stdcounters.inc:15
+#: lib/layouts/stdsections.inc:56 lib/layouts/svcommon.inc:166
+#: lib/layouts/svmult.layout:121 lib/layouts/tufte-book.layout:81
+msgid "Chapter"
+msgstr "Chapitre"
+
+#: lib/layouts/jlreq-common.inc:30 lib/layouts/jlreq-common.inc:38
+msgid "Subtitle of the chapter"
+msgstr "Sous-titre du chapitre"
+
+#: lib/layouts/jlreq-common.inc:35 lib/layouts/memoir.layout:91
+#: lib/layouts/stdstarsections.inc:29 lib/layouts/svcommon.inc:275
+msgid "Chapter*"
+msgstr "Chapitre*"
+
+#: lib/layouts/jlreq-common.inc:46 lib/layouts/jlreq-common.inc:54
+msgid "Subtitle of the section"
+msgstr "Sous-titre de la section"
+
+#: lib/layouts/jlreq-common.inc:62 lib/layouts/jlreq-common.inc:70
+msgid "Subtitle of the subsection"
+msgstr "Sous-titre de la sous-section"
+
+#: lib/layouts/jlreq-common.inc:78 lib/layouts/jlreq-common.inc:86
+msgid "Subtitle of the subsubsection"
+msgstr "Sous-titre de la sous-sous-section"
+
+#: lib/layouts/jlreq-common.inc:91
+msgid "Abstract over Columns"
+msgstr "Résumé en colonnes"
+
+#: lib/layouts/jlreq-common.inc:107 lib/layouts/jlreq-common.inc:113
+msgid "JLReq Setup"
+msgstr "Réglage JLReq"
+
+#: lib/layouts/jlreq-common.inc:170 lib/layouts/jlreq-common.inc:173
+#: lib/layouts/tufte-book.layout:27 lib/layouts/tufte-book.layout:159
+msgid "Sidenote"
+msgstr "Note latérale"
+
+#: lib/layouts/jlreq-common.inc:201
+msgid "Endnote contents"
+msgstr "Contenu de la note en fin de document"
+
+#: lib/layouts/jlreq-common.inc:202
+msgid ""
+"Contents of the sidenote. Only makes sense when "
+"\\jlreqsetup{sidenote_type=symbol} is specified in the preamble."
+msgstr ""
+"Contenu de la note latérale. N'a de sens que quand "
+"\\jlreqsetup{sidenote_type=symbole} est précisé dans le préambule."
+
+#: lib/layouts/jlreq-common.inc:209 lib/layouts/jlreq-common.inc:212
+msgid "Warichu"
+msgstr "Warichu"
+
+#: lib/layouts/jlreq-common.inc:240 lib/layouts/jlreq-common.inc:243
+msgid "Warichu*"
+msgstr "Warichu*"
+
+#: lib/layouts/jlreq-common.inc:277 lib/layouts/jlreq-common.inc:281
+msgid "Tatechuyoko"
+msgstr "Tatechuyoko"
+
+#: lib/layouts/jlreq-common.inc:285 lib/layouts/jlreq-common.inc:288
+msgid "Jidori"
+msgstr "Jidori"
+
+#: lib/layouts/jlreq-common.inc:290
+msgid "Length"
+msgstr "Longueur"
+
+#: lib/layouts/jlreq-common.inc:291
+msgid "Jidori Length|L"
+msgstr "Longueur Jidori|L"
+
+#: lib/layouts/jlreq-common.inc:292
+msgid "Length of Jidori. Contents is fit to this length."
+msgstr "Longueur de jidori. Le contenu est adapté à cette longueur."
+
+#: lib/layouts/jlreq-common.inc:298 lib/layouts/jlreq-common.inc:301
+msgid "Akigumi"
+msgstr "Akigumi"
+
+#: lib/layouts/jlreq-common.inc:302
+msgid "Akigumi (LuaLaTeX)"
+msgstr "Akigumi(LuaLaTeX) "
+
+#: lib/layouts/jlreq-common.inc:304
+msgid "Char Space"
+msgstr "Espace caractère"
+
+#: lib/layouts/jlreq-common.inc:305
+msgid "Char Space|D"
+msgstr "Espace caractère|c"
+
+#: lib/layouts/jlreq-common.inc:306
+msgid "Distance between chars is set to this length."
+msgstr "La distance inter-caractères est positionnée à cette longueur."
+
+#: lib/layouts/jlreq-report.layout:3
+msgid "Japanese Report (JLReq Class)"
+msgstr "Rapport japonais (classe JLReq)"
+
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (Standard Class)"
 msgstr "Rapport japonais (classe standard)"
 
 #: lib/layouts/jsarticle.layout:3
-msgid "Japanese Article (JS Class)"
-msgstr "Article japonais (JS Class)"
+msgid "Japanese Article (JS Bundle)"
+msgstr "Article japonais (paquet JS)"
 
 #: lib/layouts/jsbook.layout:3
-msgid "Japanese Book (JS Class)"
-msgstr "Livre japonnais (JS Class)"
+msgid "Japanese Book (JS Bundle)"
+msgstr "Livre japonais (paquet JS)"
 
 #: lib/layouts/jss.layout:3 lib/examples/Articles:0
 msgid "Journal of Statistical Software (JSS) version 2"
@@ -15079,15 +15213,6 @@ msgstr "Bloc"
 msgid "Lecture Notes in Comp. Science (LNCS)"
 msgstr "Lecture Notes in Comp. Science (LNCS)"
 
-#: lib/layouts/llncs.layout:42 lib/layouts/memoir.layout:75
-#: lib/layouts/numreport.inc:7 lib/layouts/recipebook.layout:43
-#: lib/layouts/scrbook.layout:18 lib/layouts/scrclass.inc:84
-#: lib/layouts/stdcounters.inc:15 lib/layouts/stdsections.inc:56
-#: lib/layouts/svcommon.inc:166 lib/layouts/svmult.layout:121
-#: lib/layouts/tufte-book.layout:81
-msgid "Chapter"
-msgstr "Chapitre"
-
 #: lib/layouts/llncs.layout:158
 msgid "Running LaTeX Title"
 msgstr "Titre Latex courant"
@@ -15270,11 +15395,6 @@ msgstr "Titre court (en-tête)"
 #: lib/layouts/memoir.layout:83
 msgid "The chapter as it appears in the running headers"
 msgstr "Le titre du chapitre tel qu'il apparaîtra dans les en-têtes courants"
-
-#: lib/layouts/memoir.layout:91 lib/layouts/stdstarsections.inc:29
-#: lib/layouts/svcommon.inc:275
-msgid "Chapter*"
-msgstr "Chapitre*"
 
 #: lib/layouts/memoir.layout:103
 msgid "The section as it appears in the table of contents"
@@ -17877,12 +17997,12 @@ msgstr ""
 "»."
 
 #: lib/layouts/tarticle.layout:3
-msgid "Japanese Article (Standard Class: Vertical Writing)"
-msgstr "Article japonais (classe standard : écriture verticale)"
+msgid "Japanese Article (Standard Class, vertical Writing)"
+msgstr "Article japonais (classe standard, écriture verticale)"
 
 #: lib/layouts/tbook.layout:3
-msgid "Japanese Book (Standard Class: Vertical Writing)"
-msgstr "Livre japonais  (classe standard : écriture verticale)"
+msgid "Japanese Book (Standard Class, vertical Writing)"
+msgstr "Livre japonais  (classe standard, écriture verticale)"
 
 #: lib/layouts/tcolorbox.module:2 lib/examples/Articles:0
 msgid "Fancy Colored Boxes"
@@ -18760,16 +18880,12 @@ msgid "MissingFigure"
 msgstr "FigureManquante"
 
 #: lib/layouts/treport.layout:3
-msgid "Japanese Report (Vertical Writing)"
-msgstr "Report japonais  (écriture verticale)"
+msgid "Japanese Report (Standard Class, vertical Writing)"
+msgstr "Rapport japonais  (classe standard, écriture verticale)"
 
 #: lib/layouts/tufte-book.layout:3 lib/examples/Articles:0
 msgid "Tufte Book"
 msgstr "Book Tufte"
-
-#: lib/layouts/tufte-book.layout:27 lib/layouts/tufte-book.layout:159
-msgid "Sidenote"
-msgstr "Note latérale"
 
 #: lib/layouts/tufte-book.layout:28 lib/layouts/tufte-book.layout:164
 msgid "sidenote"
@@ -34593,43 +34709,43 @@ msgstr "Revenir à la position initiale du curseur"
 msgid "<No prefix>"
 msgstr "<Sans prefixe>"
 
-#: src/frontends/qt/GuiSearch.cpp:192
+#: src/frontends/qt/GuiSearch.cpp:193
 msgid "Ex&pand"
 msgstr "Dé&ployer"
 
-#: src/frontends/qt/GuiSearch.cpp:193
+#: src/frontends/qt/GuiSearch.cpp:194
 msgid "Show replace and option widgets"
 msgstr "Montrer les vignettes Remplacer et Options"
 
-#: src/frontends/qt/GuiSearch.cpp:250
+#: src/frontends/qt/GuiSearch.cpp:252
 msgid "Active options:"
 msgstr "Options actives :"
 
-#: src/frontends/qt/GuiSearch.cpp:253
+#: src/frontends/qt/GuiSearch.cpp:255
 msgid "Case sensitive search"
 msgstr "Selon la &casse"
 
-#: src/frontends/qt/GuiSearch.cpp:267
+#: src/frontends/qt/GuiSearch.cpp:269
 msgid "Whole words only"
 msgstr "Mots comp&lets uniquement"
 
-#: src/frontends/qt/GuiSearch.cpp:280
+#: src/frontends/qt/GuiSearch.cpp:282
 msgid "Search only in selection"
 msgstr "Rechercher uniquement dans la sélection"
 
-#: src/frontends/qt/GuiSearch.cpp:293
+#: src/frontends/qt/GuiSearch.cpp:295
 msgid "Search as you type"
 msgstr "Chercher pendant la saisie"
 
-#: src/frontends/qt/GuiSearch.cpp:306
+#: src/frontends/qt/GuiSearch.cpp:308
 msgid "Wrap search"
 msgstr "Recherche récursive"
 
-#: src/frontends/qt/GuiSearch.cpp:322
+#: src/frontends/qt/GuiSearch.cpp:324
 msgid "Click here to change search options"
 msgstr "Cliquer ici pour changer les options de recherche"
 
-#: src/frontends/qt/GuiSearch.cpp:541
+#: src/frontends/qt/GuiSearch.cpp:563
 msgid "Search and Replace"
 msgstr "Rechercher et remplacer"
 
@@ -35756,27 +35872,27 @@ msgstr "Aperçu de code"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1, aperçu"
 
-#: src/frontends/qt/GuiWorkArea.cpp:1512
+#: src/frontends/qt/GuiWorkArea.cpp:1513
 msgid "Close File"
 msgstr "Fermer le fichier"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2050
+#: src/frontends/qt/GuiWorkArea.cpp:2051
 msgid "%1 (read only)"
 msgstr "%1 (en lecture seule)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2058
+#: src/frontends/qt/GuiWorkArea.cpp:2059
 msgid "%1 (modified externally)"
 msgstr "%1 (modifié par une application externe)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2081
+#: src/frontends/qt/GuiWorkArea.cpp:2082
 msgid "Hide tab"
 msgstr "Cacher l'onglet"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2087
+#: src/frontends/qt/GuiWorkArea.cpp:2088
 msgid "Close tab"
 msgstr "Fermer l'onglet"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2126
+#: src/frontends/qt/GuiWorkArea.cpp:2127
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Le fichier %1 a changé sur le disque.</b>"
 
@@ -36943,7 +37059,7 @@ msgstr "Chemin d'accès au fichier"
 msgid "Used text class"
 msgstr "Classe de texte utilisée"
 
-#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:1163
+#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:1159
 msgid "No version control!"
 msgstr "Pas de contrôle de version !"
 
@@ -37091,97 +37207,97 @@ msgstr "Heure statique"
 msgid "Missing \\end_inset at this point."
 msgstr "Il manque un \\end_inset à cet endroit."
 
-#: src/insets/InsetInfo.cpp:830
+#: src/insets/InsetInfo.cpp:826
 msgid "Unknown Info!"
 msgstr "Information inconnue !"
 
-#: src/insets/InsetInfo.cpp:839 src/insets/InsetInfo.cpp:1038
+#: src/insets/InsetInfo.cpp:835 src/insets/InsetInfo.cpp:1034
 #, c-format
 msgid "Unknown action %1$s"
 msgstr "Action inconnue %1$s"
 
-#: src/insets/InsetInfo.cpp:845 src/insets/InsetInfo.cpp:955
-#: src/insets/InsetInfo.cpp:964 src/insets/InsetInfo.cpp:972
+#: src/insets/InsetInfo.cpp:841 src/insets/InsetInfo.cpp:951
+#: src/insets/InsetInfo.cpp:960 src/insets/InsetInfo.cpp:968
 msgid "undefined"
 msgstr "indéfini"
 
-#: src/insets/InsetInfo.cpp:868 src/insets/InsetInfo.cpp:918
+#: src/insets/InsetInfo.cpp:864 src/insets/InsetInfo.cpp:914
 msgid "Return[[Key]]"
 msgstr "Entrée"
 
-#: src/insets/InsetInfo.cpp:873
+#: src/insets/InsetInfo.cpp:869
 msgid "Tab[[Key]]"
 msgstr "Tab"
 
-#: src/insets/InsetInfo.cpp:878
+#: src/insets/InsetInfo.cpp:874
 msgid "PgUp"
 msgstr "Pg.Préc"
 
-#: src/insets/InsetInfo.cpp:883
+#: src/insets/InsetInfo.cpp:879
 msgid "PgDown"
 msgstr "PgSuiv"
 
-#: src/insets/InsetInfo.cpp:888
+#: src/insets/InsetInfo.cpp:884
 msgid "Backtab"
 msgstr "Ret.Arr"
 
-#: src/insets/InsetInfo.cpp:893
+#: src/insets/InsetInfo.cpp:889
 msgid "Tab"
 msgstr "Tab"
 
-#: src/insets/InsetInfo.cpp:903
+#: src/insets/InsetInfo.cpp:899
 msgid "CapsLock"
 msgstr "Verr.Maj"
 
-#: src/insets/InsetInfo.cpp:908
+#: src/insets/InsetInfo.cpp:904
 msgid "Control[[Key]]"
 msgstr "Control[[Key]]"
 
-#: src/insets/InsetInfo.cpp:913
+#: src/insets/InsetInfo.cpp:909
 msgid "Command[[Key]]"
 msgstr "Commande"
 
-#: src/insets/InsetInfo.cpp:923
+#: src/insets/InsetInfo.cpp:919
 msgid "Option[[Key]]"
 msgstr "Option"
 
-#: src/insets/InsetInfo.cpp:928
+#: src/insets/InsetInfo.cpp:924
 msgid "Delete[[Key]]"
 msgstr "Suppr"
 
-#: src/insets/InsetInfo.cpp:933
+#: src/insets/InsetInfo.cpp:929
 msgid "Fn+Del"
 msgstr "Fn+Suppr"
 
-#: src/insets/InsetInfo.cpp:938
+#: src/insets/InsetInfo.cpp:934
 msgid "Esc"
 msgstr "Esc"
 
-#: src/insets/InsetInfo.cpp:982
+#: src/insets/InsetInfo.cpp:978
 msgid "not set"
 msgstr "non réglé"
 
-#: src/insets/InsetInfo.cpp:1006 src/insets/InsetInfo.cpp:1023
+#: src/insets/InsetInfo.cpp:1002 src/insets/InsetInfo.cpp:1019
 msgid "yes"
 msgstr "oui"
 
-#: src/insets/InsetInfo.cpp:1009 src/insets/InsetInfo.cpp:1026
+#: src/insets/InsetInfo.cpp:1005 src/insets/InsetInfo.cpp:1022
 msgid "no"
 msgstr "non"
 
-#: src/insets/InsetInfo.cpp:1049
+#: src/insets/InsetInfo.cpp:1045
 #, c-format
 msgid "Can't determine menu entry for action %1$s in batch mode"
 msgstr ""
 "Impossible de déterminer l'entrée de menu pour l'action %1$s en mode "
 "traitement par lot"
 
-#: src/insets/InsetInfo.cpp:1057
+#: src/insets/InsetInfo.cpp:1053
 #, c-format
 msgid "No menu entry for action %1$s"
 msgstr "Pas d'entrée de menu pour l'action %1$s"
 
-#: src/insets/InsetInfo.cpp:1182
+#: src/insets/InsetInfo.cpp:1178
 #, c-format
 msgid "%1$s[[vcs data]] unknown"
 msgstr "%1$s inconnu"
@@ -38139,11 +38255,11 @@ msgstr ""
 "Impossible d'ouvrir le document\n"
 "%1$s."
 
-#: src/output_latex.cpp:1662
+#: src/output_latex.cpp:1664
 msgid "Error in latexParagraphs"
 msgstr "Erreur dans latexParagraphs"
 
-#: src/output_latex.cpp:1663
+#: src/output_latex.cpp:1665
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
@@ -38544,6 +38660,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
 
+#~ msgid "Japanese Report (Vertical Writing)"
+#~ msgstr "Report japonais  (écriture verticale)"
+
 #~ msgid "Acknowledgement"
 #~ msgstr "Remerciements"
 
@@ -38635,9 +38754,6 @@ msgstr "Utilisateur inconnu"
 
 #~ msgid "Protected Space"
 #~ msgstr "Espace insécable"
-
-#~ msgid "Thin Space"
-#~ msgstr "Espace fine"
 
 #~ msgid "Medium Space"
 #~ msgstr "Espace moyenne"
