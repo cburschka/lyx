@@ -899,6 +899,356 @@ Beenden
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sicherheitsnetze"
+
+\end_inset
+
+Sicherheitsnetze:
+ Dateien retten,
+ wenn die Stricke reißen
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ legt größten Wert auf Sicherheit.
+ Wir wissen,
+ wie viel Mühe Sie in Ihre Arbeit investieren,
+ und deshalb ist das letzte,
+ was wir wollen,
+ dass diese Arbeit verloren geht.
+ Allerdings können wir nicht alles Böse verhindern:
+ \SpecialChar LyX
+ könnte abstürzen (auch wenn wir alles tun,
+ damit das nicht passiert),
+ der Strom könnte ausfallen,
+ während Sie an einem Dokument mit ungesicherten Änderungen arbeiten,
+ Festplatten können beschädigt sein oder Dateien könnten bei der Synchronisation verloren gehen bzw.
+ beschädigt werden oder einfach versehentlich gelöscht werden.
+ Für solche Fälle hat \SpecialChar LyX
+ ein mehrfaches Sicherheitsnetz eingebaut,
+ welches Ihnen hoffentlich größeren Stress erspart.
+ Das heißt,
+ dass \SpecialChar LyX
+ nicht einfach nur eine Sicherungskopie macht,
+ sondern es macht gleich mehrere,
+ welche in unterschiedlichen Szenarien hilfreich sein können.
+ Teile dieses Mehrfachnetzes können Sie ausschalten,
+ wenn Ihnen das Risiko nichts ausmacht und Sie die vielen Extradateien stören (siehe dazu Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Sicherung-Dokumente"
+
+\end_inset
+
+),
+ per Voreinstellung sind aber alle Maßnahmen aktiviert um Ihnen die größtmögliche Sicherheit zu gewähren.
+\end_layout
+
+\begin_layout Standard
+Im Folgenden erläutern wir die verschiedenen Dateitypen und wann sie nützlich werden können.
+\end_layout
+
+\begin_layout Subsection
+Sicherungsdateien
+\end_layout
+
+\begin_layout Standard
+Per Voreinstellung legt \SpecialChar LyX
+ Kopien von Dateien an,
+ sobald diese gespeichert werden.
+ Diese Dateien werden normalerweise im gleichen Verzeichnis gespeichert wie die Originaldateien,
+ und sie haben auch denselben Namen,
+ aber die Endung 
+\family typewriter
+.lyx~
+\family default
+ (bspw.
+ 
+\family typewriter
+meineDatei.lyx~
+\family default
+).
+ Wenn Sie es bevorzugen,
+ alle Sicherungsdateien in einem separaten Ordner (und vielleicht auf einer anderen Festplatte) abzulegen,
+ können Sie in den \SpecialChar LyX
+-Einstellungen ein 
+\family sans
+Sicherungsverzeichnis
+\family default
+ festlegen,
+ in dem dann alle Sicherungsdateien abgelegt werden (siehe
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Pfade"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Um Dateinamenkonflikte zu verhindern,
+ haben die Sicherungsdateien in diesem Fall nicht einfach nur den Namen des Originaldokuments,
+ sondern tragen auch den Dateipfad,
+ durch 
+\begin_inset Quotes gld
+\end_inset
+
+!
+\begin_inset Quotes grd
+\end_inset
+
+ getrennt,
+ im Namen (bspw.
+ 
+\family typewriter
+!home!paula!Dateien!meineDatei.lyx~
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+Bitte beachten Sie,
+ dass manche Dateimanager Sicherungsdateien per Voreinstellung verstecken.
+ Sie müssen 
+\begin_inset Quotes gld
+\end_inset
+
+Versteckte Dateien anzeigen
+\begin_inset Quotes grd
+\end_inset
+
+ aktivieren,
+ um sie zu sehen.
+\end_layout
+
+\begin_layout Standard
+Sicherungsdateien enthalten die zuletzt gespeicherte Version eines Dokuments.
+ Sie werden von \SpecialChar LyX
+ niemals gelöscht,
+ aber sie werden durch neuere Versionen überschrieben,
+ sobald Änderungen im Originaldokument gespeichert werden.
+\end_layout
+
+\begin_layout Subsection
+Automatische Schnappschüsse
+\end_layout
+
+\begin_layout Standard
+Per Voreinstellung erstellt \SpecialChar LyX
+ außerdem regelmäßig automatische Schnappschüsse aller geöffneten Dokumente,
+ die ungesicherte Änderungen haben (das Intervall,
+ in dem das geschieht,
+ können Sie in den Einstellungen anpassen,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Sicherung-Dokumente"
+
+\end_inset
+
+).
+ Im Gegensatz zu den Sicherungsdateien enthalten diese Schnappschüsse auch ungespeicherte Änderungen,
+ sie sind also unter Umständen aktueller als die Sicherungsdateien.
+\end_layout
+
+\begin_layout Standard
+Die Schnappschüsse werden immer in dem Verzeichnis gespeichert,
+ in dem das Originaldokument liegt.
+ Sie haben denselben Dateinamen,
+ sind aber durch 
+\begin_inset Quotes gld
+\end_inset
+
+#
+\begin_inset Quotes grd
+\end_inset
+
+ eingeklammert (bspw.
+ 
+\family typewriter
+#meineDatei.lyx#
+\family default
+).
+ Die Schnappschüsse werden von \SpecialChar LyX
+ gelöscht,
+ sobald das entsprechende Dokument normal,
+ d.
+\begin_inset space \thinspace{}
+\end_inset
+
+h.
+ ohne ungespeicherte Änderungen,
+ geschlossen werden.
+ Sie bleiben auf der Festplatte im Fall von außergewöhnlichen Programmbeendigungen (etwa einem Absturz oder einem Stromausfall),
+ und genau dann können sie auch nützlich werden.
+\end_layout
+
+\begin_layout Subsection
+Notfalldateien
+\end_layout
+
+\begin_layout Standard
+Falls \SpecialChar LyX
+ abstürzt und Dokumente ungesicherte Änderungen haben,
+ versucht das Programm weiterhin,
+ eine Notfalldatei zu schreiben.
+ Das ist eine Version des Dokuments,
+ die alle ungesicherten Änderungen enthält (auch die,
+ die nach dem letzten Schnappschuss vorgenommen wurden).
+\end_layout
+
+\begin_layout Standard
+Diese Dateien werden immer in dem Verzeichnis gespeichert,
+ in dem das Originaldokument liegt.
+ Sie haben denselben Dateinamen,
+ aber die Endung 
+\family typewriter
+.lyx.emergency
+\family default
+ (bspw.
+ 
+\family typewriter
+meineDatei.lyx.emergency
+\family default
+).
+ Sobald das betreffende Dokument mit \SpecialChar LyX
+ wieder geöffnet wird,
+ erkennt das Programm die Notfalldatei und fragt Sie,
+ ob es ihr Dokument zu diesem Notfallstatus wiederherstellen soll.
+ Wenn Sie dem zustimmen,
+ wird das gemacht,
+ und wenn es erfolgreich ist,
+ werden Sie als nächstes gefragt,
+ ob die Notfalldatei gelöscht werden kann.
+ Stimmen Sie dem erst zu,
+ nachdem Sie geprüft haben,
+ dass alles korrekt wiederhergestellt wurde.
+\end_layout
+
+\begin_layout Subsection
+Sicherungsdateien von älteren \SpecialChar LyX
+-Versionen
+\end_layout
+
+\begin_layout Standard
+Wenn Sie zum ersten Mal ein \SpecialChar LyX
+-Dokument mit einer neuen Hauptversion von \SpecialChar LyX
+ öffnen,
+ wird diese in das neue Dateiformat konvertiert (welches die neuen Features ermöglicht).
+ In solchen Fällen legt \SpecialChar LyX
+ eine Kopie der alten Version an,
+ die nach dem Muster 
+\family typewriter
+<Dateiname>-lyxformat-<n>.lyx
+\family default
+ benannt wird.
+ Dabei ist <n> das alte Dateiformat (bspw.
+ 
+\family typewriter
+meineDatei-lyxformat-474.lyx
+\family default
+).
+ Diese Dateien werden am selben Ort abgelegt wie die normalen Sicherungsdateien,
+ also drekt beim Originaldokument oder,
+ wenn das so eingerichtet ist,
+ im Sicherungsverzeichnis.
+\end_layout
+
+\begin_layout Standard
+Wie Sicherungsdateien werden diese Dateien von \SpecialChar LyX
+ niemals gelöscht.
+\end_layout
+
+\begin_layout Subsection
+Wann soll man welche Datei verwenden?
+\end_layout
+
+\begin_layout Standard
+Warum nun also all diese Dateien?
+ Weil sie unterschiedliche Zwecke haben.
+ Allgemein gesprochen:
+\end_layout
+
+\begin_layout Standard
+Falls \SpecialChar LyX
+ unerwartet beendet wurde:
+\end_layout
+
+\begin_layout Enumerate
+versuchen Sie zuallererst,
+ ihre Dokumente von der Notfalldatei aus wieder herzustellen (einfach,
+ indem sie sie mit \SpecialChar LyX
+ wieder öffnen).
+ Diese Datei enthält die allerneuesten Änderungen,
+ sogar die,
+ die Sie gemacht haben,
+ nachdem der letzte Schnappschuss erstellt wurde.
+\end_layout
+
+\begin_layout Enumerate
+Falls diese Versuch nicht zum Erfolg führt,
+ weil es keine Notfalldatei gibt (bspw.
+ nach einem Stromausfall) oder diese beschädigt ist (in besonders üblen Fällen kann es nämlich passieren,
+ dass die Notfalldatei ausgerechnet jene letzte Änderung enthält,
+ die \SpecialChar LyX
+ zum Absturz bringt!),
+ schauen Sie,
+ ob es einen automatischen Schnappschuss gibt.
+ Falls ja,
+ benennen Sie ihn um (noch nicht zum Namen der Originaldatei,
+ so lange Sie sie nicht sorgfältig geprüft haben) und schauen Sie,
+ ob sie für Sie funktioniert.
+ Im schlimmsten Fall (jedenfalls mit den Voreinstellung) verlieren Sie so die letzten 5 Minuten Ihrer Arbeit am Dokument.
+\end_layout
+
+\begin_layout Enumerate
+Falls es keinen automatischen Schnappschuss gibt oder auch dieser beschädigt ist,
+ greifen Sie auf die Sicherungsdatei zurück.
+ Diese enthält keine Änderungen,
+ die Sie nicht gespeichert haben,
+ aber sie kann trotzdem die neueste Version sein,
+ die Ihnen zugänglich ist.
+ Das ist besonders dann der Fall,
+ wenn die Originaldatei selbst verloren gegangen oder beschädigt ist.
+\end_layout
+
+\begin_layout Standard
+Der vierte Dateityp,
+ die Sicherungsdatei alter Versionen,
+ ist nützlich,
+ wenn die Konvertierung schiefgegangen ist und ein nicht lesbares Dokument produziert (obwohl wir alles tun,
+ damit das nicht passiert),
+ oder wenn Sie versehentlich ein Dokument mit einer neuen \SpecialChar LyX
+-Version (etwa einer Entwicklerversion) geöffnet und gespeichert haben,
+ aber eigentlich mit der alten Version weiterarbeiten möchten.
+\end_layout
+
+\begin_layout Standard
+Soviel zum Sicherheitsnetz.
+ Wir hoffen,
+ Sie brauchen es nicht,
+ aber falls doch,
+ soll es Sie auf möglichst großer Höhe abfangen.
+ Kommen wir nun zum eigentlichen Schreibprozess zurück.
+\end_layout
+
+\begin_layout Section
 Einfache Bearbeitungsfunktionen
 \begin_inset CommandInset label
 LatexCommand label
@@ -7339,18 +7689,15 @@ Aufzählung
 \family default
 -Umgebung können Sie diese Marken Ihren Wünschen durch entsprechende Befehle im \SpecialChar LaTeX
 -Vorspann anpassen,
- siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Benutzerdefinierte-Listen"
-nolink "false"
-
-\end_inset
-
+ siehe Abschnitt 
+\emph on
+Listenmarkierer
+\emph default
+ unter 
+\family sans
+Hilfe\SpecialChar menuseparator
+Handbuchwerweiterungen
+\family default
 .
  Solche Anpassungen erscheinen nur im gedruckten Dokument,
  nicht im \SpecialChar LyX
@@ -51031,8 +51378,8 @@ Dokumente
 Sichere Originaldokumente beim Speichern
 \family default
  erstellt eine Sicherungskopie der Datei im Zustand,
- in dem sie geöffnet oder das letzte mal gespeichert wurde.
- Sie wird im 
+ in dem sie das letzte Mal gespeichert wurde.
+ Sie wird entweder im 
 \family sans
 Sicherungsverzeichnis
 \family default
@@ -51054,41 +51401,70 @@ nolink "false"
 Sicherungsverzeichnis
 \family default
  vorgegeben ist.
- Sie wird im selben Ordner wie Ihr Dokument oder im 
+ Die Sicherungsdateien haben die Endung
+\family typewriter
+ .lyx~
+\family default
+ und denselben Dateinamen wie das Originaldokument.
+ Wenn ein 
 \family sans
 Sicherungsverzeichnis
 \family default
- gespeichert,
- siehe Abschnitt
+ vorgegeben ist,
+ haben die Dateien außerdem den vollen Pfad,
+ durch 
+\begin_inset Quotes gld
+\end_inset
+
+!
+\begin_inset Quotes grd
+\end_inset
+
+ getrennt,
+ in ihrem Namen,
+ bspw.
+ 
+\family typewriter
+!MeinVerzeichnis!MeinUnterverzeichnis!Dateiname.lyx~
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Falls die Option
+\family sans
+ Mache alle X Minuten automatische Schnappschüsse
+\family default
+ ausgewählt ist,
+ macht \SpecialChar LyX
+ außerdem im angegebenen Intervall automatisch einen Schnappschuss aller Dokumente,
+ die ungespeicherte Änderungen haben (inklusive dieser ungespeicherten Änderungen).
+ Diese Dateien werden als 
+\family typewriter
+#<Dateiname>.lyx#
+\family default
+ im Verzeichnis der jeweiligen Dokumente abgelegt.
+ Sie werden bei jedem Zyklus überschrieben und gelöscht,
+ wenn das Dokument normal geschlossen wird.
+ Sollte \SpecialChar LyX
+ mit ungespeicherten Änderungen abstürzen und die Dateiwiederherstellung beim Öffnen scheitern,
+ kann diese Datei als Ersatz verwendet werden.
+\end_layout
+
+\begin_layout Standard
+Bitte lesen Sie Abschnitt
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Pfade"
-nolink "false"
+reference "sec:Sicherheitsnetze"
 
 \end_inset
 
-.
- Die Sicherungsdateien haben die Endung 
-\begin_inset Quotes gld
-\end_inset
-
-.lyx~
-\begin_inset Quotes grd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Mit der Option
-\family sans
- Sicherung der Dokumente alle
-\family default
- kann die Zeit zwischen den Sicherungsspeicherungen eingestellt werden.
+ für Details zu \SpecialChar LyX
+' verschiedenen Datei-Sicherungsmechanismen.
 \end_layout
 
 \begin_layout Standard
@@ -51111,6 +51487,23 @@ nolink "false"
 ).
  Dies gilt jedoch nur für neu erstellte Dokumente.
  Der Komprimierungsstatus von existierenden Dokumenten wird beim Speichern nicht geändert.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Dokumentverzeichnis speichern
+\family default
+ sorgt dafür,
+ dass der Pfad des Dokuments im \SpecialChar LyX
+-Dokument gespeichert wird.
+ Das ist vor allem dann nützlich,
+ wenn Sie eingebettete Dateien (wie Grafiken oder Unterdokumente) haben,
+ die mit relativen Pfaden eingebunden sind.
+ In dem Fall erlaubt die Option,
+ dass diese Dateien weiterhin gefunden werden,
+ wenn das Dokument irgendwohin verschoben wurde,
+ die Dateien aber nicht.
 \end_layout
 
 \begin_layout Subsubsection
