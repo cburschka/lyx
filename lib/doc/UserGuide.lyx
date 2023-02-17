@@ -1145,11 +1145,12 @@ Backup Files
 
 \begin_layout Standard
 
-\change_inserted -712698321 1676624410
+\change_inserted -712698321 1676629660
 By default,
  \SpecialChar LyX
  makes backup copies of files when they are saved.
- These files normally are stored in the same directory than the original file and with the same file name but the extension 
+ Normally,
+ these files are stored in the same directory than the original file and with the same file name but the extension 
 \family typewriter
 .lyx~
 \family default
@@ -1306,11 +1307,12 @@ Emergency files
 
 \begin_layout Standard
 
-\change_inserted -712698321 1676624951
+\change_inserted -712698321 1676629567
 If \SpecialChar LyX
  crashes and documents have unsaved changes,
  the program furthermore tries to write an emergency file,
- which is a version of the document containing all unsaved changes.
+ which is a version of the document containing all unsaved changes,
+ even those that have been made after the latest snapshot.
 \end_layout
 
 \begin_layout Standard
@@ -1452,12 +1454,12 @@ The fourth type of file,
 
 \begin_layout Standard
 
-\change_inserted -712698321 1676626368
+\change_inserted -712698321 1676629641
 So much for the safety net.
- We hope you will not not it,
+ We hope you will not need it,
  but if so,
  that it catches you as high up as possible.
- Now let us turn to the actual writing process.
+ Now let us return to the actual writing process.
 \change_unchanged
 
 \end_layout
