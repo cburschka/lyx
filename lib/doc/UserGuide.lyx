@@ -1078,6 +1078,58 @@ d version
 Control 
 \family default
 you can register the changes you made to a document so that others can identify them as your changes.
+\change_inserted -712698321 1676620203
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -712698321 1676622914
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Safety-Nets"
+
+\end_inset
+
+Safety Nets:
+ Rescuing Files If Things Go Awry
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676623839
+\SpecialChar LyX
+ lays much stress on safety.
+ We know how much effort you invest in your work,
+ and thus the last thing we want is that this work gets lost.
+ However,
+ we cannot completely prevent bad things from happening:
+ \SpecialChar LyX
+ might crash (although we put in all effort that it doesn't),
+ you might face a power outage while you are working on a document with unsaved changes,
+ disks might get corrupt or files might get lost or damaged during synchronization.
+ For such cases,
+ \SpecialChar LyX
+ provides a multi-layered safety net that will hopefully prevent you from major hassles.
+ This means that \SpecialChar LyX
+ does not simply make a backup file,
+ it makes several such files that might be useful in different scenarios.
+ Parts of this multi-layered net can be switched off,
+ if you prefer to go a bit more risky over having multiple files (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Backup documents"
+
+\end_inset
+
+),
+ but all measures are on by default to provide you with most possible security.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -57292,7 +57344,11 @@ Documents
 \family sans
 Backup original documents when saving
 \family default
- creates a backup copy of the file in the state when it was opened or when it was saved the last time.
+ creates a backup copy of the file in the state when it was 
+\change_deleted -712698321 1676618729
+opened or when it was 
+\change_unchanged
+saved the last time.
  It is stored in the 
 \family sans
 Backup
@@ -57323,21 +57379,103 @@ directory
 \family default
  is specified.
  The backup file has the file extension 
+\change_deleted -712698321 1676618692
+
+\family typewriter
+
 \begin_inset Quotes eld
 \end_inset
 
 
-\family sans
+\change_unchanged
 .lyx~
+\change_deleted -712698321 1676618694
+
 \family default
 
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1676618670
+ and the same name than the original file.
+ If a 
+\family sans
+Backup
+\begin_inset space ~
+\end_inset
+
+directory
+\family default
+ is specified,
+ the file has the full path in its file name,
+ separated by 
+\begin_inset Quotes eld
+\end_inset
+
+!
+\begin_inset Quotes erd
+\end_inset
+
+,
+ e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\family typewriter
+!MyDir!MySubDir!Filename.lyx~
+\family default
 .
+\change_deleted -712698321 1676618585
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1676622933
+If the option 
+\family sans
+Make auto-save snapshots every X minutes
+\family default
+ is checked,
+ LyX furthermore automatically saves snapshots of the current document (including unsaved changes) in the specified interval if there are unsaved changes.
+ These files which are stored as 
+\family typewriter
+#<filename>.lyx#
+\family default
+ in the document's directory are overwritten on each auto-save cycle and deleted when the document is closed normally.
+ Should \SpecialChar LyX
+ crash with unsaved changes and the restoration from the emergency file fail,
+ this file can be used as a resort.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676623063
+Please read section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Safety-Nets"
+
+\end_inset
+
+ for more details on \SpecialChar LyX
+'s diverse backup and safety mechanisms.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1676619117
 With the option 
 \family sans
 Backup documents,
@@ -57345,6 +57483,8 @@ Backup documents,
 \family default
 ,
  you can specify the time between backup saves.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -57367,13 +57507,28 @@ nolink "false"
 ).
  This applies to newly created documents only.
  The compression status of existing documents is not changed when saving.
-\change_inserted 5863208 1673903118
+\change_inserted -712698321 1676619181
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 5863208 1673903357
+\change_inserted -712698321 1676619393
+
+\family sans
+Save the document directory path
+\family default
+ stores the path of the document in the \SpecialChar LyX
+ file.
+ This is particularly handy if you have included files (such as graphics or child documents) which are referred to with relative paths.
+ The option then allows moving the document elsewhere and still finding these included files if they are still in their original directories.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1676618508
 Apart from that LyX autosaves document in regular intervals.
  It is used to restore unsaved changes in the document if the program crashes.
  The temporary file name is 
