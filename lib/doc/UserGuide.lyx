@@ -1097,7 +1097,7 @@ Safety Nets:
 
 \begin_layout Standard
 
-\change_inserted -712698321 1676623839
+\change_inserted -712698321 1676623979
 \SpecialChar LyX
  lays much stress on safety.
  We know how much effort you invest in your work,
@@ -1107,7 +1107,7 @@ Safety Nets:
  \SpecialChar LyX
  might crash (although we put in all effort that it doesn't),
  you might face a power outage while you are working on a document with unsaved changes,
- disks might get corrupt or files might get lost or damaged during synchronization.
+ disks might get corrupt or files might get lost or damaged during synchronization or simply because you deleted it by mistake.
  For such cases,
  \SpecialChar LyX
  provides a multi-layered safety net that will hopefully prevent you from major hassles.
@@ -1128,6 +1128,336 @@ reference "subsec:Backup documents"
 
 ),
  but all measures are on by default to provide you with most possible security.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676624009
+In what follows,
+ we elaborate on the diverse files and when they might become useful.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1676624109
+Backup Files
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676624410
+By default,
+ \SpecialChar LyX
+ makes backup copies of files when they are saved.
+ These files normally are stored in the same directory than the original file and with the same file name but the extension 
+\family typewriter
+.lyx~
+\family default
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\family typewriter
+myfile.lyx~
+\family default
+).
+ If you prefer to have all backups in a central place (and maybe on a separate disk),
+ you can specify a 
+\family sans
+Backup Path
+\family default
+ in preferences (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Paths"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+),
+ then all backups are stored there.
+ In order to prevent file name clashes,
+ the files then do not simply have the original file name,
+ but also the path in their name,
+ separated by 
+\begin_inset Quotes eld
+\end_inset
+
+!
+\begin_inset Quotes erd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\family typewriter
+!home!paula!work!myfile.lyx~
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676624464
+Note that some file managers hide backup files by default,
+ and you need to enable 
+\begin_inset Quotes eld
+\end_inset
+
+Show hidden files
+\begin_inset Quotes erd
+\end_inset
+
+ in order to see them.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676624516
+Backup files provide the latest saved version of a document.
+ They are never deleted by \SpecialChar LyX
+,
+ but overwritten if new changes are saved in the original file.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1676624541
+Auto-save snapshots
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676624657
+By default,
+ \SpecialChar LyX
+ also makes automatic snapshots of all opened documents that have unsaved changes in a regular time interval (which can be adjusted in preferences,
+ see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Backup documents"
+
+\end_inset
+
+).
+ As opposed to the backup files,
+ these also contain unsaved changes and thus might be newer than the backups.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676624841
+These files are always stored in the same directory than the original file and with the same name,
+ but embraced by 
+\begin_inset Quotes eld
+\end_inset
+
+#
+\begin_inset Quotes erd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\family typewriter
+#myfile.lyx#
+\family default
+).
+ Auto-save snapshots are deleted when a document is closed normally,
+ i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.,
+ with all changes saved.
+ They are left on disk in case of non-normal termination (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ program crash or power outage),
+ and this is when they might become useful.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1676624864
+Emergency files
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676624951
+If \SpecialChar LyX
+ crashes and documents have unsaved changes,
+ the program furthermore tries to write an emergency file,
+ which is a version of the document containing all unsaved changes.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676625158
+These files are always stored in the same directory than the original file and with the same name but the extension 
+\family typewriter
+.lyx.emergency
+\family default
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\family typewriter
+myfile.lyx.emergency
+\family default
+).
+ When the respective document is reopened with \SpecialChar LyX
+ next time,
+ the application recognizes the emergency file and asks you whether it should try to recover your file to that last state.
+ If you agree,
+ it will do so,
+ and if this succeeds it will ask you next whether the emergency file can be deleted.
+ Agree on this only after you checked that everything has been correctly recovered!
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1676625213
+Backup files from old \SpecialChar LyX
+ versions
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676625452
+If you open a \SpecialChar LyX
+ document for the first time with a new major version of \SpecialChar LyX
+,
+ it gets converted to the new file format (allowing for new features).
+ In such cases,
+ \SpecialChar LyX
+ keeps a copy of the old version,
+ named as 
+\family typewriter
+<filename>-lyxformat-<n>.lyx
+\family default
+,
+ where <n> is the old format (e.
+\begin_inset space ~
+\end_inset
+
+g.,
+ 
+\family typewriter
+myfile-lyxformat-474.lyx
+\family default
+).
+ Those files are stored at the same location than the backup files,
+ that is alongside the original document or,
+ if specified,
+ in the backup directory.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676625483
+As with backup files,
+ these files are never deleted by \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1676625510
+When to Use Which File?
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676625539
+Now why all these files?
+ Because they have different purposes.
+ Generally spoken:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676625820
+If \SpecialChar LyX
+ terminates unexpectedly,
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1676625790
+first try to restore from the emergency file (by reopening the document in \SpecialChar LyX
+).
+ This file has the latest changes,
+ even changes you made after the last auto-save snapshot has been made.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1676626031
+If the rescue file way did not work because there is no rescue file (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ after a power outage) or if the rescue file is damaged (it might happen in mean cases that the rescue files contains just that latest addition that makes \SpecialChar LyX
+ crash!),
+ look if there is an auto-save snapshot.
+ If so,
+ rename it (not to the original file name unless you checked it) and see if that works for you.
+ In the worst case (with the default setting at least),
+ you will have lost maximally 5 minutes of work.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1676626178
+If there is no auto-save snapshot or this one is garbled as well,
+ use the backup file.
+ It does not have all the unsaved changes,
+ but it might still be the most recent you can get.
+ This is particularly the case if the original file itself got lost or is damaged.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676626301
+The fourth type of file,
+ the backup file from old versions,
+ is useful if the conversion process did not work and results in a non-working document (although we put in all efforts to prevent this) or if you mistakenly opened and saved a document with a newer version (such as a development version) and actually want to keep on using the old version.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1676626368
+So much for the safety net.
+ We hope you will not not it,
+ but if so,
+ that it catches you as high up as possible.
+ Now let us turn to the actual writing process.
 \change_unchanged
 
 \end_layout
