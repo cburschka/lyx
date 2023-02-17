@@ -982,7 +982,7 @@ meineDatei.lyx~
 Sicherungsverzeichnis
 \family default
  festlegen,
- in dem dann alle Sicherungsdateien abgelegt werden (siehe
+ in dem dann alle Sicherungsdateien abgelegt werden (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -1087,7 +1087,7 @@ Die Schnappschüsse werden immer in dem Verzeichnis gespeichert,
 ).
  Die Schnappschüsse werden von \SpecialChar LyX
  gelöscht,
- sobald das entsprechende Dokument normal,
+ sobald die entsprechenden Dokument normal,
  d.
 \begin_inset space \thinspace{}
 \end_inset
@@ -1138,7 +1138,7 @@ meineDatei.lyx.emergency
  ob die Notfalldatei gelöscht werden kann.
  Stimmen Sie dem erst zu,
  nachdem Sie geprüft haben,
- dass alles korrekt wiederhergestellt wurde.
+ dass alles korrekt wiederhergestellt wurde!
 \end_layout
 
 \begin_layout Subsection
@@ -1165,7 +1165,7 @@ meineDatei-lyxformat-474.lyx
 \family default
 ).
  Diese Dateien werden am selben Ort abgelegt wie die normalen Sicherungsdateien,
- also drekt beim Originaldokument oder,
+ also direkt beim Originaldokument oder,
  wenn das so eingerichtet ist,
  im Sicherungsverzeichnis.
 \end_layout
@@ -1193,7 +1193,7 @@ Falls \SpecialChar LyX
 \begin_layout Enumerate
 versuchen Sie zuallererst,
  ihre Dokumente von der Notfalldatei aus wieder herzustellen (einfach,
- indem sie sie mit \SpecialChar LyX
+ indem Sie sie mit \SpecialChar LyX
  wieder öffnen).
  Diese Datei enthält die allerneuesten Änderungen,
  sogar die,
@@ -1211,10 +1211,14 @@ Falls diese Versuch nicht zum Erfolg führt,
  schauen Sie,
  ob es einen automatischen Schnappschuss gibt.
  Falls ja,
- benennen Sie ihn um (noch nicht zum Namen der Originaldatei,
- so lange Sie sie nicht sorgfältig geprüft haben) und schauen Sie,
+ entfernen Sie das abschließende #,
+ so dass die Datei mit \SpecialChar LyX
+ geöffnet werden kann (noch nicht das erste #,
+ so dass die Originaldatei erhalten bleibt,
+ so lange Sie den Schnappschuss nicht sorgfältig geprüft haben) und schauen Sie,
  ob sie für Sie funktioniert.
- Im schlimmsten Fall (jedenfalls mit den Voreinstellung) verlieren Sie so die letzten 5 Minuten Ihrer Arbeit am Dokument.
+ Falls ja,
+ verlieren Sie so im schlimmsten Fall (jedenfalls mit den Voreinstellung) die letzten 5 Minuten Ihrer Arbeit am Dokument.
 \end_layout
 
 \begin_layout Enumerate
@@ -1233,8 +1237,7 @@ Der vierte Dateityp,
  die Sicherungsdatei alter Versionen,
  ist nützlich,
  wenn die Konvertierung schiefgegangen ist und ein nicht lesbares Dokument produziert (obwohl wir alles tun,
- damit das nicht passiert),
- oder wenn Sie versehentlich ein Dokument mit einer neuen \SpecialChar LyX
+ damit das nicht passiert) oder wenn Sie versehentlich ein Dokument mit einer neuen \SpecialChar LyX
 -Version (etwa einer Entwicklerversion) geöffnet und gespeichert haben,
  aber eigentlich mit der alten Version weiterarbeiten möchten.
 \end_layout

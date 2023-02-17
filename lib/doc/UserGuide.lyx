@@ -1235,8 +1235,8 @@ Backup files provide the latest saved version of a document.
 
 \begin_layout Subsection
 
-\change_inserted -712698321 1676624541
-Auto-save snapshots
+\change_inserted -712698321 1676633415
+Auto-Save Snapshots
 \end_layout
 
 \begin_layout Standard
@@ -1301,8 +1301,8 @@ g.,
 
 \begin_layout Subsection
 
-\change_inserted -712698321 1676624864
-Emergency files
+\change_inserted -712698321 1676633419
+Emergency Files
 \end_layout
 
 \begin_layout Standard
@@ -1343,9 +1343,9 @@ myfile.lyx.emergency
 
 \begin_layout Subsection
 
-\change_inserted -712698321 1676625213
-Backup files from old \SpecialChar LyX
- versions
+\change_inserted -712698321 1676633427
+Backup Files from Old \SpecialChar LyX
+ Versions
 \end_layout
 
 \begin_layout Standard
@@ -1419,19 +1419,20 @@ first try to restore from the emergency file (by reopening the document in \Spec
 
 \begin_layout Enumerate
 
-\change_inserted -712698321 1676626031
+\change_inserted -712698321 1676634256
 If the rescue file way did not work because there is no rescue file (e.
 \begin_inset space \thinspace{}
 \end_inset
 
 g.,
- after a power outage) or if the rescue file is damaged (it might happen in mean cases that the rescue files contains just that latest addition that makes \SpecialChar LyX
+ after a power outage) or the rescue file is damaged (it might happen in mean cases that the rescue files contains just that latest addition that makes \SpecialChar LyX
  crash!),
  look if there is an auto-save snapshot.
  If so,
- rename it (not to the original file name unless you checked it) and see if that works for you.
- In the worst case (with the default setting at least),
- you will have lost maximally 5 minutes of work.
+ remove the trailing # so that the file can be opened with \SpecialChar LyX
+ (not the first # in order to keep the original file until you checked the snapshot) and see if that works for you.
+ If so,
+ you will have lost five minutes of work in the worst case (with the default settings at least).
 \end_layout
 
 \begin_layout Enumerate
