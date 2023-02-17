@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-16 13:51+0100\n"
-"PO-Revision-Date: 2023-02-16 12:54+0000\n"
+"POT-Creation-Date: 2023-02-17 15:05+0100\n"
+"PO-Revision-Date: 2023-02-17 14:27+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4095,11 +4095,25 @@ msgid "Backup &original documents when saving"
 msgstr "Zálohovať pô&vodné dokumenty pri uložení"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:103
-msgid "&Backup documents, every"
+msgid ""
+"If this is checked, LyX saves a temporary copy of changed documents in the "
+"given interval (as #filename.lyx# in the given directory). As opposed to the "
+"backup above, this snapshot will be removed when changes are being saved. If "
+"the application crashes with unsaved changes and the restoration from the "
+"emergency file fails, this snapshot can be at rescue."
+msgstr ""
+"Keď je toto zaškrtnuté, LyX zálohuje prechodné kópie zmenených dokumentov v "
+"danom intervale (ako #menosúboru.lyx# v určenom adresáre). Ináč ako navyše, "
+"zálohy budú odstránené keď budú patričné zmeny uložené. Keď aplikácia "
+"havaruje a bez uložených zmien a obnovenie z havarijnej kópie zlyhá, táto "
+"záloha by mohla byť záchranou."
+
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:106
+msgid "Make a&uto-save snapshots every[[ N minutes]]"
 msgstr "Zá&lohovať dokumenty, každých"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:120
-msgid "&minutes"
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:123
+msgid "[[Make auto-save snapshots every N ]]&minutes"
 msgstr "&minút"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:145
