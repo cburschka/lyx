@@ -527,3 +527,28 @@ Sublabel: docbook beamer
 !export/templates/Presentations/Slides_docbook5
 export/(examples|templates)/(ar|de|es|fr|ja|ru)/Presentations/.*_docbook5
 export/(examples|templates)/Presentations/.*_docbook5
+
+# ======================================================================
+Sublabel: expected
+# These exports are expected to fail but don't necessarily indicate a bug.
+# ======================================================================
+
+# These fail because of the following warning:
+#
+#   lyx2lyx warning: Can't find bibfiles for bibtex inset at line <N>!
+#
+# From Jürgen (https://www.mail-archive.com/search?l=mid&q=f6dad5b0596f33e6931ffa4ea4ca49390b5c1bf8.camel%40lyx.org):
+#   The bibtex inset in these files does not contain any bib file, so the
+#   warning is appropriate. I would not want to ditch the warning, as it
+#   makes sense to warn in this case.
+#
+#   On the other hand I can see why it makes sense to include an empty
+#   inset to a template file.
+#
+#   So this is probably a case where adjustment to please the tests would
+#   be over-optimization.
+#
+# Alternative to inverting them would be to just always ignore this warning in
+# the ctests, but I think it might be useful in other cases.
+#
+export/templates/ja/(Articles|Books|Reports)/.*_lyx(16|20|21|22)
