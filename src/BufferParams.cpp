@@ -1921,8 +1921,12 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	if (useNonTeXFonts) {
 		// Babel (as of 2017/11/03) loads fontspec itself
+		// However, it does so only if a non-default font is requested via \babelfont
+		// Thus load fontspec if this is not the case and we need fontspec features
 		if (!features.isProvided("fontspec")
-		    && !(features.useBabel() && features.isAvailableAtLeastFrom("babel", 2017, 11, 3)))
+		    && !(features.useBabel() && features.isAvailableAtLeastFrom("babel", 2017, 11, 3)
+			&& (fontsRoman() != "default" || fontsSans() != "default" || fontsTypewriter() != "default")
+			&& !features.isRequired("textquotesinglep") && !features.isRequired("textquotedoublep")))
 			os << "\\usepackage{fontspec}\n";
 		if (features.mustProvide("unicode-math")
 		    && features.isAvailable("unicode-math"))
