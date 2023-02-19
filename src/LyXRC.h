@@ -252,7 +252,7 @@ public:
 	/// given citation.
 	bool citation_search = false;
 	/// Name of external script which searches for file corresponding to a 
-	/// given citation. At this moment only script lyxpaperview.p is supported
+	/// given citation. At this moment only script lyxpaperview.py is supported
 	/// (search for pdf or ps based on specific items)
 	std::string citation_search_view;
 	/// Items to search for in citation_search_view
