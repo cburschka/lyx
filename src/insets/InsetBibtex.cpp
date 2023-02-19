@@ -176,8 +176,12 @@ bool InsetBibtex::usingBiblatex() const
 
 docstring InsetBibtex::screenLabel() const
 {
-	return usingBiblatex() ? _("Biblatex Generated Bibliography")
+	docstring res;
+	if (getParam("bibfiles").empty())
+		res = _("EMPTY: ");
+	res += usingBiblatex() ? _("Biblatex Generated Bibliography")
 			       : _("BibTeX Generated Bibliography");
+	return res;
 }
 
 
@@ -188,7 +192,7 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 
 	tip += "<ul>";
 	if (bibfilelist.empty())
-		tip += "<li>" + _("none") + "</li>";
+		tip += "<li>" + _("None[[bib databases]], please fill in!") + "</li>";
 	else
 		for (docstring const & bibfile : bibfilelist)
 			tip += "<li>" + bibfile + "</li>";
@@ -934,6 +938,8 @@ void InsetBibtex::updateBuffer(ParIterator const &, UpdateType, bool const /*del
 	}
 	if (invalidate)
 		buffer().invalidateBibinfoCache();
+
+	setBroken(getParam("bibfiles").empty());
 }
 
 
