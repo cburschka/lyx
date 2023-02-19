@@ -165,7 +165,7 @@
    </item>
    <item row="5" column="3">
     <widget class="QPushButton" name="resetColorPB">
-     <property name="statusTip">
+     <property name="toolTip">
       <string>Reset branch color to default (standard background)</string>
      </property>
      <property name="text">
