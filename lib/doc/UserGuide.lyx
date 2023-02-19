@@ -10222,14 +10222,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -10242,7 +10240,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -10266,7 +10263,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -36801,7 +36797,52 @@ localfile
 \change_inserted -712698321 1598526494
 In addition to that,
  \SpecialChar LyX
- also searches your disk for matching files if you enable 
+ also searches
+\change_inserted 5863208 1676821714
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1676822207
+By default we provide python script 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1676822064
+lyxpaperview.py
+\end_layout
+
+\end_inset
+
+ for the search,
+ but you can use any modified script by setting 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1676822135
+
+\backslash
+citation_search_view
+\end_layout
+
+\end_inset
+
+ variable in your RC file.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_inserted -712698321 1598526494
+ your disk for matching files if you enable 
 \family sans
 Search drive for cited files
 \family default
