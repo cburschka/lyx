@@ -112,8 +112,11 @@
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <widget class="QCheckBox" name="citationSearchCB">
-          <property name="statusTip">
+          <property name="toolTip">
            <string>If this is activated, LyX will search your disk for matching files when clicking on &quot;Try to Open Citation Content...&quot; in the citation context menu</string>
+          </property>
+          <property name="statusTip">
+           <string/>
           </property>
           <property name="text">
            <string>Search &amp;drive for cited files</string>
