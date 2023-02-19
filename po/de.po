@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-16 15:18+0100\n"
-"PO-Revision-Date: 2023-02-16 15:24+0100\n"
+"POT-Creation-Date: 2023-02-19 12:19+0100\n"
+"PO-Revision-Date: 2023-02-19 12:25+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -498,17 +498,17 @@ msgid "&Content:"
 msgstr "&Inhalt:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:348 src/frontends/qt/GuiBibtex.cpp:395
-#: src/insets/InsetBibtex.cpp:218 src/insets/InsetBibtex.cpp:236
+#: src/insets/InsetBibtex.cpp:222 src/insets/InsetBibtex.cpp:240
 msgid "all cited references"
 msgstr "alle zitierten Literatureinträge"
 
 #: src/frontends/qt/ui/BibtexUi.ui:353 src/frontends/qt/GuiBibtex.cpp:397
-#: src/insets/InsetBibtex.cpp:216
+#: src/insets/InsetBibtex.cpp:220
 msgid "all uncited references"
 msgstr "alle nicht zitierten Literatureinträge"
 
 #: src/frontends/qt/ui/BibtexUi.ui:358 src/frontends/qt/GuiBibtex.cpp:398
-#: src/insets/InsetBibtex.cpp:214 src/insets/InsetBibtex.cpp:234
+#: src/insets/InsetBibtex.cpp:218 src/insets/InsetBibtex.cpp:238
 msgid "all references"
 msgstr "alle Literatureinträge"
 
@@ -600,7 +600,7 @@ msgid "Height value"
 msgstr "Höhe"
 
 #: src/frontends/qt/ui/BoxUi.ui:139 src/frontends/qt/ui/MathMatrixUi.ui:23
-#: src/frontends/qt/ui/ParagraphUi.ui:86 lib/layouts/japanese-vertical.inc:18
+#: src/frontends/qt/ui/ParagraphUi.ui:86 lib/layouts/japanese-vertical.inc:19
 msgid "Alignment"
 msgstr "Ausrichtung"
 
@@ -7840,7 +7840,7 @@ msgstr "Kurztitel für den Anhang"
 #: lib/layouts/stdstruct.inc:59 lib/layouts/svcommon.inc:658
 #: lib/layouts/tufte-book.layout:301 lib/layouts/tufte-book.layout:303
 #: lib/layouts/tufte-handout.layout:78 lib/examples/Articles:0
-#: src/frontends/qt/GuiDocument.cpp:1816 src/insets/InsetBibtex.cpp:957
+#: src/frontends/qt/GuiDocument.cpp:1816 src/insets/InsetBibtex.cpp:963
 msgid "Bibliography"
 msgstr "Literaturverzeichnis"
 
@@ -7856,8 +7856,8 @@ msgstr "Literaturverzeichnis"
 #: lib/layouts/kluwer.layout:398 lib/layouts/llncs.layout:296
 #: lib/layouts/moderncv.layout:629 lib/layouts/siamltex.layout:355
 #: lib/layouts/stdstruct.inc:75 lib/layouts/svcommon.inc:674
-#: src/insets/InsetBibtex.cpp:958 src/insets/InsetBibtex.cpp:1034
-#: src/insets/InsetBibtex.cpp:1089 src/output_plaintext.cpp:157
+#: src/insets/InsetBibtex.cpp:964 src/insets/InsetBibtex.cpp:1040
+#: src/insets/InsetBibtex.cpp:1095 src/output_plaintext.cpp:157
 msgid "References"
 msgstr "Literaturverzeichnis"
 
@@ -14142,49 +14142,49 @@ msgstr "NDB-Referenz:"
 msgid "Synopsis"
 msgstr "Synopse"
 
-#: lib/layouts/japanese-vertical.inc:9 lib/layouts/japanese-vertical.inc:14
+#: lib/layouts/japanese-vertical.inc:10 lib/layouts/japanese-vertical.inc:15
 msgid "Rensuji"
 msgstr "Rensuji"
 
-#: lib/layouts/japanese-vertical.inc:13
+#: lib/layouts/japanese-vertical.inc:14
 msgid "Rensuji|R"
 msgstr "Rensuji|R"
 
-#: lib/layouts/japanese-vertical.inc:17
+#: lib/layouts/japanese-vertical.inc:18
 msgid "Pos"
 msgstr "Pos"
 
-#: lib/layouts/japanese-vertical.inc:19
+#: lib/layouts/japanese-vertical.inc:20
 msgid "Insert 'c' for centering, 'r' for flushright and 'l' for flushleft"
 msgstr ""
 "Geben Sie hier 'c' für zentriert, 'r' für rechts- und 'l' für "
 "linksausgerichtet ein"
 
-#: lib/layouts/japanese-vertical.inc:23
+#: lib/layouts/japanese-vertical.inc:25
 msgid "Rensuji*"
 msgstr "Rensuji*"
 
-#: lib/layouts/japanese-vertical.inc:26
+#: lib/layouts/japanese-vertical.inc:28
 msgid "Rensuji with no Skip Adjustment|n"
 msgstr "Rensuji ohne Abstandsanpassung|n"
 
-#: lib/layouts/japanese-vertical.inc:27
+#: lib/layouts/japanese-vertical.inc:29
 msgid "Rensuji (no skip adj.)"
 msgstr "Rensuji (keine Anp.)"
 
-#: lib/layouts/japanese-vertical.inc:30
+#: lib/layouts/japanese-vertical.inc:32
 msgid "Bou"
 msgstr "Bou"
 
-#: lib/layouts/japanese-vertical.inc:33 lib/layouts/japanese-vertical.inc:34
+#: lib/layouts/japanese-vertical.inc:35 lib/layouts/japanese-vertical.inc:36
 msgid "Bouten"
 msgstr "Bouten"
 
-#: lib/layouts/japanese-vertical.inc:37
+#: lib/layouts/japanese-vertical.inc:39
 msgid "Kasen"
 msgstr "Kasen"
 
-#: lib/layouts/japanese-vertical.inc:40 lib/layouts/japanese-vertical.inc:41
+#: lib/layouts/japanese-vertical.inc:42 lib/layouts/japanese-vertical.inc:43
 msgid "Bousen"
 msgstr "Bousen"
 
@@ -21857,12 +21857,12 @@ msgid "Reject All Changes|e"
 msgstr "Alle Änderungen ablehnen|h"
 
 #: lib/ui/stdmenus.inc:594
-msgid "Accept All Changes (incl. Master/Children/Siblings)|p"
-msgstr "Alle Änderungen (inkl. Haupt-/Unter-/Geschwisterdateien) akzeptieren|l"
+msgid "Accept All Changes (incl. relatives)|p"
+msgstr "Alle Änderungen im Dokumentenverbund akzeptieren|l"
 
 #: lib/ui/stdmenus.inc:595
-msgid "Reject All Changes (incl. Master/Children/Siblings)|j"
-msgstr "Alle Änderungen (inkl. Haupt-/Unter-/Geschwisterdateien) ablehnen|n"
+msgid "Reject All Changes (incl. relatives)|j"
+msgstr "Alle Änderungen im Dokumentenverbund ablehnen|n"
 
 #: lib/ui/stdmenus.inc:596
 msgid "Show Changes in Output|S"
@@ -28175,7 +28175,7 @@ msgstr ""
 "Der folgende Dateiname könnte Probleme bereiten, wenn LaTeX mit der "
 "exportierten Datei ausgeführt und die erzeugte DVI-Datei geöffnet wird: "
 
-#: src/Buffer.cpp:3442 src/insets/InsetBibtex.cpp:349
+#: src/Buffer.cpp:3442 src/insets/InsetBibtex.cpp:353
 msgid "Export Warning!"
 msgstr "Export-Warnung!"
 
@@ -28527,7 +28527,7 @@ msgid "greyedout inset text"
 msgstr "Grauschrift-Einfügungstext"
 
 #: src/BufferParams.cpp:1721 src/BufferParams.cpp:1875
-#: src/BufferParams.cpp:2320 src/Encoding.cpp:264 src/Paragraph.cpp:3060
+#: src/BufferParams.cpp:2330 src/Encoding.cpp:264 src/Paragraph.cpp:3060
 #: src/frontends/qt/LaTeXHighlighter.cpp:143
 #: src/frontends/qt/LaTeXHighlighter.cpp:257
 #: src/insets/InsetCommandParams.cpp:508 src/insets/InsetCommandParams.cpp:516
@@ -28539,7 +28539,7 @@ msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
 #: src/BufferParams.cpp:1722 src/BufferParams.cpp:1876
-#: src/BufferParams.cpp:2321 src/Encoding.cpp:265 src/Paragraph.cpp:3061
+#: src/BufferParams.cpp:2331 src/Encoding.cpp:265 src/Paragraph.cpp:3061
 #: src/insets/InsetCommandParams.cpp:509 src/insets/InsetCommandParams.cpp:517
 #: src/insets/InsetGraphics.cpp:901 src/insets/InsetGraphics.cpp:909
 #: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
@@ -28592,11 +28592,11 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:2334
+#: src/BufferParams.cpp:2344
 msgid "Uncodable character in user preamble"
 msgstr "Unkodierbares Zeichen im Benutzervorspann"
 
-#: src/BufferParams.cpp:2336
+#: src/BufferParams.cpp:2346
 #, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
@@ -28614,7 +28614,7 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:2651
+#: src/BufferParams.cpp:2661
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -28629,11 +28629,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:2657
+#: src/BufferParams.cpp:2667
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:2664
+#: src/BufferParams.cpp:2674
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -28648,23 +28648,23 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2670 src/BufferView.cpp:1425 src/BufferView.cpp:1457
+#: src/BufferParams.cpp:2680 src/BufferView.cpp:1425 src/BufferView.cpp:1457
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2715
+#: src/BufferParams.cpp:2725
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2716 src/TextClass.cpp:1952 src/TextClass.cpp:1985
+#: src/BufferParams.cpp:2726 src/TextClass.cpp:1952 src/TextClass.cpp:1985
 msgid "Read Error"
 msgstr "Lesefehler"
 
-#: src/BufferParams.cpp:3732
+#: src/BufferParams.cpp:3742
 msgid "No bibliography processor found!"
 msgstr "Kein Literaturverzeichnis-Prozessor gefunden!"
 
-#: src/BufferParams.cpp:3734
+#: src/BufferParams.cpp:3744
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -28678,11 +28678,11 @@ msgstr ""
 "Literaturverweise erzeugt werden.\n"
 "Bitte reparieren Sie Ihr System!"
 
-#: src/BufferParams.cpp:3742
+#: src/BufferParams.cpp:3752
 msgid "Requested bibliography processor not found!"
 msgstr "Verlangter Literaturverzeichnis-Prozessor nicht gefunden!"
 
-#: src/BufferParams.cpp:3744
+#: src/BufferParams.cpp:3754
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -28929,8 +28929,7 @@ msgstr ""
 msgid "ChkTeX warning id # %1$s"
 msgstr "ChkTeX-Warnung Nr. # %1$s"
 
-#: src/Color.cpp:242 src/insets/InsetBibtex.cpp:191
-#: src/insets/InsetBibtex.cpp:210
+#: src/Color.cpp:242 src/insets/InsetBibtex.cpp:214
 msgid "none"
 msgstr "keine"
 
@@ -32231,7 +32230,7 @@ msgstr ""
 msgid "Biblatex Bibliography"
 msgstr "Biblatex-Literaturverzeichnis"
 
-#: src/frontends/qt/GuiBibtex.cpp:400 src/insets/InsetBibtex.cpp:232
+#: src/frontends/qt/GuiBibtex.cpp:400 src/insets/InsetBibtex.cpp:236
 msgid "all reference units"
 msgstr "alle Literaturverzeichnisse"
 
@@ -36262,31 +36261,39 @@ msgstr "Datenbanken öffnen?"
 msgid "&Proceed"
 msgstr "&Fortfahren"
 
-#: src/insets/InsetBibtex.cpp:179
+#: src/insets/InsetBibtex.cpp:181
+msgid "EMPTY: "
+msgstr "LEER: "
+
+#: src/insets/InsetBibtex.cpp:182
 msgid "Biblatex Generated Bibliography"
 msgstr "Biblatex-erzeugtes Literaturverzeichnis"
 
-#: src/insets/InsetBibtex.cpp:180
+#: src/insets/InsetBibtex.cpp:183
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-erzeugtes Literaturverzeichnis"
 
-#: src/insets/InsetBibtex.cpp:186
+#: src/insets/InsetBibtex.cpp:190
 msgid "Databases:"
 msgstr "Datenbanken:"
 
-#: src/insets/InsetBibtex.cpp:209
+#: src/insets/InsetBibtex.cpp:195
+msgid "None[[bib databases]], please fill in!"
+msgstr "Keine, bitte einfügen!"
+
+#: src/insets/InsetBibtex.cpp:213
 msgid "Style File:"
 msgstr "Stildatei:"
 
-#: src/insets/InsetBibtex.cpp:212 src/insets/InsetBibtex.cpp:230
+#: src/insets/InsetBibtex.cpp:216 src/insets/InsetBibtex.cpp:234
 msgid "Lists:"
 msgstr "Enthält:"
 
-#: src/insets/InsetBibtex.cpp:221 src/insets/InsetBibtex.cpp:239
+#: src/insets/InsetBibtex.cpp:225 src/insets/InsetBibtex.cpp:243
 msgid "included in TOC"
 msgstr "im Inhaltverzeichnis aufgeführt"
 
-#: src/insets/InsetBibtex.cpp:226
+#: src/insets/InsetBibtex.cpp:230
 msgid ""
 "Note: This bibliography is not output, since bibliographies in the master "
 "file are not allowed with the setting 'Multiple bibliographies per child "
@@ -36297,15 +36304,15 @@ msgstr ""
 "Einstellung ,Mehrere Literaturverzeichnisse: pro Unterdokument` gewählt "
 "wurde."
 
-#: src/insets/InsetBibtex.cpp:243
+#: src/insets/InsetBibtex.cpp:247
 msgid "Options: "
 msgstr "Optionen: "
 
-#: src/insets/InsetBibtex.cpp:277
+#: src/insets/InsetBibtex.cpp:281
 msgid "[BIBLIOGRAPHY DELETED!]"
 msgstr "[LITERATURVERZEICHNIS GELÖSCHT!]"
 
-#: src/insets/InsetBibtex.cpp:350
+#: src/insets/InsetBibtex.cpp:354
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
