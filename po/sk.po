@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-18 16:49+0100\n"
-"PO-Revision-Date: 2023-02-18 16:11+0000\n"
+"POT-Creation-Date: 2023-02-19 12:35+0100\n"
+"PO-Revision-Date: 2023-02-19 11:39+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -35772,6 +35772,10 @@ msgstr "Otvoriť databázy?"
 msgid "&Proceed"
 msgstr "&Pokračovať"
 
+#: src/insets/InsetBibtex.cpp:181
+msgid "EMPTY: "
+msgstr "PRÁZDNE: "
+
 #: src/insets/InsetBibtex.cpp:179
 msgid "Biblatex Generated Bibliography"
 msgstr "Zoznam bibliografických odkazov generovaný biblatexom"
@@ -35783,6 +35787,10 @@ msgstr "Zoznam bibliografických odkazov generovaný BibTeXom"
 #: src/insets/InsetBibtex.cpp:186
 msgid "Databases:"
 msgstr "Databázy:"
+
+#: src/insets/InsetBibtex.cpp:195
+msgid "None[[bib databases]], please fill in!"
+msgstr "Bez, vložte prosím!"
 
 #: src/insets/InsetBibtex.cpp:209
 msgid "Style File:"
