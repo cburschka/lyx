@@ -1921,10 +1921,9 @@ msgstr "&Možnosti:"
 
 #: src/frontends/qt/ui/FontUi.ui:194 src/frontends/qt/ui/FontUi.ui:302
 #: src/frontends/qt/ui/FontUi.ui:410
-#, fuzzy
 msgid ""
 "Here you can insert additional options (as provided by the font package)"
-msgstr "Zpřesňující volby bibliografického nástroje"
+msgstr "Zde můžete zadat zpřesňující volby (poskytnuté balíčkem fontu)"
 
 #: src/frontends/qt/ui/FontUi.ui:205
 msgid "&Sans Serif:"
@@ -1948,9 +1947,8 @@ msgstr ""
 "Změnit měřítko bezpatkového fontu tak, aby odpovídal rozměru základního fontu"
 
 #: src/frontends/qt/ui/FontUi.ui:267
-#, fuzzy
 msgid "Use old st&yle figures"
-msgstr "Použít &minuskové číslice (old style figures)"
+msgstr "Použít m&inuskové číslice (old style figures)"
 
 #: src/frontends/qt/ui/FontUi.ui:313
 msgid "&Typewriter:"
@@ -1973,9 +1971,8 @@ msgstr ""
 "fontu"
 
 #: src/frontends/qt/ui/FontUi.ui:375
-#, fuzzy
 msgid "Use old style &figures"
-msgstr "Použít &minuskové číslice (old style figures)"
+msgstr "Použít mi&nuskové číslice (old style figures)"
 
 #: src/frontends/qt/ui/FontUi.ui:421
 msgid "&Math:"
@@ -2137,9 +2134,8 @@ msgid "Sho&w in LyX"
 msgstr "&Zobrazit v LyX-u"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:556 src/frontends/qt/ui/GraphicsUi.ui:563
-#, fuzzy
 msgid "Percentage to scale by in LyX (1 to 1000)"
-msgstr "Měřítko zvětšení v procentech"
+msgstr "Měřítko zvětšení v procentech (od 1 do 1000)"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:566
 msgid "Sca&le on screen (%):"
@@ -2149,10 +2145,11 @@ msgstr "Měřítko na o&brazovce (%):"
 msgid ""
 "If LyX uses a dark theme, revert the colors of this graphics in the workarea"
 msgstr ""
+"Pokud LyX používá tmavý mód, provede se inverze barev tohoto obrázku v editoru"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:592
 msgid "Re&vert colors in dark mode"
-msgstr ""
+msgstr "Inve&rze barev v tmavém módu"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:615 src/frontends/qt/ui/GraphicsUi.ui:634
 msgid "Additional LaTeX options"
@@ -4139,10 +4136,11 @@ msgid ""
 "paste operations and when moving content from/to insets if change tracking "
 "is deactivated."
 msgstr ""
+"Při zaškrtnutí budou označení všech revizních změn kopírována/vkládána společně s textem (rovněž při přesouvání z/do vložky). Sledování revizních změn musí být vypnuto."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:93
 msgid "&Keep change tracking markup on copy and paste"
-msgstr ""
+msgstr "Z&achovat revizní značky při kopírování do schránky"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:100
 msgid "Sort &environments alphabetically"
@@ -4156,33 +4154,30 @@ msgstr "&Kurzor následuje posuvník"
 msgid ""
 "If this is activated, LyX will search your disk for matching files when "
 "clicking on \"Try to Open Citation Content...\" in the citation context menu"
-msgstr ""
+msgstr "LyX bude prohledávat odpovídající soubory na lokálním disku pokud zvolíte \"Zkusit otevřít obsah citace...\" v kontextovém menu citace."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:119
-#, fuzzy
 msgid "Search &drive for cited files"
-msgstr "Vybrat adresář s příklady"
+msgstr "H&ledat obsah citací na disku"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:144
-#, fuzzy
 msgid "Patte&rn:"
-msgstr "&Vzorek výplně:"
+msgstr "&Maska:"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:154
 msgid "Define search pattern (see UserGuide for syntax)"
-msgstr ""
+msgstr "Definice vyhledávací masky souboru (syntax v Uživatelské příručce)"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:167
 msgid "Cursor width (&pixels):"
 msgstr "Šířka kurzoru v pi&xelech:"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:177
-#, fuzzy
 msgid ""
 "Configure the width of the text cursor.  \"Auto\" means that zoom-controlled "
 "width is used."
 msgstr ""
-"Automatická šířka (dle zvětšení) bude použita, pokud zvolíte hodnotu 0."
+"Pokud zvolíte hodnotu Auto, bude použita automatická šířka dle zvětšení"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:180
 #: lib/citeengines/biblatex-natbib.citeengine:148
@@ -4204,7 +4199,7 @@ msgstr "&Seskupit nabídku prostředí dle kategorií"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:220 src/frontends/qt/ui/PrefEditUi.ui:246
 msgid "Limit the width of the text in the work area to the specified length"
-msgstr ""
+msgstr "Omezit šířku textu na pracovní ploše editoru podle specifikované šířky"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:223
 msgid "&Limit text width"
@@ -4227,9 +4222,8 @@ msgid "Hide sta&tusbar"
 msgstr "S&krýt stavový řádek"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:323
-#, fuzzy
 msgid "H&ide tabbar"
-msgstr "&Skrýt lištu s dokumenty"
+msgstr "&Skrýt lištu s panely dokumentů"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:365
 msgid "&Hide toolbars"
@@ -20009,7 +20003,7 @@ msgstr "Zkopíruj jako referenci|Z"
 
 #: lib/ui/stdcontext.inc:152
 msgid "Try to Open Citation Content...|O"
-msgstr ""
+msgstr "Zkusit otevřít obsah citace...|o"
 
 #: lib/ui/stdcontext.inc:162
 msgid "Edit Database(s) Externally...|x"
@@ -21754,11 +21748,11 @@ msgid "Reject All Changes|e"
 msgstr "Zamítnout všechny změny|Z"
 
 #: lib/ui/stdmenus.inc:594
-msgid "Accept All Changes (incl. Master/Children/Siblings)|p"
+msgid "Accept All Changes (incl. relatives)|p"
 msgstr "Přijmout všechny změny (i propojených d.)|j"
 
 #: lib/ui/stdmenus.inc:595
-msgid "Reject All Changes (incl. Master/Children/Siblings)|j"
+msgid "Reject All Changes (incl. relatives)|j"
 msgstr "Zamítnout všechny změny (i propojených d.)|n"
 
 #: lib/ui/stdmenus.inc:596
