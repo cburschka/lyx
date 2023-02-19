@@ -299,9 +299,9 @@ void showTarget(string const & target, string const & pdfv, string const & psv)
 		string tmp, tar, opts;
 		tar = split(target, tmp, ' ');
 		if (!pdfv.empty())
-			opts = " -v " + pdfv;
+			opts = " -v \"" + pdfv + "\"";
 		if (!psv.empty())
-			opts += " -w " + psv;
+			opts += " -w \"" + psv + "\"";
 		if (!opts.empty())
 			opts += " ";
 		Systemcall one;
