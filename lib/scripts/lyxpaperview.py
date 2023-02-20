@@ -138,7 +138,12 @@ def main(argv):
         else:
             viewer = pdfviewer
     
-    subprocess.call([viewer, result])
+    cmdline = viewer.split(" -", 1)
+
+    if len(cmdline) == 1:
+        subprocess.call([viewer, result])
+    elif len(cmdline) == 2:
+        subprocess.call([cmdline[0], "-" + cmdline[1] , result])
     
     exit(0)
 
