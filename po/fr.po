@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-17 18:19+0100\n"
-"PO-Revision-Date: 2023-02-20 10:54+0100\n"
+"POT-Creation-Date: 2023-02-20 11:21+0100\n"
+"PO-Revision-Date: 2023-02-20 11:24+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -768,17 +768,17 @@ msgid "&Content:"
 msgstr "&Contenu :"
 
 #: src/frontends/qt/ui/BibtexUi.ui:348 src/frontends/qt/GuiBibtex.cpp:395
-#: src/insets/InsetBibtex.cpp:218 src/insets/InsetBibtex.cpp:236
+#: src/insets/InsetBibtex.cpp:222 src/insets/InsetBibtex.cpp:240
 msgid "all cited references"
 msgstr "toutes les références citées"
 
 #: src/frontends/qt/ui/BibtexUi.ui:353 src/frontends/qt/GuiBibtex.cpp:397
-#: src/insets/InsetBibtex.cpp:216
+#: src/insets/InsetBibtex.cpp:220
 msgid "all uncited references"
 msgstr "toutes les références non citées"
 
 #: src/frontends/qt/ui/BibtexUi.ui:358 src/frontends/qt/GuiBibtex.cpp:398
-#: src/insets/InsetBibtex.cpp:214 src/insets/InsetBibtex.cpp:234
+#: src/insets/InsetBibtex.cpp:218 src/insets/InsetBibtex.cpp:238
 msgid "all references"
 msgstr "toutes les références"
 
@@ -4632,25 +4632,25 @@ msgstr ""
 "appropriés lorsque vous cliquez sur « Tenter d’ouvrir un contenu de "
 "citation...» dans le menu contextuel de citation"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:119
+#: src/frontends/qt/ui/PrefEditUi.ui:122
 msgid "Search &drive for cited files"
 msgstr "Rechercher les fichiers cités sur le &disque"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:144
+#: src/frontends/qt/ui/PrefEditUi.ui:147
 msgid "Patte&rn:"
 msgstr "&Filtre :"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:154
+#: src/frontends/qt/ui/PrefEditUi.ui:157
 msgid "Define search pattern (see UserGuide for syntax)"
 msgstr ""
 "Définir un patron de recherche (voir le Manuel de l’utilisateur pour la "
 "syntaxe)"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:167
+#: src/frontends/qt/ui/PrefEditUi.ui:170
 msgid "Cursor width (&pixels):"
 msgstr "Largeur du curseur (&pixels) :"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:177
+#: src/frontends/qt/ui/PrefEditUi.ui:180
 msgid ""
 "Configure the width of the text cursor.  \"Auto\" means that zoom-controlled "
 "width is used."
@@ -4658,55 +4658,55 @@ msgstr ""
 "Configurer le largeur du curseur de texte. Si la valeur vaut « Auto », le "
 "zoom automatique fixe la largeur du curseur."
 
-#: src/frontends/qt/ui/PrefEditUi.ui:180
+#: src/frontends/qt/ui/PrefEditUi.ui:183
 #: lib/citeengines/biblatex-natbib.citeengine:148
 #: lib/citeengines/biblatex.citeengine:138
 msgid "Auto"
 msgstr "Auto"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:201
+#: src/frontends/qt/ui/PrefEditUi.ui:204
 msgid "Skip trailing non-word characters"
 msgstr "Sauter les caractères finaux non alphanumériques"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:204
+#: src/frontends/qt/ui/PrefEditUi.ui:207
 msgid "Use M&ac-style cursor movement"
 msgstr "Utiliser les déplacements de curseur à la M&ac"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:211
+#: src/frontends/qt/ui/PrefEditUi.ui:214
 msgid "&Group environments by their category"
 msgstr "Re&grouper les environnements par catégorie"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:220 src/frontends/qt/ui/PrefEditUi.ui:246
+#: src/frontends/qt/ui/PrefEditUi.ui:223 src/frontends/qt/ui/PrefEditUi.ui:249
 msgid "Limit the width of the text in the work area to the specified length"
 msgstr ""
 "Contraint la largeur du texte dans la fenêtre de travail à la valeur "
 "spécifiée"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:223
+#: src/frontends/qt/ui/PrefEditUi.ui:226
 msgid "&Limit text width"
 msgstr "&Limitation de la largeur du texte"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:274
+#: src/frontends/qt/ui/PrefEditUi.ui:277
 msgid "Fullscreen"
 msgstr "Plein écran"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:286
+#: src/frontends/qt/ui/PrefEditUi.ui:289
 msgid "Hide &menubar"
 msgstr "Cacher la barre des &menus"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:293
+#: src/frontends/qt/ui/PrefEditUi.ui:296
 msgid "Hide scr&ollbar"
 msgstr "Cacher l'&ascenseur"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:316
+#: src/frontends/qt/ui/PrefEditUi.ui:319
 msgid "Hide sta&tusbar"
 msgstr "Cacher la barre d'&état"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:323
+#: src/frontends/qt/ui/PrefEditUi.ui:326
 msgid "H&ide tabbar"
 msgstr "Cacher la barre des &onglets"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:365
+#: src/frontends/qt/ui/PrefEditUi.ui:368
 msgid "&Hide toolbars"
 msgstr "Cacher les palettes d'&outils"
 
@@ -8113,7 +8113,7 @@ msgstr "Titre court pour l'annexe"
 #: lib/layouts/stdstruct.inc:59 lib/layouts/svcommon.inc:658
 #: lib/layouts/tufte-book.layout:301 lib/layouts/tufte-book.layout:303
 #: lib/layouts/tufte-handout.layout:78 lib/examples/Articles:0
-#: src/frontends/qt/GuiDocument.cpp:1816 src/insets/InsetBibtex.cpp:957
+#: src/frontends/qt/GuiDocument.cpp:1816 src/insets/InsetBibtex.cpp:963
 msgid "Bibliography"
 msgstr "Bibliographie"
 
@@ -8129,8 +8129,8 @@ msgstr "Bibliographie"
 #: lib/layouts/kluwer.layout:398 lib/layouts/llncs.layout:296
 #: lib/layouts/moderncv.layout:629 lib/layouts/siamltex.layout:355
 #: lib/layouts/stdstruct.inc:75 lib/layouts/svcommon.inc:674
-#: src/insets/InsetBibtex.cpp:958 src/insets/InsetBibtex.cpp:1034
-#: src/insets/InsetBibtex.cpp:1089 src/output_plaintext.cpp:157
+#: src/insets/InsetBibtex.cpp:964 src/insets/InsetBibtex.cpp:1040
+#: src/insets/InsetBibtex.cpp:1095 src/output_plaintext.cpp:157
 msgid "References"
 msgstr "Références"
 
@@ -22161,15 +22161,12 @@ msgid "Reject All Changes|e"
 msgstr "Rejeter toutes les modifications|e"
 
 #: lib/ui/stdmenus.inc:594
-msgid "Accept All Changes (incl. Master/Children/Siblings)|p"
-msgstr ""
-"Accepter toutes les modifications (document/sous-document/apparentés inclus)|"
-"p"
+msgid "Accept All Changes (incl. relatives)|p"
+msgstr "Accepter toutes les modifications (dépendances incluses)|p"
 
 #: lib/ui/stdmenus.inc:595
-msgid "Reject All Changes (incl. Master/Children/Siblings)|j"
-msgstr ""
-"Rejeter toutes les modifications (document/sous-document/apparentés inclus)|j"
+msgid "Reject All Changes (incl. relatives)|j"
+msgstr "Rejeter toutes les modifications (dépendances incluses)|j"
 
 #: lib/ui/stdmenus.inc:596
 msgid "Show Changes in Output|S"
@@ -28476,7 +28473,7 @@ msgstr ""
 "Le nom de fichier suivant risque de causer des problèmes quand le fichier "
 "exporté sera traité avec LaTeX, à l'ouverture du fichier DVI : "
 
-#: src/Buffer.cpp:3442 src/insets/InsetBibtex.cpp:349
+#: src/Buffer.cpp:3442 src/insets/InsetBibtex.cpp:353
 msgid "Export Warning!"
 msgstr "Alerte d'exportation !"
 
@@ -28829,7 +28826,7 @@ msgid "greyedout inset text"
 msgstr "texte d'insert grisé"
 
 #: src/BufferParams.cpp:1721 src/BufferParams.cpp:1875
-#: src/BufferParams.cpp:2320 src/Encoding.cpp:264 src/Paragraph.cpp:3060
+#: src/BufferParams.cpp:2330 src/Encoding.cpp:264 src/Paragraph.cpp:3060
 #: src/frontends/qt/LaTeXHighlighter.cpp:143
 #: src/frontends/qt/LaTeXHighlighter.cpp:257
 #: src/insets/InsetCommandParams.cpp:508 src/insets/InsetCommandParams.cpp:516
@@ -28841,7 +28838,7 @@ msgid "LyX Warning: "
 msgstr "Avertissement LyX : "
 
 #: src/BufferParams.cpp:1722 src/BufferParams.cpp:1876
-#: src/BufferParams.cpp:2321 src/Encoding.cpp:265 src/Paragraph.cpp:3061
+#: src/BufferParams.cpp:2331 src/Encoding.cpp:265 src/Paragraph.cpp:3061
 #: src/insets/InsetCommandParams.cpp:509 src/insets/InsetCommandParams.cpp:517
 #: src/insets/InsetGraphics.cpp:901 src/insets/InsetGraphics.cpp:909
 #: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
@@ -28896,11 +28893,11 @@ msgstr ""
 "Choisir un encodage approprié (par exemple utf8)\n"
 "ou modifier les options de classe."
 
-#: src/BufferParams.cpp:2334
+#: src/BufferParams.cpp:2344
 msgid "Uncodable character in user preamble"
 msgstr "Caractère incodable dans le préambule utilisateur"
 
-#: src/BufferParams.cpp:2336
+#: src/BufferParams.cpp:2346
 #, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
@@ -28919,7 +28916,7 @@ msgstr ""
 "Choisir un encodage approprié (par exemple utf8)\n"
 "ou modifier l'orthographe du nom d'auteur."
 
-#: src/BufferParams.cpp:2651
+#: src/BufferParams.cpp:2661
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -28934,11 +28931,11 @@ msgstr ""
 "sera utilisée. LyX ne pourra pas produire\n"
 "un résultat imprimable correct."
 
-#: src/BufferParams.cpp:2657
+#: src/BufferParams.cpp:2667
 msgid "Document class not found"
 msgstr "Classe de document introuvable"
 
-#: src/BufferParams.cpp:2664
+#: src/BufferParams.cpp:2674
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -28953,23 +28950,23 @@ msgstr ""
 "sera utilisée. LyX ne pourra pas produire\n"
 "un résultat imprimable correct."
 
-#: src/BufferParams.cpp:2670 src/BufferView.cpp:1425 src/BufferView.cpp:1457
+#: src/BufferParams.cpp:2680 src/BufferView.cpp:1425 src/BufferView.cpp:1457
 msgid "Could not load class"
 msgstr "Chargement de la classe impossible"
 
-#: src/BufferParams.cpp:2715
+#: src/BufferParams.cpp:2725
 msgid "Error reading internal layout information"
 msgstr "Erreur de lecture du format interne"
 
-#: src/BufferParams.cpp:2716 src/TextClass.cpp:1952 src/TextClass.cpp:1985
+#: src/BufferParams.cpp:2726 src/TextClass.cpp:1952 src/TextClass.cpp:1985
 msgid "Read Error"
 msgstr "Erreur de lecture"
 
-#: src/BufferParams.cpp:3732
+#: src/BufferParams.cpp:3742
 msgid "No bibliography processor found!"
 msgstr "Aucun processeur bibliographique n'a été trouvé !"
 
-#: src/BufferParams.cpp:3734
+#: src/BufferParams.cpp:3744
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -28982,11 +28979,11 @@ msgstr ""
 "bibliographie ni références ne seront créées.\n"
 "Merci de réparer votre installation !"
 
-#: src/BufferParams.cpp:3742
+#: src/BufferParams.cpp:3752
 msgid "Requested bibliography processor not found!"
 msgstr "Processeur bibliographique requis introuvable !"
 
-#: src/BufferParams.cpp:3744
+#: src/BufferParams.cpp:3754
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -29237,8 +29234,7 @@ msgstr "Avertissement ChkTeX n° %1$s"
 # à revoir, accord avec les autres mots incertain
 # Semble féminin dans tous les cas
 # (couleurs ou liste bibtex) -- JPC
-#: src/Color.cpp:242 src/insets/InsetBibtex.cpp:191
-#: src/insets/InsetBibtex.cpp:210
+#: src/Color.cpp:242 src/insets/InsetBibtex.cpp:214
 msgid "none"
 msgstr "aucune"
 
@@ -32487,7 +32483,7 @@ msgstr ""
 msgid "Biblatex Bibliography"
 msgstr "Bibliographie Biblatex"
 
-#: src/frontends/qt/GuiBibtex.cpp:400 src/insets/InsetBibtex.cpp:232
+#: src/frontends/qt/GuiBibtex.cpp:400 src/insets/InsetBibtex.cpp:236
 msgid "all reference units"
 msgstr "toutes les entités de références"
 
@@ -36502,31 +36498,39 @@ msgstr "Ouvrir les bases de données ?"
 msgid "&Proceed"
 msgstr "&Poursuivre"
 
-#: src/insets/InsetBibtex.cpp:179
+#: src/insets/InsetBibtex.cpp:181
+msgid "EMPTY: "
+msgstr "VIDE :"
+
+#: src/insets/InsetBibtex.cpp:182
 msgid "Biblatex Generated Bibliography"
 msgstr "Bibliographie biblatex"
 
-#: src/insets/InsetBibtex.cpp:180
+#: src/insets/InsetBibtex.cpp:183
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliographie BibTeX"
 
-#: src/insets/InsetBibtex.cpp:186
+#: src/insets/InsetBibtex.cpp:190
 msgid "Databases:"
 msgstr "Bases de données :"
 
-#: src/insets/InsetBibtex.cpp:209
+#: src/insets/InsetBibtex.cpp:195
+msgid "None[[bib databases]], please fill in!"
+msgstr "Aucune citation, veuillez effectuer une saisie !"
+
+#: src/insets/InsetBibtex.cpp:213
 msgid "Style File:"
 msgstr "Fichier de style :"
 
-#: src/insets/InsetBibtex.cpp:212 src/insets/InsetBibtex.cpp:230
+#: src/insets/InsetBibtex.cpp:216 src/insets/InsetBibtex.cpp:234
 msgid "Lists:"
 msgstr "Listes :"
 
-#: src/insets/InsetBibtex.cpp:221 src/insets/InsetBibtex.cpp:239
+#: src/insets/InsetBibtex.cpp:225 src/insets/InsetBibtex.cpp:243
 msgid "included in TOC"
 msgstr "inclus dans la TDM"
 
-#: src/insets/InsetBibtex.cpp:226
+#: src/insets/InsetBibtex.cpp:230
 msgid ""
 "Note: This bibliography is not output, since bibliographies in the master "
 "file are not allowed with the setting 'Multiple bibliographies per child "
@@ -36536,15 +36540,15 @@ msgstr ""
 "les bibliographies du fichier maître ne sont pas autorisées avec le réglage "
 "« Bibliographies multiples par sous-document »"
 
-#: src/insets/InsetBibtex.cpp:243
+#: src/insets/InsetBibtex.cpp:247
 msgid "Options: "
 msgstr "Options : "
 
-#: src/insets/InsetBibtex.cpp:277
+#: src/insets/InsetBibtex.cpp:281
 msgid "[BIBLIOGRAPHY DELETED!]"
 msgstr "[BIBLIOGRAPHIE EFFACÉE]"
 
-#: src/insets/InsetBibtex.cpp:350
+#: src/insets/InsetBibtex.cpp:354
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
