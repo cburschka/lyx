@@ -601,12 +601,31 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 		 */
 		if (brk.splitAt(min(w - wid_brk, brk.dim.wid - 2), next_width, false, tail)) {
 			/* if this element originally did not cause a row overflow
-			 * in itself, and the remainder of the row would still be
-			 * too large after breaking, then we will have issues in
-			 * next row. Thus breaking does not help.
+			 * in itself, and the next item is not breakable and would
+			 * still be too large after breaking, then we will have
+			 * issues in next row. Thus breaking does not help.
+			 *
+			 * FIXME: this is not perfect, since it is difficult to
+			 * know whether next element in tail is too large:
+			 *
+			 * - next element could be a very long word, which is
+			 *   theoretically breakable, but not in practice
+			 *   (difficult to solve).
+			 *
+			 * - next element could be short enough, but linked to
+			 *   another one with a NoBreak bond.
+			 *
+			 * Basically, it is difficult to solve that in a purely
+			 * left-to-right algorithm; implementing the TeX badness
+			 * algorithm is more difficult and more costly, so we do
+			 * our best in our restricted setting.
 			 */
+			auto const cit_next = cit_brk + 1;
+			int const tail_wid = !tail.empty() ? tail.front().dim.wid : 0;
 			if (wid_brk + cit_brk->dim.wid < w
-			    && dim_.wid - (wid_brk + brk.dim.wid) >= next_width) {
+			    && cit_next != elements_.end()
+			    && tail_wid + cit_next->dim.wid > next_width
+			    && !(cit_next->row_flags & CanBreakInside)) {
 				tail.clear();
 				break;
 			}
