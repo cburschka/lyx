@@ -189,8 +189,20 @@ bool Row::Element::splitAt(int const width, int next_width, bool force,
 		// first_e row should be broken after the original element
 		first_e.row_flags |= BreakAfter;
 	} else {
-		// Restore the after flags of the original element.
+#if 1
+		// remove the BreakAfter that got added above.
 		first_e.row_flags &= ~BreakAfter;
+#else
+		// FIXME : the code below looks like a good idea, but I do not
+		//         have a use case yet. The question is what happens
+		//         when breaking at the end of a string with a
+		//         trailing space.
+		// if it turns out that no breaking was necessary, remove the
+		// BreakAfter that got added above.
+		if (first_e.dim.wid <= width)
+			first_e.row_flags &= ~BreakAfter;
+#endif
+		// Restore the after flags of the original element.
 		first_e.row_flags |= row_flags & AfterFlags;
 	}
 
