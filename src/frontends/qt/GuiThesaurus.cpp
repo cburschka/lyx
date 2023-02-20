@@ -124,22 +124,9 @@ void GuiThesaurus::selectionChanged()
 	QString item = meaningsTV->currentItem()->text(col);
 	// cut out the classification in brackets:
 	// "hominid (generic term)" -> "hominid"
-#if QT_VERSION < 0x060000
-	QRegExp re("^([^\\(\\)]+)\\b\\(?.*\\)?.*$");
-#else
 	QRegularExpression re("^([^\\(\\)]+)\\b\\(?.*\\)?.*$");
-#endif
 	// This is for items with classifications at the beginning:
 	// "(noun) man" -> "man"; "(noun) male (generic term)" -> "male"
-#if QT_VERSION < 0x060000
-	QRegExp rex("^(\\(.+\\))\\s*([^\\(\\)]+)\\s*\\(?.*\\)?.*$");
-	int pos = re.indexIn(item);
-	if (pos > -1)
-		item = re.cap(1).trimmed();
-	pos = rex.indexIn(item);
-	if (pos > -1)
-		item = rex.cap(2).trimmed();
-#else
 	QRegularExpression rex("^(\\(.+\\))\\s*([^\\(\\)]+)\\s*\\(?.*\\)?.*$");
 	QRegularExpressionMatch match = re.match(item);
 	if (match.hasMatch())
@@ -147,7 +134,6 @@ void GuiThesaurus::selectionChanged()
 	match = rex.match(item);
 	if (match.hasMatch())
 		item = match.captured(2).trimmed();
-#endif
 	replaceED->setText(item);
 	replacePB->setEnabled(!isBufferReadonly());
 	changed();
@@ -165,22 +151,9 @@ void GuiThesaurus::selectionClicked(QTreeWidgetItem * item, int col)
 	QString str = item->text(col);
 	// cut out the classification in brackets:
 	// "hominid (generic term)" -> "hominid"
-#if QT_VERSION < 0x060000
-	QRegExp re("^([^\\(\\)]+)\\b\\(?.*\\)?.*$");
-#else
 	QRegularExpression re("^([^\\(\\)]+)\\b\\(?.*\\)?.*$");
-#endif
 	// This is for items with classifications at the beginning:
 	// "(noun) man" -> "man"; "(noun) male (generic term)" -> "male"
-#if QT_VERSION < 0x060000
-	QRegExp rex("^(\\(.+\\))\\s*([^\\(\\)]+)\\s*\\(?.*\\)?.*$");
-	int pos = re.indexIn(str);
-	if (pos > -1)
-		str = re.cap(1).trimmed();
-	pos = rex.indexIn(str);
-	if (pos > -1)
-		str = rex.cap(2).trimmed();
-#else
 	QRegularExpression rex("^(\\(.+\\))\\s*([^\\(\\)]+)\\s*\\(?.*\\)?.*$");
 	QRegularExpressionMatch match = re.match(str);
 	if (match.hasMatch())
@@ -188,7 +161,6 @@ void GuiThesaurus::selectionClicked(QTreeWidgetItem * item, int col)
 	match = rex.match(str);
 	if (match.hasMatch())
 		str = match.captured(2).trimmed();
-#endif
 	entryCO->insertItem(0, str);
 	entryCO->setCurrentIndex(0);
 

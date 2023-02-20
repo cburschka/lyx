@@ -18,7 +18,7 @@
 #include "support/docstring.h"
 #include "support/qstring_helpers.h"
 
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QLocale>
 #include <QString>
 #include <QVector>
@@ -83,9 +83,10 @@ QString charFilterRegExp(QString const & filter)
 	QString re = ".*";
 	for (QChar const & c : filter) {
 		if (c.isLower())
-			re +=  "["+ QRegExp::escape(c) + QRegExp::escape(c.toUpper()) + "]";
+			re +=  "[" + QRegularExpression::escape(c)
+			           + QRegularExpression::escape(c.toUpper()) + "]";
 		else
-			re +=  QRegExp::escape(c);
+			re +=  QRegularExpression::escape(c);
 	}
 	return re;
 }
@@ -95,9 +96,10 @@ QString charFilterRegExpC(QString const & filter)
 	QString re = "(";
 	for (QChar const & c : filter) {
 		if (c.isLower())
-			re +=  "["+ QRegExp::escape(c) + QRegExp::escape(c.toUpper()) + "]";
+			re +=  "[" + QRegularExpression::escape(c)
+		               + QRegularExpression::escape(c.toUpper()) + "]";
 		else
-			re +=  QRegExp::escape(c);
+			re +=  QRegularExpression::escape(c);
 	}
 	return re + ")";
 }

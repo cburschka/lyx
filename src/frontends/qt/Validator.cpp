@@ -192,11 +192,7 @@ NoNewLineValidator::NoNewLineValidator(QWidget * parent)
 
 QValidator::State NoNewLineValidator::validate(QString & qtext, int &) const
 {
-#if QT_VERSION < 0x060000
-	qtext.remove(QRegExp("[\\n\\r]"));
-#else
 	qtext.remove(QRegularExpression("[\\n\\r]"));
-#endif
 	return QValidator::Acceptable;
 }
 

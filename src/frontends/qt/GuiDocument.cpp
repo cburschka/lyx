@@ -4002,13 +4002,8 @@ void GuiDocument::applyView()
 		pdf.pagemode.clear();
 	pdf.quoted_options = pdf.quoted_options_check(
 				fromqstr(pdfSupportModule->optionsTE->toPlainText()));
-#if QT_VERSION < 0x060000
-	bp_.document_metadata = qstring_to_ucs4(pdfSupportModule->metadataTE->toPlainText()
-						.trimmed().replace(QRegExp("\n+"), "\n"));
-#else
 	bp_.document_metadata = qstring_to_ucs4(pdfSupportModule->metadataTE->toPlainText()
 						.trimmed().replace(QRegularExpression("\n+"), "\n"));
-#endif
 
 	// change tracking
 	bp_.track_changes = changesModule->trackChangesCB->isChecked();

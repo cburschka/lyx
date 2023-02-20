@@ -127,13 +127,8 @@ static QString release_notes()
 					continue;
 
 				// detect links to the tracker
-#if QT_VERSION < 0x060000
-				line.replace(QRegExp("(bug )(\\#)(\\d+)*"),
-					     "<a href=\"http://www.lyx.org/trac/ticket/\\3\">\\1\\3</a>");
-#else
 				line.replace(QRegularExpression("(bug )(\\#)(\\d+)*"),
 					     "<a href=\"http://www.lyx.org/trac/ticket/\\3\">\\1\\3</a>");
-#endif
 
 				// headings
 				if (line.startsWith("!!!")) {

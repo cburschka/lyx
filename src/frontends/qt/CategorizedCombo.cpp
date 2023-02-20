@@ -34,9 +34,6 @@
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 #include <QTextFrame>
-#if QT_VERSION >= 0x060000
-#include <QtCore5Compat/QRegExp>
-#endif
 
 using namespace lyx::support;
 
@@ -273,11 +270,7 @@ QString CCItemDelegate::underlineFilter(QString const & s) const
 	if (f.isEmpty())
 		return s;
 	QString r(s);
-#if QT_VERSION < 0x060000
-	QRegExp pattern(charFilterRegExpC(f));
-#else
 	QRegularExpression pattern(charFilterRegExpC(f));
-#endif
 	r.replace(pattern, "<u><b>\\1</b></u>");
 	return r;
 }

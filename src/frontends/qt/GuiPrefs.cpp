@@ -189,11 +189,7 @@ QString browseRelToSub(QString const & filename, QString const & relpath,
 		toqstr(makeRelPath(qstring_to_ucs4(outname), qstring_to_ucs4(relpath)));
 
 	QString testname = reloutname;
-#if QT_VERSION < 0x060000
-	testname.remove(QRegExp("^(\\.\\./)+"));
-#else
 	testname.remove(QRegularExpression("^(\\.\\./)+"));
-#endif
 
 	if (testname.contains("/"))
 		return outname;
@@ -2469,11 +2465,7 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 	startCommandED->setValidator(new NoNewLineValidator(startCommandED));
 	endCommandED->setValidator(new NoNewLineValidator(endCommandED));
 
-#if QT_VERSION < 0x060000
-	defaultDecimalSepED->setValidator(new QRegExpValidator(QRegExp("\\S"), this));
-#else
 	defaultDecimalSepED->setValidator(new QRegularExpressionValidator(QRegularExpression("\\S"), this));
-#endif
 	defaultDecimalSepED->setMaxLength(1);
 
 	defaultLengthUnitCO->addItem(lyx::qt_(unit_name_gui[Length::CM]), Length::CM);

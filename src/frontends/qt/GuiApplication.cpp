@@ -111,7 +111,6 @@
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
 #include <QRandomGenerator>
 #endif
-#include <QRegExp>
 #include <QSessionManager>
 #include <QSettings>
 #include <QSocketNotifier>
@@ -2623,16 +2622,6 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 		int x, y;
 		int w, h;
 		QChar sx, sy;
-#if QT_VERSION < 0x060000
-		QRegExp re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)){0,1}(?:([+-][0-9]*)){0,1}" );
-		re.indexIn(geometry_arg);
-		w = re.cap(1).toInt();
-		h = re.cap(2).toInt();
-		x = re.cap(3).toInt();
-		y = re.cap(4).toInt();
-		sx = re.cap(3).isEmpty() ? '+' : re.cap(3).at(0);
-		sy = re.cap(4).isEmpty() ? '+' : re.cap(4).at(0);
-#else
 		QRegularExpression re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)){0,1}(?:([+-][0-9]*)){0,1}" );
 		QRegularExpressionMatch match = re.match(geometry_arg);
 		w = match.captured(1).toInt();
@@ -2641,7 +2630,7 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 		y = match.captured(4).toInt();
 		sx = match.captured(3).isEmpty() ? '+' : match.captured(3).at(0);
 		sy = match.captured(4).isEmpty() ? '+' : match.captured(4).at(0);
-#endif
+
 		// Set initial geometry such that we can get the frame size.
 		view->setGeometry(x, y, w, h);
 		int framewidth = view->geometry().x() - view->x();

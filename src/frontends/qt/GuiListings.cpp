@@ -30,11 +30,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QValidator>
-#if QT_VERSION < 0x060000
-#include <QRegExpValidator>
-#else
 #include <QRegularExpressionValidator>
-#endif
 
 using namespace std;
 using namespace lyx::support;
@@ -236,11 +232,7 @@ GuiListings::GuiListings(GuiView & lv)
 	numberStepLE->setValidator(new QIntValidator(0, 1000000, this));
 	firstlineLE->setValidator(new QIntValidator(0, 1000000, this));
 	lastlineLE->setValidator(new QIntValidator(0, 1000000, this));
-#if QT_VERSION < 0x060000
-	placementLE->setValidator(new QRegExpValidator(QRegExp("[\\*tbph]*"), this));
-#else
 	placementLE->setValidator(new QRegularExpressionValidator(QRegularExpression("[\\*tbph]*"), this));
-#endif
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
