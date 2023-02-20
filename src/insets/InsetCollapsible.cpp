@@ -424,7 +424,7 @@ void InsetCollapsible::cursorPos(BufferView const & bv,
 
 	switch (geometry(bv)) {
 	case LeftButton:
-		x += dimensionCollapsed(bv).wid;
+		x += dimensionCollapsed(bv).wid - leftOffset(&bv) / 2;
 		break;
 	case TopButton: {
 		y += dimensionCollapsed(bv).des + textdim.asc;
