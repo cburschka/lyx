@@ -498,7 +498,23 @@ Avertissement:
 
 \series default
  dans le document,
- on utilise «graphique» en tant que raccourci de «objet graphique»:
+ on utilise 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+ en tant que raccourci de 
+\begin_inset Quotes cld
+\end_inset
+
+objet graphique
+\begin_inset Quotes crd
+\end_inset
+
+:
  graphique,
  diagramme,
  image,
@@ -9946,14 +9962,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9966,7 +9980,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9999,7 +10012,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
