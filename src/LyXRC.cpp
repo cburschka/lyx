@@ -1662,8 +1662,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	case RC_CITATION_SEARCH:
 		if (ignore_system_lyxrc ||
 		    citation_search != system_lyxrc.citation_search) {
-			os << "# Set to true to use script to search\n"
-			   << "# locl disk for citation targets.\n"
+			os << "# Set to true to use script to search"
+			   << " local disk for citation targets.\n"
 			   << "\\citation_search "
 			   << convert<string>(citation_search)
 			   << '\n';
