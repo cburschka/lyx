@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-15 21:27+0100\n"
+"POT-Creation-Date: 2023-02-21 09:56+0100\n"
 "PO-Revision-Date: 2023-02-03 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -397,17 +397,17 @@ msgid "&Content:"
 msgstr "&Obsah:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:348 src/frontends/qt/GuiBibtex.cpp:395
-#: src/insets/InsetBibtex.cpp:218 src/insets/InsetBibtex.cpp:236
+#: src/insets/InsetBibtex.cpp:222 src/insets/InsetBibtex.cpp:240
 msgid "all cited references"
 msgstr "všechny citované reference"
 
 #: src/frontends/qt/ui/BibtexUi.ui:353 src/frontends/qt/GuiBibtex.cpp:397
-#: src/insets/InsetBibtex.cpp:216
+#: src/insets/InsetBibtex.cpp:220
 msgid "all uncited references"
 msgstr "všechny necitované reference"
 
 #: src/frontends/qt/ui/BibtexUi.ui:358 src/frontends/qt/GuiBibtex.cpp:398
-#: src/insets/InsetBibtex.cpp:214 src/insets/InsetBibtex.cpp:234
+#: src/insets/InsetBibtex.cpp:218 src/insets/InsetBibtex.cpp:238
 msgid "all references"
 msgstr "všechny reference"
 
@@ -497,7 +497,7 @@ msgid "Height value"
 msgstr "Hodnota výšky"
 
 #: src/frontends/qt/ui/BoxUi.ui:139 src/frontends/qt/ui/MathMatrixUi.ui:23
-#: src/frontends/qt/ui/ParagraphUi.ui:86
+#: src/frontends/qt/ui/ParagraphUi.ui:86 lib/layouts/japanese-vertical.inc:19
 msgid "Alignment"
 msgstr "Zarovnání"
 
@@ -1770,7 +1770,8 @@ msgstr "Zarovnání uvnitř"
 msgid ""
 "Use the document's default alignment for floats, as specified in Document "
 "Settings."
-msgstr "Použít standardní zarovnání pro plovoucí objekty z nastavení dokumentu."
+msgstr ""
+"Použít standardní zarovnání pro plovoucí objekty z nastavení dokumentu."
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:97
 msgid "D&ocument Default"
@@ -2145,7 +2146,8 @@ msgstr "Měřítko na o&brazovce (%):"
 msgid ""
 "If LyX uses a dark theme, revert the colors of this graphics in the workarea"
 msgstr ""
-"Pokud LyX používá tmavý mód, provede se inverze barev tohoto obrázku v editoru"
+"Pokud LyX používá tmavý mód, provede se inverze barev tohoto obrázku v "
+"editoru"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:592
 msgid "Re&vert colors in dark mode"
@@ -4033,14 +4035,23 @@ msgid "Backup &original documents when saving"
 msgstr "&Zálohovat původní dokumenty při ukládání"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:103
-msgid "&Backup documents, every"
-msgstr "Zá&lohovat dokumenty, každých"
+msgid ""
+"If this is checked, LyX saves a temporary copy of changed documents in the "
+"given interval (as #filename.lyx# in the given directory). As opposed to the "
+"backup above, this snapshot will be removed when changes are being saved. If "
+"the application crashes with unsaved changes and the restoration from the "
+"emergency file fails, this snapshot can be at rescue."
+msgstr ""
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:120
-msgid "&minutes"
-msgstr "&minut"
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:106
+msgid "Make a&uto-save snapshots every[[ N minutes]]"
+msgstr ""
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:145
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:123
+msgid "[[Make auto-save snapshots every N ]]&minutes"
+msgstr ""
+
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:148
 msgid ""
 "If this is checked, new documents will be saved in a compressed binary-"
 "format by default. Existing documents will still be saved in their current "
@@ -4049,11 +4060,11 @@ msgstr ""
 "Nové dokumenty budou uloženy standardně v komprimovaném formátu. Existující "
 "dokumenty budou uloženy dle jejich předechozího nastavení."
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:148
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:151
 msgid "&Save new documents compressed by default"
 msgstr "Standardně &ukládat dokumenty komprimované"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:155
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:158
 msgid ""
 "If this is checked, the document directory path will be saved in the "
 "document. This allows moving the document elsewhere and still finding the "
@@ -4062,19 +4073,19 @@ msgstr ""
 "Cesta k dokumentu bude uložena uvnitř dokumentu. Dovoluje zachování odkazů "
 "na soubory při přesunech dokumentu."
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:158
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:161
 msgid "Save the &document directory path"
 msgstr "Ukládat &cestu k dokumentu"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:168
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:171
 msgid "Windows && Work Area"
 msgstr "Okna a pracovní plocha"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:177
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:180
 msgid "Open documents in &tabs"
 msgstr "Otevírat dokumenty v &panelech"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:184
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:187
 msgid ""
 "Whether to open documents in an already running instance of LyX. (Set the "
 "LyXServer pipe path and restart LyX to enable this feature)"
@@ -4082,31 +4093,31 @@ msgstr ""
 "Otevírat dokumenty v již běžící instanci LyX-u.\n"
 "(Nastavte cestu pro napojení k LyXServeru (pipe) a restartujte LyX.)"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:187
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:190
 msgid "Use s&ingle instance"
 msgstr "Jediná &instance"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:194
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:197
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "Má se zavírací tlačítko objevit na každém panelu zvlášť?"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:197
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:200
 msgid "Displa&y single close-tab button"
 msgstr "&Jediné tlačítko pro zavírání panelu"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:206
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:209
 msgid "Closing last &view:"
 msgstr "Uzavření &posledního panelu"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:217
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:220
 msgid "Closes document"
 msgstr "Zavře dokument"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:222
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:225
 msgid "Hides document"
 msgstr "Skryje dokument"
 
-#: src/frontends/qt/ui/PrefDocHandlingUi.ui:227
+#: src/frontends/qt/ui/PrefDocHandlingUi.ui:230
 msgid "Ask the user"
 msgstr "Zeptat se uživatele"
 
@@ -4136,7 +4147,9 @@ msgid ""
 "paste operations and when moving content from/to insets if change tracking "
 "is deactivated."
 msgstr ""
-"Při zaškrtnutí budou označení všech revizních změn kopírována/vkládána společně s textem (rovněž při přesouvání z/do vložky). Sledování revizních změn musí být vypnuto."
+"Při zaškrtnutí budou označení všech revizních změn kopírována/vkládána "
+"společně s textem (rovněž při přesouvání z/do vložky). Sledování revizních "
+"změn musí být vypnuto."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:93
 msgid "&Keep change tracking markup on copy and paste"
@@ -4154,78 +4167,80 @@ msgstr "&Kurzor následuje posuvník"
 msgid ""
 "If this is activated, LyX will search your disk for matching files when "
 "clicking on \"Try to Open Citation Content...\" in the citation context menu"
-msgstr "LyX bude prohledávat odpovídající soubory na lokálním disku pokud zvolíte \"Zkusit otevřít obsah citace...\" v kontextovém menu citace."
+msgstr ""
+"LyX bude prohledávat odpovídající soubory na lokálním disku pokud zvolíte "
+"\"Zkusit otevřít obsah citace...\" v kontextovém menu citace."
 
-#: src/frontends/qt/ui/PrefEditUi.ui:119
+#: src/frontends/qt/ui/PrefEditUi.ui:122
 msgid "Search &drive for cited files"
 msgstr "H&ledat obsah citací na disku"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:144
+#: src/frontends/qt/ui/PrefEditUi.ui:147
 msgid "Patte&rn:"
 msgstr "&Maska:"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:154
+#: src/frontends/qt/ui/PrefEditUi.ui:157
 msgid "Define search pattern (see UserGuide for syntax)"
 msgstr "Definice vyhledávací masky souboru (syntax v Uživatelské příručce)"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:167
+#: src/frontends/qt/ui/PrefEditUi.ui:170
 msgid "Cursor width (&pixels):"
 msgstr "Šířka kurzoru v pi&xelech:"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:177
+#: src/frontends/qt/ui/PrefEditUi.ui:180
 msgid ""
 "Configure the width of the text cursor.  \"Auto\" means that zoom-controlled "
 "width is used."
 msgstr ""
 "Pokud zvolíte hodnotu Auto, bude použita automatická šířka dle zvětšení"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:180
+#: src/frontends/qt/ui/PrefEditUi.ui:183
 #: lib/citeengines/biblatex-natbib.citeengine:148
 #: lib/citeengines/biblatex.citeengine:138
 msgid "Auto"
 msgstr "Auto"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:201
+#: src/frontends/qt/ui/PrefEditUi.ui:204
 msgid "Skip trailing non-word characters"
 msgstr "Přeskakovat speciální znaky"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:204
+#: src/frontends/qt/ui/PrefEditUi.ui:207
 msgid "Use M&ac-style cursor movement"
 msgstr "Poh&yb kurzoru jako na Mac-u"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:211
+#: src/frontends/qt/ui/PrefEditUi.ui:214
 msgid "&Group environments by their category"
 msgstr "&Seskupit nabídku prostředí dle kategorií"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:220 src/frontends/qt/ui/PrefEditUi.ui:246
+#: src/frontends/qt/ui/PrefEditUi.ui:223 src/frontends/qt/ui/PrefEditUi.ui:249
 msgid "Limit the width of the text in the work area to the specified length"
 msgstr "Omezit šířku textu na pracovní ploše editoru podle specifikované šířky"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:223
+#: src/frontends/qt/ui/PrefEditUi.ui:226
 msgid "&Limit text width"
 msgstr "&Omezit šířku textu"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:274
+#: src/frontends/qt/ui/PrefEditUi.ui:277
 msgid "Fullscreen"
 msgstr "Celoobrazovkový mód"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:286
+#: src/frontends/qt/ui/PrefEditUi.ui:289
 msgid "Hide &menubar"
 msgstr "Skrýt &menu"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:293
+#: src/frontends/qt/ui/PrefEditUi.ui:296
 msgid "Hide scr&ollbar"
 msgstr "Skrýt &posuvník"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:316
+#: src/frontends/qt/ui/PrefEditUi.ui:319
 msgid "Hide sta&tusbar"
 msgstr "S&krýt stavový řádek"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:323
+#: src/frontends/qt/ui/PrefEditUi.ui:326
 msgid "H&ide tabbar"
 msgstr "&Skrýt lištu s panely dokumentů"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:365
+#: src/frontends/qt/ui/PrefEditUi.ui:368
 msgid "&Hide toolbars"
 msgstr "Skrýt panel s &nástroji"
 
@@ -5340,7 +5355,9 @@ msgstr "Vyhledávat &při zadávání"
 
 #: src/frontends/qt/ui/SearchUi.ui:268
 msgid "If the end/start of the document is reached, automatically wrap around"
-msgstr "Pokud se narazí na začátek/konec dokumentu, hledání automaticky začne od druhého konce"
+msgstr ""
+"Pokud se narazí na začátek/konec dokumentu, hledání automaticky začne od "
+"druhého konce"
 
 #: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:107
 msgid "&Wrap"
@@ -6343,6 +6360,30 @@ msgstr "V&ynutit plný název"
 msgid "Use full title even if shorttitle exists"
 msgstr "Použítí plného názvu i v případě existence zkráceného titulku"
 
+#: lib/citeengines/biblatex-natbib.citeengine:153
+#: lib/citeengines/biblatex.citeengine:145
+#: lib/citeengines/jurabib.citeengine:130 lib/citeengines/natbib.citeengine:124
+msgid " et al."
+msgstr " et al."
+
+#: lib/citeengines/biblatex-natbib.citeengine:154
+#: lib/citeengines/biblatex.citeengine:146
+#: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:29
+msgid ", [[separate author names in citation, except for last name]]"
+msgstr ", "
+
+#: lib/citeengines/biblatex-natbib.citeengine:155
+#: lib/citeengines/biblatex.citeengine:147
+#: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:30
+msgid ", and [[separate name of last author in citation]]"
+msgstr ", a "
+
+#: lib/citeengines/biblatex-natbib.citeengine:156
+#: lib/citeengines/biblatex.citeengine:148
+#: lib/citeengines/natbib.citeengine:127 lib/layouts/stdciteformats.inc:31
+msgid " and [[separate two authors in citation]]"
+msgstr " a "
+
 #: lib/citeengines/biblatex-natbib.citeengine:303
 #: lib/citeengines/biblatex.citeengine:289
 msgid "Super"
@@ -6404,6 +6445,12 @@ msgstr "před"
 msgid "short title"
 msgstr "krátký titulek"
 
+#: lib/citeengines/jurabib.citeengine:131
+#: lib/citeengines/jurabib.citeengine:132
+#: lib/citeengines/jurabib.citeengine:133
+msgid "/"
+msgstr "/"
+
 #: lib/citeengines/natbib.citeengine:2
 msgid "Natbib (BibTeX)"
 msgstr "Natbib (BibTeX)"
@@ -6447,15 +6494,16 @@ msgstr "American Economic Association (AEA)"
 #: lib/layouts/jlreq-article.layout:4 lib/layouts/jsarticle.layout:4
 #: lib/layouts/jss.layout:4 lib/layouts/kluwer.layout:4
 #: lib/layouts/llncs.layout:4 lib/layouts/ltjarticle.layout:4
-#: lib/layouts/ltjsarticle.layout:4 lib/layouts/ltugboat.layout:4
-#: lib/layouts/maa-monthly.layout:4 lib/layouts/mwart.layout:4
-#: lib/layouts/paper.layout:4 lib/layouts/revtex4-1.layout:4
-#: lib/layouts/revtex4-2.layout:4 lib/layouts/revtex4.layout:4
-#: lib/layouts/scrartcl.layout:4 lib/layouts/scrarticle-beamer.layout:4
-#: lib/layouts/siamltex.layout:4 lib/layouts/singlecol-new.layout:4
-#: lib/layouts/spie.layout:4 lib/layouts/svglobal3.layout:4
-#: lib/layouts/svjog.layout:4 lib/layouts/svprobth.layout:4
-#: lib/layouts/tarticle.layout:4 lib/examples/Articles:0
+#: lib/layouts/ltjsarticle.layout:4 lib/layouts/ltjtarticle.layout:4
+#: lib/layouts/ltugboat.layout:4 lib/layouts/maa-monthly.layout:4
+#: lib/layouts/mwart.layout:4 lib/layouts/paper.layout:4
+#: lib/layouts/revtex4-1.layout:4 lib/layouts/revtex4-2.layout:4
+#: lib/layouts/revtex4.layout:4 lib/layouts/scrartcl.layout:4
+#: lib/layouts/scrarticle-beamer.layout:4 lib/layouts/siamltex.layout:4
+#: lib/layouts/singlecol-new.layout:4 lib/layouts/spie.layout:4
+#: lib/layouts/svglobal3.layout:4 lib/layouts/svjog.layout:4
+#: lib/layouts/svprobth.layout:4 lib/layouts/tarticle.layout:4
+#: lib/examples/Articles:0
 msgid "Articles"
 msgstr "Články"
 
@@ -7596,7 +7644,7 @@ msgstr "Short title for the appendix"
 #: lib/layouts/stdstruct.inc:59 lib/layouts/svcommon.inc:658
 #: lib/layouts/tufte-book.layout:301 lib/layouts/tufte-book.layout:303
 #: lib/layouts/tufte-handout.layout:78 lib/examples/Articles:0
-#: src/frontends/qt/GuiDocument.cpp:1816 src/insets/InsetBibtex.cpp:957
+#: src/frontends/qt/GuiDocument.cpp:1816 src/insets/InsetBibtex.cpp:963
 msgid "Bibliography"
 msgstr "Literatura"
 
@@ -7612,8 +7660,8 @@ msgstr "Literatura"
 #: lib/layouts/kluwer.layout:398 lib/layouts/llncs.layout:296
 #: lib/layouts/moderncv.layout:629 lib/layouts/siamltex.layout:355
 #: lib/layouts/stdstruct.inc:75 lib/layouts/svcommon.inc:674
-#: src/insets/InsetBibtex.cpp:958 src/insets/InsetBibtex.cpp:1034
-#: src/insets/InsetBibtex.cpp:1089 src/output_plaintext.cpp:157
+#: src/insets/InsetBibtex.cpp:964 src/insets/InsetBibtex.cpp:1040
+#: src/insets/InsetBibtex.cpp:1095 src/output_plaintext.cpp:157
 msgid "References"
 msgstr "Reference"
 
@@ -7775,8 +7823,9 @@ msgstr "R Journal"
 #: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
 #: lib/layouts/jlreq-report.layout:4 lib/layouts/jreport.layout:4
 #: lib/layouts/ltjreport.layout:4 lib/layouts/ltjsreport.layout:4
-#: lib/layouts/mwrep.layout:4 lib/layouts/report.layout:4
-#: lib/layouts/scrreprt.layout:4 lib/layouts/treport.layout:4
+#: lib/layouts/ltjtreport.layout:4 lib/layouts/mwrep.layout:4
+#: lib/layouts/report.layout:4 lib/layouts/scrreprt.layout:4
+#: lib/layouts/treport.layout:4 lib/examples/Articles:0
 msgid "Reports"
 msgstr "Hlášení"
 
@@ -9424,11 +9473,12 @@ msgstr "Podpodsekce*"
 #: lib/layouts/docbook-section.layout:4 lib/layouts/extbook.layout:4
 #: lib/layouts/jbook.layout:4 lib/layouts/jlreq-book.layout:4
 #: lib/layouts/jsbook.layout:4 lib/layouts/ltjbook.layout:4
-#: lib/layouts/ltjsbook.layout:4 lib/layouts/memoir.layout:4
-#: lib/layouts/mwbk.layout:4 lib/layouts/recipebook.layout:4
-#: lib/layouts/scrbook.layout:4 lib/layouts/svmono.layout:4
-#: lib/layouts/svmult.layout:4 lib/layouts/tbook.layout:4
-#: lib/layouts/tufte-book.layout:4 lib/examples/Articles:0
+#: lib/layouts/ltjsbook.layout:4 lib/layouts/ltjtbook.layout:4
+#: lib/layouts/memoir.layout:4 lib/layouts/mwbk.layout:4
+#: lib/layouts/recipebook.layout:4 lib/layouts/scrbook.layout:4
+#: lib/layouts/svmono.layout:4 lib/layouts/svmult.layout:4
+#: lib/layouts/tbook.layout:4 lib/layouts/tufte-book.layout:4
+#: lib/examples/Articles:0
 msgid "Books"
 msgstr "Knihy"
 
@@ -13932,6 +13982,53 @@ msgstr "NDB reference:"
 msgid "Synopsis"
 msgstr "Synopsis"
 
+#: lib/layouts/japanese-vertical.inc:10 lib/layouts/japanese-vertical.inc:15
+msgid "Rensuji"
+msgstr ""
+
+#: lib/layouts/japanese-vertical.inc:14
+msgid "Rensuji|R"
+msgstr ""
+
+#: lib/layouts/japanese-vertical.inc:18
+#, fuzzy
+msgid "Pos"
+msgstr "cos"
+
+#: lib/layouts/japanese-vertical.inc:20
+msgid "Insert 'c' for centering, 'r' for flushright and 'l' for flushleft"
+msgstr ""
+
+#: lib/layouts/japanese-vertical.inc:25
+msgid "Rensuji*"
+msgstr ""
+
+#: lib/layouts/japanese-vertical.inc:28
+msgid "Rensuji with no Skip Adjustment|n"
+msgstr ""
+
+#: lib/layouts/japanese-vertical.inc:29
+msgid "Rensuji (no skip adj.)"
+msgstr ""
+
+#: lib/layouts/japanese-vertical.inc:32
+#, fuzzy
+msgid "Bou"
+msgstr "Rámeček"
+
+#: lib/layouts/japanese-vertical.inc:35 lib/layouts/japanese-vertical.inc:36
+msgid "Bouten"
+msgstr ""
+
+#: lib/layouts/japanese-vertical.inc:39
+msgid "Kasen"
+msgstr ""
+
+#: lib/layouts/japanese-vertical.inc:42 lib/layouts/japanese-vertical.inc:43
+#, fuzzy
+msgid "Bousen"
+msgstr "Myška"
+
 #: lib/layouts/jarticle.layout:3
 msgid "Japanese Article (Standard Class)"
 msgstr "Japanese Article (Standard Class)"
@@ -14925,35 +15022,50 @@ msgstr "Silný důraz"
 msgid "strong"
 msgstr "silný důraz"
 
-#: lib/layouts/ltjarticle.layout:3
+#: lib/layouts/ltjarticle.layout:3 lib/examples/Articles:0
 #, fuzzy
 msgid "Japanese Article (Standard Class for LuaTeX)"
 msgstr "Japanese Article (Standard Class)"
 
-#: lib/layouts/ltjbook.layout:3
+#: lib/layouts/ltjbook.layout:3 lib/examples/Articles:0
 #, fuzzy
 msgid "Japanese Book (Standard Class for LuaTeX)"
 msgstr "Japanese Book (Standard Class)"
 
-#: lib/layouts/ltjreport.layout:3
+#: lib/layouts/ltjreport.layout:3 lib/examples/Articles:0
 #, fuzzy
 msgid "Japanese Report (Standard Class for LuaTeX)"
 msgstr "Japanese Report (Standard Class)"
 
-#: lib/layouts/ltjsarticle.layout:3
+#: lib/layouts/ltjsarticle.layout:3 lib/examples/Articles:0
 #, fuzzy
 msgid "Japanese Article (JS Bundle for LuaTeX)"
 msgstr "Japanese Article (JS Class)"
 
-#: lib/layouts/ltjsbook.layout:3
+#: lib/layouts/ltjsbook.layout:3 lib/examples/Articles:0
 #, fuzzy
 msgid "Japanese Book (JS Bundle for LuaTeX)"
 msgstr "Japanese Book (JS Class)"
 
-#: lib/layouts/ltjsreport.layout:3
+#: lib/layouts/ltjsreport.layout:3 lib/examples/Articles:0
 #, fuzzy
 msgid "Japanese Report (JS Bundle for LuaTeX)"
 msgstr "Japanese Report (BXJS Class)"
+
+#: lib/layouts/ltjtarticle.layout:3
+#, fuzzy
+msgid "Japanese Article (Standard Class for LuaTeX, vertical Writing)"
+msgstr "Japanese Article (Standard Class: Vertical Writing)"
+
+#: lib/layouts/ltjtbook.layout:3
+#, fuzzy
+msgid "Japanese Book (Standard Class for LuaTeX, vertical Writing)"
+msgstr "Japanese Book (Standard Class: Vertical Writing)"
+
+#: lib/layouts/ltjtreport.layout:3
+#, fuzzy
+msgid "Japanese Report (Standard Class for LuaTeX, vertical Writing)"
+msgstr "Japanese Book (Standard Class: Vertical Writing)"
 
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
@@ -17140,6 +17252,30 @@ msgstr "ACKNOWLEDGEMENTS"
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 msgid "UNDEFINED"
 msgstr "NEDEFINOVÁNO"
+
+#: lib/layouts/stdciteformats.inc:22
+msgid "pp."
+msgstr "str."
+
+#: lib/layouts/stdciteformats.inc:23
+msgid "ed."
+msgstr "ed."
+
+#: lib/layouts/stdciteformats.inc:24
+msgid "eds."
+msgstr "eds."
+
+#: lib/layouts/stdciteformats.inc:25
+msgid "vol."
+msgstr "svaz."
+
+#: lib/layouts/stdciteformats.inc:26
+msgid "no."
+msgstr "č."
+
+#: lib/layouts/stdciteformats.inc:27
+msgid "in"
+msgstr "v"
 
 #: lib/layouts/stdcounters.inc:10
 msgid "\\Roman{part}"
@@ -27647,6 +27783,21 @@ msgstr ""
 msgid "Theses"
 msgstr "Tezaurus"
 
+#: lib/examples/Articles:0
+#, fuzzy
+msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr "Japanese Book (Standard Class: Vertical Writing)"
+
+#: lib/examples/Articles:0
+#, fuzzy
+msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr "Japanese Book (Standard Class: Vertical Writing)"
+
+#: lib/examples/Articles:0
+#, fuzzy
+msgid "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr "Japanese Article (Standard Class: Vertical Writing)"
+
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 #, fuzzy
 msgid "Formal with Footline"
@@ -28107,7 +28258,7 @@ msgstr ""
 "Následující jméno souboru pravděpodobně způsobí problémy při překladu "
 "exportovaného souboru LaTeX-em a následném prohlížení DVI: "
 
-#: src/Buffer.cpp:3442 src/insets/InsetBibtex.cpp:349
+#: src/Buffer.cpp:3442 src/insets/InsetBibtex.cpp:353
 msgid "Export Warning!"
 msgstr "Export-varování!"
 
@@ -28454,7 +28605,7 @@ msgid "greyedout inset text"
 msgstr "zašedlá vložka textu"
 
 #: src/BufferParams.cpp:1721 src/BufferParams.cpp:1875
-#: src/BufferParams.cpp:2320 src/Encoding.cpp:264 src/Paragraph.cpp:3060
+#: src/BufferParams.cpp:2330 src/Encoding.cpp:264 src/Paragraph.cpp:3060
 #: src/frontends/qt/LaTeXHighlighter.cpp:143
 #: src/frontends/qt/LaTeXHighlighter.cpp:257
 #: src/insets/InsetCommandParams.cpp:508 src/insets/InsetCommandParams.cpp:516
@@ -28466,7 +28617,7 @@ msgid "LyX Warning: "
 msgstr "Výstraha LyX-u: "
 
 #: src/BufferParams.cpp:1722 src/BufferParams.cpp:1876
-#: src/BufferParams.cpp:2321 src/Encoding.cpp:265 src/Paragraph.cpp:3061
+#: src/BufferParams.cpp:2331 src/Encoding.cpp:265 src/Paragraph.cpp:3061
 #: src/insets/InsetCommandParams.cpp:509 src/insets/InsetCommandParams.cpp:517
 #: src/insets/InsetGraphics.cpp:901 src/insets/InsetGraphics.cpp:909
 #: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
@@ -28521,11 +28672,11 @@ msgstr ""
 "Vyberte vhodné kódování dokumentu (např. utf8) nebo vhodně změnte nastavení "
 "třídy."
 
-#: src/BufferParams.cpp:2334
+#: src/BufferParams.cpp:2344
 msgid "Uncodable character in user preamble"
 msgstr "Nekódovatelné znaky v uživatelské preambuli"
 
-#: src/BufferParams.cpp:2336
+#: src/BufferParams.cpp:2346
 #, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
@@ -28543,7 +28694,7 @@ msgstr ""
 "\n"
 "Vyberte vhodné kódování dokumentu (např. utf8) nebo změnte preambuli."
 
-#: src/BufferParams.cpp:2651
+#: src/BufferParams.cpp:2661
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -28557,11 +28708,11 @@ msgstr ""
 "Bude použita třída se standardním rozvržením.\n"
 "LyX nebude schopen vytvořit korektní výstup."
 
-#: src/BufferParams.cpp:2657
+#: src/BufferParams.cpp:2667
 msgid "Document class not found"
 msgstr "Třída dokumentu nenalezena"
 
-#: src/BufferParams.cpp:2664
+#: src/BufferParams.cpp:2674
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -28575,23 +28726,23 @@ msgstr ""
 "Bude použita třída se standardním rozvržením.\n"
 "LyX nebude schopen vytvořit korektní výstup."
 
-#: src/BufferParams.cpp:2670 src/BufferView.cpp:1425 src/BufferView.cpp:1457
+#: src/BufferParams.cpp:2680 src/BufferView.cpp:1425 src/BufferView.cpp:1457
 msgid "Could not load class"
 msgstr "Nelze načíst třídu"
 
-#: src/BufferParams.cpp:2715
+#: src/BufferParams.cpp:2725
 msgid "Error reading internal layout information"
 msgstr "Chyba při čtení informací o rozvržení"
 
-#: src/BufferParams.cpp:2716 src/TextClass.cpp:1952 src/TextClass.cpp:1985
+#: src/BufferParams.cpp:2726 src/TextClass.cpp:1952 src/TextClass.cpp:1985
 msgid "Read Error"
 msgstr "Chyba čtení"
 
-#: src/BufferParams.cpp:3732
+#: src/BufferParams.cpp:3742
 msgid "No bibliography processor found!"
 msgstr "Nebyl nalezen generátor bibliografie!"
 
-#: src/BufferParams.cpp:3734
+#: src/BufferParams.cpp:3744
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -28604,11 +28755,11 @@ msgstr ""
 "nebudou vygenerovány.\n"
 "Prosíme opravte svoji instalaci!"
 
-#: src/BufferParams.cpp:3742
+#: src/BufferParams.cpp:3752
 msgid "Requested bibliography processor not found!"
 msgstr "Požadovaný generátor bibliografie nenalezen!"
 
-#: src/BufferParams.cpp:3744
+#: src/BufferParams.cpp:3754
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -28857,8 +29008,7 @@ msgstr ""
 msgid "ChkTeX warning id # %1$s"
 msgstr "ChkTeX varování id # %1$s"
 
-#: src/Color.cpp:242 src/insets/InsetBibtex.cpp:191
-#: src/insets/InsetBibtex.cpp:210
+#: src/Color.cpp:242 src/insets/InsetBibtex.cpp:214
 msgid "none"
 msgstr "žádná"
 
@@ -32060,7 +32210,7 @@ msgstr ""
 msgid "Biblatex Bibliography"
 msgstr "Bibliografie Biblatex-u"
 
-#: src/frontends/qt/GuiBibtex.cpp:400 src/insets/InsetBibtex.cpp:232
+#: src/frontends/qt/GuiBibtex.cpp:400 src/insets/InsetBibtex.cpp:236
 msgid "all reference units"
 msgstr "všechny jednotky referencí"
 
@@ -35772,8 +35922,8 @@ msgstr "Heslo rejstříku (%1$s)"
 msgid "No Citation in Scope!"
 msgstr "Žádná citace v dosahu!"
 
-#: src/frontends/qt/Menus.cpp:1620 src/insets/InsetCitation.cpp:324
-#: src/insets/InsetCitation.cpp:454
+#: src/frontends/qt/Menus.cpp:1620 src/insets/InsetCitation.cpp:325
+#: src/insets/InsetCitation.cpp:455
 msgid "No citations selected!"
 msgstr "Není vybrána žádná citace!"
 
@@ -36041,31 +36191,39 @@ msgstr "Otevřít databáze?"
 msgid "&Proceed"
 msgstr "&Pokračovat"
 
-#: src/insets/InsetBibtex.cpp:179
+#: src/insets/InsetBibtex.cpp:181
+msgid "EMPTY: "
+msgstr ""
+
+#: src/insets/InsetBibtex.cpp:182
 msgid "Biblatex Generated Bibliography"
 msgstr "Bibliografie generovaná Biblatex-em"
 
-#: src/insets/InsetBibtex.cpp:180
+#: src/insets/InsetBibtex.cpp:183
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliografie generovaná BibTeX-em"
 
-#: src/insets/InsetBibtex.cpp:186
+#: src/insets/InsetBibtex.cpp:190
 msgid "Databases:"
 msgstr "Databáze:"
 
-#: src/insets/InsetBibtex.cpp:209
+#: src/insets/InsetBibtex.cpp:195
+msgid "None[[bib databases]], please fill in!"
+msgstr ""
+
+#: src/insets/InsetBibtex.cpp:213
 msgid "Style File:"
 msgstr "Soubor se stylem:"
 
-#: src/insets/InsetBibtex.cpp:212 src/insets/InsetBibtex.cpp:230
+#: src/insets/InsetBibtex.cpp:216 src/insets/InsetBibtex.cpp:234
 msgid "Lists:"
 msgstr "Generovat:"
 
-#: src/insets/InsetBibtex.cpp:221 src/insets/InsetBibtex.cpp:239
+#: src/insets/InsetBibtex.cpp:225 src/insets/InsetBibtex.cpp:243
 msgid "included in TOC"
 msgstr "zahrnuto v Obsahu"
 
-#: src/insets/InsetBibtex.cpp:226
+#: src/insets/InsetBibtex.cpp:230
 msgid ""
 "Note: This bibliography is not output, since bibliographies in the master "
 "file are not allowed with the setting 'Multiple bibliographies per child "
@@ -36074,15 +36232,15 @@ msgstr ""
 "Poznámka: Tato bibliografie nejde na výstup, jelikož bibliografie potomků v "
 "hlavním dokumentu nejsou povoleny ('Vícenásobné bibliografie')"
 
-#: src/insets/InsetBibtex.cpp:243
+#: src/insets/InsetBibtex.cpp:247
 msgid "Options: "
 msgstr "Možnosti:"
 
-#: src/insets/InsetBibtex.cpp:277
+#: src/insets/InsetBibtex.cpp:281
 msgid "[BIBLIOGRAPHY DELETED!]"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:350
+#: src/insets/InsetBibtex.cpp:354
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -36207,16 +36365,16 @@ msgstr "Sub-%1$s"
 msgid "%1$s %2$s: [[Caption label (ex. Figure 1: )]]"
 msgstr ""
 
-#: src/insets/InsetCitation.cpp:320
+#: src/insets/InsetCitation.cpp:321
 msgid "No bibliography defined!"
 msgstr "Není definována žádná bibliografie!"
 
-#: src/insets/InsetCitation.cpp:341
+#: src/insets/InsetCitation.cpp:342
 #, c-format
 msgid "+ %1$d more entries."
 msgstr "+ %1$d dalších položek."
 
-#: src/insets/InsetCitation.cpp:579 src/insets/InsetRef.cpp:538
+#: src/insets/InsetCitation.cpp:580 src/insets/InsetRef.cpp:538
 msgid "BROKEN: "
 msgstr "NEPLATNÝ: "
 
@@ -38411,6 +38569,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámý uživatel"
 
+#~ msgid "&Backup documents, every"
+#~ msgstr "Zá&lohovat dokumenty, každých"
+
+#~ msgid "&minutes"
+#~ msgstr "&minut"
+
 #, fuzzy
 #~ msgid "Acknowledgment[[theorem]]"
 #~ msgstr "Poděkování \\thetheorem."
@@ -39386,39 +39550,6 @@ msgstr "Neznámý uživatel"
 
 #~ msgid "The directory path to the document cannot contain spaces."
 #~ msgstr "Cesta k dokumentu nesmí obsahovat mezery."
-
-#~ msgid " et al."
-#~ msgstr " et al."
-
-#~ msgid ", [[separate author names in citation, except for last name]]"
-#~ msgstr ", "
-
-#~ msgid ", and [[separate name of last author in citation]]"
-#~ msgstr ", a "
-
-#~ msgid " and [[separate two authors in citation]]"
-#~ msgstr " a "
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "pp."
-#~ msgstr "str."
-
-#~ msgid "ed."
-#~ msgstr "ed."
-
-#~ msgid "eds."
-#~ msgstr "eds."
-
-#~ msgid "vol."
-#~ msgstr "svaz."
-
-#~ msgid "no."
-#~ msgstr "č."
-
-#~ msgid "in"
-#~ msgstr "v"
 
 #~ msgid "Cancel Background Process|P"
 #~ msgstr "Zrušit proces na pozadí|Z"
