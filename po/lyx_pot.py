@@ -107,7 +107,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     CounterFormat = re.compile(r'^\s*PrettyFormat\s+"?(.*)"?\s*$', re.IGNORECASE)
     CiteFormat = re.compile(r'^\s*CiteFormat', re.IGNORECASE)
     # Note: preceding and trailing space in the val below matters
-    KeyVal = re.compile(r'^\s*_\w+\s(.*\S)*$')
+    KeyVal = re.compile(r'^\s*B?_\w+\s(.*\S)*$')
     Float = re.compile(r'^\s*Float\s*$', re.IGNORECASE)
     UsesFloatPkg = re.compile(r'^\s*UsesFloatPkg\s+(.*\S)\s*$', re.IGNORECASE)
     IsPredefined = re.compile(r'^\s*IsPredefined\s+(.*\S)\s*$', re.IGNORECASE)
