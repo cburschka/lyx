@@ -9301,12 +9301,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -9319,7 +9317,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -9345,7 +9342,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -33438,14 +33434,102 @@ Bearbeiten\SpecialChar menuseparator
 Kontrolle
 \family default
  aktiviert haben.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Per Voreinstellung wird für die Suche das mitgelieferte Python-Skript 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxpaperview.py
+\end_layout
+
+\end_inset
+
+ verwendet,
+ Sie können aber ein beliebig modifiziertes Skript verwenden,
+ indem Sie die Variable 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+citation_search_view
+\end_layout
+
+\end_inset
+
+ in der Datei 
+\family typewriter
+preferences
+\family default
+ in Ihrem lokalen Konfigurationsverzeichnis (s.
+ für Details den entsprechenden Abschnitt unter 
+\family sans
+Hilfe\SpecialChar menuseparator
+Anpassung
+\family default
+) entsprechend setzen (die Voreinstellung finden Sie in der Datei 
+\family typewriter
+lyxrc.defaults
+\family default
+ im selben Verzeichnis;
+ Sie können sie einfach kopieren und entsprechend anpassen).
+\end_layout
+
+\end_inset
+
  Dafür wird das Suchmuster verwendet,
  das im selben Abschnitt der Einstellungen unter 
 \family sans
 Suchmuster
 \family default
  angegeben ist (per Voreinstellungen sucht \SpecialChar LyX
- nach Jahr und Autoren).
- Jeder Suchbegriff muss im Titel der Datei vorkommen (an beliebiger Position).
+ nach Jahr und Autoren
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Dies erzeugen die Schlüsselwortsequenz 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%year% %abbrvciteauthor%
+\end_layout
+
+\end_inset
+
+.
+ Beachten Sie,
+ dass einige Komponenten (
+\begin_inset Quotes gld
+\end_inset
+
+und
+\begin_inset Quotes grd
+\end_inset
+
+,
+ Kommata,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+et al.
+\begin_inset Quotes grd
+\end_inset
+
+) automatisch ignoriert werden.
+\end_layout
+
+\end_inset
+
+).
+ Jeder Suchbegriff muss im Dateinamen vorkommen (an beliebiger Position).
  \SpecialChar LyX
  öffnet die erste Datei,
  auf die das Muster passt.
