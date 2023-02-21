@@ -36814,6 +36814,8 @@ status collapsed
 
 \change_inserted 5863208 1676822064
 lyxpaperview.py
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -36829,6 +36831,8 @@ status collapsed
 
 \backslash
 citation_search_view
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -36860,7 +36864,55 @@ Control
 Pattern
 \family default
  in the same preferences section (by default:
- year and authors).
+ year and authors
+\change_inserted 5863208 1676968851
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1676969379
+Provided by tokens 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1676968931
+%year% %abbrvciteauthor%
+\end_layout
+
+\end_inset
+
+.
+ Note that some strings (
+\begin_inset Quotes eld
+\end_inset
+
+and
+\begin_inset Quotes erd
+\end_inset
+
+,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+ are automatically stripped from the result.) 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_inserted -712698321 1598526494
+).
  Any of the tokens in the pattern must occur in the 
 \change_deleted 630872221 1621608311
 title
