@@ -36837,7 +36837,33 @@ citation_search_view
 
 \end_inset
 
- variable in your RC file.
+ variable in 
+\change_deleted -712698321 1676971997
+your RC
+\change_inserted -712698321 1676971998
+the
+\change_inserted 5863208 1676822207
+ file
+\change_inserted -712698321 1676972080
+ 
+\family typewriter
+preferences
+\family default
+ in your local configuration directory (please refer to the respective section at 
+\family sans
+Help\SpecialChar menuseparator
+Customization
+\family default
+)
+\change_inserted 5863208 1676822207
+.
+
+\change_inserted -712698321 1676972139
+ The default setting is to be found in the file 
+\family typewriter
+lyxrc.defaults
+\family default
+ in the same directory and can be copied and modified for this purpose.
 \change_unchanged
 
 \end_layout
@@ -36873,7 +36899,13 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 5863208 1676969379
-Provided by tokens 
+Provided by token
+\change_inserted -712698321 1676972365
+ sequence
+\change_deleted -712698321 1676972365
+s
+\change_inserted 5863208 1676969379
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -36881,12 +36913,20 @@ status collapsed
 
 \change_inserted 5863208 1676968931
 %year% %abbrvciteauthor%
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 .
- Note that some strings (
+ Note that some 
+\change_deleted -712698321 1676972344
+strings
+\change_inserted -712698321 1676972349
+constituents
+\change_inserted 5863208 1676969379
+ (
 \begin_inset Quotes eld
 \end_inset
 
@@ -36903,7 +36943,16 @@ et al.
 \begin_inset Quotes erd
 \end_inset
 
- are automatically stripped from the result.) 
+
+\change_inserted -712698321 1676972338
+,
+ commas)
+\change_inserted 5863208 1676969379
+ are automatically stripped from the result.
+\change_deleted -712698321 1676972332
+)
+\change_inserted 5863208 1676969379
+ 
 \change_unchanged
 
 \end_layout
