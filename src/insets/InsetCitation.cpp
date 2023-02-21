@@ -213,10 +213,11 @@ void InsetCitation::openCitation()
 		CiteItem ci;
 		titledata = bi.getInfo(kvar, buffer(), ci,
 				       from_ascii(lyxrc.citation_search_pattern));
-		// some cleanup: commas and " and ", as used in name lists,
+		// some cleanup: commas, " and " and " et al.", as used in name lists,
 		// are not expected in file names
 		titledata = subst(titledata, from_ascii(","), docstring());
 		titledata = subst(titledata, from_ascii(" and "), from_ascii(" "));
+		titledata = subst(titledata, from_ascii(" et al."), docstring());
 		bi.getLocators(kvar, doi, url, file);
 		LYXERR(Debug::INSETS, "Locators: doi:" << doi << " url:"
 		        << url << " file:" << file << " title data:" << titledata
