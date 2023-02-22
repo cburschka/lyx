@@ -2277,7 +2277,7 @@ msgid ""
 "to enter LaTeX code."
 msgstr ""
 "Předat LaTeX-u pole `Jméno' v doslovném znění. Vhodné pro případ přímého "
-"vkládaání LaTeX-ového kódu."
+"vkládání LaTeX-ového kódu."
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:106
 msgid "Specify the link target"
@@ -2291,7 +2291,7 @@ msgstr "Typ odkazu"
 msgid ""
 "Link to the web or any other target with an \"authority\" component (i."
 "e., :// in the URI)"
-msgstr ""
+msgstr "Odkaz na web nebo jiný cíl (za :// v URI)"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:136
 msgid "&Web"
@@ -2317,14 +2317,13 @@ msgstr "Sou&bor"
 msgid ""
 "Link to an arbitrary URI scheme not matched by the other three types (to be "
 "fully spelled out in the Target field above)"
-msgstr ""
+msgstr "Odkaz libovolným odlišným URI schématem (vyplnit v cílovém poli výše)"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:169
 msgid "&Other[[Link Type]]"
-msgstr ""
+msgstr "J&iný"
 
 #: src/frontends/qt/ui/IncludeUi.ui:35
-#, fuzzy
 msgid "I&nclude Type:"
 msgstr "&Způsob zahrnutí:"
 
@@ -2370,7 +2369,7 @@ msgstr "Podtrhni mezery v generovaném výstupu"
 
 #: src/frontends/qt/ui/IncludeUi.ui:127
 msgid "&Mark spaces in output"
-msgstr "&Označ mezery ve výstupu"
+msgstr "O&znač mezery ve výstupu"
 
 #: src/frontends/qt/ui/IncludeUi.ui:140
 msgid "Show LaTeX preview"
@@ -2385,9 +2384,8 @@ msgid "Listing Parameters"
 msgstr "Parametry výpisu"
 
 #: src/frontends/qt/ui/IncludeUi.ui:252
-#, fuzzy
 msgid "&Caption:"
-msgstr "Popisek:"
+msgstr "&Popisek:"
 
 #: src/frontends/qt/ui/IncludeUi.ui:279
 #: src/frontends/qt/ui/ListingsSettingsUi.ui:79
@@ -2402,21 +2400,18 @@ msgid "&Bypass validation"
 msgstr "&Přeskočit ověření platnosti"
 
 #: src/frontends/qt/ui/IncludeUi.ui:289
-#, fuzzy
 msgid "&More parameters"
-msgstr "&Další parametry"
+msgstr "D&alší parametry"
 
 #: src/frontends/qt/ui/IncludeUi.ui:299
-#, fuzzy
 msgid ""
 "Pass content of the `Caption' field literally to LaTeX. Check this if you "
 "want to enter LaTeX code."
 msgstr ""
-"Předat LaTeX-u pole `Jméno' v doslovném znění. Vhodné pro případ přímého "
-"vkládaání LaTeX-ového kódu."
+"Předat LaTeX-u pole `Značka' v doslovném znění. Vhodné pro případ přímého "
+"vkládání LaTeX-ového kódu."
 
 #: src/frontends/qt/ui/IndexUi.ui:23
-#, fuzzy
 msgid "Available I&ndexes"
 msgstr "Dostupné &rejstříky:"
 
@@ -2425,18 +2420,16 @@ msgid "Select the index this entry should be listed in."
 msgstr "Zvolit rejstřík ve kterém má být tato položka vypsána."
 
 #: src/frontends/qt/ui/IndexUi.ui:52
-#, fuzzy
 msgid "&Pagination"
-msgstr "Variation"
+msgstr "&Stránkování"
 
 #: src/frontends/qt/ui/IndexUi.ui:58
-#, fuzzy
 msgid "Page &Range:"
 msgstr "&Rozsah stran:"
 
 #: src/frontends/qt/ui/IndexUi.ui:68
 msgid "If the entry spans multiple pages, you can start or end the range here"
-msgstr ""
+msgstr "Přesahuje-li položka několik stran, můžete začít nebo skončit rozsah zde"
 
 #: src/frontends/qt/ui/IndexUi.ui:88 src/frontends/qt/ui/PageLayoutUi.ui:29
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:20
@@ -2447,11 +2440,11 @@ msgstr "&Formát:"
 msgid ""
 "Customize the format of the page number here. Note that the format is not "
 "used with \"See\" and \"See also\" references."
-msgstr ""
+msgstr "Zde přizpůsobte formát čísel stránek. Tento formát nebude použit u referencí \"Viz\" a \"Viz též\" (\"See\" a \"See also\")."
 
 #: src/frontends/qt/ui/IndexUi.ui:105
 msgid "Enter custom command here (without leading backslash)."
-msgstr ""
+msgstr "Vložte vlastní příkaz zde (bez počátečního zpětného lomítka)"
 
 #: src/frontends/qt/ui/IndicesUi.ui:19
 msgid ""
@@ -17367,9 +17360,8 @@ msgid "Listings"
 msgstr "Výpisy"
 
 #: lib/layouts/stdinsets.inc:19
-#, fuzzy
 msgid "Margin"
-msgstr "okraj"
+msgstr "Okraj"
 
 #: lib/layouts/stdinsets.inc:177
 msgid "Greyedout"
@@ -17399,23 +17391,20 @@ msgid "Idx"
 msgstr "Idx"
 
 #: lib/layouts/stdinsets.inc:435 src/insets/InsetIndexMacro.cpp:63
-#, fuzzy
 msgid "See"
-msgstr "Scene"
+msgstr "Viz"
 
 #: lib/layouts/stdinsets.inc:451 src/insets/InsetIndexMacro.cpp:64
 msgid "See also"
-msgstr ""
+msgstr "Viz též"
 
 #: lib/layouts/stdinsets.inc:456 src/insets/InsetIndexMacro.cpp:66
-#, fuzzy
 msgid "Sort as"
-msgstr "&Třídit jako:"
+msgstr "Třídit jako"
 
 #: lib/layouts/stdinsets.inc:461 src/insets/InsetIndexMacro.cpp:65
-#, fuzzy
 msgid "Subentry"
-msgstr "Country"
+msgstr "Podheslo"
 
 #: lib/layouts/stdinsets.inc:639
 msgid "Argument"
