@@ -692,10 +692,12 @@ GuiView::GuiView(int id)
 	zoom_out_->setAlignment(Qt::AlignCenter);
 
 	statusBar()->addPermanentWidget(zoom_out_);
-	zoom_out_->setEnabled(currentBufferView());
+	zoom_out_->setEnabled(currentBufferView()
+			      && zoom_slider_->value() > zoom_slider_->minimum());
 	statusBar()->addPermanentWidget(zoom_slider_);
 	zoom_slider_->setEnabled(currentBufferView());
-	zoom_in_->setEnabled(currentBufferView());
+	zoom_in_->setEnabled(currentBufferView()
+			     && zoom_slider_->value() < zoom_slider_->maximum());
 	statusBar()->addPermanentWidget(zoom_in_);
 
 	connect(zoom_slider_, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
@@ -829,6 +831,10 @@ void GuiView::zoomSliderMoved(int value)
 	dispatch(FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(value)), dr);
 	scheduleRedrawWorkAreas();
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), value)));
+	zoom_in_->setEnabled(currentBufferView()
+			     && value < zoom_slider_->maximum());
+	zoom_out_->setEnabled(currentBufferView()
+			      && value > zoom_slider_->minimum());
 }
 
 
@@ -1011,6 +1017,8 @@ void GuiView::setCurrentZoom(const int v)
 {
 	lyxrc.currentZoom = v;
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), v)));
+	zoom_in_->setEnabled(currentBufferView() && v < zoom_slider_->maximum());
+	zoom_out_->setEnabled(currentBufferView() && v > zoom_slider_->minimum());
 	Q_EMIT currentZoomChanged(v);
 }
 
@@ -1560,8 +1568,10 @@ void GuiView::onBufferViewChanged()
 	updateDialogs();
 	zoom_slider_->setEnabled(currentBufferView());
 	zoom_value_->setEnabled(currentBufferView());
-	zoom_in_->setEnabled(currentBufferView());
-	zoom_out_->setEnabled(currentBufferView());
+	zoom_in_->setEnabled(currentBufferView()
+			     && zoom_slider_->value() < zoom_slider_->maximum());
+	zoom_out_->setEnabled(currentBufferView()
+			      && zoom_slider_->value() > zoom_slider_->minimum());
 }
 
 
