@@ -560,6 +560,45 @@ static void outline(OutlineOp mode, Cursor & cur, Text * text)
 		}
 		case OutlineIn:
 		case OutlineOut: {
+			// We first iterate without actually doing something
+			// in order to check whether the action flattens the structure.
+			// If so, warn (#11178).
+			ParagraphList::iterator cstart = start;
+			bool strucchange = false;
+			for (; cstart != finish; ++cstart) {
+				toclevel = buf.text().getTocLevel(distance(bgn, cstart));
+				if (toclevel == Layout::NOT_IN_TOC)
+					continue;
+	
+				DocumentClass const & tc = buf.params().documentClass();
+				int const newtoclevel =
+					(mode == OutlineIn ? toclevel + 1 : toclevel - 1);
+	
+				bool found = false;
+				for (auto const & lay : tc) {
+					if (lay.toclevel == newtoclevel
+					    && lay.isNumHeadingLabelType()
+					    && cstart->layout().isNumHeadingLabelType()) {
+						found = true;
+						break;
+					}
+				}
+				if (!found) {
+					strucchange = true;
+					break;
+				}
+			}
+			if (strucchange
+			    && frontend::Alert::prompt(_("Action flattens document structure"),
+						       _("This action will cause some headings that have been "
+							 "on different level before to be on the same level "
+							 "since there is no more lower or higher heading level. "
+							 "Continue still?"),
+						       1, 1,
+						       _("&Yes, continue nonetheless"),
+						       _("&No, quit operation")) == 1)
+				break;
+
 			pit_type const len = distance(start, finish);
 			buf.undo().recordUndo(cur, pit, pit + len - 1);
 			for (; start != finish; ++start) {
