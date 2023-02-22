@@ -69,6 +69,7 @@ protected Q_SLOTS:
 
 	void on_tocTV_activated(QModelIndex const &);
 	void on_tocTV_pressed(QModelIndex const &);
+	void on_tocTV_doubleClicked(QModelIndex const &);
 	void on_updateTB_clicked();
 	void on_sortCB_stateChanged(int state);
 	void on_persistentCB_stateChanged(int state);
@@ -115,6 +116,8 @@ private:
 	int depth_;
 	/// persistence of uncollapsed nodes in toc view
 	bool persistent_;
+	/// keep uncollapsed nodes in this event
+	bool keep_expanded_;
 	///
 	GuiView & gui_view_;
 	// Timer for scheduling expensive update operations

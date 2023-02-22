@@ -47,8 +47,8 @@ namespace lyx {
 namespace frontend {
 
 TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
-	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view),
-	  timer_(new QTimer(this))
+	: QWidget(parent), depth_(0), persistent_(false), keep_expanded_(false),
+	  gui_view_(gui_view), timer_(new QTimer(this))
 {
 	setupUi(this);
 
@@ -263,13 +263,20 @@ void TocWidget::on_tocTV_activated(QModelIndex const & index)
 
 void TocWidget::on_tocTV_pressed(QModelIndex const & index)
 {
-
+	DocIterator const & dit = gui_view_.documentBufferView()->cursor();
+	keep_expanded_ = gui_view_.tocModels().currentIndex(current_type_, dit) == index;
 	Qt::MouseButtons const button = QApplication::mouseButtons();
 	if (button & Qt::LeftButton) {
 		goTo(index);
 		gui_view_.setFocus();
 		gui_view_.activateWindow();
 	}
+}
+
+
+void TocWidget::on_tocTV_doubleClicked(QModelIndex const &)
+{
+	keep_expanded_ = true;
 }
 
 
@@ -492,7 +499,7 @@ void TocWidget::updateView()
 	// Expensive operations are on a timer.  We finish the update immediately
 	// for sparse edition actions, i.e. there was no edition/cursor movement
 	// recently, then every 300ms.
-	if (!timer_->isActive()) {
+	if (!timer_->isActive() && !keep_expanded_) {
 		finishUpdateView();
 		timer_->start(300);
 	}
@@ -512,8 +519,9 @@ void TocWidget::finishUpdateView()
 	// text and moving with arrows. For bigger operations, this is negligible,
 	// and outweighted by TocModels::reset() anyway.
 	if (canNavigate()) {
-		if (!persistent_)
+		if (!persistent_ && !keep_expanded_)
 			setTreeDepth(depth_);
+		keep_expanded_ = false;
 		persistentCB->setChecked(persistent_);
 		// select the item at current cursor location
 		if (gui_view_.documentBufferView()) {
