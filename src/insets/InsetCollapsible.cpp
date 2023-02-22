@@ -191,8 +191,11 @@ Dimension InsetCollapsible::dimensionCollapsed(BufferView const & bv) const
 	int const offset = Inset::textOffset(&bv);
 	theFontMetrics(labelfont).buttonText(
 		buttonLabel(bv), offset, dim.wid, dim.asc, dim.des);
-	// remove spacing on the right for left buttons
-	if (geometry(bv) == LeftButton)
+	// remove spacing on the right for left buttons; we also do it for
+	// TopButton (although it is not useful per se), because
+	// openinlined_ is not always set properly at this point.
+	Geometry const geom = geometry(bv);
+	if (geom == LeftButton || geom == TopButton)
 		// this form makes a difference if offset is even
 		dim.wid -= offset - offset / 2;
 	return dim;
