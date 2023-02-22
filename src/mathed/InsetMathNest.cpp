@@ -2143,8 +2143,8 @@ bool InsetMathNest::insertCompletion(Cursor & cur, docstring const & s, bool fin
 		MathCompletionList::addToFavorites(inset->name());
 #endif
 		lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, " "));
-	}
-	cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
+	} else
+		cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 
 	return true;
 }
