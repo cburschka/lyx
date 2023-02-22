@@ -614,6 +614,8 @@ void TocWidget::init(QString const & str)
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
 	updateViewNow();
+	if (persistent_)
+		setTreeDepth(depth_);
 }
 
 } // namespace frontend
