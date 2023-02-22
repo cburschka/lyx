@@ -1550,6 +1550,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			break;
 		}
+		cur.forceBufferUpdate();
 		// perhaps this should be FINISHED_BACKWARD -- just for clarity?
 		//lyxerr << "returning FINISHED_LEFT" << endl;
 		break;
