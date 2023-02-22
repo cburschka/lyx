@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-19 12:35+0100\n"
-"PO-Revision-Date: 2023-02-19 11:39+0000\n"
+"POT-Creation-Date: 2023-02-22 11:59+0100\n"
+"PO-Revision-Date: 2023-02-22 11:16+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6408,6 +6408,30 @@ msgstr "Vnútiť plný titul"
 msgid "Use full title even if shorttitle exists"
 msgstr "Použiť plný titul aj keď krátky titul existuje"
 
+#: lib/citeengines/biblatex-natbib.citeengine:153
+#: lib/citeengines/biblatex.citeengine:145
+#: lib/citeengines/jurabib.citeengine:130 lib/citeengines/natbib.citeengine:124
+msgid " et al."
+msgstr " a kol."
+
+#: lib/citeengines/biblatex-natbib.citeengine:154
+#: lib/citeengines/biblatex.citeengine:146
+#: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:29
+msgid ", [[separate author names in citation, except for last name]]"
+msgstr ", "
+
+#: lib/citeengines/biblatex-natbib.citeengine:155
+#: lib/citeengines/biblatex.citeengine:147
+#: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:30
+msgid ", and [[separate name of last author in citation]]"
+msgstr ", a "
+
+#: lib/citeengines/biblatex-natbib.citeengine:156
+#: lib/citeengines/biblatex.citeengine:148
+#: lib/citeengines/natbib.citeengine:127 lib/layouts/stdciteformats.inc:31
+msgid " and [[separate two authors in citation]]"
+msgstr " a "
+
 #: lib/citeengines/biblatex-natbib.citeengine:303
 #: lib/citeengines/biblatex.citeengine:289
 msgid "Super"
@@ -6468,6 +6492,12 @@ msgstr "pred"
 #: lib/citeengines/jurabib.citeengine:128
 msgid "short title"
 msgstr "krátky titul"
+
+#: lib/citeengines/jurabib.citeengine:131
+#: lib/citeengines/jurabib.citeengine:132
+#: lib/citeengines/jurabib.citeengine:133
+msgid "/"
+msgstr "/"
 
 #: lib/citeengines/natbib.citeengine:2
 msgid "Natbib (BibTeX)"
@@ -17001,6 +17031,30 @@ msgstr "POĎAKOVANIA"
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 msgid "UNDEFINED"
 msgstr "NEDEFINOVANÉ"
+
+#: lib/layouts/stdciteformats.inc:22
+msgid "pp."
+msgstr "str."
+
+#: lib/layouts/stdciteformats.inc:23
+msgid "ed."
+msgstr "vyd."
+
+#: lib/layouts/stdciteformats.inc:24
+msgid "eds."
+msgstr "vyd."
+
+#: lib/layouts/stdciteformats.inc:25
+msgid "vol."
+msgstr "diel"
+
+#: lib/layouts/stdciteformats.inc:26
+msgid "no."
+msgstr "č."
+
+#: lib/layouts/stdciteformats.inc:27
+msgid "in"
+msgstr "v"
 
 #: lib/layouts/stdcounters.inc:10
 msgid "\\Roman{part}"
@@ -38879,33 +38933,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "for this version of LyX."
 #~ msgstr "pre túto verziu LyXu."
-
-#~ msgid " et al."
-#~ msgstr " a kol."
-
-#~ msgid ", [[separate author names in citation, except for last name]]"
-#~ msgstr ", "
-
-#~ msgid ", and [[separate name of last author in citation]]"
-#~ msgstr ", a "
-
-#~ msgid " and [[separate two authors in citation]]"
-#~ msgstr " a "
-
-#~ msgid "pp."
-#~ msgstr "str."
-
-#~ msgid "ed."
-#~ msgstr "vyd."
-
-#~ msgid "vol."
-#~ msgstr "diel"
-
-#~ msgid "no."
-#~ msgstr "č."
-
-#~ msgid "in"
-#~ msgstr "v"
 
 #~ msgid "Use the minted package instead of the listings one"
 #~ msgstr "Použiť minted balík namiesto balíka listings"
