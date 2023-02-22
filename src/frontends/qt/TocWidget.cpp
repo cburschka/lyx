@@ -503,6 +503,7 @@ void TocWidget::updateView()
 		finishUpdateView();
 		timer_->start(300);
 	}
+	keep_expanded_ = false;
 }
 
 
