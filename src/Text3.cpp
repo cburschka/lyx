@@ -570,11 +570,11 @@ static void outline(OutlineOp mode, Cursor & cur, Text * text)
 				DocumentClass const & tc = buf.params().documentClass();
 				int const newtoclevel =
 					(mode == OutlineIn ? toclevel + 1 : toclevel - 1);
-				LabelType const oldlabeltype = start->layout().labeltype;
 
 				for (auto const & lay : tc) {
-					if (lay.toclevel ==  newtoclevel &&
-						 lay.labeltype == oldlabeltype) {
+					if (lay.toclevel == newtoclevel
+					    && lay.isNumHeadingLabelType()
+					    && start->layout().isNumHeadingLabelType()) {
 						start->setLayout(lay);
 						break;
 					}

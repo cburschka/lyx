@@ -292,6 +292,11 @@ public:
 			|| labeltype == LABEL_CENTERED
 			|| labeltype == LABEL_BIBLIO;
 	}
+	bool isNumHeadingLabelType() const {
+		return labeltype == LABEL_ABOVE
+			|| labeltype == LABEL_CENTERED
+			|| labeltype == LABEL_STATIC;
+	}
 	///
 	bool addToToc() const { return add_to_toc_; }
 	///
