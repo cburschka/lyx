@@ -2144,6 +2144,7 @@ bool InsetMathNest::insertCompletion(Cursor & cur, docstring const & s, bool fin
 #endif
 		lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, " "));
 	}
+	cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 
 	return true;
 }
