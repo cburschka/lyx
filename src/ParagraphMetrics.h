@@ -72,10 +72,14 @@ public:
 	///
 	int position() const { return position_; }
 	void setPosition(int position);
+	///
+	int id() const { return id_; }
 
 private:
 	///
 	int position_;
+	///
+	int id_;
 	///
 	mutable RowList rows_;
 	/// cached dimensions of paragraph

@@ -42,7 +42,7 @@ namespace lyx {
 
 
 ParagraphMetrics::ParagraphMetrics(Paragraph const & par) :
-	position_(-1), par_(&par)
+	position_(-1), id_(par.id()), par_(&par)
 {}
 
 

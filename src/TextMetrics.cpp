@@ -1986,7 +1986,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		swap(pi.leftx, pi.rightx);
 
 	BookmarksSection::BookmarkPosList bpl =
-		theSession().bookmarks().bookmarksInPar(bv_->buffer().fileName(), pm.par().id());
+		theSession().bookmarks().bookmarksInPar(bv_->buffer().fileName(), pm.id());
 
 	for (size_t i = 0; i != nrows; ++i) {
 
