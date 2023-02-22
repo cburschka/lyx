@@ -193,7 +193,6 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd,
 		DispatchResult & dr)
 {
-
 	Inset * inset = itemInset();
 
 	QModelIndex const & index = tocTV->currentIndex();
@@ -379,7 +378,6 @@ void TocWidget::outline(FuncCode func_code)
 
 void TocWidget::sendDispatch(FuncRequest fr)
 {
-
 	fr.setViewOrigin(&gui_view_);
 	GuiWorkArea * old_wa = gui_view_.currentWorkArea();
 	GuiWorkArea * doc_wa = gui_view_.currentMainWorkArea();
