@@ -143,7 +143,7 @@ def main(argv):
     if len(cmdline) == 1:
         subprocess.call([viewer, result])
     elif len(cmdline) == 2:
-        subprocess.Popen([cmdline[0], "-" + cmdline[1] , result])
+        subprocess.Popen([cmdline[0], "-" + cmdline[1] , result], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
     
     exit(0)
 
