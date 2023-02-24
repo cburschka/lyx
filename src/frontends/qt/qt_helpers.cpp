@@ -305,7 +305,8 @@ void showTarget(string const & target, string const & pdfv, string const & psv)
 		if (!opts.empty())
 			opts += " ";
 		Systemcall one;
-		string const command = lyxrc.citation_search_view + " " + opts + tar;
+		string const viewer = subst(lyxrc.citation_search_view, "$${python}", os::python());
+		string const command = viewer + " " + opts + tar;
 		int const result = one.startscript(Systemcall::Wait, command);
 		if (result == 1)
 			// Script failed
