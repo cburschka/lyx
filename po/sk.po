@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-22 11:59+0100\n"
-"PO-Revision-Date: 2023-02-22 11:16+0000\n"
+"POT-Creation-Date: 2023-02-22 18:54+0100\n"
+"PO-Revision-Date: 2023-02-22 18:16+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -30776,6 +30776,28 @@ msgstr "Už v postupe pre regulárny výraz"
 #: src/Text3.cpp:224
 msgid "Regexp editor mode"
 msgstr "Režim editoru pre regulárny výraz"
+
+#: src/Text3.cpp:592
+msgid "Action flattens document structure"
+msgstr "Akcia vyrovnáva štruktúru dokumentu"
+
+#: src/Text3.cpp:593
+msgid ""
+"This action will cause some headings that have been on different level "
+"before to be on the same level since there is no more lower or higher "
+"heading level. Continue still?"
+msgstr ""
+"Táto akcia spôsobí že niektoré nadpisy, ktoré mali predtým inú úroveň, budú "
+"mať teraz tú istú, lebo niet nižšej alebo vyššej úrovne. Pokračovať napriek "
+"tomu?"
+
+#: src/Text3.cpp:598
+msgid "&Yes, continue nonetheless"
+msgstr "&Áno, jednako pokračovať"
+
+#: src/Text3.cpp:599
+msgid "&No, quit operation"
+msgstr "&Nie, zrušiť konanie"
 
 #: src/Text3.cpp:1599
 msgid "Layout "
