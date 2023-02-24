@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -13,7 +13,7 @@
 \fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
-\font_typewriter "default" "IPAGothic"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -4149,7 +4149,7 @@ book
 \end_layout
 
 \begin_layout Subsection
-日本語新標準クラス
+日本語新標準クラス（JSシリーズ）
 \end_layout
 
 \begin_layout Description
@@ -4217,7 +4217,136 @@ jsbook
 \end_layout
 
 \begin_layout Subsection
-日本語新標準クラス（拡張）
+LuaTeX用日本語標準クラス
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\family sans
+ltjarticle
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjarticle"
+\end_inset
+
+,
+ 
+\family sans
+ltjreport
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjreport"
+\end_inset
+
+,
+ 
+\family sans
+ltjbook
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjbook"
+\end_inset
+
+
+\family sans
+,
+ ltjsarticle
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjsarticle"
+\end_inset
+
+,
+ 
+\family sans
+ltjsreport
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjsreport"
+\end_inset
+
+,
+ 
+\family sans
+ltjsbook
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjsbook"
+\end_inset
+
+
+\family sans
+,
+ ltjtarticle
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjtarticle"
+\end_inset
+
+,
+ 
+\family sans
+ltjtreport
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjtreport"
+\end_inset
+
+,
+ 
+\family sans
+ltjtbook
+\family default
+:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "ltjtbook"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/luatex/generic/luatexja/
+\end_layout
+
+\begin_layout Description
+備考:
+ これらの文書クラスは，
+上記の新旧日本語標準クラスのLuaTeX版です．
+\end_layout
+
+\begin_layout Subsection
+日本語新標準クラス（BXシリーズ）
 \end_layout
 
 \begin_layout Description
@@ -4279,6 +4408,79 @@ pdf\SpecialChar LaTeX
 とXe\SpecialChar LaTeX
 およびLua\SpecialChar LaTeX
 もサポートします．
+\end_layout
+
+\begin_layout Subsection
+日本語新標準クラス（JLReqクラス）
+\end_layout
+
+\begin_layout Description
+検出:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "jlreq"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/jptex/latex/jlreq/
+\end_layout
+
+\begin_layout Description
+備考:
+ 
+\family sans
+jlreq
+\family default
+クラスは，
+World Wide Webコンソーシアム（W3C，
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.w3.org/TR/jlreq/?lang=en
+\end_layout
+
+\end_inset
+
+を参照）が設定した「日本語組版処理の要件」の標準にしたがった文書クラスです．p\SpecialChar LaTeX
+とup\SpecialChar LaTeX
+だけでなく，
+Lua\SpecialChar LaTeX
+でも使用できます．この文書のひな型の既定出力はLua\SpecialChar LaTeX
+です．このクラスには，
+article・report・bookの各クラスがサブセットとして含まれていて，
+クラスオプションとして指定できます．英語版解説文書が
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/jptex/latex/jlreq/jlreq.pdf
+\end_layout
+
+\end_inset
+
+にあります（日本語版は
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://ftp.kddilabs.jp/CTAN/macros/jptex/latex/jlreq/jlreq-ja.pdf
+\end_layout
+
+\end_inset
+
+）．
 \end_layout
 
 \begin_layout Subsection

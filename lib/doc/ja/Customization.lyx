@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -91,7 +91,7 @@ End
 \fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
-\font_typewriter "default" "IPAGothic"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -215,7 +215,7 @@ literal "false"
 \end_inset
 
 宛お送りください．件名ヘッダに「[Customization]」という文字を入れ，
-このファイルの現在のメンテナRichard Kimberly Heck <rgheck@comcast.net>をccにして送ってください．
+このファイルの現在のメンテナRichard Kimberly Heck <rikiheck@lyx.org>をccにして送ってください．
 \end_layout
 
 \end_inset
@@ -877,8 +877,7 @@ lyx2lyx
 
 \end_inset
 
- Pythonスクリプトが納められています．たとえば，
-複数のファイルの変換をバッチ処理したい場合には，
+ Pythonスクリプトが納められています．複数のファイルの変換をバッチ処理したい場合には，
 これらをコマンドラインから実行することもできます．
 \end_layout
 
@@ -2498,6 +2497,39 @@ latex
 \end_inset
 
 が用いられます．
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+needauth
+\end_layout
+
+\end_inset
+
+ この変換子が安全でないと見做されていて，
+ユーザーの許可が必要であることを示します．
+\family sans
+\series bold
+ツール\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+ファイル処理\SpecialChar menuseparator
+変換子
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+の設定によって，
+ユーザーは，
+(a.)現在の文書を一時的もしくは恒久的に信頼するか否かを尋ねられるか，
+(b.)セキュリティ上の懸念によって変換は不可能であることを伝えられるか，
+(c.)恒久的な同意を与えたので通知されないかのいずれかになります．任意のプログラムを実行する可能性のある変換子には，
+このフラグを設定してください．
 \end_layout
 
 \begin_layout Labeling
@@ -6598,7 +6630,13 @@ arg   "version"
 \end_inset
 
 では，
-最新書式は69です)
+最新書式は
+\begin_inset Info
+type  "lyxinfo"
+arg   "layoutformat"
+\end_inset
+
+です)．
 \end_layout
 
 \begin_layout Standard
@@ -9852,11 +9890,8 @@ status collapsed
 
 \end_inset
 
-] このクラスによって生成されるファイル形式を示す文字列（
-\family sans
-設定
-\family default
-ダイアログで定義される形のもの）．おもに，
+] この文書クラスによって生成されるファイル形式（\SpecialChar LyX
+設定で定義される形のもの）．おもに，
 
 \begin_inset Flex Code
 status collapsed
@@ -9889,15 +9924,12 @@ OutputType
 \end_inset
 
 パラメーターに遭遇したときには，
-この文字列は，
-「
+形式は「
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-lat
-\emph on
-ex
+latex
 \end_layout
 
 \end_inset
@@ -9940,8 +9972,7 @@ literate
 
 \end_inset
 
-] このクラスを使用する文書がどのような種類の出力をするかを示す文字列．現在のところ，
-取り得る値は「docbook」・「latex」・「literate」です．
+] このクラスを使用する文書がどのような種類の出力をするかを示す文字列．
 \end_layout
 
 \begin_layout Description
@@ -11555,19 +11586,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-CommandDepth
-\end_layout
-
-\end_inset
-
- XMLコマンドの深度．XML型の書式でのみ使用されます．
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 CopyStyle
 \end_layout
 
@@ -11585,6 +11603,74 @@ status collapsed
 
 ] 既存の様式から，
 すべての機能を現在の様式にコピーします．
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookGenerateTitle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ブール型=false
+\end_layout
+
+\end_inset
+
+] ラッパータグの後に
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+title
+\end_layout
+
+\end_inset
+
+タグを生成します．このパラメータは，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperTag
+\end_layout
+
+\end_inset
+
+でのみ使用してください．他の場合はタイトルは環境の中身の
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
+後に
+\end_layout
+
+\end_inset
+
+出力されます．生成されるタイトルはLyXHTMLラベルと同じで，
+環境型とその番号の組み合わせです．主な使用法は，
+DocBookにLaTeX環境を閉じるマッピングがなく，
+LaTeXにはないタイトルが必要となる
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+figure
+\end_layout
+
+\end_inset
+
+のような汎用コンテナをユーザが頼らざるを得ないときに使います．この機能は，
+定理型の環境でたいへんよく用いられます．
 \end_layout
 
 \begin_layout Description
@@ -11853,7 +11939,7 @@ ForceLocal
 status collapsed
 
 \begin_layout Plain Layout
-int=0
+整数型=0
 \end_layout
 
 \end_inset
@@ -12004,19 +12090,6 @@ nolink "false"
 \end_inset
 
 節をご覧ください．
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-InnerTag
-\end_layout
-
-\end_inset
-
- [[FIXME]] （XML型書式でのみ使用されます．）
 \end_layout
 
 \begin_layout Description
@@ -12342,19 +12415,6 @@ ItemSep
 乗数
 \emph default
 であることに注意してください．
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ItemTag
-\end_layout
-
-\end_inset
-
- [[FIXME]] （XML型書式でのみ使用されます．）
 \end_layout
 
 \begin_layout Description
@@ -12808,19 +12868,6 @@ LabelStringAppendix
 \end_inset
 
 をもリセットすることに注意してください．
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelTag
-\end_layout
-
-\end_inset
-
- [FIXME] （XML型書式でのみ使用されます．）
 \end_layout
 
 \begin_layout Description

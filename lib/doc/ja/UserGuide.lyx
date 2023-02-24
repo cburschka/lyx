@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -100,7 +100,7 @@ End
 \fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
-\font_typewriter "default" "IPAGothic"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -1047,6 +1047,286 @@ status open
 あなたが文書に対して行った変更を登録して，
 他の人たちに，
 それがあなたが行った変更であることを認識できるようにします．
+\end_layout
+
+\begin_layout Section
+安全網：
+おかしくなったときのファイルの救出
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:安全網"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+は安全性の確保に力を入れています．私たちは，
+あなたが著作にどれほどの労力を費やしたかを知っていますので，
+その著作が失われることはけっして望みません．しかしながら，
+私たちは悪いことが起こることを完全に排除することはできません．\SpecialChar LyX
+がクラッシュするかもしれませんし（そうならないよう私たちは全力を尽くしていますが），
+保存の済んでいない文書で作業中に電力遮断に遭うかもしれません．あるいはディスクが壊れるかもしれませんし，
+はたまた同期中にファイルがなくなったり壊れたり，
+自分で間違って削除してしまうかもしれません．そのようなときのために，
+\SpecialChar LyX
+は複層的な安全網を提供して，
+大きな困難に陥らないですむように設計されています．このために，
+\SpecialChar LyX
+は一つのバックアップファイルを作るだけで済まさずに，
+さまざまなシナリオで使えるように複数のパターンを用意しています．ユーザーが，
+複数のファイルを持つよりはリスクを引き受ける方を望むならば，
+この複層安全網は切ることもできますが（第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:文書のバックアップ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節参照），
+既定では，
+可能な限りの安全性を提供するためにすべての方法が有効になっています．
+\end_layout
+
+\begin_layout Standard
+以下では，
+それらのファイルの詳細と，
+いつそれらが有効であるかについて説明します．
+\end_layout
+
+\begin_layout Subsection
+バックアップファイル
+\end_layout
+
+\begin_layout Standard
+既定では，
+\SpecialChar LyX
+は保存時にファイルのバックアップコピーを作ります．通常は，
+これらのファイルは，
+元のファイルと同じディレクトリに，
+同じ名前に拡張子
+\family typewriter
+.lyx~
+\family default
+を付けて保存されます（例：
+
+\family typewriter
+myfile.lyx~
+\family default
+）．もしすべてのバックアップを同じ場所に（場合によっては別のディスクに）保存したい場合には，
+設定で
+\family sans
+バックアップディレクトリ
+\family default
+を指定すれば，
+すべてのバックアップをそこに保存させることができます（第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:パス"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節参照）．その場合，
+ファイル名の衝突を防ぐために，
+ファイルは元のファイルと同じファイル名を持つのではなく，
+フルパスを「!」で区切ったものをファイル名として持ちます（例：
+
+\family typewriter
+!home!paula!work!myfile.lyx~
+\family default
+）．
+\end_layout
+
+\begin_layout Standard
+一部のファイルマネージャーは，
+既定ではバックアップファイルを隠すので，
+ファイルを見るためには「隠しファイルを表示」を有効にする必要があります．
+\end_layout
+
+\begin_layout Standard
+バックアップファイルは，
+文書の最後に保存されたバージョンを提供します．\SpecialChar LyX
+がこれらのファイルを削除することはありませんが，
+元のファイルに加えられた変更点が保存されれば，
+上書きされます．
+\end_layout
+
+\begin_layout Subsection
+自動保存スナップショット
+\end_layout
+
+\begin_layout Standard
+既定では，
+\SpecialChar LyX
+は，
+保存されていない変更点を持つ，
+開かれている文書すべての自動スナップショットを，
+定期的に作成します（間隔は設定で変更できます．第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:パス"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節参照）．バックアップファイルとは違って，
+保存されていない変更点を含むので，
+バックアップファイルよりも新しいです．
+\end_layout
+
+\begin_layout Standard
+これらのファイルは，
+つねに元のファイルと同じディレクトリに，
+同じファイル名を「#」で囲んで保管されます（例：
+
+\family typewriter
+#myfile.lyx#
+\family default
+）．自動保存スナップショットは，
+文書が正常に閉じた場合には（すなわちすべての変更点が保存された場合には）削除されます．万一，
+正常でない終了（プログラムのクラッシュや電力遮断など）が起こった場合には，
+ディスク上に残されますので，
+このようなときには役立ちます．
+\end_layout
+
+\begin_layout Subsection
+緊急ファイル
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+がクラッシュしたときに文書に保存していない変更点がある場合には，
+\SpecialChar LyX
+はさらに緊急ファイルを書き込もうと試みます．このファイルは，
+最後に保存されたスナップショットより後に変更された変更点も含んだ，
+すべての保存されていない変更点が含まれたバージョンです．
+\end_layout
+
+\begin_layout Standard
+これらのファイルは，
+つねに元のファイルと同じディレクトリに，
+同じファイル名に拡張子
+\family typewriter
+.lyx.emergency
+\family default
+を付けて保管されます（例：
+
+\family typewriter
+myfile.lyx.emergency
+\family default
+）．それぞれの文書が，
+次に\SpecialChar LyX
+で開かれたとき，
+\SpecialChar LyX
+が緊急ファイルを認識して，
+ファイルを最後の状態に復旧することを試みるかどうかを尋ねます．同意すれば復旧を試み，
+成功すると緊急ファイルを削除するかどうか尋ねます．これに同意する際には，
+すべてが正しく復旧していることを確かめてからにしてください．
+\end_layout
+
+\begin_layout Subsection
+旧\SpecialChar LyX
+バージョンからのバックアップファイル
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+の新しいメジャー・バージョンで\SpecialChar LyX
+文書を初めて開くとき，
+文書は（新しい機能を盛り込んだ）新しいファイル形式に変換されます．そのとき，
+\SpecialChar LyX
+は旧バージョンのコピーを，
+<n>を旧形式番号として
+\family typewriter
+<ファイル名>-lyxformat-<n>.lyx
+\family default
+という名前で保持します（例：
+
+\family typewriter
+myfile-lyxformat-474.lyx
+\family default
+）．これらのファイルは，
+バックアップファイルと同じ場所，
+すなわち元文書と同じ場所か，
+指定されたバックアップディレクトリに保管されます．
+\end_layout
+
+\begin_layout Standard
+バックアップファイルと同様，
+\SpecialChar LyX
+がこれらのファイルを削除することはありません．
+\end_layout
+
+\begin_layout Subsection
+いつどのファイルを使うべきか？
+
+\end_layout
+
+\begin_layout Standard
+さて，
+どうしてこんなに救援ファイルがあるのでしょうか．それはこれらが別々の目的を持っているからです．一般的に云って，
+\SpecialChar LyX
+が予期せず終了した際には，
+
+\end_layout
+
+\begin_layout Enumerate
+まず（\SpecialChar LyX
+で文書を再度開き）緊急ファイルからの復旧を試みます．このファイルは，
+最後の自動保存スナップショットの後に加えられた変更点も含んだ，
+最後の変更点を保持しています．
+\end_layout
+
+\begin_layout Enumerate
+救援ファイルがなかったり（例：
+電力遮断後など）損傷していたりして（\SpecialChar LyX
+をクラッシュさせた最後の変更点が救援ファイルに含まれているなどのたちの悪い場合に起こりえます），
+上記の救済法がうまくいかなかった場合には，
+自動保存スナップショットを見てください．その場合，
+ファイル名最後の#を取り除いて\SpecialChar LyX
+で開けるようにし，
+うまくいくか確かめてください（スナップショットのチェックが終わるまで元のファイルを保持するために，
+最初の#は取り除かないでください）．この場合，
+最悪で５分の仕事を失うことになります（少なくとも既定の設定の場合）．
+\end_layout
+
+\begin_layout Enumerate
+自動保存スナップショットがなかったり，
+上記ファイルも破損していたりした場合，
+バックアップファイルを使用してください．これは，
+保存していない変更点をすべて保持しているわけではありませんが，
+それでも入手できるもっとも最近のものになります．とくに，
+元のファイル自身が失われていたり損傷していたりした場合には，
+そうなります．
+\end_layout
+
+\begin_layout Standard
+４つめのファイル型である旧バージョンからのバックアップファイルは，
+変換プロセスがうまくいかず，
+動作しない文書ができあがったときや（私たちはこのようなことが起こらないように全力を尽くしていますが），
+本当は旧バージョンを使い続けたいのに，
+新しいバージョンで文書を誤って開いてしまい，
+さらに保存してしまったときなどに役に立ちます．
+\end_layout
+
+\begin_layout Standard
+以上，
+安全網についてでした．これが必要とならないことを願っていますが，
+必要なときにはできる限り高い場所で救えるように願っています．それでは，
+実際の執筆プロセスに戻りましょう．
 \end_layout
 
 \begin_layout Section
@@ -10682,12 +10962,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です．
 \end_layout
 
@@ -10700,6 +10982,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め，
 ほぼすべての文字が使えます．例：
 "%&$§#~'`
@@ -10733,6 +11016,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -33525,7 +33809,7 @@ URL
 右がURLの例です．(例)\SpecialChar LyX
 のホームページは
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -33538,13 +33822,140 @@ https://www.lyx.org
 \end_layout
 
 \begin_layout Standard
+既定では，
 URL文はつねに
 \family typewriter
 タイプライタ体
 \family default
-で表示され，
-リンク文の形式を変更することはできません．URL文の形式を指定したい場合には，
-次節に説明するハイパーリンクを使用してください．
+で表示されますが，
+
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+
+\series default
+LaTeX
+\series bold
+プリアンブル
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+に
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+urlstyle{<xx>}
+\end_layout
+
+\begin_layout Standard
+と書くことによって（ここで
+\family typewriter
+<xx>
+\family default
+は，
+
+\family typewriter
+rm
+\family default
+（ローマン体）・
+\family typewriter
+sf
+\family default
+（サンセリフ体）・
+\family typewriter
+tt
+\family default
+（タイプライタタイ）・
+\family typewriter
+same
+\family default
+（何であれ現在の本文フォントを使用）のいずれかです），
+この組版はグローバルに変更することができます．URLをイタリック体にしたい場合には，
+代わりに
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+def
+\backslash
+UrlFont{
+\backslash
+rmfamily
+\backslash
+itshape}
+\end_layout
+
+\begin_layout Standard
+としてください．URLは，
+次の特定の文字で改行されます：
+
+\end_layout
+
+\begin_layout LyX-Code
+.
+ @ 
+\backslash
+ / !
+ _ | ;
+ > ] % ) ,
+ ?
+ & ' + = #
+\end_layout
+
+\begin_layout Standard
+URLは，
+既定ではハイフン（-）では改行しませんが，
+
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+文書クラス\SpecialChar menuseparator
+クラスオプション\SpecialChar menuseparator
+詳細設定
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+に
+\family sans
+hyphens
+\family default
+を加えてください．これでもURLがうまく改行しない場合には，
+最後の手段は
+\family typewriter
+
+\backslash
+usepackage{xurl}
+\family default
+を
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+
+\series default
+LsTeXプリアンブル
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+に加えることです．これによって，
+URLはすべての文字で改行するようになります．
 \end_layout
 
 \begin_layout Standard
@@ -33621,7 +34032,12 @@ literal "false"
 \end_inset
 
 のような電子メールリンク型か，
-ファイルへのリンクのいずれかです．ハイパーリンク設定ダイアログ中の
+ファイルへのリンクか，
+他の有効なURL（
+\family sans
+tel:<電話番号>
+\family default
+など）のいずれかです．ハイパーリンク設定ダイアログ中の
 \series bold
 
 \begin_inset space \thinspace{}
@@ -33660,7 +34076,10 @@ literal "false"
 \family sans
 run:
 \family default
-」という前置詞を加えてください．
+」という前置詞を加えてください．ただし，
+ほとんどのPDFビューアは，
+セキュリティ上の理由から，
+そのようなリンクを無効にしています．
 \end_layout
 
 \begin_layout Standard
@@ -55118,8 +55537,13 @@ status open
 \end_inset
 
 を有効にすると，
-ファイルが開かれた時の状態か，
-最後に保存された時の状態のバックアップコピーを作成します．これはバックアップディレクトリに保存されるか(第
+ファイルが最後に保存された時の状態のバックアップコピーを作成します．これは
+\family sans
+\series bold
+バックアップディレクトリ
+\family default
+\series default
+に保存されるか（第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:パス"
@@ -55127,22 +55551,56 @@ nolink "false"
 
 \end_inset
 
-節参照)，
-バックアップディレクトリが指定されていない場合は，
-使用中の文書と同じフォルダに保存されます．
+節参照），
+
+\family sans
+\series bold
+バックアップディレクトリ
+\family default
+\series default
+が指定されていない場合は，
+使用中の文書と同じフォルダに保存されます．バックアップファイルは，
+元のファイルと同じファイル名と拡張子
+\family typewriter
+.lyx~
+\family default
+を持ちます．
+\family sans
+\series bold
+バックアップディレクトリ
+\family default
+\series default
+が指定されている場合には，
+ファイルはフルパスを「!」で区切ったものをファイル名に持ちます（例：
+
+\family typewriter
+!MyDir!MySubDir!Filename.lyx~
+\family default
+）．
 \end_layout
 
 \begin_layout Standard
 
+\family sans
 \series bold
-文書バックアップ:毎
+自動保存スナップショットを毎X分ごとに行う
+\family default
 \series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
-オプションを指定すると，
-バックアップ保存動作の間隔を指定することができます．
+オプションを有効にすると，
+保存されない変更点がある場合，
+\SpecialChar LyX
+は指定された間隔で現在の文書のスナップショットを（保存されていない変更点を含み）自動的に保存します．文書ディレクトリに
+\family typewriter
+#<filename>.lyx#
+\family default
+として保管されている，
+これらのファイルは，
+自動保存サイクル毎に上書きされ，
+文書が正常に閉じた場合には削除されます．
 \end_layout
 
 \begin_layout Standard
@@ -55157,7 +55615,27 @@ nolink "false"
 \end_inset
 
 を有効にすると，
-ファイルは常に圧縮形式で保存されます．
+ファイルは常に圧縮形式で保存されます．\SpecialChar LyX
+が保存されない変更点があるままで万一クラッシュし，
+緊急ファイルからの復旧に失敗した場合，
+このファイルがよりどころとなります．
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+のさまざまなバックアップおよび安全メカニズムについて，
+詳しくは第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:安全網"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節をお読みください．
 \end_layout
 
 \begin_layout Standard
@@ -55194,6 +55672,25 @@ nolink "false"
 節もご覧ください)．これは，
 新規に作成された文書にのみ適用されます．既存文書の圧縮状態は，
 保存時に変更されません．
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+文書ディレクトリのパスを保存する
+\family default
+\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+は，
+文書パスを\SpecialChar LyX
+ファイルに保管します．これは，
+相対パスで参照されている内包ファイル（図表や子文書）があるときにとくに便利です．このオプションによって，
+元のディレクトリに置いたままの内包ファイルを見つけることができる状態のまま，
+文書を他の場所に移すことができるようになります．
 \end_layout
 
 \begin_layout Subsubsection

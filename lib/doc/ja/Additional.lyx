@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -56,20 +56,40 @@ ruby
 \end_modules
 \maintain_unincluded_children no
 \begin_local_layout
-Format 35
-InsetLayout		Flex:MenuItem
-LyxType		charstyle
-LabelString           menu
-LatexType             command
-LatexName             menuitem
-Font
-Family              Sans
-Series              Bold
-EndFont
-Preamble
-\newcommand*{\menuitem}[1]{{\sffamily #1}}
-EndPreamble
+### Inserted by lyx2lyx (ams extended theorems) ###
+### This requires a theorems-ams-extended-* module to be loaded
+Style Acknowledgement*
+  CopyStyle             Remark*
+  LatexName             acknowledgement*
+  LabelString           "Acknowledgement."
+  Preamble
+    \theoremstyle{remark}
+    \newtheorem*{acknowledgement*}{\protect\acknowledgementname}
+  EndPreamble
+  LangPreamble
+    \providecommand{\acknowledgementname}{_(Acknowledgement)}
+  EndLangPreamble
+  BabelPreamble
+    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}
+  EndBabelPreamble
+  DocBookTag            para
+  DocBookAttr           role="acknowledgement"
+  DocBookItemTag        ""
 End
+#Format 35
+#InsetLayout		Flex:MenuItem
+#LyxType		charstyle
+#LabelString           menu
+#LatexType             command
+#LatexName             menuitem
+#Font
+#Family              Sans
+#Series              Bold
+#EndFont
+#Preamble
+#\newcommand*{\menuitem}[1]{{\sffamily #1}}
+#EndPreamble
+#End
 InsetLayout Flex:圏点
   LyxType       charstyle
   LatexType     command
@@ -105,7 +125,7 @@ End
 \fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
-\font_typewriter "default" "IPAGothic"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -126,7 +146,7 @@ End
 \float_placement class
 \float_alignment class
 \paperfontsize 12
-\spacing single
+\spacing onehalf
 \use_hyperref true
 \pdf_title "LyX's Additional Features manual"
 \pdf_author "LyX Team"
@@ -450,15 +470,11 @@ shopなどがあります．もちろんviとemacsの\SpecialChar LaTeX
 \noun default
 \color inherit
 
-\begin_inset Flex MenuItem
-status collapsed
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
-
-\family sans
 ファイル
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -480,19 +496,11 @@ status collapsed
 \noun default
 \color inherit
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-エクスポート\SpecialChar menuseparator
-LaTeX
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
-
+エクスポート\SpecialChar menuseparator
+LaTeX
 \family roman
 \series medium
 \shape up
@@ -510,20 +518,8 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
 表示\SpecialChar menuseparator
 ソースを閲覧
-\end_layout
-
-\end_inset
-
-
 \family roman
 \series medium
 \shape up
@@ -576,38 +572,18 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex MenuItem
-status collapsed
 
-\begin_layout Plain Layout
+\family sans
 表示\SpecialChar menuseparator
 書式
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\bar no
 表示\SpecialChar menuseparator
 更新\SpecialChar menuseparator
-
-\bar default
 書式
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -804,20 +780,8 @@ makeindex
 \bar default
 \noun default
 \color inherit
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
 表示\SpecialChar menuseparator
 DVI
-\end_layout
-
-\end_inset
-
-
 \family roman
 \series medium
 \shape up
@@ -830,11 +794,16 @@ DVI
 \SpecialChar LyX
 はこの後，
 DVIビューアを実行してDVIファイルを表示します．
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+表示\SpecialChar menuseparator
+PostScript
 \family roman
 \series medium
 \shape up
@@ -843,12 +812,6 @@ status collapsed
 \bar no
 \noun off
 \color none
-表示\SpecialChar menuseparator
-PostScript
-\end_layout
-
-\end_inset
-
 を使用した場合には，
 \SpecialChar LyX
 はさらに以下の段階をふみます．
@@ -957,21 +920,9 @@ PostScript
 \SpecialChar LyX
 で
 \family sans
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
 ファイル\SpecialChar menuseparator
 インポート\SpecialChar menuseparator
 LaTeX
-\end_layout
-
-\end_inset
-
-
 \family roman
 \series medium
 \shape up
@@ -1269,17 +1220,9 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
 挿入\SpecialChar menuseparator
 TeXコード
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -1557,10 +1500,24 @@ end{tabular}
 複雑な\SpecialChar LaTeX
 コードを含む部分を別ファイルとして作成しておき，
 そのファイルをインクルードするのに
-\begin_inset Flex MenuItem
-status collapsed
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 
-\begin_layout Plain Layout
+\begin_inset space \thinspace{}
+\end_inset
+
+挿入\SpecialChar menuseparator
+ファイル\SpecialChar menuseparator
+子文書
+\begin_inset space \thinspace{}
+\end_inset
+
 
 \family roman
 \series medium
@@ -1570,13 +1527,6 @@ status collapsed
 \bar no
 \noun off
 \color none
-挿入\SpecialChar menuseparator
-ファイル\SpecialChar menuseparator
-子文書
-\end_layout
-
-\end_inset
-
 を使用する方法もあります（取り込みの型として
 \begin_inset Flex Code
 status collapsed
@@ -1598,23 +1548,15 @@ Input
 
 を選択しなくてはなりません）．この方法をとる場合には，
 .texファイルが正しく動作することが
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 確認できている
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\end_layout
+
+\end_inset
+
 場合のみに限った方がよいでしょう．さもないと，
 \SpecialChar LaTeX
 エラーを追跡するたいへんな作業を行わなくてはならなくなります．
@@ -1824,14 +1766,10 @@ literal "false"
 \SpecialChar LaTeX
 文書のいちばん始め，
 本文の
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 前
 \family roman
 \series medium
@@ -1841,7 +1779,12 @@ literal "false"
 \bar no
 \noun off
 \color none
-の部分に来ます．ここでは以下のことを行います．
+の
+\end_layout
+
+\end_inset
+
+部分に来ます．ここでは以下のことを行います．
 \end_layout
 
 \begin_layout Itemize
@@ -1867,7 +1810,7 @@ literal "false"
 \series default
 \shape default
 \size default
-\emph on
+\emph default
 \bar default
 \noun default
 \color inherit
@@ -2128,30 +2071,19 @@ status collapsed
 \SpecialChar LyX
 自体にパッチを当てないかぎり変更できないようになっています．しかしながら，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 文書\SpecialChar menuseparator
 設定
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
-ダイアログの
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2161,12 +2093,25 @@ status collapsed
 \bar no
 \noun off
 \color none
+ダイアログの
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 \SpecialChar LaTeX
 プリアンブル
-\end_layout
-
-\end_inset
-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
 の項から，
 プリアンブルに追加をすることはできます．\SpecialChar LyX
 は，
@@ -2179,19 +2124,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
 プリアンブル
-\end_layout
-
-\end_inset
-
-
 \family roman
 \series medium
 \shape up
@@ -2217,7 +2150,17 @@ status collapsed
 また，
 
 \emph on
-プリアンブルコードが正しいことを確認してください．
+
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
+プリアンブルコードが正しいことを確認してください
+\end_layout
+
+\end_inset
+
+．
 \emph default
 \SpecialChar LyX
 は，
@@ -2804,9 +2747,15 @@ labels.sty
 \color inherit
 ．（これはユーモアです．（ほんと？
 ）
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 ユーモアですってば
-\emph default
+\end_layout
+
+\end_inset
+
 ．）
 \end_layout
 
@@ -2991,10 +2940,19 @@ status collapsed
 人によっては，
 ログファイルを直接ご覧になりたいかもしれません．これは，
 
-\begin_inset Flex MenuItem
-status collapsed
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+文書\SpecialChar menuseparator
+LaTeXログ
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -3004,12 +2962,6 @@ status collapsed
 \bar no
 \noun off
 \color none
-文書\SpecialChar menuseparator
-LaTeXログ
-\end_layout
-
-\end_inset
-
 で見ることができます．エラーメッセージや警告には，
 よく見かけるものがいくつかありますので，
 それらをここに収録しておきます．ここにないエラーや警告に関しては，
@@ -3115,25 +3067,16 @@ hbox
 \end_inset
 
 \SpecialChar LaTeX
-は，
+は
+\begin_inset Flex 圏点
+status open
 
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
+\begin_layout Plain Layout
 ほぼどんなときでも
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\end_layout
+
+\end_inset
+
 この警告を吐き出します．どんな文書を書いたとしても，
 このメッセージは，
 少なくとも1つは出てくるようです．これは，
@@ -3177,6 +3120,10 @@ hbox
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 フォント
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -3194,7 +3141,15 @@ hbox
 \bar default
 \noun default
 \color inherit
+
+\begin_inset space \thinspace{}
+\end_inset
+
 マイクロタイポグラフィ拡張を有効にする
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -3217,6 +3172,10 @@ hbox
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 プリアンブル
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -3492,7 +3451,7 @@ usepackage{}
 コマンドも使用していないとすれば，
 \SpecialChar LyX
 が読み込もうしているパッケージに存在しないものがあるということです．
-\family default
+\family sans
 \series default
 \shape default
 \size default
@@ -3500,16 +3459,10 @@ usepackage{}
 \bar default
 \noun default
 \color inherit
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
 ヘルプ\SpecialChar menuseparator
 \SpecialChar LaTeX
 の設定
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -3525,10 +3478,19 @@ status collapsed
 \SpecialChar LyX
 が認識しているパッケージの一覧を得てください．このファイルは，
 （
-\begin_inset Flex MenuItem
-status collapsed
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ツール\SpecialChar menuseparator
+再設定
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -3538,12 +3500,6 @@ status collapsed
 \bar no
 \noun off
 \color none
-ツール\SpecialChar menuseparator
-再設定
-\end_layout
-
-\end_inset
-
 を使用して）\SpecialChar LyX
 の再設定を行うたびに更新され，
 どのパッケージが検出されたか，
@@ -4031,22 +3987,26 @@ bookおよびletterの4つの標準文書クラスを提供していましたが
 外部的にメンテナンスされている主要なクラスについて，
 簡単に説明します．
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 文書クラス
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 ダイアログの
 \family sans
-\series bold
+
+\begin_inset space \thinspace{}
+\end_inset
+
 文書クラス
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family default
-\series default
 プルダウンの一覧に「利用不能：
 」とマークされているものがありますが，
 これらを使用するためには，
@@ -4165,13 +4125,14 @@ ftp://ftp.ams.org/pub/tex/amslatex/
 amsart：
 標準AMS article書式．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 論文\SpecialChar menuseparator
-
-\series default
 American Mathematical Society (AMS)
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family default
 を参照．
 \end_layout
@@ -4180,13 +4141,14 @@ American Mathematical Society (AMS)
 amsbook：
 標準AMS book（実際はモノグラフ）書式．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 書籍\SpecialChar menuseparator
-
-\series default
 American Mathematical Society (AMS)
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family default
 を参照．
 \end_layout
@@ -4306,9 +4268,15 @@ status collapsed
 \begin_layout Standard
 これらのモジュールは，
 AMSクラスで使用する
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 必要はない
-\emph default
+\end_layout
+
+\end_inset
+
 ことに注意してください．
 \begin_inset Flex Code
 status collapsed
@@ -4613,11 +4581,7 @@ status collapsed
 場合で，
 証了記号は証明環境の終わりにのみ現れるようにしたい場合には，
 他の環境は証明環境の中に入れ子にしなくてはなりません．入れ子に関する情報については，
-ユーザーの手引きの
-\emph on
-環境を入れ子にする
-\emph default
-の節をご覧ください．
+『ユーザーの手引き』の「環境を入れ子にする」の節をご覧ください．
 \end_layout
 
 \begin_layout Fact
@@ -4670,6 +4634,10 @@ AMS定理(拡張)
 
 \end_layout
 
+\begin_layout Acknowledgement*
+謝辞(acknowledgement)です．
+\end_layout
+
 \begin_layout Conclusion*
 長い議論の終わりに時々用いられます．
 \end_layout
@@ -4720,11 +4688,7 @@ Article
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-フォント寸法を追加した標準クラス
-\series default
-)
+(フォント寸法を追加した標準クラス)
 \family default
 と
 \family sans
@@ -4732,11 +4696,7 @@ Book
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-フォント寸法を追加した標準クラス
-\series default
-)
+(フォント寸法を追加した標準クラス)
 \family default
 ，
 
@@ -4745,11 +4705,7 @@ Letter
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-フォント寸法を追加した標準クラス
-\series default
-)
+(フォント寸法を追加した標準クラス)
 \family default
 ，
 
@@ -4758,11 +4714,7 @@ Report
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-フォント寸法を追加した標準クラス
-\series default
-)
+(フォント寸法を追加した標準クラス)
 \family default
 の各文書クラスを提供しています．これらは，
 それぞれ
@@ -4786,12 +4738,9 @@ report.cls
 の各文書クラスを使用しますが，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 フォント
-\series default
-
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -4799,10 +4748,8 @@ report.cls
 \family default
 ダイアログにある
 \family sans
-\series bold
 基本寸法
 \family default
-\series default
 の選択肢として8・9・14・17・20が追加されます．
 \end_layout
 
@@ -4813,17 +4760,11 @@ report.cls
 \begin_layout Standard
 文書クラスの
 \family sans
-\series bold
-ヘブライ語
-\series default
-Article
+ヘブライ語Article
 \family default
 と
 \family sans
-\series bold
-ヘブライ語
-\series default
-Letter
+ヘブライ語Letter
 \family default
 は，
 
@@ -4841,6 +4782,18 @@ letter.cls
 
 \begin_layout Subsection
 日本語
+\family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+(
+\series bold
+標準クラス
+\series default
+)
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:日本語"
@@ -4851,169 +4804,506 @@ name "subsec:日本語"
 \end_layout
 
 \begin_layout Standard
-文書クラスの
+\SpecialChar LyX
+には，
+日本語文書の組版を可能にするためのいくつかのシリーズが収められています．これらのシリーズは，
+異なる時期に開発されたため，
+サポートする組版エンジンや機能が異なっています．このコレクションは最も古いものです．これは，
+横書きと縦書きの日本の組版要求に合うように，
+\SpecialChar LaTeX
+標準クラスを調整したものです．このコレクションには，
+
 \family sans
-\series bold
-日本語
-\series default
-Article
+日本語Article
 \begin_inset space \thinspace{}
 \end_inset
 
-(BXJS
-\series bold
-クラス
-\series default
-)
-\family default
-および
-\family sans
-\series bold
-日本語
-\series default
-Article
-\begin_inset space \thinspace{}
-\end_inset
-
-(JS
-\series bold
-クラス
-\series default
-)
+(標準クラス)
 \family default
 ，
 
 \family sans
-\series bold
-日本語
-\series default
-Article
+日本語Article
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-標準クラス：
-縦書き
-\series default
-)
+(標準クラス：
+縦書き)
 \family default
 ，
 
 \family sans
-\series bold
-日本語
-\series default
-Article
+日本語Book
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-標準クラス
-\series default
-)
+(標準クラス)
 \family default
 ，
 
 \family sans
-\series bold
-日本語
-\series default
-Book
+日本語Book
 \begin_inset space \thinspace{}
 \end_inset
 
-(BXJS
-\series bold
-クラス
-\series default
-)
+(標準クラス：
+縦書き)
 \family default
 ，
 
 \family sans
-\series bold
-日本語
-\series default
-Book
+日本語Report
 \begin_inset space \thinspace{}
 \end_inset
 
-(JS
-\series bold
-クラス
-\series default
-)
+(標準クラス)
 \family default
 ，
 
 \family sans
-\series bold
-日本語
-\series default
-Book
+日本語Report
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-標準クラス：
-縦書き
-\series default
-)
+(標準クラス：
+縦書き)
+\family default
+が収録されており，
+すべて日本語用に仕立てられた「古典的」エンジンであるp\SpecialChar LaTeX
+とup\SpecialChar LaTeX
+で動作します．
+\end_layout
+
+\begin_layout Standard
+より近代的なLua\SpecialChar LaTeX
+組版エンジンで使用するために，
+コレクションには，
+
+\family sans
+luatexja
+\family default
+ \SpecialChar LaTeX
+パッケージによって提供される，
+専用の
+\family sans
+日本語Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(LuaTeX用標準クラス)，
+日本語Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(LuaTeX用標準クラス：
+縦書き)，
+日本語Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(LuaTeX用標準クラス)
 \family default
 ，
 
 \family sans
-\series bold
-日本語
-\series default
-Book
+日本語Book
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-標準クラス
-\series default
-)
+(LuaTeX用標準クラス：
+縦書き)
 \family default
 ，
 
 \family sans
-\series bold
-日本語
-\series default
-Report
+日本語Report
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-標準クラス：
-縦書き
-\series default
-)
+(LuaTeX用標準クラス)
 \family default
 ，
 
 \family sans
-\series bold
-日本語
-\series default
-Report
+日本語Report
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\series bold
-標準クラス
-\series default
-)
+(LuaTeX用標準クラス：
+縦書き)
 \family default
-は，
-日本語のための文書クラスを提供します．
+が納められています．
+\end_layout
+
+\begin_layout Standard
+Lua\SpecialChar LaTeX
+クラス用のひな型が，
+
+\family sans
+ファイル\SpecialChar menuseparator
+新規(ひな型使用)
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+の
+\family sans
+論文
+\family default
+・
+\family sans
+書籍
+\family default
+・
+\family sans
+レポート
+\family default
+の各カテゴリにあります．
+\end_layout
+
+\begin_layout Subsection
+日本語
+\family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+(JSシリーズ)
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:日本語-JS"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+このコレクションには，
+
+\family sans
+日本語
+\begin_inset space \thinspace{}
+\end_inset
+
+(標準クラス)
+\family default
+に収録されているクラスの改善版が収められています（第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:日本語"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節参照）．これには，
+
+\family sans
+日本語Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(JSシリーズ)
+\family default
+と
+\family sans
+日本語Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(JSシリーズ)
+\family default
+，
+
+\family sans
+日本語Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(JSシリーズ)
+\family default
+が収録されています．Reportクラスは，
+
+\family sans
+日本語Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(JSシリーズ)
+\family default
+を使用して，
+
+\family sans
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+文書クラス\SpecialChar menuseparator
+クラスオプション\SpecialChar menuseparator
+詳細設定
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+で
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+report
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+オプションを指定してください．これらのクラスは，
+すべて日本語向けの「古典的」エンジンであるp\SpecialChar LaTeX
+とup\SpecialChar LaTeX
+で動作します．
+\end_layout
+
+\begin_layout Standard
+Lua\SpecialChar LaTeX
+クラス用のひな型が，
+
+\family sans
+ファイル\SpecialChar menuseparator
+新規(ひな型使用)
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+の
+\family sans
+論文
+\family default
+・
+\family sans
+書籍
+\family default
+・
+\family sans
+レポート
+\family default
+の各カテゴリにあります．
+\end_layout
+
+\begin_layout Subsection
+日本語
+\family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+(BXシリーズ)
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:日本語-BX"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+このシリーズには，
+日本語文書のためのもう一つの文書クラスである，
+
+\family sans
+日本語Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(BXシリーズ)
+\family default
+文書クラス・
+\family sans
+日本語Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(BXシリーズ)
+\family default
+文書クラス・
+\family sans
+日本語Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(BXシリーズ)
+\family default
+文書クラスが含まれています．さらに，
+プレゼンテーション・スライド用の
+\family sans
+日本語Slide
+\begin_inset space \thinspace{}
+\end_inset
+
+(BXシリーズ)
+\family default
+文書クラスも収録されています．素の状態ではp\SpecialChar LaTeX
+とup\SpecialChar LaTeX
+のみをサポートする標準クラスやJSシリーズと違って（第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:日本語"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節および第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:日本語-JS"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+節参照；
+Lua\SpecialChar LaTeX
+は 
+\family sans
+luatexja
+\family default
+ \SpecialChar LaTeX
+パッケージで追加されるクラスのみを通じてサポート），
+このシリーズのクラスは，
+日本語組版能力を提供する適切なパッケージを使用して，
+pdf\SpecialChar LaTeX
+・Xe\SpecialChar LaTeX
+・Lua\SpecialChar LaTeX
+も直接サポートします．
+\end_layout
+
+\begin_layout Subsection
+日本語
+\family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReqクラス)
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:日本語-JLReq"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+このシリーズは，
+World Wide Webコンソーシアム（W3C，
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.w3.org/TR/jlreq/?lang=en
+\end_layout
+
+\end_inset
+
+を参照）が設定した「日本語組版処理の要件」の標準にしたがった
+\family sans
+jlreq
+\family default
+クラスに依拠しています．p\SpecialChar LaTeX
+とup\SpecialChar LaTeX
+だけでなく，
+Lua\SpecialChar LaTeX
+でも使用できます．
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+では，
+
+\family sans
+jlreq
+\family default
+ \SpecialChar LaTeX
+クラスにクラスオプションを指定して構成された
+\family sans
+日本語Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReqクラス)
+\family default
+・
+\family sans
+日本語Book
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReqクラス)
+\family default
+・
+\family sans
+日本語Report
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReqクラス)
+\family default
+の各レイアウトを提供しています．
+\end_layout
+
+\begin_layout Standard
+用例Article文書が，
+
+\family sans
+ファイル\SpecialChar menuseparator
+用例を開く\SpecialChar menuseparator
+論文\SpecialChar menuseparator
+日本語Article
+\begin_inset space \thinspace{}
+\end_inset
+
+(JLReqクラス)
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family default
+にあり，
+英語版解説文書が
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/jptex/latex/jlreq/jlreq.pdf
+\end_layout
+
+\end_inset
+
+にあります（日本語版は
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://ftp.kddilabs.jp/CTAN/macros/jptex/latex/jlreq/jlreq-ja.pdf
+\end_layout
+
+\end_inset
+
+）．
 \end_layout
 
 \begin_layout Subsection
@@ -5082,29 +5372,21 @@ KOMA-Script文書クラスコレクションは，
 \begin_layout Standard
 \SpecialChar LyX
 の文書クラス
-\emph on
-article (koma-script)
-\emph default
+\family sans
+KOMA-Script Article
+\family default
 ・
-\emph on
-report (koma-script)
-\emph default
+\family sans
+KOMA-Script Report
+\family default
 ・
-\emph on
-book
-\emph default
- 
-\emph on
-(koma-script)
-\emph default
+\family sans
+KOMA-Script Book
+\family default
 ・
-\emph on
-letter
-\emph default
- 
-\emph on
-(koma-script)
-\emph default
+\family sans
+KOMA-Script Letter
+\family default
 は，
 それぞれKoma-Scriptファミリーの\SpecialChar LaTeX
 文書クラス
@@ -5147,31 +5429,31 @@ letter.cls
 \begin_layout Itemize
 KOMA-Scriptクラスを選択した際の基本文字寸法は，
 
-\emph on
+\family sans
 KOMA-Script Article
-\emph default
+\family default
 ・
-\emph on
+\family sans
 KOMA-Script Report
-\emph default
+\family default
 ・
-\emph on
+\family sans
 KOMA-Script Book
-\emph default
+\family default
 で11pt，
 
-\emph on
+\family sans
 KOMA-Script Letter
-\emph default
+\family default
 で12ptです．
 \end_layout
 
 \begin_layout Itemize
 見出しや箇条書き(記述)環境のラベル，
 および
-\emph on
+\family sans
 KOMA-Script Letter
-\emph default
+\family default
 文書クラスの要素の多くでは，
 ボールド体サンセリフフォントが使われます
 \begin_inset Foot
@@ -5208,10 +5490,22 @@ cmsd.sty
 \family sans
 文書\SpecialChar menuseparator
 設定
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family default
 ダイアログの
 \family sans
+
+\begin_inset space \thinspace{}
+\end_inset
+
 クラスオプション
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family default
 フィールドで指定します）．これらのオプションの独語での詳細な説明が，
 Koma-Scriptの取扱説明書
@@ -5251,14 +5545,12 @@ Koma-Script文書クラスで，
 本文領域をデザインする主な方法は，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 文書クラス\SpecialChar menuseparator
 クラスオプション\SpecialChar menuseparator
 詳細設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -5279,11 +5571,9 @@ DIV
 綴り補正は7.5mmであり，
 
 \family sans
-\series bold
 クラスオプション\SpecialChar menuseparator
 詳細設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -5296,10 +5586,8 @@ BCOR7.5mm
 因数を11に変えるには，
 
 \family sans
-\series bold
 詳細設定クラスオプション
 \family default
-\series default
 にコンマ区切りの項目リストに
 \family typewriter
 DIV=11
@@ -5310,9 +5598,9 @@ DIV=11
 DIV=calc
 \family default
 と書き加えます．
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 ページレイアウトの計算に円方式を採用したい場合には，
 代わりに
 \family typewriter
@@ -5838,14 +6126,12 @@ article (koma-script)
 KOMA-Scriptは，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 文書クラス\SpecialChar menuseparator
 クラスオプション\SpecialChar menuseparator
 詳細設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -5853,10 +6139,16 @@ KOMA-Scriptは，
 ダイアログにおいて，
 幅広い
 \family sans
-\series bold
+
+\begin_inset space \thinspace{}
+\end_inset
+
 詳細設定クラスオプション
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family default
-\series default
 を提供しており，
 文書全体に適用することができます．主要なものを挙げると，
 
@@ -5944,11 +6236,12 @@ KOMA-Scriptは，
 キャプションをボールド体にしたければ，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 \SpecialChar LaTeX
 プリアンブル
+\series bold
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -6008,10 +6301,7 @@ mainmatter
 と書きます．あるいは，
 
 \family sans
-\series bold
-章
-\series default
-* (TOC)
+章* (TOC)
 \family default
 を使うこともできます．
 \end_layout
@@ -6178,6 +6468,10 @@ URL
 \family sans
 挿入\SpecialChar menuseparator
 図
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family default
 で）
 \family sans
@@ -6240,13 +6534,10 @@ KOMAold
 ．用例としては，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar ldots
 \SpecialChar menuseparator
 書簡\SpecialChar menuseparator
-
-\series default
 KOMA-Script Letter (V.2)
 \family default
 のひな型をご覧ください．詳細な解説は，
@@ -6366,13 +6657,17 @@ Tomasz Luczak
 \begin_layout Standard
 \SpecialChar LyX
 文書クラス
-\emph on
+\family sans
 ポーランド語Article (MW Bundle)
-\emph default
+\family default
 ・
-\emph on
-ポーランド語Report (MW Bundle)・ポーランド語Book (MW Bundle)
-\emph default
+\family sans
+ポーランド語Report (MW Bundle)
+\family default
+・
+\family sans
+ポーランド語Book (MW Bundle)
+\family default
 は，
 それぞれ\SpecialChar LaTeX
 文書クラス
@@ -6514,31 +6809,34 @@ tufte-handout.cls
 文書クラスを用います．これらの文書クラスの詳細は，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 書籍\SpecialChar menuseparator
-
-\series default
 Tufte
 \begin_inset space \thinspace{}
 \end_inset
 
 Book
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 と
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 ハンドアウト\SpecialChar menuseparator
-
-\series default
-Tufte
-\series bold
-ハンドアウト
+Tufteハンドアウト
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 にあります．
 \end_layout
 
@@ -6562,7 +6860,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Subsection
-Astronomy & Astrophysicsの論文
+Astronomy & Astrophysics
 \end_layout
 
 \begin_layout Standard
@@ -6647,12 +6945,9 @@ Dir/layouts/aapaper.layout
 \begin_layout Standard
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 論文\SpecialChar menuseparator
-
-\series default
 Astronomy & Astrophysics
 \family default
 
@@ -6667,12 +6962,10 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 文書クラス
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -6688,27 +6981,21 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \family sans
-\series bold
 ページレイアウト
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 ダイアログの
 \family sans
-\series bold
 ページ様式
 \family default
-\series default
 オプションは変更しないで，
 
 \family sans
-\series bold
 既定値
 \family default
-\series default
 のままに設定しておいてください．全体のレイアウトはマクロが行うので，
 何も変更してはいけません．
 \end_layout
@@ -6727,10 +7014,8 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \family sans
-\series bold
 タイトル
 \family default
-\series default
 ：
 ［必須］
 \end_layout
@@ -6738,10 +7023,8 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \family sans
-\series bold
 サブタイトル
 \family default
-\series default
 ：
 ［非必須］
 \end_layout
@@ -6749,10 +7032,8 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \family sans
-\series bold
 著者
 \family default
-\series default
 ：
 ［必須］
 \end_layout
@@ -6760,10 +7041,8 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \family sans
-\series bold
 住所
 \family default
-\series default
 ：
 ［必須］
 \end_layout
@@ -6771,10 +7050,8 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \family sans
-\series bold
 抜き刷り
 \family default
-\series default
 ：
 ［非必須］連絡と抜き刷りを受け取る人を指定
 \end_layout
@@ -6782,10 +7059,8 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \family sans
-\series bold
 郵便
 \family default
-\series default
 ：
 ［非必須］連絡用の郵便住所
 \end_layout
@@ -6793,10 +7068,8 @@ Astronomy & Astrophysics
 \begin_layout Itemize
 
 \family sans
-\series bold
 日付
 \family default
-\series default
 ：
 ［必須］推奨されるフォーマットは，
 
@@ -6829,11 +7102,9 @@ maketitle
 へッダ部に脚注を挿入したい場合には，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 脚注
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -6852,11 +7123,9 @@ thanks{}
 \begin_layout Standard
 
 \family sans
-\series bold
 編集\SpecialChar menuseparator
 特別文辞様式
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -6867,18 +7136,14 @@ thanks{}
 \begin_layout Itemize
 
 \family sans
-\series bold
 所属機関
 \family default
-\series default
 は，
 連絡担当著者と所属機関の組をマークします．所属機関には，
 
 \family sans
-\series bold
 住所
 \family default
-\series default
 フィールドに現れるのと同じ順序で連番が振られますので，
 各著者に標識を付けてください．
 \end_layout
@@ -6886,10 +7151,8 @@ thanks{}
 \begin_layout Itemize
 
 \family sans
-\series bold
 電子メール
 \family default
-\series default
 は，
 至急連絡用の電子メールアドレスを付するものです．
 \end_layout
@@ -6916,11 +7179,15 @@ and
 コードとして適切なコマンドを入力する必要があります．ひな型中の用例と
 \family sans
 \series bold
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\series default
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 論文\SpecialChar menuseparator
-
-\series default
 Astronomy & Astrophysics
 \family default
 
@@ -6940,10 +7207,8 @@ Astronomy & Astrophysics
 キーワード項目が含まれていなくてはなりません．これは，
 段落様式
 \family sans
-\series bold
 キーワード
 \family default
-\series default
 で為されます．用例論文を参照してください．
 \end_layout
 
@@ -7032,8 +7297,7 @@ status open
 \begin_layout Itemize
 
 \family sans
-\SpecialChar LaTeX
-
+LaTeX
 \end_layout
 
 \end_inset
@@ -7094,7 +7358,6 @@ titlerunning{}
 これらのコマンドのいずれかを使いたい場合には，
 自分で入力する必要があります．
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 \SpecialChar TeX
 コード
@@ -7108,8 +7371,6 @@ titlerunning{}
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 忘れないで下さい
 \end_layout
 
@@ -7148,11 +7409,9 @@ table*
 表を選択して，
 
 \family sans
-\series bold
 編集\SpecialChar menuseparator
 段落設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -7170,12 +7429,10 @@ table*
 \begin_layout Enumerate
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 フロート\SpecialChar menuseparator
 図
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -7183,12 +7440,14 @@ table*
 を使って，
 幅広の図フロートを作成します．それから，
 フロート内で
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
 編集\SpecialChar menuseparator
 フロートの設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -7196,14 +7455,24 @@ table*
 メニューを開き，
 
 \family sans
-\series bold
 フロート
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログで
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
 段をまたぐ
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を有効にします．
 \end_layout
 
@@ -7228,31 +7497,27 @@ Return
 カーソルを図の後ろに置いて，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 整形\SpecialChar menuseparator
 横方向の空白
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を選択して
 \family sans
-\series bold
 空白
 \family default
-\series default
 ダイアログを開き，
 
 \family sans
-\series bold
 空白
 \family default
-\series default
 コンテクストメニューから
 \family sans
-\series bold
 水平フィル
 \family default
-\series default
 を選択します．
 \end_layout
 
@@ -7310,12 +7575,9 @@ t }
 \begin_layout Standard
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 論文\SpecialChar menuseparator
-
-\series default
 Astronomy & Astrophysics
 \family default
 
@@ -7342,22 +7604,26 @@ referee
 
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 文書クラス
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 ダイアログの
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
 任意設定クラスオプション
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 フィールドに入力する必要があります．
 \end_layout
 
@@ -7368,12 +7634,9 @@ referee
 \begin_layout Standard
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 論文\SpecialChar menuseparator
-
-\series default
 Astronomy & Astrophysics
 \family default
 
@@ -7492,12 +7755,9 @@ AASTeXの全コマンドを理解する必然性をなくすものではなく�
 AAS\SpecialChar TeX
 ひな型ファイルを土台に始めることを強くお勧めします．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 論文\SpecialChar menuseparator
-
-\series default
 American Astronomical Society
 \family default
 
@@ -7837,25 +8097,31 @@ flushrt
 \family default
  (3.4)．これらは，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 文書\SpecialChar menuseparator
 設定
-\end_layout
-
-\end_inset
-
+\family default
 にある，
 
 \family sans
 クラスオプション
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 の
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
 任意設定
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ボックスに入力してください．
 \end_layout
 
@@ -8023,14 +8289,16 @@ appendix
 figcaption
 \family default
 (2.14.2)―文章のはじめにカーソルを置いて
-\begin_inset Flex MenuItem
-status collapsed
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
+
+\family sans
 挿入\SpecialChar menuseparator
 短縮タイトル
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 を選択すれば，
@@ -8214,11 +8482,9 @@ deluxetableを使う必要があるならば，
 テキストエディタで別ファイルとして編集し，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 子文書
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -8228,12 +8494,9 @@ deluxetableを使う必要があるならば，
 ファイルに読み込むことを推奨します．この実例は，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 論文\SpecialChar menuseparator
-
-\series default
 American Astronomical Society
 \family default
 
@@ -8302,10 +8565,18 @@ layouts
 \begin_layout Enumerate
 \SpecialChar LyX
 中から
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
 ツール\SpecialChar menuseparator
 環境構成
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を再度実行し，
 \SpecialChar LyX
 を再起動してください．
@@ -8324,11 +8595,9 @@ American Astronomical Society (AASTeX V.
 が，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -8360,11 +8629,9 @@ AAS\SpecialChar TeX
 キャプションやタイトルのどこかをクリックして，
 
 \family sans
-\series bold
 編集\SpecialChar menuseparator
 段落設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -8372,16 +8639,24 @@ AAS\SpecialChar TeX
 を選択し，
 
 \family sans
-\series bold
 配置
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
 両端揃え
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 に設定してください．私のところではこれで解決しました．
 \end_layout
 
@@ -8419,11 +8694,17 @@ Ressler (1992)
 文書の最後に，
 最初の書誌情報をまず書き込み，
 それを
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
 書誌情報
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 環境としてマークすることです．すると，
 入力したものの前に，
 小さな灰色のボックスが現れます．このボックスをクリックして，
@@ -8529,10 +8810,8 @@ ApJとAJに発表した論文がありますが，
 \begin_layout Standard
 
 \family sans
-\series bold
 チェス
 \family default
-\series default
 文書クラスは，
 チェスゲームの叙述を可能にするために，
 標準article文書クラスを
@@ -8541,27 +8820,39 @@ lyxskak
 \family default
 パッケージとともに使用します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 論文\SpecialChar menuseparator
 チェス
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を開くと
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
-ゲーム
-\series default
-1
+ゲーム1
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 と
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
-ゲーム
-\series default
-2
+ゲーム2
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 がありますので，
 それらを参照してください．
 \end_layout
@@ -8586,40 +8877,28 @@ elsarticle
 以下の各環境を追加します：
 
 \family sans
-\series bold
 表題脚註
 \family default
-\series default
 ・
 \family sans
-\series bold
 著者脚註
 \family default
-\series default
 ・
 \family sans
-\series bold
 連絡担当著者
 \family default
-\series default
 ・
 \family sans
-\series bold
 住所
 \family default
-\series default
 ・
 \family sans
-\series bold
 電子メール
 \family default
-\series default
 ・
 \family sans
-\series bold
 キーワード
 \family default
-\series default
 ．ひな型は
 \begin_inset space \thinspace{}
 \end_inset
@@ -8706,8 +8985,20 @@ REVTeX (V.
 Rev\SpecialChar TeX
  3.1で動作する
 \family sans
-REVTeX (obsolete)
+REVTeX
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+(廃版)
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 テキストクラスもあります．しかしながら，
 第3.1版は\SpecialChar LaTeX
  2.09で動作するものであり，
@@ -8737,9 +9028,15 @@ REVTeX (V.
 この取扱説明書は，
 Rev\SpecialChar TeX
  4.0の説明書の
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 補完
-\emph default
+\end_layout
+
+\end_inset
+
 として使用されることを前提としています．したがって，
 ここではRev\SpecialChar TeX
 固有マクロの説明はせず，
@@ -8789,20 +9086,8 @@ tex2lyx
  4文書を読み込むか，
 または
 \family sans
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\series bold
 ファイル\SpecialChar menuseparator
-新規
-\series default
-(
-\series bold
-ひな型使用
-\series default
-)\SpecialChar menuseparator
+新規(ひな型使用)\SpecialChar menuseparator
 Article
 \family default
 
@@ -8840,10 +9125,22 @@ documentclass
 設定\SpecialChar menuseparator
 文書クラス
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 の
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
 クラスオプション
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 フィールドに入れます．Rev\SpecialChar TeX
 では，
 少なくとも一つの非必須引数が必要なことに注意してください．
@@ -8865,6 +9162,10 @@ draft
 \SpecialChar LaTeX
 プリアンブル
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 に入れてください．
 \end_layout
 
@@ -8954,9 +9255,15 @@ thanks
 author
 \family default
 コマンドの
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 外側
-\emph default
+\end_layout
+
+\end_inset
+
 に来なくてはなりません．\SpecialChar LyX
 では，
 独立した
@@ -9209,6 +9516,10 @@ Memoirには，
 設定\SpecialChar menuseparator
 ページレイアウト
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 参照）．これらを章題ページに使用したい場合には，
 コマンド
 \family typewriter
@@ -9236,10 +9547,18 @@ chapterstyle{companion}
 タイトルが長すぎる場合などに用います）．\SpecialChar LyX
 では，
 章や節の始めで
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
 挿入\SpecialChar menuseparator
 短縮タイトル
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を使えば，
 これを指定することができます．一方，
 Memoirでは，
@@ -9250,10 +9569,22 @@ Memoirでは，
 \family sans
 挿入
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 メニューから
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
 短縮タイトル
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 の特定の派生形の形で利用できます．
 \end_layout
 
@@ -9288,14 +9619,12 @@ article
 \emph default
 を用いる（
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 文書クラス\SpecialChar menuseparator
 クラスオプション\SpecialChar menuseparator
 詳細設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -9406,6 +9735,10 @@ memoirにはあります．これは，
 挿入\SpecialChar menuseparator
 題辞出典
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 で入力できます．
 \end_layout
 
@@ -9453,24 +9786,26 @@ Book
 \begin_layout Description
 レシピ 二重水平線を引いた中央揃えボールド体の見出しを生成する
 \family sans
-\series bold
 小々節
 \family default
-\series default
 階層の連番節環境
 \end_layout
 
 \begin_layout Description
 材料 
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 材料
-\emph default
+\end_layout
+
+\end_inset
+
 が記述される
 \family sans
-\series bold
 記述
 \family default
-\series default
 環境で，
 環境の終わりに水平線が引かれます
 \end_layout
@@ -9478,14 +9813,15 @@ Book
 \begin_layout Standard
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 書籍\SpecialChar menuseparator
-
-\series default
 Recipe Book
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 に使用法が描かれています．
 \end_layout
 
@@ -9515,12 +9851,9 @@ europasscv.cls
 \family default
 文書クラスを提供します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 履歴書\SpecialChar menuseparator
-
-\series default
 Europass (2013)
 \begin_inset space \thinspace{}
 \end_inset
@@ -9555,12 +9888,9 @@ europecv.cls
 \family default
 文書クラスを提供します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 履歴書\SpecialChar menuseparator
-
-\series default
 Europe CV
 \begin_inset space \thinspace{}
 \end_inset
@@ -9596,12 +9926,9 @@ moderncv.cls
 文書クラスを提供します．これによって，
 カスタマイズ可能な履歴書を生成することができます．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 履歴書\SpecialChar menuseparator
-
-\series default
 Modern CV
 \begin_inset space \thinspace{}
 \end_inset
@@ -9637,12 +9964,9 @@ simplecv.cls
 \family default
 文書クラスを提供します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 履歴書\SpecialChar menuseparator
-
-\series default
 Simple CV
 \begin_inset space \thinspace{}
 \end_inset
@@ -9739,12 +10063,9 @@ dinbrief.cls
  \SpecialChar LaTeX
 クラスへのサポートを提供します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 書簡\SpecialChar menuseparator
-
-\series default
 DIN-Brief
 \begin_inset space \thinspace{}
 \end_inset
@@ -9774,10 +10095,7 @@ literal "false"
 \begin_layout Standard
 
 \family sans
-\series bold
-フランス語
-\series default
-Letter
+フランス語Letter
 \begin_inset space \space{}
 \end_inset
 
@@ -9791,13 +10109,10 @@ frletter.cls
  \SpecialChar LaTeX
 クラスへのサポートを提供します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 書簡\SpecialChar menuseparator
-フランス語
-\series default
-Letter
+フランス語Letter
 \begin_inset space \space{}
 \end_inset
 
@@ -9821,10 +10136,7 @@ Letter
 \begin_layout Standard
 
 \family sans
-\series bold
-フランス語
-\series default
-Letter
+フランス語Letter
 \begin_inset space \space{}
 \end_inset
 
@@ -9839,13 +10151,10 @@ lettre.cls
  \SpecialChar LaTeX
 クラスへのサポートを提供します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 書簡\SpecialChar menuseparator
-フランス語
-\series default
-Letter
+フランス語Letter
 \begin_inset space \space{}
 \end_inset
 
@@ -9900,12 +10209,9 @@ g-brief2.cls
  \SpecialChar LaTeX
 クラスへのサポートを提供します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 書簡\SpecialChar menuseparator
-
-\series default
 G-Brief
 \begin_inset space \space{}
 \end_inset
@@ -9953,12 +10259,9 @@ beamer.cls
  \SpecialChar LaTeX
 クラスを使用します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 プレゼンテーション\SpecialChar menuseparator
-
-\series default
 Beamer
 \begin_inset space \thinspace{}
 \end_inset
@@ -9968,16 +10271,10 @@ Beamer
 メニューにあるファイルか，
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
-
-\series default
-Beamer
-\series bold
-プレゼンテーション
+Beamerプレゼンテーション
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -10096,22 +10393,26 @@ literal "false"
 この文書クラスを使うには，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 文書クラス
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 メニューの
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
 文書クラス
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ドロップダウンで「
 \family sans
 FoilTeX
@@ -10119,10 +10420,12 @@ FoilTeX
 」を選択する必要があります．また，
 
 \family sans
-\series bold
 文書設定
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログ中には，
 以下のように，
 このクラスに特有の設定がいくつかあることを知っておかなくてはなりません．
@@ -10131,23 +10434,33 @@ FoilTeX
 \begin_layout Itemize
 
 \family sans
-\series bold
 文書設定
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログ中の，
 
 \family sans
-\series bold
 両面文書
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 オプションと
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
 二段組文書
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 オプションは変更しないでください．これらは 
 \family sans
 foils
@@ -10200,10 +10513,12 @@ A4とレター大の用紙寸法をサポートします．A5・B5・リーガ�
 \begin_layout Itemize
 
 \family sans
-\series bold
 フロートの配置
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 の設定は無視されますので，
 わざわざ変更する必要はありません．フロートはすべて，
 本文中で定義された位置に表示されます．
@@ -10211,11 +10526,17 @@ A4とレター大の用紙寸法をサポートします．A5・B5・リーガ�
 
 \begin_layout Itemize
 このクラスの
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
-\series bold
 ページレイアウト
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 の設定は，
 若干異なった挙動を示します．Foil\SpecialChar TeX
 では，
@@ -10237,9 +10558,15 @@ nolink "false"
 付けられず，
 （ロゴが定義されていれば）ロゴは，
 
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 つねに
-\emph default
+\end_layout
+
+\end_inset
+
 ページ下部中央に表示されます．使用できるページ様式とその挙動は，
 以下の通りです．
 \end_layout
@@ -10304,9 +10631,17 @@ Foil\SpecialChar TeX
 
 \begin_layout Standard
 以下のオプションは
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \family sans
 文書設定
 \family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 ダイアログの任意設定クラスオプションボックスで使うことができます．
 \end_layout
 
@@ -10356,7 +10691,11 @@ foils
 \family default
 文書を作成する度に自動的に設定されます．このオプションは，
 横向きに設定されたページを回転させるのに，
-dvipsドライバを使うようFoil\SpecialChar TeX
+dvipsドライバを使うよう
+\family sans
+Foil\SpecialChar TeX
+
+\family default
 に指示します．
 \end_layout
 
@@ -10414,7 +10753,11 @@ Foil\SpecialChar TeX
 
 \family default
 クラスでもサポートされています．それ以外に，
+
+\family sans
 Foil\SpecialChar TeX
+
+\family default
 が提供している環境と，
 \SpecialChar LyX
 が付け加えた環境があります．以下の環境は，
@@ -10428,102 +10771,67 @@ Foil\SpecialChar TeX
 status open
 
 \begin_layout Itemize
-
-\series bold
 標準
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 箇条書き(記号)
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 箇条書き(連番)
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 箇条書き(記述)
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 箇条書き(リスト)
 \end_layout
 
 \begin_layout Itemize
-
-\family sans
 \SpecialChar LyX
-
-\family default
-\series bold
 コード
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 詩句
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 引用(字下げあり)
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 引用(字下げなし)
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 タイトル
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 著者
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 日付
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 概要
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 書誌情報
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 住所
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 右寄せ住所
 \end_layout
 
@@ -10539,28 +10847,22 @@ status open
 基本的にタイトルと本文を備えた自己完結した節なので，
 
 \family sans
-Foil
+Foil\SpecialChar TeX
+
 \family default
-\SpecialChar TeX
 は新しいスライドを始める以下のようなコマンドを備えています．
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
-スライドタイトル
-\series default
-(Foilhead)
+スライドタイトル(Foilhead)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
-横置きスライドタイトル
-\series default
-(Rotatefoilhead)
+横置きスライドタイトル(Rotatefoilhead)
 \end_layout
 
 \begin_layout Standard
@@ -10573,27 +10875,13 @@ Foil
 \begin_layout Itemize
 
 \family sans
-\series bold
-スライドタイトル
-\series default
-(
-\series bold
-小
-\series default
-)(ShortFoilhead)
+スライドタイトル(小)(ShortFoilhead)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
-横置きスライドタイトル
-\series default
-(
-\series bold
-小
-\series default
-)(ShortRotatefoilhead)
+横置きスライドタイトル(小)(ShortRotatefoilhead)
 \end_layout
 
 \begin_layout Standard
@@ -10606,9 +10894,9 @@ Foil
 新しい定理を説明したりするのにしばしば使われるので，
 
 \family sans
-Foil
+Foil\SpecialChar TeX
+
 \family default
-\SpecialChar TeX
 はそれらを説明するのに便利な環境を幅広く用意しています．
 \end_layout
 
@@ -10619,68 +10907,46 @@ Foil
 status open
 
 \begin_layout Itemize
-
-\series bold
 定理
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 補題
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 系
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 命題
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 定義
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 証明
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 定理*
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 補題*
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 系*
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 命題*
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 定義*
 \end_layout
 
@@ -10699,19 +10965,21 @@ status open
 \begin_layout Itemize
 
 \family sans
-\series bold
 箇条書き(チック)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 箇条書き(クロス)
 \end_layout
 
 \begin_layout Standard
+
+\family sans
 Foil\SpecialChar TeX
+
+\family default
 には，
 強力なヘッダ機能とフッタ機能があり，
 これらはプリアンブルで設定するのが最良ですが，
@@ -10734,35 +11002,30 @@ status open
 \begin_layout Itemize
 
 \family sans
-\series bold
 グラフィックスロゴ
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 配布制限
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 右フッタ
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 右ヘッダ
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 左ヘッダ
 \end_layout
 
@@ -10781,7 +11044,11 @@ status open
 \end_layout
 
 \begin_layout Standard
+
+\family sans
 Foil\SpecialChar TeX
+
+\family default
 が提供しているコマンドで，
 \SpecialChar LyX
 が直接サポートしていないコマンドもありますが，
@@ -10806,12 +11073,9 @@ nolink "false"
 様々な環境を使ってスライドの組を作る方法を簡単に紹介します．スライド組の例をご覧になりたい場合は，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 プレゼンテーション\SpecialChar menuseparator
-
-\series default
 Foils
 \family default
 
@@ -10828,28 +11092,20 @@ Foils
 \begin_layout Standard
 
 \family sans
-\series bold
 タイトル
 \family default
-\series default
 ・
 \family sans
-\series bold
 著者
 \family default
-\series default
 ・
 \family sans
-\series bold
 日付
 \family default
-\series default
 ・
 \family sans
-\series bold
 概要
 \family default
-\series default
 環境のある他のクラスとは異なり，
 
 \family sans
@@ -10874,17 +11130,11 @@ FoilTeX
 4つの方法があります．縦向きのスライドを開始するには，
 
 \family sans
-\series bold
-スライドタイトル
-\series default
-(Foilhead)
+スライドタイトル(Foilhead)
 \family default
 や
 \family sans
-\series bold
-スライドタイトル
-\series default
-(小)(ShortFoilhead)
+スライドタイトル(小)(ShortFoilhead)
 \family default
 を使用します．両環境の違いは，
 スライドタイトル(foilhead)とスライド本文の間の余白の違いです．
@@ -10894,21 +11144,11 @@ FoilTeX
 横向きのスライドは，
 
 \family sans
-\series bold
-横向きスライドタイトル
-\series default
-(Rotatefoilhead)
+横向きスライドタイトル(Rotatefoilhead)
 \family default
 か
 \family sans
-\series bold
-横向きスライドタイトル
-\series default
-(
-\series bold
-小
-\series default
-)(ShortRotatefoilhead)
+横向きスライドタイトル(小)(ShortRotatefoilhead)
 \family default
 環境を使用して生成します．ここでも両環境の違いは，
 タイトルと本文の間の余白のみです．どちらの場合も，
@@ -10973,16 +11213,12 @@ nolink "false"
 \begin_layout Standard
 
 \family sans
-\series bold
 箇条書き(チック)
 \family default
-\series default
 と
 \family sans
-\series bold
 箇条書き(クロス)
 \family default
-\series default
 の二つの新しい様式は，
 チェック印や
 \begin_inset Formula $\times$
@@ -10992,10 +11228,8 @@ nolink "false"
 予定一覧や正誤一覧を作りやすくするように設計されたものです．これらの箇条書きは，
 
 \family sans
-\series bold
 箇条書き(記号)
 \family default
-\series default
 の派生型を専用に用意したものに過ぎません．ただし，
 これらは，
 
@@ -11010,7 +11244,11 @@ psnfss
 \end_layout
 
 \begin_layout Standard
+
+\family sans
 Foil\SpecialChar TeX
+
+\family default
 では，
 図表フロートは，
 本文中の挿入箇所にこれらが正確に表示されるように再定義されており，
@@ -11056,22 +11294,16 @@ Foil
 スライドの残り三隅には，
 
 \family sans
-\series bold
 右フッタ
 \family default
-\series default
 （既定ではページ番号）・
 \family sans
-\series bold
 右ヘッダ
 \family default
-\series default
 （右上）・
 \family sans
-\series bold
 左ヘッダ
 \family default
-\series default
 （左上）を使って文字を入れることができます．
 \end_layout
 
@@ -11416,7 +11648,7 @@ fancyheadings
 \family default
 パッケージが提供するページレイアウトと
 \family sans
-foils
+FoilTeX
 \family default
 クラスの提供するページレイアウトの間に衝突が発生するためです．
 \end_layout
@@ -11438,12 +11670,9 @@ powerdot.cls
  \SpecialChar LaTeX
 クラスを提供します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 プレゼンテーション\SpecialChar menuseparator
-
-\series default
 Powerdot
 \begin_inset space \thinspace{}
 \end_inset
@@ -11486,12 +11715,9 @@ seminar.cls
  \SpecialChar LaTeX
 クラスを提供します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 プレゼンテーション\SpecialChar menuseparator
-
-\series default
 Seminar
 \begin_inset space \thinspace{}
 \end_inset
@@ -11517,17 +11743,6 @@ Sli\SpecialChar TeX
 
 \noun default
 ）
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-（訳註）この節の内容は，
-全般的に古くなっています．
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:slitex"
@@ -11558,7 +11773,7 @@ John Weiss
 をどのように使えばよいかを説明します．これを行う2つの文書クラス，
 
 \family sans
-Slides
+スライド(Slides)
 \family default
 文書クラスと
 \family sans
@@ -11582,7 +11797,7 @@ nolink "false"
 
 \end_inset
 
-節をご参照ください2023年現在，
+節をご参照ください．2023年現在，
 
 \family sans
 Slides
@@ -11612,21 +11827,17 @@ name "sec:slidesetup"
 この文書クラスを使用するには，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 ダイアログのクラスリストから「
 \family sans
-\series bold
 スライド
 \family default
-\series default
 」を選択しなくてはなりません．このクラスについて，
 以下のように，
 特に知っておいた方が良いことがいくつかあります．
@@ -11635,16 +11846,12 @@ name "sec:slidesetup"
 \begin_layout Itemize
 
 \family sans
-\series bold
 用紙方向
 \family default
-\series default
 と
 \family sans
-\series bold
 二段組文書
 \family default
-\series default
 の各オプションは，
 あえて変更する必要はありません．これらのオプションは，
 
@@ -11658,10 +11865,8 @@ name "sec:slidesetup"
 \begin_layout Itemize
 
 \family sans
-\series bold
 ヘディング様式
 \family default
-\series default
 オプションは，
 このクラスでは少し異なった振る舞いをします．各選択肢とその機能は，
 以下の通りです．
@@ -11675,11 +11880,7 @@ name "sec:slidesetup"
 \begin_layout Description
 設定(headings)
 \family sans
- 
-\series bold
-プレーン
-\series default
-(plain)
+ プレーン(plain)
 \family default
 と同様ですが，
 それ以外にあなたが指定したタイムマーカーをすべて出力します．これが既定値です．
@@ -11694,10 +11895,8 @@ name "sec:slidesetup"
 \begin_layout Itemize
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 クラスには，
 もう一つ
 \family typewriter
@@ -11706,10 +11905,8 @@ clock
 というオプションがあります．これを使用するには，
 
 \family sans
-\series bold
 クラスオプション
 \family default
-\series default
 に「
 \family typewriter
 clock
@@ -11722,10 +11919,8 @@ clock
 このオプションを使うと，
 
 \family sans
-\series bold
 注釈
 \family default
-\series default
 にタイムマーカーを加えることができます．詳細は，
 第
 \begin_inset CommandInset ref
@@ -11748,15 +11943,15 @@ slides
 ひな型ファイルを使用することもできます（新規ファイルを開く際に
 \family sans
 \series bold
-ファイル\SpecialChar menuseparator
-新規(ひな型使用)
-\series default
-\SpecialChar menuseparator
 
-\series bold
-プレゼンテーション
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \series default
-\SpecialChar menuseparator
+ファイル\SpecialChar menuseparator
+新規(ひな型使用)\SpecialChar menuseparator
+プレゼンテーション\SpecialChar menuseparator
 Slides
 \family default
 
@@ -11781,22 +11976,18 @@ Slides
 \begin_layout Standard
 新しく
 \family sans
-Slides
+スライド
 \family default
 文書を開いたときにまず気付くのは，
 フォント寸法とフォント族の違いでしょう．ここでは，
 
 \family sans
-\series bold
 サンセリフ体
 \family default
-\series default
 フォントの
 \family sans
-\series bold
 極大
 \family default
-\series default
 寸法が用いられており，
 出力でもこのフォントが使用されます．これは，
 現在スライドを作成中であることの「目印」だと考えてください．出力スライドは大きなフォントを使用するため，
@@ -11824,63 +12015,54 @@ status open
 \begin_layout Itemize
 
 \family sans
-\series bold
 標準
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 箇条書き(記号)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 箇条書き(連番)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 箇条書き(記述)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 箇条書き(一覧)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 引用(字下げあり)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 引用(字下げなし)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 詩句
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 キャプション
 \end_layout
 
@@ -11888,8 +12070,6 @@ status open
 
 \family sans
 \SpecialChar LyX
-
-\series bold
 コード
 \end_layout
 
@@ -11919,35 +12099,30 @@ status open
 \begin_layout Itemize
 
 \family sans
-\series bold
 スライド
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 オーバーレイ
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 注釈
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 不可視文
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 可視文
 \end_layout
 
@@ -11998,108 +12173,78 @@ name "sec:スライドの癖"
 環境を別の環境で開始することが禁止されています．これを回避するために，
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 環境は『ユーザーの手引き』で述べられているような段落環境ではなくなっています．
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 ・
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 ・
 \family sans
-\series bold
 注釈
 \family default
-\series default
 は「疑似環境」だとお考えください．これらは節見出しや「
 \family sans
-\series bold
 キャプション
 \family default
-\series default
 」のように見えますが，
 実際には（必要なら前段落を終了して）新しい段落環境を開始します．同様に，
 
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 と
 \family sans
-\series bold
 可視文
 \family default
-\series default
 も「疑似コマンド」とお考えください．この2つは特定のアクションを行います．
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 ・
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 ・
 \family sans
-\series bold
 注釈
 \family default
-\series default
 ・
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 ・
 \family sans
-\series bold
 可視文
 \family default
-\series default
 の5環境に共通しているのは，
 長めのラベルを持つことです．このラベルに続く文章—
 通常は段落環境の内容になるはずですが—
 は，
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 ・
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 ・
 \family sans
-\series bold
 注釈
 \family default
-\series default
 ・
 \family sans
 不可視文
@@ -12116,14 +12261,16 @@ name "sec:スライドの癖"
 \end_layout
 
 \begin_layout Standard
-長めのラベルの後に文章を入れる
-\emph on
-必要は
-\emph default
-まったく
-\emph on
-ない
-\emph default
+長めのラベルの後に文章を入れる必要は
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
+まったくない
+\end_layout
+
+\end_inset
+
 とはいえ，
 何か書いておきたいこともあるかもしれません．たとえば，
 スライドの内容に関する短い説明などがそうでしょう．この場合，
@@ -12169,7 +12316,7 @@ Return
 大いにがっかりされるかもしれません．当然ながら，
 プレゼンテーション用の資料を準備するうえで
 \family sans
-slides
+スライド
 \family default
 クラスを役立てる方法を詳しく説明はしますが，
 内容をどうするかはあなた次第です（そしてこれも\SpecialChar LyX
@@ -12179,10 +12326,8 @@ slides
 \begin_layout Standard
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 環境を選択すれば（方法は第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -12215,33 +12360,25 @@ Slidesは，
 一枚に収まらないスライドでは，
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 を使用すると干渉する恐れがあります．
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 環境と
 \family sans
-\series bold
 注釈
 \family default
-\series default
 環境も，
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 環境と同様の動作を示します．これらは，
 青の代わりに鮮やかなマゼンタで，
 それぞれ「
@@ -12259,23 +12396,17 @@ Slidesは，
 \begin_layout Standard
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 と同様に，
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 や
 \family sans
-\series bold
 注釈
 \family default
-\series default
 の内容が，
 一つのスライドないしページに物理的に収まりきらない場合には，
 余分は新規スライドに回されます．この場合には，
@@ -12285,10 +12416,8 @@ Slidesは，
 \family default
 や
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 の本来の目的が達せられなくなりますので，
 ここでもこのような状態は避けるべきでしょう．
 \end_layout
@@ -12306,10 +12435,8 @@ Slidesは，
 \begin_layout Standard
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 の背後にある考え方は，
 別のスライドの上にスライドを載せようとするものです．メインの
 \family sans
@@ -12331,10 +12458,8 @@ Slidesは，
 喋りながら手探りで揃えなくてはなりません．これらのような場合には，
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 環境を使えば，
 もっと楽になります．
 \end_layout
@@ -12342,10 +12467,8 @@ Slidesは，
 \begin_layout Standard
 各
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 は，
 「親」
 \family sans
@@ -12387,17 +12510,13 @@ status collapsed
 \family default
 と
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 の内容は両方とも，
 1枚のスライドに物理的に収まるようになっていなければなりません．
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 は
 \family sans
 スライド
@@ -12406,10 +12525,8 @@ status collapsed
 では，
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 のラベルを
 \family sans
 スライド
@@ -12419,10 +12536,8 @@ status collapsed
 印刷可能な出力を生成すると，
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 と親
 \family sans
 スライド
@@ -12444,10 +12559,8 @@ status collapsed
 もっと良い方法として，
 
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 と
 \family sans
 可視文
@@ -12459,10 +12572,8 @@ status collapsed
 これらの名前が意味するとおり，
 
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 と
 \family sans
 可視文
@@ -12479,15 +12590,19 @@ nolink "false"
 
 節で述べたように，
 この2つの環境の
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 中
-\emph default
+\end_layout
+
+\end_inset
+
 には何も置くことができません．
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 を作成すると，
 「<以下不可視文>」と書かれた水色のラベルが，
 ページに中央揃えで表示されます．このラベルに続く段落は，
@@ -12497,10 +12612,8 @@ nolink "false"
 \family default
 （あるいは
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 ；
 どちらでも同じことです）部分に，
 代わりに空白の部分が置かれます．
@@ -12520,10 +12633,8 @@ nolink "false"
 \family default
 ・
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 ・
 \family sans
 注釈
@@ -12531,10 +12642,8 @@ nolink "false"
 を開始すると，
 
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 は自動的に終了されることに注意してください．したがって，
 
 \family sans
@@ -12552,22 +12661,16 @@ nolink "false"
 ここまでで，
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 や
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 上で
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 と
 \family sans
 可視文
@@ -12579,10 +12682,8 @@ nolink "false"
 \begin_layout Enumerate
 メインのスライドか
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 かに関わらず，
 スライド上に現れるすべてを含んだ
 \family sans
@@ -12594,25 +12695,19 @@ nolink "false"
 \begin_layout Enumerate
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 のみに表示するすべての図や段落の前に，
 
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 環境を挿入し，
 必要ならば，
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 のみの文章の後に
 \family sans
 可視文
@@ -12628,10 +12723,8 @@ nolink "false"
 の直後から，
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 を開始します．
 \end_layout
 
@@ -12642,32 +12735,24 @@ nolink "false"
 \family default
 の内容を
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 にコピーします．
 \end_layout
 
 \begin_layout Enumerate
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 内部の
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 行をすべて
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 に変更し，
 
 \family sans
@@ -12675,28 +12760,24 @@ nolink "false"
 \family default
 は
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 に変更します．
 \end_layout
 
 \begin_layout Standard
 これだけです．これで
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 ができあがりました．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- 
+
 \family sans
-slides
+スライド
 \family default
 クラスをデザインする上で，
 ひとつ残された問題があります．段落途中の文章を不可視にしたり，
@@ -12759,7 +12840,7 @@ visible
 \begin_layout Paragraph
 
 \family sans
-スライドで注釈を使う
+スライドで註釈を使う
 \family default
 
 \begin_inset CommandInset label
@@ -12774,10 +12855,8 @@ name "sec:スライド注釈"
 \begin_layout Standard
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 と同様，
 
 \family sans
@@ -12803,10 +12882,8 @@ name "sec:スライド注釈"
 よりも短く（オーバーレイのラベルよりも長いですが），
 
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 のラベルと同様，
 派手な赤紫色です．加えて，
 印刷した
@@ -12838,16 +12915,12 @@ name "sec:スライド注釈"
 を関連付けることができるので，
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 と
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 と同じように，
 長い注釈は，
 1枚の紙に収まるように分割したいと思われるに違いありません．
@@ -12856,16 +12929,12 @@ name "sec:スライド注釈"
 \begin_layout Standard
 
 \family sans
-\series bold
-注釈
+註釈
 \family default
-\series default
 の目的は明らかです．
 \family sans
-\series bold
 スライド
 \family default
-\series default
 に関して付け加えたいことを書き留めておくことです．特定の
 \family sans
 スライド
@@ -12875,10 +12944,8 @@ name "sec:スライド注釈"
 \SpecialChar LyX
 の
 \family sans
-\series bold
 スライド
 \family default
-\series default
 クラスは，
 
 \noun on
@@ -12907,10 +12974,8 @@ nolink "false"
 節参照）．このオプションはタイムマーカ機能を有効にして，
 生成したすべての
 \family sans
-\series bold
-注釈
+註釈
 \family default
-\series default
 の左下にタイムマーカを表示します．タイムマーカに表示するものを設定するには，
 \SpecialChar LaTeX
 コマンド「
@@ -12943,10 +13008,8 @@ addtime{}
 」は，
 タイムマーカを指定した分だけ進めます．このようにタイムマーカと
 \family sans
-\series bold
-注釈
+註釈
 \family default
-\series default
 を用いれば，
 特定の
 \family sans
@@ -12960,34 +13023,32 @@ addtime{}
 説明しておくべき機能がもう一つあります．当然ながら，
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 と
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 はすべてスライドに，
 
 \family sans
-\series bold
-注釈
+註釈
 \family default
-\series default
 はすべて普通の紙に印刷したいはずです．しかしながら，
 
 \family sans
-\series bold
-注釈
+註釈
 \family default
-\series default
 は関連付けられた親スライドの直後に
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 来なくてはなりません
-\emph default
+\end_layout
+
+\end_inset
+
 ．ユーザーはどうしたら良いのでしょうか．
 \end_layout
 
@@ -13006,16 +13067,12 @@ slides}
 」は，
 出力に
 \family sans
-\series bold
 スライド
 \family default
-\series default
 と
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 のみが含まれるようにするものです．同様に，
 「
 \family typewriter
@@ -13027,10 +13084,8 @@ notes}
 \family default
 」は
 \family sans
-\series bold
-注釈
+註釈
 \family default
-\series default
 以外の出力をすべて抑制します．私のアドバイスとしては，
 両コマンドをプリアンブルに書いておいて，
 最初は両方ともコメントアウトしておくと良いでしょう．そうすれば，
@@ -13093,7 +13148,7 @@ onlynotes{}
 \begin_layout Subsubsection
 
 \family sans
-slides
+スライド
 \family default
 クラスのひな型ファイル
 \end_layout
@@ -13101,19 +13156,16 @@ slides
 \begin_layout Standard
 
 \family sans
-slides
+スライド
 \family default
 クラス用のひな型ファイルが提供されています．これを使用するには，
 新しいプレゼンテーションを作り始める際に，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)\SpecialChar menuseparator
 プレゼンテーション\SpecialChar menuseparator
-
-\series default
-Slides
+スライド
 \family default
 
 \begin_inset space \thinspace{}
@@ -13122,49 +13174,35 @@ Slides
 メニューを選択してください．すると新規ファイルには，
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 ―
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 ―
 \family sans
-\series bold
-注釈
+註釈
 \family default
-\series default
 の組が，
 例として含まれており，
 
 \family sans
-\series bold
 スライド
 \family default
-\series default
 と
 \family sans
-\series bold
 オーバーレイ
 \family default
-\series default
 には，
 さらに
 \family sans
-\series bold
 不可視文
 \family default
-\series default
 と
 \family sans
-\series bold
 可視文
 \family default
-\series default
 の使用例も含まれています．また，
 プリアンブルには，
 次のように書き込まれています．
@@ -13221,7 +13259,7 @@ Sli\SpecialChar TeX
 ユーザーがこれを使いたかったり必要としたりしたときのためにあるものです．プレゼンテーションを作成するためには，
 
 \family sans
-Foils
+FoilTeX
 \family default
 （第
 \begin_inset CommandInset ref
@@ -13261,8 +13299,8 @@ Report
 
 \begin_layout Standard
 Reportクラスは，
-いわばbookクラスとarticleクラスの相の子です．これはbook文書クラスのように部・章・節を提供しますが，
-前付け・中付け・後付けは提供しません．またarticle文書クラスのように概要段落様式を提供し，
+いわばBookクラスとArticleクラスの相の子です．これはBook文書クラスのように部・章・節を提供しますが，
+前付け・中付け・後付けは提供しません．またArticle文書クラスのように概要段落様式を提供し，
 既定では片面文書です．また（両面モードでも），
 新しい章を右側ページから始めることはしません．
 \end_layout
@@ -13272,7 +13310,7 @@ Reportクラスは，
 \SpecialChar LyX
 が公式にサポートしている
 \family sans
-report
+Report
 \family default
 文書クラスについては，
 コレクション(第
@@ -13292,33 +13330,20 @@ nolink "false"
 \begin_layout Itemize
 
 \family sans
-\series bold
-日本語
-\series default
-Report
+日本語Report
 \begin_inset space \space{}
 \end_inset
 
-(
-\series bold
-標準クラス
-\series default
-)
+(標準クラス)
 \family default
 および
 \family sans
-\series bold
-日本語
-\series default
-Report
+日本語Report
 \begin_inset space \space{}
 \end_inset
 
-(
-\series bold
-縦書き
-\series default
-)
+(標準クラス：
+縦書き)
 \family default
 については，
 第
@@ -13366,11 +13391,7 @@ Report
 \begin_inset space \space{}
 \end_inset
 
-(
-\series bold
-フォント寸法を追加した標準クラス
-\series default
-)
+(フォント寸法を追加した標準クラス)
 \family default
 については，
 第
@@ -13390,18 +13411,11 @@ nolink "false"
 \begin_layout Itemize
 
 \family sans
-\series bold
-ポーランド語
-\series default
-Report
+ポーランド語Report
 \begin_inset space \space{}
 \end_inset
 
-(MW
-\begin_inset space \space{}
-\end_inset
-
-Bundle)
+(MWシリーズ)
 \family default
 については，
 第
@@ -14142,13 +14156,11 @@ INSERT —
 2つの差込枠と段落様式を提供します．詳細については，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
 危険有害性情報・注意書き
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14159,12 +14171,10 @@ INSERT —
 
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
 危険有害性情報・注意書き
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14181,29 +14191,21 @@ INSERT —
 このモジュールは，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 特別差込枠
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 から入力することのできる
 \family sans
-R-S
-\series bold
-番号
+R-S番号
 \family default
-\series default
 と
 \family sans
-R-S
-\series bold
-文
+R-S文
 \family default
-\series default
 の2つの差込枠と，
 化学物質のリスクと安全性に関する表示の番号と説明文を組版するための1つの環境を提供します．
 \end_layout
@@ -14219,25 +14221,21 @@ R-S
 OT絵画フロート)を付け加えます．このモジュールについての情報は，
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
 言語学
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 および
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
 言語学
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14271,25 +14269,21 @@ literal "false"
 
 から入手できます．
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
 点字
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 および
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
 点字
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14333,14 +14327,12 @@ fixme
 既定状態では，
 註釈は「原稿」モードでのみ表示されます(
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 文書クラス\SpecialChar menuseparator
 クラスオプション\SpecialChar menuseparator
 詳細設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14348,12 +14340,10 @@ fixme
 で「draft」オプションを指定した時のみ)．註釈をつねに表示するには，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 プリアンブル
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14375,16 +14365,10 @@ PDFコメント
 このモジュールは，
 PDF出力向けに各種註釈を提供します．
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
-
-\series default
-PDF
-\series bold
-コメント
+PDFコメント
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14395,17 +14379,11 @@ PDF
 
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
-PDF
-\series bold
-コメント
+PDFコメント
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14429,16 +14407,10 @@ literal "false"
 
 および
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
-
-\series default
-PDF
-\series bold
-フォーム
+PDFフォーム
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14449,17 +14421,11 @@ PDF
 
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
-PDF
-\series bold
-フォーム
+PDFフォーム
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14485,13 +14451,15 @@ TODO註釈
 文書中にTODO項目を入れ込む特別差込枠を提供し，
 「TODO一覧」を生成するための段落様式も提供します．
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 文書クラス\SpecialChar menuseparator
 クラスオプション\SpecialChar menuseparator
 詳細設定
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 に「final」を渡せば，
 TODO註釈は出力されません． 
 \begin_inset CommandInset href
@@ -14533,12 +14501,10 @@ apaciteやapacitexあるいは他の様式でも構いません)．
 tcolorboxパッケージを使って色付きボックスをサポートする特別差込枠を追加します．詳細については，
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
 色付きボックス
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14549,13 +14515,11 @@ tcolorboxパッケージを使って色付きボックスをサポートする�
 
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
 色付き装飾ボックス
 \family default
-\series default
 ，
 
 \begin_inset CommandInset href
@@ -14577,38 +14541,28 @@ literal "false"
 これは，
 ボックスの中身を伸縮したり回転したりする
 \family sans
-\series bold
 反転ボックス
 \family default
-\series default
 ・
 \family sans
-\series bold
 寸法変更ボックス
 \family default
-\series default
 ・
 \family sans
-\series bold
 回転ボックス
 \family default
-\series default
 ・
 \family sans
-\series bold
 伸縮ボックス
 \family default
-\series default
 の各特別差込枠を提供します．
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\series bold
 反転ボックス
 \family default
-\series default
 は，
 下記のように，
 特段の設定なく簡単に文を反転させることができます．
@@ -14635,10 +14589,8 @@ Ctrl-Rを押す必要があります．)
 \begin_layout Standard
 
 \family sans
-\series bold
 寸法変更ボックス
 \family default
-\series default
 を使うと，
 文や画像の寸法を指定することができます．使用することのできる単位は，
 em・ex・in・pt・pc・cm・mm・dd・cc・nd・nc・bp・spです．下記のように
@@ -14689,20 +14641,16 @@ Great Western Railway グレートウェスタン鉄道
 \begin_layout Standard
 
 \family sans
-\series bold
 回転ボックス
 \family default
-\series default
 を使えば，
 ボックスの参照点を中心に内容物を回転させることができます．入れることができます．異なる原点の周りに回転させたい場合は，
 ボックスの中にカーソルを置いて，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 原点
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -14835,28 +14783,22 @@ Great Western Railway グレートウェスタン鉄道
 \begin_layout Standard
 
 \family sans
-\series bold
 伸縮ボックス
 \family default
-\series default
 は内容物を伸縮します．垂直因子を追加するには，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 垂直因子
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 を選択してください．
 \family sans
-\series bold
 垂直因子
 \family default
-\series default
 を使わない場合には，
 水平因子が使われます．水平因子と垂直因子の値が異なる場合には，
 下記のように歪みが生まれます．
@@ -14989,10 +14931,8 @@ varwidth
 \family default
 を使用する
 \family sans
-\series bold
 ミニページ(可変幅)
 \family default
-\series default
 差込枠を
 \family sans
 \series bold
@@ -15000,8 +14940,12 @@ varwidth
 \begin_inset space \thinspace{}
 \end_inset
 
+
+\series default
 挿入\SpecialChar menuseparator
 特別差込枠
+\series bold
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15018,9 +14962,10 @@ varwidth
 カーソルをミニページの内側に置いて，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 垂直調整
+\series bold
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15046,8 +14991,12 @@ b
 \begin_inset space \thinspace{}
 \end_inset
 
+
+\series default
 挿入\SpecialChar menuseparator
 最大幅
+\series bold
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15062,13 +15011,15 @@ linewidth
 \family default
 )を使用します．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
 可変幅ミニページ
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 をご覧ください．
 \end_layout
 
@@ -15162,10 +15113,8 @@ fixltx2e
 \begin_layout Enumerate
 
 \family sans
-\series bold
 プリアンブル文
 \family default
-\series default
 様式では，
 そこに入力されたものは全てプリアンブルにそのまま置かれます．これは，
 プリアンブルコードを\SpecialChar LyX
@@ -15175,10 +15124,8 @@ fixltx2e
 \begin_layout Enumerate
 
 \family sans
-\series bold
 表題文
 \family default
-\series default
 様式では，
 その中身が，
 \SpecialChar LaTeX
@@ -15239,21 +15186,17 @@ literal "false"
 このモジュールは，
 二言語キャプションを組むための段落様式
 \family sans
-\series bold
 キャプション設定
 \family default
-\series default
 を提供します．この段落様式の中で
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 言語
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -15263,13 +15206,11 @@ babel言語名を使って望む第二言語を入力することができます
 より詳しくは，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
 多言語キャプション
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -15280,12 +15221,14 @@ babel言語名を使って望む第二言語を入力することができます
 
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
 多言語キャプション
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を参照． 
 \end_layout
 
@@ -15335,12 +15278,10 @@ endnotes
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 特別差込枠\SpecialChar menuseparator
 後註
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -15352,23 +15293,23 @@ endnotes
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 一覧/目次/参照\SpecialChar menuseparator
 後註
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 として後註一覧を挿入します．
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 埋込オブジェクト篇
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 の第4.2節「脚註」を参照． 
 \end_layout
 
@@ -15395,12 +15336,10 @@ endnotes
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 特別差込枠\SpecialChar menuseparator
 後註
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -15412,23 +15351,23 @@ endnotes
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 一覧/目次/参照\SpecialChar menuseparator
 後註
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 として後註一覧を挿入します．
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 埋込オブジェクト篇
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 の第4.2節「脚註」を参照． 
 \end_layout
 
@@ -15450,23 +15389,23 @@ endnotes
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 一覧/目次/参照\SpecialChar menuseparator
 後註
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 として後註一覧を挿入します．
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 埋込オブジェクト篇
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 の第4.2節「脚註」を参照． 
 \end_layout
 
@@ -15493,23 +15432,23 @@ endnotes
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 一覧/目次/参照\SpecialChar menuseparator
 後註
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 として後註一覧を挿入します．
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 埋込オブジェクト篇
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 の第4.2節「脚註」を参照．
 \end_layout
 
@@ -15530,26 +15469,22 @@ chessboard
 \family default
 パッケージをサポートします．
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 論文\SpecialChar menuseparator
 チェス
 \family default
-\series default
+
+\begin_inset space \thinspace{}
+\end_inset
+
 を開くと
 \family sans
-\series bold
-ゲーム
-\series default
-1
+ゲーム1
 \family default
 と
 \family sans
-\series bold
-ゲーム
-\series default
-2
+ゲーム2
 \family default
 がありますので，
 それらと
@@ -15576,11 +15511,8 @@ LilyPond楽譜エディタ用のコードを
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 特別差込枠\SpecialChar menuseparator
-
-\series default
 LilyPond
 \family default
 
@@ -15589,11 +15521,8 @@ LilyPond
 
 にて入力する差込枠を提供します．これは出力時に処理されます．
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
-
-\series default
 LilyPond
 \family default
 
@@ -15606,12 +15535,9 @@ LilyPond
 
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 LilyPond
 \begin_inset space \space{}
 \end_inset
@@ -15674,11 +15600,9 @@ enumitem
 箇条書きの各階層における最初の項目に，
 非必須引数を加えることで(
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 箇条書きオプション
 \family default
-\series default
 )変更することができます．そこに，
 \SpecialChar TeX
 コード(ショートカット：
@@ -15804,7 +15728,7 @@ status collapsed
 
 \begin_layout Enumerate
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -15834,7 +15758,7 @@ Alph{enumi}
 \begin_deeper
 \begin_layout Enumerate
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -15866,7 +15790,7 @@ arabic{enumii}
 \begin_deeper
 \begin_layout Enumerate
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -15894,7 +15818,7 @@ arabic{enumiii}}
 \begin_deeper
 \begin_layout Enumerate
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -16023,10 +15947,10 @@ Reportにおける連番段落
 \begin_layout Enumerate
 公的なレポートには，
 連番を振った段落がよく用いられます．この目的を達するには，
-脚註
+第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fn:段落ごとに異なるブリットの形"
+reference "sec:使用法"
 plural "false"
 caps "false"
 noprefix "false"
@@ -16034,7 +15958,7 @@ nolink "false"
 
 \end_inset
 
-で要約したような様々な方法があります．各コマンドのitemをenumに変えてください．
+節で要約したような様々な方法があります．各コマンドのitemをenumに変えてください．
 \end_layout
 
 \begin_layout Enumerate
@@ -16139,18 +16063,8 @@ status open
 連番を復帰させるには，
 スタイル
 \family sans
-\series bold
-箇条書き
-\series default
-(
-\series bold
-連番
-\series default
-)-
-\series bold
-復帰
+箇条書き(連番)-復帰
 \family default
-\series default
 を使用してください．
 \end_layout
 
@@ -16735,13 +16649,10 @@ LaTeX環境の記号・連番箇条書きも，
 同様のオプション引数を使えるように拡張します．詳細については，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-段落箇条書き
-\series default
-(paralist)
+段落箇条書き(paralist)
 \family default
 
 \begin_inset space \thinspace{}
@@ -16753,9 +16664,10 @@ LaTeX環境の記号・連番箇条書きも，
 
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
+
+\series bold
 Paralist
 \family default
 \series default
@@ -16807,34 +16719,25 @@ nolink "false"
 節に解説があり，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 Noweb
 \family default
 ，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 Noweb
 \family default
 ，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 Noweb
 \begin_inset space \space{}
 \end_inset
@@ -16844,12 +16747,9 @@ Listerrors
 ，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 Noweb2LyX
 \family default
 
@@ -16903,7 +16803,7 @@ install.packages('knitr')
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 これはR >= 2.14.1に依存します．詳細については
 \begin_inset Flex URL
 status collapsed
@@ -16918,13 +16818,15 @@ http://yihui.name/knitr
 をご覧ください．
 \end_layout
 
-\begin_layout Standard
-また，
+\begin_layout Itemize
 
 \family typewriter
 includernw
 \family default
-パッケージも導入されていなくてはならず，
+パッケージも導入されていなくてはなりません．
+\end_layout
+
+\begin_layout Itemize
 
 \family sans
 LilyPond
@@ -16938,25 +16840,23 @@ Book
 Sweave
 \family default
 が読み込まれている場合には，
-使用できません．情報と文芸的プログラミングについては，
+使用できません．
+\end_layout
+
+\begin_layout Standard
+情報と文芸的プログラミングについては，
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
-
-\series default
 knitr
 \family default
 ，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 Rnw
 \begin_inset space \thinspace{}
 \end_inset
@@ -17021,22 +16921,16 @@ Book
 使用できません．情報と文芸的プログラミングについては，
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
-
-\series default
 Sweave
 \family default
 ，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 Sweave
 \family default
 および第
@@ -17067,22 +16961,16 @@ AMS定理
 定理は文書を通じて連番が付されます．これは，
 
 \family sans
-\series bold
-定理(…毎…連番)
+AMS定理(…毎…連番)
 \family default
-\series default
 モジュールのうちの一つを読み込むことによって変更することができます．
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 モジュールや
 \family sans
-\series bold
 標準定理(連番なし)
 \family default
-\series default
 モジュールが読み込まれているときには，
 使用することができません．
 \end_layout
@@ -17095,20 +16983,14 @@ AMS定理(拡張)
 このモジュールは，
 
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 パッケージを使う定理環境をいくつか追加定義します(
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 モジュールは読み込まれていなくてはなりません)．これには，
-基準・アルゴリズム・公理・条件・註釈・記法・要約・謝辞・結論・事実・仮定・場合・問題が，
+基準・アルゴリズム・公理・条件・註釈・記法・要約・結論・事実・仮定・場合・問題が，
 連番ありと連番なしの両方の形で含まれています．
 \end_layout
 
@@ -17120,27 +17002,18 @@ AMS定理(拡張・章毎に種類別連番)
 このモジュールは，
 
 \family sans
-AMS
-\series bold
-定理(章毎に種類別連番)
+AMS定理(章毎に種類別連番)
 \family default
-\series default
-パッケージを使う定理環境をいくつか追加定義します(
+モジュールを使う定理環境をいくつか追加定義します(
 \family sans
-AMS
-\series bold
-定理(章毎に種類別連番)
+AMS定理(章毎に種類別連番)
 \family default
-\series default
 モジュールは読み込まれていなくてはなりません)．中には，
-基準・アルゴリズム・公理・条件・註釈・記法・要約・謝辞・結論・仮定・場合が，
+基準・アルゴリズム・公理・条件・註釈・記法・要約・結論・仮定・場合が，
 連番ありと連番なしの両方の形で含まれています．
 \family sans
-AMS
-\series bold
-定理(拡張)
+AMS定理(拡張)
 \family default
-\series default
 モジュールとは異なり，
 このモジュールでは定理の種類毎に別々のカウンタを有し，
 章毎にリセットされます(例：
@@ -17156,27 +17029,18 @@ AMS定理(拡張・種類別連番)
 このモジュールは，
 
 \family sans
-AMS
-\series bold
-定理(種類別連番)
+AMS定理(種類別連番)
 \family default
-\series default
 パッケージを使う定理環境をいくつか追加定義します(
 \family sans
-AMS
-\series bold
-定理(種類別連番)
+AMS定理(種類別連番)
 \family default
-\series default
 モジュールは読み込まれていなくてはなりません)．中には，
-基準・アルゴリズム・公理・条件・註釈・記法・要約・謝辞・結論・事実・仮定・場合が，
+基準・アルゴリズム・公理・条件・註釈・記法・要約・結論・事実・仮定・場合が，
 連番ありと連番なしの両方の形で含まれています．
 \family sans
-AMS
-\series bold
-定理(拡張)
+AMS定理(拡張)
 \family default
-\series default
 モジュールとは異なり，
 このモジュールでは定理の種類毎に別々のカウンタを有します(例：
 基準1→基準2→公理3→仮定4→…ではなく，
@@ -17191,42 +17055,30 @@ AMS定理(章毎に種類別連番)
 このモジュールは，
 拡張AMS機構を使う定理環境と証明環境を定義します．連番付きと連番なしの両方の型が提供されます．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 モジュールとは異なり，
 ここに含まれる定理型は，
 種類毎に別々のカウンタを有します(例：
 定理1→定理2→補題3→命題4→…ではなく，
 定理1.1→定理1.2→補題1.1→命題1.1→定理1.3→補題1.2→…となります)．連番は章毎にリセットされます(定理1.1→定理2.1→...)．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 や
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(種類別連番)
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(連番なし)
 \family default
-\series default
 の各モジュールが読み込まれているときには，
 使用することができません．
 \end_layout
@@ -17239,42 +17091,30 @@ AMS定理(種類別連番)
 このモジュールは，
 拡張AMS機構を使う定理環境と証明環境を定義します．連番付きと連番なしの両方の型が提供されます．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 モジュールとは異なり，
 このモジュールでは定理の種類毎に別々のカウンタを有します(例：
 定理1→定理2→補題3→命題4→…ではなく，
 定理1→定理2→補題1→命題1→定理3→補題2→…となります)．連番の及ぶ範囲は文書全体です．章毎または節毎の連番をお望みであれば，
 「章毎に…連番」または「節毎に…連番」とあるモジュールを選択してください．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 や
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(種類別連番)
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(連番なし)
 \family default
-\series default
 の各モジュールが読み込まれているときには，
 使用することができません．
 \end_layout
@@ -17299,23 +17139,16 @@ AMS
 定理は文書を通じて連番が付されます．これは，
 
 \family sans
-\series bold
 標準定理(...連番)
 \family default
-\series default
 モジュールのうちの一つを読み込むことによって変更することができます．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 や
 \family sans
-\series bold
 標準定理(連番なし)
 \family default
-\series default
 のモジュールが読み込まれているときには，
 使用することができません．
 \end_layout
@@ -17326,7 +17159,20 @@ AMS
 
 \begin_layout Standard
 このモジュールは，
-定理名付き定理を使用できるようにします．定理名は「定理追加文」差込枠に入れます．
+定理名付き定理を使用できるようにします．定理名は
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+挿入\SpecialChar menuseparator
+定理見出し文
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+で入れることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -17338,23 +17184,16 @@ AMS
 定理などを章ごとに付番します(つまり章が始まるときにカウンタがリセットされます)．このモジュールは，
 章環境を提供するレイアウトとのみ使用してください．
 \family sans
-AMS
-\series bold
-定理(種類別連番)
+AMS定理(種類別連番)
 \family default
-\series default
 または
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 モジュールのどちらかが読み込まれていなくてはなりません．
 \family sans
-\series bold
 標準定理(節毎連番)
 \family default
-\series default
 のモジュールが読み込まれているときには，
 使用することができません．
 \end_layout
@@ -17367,23 +17206,16 @@ AMS
 このモジュールは，
 定理などを節ごとに付番します(つまり節が始まるときにカウンタがリセットされます)．
 \family sans
-AMS
-\series bold
-定理(種類別連番)
+AMS定理(種類別連番)
 \family default
-\series default
 または
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 モジュールのどちらかが読み込まれていなくてはなりません．
 \family sans
-\series bold
 標準定理(章毎連番)
 \family default
-\series default
 のモジュールが読み込まれているときには，
 使用することができません．
 \end_layout
@@ -17396,17 +17228,12 @@ AMS
 このモジュールは，
 非AMSクラス用にいくつか定理環境を定義します．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 モジュールや
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 モジュールとは違って，
 このモジュールでは定理の種類毎に別々のカウンタが設定されています(例：
 定理1→定理2→補題3→命題4→定理5→補題6\SpecialChar ldots
@@ -17415,51 +17242,35 @@ AMS
 のように進行します)．連番は，
 章の開始時にリセットされます．
 \family sans
-AMS
-\series bold
-定理(種類別連番)
+AMS定理(種類別連番)
 \family default
-\series default
 または
 \family sans
-\series bold
 標準定理(種類別連番)
 \family default
-\series default
 モジュールのどちらかが読み込まれていなくてはなりません．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 や
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(連番なし)
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(節毎連番)
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(節毎に種類別連番)
 \family default
-\series default
 の各モジュールが読み込まれているときには，
 使用することができません．
 \end_layout
@@ -17472,68 +17283,47 @@ AMS
 このモジュールは，
 非AMSクラス用にいくつか定理環境を定義します．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 モジュールや
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 モジュールとは違って，
 このモジュールでは定理の種類毎に別々のカウンタが設定されています(例：
 定理1→定理2→補題3→命題4→…のようにはならないで，
 定理1→定理2→補題1→命題1→定理3→補題2→…のように進行します)．連番は，
 節の開始時にリセットされます．
 \family sans
-AMS
-\series bold
-定理(種類別連番)
+AMS定理(種類別連番)
 \family default
-\series default
 または
 \family sans
-\series bold
 標準定理(種類別連番)
 \family default
-\series default
 モジュールのどちらかが読み込まれていなくてはなりません．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 や
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(連番なし)
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(章毎連番)
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(章毎に種類別連番)
 \family default
-\series default
 の各モジュールが読み込まれているときには，
 使用することができません．
 \end_layout
@@ -17546,48 +17336,34 @@ AMS
 このモジュールは，
 非AMSクラス用にいくつか定理環境を定義します．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 モジュールや
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 モジュールとは違って，
 このモジュールでは定理の種類毎に別々のカウンタが設定されています(例：
 定理1→定理2→補題3→命題4→…のようにはならないで，
 定理1→定理2→補題1→命題1→定理3→補題2→…のように進行します)．連番の及ぶ範囲は文書全体です．章毎または節毎の連番をお望みであれば，
 「章毎に…連番」または「節毎に…連番」とあるモジュールを選択してください．
 \family sans
-AMS
-\series bold
-定理
+AMS定理
 \family default
-\series default
 や
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 標準定理(連番なし)
 \family default
-\series default
 ，
 
 \family sans
-\series bold
 AMS定理(種類別連番)
 \family default
-\series default
 の各モジュールが読み込まれているときには，
 使用することができません．
 \end_layout
@@ -17601,17 +17377,12 @@ AMS定理(種類別連番)
 拡張AMS機構を用いる，
 番号なし定理環境と証明環境のみ定義します．
 \family sans
-AMS
-\series bold
-定理(種類別連番)
+AMS定理(種類別連番)
 \family default
-\series default
 または
 \family sans
-\series bold
 標準定理
 \family default
-\series default
 モジュールのどちらかが読み込まれていなくてはなりません．
 \end_layout
 
@@ -17623,12 +17394,10 @@ AMS
 このモジュールは，
 LyX中で数式群をまとめる直感的な方法を提供します．
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 細目番号
 \family default
-\series default
 をご覧ください．
 \end_layout
 
@@ -17644,22 +17413,18 @@ LyX中で数式群をまとめる直感的な方法を提供します．
 このモジュールは，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定ページ\SpecialChar menuseparator
 ページレイアウト
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 ダイアログの
 \family sans
-\series bold
 ページ様式
 \family default
-\series default
 オプションを
 \family typewriter
 fancy
@@ -17675,42 +17440,36 @@ fancyhdr
 \begin_layout Itemize
 
 \family sans
-\series bold
 左ヘッダ
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 中央ヘッダ
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 右ヘッダ
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 左フッタ
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 中央フッタ
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\series bold
 右フッタ
 \end_layout
 
@@ -17721,36 +17480,30 @@ fancyhdr
 \begin_layout Standard
 既定のページレイアウトは，
 どちらかといえば素っ気ないものです．
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-article
-\end_layout
-
-\end_inset
-
+\family sans
+Article (標準クラス) 
+\family default
 文書クラスの場合には，
-ページの下の真ん中にページ番号がつくだけです．この取扱説明書はKOMA-scriptのbookクラスなので，
+ページの下の真ん中にページ番号がつくだけです．この取扱説明書は
+\family sans
+KOMA-Script Book
+\family default
+クラスなので，
 すこしは凝ってますが，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定ページ\SpecialChar menuseparator
 ページレイアウト
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 ダイアログの
 \family sans
-\series bold
 ページ様式
 \family default
-\series default
 オプションを「fancy」に設定すれば，
 ページへッダが「左」「中央」「右」と命名された3つのフィールドに分割されます．フッタも同様に3つのフィールドに分割されます．これらのフィールドをもっとも簡単に設定する\SpecialChar LaTeX
 コマンドは，
@@ -17856,14 +17609,12 @@ cfoot{}
 しかしながら，
 ちょっとした変更を加えるのにもっと簡単な方法があります．
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
 ページレイアウト\SpecialChar menuseparator
 ヘッダ・フッタ文の設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -17878,13 +17629,9 @@ cfoot{}
 自分の名前を左下に，
 日付を右下に入れます．新しく使えるようにした環境を使って，
 以下の項目を加えてください．
-\begin_inset VSpace defskip
-\end_inset
-
-
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 左ヘッダ：
 第
 \family typewriter
@@ -17895,12 +17642,12 @@ thesection
  節
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 中央ヘッダ：
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 右ヘッダ：
 
 \family typewriter
@@ -17911,29 +17658,23 @@ thepage
  ページ
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 左フッタ：
 物書 はじめ
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 中央フッタ：
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 右フッタ：
 
 \family typewriter
 
 \backslash
 today
-\family default
-
-\begin_inset VSpace defskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -18117,7 +17858,7 @@ thispagestyle{fancy}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 \begin_inset Flex Strong
 status collapsed
 
@@ -18132,7 +17873,7 @@ fancyfoot{}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 \begin_inset Flex Strong
 status collapsed
 
@@ -18168,9 +17909,19 @@ thepage}
 最後の例として，
 へッダやフッタに画像を挿入できることを取り上げましょう．会社のロゴをページ左上に入れたいものとします．たとえば，
 
+\family sans
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+LaTeXプリアンブル
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+に
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \family sans
 
@@ -18179,12 +17930,12 @@ lhead{
 \backslash
 resizebox{1in}{!}{
 \backslash
-includegraphics{logo.eps}}}
+includegraphics{logo.png}}}
 \end_layout
 
 \begin_layout Standard
 \noindent
-とすれば，
+と書けば，
 これを実現できます（文書中に他に画像を挿入していない場合には，
 
 \family sans
@@ -18229,12 +17980,10 @@ fancyhdr
 このモジュールは，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 特別差込枠\SpecialChar menuseparator
 横向き
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -18245,12 +17994,10 @@ fancyhdr
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 特別差込枠\SpecialChar menuseparator
 横向き(フロート)
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -18285,31 +18032,25 @@ multicol
 パッケージを使用するもので，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 本文レイアウト
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 にある
 \family sans
-\series bold
 二段組文書
 \family default
-\series default
 とは別の機能です．文書全体に二段組を行いたい場合には，
 
 \family sans
-\series bold
 二段組文書
 \family default
-\series default
 オプションを利用することをお勧めします．それ以外の場合には，
-本機能をご使用ください．
+本モジュールをご使用ください．
 \end_layout
 
 \begin_layout Standard
@@ -18318,21 +18059,17 @@ multicol
 各段の下ごとには置かれません．フロートに関して，
 
 \family sans
-\series bold
 編集\SpecialChar menuseparator
 フロート設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 で
 \family sans
-\series bold
 段をまたぐ
 \family default
-\series default
 オプションを有効にする必要があるという制限がある他は，
 各段において通常の使用をすることができます．
 \end_layout
@@ -18349,12 +18086,10 @@ multicol
 
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
-任意設定差込枠\SpecialChar menuseparator
+特別差込枠\SpecialChar menuseparator
 多段組
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -18426,11 +18161,9 @@ It was in the spring of the year 1894 that all London was interested,
 カーソルを多段組差込枠の内部において，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 段数
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -19853,7 +19586,7 @@ shapepar
 \series bold
 shapepar
 \series default
-は，
+パッケージは，
 以下の形を提供しています．
 \end_layout
 
@@ -20407,9 +20140,9 @@ CDlabel
 CD/DVDの寸法に収まらなくてはならないので，
 伸縮しません．したがって，
 形に収まる文章量は限られています．
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 
 \family sans
 drop
@@ -20435,13 +20168,6 @@ Arithmetic overflow
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 先端のある形では，
 先端部の文字列で，
 \SpecialChar LaTeX
@@ -20458,13 +20184,6 @@ arg   "specialchar-insert hyphenation"
 
 \family default
 ）を指定することが往々にして必要になります．
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -20654,14 +20373,16 @@ literal "false"
 
 \begin_layout Enumerate
 \SpecialChar LyX
+の
+\begin_inset space \thinspace{}
+\end_inset
+
 
 \family sans
-\series bold
-の挿入\SpecialChar menuseparator
+挿入\SpecialChar menuseparator
 ファイル\SpecialChar menuseparator
 子文書
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -20669,10 +20390,8 @@ literal "false"
 メニューでファイルを選択し，
 
 \family sans
-\series bold
 取り込みの型
 \family default
-\series default
 として
 \family sans
 Input
@@ -20886,18 +20605,14 @@ status open
 モジュールは，
 ドロップキャピタル段落様式である
 \family sans
-\series bold
 頭文字
 \family default
-\series default
 段落環境を追加します．これを用いれば，
 望む場所をドロップキャピタルにすることができます．すると，
 
 \family sans
-\series bold
 挿入
 \family default
-\series default
 メニューに以下の3つの項目が追加されます．
 \end_layout
 
@@ -20935,13 +20650,11 @@ status open
 様式の見た目を調整するには，
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 埋込オブジェクト篇\SpecialChar menuseparator
 本文回り込みオブジェクト\SpecialChar menuseparator
 頭文字
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -20954,11 +20667,11 @@ status open
 \end_layout
 
 \begin_layout Subsection
-ハイフネート可能なテキストマークアップ
+ハイフネート可能なテキストマークアップ（Soul）
 \end_layout
 
 \begin_layout Standard
-このパッケージは，
+このモジュールは，
 
 \family sans
 soul
@@ -20966,7 +20679,11 @@ soul
 パッケージを使って，
 ハイライトしたり均等配置したり，
 打消線や下線を引いたり，
-大文字化/スモールキャップ化したりするための文辞様式を定義します．文辞特性ダイアログで提供されるマークアップと違い，
+大文字化/スモールキャップ化したりするための文辞様式を定義します．
+\end_layout
+
+\begin_layout Standard
+文辞特性ダイアログで提供されるマークアップと違い，
 
 \family sans
 soul
@@ -21032,11 +20749,9 @@ status collapsed
 )を定義します．これらは，
 
 \family sans
-\series bold
 編集\SpecialChar menuseparator
 特別文辞様式
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -21170,67 +20885,47 @@ biblatex
 \SpecialChar LyX
 での各パッケージの取扱い方は，
 ほぼ同じです．
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 文書\SpecialChar menuseparator
 設定
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 メニューを開き，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 書誌情報
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
-項目から
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
+項目の
+\family sans
+様式整形子
+\family default
+において
+\family sans
+基本 (BibTeX)
+\family default
+・
+\family sans
 Biblatex
-\end_layout
-
-\end_inset
-
+\family default
 ・
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Biblatex (Natbibモード)
-\end_layout
-
-\end_inset
-
+\family default
 ・
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Natbib (BibTeX)
-\end_layout
-
-\end_inset
-
+\family default
 ・
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Jurabib (BibTeX)
-\end_layout
-
-\end_inset
-
+\family default
 のいずれかを選択してください（各選択肢についての詳細は，
 ユーザーの手引きの第6.5.3節を参照のこと）．これらのパッケージによって，
 引用ダイアログに機能が追加され，
@@ -21366,36 +21061,23 @@ scientific.bib
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex MenuItem
-status collapsed
 
-\begin_layout Plain Layout
+\family sans
 文書\SpecialChar menuseparator
 設定
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 を開いて
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 書誌情報
-\end_layout
-
-\end_inset
-
+\family default
 の下の
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 区分された書誌情報
-\end_layout
-
-\end_inset
-
+\family default
 をチェックしてください．すると，
 書誌情報の各節に一つずつ，
 複数の書誌情報を挿入することができます．上記の例では，
@@ -21563,11 +21245,7 @@ article
 などの）項目型によりフィルターを掛けることもできます．あるいは，
 各項目を割り当てるための，
 いわゆる「書誌情報カテゴリ」を作ることもできます．詳細については，
-Biblatex取扱説明書の
-\emph on
-区分された書誌情報
-\emph default
-の節をご参照ください．
+Biblatex取扱説明書の「区分された書誌情報」の節をご参照ください．
 \end_layout
 
 \begin_layout Section
@@ -21586,15 +21264,13 @@ name "subsec:複数の書誌情報"
 複数の書誌情報も\SpecialChar LyX
 ではサポートされています．これを有効にするためには，
 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 書誌情報
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 を開き，
@@ -21971,27 +21647,23 @@ status collapsed
 
 \begin_layout Standard
 メニュー項目の
-\begin_inset Flex MenuItem
-status collapsed
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
+
+\family sans
 文書\SpecialChar menuseparator
 設定
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 を選択してダイアログを開き，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\series bold
 ブリット
-\end_layout
-
-\end_inset
-
+\series default
 タブを選択してください．
 \end_layout
 
@@ -22000,6 +21672,20 @@ status collapsed
 ブリット形の一覧表を提示します．表左のボタン列で，
 6つの各ブリット形パネルを切り替えることができます．上部のボタン列では，
 変更するブリット階層を選択できます．
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+任意のブリット
+\family default
+を選択すると，
+表下のテキスト入力欄が有効となり，
+そこにブリットの形の\SpecialChar LaTeX
+表記を入力することができます．このテキストを変更すると，
+同時に，
+必要となるパッケージを\SpecialChar LaTeX
+プリアンブルで指定する必要があります．
 \end_layout
 
 \begin_layout Standard
@@ -22300,6 +21986,13 @@ status collapsed
 
 \begin_layout Section
 使用法
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:使用法"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -22313,21 +22006,20 @@ status collapsed
 \begin_layout Standard
 ブリット形は，
 適切な階層のブリットボタンをマウスで右クリックすれば，
-簡単に既定値に初期化することができます
-\begin_inset Foot
+簡単に既定値に初期化することができます．
+\end_layout
+
+\begin_layout Standard
+もし
+\begin_inset Flex 圏点
 status open
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fn:段落ごとに異なるブリットの形"
+本当に
+\end_layout
 
 \end_inset
 
-もし
-\emph on
-本当に
-\emph default
 段落ごとに異なるブリットの形を使いたいならば，
 \SpecialChar TeX
 コードを使って少し手を汚す必要があります．この場合も，
@@ -22336,7 +22028,7 @@ name "fn:段落ごとに異なるブリットの形"
 以下のような選択肢があります．
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -22356,7 +22048,7 @@ labelitemi
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -22522,7 +22214,7 @@ star
 が指定されています．
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -22542,7 +22234,7 @@ savelabelitemi}
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 文書全体で使用するブリット形が有効であるようにするために，
 labelitemを元の設定に戻す必要があります．そのためには，
 以下のようにします．
@@ -22558,11 +22250,6 @@ renewcommand
 labelitemi[0]{
 \backslash
 savelabelitemi}
-\end_layout
-
-\end_inset
-
-．
 \end_layout
 
 \begin_layout Chapter
@@ -22647,12 +22334,10 @@ DVIファイルを作成する際にエラーが発生するでしょう．
 では，
 
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 ファイル\SpecialChar menuseparator
 子文書
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -22708,19 +22393,7 @@ verbatim
 単なる見えない空白です．ただし，
 
 \family sans
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
 出力の空白に印付けをする
-\end_layout
-
-\end_inset
-
-
 \family default
 チェックボックスを有効にすると，
 空白が存在することを明確にするために空白の印が出力されます．
@@ -22805,29 +22478,23 @@ Bで参照したいとしましょう．文書Bで相互参照ダイアログを
 この差込枠を，
 たとえば「子文書のみ」などと名付けた派生枝の中に置く（
 \family sans
-\series bold
 挿入\SpecialChar menuseparator
 派生枝\SpecialChar menuseparator
 新規派生枝を挿入...
 \family default
-\series default
 ）のが肝要です．そして，
 子文書の中でこの派生枝を有効にし（
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定...\SpecialChar menuseparator
 派生枝
 \family default
-\series default
-）,親文書で無効にします（
+）親文書で無効にします（
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定...\SpecialChar menuseparator
 派生枝
 \family default
-\series default
 ）．こうすることで，
 子文書中の書誌情報は，
 親文書中では無視され，
@@ -22937,43 +22604,41 @@ zip
 「\SpecialChar LyX
 書庫」を書き出すことができるようにスクリプトが準備され，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 ファイル\SpecialChar menuseparator
 書き出し
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 の下で利用可能となります．
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex MenuItem
-status collapsed
 
-\begin_layout Plain Layout
+\family sans
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 ファイル処理\SpecialChar menuseparator
 変換子
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 の
-\begin_inset Flex MenuItem
-status collapsed
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
+
+\family sans
 \SpecialChar LyX
-\SpecialChar menuseparator
-\SpecialChar LyX
+->\SpecialChar LyX
 書庫
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 変換子に，
@@ -23022,455 +22687,6 @@ zip
 形式を強制することができます（スイッチは，
 スクリプト名の前ではなく，
 後ろに加えてください）．
-\end_layout
-
-\begin_layout Section
-装飾的なヘッダ・フッタ
-\end_layout
-
-\begin_layout Standard
-既定のページレイアウトは，
-どちらかといえば素っ気ないものです．
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-article
-\end_layout
-
-\end_inset
-
-文書クラスの場合には，
-ページの下の真ん中にページ番号がつくだけです．この取扱説明書はKOMA-scriptのbookクラスなので，
-すこしは凝ってますが，
-ほんとうに着飾るには，
-『ユーザーの手引き』に述べられているように，
-文書ページスタイルを「装飾的(fancy)」に設定する必要があります．この節では，
-望んだとおりの効果を得るために，
-\SpecialChar LaTeX
-プリアンブルに挿入する必要のある\SpecialChar LaTeX
-コードについて解説します．
-\end_layout
-
-\begin_layout Standard
-装飾的ヘッダについて詳しくは，
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-fancyhdr
-\end_layout
-
-\end_inset
-
-パッケージの説明書を参照してください(
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://www.ctan.org/tex-archive/help/Catalogue/entries/fancyhdr.html
-\end_layout
-
-\end_inset
-
-)．
-\end_layout
-
-\begin_layout Standard
-ページへッダは，
-「left(左)」・「center(中央)」・「right(右)」と命名された3つのフィールドに分けられています．フッタも同様に3つのフィールドに分類されています．これらのフィールドをもっとも簡単に設定する\SpecialChar LaTeX
-コマンドには，
-
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-lhead
-\end_layout
-
-\end_inset
-
-
-\family default
-・
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-chead
-\end_layout
-
-\end_inset
-
-
-\family default
-・
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-rhead
-\end_layout
-
-\end_inset
-
-
-\family default
-・
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-lfoot
-\end_layout
-
-\end_inset
-
-などがあります．かりに，
-各ページの左上端に自分の名前を入れたいものとしましょう．次のようなコマンドをプリアンブルに入れるだけです．
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-lhead{物書 はじめ}
-\end_layout
-
-\begin_layout Standard
-これで自分の名前が左上に現れます．フィールドに取り除きたい既定の内容がある場合（往々にして中央のフッタにはページ番号が入ります）には，
-空の引数を持つコマンドを入れるだけです．すなわち，
-
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-cfoot{}
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-とします．
-\end_layout
-
-\begin_layout Standard
-もっと美しくしてみましょう．節番号を「第‥節」という言葉といっしょに（第3節のように）左上に入れ，
-ページ番号を（4ページのように）右上に，
-自分の名前を左下に，
-日付を右下に入れます．以下のコマンドをプリアンブルに入れます．
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-lhead{第
-\backslash
-thesection 節}
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-chead{}
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-rhead{
-\backslash
-thepage ページ}
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-lfoot{物書 はじめ}
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-cfoot{}
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-rfoot{
-\backslash
-today}
-\end_layout
-
-\begin_layout Standard
-コマンド
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-thesecti
-\family default
-o
-\family typewriter
-n
-\end_layout
-
-\end_inset
-
-
-\family default
-と
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-thepa
-\family default
-ge
-\end_layout
-
-\end_inset
-
-は，
-それぞれ\SpecialChar LaTeX
-の節カウンタおよびページカウンタを取得するもので，
-これによって現在の節番号とページ番号を印字します．
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-tod
-\family default
-ay
-\end_layout
-
-\end_inset
-
-は，
-今日の日付を印字するものです．
-\end_layout
-
-\begin_layout Standard
-へッダ下またはフッタ上に描かれる罫線の太さも変更することができます．もし罫線が必要なければ，
-太さを0にしてください．ヘッダ罫線は，
-既定では0.4ptの太さであり，
-フッタ罫線は0ptです．太さを変更するには，
-
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-renewcommand{
-\backslash
-headrulewidth}{0.4pt}
-\end_layout
-
-\end_inset
-
-
-\family default
-や
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-renewcommand{
-\backslash
-footrulewidth}{0.4pt}
-\end_layout
-
-\end_inset
-
-
-\family default
-のようなコマンドを使用してください．
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-・
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-thispagestyle{plain}
-\end_layout
-
-\end_inset
-
-・
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-thispagestyle{fancy}
-\end_layout
-
-\end_inset
-
-のようなコマンドを使えば，
-各ページごとにへッダ・フッタ設定を有効にしたり無効にしたりすることができます．設定を変更したいページに，
-これらのコマンドを\SpecialChar TeX
-コードとして挿入してください．実は，
-タイトルページは，
-その後のページは大域的に装飾的(fancy)に設定されていれば装飾的(fancy)になるにもかかわらず，
-既定でプレーン(plain)になるように設定されているのです．
-\end_layout
-
-\begin_layout Standard
-奇数ページの左上だけに何かを挿入するなど，
-もっと複雑なコマンドもあるのですが，
-詳しい解説は
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-fancyhdr
-\end_layout
-
-\end_inset
-
-パッケージの取扱説明書をご参照ください（
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-fancyhdr.dvi
-\end_layout
-
-\end_inset
-
-を探してください）．
-\end_layout
-
-\begin_layout Standard
-最後の例として，
-へッダやフッタに画像を挿入できることを取り上げましょう．会社のロゴをページ左上に入れたいものとします．たとえば，
-
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-lhead{
-\backslash
-resizebox{1in}{!}{
-\backslash
-includegraphics{logo.eps}}}
-\end_layout
-
-\begin_layout Standard
-\noindent
-とすれば，
-これを実現できます（文書中に他に画像を挿入していない場合には，
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-usepackage{graphics}
-\end_layout
-
-\end_inset
-
-をプリアンブルに宣言する必要があります）．
 \end_layout
 
 \begin_layout Chapter
@@ -24036,15 +23252,13 @@ status collapsed
 
 画像の寸法は，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 形式
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 の「数式画像の伸縮」パラメータを変更することで制御できます
@@ -24138,15 +23352,17 @@ class='math'
 
 \begin_layout Standard
 これらの出力方法のいずれかを
-\begin_inset Flex MenuItem
-status collapsed
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
+
+\family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 形式
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 で選択しなくてはなりません．既定では，
@@ -24602,9 +23818,15 @@ UserDir
 
 の下に作られ（Windowsを除く．Windowsでは，
 名前を付けた
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 ローカルの
-\emph default
+\end_layout
+
+\end_inset
+
 パイプは
 \begin_inset Flex Code
 status collapsed
@@ -24666,14 +23888,12 @@ status collapsed
 
 から読み出します．パイプ名の語幹は，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 ツール\SpecialChar menuseparator
 設定
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 から，
@@ -24731,9 +23951,15 @@ pipe"
 
 なども使用できます）．サーバーを開始するためには，
 これを
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 手動で設定しなくてはなりません
-\emph default
+\end_layout
+
+\end_inset
+
 ．
 \end_layout
 
@@ -25228,27 +24454,19 @@ arg   "buffer-toggle-output-sync"
 \SpecialChar LyX
 がすべてをうまくこなしてくれます．あるいは，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 形式
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 メニューで
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 出力と同期
-\end_layout
-
-\end_inset
-
+\family default
 にチェックを入れることで有効にすることもできます．その場合，
 \SpecialChar LyX
 は，
@@ -25257,15 +24475,9 @@ status collapsed
 マクロ（PDFの場合）や，
 srcltxパッケージ（DVIの場合）を挿入してくれます．このオプションは，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 表示/更新
-\end_layout
-
-\end_inset
-
+\family default
 ツールバーからも容易にアクセスすることができます．
 \end_layout
 
@@ -25273,16 +24485,14 @@ status collapsed
 もし，
 これとは別の設定が必要な場合には，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 出力\SpecialChar menuseparator
 出力と同期
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 の直下にあるドロップダウンボックスから，
@@ -25421,37 +24631,23 @@ DVIファイルに原文検索に必要な情報を追加するものです．�
 頒布版はすべて対応しています），
 安定して動作します．これを有効にするには，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 設定\SpecialChar menuseparator
 ファイル処理\SpecialChar menuseparator
 変換子
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 の
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 LaTeX (plain)->DVI
-\end_layout
-
-\end_inset
-
+\family default
 ないし
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 LaTeX (plain)->DraftDVI
-\end_layout
-
-\end_inset
-
+\family default
 変換子を
 \begin_inset Flex Code
 status collapsed
@@ -25610,15 +24806,13 @@ Mac上のSkim，
 DVI出力でSync\SpecialChar TeX
 を有効にするには，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 設定\SpecialChar menuseparator
 ファイル処理\SpecialChar menuseparator
 変換子
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 の
@@ -25762,15 +24956,13 @@ Mac OS X上ではAlt-クリックで始動します）．
 \SpecialChar LyX
 と通信するのにソケットではなく命名パイプを使用したい場合には，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 設定\SpecialChar menuseparator
 ファイル処理\SpecialChar menuseparator
-ファイル書式
-\end_layout
+ファイル形式
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 のDVIビューアを
@@ -25851,14 +25043,12 @@ status collapsed
 
 は，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 設定\SpecialChar menuseparator
 パス
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 で指定したLyXServerパイプのパスを指定してください．
@@ -25940,16 +25130,15 @@ Skim（Mac OS X）
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex MenuItem
-status collapsed
 
-\begin_layout Plain Layout
+\family sans
 設定\SpecialChar menuseparator
 ファイル処理\SpecialChar menuseparator
 ファイル書式\SpecialChar menuseparator
 PDF (pdflatex)
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 のビューア設定に
@@ -25964,15 +25153,17 @@ open -a Skim.app $$i
 
 と入力し，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Skim\SpecialChar menuseparator
-設定\SpecialChar menuseparator
-Sync
-\end_layout
 
+\series bold
+設定
+\series default
+\SpecialChar menuseparator
+Sync
+\family default
+
+\begin_inset space \thinspace{}
 \end_inset
 
 でLyXを選択してください．
@@ -26007,15 +25198,14 @@ Okular（KDE）
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Noun
-status collapsed
 
-\begin_layout Plain Layout
+\family sans
 設定\SpecialChar menuseparator
 Okularを設定\SpecialChar menuseparator
 エディタ
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 で「Lyxクライアント」をエディタとして選択してください．これによって適切なコマンド（
@@ -26046,15 +25236,13 @@ Qpdfviewは，
 第0.3.5版以降，
 Sync\SpecialChar TeX
 をサポートしています．
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Edit\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Behavior
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 を開いて「Source editor」項目の入力フィールドをクリックし，
@@ -26083,14 +25271,12 @@ YAP（Windows）
 \begin_layout Standard
 yapを起動し，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 View\SpecialChar menuseparator
 Options
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 メニューを選択し，
@@ -26224,16 +25410,14 @@ SumatraPDF（Windows）
 \begin_layout Standard
 SumatraPDFを原文検索で使用するためには，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 設定\SpecialChar menuseparator
 ファイル処理\SpecialChar menuseparator
 ファイル書式\SpecialChar menuseparator
 PDF (pdflatex)
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 のビューア設定で
@@ -26273,14 +25457,12 @@ YAP（Cygwin）
 yapがWindows環境での既定のDVIビューアになっていることを確認してから，
 yapを起動し，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 View\SpecialChar menuseparator
 Options
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 メニューを選択し，
@@ -26359,16 +25541,14 @@ SumatraPDF（Cygwin）
 \begin_layout Standard
 SumatraPDFを原文検索で使用するためには，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 設定\SpecialChar menuseparator
 ファイル処理\SpecialChar menuseparator
 ファイル書式\SpecialChar menuseparator
 PDF (pdflatex)
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 のビューア設定で
@@ -26476,26 +25656,18 @@ Serverパイプパスを指定することを忘れないでください．
 カーソルを\SpecialChar LyX
 文書の好きなところに置いて，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 移動\SpecialChar menuseparator
 出力検索
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 を選択すると（あるいはマウスの右クリックで表示される文脈依存メニューから
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 出力検索
-\end_layout
-
-\end_inset
-
+\family default
 を選択してもよい），
 ビューアも同じ箇所に移動します．もちろん，
 使用しているビューアが，
@@ -26521,16 +25693,14 @@ nolink "false"
 \begin_layout Standard
 次に，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 出力\SpecialChar menuseparator
 一般
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 で自分の使うビューアを利用するように，
@@ -26765,11 +25935,8 @@ chktex
 
 \family sans
 \SpecialChar TeX
-
-\series bold
 構文チェック
 \family default
-\series default
 という項目が表示されます．
 \family typewriter
 chktex
@@ -26833,14 +26000,26 @@ lint
 lint
 \family default
 がC言語プログラムの
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 文法
-\emph default
+\end_layout
+
+\end_inset
+
 をチェックするだけでなく，
 打ち間違いによる
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 意味上の
-\emph default
+\end_layout
+
+\end_inset
+
 チェックも行うように，
 
 \family sans
@@ -26849,9 +26028,15 @@ Chk\SpecialChar TeX
 \family default
 は，
 文法エラーの他に犯しがちな
-\emph on
+\begin_inset Flex 圏点
+status open
+
+\begin_layout Plain Layout
 写植上の
-\emph default
+\end_layout
+
+\end_inset
+
 誤りも検出してくれるからです．
 \family sans
 Chk\SpecialChar TeX
@@ -27028,12 +26213,9 @@ Chk\SpecialChar TeX
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\series bold
 移動\SpecialChar menuseparator
 エラー
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -27188,12 +26370,6 @@ chktex
 \begin_layout Itemize
 
 \family sans
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 出力\SpecialChar menuseparator
@@ -27201,12 +26377,11 @@ status collapsed
 \SpecialChar menuseparator
 Check\SpecialChar TeX
 コマンド
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
-
-\family default
 中の
 \family sans
 Chk\SpecialChar TeX
@@ -27234,11 +26409,8 @@ chktexrc
 \begin_layout Itemize
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
-書き出し
-\series default
-\SpecialChar menuseparator
+書き出し\SpecialChar menuseparator
 \SpecialChar LaTeX
 
 \family default
@@ -28021,11 +27193,9 @@ vc-command
 バージョン管理機能を使用している場合には，
 文書を非圧縮形式で保存をすることを強く推奨します（
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 圧縮
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -28076,10 +27246,8 @@ RCS 5.7/5.8に対して試験されています．
 文書の最初の説明を入力するように尋ねられます．すると文書は読み込み専用モードになるので，
 変更を加えるためには
 \family sans
-\series bold
 チェックアウトして編集
 \family default
-\series default
 を実行する必要があります．バージョン管理下にある文書は，
 ミニバッファのファイル名の後ろに「 [RCS:<バージョン> <ロック>]」という項目が表示されます．
 \end_layout
@@ -28387,26 +27555,14 @@ CVS/Baseサブディレクトリに使用中文書のコピーが存在してい
 そうでない場合には予備なしチェックアウトを使用しているものと仮定します．予備付きチェックアウトが検出された場合には，
 作業コピーが読み込み専用の場合に書き込み可能にするためには，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 チェックアウト
-\end_layout
-
-\end_inset
-
+\family default
 メニューを使用しなくてはなりません．その後，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 チェックイン
-\end_layout
-
-\end_inset
-
+\family default
 メニューが利用可能になるので，
 自分が加えた変更をリポジトリに移した後，
 作業コピーを再び読み込み専用にする際には，
@@ -28526,15 +27682,9 @@ cvs -q add -m"<入力した説明文>" "<ファイル名>"
 変更がレポジトリに書き込まれます．文書を変更せず，
 予備付きチェックアウトが検出された場合，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 チェックアウト
-\end_layout
-
-\end_inset
-
+\family default
 で作られた予備は取り消されます．
 \end_layout
 
@@ -29016,16 +28166,10 @@ nolink "false"
 は，
 現在SVNを一部サポートしています．そのコマンドは，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 ファイル\SpecialChar menuseparator
 バージョン管理
-\end_layout
-
-\end_inset
-
+\family default
 メニューにあります．レポジトリへのアクセスに，
 ssh経由のパスワード保護アクセスを使用している場合には，
 端末ウィンドウでの入力を促されます．\SpecialChar LyX
@@ -29763,15 +28907,13 @@ status collapsed
 
 ファイルに対する書き込み権限の自動設定は，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 ファイル\SpecialChar menuseparator
 バージョン管理\SpecialChar menuseparator
 ロック特性を使用
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 で行うことができます．このコマンドは，
@@ -30099,15 +29241,7 @@ vcs-time
 \end_deeper
 \begin_layout Standard
 これらの情報は，
-情報差込枠で得ることができます（
-\family sans
-\series bold
-挿入\SpecialChar menuseparator
-フィールド\SpecialChar menuseparator
-バージョン管理改訂番号
-\family default
-\series default
-）．これらの情報は，
+情報差込枠で得ることができます（ｂ）．これらの情報は，
 ファイルをsvn管理下に置いたときのみ（すなわち使用中文書の
 \begin_inset Flex Code
 status collapsed
@@ -30314,16 +29448,10 @@ new project
 
 を見つけ出して右クリックし，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 TortoiseSVN\SpecialChar menuseparator
 Repo-browser
-\end_layout
-
-\end_inset
-
+\family default
 を選択してください．必要であれば，
 レポジトリのURLを調整し，
 OKをクリックしてください．
@@ -30332,16 +29460,10 @@ OKをクリックしてください．
 \begin_layout Enumerate
 新規プロジェクトフォルダを置くレポジトリレベル（多くの場合最上位レベル）を右クリックし，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Create folder\SpecialChar ldots
 
-\end_layout
-
-\end_inset
-
+\family default
 をクリックしてください．プロジェクトフォルダの名称を入力してOKをクリックしてください．必要であればログファイル用のメッセージを入力し，
 再びOKをクリックしてください．新規プロジェクトフォルダがレポジトリに現れるはずです．最後にOKを再度クリックして，
 レポジトリブラウザを終了してください．
@@ -30362,16 +29484,10 @@ new project
 
 を右クリックし，
 今度は
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 SVN Checkout\SpecialChar ldots
 
-\end_layout
-
-\end_inset
-
+\family default
 を選択してください．レポジトリにたった今作成した，
 プロジェクトフォルダのURLを選択し，
 チェックアウトディレクトリを
@@ -30418,17 +29534,11 @@ status collapsed
 \SpecialChar LyX
 で文書を新規作成するか開くかして，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 ファイル\SpecialChar menuseparator
 バージョン管理\SpecialChar menuseparator
 登録
-\end_layout
-
-\end_inset
-
+\family default
 をクリックします．ログメッセージを入力してOKをクリックし，
 文書をバージョン管理にコミットしてください．
 \end_layout
@@ -30436,16 +29546,10 @@ status collapsed
 \begin_layout Standard
 爾後，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 ファイル\SpecialChar menuseparator
 バージョン管理
-\end_layout
-
-\end_inset
-
+\family default
 メニューのすべての機能が使用できるようになります．Windows ExplorerのTortoiseSVNコンテクストメニューか，
 コマンドプロンプトでのSubversionクライアントプログラムを使用して，
 文書をチェックイン・チェックアウトしたり，
@@ -30729,11 +29833,9 @@ http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
 最小限のGITコマンドがサポートされるようになりました．これらのコマンドは，
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 バージョン管理
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -31197,15 +30299,9 @@ arg   "vc-compare"
 を使用する方法です．当該文書のうち，
 任意の2つの改訂版を比較することもできますし，
 編集中の現行版を古い改訂版と比較することもできます（このとき改訂版遡及数「
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 0
-\end_layout
-
-\end_inset
-
+\family default
 」は，
 編集中のファイルと最後にコミットした改訂版との比較を意味します）．
 \end_layout
@@ -31491,11 +30587,9 @@ Nowebと\SpecialChar LyX
 文書クラスを選択した後，
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 設定
 \family default
-\series default
 
 \begin_inset space \thinspace{}
 \end_inset
@@ -31617,12 +30711,8 @@ LIBDIR/examples/listerrors.lyx
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\series bold
 文書\SpecialChar menuseparator
 表示
-\series default
-
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -31640,11 +30730,8 @@ LIBDIR/examples/listerrors.lyx
 \begin_layout Enumerate
 
 \family sans
-\series bold
 文書\SpecialChar menuseparator
 更新
-\series default
-
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -31659,15 +30746,9 @@ LIBDIR/examples/listerrors.lyx
 \begin_layout Standard
 文書が文芸プログラミング用のクラスであった場合には，
 拡張子に（
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 設定
-\end_layout
-
-\end_inset
-
+\family default
 パネルで設定した）文芸プログラム用のものがつけられます．それ以外は .texが拡張子に使われます．
 \end_layout
 
@@ -31706,15 +30787,7 @@ status collapsed
 設定
 \family default
 パネルの変換子タブに定義されています．変換子の一般的な情報については，
-取扱説明書『
-\emph on
-カスタマイズ篇
-\emph default
-』の「
-\emph on
-変換子
-\emph default
-」の節をご覧ください．
+取扱説明書『カスタマイズ篇』の「変換子」の節をご覧ください．
 \end_layout
 
 \end_inset
@@ -31954,40 +31027,32 @@ fi
 \begin_layout Standard
 
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 Noweb
 \begin_inset space \space{}
 \end_inset
 
-Listerros
+Listerrors
+\family default
+
+\begin_inset space \thinspace{}
+\end_inset
+
+または
+\family sans
+ファイル\SpecialChar menuseparator
+用例を開く\SpecialChar menuseparator
+モジュール\SpecialChar menuseparator
+Noweb2LyX
 \family default
 
 \begin_inset space \thinspace{}
 \end_inset
 
 をご覧ください．このファイルには異なる実装の「listerrors」プログラムが含まれていて，
-これまで説明してきた各々の部分が全体としてどのようになるかをわかってもらうための例です．また，
-
-\family sans
-\series bold
-ファイル\SpecialChar menuseparator
-用例を開く\SpecialChar menuseparator
-モジュール\SpecialChar menuseparator
-
-\series default
-Noweb2\SpecialChar LyX
-
-\family default
-
-\begin_inset space \thinspace{}
-\end_inset
-
-もご覧ください．面白いことに，
+これまで説明してきた各々の部分が全体としてどのようになるかをわかってもらうための例です．面白いことに，
 これらのファイルには，
 PythonとPerlが各々使われていて，
 \SpecialChar LyX
@@ -32093,28 +31158,16 @@ ddd/gdbまたは他のデバッガで使える「server-goto-file-row」関数�
 \begin_layout Standard
 ddd/gdbでデバッグしているとき，
 一つのキーストロークで現在実行している位置でテキストエディタを起動できます．既定のdddの設定ではShift-Ctrl-Vになっています．この設定はdddで
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 ファイル書式
-\end_layout
-
-\end_inset
-
+\family default
 ウインドウを表示して，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 編集プログラム
-\end_layout
-
-\end_inset
-
+\family default
 エントリを変えると変えることができます．
 \end_layout
 
@@ -32122,15 +31175,9 @@ status collapsed
 新しい\SpecialChar LyX
 サーバの関数と，
 このdddの機能を使うために
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 編集プログラム
-\end_layout
-
-\end_inset
-
+\family default
 を次のように設定してください．
 \end_layout
 
@@ -32174,16 +31221,12 @@ nolink "false"
 \begin_layout Standard
 ツールバーに加えることのできる6つの新しいボタンがあります．そのうちの4つのボタンは
 \family sans
-\series bold
 標準
 \family default
-\series default
 ・
 \family sans
-\series bold
 節
 \family default
-\series default
 ・
 \family sans
 \SpecialChar LaTeX
@@ -32192,11 +31235,8 @@ nolink "false"
 ・
 \family sans
 \SpecialChar LyX
-
-\series bold
 コード
 \family default
-\series default
 の段落環境へのショートカットであり，
 1つは特別差込枠
 \family sans
@@ -32208,27 +31248,31 @@ Chunk
 \begin_layout Standard
 \SpecialChar LyX
 はツールバーで使うためのいくつものボタンを用意しています．私のツールバーはこの6つのショートカットに
-\begin_inset Flex MenuItem
-status collapsed
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
+
+\family sans
 文書\SpecialChar menuseparator
 更新\SpecialChar menuseparator
 DVI
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 と
-\begin_inset Flex MenuItem
-status collapsed
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
+
+\family sans
 文書\SpecialChar menuseparator
 表示\SpecialChar menuseparator
 DVI
-\end_layout
+\family default
 
+\begin_inset space \thinspace{}
 \end_inset
 
 を組み合わせたものになっています．
@@ -32306,15 +31350,11 @@ End
 \begin_layout Standard
 \SpecialChar LyX
 ではいくつもの色を
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
+\series bold
 設定
-\end_layout
-
-\end_inset
-
+\family default
+\series default
 で変えることができます．人々が困りがちなのは，
 \SpecialChar LaTeX
 フォント色でしょう．これは，
@@ -32324,16 +31364,10 @@ chunkは\SpecialChar LaTeX
 文芸プログラミング文書には多くのchunkが現れるために，
 すべて赤で見ていると疲れてしまうかもしれません．これは，
 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 操作性\SpecialChar menuseparator
 色
-\end_layout
-
-\end_inset
-
+\family default
 タブで変更することができます．
 \end_layout
 
@@ -32353,20 +31387,15 @@ status collapsed
 knitrとSweaveへのサポートについては，
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
 Knitr
 \family default
-\series default
 および
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 Rnw
 \begin_inset space \space{}
 \end_inset
@@ -32376,23 +31405,29 @@ Rnw
 ，
 
 \family sans
-\series bold
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
 Sweave
 \family default
-\series default
 および
 \family sans
-\series bold
 ファイル\SpecialChar menuseparator
 用例を開く\SpecialChar menuseparator
 モジュール\SpecialChar menuseparator
-
-\series default
 Sweave
 \family default
 に説明があります．
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "idx"
+name "索引"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
