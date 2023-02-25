@@ -68,17 +68,17 @@ char const * info_types[] =
 // GUI names (in combo)
 char const * info_types_gui[] =
 { N_("Date (current)"),// date
-  N_("Date (last modified)"),// moddate
-  N_("Date (fix)"),// fixdate
+  N_("Date (last modification of document)"),// moddate
+  N_("Date (fixed)"),// fixdate
   N_("Time (current)"),// time
-  N_("Time (last modified)"),// modtime
-  N_("Time (fix)"),// fixtime
+  N_("Time (last modification of document)"),// modtime
+  N_("Time (fixed)"),// fixtime
   N_("Document Information"),// buffer
   N_("Version Control Information"),// vcs
   N_("LaTeX Package Availability"),// package
   N_("LaTeX Class Availability"),// textclass
   N_("Last Assigned Keyboard Shortcut"),// shortcut
-  N_("All Keyboard Shortcuts"),// shortcuts
+  N_("All Assigned Keyboard Shortcuts"),// shortcuts
   N_("LyX Menu Location"),// menu
   N_("Localized GUI String"),// l7n
   N_("LyX Toolbar Icon"),// icon
@@ -358,12 +358,12 @@ bool GuiInfo::checkWidgets(bool readonly) const
 	fixDateLE->setVisible(fixdate_enabled);
 	fixDateLA->setVisible(fixdate_enabled);
 	if (typestr == "fixdate") {
-		fixDateLE->setToolTip(qt_("Here you can enter a fix date (in ISO format: YYYY-MM-DD)"));
-		fixDateLA->setText(qt_("&Fix Date:"));
+		fixDateLE->setToolTip(qt_("Here you can enter a fixed date (in ISO format: YYYY-MM-DD)"));
+		fixDateLA->setText(qt_("&Fixed Date:"));
 	}
 	else if (typestr == "fixtime") {
-		fixDateLE->setToolTip(qt_("Here you can enter a fix time (in ISO format: hh:mm:ss)"));
-		fixDateLA->setText(qt_("&Fix Time:"));
+		fixDateLE->setToolTip(qt_("Here you can enter a fixed time (in ISO format: hh:mm:ss)"));
+		fixDateLA->setText(qt_("&Fixed Time:"));
 	}
 
 	if (!InsetParamsWidget::checkWidgets())

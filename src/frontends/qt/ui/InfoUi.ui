@@ -46,7 +46,7 @@
      <item>
       <widget class="QLabel" name="fixDateLA">
        <property name="text">
-        <string>&amp;Fix Date:</string>
+        <string>&amp;Fixed Date:</string>
        </property>
        <property name="buddy">
         <cstring>fixDateLE</cstring>
@@ -56,7 +56,7 @@
      <item>
       <widget class="QLineEdit" name="fixDateLE">
        <property name="toolTip">
-        <string>Here you can enter a fix date (in ISO format: YYYY-MM-DD)</string>
+        <string>Here you can enter a fixed date (in ISO format: YYYY-MM-DD)</string>
        </property>
       </widget>
      </item>
