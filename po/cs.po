@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-25 18:55+0100\n"
+"POT-Creation-Date: 2023-02-25 18:44+0100\n"
 "PO-Revision-Date: 2023-02-03 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -2517,27 +2517,24 @@ msgid "Define or change button color"
 msgstr "Změnit barvu tlačítka"
 
 #: src/frontends/qt/ui/InfoUi.ui:25
-#, fuzzy
 msgid "Infor&mation Type:"
-msgstr "Typ informace:"
+msgstr "&Typ informace:"
 
 #: src/frontends/qt/ui/InfoUi.ui:35
 msgid ""
 "Select the type of information to be output. Then specify the requested "
 "information below."
-msgstr ""
+msgstr "Nejprve zvolte typ informace a poté konkrétní obsah ve výběru níže."
 
 #: src/frontends/qt/ui/InfoUi.ui:49 src/frontends/qt/GuiInfo.cpp:362
-#, fuzzy
 msgid "&Fixed Date:"
-msgstr "Date:"
+msgstr "&Fixní datum:"
 
 #: src/frontends/qt/ui/InfoUi.ui:59 src/frontends/qt/GuiInfo.cpp:361
 msgid "Here you can enter a fixed date (in ISO format: YYYY-MM-DD)"
-msgstr ""
+msgstr "Zde můžete vložit fixní datum v ISO formátu (RRRR-MM-DD)"
 
 #: src/frontends/qt/ui/InfoUi.ui:70
-#, fuzzy
 msgid "&Custom:"
 msgstr "V&lastní:"
 
@@ -4135,7 +4132,7 @@ msgstr "Editace mat. maker v řádku, jméno makra ve stavovém řádku"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:82
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
-msgstr "Editace mat. maker se seznamem parametrů (jako v LyXu < 1.6)"
+msgstr "Editace mat. maker se seznamem parametrů (jako v LyX-u < 1.6)"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:90
 msgid ""
@@ -16923,7 +16920,7 @@ msgid ""
 "Modules > Paragraph Styles > Custom Paragraph Shapes."
 msgstr ""
 "Obsahuje několik tvarů pro odstavce a pokytuje příkazy pro tvorbu nových. "
-"Bližší informace v manuálu 'Rozšířené vlasnosti LyXu.'"
+"Bližší informace v manuálu 'Rozšířené vlasnosti LyX-u.'"
 
 #: lib/layouts/shapepar.module:27
 msgid "CD label"
@@ -20713,7 +20710,7 @@ msgstr "Sloupce/Řádky|S"
 
 #: lib/ui/stdcontext.inc:523
 msgid "Transform Field to Static Text|T"
-msgstr ""
+msgstr "Převést pole na statický text|x"
 
 #: lib/ui/stdcontext.inc:524
 msgid "Copy Text|o"
@@ -21642,51 +21639,47 @@ msgstr "Loga|g"
 
 #: lib/ui/stdmenus.inc:428
 msgid "Date (Current)|D"
-msgstr ""
+msgstr "Datum (současné)|D"
 
 #: lib/ui/stdmenus.inc:429
 msgid "Date (Last Modification of Document)|L"
-msgstr ""
+msgstr "Datum (poslední modifikace dokumentu)|m"
 
 #: lib/ui/stdmenus.inc:430
 msgid "Date (Fixed)|F"
-msgstr ""
+msgstr "Datum (současné)|t"
 
 #: lib/ui/stdmenus.inc:432
 msgid "Time (Current)|T"
-msgstr ""
+msgstr "Čas|a"
 
 #: lib/ui/stdmenus.inc:433
 msgid "Time (Last Modification of document)|M"
-msgstr ""
+msgstr "Čas (poslední modifikace dokumentu)|o"
 
 #: lib/ui/stdmenus.inc:434
 msgid "Time (Fixed)|x"
-msgstr ""
+msgstr "Čas (současný)|n"
 
 #: lib/ui/stdmenus.inc:436
-#, fuzzy
 msgid "File Name (Excl. Extension)|N"
-msgstr "Přípona &souboru:"
+msgstr "Jméno souboru (bez přípony)|u"
 
 #: lib/ui/stdmenus.inc:437
-#, fuzzy
 msgid "Version Control Revision|V"
-msgstr "Správa verzí|S"
+msgstr "Revize ze správa verzí|R"
 
 #: lib/ui/stdmenus.inc:438
-#, fuzzy
 msgid "User Name|U"
-msgstr "Uživatelsky definované|U"
+msgstr "Jméno uživatele|J"
 
 #: lib/ui/stdmenus.inc:439
 msgid "User Email|E"
-msgstr ""
+msgstr "Email uživatele|v"
 
 #: lib/ui/stdmenus.inc:441
-#, fuzzy
 msgid "Other...|O"
-msgstr "Otevřít...|O"
+msgstr "Jiné...|i"
 
 #: lib/ui/stdmenus.inc:445
 msgid "LyX Logo|L"
@@ -21981,7 +21974,7 @@ msgstr "Uživatelská příručka|U"
 
 #: lib/ui/stdmenus.inc:651
 msgid "Additional Features|F"
-msgstr "Rozšířené vlasnosti LyXu|R"
+msgstr "Rozšířené vlasnosti LyX-u|R"
 
 #: lib/ui/stdmenus.inc:652
 msgid "Embedded Objects|O"
@@ -21989,7 +21982,7 @@ msgstr "Vkládané objekty|V"
 
 #: lib/ui/stdmenus.inc:654
 msgid "Customization|C"
-msgstr "Přizpůsobení LyXu|i"
+msgstr "Přizpůsobení LyX-u|i"
 
 #: lib/ui/stdmenus.inc:655
 msgid "Shortcuts|S"
@@ -22256,7 +22249,7 @@ msgstr "Vložit poznámku na okraj"
 
 #: lib/ui/stdtoolbars.inc:143
 msgid "Insert LyX note"
-msgstr "Vložit poznámku LyXu"
+msgstr "Vložit poznámku LyX-u"
 
 #: lib/ui/stdtoolbars.inc:144
 msgid "Insert box"
@@ -27622,7 +27615,7 @@ msgstr "Beamer Note"
 #: lib/examples/Articles:0
 #, fuzzy
 msgid "Welcome"
-msgstr "Vítejte v LyXu!"
+msgstr "Vítejte v LyX-u!"
 
 #: lib/examples/Articles:0
 msgid "Writing Korean with CJK-ko"
@@ -33733,122 +33726,103 @@ msgstr ""
 
 #: src/frontends/qt/GuiInfo.cpp:70
 msgid "Date (current)"
-msgstr ""
+msgstr "Datum (současné)"
 
 #: src/frontends/qt/GuiInfo.cpp:71
-#, fuzzy
 msgid "Date (last modification of document)"
-msgstr "Biblatex (mód natbib)"
+msgstr "Datum (poslední modifikace dokumentu)"
 
 #: src/frontends/qt/GuiInfo.cpp:72
-#, fuzzy
 msgid "Date (fixed)"
-msgstr "Biblatex (mód natbib)"
+msgstr "Datum (fixní)"
 
 #: src/frontends/qt/GuiInfo.cpp:73
-#, fuzzy
 msgid "Time (current)"
-msgstr "Mid (accent)"
+msgstr "Čas (současný)"
 
 #: src/frontends/qt/GuiInfo.cpp:74
-#, fuzzy
 msgid "Time (last modification of document)"
-msgstr "Čínština (zjednodušená)"
+msgstr "Čas (poslední modifikace dokumentu)"
 
 #: src/frontends/qt/GuiInfo.cpp:75
-#, fuzzy
 msgid "Time (fixed)"
-msgstr "Čínština (zjednodušená)"
+msgstr "Čas (fixní)"
 
 #: src/frontends/qt/GuiInfo.cpp:76
-#, fuzzy
 msgid "Document Information"
-msgstr "Formát &dokumentu"
+msgstr "Informance o dokumentu"
 
 #: src/frontends/qt/GuiInfo.cpp:77
-#, fuzzy
 msgid "Version Control Information"
-msgstr "Log ze správy verzí"
+msgstr "Správa verzí"
 
 #: src/frontends/qt/GuiInfo.cpp:78
-#, fuzzy
 msgid "LaTeX Package Availability"
-msgstr "Balíček není dostupný"
+msgstr "Dostupnost LaTeX-ového balíčku"
 
 #: src/frontends/qt/GuiInfo.cpp:79
 msgid "LaTeX Class Availability"
-msgstr ""
+msgstr "Dostupnost LaTeX-ové třídy"
 
 #: src/frontends/qt/GuiInfo.cpp:80
 msgid "Last Assigned Keyboard Shortcut"
-msgstr ""
+msgstr "Poslední přiřazená klávesová zkratka"
 
 #: src/frontends/qt/GuiInfo.cpp:81
-#, fuzzy
 msgid "All Assigned Keyboard Shortcuts"
-msgstr "Klávesnice/myš"
+msgstr "Všechny přiřazené klávesové zkratky"
 
 #: src/frontends/qt/GuiInfo.cpp:82
-#, fuzzy
 msgid "LyX Menu Location"
-msgstr "Location"
+msgstr "Umístění v menu"
 
 #: src/frontends/qt/GuiInfo.cpp:83
-#, fuzzy
 msgid "Localized GUI String"
-msgstr "Localization"
+msgstr "Lokalizovaný řetězec v GUI"
 
 #: src/frontends/qt/GuiInfo.cpp:84
 msgid "LyX Toolbar Icon"
-msgstr ""
+msgstr "Ikona v nástroji panelů"
 
 #: src/frontends/qt/GuiInfo.cpp:85
-#, fuzzy
 msgid "LyX Preferences Entry"
-msgstr "Nastavení"
+msgstr "Položka z nastavení LyX-u"
 
 #: src/frontends/qt/GuiInfo.cpp:86
-#, fuzzy
 msgid "LyX Application Information"
-msgstr "Informace TeX-u"
+msgstr "Informace o aplikaci LyX-u"
 
 #: src/frontends/qt/GuiInfo.cpp:92 src/frontends/qt/GuiInfo.cpp:93
 #: src/frontends/qt/GuiInfo.cpp:94 src/frontends/qt/GuiInfo.cpp:95
 #: src/frontends/qt/GuiInfo.cpp:96 src/frontends/qt/GuiInfo.cpp:97
-#, fuzzy
 msgid "Custom Format"
-msgstr "Výstupní formát"
+msgstr "Vlastní formát"
 
 #: src/frontends/qt/GuiInfo.cpp:98 src/frontends/qt/GuiInfo.cpp:99
 #: src/frontends/qt/GuiInfo.cpp:108 src/frontends/qt/GuiInfo.cpp:109
 msgid "Not Applicable"
-msgstr ""
+msgstr "Nelze použít"
 
 #: src/frontends/qt/GuiInfo.cpp:100
-#, fuzzy
 msgid "Package Name"
-msgstr "Balíček"
+msgstr "Jméno balíčku"
 
 #: src/frontends/qt/GuiInfo.cpp:101
-#, fuzzy
 msgid "Class Name"
-msgstr "Company Name"
+msgstr "Jméno třídy"
 
 #: src/frontends/qt/GuiInfo.cpp:102 src/frontends/qt/GuiInfo.cpp:103
 #: src/frontends/qt/GuiInfo.cpp:104 src/frontends/qt/GuiInfo.cpp:106
-#, fuzzy
 msgid "LyX Function"
-msgstr "Funkce LyX-u|F"
+msgstr "Funkce LyX-u"
 
 #: src/frontends/qt/GuiInfo.cpp:105
-#, fuzzy
 msgid "English String"
-msgstr "Angličtina (USA)"
+msgstr "Anglický řetězec"
 
 #: src/frontends/qt/GuiInfo.cpp:107
-#, fuzzy
 msgid "Preferences Key"
-msgstr "Nastavení"
+msgstr "Klíč položky nastavení"
 
 #: src/frontends/qt/GuiInfo.cpp:115 src/frontends/qt/GuiInfo.cpp:126
 #: src/frontends/qt/GuiInfo.cpp:137
@@ -33865,6 +33839,17 @@ msgid ""
 "* yy: year as two digit number\n"
 "* yyyy: year as four digit number"
 msgstr ""
+"Vložte specifikaci data za pomocí těchto znaků:\n"
+"* d: číslo dne bez úvodní nuly\n"
+"* dd: číslo dne s úvodní nulou\n"
+"* ddd: lokalizovaná zkratka dne\n"
+"* dddd: lokalizované jméno dne\n"
+"* M: číslo měsíce bez úvodní nuly\n"
+"* MM: číslo měsíce s úvodní nulou\n"
+"* MMM: lokalizovaná zkratka měsíce\n"
+"* MMMM: lokalizované jméno měsíce\n"
+"* yy: rok dvojciferně\n"
+"* yyyy: rok"
 
 #: src/frontends/qt/GuiInfo.cpp:148 src/frontends/qt/GuiInfo.cpp:162
 #: src/frontends/qt/GuiInfo.cpp:176
@@ -33884,23 +33869,42 @@ msgid ""
 "* ap or a: use am/pm display ('am'/'pm')\n"
 "* t: the timezone (e.g. CEST)"
 msgstr ""
+"Vložte specifikaci časového formátu za pomocí těchto znaků:\n"
+"* h: hodina bez úvodní nuly (1-12 in AM/PM)\n"
+"* hh: hodina s úvodní nulou (01-12 in AM/PM)\n"
+"* H: hodina bez úvodní nuly (0-23 in AM/PM)\n"
+"* HH: hodina s úvodní nulou (00-23 in AM/PM)\n"
+"* m: minuta bez úvodní nuly\n"
+"* mm: minuta s úvodní nulou\n"
+"* s: sekunda bez úvodní nuly\n"
+"* ss: sekunda s úvodní nulou\n"
+"* z: millisekundy bez úvodní nuly\n"
+"* zzz: millisekundy s úvodní nulou\n"
+"* AP nebo A: zobrazit AM/PM ('AM'/'PM')\n"
+"* ap or a: zobrazit am/pm ('am'/'pm')\n"
+"* t: časová zóna (např. CEST)"
 
 #: src/frontends/qt/GuiInfo.cpp:190 src/frontends/qt/GuiInfo.cpp:191
 #: src/frontends/qt/GuiInfo.cpp:208 src/frontends/qt/GuiInfo.cpp:209
 msgid "Please select a valid type above"
-msgstr ""
+msgstr "Zvolte platný typ výše"
 
 #: src/frontends/qt/GuiInfo.cpp:192
 msgid ""
 "Enter a LaTeX package name such as 'hyperref' (extension is optional). The "
 "output will be 'Yes' (package available) or 'No' (package unavailable)."
 msgstr ""
+"Vložte jméno LaTeX-ového balíčku jako např. 'hyperref' (přípona je "
+"volitelná). Výstupem bude 'Ano' (balíček k dispozici) nebo 'Ne' (nedostupný "
+"balíček)."
 
 #: src/frontends/qt/GuiInfo.cpp:194
 msgid ""
 "Enter a LaTeX class name such as 'article' (extension is optional). The "
 "output will be 'Yes' (class available) or 'No' (class unavailable)."
 msgstr ""
+"Vložte jméno LaTeX-ové třídy jako např. 'article' (přípona je volitelná). "
+"Výstupem bude 'Ano' (balíček k dispozici) nebo 'Ne' (nedostupný balíček)."
 
 #: src/frontends/qt/GuiInfo.cpp:196
 msgid ""
@@ -33908,6 +33912,9 @@ msgid ""
 "LyX Functions for a comprehensive list of functions. The output is the most "
 "recently assigned keyboard shortcut for this function"
 msgstr ""
+"Vložte jméno funkce jako např. 'math-insert \\alpha'. Pro seznam funkcí viz "
+"Nápověda > Funkce LyX-u. Výstupem je poslední přiřazená klávesová zkratka "
+"pro tuto funkci."
 
 #: src/frontends/qt/GuiInfo.cpp:198
 msgid ""
@@ -33915,6 +33922,9 @@ msgid ""
 "LyX Functions for a comprehensive list of functions. The output lists all "
 "possible keyboard shortcuts for this function"
 msgstr ""
+"Vložte jméno funkce jako např. 'math-insert \\alpha'. Pro seznam funkcí viz "
+"Nápověda > Funkce LyX-u. Výstupem jsou všechny přiřazené klávesové zkratky "
+"pro tuto funkci."
 
 #: src/frontends/qt/GuiInfo.cpp:200
 msgid ""
@@ -33922,6 +33932,8 @@ msgid ""
 "LyX Functions for a comprehensive list of functions. The output is the path "
 "to the function in the menu (using the current localization)."
 msgstr ""
+"Vložte jméno funkce jako např. 'math-insert \\alpha'. Pro seznam funkcí viz "
+"Nápověda > Funkce LyX-u. Výstupem je cesta v menu k dané funkci."
 
 #: src/frontends/qt/GuiInfo.cpp:202
 msgid ""
@@ -33930,6 +33942,10 @@ msgid ""
 "localized string (using the current localization); trailing colons and "
 "accelerator markup are stripped."
 msgstr ""
+"Zadejte lokalizovatelný anglický řetezec z uživatelského rozhraní včetně "
+"značek pro zkratky ('&' nebo '|') a koncových (dvoj)teček. Výstupem je "
+"lokalizovaný řetězec do zvoleného jazyka uživatelského rozhraní. Značky "
+"zkratek a tečky budou odstraněny."
 
 #: src/frontends/qt/GuiInfo.cpp:204
 msgid ""
@@ -33937,12 +33953,17 @@ msgid ""
 "LyX Functions for a comprehensive list of functions. The output is the "
 "toolbar icon for this function (using the active icon theme)."
 msgstr ""
+"Vložte jméno funkce jako např. 'math-insert \\alpha'. Pro seznam funkcí viz "
+"Nápověda > Funkce LyX-u. Výstupem ikona z panelu nástrojů (ze současného "
+"tématu ikon)."
 
 #: src/frontends/qt/GuiInfo.cpp:206
 msgid ""
 "Enter a LyX preferences key such as 'bind_file'. See the proposed list for "
 "available entries. The output is the current setting of this preference."
 msgstr ""
+"Vložte klíč pro danou položku nastavení jako např. 'bind_file'. Vizte "
+"nabídnutý seznam položek. Výstupem je současné nastavení dané položky."
 
 #: src/frontends/qt/GuiInfo.cpp:256 src/insets/InsetInclude.cpp:426
 msgid "Unknown"
@@ -33950,21 +33971,19 @@ msgstr "Neznámý"
 
 #: src/frontends/qt/GuiInfo.cpp:332
 msgid "Enter a valid value below"
-msgstr ""
+msgstr "Vložte platný kód níže"
 
 #: src/frontends/qt/GuiInfo.cpp:365
 msgid "Here you can enter a fixed time (in ISO format: hh:mm:ss)"
-msgstr ""
+msgstr "Zde můžete vložit fixní čas (v ISO formátu: hh:mm:ss)"
 
 #: src/frontends/qt/GuiInfo.cpp:366
-#, fuzzy
 msgid "&Fixed Time:"
-msgstr "Opravy LaTeX-u"
+msgstr "Fi&xní čas:"
 
 #: src/frontends/qt/GuiInfo.h:40
-#, fuzzy
 msgid "Field Settings"
-msgstr "Nastavení čáry"
+msgstr "Nastavení pole"
 
 #: src/frontends/qt/GuiKeySymbol.cpp:834
 msgid "Shift-"
@@ -34043,9 +34062,8 @@ msgid "No version control log file found."
 msgstr "Log ze správy verzí nenalezen."
 
 #: src/frontends/qt/GuiLyXFiles.cpp:158 src/frontends/qt/GuiLyXFiles.cpp:620
-#, fuzzy
 msgid "New File From Template"
-msgstr "Nový ze šablony...|b"
+msgstr "Nový soubor ze šablony"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:190
 #, fuzzy
@@ -34388,7 +34406,7 @@ msgstr "Je potřeba restartovat LyX!"
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
-msgstr "Změna uživatelského rozhraní bude plně aktivní pouze po restartu LyXu."
+msgstr "Změna uživatelského rozhraní bude plně aktivní pouze po restartu LyX-u."
 
 #: src/frontends/qt/GuiPrefs.cpp:2614
 msgid "User Interface"
@@ -35168,7 +35186,7 @@ msgstr "%1$s (externě modifikován)"
 
 #: src/frontends/qt/GuiView.cpp:1632
 msgid "Welcome to LyX!"
-msgstr "Vítejte v LyXu!"
+msgstr "Vítejte v LyX-u!"
 
 #: src/frontends/qt/GuiView.cpp:2204
 msgid "Automatic save done."
@@ -38582,6 +38600,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámý uživatel"
 
+#~ msgid "&Fix Date:"
+#~ msgstr "&Fixní datum:"
+
 #~ msgid "&Backup documents, every"
 #~ msgstr "Zá&lohovat dokumenty, každých"
 
@@ -40952,7 +40973,7 @@ msgstr "Neznámý uživatel"
 #~ msgstr "Jdi na 5.záložku|5"
 
 #~ msgid "Extended Features|E"
-#~ msgstr "Rozšířené vlastnosti LyXu|R"
+#~ msgstr "Rozšířené vlastnosti LyX-u|R"
 
 #~ msgid "Embedded Objects|m"
 #~ msgstr "Vkládané objekty|V"
@@ -41468,7 +41489,7 @@ msgstr "Neznámý uživatel"
 #~ "není použitelný. To je pravděpodobně způsobeno tím,\n"
 #~ "že LaTeX-ová třída nebo požadovaný soubor stylu\n"
 #~ "není dostupný. Pro více informací nahlédněte do\n"
-#~ "nápovědy (Přizpůsobení LyXu).\n"
+#~ "nápovědy (Přizpůsobení LyX-u).\n"
 
 #~ msgid "LyX will not be able to produce output."
 #~ msgstr "LyX nebude schopen vytvořit výstup."
@@ -42141,7 +42162,7 @@ msgstr "Neznámý uživatel"
 #~ "Please report this bug to the lyx-devel mailing list."
 #~ msgstr ""
 #~ "Pravděpodobně díky chybě se nepodařilo vyhledat všechny přibalené "
-#~ "soubory. Pokud rozbalíte soubor LyXu (unzip), měli byste najít soubor "
+#~ "soubory. Pokud rozbalíte soubor LyX-u (unzip), měli byste najít soubor "
 #~ "content.lyx, který obsahuje váš hlavní text. Také by mělo být možné znovu "
 #~ "získat některé z přibalených souborů. Prosíme nahlaste tuto chybu "
 #~ "vývojářskému týmu."
