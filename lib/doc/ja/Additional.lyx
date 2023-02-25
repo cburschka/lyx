@@ -56,26 +56,6 @@ ruby
 \end_modules
 \maintain_unincluded_children no
 \begin_local_layout
-### Inserted by lyx2lyx (ams extended theorems) ###
-### This requires a theorems-ams-extended-* module to be loaded
-Style Acknowledgement*
-  CopyStyle             Remark*
-  LatexName             acknowledgement*
-  LabelString           "Acknowledgement."
-  Preamble
-    \theoremstyle{remark}
-    \newtheorem*{acknowledgement*}{\protect\acknowledgementname}
-  EndPreamble
-  LangPreamble
-    \providecommand{\acknowledgementname}{_(Acknowledgement)}
-  EndLangPreamble
-  BabelPreamble
-    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}
-  EndBabelPreamble
-  DocBookTag            para
-  DocBookAttr           role="acknowledgement"
-  DocBookItemTag        ""
-End
 #Format 35
 #InsetLayout		Flex:MenuItem
 #LyxType		charstyle
@@ -4632,10 +4612,6 @@ AMS定理(拡張)
 \begin_layout Summary
 本当に説明する必要がありますか？
 
-\end_layout
-
-\begin_layout Acknowledgement*
-謝辞(acknowledgement)です．
 \end_layout
 
 \begin_layout Conclusion*
