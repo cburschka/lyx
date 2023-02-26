@@ -941,6 +941,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().clearRemovedModules();
 	params().clearIncludedChildren();
 	params().pdfoptions().clear();
+	params().document_metadata.clear();
 	params().indiceslist().clear();
 	params().backgroundcolor = lyx::rgbFromHexName("#ffffff");
 	params().isbackgroundcolor = false;
