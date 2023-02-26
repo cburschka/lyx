@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2023-02-22 18:54+0100\n"
-"PO-Revision-Date: 2023-02-22 18:16+0000\n"
+"POT-Creation-Date: 2023-02-26 11:07+0100\n"
+"PO-Revision-Date: 2023-02-26 10:20+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2589,14 +2589,6 @@ msgid ""
 "information below."
 msgstr ""
 "Vyberte typ informácie pre výstup. Potom určite dolu žiadanú informáciu."
-
-#: src/frontends/qt/ui/InfoUi.ui:49 src/frontends/qt/GuiInfo.cpp:362
-msgid "&Fix Date:"
-msgstr "&Pevný Dátum:"
-
-#: src/frontends/qt/ui/InfoUi.ui:59 src/frontends/qt/GuiInfo.cpp:361
-msgid "Here you can enter a fix date (in ISO format: YYYY-MM-DD)"
-msgstr "Tu môžte vložiť pevný dátum (napr. vo formáte ISO: YYYY-MM-DD)"
 
 #: src/frontends/qt/ui/InfoUi.ui:70
 msgid "&Custom:"
@@ -21408,8 +21400,8 @@ msgid "Date (Current)|D"
 msgstr "Dátum (Aktuálny)|A"
 
 #: lib/ui/stdmenus.inc:429
-msgid "Date (Last Modification)|L"
-msgstr "Dátum (Poslednej modifikácie)|m"
+msgid "Date (Last Modification of Document)|L"
+msgstr "Dátum (Poslednej modifikácie dokumentu)|m"
 
 #: lib/ui/stdmenus.inc:430
 msgid "Date (Fixed)|F"
@@ -21420,8 +21412,8 @@ msgid "Time (Current)|T"
 msgstr "Čas (Aktuálny)|s"
 
 #: lib/ui/stdmenus.inc:433
-msgid "Time (Last Modification)|M"
-msgstr "Čas (Poslednej modifikácie)|o"
+msgid "Time (Last Modification of document)|M"
+msgstr "Čas (Poslednej modifikácie dokumentu)|o"
 
 #: lib/ui/stdmenus.inc:434
 msgid "Time (Fixed)|x"
@@ -33374,24 +33366,24 @@ msgid "Date (current)"
 msgstr "Dátum (aktuálny)"
 
 #: src/frontends/qt/GuiInfo.cpp:71
-msgid "Date (last modified)"
-msgstr "Dátum (Poslednej modifikácie)"
+msgid "Date (last modification of document)"
+msgstr "Dátum (Poslednej modifikácie dokumentu)|m"
 
 #: src/frontends/qt/GuiInfo.cpp:72
-msgid "Date (fix)"
-msgstr "Dátum (Pevný)"
+msgid "Date (fixed)"
+msgstr "Dátum (pevný)"
 
 #: src/frontends/qt/GuiInfo.cpp:73
 msgid "Time (current)"
 msgstr "Čas (aktuálny)"
 
 #: src/frontends/qt/GuiInfo.cpp:74
-msgid "Time (last modified)"
-msgstr "Čas (Poslednej modifikácie)"
+msgid "Time (last modification of document)"
+msgstr "Čas (Poslednej modifikácie dokumentu)|o"
 
 #: src/frontends/qt/GuiInfo.cpp:75
-msgid "Time (fix)"
-msgstr "Čas (Pevný)"
+msgid "Time (fixed)"
+msgstr "Čas (pevný)"
 
 #: src/frontends/qt/GuiInfo.cpp:76
 msgid "Document Information"
@@ -33414,8 +33406,8 @@ msgid "Last Assigned Keyboard Shortcut"
 msgstr "Naposledy pridelená klávesová skratka"
 
 #: src/frontends/qt/GuiInfo.cpp:81
-msgid "All Keyboard Shortcuts"
-msgstr "Všetky klávesové skratky"
+msgid "All Assigned Keyboard Shortcuts"
+msgstr "Všetky pridelené klávesové skratky"
 
 #: src/frontends/qt/GuiInfo.cpp:82
 msgid "LyX Menu Location"
@@ -33618,12 +33610,20 @@ msgstr "Neznáme"
 msgid "Enter a valid value below"
 msgstr "Vložte poniže prijateľnú hodnotu"
 
+#: src/frontends/qt/GuiInfo.cpp:361 src/frontends/qt/ui/InfoUi.ui:59
+msgid "Here you can enter a fixed date (in ISO format: YYYY-MM-DD)"
+msgstr "Tu môžte vložiť pevný dátum (vo formáte ISO: YYYY-MM-DD)"
+
+#: src/frontends/qt/GuiInfo.cpp:362 src/frontends/qt/ui/InfoUi.ui:49
+msgid "&Fixed Date:"
+msgstr "&Pevný Dátum:"
+
 #: src/frontends/qt/GuiInfo.cpp:365
-msgid "Here you can enter a fix time (in ISO format: hh:mm:ss)"
-msgstr "Tu môžte vložiť pevný čas (napr. vo formáte ISO: hh:mm:ss)"
+msgid "Here you can enter a fixed time (in ISO format: hh:mm:ss)"
+msgstr "Tu môžte vložiť pevný čas (vo formáte ISO: hh:mm:ss)"
 
 #: src/frontends/qt/GuiInfo.cpp:366
-msgid "&Fix Time:"
+msgid "&Fixed Time:"
 msgstr "P&evný čas:"
 
 #: src/frontends/qt/GuiInfo.h:40
