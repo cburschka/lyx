@@ -430,7 +430,7 @@ Menuset
 		Item "Date (Fixed)|F" "info-insert fixdate"
 		Separator
 		Item "Time (Current)|T" "info-insert time"
-		Item "Time (Last Modification of document)|M" "info-insert modtime"
+		Item "Time (Last Modification of Document)|M" "info-insert modtime"
 		Item "Time (Fixed)|x" "info-insert fixtime"
 		Separator
 		Item "File Name (Excl. Extension)|N" "info-insert buffer name-noext"
