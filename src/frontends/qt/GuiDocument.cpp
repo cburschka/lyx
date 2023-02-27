@@ -4630,7 +4630,7 @@ void GuiDocument::paramsToDialog()
 		toqstr(pdf.quoted_options));
 
 	pdfSupportModule->metadataTE->setPlainText(
-		toqstr(bp_.document_metadata));
+		toqstr(rtrim(bp_.document_metadata, "\n")));
 
 	// change tracking
 	changesModule->trackChangesCB->setChecked(bp_.track_changes);
