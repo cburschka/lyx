@@ -2568,9 +2568,8 @@ msgid "Click to select a local document class definition file"
 msgstr "Nastavit lokální definiční soubor třídy dokumentu"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:51
-#, fuzzy
 msgid "&Local Class..."
-msgstr "&Lokální rozvržení..."
+msgstr "Lo&kální třída..."
 
 #: src/frontends/qt/ui/LaTeXUi.ui:61
 msgid "Class Options"
@@ -2630,9 +2629,8 @@ msgid "&Quote style:"
 msgstr "&Typ uvozovek:"
 
 #: src/frontends/qt/ui/LanguageUi.ui:49
-#, fuzzy
 msgid "Select the default quotation marks style"
-msgstr "Nastavit standardní rodinu písma pro dokument"
+msgstr "Nastavit standardní styl uvozovek"
 
 #: src/frontends/qt/ui/LanguageUi.ui:59
 msgid ""
@@ -2648,26 +2646,24 @@ msgid "Use d&ynamic quotation marks"
 msgstr "Použití d&ynamických uvozovek"
 
 #: src/frontends/qt/ui/LanguageUi.ui:89
-#, fuzzy
 msgid "&Encoding:"
-msgstr "Kódování"
+msgstr "&Kódování:"
 
 #: src/frontends/qt/ui/LanguageUi.ui:102
 msgid "Select encoding of the generated LaTeX source (LaTeX input encoding)."
-msgstr ""
+msgstr "Nastavit kódování generovaného LaTeX-ového výstupu (vstupní kódování LaTeX-u)."
 
 #: src/frontends/qt/ui/LanguageUi.ui:115
 msgid "Select Unicode encoding variant."
-msgstr ""
+msgstr "Vybrat variantu Unicode kódování."
 
 #: src/frontends/qt/ui/LanguageUi.ui:125
 msgid "Specify whether to load the 'inputenc' package."
-msgstr ""
+msgstr "Zvolte, zda-li načíst balíček 'inputenc'."
 
 #: src/frontends/qt/ui/LanguageUi.ui:135
-#, fuzzy
 msgid "Select custom encoding."
-msgstr "Vybrat dokument"
+msgstr "Vybrat vlastní kódování."
 
 #: src/frontends/qt/ui/LanguageUi.ui:142
 msgid "Language pa&ckage:"
@@ -4633,9 +4629,8 @@ msgstr "Jednotka &míry:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:348
 #: src/frontends/qt/GuiDocument.cpp:1040
-#, fuzzy
 msgid "Language Default"
-msgstr "&Standardní pro daný jazyk"
+msgstr "Standardní pro daný jazyk"
 
 #: src/frontends/qt/ui/PrefLatexUi.ui:34
 msgid "&DVI viewer paper size options:"
@@ -21654,7 +21649,7 @@ msgid "Time (Current)|T"
 msgstr "Čas|a"
 
 #: lib/ui/stdmenus.inc:433
-msgid "Time (Last Modification of document)|M"
+msgid "Time (Last Modification of Document)|M"
 msgstr "Čas (poslední modifikace dokumentu)|o"
 
 #: lib/ui/stdmenus.inc:434
@@ -32729,19 +32724,16 @@ msgid "Convert to current format"
 msgstr "Konverze do současného formátu"
 
 #: src/frontends/qt/GuiDocument.cpp:890
-#, fuzzy
 msgid "Small Skip"
-msgstr "Malá mezera (SmallSkip)"
+msgstr "Malá mezera (Small Skip)"
 
 #: src/frontends/qt/GuiDocument.cpp:891
-#, fuzzy
 msgid "Medium Skip"
 msgstr "Střední mezera"
 
 #: src/frontends/qt/GuiDocument.cpp:892
-#, fuzzy
 msgid "Big Skip"
-msgstr "Velká mezera (BigSkip)"
+msgstr "Velká mezera (Big Skip)"
 
 #: src/frontends/qt/GuiDocument.cpp:904 src/frontends/qt/GuiDocument.cpp:906
 #: src/frontends/qt/GuiDocument.cpp:1809
@@ -32762,25 +32754,23 @@ msgstr "Unicode (utf8)"
 
 #: src/frontends/qt/GuiDocument.cpp:1013
 msgid "Traditional (auto-selected)"
-msgstr ""
+msgstr "Tradiční (automatický výběr)"
 
 #: src/frontends/qt/GuiDocument.cpp:1016
-#, fuzzy
 msgid "Select Unicode (utf8) encoding."
-msgstr "Unicode (utf8)"
+msgstr "Vybrat kódování Unicode (utf8)."
 
 #: src/frontends/qt/GuiDocument.cpp:1018
 msgid "Use language-dependent traditional encodings."
-msgstr ""
+msgstr "Vybrat na jazyce závislé tradiční kódování."
 
 #: src/frontends/qt/GuiDocument.cpp:1020
-#, fuzzy
 msgid "Select a custom, document-wide encoding."
-msgstr "Vybrat adresář pro dokumenty"
+msgstr "Vybrat vlastní kódování pro celý dokument."
 
 #: src/frontends/qt/GuiDocument.cpp:1029
 msgid "Standard Unicode support by the ``inputenc'' package."
-msgstr ""
+msgstr "Standardní Unicode podpora balíčkem ``inputenc''."
 
 #: src/frontends/qt/GuiDocument.cpp:1032
 msgid ""
