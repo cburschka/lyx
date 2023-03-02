@@ -5190,7 +5190,7 @@ msgstr "&Jdi na značku"
 
 #: src/frontends/qt/ui/RefUi.ui:214
 msgid "Reference For&mat:"
-msgstr "&Formát reference:"
+msgstr "Formát &reference:"
 
 #: src/frontends/qt/ui/RefUi.ui:233
 msgid "Adjust the style of the cross-reference"
@@ -5261,9 +5261,8 @@ msgid "No Prefix"
 msgstr "Bez prefi&xu"
 
 #: src/frontends/qt/ui/RefUi.ui:340 lib/ui/stdcontext.inc:127
-#, fuzzy
 msgid "No Hyperlink"
-msgstr "Odkaz: "
+msgstr "Bez odka&zu"
 
 #: src/frontends/qt/ui/SearchUi.ui:52
 msgid "Find previous occurrence (Shift+Enter)"
@@ -5356,12 +5355,10 @@ msgid "Process the converted file with this command ($$FName = file name)"
 msgstr "Zpracuj konvertovaný soubor tímto příkazem ($$FName = jméno souboru)"
 
 #: src/frontends/qt/ui/SendtoUi.ui:95
-#, fuzzy
 msgid "Export for&mats:"
 msgstr "&Exportovat formáty:"
 
 #: src/frontends/qt/ui/SendtoUi.ui:105
-#, fuzzy
 msgid "Send exported file to &command:"
 msgstr "&Výstupní soubor zpracovat příkazem:"
 
@@ -5370,7 +5367,6 @@ msgid "Edit shortcut"
 msgstr "Editovat zkratku"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:23
-#, fuzzy
 msgid "Fu&nction:"
 msgstr "&Funkce:"
 
@@ -5379,7 +5375,6 @@ msgid "Enter LyX function or command sequence"
 msgstr "Vložte funkci LyX-u nebo sekvenci příkazů"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:43
-#, fuzzy
 msgid "Short&cut:"
 msgstr "&Zkratka:"
 
@@ -5420,9 +5415,8 @@ msgid ""
 msgstr "Kontrolovaný jazyk. Přepnutím změníte jazyk kontrolovaného slova."
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:60
-#, fuzzy
 msgid "Unknown &word:"
-msgstr "Neznámé slovo:"
+msgstr "Neznámé &slovo:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:70
 msgid "Current word"
@@ -5430,24 +5424,23 @@ msgstr "Současné slovo"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:77
 msgid "Skip this match and go to next misspelling"
-msgstr ""
+msgstr "Přeskočit tento výskyt a přejít na další"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:80
 msgid "S&kip"
-msgstr ""
+msgstr "Př&eskočit"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:87
-#, fuzzy
 msgid "Repla&cement:"
 msgstr "&Náhrada:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:97
 msgid "Skips all occurrences of this word within the current session."
-msgstr ""
+msgstr "Přeskočit všechny výskyty tohoto slova v rámci současného běhu aplikace."
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:100
 msgid "Skip A&ll"
-msgstr ""
+msgstr "Přeskočit &vše"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:110
 msgid "Replace with selected word"
@@ -5464,31 +5457,29 @@ msgstr "Nah&raď"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:142
 msgid "S&uggestions:"
-msgstr "Návr&hy:"
+msgstr "Návrh&y:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:152
-#, fuzzy
 msgid "Replace all occurrences of the word in the document with current choice"
-msgstr "Nahradit slovo aktuálně vybraným"
+msgstr "Nahradit všechny výskyty tohoto slova v dokumentu aktuálně vybraným"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:155
-#, fuzzy
 msgid "Re&place All"
-msgstr "Nahraď &vše"
+msgstr "Na&hraď vše"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:165
-msgid "Ignore this occurrence of the word permanently"
-msgstr ""
+msgid "Ignore this occurrence of the word permanently (saved as a Text Property)"
+msgstr "Ignorovat tento výskyt permanentně (uloženo ve Vlasnostech textu)"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:168
 msgid "Ign&ore"
-msgstr ""
+msgstr "Ign&orovat"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:175
 msgid ""
 "Ignore all occurrences of this word within this document. This persists "
 "beyond the current session."
-msgstr ""
+msgstr "Permanentně ignorovat všechny výskyty tohoto slova v rámci tohoto dokumentu."
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:178
 msgid "I&gnore All"
@@ -5499,9 +5490,8 @@ msgid "Add the word to your personal dictionary"
 msgstr "Přidat slovo do vlastního slovníku"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:188
-#, fuzzy
 msgid "&Add[[Spellchecker]]"
-msgstr "Kontrola pravopisu"
+msgstr "Př&idat"
 
 #: src/frontends/qt/ui/SymbolsUi.ui:40
 msgid ""
