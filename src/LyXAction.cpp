@@ -735,7 +735,7 @@ void LyXAction::init()
                Template will be asked for via Open-dialog.
  * \li Syntax: buffer-new-template [<FILE>] [<TEMPLATE FILE>]
  * \li Params: <FILE>: filename of created file with absolute path. If empty
- *                     or "newfile", a file with appropriate name is generated.
+ *                     or "newfile", a file with appropriate name is generated.\n
  *             <TEMPLATE FILE>: filename of template with absolute path. If empty,
  *                              a dialog is opened to select the new file.
  * \endvar
@@ -854,7 +854,7 @@ void LyXAction::init()
  * \li Syntax: buffer-update [<FORMAT>]
  * \li Params: <FORMAT>: The format to display, where this is one of the
                          formats defined in the Tools>Preferences>File Formats dialog,
-			 use the "Short name" field.
+                         use the "Short name" field.
                          If no format is given, the default format as
                          specified in the same dialog is used.
  * \li Origin: Dekel, 5 Aug 2000
@@ -927,7 +927,7 @@ void LyXAction::init()
  * \li Action: Rename and save current buffer in the local templates directory.
  * \li Syntax: buffer-write-as-template <FILENAME>
  * \li Params: <FILENAME>: New name of the buffer/file. A relative path
-	       is with respect to the original location of the buffer/file.
+               is with respect to the original location of the buffer/file.
  * \endvar
  */
 		{ LFUN_BUFFER_WRITE_AS_TEMPLATE, "buffer-write-as-template", ReadOnly, Buffer },
@@ -2289,10 +2289,10 @@ void LyXAction::init()
  * \li Action: Splits the current inset into two at current position.
  * \li Syntax: inset-split [<INSET>]
  * \li Params: <INSET>: this can be used to make sure the right kind of inset
-			is dissolved. For example "split" entry in the charstyles
-			sub-menu should only dissolve the charstyle inset, even if the
-			cursor is inside several nested insets of different type.\n
-			For values see #lyx::InsetLayout::lyxtype_ .
+                        is dissolved. For example "split" entry in the charstyles
+                        sub-menu should only dissolve the charstyle inset, even if the
+                        cursor is inside several nested insets of different type.\n
+                        For values see #lyx::InsetLayout::lyxtype_ .
  * \li Origin: spitz, 22 Dec 2020
  * \endvar
  */
@@ -3836,7 +3836,7 @@ void LyXAction::init()
  *             spell checker dictionary.
  *             The default for the language is retrieved from the cursor position.
  * \li Syntax: spelling-add [<STRING>] [<LANG>]
- * \li Params: <WORD>: word to add
+ * \li Params: <WORD>: word to add\n
                <LANG>: language name (see file languages)
  * \li Origin: spitz, 18 Jan 2010
  * \endvar
@@ -3849,8 +3849,8 @@ void LyXAction::init()
  *             spell checker dictionary.
  *             The default for the language is retrieved from the cursor position.
  * \li Syntax: spelling-add-local [<STRING>] [<LANG>]
- * \li Params: <WORD>: word to add
-	       <LANG>: language name (see file languages)
+ * \li Params: <WORD>: word to add\n
+               <LANG>: language name (see file languages)
  * \li Origin: spitz, 6 Mar 2021
  * \endvar
  */
@@ -3862,8 +3862,8 @@ void LyXAction::init()
  *             spell checker dictionary.
  *             The default for the language is retrieved from the cursor position.
  * \li Syntax: spelling-remove-local [<STRING>] [<LANG>]
- * \li Params: <WORD>: word to remove
-	       <LANG>: language name (see file languages)
+ * \li Params: <WORD>: word to remove\n
+               <LANG>: language name (see file languages)
  * \li Origin: spitz, 7 Mar 2021
  * \endvar
  */
@@ -3885,7 +3885,7 @@ void LyXAction::init()
  *             in the current session for the given language.
  *             The default for the language is retrieved from the cursor position.
  * \li Syntax: spelling-ignore [<WORD>] [<LANG>]
- * \li Params: <WORD>: word to ignore
+ * \li Params: <WORD>: word to ignore\n
                <LANG>: language name (see file languages)
  * \li Origin: spitz, 18 Jan 2010
  * \endvar
@@ -3898,8 +3898,8 @@ void LyXAction::init()
  *             spell checker dictionary.
  *             The default for the language is retrieved from the cursor position.
  * \li Syntax: spelling-remove [<STRING>] [<LANG>]
- * \li Params: <WORD>: word to remove
- *             <LANG>: language name (see file languages)
+ * \li Params: <WORD>: word to remove\n
+               <LANG>: language name (see file languages)
  * \li Origin: SWitt, 28 July 2010
  * \endvar
  */
@@ -4081,7 +4081,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_THESAURUS_ENTRY
  * \li Action: Look up thesaurus entries with respect to the word under the cursor.
  * \li Syntax: thesaurus-entry [<STRING>] [lang=<LANG>]
- * \li Params: <STRING>: word to look up
+ * \li Params: <STRING>: word to look up\n
                <LANG>: language (see file languages)
  * \li Origin: Levon, 20 Jul 2001
  * \endvar
@@ -4106,8 +4106,8 @@ void LyXAction::init()
  * \li Notion: Skipping "auto" when allowauto is false.
  * \li Syntax: toolbar-set <NAME> [on|off|auto]
  * \li Params: <NAME>: standard|extra|table|math|mathmacrotemplate|\n
-		       minibuffer|review|view/update|math_panels|vcs|
-		       view-others|update-others
+                       minibuffer|review|view/update|math_panels|vcs|\n
+                       view-others|update-others
  * \li Origin: spitz, 17 Dec 2020
  * \endvar
  */
@@ -4119,7 +4119,7 @@ void LyXAction::init()
  * \li Notion: Skipping "auto" when allowauto is false.
  * \li Syntax: toolbar-toggle <NAME> [allowauto]
  * \li Params: <NAME>: standard|extra|table|math|mathmacrotemplate|\n
-                       minibuffer|review|view/update|math_panels|vcs|
+                       minibuffer|review|view/update|math_panels|vcs|\n
                        view-others|update-others
  * \li Origin: Edwin, 21 May 2007
  * \endvar
