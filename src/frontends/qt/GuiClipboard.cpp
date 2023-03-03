@@ -130,7 +130,7 @@ string const GuiClipboard::getAsLyX() const
 	if (cache_.hasFormat(lyxMimeType())) {
 		// data from ourself or some other LyX instance
 		QByteArray const ar = cache_.data(lyxMimeType());
-		string const s(ar.data(), ar.count());
+		string const s(ar.data(), ar.size());
 		LYXERR(Debug::CLIPBOARD, s << "'");
 		return s;
 	}
@@ -307,7 +307,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 	// data from ourself or some other LyX instance
 	QByteArray const ar = cache_.data(mime);
 	LYXERR(Debug::CLIPBOARD, "Getting from clipboard: mime = " << mime.constData()
-	       << "length = " << ar.count());
+	       << "length = " << ar.size());
 
 	QFile f(toqstr(filename.absFileName()));
 	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
@@ -534,7 +534,7 @@ bool GuiClipboard::isInternal() const
 	// We are running on OS X: Check whether clipboard data is from
 	// ourself by comparing its checksum with the stored one.
 	QByteArray const ar = cache_.data(lyxMimeType());
-	string const data(ar.data(), ar.count());
+	string const data(ar.data(), ar.size());
 	return checksum == static_cast<std::uint32_t>(support::checksum(data));
 }
 
