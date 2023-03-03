@@ -25,7 +25,6 @@
 #include <QKeyEvent>
 #include <QKeySequence>
 #include <QEvent>
-#include <QTextCodec>
 
 #include <map>
 #include <string>
@@ -690,39 +689,6 @@ static std::string const qkey_to_string(int lkey)
 	case Qt::Key_unknown: return "";
 	}
 }
-
-
-#if 0
-static char encode(string const & encoding, QString const & str)
-{
-	typedef map<string, QTextCodec *> EncodingMap;
-	EncodingMap encoding_map;
-
-	QTextCodec * codec = 0;
-
-	EncodingMap::const_iterator cit = encoding_map.find(encoding);
-	if (cit == encoding_map.end()) {
-		LYXERR(Debug::KEY, "Unrecognised encoding '" << encoding << "'.");
-		codec = encoding_map.find("")->second;
-	} else {
-		codec = cit->second;
-	}
-
-	if (!codec) {
-		LYXERR(Debug::KEY, "No codec for encoding '" << encoding << "' found.");
-		return 0;
-	}
-
-	LYXERR(Debug::KEY, "Using codec " << codec->name());
-
-	if (!codec->canEncode(str)) {
-		LYXERR(Debug::KEY, "Oof. Can't encode the text !");
-		return 0;
-	}
-
-	return codec->fromUnicode(str).data()[0];
-}
-#endif
 
 
 void setKeySymbol(KeySymbol * sym, QKeyEvent const * ev)
