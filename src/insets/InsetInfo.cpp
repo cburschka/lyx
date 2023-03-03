@@ -796,8 +796,12 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 	// in the original Buffer. This is especially important for VCS.
 	// Otherwise, we could in principle have different settings here
 	// than in the Buffer we were exporting.
-	if (buffer().isClone())
+	// However, we need to check whether the inset is in an intitle
+	// context.
+	if (buffer().isClone()) {
+		InsetText::checkIntitleContext(it);
 		return;
+	}
 	BufferParams const & bp = buffer().params();
 	params_.lang = it.paragraph().getFontSettings(bp, it.pos()).language();
 	InsetCollapsible::updateBuffer(it, utype, deleted);

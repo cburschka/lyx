@@ -125,6 +125,9 @@ public:
 
 	///
 	void fixParagraphsFont();
+	/// Check and record if this inset is embedded in a title layout
+	/// This is needed to decide when \maketitle is output.
+	void checkIntitleContext(ParIterator const & it);
 
 	/// does the inset contain changes ?
 	bool isChanged() const override { return is_changed_; }
