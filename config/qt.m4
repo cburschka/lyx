@@ -27,8 +27,8 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		qt_corelibs="-lQtCore -lQtCore4"
 		qt_guilibs="'-lQtCore -lQtGui' '-lQtCore4 -lQtGui4'"
 		if test $USE_QT6 = "yes" ; then
-		    qt_corelibs="-lQt6Core -lQt6Core5Compat"
-		    qt_guilibs="-lQt6Core -lQt6Core5Compat -lQt6Concurrent -lQt6Gui -lQt6Svg -lQt6Widgets"
+		    qt_corelibs="-lQt6Core"
+		    qt_guilibs="-lQt6Core -lQt6Concurrent -lQt6Gui -lQt6Svg -lQt6Widgets"
 		else
 		    qt_corelibs="-lQt5Core"
 		    qt_guilibs="-lQt5Core -lQt5Concurrent -lQt5Gui -lQt5Svg -lQt5Widgets"
@@ -44,7 +44,7 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		qt_cv_libname=
 		for libname in $qt_guilibs \
 		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtWidgets -framework QtMacExtras -framework QtGui'\
-		               '-framework QtCore -framework QtConcurrent -framework QtCore5Compat -framework QtSvg -framework QtSvgWidgets -framework QtWidgets -framework QtGui'\
+		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtSvgWidgets -framework QtWidgets -framework QtGui'\
 		               '-framework QtCore -framework QtGui'
 		do
 			QT_TRY_LINK($libname)
@@ -339,7 +339,7 @@ AC_DEFUN([QT_DO_MANUAL_CONFIG],
 	QT_CORE_LDFLAGS=
 	if test -n "$qt_cv_includes"; then
 		QT_INCLUDES="-I$qt_cv_includes"
-		for i in Qt QtCore QtGui QtWidgets QtSvg QtConcurrent QtSvgWidgets QtCore5Compat QtMacExtras; do
+		for i in Qt QtCore QtGui QtWidgets QtSvg QtConcurrent QtSvgWidgets QtMacExtras; do
 			QT_INCLUDES="$QT_INCLUDES -I$qt_cv_includes/$i"
 			if test "$lyx_use_packaging" = "macosx" ; then
 				QT_INCLUDES="$QT_INCLUDES -I$qt_cv_libraries/${i}.framework/Headers"
@@ -392,7 +392,6 @@ AC_DEFUN([QT6_QMAKE_CONFIG],
 	    lyx_test_qt_mak="$lyx_test_qt_dir/Makefile"
 	    cat > $lyx_test_qt_pro << EOF1
 qtHaveModule(core):		QT += core
-qtHaveModule(core5compat):	QT += core5compat
 percent.target = %
 percent.commands = @echo -n "\$(\$(@))\ "
 QMAKE_EXTRA_TARGETS += percent
@@ -416,7 +415,6 @@ EOF1
 		AC_SUBST(QT_CORE_LIB)
 		cat > $lyx_test_qt_pro << EOF2
 qtHaveModule(core):		QT += core
-qtHaveModule(core5compat):	QT += core5compat
 qtHaveModule(concurrent):	QT += concurrent
 qtHaveModule(gui):		QT += gui gui-private
 qtHaveModule(svg):		QT += svg
