@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1294,9 +1294,17 @@ dvi
 A v neposlední řadě,
  napsali jsme pro vás soubor na vyzkoušení vaší znalosti \SpecialChar LyX
 u.
- Jmenuje se 
+ Budeme mu říkat Jmenuje se 
 \family typewriter
-priklad_syrovy.lyx
+Ukázkový
+\begin_inset space ~
+\end_inset
+
+příklad
+\begin_inset space ~
+\end_inset
+
+(surový)
 \family default
 .
  Představte si,
@@ -1309,8 +1317,15 @@ u a my vám doporučujeme,
  Jestli chcete napovídat (nebo si ověřit vaše výsledky),
  je zde také soubor 
 \family typewriter
-priklad_z\SpecialChar LyX
-ovany.lyx
+Ukázkový
+\begin_inset space ~
+\end_inset
+
+příklad
+\begin_inset space ~
+\end_inset
+
+(zlyxovaný)
 \family default
 ,
  který obsahuje tentýž text napsaný zkušeným uživatelem \SpecialChar LyX
@@ -2492,26 +2507,25 @@ Subsubsekci
 Cvičení
 \series default
 :
- Opravte nadpisy oddílů a pododdílů v 
-\family typewriter
-priklad_syrovy.lyx
-\family default
-.
- Tento dokument najdete v adresáři 
-\family typewriter
-examples/
-\family default
-,
- který zvolíte pomocí nabídky 
+ Opravte nadpisy oddílů a pododdílů v ukázkovém příkladu.
+ Tento dokument najdete pomocí nabídky 
 \family sans
 Soubor->Otevřít
-\family default
- a pak stisknutím tlačítka 
-\family sans
-Příklady
+\begin_inset space ~
+\end_inset
+
+Příklad
 \family default
 .
- Otevřete dokument,
+ Otevřete dokument 
+\family sans
+Ukázkový
+\begin_inset space ~
+\end_inset
+
+příklad (surový formát)
+\family default
+,
  a použijte 
 \family sans
 Soubor->Uložit
@@ -2809,9 +2823,9 @@ C-Mezera,
 Cvičení
 \series default
 :
- Vysázejte seznam v souboru 
+ Vysázejte seznam v ukázkovém příkladu
 \family typewriter
-priklad_syrovy.lyx.
+.
 \end_layout
 
 \begin_layout Standard
@@ -2917,9 +2931,9 @@ Citát,
 \family sans
 Verš
 \family default
- v 
+ v surovém ukázkovém příkladu
 \family typewriter
-priklad_syrovy.lyx.
+.
 \end_layout
 
 \begin_layout Chapter
@@ -3516,9 +3530,9 @@ Cvičení
 \series default
 :
  Opravte sázení titulku,
- data a autora v 
+ data a autora v v surovém ukázkovém příkladu
 \family typewriter
-priklad_syrovy.lyx.
+.
 \end_layout
 
 \begin_layout Section
@@ -3761,9 +3775,9 @@ nolink "false"
 Cvičení
 \series default
 :
- Opravte odkazy v 
+ Opravte odkazy v surovém ukázkovém příkladu
 \family typewriter
-priklad_syrovy.lyx.
+.
 \end_layout
 
 \begin_layout Section
@@ -3964,9 +3978,9 @@ u.
 Cvičení
 \series default
 :
- Opravte poznámky pod čarou v souboru 
+ Opravte poznámky pod čarou v v surovém ukázkovém příkladu
 \family typewriter
-priklad_syrovy.lyx.
+.
 \end_layout
 
 \begin_layout Section
@@ -4084,9 +4098,9 @@ u.
 Cvičení:
 
 \series default
- Opravte citace v 
+ Opravte citace v v surovém ukázkovém příkladu
 \family typewriter
-priklad_syrovy.lyx.
+.
 \end_layout
 
 \begin_layout Section
@@ -4164,9 +4178,13 @@ Obsah lze vymazat jako jakýkoli jiný (obyčejný) znak.
 Cvičení
 \series default
 :
- Opravte obsah v souboru 
+ Opravte obsah v souboru
 \family typewriter
-priklad_syrovy.lyx.
+ 
+\family default
+v surovém ukázkovém příkladu
+\family typewriter
+.
 \end_layout
 
 \begin_layout Chapter
@@ -4635,11 +4653,7 @@ _
 Cvičení
 \series default
 :
- Předělejte rovnici 1 z 
-\family typewriter
-priklad_syrovy.lyx
-\family default
- do matematického režimu.
+ Předělejte rovnici 1 v surovém ukázkovém příkladu do matematického režimu.
 \end_layout
 
 \begin_layout Section
@@ -4932,11 +4946,7 @@ Dolů
 Cvičení
 \series default
 :
- Předělejte rovnici 2 z 
-\family typewriter
-priklad_syrovy.lyx
-\family default
- do matematického režimu..
+ Předělejte rovnici 2 v surovém ukázkovém příkladu do matematického režimu..
 \end_layout
 
 \begin_layout Subsection
@@ -5135,11 +5145,7 @@ Funkce
 Cvičení
 \series default
 :
- Předělejte rovnici 3 z 
-\family typewriter
-priklad_syrovy.lyx
-\family default
- do matematického režimu.
+ Předělejte rovnici 3 v surovém ukázkovém příkladu do matematického režimu.
 \end_layout
 
 \begin_layout Subsection
@@ -5319,11 +5325,7 @@ za
 Cvičení
 \series default
 :
- Změňte režim zobrazení pro různé rovnice v 
-\family typewriter
-priklad_syrovy.lyx
-\family default
- a prohlédněte si rozdíly.
+ Změňte režim zobrazení pro různé rovnice v v surovém ukázkovém příkladu a prohlédněte si rozdíly.
 \end_layout
 
 \begin_layout Standard
