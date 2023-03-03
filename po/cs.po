@@ -2963,9 +2963,8 @@ msgid "&Update"
 msgstr "&Aktualizace"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:23
-#, fuzzy
 msgid "Filter"
-msgstr "Filtr:"
+msgstr "Filtr"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:32 src/frontends/qt/ui/MathMatrixUi.ui:109
 msgid "&Type:"
@@ -2986,13 +2985,12 @@ msgid "Case Sensiti&ve"
 msgstr "Velikost pís&men"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:94
-#, fuzzy
 msgid "File &Language:"
-msgstr "&Jazyk:"
+msgstr "&Jazyk dokumentu:"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:110
 msgid "The available language(s) of the selected file will be displayed here"
-msgstr ""
+msgstr "Zde budou zobrazeny dostupné jazykové varianty tohoto souboru"
 
 #: src/frontends/qt/ui/MarginsUi.ui:42
 msgid "&Default margins"
@@ -5468,8 +5466,8 @@ msgid "Re&place All"
 msgstr "Na&hraď vše"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:165
-msgid "Ignore this occurrence of the word permanently (saved as a Text Property)"
-msgstr "Ignorovat tento výskyt permanentně (uloženo ve Vlasnostech textu)"
+msgid "Ignore this occurrence of the word permanently (saved as a text property)"
+msgstr "Ignorovat tento výskyt permanentně (uloženo ve vlastnostech textu)"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:168
 msgid "Ign&ore"
@@ -5514,9 +5512,8 @@ msgid "&Display all"
 msgstr "Zo&brazit všechny"
 
 #: src/frontends/qt/ui/TabularCreateUi.ui:121
-#, fuzzy
 msgid "&Style:"
-msgstr "Styl"
+msgstr "S&tyl:"
 
 #: src/frontends/qt/ui/TabularUi.ui:33
 msgid "&Table Settings"
@@ -6721,9 +6718,8 @@ msgstr "Acknowledgments"
 #: lib/layouts/AEA.layout:135 lib/layouts/aa.layout:181
 #: lib/layouts/agutex.layout:205 lib/layouts/copernicus.layout:427
 #: lib/layouts/egs.layout:610
-#, fuzzy
 msgid "Acknowledgments."
-msgstr "Acknowledgments"
+msgstr "Acknowledgments."
 
 #: lib/layouts/AEA.layout:143
 msgid "Figure Notes"
@@ -8204,9 +8200,8 @@ msgid "Subject headings:"
 msgstr "Subject headings:"
 
 #: lib/layouts/aastex.layout:365
-#, fuzzy
 msgid "[Acknowledgments]"
-msgstr "Acknowledgments"
+msgstr "[Acknowledgments]"
 
 #: lib/layouts/aastex.layout:377
 msgid "PlaceFigure"
@@ -9643,9 +9638,8 @@ msgid "FourAffiliations"
 msgstr "FourAffiliations"
 
 #: lib/layouts/apa.layout:256 lib/layouts/iucr.layout:257
-#, fuzzy
-msgid "Acknowledgments:"
-msgstr "Acknowledgments"
+msgid "aCknowledgments:"
+msgstr "Acknowledgments:"
 
 #: lib/layouts/apa.layout:268 lib/layouts/apax.inc:367
 msgid "ThickLine"
@@ -10719,28 +10713,24 @@ msgid "Right Address"
 msgstr "Adresa napravo"
 
 #: lib/layouts/bxjsarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (BX Bundle)"
-msgstr "Japanese Article (BXJS Class)"
+msgstr "Japanese Article (BX Bundle)"
 
 #: lib/layouts/bxjsbook.layout:3
-#, fuzzy
 msgid "Japanese Book (BX Bundle)"
-msgstr "Japanese Book (BXJS Class)"
+msgstr "Japanese Book (BX Bundle)"
 
 #: lib/layouts/bxjsreport.layout:3
-#, fuzzy
 msgid "Japanese Report (BX Bundle)"
-msgstr "Japanese Report (BXJS Class)"
+msgstr "Japanese Report (BX Bundle)"
 
 #: lib/layouts/bxjsslide.layout:3
-#, fuzzy
 msgid "Japanese Slides (BX Bundle)"
-msgstr "Japanese Slide (BXJS Class)"
+msgstr "Japanese Slides (BX Bundle)"
 
 #: lib/layouts/chess.layout:3 lib/examples/Articles:0
 msgid "Chess"
-msgstr "Chess"
+msgstr "Šachy"
 
 #: lib/layouts/chess.layout:36 lib/layouts/chessboard.module:46
 msgid "Mainline"
@@ -10930,9 +10920,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/chessboard.module:137 lib/examples/Articles:0
-#, fuzzy
 msgid "Chessboard"
-msgstr "ChessBoard"
+msgstr "Šachovnice"
 
 #: lib/layouts/chessboard.module:140
 #, fuzzy
@@ -11853,14 +11842,12 @@ msgstr "reprint_reqs_to:"
 #: lib/layouts/egs.layout:620 lib/layouts/elsart.layout:549
 #: lib/layouts/elsart.layout:555 lib/layouts/svcommon.inc:625
 #: lib/layouts/svmult.layout:158
-#, fuzzy
 msgid "Acknowledgment"
-msgstr "Acknowledgments"
+msgstr "Acknowledgment"
 
 #: lib/layouts/egs.layout:634
-#, fuzzy
 msgid "Acknowledgment."
-msgstr "Poděkování."
+msgstr "Acknowledgment."
 
 #: lib/layouts/elsart.layout:3
 msgid "Elsevier (Obsolete Version)"
@@ -15070,7 +15057,6 @@ msgid "Affiliation (include email):"
 msgstr "Affiliation (include email):"
 
 #: lib/layouts/maa-monthly.layout:147
-#, fuzzy
 msgid "Title of acknowledgment"
 msgstr "Title of acknowledgment"
 
@@ -15207,7 +15193,7 @@ msgstr "Předefinovat některé z vložek jako minimalistické (Index, Větev, U
 
 #: lib/layouts/moderncv.layout:3 lib/examples/Articles:0
 msgid "Modern CV"
-msgstr "Modern CV"
+msgstr "Moderní CV"
 
 #: lib/layouts/moderncv.layout:39
 msgid "CVStyle"
@@ -16354,9 +16340,8 @@ msgid "Short title as it appears in the running headers"
 msgstr "Short title as it appears in the running headers"
 
 #: lib/layouts/revtex4-x.inc:267
-#, fuzzy
 msgid "acknowledgments"
-msgstr "Acknowledgments"
+msgstr "acknowledgments"
 
 #: lib/layouts/revtex4-x.inc:283
 msgid "Ruled Table"
@@ -17081,7 +17066,7 @@ msgstr "Terms:"
 
 #: lib/layouts/simplecv.layout:3 lib/examples/Articles:0
 msgid "Simple CV"
-msgstr "Simple CV"
+msgstr "Jednoduché CV"
 
 #: lib/layouts/simplecv.layout:72
 msgid "Topic"
@@ -17223,9 +17208,8 @@ msgid "Authorinfo:"
 msgstr "Authorinfo:"
 
 #: lib/layouts/spie.layout:105
-#, fuzzy
 msgid "ACKNOWLEDGMENTS"
-msgstr "ACKNOWLEDGEMENTS"
+msgstr "ACKNOWLEDGMENTS"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 msgid "UNDEFINED"
@@ -22011,7 +21995,7 @@ msgstr "Knitr|K"
 
 #: lib/ui/stdmenus.inc:669
 msgid "LilyPond|P"
-msgstr "LilyPond|L"
+msgstr "Noty (LilyPond)|L"
 
 #: lib/ui/stdmenus.inc:670
 msgid "Linguistics|L"
@@ -27450,29 +27434,24 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archive (tar.gz)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Game 1"
-msgstr "Game"
+msgstr "Game 1"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Game 2"
-msgstr "Game"
+msgstr "Game 2"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Example (LyXified)"
-msgstr "Dokumenty s přík&lady:"
+msgstr "Ukázkový příklad (zlyxovaný)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Example (raw)"
-msgstr "Example. "
+msgstr "Ukázkový příklad (surový formát)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Gnuplot"
-msgstr "gnuplot"
+msgstr "Gnuplot"
 
 #: lib/examples/Articles:0 src/TocBackend.cpp:302
 #: src/frontends/qt/GuiExternal.cpp:86
@@ -27480,86 +27459,72 @@ msgid "External Material"
 msgstr "Externí materiál"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "XY-Figure"
-msgstr "Obrázek"
+msgstr "XY-Figure"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Minted Listings"
-msgstr "Seznam výpisů"
+msgstr "Zdrojový kód (minted)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Instant Preview"
-msgstr "&Okamžitý náhled (vzorce):"
+msgstr "Funkce okamžitého náhledu"
 
 #: lib/examples/Articles:0
 msgid "XY-Pic"
-msgstr ""
+msgstr "XY-Pic"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Minted File Listing"
-msgstr "&Uvnitř řádku"
+msgstr "Zdrojový kód ze souboru (minted)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Itemize Bullets"
-msgstr "Seznam položek"
+msgstr "Odrážky položek"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Feynman Diagrams"
-msgstr "Feynmanovy diagramy|F"
+msgstr "Feynmanovy diagramy"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Graphics and Insets"
-msgstr "&Ovladač pro obrázky:"
+msgstr "Obrázky a vložky"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Mixing Japanese with other Languages (with CJKutf8)"
-msgstr "Vícejazyčné popisky|y"
+msgstr "Mixing Japanese with other Languages (with CJKutf8)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Localization Test (for Developers)"
-msgstr "Localization"
+msgstr "Localization Test (for Developers)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Writing Armenian"
-msgstr "Arménština"
+msgstr "Writing Armenian"
 
 #: lib/examples/Articles:0
 msgid "Mixing Japanese with other Languages (with platex)"
-msgstr ""
+msgstr "Mixing Japanese with other Languages (with platex)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Language Support"
-msgstr "Podpora psaní zprava-doleva"
+msgstr "Jazyková podpora"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Serial Letter 3"
-msgstr "Hebrew Letter"
+msgstr "Dopis 3"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Serial Letter 1"
-msgstr "Hebrew Letter"
+msgstr "Dopis 1"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Serial Letter 2"
-msgstr "Hebrew Letter"
+msgstr "Dopis 2"
 
 #: lib/examples/Articles:0
 msgid "LilyPond Book"
-msgstr "LilyPond Book"
+msgstr "Kniha not (LilyPond)"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Captions"
@@ -27570,154 +27535,128 @@ msgid "Hazard and Precautionary Statements"
 msgstr "Výkaz pro chem. rizika"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Noweb2LyX"
-msgstr "Noweb"
+msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0
 msgid "Noweb Listerrors"
-msgstr ""
+msgstr "Noweb Listerrors"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1806
 msgid "Modules"
 msgstr "Moduly"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Foils Landslide"
-msgstr "LandscapeSlide"
+msgstr "Foils Landslide"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Foils"
-msgstr "FoilTeX"
+msgstr "Foils"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Beamer (Complex)"
-msgstr "Beamer Note"
+msgstr "Beamer (Complex)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Welcome"
-msgstr "Vítejte v LyX-u!"
+msgstr "Uvítání"
 
 #: lib/examples/Articles:0
 msgid "Writing Korean with CJK-ko"
-msgstr ""
+msgstr "Writing Korean with CJK-ko"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly article"
+msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Springers Global Journal Template (V. 3)"
-msgstr "Springer's Global Journal Template (V. 3)"
+msgstr "Springers Global Journal Template (V. 3)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Computer Society"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "IEEE Transactions Journal"
-msgstr "IEEE Transactions"
+msgstr "IEEE Transactions Journal"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Hebrew Article (KOMA-Script)"
-msgstr "Beamer Article (KOMA-Script)"
+msgstr "Hebrew Article (KOMA-Script)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "00 Main File"
-msgstr "Chybějící soubor"
+msgstr "00 Main File"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "02 Foreword"
-msgstr "Foreword"
+msgstr "02 Foreword"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "10 Glossary"
-msgstr "Slovníček"
+msgstr "10 Glossary"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "09 Appendix"
-msgstr "Příloha"
+msgstr "09 Appendix"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "11 References"
-msgstr "Reference"
+msgstr "11 References"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "04 Acknowledgements"
-msgstr "Acknowledgements"
+msgstr "04 Acknowledgements"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "08 Author"
-msgstr "Autor"
+msgstr "08 Author"
 
 #: lib/examples/Articles:0
 msgid "06 Acronym"
-msgstr ""
+msgstr "06 Acronym"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "01 Dedication"
-msgstr "Věnování"
+msgstr "01 Dedication"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "03 Preface"
-msgstr "Předmluva"
+msgstr "03 Preface"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "07 Part"
-msgstr "Část"
+msgstr "07 Part"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "05 Contributor List"
-msgstr "Contributor List"
+msgstr "05 Contributor List"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "09 Glossary"
-msgstr "Slovníček"
+msgstr "09 Glossary"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "06 Part"
-msgstr "Část"
+msgstr "06 Part"
 
 #: lib/examples/Articles:0
 msgid "05 Acronym"
-msgstr ""
+msgstr "05 Acronym"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "07 Chapter"
-msgstr "Kapitola"
+msgstr "07 Chapter"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "08 Appendix"
-msgstr "Příloha"
+msgstr "08 Appendix"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "10 Solutions"
-msgstr "Řešení"
+msgstr "10 Solutions"
 
 #: lib/examples/Articles:0
 #, fuzzy
@@ -27730,67 +27669,56 @@ msgid "Colored"
 msgstr "Barevně"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Main File"
-msgstr "Chybějící soubor"
+msgstr "Hlavní dokument"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Chapter 1"
-msgstr "Kapitola"
+msgstr "Kapitola 1"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Chapter 2"
-msgstr "Kapitola"
+msgstr "Kapitola 2"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
-msgstr ""
+msgstr "PhD dizertace"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Theses"
-msgstr "Tezaurus"
+msgstr "Theses"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
-msgstr "Japanese Book (Standard Class: Vertical Writing)"
+msgstr "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
-msgstr "Japanese Book (Standard Class: Vertical Writing)"
+msgstr "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
-msgstr "Japanese Article (Standard Class: Vertical Writing)"
+msgstr "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Formal with Footline"
-msgstr "linka (matematika)"
+msgstr "Formální s patičkou"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Formal without Footline"
-msgstr "Biography without photo"
+msgstr "Formální bez patičky"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Grid with Head"
-msgstr ""
+msgstr "Mřížka s hlavičkou"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "No Borders"
-msgstr "&Okraje"
+msgstr "Bez čar"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
-#, fuzzy
 msgid "Simple Grid"
-msgstr "Simple CV"
+msgstr "Jednoduchá mřížka"
 
 #: src/Author.cpp:56
 #, c-format
@@ -34146,19 +34074,16 @@ msgid "LyX Keymap Files (*.kmap)"
 msgstr "Mapa kláves pro LyX (*.kmap)"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:449
-#, fuzzy
 msgid "Default Template"
-msgstr "Default Text"
+msgstr "Standardní šablona"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:618
-#, fuzzy
 msgid "Open Example File"
-msgstr "Dokumenty s přík&lady:"
+msgstr "Otevřít dokumenty s příkladem"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:622
-#, fuzzy
 msgid "Open File"
-msgstr "Otevřené soubory"
+msgstr "Otevřít dokument"
 
 #: src/frontends/qt/GuiMathMatrix.cpp:34
 msgid "[x]"
@@ -35835,7 +35760,7 @@ msgstr "Více jazyků...|V"
 
 #: src/frontends/qt/Menus.cpp:1007 src/frontends/qt/Menus.cpp:1008
 msgid "Hidden|H"
-msgstr "Skryté|S"
+msgstr "Skryté|k"
 
 #: src/frontends/qt/Menus.cpp:1012
 msgid "(No Documents Open)"
