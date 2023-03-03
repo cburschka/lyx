@@ -833,7 +833,7 @@ if(LYX_USE_QT MATCHES "QT6|QT5")
 		endif()
 		if (LYX_USE_QT MATCHES "QT6")
 			get_target_property(QT_MOC_EXECUTABLE Qt6::moc LOCATION)
-			find_package(Qt6 COMPONENTS Core5Compat REQUIRED)
+			#find_package(Qt6 COMPONENTS Core5Compat REQUIRED)
 			# We don't know why QtZlib is included, and ideally we
 			# would have a different fix than relying on this
 			# variable (which as "Private" in the name indicates,
@@ -842,8 +842,8 @@ if(LYX_USE_QT MATCHES "QT6|QT5")
 			# https://www.mail-archive.com/search?l=mid&q=CAGU9VOqpkngYBumnNh%3DcuzQ585GsS7TJbhHa903nJSfy-davRg%40mail.gmail.com
 			list(REMOVE_ITEM Qt6Core5Compat_INCLUDE_DIRS ${_Qt6ZlibPrivate_OWN_INCLUDE_DIRS})
 			include_directories(${Qt6Core5Compat_INCLUDE_DIRS})
-			set(QtCore5CompatLibrary Qt6::Core5Compat)
-			set(QtCore5CompatModule Core5Compat)
+			#set(QtCore5CompatLibrary Qt6::Core5Compat)
+			#set(QtCore5CompatModule Core5Compat)
 		endif()
 	endif()
 else()
