@@ -103,11 +103,7 @@ IconPalette::IconPalette(QWidget * parent)
 	: QWidget(parent, Qt::Popup), tornoff_(false)
 {
 	QVBoxLayout * v = new QVBoxLayout(this);
-#if QT_VERSION < 0x060000
-	v->setMargin(0);
-#else
 	v->setContentsMargins(0, 0, 0, 0);
-#endif
 	v->setSpacing(0);
 	layout_ = new QGridLayout;
 	layout_->setSpacing(0);
