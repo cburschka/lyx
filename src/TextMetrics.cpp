@@ -621,7 +621,7 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 	if (Inset const * inset = par.getInset(row.pos())) {
 		if (inset->rowFlags() & Display) {
 			if (inset->rowFlags() & AlignLeft)
-				align = LYX_ALIGN_BLOCK;
+				align = LYX_ALIGN_LEFT;
 			else if (inset->rowFlags() & AlignRight)
 				align = LYX_ALIGN_RIGHT;
 			else
