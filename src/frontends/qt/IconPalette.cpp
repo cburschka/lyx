@@ -19,17 +19,13 @@
 #include <QToolTip>
 #include <QToolBar>
 #include <QApplication>
-#if QT_VERSION < 0x060000
-#include <QDesktopWidget>
-#endif
 #include <QPainter>
+#include <QScreen>
 #include <QStyle>
 #include <QStyleOptionFrame>
 #include <QMouseEvent>
 #include <QVBoxLayout>
-#if QT_VERSION >= 0x060000
 #include <QWindow>
-#endif
 
 namespace lyx {
 namespace frontend {
@@ -181,11 +177,7 @@ void IconPalette::showEvent(QShowEvent * /*event*/)
 		voffset -= parheight;
 	}
 
-#if QT_VERSION < 0x060000
-	QRect const screen = qApp->desktop()->availableGeometry(this);
-#else
 	QRect const screen = window()->windowHandle()->screen()->availableGeometry();
-#endif
 	QPoint const gpos = parentWidget()->mapToGlobal(
 		parentWidget()->geometry().bottomLeft());
 

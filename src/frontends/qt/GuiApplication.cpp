@@ -89,9 +89,6 @@
 #include <QByteArray>
 #include <QBitmap>
 #include <QDateTime>
-#if QT_VERSION < 0x060000
-#include <QDesktopWidget>
-#endif
 #include <QEvent>
 #include <QFileOpenEvent>
 #include <QFileInfo>
@@ -2638,11 +2635,7 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 		// Negative displacements must be interpreted as distances
 		// from the right or bottom screen borders.
 		if (sx == '-' || sy == '-') {
-#if QT_VERSION < 0x060000
-			QRect rec = QApplication::desktop()->screenGeometry();
-#else
 			QRect rec = QGuiApplication::primaryScreen()->geometry();
-#endif
 			if (sx == '-')
 				x += rec.width() - w - framewidth;
 			if (sy == '-')
