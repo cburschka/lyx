@@ -16994,7 +16994,7 @@ msgstr "Hypotéza*"
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:144
 #: lib/layouts/theorems-ams-extended.module:96
 msgid "Algorithm*"
-msgstr "Algoritm*"
+msgstr "Algoritmus*"
 
 #: lib/layouts/siamltex.layout:138
 msgid "AMS"
@@ -17717,14 +17717,12 @@ msgstr ""
 "např. 'Table 2.1'"
 
 #: lib/layouts/tarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (Standard Class, vertical Writing)"
-msgstr "Japanese Article (Standard Class: Vertical Writing)"
+msgstr "Japanese Article (Standard Class, vertical Writing)"
 
 #: lib/layouts/tbook.layout:3
-#, fuzzy
 msgid "Japanese Book (Standard Class, vertical Writing)"
-msgstr "Japanese Book (Standard Class: Vertical Writing)"
+msgstr "Japanese Book (Standard Class, vertical Writing)"
 
 #: lib/layouts/tcolorbox.module:2 lib/examples/Articles:0
 msgid "Fancy Colored Boxes"
@@ -17943,7 +17941,6 @@ msgid "AMS Theorems (Extended, Numbered by Type)"
 msgstr "AMS Teorémy (rozšířené, čísla dle typu)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -17955,8 +17952,8 @@ msgid ""
 msgstr ""
 "Definuje některá přídavná prostředí pro použití mat. teorémů s balíčky AMS. "
 "Zahrnuje Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, "
-"Acknowledgement, Conclusion, Assumption, Case v obou formách (číslované/"
-"nečíslované). verzi. Na rozdíl od obyčejných modulů pro AMS rozšíření, "
+"Conclusion, Assumption, Case v obou formách (číslované/"
+"nečíslované) verzi. Na rozdíl od obyčejných modulů pro AMS rozšíření, "
 "rozdílné typy teorémů zde mají vlastní číslování (např. criterion 1, "
 "criterion 2, axiom 1, assumption 1,criterion 3, ..., na rozdíl od criterion "
 "1, criterion 2, axiom 3, assumption 4, ...)."
@@ -18145,7 +18142,6 @@ msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
 msgstr "AMS Teorémy (rozšířené, čísla dle typu uvnitř kapitolách)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -18158,7 +18154,7 @@ msgid ""
 msgstr ""
 "Definuje některá přídavná prostředí pro použití mat. teorémů s balíčky AMS. "
 "Zahrnuje Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, "
-"Acknowledgement, Conclusion, Assumption, Case v obou formách (číslované/"
+"Conclusion, Assumption, Case v obou formách (číslované/"
 "nečíslované). Na rozdíl od obyčejných modulů pro AMS rozšíření, rozdílné "
 "typy teorémů zde mají vlastní číslování pro každou kapitolu (např. criterion "
 "1.1, criterion 1.2, axiom 1.1, assumption 1.1, criterion 1.3, ..., na rozdíl "
@@ -18169,7 +18165,6 @@ msgid "AMS Theorems (Extended)"
 msgstr "AMS Teorémy (rozšířené)"
 
 #: lib/layouts/theorems-ams-extended.module:10
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -18178,7 +18173,7 @@ msgid ""
 msgstr ""
 "Definuje některá přídavná matematická prostředí pro použití s balíčky AMS "
 "pro teorémy. Zahrnuje Criterion, Algorithm, Axiom, Condition, Note, "
-"Notation, Summary, Acknowledgement, Conclusion, Fact, Assumption,  Case, "
+"Notation, Summary, Conclusion, Fact, Assumption,  Case, "
 "Question v obou formách (číslované/nečíslované)."
 
 #: lib/layouts/theorems-ams-extended.module:39
@@ -18187,7 +18182,7 @@ msgstr "Kritérium \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:79
 msgid "Algorithm \\thetheorem."
-msgstr "Algorithm \\thetheorem."
+msgstr "Algoritmus \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:120
 msgid "Axiom \\thetheorem."
@@ -18246,9 +18241,8 @@ msgid "Claim \\thetheorem."
 msgstr "Tvrzení \\thetheorem."
 
 #: lib/layouts/theorems-ams.module:2
-#, fuzzy
 msgid "AMS Theorems"
-msgstr "Teorémy"
+msgstr "AMS Teorémy"
 
 #: lib/layouts/theorems-ams.module:9
 msgid ""
@@ -18263,9 +18257,8 @@ msgstr ""
 "volbou patřičných teorém. modulů."
 
 #: lib/layouts/theorems-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type)"
-msgstr "Teorémy (čísla dle typu)"
+msgstr "Standardní teorémy (čísla dle typu)"
 
 #: lib/layouts/theorems-bytype.module:11
 msgid ""
@@ -18286,7 +18279,7 @@ msgstr ""
 
 #: lib/layouts/theorems-case.inc:12
 msgid "Case (Level 1)"
-msgstr ""
+msgstr "Případ (úroveň 1)"
 
 #: lib/layouts/theorems-case.inc:13
 msgid "Case \\arabic{casei}."
@@ -18294,7 +18287,7 @@ msgstr "Případ \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
 msgid "Case (Level 2)"
-msgstr ""
+msgstr "Případ (úroveň 2)"
 
 #: lib/layouts/theorems-case.inc:18
 msgid "Case \\roman{caseii}."
@@ -18302,7 +18295,7 @@ msgstr "Případ \\roman{caseii}."
 
 #: lib/layouts/theorems-case.inc:21
 msgid "Case (Level 3)"
-msgstr ""
+msgstr "Případ (úroveň 3)"
 
 #: lib/layouts/theorems-case.inc:23
 msgid "Case \\alph{caseiii}."
@@ -18310,16 +18303,15 @@ msgstr "Případ \\alph{caseiii}."
 
 #: lib/layouts/theorems-case.inc:26
 msgid "Case (Level 4)"
-msgstr ""
+msgstr "Případ (úroveň 4)"
 
 #: lib/layouts/theorems-case.inc:28
 msgid "Case \\arabic{caseiv}."
 msgstr "Případ \\arabic{caseiv}."
 
 #: lib/layouts/theorems-chap-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type within Chapters)"
-msgstr "Teorémy (čísla dle typu v kapitolách)"
+msgstr "Standardní teorémy (čísla dle typu v kapitolách)"
 
 #: lib/layouts/theorems-chap-bytype.module:10
 msgid ""
@@ -18336,9 +18328,8 @@ msgstr ""
 "proposition 4, ...). Číslování začíná od začátku v každé kapitole."
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Chapter)"
-msgstr "Teorémy (čísla dle kapitol)"
+msgstr "Standardní teorémy (čísla dle kapitol)"
 
 #: lib/layouts/theorems-chap.module:8
 msgid ""
@@ -18352,7 +18343,7 @@ msgstr ""
 
 #: lib/layouts/theorems-named.module:3
 msgid "Standard Theorems (Nameable)"
-msgstr ""
+msgstr "Standardní teorémy (pojmenované)"
 
 #: lib/layouts/theorems-named.module:8
 msgid ""
@@ -18394,9 +18385,8 @@ msgid "Alternative proof string"
 msgstr "Alternativní jmenovka důkazu"
 
 #: lib/layouts/theorems-sec-bytype.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Type within Sections)"
-msgstr "Teorémy (dle typu v sekcích)"
+msgstr "Standardní Teorémy (čísla dle typu v sekcích)"
 
 #: lib/layouts/theorems-sec-bytype.module:10
 msgid ""
@@ -18413,9 +18403,8 @@ msgstr ""
 "proposition 4, ...). Číslování začíná od začátku v každé sekci."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Standard Theorems (Numbered by Section)"
-msgstr "Teorémy (čísla dle sekcí)"
+msgstr "Standardní Teorémy (čísla dle sekcí)"
 
 #: lib/layouts/theorems-sec.module:7
 msgid ""
@@ -18450,9 +18439,8 @@ msgid "Remark."
 msgstr "Poznámka."
 
 #: lib/layouts/theorems-starred.module:2
-#, fuzzy
 msgid "Standard Theorems (Unnumbered)"
-msgstr "Teorémy (nečíslovat)"
+msgstr "Standardní Teorémy (nečíslovat)"
 
 #: lib/layouts/theorems-starred.module:7
 msgid ""
@@ -18463,9 +18451,8 @@ msgstr ""
 "rozšíření AMS."
 
 #: lib/layouts/theorems-std.module:2
-#, fuzzy
 msgid "Standard Theorems"
-msgstr "Teorémy (pojmenované)"
+msgstr "Standardní Teorémy"
 
 #: lib/layouts/theorems-std.module:8
 msgid ""
@@ -18603,9 +18590,8 @@ msgid "MissingFigure"
 msgstr "MissingFigure"
 
 #: lib/layouts/treport.layout:3
-#, fuzzy
 msgid "Japanese Report (Standard Class, vertical Writing)"
-msgstr "Japanese Book (Standard Class: Vertical Writing)"
+msgstr "Japanese Report (Standard Class, vertical Writing)"
 
 #: lib/layouts/tufte-book.layout:3 lib/examples/Articles:0
 msgid "Tufte Book"
@@ -18616,9 +18602,8 @@ msgid "sidenote"
 msgstr "sidenote"
 
 #: lib/layouts/tufte-book.layout:29
-#, fuzzy
 msgid "bibl. entry"
-msgstr "heslo bibliografie"
+msgstr "bibl. entry"
 
 #: lib/layouts/tufte-book.layout:183
 msgid "Marginnote"
@@ -18657,14 +18642,12 @@ msgid "Full Width"
 msgstr "Full Width"
 
 #: lib/layouts/tufte-book.layout:261
-#, fuzzy
 msgid "Margin Figure"
-msgstr "Postranní obrázky"
+msgstr "Margin Figure"
 
 #: lib/layouts/tufte-book.layout:265
-#, fuzzy
 msgid "Margin Table"
-msgstr "Postranní tabulky"
+msgstr "Margin Table"
 
 #: lib/layouts/tufte-book.layout:271
 msgid "MarginTable"
@@ -18983,9 +18966,8 @@ msgid "Korean"
 msgstr "Korejština"
 
 #: lib/languages:1019
-#, fuzzy
 msgid "Kurdish (Kurmanji)"
-msgstr "Kurmanji"
+msgstr "Kurdština (Kurmanji)"
 
 #: lib/languages:1032 src/frontends/qt/GuiSymbols.cpp:77
 msgid "Lao"
@@ -19192,54 +19174,48 @@ msgid "Computer Modern Roman"
 msgstr "Computer Modern Roman"
 
 #: lib/latexfonts:164
-#, fuzzy
 msgid "Crimson Pro"
-msgstr "Crimson"
+msgstr "Crimson Pro"
 
 #: lib/latexfonts:175
-#, fuzzy
 msgid "Crimson Pro (Medium)"
-msgstr "Crimson (New TX)"
+msgstr "Crimson Pro (Medium)"
 
 #: lib/latexfonts:186
-#, fuzzy
 msgid "Crimson Pro (Light)"
-msgstr "Kurier (Light)"
+msgstr "Crimson Pro (Light)"
 
 #: lib/latexfonts:197
 msgid "Crimson Pro (Extralight)"
-msgstr ""
+msgstr "Crimson Pro (Extralight)"
 
 #: lib/latexfonts:208
-#, fuzzy
 msgid "DejaVu Serif"
-msgstr "Bera Serif"
+msgstr "DejaVu Serif"
 
 #: lib/latexfonts:214
-#, fuzzy
 msgid "DejaVu Serif (Condensed)"
-msgstr "Kurier (Condensed)"
+msgstr "DejaVu Serif (Condensed)"
 
 #: lib/latexfonts:225
-#, fuzzy
 msgid "IBM Plex Serif"
-msgstr "Bera Serif"
+msgstr "IBM Plex Serif"
 
 #: lib/latexfonts:232
 msgid "IBM Plex Serif (Thin)"
-msgstr ""
+msgstr "IBM Plex Serif (Thin)"
 
 #: lib/latexfonts:240
 msgid "IBM Plex Serif (Extra Light)"
-msgstr ""
+msgstr "IBM Plex Serif (Extra Light)"
 
 #: lib/latexfonts:248
 msgid "IBM Plex Serif (Light)"
-msgstr ""
+msgstr "IBM Plex Serif (Light)"
 
 #: lib/latexfonts:256
 msgid "Source Serif Pro"
-msgstr ""
+msgstr "Source Serif Pro"
 
 #: lib/latexfonts:264 lib/latexfonts:274
 msgid "URW Garamond"
@@ -19251,9 +19227,8 @@ msgid "Libertine"
 msgstr "Libertine"
 
 #: lib/latexfonts:322 lib/latexfonts:333
-#, fuzzy
 msgid "Libertinus"
-msgstr "Libertine"
+msgstr "Libertinus"
 
 #: lib/latexfonts:341 lib/latexfonts:349
 msgid "Latin Modern Roman"
@@ -19284,24 +19259,20 @@ msgid "Noto Serif"
 msgstr "Noto Serif"
 
 #: lib/latexfonts:459
-#, fuzzy
 msgid "Noto Serif (Medium)"
-msgstr "Noto Serif"
+msgstr "Noto Serif (Medium)"
 
 #: lib/latexfonts:469
-#, fuzzy
 msgid "Noto Serif (Thin)"
-msgstr "Noto Serif"
+msgstr "Noto Serif (Thin)"
 
 #: lib/latexfonts:479
-#, fuzzy
 msgid "Noto Serif (Light)"
-msgstr "Noto Serif"
+msgstr "Noto Serif (Light)"
 
 #: lib/latexfonts:489
-#, fuzzy
 msgid "Noto Serif (Extralight)"
-msgstr "Noto Serif"
+msgstr "Noto Serif (Extralight)"
 
 #: lib/latexfonts:499 lib/latexfonts:512 lib/latexfonts:519 lib/latexfonts:525
 #: lib/latexfonts:533
@@ -19309,9 +19280,8 @@ msgid "Palatino"
 msgstr "Palatino"
 
 #: lib/latexfonts:539
-#, fuzzy
 msgid "PT Serif"
-msgstr "Bera Serif"
+msgstr "PT Serif"
 
 #: lib/latexfonts:546 lib/latexfonts:556 lib/latexfonts:563 lib/latexfonts:569
 msgid "Times Roman"
@@ -19342,9 +19312,8 @@ msgid "Utopia (Fourier)"
 msgstr "Utopia (Fourier)"
 
 #: lib/latexfonts:639
-#, fuzzy
 msgid "Bitstream Charter (XCharter)"
-msgstr "Bitstream Charter (Mathdesign)"
+msgstr "Bitstream Charter (XCharter)"
 
 #: lib/latexfonts:651
 msgid "Avant Garde"
@@ -19367,18 +19336,16 @@ msgid "Chivo (Thin)"
 msgstr ""
 
 #: lib/latexfonts:716
-#, fuzzy
 msgid "Chivo (Light)"
-msgstr "Iwona (Light)"
+msgstr "Chivo (Light)"
 
 #: lib/latexfonts:727
 msgid "Chivo"
-msgstr ""
+msgstr "Chivo"
 
 #: lib/latexfonts:737
-#, fuzzy
 msgid "Chivo (Medium)"
-msgstr "Střední"
+msgstr "Chivo (Medium)"
 
 #: lib/latexfonts:748
 msgid "CM Bright"
@@ -19389,67 +19356,60 @@ msgid "Computer Modern Sans"
 msgstr "Computer Modern Sans"
 
 #: lib/latexfonts:762
-#, fuzzy
 msgid "DejaVu Sans"
-msgstr "Bera Sans"
+msgstr "DejaVu Sans"
 
 #: lib/latexfonts:769
-#, fuzzy
 msgid "DejaVu Sans (Condensed)"
-msgstr "Iwona (Condensed)"
+msgstr "DejaVu Sans (Condensed)"
 
 #: lib/latexfonts:776
-#, fuzzy
 msgid "Fira Sans"
-msgstr "Bera Sans"
+msgstr "Fira Sans"
 
 #: lib/latexfonts:787
 msgid "Fira Sans (Book)"
-msgstr ""
+msgstr "Fira Sans (Book)"
 
 #: lib/latexfonts:799
-#, fuzzy
 msgid "Fira Sans (Light)"
-msgstr "Kurier (Light)"
+msgstr "Fira Sans (Light)"
 
 #: lib/latexfonts:811
 msgid "Fira Sans (Extralight)"
-msgstr ""
+msgstr "Fira Sans (Extralight)"
 
 #: lib/latexfonts:823
 msgid "Fira Sans (Ultralight)"
-msgstr ""
+msgstr "Fira Sans (Ultralight)"
 
 #: lib/latexfonts:835
 msgid "Fira Sans (Thin)"
-msgstr ""
+msgstr "Fira Sans (Thin)"
 
 #: lib/latexfonts:847
-#, fuzzy
 msgid "IBM Plex Sans"
-msgstr "Bera Sans"
+msgstr "IBM Plex Sans"
 
 #: lib/latexfonts:855
-#, fuzzy
 msgid "IBM Plex Sans (Condensed)"
-msgstr "Iwona (Condensed)"
+msgstr "IBM Plex Sans (Condensed)"
 
 #: lib/latexfonts:864
 msgid "IBM Plex Sans (Thin)"
-msgstr ""
+msgstr "IBM Plex Sans (Thin)"
 
 #: lib/latexfonts:873
 msgid "IBM Plex Sans (Extra Light)"
-msgstr ""
+msgstr "IBM Plex Sans (Extra Light)"
 
 #: lib/latexfonts:882
 msgid "IBM Plex Sans (Light)"
-msgstr ""
+msgstr "IBM Plex Sans (Light)"
 
 #: lib/latexfonts:891
-#, fuzzy
 msgid "Source Sans Pro"
-msgstr "Zdrojový text|x"
+msgstr "Source Sans Pro"
 
 #: lib/latexfonts:900
 msgid "Helvetica"
@@ -19488,9 +19448,8 @@ msgid "Kurier (Light Condensed)"
 msgstr "Kurier (Light Condensed)"
 
 #: lib/latexfonts:964 lib/latexfonts:974
-#, fuzzy
 msgid "Libertinus Sans"
-msgstr "Libertine Mono"
+msgstr "Libertinus Sans"
 
 #: lib/latexfonts:982
 msgid "Latin Modern Sans"
@@ -19501,28 +19460,24 @@ msgid "Noto Sans"
 msgstr "Noto Sans"
 
 #: lib/latexfonts:999
-#, fuzzy
 msgid "Noto Sans (Medium)"
-msgstr "Noto Sans"
+msgstr "Noto Sans (Medium)"
 
 #: lib/latexfonts:1010
-#, fuzzy
 msgid "Noto Sans (Thin)"
-msgstr "Noto Sans"
+msgstr "Noto Sans (Thin)"
 
 #: lib/latexfonts:1021
-#, fuzzy
 msgid "Noto Sans (Light)"
-msgstr "Noto Sans"
+msgstr "Noto Sans (Light)"
 
 #: lib/latexfonts:1032
 msgid "Noto Sans (Extralight)"
-msgstr ""
+msgstr "Noto Sans (Extralight)"
 
 #: lib/latexfonts:1043
-#, fuzzy
 msgid "PT Sans"
-msgstr "Bera Sans"
+msgstr "PT Sans"
 
 #: lib/latexfonts:1051
 msgid "TeX Gyre Adventor"
@@ -19554,43 +19509,39 @@ msgstr "Courier"
 
 #: lib/latexfonts:1103
 msgid "DejaVu Sans Mono"
-msgstr ""
+msgstr "DejaVu Sans Mono"
 
 #: lib/latexfonts:1110
-#, fuzzy
 msgid "Fira Mono"
-msgstr "Bera Mono"
+msgstr "Fira Mono"
 
 #: lib/latexfonts:1121
-#, fuzzy
 msgid "IBM Plex Mono"
-msgstr "Bera Mono"
+msgstr "IBM Plex Mono"
 
 #: lib/latexfonts:1129
 msgid "IBM Plex Mono (Thin)"
-msgstr ""
+msgstr "IBM Plex Mono (Thin)"
 
 #: lib/latexfonts:1138
 msgid "IBM Plex Mono (Extra Light)"
-msgstr ""
+msgstr "IBM Plex Mono (Extra Light)"
 
 #: lib/latexfonts:1147
-#, fuzzy
 msgid "IBM Plex Mono (Light)"
-msgstr "Iwona (Light)"
+msgstr "IBM Plex Mono (Light)"
 
 #: lib/latexfonts:1156
 msgid "Source Code Pro"
-msgstr ""
+msgstr "Source Code Pro"
 
 #: lib/latexfonts:1165 lib/latexfonts:1173
 msgid "Libertine Mono"
 msgstr "Libertine Mono"
 
 #: lib/latexfonts:1180
-#, fuzzy
 msgid "Libertinus Mono"
-msgstr "Libertine Mono"
+msgstr "Libertinus Mono"
 
 #: lib/latexfonts:1188
 msgid "Latin Modern Typewriter"
@@ -19605,9 +19556,8 @@ msgid "Noto Mono"
 msgstr "Noto Mono"
 
 #: lib/latexfonts:1211
-#, fuzzy
 msgid "PT Mono"
-msgstr "Bera Mono"
+msgstr "PT Mono"
 
 #: lib/latexfonts:1219
 msgid "TeX Gyre Cursor"
@@ -19642,9 +19592,8 @@ msgid "Libertine (New TX)"
 msgstr "Libertine (New TX)"
 
 #: lib/latexfonts:1293
-#, fuzzy
 msgid "Libertinus Math"
-msgstr "Libertine Mono"
+msgstr "Libertinus Math"
 
 #: lib/latexfonts:1300
 msgid "Minion Pro (New TX)"
@@ -19656,7 +19605,7 @@ msgstr "Times Roman (New TX)"
 
 #: lib/encodings:55
 msgid "Extended [ucs] (utf8x)"
-msgstr ""
+msgstr "Rozšířené [ucs] (utf8x)"
 
 #: lib/encodings:59
 msgid "Armenian (ArmSCII8)"
