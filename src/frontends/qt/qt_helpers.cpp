@@ -264,6 +264,8 @@ void setMessageColour(list<QWidget *> highlighted, list<QWidget *> plain)
 	QPalette pal = QApplication::palette();
 	QPalette newpal(pal.color(QPalette::Active, QPalette::HighlightedText),
 	                pal.color(QPalette::Active, QPalette::Highlight));
+	newpal.setColor(QPalette::WindowText,
+	                pal.color(QPalette::Active, QPalette::HighlightedText));
 	for (QWidget * w : highlighted)
 		w->setPalette(newpal);
 	for (QWidget * w : plain)

@@ -2115,7 +2115,8 @@ GuiWorkAreaContainer::GuiWorkAreaContainer(GuiWorkArea * wa, QWidget * parent)
 	        this, SLOT(updateDisplay()));
 	connect(reloadPB, SIGNAL(clicked()), this, SLOT(reload()));
 	connect(ignorePB, SIGNAL(clicked()), this, SLOT(ignore()));
-	setMessageColour({notificationFrame}, {reloadPB, ignorePB});
+	setMessageColour({notificationFrame, externalModificationLabel},
+	                 {reloadPB, ignorePB});
 	updateDisplay();
 }
 
