@@ -324,6 +324,9 @@ void ModuleSelectionManager::updateAddPB()
 	}
 
 	QModelIndex const & idx = availableLV->selectionModel()->currentIndex();
+	
+	if (!idx.isValid())
+		return;
 
 	if (getAvailableModel()->itemFromIndex(idx)->hasChildren()) {
 		// This is a category header
@@ -3336,6 +3339,9 @@ void GuiDocument::updateModuleInfo()
 		return;
 	}
 	QModelIndex const & idx = lv->selectionModel()->currentIndex();
+
+	if (!idx.isValid())
+		return;
 
 	if (!focus_on_selected
 	    && modules_av_model_.itemFromIndex(idx)->hasChildren()) {
