@@ -2750,7 +2750,6 @@ msgid "&Float"
 msgstr "P&lovoucí"
 
 #: src/frontends/qt/ui/ListingsUi.ui:59 src/frontends/qt/ui/WrapUi.ui:23
-#, fuzzy
 msgid "Pla&cement:"
 msgstr "&Umístění:"
 
@@ -3108,14 +3107,12 @@ msgid "Vertical alignment"
 msgstr "Vertikální zarovnání"
 
 #: src/frontends/qt/ui/MathMatrixUi.ui:80
-#, fuzzy
 msgid "Hori&zontal:"
 msgstr "&Horizontálně:"
 
 #: src/frontends/qt/ui/MathMatrixUi.ui:100
-#, fuzzy
 msgid "Appearance"
-msgstr "Appendices"
+msgstr "Vzhled"
 
 #: src/frontends/qt/ui/MathMatrixUi.ui:122
 msgid "decoration type / matrix border"
@@ -3256,14 +3253,12 @@ msgid "&Greyed out"
 msgstr "&Zašedlé"
 
 #: src/frontends/qt/ui/NumberingUi.ui:37
-#, fuzzy
-msgid "Add line numbers to the document"
-msgstr "Vsunout novou vložku do koumentu"
+msgid "Add line numbers to the side of the document"
+msgstr "Přidat čísla řádek po stranách dokumentu"
 
 #: src/frontends/qt/ui/NumberingUi.ui:40
-#, fuzzy
 msgid "L&ine numbering"
-msgstr "Číslování řádek"
+msgstr "Čís&lování řádek"
 
 #: src/frontends/qt/ui/NumberingUi.ui:63
 msgid "O&ptions:"
@@ -3273,7 +3268,7 @@ msgstr "&Volby:"
 msgid ""
 "Line numbering (lineno package) options (e.g. right, modulo, switch(*), "
 "pagewise). Please refer to the lineno package manual for details."
-msgstr ""
+msgstr "Volby balíčku lineno (např. right, modulo, switch(*), pagewise). Detaily jsou uvedeny v manuálu pro balíček lineno."
 
 #: src/frontends/qt/ui/NumberingUi.ui:82
 msgid "&List in Table of Contents"
@@ -3284,14 +3279,12 @@ msgid "&Numbering"
 msgstr "Čí&slování"
 
 #: src/frontends/qt/ui/OutputUi.ui:20
-#, fuzzy
 msgid "DocBook Output Options"
-msgstr "Volby pro XHTML výstup"
+msgstr "Volby pro DocBook výstup"
 
 #: src/frontends/qt/ui/OutputUi.ui:35
-#, fuzzy
 msgid "&Table output:"
-msgstr "&Výstup vzorců:"
+msgstr "Výst&up tabulek:"
 
 #: src/frontends/qt/ui/OutputUi.ui:51 src/frontends/qt/ui/OutputUi.ui:260
 msgid "Format to use for math output."
@@ -3303,35 +3296,33 @@ msgstr "HTML"
 
 #: src/frontends/qt/ui/OutputUi.ui:60
 msgid "CALS"
-msgstr ""
+msgstr "CALS"
 
 #: src/frontends/qt/ui/OutputUi.ui:87
 msgid "&MathML namespace prefix:"
-msgstr ""
+msgstr "Prefix prostoru jmen v &MathML:"
 
 #: src/frontends/qt/ui/OutputUi.ui:103
 msgid ""
 "Namespace prefix to use for MathML formulae. For instance, with the <code>m</"
 "code> prefix, the MathML tags will be output like <code>m:math</code>."
-msgstr ""
+msgstr "Prefix prostoru jmen (namespace) pro formule v MathML. Např. prefix <code>m</code> bude na výstupu vypadat jako <code>m:math</code>."
 
 #: src/frontends/qt/ui/OutputUi.ui:107
 msgid "No prefix (namespace defined inline for each tag)"
-msgstr ""
+msgstr "Bez prefixu (jmenný prostor definován v každé značce)"
 
 #: src/frontends/qt/ui/OutputUi.ui:112
-#, fuzzy
 msgid "m (default)"
-msgstr "standardní"
+msgstr "m (standardně)"
 
 #: src/frontends/qt/ui/OutputUi.ui:117
-#, fuzzy
 msgid "mml"
-msgstr "mm"
+msgstr "mml"
 
 #: src/frontends/qt/ui/OutputUi.ui:141
 msgid "LyX Format"
-msgstr "Formát Ly&X-u"
+msgstr "Formát LyX-u"
 
 #: src/frontends/qt/ui/OutputUi.ui:153
 msgid ""
@@ -3417,9 +3408,8 @@ msgid "&Allow running external programs"
 msgstr "P&ovolit běh externích programů"
 
 #: src/frontends/qt/ui/OutputUi.ui:387
-#, fuzzy
 msgid "LaTeX Output Options"
-msgstr "Volby pro XHTML výstup"
+msgstr "Volby pro výstup LaTeX-u"
 
 #: src/frontends/qt/ui/OutputUi.ui:395
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -3444,10 +3434,11 @@ msgid ""
 "out of moving arguments such as sections and captions. This prevents LaTeX "
 "errors that can happen in such cases. It is recommended to keep this on."
 msgstr ""
+"Křehké položky, jako např. značky nebo položky rejstříku, budou přesunuty z pohyblivých argumentů (např. sekcí, popisků). Zabraňuje chybám LaTeX-u v těchto případech. Doporučejeme zapnout tuto funkci. "
 
 #: src/frontends/qt/ui/OutputUi.ui:463
 msgid "Put fra&gile content out of moving arguments"
-msgstr ""
+msgstr "Přemístit kře&hký obsah z pohyblivých argumentů"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:23
 msgid "&Use hyperref support"
@@ -3470,9 +3461,8 @@ msgid "&Author:"
 msgstr "&Autor:"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:145
-#, fuzzy
 msgid "Sub&ject:"
-msgstr "Subject:"
+msgstr "Pře&dmět:"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:158
 msgid "&Keywords:"
@@ -3553,21 +3543,20 @@ msgstr "&Doplňkové parametry pro LaTeX"
 #: src/frontends/qt/ui/PDFSupportUi.ui:461
 msgid ""
 "Additional hyperref options (comma-separated) to be passed via \\hypersetup."
-msgstr ""
+msgstr "Doplňkové volby balíčku hyperref oddělené čárkami budou vloženy pomocí příkazu \\hypersetup."
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:464
 msgid "Hyperse&tup"
-msgstr ""
+msgstr "Hyperse&tup"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:487
 msgid ""
 "Document metadata and PDF settings (as specified in LaTeX 06/2022 and later)"
-msgstr ""
+msgstr "Metadata dokumentu a PDF nastavení (dle specifikace LaTeX-u 06/2022 a pozdějších verzí)"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:490
-#, fuzzy
 msgid "Document &Metadata"
-msgstr "Nastavení dokumentu"
+msgstr "&Metadata dokumentu"
 
 #: src/frontends/qt/ui/PageLayoutUi.ui:20
 msgid "Paper Format"
@@ -3680,18 +3669,16 @@ msgid "Lo&ngest label"
 msgstr "&Nejdelší značka"
 
 #: src/frontends/qt/ui/ParagraphUi.ui:201
-#, fuzzy
 msgid "&Do not indent paragraph"
-msgstr "Ods&adit odstavec"
+msgstr "Ne&odsazovat odstavec"
 
 #: src/frontends/qt/ui/PhantomUi.ui:47
 msgid "Horizontal and vertical space of the phantom content"
 msgstr "Horizontální a vertikální velikost pro kontext fantómu"
 
 #: src/frontends/qt/ui/PhantomUi.ui:50
-#, fuzzy
 msgid "Phanto&m"
-msgstr "Phantom"
+msgstr "Fantó&m"
 
 #: src/frontends/qt/ui/PhantomUi.ui:57
 msgid "Horizontal space of the phantom content"
@@ -3706,14 +3693,12 @@ msgid "Vertical space of the phantom content"
 msgstr "Vertikální velikost pro kontext fantómu"
 
 #: src/frontends/qt/ui/PhantomUi.ui:70
-#, fuzzy
 msgid "Verti&cal Phantom"
 msgstr "&Vertikální fantóm"
 
 #: src/frontends/qt/ui/PreambleUi.ui:35
-#, fuzzy
 msgid "Find in preamble"
-msgstr "Najít a zaměnit"
+msgstr "Najít v preambuli"
 
 #: src/frontends/qt/ui/PreambleUi.ui:42
 msgid "&Find"
@@ -3732,18 +3717,16 @@ msgid "Reset the selected color to its original value"
 msgstr "Vrátit vybranou barvu do základního stavu"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:73
-#, fuzzy
 msgid "Restore &Default"
-msgstr "Obnov standardní"
+msgstr "Obno&v standardní"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:80
 msgid "Reset all colors to their original value"
 msgstr "Vrátit všechny barvy do základního stavu"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:83
-#, fuzzy
 msgid "Restore A&ll"
-msgstr "&Vynulovat vše"
+msgstr "O&bnovit vše"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:105
 msgid "Use the color scheme of your Operating System/Desktop Environment"
@@ -3878,16 +3861,14 @@ msgid "Converter Defi&nitions"
 msgstr "Definice &konvertoru"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:128
-#, fuzzy
 msgid "&Converter:"
-msgstr "&Konvertory"
+msgstr "&Konvertor:"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:138
 msgid "E&xtra flag:"
 msgstr "Příznak naví&c:"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:186
-#, fuzzy
 msgid "Fro&m format:"
 msgstr "&Z formátu:"
 
@@ -4329,14 +4310,12 @@ msgid "Your name"
 msgstr "Vaše jméno"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:41
-#, fuzzy
 msgid "&Initials:"
-msgstr "Iniciálky"
+msgstr "&Iniciály:"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:63
-#, fuzzy
 msgid "Initials of your name"
-msgstr "Založ &jméno skupiny:"
+msgstr "Iniciály vašeho jména"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:72
 msgid "&E-mail:"
@@ -4407,9 +4386,8 @@ msgid "Scroll Wheel Zoom"
 msgstr "Lupa pomocí kolečka myši"
 
 #: src/frontends/qt/ui/PrefInputUi.ui:230
-#, fuzzy
 msgid "&Enable"
-msgstr "&Zapnuto"
+msgstr "&Zapnout"
 
 #: src/frontends/qt/ui/PrefInputUi.ui:244
 msgid "Ctrl"
@@ -4432,18 +4410,16 @@ msgid "Select the language of the user interface (menus, dialogs, etc.)"
 msgstr "Zvolit jazyk uživatelského rozhraní (menu, dialogy, ...)"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:57
-#, fuzzy
 msgid "LaTeX Language Support"
-msgstr "Podpora psaní zprava-doleva"
+msgstr "Jazyková podpora LaTeX-u"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:63
 msgid "Language &package:"
 msgstr "Jazykový &balíček:"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:73
-#, fuzzy
 msgid "Select which (LaTeX) language package documents should use by default"
-msgstr "Vybrat jazykový balíček, který má LyX používat"
+msgstr "Vybrat jazykový balíček LaTeX-u, který má být standardně používán v dokumentech"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:77
 #: src/frontends/qt/GuiDocument.cpp:1077 src/frontends/qt/GuiDocument.cpp:2807
