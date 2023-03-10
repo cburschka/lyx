@@ -1392,79 +1392,57 @@ Comme les fichiers de sauvegarde,
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-When to Use Which File?
+Quel fichier utiliser et quand ?
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Now why all these files?
- Because they have different purposes.
- Generally spoken:
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-If \SpecialChar LyX
- terminates unexpectedly,
+Pourquoi tous ces fichiers ?
+ Parce qu'ils ont différents objectifs.
+ D'une manière générale,
+ si \SpecialChar LyX
+ se termine d'une manière inattendue:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-first try to restore from the emergency file (by reopening the document in \SpecialChar LyX
+essayer d'abord une récupération à partir du fichier d'urgence (en ré-ouvrant le document avec \SpecialChar LyX
 ).
- This file has the latest changes,
- even changes you made after the last auto-save snapshot has been made.
+ Ce fichier inclut les dernières modifications,
+ même celles faites après le dernier instantané;
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-If the rescue file way did not work because there is no rescue file (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.,
- after a power outage) or the rescue file is damaged (it might happen in mean cases that the rescue files contains just that latest addition that makes \SpecialChar LyX
- crash!),
- look if there is an auto-save snapshot.
- If so,
- remove the trailing # so that the file can be opened with \SpecialChar LyX
- (not the first # in order to keep the original file until you checked the snapshot) and see if that works for you.
- If so,
- you will have lost five minutes of work in the worst case (with the default settings at least).
+si le fichier d'urgence ne fonctionne pas parce qu'il n'y a pas de fichier d'urgence (e.g.
+ après une coupure de courant) ou que le fichier d'urgence est endommagé (il peut arriver que le fichier d'urgence contienne la dernière modification qui a fait planter \SpecialChar LyX
+!),
+ regarder si un instantané automatique existe.
+ Si c'est le cas,
+ supprimer le dernier # pour pouvoir ouvrir le fichier avec \SpecialChar LyX
+ (mais pas le premier # pour conserver le fichier original jusqu'à ce que vous ayez vérifié l'instantané) et voyez si cela fonctionne pour vous.
+ Si c'est le cas,
+ vous aurez perdu au pire cinq minutes de travail (du moins avec les réglages implicites);
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-If there is no auto-save snapshot or this one is garbled as well,
- use the backup file.
- It does not have all the unsaved changes,
- but it might still be the most recent you can get.
- This is particularly the case if the original file itself got lost or is damaged.
+s'il n'y a pas d'instantané ou si celui-ci est compromis également,
+ utilisez le fichiers de sauvegarde.
+ Il ne contiendra pas les modifications non sauvegardées,
+ mais il peut être le fichier le plus récent que vous puissiez récupérer.
+ C'est en particulier le cas si le fichier original lui-même est perdu ou endommagé.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The fourth type of file,
- the backup file from old versions,
- is useful if the conversion process did not work and results in a non-working document (although we put in all efforts to prevent this) or if you mistakenly opened and saved a document with a newer version (such as a development version) and actually want to keep on using the old version.
+Le quatrième type de fichier,
+ le fichier de sauvegarde pour les versions anciennes,
+ est utile si la conversion n'a pas fonctionné et qu'il en découle un document qui n'est pas opérationnel (bien que nous mettions tout en œuvre pour éviter cela) ou si vous avez ouvert et sauvegardé par erreur un document dans une nouvelle version (une version de développement,
+ par exemple) et que vous vouliez en rester à la version ancienne.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-So much for the safety net.
- We hope you will not need it,
- but if so,
- that it catches you as high up as possible.
- Now let us return to the actual writing process.
+Voilà pour les filets de sécurité.
+ Nous espérons que vous n'en aurez pas besoin,
+ mais que si c'est le cas,
+ qu'ils vous attraperont aussi haut que possible.
+ Revenons maintenant à la tâche de rédaction elle-même.
 \end_layout
 
 \begin_layout Section
