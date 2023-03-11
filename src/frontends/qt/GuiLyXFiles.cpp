@@ -211,9 +211,6 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 	bc().setOK(buttonBox->button(QDialogButtonBox::Open));
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
 
-	//filesLW->setViewMode(QListView::ListMode);
-	filesLW->setIconSize(QSize(22, 22));
-
 	QIcon user_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-user")
 			       : getPixmap("images/", "lyxfiles-user", "svgz,png"));
 	QIcon system_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-system")
