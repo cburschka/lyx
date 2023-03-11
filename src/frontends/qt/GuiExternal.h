@@ -36,7 +36,7 @@ private Q_SLOTS:
 	void browseClicked();
 	void change_adaptor();
 	void extraChanged(const QString &);
-	void formatChanged(const QString &);
+	void formatChanged(int const);
 	void getbbClicked();
 	void sizeChanged();
 	void templateChanged();

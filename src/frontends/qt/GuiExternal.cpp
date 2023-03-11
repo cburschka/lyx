@@ -100,12 +100,12 @@ GuiExternal::GuiExternal(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(browsePB, SIGNAL(clicked()),
 		this, SLOT(browseClicked()));
-	connect(externalCO, SIGNAL(activated(QString)),
+	connect(externalCO, SIGNAL(activated(int)),
 		this, SLOT(templateChanged()));
 	connect(extraED, SIGNAL(textChanged(QString)),
 		this, SLOT(extraChanged(QString)));
-	connect(extraFormatCO, SIGNAL(activated(QString)),
-		this, SLOT(formatChanged(QString)));
+	connect(extraFormatCO, SIGNAL(activated(int)),
+		this, SLOT(formatChanged(int)));
 	connect(widthUnitCO, SIGNAL(activated(int)),
 		this, SLOT(widthUnitChanged()));
 	connect(heightUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
@@ -315,9 +315,9 @@ void GuiExternal::extraChanged(const QString & text)
 }
 
 
-void GuiExternal::formatChanged(const QString & format)
+void GuiExternal::formatChanged(int const i)
 {
-	extraED->setText(extra_[format]);
+	extraED->setText(extra_[extraFormatCO->itemText(i)]);
 }
 
 
