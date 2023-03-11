@@ -2842,8 +2842,10 @@ QAbstractItemModel * GuiApplication::languageModel()
 
 	QStandardItemModel * lang_model = new QStandardItemModel(this);
 	lang_model->insertColumns(0, 3);
-	QIcon speller(getPixmap("images/", "dialog-show_spellchecker", "svgz,png"));
-	QIcon saurus(getPixmap("images/", "thesaurus-entry", "svgz,png"));
+	QIcon speller(guiApp ? guiApp->getScaledPixmap("images/", "dialog-show_spellchecker")
+			  : getPixmap("images/", "dialog-show_spellchecker", "svgz,png"));
+	QIcon saurus(guiApp ? guiApp->getScaledPixmap("images/", "thesaurus-entry")
+			  : getPixmap("images/", "thesaurus-entry", "svgz,png"));
 	Languages::const_iterator it = lyx::languages.begin();
 	Languages::const_iterator end = lyx::languages.end();
 	for (; it != end; ++it) {

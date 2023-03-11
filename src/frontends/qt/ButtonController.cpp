@@ -88,7 +88,8 @@ bool CheckedLineEdit::check() const
 		}
 		setValid(target_, valid);
 		if (!valid && tab_index_ >= 0 && qobject_cast<QTabWidget*>(target_) != nullptr) {
-			QIcon warn(getPixmap("images/", "emblem-shellescape", "svgz,png"));
+			QIcon warn(guiApp ? guiApp->getScaledPixmap("images/", "emblem-shellescape")
+					  : getPixmap("images/", "emblem-shellescape", "svgz,png"));
 			QTabBar * tb = qobject_cast<QTabWidget*>(target_)->tabBar();
 			tb->setTabIcon(tab_index_, warn);
 			tb->setTabToolTip(tab_index_, qt_("This tab contains invalid input. Please fix!"));
