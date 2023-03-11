@@ -140,15 +140,9 @@ void FancyLineEdit::checkButtons(const QString &text)
 
 void FancyLineEdit::setClearButton(bool visible)
 {
-// QLineEdit::setClearButtonEnabled() has been implemented in Qt 5.2.
-// In earlier Qt versions, we roll our own button
-#if QT_VERSION < 0x050200
-	setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
-	setButtonVisible(FancyLineEdit::Right, visible);
-	setAutoHideButton(FancyLineEdit::Right, true);
-#else
+	// QLineEdit::setClearButtonEnabled() has been implemented in Qt 5.2.
+	// This is now the minimum required version
 	setClearButtonEnabled(visible);
-#endif
 }
 
 
