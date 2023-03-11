@@ -214,8 +214,10 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 	//filesLW->setViewMode(QListView::ListMode);
 	filesLW->setIconSize(QSize(22, 22));
 
-	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
-	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
+	QIcon user_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-user")
+			       : getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-system")
+				 : getPixmap("images/", "lyxfiles-system", "svgz,png"));
 	fileTypeCO->addItem(qt_("User and System Files"), toqstr("all"));
 	fileTypeCO->addItem(user_icon, qt_("User Files Only"), toqstr("user"));
 	fileTypeCO->addItem(system_icon, qt_("System Files Only"), toqstr("system"));
@@ -308,8 +310,10 @@ void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 	setLanguage();
 	QString const realpath = getRealPath();
 	filesLW->currentItem()->setData(0, Qt::ToolTipRole, realpath);
-	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
-	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
+	QIcon user_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-user")
+			       : getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-system")
+				 : getPixmap("images/", "lyxfiles-system", "svgz,png"));
 	QIcon file_icon = (realpath.startsWith(toqstr(package().user_support().absFileName()))) ?
 			user_icon : system_icon;
 	item->setIcon(0, file_icon);
@@ -410,10 +414,16 @@ void GuiLyXFiles::updateContents()
 	languageCO->model()->sort(0);
 
 	filesLW->clear();
-	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
-	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
-	QIcon user_folder_icon(getPixmap("images/", "lyxfiles-user-folder", "svgz,png"));
-	QIcon system_folder_icon(getPixmap("images/", "lyxfiles-system-folder", "svgz,png"));
+
+	QIcon user_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-user")
+			       : getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-system")
+				 : getPixmap("images/", "lyxfiles-system", "svgz,png"));
+	QIcon user_folder_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-user-folder")
+				      : getPixmap("images/", "lyxfiles-user-folder", "svgz,png"));
+	QIcon system_folder_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-system-folder")
+					: getPixmap("images/", "lyxfiles-system-folder", "svgz,png"));
+
 	QStringList cats;
 	QMap<QString, QString>::const_iterator it = files.constBegin();
 	QFont capfont;

@@ -94,6 +94,9 @@ public:
 	/// Return true if current position is RTL of if no document is open and interface if RTL
 	bool rtlContext() const;
 
+	/// Scale Pixmaps properly (also for HiDPI)
+	QPixmap getScaledPixmap(QString imagedir, QString name) const;
+
 	///
 	Clipboard & clipboard();
 	///

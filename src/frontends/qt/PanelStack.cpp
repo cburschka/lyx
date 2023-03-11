@@ -155,7 +155,8 @@ void PanelStack::markPanelValid(QString const & name, bool valid)
 		item->setIcon(0, QIcon());
 		item->setToolTip(0, QString());
 	} else {
-		QIcon warn(getPixmap("images/", "emblem-shellescape", "svgz,png"));
+		QIcon warn(guiApp ? guiApp->getScaledPixmap("images/", "emblem-shellescape-user")
+				  : getPixmap("images/", "emblem-shellescape", "svgz,png"));
 		item->setIcon(0, warn);
 		item->setToolTip(0, qt_("This section contains invalid input. Please fix!"));
 	}

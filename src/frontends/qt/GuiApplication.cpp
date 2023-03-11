@@ -114,6 +114,7 @@
 #include <QSocketNotifier>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
+#include <QSvgRenderer>
 #include <QTimer>
 #include <QTranslator>
 #include <QThreadPool>
@@ -2663,6 +2664,30 @@ bool GuiApplication::unhide(Buffer * buf)
 		return false;
 	currentView()->setBuffer(buf, false);
 	return true;
+}
+
+
+QPixmap GuiApplication::getScaledPixmap(QString imagedir, QString name) const
+{
+	qreal dpr = 1.0;
+	// Consider device/pixel ratio (HiDPI)
+	if (currentView())
+		dpr = currentView()->devicePixelRatio();
+	// We render SVG directly for HiDPI scalability
+	QPixmap pm = getPixmap(imagedir, name, "svgz,png");
+	FileName fname = imageLibFileSearch(imagedir, name, "svgz,png");
+	QString fpath = toqstr(fname.absFileName());
+	if (!fpath.isEmpty()) {
+		QSvgRenderer svgRenderer(fpath);
+		if (svgRenderer.isValid()) {
+			pm = QPixmap(pm.size() * dpr);
+			pm.fill(Qt::transparent);
+			QPainter painter(&pm);
+			svgRenderer.render(&painter);
+			pm.setDevicePixelRatio(dpr);
+		}
+	}
+	return pm;
 }
 
 

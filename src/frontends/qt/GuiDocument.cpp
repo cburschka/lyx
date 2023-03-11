@@ -614,7 +614,8 @@ void PreambleModule::editExternal() {
 	preambleTE->setReadOnly(true);
 	theFormats().edit(*current_id_, tempfilename, format);
 	editPB->setText(qt_("&End Edit"));
-	QIcon warn(getPixmap("images/", "emblem-shellescape", "svgz,png"));
+	QIcon warn(guiApp ? guiApp->getScaledPixmap("images/", "emblem-shellescape-user")
+			  : getPixmap("images/", "emblem-shellescape", "svgz,png"));
 	editPB->setIcon(warn);
 	changed();
 }
@@ -793,7 +794,8 @@ void LocalLayout::editExternal() {
 	locallayoutTE->setReadOnly(true);
 	theFormats().edit(*current_id_, tempfilename, format);
 	editPB->setText(qt_("&End Edit"));
-	QIcon warn(getPixmap("images/", "emblem-shellescape", "svgz,png"));
+	QIcon warn(guiApp ? guiApp->getScaledPixmap("images/", "emblem-shellescape-user")
+			  : getPixmap("images/", "emblem-shellescape", "svgz,png"));
 	editPB->setIcon(warn);
 	validatePB->setEnabled(false);
 	hideConvert();
@@ -1960,8 +1962,10 @@ void GuiDocument::filterModules(QString const & str)
 			return 0 < b.name.localeAwareCompare(a.name);
 		});
 
-	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
-	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
+	QIcon user_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-user")
+			       : getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-system")
+				 : getPixmap("images/", "lyxfiles-system", "svgz,png"));
 
 	int i = 0;
 	for (modInfoStruct const & m : modInfoList) {
@@ -4672,8 +4676,10 @@ void GuiDocument::updateAvailableModules()
 	modInfoList.sort([](modInfoStruct const & a, modInfoStruct const & b) {
 			return 0 < b.name.localeAwareCompare(a.name);
 		});
-	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
-	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
+	QIcon user_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-user")
+			       : getPixmap("images/", "lyxfiles-user", "svgz,png"));
+	QIcon system_icon(guiApp ? guiApp->getScaledPixmap("images/", "lyxfiles-system")
+				 : getPixmap("images/", "lyxfiles-system", "svgz,png"));
 	int i = 0;
 	QFont catfont;
 	catfont.setBold(true);
