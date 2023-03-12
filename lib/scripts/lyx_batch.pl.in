@@ -54,6 +54,8 @@ my %Tests = (
   },
   beamer_test => {
     src_files => ["beamer_test.lyx"],
+    check_type => 'custom',
+    check_script => ["$perl","$test_bin/compare_exported_tex.pl"],
     check => [["beamer_test.tex", "beamer_test.tex.orig"]],
     commands => ["file-open beamer_test.lyx",
                  "buffer-begin",
@@ -69,6 +71,8 @@ my %Tests = (
       workdir => "$data",
     },
     src_files => ["vcs_info_export.lyx"],
+    check_type => 'custom',
+    check_script => ["$perl","$test_bin/compare_exported_tex.pl"],
     check => [["vcs_info_export.tex", "vcs_info_export.tex.orig"]],
     command_line => ["-E", "pdflatex", "vcs_info_export.tex", "$data/vcs_info_export.lyx"],
   },
