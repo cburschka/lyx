@@ -1146,7 +1146,7 @@ Filets de sécurité:
  est très concerné par la sécurité.
  Nous savons combien vous vous investissez dans votre travail et la dernière chose que nous voulons est que votre travail soit perdu.
  Cependant,
- nous ne pouvons pas totalement éviter que de mauvaises choses arrivent:
+ nous ne pouvons pas totalement éviter que des événements désagréables arrivent:
  \SpecialChar LyX
  peut se planter (bien que nous fassions tout pour que ça n'arrive pas),
  vous pouvez avoir une coupure de courant avec des modifications non sauvegardées,
@@ -1156,8 +1156,8 @@ Filets de sécurité:
  inclut un filet de sécurité multi-couches qui vous préservera,
  nous l'espérons,
  de galères majeures.
- Ceci signifie que ne se contente pas d'un fichier de sauvegarde,
- il en faut plusieurs qui se révéleront utiles en fonction des différents scénarios.
+ Ceci signifie qu'il ne se contente pas d'un fichier de sauvegarde,
+ il en crée plusieurs qui se révéleront utiles en fonction des différents scénarios.
  Des sous-ensembles de ce filet de sécurité peuvent être déconnectés si vous préférez vivre plus dangereusement sans multiplier les fichiers (voir la section
 \begin_inset space ~
 \end_inset
@@ -51451,7 +51451,7 @@ ucs)
 \begin_inset space ~
 \end_inset
 
-(utf8) encodage Unicode utf8 basé sur la paquetage \SpecialChar LaTeX
+(utf8x) encodage Unicode utf8 basé sur la paquetage \SpecialChar LaTeX
  
 \series bold
 ucs
@@ -51981,16 +51981,12 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-Vous pouvez imprimer des numéros de ligne dan sle résultat imprimable en cochant la case en bas.
- Cette fonctionnalité est gérée par le paquertage
-\end_layout
-
-\begin_layout Standard
-
+Vous pouvez imprimer des numéros de ligne dans le résultat imprimable en cochant la case en bas.
+ Cette fonctionnalité est gérée par le paquetage
 \series bold
-lineno
+ lineno
 \series default
- est les options de ce paqutage peuvent être activée.
+ et les options de ce paquetage peuvent être activées.
  Les plus usuelles sont:
 \end_layout
 
@@ -52991,11 +52987,7 @@ d'exécution
 \end_inset
 
 \SpecialChar LaTeX
-
-\begin_inset space ~
-\end_inset
-
-prpose des réglages pour l'exportation \SpecialChar LaTeX
+ propose des réglages pour l'exportation \SpecialChar LaTeX
 :
 \end_layout
 
@@ -54992,28 +54984,6 @@ Ouvrir l'exemple
 \family sans
 
 \begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Nota :
-
-\series default
- le bouton 
-\family sans
-Exemples
-\family default
- n'existe pas si vous utilisez \SpecialChar LyX
- sous Mac OS ou Windows
-\family sans
-.
-\end_layout
-
 \end_inset
 
 
@@ -57962,22 +57932,11 @@ xindex
 
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/indexing/xindex/doc/xindex-doc.pdf
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.xindy.org/documentation.html
 \end_layout
 
 \end_inset
@@ -58012,7 +57971,7 @@ xindy
 
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
