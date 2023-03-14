@@ -14698,7 +14698,11 @@ string
 \end_inset
 
 ] Copies all the features of an existing style into the current one.
-\change_inserted 1075283030 1671679774
+
+\change_inserted -584632292 1678808972
+ Note that this copies the style as it is defined at that point.
+ Later changes to it will not affect styles into which it has been copied.
+\change_unchanged
 
 \end_layout
 
