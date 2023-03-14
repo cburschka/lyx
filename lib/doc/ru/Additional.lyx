@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -9722,7 +9722,7 @@ status collapsed
 \end_inset
 
 ,
- причем в последнем случае в версиях со звездочкой (без номера) и без нее (с номером).
+ причем в последнем случае в версиях с нумерацией и без нее.
  Эти же окружения предоставляются только в версиях,
  помеченных звездочкой модулем 
 \begin_inset Flex Code
@@ -9832,6 +9832,13 @@ status collapsed
 .
 \end_layout
 
+\begin_layout Fact
+Аналогично предложению,
+ хотя,
+ возможно,
+ ниже по значимости.
+\end_layout
+
 \begin_layout Standard
 А следующие окружения предоставляются из 
 \begin_inset Flex Code
@@ -9881,11 +9888,12 @@ status collapsed
  подведение итогов.
 \end_layout
 
-\begin_layout Fact
-Аналогично предложению,
- хотя,
- возможно,
- ниже по значимости.
+\begin_layout Assumption*
+Допущения.
+\end_layout
+
+\begin_layout Question*
+Вопросы.
 \end_layout
 
 \begin_layout Standard
@@ -9971,14 +9979,14 @@ in
 broadway.bind
 \family default
 ,
- чтобы получить ключи привязки,
+ чтобы получить привязки клавиш,
  показанные справа):
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Standard
+Обычный текст
 \begin_inset Newline newline
 \end_inset
 
@@ -9992,7 +10000,7 @@ Standard
 \begin_layout Itemize
 
 \family sans
-Narrative
+Повествование
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10009,7 +10017,7 @@ M-z n
 \begin_layout Itemize
 
 \family sans
-ACT
+АКТ
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10021,13 +10029,14 @@ M-z a
 \family default
 Нумеруется автоматически.
  На экране будет помечен арабскими цифрами,
- но в выводе будет как Roman.
+ но в выводе —
+ римскими.
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-ACT*
+АКТ*
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10048,7 +10057,7 @@ M-z S at
 \begin_layout Itemize
 
 \family sans
-SCENE
+СЦЕНА
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10065,7 +10074,7 @@ M-z S-S
 \begin_layout Itemize
 
 \family sans
-AT_RISE
+НА ПОДЪЕМЕ
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10083,7 +10092,7 @@ M-z S-R
 \begin_layout Itemize
 
 \family sans
-Speaker
+Персонаж
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10100,7 +10109,7 @@ M-z s
 \begin_layout Itemize
 
 \family sans
-Parenthetical
+Ремарка
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10110,21 +10119,14 @@ M-z p
 
 
 \family default
-Текст для персонажа (докладчика).
- Скобки вставляются автоматически.
- Символ "(" появится на экране,
- но он и текст будут присутствовать в выводе.
- Эта среда используется только в 
-\family sans
-Dialogue
-\family default
-.
+Инструкции для персонажа (докладчика).
+ Скобки ( ) вставляются автоматически.
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Dialogue
+Реплика
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10140,7 +10142,7 @@ M-z d
 \begin_layout Itemize
 
 \family sans
-CURTAIN
+ЗАНАВЕС
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10165,7 +10167,7 @@ M-z S-C
 \begin_layout Itemize
 
 \family sans
-Title
+Заголовок
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10175,7 +10177,7 @@ M-z S-T
 \begin_layout Itemize
 
 \family sans
-Author
+Автор
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10185,7 +10187,7 @@ M-z S-A
 \begin_layout Itemize
 
 \family sans
-Right_Address
+Адрес справа
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10193,21 +10195,17 @@ M-z r
 \end_layout
 
 \begin_layout Section
-Dinbrief
+DIN-Brief
 \end_layout
 
 \begin_layout Standard
 Класс документа 
 \series bold
-dinbrief
+DIN-Brief
 \series default
- может использоваться для набора букв в соответствии с соглашениями немецкого языка.
- Файл шаблона включен в 
-\family typewriter
-.../lyx/share/templates
-\family default
-,
- вы можете использовать его в качестве отправной точки.
+ может использоваться для набора писем в соответствии с соглашениями немецкого языка.
+ Имеется файл шаблона,
+ который вы можете использовать в качестве отправной точки.
 \end_layout
 
 \begin_layout Section
@@ -10370,7 +10368,7 @@ hollywood.bind
 \begin_layout Itemize
 
 \family sans
-Standard
+Общее
 \begin_inset Newline newline
 \end_inset
 
@@ -10384,7 +10382,7 @@ Standard
 \begin_layout Itemize
 
 \family sans
-FADE_IN
+ПОЯВЛЕНИЕ
 \family default
 :
 \begin_inset space \hfill{}
@@ -10404,7 +10402,7 @@ M-z S-I
 \begin_layout Itemize
 
 \family sans
-INT:
+ИНТ.
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10423,7 +10421,7 @@ M-z i
 \begin_layout Itemize
 
 \family sans
-EXT:
+НАТ.
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10440,7 +10438,7 @@ M-z e
 \begin_layout Itemize
 
 \family sans
-Speaker
+Персонаж
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10450,13 +10448,14 @@ M-z s
 
 
 \family default
-Говорит персонаж.
+Персонаж,
+ который говорит.
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Parenthetical
+Ремарка
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10464,16 +10463,16 @@ M-z p
 \begin_inset Newline newline
 \end_inset
 
-
+Инструкции
 \family default
-Текст для персонажа.
+ для персонажа.
  Скобки ( ) вставляются автоматически.
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Dialogue
+Реплика
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10483,13 +10482,17 @@ M-z d
 
 
 \family default
-Что говорит персонаж.
+Что говорит 
+\family sans
+Персонаж
+\family default
+.
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Transition
+Переход
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10507,7 +10510,7 @@ M-z t
 \begin_layout Itemize
 
 \family sans
-FADE OUT:
+ИСЧЕЗАНИЕ:
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10515,13 +10518,15 @@ M-z S-I
 \begin_inset Newline newline
 \end_inset
 
+
+\family default
 Постепенное исчезновение (съемка в затемнении)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Author
+Автор
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10531,7 +10536,7 @@ M-z S-A
 \begin_layout Itemize
 
 \family sans
-Title
+Заголовок
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10541,7 +10546,7 @@ M-z S-T
 \begin_layout Itemize
 
 \family sans
-Right_Address
+Адрес справа
 \begin_inset space \hfill{}
 \end_inset
 
@@ -10661,7 +10666,7 @@ letter.cls
 \end_layout
 
 \begin_layout Itemize
-Стандартный размер шрифта —
+Базовый размер шрифта —
  11
 \begin_inset space \thinspace{}
 \end_inset
@@ -11945,7 +11950,7 @@ Paper
 \end_layout
 
 \begin_layout Standard
-Документный класс 
+Класс документа 
 \family sans
 paper
 \family default

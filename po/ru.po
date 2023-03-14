@@ -6,13 +6,13 @@
 # Nick A. Gusev <guusev@yandex.ru>, 2009.
 # Valeriy Kruchko <lerkru@gmail.com>, 2009.
 # Sergey Tereschenko <serg.partizan@gmail.com>, 2010.
-# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2022.
+# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2023-01-31 05:51+0100\n"
-"PO-Revision-Date: 2022-12-10 22:16+0100\n"
+"PO-Revision-Date: 2023-03-12 16:52+0100\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1194,9 +1194,8 @@ msgid "Main text:"
 msgstr "Основной текст:"
 
 #: src/frontends/qt/ui/ColorUi.ui:110
-#, fuzzy
 msgid "C&hange..."
-msgstr "Изменить..."
+msgstr "&Изменить..."
 
 #: src/frontends/qt/ui/ColorUi.ui:123 src/frontends/qt/ui/ColorUi.ui:145
 #: src/frontends/qt/ui/ColorUi.ui:250 src/frontends/qt/ui/ColorUi.ui:311
@@ -1216,17 +1215,14 @@ msgid "Page:"
 msgstr "Страница:"
 
 #: src/frontends/qt/ui/ColorUi.ui:298
-#, fuzzy
 msgid "Ch&ange..."
-msgstr "Изменить..."
+msgstr "И&зменить..."
 
 #: src/frontends/qt/ui/ColorUi.ui:314
-#, fuzzy
 msgid "Re&set"
-msgstr "&Обновить"
+msgstr "С&бросить"
 
 #: src/frontends/qt/ui/ColorUi.ui:336
-#, fuzzy
 msgid "Chan&ge..."
 msgstr "Изменить..."
 
@@ -1259,14 +1255,12 @@ msgid "Document Settings"
 msgstr "Настройки документа"
 
 #: src/frontends/qt/ui/CompareUi.ui:69
-#, fuzzy
 msgid "O&ld document"
 msgstr "Старый документ"
 
 #: src/frontends/qt/ui/CompareUi.ui:76
-#, fuzzy
 msgid "New docu&ment"
-msgstr "Создать документ"
+msgstr "Новый документ"
 
 #: src/frontends/qt/ui/CompareUi.ui:101
 msgid ""
@@ -1281,7 +1275,6 @@ msgid "&Enable change tracking features in the output"
 msgstr "Отслеживать изменения в выходном файле"
 
 #: src/frontends/qt/ui/CompareUi.ui:129
-#, fuzzy
 msgid "Old documen&t:"
 msgstr "Старый документ:"
 
@@ -1294,7 +1287,6 @@ msgid "Bro&wse..."
 msgstr "&Выбрать..."
 
 #: src/frontends/qt/ui/CompareUi.ui:165
-#, fuzzy
 msgid "&New document:"
 msgstr "Новый документ:"
 
@@ -1313,11 +1305,11 @@ msgstr "&Выбрать..."
 msgid ""
 "Changes in the workarea are allocated to the selected author or category"
 msgstr ""
+"Изменения в рабочей области назначаются выбранному автору или категории"
 
 #: src/frontends/qt/ui/CompareUi.ui:230
-#, fuzzy
 msgid "Changes mar&kup:"
-msgstr "панель изменений"
+msgstr "Разметка изменений:"
 
 #: src/frontends/qt/ui/CounterUi.ui:22
 msgid "C&ounter:"
@@ -2320,6 +2312,8 @@ msgid ""
 "Link to the web or any other target with an \"authority\" component (i."
 "e., :// in the URI)"
 msgstr ""
+"Ссылка на веб или любую другую цель с компонентом \"authority\" (т.е. :// в "
+"URI)"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:136
 msgid "&Web"
@@ -2346,10 +2340,12 @@ msgid ""
 "Link to an arbitrary URI scheme not matched by the other three types (to be "
 "fully spelled out in the Target field above)"
 msgstr ""
+"Ссылка на произвольную схему URI, не соответствующую трем другим типам "
+"(должна быть полностью прописана в поле Цель выше)"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:169
 msgid "&Other[[Link Type]]"
-msgstr ""
+msgstr "&Другое"
 
 #: src/frontends/qt/ui/IncludeUi.ui:35
 msgid "I&nclude Type:"
@@ -2939,9 +2935,8 @@ msgstr "Будет использован редактор для формата
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:77 src/frontends/qt/ui/PreambleUi.ui:52
 #: src/frontends/qt/GuiDocument.cpp:596 src/frontends/qt/GuiDocument.cpp:775
-#, fuzzy
 msgid "&Edit Externally"
-msgstr "Править внешним редактором...|ш"
+msgstr "Править внешним редактором..."
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:84
 msgid "Convert"
@@ -3760,9 +3755,8 @@ msgid "Verti&cal Phantom"
 msgstr "Вертикальный фантом"
 
 #: src/frontends/qt/ui/PreambleUi.ui:35
-#, fuzzy
 msgid "Find in preamble"
-msgstr "Преамбула библиографии"
+msgstr "Найти в преамбуле"
 
 #: src/frontends/qt/ui/PreambleUi.ui:42
 msgid "&Find"
@@ -4834,9 +4828,9 @@ msgstr ""
 "Разрешены относительные и абсолютные пути. Относительные пути будут "
 "расширены относительно рабочего каталога (WD). Для всех путей, кроме "
 "\"Префикс TEXINPUTS\", WD является каталогом, из которого вы запускаете LyX, "
-"и поэтому может меняться для каждой сессии LyX. Для пути \"Префикс "
-"TEXINPUTS\" WD - это каталог, содержащий текущий документ. Путь \".\" (без "
-"кавычек) является общим примером относительного пути и ссылается на WD."
+"и поэтому может меняться для каждой сессии LyX. Для пути \"Префикс TEXINPUTS"
+"\" WD - это каталог, содержащий текущий документ. Путь \".\" (без кавычек) "
+"является общим примером относительного пути и ссылается на WD."
 
 #: src/frontends/qt/ui/PrefPathsUi.ui:35
 msgid "&PATH prefix:"
@@ -5304,9 +5298,8 @@ msgid "No Prefix"
 msgstr "Без префикса"
 
 #: src/frontends/qt/ui/RefUi.ui:340 lib/ui/stdcontext.inc:127
-#, fuzzy
 msgid "No Hyperlink"
-msgstr "Гиперссылка: "
+msgstr "Нет гиперссылки"
 
 #: src/frontends/qt/ui/SearchUi.ui:52
 msgid "Find previous occurrence (Shift+Enter)"
@@ -6714,11 +6707,11 @@ msgstr "Аннотация"
 #: lib/layouts/theorems-ams-extended.module:336
 #: lib/layouts/theorems-counters-extended-bytype.inc:28
 msgid "Acknowledgement"
-msgstr "Подтверждение"
+msgstr "Благодарности"
 
 #: lib/layouts/AEA.layout:131 lib/layouts/egs.layout:635
 msgid "Acknowledgement."
-msgstr "Подтверждение."
+msgstr "Благодарности."
 
 #: lib/layouts/AEA.layout:140
 msgid "Figure Notes"
@@ -10522,13 +10515,12 @@ msgid "Bilingual Captions"
 msgstr "Многоязычные подписи"
 
 #: lib/layouts/bicaption.module:7
-#, fuzzy
 msgid ""
 "Provides two styles to typeset bilingual captions. For a description see "
 "Help > Specific Manuals > Multilingual Captions."
 msgstr ""
 "Предоставляет два стиля для вёрстки многоязычных подписей. Описание см. в "
-"файле MultilingualCaptions.lyx в папке примеров LyX."
+"Помощь > Специальные руководства > Многоязычные подписи."
 
 #: lib/layouts/bicaption.module:11
 msgid "Caption setup"
@@ -10588,13 +10580,12 @@ msgid "Accessibility"
 msgstr "Доступность"
 
 #: lib/layouts/braille.module:7
-#, fuzzy
 msgid ""
 "Defines an environment to typeset Braille. For more details see Help > "
 "Specific Manuals > Braille."
 msgstr ""
-"Определяет окружение для брайлевской печати. Более подробно см. Braille.lyx "
-"в примерах."
+"Определяет окружение для брайлевской печати. Более подробно см. Помощь > "
+"Специальные руководства > Брайлевская печать."
 
 #: lib/layouts/braille.module:23
 msgid "Braille (default)"
@@ -10857,13 +10848,12 @@ msgid "Leisure, Sports & Music"
 msgstr "Развлечения, спорт, музыка"
 
 #: lib/layouts/chessboard.module:7
-#, fuzzy
 msgid ""
 "Support for the chessboard package to print chess games See File > Open "
 "Example > Articles > Chess where you will find Game 1 and Game 2."
 msgstr ""
-"Поддержка пакета chessboard для печати шахматных партий См. пример "
-"chessboard-article.lyx."
+"Поддержка пакета chessboard для печати шахматных партий См. Файл > Открыть "
+"пример > Статьи > Шахматы."
 
 #: lib/layouts/chessboard.module:16
 msgid "NewChessGame"
@@ -13477,11 +13467,11 @@ msgstr "НАТ."
 
 #: lib/layouts/hollywood.layout:192
 msgid "Continuing"
-msgstr "Продолжая"
+msgstr "Продолжение"
 
 #: lib/layouts/hollywood.layout:203
 msgid "(continuing)"
-msgstr "(продолжая)"
+msgstr "(продолжение)"
 
 #: lib/layouts/hollywood.layout:231
 msgid "Transition"
@@ -13522,15 +13512,14 @@ msgid "Academic Field Specifics"
 msgstr "Наука"
 
 #: lib/layouts/hpstatement.module:8
-#, fuzzy
 msgid ""
 "Provides two insets to typeset numbers and phrases of chemical hazard and "
 "precautionary statements. For a description see Help > Specific Manuals > "
 "Hazard and Precautionary Statements."
 msgstr ""
 "Обеспечивает две вставки для вёрстки номеров и фраз о химической опасности и "
-"мерах предосторожности. Описание см. в файле H-P-statements.lyx в папке "
-"примеров LyX."
+"мерах предосторожности. Описание см. в Помощь > Специальные руководства > "
+"Химическая опасность."
 
 #: lib/layouts/hpstatement.module:12 lib/layouts/hpstatement.module:17
 msgid "H-P number"
@@ -14202,15 +14191,14 @@ msgid "LilyPond Music Notation"
 msgstr "Нотная запись LilyPond"
 
 #: lib/layouts/lilypond.module:8
-#, fuzzy
 msgid ""
 "This module adds an inset to enter LilyPond code directly into LyX. It will "
 "be processed in the output. For details, see Help > Specific Manuals > "
 "LilyPond."
 msgstr ""
 "Этот модуль добавляет вставку для ввода кода LilyPond непосредственно в LyX. "
-"Он будет обработан при создании выходного файла. См. файл примера lilypond."
-"lyx."
+"Он будет обработан при создании выходного файла. См. Помощь > Специальные "
+"руководства > LilyPond."
 
 #: lib/layouts/lilypond.module:15 lib/layouts/lilypond.module:16
 #: lib/xtemplates/lilypond.xtemplate:14
@@ -14235,15 +14223,14 @@ msgid "Linguistics"
 msgstr "Лингвистика"
 
 #: lib/layouts/linguistics.module:8
-#, fuzzy
 msgid ""
 "Defines some special environments useful for linguistics (numbered examples, "
 "glosses, semantic markup, tableau floats). See Help > Specific Manuals > "
 "Linguistics."
 msgstr ""
 "Определяет некоторые специальные окружения, полезные для лингвистов "
-"(нумерация примеров, толкования, семантическая разметка, таблицы). См. файл "
-"linguistics.lyx в примерах."
+"(нумерация примеров, толкования, семантическая разметка, таблицы). См. "
+"Помощь > Специальные руководства > Лингвистика."
 
 #: lib/layouts/linguistics.module:20
 msgid "(\\arabic{example})"
@@ -15218,7 +15205,6 @@ msgid "Multiple Columns"
 msgstr "Многоколоночность"
 
 #: lib/layouts/multicol.module:8
-#, fuzzy
 msgid ""
 "Adds a custom inset whose content is set with multiple columns (2 by "
 "default). See the Additional manual, section Modules > Page Layout > "
@@ -15452,15 +15438,14 @@ msgid "PDF Comments"
 msgstr "Комментарии PDF"
 
 #: lib/layouts/pdfcomment.module:8
-#, fuzzy
 msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
 "the pdfcomment package. Please consult Help > Specific Manuals > PDF "
 "comments and the package documentation for details."
 msgstr ""
 "Предоставляет различные виды аннотаций для вывода PDF. Модуль использует "
-"пакет pdfcomment. Пожалуйста, обратитесь к файлу примера PDF-comment.lyx и "
-"документации пакета."
+"пакет pdfcomment. Пожалуйста, обратитесь к Помощь > Специальные руководства "
+"> Комментарии PDF и документации пакета."
 
 #: lib/layouts/pdfcomment.module:20
 msgid "Define Avatar"
@@ -15662,15 +15647,14 @@ msgid "PDF Form"
 msgstr "Форма PDF"
 
 #: lib/layouts/pdfform.module:8
-#, fuzzy
 msgid ""
 "Provides fields and buttons for PDF forms. The module uses the LaTeX package "
 "hyperref. Please consult Help > Specific Manuals > PDF forms and the "
 "documentation of hyperref for details."
 msgstr ""
 "Обеспечивает поля и кнопки для форм PDF. Модуль использует пакет LaTeX "
-"hyperref. Пожалуйста, ознакомьтесь с файлом примера PDF-form.lyx и "
-"документацией пакета hyperref."
+"hyperref. Пожалуйста, ознакомьтесь с Помощь > Специальные руководства > "
+"Формы PDF и документацией пакета hyperref."
 
 #: lib/layouts/pdfform.module:16 lib/layouts/pdfform.module:27
 msgid "Begin PDF Form"
@@ -16130,14 +16114,12 @@ msgid "Chemistry: Risk and Safety Statements"
 msgstr "Химия: Утверждения о рисках и безопасности"
 
 #: lib/layouts/rsphrase.module:7
-#, fuzzy
 msgid ""
 "Provides two insets and one environment to typeset numbers and phrases of "
 "chemical risk and safety statements."
 msgstr ""
 "Предоставляет две вставки и одно окружение для вёрстки номеров и фраз "
-"утверждений о химическом риске и безопасности. Описание см. в файле R-S-"
-"statements.lyx в папке примеров LyX."
+"утверждений о химическом риске и безопасности."
 
 #: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
 msgid "R-S number"
@@ -16168,7 +16150,6 @@ msgid "Ruby (Furigana)"
 msgstr "Руби (Фуригана)"
 
 #: lib/layouts/ruby.module:8
-#, fuzzy
 msgid ""
 "Defines an inset to typeset reading aids (ruby, furigana) to Chinese "
 "characters. Uses the 'okumakro', 'luatexja-ruby', or 'ruby' package "
@@ -16597,7 +16578,6 @@ msgid "Custom Paragraph Shapes"
 msgstr "Пользовательские формы абзаца"
 
 #: lib/layouts/shapepar.module:8
-#, fuzzy
 msgid ""
 "Provides several paragraph shapes as well as commands to define custom "
 "shapes. For a description see LyX's Additional features manual, section "
@@ -17373,7 +17353,6 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:7
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see Help > Specific Manuals > "
@@ -17381,7 +17360,7 @@ msgid ""
 msgstr ""
 "Позволяет использовать статистический язык S/R в качестве инструмента "
 "грамотного программирования с помощью функции Sweave(). Для получения "
-"дополнительной информации см. файл примера sweave.lyx."
+"дополнительной информации см. Помощь > Специальные руководства > Sweave."
 
 #: lib/layouts/sweave.module:77 lib/layouts/sweave.module:78
 msgid "Sweave Input File"
@@ -17625,7 +17604,6 @@ msgid "AMS Theorems (Extended, Numbered by Type)"
 msgstr "Теоремы AMS (Расширенный, нумерация по типу)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -17637,7 +17615,7 @@ msgid ""
 msgstr ""
 "Определяет некоторые дополнительные окружения теорем для использования с "
 "пакетами теорем AMS. Включает Критерии, Алгоритмы, Аксиомы, Условия, "
-"Заметки, Обозначения, Обобщения, Подтверждения, Заключения, Допущения и "
+"Заметки, Обозначения, Обобщения, Благодарности, Заключения, Допущения и "
 "Случаи в нумерованном и ненумерованном вариантах. В отличие от расширенного "
 "модуля AMS, разные типы теорем имеют отдельную нумерацию (напр. критерий 1, "
 "критерий 2, аксиома 1, гипотеза 1, критерий 3, ..., а не критерий 1, "
@@ -17773,30 +17751,30 @@ msgstr "Резюме."
 #: lib/layouts/theorems-ams-extended.module:350
 #: lib/layouts/theorems-ams-extended.module:353
 msgid "Acknowledgment"
-msgstr "Подтверждение"
+msgstr "Благодарности"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:328
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:395
 msgid "Acknowledgment \\theacknowledgement."
-msgstr "Подтверждение \\theacknowledgement."
+msgstr "Благодарности \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:351
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:422
 #: lib/layouts/theorems-ams-extended.module:341
 msgid "Acknowledgment*"
-msgstr "Подтверждение*"
+msgstr "Благодарности*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:354
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:425
 #: lib/layouts/theorems-ams-extended.module:344
 msgid "Acknowledgment."
-msgstr "Подтверждение."
+msgstr "Благодарности."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:371
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:442
 #: lib/layouts/theorems-ams-extended.module:361
 msgid "Acknowledgement*"
-msgstr "Подтверждение*"
+msgstr "Благодарности*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:379
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:450
@@ -17868,7 +17846,6 @@ msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
 msgstr "Теоремы AMS (Расширенный, нумерация по типу внутри глав)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -17881,7 +17858,7 @@ msgid ""
 msgstr ""
 "Определяет некоторые дополнительные окружения теорем для использования с "
 "пакетами теорем AMS. Включает Критерии, Алгоритмы, Аксиомы, Условия, "
-"Заметки, Обозначения, Обобщения, Подтверждения, Заключения, Допущения и "
+"Заметки, Обозначения, Обобщения, Благодарности, Заключения, Допущения и "
 "Случаи в нумерованном и ненумерованном вариантах. В отличие от расширенного "
 "модуля AMS, разные типы теорем имеют отдельную нумерацию для каждой главы "
 "(напр. критерий 1.1, критерий 1.2, аксиома 1.1, гипотеза 1.1 # критерий 2.1, "
@@ -17893,7 +17870,6 @@ msgid "AMS Theorems (Extended)"
 msgstr "Теоремы AMS (Расширенный)"
 
 #: lib/layouts/theorems-ams-extended.module:10
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -17902,7 +17878,7 @@ msgid ""
 msgstr ""
 "Определяет некоторые дополнительные окружения теорем для использования с "
 "пакетами теорем AMS. Включает Критерии, Алгоритмы, Аксиомы, Условия, "
-"Заметки, Обозначения, Обобщения, Подтверждения, Заключения, Факты, Допущения "
+"Заметки, Обозначения, Обобщения, Благодарности, Заключения, Факты, Допущения "
 "и Случаи в нумерованном и ненумерованном вариантах."
 
 #: lib/layouts/theorems-ams-extended.module:40
@@ -17934,9 +17910,8 @@ msgid "Summary \\thetheorem."
 msgstr "Резюме \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:319
-#, fuzzy
 msgid "Acknowledgment \\thetheorem."
-msgstr "Подтверждение \\thetheorem."
+msgstr "Благодарности \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:369
 msgid "Conclusion \\thetheorem."
@@ -18410,7 +18385,6 @@ msgid "Variable-width Minipages"
 msgstr "Мини-страницы переменной ширины"
 
 #: lib/layouts/varwidth.module:14
-#, fuzzy
 msgid ""
 "Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. The "
 "varwidth package provides a variable-width minipage, whose resulting width "
@@ -18424,7 +18398,7 @@ msgstr ""
 "результирующей шириной которого является ширина его содержимого (если она не "
 "превышает заданной максимальной ширины).  Вставка имеет два необязательных "
 "аргумента: вертикальное выравнивание (c|t|b) и максимальная ширина (по "
-"умолчанию \\linewidth). См. пример в varwidth-floats-side-by-side.lyx."
+"умолчанию \\linewidth). См. пример в Файл > Открыть пример > Модули."
 
 #: lib/layouts/varwidth.module:20
 msgid "Minipage (Var. Width)"
@@ -20413,7 +20387,6 @@ msgid "Emphasized Page Formatting|z"
 msgstr "Выделенный номер страницы"
 
 #: lib/ui/stdcontext.inc:647
-#, fuzzy
 msgid "Custom Page Formatting|u"
 msgstr "Пользовательский формат номера страницы..."
 
@@ -21138,9 +21111,8 @@ msgid "Branch|B"
 msgstr "Ветка|В"
 
 #: lib/ui/stdmenus.inc:384
-#, fuzzy
 msgid "Custom Inset"
-msgstr "Пользовательская вставка|П"
+msgstr "Пользовательская вставка"
 
 #: lib/ui/stdmenus.inc:385
 msgid "File|e"
@@ -21328,7 +21300,7 @@ msgstr "Неразрывный обычный пробел"
 
 #: lib/ui/stdmenus.inc:457
 msgid "Non-breaking Thin Space|T"
-msgstr "Неразрывный тонкий пробел|О"
+msgstr "Неразрывный тонкий пробел|о"
 
 #: lib/ui/stdmenus.inc:458
 msgid "Horizontal Space...|o"
@@ -29276,11 +29248,11 @@ msgstr "Гибкая вставка %1$s не определена после п
 #: src/CutAndPaste.cpp:886
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
-"`%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
+"%3$s'."
 msgstr ""
-"Гибкая вставка %1$s не определена из-за преобразования из макета `%2$s' в "
-"`%3$s'."
+"Гибкая вставка %1$s не определена из-за преобразования из макета `%2$s' в `"
+"%3$s'."
 
 #: src/CutAndPaste.cpp:891
 msgid "Undefined flex inset"
@@ -29654,19 +29626,18 @@ msgid "&Exit LyX"
 msgstr "Выйти из LyX'а"
 
 #: src/LyX.cpp:617
-#, fuzzy
 msgid "No python is found"
-msgstr "Не найден класс документа"
+msgstr "Не найдена программа python"
 
 #: src/LyX.cpp:618
-#, fuzzy
 msgid ""
 "LyX will only have minimal functionality because no python interpreter has "
 "been found. Consider installing python with your software manager or from "
 "the python.org website."
 msgstr ""
 "LyX будет предоставлять только минимальную функциональность, потому что не "
-"найдены классы документа. Вы можете обновить конфигурацию LyX или продолжить."
+"найден Python. Рассмотрите возможность установки Python с помощью менеджера "
+"пакетов или с сайта python.org."
 
 #: src/LyX.cpp:720
 msgid ""
@@ -29913,8 +29884,8 @@ msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
-"Считать слитно написанные слова, например \"diskdrive\" вместо \"disk "
-"drive\", допустимыми?"
+"Считать слитно написанные слова, например \"diskdrive\" вместо \"disk drive"
+"\", допустимыми?"
 
 #: src/LyXRC.cpp:3110
 msgid ""
@@ -31170,7 +31141,7 @@ msgstr "Маркер 4"
 
 #: src/frontends/qt/ButtonController.cpp:94
 msgid "This tab contains invalid input. Please fix!"
-msgstr ""
+msgstr "Эта вкладка содержит недопустимый ввод. Пожалуйста, исправьте!"
 
 #: src/frontends/qt/ButtonController.cpp:266
 #: src/frontends/qt/GuiApplication.cpp:2010 src/frontends/qt/GuiCompare.cpp:196
@@ -31390,9 +31361,9 @@ msgid "Qt Version (compile-time): %1$s"
 msgstr "Версия Qt (компиляция): %1$s"
 
 #: src/frontends/qt/GuiAbout.cpp:298
-#, fuzzy, c-format
+#, c-format
 msgid "OS Version (run-time): %1$s"
-msgstr "Версия Qt (компиляция): %1$s"
+msgstr "Операционная система: %1$s"
 
 #: src/frontends/qt/GuiAbout.cpp:305
 #, c-format
@@ -31507,8 +31478,8 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 "В системе была обновлена конфигурация.\n"
-"Необходимо перезапустить LyX, чтобы использовать\n"
-"обновлённые классы документов."
+"Необходимо перезапустить LyX, чтобы использовать обновлённые классы "
+"документов."
 
 #: src/frontends/qt/GuiApplication.cpp:1802
 msgid "Exiting."
@@ -32602,23 +32573,20 @@ msgid "Unapplied changes"
 msgstr "Неприменённые изменения"
 
 #: src/frontends/qt/GuiDocument.cpp:1848
-#, fuzzy
 msgid ""
 "Some changes in the previous document were not yet applied.\n"
 "Do you want to switch back and apply them?"
 msgstr ""
-"Некоторые изменения в диалоге ещё не приняты.\n"
-"Если вы не примените их сейчас, они будут\n"
-"потеряны после этого действия."
+"Некоторые изменения в предыдущем документе еще не были приняты.\n"
+"Вы хотите переключиться обратно и применить их?"
 
 #: src/frontends/qt/GuiDocument.cpp:1850
 msgid "Yes, &Switch Back"
-msgstr ""
+msgstr "Да, переключить &обратно"
 
 #: src/frontends/qt/GuiDocument.cpp:1850
-#, fuzzy
 msgid "No, &Dismiss Changes"
-msgstr "Нет, сохранить изменения"
+msgstr "Нет, отклонить изменения"
 
 #: src/frontends/qt/GuiDocument.cpp:2165 src/frontends/qt/GuiDocument.cpp:2251
 msgid "Class defaults"
@@ -32658,7 +32626,7 @@ msgstr " (не установлен)"
 #: src/frontends/qt/GuiDocument.cpp:2740 src/frontends/qt/GuiDocument.cpp:2772
 #: src/frontends/qt/GuiDocument.cpp:2783 src/frontends/qt/GuiDocument.cpp:2794
 msgid "Default font (as set by class)"
-msgstr ""
+msgstr "Шрифт по умолчанию (заданный классом)"
 
 #: src/frontends/qt/GuiDocument.cpp:2742
 msgid "Non-TeX Fonts Default"
@@ -32845,12 +32813,12 @@ msgstr "[Не предопределено никаких параметров]"
 #: src/frontends/qt/GuiDocument.cpp:4405 src/frontends/qt/GuiDocument.cpp:4416
 #: src/frontends/qt/GuiDocument.cpp:4427
 msgid "Uninstalled used fonts"
-msgstr ""
+msgstr "Неустановленные использованные шрифты"
 
 #: src/frontends/qt/GuiDocument.cpp:4406 src/frontends/qt/GuiDocument.cpp:4417
 #: src/frontends/qt/GuiDocument.cpp:4428
 msgid "This font is not installed and won't be used in output"
-msgstr ""
+msgstr "Этот шрифт не установлен и не будет использоваться в выводе"
 
 #: src/frontends/qt/GuiDocument.cpp:4598
 msgid "C&ustomize Hyperref Options"
@@ -34467,24 +34435,22 @@ msgid "Outline"
 msgstr "Навигация"
 
 #: src/frontends/qt/GuiToolbar.cpp:445
-#, fuzzy
 msgid "&Reset to default (keep language)"
-msgstr "Сбросить к настройкам по умолчанию"
+msgstr "Сбросить к настройкам по умолчанию (кроме языка)"
 
 #: src/frontends/qt/GuiToolbar.cpp:446
-#, fuzzy
 msgid "Reset all font settings to their defaults but keep language settings"
-msgstr "Сбросить все настройки шрифта к значениям по умолчанию"
+msgstr ""
+"Сбросить все настройки только шрифта к значениям по умолчанию, настройки "
+"языка не меняются"
 
 #: src/frontends/qt/GuiToolbar.cpp:451
-#, fuzzy
 msgid "Reset to default (including &language)"
-msgstr "Восстановить значения по умолчанию формальных линий"
+msgstr "Сбросить к настройкам по умолчанию (включая язык)"
 
 #: src/frontends/qt/GuiToolbar.cpp:452
-#, fuzzy
 msgid "Reset all font settings and the language to their defaults"
-msgstr "Сбросить все настройки шрифта к значениям по умолчанию"
+msgstr "Сбросить все настройки шрифта и языка к значениям по умолчанию"
 
 #: src/frontends/qt/GuiToolbar.cpp:665
 msgid "auto"
@@ -34531,7 +34497,7 @@ msgstr "1.0[[possibly scale the welcome banner text size]]"
 
 #: src/frontends/qt/GuiView.cpp:163
 msgid "version "
-msgstr "версия "
+msgstr " "
 
 #: src/frontends/qt/GuiView.cpp:163
 msgid "unknown version"
@@ -34695,9 +34661,8 @@ msgid "Document not loaded."
 msgstr "Документ невозможно загрузить."
 
 #: src/frontends/qt/GuiView.cpp:2809
-#, fuzzy
 msgid "Select documents to open"
-msgstr "Выберите документ для открытия"
+msgstr "Выберите документы для открытия"
 
 #: src/frontends/qt/GuiView.cpp:2815
 msgid "LyX Document Backups (*.lyx~)"
@@ -34725,16 +34690,17 @@ msgid ""
 "%1$s\n"
 "does not exist. Create empty file?"
 msgstr ""
+"Файл\n"
+"%1$s\n"
+"не существует. Создать пустой файл?"
 
 #: src/frontends/qt/GuiView.cpp:2863
-#, fuzzy
 msgid "File does not exist"
-msgstr "Файл не существует: %1$s"
+msgstr "Файл не существует"
 
 #: src/frontends/qt/GuiView.cpp:2865
-#, fuzzy
 msgid "Create &File"
-msgstr "Повреждённый файл"
+msgstr "Создать файл"
 
 #: src/frontends/qt/GuiView.cpp:2877
 #, c-format
@@ -35538,7 +35504,7 @@ msgstr "Искать"
 
 #: src/frontends/qt/PanelStack.cpp:160
 msgid "This section contains invalid input. Please fix!"
-msgstr ""
+msgstr "Этот раздел содержит недопустимые данные. Пожалуйста, исправьте!"
 
 #: src/frontends/qt/Toolbars.cpp:246
 #, c-format
@@ -36095,11 +36061,11 @@ msgstr "Гиперссылка: "
 
 #: src/insets/InsetHyperlink.cpp:277
 msgid "www"
-msgstr "www"
+msgstr "веб"
 
 #: src/insets/InsetHyperlink.cpp:279
 msgid "email"
-msgstr "email"
+msgstr "эл. почта"
 
 #: src/insets/InsetHyperlink.cpp:281
 msgid "file"
@@ -36107,7 +36073,7 @@ msgstr "файл"
 
 #: src/insets/InsetHyperlink.cpp:283
 msgid "other[[Hyperlink Type]]"
-msgstr ""
+msgstr "другое"
 
 #: src/insets/InsetHyperlink.cpp:284
 #, c-format
@@ -37466,9 +37432,8 @@ msgid "Can't change number of columns in '%1$s'"
 msgstr "Невозможно изменить число колонок в '%1$s'"
 
 #: src/mathed/InsetMathMacro.cpp:1199
-#, fuzzy
 msgid "Uncodable characters in math macro"
-msgstr "Некодируемый символ в имени автора"
+msgstr "Некодируемые символы в матем. макросе"
 
 #: src/mathed/InsetMathMacro.cpp:1200
 #, c-format
@@ -37477,6 +37442,9 @@ msgid ""
 "that is not encodable in the current encoding (%2$s).\n"
 "Please fix this macro."
 msgstr ""
+"Имя макроса '%1$s' содержит символ,\n"
+"который не может быть закодирован в текущей кодировке (%2$s).\n"
+"Пожалуйста, исправьте этот макрос."
 
 #: src/mathed/InsetMathMacro.cpp:1357 src/mathed/InsetMathMacro.cpp:1363
 #, c-format

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 614
+\lyxformat 615
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -36690,9 +36690,12 @@ Shift+Return
 
 ,
  можно искать,
- вводя их в редакторе поиска.
- При поиске формулы она обнаруживается,
- как в одиночку,
+ вводя их в редакторе 
+\family sans
+Найти
+\family default
+.
+ При поиске формулы она будет найдена как в одиночку,
  так и когда она встречается в подформулах и вложенных частях подформул.
  Например,
  упомянутые фрагменты можно найти в формуле,
@@ -36956,9 +36959,13 @@ status collapsed
 \begin_layout Enumerate
 Поиск по всему тексту с заданным стилем:
  например,
- после снятия флажка 
+ после установки флажка 
 \family sans
-Игнорировать форматирование
+Соблюдать форматирование поисковой строки
+\family default
+ и нажатия 
+\family sans
+Выделить все
 \family default
  на вкладке 
 \family sans
@@ -36993,7 +37000,11 @@ status collapsed
 \begin_layout Standard
 Наконец,
  ссылки на (под)выражения в регулярном выражении могут использоваться как обычно:
- части выражения заключаются в круглые скобки () и обращение к ним осуществляется через 
+ части выражения заключаются в круглые скобки 
+\begin_inset Formula $()$
+\end_inset
+
+ и обращение к ним осуществляется через 
 \begin_inset Formula $\backslash1$
 \end_inset
 
@@ -37013,9 +37024,17 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-[[:space:]]([[:alpha:]]+)[[:space:]]
+
 \backslash
-1[[:space:]]
+b(
+\backslash
+w+)
+\backslash
+s
+\backslash
+1
+\backslash
+b
 \begin_inset Newline newline
 \end_inset
 
@@ -37024,7 +37043,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Использование обратных ссылок в замененном тексте (пока) не реализовано.
+Использование обратных ссылок в тексте замены (пока) реализовано не полностью.
 \end_layout
 
 \begin_layout Standard
@@ -47960,7 +47979,7 @@ status collapsed
 Создавать резервные копии при сохранении
 \family default
  создает резервную копию файла в состоянии,
- когда он был открыт или когда он был сохранен в последний раз.
+ когда он был сохранен в последний раз.
  Она хранится в каталоге,
  указанном в 
 \family sans
@@ -47981,21 +48000,53 @@ reference "sec:Paths"
 ),
  или в том же каталоге,
  что и документ,
- если каталог не указан.
+ если резервный каталог не указан.
  Файл резервной копии имеет расширение «
 \family typewriter
 .lyx~
 \family default
-».
+» и имя исходного файла.
+ Если 
+\family sans
+Каталог резервного копирования
+\family default
+ задан,
+ то резервный файл содержит полный путь в своем имени с разделителем 
+\begin_inset Quotes rld
+\end_inset
+
+!
+\begin_inset Quotes rrd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-С опцией 
+Если включена опция 
 \family sans
-Делать резервные копии документов каждые ...
+Делать резервные копии каждые ...
  минут
 \family default
- вы можете указать время между созданием резервных копий.
+,
+ то \SpecialChar LyX
+ будет автоматически сохранять текущее состояние документа (включая несохраненные изменения) с указанным интервалом времени.
+ Эти файлы с именем 
+\begin_inset Quotes rld
+\end_inset
+
+
+\family typewriter
+#<документ>.lyx#
+\family default
+
+\begin_inset Quotes rrd
+\end_inset
+
+ хранятся в каталоге документа,
+ перезаписываются при каждом автоматическом сохранении и удаляются при обычном закрытии документа.
+ В случае сбоя \SpecialChar LyX
+ эти файлы могут быть использованы для восстановления.
 \end_layout
 
 \begin_layout Standard
