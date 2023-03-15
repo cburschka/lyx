@@ -236,8 +236,8 @@ Format 5
 \bind "nobreakspace"		"space-insert protected"
 \bind "C-M-space"		"space-insert normal"
 \bind "S-C-space"		"space-insert thin"
-\bind "C-period"		"specialchar-insert end-of-sentence"
-\bind "M-period"		"specialchar-insert dots"
+\bind "C-~S-period"		"specialchar-insert end-of-sentence"
+\bind "M-~S-period"		"specialchar-insert dots"
 \bind "Escape"			"cancel"
 \bind "F9"			"meta-prefix"
 
