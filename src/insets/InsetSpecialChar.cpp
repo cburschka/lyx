@@ -191,8 +191,7 @@ void drawLogo(PainterInfo & pi, int & x, int const y, InsetSpecialChar::Kind kin
 
 void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	frontend::FontMetrics const & fm =
-		theFontMetrics(mi.base.font);
+	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = 0;
 	dim.wid = 0;
@@ -211,7 +210,9 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 			s = from_ascii(".");
 			break;
 		case LDOTS:
-			s = from_ascii(". . .");
+			// see comment in draw().
+			dim.wid = 3 * fm.width(char_type('.'))
+			        + 3 * fm.width(char_type(' ')) / 2;
 			break;
 		case MENU_SEPARATOR:
 			// ▹  U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE
@@ -285,15 +286,20 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	case LDOTS:
 	{
 		font.setColor(Color_special);
-		string ell = ". . . ";
-		docstring dell(ell.begin(), ell.end());
-		pi.pain.text(x, y, dell, font);
+		/* \textellipsis uses a \fontdimen3 is spacing. The TeXbook
+		 * tells us that \fontdimen3 is the interword stretch, and
+		 * that this is usually half a space.
+		 */
+		frontend::FontMetrics const & fm = theFontMetrics(font);
+		int wid1 = fm.width(char_type('.')) + fm.width(char_type(' ')) / 2;
+		pi.pain.text(x, y, char_type('.'), font);
+		pi.pain.text(x + wid1, y, char_type('.'), font);
+		pi.pain.text(x + 2 * wid1, y, char_type('.'), font);
 		break;
 	}
 	case MENU_SEPARATOR:
 	{
-		frontend::FontMetrics const & fm =
-			theFontMetrics(font);
+		frontend::FontMetrics const & fm = theFontMetrics(font);
 
 		// There is a \thinspace on each side of the triangle
 		x += fm.em() / 6;
