@@ -29,7 +29,7 @@ class Paragraph;
 class ParagraphMetrics {
 public:
 	/// Default constructor (only here for STL containers).
-	ParagraphMetrics() : position_(0), par_(0) {}
+	ParagraphMetrics() {}
 	/// The only useful constructor.
 	explicit ParagraphMetrics(Paragraph const & par);
 
@@ -77,15 +77,15 @@ public:
 
 private:
 	///
-	int position_;
+	int position_ = 0;
 	///
-	int id_;
+	int id_ = -1;
 	///
 	mutable RowList rows_;
 	/// cached dimensions of paragraph
 	Dimension dim_;
 	///
-	Paragraph const * par_;
+	Paragraph const * par_ = nullptr;
 };
 
 } // namespace lyx
