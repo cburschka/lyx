@@ -710,7 +710,7 @@ void GuiCompleter::tab()
 	docstring longestCompletion = longestUniqueCompletion();
 	prefix = cur.inset().completionPrefix(cur);
 	docstring postfix = longestCompletion.substr(min(longestCompletion.size(), prefix.size()));
-	cur.inset().insertCompletion(cur, postfix, uniqueCompletionAvailable());
+	cur.inset().insertCompletion(cur, postfix, false);
 	old_cursor_ = bv.cursor();
 	updatePrefix(cur);
 
