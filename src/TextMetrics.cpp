@@ -35,6 +35,7 @@
 #include "TextClass.h"
 #include "VSpace.h"
 
+#include "insets/InsetSeparator.h"
 #include "insets/InsetText.h"
 
 #include "mathed/MacroTable.h"
@@ -1792,11 +1793,13 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 		}
 	}
 
-	// This happens after sections or environments in standard classes.
-	// We have to check the previous layout at same depth.
+	// Check for reasons to remove indentation.
+	// First, at document level.
 	if (buffer.params().paragraph_separation ==
 			BufferParams::ParagraphSkipSeparation)
 		parindent.erase();
+	// This happens after sections or environments in standard classes.
+	// We have to check the previous layout at same depth.
 	else if (pit > 0 && pars[pit - 1].getDepth() >= par.getDepth()) {
 		pit_type prev = text_->depthHook(pit, par.getDepth());
 		if (par.layout() == pars[prev].layout()) {
@@ -1805,6 +1808,15 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 				parindent.erase();
 		} else if (pars[prev].layout().nextnoindent)
 			parindent.erase();
+	}
+	// The previous paragraph may have ended with a separator inset.
+	if (pit > 0) {
+		Paragraph const & ppar = pars[pit - 1];
+		if (ppar.size() > 0) {
+			auto * in = dynamic_cast<InsetSeparator const *>(ppar.getInset(ppar.size() - 1));
+			if (in != nullptr && in->nextnoindent())
+				parindent.erase();
+		}
 	}
 
 	FontInfo const labelfont = text_->labelFont(par);

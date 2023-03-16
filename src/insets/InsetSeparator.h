@@ -66,6 +66,8 @@ public:
 	}
 	///
 	int rowFlags() const override { return BreakAfter | Flush; }
+	///
+	bool nextnoindent() const { return params_.kind == InsetSeparatorParams::PLAIN; }
 private:
 	///
 	InsetCode lyxCode() const override { return SEPARATOR_CODE; }
