@@ -688,9 +688,10 @@ void GuiCompleter::tab()
 	// If completion is active, at least complete by one character
 	docstring prefix = cur.inset().completionPrefix(cur);
 	docstring completion = qstring_to_ucs4(currentCompletion());
-	if (completion.size() <= prefix.size()) {
+	if (uniqueCompletionAvailable() || completion.size() <= prefix.size()) {
 		// finalize completion
-		cur.inset().insertCompletion(cur, docstring(), true);
+		docstring const postfix = completion.substr(min(completion.size(), prefix.size()));
+		cur.inset().insertCompletion(cur, postfix, true);
 
 		// hide popup and inline completion
 		hidePopup();
