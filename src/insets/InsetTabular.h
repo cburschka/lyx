@@ -1150,7 +1150,8 @@ public:
 	docstring asString(idx_type stidx, idx_type enidx, bool intoInsets = true);
 	///
 	ParagraphList asParList(idx_type stidx, idx_type enidx);
-
+	///
+	bool confirmDeletion() const override { return true; }
 	/// Returns whether the cell in the specified row and column is selected.
 	bool isCellSelected(Cursor & cur, row_type row, col_type col) const;
 	///
