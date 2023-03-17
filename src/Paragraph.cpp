@@ -2027,9 +2027,11 @@ char_type Paragraph::getUChar(BufferParams const & bparams,
 	char_type c = d->text_[pos];
 
 	// Return unchanged character in LTR languages
-	// or if we use poylglossia/bidi (XeTeX).
-	if (rp.useBidiPackage()
-	    || !getFontSettings(bparams, pos).isRightToLeft())
+	// or if we use poylglossia/bidi (XeTeX)
+	// or with babel and Xe/LuaTeX.
+	if (!getFontSettings(bparams, pos).isRightToLeft()
+	    || rp.useBidiPackage()
+	    || (rp.use_babel && rp.isFullUnicode()))
 		return c;
 
 	// Without polyglossia/bidi, we need to account for some special cases.
