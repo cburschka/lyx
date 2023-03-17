@@ -209,11 +209,14 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		case END_OF_SENTENCE:
 			s = from_ascii(".");
 			break;
-		case LDOTS:
+		case LDOTS: {
 			// see comment in draw().
-			dim.wid = 3 * fm.width(char_type('.'))
-			        + 3 * fm.width(char_type(' ')) / 2;
+			auto const fam = mi.base.font.family();
+			// Multiplication by 3 is done here to limit rounding effects.
+			int const spc3 = fam == TYPEWRITER_FAMILY ? 0 : 3 * fm.width(char_type(' ')) / 2;
+			dim.wid = 3 * fm.width(char_type('.')) + spc3;
 			break;
+		}
 		case MENU_SEPARATOR:
 			// ▹  U+25B9 WHITE RIGHT-POINTING SMALL TRIANGLE
 			// There is a \thinspace on each side of the triangle
@@ -291,7 +294,9 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 		 * that this is usually half a space.
 		 */
 		frontend::FontMetrics const & fm = theFontMetrics(font);
-		int wid1 = fm.width(char_type('.')) + fm.width(char_type(' ')) / 2;
+		auto const fam = pi.base.font.family();
+		int const spc = fam == TYPEWRITER_FAMILY ? 0 : fm.width(char_type(' ')) / 2;
+		int wid1 = fm.width(char_type('.')) + spc;
 		pi.pain.text(x, y, char_type('.'), font);
 		pi.pain.text(x + wid1, y, char_type('.'), font);
 		pi.pain.text(x + 2 * wid1, y, char_type('.'), font);
