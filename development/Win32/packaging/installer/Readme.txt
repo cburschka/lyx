@@ -49,15 +49,15 @@ Updating dependencies
   to %%dependencies%%\ghostscript.
 
 - Python
-  download the latest Python 2 release for windows from https://www.python.org/downloads/windows/ (32 or 64 bit),
-  current version is 2.7.17
-  Install it or extract with a tool named lessmsi. If you install it, you will have to find python27.dll in the 
-  Windows\System32 folder. 64-bit dlls on a 64-bit windows are stored in Windows\System32 folder, 32-bit dlls on a 64-bit windows
-  are stored in Windows\SysWOW64. Copy this python27.dll to %%dependencies%%\Python, from the python installation folder copy
-  all files and "DLLs", "Lib" and "libs" subfolders to %%dependencies%%\Python. You can uninstall python afterwards.
-  If you extracted with lessmsi, you will also get visual studio runtime dlls and some executables, which are used during installation,
-  these are not needed. Copy the 2 python executables, the python dll, the 3 textfiles (license, news and readme) and the "DLLs",
-  "Lib" and "libs" subfolders to %%dependencies%%\Python.
+  download the latest Python 3 release for windows from https://www.python.org/downloads/windows/ (embeddable package 64 bit),
+  current version is 3.11.2
+  Extract it and copy to %%dependencies%%\Python.
+  open python3XX._pth file with a text editor, uncomment the "import site" line
+  add following paths after the 2 already existing paths ('.' and python311.zip)
+    ./Scripts
+    ../Resources
+    ../Resources/lyx2lyx
+    ../Resources/scripts
 
 - Visual Studio runtime
   Download the latest Visual C++ Redistributable (if you still haven't), the version should match with your VS C++ compiler

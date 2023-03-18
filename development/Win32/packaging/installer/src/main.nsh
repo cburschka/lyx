@@ -719,7 +719,7 @@ Section -CompilePython
 SectionEnd
 
 Section -LyxrcDist
-  StrCpy $pathPrefix "$LatexPath;$$LyXDir\bin;$$LyXDir\Python;$$LyXDir\Python\Lib;$$LyXDir\imagemagick;$$LyXDir\ghostscript\bin"
+  StrCpy $pathPrefix "$LatexPath;$$LyXDir\bin;$$LyXDir\Python;$$LyXDir\Python\Lib;$$LyXDir\Python\Scripts;$$LyXDir\imagemagick;$$LyXDir\ghostscript\bin"
 
   # Find additional software and add their install locations to the path_prefix
   # This list contains all software, which write the string value "InstallLocation" in their corresponding keys in "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
