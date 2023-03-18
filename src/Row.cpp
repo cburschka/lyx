@@ -45,7 +45,7 @@ static double const MAX_SPACE_STRETCH = 1.5; //em
 
 int Row::Element::countExpanders() const
 {
-	if (type != STRING)
+	if (type != STRING || font.fontInfo().family() == TYPEWRITER_FAMILY)
 		return 0;
 	return support::countExpanders(str);
 }
@@ -53,7 +53,7 @@ int Row::Element::countExpanders() const
 
 int Row::Element::expansionAmount() const
 {
-	if (type != STRING)
+	if (type != STRING || font.fontInfo().family() == TYPEWRITER_FAMILY)
 		return 0;
 	return countExpanders() * theFontMetrics(font).em();
 }
