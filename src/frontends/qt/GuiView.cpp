@@ -1015,11 +1015,11 @@ void GuiView::saveUISettings() const
 
 void GuiView::setCurrentZoom(const int v)
 {
+	Q_EMIT currentZoomChanged(v);
 	lyxrc.currentZoom = v;
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), v)));
 	zoom_in_->setEnabled(currentBufferView() && v < zoom_slider_->maximum());
 	zoom_out_->setEnabled(currentBufferView() && v > zoom_slider_->minimum());
-	Q_EMIT currentZoomChanged(v);
 }
 
 
