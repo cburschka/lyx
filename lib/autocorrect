@@ -124,6 +124,17 @@
 \Leftarrow        =    \Longleftarrow
 \Longleftarrow    >    \Longleftrightarrow
 
+\leftarrow        *    \longleftarrow
+\longleftarrow    *    \longleftrightarrow
+\longleftrightarrow *  \leftarrow
+\rightarrow       *    \longrightarrow
+\longrightarrow   *    \longleftrightarrow
+
+\Leftarrow        *    \Longleftarrow
+\Longleftarrow    *    \Longleftrightarrow
+\Longleftrightarrow *  \Leftarrow
+\Rightarrow       *    \Longrightarrow
+\Longrightarrow   *    \Longleftrightarrow
 
 @                 *    \circ
 \circ             /    \varnothing
