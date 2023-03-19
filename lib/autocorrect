@@ -119,7 +119,25 @@
 \leftarrow        -    \longleftarrow
 \longleftarrow    >    \longleftrightarrow
 =                 >    \Rightarrow
+=                 <    \Leftarrow
+\Rightarrow       =    \Longrightarrow
+\Leftarrow        >    \Leftrightarrow
+\Leftarrow        =    \Longleftarrow
+\Longleftarrow    >    \Longleftrightarrow
 
+\leftarrow        *    \longleftarrow
+\longleftarrow    *    \longleftrightarrow
+\longleftrightarrow *  \leftrightarrow
+\leftrightarrow   *    \leftarrow
+\rightarrow       *    \longrightarrow
+\longrightarrow   *    \longleftrightarrow
+
+\Leftarrow        *    \Longleftarrow
+\Longleftarrow    *    \Longleftrightarrow
+\Longleftrightarrow *  \Leftrightarrow
+\Leftrightarrow   *    \Leftarrow
+\Rightarrow       *    \Longrightarrow
+\Longrightarrow   *    \Longleftrightarrow
 
 @                 *    \circ
 \circ             /    \varnothing
