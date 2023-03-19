@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2023-03-15 22:56+0100\n"
-"PO-Revision-Date: 2023-03-12 16:52+0100\n"
+"PO-Revision-Date: 2023-03-20 00:18+0100\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1743,7 +1743,7 @@ msgstr "Зачёркивание"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:460
 msgid "Font series[[FindReplaceAdv]]"
-msgstr ""
+msgstr "Насыщенность шрифта"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:474
 msgid "Emph/noun"
@@ -2557,12 +2557,10 @@ msgstr ""
 "ниже."
 
 #: src/frontends/qt/ui/InfoUi.ui:49 src/frontends/qt/GuiInfo.cpp:362
-#, fuzzy
 msgid "&Fixed Date:"
 msgstr "Заданная дата:"
 
 #: src/frontends/qt/ui/InfoUi.ui:59 src/frontends/qt/GuiInfo.cpp:361
-#, fuzzy
 msgid "Here you can enter a fixed date (in ISO format: YYYY-MM-DD)"
 msgstr "Введите дату (в формате ISO: YYYY-MM-DD)"
 
@@ -2935,7 +2933,6 @@ msgid "Errors reported in terminal."
 msgstr "Ошибки показаны в терминале."
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:74 src/frontends/qt/ui/PreambleUi.ui:49
-#, fuzzy
 msgid "Editor for LaTeX (plain) format will be used"
 msgstr "Будет использован редактор для формата LaTeX (plain)"
 
@@ -3303,7 +3300,6 @@ msgid "&Greyed out"
 msgstr "&Серый текст"
 
 #: src/frontends/qt/ui/NumberingUi.ui:37
-#, fuzzy
 msgid "Add line numbers to the side of the document"
 msgstr "Добавить нумерацию строк в документ"
 
@@ -4086,14 +4082,20 @@ msgid ""
 "the application crashes with unsaved changes and the restoration from the "
 "emergency file fails, this snapshot can be at rescue."
 msgstr ""
+"Если флажок установлен, LyX сохраняет временную копию измененных документов "
+"в заданном интервале (как #filename.lyx# в заданном каталоге). В отличие от "
+"резервного копирования, задаваемого выше, эта временная копия будет удалена "
+"сразу после сохранения изменений. Если приложение аварийно завершает работу "
+"с несохраненными изменениями и восстановление из аварийного файла не "
+"удается, эта копия может стать спасением."
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:106
 msgid "Make a&uto-save snapshots every[[ N minutes]]"
-msgstr ""
+msgstr "Делать копии с автоматическим сохранением каждые"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:123
 msgid "[[Make auto-save snapshots every N ]]&minutes"
-msgstr ""
+msgstr "минут"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:148
 msgid ""
@@ -4901,6 +4903,10 @@ msgid ""
 "This requires 'Backup original documents when saving' in Look & Feel > "
 "Document Handling to be checked."
 msgstr ""
+"Если здесь указан путь, все резервные копии файлов LyX будут располагаться "
+"там. Если путь не указан, резервные копии будут храниться рядом с исходным "
+"документом. Для этого необходимо установить флажок 'Резервное копирование "
+"исходных документов при сохранении' в Вид и поведение > Документ."
 
 #: src/frontends/qt/ui/PrefPathsUi.ui:156
 msgid "&Backup directory:"
@@ -5528,10 +5534,10 @@ msgid "Re&place All"
 msgstr "Заменить вс&ё"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:165
-#, fuzzy
 msgid ""
 "Ignore this occurrence of the word permanently (saved as a text property)."
-msgstr "Игнорировать это появление слова всегда"
+msgstr ""
+"Игнорировать это появление слова всегда (сохраняется в свойствах текста)"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:168
 msgid "Ign&ore"
@@ -6400,25 +6406,25 @@ msgstr "Использовать полный заголовок, даже ес�
 #: lib/citeengines/biblatex.citeengine:145
 #: lib/citeengines/jurabib.citeengine:130 lib/citeengines/natbib.citeengine:124
 msgid " et al."
-msgstr ""
+msgstr " и др."
 
 #: lib/citeengines/biblatex-natbib.citeengine:154
 #: lib/citeengines/biblatex.citeengine:146
 #: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:29
 msgid ", [[separate author names in citation, except for last name]]"
-msgstr ""
+msgstr ", "
 
 #: lib/citeengines/biblatex-natbib.citeengine:155
 #: lib/citeengines/biblatex.citeengine:147
 #: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:30
 msgid ", and [[separate name of last author in citation]]"
-msgstr ""
+msgstr " и "
 
 #: lib/citeengines/biblatex-natbib.citeengine:156
 #: lib/citeengines/biblatex.citeengine:148
 #: lib/citeengines/natbib.citeengine:127 lib/layouts/stdciteformats.inc:31
 msgid " and [[separate two authors in citation]]"
-msgstr ""
+msgstr " и "
 
 #: lib/citeengines/biblatex-natbib.citeengine:303
 #: lib/citeengines/biblatex.citeengine:289
@@ -6486,9 +6492,8 @@ msgstr "краткий заголовок"
 #: lib/citeengines/jurabib.citeengine:131
 #: lib/citeengines/jurabib.citeengine:132
 #: lib/citeengines/jurabib.citeengine:133
-#, fuzzy
 msgid "/"
-msgstr "_/"
+msgstr "/"
 
 #: lib/citeengines/natbib.citeengine:2
 msgid "Natbib (BibTeX)"
@@ -8264,7 +8269,6 @@ msgid "Subject headings:"
 msgstr "Ключевые слова:"
 
 #: lib/layouts/aastex.layout:365
-#, fuzzy
 msgid "[Acknowledgments]"
 msgstr "[Благодарности]"
 
@@ -9695,7 +9699,6 @@ msgid "FourAffiliations"
 msgstr "Четыре принадлежности"
 
 #: lib/layouts/apa.layout:256 lib/layouts/iucr.layout:257
-#, fuzzy
 msgid "Acknowledgments:"
 msgstr "Благодарности:"
 
@@ -10764,24 +10767,20 @@ msgid "Right Address"
 msgstr "Адрес справа"
 
 #: lib/layouts/bxjsarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (BX Bundle)"
-msgstr "Japanese Article (BXJS Class)"
+msgstr "Japanese Article (BX Bundle)"
 
 #: lib/layouts/bxjsbook.layout:3
-#, fuzzy
 msgid "Japanese Book (BX Bundle)"
-msgstr "Japanese Book (BXJS Class)"
+msgstr "Japanese Book (BX Bundle)"
 
 #: lib/layouts/bxjsreport.layout:3
-#, fuzzy
 msgid "Japanese Report (BX Bundle)"
-msgstr "Japanese Report (BXJS Class)"
+msgstr "Japanese Report (BX Bundle)"
 
 #: lib/layouts/bxjsslide.layout:3
-#, fuzzy
 msgid "Japanese Slides (BX Bundle)"
-msgstr "Japanese Slide (BXJS Class)"
+msgstr "Japanese Slides (BX Bundle)"
 
 #: lib/layouts/chess.layout:3 lib/examples/Articles:0
 msgid "Chess"
@@ -13971,50 +13970,47 @@ msgstr "Краткий обзор"
 
 #: lib/layouts/japanese-vertical.inc:10 lib/layouts/japanese-vertical.inc:15
 msgid "Rensuji"
-msgstr ""
+msgstr "Rensuji"
 
 #: lib/layouts/japanese-vertical.inc:14
 msgid "Rensuji|R"
-msgstr ""
+msgstr "Rensuji|R"
 
 #: lib/layouts/japanese-vertical.inc:18
-#, fuzzy
 msgid "Pos"
-msgstr "cos"
+msgstr "Pos"
 
 #: lib/layouts/japanese-vertical.inc:20
 msgid "Insert 'c' for centering, 'r' for flushright and 'l' for flushleft"
-msgstr ""
+msgstr "Insert 'c' for centering, 'r' for flushright and 'l' for flushleft"
 
 #: lib/layouts/japanese-vertical.inc:25
 msgid "Rensuji*"
-msgstr ""
+msgstr "Rensuji*"
 
 #: lib/layouts/japanese-vertical.inc:28
 msgid "Rensuji with no Skip Adjustment|n"
-msgstr ""
+msgstr "Rensuji with no Skip Adjustment|n"
 
 #: lib/layouts/japanese-vertical.inc:29
 msgid "Rensuji (no skip adj.)"
-msgstr ""
+msgstr "Rensuji (no skip adj.)"
 
 #: lib/layouts/japanese-vertical.inc:32
-#, fuzzy
 msgid "Bou"
-msgstr "Блок"
+msgstr "Bou"
 
 #: lib/layouts/japanese-vertical.inc:35 lib/layouts/japanese-vertical.inc:36
 msgid "Bouten"
-msgstr ""
+msgstr "Bouten"
 
 #: lib/layouts/japanese-vertical.inc:39
 msgid "Kasen"
-msgstr ""
+msgstr "Kasen"
 
 #: lib/layouts/japanese-vertical.inc:42 lib/layouts/japanese-vertical.inc:43
-#, fuzzy
 msgid "Bousen"
-msgstr "Мышь"
+msgstr "Bousen"
 
 #: lib/layouts/jarticle.layout:3
 msgid "Japanese Article (Standard Class)"
@@ -14061,28 +14057,24 @@ msgid "American Geophysical Union (AGUPLUS JGR)"
 msgstr "American Geophysical Union (AGUPLUS JGR)"
 
 #: lib/layouts/jlreq-article.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Article (JLReq Class)"
-msgstr "Japanese Article (JS Class)"
+msgstr "Japanese Article (JLReq Class)"
 
 #: lib/layouts/jlreq-book.layout:3
-#, fuzzy
 msgid "Japanese Book (JLReq Class)"
-msgstr "Japanese Book (JS Class)"
+msgstr "Japanese Book (JLReq Class)"
 
 #: lib/layouts/jlreq-common.inc:13 lib/layouts/jlreq-common.inc:21
 #: lib/layouts/jlreq-common.inc:29 lib/layouts/jlreq-common.inc:37
 #: lib/layouts/jlreq-common.inc:45 lib/layouts/jlreq-common.inc:53
 #: lib/layouts/jlreq-common.inc:61 lib/layouts/jlreq-common.inc:69
 #: lib/layouts/jlreq-common.inc:77 lib/layouts/jlreq-common.inc:85
-#, fuzzy
 msgid "Subtitle|u"
 msgstr "Подзаголовок"
 
 #: lib/layouts/jlreq-common.inc:14 lib/layouts/jlreq-common.inc:22
-#, fuzzy
 msgid "Subtitle of the part"
-msgstr "Заголовок этой части"
+msgstr "Заголовок части"
 
 #: lib/layouts/jlreq-common.inc:27 lib/layouts/llncs.layout:42
 #: lib/layouts/memoir.layout:75 lib/layouts/numreport.inc:7
@@ -14094,9 +14086,8 @@ msgid "Chapter"
 msgstr "Глава"
 
 #: lib/layouts/jlreq-common.inc:30 lib/layouts/jlreq-common.inc:38
-#, fuzzy
 msgid "Subtitle of the chapter"
-msgstr "Номер категории"
+msgstr "Подзаголовок главы"
 
 #: lib/layouts/jlreq-common.inc:35 lib/layouts/memoir.layout:91
 #: lib/layouts/stdstarsections.inc:29 lib/layouts/svcommon.inc:275
@@ -14104,28 +14095,24 @@ msgid "Chapter*"
 msgstr "Глава*"
 
 #: lib/layouts/jlreq-common.inc:46 lib/layouts/jlreq-common.inc:54
-#, fuzzy
 msgid "Subtitle of the section"
-msgstr "Ширина блока раздела"
+msgstr "Подзаголовок раздела"
 
 #: lib/layouts/jlreq-common.inc:62 lib/layouts/jlreq-common.inc:70
-#, fuzzy
 msgid "Subtitle of the subsection"
-msgstr "Ширина блока раздела"
+msgstr "Подзаголовок подраздела"
 
 #: lib/layouts/jlreq-common.inc:78 lib/layouts/jlreq-common.inc:86
-#, fuzzy
 msgid "Subtitle of the subsubsection"
-msgstr "\\thesubsubsection."
+msgstr "Подзаголовок подподраздела"
 
 #: lib/layouts/jlreq-common.inc:91
-#, fuzzy
 msgid "Abstract over Columns"
-msgstr "Количество колонок"
+msgstr "Аннотация над колонками"
 
 #: lib/layouts/jlreq-common.inc:107 lib/layouts/jlreq-common.inc:113
 msgid "JLReq Setup"
-msgstr ""
+msgstr "JLReq Setup"
 
 #: lib/layouts/jlreq-common.inc:170 lib/layouts/jlreq-common.inc:173
 #: lib/layouts/tufte-book.layout:27 lib/layouts/tufte-book.layout:159
@@ -14133,86 +14120,80 @@ msgid "Sidenote"
 msgstr "Заметка на полях"
 
 #: lib/layouts/jlreq-common.inc:201
-#, fuzzy
 msgid "Endnote contents"
-msgstr "Некодируемое содержимое"
+msgstr "Содержание концевых сносок"
 
 #: lib/layouts/jlreq-common.inc:202
 msgid ""
 "Contents of the sidenote. Only makes sense when "
 "\\jlreqsetup{sidenote_type=symbol} is specified in the preamble."
 msgstr ""
+"Contents of the sidenote. Only makes sense when "
+"\\jlreqsetup{sidenote_type=symbol} is specified in the preamble."
 
 #: lib/layouts/jlreq-common.inc:209 lib/layouts/jlreq-common.inc:212
 msgid "Warichu"
-msgstr ""
+msgstr "Warichu"
 
 #: lib/layouts/jlreq-common.inc:240 lib/layouts/jlreq-common.inc:243
 msgid "Warichu*"
-msgstr ""
+msgstr "Warichu*"
 
 #: lib/layouts/jlreq-common.inc:277 lib/layouts/jlreq-common.inc:281
 msgid "Tatechuyoko"
-msgstr ""
+msgstr "Tatechuyoko"
 
 #: lib/layouts/jlreq-common.inc:285 lib/layouts/jlreq-common.inc:288
 msgid "Jidori"
-msgstr ""
+msgstr "Jidori"
 
 #: lib/layouts/jlreq-common.inc:290
 msgid "Length"
-msgstr ""
+msgstr "Length"
 
 #: lib/layouts/jlreq-common.inc:291
-#, fuzzy
 msgid "Jidori Length|L"
-msgstr "Заданное значение...|и"
+msgstr "Jidori Length|L"
 
 #: lib/layouts/jlreq-common.inc:292
 msgid "Length of Jidori. Contents is fit to this length."
-msgstr ""
+msgstr "Length of Jidori. Contents is fit to this length."
 
 #: lib/layouts/jlreq-common.inc:298 lib/layouts/jlreq-common.inc:301
 msgid "Akigumi"
-msgstr ""
+msgstr "Akigumi"
 
 #: lib/layouts/jlreq-common.inc:302
-#, fuzzy
 msgid "Akigumi (LuaLaTeX)"
-msgstr "PDF (LuaTeX)"
+msgstr "Akigumi (LuaLaTeX)"
 
 #: lib/layouts/jlreq-common.inc:304
-#, fuzzy
 msgid "Char Space"
-msgstr "Квадрат"
+msgstr "Char Space"
 
 #: lib/layouts/jlreq-common.inc:305
-#, fuzzy
 msgid "Char Space|D"
-msgstr "Тонкий пробел|Т"
+msgstr "Char Space|D"
 
 #: lib/layouts/jlreq-common.inc:306
 msgid "Distance between chars is set to this length."
-msgstr ""
+msgstr "Distance between chars is set to this length."
 
 #: lib/layouts/jlreq-report.layout:3
-#, fuzzy
 msgid "Japanese Report (JLReq Class)"
-msgstr "Japanese Report (BXJS Class)"
+msgstr "Japanese Report (JLReq Class)"
 
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (Standard Class)"
 msgstr "Japanese Report (стандартный класс)"
 
 #: lib/layouts/jsarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (JS Bundle)"
-msgstr "Japanese Article (JS Class)"
+msgstr "Japanese Article (JS Bundle)"
 
 #: lib/layouts/jsbook.layout:3
-#, fuzzy
 msgid "Japanese Book (JS Bundle)"
-msgstr "Japanese Book (JS Class)"
+msgstr "Japanese Book (JS Bundle)"
 
 #: lib/layouts/jss.layout:3 lib/examples/Articles:0
 msgid "Journal of Statistical Software (JSS) version 2"
@@ -14975,49 +14956,40 @@ msgid "strong"
 msgstr "сильное выделение"
 
 #: lib/layouts/ltjarticle.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Article (Standard Class for LuaTeX)"
-msgstr "Japanese Article (стандартный класс)"
+msgstr "Japanese Article (стандартный класс для LuaTeX)"
 
 #: lib/layouts/ltjbook.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Book (Standard Class for LuaTeX)"
-msgstr "Japanese Book (стандартный класс)"
+msgstr "Japanese Book (стандартный класс для LuaTeX)"
 
 #: lib/layouts/ltjreport.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Report (Standard Class for LuaTeX)"
-msgstr "Japanese Report (стандартный класс)"
+msgstr "Japanese Report (стандартный класс для LuaTeX)"
 
 #: lib/layouts/ltjsarticle.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Article (JS Bundle for LuaTeX)"
-msgstr "Japanese Article (JS Class)"
+msgstr "Japanese Article (JS Bundle for LuaTeX)"
 
 #: lib/layouts/ltjsbook.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Book (JS Bundle for LuaTeX)"
-msgstr "Japanese Book (JS Class)"
+msgstr "Japanese Book (JS Bundle for LuaTeX)"
 
 #: lib/layouts/ltjsreport.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Report (JS Bundle for LuaTeX)"
-msgstr "Japanese Report (BXJS Class)"
+msgstr "Japanese Report (JS Bundle for LuaTeX)"
 
 #: lib/layouts/ltjtarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (Standard Class for LuaTeX, vertical Writing)"
-msgstr "Japanese Article (стандартный класс: вертикальное письмо)"
+msgstr "Japanese Article (стандартный класс для LuaTeX, вертикальное письмо)"
 
 #: lib/layouts/ltjtbook.layout:3
-#, fuzzy
 msgid "Japanese Book (Standard Class for LuaTeX, vertical Writing)"
-msgstr "Japanese Book (стандартный класс: вертикальное письмо)"
+msgstr "Japanese Book (стандартный класс для LuaTeX, вертикальное письмо)"
 
 #: lib/layouts/ltjtreport.layout:3
-#, fuzzy
 msgid "Japanese Report (Standard Class for LuaTeX, vertical Writing)"
-msgstr "Japanese Book (стандартный класс: вертикальное письмо)"
+msgstr "Japanese Report (стандартный класс для LuaTeX, вертикальное письмо)"
 
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
@@ -17189,30 +17161,27 @@ msgstr "НЕОПРЕДЕЛЕНО"
 
 #: lib/layouts/stdciteformats.inc:22
 msgid "pp."
-msgstr ""
+msgstr "С."
 
 #: lib/layouts/stdciteformats.inc:23
-#, fuzzy
 msgid "ed."
-msgstr "Красный"
+msgstr "ред."
 
 #: lib/layouts/stdciteformats.inc:24
 msgid "eds."
-msgstr ""
+msgstr "ред."
 
 #: lib/layouts/stdciteformats.inc:25
 msgid "vol."
-msgstr ""
+msgstr "Т."
 
 #: lib/layouts/stdciteformats.inc:26
-#, fuzzy
 msgid "no."
-msgstr "нет"
+msgstr "№"
 
 #: lib/layouts/stdciteformats.inc:27
-#, fuzzy
 msgid "in"
-msgstr "inf"
+msgstr "в"
 
 #: lib/layouts/stdcounters.inc:10
 msgid "\\Roman{part}"
@@ -17690,14 +17659,12 @@ msgstr ""
 "таблицы, например 'Таблица 2.1'."
 
 #: lib/layouts/tarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (Standard Class, vertical Writing)"
-msgstr "Japanese Article (стандартный класс: вертикальное письмо)"
+msgstr "Japanese Article (стандартный класс, вертикальное письмо)"
 
 #: lib/layouts/tbook.layout:3
-#, fuzzy
 msgid "Japanese Book (Standard Class, vertical Writing)"
-msgstr "Japanese Book (стандартный класс: вертикальное письмо)"
+msgstr "Japanese Book (стандартный класс, вертикальное письмо)"
 
 #: lib/layouts/tcolorbox.module:2 lib/examples/Articles:0
 msgid "Fancy Colored Boxes"
@@ -17917,7 +17884,6 @@ msgid "AMS Theorems (Extended, Numbered by Type)"
 msgstr "Теоремы AMS (Расширенный, нумерация по типу)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -17929,9 +17895,9 @@ msgid ""
 msgstr ""
 "Определяет некоторые дополнительные окружения теорем для использования с "
 "пакетами теорем AMS. Включает Критерии, Алгоритмы, Аксиомы, Условия, "
-"Заметки, Обозначения, Обобщения, Благодарности, Заключения, Допущения и "
-"Случаи в нумерованном и ненумерованном вариантах. В отличие от расширенного "
-"модуля AMS, разные типы теорем имеют отдельную нумерацию (напр. критерий 1, "
+"Заметки, Обозначения, Обобщения, Заключения, Допущения и Случаи в "
+"нумерованном и ненумерованном вариантах. В отличие от расширенного модуля "
+"AMS, разные типы теорем имеют отдельную нумерацию (напр. критерий 1, "
 "критерий 2, аксиома 1, гипотеза 1, критерий 3, ..., а не критерий 1, "
 "критерий 2, аксиома 3, гипотеза 4, ...)."
 
@@ -18119,7 +18085,6 @@ msgid "AMS Theorems (Extended, Numbered by Type within Chapters)"
 msgstr "Теоремы AMS (Расширенный, нумерация по типу внутри глав)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:13
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -18132,10 +18097,10 @@ msgid ""
 msgstr ""
 "Определяет некоторые дополнительные окружения теорем для использования с "
 "пакетами теорем AMS. Включает Критерии, Алгоритмы, Аксиомы, Условия, "
-"Заметки, Обозначения, Обобщения, Благодарности, Заключения, Допущения и "
-"Случаи в нумерованном и ненумерованном вариантах. В отличие от расширенного "
-"модуля AMS, разные типы теорем имеют отдельную нумерацию для каждой главы "
-"(напр. критерий 1.1, критерий 1.2, аксиома 1.1, гипотеза 1.1 # критерий 2.1, "
+"Заметки, Обозначения, Обобщения, Заключения, Допущения и Случаи в "
+"нумерованном и ненумерованном вариантах. В отличие от расширенного модуля "
+"AMS, разные типы теорем имеют отдельную нумерацию для каждой главы (напр. "
+"критерий 1.1, критерий 1.2, аксиома 1.1, гипотеза 1.1 # критерий 2.1, "
 "критерий 2.2, аксиома 2.1, ..., а не критерий 1, критерий 2, аксиома 3, "
 "гипотеза 4, ...)."
 
@@ -18144,7 +18109,6 @@ msgid "AMS Theorems (Extended)"
 msgstr "Теоремы AMS (Расширенный)"
 
 #: lib/layouts/theorems-ams-extended.module:10
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -18153,8 +18117,8 @@ msgid ""
 msgstr ""
 "Определяет некоторые дополнительные окружения теорем для использования с "
 "пакетами теорем AMS. Включает Критерии, Алгоритмы, Аксиомы, Условия, "
-"Заметки, Обозначения, Обобщения, Благодарности, Заключения, Факты, Допущения "
-"и Случаи в нумерованном и ненумерованном вариантах."
+"Заметки, Обозначения, Обобщения, Заключения, Факты, Допущения и Случаи в "
+"нумерованном и ненумерованном вариантах."
 
 #: lib/layouts/theorems-ams-extended.module:39
 msgid "Criterion \\thetheorem."
@@ -18572,9 +18536,8 @@ msgid "MissingFigure"
 msgstr "Отсутствует рисунок"
 
 #: lib/layouts/treport.layout:3
-#, fuzzy
 msgid "Japanese Report (Standard Class, vertical Writing)"
-msgstr "Japanese Book (стандартный класс: вертикальное письмо)"
+msgstr "Japanese Report (стандартный класс, вертикальное письмо)"
 
 #: lib/layouts/tufte-book.layout:3 lib/examples/Articles:0
 msgid "Tufte Book"
@@ -21499,9 +21462,8 @@ msgid "Date (Current)|D"
 msgstr "Дата (текущая)|Д"
 
 #: lib/ui/stdmenus.inc:429
-#, fuzzy
 msgid "Date (Last Modification of Document)|L"
-msgstr "Дата (последнее изменение)|и"
+msgstr "Дата (последнее изменение документа)|и"
 
 #: lib/ui/stdmenus.inc:430
 msgid "Date (Fixed)|F"
@@ -21512,9 +21474,8 @@ msgid "Time (Current)|T"
 msgstr "Время (текущее)|В"
 
 #: lib/ui/stdmenus.inc:433
-#, fuzzy
 msgid "Time (Last Modification of Document)|M"
-msgstr "Время (последнее изменение)"
+msgstr "Время (последнее изменение документа)"
 
 #: lib/ui/stdmenus.inc:434
 msgid "Time (Fixed)|x"
@@ -21725,12 +21686,10 @@ msgid "Reject All Changes|e"
 msgstr "Отклонить все изменения"
 
 #: lib/ui/stdmenus.inc:594
-#, fuzzy
 msgid "Accept All Changes (incl. relatives)|p"
 msgstr "Принять все изменения (главный и дочерние документы)"
 
 #: lib/ui/stdmenus.inc:595
-#, fuzzy
 msgid "Reject All Changes (incl. relatives)|j"
 msgstr "Отклонить все изменения (главный и дочерние документы)"
 
@@ -27360,29 +27319,24 @@ msgid "Graphics and Insets"
 msgstr "Графика и вставки"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Mixing Japanese with other Languages (with CJKutf8)"
-msgstr "Многоязычная вёрстка с CJKutf8"
+msgstr "Многоязычная вёрстка японского с другими языками (с CJKutf8)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Localization Test (for Developers)"
-msgstr "Тест локализации"
+msgstr "Тест локализации (для разработчиков)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Writing Armenian"
-msgstr "Армянский"
+msgstr "Армянская письменность"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Mixing Japanese with other Languages (with platex)"
-msgstr "Многоязычная вёрстка с platex"
+msgstr "Многоязычная вёрстка японского с другими языками (с platex)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Language Support"
-msgstr "Поддержка языков LaTeX"
+msgstr "Поддержка языков"
 
 #: lib/examples/Articles:0
 msgid "Serial Letter 3"
@@ -27438,7 +27392,7 @@ msgstr "Добро пожаловать"
 
 #: lib/examples/Articles:0
 msgid "Writing Korean with CJK-ko"
-msgstr ""
+msgstr "Корейская письменность с CJK-ko"
 
 #: lib/examples/Articles:0
 msgid "Mathematical Monthly"
@@ -27561,19 +27515,16 @@ msgid "Theses"
 msgstr "Диссертации"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
-msgstr "Japanese Book (стандартный класс: вертикальное письмо)"
+msgstr "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
-msgstr "Japanese Book (стандартный класс: вертикальное письмо)"
+msgstr "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
-msgstr "Japanese Article (стандартный класс: вертикальное письмо)"
+msgstr "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Formal with Footline"
@@ -30904,7 +30855,7 @@ msgstr "Режим редактора regexp"
 
 #: src/Text3.cpp:592
 msgid "Action flattens document structure"
-msgstr ""
+msgstr "Действие упрощает структуру документа"
 
 #: src/Text3.cpp:593
 msgid ""
@@ -30912,14 +30863,17 @@ msgid ""
 "before to be on the same level since there is no more lower or higher "
 "heading level. Continue still?"
 msgstr ""
+"Это действие приведет к тому, что некоторые заголовки, которые раньше "
+"находились на разных уровнях, будут находиться на одном уровне, поскольку "
+"больше нет более низкого или более высокого уровня заголовка. Продолжить?"
 
 #: src/Text3.cpp:598
 msgid "&Yes, continue nonetheless"
-msgstr ""
+msgstr "&Да, всё равно продолжить"
 
 #: src/Text3.cpp:599
 msgid "&No, quit operation"
-msgstr ""
+msgstr "&Нет, завершить операцию"
 
 #: src/Text3.cpp:1638
 msgid "Layout "
@@ -33508,12 +33462,10 @@ msgid "Date (current)"
 msgstr "Дата (текущая)"
 
 #: src/frontends/qt/GuiInfo.cpp:71
-#, fuzzy
 msgid "Date (last modification of document)"
-msgstr "Дата (последнее изменение)|и"
+msgstr "Дата (последнее изменение документа)|и"
 
 #: src/frontends/qt/GuiInfo.cpp:72
-#, fuzzy
 msgid "Date (fixed)"
 msgstr "Дата (заданная)"
 
@@ -33522,12 +33474,10 @@ msgid "Time (current)"
 msgstr "Время (текущее)"
 
 #: src/frontends/qt/GuiInfo.cpp:74
-#, fuzzy
 msgid "Time (last modification of document)"
-msgstr "Время (последнее изменение)"
+msgstr "Время (последнее изменение документа)"
 
 #: src/frontends/qt/GuiInfo.cpp:75
-#, fuzzy
 msgid "Time (fixed)"
 msgstr "Время (заданное)"
 
@@ -33552,9 +33502,8 @@ msgid "Last Assigned Keyboard Shortcut"
 msgstr "Последнее назначенное сочетание клавиш"
 
 #: src/frontends/qt/GuiInfo.cpp:81
-#, fuzzy
 msgid "All Assigned Keyboard Shortcuts"
-msgstr "Последнее назначенное сочетание клавиш"
+msgstr "Все назначенные сочетания клавиш"
 
 #: src/frontends/qt/GuiInfo.cpp:82
 msgid "LyX Menu Location"
@@ -33758,12 +33707,10 @@ msgid "Enter a valid value below"
 msgstr "Введите допустимое значение ниже"
 
 #: src/frontends/qt/GuiInfo.cpp:365
-#, fuzzy
 msgid "Here you can enter a fixed time (in ISO format: hh:mm:ss)"
 msgstr "Введите заданное время (в формате ISO: hh:mm:ss)"
 
 #: src/frontends/qt/GuiInfo.cpp:366
-#, fuzzy
 msgid "&Fixed Time:"
 msgstr "Заданное время:"
 
@@ -34204,6 +34151,11 @@ msgid ""
 "Note that these files are hidden by default by some file managers. A "
 "dedicated backup directory can be set in the 'Paths' section."
 msgstr ""
+"Если этот флажок установлен, в текущем рабочем каталоге создается резервная "
+"копия документа. Файл резервной копии имеет то же имя, но с суффиксом '."
+"lyx~'. Обратите внимание, что эти файлы по умолчанию скрыты некоторыми "
+"файловыми менеджерами. Специальный каталог для резервных копий можно задать "
+"в разделе 'Пути'."
 
 #: src/frontends/qt/GuiPrefs.cpp:2771
 #, c-format
@@ -34213,6 +34165,11 @@ msgid ""
 "file name and the suffix '.lyx~' (e.g., !mydir!filename.lyx~). Note that "
 "these files are hidden by default by some file managers."
 msgstr ""
+"Если этот флажок установлен, резервная копия документа создается в каталоге "
+"резервного копирования (%1$s). Резервный файл имеет полный исходный путь и "
+"имя в качестве имени файла и суффикс '.lyx~' (например, !mydir!filename."
+"lyx~). Обратите внимание, что эти файлы скрыты по умолчанию некоторыми "
+"файловыми менеджерами."
 
 #: src/frontends/qt/GuiPrefs.cpp:2796
 msgid "Control"
@@ -35988,7 +35945,7 @@ msgstr "&Продолжить"
 
 #: src/insets/InsetBibtex.cpp:181
 msgid "EMPTY: "
-msgstr ""
+msgstr "ПУСТО: "
 
 #: src/insets/InsetBibtex.cpp:182
 msgid "Biblatex Generated Bibliography"
@@ -36004,7 +35961,7 @@ msgstr "Базы данных:"
 
 #: src/insets/InsetBibtex.cpp:195
 msgid "None[[bib databases]], please fill in!"
-msgstr ""
+msgstr "Нет базы, пожалуйста, заполните!"
 
 #: src/insets/InsetBibtex.cpp:213
 msgid "Style File:"
