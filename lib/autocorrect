@@ -121,18 +121,21 @@
 =                 >    \Rightarrow
 =                 <    \Leftarrow
 \Rightarrow       =    \Longrightarrow
+\Leftarrow        >    \Leftrightarrow
 \Leftarrow        =    \Longleftarrow
 \Longleftarrow    >    \Longleftrightarrow
 
 \leftarrow        *    \longleftarrow
 \longleftarrow    *    \longleftrightarrow
-\longleftrightarrow *  \leftarrow
+\longleftrightarrow *  \leftrightarrow
+\leftrightarrow   *    \leftarrow
 \rightarrow       *    \longrightarrow
 \longrightarrow   *    \longleftrightarrow
 
 \Leftarrow        *    \Longleftarrow
 \Longleftarrow    *    \Longleftrightarrow
-\Longleftrightarrow *  \Leftarrow
+\Longleftrightarrow *  \Leftrightarrow
+\Leftrightarrow   *    \Leftarrow
 \Rightarrow       *    \Longrightarrow
 \Longrightarrow   *    \Longleftrightarrow
 
