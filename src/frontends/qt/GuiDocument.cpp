@@ -19,6 +19,7 @@
 #include "GuiApplication.h"
 #include "GuiBranches.h"
 #include "GuiIndices.h"
+#include "GuiView.h"
 #include "GuiSelectionManager.h"
 #include "LaTeXHighlighter.h"
 #include "Validator.h"
@@ -1380,6 +1381,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(outputChangesToggled(bool)));
 	connect(changesModule->changeBarsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(&lv, SIGNAL(changeTrackingToggled(bool)),
+		this, SLOT(changeTrackingChanged(bool)));
 
 
 	// numbering
@@ -1901,6 +1904,14 @@ void GuiDocument::bookmarksopenChanged(bool state)
 {
 	pdfSupportModule->bookmarksopenlevelSB->setEnabled(state);
 	pdfSupportModule->bookmarksopenlevelLA->setEnabled(state);
+}
+
+
+void GuiDocument::changeTrackingChanged(bool state)
+{
+	// This is triggered if the CT state is toggled outside
+	// the document dialog (e.g., menu).
+	changesModule->trackChangesCB->setChecked(state);
 }
 
 

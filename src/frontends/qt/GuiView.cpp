@@ -2446,6 +2446,14 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
+	case LFUN_CHANGES_TRACK: {
+		if (!doc_buffer) {
+			enable = false;
+			break;
+		}
+		return doc_buffer->getStatus(cmd, flag);
+	}
+
 	case LFUN_VIEW_SPLIT:
 		if (cmd.getArg(0) == "vertical")
 			enable = doc_buffer && (d.splitter_->count() == 1 ||
@@ -4527,6 +4535,15 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			LASSERT(doc_buffer, break);
 			doc_buffer->runChktex();
 			break;
+
+		case LFUN_CHANGES_TRACK: {
+			// the actual dispatch is done in Buffer
+			dispatchToBufferView(cmd, dr);
+			// but we inform the GUI (document settings) if this is toggled
+			LASSERT(doc_buffer, break);
+			Q_EMIT changeTrackingToggled(doc_buffer->params().track_changes);
+			break;
+		}
 
 		case LFUN_COMMAND_EXECUTE: {
 			command_execute_ = true;

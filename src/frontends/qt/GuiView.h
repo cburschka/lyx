@@ -230,6 +230,8 @@ Q_SIGNALS:
 	void currentZoomChanged(int);
 	/// emitted when script is killed (e.g., user cancels export)
 	void scriptKilled();
+	/// emitted when track changes status toggled
+	void changeTrackingToggled(bool);
 
 public Q_SLOTS:
 	///

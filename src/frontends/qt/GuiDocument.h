@@ -168,6 +168,7 @@ private Q_SLOTS:
 	void outputChangesToggled(bool);
 	void setOutputSync(bool);
 	void bookmarksopenChanged(bool);
+	void changeTrackingChanged(bool);
 private:
 	/// validate listings parameters and return an error message, if any
 	QString validateListingsParameters();
